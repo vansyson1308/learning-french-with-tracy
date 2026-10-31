@@ -26,66 +26,30 @@
         "B": null
       },
       "canary": {
-        "reportedAt": "2026-10-30",
+        "reportedAt": "2026-10-31",
         "report": "content/reports/audio-canary.json",
         "voices": [
           {
             "voiceId": "kokoro-ff_siwis",
             "clips": 26,
-            "meanWer": 0.1575,
+            "meanWer": 0.1757,
             "technicalFailures": 0
           },
           {
-            "voiceId": "fr_FR-mls_s13-medium",
+            "voiceId": "parler-fr-christine",
             "clips": 26,
-            "meanWer": 2.1874,
-            "technicalFailures": 0
+            "meanWer": 0.4518,
+            "technicalFailures": 2
           },
           {
-            "voiceId": "fr_FR-mls_s34-medium",
+            "voiceId": "parler-fr-daniel",
             "clips": 26,
-            "meanWer": 2.9603,
-            "technicalFailures": 0
-          },
-          {
-            "voiceId": "fr_FR-mls_s8-medium",
-            "clips": 26,
-            "meanWer": 2.5046,
-            "technicalFailures": 1
-          },
-          {
-            "voiceId": "fr_FR-mls_s21-medium",
-            "clips": 26,
-            "meanWer": 2.7322,
+            "meanWer": 0.4354,
             "technicalFailures": 3
-          },
-          {
-            "voiceId": "fr_FR-mls_s1-medium",
-            "clips": 26,
-            "meanWer": 2.8732,
-            "technicalFailures": 4
-          },
-          {
-            "voiceId": "fr_FR-mls_s3-medium",
-            "clips": 26,
-            "meanWer": 2.972,
-            "technicalFailures": 4
-          },
-          {
-            "voiceId": "fr_FR-mls_s2-medium",
-            "clips": 26,
-            "meanWer": 3.2436,
-            "technicalFailures": 4
-          },
-          {
-            "voiceId": "fr_FR-mls_s5-medium",
-            "clips": 26,
-            "meanWer": 3.203,
-            "technicalFailures": 8
           }
         ]
       },
-      "castNote": "A=kokoro-ff_siwis (Kokoro voice pack ff_siwis); no second voice: no other candidate is a verified different speaker within the floor; skipped fr_FR-mls_s13-medium (mean WER/CER 2.1874 > 0.6), fr_FR-mls_s34-medium (mean WER/CER 2.9603 > 0.6), fr_FR-mls_s8-medium (mean WER/CER 2.5046 > 0.6), fr_FR-mls_s21-medium (mean WER/CER 2.7322 > 0.6), fr_FR-mls_s1-medium (mean WER/CER 2.8732 > 0.6), fr_FR-mls_s3-medium (mean WER/CER 2.972 > 0.6), fr_FR-mls_s2-medium (mean WER/CER 3.2436 > 0.6), fr_FR-mls_s5-medium (mean WER/CER 3.203 > 0.6)",
+      "castNote": "A=kokoro-ff_siwis (Kokoro voice pack ff_siwis); no second voice: no other candidate is a verified different speaker within the floor; skipped parler-fr-christine (2 technical failure(s)), parler-fr-daniel (3 technical failure(s))",
       "candidateSearch": "2026-10-31 (D-11): the Multilingual LibriSpeech Piper voices were tried first, eight speakers each. German mean WER 1.39 to 2.01, French 2.19 to 3.24, against the 0.6 floor, so they left. Kokoro has no German."
     },
     "es": {

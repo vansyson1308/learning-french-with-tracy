@@ -132,11 +132,11 @@ Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 - **License:** Apache-2.0
 - **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-30
+- **Retrieved:** 2026-10-31
 
 Course audio for fr-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/ff_siwis.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.1575 over 26 sampled strings, 0 technical failures). Model weights are never committed.
+> Selected by the audio canary ASR audit (mean WER/CER 0.1757 over 26 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## Kokoro-82M voice kokoro-if_sara
 
