@@ -1513,6 +1513,9 @@ export type Readings = z.infer<typeof ReadingsSchema>;
  * the pinned voice cast and concatenated deterministically at generation
  * time — the segments ARE the single authoritative transcript (P7 §40).
  */
+/** A voice's selector: a Piper speaker id, or a Parler speaker's name (D-11). */
+const castSpeaker = z.union([z.number().int(), z.string().min(1)]).nullable();
+
 export const ListeningSegmentSchema = z.strictObject({
   speaker: z.enum(["A", "B"]),
   text: z.string().min(1),
@@ -1549,8 +1552,8 @@ export const listeningSchema = (lang: string) =>
      * silently reshuffle who speaks.
      */
     voiceCast: z.strictObject({
-      A: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
-      B: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
+      A: z.strictObject({ voiceId: z.string().min(1), speaker: castSpeaker }),
+      B: z.strictObject({ voiceId: z.string().min(1), speaker: castSpeaker }),
     }),
     clips: z.array(listeningClipSchema(lang)).min(1),
   });
@@ -1624,9 +1627,9 @@ export const storiesSchema = (lang: string) =>
      * voices whenever a story has dialogue (validator).
      */
     voiceCast: z.strictObject({
-      N: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
-      A: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
-      B: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
+      N: z.strictObject({ voiceId: z.string().min(1), speaker: castSpeaker }),
+      A: z.strictObject({ voiceId: z.string().min(1), speaker: castSpeaker }),
+      B: z.strictObject({ voiceId: z.string().min(1), speaker: castSpeaker }),
     }),
     /** Closed-class words of the language (articles, pronouns, prepositions …), lower case. */
     functionWords: z.array(z.string().min(1)).min(10),

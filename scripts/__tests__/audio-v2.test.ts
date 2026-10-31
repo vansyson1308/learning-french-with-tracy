@@ -151,9 +151,9 @@ describe("licence gate v2", () => {
 describe("manifests and voice casts", () => {
   const pack = readJson("content/audio/pack-audio-manifest.json") as { version: number; pipelineVersions: Record<string, number>; courses: Record<string, { language: string; policy: string; voiceCast?: { A: string | null } }>; voices: { id: string; engine: string; language: string }[] };
   const casts = readJson("content/audio/voice-casts.json") as { languages: Record<string, { status: string; candidates: { voiceId: string; engine: string }[]; cast: { A: string | null } }> };
-  test("every course has a language, every candidate voice is declared with its engine, French stays at pipelineVersion 1", () => {
+  test("every course has a language, every candidate voice is declared with its engine, every language on the default pipeline", () => {
     expect(pack.version).toBe(2);
-    expect(pack.pipelineVersions.fr).toBe(1);
+    expect(pack.pipelineVersions.fr).toBeUndefined(); // D-11: French left its frozen version 1
     expect(pack.pipelineVersions.default).toBe(3); // P3f: 32 kbps speech from version 3
     const voices = [...pack.voices];
     for (const lang of Object.keys(casts.languages)) {

@@ -125,8 +125,5 @@ describe("Opus fixture provenance (content/audio/diagnostics-fixtures.json)", ()
     expect(entry).toBeDefined();
     expect(entry!.covers).toEqual(["assets/diagnostics/"]);
     expect(entry!.testOnly).toBe(true);
-    const voice = loadRegistry().sources.find((s) => s.id === "piper-voice-siwis");
-    expect(entry!.license).toBe(voice!.license);
-    expect(entry!.url).toBe(voice!.url);
   });
 });

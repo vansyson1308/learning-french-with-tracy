@@ -457,6 +457,18 @@
       "buildTimeOnly": true
     },
     {
+      "id": "tts-engine-parler",
+      "name": "Parler-TTS",
+      "kind": "TTS engine used at pipeline time (never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://github.com/huggingface/parler-tts",
+      "attribution": "Parler-TTS (Hugging Face, Apache-2.0), pinned in content/audio/engines.json, renders course audio at pipeline time. It never ships.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "content/audio/engines.json"
+      ]
+    },
+    {
       "id": "tts-engine-melotts",
       "name": "MeloTTS (MyShell.ai) — neural TTS engine and per-language models",
       "kind": "TTS engine used at pipeline time (never shipped)",

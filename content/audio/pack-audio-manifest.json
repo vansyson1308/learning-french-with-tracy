@@ -1,8 +1,7 @@
 {
   "version": 2,
   "pipelineVersions": {
-    "default": 3,
-    "fr": 1
+    "default": 3
   },
   "note": "Bundled course audio (pack layer: every word, phrase and sentence a course pack references; lexicon layer: every lexeme surface and example of a language's lexicon, keyed by its primary course). Audio pipeline v2 (P3b): engines, pins, licence gate and loudness target live in content/audio/engines.json; candidate voices per LANGUAGE and the selected voice cast live in content/audio/voice-casts.json (written by `scripts/audio.ts select` from the canary ASR audit); every voice is pinned here by double-download hash after recon. pipelineVersions: French clips keep version 1 (their content-addressed keys and bytes never change); every other language uses version 2 (EBU R128 loudness normalisation). Courses whose language has no licence-clean voice keep policy device-tts.",
   "engines": "content/audio/engines.json",
@@ -124,18 +123,13 @@
       }
     },
     "zh-en": {
-      "policy": "generated",
+      "policy": "device-tts",
       "language": "zh",
-      "voiceId": "melotts-zh",
+      "reason": "D-11: MeloTTS declares no training data; the Kokoro Chinese voices await their canary (P4d)",
       "candidates": [
-        "melotts-zh",
         "kokoro-zf_xiaobei",
         "kokoro-zm_yunjian"
-      ],
-      "voiceCast": {
-        "A": "melotts-zh",
-        "B": "kokoro-zm_yunjian"
-      }
+      ]
     },
     "ja-en": {
       "policy": "generated",
@@ -152,16 +146,10 @@
       }
     },
     "ko-en": {
-      "policy": "generated",
+      "policy": "device-tts",
       "language": "ko",
-      "voiceId": "melotts-ko",
-      "candidates": [
-        "melotts-ko"
-      ],
-      "voiceCast": {
-        "A": "melotts-ko",
-        "B": null
-      }
+      "reason": "D-11: MeloTTS declares no training data and no other engine in the pipeline has Korean",
+      "candidates": []
     }
   },
   "voices": [

@@ -183,7 +183,7 @@ jobs:
           piper --version 2>/dev/null || true
 
       - name: Synthesize
-        timeout-minutes: 90 # longest observed 30 min
+        timeout-minutes: 300 # Kokoro and Piper about 30 min; Parler runs at about 6 times real time on the CPU
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
