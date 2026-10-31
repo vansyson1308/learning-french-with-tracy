@@ -104,7 +104,7 @@ try {
   // 3. Goals: estimate card, per-domain n/m chips, capstone link, limit explainer.
   await page.goto(`${BASE}/goals`, { waitUntil: "networkidle" });
   const estimateLabel = (await byId("a1-estimate-label").textContent())?.trim();
-  check("goals: estimate label in the UI language", estimateLabel === t("goals.estimateLabel").replace("{level}", "A1"), `"${estimateLabel}"`);
+  check("goals: estimate label in the UI language", estimateLabel === t("goals.estimateLabel", { level: "A1" }), `"${estimateLabel}"`);
   await byId("a1-domain-chips").waitFor();
   const listeningChip = await byId("a1-domain-chip-spoken_reception").innerText();
   const listeningName = t("domain.spoken_reception");

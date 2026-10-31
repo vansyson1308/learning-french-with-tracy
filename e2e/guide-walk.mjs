@@ -335,7 +335,7 @@ try {
   // ---- §23 §24 §25 goals ------------------------------------------------------
   await attempt(23, "CEFR-aligned A1 estimate — five skills with authored denominators", async () => {
     await go("/goals");
-    await see(t("goals.estimateLabel"));
+    await see(t("goals.estimateLabel", { level: "A1" }));
     const chip = await byId("a1-domain-chip-spoken_reception").textContent();
     if (!new RegExp(`${t("domain.spoken_reception")}\\s*\\d/\\d`).test(chip ?? "")) throw new Error(`chip "${chip}"`);
     await see(new RegExp(`${t("goals.estimateIncomplete")}|${t("goals.estimateDemonstrated")}`));
