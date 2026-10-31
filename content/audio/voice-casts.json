@@ -23,7 +23,7 @@
       ],
       "cast": {
         "A": "kokoro-ff_siwis",
-        "B": null
+        "B": "parler-fr-daniel"
       },
       "canary": {
         "reportedAt": "2026-10-31",
@@ -32,24 +32,24 @@
           {
             "voiceId": "kokoro-ff_siwis",
             "clips": 26,
-            "meanWer": 0.1757,
+            "meanWer": 0.1988,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "parler-fr-daniel",
+            "clips": 26,
+            "meanWer": 0.3484,
             "technicalFailures": 0
           },
           {
             "voiceId": "parler-fr-christine",
             "clips": 26,
-            "meanWer": 0.4518,
-            "technicalFailures": 2
-          },
-          {
-            "voiceId": "parler-fr-daniel",
-            "clips": 26,
-            "meanWer": 0.4354,
-            "technicalFailures": 3
+            "meanWer": 0.6917,
+            "technicalFailures": 1
           }
         ]
       },
-      "castNote": "A=kokoro-ff_siwis (Kokoro voice pack ff_siwis); no second voice: no other candidate is a verified different speaker within the floor; skipped parler-fr-christine (2 technical failure(s)), parler-fr-daniel (3 technical failure(s))",
+      "castNote": "A=kokoro-ff_siwis (Kokoro voice pack ff_siwis); B=parler-fr-daniel: different speaker (Parler speaker Daniel), other gender (male vs female), mean WER/CER 0.3484 ≤ 0.6; skipped parler-fr-christine (mean WER/CER 0.6917 > 0.6)",
       "candidateSearch": "2026-10-31 (D-11): the Multilingual LibriSpeech Piper voices were tried first, eight speakers each. German mean WER 1.39 to 2.01, French 2.19 to 3.24, against the 0.6 floor, so they left. Kokoro has no German."
     },
     "es": {

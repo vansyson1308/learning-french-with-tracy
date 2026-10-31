@@ -136,7 +136,7 @@ Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 
 Course audio for fr-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/ff_siwis.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.1757 over 26 sampled strings, 0 technical failures). Model weights are never committed.
+> Selected by the audio canary ASR audit (mean WER/CER 0.1988 over 26 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## Kokoro-82M voice kokoro-if_sara
 
@@ -368,6 +368,17 @@ Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1
 Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Nicole; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
 
 > Selected by the audio canary ASR audit (mean WER/CER 0.1937 over 36 sampled strings, 0 technical failures). Model weights are never committed.
+
+## Parler-TTS Mini Multilingual speaker Daniel (fr)
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-31
+
+Course audio for fr-en synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Daniel; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.3484 over 26 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## Piper voice es_ES-davefx-medium
 
