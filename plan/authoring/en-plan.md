@@ -27,6 +27,6 @@ This departs from the wording of P4f and D-13. It is recorded in `plan/STATUS.md
 ## Pedagogy notes
 - IPA: General American primary, British variants noted.
 - Speech: `en-US` recogniser, with `en-GB` accepted, per P4f.
-- Audio: Kokoro `af_heart` (A), `am_michael` (B), per `content/audio/voice-casts.json`. The brief's MeloTTS-EN mention is out: MeloTTS fails the lineage gate (D-11).
+- Audio: Kokoro `am_michael` (A), `af_heart` (B), per `content/audio/voice-casts.json`. The brief's MeloTTS-EN mention is out: MeloTTS fails the lineage gate (D-11).
 - Scenarios per P4f: job interview basics, workplace instructions, email and phone, shop, directions, clinic, introducing yourself at work.
 - Onboarding: `en-vi` becomes the default suggestion for Vietnamese UI users once it passes the claim gate.

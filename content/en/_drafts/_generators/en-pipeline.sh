@@ -26,6 +26,9 @@ if ! python -I -c "import json,sys; p=json.load(open('content/en/_drafts/pack.js
 fi
 bun scripts/en-draft.ts syllabus
 python -I "$G/en-lex.py" . split
+# Stories first: s3 takes the band-1 audio list from their reading order. Their ingest comes after the lessons, which set bands A1-0.
+rm -rf content/en/_drafts/stories/batches
+for story_batch in "$G"/en-stories-[0-9]*.py; do python -I "$story_batch" .; done
 # Reception, speech, writing, scenarios. s3 writes the listening.json head with the voice cast; s4 and s6 append their clips.
 python -I "$G/en-reception-s3.py" .
 python -I "$G/en-speech-s4.py" .
@@ -51,3 +54,7 @@ for step in checkpoints placement exam; do
   bun scripts/author.ts ingest "$step" --target en --native vi || true
   grep -q "failed: 0 ·" "content/en/_drafts/$step/REPORT.md"
 done
+# The seed writes the head of the staged stories.json afresh: voice cast, function words, shared token map.
+python -I "$G/en-stories-seed.py" .
+bun scripts/author.ts ingest stories --target en --native vi || true
+grep -q "failed: 0 ·" content/en/_drafts/stories/REPORT.md

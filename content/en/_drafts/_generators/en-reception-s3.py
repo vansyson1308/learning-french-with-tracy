@@ -10,7 +10,8 @@ from en_refs import check, clip, refs, report, write_jsonl
 
 ROOT = sys.argv[1]
 DRAFTS = f"{ROOT}/content/en/_drafts"
-CAST = {"A": "kokoro-af_heart", "B": "kokoro-am_michael"}
+# The canary's record, content/audio/voice-casts.json: A is the male voice, B the female voice. A clip whose speaker states a gender sits on the matching voice.
+CAST = {"A": "kokoro-am_michael", "B": "kokoro-af_heart"}
 R_MSG, R_NOTICE, R_TEXT, R_WORDS = "en.obj.reading.short_messages", "en.obj.reading.notices_info", "en.obj.reading.short_texts", "en.obj.reading.familiar_words"
 FW, INFO, ANN, DLG = "en.obj.listening.familiar_words", "en.obj.listening.short_info", "en.obj.listening.announcements", "en.obj.listening.short_dialogues"
 NUM, TIME, PAST = "en.obj.numbers.0_100", "en.obj.vocab.time_calendar", "en.obj.verbs.past_recognition"
@@ -102,7 +103,7 @@ CLIPS += [
 ]
 # Unit i: short dialogues.
 CLIPS += [
- C("ui_meet", "dialogue", [("A", "Hi! I'm Anna."), ("B", "Nice to meet you. I'm Minh.")], [DLG], 2),
+ C("ui_meet", "dialogue", [("B", "Hi! I'm Anna."), ("A", "Nice to meet you. I'm Minh.")], [DLG], 2),
  C("ui_how", "dialogue", [("A", "How are you?"), ("B", "I'm fine, thanks. And you?")], [DLG], 1),
  C("ui_order", "dialogue", [("B", "What would you like?"), ("A", "A coffee, please.")], [DLG], 1),
  C("ui_pay", "dialogue", [("A", "That's four dollars."), ("B", "Can I pay by card?"), ("A", "Yes, of course.")], [DLG, NUM], 2),
@@ -156,14 +157,23 @@ os.makedirs(os.path.dirname(staged), exist_ok=True)
 with open(staged, "w", encoding="utf-8", newline="\n") as f:
     f.write(json.dumps(head, indent=2, ensure_ascii=False) + "\n")
 
-# Reception voice manifest: pins copied from the pack manifest; storyAudio is the stories step's.
+# Band-1 story audio: the first STORY_AUDIO_MAX_BUNDLED stories of bandOneOrder (scripts/lib/stories.ts): reading order (band, then
+# authored order) without the micro-stories. The stories' generators run before this script; the validator warns if the list drifts.
+BANDS = ["A1-0", "A1-1", "A1-2", "A2-1", "A2-2", "B1-1", "B1-2", "B2-1", "B2-2"]
+STORY_AUDIO_MAX_BUNDLED = 18
+stories = [json.loads(line) for line in open(f"{DRAFTS}/stories/OUTPUT.jsonl", encoding="utf-8")]
+reading_order = [s["id"] for _, s in sorted(enumerate(stories), key=lambda p: (BANDS.index(p[1]["band"]), p[0])) if s["band"] != "A1-0"]
+story_audio = {"bundled": "band-1", "stories": reading_order[:STORY_AUDIO_MAX_BUNDLED],
+               "reason": "QC 2026-10-29b §2.3 + Opus (CI-proven 2026-10-30, PR #51): band-1 story audio only, as in es and it: the first 18 stories of the reading order after the A1-0 micro-stories bundle sentence audio as Opus 16 kbps; the micro-stories and every other story are read with the device voice, labelled \"Giọng đọc của máy\" (release/ASSET_DELIVERY.md)."}
+
+# Reception voice manifest: pins copied from the pack manifest.
 pack = json.load(open(f"{ROOT}/content/audio/pack-audio-manifest.json", encoding="utf-8"))
-ROLE = {"kokoro-af_heart": "speaker A — female voice for announcements, monologues and dialogue turns", "kokoro-am_michael": "speaker B — male voice for the second speaker of dialogues"}
+ROLE = {"kokoro-am_michael": "speaker A — male voice for announcements, monologues and dialogue turns", "kokoro-af_heart": "speaker B — female voice for the second speaker of dialogues"}
 voices = []
 for vid in CAST.values():
     v = next(x for x in pack["voices"] if x["id"] == vid)
     voices.append({**v, "role": ROLE[vid], "multiSpeaker": False})
-manifest = {"version": 2, "pipelineVersion": 3, "storyPipelineVersion": 4,
+manifest = {"version": 2, "pipelineVersion": 3, "storyPipelineVersion": 4, "storyAudio": story_audio,
             "note": "Pinned TTS sources for the English reception audio (P4f): the two Kokoro-82M voices of the en-vi cast, with the same pins as the pack manifest; verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
             "engines": "content/audio/engines.json", "voices": voices, "excludedVoices": []}
 with open(f"{ROOT}/content/en/reception/audio-source-manifest.json", "w", encoding="utf-8", newline="\n") as f:

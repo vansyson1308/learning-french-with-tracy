@@ -116,8 +116,8 @@ def add_clip(cid, text, obj, speaker):
 for rows, reserved in ((TEACHING, False), (RESERVED, True)):
     for n, (sid, fam, obj, title, goal, steps, end, miss) in enumerate(rows):
         base = f"en.clip.ix_{sid}"
-        # Partner voices alternate, so that a learner meets both.
-        speaker = "A" if n % 2 == 0 else "B"
+        # Partner voices alternate, so that a learner meets both. A is the male voice; the partner of intro_at_work is Anna.
+        speaker = "B" if sid == "intro_at_work" else "A" if n % 2 == 0 else "B"
         nodes = {}
         add_clip(f"{base}_miss", miss, obj, speaker)
         nodes["t_miss"] = {"kind": "terminal", "id": "t_miss", "outcome": "goal_not_met", "text": miss, "clipId": f"{base}_miss"}

@@ -119,7 +119,7 @@ L3 = {
         ("Nhà hàng cần người làm khi nào?", "Cuối tuần", ["Các ngày trong tuần", "Mỗi buổi tối"]), ("Tiền lương là bao nhiêu?", "12 đô la một giờ", ["20 đô la một giờ", "12 đô la một ngày"]),
         ("Người A phải mang gì?", "Thẻ căn cước và một tấm ảnh", ["Sơ yếu lý lịch", "Bằng lái xe"])]),
  "b": ([("A", "Good morning, Green Clinic."), ("B", "Good morning. I'd like to see a doctor. I've had a bad cough for three days."), ("A", "Do you have a fever?"), ("B", "A little, last night."),
-        ("A", "Doctor Lan can see you today at four, or tomorrow at nine."), ("B", "Today, please. I can't come tomorrow because I work in the morning."), ("A", "Fine. What's your name?"), ("B", "Hung Pham."),
+        ("A", "Doctor Lan can see you today at four, or tomorrow at nine."), ("B", "Today, please. I can't come tomorrow because I work in the morning."), ("A", "Fine. What's your name?"), ("B", "Hoa Pham."),
         ("A", "Please bring your health card and come ten minutes early.")],
        [("Người B đã ho mấy ngày?", "Ba ngày", ["Hai ngày", "Mười ngày"]), ("Người B bị sốt khi nào?", "Tối qua", ["Sáng nay", "Ba ngày trước"]),
         ("Người B đặt hẹn khi nào?", "Hôm nay lúc 4 giờ", ["Ngày mai lúc 9 giờ", "Hôm nay lúc 9 giờ"]), ("Vì sao người B không đến vào ngày mai?", "Vì sáng mai phải đi làm", ["Vì ngày mai phòng khám đóng cửa", "Vì bác sĩ Lan bận"]),
@@ -152,7 +152,7 @@ for form in "ab":
     cid = clip(f"en.clip.bac2_{form}_l3", "dialogue", segs, LD, 5)
     for n, (q, ok, wrong) in enumerate(qs, 1):
         lc(form, 3, n, cid, q, ok, wrong, LD)
-    for task, table, speaker in ((4, L4, "A"), (5, L5, "B")):
+    for task, table, speaker in ((4, L4, "B"), (5, L5, "A")):
         text, gaps = table[form]
         cid = clip(f"en.clip.bac2_{form}_l{task}", "factual", [(speaker, text)], LI, 5)
         for n, (sent, ok, wrong) in enumerate(gaps, 1):
