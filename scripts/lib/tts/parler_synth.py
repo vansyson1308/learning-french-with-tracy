@@ -32,7 +32,7 @@ def main() -> int:
     from parler_tts import ParlerTTSForConditionalGeneration  # workflow-only dependency
     from transformers import AutoTokenizer
 
-    model = ParlerTTSForConditionalGeneration.from_pretrained(args.model, attn_implementation="sdpa").eval()
+    model = ParlerTTSForConditionalGeneration.from_pretrained(args.model).eval()
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     description_tokenizer = AutoTokenizer.from_pretrained(args.description_tokenizer)
     description = description_tokenizer(DESCRIPTION.format(speaker=args.speaker), return_tensors="pt")
