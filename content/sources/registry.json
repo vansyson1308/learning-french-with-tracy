@@ -702,6 +702,60 @@
           "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
         }
       ]
+    },
+    {
+      "id": "parler-voice-de-michelle",
+      "name": "Parler-TTS Mini Multilingual speaker Michelle (de)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3",
+      "attribution": "Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Michelle; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "assets/audio/de/",
+        "content/audio/model-cards/de/parler-de-michelle.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1532 over 36 sampled strings, 1 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "CML-TTS, cleaned",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/cml-tts-filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "Multilingual LibriSpeech, non-English",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/mls-annotated"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "LibriTTS-R",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/parler-tts/libritts_r_filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1 weights",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1",
+          "quote": "This model is permissively licensed under the Apache 2.0 license."
+        },
+        {
+          "model": "Flan-T5 large (text encoder)",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/google/flan-t5-large"
+        },
+        {
+          "model": "DAC 44 kHz (audio codec)",
+          "dataset": "the checkpoint itself",
+          "licence": "MIT",
+          "url": "https://huggingface.co/parler-tts/dac_44khZ_8kbps",
+          "quote": "Weights are released as part of this repo under MIT license."
+        }
+      ]
     }
   ]
 }

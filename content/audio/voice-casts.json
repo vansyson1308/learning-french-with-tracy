@@ -149,7 +149,7 @@
       "castNote": "A=kokoro-ef_dora (Kokoro voice pack ef_dora); B=kokoro-em_alex: different speaker (Kokoro voice pack em_alex), other gender (male vs female), mean WER/CER 0.1302 ≤ 0.6"
     },
     "de": {
-      "status": "no-clean-voice",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "parler-de-nicole",
@@ -168,66 +168,35 @@
         }
       ],
       "cast": {
-        "A": null,
+        "A": "parler-de-michelle",
         "B": null
       },
       "canary": {
-        "reportedAt": "2026-10-30",
+        "reportedAt": "2026-10-31",
         "report": "content/reports/de/audio-canary.json",
         "voices": [
           {
-            "voiceId": "de_DE-mls_s2-medium",
+            "voiceId": "parler-de-michelle",
             "clips": 36,
-            "meanWer": 1.6079,
-            "technicalFailures": 2
+            "meanWer": 0.1532,
+            "technicalFailures": 1
           },
           {
-            "voiceId": "de_DE-mls_s3-medium",
+            "voiceId": "parler-de-nicole",
             "clips": 36,
-            "meanWer": 1.4,
-            "technicalFailures": 3
+            "meanWer": 0.2643,
+            "technicalFailures": 1
           },
           {
-            "voiceId": "de_DE-mls_s34-medium",
+            "voiceId": "parler-de-christopher",
             "clips": 36,
-            "meanWer": 1.4818,
-            "technicalFailures": 3
-          },
-          {
-            "voiceId": "de_DE-mls_s21-medium",
-            "clips": 36,
-            "meanWer": 1.8888,
-            "technicalFailures": 3
-          },
-          {
-            "voiceId": "de_DE-mls_s8-medium",
-            "clips": 36,
-            "meanWer": 1.3892,
+            "meanWer": 0.2283,
             "technicalFailures": 5
-          },
-          {
-            "voiceId": "de_DE-mls_s1-medium",
-            "clips": 36,
-            "meanWer": 2.0125,
-            "technicalFailures": 5
-          },
-          {
-            "voiceId": "de_DE-mls_s13-medium",
-            "clips": 36,
-            "meanWer": 1.8911,
-            "technicalFailures": 6
-          },
-          {
-            "voiceId": "de_DE-mls_s5-medium",
-            "clips": 36,
-            "meanWer": 1.5624,
-            "technicalFailures": 7
           }
         ]
       },
-      "castNote": "no voice within the floor (best de_DE-mls_s2-medium mean WER/CER 1.6079 > 0.6)",
-      "candidateSearch": "2026-10-31 (D-11): the Multilingual LibriSpeech Piper voices were tried first, eight speakers each. German mean WER 1.39 to 2.01, French 2.19 to 3.24, against the 0.6 floor, so they left. Kokoro has no German.",
-      "reason": "best candidate de_DE-mls_s2-medium has mean WER/CER 1.6079 (> 0.6) — not intelligible enough to ship"
+      "castNote": "A=parler-de-michelle (Parler speaker Michelle); no second voice: no other candidate is a verified different speaker within the floor; skipped parler-de-nicole (1 technical failure(s)), parler-de-christopher (5 technical failure(s))",
+      "candidateSearch": "2026-10-31 (D-11): the Multilingual LibriSpeech Piper voices were tried first, eight speakers each. German mean WER 1.39 to 2.01, French 2.19 to 3.24, against the 0.6 floor, so they left. Kokoro has no German."
     },
     "it": {
       "status": "selected",
