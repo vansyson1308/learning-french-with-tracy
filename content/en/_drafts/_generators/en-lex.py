@@ -27,15 +27,22 @@ LATER = "core-a2.txt"
 POS = {"N": "noun", "V": "verb", "A": "adjective", "D": "adverb", "P": "pronoun", "T": "determiner", "R": "preposition", "C": "conjunction", "I": "interjection", "E": "expression"}
 TOPICS = {"people", "greetings", "food", "animals", "travel", "everyday", "places", "shopping", "time", "family", "home", "body", "clothing", "colors", "numbers", "weather", "nature", "work", "school", "feelings", "leisure", "technology"}
 AUTHORED_IPA = "original-english-course"
-UNIT_ORDER = ["1", "2", "3", "4", "5", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "o", "p", "q", "r", "s", "t", "u", "v"]
-# Provisional until content/courses/en-vi.json exists: same unit scheme as it-vi; re-derive then (see REVIEW.md).
+UNIT_ORDER = ["1", "2", "3", "4", "5", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v"]
+# Where a lexeme no unit's word list teaches first unlocks in the daily words (en-units.py teaches about 200 of the 750).
+# Near-first units for what a learner needs early; work words at the units about work.
 TOPIC_UNITS = {
-    "greetings": "2", "people": "1", "people:adjective": "n", "family": "4", "animals": "4", "food": "3", "food:verb": "t",
-    "travel": "5", "travel:verb": "h", "places": "5", "places:verb": "u", "places:adverb": "u", "places:adjective": "u",
-    "home": "a", "home:verb": "j", "home:adjective": "n", "work": "b", "school": "b", "technology": "q", "numbers": "d",
-    "time": "d", "time:verb": "j", "time:adverb": "j", "colors": "n", "clothing": "n", "body": "u", "shopping": "t", "weather": "j",
-    "nature": "j", "feelings": "l", "feelings:adjective": "n", "leisure": "l", "everyday": "b", "everyday:adjective": "n",
-    "everyday:noun": "f", "everyday:interjection": "i", "everyday:pronoun": "1", "everyday:determiner": "a", "everyday:adverb": "j",
+    "greetings": "1", "people": "2", "people:pronoun": "2", "people:determiner": "3", "people:expression": "o", "people:verb": "s", "people:adjective": "l",
+    "family": "3", "animals": "3", "food": "4", "food:verb": "4", "food:adjective": "t",
+    "travel": "5", "travel:verb": "h", "travel:preposition": "h", "travel:expression": "5",
+    "places": "5", "places:preposition": "5", "places:verb": "u", "places:adverb": "i", "places:adjective": "u", "places:expression": "u",
+    "home": "a", "home:verb": "j", "home:adjective": "n",
+    "work": "l", "work:verb": "h", "work:adjective": "g", "work:conjunction": "p",
+    "school": "h", "school:verb": "f", "technology": "q", "numbers": "d",
+    "time": "d", "time:verb": "j", "time:adverb": "j", "time:adjective": "v", "time:preposition": "v",
+    "colors": "n", "clothing": "n", "body": "u", "shopping": "t", "weather": "j", "nature": "j",
+    "feelings": "n", "feelings:verb": "p", "leisure": "v",
+    "everyday": "b", "everyday:adjective": "n", "everyday:noun": "f", "everyday:adverb": "c", "everyday:pronoun": "i", "everyday:determiner": "a",
+    "everyday:expression": "a", "everyday:conjunction": "p", "everyday:preposition": "p",
 }
 DERIVATION = "members: lexemes taught by the primary course + course-authored lexemes (source original-lexicon-etl only) + lexemes the course added through lexicon-add + frequency bands very-common/common; unit: first unit teaching the lexeme, else the authored topic map (topic-units.json, topic:pos before topic), else first unit teaching its topic, else the first unit; order: unit, then frequency rank; the words of content/en/_drafts/_generators/core-a2.txt are band A2-1 (syllabus-a2-1.json)"
 # Confusable by sound or spelling for Vietnamese learners (surfaces); symmetric by construction.
@@ -335,7 +342,7 @@ def review(a1, a2, stats, rep):
         "",
         "- **Vietnamese text.** Every gloss and example translation was written by an AI agent and awaits native review. There are no `TODO:vi` markers.",
         "- **IPA.** Authored transcriptions are the project's own General American, not checked against a dictionary. See the counts below.",
-        "- **Unit mapping.** `syllabus.json` and `topic-units.json` use the it-vi unit scheme (`en-vi:unit-1`, `en-vi:unit-a`, …) because `content/courses/en-vi.json` does not exist yet. Once it does, run `bun scripts/syllabus.ts derive` for en, then `python -I content/en/_drafts/_generators/en-lex.py . split`.",
+        "- **Unit mapping.** `topic-units.json` is authored in `TOPIC_UNITS` above; `syllabus.json` is derived from it and the unit word lists by `content/en/_drafts/_generators/en-pipeline.sh`.",
         "",
         "## Counts",
         "",
@@ -407,7 +414,7 @@ def main():
     topics = {r["topic"] for r in a1 + a2}
     poses = {POS[r["kind"]] for r in a1 + a2}
     units = {k: f"en-vi:unit-{v}" for k, v in TOPIC_UNITS.items() if k.split(":")[0] in topics and (":" not in k or k.split(":")[1] in poses)}
-    write_json(root, "content/en/lexicon/topic-units.json", {"version": 1, "language": "en", "courseId": "en-vi", "note": "Authored topic → unit map of the en-vi syllabus: where a lexeme no lesson teaches first belongs. Keys are topic:partOfSpeech before topic. Unit ids follow the it-vi scheme until the en-vi pack exists.", "units": units})
+    write_json(root, "content/en/lexicon/topic-units.json", {"version": 1, "language": "en", "courseId": "en-vi", "note": "Authored topic → unit map of the en-vi syllabus: where a lexeme no lesson teaches first belongs. Keys are topic:partOfSpeech before topic.", "units": units})
     plurals, verbs, adjectives = forms_docs(a1 + a2)
     write_json(root, "content/en/lexicon/noun-plurals.json", {"version": 1, "language": "en", "note": "Irregular plurals of the nouns in the English lexicon, authored with the curated lists in content/en/_drafts/_generators; — = uncountable or no plural in everyday use; any other noun takes -s/-es/-ies.", "plurals": dict(sorted(plurals.items()))})
     write_json(root, "content/en/lexicon/irregular-forms.json", {"version": 1, "language": "en", "note": "Irregular past and participle of verbs, irregular comparative and superlative, authored with the curated lists in content/en/_drafts/_generators.", "verbs": dict(sorted(verbs.items())), "adjectives": dict(sorted(adjectives.items()))})

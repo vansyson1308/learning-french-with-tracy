@@ -6,7 +6,7 @@ A human still has to check:
 
 - **Vietnamese text.** Every gloss and example translation was written by an AI agent and awaits native review. There are no `TODO:vi` markers.
 - **IPA.** Authored transcriptions are the project's own General American, not checked against a dictionary. See the counts below.
-- **Unit mapping.** `syllabus.json` and `topic-units.json` use the it-vi unit scheme (`en-vi:unit-1`, `en-vi:unit-a`, …) because `content/courses/en-vi.json` does not exist yet. Once it does, run `bun scripts/syllabus.ts derive` for en, then `python -I content/en/_drafts/_generators/en-lex.py . split`.
+- **Unit mapping.** `topic-units.json` is authored in `TOPIC_UNITS` above; `syllabus.json` is derived from it and the unit word lists by `content/en/_drafts/_generators/en-pipeline.sh`.
 
 ## Counts
 

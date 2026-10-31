@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "language": "en",
+  "level": "A1",
+  "principle": "A learner's CEFR-aligned A1 estimate counts a communicative domain as demonstrated only when EVERY objective listed for that domain below carries a real 'demonstrated' checkpoint verdict under the latest-attempt policy. The list is the authored denominator: it names every essential objective that is aligned directly to an A1 descriptor scale in the domain. Non-essential direct objectives are listed under excludedObjectiveIds with the pedagogical reason; nothing is omitted silently. The A1 Capstone samples one representative objective per domain and therefore can contribute evidence but can never complete a domain on its own.",
+  "domains": [
+    {
+      "domain": "spoken_reception",
+      "requiredObjectiveIds": [
+        "en.obj.listening.short_info",
+        "en.obj.listening.announcements",
+        "en.obj.listening.short_dialogues"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "Facts in a recording, announcements and dialogues: the three A1 listening activities the Section 3 checkpoint scores. Word recognition is direct at Pre-A1 only and is not listed here."
+    },
+    {
+      "domain": "written_reception",
+      "requiredObjectiveIds": [
+        "en.obj.reading.short_messages",
+        "en.obj.reading.notices_info",
+        "en.obj.reading.short_texts"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "Messages, notices and short texts: the three A1 reading activities the Section 3 checkpoint scores. Word recognition is direct at Pre-A1 only and is not listed here."
+    },
+    {
+      "domain": "spoken_production",
+      "requiredObjectiveIds": [
+        "en.obj.speaking.formulaic",
+        "en.obj.speaking.self_intro",
+        "en.obj.speaking.give_info"
+      ],
+      "excludedObjectiveIds": [
+        {
+          "objectiveId": "en.obj.speaking.describe",
+          "reason": "Short separate phrases only. It is practised and reported on its own; the estimate does not depend on it."
+        }
+      ],
+      "rationale": "Formulas, self-introduction and simple facts: what a Vietnamese adult needs first at work and in daily life, all checked from recognised words."
+    },
+    {
+      "domain": "written_production",
+      "requiredObjectiveIds": [
+        "en.obj.writing.personal_info",
+        "en.obj.writing.phrases_sentences",
+        "en.obj.writing.short_message"
+      ],
+      "excludedObjectiveIds": [
+        {
+          "objectiveId": "en.obj.writing.form_filling",
+          "reason": "Discrete labelled fields. It is practised and reported on its own, and proves less than guided sentences do, so the estimate does not depend on it."
+        }
+      ],
+      "rationale": "Personal facts, sentences and a short message or email: the three guided writing activities the Section 5 checkpoint scores."
+    },
+    {
+      "domain": "interaction",
+      "requiredObjectiveIds": [
+        "en.obj.interaction.everyday_conversation",
+        "en.obj.interaction.practical_needs"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "Conversation and practical tasks together: an A1 estimate needs both talking with someone and getting something done."
+    }
+  ]
+}
