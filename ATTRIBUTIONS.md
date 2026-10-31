@@ -336,6 +336,17 @@ Spanish course content for Vietnamese speakers authored by the Learning French w
 
 > P3d: clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/es-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/es/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public DELE A1 formats only, never official items. Ships under the repository's MIT grant like the other course packs.
 
+## Parler-TTS Mini Multilingual speaker Christopher (de)
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-31
+
+Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Christopher; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.286 over 36 sampled strings, 0 technical failures). Model weights are never committed.
+
 ## Parler-TTS Mini Multilingual speaker Michelle (de)
 
 - **License:** Apache-2.0
@@ -346,6 +357,17 @@ Spanish course content for Vietnamese speakers authored by the Learning French w
 Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Michelle; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
 
 > Selected by the audio canary ASR audit (mean WER/CER 0.1532 over 36 sampled strings, 1 technical failures). Model weights are never committed.
+
+## Parler-TTS Mini Multilingual speaker Nicole (de)
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-31
+
+Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Nicole; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1937 over 36 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## Piper voice es_ES-davefx-medium
 

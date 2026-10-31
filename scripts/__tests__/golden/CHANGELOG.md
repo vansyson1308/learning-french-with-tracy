@@ -1109,3 +1109,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  content/reports/audio-canary.json
+
+## 2026-10-31 — audio.yml de canary (pack) run 41156630437
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/de/audio-canary.json
+- compile: changed  src/content/attributions.json

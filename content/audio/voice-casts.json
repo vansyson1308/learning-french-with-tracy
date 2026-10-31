@@ -132,34 +132,34 @@
         }
       ],
       "cast": {
-        "A": "parler-de-michelle",
-        "B": null
+        "A": "parler-de-nicole",
+        "B": "parler-de-christopher"
       },
       "canary": {
         "reportedAt": "2026-10-31",
         "report": "content/reports/de/audio-canary.json",
         "voices": [
           {
-            "voiceId": "parler-de-michelle",
-            "clips": 36,
-            "meanWer": 0.1532,
-            "technicalFailures": 1
-          },
-          {
             "voiceId": "parler-de-nicole",
             "clips": 36,
-            "meanWer": 0.2643,
-            "technicalFailures": 1
+            "meanWer": 0.1937,
+            "technicalFailures": 0
           },
           {
             "voiceId": "parler-de-christopher",
             "clips": 36,
-            "meanWer": 0.2283,
-            "technicalFailures": 5
+            "meanWer": 0.286,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "parler-de-michelle",
+            "clips": 36,
+            "meanWer": 0.2959,
+            "technicalFailures": 0
           }
         ]
       },
-      "castNote": "A=parler-de-michelle (Parler speaker Michelle); no second voice: no other candidate is a verified different speaker within the floor; skipped parler-de-nicole (1 technical failure(s)), parler-de-christopher (5 technical failure(s))",
+      "castNote": "A=parler-de-nicole (Parler speaker Nicole); B=parler-de-christopher: different speaker (Parler speaker Christopher), other gender (male vs female), mean WER/CER 0.286 ≤ 0.6",
       "candidateSearch": "2026-10-31 (D-11): the Multilingual LibriSpeech Piper voices were tried first, eight speakers each. German mean WER 1.39 to 2.01, French 2.19 to 3.24, against the 0.6 floor, so they left. Kokoro has no German."
     },
     "it": {
