@@ -34,10 +34,10 @@ lesson("ug-l0", [
     T("message", ["important", "safe", "open"]), N("important", ["careful", "dangerous", "safe"]),
 ])
 lesson("ug-l1", [
-    RC("ug_signs", "Bạn muốn đi ra khỏi nhà ga. Bạn đi theo biển nào?", "Exit", ["Entrance", "No smoking", "Toilets"]), RC("ug_signs", "Nhà vệ sinh ở phía nào?", "bên trái", ["bên phải", "ở lối vào", "ở lối ra"]), RC("ug_signs", "Biển nào cấm hút thuốc?", "No smoking", ["Entrance", "Exit", "Toilets"]), RC("ug_post", "Hôm nay bưu điện thế nào?", "đóng cửa", ["mở cửa cả ngày", "mở cửa lúc 9 giờ", "mở cửa đến 9 giờ"]), RC("ug_post", "Ngày mai bưu điện mở cửa lúc mấy giờ?", "9 giờ", ["8 giờ", "10 giờ", "12 giờ"]), M("entrance", "exit", "open", "closed", "smoke"),
+    RC("ug_signs", "Bạn muốn đi ra khỏi nhà ga. Bạn đi theo biển nào?", "Exit", ["Entrance", "No smoking", "Restrooms"]), RC("ug_signs", "Nhà vệ sinh ở phía nào?", "bên trái", ["bên phải", "ở lối vào", "ở lối ra"]), RC("ug_signs", "Biển nào cấm hút thuốc?", "No smoking", ["Entrance", "Exit", "Restrooms"]), RC("ug_post", "Hôm nay bưu điện thế nào?", "đóng cửa", ["mở cửa cả ngày", "mở cửa lúc 9 giờ", "mở cửa đến 9 giờ"]), RC("ug_post", "Ngày mai bưu điện mở cửa lúc mấy giờ?", "9 giờ", ["8 giờ", "10 giờ", "12 giờ"]), M("entrance", "exit", "open", "closed", "smoke"),
 ])
 lesson("ug-l2", [
-    RC("ug_hours", "Thứ Bảy chợ mở cửa đến mấy giờ?", "12 giờ", ["18 giờ", "8 giờ", "đóng cửa cả ngày"]), RC("ug_hours", "Ngày nào chợ đóng cửa?", "Chủ nhật", ["thứ Hai", "thứ Sáu", "thứ Bảy"]), RC("ug_shift", "Ca sáng bắt đầu lúc mấy giờ?", "6 giờ", ["8 giờ", "14 giờ", "22 giờ"]), RC("ug_shift", "Công nhân phải đến sớm bao lâu?", "mười phút", ["một tiếng", "hai phút", "nửa tiếng"]),
+    RC("ug_hours", "Thứ Bảy chợ mở cửa đến mấy giờ?", "12 giờ", ["6 giờ", "8 giờ", "đóng cửa cả ngày"]), RC("ug_hours", "Ngày nào chợ đóng cửa?", "Chủ nhật", ["thứ Hai", "thứ Sáu", "thứ Bảy"]), RC("ug_shift", "Ca sáng bắt đầu lúc mấy giờ?", "6 giờ", ["8 giờ", "2 giờ", "10 giờ"]), RC("ug_shift", "Công nhân phải đến sớm bao lâu?", "mười phút", ["một tiếng", "hai phút", "nửa tiếng"]),
     T("safe", ["dangerous", "important", "closed"]), F("This street is not ___ at night.", "safe", ["message", "smoke", "exit"], "Con phố này không an toàn vào ban đêm."),
 ])
 lesson("ug-l3", [
@@ -55,7 +55,7 @@ lesson("uh-l2", [
     LC("uh_press", "Nhấn nút màu gì để chạy máy?", "màu xanh lá", ["màu đỏ", "màu đen", "màu vàng"]), LC("uh_stop", "Bạn phải làm gì?", "dừng máy và gọi quản lý", ["chạy máy và gọi quản lý", "dừng máy và về nhà", "sửa máy"]), LC("uh_gloves", "Bạn phải đeo gì?", "găng tay và mũ bảo hộ", ["găng tay và kính", "chỉ mũ bảo hộ", "đồng phục"]), D("uh_stop", "Stop the machine and call the manager."), M("press", "push", "pull", "lift", "touch"), F("___ the door to open it.", "Push", ["Fly", "Answer", "Follow"], "Đẩy cửa để mở."), Y("Làm ơn đợi ở đây.", "Please wait here.", "Wait here, please."),
 ])
 lesson("uh-l3", [
-    LC("uh_ticket_price", "Vé giá bao nhiêu?", "20 đô la", ["2 đô la", "12 đô la", "30 đô la"]), LC("uh_meeting_time", "Cuộc họp lúc mấy giờ?", "9 giờ rưỡi", ["10 giờ rưỡi", "9 giờ", "8 giờ rưỡi"]), LC("uh_shift_end", "Ca sáng kết thúc lúc mấy giờ?", "2 giờ", ["12 giờ", "8 giờ", "10 giờ"]), M("school", "class", "lesson", "exam", "test"), F("Please open your book at ___ ten.", "page", ["letter", "answer", "class"], "Hãy mở sách ở trang mười."), TX("Can you fix this machine?", "Bạn sửa được cái máy này không?", ["Bạn mua được cái máy này không?", "Cái máy này có đắt không?", "Bạn có dùng cái máy này không?"]),
+    LC("uh_ticket_price", "Vé giá bao nhiêu?", "20 đô la", ["2 đô la", "12 đô la", "30 đô la"]), LC("uh_meeting_time", "Cuộc họp lúc mấy giờ?", "9 giờ rưỡi", ["10 giờ rưỡi", "9 giờ", "8 giờ rưỡi"]), LC("uh_shift_end", "Ca sáng kết thúc lúc mấy giờ?", "2 giờ", ["12 giờ", "8 giờ", "10 giờ"]), M("school", "class", "lesson", "exam", "test"), F("Please open your book to ___ ten.", "page", ["letter", "answer", "class"], "Hãy mở sách ở trang mười."), TX("Can you fix this machine?", "Bạn sửa được cái máy này không?", ["Bạn mua được cái máy này không?", "Cái máy này có đắt không?", "Bạn có dùng cái máy này không?"]),
     M("check", "fix", "lift", "pull", "ride"), M("lesson", "test", "page", "answer", "exam"), N("answer", ["sentence", "page", "exam"]),
 ])
 # ---------------------------------------------------------------- ui
@@ -185,14 +185,14 @@ lesson("uq-l1", [
     WR("q_late"), WR("q_own"), W("Hôm nay tôi đến muộn.", "I am late today.", ["is", "tomorrow"], ["Today I am late."]), Y("Hẹn gặp bạn vào thứ Bảy.", "See you on Saturday.", "See you Saturday."), T("reply", ["send", "phone", "password"]),
 ])
 lesson("uq-l2", [
-    WR("q_report"), WR("q_meeting"), F("Dear ___ Brown,", "Ms", ["Sister", "Woman", "My"], "Kính gửi chị Brown,"), NX("Ông Tom Smith được gọi là gì trong email?", "Mr Smith", ["Mr Tom", "Tom Mr", "Smith Mr"]), Y("Tôi đang gửi email cho bạn.", "I am sending you an email.", "I am sending an email to you.", "I am sending you the email.", "I am sending the email to you."),
+    WR("q_report"), WR("q_meeting"), F("Dear ___ Brown,", "Ms.", ["Sister", "Woman", "My"], "Kính gửi chị Brown,"), NX("Ông Tom Smith được gọi là gì trong email?", "Mr. Smith", ["Mr. Tom", "Tom Mr.", "Smith Mr."]), Y("Tôi đang gửi email cho bạn.", "I am sending you an email.", "I am sending an email to you.", "I am sending you the email.", "I am sending the email to you."),
 ])
 lesson("uq-l3", [
     WR("q_open"), M("file", "screen", "website", "password", "printer"), F("Please send me the ___.", "file", ["screen", "dear", "send"], "Làm ơn gửi cho tôi tệp đó."), W("Làm ơn trả lời email của tôi.", "Please reply to my email.", ["I", "at"]), TX("I forgot my password.", "Tôi quên mật khẩu rồi.", ["Tôi đổi mật khẩu rồi.", "Tôi biết mật khẩu.", "Tôi quên điện thoại rồi."]), Y("Bạn có email của tôi không?", "Do you have my email?"),
 ])
 # ---------------------------------------------------------------- ur
 lesson("ur-l0", [
-    WR("r_form_course"), T("form", ["sign", "document", "passport"]), F("Please fill in this ___.", "form", ["passport", "sign", "age"], "Làm ơn điền vào biểu mẫu này."), W("Làm ơn điền vào biểu mẫu này.", "Please fill in this form.", ["these", "at"]), Y("Tôi sống ở Huế.", "I live in Hue."),
+    WR("r_form_course"), T("form", ["sign", "document", "passport"]), F("Please fill out this ___.", "form", ["passport", "sign", "age"], "Làm ơn điền vào biểu mẫu này."), W("Làm ơn điền vào biểu mẫu này.", "Please fill out this form.", ["these", "at"]), Y("Tôi sống ở Huế.", "I live in Hue."),
 ])
 lesson("ur-l1", [
     WR("r_form_job"), T("passport", ["form", "document", "sign"]), N("document", ["passport", "form", "address"]), F("My ___ name is Nguyen.", "last", ["first", "form", "sign"], "Họ của tôi là Nguyen."), Y("Tôi là y tá.", "I'm a nurse.", "I work as a nurse."),
@@ -218,17 +218,17 @@ lesson("us-l3", [
 ])
 # ---------------------------------------------------------------- ut
 lesson("ut-l0", [
-    C("can-would-like"), NX("Cho tôi cái này.", "I would like this one, please.", ["I would like this one, sorry.", "I like would this one, please.", "I would likes this one, please."]), J("I can ___ you.", "help", "inf", "Tôi có thể giúp bạn."), W("Cho tôi một cái áo khoác.", "I would like a jacket.", ["likes", "an"]), M("shop", "cash", "receipt", "price", "market"), Y("Tôi muốn một ly trà.", "I would like a tea.", "I'd like some tea.", "I want a tea.", "I want some tea.", "I would like some tea.", "A tea, please.", "Tea, please."),
+    C("can-would-like"), NX("Cho tôi cái này.", "I would like this one, please.", ["I would like this one, sorry.", "I like would this one, please.", "I would likes this one, please."]), J("I can ___ you.", "help", "inf", "Tôi có thể giúp bạn."), W("Cho tôi một cái áo khoác.", "I would like a jacket.", ["likes", "an"]), M("store", "cash", "receipt", "price", "market"), Y("Tôi muốn một ly trà.", "I would like a tea.", "I'd like some tea.", "I want a tea.", "I want some tea.", "I would like some tea.", "A tea, please.", "Tea, please."),
 ])
 lesson("ut-l1", [
-    W("Cái áo sơ mi này giá bao nhiêu?", "How much is this shirt?", ["many", "are"]), IX("shop_shirt"), N("receipt", ["cash", "shop", "pay"]), F("Do you want to pay by card or in ___?", "cash", ["market", "shop", "pay"], "Bạn muốn trả bằng thẻ hay tiền mặt?"), Y("Tôi trả bằng thẻ.", "I'll pay by card.", "I pay by card.", "I will pay with my card.", "By card, please.", "I want to pay by card.", "I am paying by card."),
+    W("Cái áo sơ mi này giá bao nhiêu?", "How much is this shirt?", ["many", "are"]), IX("shop_shirt"), N("receipt", ["cash", "store", "pay"]), F("Do you want to pay by card or in ___?", "cash", ["market", "store", "pay"], "Bạn muốn trả bằng thẻ hay tiền mặt?"), Y("Tôi trả bằng thẻ.", "I'll pay by card.", "I pay by card.", "I will pay with my card.", "By card, please.", "I want to pay by card.", "I am paying by card."),
 ])
 lesson("ut-l2", [
-    TX("The soup is too spicy.", "Món súp cay quá.", ["Món súp ngọt quá.", "Món súp rất ngon.", "Món súp hết rồi."]), M("delicious", "spicy", "sweet", "cheap", "expensive"), F("The ___ is very kind.", "waiter", ["bill", "spicy", "price"], "Người phục vụ rất tốt bụng."), W("Làm ơn cho tôi hóa đơn.", "The bill, please.", ["Sorry", "A"]), Y("Thức ăn rất ngon.", "The food is delicious.", "The food is very good.", "The food is very delicious."),
+    TX("The soup is too spicy.", "Món súp cay quá.", ["Món súp ngọt quá.", "Món súp rất ngon.", "Món súp hết rồi."]), M("delicious", "spicy", "sweet", "cheap", "expensive"), F("The ___ is very kind.", "waiter", ["check", "spicy", "price"], "Người phục vụ rất tốt bụng."), W("Làm ơn cho tôi hóa đơn.", "The check, please.", ["Sorry", "A"]), Y("Thức ăn rất ngon.", "The food is delicious.", "The food is very good.", "The food is very delicious."),
 ])
 lesson("ut-l3", [
-    W("Cho tôi một ly nước.", "A glass of water, please.", ["an", "sorry"]), IX("restaurant_order"), N("market", ["supermarket", "shop", "price"]), F("I ___ a lot of money in this shop.", "spend", ["sell", "free", "change"], "Tôi tiêu nhiều tiền ở cửa hàng này."), Y("Bạn muốn uống gì?", "What would you like to drink?", "What do you want to drink?"),
-    M("bill", "free", "price", "spend", "sweet"),
+    W("Cho tôi một ly nước.", "A glass of water, please.", ["an", "sorry"]), IX("restaurant_order"), N("market", ["supermarket", "store", "price"]), F("I ___ a lot of money at this store.", "spend", ["sell", "free", "change"], "Tôi tiêu nhiều tiền ở cửa hàng này."), Y("Bạn muốn uống gì?", "What would you like to drink?", "What do you want to drink?"),
+    M("receipt", "free", "price", "spend", "sweet"),
 ])
 # ---------------------------------------------------------------- uu
 lesson("uu-l0", [
@@ -247,7 +247,7 @@ lesson("uu-l3", [
 ])
 # ---------------------------------------------------------------- uv
 lesson("uv-l0", [
-    NX("Cho tôi nói chuyện với ông Brown được không?", "Can I speak to Mr Brown, please?", ["Can I speak Mr Brown, please?", "I can speak to Mr Brown?", "Can I speaks to Mr Brown, please?"]), M("song", "game", "story", "picture", "gift"), M("sport", "soccer", "hobby", "swim", "party"), W("Tôi muốn đặt một cuộc hẹn.", "I would like to make an appointment.", ["a", "do"]), Y("Tôi là Hoa đây (nói qua điện thoại).", "This is Hoa.", "Hello, this is Hoa.", "It's Hoa."),
+    NX("Cho tôi nói chuyện với ông Brown được không?", "Can I speak to Mr. Brown, please?", ["Can I speak Mr. Brown, please?", "I can speak to Mr. Brown?", "Can I speaks to Mr. Brown, please?"]), M("song", "game", "story", "picture", "gift"), M("sport", "soccer", "hobby", "swim", "party"), W("Tôi muốn đặt một cuộc hẹn.", "I would like to make an appointment.", ["a", "do"]), Y("Tôi là Hoa đây (nói qua điện thoại).", "This is Hoa.", "Hello, this is Hoa.", "It's Hoa."),
 ])
 lesson("uv-l1", [
     W("Thứ Sáu lúc mười giờ được không?", "Is Friday at ten okay?", ["on", "are"]), IX("phone_appointment"), N("appointment", ["meeting", "shift", "party"]), TX("I'm sorry, I can't come to work today.", "Xin lỗi, hôm nay tôi không đi làm được.", ["Xin lỗi, hôm qua tôi không đi làm.", "Hôm nay tôi đi làm sớm.", "Xin lỗi, hôm nay tôi đến muộn."]), Y("Hôm nay tôi bị ốm.", "I am sick today.", "Today I am sick."),

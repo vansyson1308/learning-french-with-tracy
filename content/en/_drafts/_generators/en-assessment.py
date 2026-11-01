@@ -202,7 +202,7 @@ s3 = items("s3", [
  ("msg_time", (rc("cp3_msg_hoa", "Tàu của Hoa đến lúc mấy giờ?", "Lúc năm giờ", ["Lúc hai giờ", "Lúc mười lăm giờ", "Lúc sáu giờ"]), RM)),
  ("msg_bags", (rc("cp3_msg_hoa", "Hoa mang theo gì?", "Hai cái túi to", ["Một cái túi nhỏ", "Hai cái túi nhỏ", "Một cái vali"]), RM)),
  ("mail_printer", (rc("cp3_mail_staff", "Hôm nay nhân viên nên dùng máy in ở đâu?", "Trong văn phòng của quản lý", ["Ở tầng hai", "Ở tầng một", "Ở phòng họp"]), RM)),
- ("note_hours", (rc("cp3_notice_shop", "Cửa hàng mở cửa từ mấy giờ đến mấy giờ?", "Từ 9 giờ đến 20 giờ", ["Từ 8 giờ đến 20 giờ", "Từ 9 giờ đến 12 giờ", "Từ 20 giờ đến 9 giờ"]), RN)),
+ ("note_hours", (rc("cp3_notice_shop", "Cửa hàng mở cửa từ mấy giờ đến mấy giờ?", "Từ 9 giờ sáng đến 8 giờ tối", ["Từ 8 giờ sáng đến 8 giờ tối", "Từ 9 giờ sáng đến 12 giờ trưa", "Từ 8 giờ tối đến 9 giờ sáng"]), RN)),
  ("note_closed", (rc("cp3_notice_shop", "Cửa hàng đóng cửa khi nào?", "Sáng Chủ nhật", ["Cả ngày Chủ nhật", "Sáng thứ Bảy", "Chiều Chủ nhật"]), RN)),
  ("note_pay", (rc("cp3_notice_shop", "Khách trả tiền ở đâu?", "Ở quầy thu ngân", ["Ở cửa ra vào", "Ở ngân hàng", "Trên mạng"]), RN)),
  ("text_linh_work", (rc("cp3_text_linh", "Linh làm việc ở đâu?", "Ở một bệnh viện", ["Ở một ngân hàng", "Ở một trường học", "Ở một khách sạn"]), RT)),
@@ -299,7 +299,7 @@ STAGES = [
  {"id": "en.pstage.reception", "title": {"vi": "Hiểu tiếng Anh"}, "clusters": [
    cluster("listen_words", LF, "uf-l0", [pli("s3", "listen_milk", (lc("pl_milk", "Bạn nghe thấy gì?", "sữa", ["nước", "bánh mì", "trà"]), LF))]),
    cluster("read_messages", RM, "ug-l0", [pli("s3", "message_when", (rc("pl_message", "Lan muốn Tuấn gọi điện khi nào?", "Tối nay", ["Sáng nay", "Ngày mai", "Bây giờ"]), RM))]),
-   cluster("read_notices", RN, "ug-l1", [pli("s3", "notice_dinner", (rc("pl_notice_cafe", "Bữa tối phục vụ từ mấy giờ?", "Từ 17 giờ", ["Từ 11 giờ", "Từ 14 giờ", "Từ 21 giờ"]), RN)),
+   cluster("read_notices", RN, "ug-l1", [pli("s3", "notice_dinner", (rc("pl_notice_cafe", "Bữa tối phục vụ từ mấy giờ?", "Từ 5 giờ chiều", ["Từ 11 giờ sáng", "Từ 2 giờ chiều", "Từ 9 giờ tối"]), RN)),
                                          pli("s3", "notice_closed", (rc("pl_notice_cafe", "Nhà hàng đóng cửa ngày nào?", "Thứ Hai", ["Chủ nhật", "Thứ Bảy", "Thứ Ba"]), RN))]),
    cluster("listen_announcements", LA, "uh-l0", [pli("s3", "shop_time", (lc("pl_shop", "Cửa hàng đóng cửa lúc mấy giờ?", "Lúc sáu giờ", ["Lúc bảy giờ", "Lúc hai giờ", "Lúc mười sáu giờ"]), LA)),
                                                  pli("s3", "pay_where", (lc("pl_pay", "Bạn trả tiền ở đâu?", "Ở cửa", ["Ở ngân hàng", "Trên xe buýt", "Ở quầy trên tầng hai"]), LA))]),

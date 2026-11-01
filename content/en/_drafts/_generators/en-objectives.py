@@ -159,9 +159,9 @@ obj("listening.short_info", "spoken_reception", True, ["listening.familiar_words
     "Direct at A1 within the bundled audio: short synthesized recordings holding 1-3 facts, scored in the Section 3 checkpoint. Authentic-speed media are not assessed.")
 obj("listening.announcements", "spoken_reception", True, ["listening.familiar_words"], [("A1", "direct", "announcements-instructions")],
     ("Announcements and instructions", "Thông báo và chỉ dẫn"),
-    ("I can understand very short announcements and instructions spoken clearly and slowly — at a station, in a shop, in a factory or an office.",
+    ("I can understand very short announcements and instructions spoken clearly and slowly — at a station, in a store, in a factory or an office.",
      "Tôi có thể hiểu thông báo và chỉ dẫn rất ngắn nói rõ và chậm — ở nhà ga, trong cửa hàng, ở nhà máy hay văn phòng."),
-    "Direct at A1 within the bundled audio: synthesized station, shop and workplace announcements and simple instructions, scored in the Section 3 checkpoint.")
+    "Direct at A1 within the bundled audio: synthesized station, store and workplace announcements and simple instructions, scored in the Section 3 checkpoint.")
 obj("listening.short_dialogues", "spoken_reception", True, ["listening.familiar_words", "greetings.basic"], [("A1", "direct", "understanding-conversation")],
     ("Understanding short dialogues", "Nghe hiểu hội thoại ngắn"),
     ("I can follow the main point when two people say a few clear sentences to each other about daily life or work.",
@@ -224,8 +224,8 @@ obj("writing.short_message", "written_production", True, ["writing.personal_info
      "Tôi có thể viết tin nhắn hoặc email rất ngắn: lời chào, một hai thông tin như giờ hoặc địa điểm, và lời kết."),
     "Assessed by guided tasks; the rubric requires the message's parts (greeting, fact, closing) and never judges style.")
 obj("writing.form_filling", "written_production", False, ["writing.familiar_words", "numbers.0_100"], [("A1", "direct", "notes-messages-forms")],
-    ("Filling in a form", "Điền biểu mẫu"),
-    ("I can fill in a simple everyday form in English — first name, last name, address, phone number and similar facts.",
+    ("Filling out a form", "Điền biểu mẫu"),
+    ("I can fill out a simple everyday form in English — first name, last name, address, phone number and similar facts.",
      "Tôi có thể điền biểu mẫu đơn giản bằng tiếng Anh — first name, last name, address, phone number và những thông tin tương tự."),
     "Assessed by separate labelled fields checked against the cue facts; an empty form is insufficient evidence, never a failure.")
 
@@ -239,7 +239,7 @@ obj("interaction.practical_needs", "interaction", True, ["speaking.give_info", "
     ("Practical tasks", "Việc thực tế"),
     ("I can handle very simple tasks — buy something, ask the way, see a doctor, make an appointment by phone, follow an instruction at work — and understand the short answer.",
      "Tôi có thể xử lý việc rất đơn giản — mua hàng, hỏi đường, đi khám, đặt hẹn qua điện thoại, làm theo chỉ dẫn ở chỗ làm — và hiểu câu trả lời ngắn."),
-    "Assessed by multi-turn scenario items at a shop, on the street, at a clinic, on the phone and at work. Passing needs the goal met and first-attempt intent matches on scored turns; a repair keeps the conversation alive and is recorded.")
+    "Assessed by multi-turn scenario items at a store, on the street, at a clinic, on the phone and at work. Passing needs the goal met and first-attempt intent matches on scored turns; a repair keeps the conversation alive and is recorded.")
 
 for r in OUT:
     if not r["canDo"]["vi"].startswith("Tôi có thể") or len(r["canDo"]["vi"]) > 220:

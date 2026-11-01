@@ -46,8 +46,8 @@ GUIDED = {
             [("greeting", "lời chào", GREET, False), ("place", "quán cà phê", ["coffee shop", "cafe"], False), ("time", "giờ hẹn", ["at three"], True)], 5, 20, None, "Hi Anna, let's meet at the coffee shop at three.", None),
  "q_late": ("short_message", MSG, "Hãy nhắn cho Lan: chào, báo hôm nay bạn đến muộn, rồi chào kết.", [("Gửi", "Lan")],
             [("greeting", "lời chào", GREET, False), ("late", "bạn đến muộn", ["late"], False), ("closing", "lời chào kết", CLOSE, False)], 5, 20, None, "Hi Lan, I am late today. See you soon.", None),
- "q_report": ("short_message", MSG, "Hãy viết email ngắn cho chị Brown: chào trang trọng, báo bạn đang gửi báo cáo, rồi chào kết.", [("Gửi", "Ms Brown")],
-              [("greeting", "lời chào trang trọng", FORMAL, False), ("report", "báo cáo", ["report"], False), ("closing", "lời chào kết", SIGN, False)], 6, 25, None, "Dear Ms Brown, I am sending you the report today. Best regards, Minh", None),
+ "q_report": ("short_message", MSG, "Hãy viết email ngắn cho chị Brown: chào trang trọng, báo bạn đang gửi báo cáo, rồi chào kết.", [("Gửi", "Ms. Brown")],
+              [("greeting", "lời chào trang trọng", FORMAL, False), ("report", "báo cáo", ["report"], False), ("closing", "lời chào kết", SIGN, False)], 6, 25, None, "Dear Ms. Brown, I am sending you the report today. Best regards, Minh", None),
  "q_meeting": ("short_message", MSG, "Hãy viết email ngắn cho Tom: báo cuộc họp vào thứ Hai lúc chín giờ.", [("Gửi", "Tom"), ("Ngày", "Monday"), ("Giờ", "9 giờ")],
                [("greeting", "lời chào", GREET, False), ("meeting", "cuộc họp", ["meeting"], False), ("day", "ngày họp", ["monday"], True), ("time", "giờ họp", ["at nine"], True)], 6, 25, None, "Hello Tom, the meeting is on Monday at nine.", None),
  "q_own": ("short_message", MSG, "Hãy nhắn cho Hoa: hẹn gặp vào thứ Bảy, rồi chào kết.", [("Gửi", "Hoa"), ("Ngày", "Saturday")],
@@ -88,8 +88,8 @@ RESERVED = {
                     [("greeting", "lời chào", GREET, False), ("movie", "bộ phim", ["movie"], False), ("time", "giờ hẹn", ["at eight"], True)], 5, 20, None, "Hi Peter, let's watch a movie at eight.", None),
  "cp5_note_sick": ("short_message", MSG, "Hãy nhắn cho Mai: chào, báo hôm nay bạn không đến được vì bị ốm, rồi chào kết.", [("Gửi", "Mai")],
                     [("greeting", "lời chào", GREET, False), ("sick", "bạn bị ốm", ["sick"], False), ("closing", "lời chào kết", CLOSE, False)], 6, 25, None, "Hi Mai, I can't come today because I am sick. See you tomorrow.", None),
- "cp5_mail_boss": ("short_message", MSG, "Hãy viết email ngắn cho anh Lee: chào trang trọng, xin một cuộc hẹn vào thứ Ba, rồi chào kết.", [("Gửi", "Mr Lee"), ("Ngày", "Tuesday")],
-                   [("greeting", "lời chào trang trọng", FORMAL, False), ("appointment", "cuộc hẹn", ["appointment", "meeting"], False), ("day", "ngày hẹn", ["tuesday"], True), ("closing", "lời chào kết", SIGN, False)], 8, 30, None, "Dear Mr Lee, I would like an appointment on Tuesday. Best regards, Hung", None),
+ "cp5_mail_boss": ("short_message", MSG, "Hãy viết email ngắn cho anh Lee: chào trang trọng, xin một cuộc hẹn vào thứ Ba, rồi chào kết.", [("Gửi", "Mr. Lee"), ("Ngày", "Tuesday")],
+                   [("greeting", "lời chào trang trọng", FORMAL, False), ("appointment", "cuộc hẹn", ["appointment", "meeting"], False), ("day", "ngày hẹn", ["tuesday"], True), ("closing", "lời chào kết", SIGN, False)], 8, 30, None, "Dear Mr. Lee, I would like an appointment on Tuesday. Best regards, Hung", None),
  "cp5_mail_shop": ("short_message", MSG, "Hãy viết email ngắn cho một cửa hàng: chào, hỏi giá một chiếc điện thoại, rồi chào kết.", None,
                    [("greeting", "lời chào", FORMAL, False), ("price", "câu hỏi về giá", ["how much"], False), ("phone", "điện thoại", ["phone"], False), ("closing", "lời chào kết", SIGN, False)], 6, 30, None, "Hello, how much is this phone? Thank you, Lan", None),
  "cp5_form_clinic": ("simple_form", FORM, "Hãy điền phiếu của phòng khám với các thông tin trên thẻ.", [("Tên", "Hung"), ("Tuổi", "41"), ("Điện thoại", "0903 111 222")],
@@ -107,8 +107,8 @@ RESERVED = {
                     [("greeting", "lời chào", GREET, False), ("bus", "xe buýt", ["bus"], False), ("time", "giờ xe đến", ["at six"], True)], 5, 20, None, "Hi Tom, my bus arrives at six.", None),
  "a1cap_note_home": ("short_message", MSG, "Hãy nhắn cho Hoa: chào, báo bạn đang ở siêu thị và về nhà lúc năm giờ, rồi chào kết.", [("Gửi", "Hoa"), ("Giờ", "5 giờ")],
                      [("greeting", "lời chào", GREET, False), ("place", "siêu thị", ["supermarket"], False), ("time", "giờ về nhà", ["at five"], True), ("closing", "lời chào kết", CLOSE, False)], 6, 25, None, "Hi Hoa, I am at the supermarket. I will come home at five. See you!", None),
- "a1cap_mail_smith": ("short_message", MSG, "Hãy viết email ngắn cho chị Smith: chào trang trọng, báo thứ Năm bạn nghỉ làm vì bị ốm, rồi chào kết.", [("Gửi", "Ms Smith"), ("Ngày", "Thursday")],
-                      [("greeting", "lời chào trang trọng", FORMAL, False), ("day", "ngày nghỉ", ["thursday"], True), ("sick", "bạn bị ốm", ["sick"], False), ("closing", "lời chào kết", SIGN, False)], 8, 30, None, "Dear Ms Smith, I can't come to work on Thursday because I am sick. Best regards, Nam", None),
+ "a1cap_mail_smith": ("short_message", MSG, "Hãy viết email ngắn cho chị Smith: chào trang trọng, báo thứ Năm bạn nghỉ làm vì bị ốm, rồi chào kết.", [("Gửi", "Ms. Smith"), ("Ngày", "Thursday")],
+                      [("greeting", "lời chào trang trọng", FORMAL, False), ("day", "ngày nghỉ", ["thursday"], True), ("sick", "bạn bị ốm", ["sick"], False), ("closing", "lời chào kết", SIGN, False)], 8, 30, None, "Dear Ms. Smith, I can't come to work on Thursday because I am sick. Best regards, Nam", None),
 }
 
 

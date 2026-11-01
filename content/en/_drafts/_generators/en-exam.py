@@ -136,14 +136,14 @@ L1 = {
 }
 L2 = {
  "a": [
-  ([("A", "Is this seat free?"), ("B", "Sorry, my friend is sitting here. That one by the window is free.")], "Chỗ nào còn trống?", "Chỗ cạnh cửa sổ", ["Chỗ cạnh người B", "Không còn chỗ nào"]),
+  ([("A", "Is this seat taken?"), ("B", "Sorry, my friend is sitting here. That one by the window is free.")], "Chỗ nào còn trống?", "Chỗ cạnh cửa sổ", ["Chỗ cạnh người B", "Không còn chỗ nào"]),
   ([("A", "What time does your shift end tonight?"), ("B", "Usually at ten, but tonight I finish at eight.")], "Tối nay ca làm kết thúc lúc mấy giờ?", "8 giờ", ["10 giờ", "9 giờ"]),
   ([("A", "Can I pay by card?"), ("B", "I'm sorry, the machine is broken. You can pay in cash.")], "Khách phải trả bằng gì?", "Tiền mặt", ["Thẻ", "Chuyển khoản"]),
   ([("A", "How was your trip to Hue?"), ("B", "It was great, but it rained on the last day.")], "Trời mưa khi nào?", "Ngày cuối", ["Ngày đầu", "Suốt chuyến đi"]),
   ([("A", "Do you want to meet on Thursday?"), ("B", "I can't. I have to see the doctor. How about Friday?")], "Người B đề nghị gặp vào ngày nào?", "Thứ Sáu", ["Thứ Năm", "Thứ Bảy"]),
  ],
  "b": [
-  ([("A", "Would you like some tea?"), ("B", "No, thanks. I just had one. A glass of water would be nice.")], "Người B muốn gì?", "Một ly nước", ["Trà", "Cà phê"]),
+  ([("A", "Would you like some tea?"), ("B", "No, thanks. I just had some. A glass of water would be nice.")], "Người B muốn gì?", "Một ly nước", ["Trà", "Cà phê"]),
   ([("A", "Where did you put the keys?"), ("B", "They're in my bag, not on the table.")], "Chìa khoá ở đâu?", "Trong túi", ["Trên bàn", "Trong ô tô"]),
   ([("A", "How do you get to work?"), ("B", "I used to take the bus, but now I ride my motorbike.")], "Bây giờ người B đi làm bằng gì?", "Xe máy", ["Xe buýt", "Xe đạp"]),
   ([("A", "Is the pharmacy open now?"), ("B", "No, it closes at six, and it's six thirty now.")], "Bây giờ là mấy giờ?", "6 giờ 30", ["6 giờ", "7 giờ 30"]),
@@ -166,9 +166,9 @@ L3 = {
 }
 # Talks with gaps. The real paper has the candidate write the word; the app offers three words.
 L4 = {
- "a": ("Welcome to Green Factory. My name is Sarah and I am your manager. Work starts at seven thirty every morning. Lunch is at twelve in the cafeteria on the first floor. Please wear your gloves and a helmet near the machines. If you have a problem, call Mr Lee. You get your pay on the last Friday of the month.",
+ "a": ("Welcome to Green Factory. My name is Sarah and I am your manager. Work starts at seven thirty every morning. Lunch is at twelve in the cafeteria on the first floor. Please wear your gloves and a helmet near the machines. If you have a problem, call Mr. Lee. You get your pay on the last Friday of the month.",
        [("Work starts at ___ every morning.", "seven thirty", ["seven fifty", "eight thirty"]), ("The cafeteria is on the ___ floor.", "first", ["second", "third"]), ("Near the machines, wear gloves and a ___.", "helmet", ["hat", "jacket"]),
-        ("If you have a problem, call Mr ___.", "Lee", ["Lam", "Brown"]), ("You get your pay on the last ___ of the month.", "Friday", ["Monday", "Sunday"])]),
+        ("If you have a problem, call Mr. ___.", "Lee", ["Lam", "Brown"]), ("You get your pay on the last ___ of the month.", "Friday", ["Monday", "Sunday"])]),
  "b": ("Welcome to the City Language Center. Our evening English course starts on the fifth of March and is ten weeks long. Classes are on Tuesday and Thursday, from six to eight. The course costs ninety dollars, and books are included. You can pay at the front desk or by bank transfer. If you miss a class, please send an email to your teacher.",
        [("The course starts on the ___ of March.", "fifth", ["fifteenth", "first"]), ("The course is ___ weeks long.", "ten", ["two", "twelve"]), ("Classes are on Tuesday and ___.", "Thursday", ["Friday", "Saturday"]),
         ("The course costs ___ dollars.", "ninety", ["nineteen", "fifty"]), ("If you miss a class, send an ___ to your teacher.", "email", ["apple", "invitation"])]),
@@ -199,38 +199,38 @@ for form in "ab":
 
 # ---------------- READING: 8 matching (p1), 15 multiple choice (p2-p3), 7 short answers (p4) ----------------
 R1 = {
- "a": ([("NOTICE: The elevator is out of order. Please use the stairs until Friday.", 0), ("Free parking for customers. Please show your receipt at the exit.", 1), ("Part-time cook wanted. Weekends only. Ask for Mrs Lan in the kitchen.", 2),
-        ("The swimming pool is for members only. Buy your card at the front desk.", 3), ("Wet floor. Please walk slowly and hold the handrail.", 4), ("Lost: a black bag near the bus stop on Monday. Please call Minh on 0903 222 111.", 5),
+ "a": ([("NOTICE: The elevator is out of order. Please use the stairs until Friday.", 0), ("Free parking for customers. Please show your receipt at the exit.", 1), ("Part-time cook wanted. Weekends only. Ask for Mrs. Tran in the kitchen.", 2),
+        ("The swimming pool is for members only. Buy your card at the front desk.", 3), ("Wet floor. Please walk slowly and hold the handrail.", 4), ("Lost: a black bag near the bus stop on Monday. Please call Minh at 0903 222 111.", 5),
         ("Library books must be returned within fourteen days. A late book costs one dollar a day.", 6), ("All staff: the meeting on Friday is canceled. We will meet next Tuesday instead.", 7)],
        ["You cannot use the elevator this week.", "You do not pay for your car if you buy something here.", "The restaurant needs someone to work on Saturday and Sunday.", "You need a card to go swimming.",
         "Be careful, because you could fall here.", "Someone is looking for a bag.", "You pay money if you keep a book too long.", "Workers will not have a meeting on Friday.", "You can buy a new bag here.", "The kitchen is closed on Saturday."]),
- "b": ([("CINEMA: Please turn off your phone before the movie starts.", 0), ("Children under twelve must be with an adult in the pool area.", 1), ("Room for rent near the university. No pets, please.", 2),
-        ("Shop closing down! Everything is half price until Saturday.", 3), ("Bus 15 does not stop here this week because of road work. Please walk to Hoa Street.", 4), ("Found: a set of keys in the parking lot. Ask at the information desk.", 5),
+ "b": ([("MOVIE THEATER: Please turn off your phone before the movie starts.", 0), ("Children under twelve must be with an adult in the pool area.", 1), ("Room for rent near the university. No pets, please.", 2),
+        ("Store closing! Everything is half price until Saturday.", 3), ("Bus 15 does not stop here this week because of road work. Please walk to Hoa Street.", 4), ("Found: a set of keys in the parking lot. Ask at the information desk.", 5),
         ("Staff: please wash your hands before you go back to work.", 6), ("English classes for adults. Evenings, Monday to Thursday. Beginners are welcome.", 7)],
        ["You must not use your phone here.", "Young children cannot swim here alone.", "You cannot keep a cat in this room.", "Things are cheaper this week.", "You have to walk to another bus stop.",
-        "You can get your keys at the desk.", "Workers must keep their hands clean.", "You can learn English here without any experience.", "Bus 15 is free this week.", "You can buy a phone at this shop."]),
+        "You can get your keys at the desk.", "Workers must keep their hands clean.", "You can learn English here without any experience.", "Bus 15 is free this week.", "You can buy a phone at this store."]),
 }
 ORDER = {"a": [6, 2, 8, 0, 4, 9, 1, 7, 3, 5], "b": [3, 8, 5, 0, 7, 2, 9, 4, 1, 6]}
 MATCH_Q = "Câu nào đúng với nội dung thông báo này?"
 R2 = {
  "a": [
-  (["Hi Tom, I am sorry I missed your call yesterday. My phone was broken, so I took it to the shop near my office. It will be ready on Thursday. Until then, please send me an email or call my office number. See you on the weekend! Hoa"], "message",
+  (["Hi Tom, I am sorry I missed your call yesterday. My phone was broken, so I took it to the store near my office. It will be ready on Thursday. Until then, please send me an email or call my office number. See you on the weekend! Hoa"], "message",
    [("Vì sao Hoa không nghe điện thoại?", "Điện thoại của Hoa bị hỏng", ["Hoa đang họp", "Hoa quên điện thoại ở nhà"]), ("Khi nào điện thoại sửa xong?", "Thứ Năm", ["Hôm nay", "Cuối tuần"])]),
-  (["Room for rent in a quiet street, ten minutes by bus from the city center. The room has a bed, a desk and a small fridge. The kitchen and bathroom are shared with one other person. The rent is two hundred dollars a month, with water and internet included. Please call Mr Hung after six."], "notice",
-   [("Tiền thuê đã gồm những gì?", "Nước và internet", ["Điện và nước", "Bữa ăn và internet"]), ("Nên gọi cho ông Hùng khi nào?", "Sau 6 giờ", ["Trước 6 giờ", "Buổi sáng"])]),
-  (["Our shop will move to a bigger building on Lake Road on the first of June. The old shop will close on the twenty-fifth of May. During the week between, you can still buy from our website. Customers who visit the new shop in June will get ten percent off."], "notice",
+  (["Room for rent on a quiet street, ten minutes by bus from the city center. The room has a bed, a desk and a small fridge. The kitchen and bathroom are shared with one other person. The rent is two hundred dollars a month, with water and internet included. Please call Mr. Pham after six."], "notice",
+   [("Tiền thuê đã gồm những gì?", "Nước và internet", ["Điện và nước", "Bữa ăn và internet"]), ("Nên gọi cho ông Phạm khi nào?", "Sau 6 giờ", ["Trước 6 giờ", "Buổi sáng"])]),
+  (["Our store will move to a bigger building on Lake Road on the first of June. The old store will close on the twenty-fifth of May. During the week between, you can still buy from our website. Customers who visit the new store in June will get ten percent off."], "notice",
    [("Cửa hàng cũ đóng cửa khi nào?", "Ngày 25 tháng 5", ["Ngày 1 tháng 6", "Ngày 10 tháng 6"]), ("Khách đến cửa hàng mới trong tháng 6 được gì?", "Giảm giá 10%", ["Một món quà", "Miễn phí giao hàng"])]),
   (["Dear neighbors, we are having a small party for our son's tenth birthday this Sunday afternoon. There may be some noise until about six o'clock. We are sorry about this. If you would like to join us, please come. There will be a lot of cake! Mai and Nam, apartment 12"], "message",
    [("Vì sao có bữa tiệc?", "Sinh nhật con trai của Mai và Nam", ["Mai và Nam mới chuyển nhà", "Mai và Nam kỷ niệm ngày cưới"]), ("Có thể ồn đến khoảng mấy giờ?", "6 giờ", ["10 giờ", "12 giờ"])]),
  ],
  "b": [
-  (["Hi Linh, can you help me? I have to go to the hospital this morning because my mother is ill. Could you take my shift at the shop from ten until two? I can work for you on Sunday. Please text me before nine. Thank you so much, Trang"], "message",
+  (["Hi Linh, can you help me? I have to go to the hospital this morning because my mother is sick. Could you take my shift at the store from ten until two? I can work for you on Sunday. Please text me before nine. Thank you so much, Trang"], "message",
    [("Vì sao Trang phải đi bệnh viện?", "Mẹ của Trang bị ốm", ["Trang bị ốm", "Trang đi thăm bạn"]), ("Khi nào Trang làm thay cho Linh?", "Chủ nhật", ["Hôm nay", "Thứ Bảy"])]),
   (["For sale: a blue bicycle, two years old, in very good condition. I bought it for one hundred and twenty dollars and I am selling it for sixty because I am moving to Singapore next month. It comes with a lock and a helmet. You can see it on any evening this week. Please call An."], "notice",
    [("Xe đạp được bán với giá bao nhiêu?", "60 đô la", ["120 đô la", "20 đô la"]), ("Vì sao An bán xe?", "Tháng sau An chuyển đi Singapore", ["Xe đã quá cũ", "An mua một chiếc xe mới"])]),
   (["The Water Company will repair the pipes on Binh Street on Wednesday. There will be no water from nine in the morning until three in the afternoon. Please keep some water at home for that day. We are sorry for the trouble. If you have questions, please call 1900 1234."], "notice",
    [("Khi nào sẽ không có nước?", "Từ 9 giờ sáng đến 3 giờ chiều", ["Cả ngày thứ Tư", "Từ 3 giờ chiều đến 9 giờ tối"]), ("Người dân nên làm gì?", "Để sẵn nước ở nhà", ["Gọi cho công ty ngay", "Sửa đường ống"])]),
-  (["Dear Ms Smith, thank you for your letter about the job in our sales team. We would like to meet you on the tenth of April at two o'clock at our office. Please bring your certificates and a list of your past jobs. If you cannot come on that day, please tell us by Friday. Best regards, Anna Lee"], "message",
+  (["Dear Ms. Smith, thank you for your letter about the job in our sales team. We would like to meet you on the tenth of April at two o'clock at our office. Please bring your certificates and a list of your past jobs. If you cannot come on that day, please tell us by Friday. Best regards, Anna Lee"], "message",
    [("Cuộc gặp vào lúc nào?", "2 giờ ngày 10 tháng 4", ["10 giờ ngày 2 tháng 4", "2 giờ thứ Sáu"]), ("Chị Smith phải mang gì?", "Các chứng chỉ và danh sách công việc cũ", ["Một tấm ảnh", "Thư giới thiệu"])]),
  ],
 }
@@ -249,16 +249,16 @@ R3 = {
         ("Ý chính của bài là gì?", "Một thay đổi nhỏ nhưng đều đặn rất có ích", ["Ai cũng nên đến phòng tập", "Không nên ăn bánh ngọt"])]),
 }
 R4 = {
- "a": ("Summer cooking course", ["Would you like to learn to cook Vietnamese food? The Community Center on Kim Ma Street has a new course this summer. The course starts on the eighth of July and finishes on the twenty-sixth of August. Classes are held every Saturday morning from nine to eleven thirty. Our teacher, Mrs Thu, worked as a chef in a large hotel for twenty years. Each class has no more than twelve students, so everyone gets help.",
-                                 "The course costs one hundred and fifty dollars. This includes all the food, but students must bring their own knife and an apron. To join, please fill in a form at the front desk before the first of July, or call Mr Binh. Students who finish the course will receive a small gift and a book of recipes."],
+ "a": ("Summer cooking course", ["Would you like to learn to cook Vietnamese food? The Community Center on Kim Ma Street has a new course this summer. The course starts on the eighth of July and finishes on the twenty-sixth of August. Classes are held every Saturday morning from nine to eleven thirty. Our teacher, Mrs. Tran, worked as a chef in a large hotel for twenty years. Each class has no more than twelve students, so everyone gets help.",
+                                 "The course costs one hundred and fifty dollars. This includes all the food, but students must bring their own knife and an apron. To join, please fill out a form at the front desk before the first of July, or call Mr. Nguyen. Students who finish the course will receive a small gift and a book of recipes."],
        [("apron", "tạp dề"), ("recipes", "công thức nấu ăn")],
-       [("Ngày bắt đầu: ___", "8 tháng 7", ["26 tháng 8", "1 tháng 7"]), ("Buổi học: sáng ___", "Thứ Bảy", ["Chủ nhật", "Thứ Hai"]), ("Giáo viên: bà ___", "Thu", ["Lan", "Binh"]), ("Số học viên tối đa mỗi lớp: ___", "12", ["20", "9"]),
+       [("Ngày bắt đầu: ___", "8 tháng 7", ["26 tháng 8", "1 tháng 7"]), ("Buổi học: sáng ___", "Thứ Bảy", ["Chủ nhật", "Thứ Hai"]), ("Giáo viên: bà ___", "Tran", ["Pham", "Nguyen"]), ("Số học viên tối đa mỗi lớp: ___", "12", ["20", "9"]),
         ("Học phí: ___ đô la", "150", ["115", "50"]), ("Học viên tự mang: dao và ___", "tạp dề", ["thức ăn", "sách"]), ("Hạn đăng ký: trước ___", "1 tháng 7", ["8 tháng 7", "26 tháng 8"])]),
  "b": ("Help at the museum", ["The City Museum is looking for volunteers to help at its new exhibition about old Hanoi. The exhibition opens on the third of October and runs for six weeks. Volunteers work one day a week, on a Saturday or a Sunday, from ten o'clock until four. Your job is to welcome visitors and answer simple questions in English or Vietnamese. You do not need any experience, but you must be at least eighteen years old.",
-                              "We give all volunteers a free lunch and a free ticket for one friend. Training is on the twenty-eighth of September at the museum. To apply, send an email to Ms Hanh before the fifteenth of September. Please tell us which day you prefer and why you want to help. Volunteers who help for all six weeks will also receive a letter of thanks from the museum."],
+                              "We give all volunteers a free lunch and a free ticket for one friend. Training is on the twenty-eighth of September at the museum. To apply, send an email to Ms. Le before the fifteenth of September. Please tell us which day you prefer and why you want to help. Volunteers who help for all six weeks will also receive a letter of thanks from the museum."],
        [("volunteers", "tình nguyện viên"), ("exhibition", "cuộc triển lãm")],
        [("Ngày khai mạc: ___", "3 tháng 10", ["28 tháng 9", "15 tháng 9"]), ("Thời gian triển lãm: ___ tuần", "6", ["4", "10"]), ("Giờ làm việc: từ 10 giờ đến ___ giờ", "4", ["6", "8"]), ("Tuổi tối thiểu: ___", "18", ["16", "28"]),
-        ("Tình nguyện viên được: bữa trưa và ___", "một vé cho một người bạn", ["tiền lương", "một cuốn sách"]), ("Ngày tập huấn: ___", "28 tháng 9", ["3 tháng 10", "15 tháng 9"]), ("Gửi email cho: chị ___", "Hanh", ["Lan", "Thu"])]),
+        ("Tình nguyện viên được: bữa trưa và ___", "một vé cho một người bạn", ["tiền lương", "một cuốn sách"]), ("Ngày tập huấn: ___", "28 tháng 9", ["3 tháng 10", "15 tháng 9"]), ("Gửi email cho: chị ___", "Le", ["Pham", "Tran"])]),
 }
 READING_WORDS = {}
 for form in "ab":
@@ -320,9 +320,9 @@ write("b", 1, "sentences", "simple_description", FIVE,
        ("s4", "câu 4", ["visited our grandmother"], False), ("s5", "câu 5", ["where did you buy this bag"], False)], 22, 45,
       "My brother usually drives to work. There are two bedrooms in my house. She does not like coffee. Last week we visited our grandmother. Where did you buy this bag?", WP)
 write("a", 2, "message", "short_message", "Phần 2 — Viết tin nhắn cho quản lý: báo bạn bị ốm và nghỉ làm vào ngày đã cho, nói ai làm thay và ngày bạn quay lại. Có lời chào và lời kết.",
-      [("Gửi", "Mr Brown"), ("Ngày nghỉ", "Monday"), ("Người làm thay", "Hoa"), ("Ngày quay lại", "Tuesday")],
+      [("Gửi", "Mr. Brown"), ("Ngày nghỉ", "Monday"), ("Người làm thay", "Hoa"), ("Ngày quay lại", "Tuesday")],
       [("greeting", "lời chào", GREET, False), ("sick", "bạn bị ốm", ["sick", "ill"], False), ("off", "ngày nghỉ", ["monday"], True), ("cover", "người làm thay", ["hoa"], True), ("back", "ngày quay lại", ["tuesday"], True), ("closing", "lời kết", SIGN, False)], 15, 50,
-      "Dear Mr Brown, I am sick and I cannot work on Monday. Hoa will take my shift. I will come back on Tuesday. Best regards, Minh", WM)
+      "Dear Mr. Brown, I am sick and I cannot work on Monday. Hoa will take my shift. I will come back on Tuesday. Best regards, Minh", WM)
 write("b", 2, "memo", "short_message", "Phần 2 — Viết bản ghi nhớ cho cả nhóm: cuộc họp chuyển sang ngày và giờ đã cho, ở phòng đã cho, mọi người mang báo cáo. Có lời chào và lời kết.",
       [("Ngày mới", "Thursday"), ("Giờ", "3 giờ"), ("Phòng", "room 5")],
       [("greeting", "lời chào", ["dear", "hi", "hello", "to all staff"], False), ("day", "ngày họp mới", ["thursday"], True), ("time", "giờ họp", ["at three"], True), ("room", "phòng họp", ["room five"], True), ("report", "mang báo cáo", ["report"], False), ("closing", "lời kết", SIGN, False)], 12, 50,
@@ -370,19 +370,19 @@ def scenario(form, task, slug, fam, obj, title, goal, steps, end, miss):
 CONV = O("interaction.everyday_conversation")
 THANKS_END, STOP = "Thank you. That's all for this part.", "That's okay. Let's stop here."
 scenario("a", 1, "greet", "conversation", CONV, "Phần 1 — Chào hỏi", "Chào giám khảo và nói tên, quê của bạn.",
- [("Good morning. Please sit down. How are you today?", "Hello. How do you feel today?", "Hãy chào lại và nói bạn khoẻ.", "fine", ["Good morning. I'm fine, thank you.", "I'm fine, thanks.", "I'm very well, thank you.", "I'm okay, thank you."], [["fine", "well", "okay", "good"]]),
-  ("What is your name, and where are you from?", "Please tell me your name and your home town.", "Hãy nói tên bạn là Lan và bạn đến từ Huế.", "name_from", ["My name is Lan and I'm from Hue.", "I'm Lan, from Hue.", "I'm Lan and I come from Hue."], [["lan"], ["hue"]])], THANKS_END, STOP)
+ [("Good morning. Please sit down. How are you today?", "Hello. How do you feel today?", "Hãy chào lại và nói bạn khỏe.", "fine", ["Good morning. I'm fine, thank you.", "I'm fine, thanks.", "I'm very well, thank you.", "I'm okay, thank you.", "I'm great, thanks."], [["fine", "well", "okay", "good", "great"]]),
+  ("What is your name, and where are you from?", "Please tell me your name and your hometown.", "Hãy nói tên bạn là Lan và bạn đến từ Huế.", "name_from", ["My name is Lan and I'm from Hue.", "I'm Lan, from Hue.", "I'm Lan and I come from Hue."], [["lan"], ["hue"]])], THANKS_END, STOP)
 scenario("b", 1, "greet", "conversation", CONV, "Phần 1 — Chào hỏi", "Chào giám khảo và nói tên, nơi sống của bạn.",
- [("Good afternoon. Come in, please. How are you?", "Hello. How are you feeling today?", "Hãy chào lại và nói bạn khoẻ.", "fine", ["Good afternoon. I'm fine, thank you.", "I'm fine, thanks.", "I'm very well, thank you.", "I'm okay, thank you."], [["fine", "well", "okay", "good"]]),
+ [("Good afternoon. Come in, please. How are you?", "Hello. How are you feeling today?", "Hãy chào lại và nói bạn khỏe.", "fine", ["Good afternoon. I'm fine, thank you.", "I'm fine, thanks.", "I'm very well, thank you.", "I'm okay, thank you.", "I'm great, thanks."], [["fine", "well", "okay", "good", "great"]]),
   ("What is your name, and where do you live?", "Please tell me your name and your city.", "Hãy nói tên bạn là Nam và bạn sống ở Hà Nội.", "name_city", ["My name is Nam and I live in Hanoi.", "I'm Nam, and I live in Hanoi.", "I'm Nam, from Hanoi."], [["nam"], ["hanoi"]])], THANKS_END, STOP)
 scenario("a", 2, "social", "information_exchange", CONV, "Phần 2 — Tương tác xã hội", "Trả lời câu hỏi về công việc và thời gian rảnh, rồi hỏi lại giám khảo một câu.",
  [("Let's talk about your work. What do you do?", "What is your job?", "Hãy nói bạn là y tá ở một bệnh viện.", "job", ["I'm a nurse in a hospital.", "I work as a nurse in a hospital.", "I'm a nurse."], [["nurse"]]),
   ("Do you like your job? Why?", "Is your job good for you? Why?", "Hãy nói bạn thích vì bạn giúp được mọi người.", "why", ["Yes, I like it because I can help people.", "Yes, because I help people.", "I like it because I help people."], [["help"]]),
-  ("Now, your free time. What do you do on the weekend?", "What do you like to do on Saturday and Sunday?", "Hãy nói bạn đi bơi và nấu ăn.", "weekend", ["I go swimming and I cook.", "I swim and cook.", "I go swimming and cook."], [["swim", "swimming"], ["cook"]]),
+  ("Now, your free time. What do you do on the weekend?", "What do you like to do on Saturday and Sunday?", "Hãy nói bạn đi bơi và nấu ăn.", "weekend", ["I go swimming and I cook.", "I swim and cook.", "I go swimming and cook.", "I go swimming and cooking."], [["swim", "swimming"], ["cook", "cooking"]]),
   ("Good. Do you have a question for me?", "You can ask me a question now.", "Hãy hỏi giám khảo có thích nấu ăn không.", "ask", ["Do you like cooking?", "Do you like to cook?", "Do you cook?"], [["you"], ["cook", "cooking"]])], THANKS_END, STOP)
 scenario("b", 2, "social", "information_exchange", CONV, "Phần 2 — Tương tác xã hội", "Trả lời câu hỏi về gia đình và món ăn, rồi hỏi lại giám khảo một câu.",
  [("Tell me about your family. How many people are there?", "How many people are in your family?", "Hãy nói gia đình bạn có năm người.", "count", ["There are five people in my family.", "Five people.", "We have five people."], [["five", "5"]]),
-  ("Who do you live with?", "Do you live with your family?", "Hãy nói bạn sống với bố mẹ.", "live_with", ["I live with my parents.", "With my parents.", "My parents."], [["parents"]]),
+  ("Who do you live with?", "Do you live with your family?", "Hãy nói bạn sống với bố mẹ.", "live_with", ["I live with my parents.", "With my parents.", "My parents.", "With my mom and dad."], [["parents", "mom", "mother", "dad", "father"]]),
   ("Let's talk about food. What is your favorite food?", "What food do you like best?", "Hãy nói bạn thích phở nhất.", "food", ["My favorite food is pho.", "I like pho best.", "Pho."], [["pho"]]),
   ("Good. Do you have a question for me?", "You can ask me a question now.", "Hãy hỏi giám khảo thích món gì.", "ask", ["What is your favorite food?", "What food do you like?", "What do you like to eat?"], [["what"], ["food", "eat"]])], THANKS_END, STOP)
 SD, SG = O("speaking.describe"), O("speaking.give_info")

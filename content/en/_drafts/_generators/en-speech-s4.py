@@ -42,9 +42,9 @@ TEACHING = {
   ("price", "information_prompt", "Một vị khách hỏi giá cà phê. Hãy trả lời.", "It costs three dollars.", ["Three dollars", "It's three dollars", "The coffee costs three dollars"], [("Giá", "3 đô la")], None),
   ("children", "information_prompt", "Hãy nói bạn có mấy đứa con.", "I have two children.", ["Two children", "I've got two children"], [("Số con", "2")], None),
   ("time", "information_prompt", "Có người hỏi giờ. Hãy trả lời.", "It's eight o'clock.", ["Eight o'clock", "It's eight"], [("Giờ", "8 giờ")], "🕗"),
-  ("rep_half", "repetition", None, "It's half past two.", ["Half past two"], None, None),
+  ("rep_half", "repetition", None, "It's two thirty.", ["Two thirty"], None, None),
   ("day", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "Today is Monday.", ["It's Monday", "Monday"], [("Hôm nay", "thứ Hai")], None),
-  ("team", "information_prompt", "Hãy nói nhóm của bạn có bao nhiêu người.", "There are ten people in my team.", ["Ten people", "We have ten people"], [("Số người", "10")], None),
+  ("team", "information_prompt", "Hãy nói nhóm của bạn có bao nhiêu người.", "There are ten people on my team.", ["Ten people", "We have ten people", "There are ten people in my team"], [("Số người", "10")], None),
  ],
  "n": [
   ("rep_big", "repetition", None, "The house is big.", [], None, None),

@@ -300,6 +300,8 @@ unit(2, "unit-d", "ud", "Số, giờ, ngày và giá", "Đếm đến 100, nói 
 - *quarter past eight* — tám giờ mười lăm
 - *quarter to nine* — chín giờ kém mười lăm
 
+Người Mỹ thường nói thẳng số: *eight thirty* (tám giờ rưỡi), *eight fifteen* (tám giờ mười lăm).
+
 ### Ngày và giá
 - *on Monday* — vào thứ Hai; thứ và tháng luôn viết hoa
 - Người Mỹ viết tháng trước ngày: *5/12* là ngày 12 tháng 5. Hãy đọc kỹ!
@@ -332,7 +334,7 @@ Tiếng Việt có thanh điệu trên mỗi tiếng. Tiếng Anh nhấn mạnh 
 
 ### Chính tả
 Chữ viết không theo âm như tiếng Việt: *station* và *information* có đuôi *-tion*; *enough* viết *-ough* nhưng kết thúc bằng âm f. Hãy học mỗi từ cùng âm thanh của nó.
-""", [("think", "🤔"), ("this", "👇"), ("sit", "🪑"), ("seat", "💺"), ("bad", "👎"), ("bed", "🛏️"), ("watch", "⌚"), ("bag", "👜"), ("information", "ℹ️"), ("enough", "🈵")],
+""", [("think", "🤔"), ("this", "👇"), ("sit", "🪑"), ("seat", "💺"), ("bad", "👎"), ("bed", "🛏️"), ("watch", "🍿"), ("bag", "👜"), ("information", "ℹ️"), ("enough", "🈵")],
      [("Âm cuối và cụm phụ âm", O("pronunciation.final_sounds")), ("Âm th và nguyên âm", O("pronunciation.final_sounds")), ("-s và -ed: ba cách đọc", O("pronunciation.final_sounds", "verbs.present_simple_do")), ("Trọng âm và chính tả", O("pronunciation.final_sounds", "writing.familiar_words"))])
 
 # ---------------------------------------------------------------- Section 3
@@ -686,7 +688,7 @@ Một tin nhắn cần ba phần: **lời chào, thông tin, lời kết**.
 *Hi Tom. I am at the station. See you at 8. Lan*
 
 ### Email ở chỗ làm
-*Dear Mr Smith,*
+*Dear Mr. Smith,*
 *I am sorry, I can't come to work today. I am sick.*
 *Best regards,*
 *Lan Nguyen*
@@ -695,10 +697,10 @@ Một tin nhắn cần ba phần: **lời chào, thông tin, lời kết**.
 | | Bắt đầu | Kết thúc |
 |---|---|---|
 | thân mật | *Hi Tom,* | *See you,* |
-| lịch sự | *Dear Ms Brown,* | *Best regards,* |
+| lịch sự | *Dear Ms. Brown,* | *Best regards,* |
 
-### Mr, Mrs, Ms
-Sau *Mr*, *Mrs*, *Ms* là **họ**, không phải tên. Ông Tom Smith là *Mr Smith*, không phải "Mr Tom". Khác với tiếng Việt, nơi "ông Nam" gọi bằng tên.
+### Mr., Mrs., Ms.
+Sau *Mr.*, *Mrs.*, *Ms.* là **họ**, không phải tên. Ông Tom Smith là *Mr. Smith*, không phải "Mr. Tom". Khác với tiếng Việt, nơi "ông Nam" gọi bằng tên. Người Mỹ viết các từ này có dấu chấm: *Mr.*, *Mrs.*, *Ms.*
 
 ### Hỏi và hẹn
 - *Are you free on Saturday?* — Thứ Bảy bạn rảnh không?
@@ -733,7 +735,7 @@ Ngày tháng dễ nhầm: nhiều biểu mẫu Mỹ viết tháng, ngày, năm: 
 
 ### Giấy tờ
 *document* là giấy tờ nói chung. *passport* là hộ chiếu. *form* là biểu mẫu.
-- *Please fill in this form.* — Xin điền vào biểu mẫu này.
+- *Please fill out this form.* — Xin điền vào biểu mẫu này.
 
 ### Viết lời nhắn
 *I am at the clinic. I will be back at 3. Lan*
@@ -762,14 +764,14 @@ Bây giờ bạn trò chuyện với ứng dụng. Câu trả lời của bạn 
 
 ### Phỏng vấn xin việc
 Câu hỏi thường rất đơn giản:
-- *Tell me about yourself.* — Hãy nói về bạn.
+- *Tell me about yourself.* — Hãy giới thiệu về bản thân.
 - *Do you have experience?* — Bạn có kinh nghiệm không?
 - *Yes, I worked in a factory for two years.* — Có, tôi làm ở nhà máy hai năm.
 - *When can you start?* — Khi nào bạn bắt đầu được?
 - *I can start on Monday.* — Tôi bắt đầu từ thứ Hai được.
 
 ### Xưng hô với người phỏng vấn
-Chào bằng *Good morning* hoặc *Good afternoon*. Nếu người ta tự giới thiệu là *Mr Brown*, hãy gọi là *Mr Brown*. Nếu họ nói *Call me Tom*, hãy gọi là *Tom*.
+Chào bằng *Good morning* hoặc *Good afternoon*. Nếu người ta tự giới thiệu là *Mr. Brown*, hãy gọi là *Mr. Brown*. Nếu họ nói *Call me Tom*, hãy gọi là *Tom*.
 """, [("introduce", "🤗"), ("manager", "🧑‍🏭"), ("interview", "🎙️"), ("experience", "🏅")],
      [("Làm quen", O("interaction.everyday_conversation")), ("Hội thoại: giới thiệu ở chỗ làm", O("interaction.everyday_conversation")), ("Những câu hỏi khi phỏng vấn", O("interaction.everyday_conversation", "syntax.questions_word_order")), ("Hội thoại: phỏng vấn xin việc", O("interaction.everyday_conversation"))])
 
@@ -799,7 +801,7 @@ unit(6, "unit-t", "ut", "Ở cửa hàng", "Mua hàng, hỏi giá, trả tiền 
 
 ### Lịch sự với người bán
 Người bán thường hỏi trước, và bạn trả lời ngắn cũng được. Hãy kết thúc bằng *Thank you* hoặc *Have a nice day*. Tiếng Việt có thể chỉ cười rồi đi, nhưng tiếng Anh cần một lời.
-""", [("shop", "🏪"), ("cash", "💴"), ("receipt", "🧾"), ("pay", "🤑")],
+""", [("store", "🏪"), ("cash", "💴"), ("receipt", "🧾"), ("pay", "🤑")],
      [("Hỏi giá và trả tiền", O("interaction.practical_needs", "verbs.future_can_would")), ("Hội thoại: ở cửa hàng", O("interaction.practical_needs")), ("Ở quán ăn", O("interaction.practical_needs")), ("Hội thoại: gọi món", O("interaction.practical_needs"))])
 
 unit(6, "unit-u", "uu", "Hỏi đường và đi khám", "Hỏi đường trên phố, nói triệu chứng ở phòng khám.", """
@@ -839,7 +841,7 @@ unit(6, "unit-v", "uv", "Điện thoại và chỉ dẫn ở chỗ làm", "Gọi
 
 ### Bắt đầu cuộc gọi
 - *Hello, this is Lan.* — Xin chào, tôi là Lan. Trên điện thoại, người ta dùng *this is*, không dùng *I am*.
-- *Can I speak to Mr Brown, please?* — Cho tôi nói chuyện với ông Brown được không?
+- *Can I speak to Mr. Brown, please?* — Cho tôi nói chuyện với ông Brown được không?
 - *Hold on, please.* — Xin chờ một chút.
 
 ### Đặt hẹn
