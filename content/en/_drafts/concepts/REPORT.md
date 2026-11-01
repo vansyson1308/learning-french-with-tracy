@@ -1,6 +1,6 @@
 # concepts — ingest report (en-vi)
 
-Records: 90 · schema-valid: 90 · failed: 0 · validator errors after merge: 0
+Records: 90 · schema-valid: 90 · failed: 0 · validator errors after merge: 1
 
 ## Records
 
@@ -97,7 +97,7 @@ Records: 90 · schema-valid: 90 · failed: 0 · validator errors after merge: 0
 
 ## Validator errors (fix these records and ingest again)
 
-- none
+- context-gate (en): en:w:soccer (en-vi:unit-v) has no context sentence — write one, or list it with a reason in lexicon/context-uncovered.json
 
 ## Written
 

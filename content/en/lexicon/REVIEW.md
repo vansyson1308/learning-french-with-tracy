@@ -11,13 +11,13 @@ A human still has to check:
 ## Counts
 
 - A1 by part of speech: adjective 93, adverb 42, conjunction 8, determiner 25, expression 27, interjection 7, noun 367, preposition 25, pronoun 23, verb 133
-- IPA: kaikki-en verbatim 309; original-english-course 471 (pool value differs from General American, usually British: 274; no pool value: 197)
+- IPA: kaikki-en verbatim 308; original-english-course 472 (pool value differs from General American, usually British: 274; no pool value: 198)
 - Examples: 805, all original (`original-lexicon-etl`, key `add`); no Tatoeba sentence is used. Each is at most 12 words and uses only words of its band, checked by en-lex.py.
 - Irregular forms are in `noun-plurals.json` and `irregular-forms.json`: the lexeme schema has no field for them, as in Italian.
 
 ## Anchor coverage
 
-- CEFR-J A1: 503 of 757 lemmas taken. NGSL first 1000: 424 of 820 lemmas taken.
+- CEFR-J A1: 502 of 757 lemmas taken. NGSL first 1000: 424 of 820 lemmas taken.
 
 ### CEFR-J A1 lemmas left out, by reason
 
@@ -33,7 +33,7 @@ A human still has to check:
 
 **children's or storybook vocabulary, little use to an adult worker at A1** (31): album, ball, band, baseball, bear, bee, candy, cow, cute, dig, doll, drama, ghost, hide, horse, kill, king, kiss, lion, monkey, palace, pig, poem, pray, prince, princess, spy, stage, theater, tiger, tower
 
-**spelling, informal, regular or near-synonym variant of a chosen headword** (26): carefully, cop, dad, daddy, favourite, feeling, grandma, grandpa, guy, healthy, kid, lady, mom, mommy, neighbour, owner, painting, player, practise, quickly, reading, reporter, singer, store, television, writer
+**spelling, informal, regular or near-synonym variant of a chosen headword** (27): carefully, cop, dad, daddy, favourite, feeling, football, grandma, grandpa, guy, healthy, kid, lady, mom, mommy, neighbour, owner, painting, player, practise, quickly, reading, reporter, singer, store, television, writer
 
 ### NGSL first 1000 lemmas left out that CEFR-J does not place at A1 (298)
 

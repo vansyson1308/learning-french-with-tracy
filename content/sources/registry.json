@@ -70,6 +70,19 @@
       "notes": "FSRS-6 scheduler. The SM-2 migration math is an independent TypeScript implementation of the published memory_state_from_sm2 formula from fsrs-rs (also MIT)."
     },
     {
+      "id": "circle-flags",
+      "name": "circle-flags (HatScripts)",
+      "kind": "artwork: round country flag icons",
+      "license": "MIT",
+      "url": "https://github.com/HatScripts/circle-flags/tree/379588b5da95482d6bbf10bd45644a35b0609ea6",
+      "attribution": "Round country flags from circle-flags by HatScripts, used under the MIT License.",
+      "retrievedAt": "2026-11-02",
+      "covers": [
+        "assets/images/flags/"
+      ],
+      "notes": "All course flags in assets/images/flags/ come from this set (flags/<code>.svg); xx.svg is the test language's. us.svg was retrieved at the pinned commit; the other flags were added in earlier milestones without a recorded commit."
+    },
+    {
       "id": "synthetic-test-language",
       "name": "Synthetic test language (xx)",
       "kind": "test fixtures — a two-word invented language that exercises every validator and the compiler for a non-French target (P1c); never shipped",

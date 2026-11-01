@@ -102,7 +102,7 @@ S.append(story("yuki_and_the_menu", "A1-1", "Yuki and the menu",
   Q("Họ gọi đồ uống gì?", "What do they order to drink?", [("Trà", "Tea"), ("Bia", "Beer"), ("Nước ép", "Juice")]),
   Q("Vì sao Tuấn ăn cay được?", "Why can Tuan eat so much spicy food?", [("Người Huế quen ăn cay", "People from Hue are used to spicy food"), ("Vì anh không có vị giác", "Because he cannot taste it"), ("Vì món đó không cay", "Because the food is not spicy")], "infer")]))
 S.append(story("the_key_on_the_table", "A1-1", "The key on the table",
- ("Linh quên chìa khóa ở chỗ làm vào cuối tuần.", "Linh forgets her key at the weekend."),
+ ("Linh quên chìa khóa ở chỗ làm vào cuối tuần.", "Linh forgets her key on the weekend."),
  ["closed", "phone", "late"],
  [("N", "It is Friday night, and Linh comes home from work.", "Tối thứ Sáu, Linh đi làm về."),
   ("N", "She looks in her bag, but her key is not in it.", "Cô tìm trong túi, nhưng không thấy chìa khóa."),

@@ -51,7 +51,7 @@ NUM["one hundred"] = "100"
 NUM["a hundred"] = "100"
 # Words the course does not teach but a learner may fairly use for the same Vietnamese prompt. Same meaning in every sentence here.
 SYNONYMS = [("movie", "film"), ("movies", "films"), ("shop", "store"), ("motorbike", "motorcycle"), ("bike", "bicycle"), ("mother", "mom"), ("mother", "mum"), ("father", "dad"),
-            ("thank you", "thanks"), ("hello", "hi"), ("goodbye", "bye"), ("taxi", "cab"), ("sick", "ill"), ("toilet", "restroom"), ("vacation", "holiday"), ("big", "large"), ("football", "soccer")]
+            ("thank you", "thanks"), ("hello", "hi"), ("goodbye", "bye"), ("taxi", "cab"), ("sick", "ill"), ("toilet", "restroom"), ("vacation", "holiday"), ("big", "large"), ("soccer", "football")]
 # Vietnamese words that are also English words: not a leak when both happen to occur.
 VI_HOMOGRAPHS = set("tom email".split())
 # Wrong forms a distractor shows on purpose (adjectives take no plural): not level words.

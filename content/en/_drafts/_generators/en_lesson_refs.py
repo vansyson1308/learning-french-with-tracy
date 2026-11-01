@@ -25,7 +25,7 @@ REFS = {
  C + "ui-l1": {"clips": CL("ui_order", "ui_pay", "ui_time"), "readings": RD("ui_at_shop")},
  C + "ui-l2": {"clips": CL("ui_box", "ui_late", "ui_hold")},
  C + "ui-l3": {"clips": CL("ui_welcome"), "readings": RD("ui_sorry")},
- C + "uj-l0": {"clips": CL("uj_nam_bus", "uj_tom_football"), "readings": RD("uj_nam_day", "uj_saturday")},
+ C + "uj-l0": {"clips": CL("uj_nam_bus", "uj_tom_soccer"), "readings": RD("uj_nam_day", "uj_saturday")},
  C + "uj-l1": {"clips": CL("uj_nam_wife"), "readings": RD("uj_nam_family")},
  C + "uj-l2": {"clips": CL("uj_lan_mother"), "readings": RD("uj_yesterday")},
  C + "uj-l3": {"clips": CL("uj_station"), "readings": RD("uj_station", "uj_office")},

@@ -188,6 +188,7 @@ export type MessageKey =
   | "language.it"
   | "language.ja"
   | "language.ko"
+  | "language.native.en"
   | "language.pt"
   | "language.vi"
   | "language.xx"
@@ -208,6 +209,8 @@ export type MessageKey =
   | "learn.xpToday"
   | "licenses.aiReviewBody"
   | "licenses.aiReviewTitle"
+  | "licenses.artwork"
+  | "licenses.artworkBody"
   | "licenses.audio"
   | "licenses.audioBody"
   | "licenses.lexicon"
@@ -532,4 +535,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 530;
+export const MESSAGE_KEY_COUNT = 533;

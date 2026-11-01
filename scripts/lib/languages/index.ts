@@ -20,7 +20,7 @@ export type { ArticleGender, ArticleRules, BuildLanguage, BuildLanguagePlugin, M
 
 export const BUILD_LANGUAGES: Record<string, BuildLanguage> = {
   fr: { code: "fr", recognitionLocale: "fr-FR", ttsLocale: "fr-FR", script: "latin", flagAsset: "fr", numberDrill: fr.numberDrill },
-  en: { code: "en", recognitionLocale: "en-US", ttsLocale: "en-US", script: "latin", flagAsset: "gb" },
+  en: { code: "en", recognitionLocale: "en-US", ttsLocale: "en-US", script: "latin", flagAsset: "us" },
   es: { code: "es", recognitionLocale: "es-ES", ttsLocale: "es-ES", script: "latin", flagAsset: "es" },
   de: { code: "de", recognitionLocale: "de-DE", ttsLocale: "de-DE", script: "latin", flagAsset: "de" },
   it: { code: "it", recognitionLocale: "it-IT", ttsLocale: "it-IT", script: "latin", flagAsset: "it" },

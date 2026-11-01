@@ -67,7 +67,7 @@ export default function CoursesScreen() {
                   {t("courses.meta", { done: lessonsDone, total: course.lessonCount, units: course.unitCount })}
                 </Text>
                 <Text style={styles.meta}>
-                  {t("courses.nativeLine", { language: languageName(course.nativeCode, course.nativeLanguage) })}
+                  {t("courses.nativeLine", { language: languageName(course.nativeCode, course.nativeLanguage, "native") })}
                 </Text>
               </View>
               {active ? <Text style={styles.activeBadge}>{t("courses.active")}</Text> : null}

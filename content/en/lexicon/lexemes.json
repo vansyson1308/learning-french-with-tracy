@@ -3151,10 +3151,10 @@
       "topic": "places",
       "examples": [
         {
-          "target": "The car park is behind the factory.",
+          "target": "The bank is behind the factory.",
           "translations": {
-            "en": "The car park is behind the factory.",
-            "vi": "Bãi đỗ xe ở phía sau nhà máy."
+            "en": "The bank is behind the factory.",
+            "vi": "Ngân hàng ở phía sau nhà máy."
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -12886,9 +12886,9 @@
       "topic": "time",
       "examples": [
         {
-          "target": "What do you do at the weekend?",
+          "target": "What do you do on the weekend?",
           "translations": {
-            "en": "What do you do at the weekend?",
+            "en": "What do you do on the weekend?",
             "vi": "Cuối tuần bạn làm gì?"
           },
           "source": "original-lexicon-etl",
@@ -20386,8 +20386,8 @@
       "lookupForm": "toilet",
       "partOfSpeech": "noun",
       "glosses": {
-        "en": "the room or seat you use to go to the bathroom",
-        "vi": "nhà vệ sinh, bồn cầu"
+        "en": "the seat you use in the bathroom",
+        "vi": "bồn cầu"
       },
       "pronunciation": {
         "value": "ˈtɔɪ.lət",
@@ -20403,10 +20403,10 @@
       "topic": "home",
       "examples": [
         {
-          "target": "The toilet is on the right.",
+          "target": "The toilet is in the bathroom.",
           "translations": {
-            "en": "The toilet is on the right.",
-            "vi": "Nhà vệ sinh ở bên phải."
+            "en": "The toilet is in the bathroom.",
+            "vi": "Bồn cầu ở trong phòng tắm."
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -32616,7 +32616,7 @@
       "lookupForm": "sport",
       "partOfSpeech": "noun",
       "glosses": {
-        "en": "a game for the body, like football",
+        "en": "a game for the body, like soccer",
         "vi": "thể thao"
       },
       "pronunciation": {
@@ -32657,32 +32657,26 @@
       ]
     },
     {
-      "id": "en:w:football",
-      "surface": "football",
-      "lemma": "football",
-      "lookupForm": "football",
+      "id": "en:w:soccer",
+      "surface": "soccer",
+      "lemma": "soccer",
+      "lookupForm": "soccer",
       "partOfSpeech": "noun",
       "glosses": {
         "en": "a game with a ball and two teams",
         "vi": "bóng đá"
       },
       "pronunciation": {
-        "value": "ˈfʊt.bɔːl",
+        "value": "ˈsɑkɚ",
         "notation": "ipa",
-        "source": "kaikki-en"
-      },
-      "frequency": {
-        "source": "frequencywords",
-        "rawValue": 26.4505,
-        "rank": 1965,
-        "band": "common"
+        "source": "original-english-course"
       },
       "topic": "leisure",
       "examples": [
         {
-          "target": "We play football on Sunday.",
+          "target": "We play soccer on Sunday.",
           "translations": {
-            "en": "We play football on Sunday.",
+            "en": "We play soccer on Sunday.",
             "vi": "Chủ nhật chúng tôi đá bóng."
           },
           "source": "original-lexicon-etl",
@@ -32690,14 +32684,6 @@
         }
       ],
       "sourceRefs": [
-        {
-          "source": "kaikki-en",
-          "key": "football|noun"
-        },
-        {
-          "source": "frequencywords",
-          "key": "football"
-        },
         {
           "source": "original-lexicon-etl"
         }

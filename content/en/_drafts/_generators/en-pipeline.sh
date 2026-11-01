@@ -9,6 +9,14 @@ cd "$(dirname "$0")/../../../.."
 G=content/en/_drafts/_generators
 STAGED=content/en/_drafts/staged
 
+# A step stops the pipeline only for a record that failed the schema. Validator errors may be transient here: a lexicon change
+# reaches the layers that use it in the steps after it, and en-gates-draft.ts and author.ts validate judge the end result.
+ingest() {
+  local dir=$1 step=${2:-$1}
+  bun scripts/author.ts ingest "$step" --target en --native vi || true
+  grep -q "failed: 0 ·" "content/en/_drafts/$dir/REPORT.md"
+}
+
 python -I "$G/en-lex.py" .
 # Full replacement, so a record the generators dropped does not linger. The draft pack is kept: it may hold lessons.
 rm -f "$STAGED/content/en/assessment/objectives.json" "$STAGED/content/en/pedagogy/concepts.json" "$STAGED/content/en/pedagogy/paradigms.json" "$STAGED/content/courses/en-vi.json"
@@ -17,9 +25,9 @@ rm -f "$STAGED/content/en/assessment/checkpoints.json" "$STAGED/content/en/asses
 python -I "$G/en-objectives.py" .
 python -I "$G/en-units.py" .
 python -I "$G/en-concepts.py" .
-bun scripts/author.ts ingest objectives --target en --native vi
-bun scripts/author.ts ingest units --target en --native vi
-bun scripts/author.ts ingest concepts --target en --native vi
+ingest objectives
+ingest units
+ingest concepts
 if ! python -I -c "import json,sys; p=json.load(open('content/en/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then
   mkdir -p "$STAGED/content/courses"
   cp content/en/_drafts/pack.json "$STAGED/content/courses/en-vi.json"
@@ -37,24 +45,21 @@ python -I "$G/en-scenarios-s6.py" .
 # Checkpoints and placement use the reserved items above and write their own OUTPUT; the exam track appends its stimuli.
 python -I "$G/en-assessment.py" .
 python -I "$G/en-exam.py" .
-bun scripts/author.ts ingest listening --target en --native vi
-bun scripts/author.ts ingest readings --target en --native vi
-bun scripts/author.ts ingest speech --target en --native vi
-bun scripts/author.ts ingest writing --target en --native vi
-bun scripts/author.ts ingest scenarios --target en --native vi
+ingest listening
+ingest readings
+ingest speech
+ingest writing
+ingest scenarios
 # Lessons: s1 starts lessons/OUTPUT.jsonl, s2 and s3 append. The ingest writes the staged course, which now loads, so its exit
 # status also counts what later steps still owe (audio): en-draft.ts validate reports those.
 # Only a record that failed the schema stops the pipeline here. The same holds for the assessment steps after it.
 python -I "$G/en-lessons-s1.py" .
 python -I "$G/en-lessons-s2.py" .
 python -I "$G/en-lessons-s3.py" .
-bun scripts/author.ts ingest lessons --target en --native vi || true
-grep -q "failed: 0 ·" content/en/_drafts/lessons/REPORT.md
+ingest lessons
 for step in checkpoints placement exam; do
-  bun scripts/author.ts ingest "$step" --target en --native vi || true
-  grep -q "failed: 0 ·" "content/en/_drafts/$step/REPORT.md"
+  ingest "$step"
 done
 # The seed writes the head of the staged stories.json afresh: voice cast, function words, shared token map.
 python -I "$G/en-stories-seed.py" .
-bun scripts/author.ts ingest stories --target en --native vi || true
-grep -q "failed: 0 ·" content/en/_drafts/stories/REPORT.md
+ingest stories

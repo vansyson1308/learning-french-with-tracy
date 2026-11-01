@@ -1,7 +1,7 @@
 """en-vi writing: guided and open tasks of units o-r, and 16 reserved tasks for checkpoint 5 and the capstone (four short messages:
 one objective per domain, two in each form). Exam writing tasks are added by en-exam.py.
-Writes content/en/_drafts/writing/OUTPUT.jsonl. Rubric notes: digits are normalised ("at 3" = "at three": one variant);
-contractions too ("i'm" = "i am"); a slot with several variants must be realised once in the model answer.
+Writes content/en/_drafts/writing/OUTPUT.jsonl. Rubric notes: digits are normalized ("at 3" = "at three": one variant);
+contractions too ("i'm" = "i am"); a slot with several variants must be realized once in the model answer.
 Clock cues are written in Vietnamese ("3 giờ"), never 3:00. usage: python -I en-writing-s5.py <repo root>
 """
 import os, sys
@@ -37,7 +37,7 @@ GUIDED = {
  "p_ask": ("simple_description", SENT, "Hãy viết một câu hỏi: Bạn sống ở đâu?", None,
            [("ask", "câu hỏi về nơi sống", ["where do you live"], False)], 3, 8, None, "Where do you live?", None),
  "p_like": ("simple_description", SENT, "Hãy viết một câu nói rằng bạn thích bóng đá.", None,
-            [("like", "bạn thích bóng đá", ["i like football", "i love football"], False)], 3, 10, ["like", "love"], "I like football.", None),
+            [("like", "bạn thích bóng đá", ["i like soccer", "i love soccer"], False)], 3, 10, ["like", "love"], "I like soccer.", None),
  "p_because": ("simple_description", SENT, "Hãy viết một câu: hôm nay bạn ở nhà vì bạn bị ốm.", None,
                [("home", "ở nhà", ["at home"], False), ("because", "từ nối chỉ lý do", ["because"], False), ("sick", "bạn bị ốm", ["i am sick"], False)], 5, 16, ["am"], "I am at home today because I am sick.", None),
  "p_scene": ("simple_description", SENT, "Hãy viết hai câu tả bức tranh: con mèo nhỏ, ngôi nhà to.", None,

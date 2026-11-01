@@ -1,7 +1,7 @@
 """en-vi assessment: 6 section checkpoints, the A1 capstone with 2 forms, and a 4-stage placement. Scored inputs (clips, readings, speech
 items, writing tasks, scenarios) are the reserved records the section generators already wrote; this step only points at them, and
 mirrors speech and writing payloads from them. Writes checkpoints/OUTPUT.jsonl and placement/OUTPUT.jsonl. English that a learner must
-recognise as right is level-checked through en_refs; a distractor may be wrong on purpose.
+recognize as right is level-checked through en_refs; a distractor may be wrong on purpose.
 usage: python -I en-assessment.py <repo root>"""
 import json, os, sys
 

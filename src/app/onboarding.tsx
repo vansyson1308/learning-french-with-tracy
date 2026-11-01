@@ -71,7 +71,7 @@ export default function OnboardingScreen() {
                 {t("onboarding.courseMeta", { units: course.unitCount, lessons: course.lessonCount })}
               </Text>
               <Text style={styles.langMeta}>
-                {t("courses.nativeLine", { language: languageName(course.nativeCode, course.nativeLanguage) })}
+                {t("courses.nativeLine", { language: languageName(course.nativeCode, course.nativeLanguage, "native") })}
               </Text>
             </Pressable>
           ))}

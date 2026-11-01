@@ -50,7 +50,7 @@ READINGS = [
  ("uj_nam_day", "narrative", "A day at work", para(["Nam lives in Hanoi. He works in a factory. Every morning he takes the bus at six. His shift starts at seven. In the evening he cooks dinner with his wife."]), [R_TEXT], [gl("factory", "nhà máy"), gl("shift", "ca làm"), gl("cooks", "nấu ăn")], 5),
  ("uj_nam_family", "description", "Nam's family", para(["Nam has a small family. His wife is a nurse. They have a son and a daughter. The son is ten years old. The daughter is six. They also have a cat."]), [R_TEXT, R_WORDS], [gl("nurse", "y tá"), gl("also", "cũng")], 5),
  ("uj_yesterday", "narrative", "Yesterday", para(["Yesterday Lan did not go to work. She visited her mother in the village. They cooked fish and rice. Lan went home at eight in the evening. She was tired but happy."]), [R_TEXT, PAST], [gl("visited", "đã đến thăm"), gl("village", "làng"), gl("went", "đã đi (quá khứ của go)")], 5),
- ("uj_saturday", "narrative", "Tom's Saturday", para(["On Saturday Tom wakes up late. He drinks coffee and eats an egg. In the afternoon he plays football with his friends. In the evening he watches a movie."]), [R_TEXT], [gl("wakes up", "thức dậy"), gl("late", "muộn"), gl("movie", "bộ phim")], 4),
+ ("uj_saturday", "narrative", "Tom's Saturday", para(["On Saturday Tom wakes up late. He drinks coffee and eats an egg. In the afternoon he plays soccer with his friends. In the evening he watches a movie."]), [R_TEXT], [gl("wakes up", "thức dậy"), gl("late", "muộn"), gl("movie", "bộ phim")], 4),
  ("uj_station", "description", "The station in the morning", para(["It is seven o'clock. There are many people at the station. A train arrives and a train leaves. A woman buys a ticket. A boy eats a banana."]), [R_TEXT], [gl("arrives", "đến nơi"), gl("leaves", "rời đi")], 4),
  ("uj_office", "description", "Our office", para(["Our office is on the third floor. There are ten desks and two printers. The manager's room is next to the stairs. The kitchen is small but clean."]), [R_TEXT, R_NOTICE], [gl("third floor", "tầng ba"), gl("printers", "máy in"), gl("stairs", "cầu thang")], 4),
  # Checkpoint 3 (never used in lessons).
@@ -118,7 +118,7 @@ CLIPS += [
  C("uj_nam_bus", "factual", B("Nam takes the bus to work every morning."), [INFO], 3),
  C("uj_nam_wife", "factual", A("Nam's wife is a nurse."), [INFO], 2),
  C("uj_lan_mother", "factual", B("Yesterday Lan visited her mother."), [INFO, PAST], 2),
- C("uj_tom_football", "factual", A("On Saturday Tom plays football with his friends."), [INFO], 3),
+ C("uj_tom_soccer", "factual", A("On Saturday Tom plays soccer with his friends."), [INFO], 3),
  C("uj_station", "factual", B("A woman buys a ticket at the station."), [INFO], 2),
 ]
 # Checkpoint 3: 11 listening, 2 dictation. Never used in lessons.

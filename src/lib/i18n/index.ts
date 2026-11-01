@@ -56,7 +56,7 @@ export type Translator = {
   t: (key: MessageKey, params?: Params) => string;
   tm: (message: Message) => string;
   /** A language's name in the UI language (course chips, "Learn French"). */
-  languageName: (code: string, fallback: string) => string;
+  languageName: (code: string, fallback: string, role?: "target" | "native") => string;
   lang: UiLanguage;
 };
 
@@ -64,7 +64,7 @@ export function translatorFor(lang: UiLanguage): Translator {
   return {
     t: (key, params) => translate(lang, key, params),
     tm: (message) => translateMessage(lang, message),
-    languageName: (code, fallback) => languageName(lang, code, fallback),
+    languageName: (code, fallback, role) => languageName(lang, code, fallback, role),
     lang,
   };
 }

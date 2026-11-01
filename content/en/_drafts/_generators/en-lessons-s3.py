@@ -74,7 +74,7 @@ lesson("ui-l3", [
 ])
 # ---------------------------------------------------------------- uj
 lesson("uj-l0", [
-    RC("uj_nam_day", "Nam làm việc ở đâu?", "ở một nhà máy", ["ở một bệnh viện", "ở một trường học", "ở nhà"]), RC("uj_nam_day", "Ca làm của Nam bắt đầu lúc mấy giờ?", "7 giờ", ["6 giờ", "8 giờ", "9 giờ"]), RC("uj_saturday", "Thứ Bảy Tom thức dậy thế nào?", "muộn", ["sớm", "lúc 6 giờ", "không dậy"]), RC("uj_saturday", "Buổi tối Tom làm gì?", "xem một bộ phim", ["chơi bóng đá", "uống cà phê", "đi làm"]), LC("uj_nam_bus", "Nam đi làm bằng gì?", "xe buýt", ["tàu hỏa", "xe máy", "ô tô"]), LC("uj_tom_football", "Tom chơi bóng đá với ai?", "với bạn bè", ["với bố", "với con trai", "một mình"]),
+    RC("uj_nam_day", "Nam làm việc ở đâu?", "ở một nhà máy", ["ở một bệnh viện", "ở một trường học", "ở nhà"]), RC("uj_nam_day", "Ca làm của Nam bắt đầu lúc mấy giờ?", "7 giờ", ["6 giờ", "8 giờ", "9 giờ"]), RC("uj_saturday", "Thứ Bảy Tom thức dậy thế nào?", "muộn", ["sớm", "lúc 6 giờ", "không dậy"]), RC("uj_saturday", "Buổi tối Tom làm gì?", "xem một bộ phim", ["chơi bóng đá", "uống cà phê", "đi làm"]), LC("uj_nam_bus", "Nam đi làm bằng gì?", "xe buýt", ["tàu hỏa", "xe máy", "ô tô"]), LC("uj_tom_soccer", "Tom chơi bóng đá với ai?", "với bạn bè", ["với bố", "với con trai", "một mình"]),
 ])
 lesson("uj-l1", [
     RC("uj_nam_family", "Vợ của Nam làm nghề gì?", "y tá", ["giáo viên", "công nhân", "bác sĩ"]), RC("uj_nam_family", "Con trai của Nam bao nhiêu tuổi?", "10 tuổi", ["6 tuổi", "16 tuổi", "12 tuổi"]), RC("uj_nam_family", "Gia đình Nam nuôi con gì?", "một con mèo", ["một con chó", "một con chim", "không nuôi con gì"]), LC("uj_nam_wife", "Câu này nói về ai?", "vợ của Nam", ["mẹ của Nam", "con gái của Nam", "chị của Nam"]),
@@ -163,7 +163,7 @@ lesson("uo-l3", [
 ])
 # ---------------------------------------------------------------- up
 lesson("up-l0", [
-    W("Anna uống trà vào buổi sáng.", "Anna drinks tea in the morning.", ["drink", "at"], ["In the morning Anna drinks tea."]), WR("p_who"), J("Nam ___ rice every day.", "eat", "pre:3s", "Nam ăn cơm mỗi ngày."), J("Hoa ___ in a bank.", "work", "pre:3s", "Hoa làm việc ở một ngân hàng."), Y("Tom chơi bóng đá.", "Tom plays football."),
+    W("Anna uống trà vào buổi sáng.", "Anna drinks tea in the morning.", ["drink", "at"], ["In the morning Anna drinks tea."]), WR("p_who"), J("Nam ___ rice every day.", "eat", "pre:3s", "Nam ăn cơm mỗi ngày."), J("Hoa ___ in a bank.", "work", "pre:3s", "Hoa làm việc ở một ngân hàng."), Y("Tom chơi bóng đá.", "Tom plays soccer."),
 ])
 lesson("up-l1", [
     WR("p_neg"), WR("p_ask"), NX("Tôi không hút thuốc.", "I don't smoke.", ["I no smoke.", "I not smoke.", "I am not smoke."]), W("Bạn làm việc ở đâu?", "Where do you work?", ["does", "is"]), Y("Bạn có thích trà không?", "Do you like tea?"),
@@ -247,7 +247,7 @@ lesson("uu-l3", [
 ])
 # ---------------------------------------------------------------- uv
 lesson("uv-l0", [
-    NX("Cho tôi nói chuyện với ông Brown được không?", "Can I speak to Mr Brown, please?", ["Can I speak Mr Brown, please?", "I can speak to Mr Brown?", "Can I speaks to Mr Brown, please?"]), M("song", "game", "story", "picture", "gift"), M("sport", "football", "hobby", "swim", "party"), W("Tôi muốn đặt một cuộc hẹn.", "I would like to make an appointment.", ["a", "do"]), Y("Tôi là Hoa đây (nói qua điện thoại).", "This is Hoa.", "Hello, this is Hoa.", "It's Hoa."),
+    NX("Cho tôi nói chuyện với ông Brown được không?", "Can I speak to Mr Brown, please?", ["Can I speak Mr Brown, please?", "I can speak to Mr Brown?", "Can I speaks to Mr Brown, please?"]), M("song", "game", "story", "picture", "gift"), M("sport", "soccer", "hobby", "swim", "party"), W("Tôi muốn đặt một cuộc hẹn.", "I would like to make an appointment.", ["a", "do"]), Y("Tôi là Hoa đây (nói qua điện thoại).", "This is Hoa.", "Hello, this is Hoa.", "It's Hoa."),
 ])
 lesson("uv-l1", [
     W("Thứ Sáu lúc mười giờ được không?", "Is Friday at ten okay?", ["on", "are"]), IX("phone_appointment"), N("appointment", ["meeting", "shift", "party"]), TX("I'm sorry, I can't come to work today.", "Xin lỗi, hôm nay tôi không đi làm được.", ["Xin lỗi, hôm qua tôi không đi làm.", "Hôm nay tôi đi làm sớm.", "Xin lỗi, hôm nay tôi đến muộn."]), Y("Hôm nay tôi bị ốm.", "I am sick today.", "Today I am sick."),

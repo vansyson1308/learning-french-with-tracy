@@ -1,10 +1,14 @@
 /** English rules (P4 en-vi): contractions, spoken numbers, en-GB spellings, labels. */
 import { describe, expect, test } from "bun:test";
 
+import { checkAnswer } from "../grading";
+import { languageName } from "../i18n/translate";
 import { msg } from "../i18n/message";
 import { translateMessage } from "../i18n/translate";
 import { en as rules, englishNumber, spellEnglishDigits } from "../languages/en";
 import { gradeSpokenAttempt, normalizeSpoken } from "../speech/grader";
+import type { Exercise } from "../types";
+import { evaluateGuidedWriting } from "../writing/rubric";
 
 const typed = (a: string, b: string) => rules.normalizeLenient(a) === rules.normalizeLenient(b);
 const spoken = (a: string, b: string) => normalizeSpoken(a, rules) === normalizeSpoken(b, rules);
@@ -290,6 +294,103 @@ describe("en-GB spellings", () => {
   test("whole words only", () => {
     expect(typed("colourless", "colorless")).toBe(false);
     expect(typed("colour", "colors")).toBe(false);
+  });
+});
+
+/** Through the real grading path: en-vi's rules, by course id. */
+const typeAnswer = (answer: string, alternatives: string[] = []): Exercise =>
+  ({ id: "en-vi:t-1-e1", type: "typeAnswer", prompt: "?", answer, alternatives, objectiveRefs: [] }) as unknown as Exercise;
+const graded = (key: string, attempt: string) => checkAnswer(typeAnswer(key), attempt, "en-vi");
+
+describe("British forms in typed answers (QC 2026-11-01: never marked wrong)", () => {
+  const SPELLING: readonly (readonly [uk: string, us: string])[] = [
+    ["colour", "color"], ["colours", "colors"], ["colourful", "colorful"], ["favourite", "favorite"], ["neighbour", "neighbor"], ["flavour", "flavor"],
+    ["honour", "honor"], ["humour", "humor"], ["behaviour", "behavior"], ["labour", "labor"], ["harbour", "harbor"], ["centre", "center"],
+    ["theatre", "theater"], ["metre", "meter"], ["litre", "liter"], ["kilometre", "kilometer"], ["fibre", "fiber"], ["organise", "organize"],
+    ["organised", "organized"], ["realise", "realize"], ["recognise", "recognize"], ["apologise", "apologize"], ["analyse", "analyze"], ["organisation", "organization"],
+    ["travelled", "traveled"], ["travelling", "traveling"], ["cancelled", "canceled"], ["labelled", "labeled"], ["grey", "gray"], ["cheque", "check"],
+    ["tyre", "tire"], ["programme", "program"], ["catalogue", "catalog"], ["dialogue", "dialog"], ["licence", "license"], ["defence", "defense"],
+    ["jewellery", "jewelry"], ["pyjamas", "pajamas"], ["aeroplane", "airplane"], ["practise", "practice"], ["mum", "mom"], ["maths", "math"], ["learnt", "learned"],
+  ];
+  const WORDS: readonly (readonly [key: string, attempt: string])[] = [
+    ["I live in an apartment.", "I live in a flat."],
+    ["Our apartment is small.", "Our flat is small."],
+    ["Take the elevator.", "Take the lift."],
+    ["He drives a truck.", "He drives a lorry."],
+    ["The gas station is near here.", "The petrol station is near here."],
+    ["My cell phone is new.", "My mobile phone is new."],
+    ["My cell phone is new.", "My mobile is new."],
+    ["We go on vacation in July.", "We go on holiday in July."],
+    ["Let's watch a movie.", "Let's watch a film."],
+    ["The store is open.", "The shop is open."],
+    ["These pants are long.", "These trousers are long."],
+    ["Put it in the trash.", "Put it in the rubbish."],
+    ["I like cookies.", "I like biscuits."],
+    ["The subway is fast.", "The underground is fast."],
+    ["Where is the parking lot?", "Where is the car park?"],
+    ["What do you do on the weekend?", "What do you do at the weekend?"],
+    ["It is cold in the fall.", "It is cold in the autumn."],
+  ];
+
+  test(`${SPELLING.length} spelling pairs, in both directions, typed and in a dictation`, () => {
+    expect(SPELLING.length).toBeGreaterThanOrEqual(30);
+    const dictation = (answer: string) => ({ id: "en-vi:t-1-e2", type: "dictation", answer, alternatives: [] }) as unknown as Exercise;
+    for (const [uk, us] of SPELLING) {
+      expect(graded(`My ${us}.`, `my ${uk}`)).toBe(true);
+      expect(graded(`My ${uk}.`, `my ${us}`)).toBe(true);
+      expect(checkAnswer(dictation(us), uk, "en-vi")).toBe(true);
+    }
+  });
+
+  test(`${WORDS.length} whole-word pairs against an American key`, () => {
+    for (const [key, attempt] of WORDS) expect(graded(key, attempt)).toBe(true);
+  });
+
+  test("a pair never makes a wrong answer correct where the meanings differ", () => {
+    const wrong: readonly (readonly [key: string, attempt: string])[] = [
+      ["The road is flat.", "The road is apartment."],
+      ["Do not lift heavy boxes.", "Do not elevator heavy boxes."],
+      ["I fall.", "I autumn."],
+      ["Draw a line.", "Draw a queue."],
+      ["I have a check.", "I have a bill."],
+      ["I live in an apartment.", "I live in an flat."],
+      ["I live in an apartment.", "I live in a lift."],
+      ["Take the elevator.", "Take the flat."],
+      ["He drives a truck.", "He drives a flat."],
+      ["The apartment is big.", "The flat are big."],
+      ["The road is flat.", "The road is lift."],
+    ];
+    for (const [key, attempt] of wrong) expect(graded(key, attempt)).toBe(false);
+    // A British word that is simply another answer's word stays where it is.
+    expect(graded("Do not lift heavy boxes.", "Do not lift heavy boxes")).toBe(true);
+    expect(graded("The road is flat.", "The road is flat")).toBe(true);
+    expect(graded("A flat tire.", "A flat tyre.")).toBe(true);
+  });
+
+  test("a writing slot takes the British word too, through the rubric engine", () => {
+    const evaluate = (text: string) =>
+      evaluateGuidedWriting({
+        rules,
+        targetLanguage: "English",
+        text,
+        rubric: { requiredSlots: [{ id: "home", description: "where", variants: ["apartment"], cueProvided: false }], minTokens: 2, maxTokens: 12 },
+        promptText: "Where do you live?",
+        knownVocabulary: new Set(["i", "live", "in", "a", "an", "apartment", "flat", "road", "the"]),
+      });
+    expect(evaluate("I live in an apartment").verdict).toBe("meets_rubric");
+    expect(evaluate("I live in a flat").verdict).toBe("meets_rubric");
+    expect(evaluate("I live in a road").verdict).toBe("does_not_meet_rubric");
+  });
+});
+
+describe("the course name carries the variety; the language of explanations does not", () => {
+  test("target and native names", () => {
+    expect(languageName("vi", "en", "English")).toBe("Tiếng Anh (Mỹ)");
+    expect(languageName("en", "en", "English")).toBe("English (US)");
+    expect(languageName("vi", "en", "English", "native")).toBe("Tiếng Anh");
+    expect(languageName("en", "en", "English", "native")).toBe("English");
+    expect(languageName("vi", "fr", "French", "native")).toBe("Tiếng Pháp");
+    expect(languageName("vi", "fr", "French")).toBe("Tiếng Pháp");
   });
 });
 

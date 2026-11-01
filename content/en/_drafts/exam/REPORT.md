@@ -47,7 +47,7 @@ Records: 1 · schema-valid: 1 · failed: 0 · validator errors after merge: 280
 - reception: en.clip.uj_nam_bus: generated asset eb2405d42133ba3ad775.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.uj_nam_wife: generated asset aca9f12760ecc4167cb2.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.uj_lan_mother: generated asset 9beb79bde4d127b9b84c.mp3 missing — run the reception-audio generate workflow (P7 §26)
-- reception: en.clip.uj_tom_football: generated asset e6303076f810c58ef77a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: en.clip.uj_tom_soccer: generated asset fa54f3d3fa477eed7b2d.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.uj_station: generated asset a0ab84b469826b77f129.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.cp3_train_hue: generated asset 011dec55aa2642949fb8.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.cp3_plane: generated asset f504275865afee7fc130.mp3 missing — run the reception-audio generate workflow (P7 §26)

@@ -86,9 +86,11 @@ function containsRun(haystack: string[], needle: string[]): boolean {
 }
 
 function slotMatched(answerTokens: string[], slot: WritingSlot, rules: LanguageRules): boolean {
-  return slot.variants.some((variant) =>
-    containsRun(answerTokens, tokensOf(normalizeWritten(variant, rules)))
-  );
+  return slot.variants.some((variant) => {
+    const key = normalizeWritten(variant, rules);
+    const aligned = rules.alignAnswerToKey?.(answerTokens.join(" "), key);
+    return containsRun(aligned === undefined ? answerTokens : tokensOf(aligned), tokensOf(key));
+  });
 }
 
 /** Every [start, end) run where `needle` occurs in `haystack`. */

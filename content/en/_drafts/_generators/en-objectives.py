@@ -53,7 +53,7 @@ def obj(oid, category, essential, pre, aligns, title, can, note=None):
 # ---------------------------------------------------------------- lexical
 obj("greetings.basic", "lexical", True, [], [("PRE_A1", "supports", "conversation"), ("A1", "supports", "sociolinguistic-appropriateness")],
     ("Everyday greetings and polite words", "Lời chào và câu lịch sự hằng ngày"),
-    ("I can recognise and type the everyday English greetings and polite words — hello, good morning, thank you, please, sorry, excuse me — and choose the one that fits the moment.",
+    ("I can recognize and type the everyday English greetings and polite words — hello, good morning, thank you, please, sorry, excuse me — and choose the one that fits the moment.",
      "Tôi có thể nhận ra và viết các lời chào và câu lịch sự hằng ngày bằng tiếng Anh — hello, good morning, thank you, please, sorry, excuse me — và chọn đúng câu cho tình huống."),
     "Written recognition and typing only. Saying these formulas aloud is assessed separately by en.obj.speaking.formulaic.")
 obj("vocab.everyday_basics", "lexical", True, [], [("PRE_A1", "supports", "vocabulary-range"), ("A1", "supports", "vocabulary-range")],
@@ -77,12 +77,12 @@ obj("numbers.0_100", "lexical", True, [], [("A1", "supports", "vocabulary-range"
 # ---------------------------------------------------------------- written recognition and form
 obj("reading.familiar_words", "written_reception", True, [], [("PRE_A1", "direct", "overall-reading-comprehension"), ("A1", "supports", "overall-reading-comprehension")],
     ("Reading familiar words and short phrases", "Đọc từ quen thuộc và cụm từ ngắn"),
-    ("I can recognise familiar words and very short learned phrases on the page and match them to their meaning.",
+    ("I can recognize familiar words and very short learned phrases on the page and match them to their meaning.",
      "Tôi có thể nhận ra từ quen thuộc và cụm từ rất ngắn đã học khi thấy chúng được viết ra, và nối chúng với nghĩa."),
     "Direct at Pre-A1 only: written recognition of familiar words and learned phrases. Reading short simple texts at A1 belongs to the reading objectives below.")
 obj("writing.familiar_words", "written_production", True, [], [("A1", "supports", "orthographic-control")],
     ("Spelling familiar words", "Viết đúng chính tả từ quen thuộc"),
-    ("I can type familiar words correctly, including words not written as they sound — daughter, hour, know — and I capitalise I, names, days and months.",
+    ("I can type familiar words correctly, including words not written as they sound — daughter, hour, know — and I capitalize I, names, days and months.",
      "Tôi có thể gõ đúng chính tả các từ quen thuộc đã học, kể cả từ không viết như đọc — daughter, hour, know — và viết hoa I, tên người, thứ và tháng."),
     "Evidence is single words and short learned forms, not composed sentences.")
 
@@ -113,7 +113,7 @@ obj("verbs.present_continuous", "grammar", False, ["verbs.be_there_is"], [("A1",
      "Tôi có thể nói việc đang diễn ra bằng be + V-ing — I am working, She is eating — ở chỗ tiếng Việt dùng “đang”."))
 obj("verbs.past_recognition", "grammar", False, ["verbs.present_simple_do"], [("A2", "supports", "grammatical-accuracy")],
     ("Recognising the past simple", "Nhận biết quá khứ đơn"),
-    ("I can recognise and use a few very common past forms — was, were, worked, went, had, saw — and ask with did, where Vietnamese only adds 'đã'.",
+    ("I can recognize and use a few very common past forms — was, were, worked, went, had, saw — and ask with did, where Vietnamese only adds 'đã'.",
      "Tôi có thể nhận ra và dùng một số dạng quá khứ rất thông dụng — was, were, worked, went, had, saw — và hỏi với did, ở chỗ tiếng Việt chỉ thêm “đã”."),
     "Taught with high-frequency verbs only: the full past system is not taught, and A1 production does not require it.")
 obj("verbs.future_can_would", "grammar", False, ["verbs.be_there_is"], [("A2", "supports", "grammatical-accuracy")],
@@ -131,7 +131,7 @@ obj("prepositions.time_place", "grammar", False, ["vocab.time_calendar"], [("A1"
      "Tôi có thể dùng in, on, at cho giờ, ngày, tháng và nơi chốn — at eight, on Monday, in May, at the station — và next to, behind khi chỉ vị trí."))
 obj("adjectives.order_very", "grammar", False, ["verbs.be_there_is"], [("A1", "supports", "grammatical-accuracy")],
     ("Adjectives, very and too", "Tính từ, very và too"),
-    ("I can put an adjective before its noun — a big house — use very and too in the right place, and recognise comparatives such as bigger and cheaper.",
+    ("I can put an adjective before its noun — a big house — use very and too in the right place, and recognize comparatives such as bigger and cheaper.",
      "Tôi có thể đặt tính từ trước danh từ — a big house — dùng very, too đúng chỗ, và nhận ra dạng so sánh hơn như bigger, cheaper."),
     "Comparatives are recognition only: A1 production does not require them.")
 
@@ -195,7 +195,7 @@ obj("speaking.self_intro", "spoken_production", True, ["verbs.be_there_is", "ver
     ("Introducing yourself aloud", "Tự giới thiệu thành tiếng"),
     ("I can introduce myself aloud in short sentences — my name (My name is …), where I come from (I am from Vietnam), my job, where I live, what I like — in class or at work.",
      "Tôi có thể tự giới thiệu thành tiếng từng câu ngắn — tên (My name is …), quê (I am from Vietnam), việc làm, nơi sống và điều mình thích — ở lớp hay nơi làm việc."),
-    "Assessed from recognised words in elicited sentences. The meaning cue is in Vietnamese; the English is never shown before the attempt.")
+    "Assessed from recognized words in elicited sentences. The meaning cue is in Vietnamese; the English is never shown before the attempt.")
 obj("speaking.give_info", "spoken_production", True, ["numbers.0_100"], [("A1", "direct", "sustained-monologue-giving-information"), ("A1", "supports", "overall-oral-production")],
     ("Giving simple facts aloud", "Nói thông tin đơn giản"),
     ("I can give simple facts aloud with numbers and common words — a phone number, a price, a time, how many.",
@@ -234,7 +234,7 @@ obj("interaction.everyday_conversation", "interaction", True, ["speaking.formula
     ("Short conversations", "Trò chuyện ngắn"),
     ("I can take part in a short conversation with a patient partner — greet, introduce myself at work, answer simple interview questions — and ask for a repeat when I need one (Can you repeat that?).",
      "Tôi có thể tham gia cuộc trò chuyện ngắn với người đối thoại kiên nhẫn — chào hỏi, giới thiệu mình ở chỗ làm, trả lời câu hỏi phỏng vấn đơn giản — và nhờ nhắc lại khi cần (Can you repeat that?)."),
-    "Assessed by multi-turn deterministic scenarios where the recognised meaning decides the partner's next turn. Asking for a repeat is tracked and never penalised; a technical speech failure is insufficient evidence, never a failure.")
+    "Assessed by multi-turn deterministic scenarios where the recognized meaning decides the partner's next turn. Asking for a repeat is tracked and never penalized; a technical speech failure is insufficient evidence, never a failure.")
 obj("interaction.practical_needs", "interaction", True, ["speaking.give_info", "listening.short_info", "numbers.0_100"], [("A1", "direct", "obtaining-goods-services"), ("A1", "direct", "information-exchange")],
     ("Practical tasks", "Việc thực tế"),
     ("I can handle very simple tasks — buy something, ask the way, see a doctor, make an appointment by phone, follow an instruction at work — and understand the short answer.",
@@ -277,13 +277,13 @@ write_json("content/en/assessment/claim-policy.json", {
 DOMAIN_WHY = {
     "spoken_reception": "Facts in a recording, announcements and dialogues: the three A1 listening activities the Section 3 checkpoint scores. Word recognition is direct at Pre-A1 only and is not listed here.",
     "written_reception": "Messages, notices and short texts: the three A1 reading activities the Section 3 checkpoint scores. Word recognition is direct at Pre-A1 only and is not listed here.",
-    "spoken_production": "Formulas, self-introduction and simple facts: what a Vietnamese adult needs first at work and in daily life, all checked from recognised words.",
+    "spoken_production": "Formulas, self-introduction and simple facts: what a Vietnamese adult needs first at work and in daily life, all checked from recognized words.",
     "written_production": "Personal facts, sentences and a short message or email: the three guided writing activities the Section 5 checkpoint scores.",
     "interaction": "Conversation and practical tasks together: an A1 estimate needs both talking with someone and getting something done.",
 }
 EXCLUDED = {
-    "en.obj.speaking.describe": "Short separate phrases only. It is practised and reported on its own; the estimate does not depend on it.",
-    "en.obj.writing.form_filling": "Discrete labelled fields. It is practised and reported on its own, and proves less than guided sentences do, so the estimate does not depend on it.",
+    "en.obj.speaking.describe": "Short separate phrases only. It is practiced and reported on its own; the estimate does not depend on it.",
+    "en.obj.writing.form_filling": "Discrete labelled fields. It is practiced and reported on its own, and proves less than guided sentences do, so the estimate does not depend on it.",
 }
 domains = []
 for domain, why in DOMAIN_WHY.items():
@@ -375,7 +375,7 @@ Same rule as the other courses: `direct` only where the course genuinely assesse
 communicative ability at that level within its stated scope (evidence notes say what
 is NOT assessed); everything else is `supports`. Doubt resolves to `supports`. The
 interaction and speaking objectives rely on the same deterministic scenario and
-recognised-word graders as French.
+recognized-word graders as French.
 
 ## Word lists
 
@@ -385,13 +385,13 @@ level is never an input to a level claim, and vocabulary counts never are.
 
 ## Exam track
 
-The one exam track practises the MOET bậc 2 adult format (QĐ 1481/QĐ-BGDĐT), marked
+The one exam track practices the MOET bậc 2 adult format (QĐ 1481/QĐ-BGDĐT), marked
 `formatFidelity: "partial"`. It is a further goal beyond this A1 course. Sources:
 `content/en/exam/FORMAT-SOURCES.md`; decision: `plan/authoring/en-plan.md`.
 
 ## Assessment limitations
 
-As for the other courses: synthesized bundled audio only, recognised words only for
+As for the other courses: synthesized bundled audio only, recognized words only for
 speech (never a pronunciation-quality score), rubric slots for writing, deterministic
 scenarios for interaction. The A1 estimate is a CEFR-aligned estimate, not an official
 examination or certification.

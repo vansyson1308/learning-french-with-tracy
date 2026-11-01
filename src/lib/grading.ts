@@ -149,10 +149,13 @@ function stripPunctuation(text: string): string {
 /**
  * Typed-answer equality under the course's lenient form, or under the
  * language's alternate lenient form when it has one (D-10 review, German:
- * "schoen" = "schön"). Languages without an alternate compare exactly as before.
+ * "schoen" = "schön"; English: "a flat" for the key "an apartment"). Other languages compare exactly as before.
  */
 function lenientEquals(rules: LanguageRules, a: string, b: string): boolean {
-  if (rules.normalizeLenient(a) === rules.normalizeLenient(b)) return true;
+  const key = rules.normalizeLenient(a);
+  const attempt = rules.normalizeLenient(b);
+  if (key === attempt) return true;
+  if (rules.alignAnswerToKey?.(attempt, key) === key) return true;
   const alternate = rules.normalizeLenientAlternate;
   return alternate !== undefined && alternate(a) === alternate(b);
 }

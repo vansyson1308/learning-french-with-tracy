@@ -268,7 +268,7 @@ describe("English plugin against the committed data", () => {
   test("the registry serves it", () => {
     expect(buildPlugin("en")).toBe(en);
     expect(en.recognitionLocale).toBe("en-US");
-    expect(en.flagAsset).toBe("gb");
+    expect(en.flagAsset).toBe("us");
     expect(en.articleRules?.neutral).toEqual(["a", "an", "the"]);
     expect(en.articleRules?.genderless).toBe(true);
     // No gender, and no leading word is taken off a surface.

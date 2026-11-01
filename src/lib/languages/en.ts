@@ -12,7 +12,9 @@
  *  - no apostrophe is forgiven when that makes another word: its, were, well, ill.
  * Spoken grading spells standalone digits 0–100 and reads the recognizer's clock and
  * price formats (8:30, half past eight and eight thirty are one answer; so are $10 and
- * ten dollars). en-GB spellings count as their US form everywhere, since neither is wrong.
+ * ten dollars). en-GB spellings count as their US form everywhere, since neither is wrong
+ * (colour, centre, organise, learnt). en-GB words are another matter: flat and lift are ordinary
+ * words with other meanings, so they count only against a key that has the US word (alignAnswerToKey).
  * Strict comparison (dictation, conjugation) expands nothing: exact form is the construct.
  */
 import { foldSpokenLatin, latinRules, normalizeLenientLatin, normalizeStrictLatin } from "./base";
@@ -120,7 +122,11 @@ function family(gb: string, us: string, endings: readonly string[]): [string, st
 }
 const NOUN = ["", "s"];
 const OUR = ["", "s", "ed", "ing"];
-const ISE: readonly [string, string][] = ["organ", "real", "recogn", "apolog", "memor", "summar", "emphas", "special", "general"].flatMap((stem) =>
+const ISE: readonly [string, string][] = [
+  "organ", "real", "recogn", "apolog", "memor", "summar", "emphas", "special", "general", "critic", "final", "modern", "priorit", "personal",
+  "categor", "custom", "minim", "maxim", "util", "author", "standard", "visual", "social", "familiar", "hospital", "capital", "civil", "legal",
+  "mobil", "stabil", "symbol", "sympath", "character",
+].flatMap((stem) =>
   family(`${stem}is`, `${stem}iz`, ["e", "es", "ed", "ing"])
 );
 
@@ -130,6 +136,10 @@ const SPELLINGS: ReadonlyMap<string, string> = new Map<string, string>([
   ...family("favour", "favor", [...OUR, "ite", "ites"]),
   ...family("neighbour", "neighbor", [...NOUN, "hood", "hoods"]),
   ...family("flavour", "flavor", OUR),
+  ...family("armour", "armor", NOUN),
+  ...family("odour", "odor", NOUN),
+  ...family("vapour", "vapor", NOUN),
+  ...family("parlour", "parlor", NOUN),
   ...family("honour", "honor", OUR),
   ...family("labour", "labor", OUR),
   ...family("harbour", "harbor", NOUN),
@@ -141,6 +151,9 @@ const SPELLINGS: ReadonlyMap<string, string> = new Map<string, string>([
   ...family("kilometre", "kilometer", NOUN),
   ...family("centimetre", "centimeter", NOUN),
   ...family("litre", "liter", NOUN),
+  ...family("millimetre", "millimeter", NOUN),
+  ...family("millilitre", "milliliter", NOUN),
+  ...family("fibre", "fiber", NOUN),
   ...family("theatre", "theater", NOUN),
   ...family("programme", "program", NOUN),
   ...family("cheque", "check", NOUN),
@@ -156,6 +169,33 @@ const SPELLINGS: ReadonlyMap<string, string> = new Map<string, string>([
   ...family("travell", "travel", ["ed", "ing", "er", "ers"]),
   ...family("cancell", "cancel", ["ed", "ing"]),
   ...family("labell", "label", ["ed", "ing"]),
+  ...family("modell", "model", ["ed", "ing"]),
+  ...family("fuell", "fuel", ["ed", "ing"]),
+  ...family("signall", "signal", ["ed", "ing"]),
+  ...family("levell", "level", ["ed", "ing"]),
+  ...family("analys", "analyz", ["e", "es", "ed", "ing"]),
+  ...family("paralys", "paralyz", ["e", "es", "ed", "ing"]),
+  ...family("mould", "mold", OUR),
+  ...family("plough", "plow", OUR),
+  ...family("doughnut", "donut", NOUN),
+  ...family("moustache", "mustache", NOUN),
+  ...family("disc", "disk", NOUN),
+  ...family("mum", "mom", NOUN),
+  ...family("judgement", "judgment", NOUN),
+  ["mummy", "mommy"],
+  ["maths", "math"],
+  ["cosy", "cozy"],
+  ["sceptical", "skeptical"],
+  ["woollen", "woolen"],
+  ["marvellous", "marvelous"],
+  ["skilful", "skillful"],
+  ["fulfil", "fulfill"],
+  ["enrol", "enroll"],
+  ["towards", "toward"],
+  ["learnt", "learned"],
+  ["burnt", "burned"],
+  ["spelt", "spelled"],
+  ["dreamt", "dreamed"],
   ["jewellery", "jewelry"],
   ["pyjamas", "pajamas"],
   ["organisation", "organization"],
@@ -172,6 +212,89 @@ function usSpelling(text: string): string {
     if ((next !== undefined && /[\u0080-ỿ]/.test(next)) || (prev !== undefined && /[\u0080-ỿ]/.test(prev))) return word;
     return SPELLINGS.get(word) ?? word;
   });
+}
+
+/**
+ * en-GB words and phrases for a US word, on lenient text: same thing, different word. Only ever
+ * rewritten when the key has the US word, and in that direction: "Lift the box" keeps its verb,
+ * "The road is flat" never takes "apartment". A US word goes here only if every sense of it a
+ * learner could be keyed on is a sense of the British word: `line` stays out (queue is not a drawn line),
+ * as does `check` (bill), and the two meanings of "first floor" are different floors.
+ */
+const WORD_PAIRS: readonly (readonly [gb: string, us: string])[] = [
+  ["flat", "apartment"],
+  ["flats", "apartments"],
+  ["block of flats", "apartment building"],
+  ["lift", "elevator"],
+  ["lifts", "elevators"],
+  ["lorry", "truck"],
+  ["lorries", "trucks"],
+  ["petrol", "gas"],
+  ["petrol station", "gas station"],
+  ["mobile phone", "cell phone"],
+  ["mobile", "cell phone"],
+  ["mobile phones", "cell phones"],
+  ["rubbish", "trash"],
+  ["rubbish", "garbage"],
+  ["bin", "trash can"],
+  ["underground", "subway"],
+  ["motorway", "highway"],
+  ["pavement", "sidewalk"],
+  ["biscuit", "cookie"],
+  ["biscuits", "cookies"],
+  ["sweets", "candy"],
+  ["trousers", "pants"],
+  ["jumper", "sweater"],
+  ["trainers", "sneakers"],
+  ["wardrobe", "closet"],
+  ["holiday", "vacation"],
+  ["holidays", "vacation"],
+  ["film", "movie"],
+  ["films", "movies"],
+  ["shop", "store"],
+  ["shops", "stores"],
+  ["post", "mail"],
+  ["postbox", "mailbox"],
+  ["postcode", "zip code"],
+  ["car park", "parking lot"],
+  ["chips", "fries"],
+  ["chips", "french fries"],
+  ["crisps", "chips"],
+  ["football", "soccer"],
+  ["tap", "faucet"],
+  ["cooker", "stove"],
+  ["nappy", "diaper"],
+  ["torch", "flashlight"],
+  ["rubber", "eraser"],
+  ["timetable", "schedule"],
+  ["railway", "railroad"],
+  ["return ticket", "round trip ticket"],
+  ["chemist", "pharmacy"],
+  ["toilet", "restroom"],
+  ["at the weekend", "on the weekend"],
+  // `fall` is first of all a verb: only as a season, where the key says so.
+  ["autumn", "fall"],
+];
+const SEASON_FALL = /\b(?:in|the|this|last|next|every)\s+fall\b/;
+/** Longest first: "petrol station" before "petrol". */
+const WORD_PAIRS_LONGEST = [...WORD_PAIRS].sort((a, b) => b[0].length - a[0].length || b[1].length - a[1].length);
+const startsWithVowelSound = (word: string) => /^[aeiou]/.test(word);
+
+function hasWord(text: string, word: string): boolean {
+  return new RegExp(`(?:^| )${word}(?= |$)`).test(text);
+}
+
+function alignAnswerToKey(answer: string, key: string): string {
+  return WORD_PAIRS_LONGEST.reduce((text, [gb, us]) => {
+    if (!hasWord(key, us) || !hasWord(text, gb) || (us === "fall" && !SEASON_FALL.test(key))) return text;
+    // The article follows the word: "a flat" is "an apartment", and "an flat" stays wrong.
+    const ownArticle = startsWithVowelSound(gb) ? "an" : "a";
+    const keyArticle = startsWithVowelSound(us) ? "an" : "a";
+    if (hasWord(text, `${ownArticle === "a" ? "an" : "a"} ${gb}`)) return text;
+    return text
+      .replace(new RegExp(`(^| )${ownArticle} ${gb}(?= |$)`, "g"), `$1${keyArticle} ${us}`)
+      .replace(new RegExp(`(^| )${gb}(?= |$)`, "g"), `$1${us}`);
+  }, answer);
 }
 
 /** Marks folded before the contractions: a typed Vietnamese answer must keep comparing as the base compares it. */
@@ -199,6 +322,7 @@ export const en: LanguageRules = latinRules(
     numberToWords: englishNumber,
     spellDigits: spellEnglishDigits,
     normalizeLenient: normalizeLenientEnglish,
+    alignAnswerToKey,
     normalizeStrict: (text) => usSpelling(normalizeStrictLatin(text)),
     foldSpoken: foldSpokenEnglish,
     // The Vietnamese wording of the note lives in the i18n catalog; these are the target's own names, as for every language.

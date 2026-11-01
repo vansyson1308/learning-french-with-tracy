@@ -41,6 +41,13 @@ export type LanguageRules = {
    * (German: ä/ö/ü spelt ae/oe/ue). Absent for languages without one.
    */
   normalizeLenientAlternate?(text: string): string;
+  /**
+   * A typed answer rewritten toward one key, both already in the lenient form: where the key
+   * has a word of this language's variety and the answer has the other variety's word for it
+   * ("an apartment" / "a flat"). Pair-aware because the pair holds only for that key's meaning;
+   * a unary fold would turn every "flat" into "apartment". Absent for most languages.
+   */
+  alignAnswerToKey?(answer: string, key: string): string;
   /** Strict comparison form: case/space folded, every letter and mark kept. */
   normalizeStrict(text: string): string;
   /**

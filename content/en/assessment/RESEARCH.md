@@ -93,7 +93,7 @@ Same rule as the other courses: `direct` only where the course genuinely assesse
 communicative ability at that level within its stated scope (evidence notes say what
 is NOT assessed); everything else is `supports`. Doubt resolves to `supports`. The
 interaction and speaking objectives rely on the same deterministic scenario and
-recognised-word graders as French.
+recognized-word graders as French.
 
 ## Word lists
 
@@ -103,13 +103,13 @@ level is never an input to a level claim, and vocabulary counts never are.
 
 ## Exam track
 
-The one exam track practises the MOET bậc 2 adult format (QĐ 1481/QĐ-BGDĐT), marked
+The one exam track practices the MOET bậc 2 adult format (QĐ 1481/QĐ-BGDĐT), marked
 `formatFidelity: "partial"`. It is a further goal beyond this A1 course. Sources:
 `content/en/exam/FORMAT-SOURCES.md`; decision: `plan/authoring/en-plan.md`.
 
 ## Assessment limitations
 
-As for the other courses: synthesized bundled audio only, recognised words only for
+As for the other courses: synthesized bundled audio only, recognized words only for
 speech (never a pronunciation-quality score), rubric slots for writing, deterministic
 scenarios for interaction. The A1 estimate is a CEFR-aligned estimate, not an official
 examination or certification.

@@ -67,7 +67,7 @@ export const EN_FUNCTION_WORDS: readonly string[] = (
 ).split(" ");
 
 export const en: BuildLanguagePlugin = genericPlugin(
-  { code: "en", recognitionLocale: "en-US", ttsLocale: "en-US", script: "latin", flagAsset: "gb" },
+  { code: "en", recognitionLocale: "en-US", ttsLocale: "en-US", script: "latin", flagAsset: "us" },
   {
     rules: enRules,
     articleRules: EN_ARTICLES,

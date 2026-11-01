@@ -86,7 +86,7 @@ Tiếng Việt nói "Tôi là công nhân". Tiếng Anh cần thêm *a*:
 
 ### Người
 *man* là người đàn ông, *woman* là người phụ nữ, *friend* là bạn. Bạn sẽ gặp lại chúng ở mọi phần sau.
-""", [("I", "🙋‍♂️"), ("you", "🫵"), ("name", "🏷️"), ("Vietnam", "🇻🇳"), ("Vietnamese", "🗣️"), ("English", "🇬🇧"), ("man", "👨"), ("woman", "👩"), ("friend", "🧑‍🤝‍🧑"), ("teacher", "👩‍🏫"), ("student", "🧑‍🎓"), ("worker", "👷")],
+""", [("I", "🙋‍♂️"), ("you", "🫵"), ("name", "🏷️"), ("Vietnam", "🇻🇳"), ("Vietnamese", "🗣️"), ("English", "🇺🇸"), ("man", "👨"), ("woman", "👩"), ("friend", "🧑‍🤝‍🧑"), ("teacher", "👩‍🏫"), ("student", "🧑‍🎓"), ("worker", "👷")],
      [("Bài 1", O("vocab.everyday_basics", "reading.familiar_words"))] * 4)
 
 unit(1, "unit-3", "u2", "Gia đình của tôi", "Bố mẹ, anh chị em, vợ chồng, con cái và từ my.", """
@@ -917,7 +917,7 @@ with open(f"{ROOT}/content/en/_drafts/units/OUTPUT.jsonl", "w", encoding="utf-8"
 pack_path = f"{ROOT}/content/en/_drafts/pack.json"
 if not os.path.exists(pack_path):
     with open(pack_path, "w", encoding="utf-8", newline="\n") as f:
-        json.dump({"id": C, "version": 1, "targetLanguage": "English", "targetCode": "en", "nativeLanguage": "Vietnamese", "nativeCode": "vi", "flag": "🇬🇧", "sections": []}, f, ensure_ascii=False, indent=2)
+        json.dump({"id": C, "version": 1, "targetLanguage": "English", "targetCode": "en", "nativeLanguage": "Vietnamese", "nativeCode": "vi", "flag": "🇺🇸", "sections": []}, f, ensure_ascii=False, indent=2)
         f.write("\n")
 profile = f"{ROOT}/content/en/_drafts/staged/content/courses/{C}.profile.json"
 os.makedirs(os.path.dirname(profile), exist_ok=True)
