@@ -153,8 +153,12 @@ export function morphologyRows(lang: string, lemma: string, entry: { forms: { fo
   return rows.filter((r) => (seen.has(`${r.mot}|${r.infoVer}`) ? false : (seen.add(`${r.mot}|${r.infoVer}`), true)));
 }
 
-/** Verbs the target's authored lexicon teaches: a course's verb is never left without paradigm evidence by its frequency rank (QC 2026-11-01 §2.3). */
-function authoredVerbs(lang: string): string[] {
+/**
+ * Verbs English's authored lexicon teaches: a course's verb is never left without paradigm evidence by its frequency rank (QC 2026-11-01 §2.3).
+ * English only: for any other language this would change the derived data on its next re-extract.
+ */
+export function authoredVerbs(lang: string): string[] {
+  if (lang !== "en") return [];
   const rel = `content/${lang}/lexicon/lexemes.json`;
   if (!existsSync(safeResolve(rel))) return [];
   return (readJson(rel) as { lexemes: { lemma: string; partOfSpeech: string }[] }).lexemes.filter((l) => l.partOfSpeech === "verb").map((l) => l.lemma);

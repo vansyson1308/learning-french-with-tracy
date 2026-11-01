@@ -16,7 +16,7 @@ import { pinyinNumbersToMarks, readCedict, readJmdict } from "../lib/lexicon-etl
 import { readFrequencyWords, readWordfreqCsv } from "../lib/lexicon-etl/adapters/frequency";
 import { atomsFromTags, cleanGloss, generalAmericanIpa, generalAmericanLines, scanKaikki, viGlossFromSense } from "../lib/lexicon-etl/adapters/kaikki";
 import { isLearnerSentence } from "../lib/lexicon-etl/adapters/tatoeba";
-import { deriveLanguage, normalizeFormFor, wordShapeFor } from "../lib/lexicon-etl/derive";
+import { authoredVerbs, deriveLanguage, normalizeFormFor, wordShapeFor } from "../lib/lexicon-etl/derive";
 import { buildManifestV2, manifestView } from "../lib/lexicon-etl/manifest";
 import { DECLARED_NOT_RETRIEVED, LEXICON_SOURCES, sourceIdsFor, sourcesFor } from "../lib/lexicon-etl/sources";
 import { generalAmericanEntries, refreshedMorphology } from "../lib/lexicon-etl/supplement";
@@ -221,6 +221,11 @@ describe("General American IPA (QC 2026-11-01 §2.2)", () => {
 });
 
 describe("English verb evidence (QC 2026-11-01 §2.3)", () => {
+  test("the authored verbs reach the pool for English only: a re-extract of another language must not change", () => {
+    expect(authoredVerbs("en")).toContain("brush");
+    for (const lang of ["es", "de", "fr", "it"]) expect(authoredVerbs(lang)).toEqual([]);
+  });
+
   const en = (o: Record<string, unknown>) => JSON.stringify({ lang_code: "en", ...o });
   test("a bare past is an English past, unless the form is restricted; other languages keep their atoms", () => {
     expect(atomsFromTags(["past"], "en")).toEqual(["ind:pas:*"]);
