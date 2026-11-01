@@ -60,6 +60,14 @@ describe("the plan writes exactly the reception files the validator wants", () =
 });
 
 describe("audio.ts plan --dry-run", () => {
+  test("a language with lexicon audio cannot generate pack or lexicon alone: apply would delete the other", () => {
+    for (const layer of ["pack", "lexicon"]) {
+      const { code, out } = run(["plan", "--lang", "de", "--layer", layer, "--mode", "generate", "--dry-run"]);
+      expect(out).toContain(`layer ${layer} alone would delete`);
+      expect(code).toBe(1);
+    }
+  });
+
   test("French generate plan validates offline and reports the authored clip count", () => {
     const listening = loadListening("fr")!;
     // P5b: the reception layer also carries one clip per sentence of a bundled

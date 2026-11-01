@@ -411,6 +411,10 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
         else for (const text of courseAudioStrings(m, id)) pushPack("pack", id, voiceId, text, "");
       }
     }
+    // Apply replaces the language's pack and lexicon audio as one set, so a generate of only one would delete the other.
+    if ((LAYER === "lexicon" || LAYER === "pack") && mode === "generate" && lexiconAudioStrings(LANG).length > 0) {
+      problems.push(`${LANG}: layer ${LAYER} alone would delete the other half of the pack and lexicon audio; generate with layer all`);
+    }
     if ((LAYER === "lexicon" || LAYER === "all") && mode === "generate") {
       const strings = lexiconAudioStrings(LANG);
       if (strings.length > 0) {

@@ -1,6 +1,6 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
-> **Lần thức gần nhất:** 2026-11-01 23:00 UTC. **Lần thức kế tiếp:** 2026-11-02 00:00 UTC. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
+> **Lần thức gần nhất:** 2026-11-02 00:00 UTC. **Lần thức kế tiếp:** 2026-11-02 01:00 UTC. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
 >
 > **Ghi chú (2026-11-01):**
 > - **Run audio fr 41166387785 thất bại lúc 2026-10-31 05:18 UTC**; phiên làm việc dừng ngay sau đó nên không ai xử lý trong khoảng 41 giờ, và câu "run tiếng Pháp vẫn đang chạy" là sai. Nguyên nhân: phần nghe của tiếng Pháp vốn đã qua pipeline v2 (392 clip được áp dụng); kế hoạch băm tên người đọc Parler thành `null`, còn validator băm đúng tên "Daniel", nên 152 file thành mồ côi và 121 clip + 40 câu truyện bị coi là thiếu. Đã sửa trong `scripts/audio.ts`, có test: kế hoạch và validator phải ra cùng một tập file cho fr, de, es.
