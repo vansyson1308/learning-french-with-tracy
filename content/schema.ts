@@ -149,6 +149,8 @@ function writingSlotSchema<D extends z.ZodTypeAny>(description: D) {
      * appearing there are an answer leak and fail validation.
      */
     cueProvided: z.boolean(),
+    /** The slot may be realized in several places without counting as keyword stuffing: a letter's closing ("Thank you. Best regards"). */
+    repeatable: z.boolean().optional(),
   });
 }
 

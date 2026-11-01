@@ -8,7 +8,7 @@
  *    "He has a car". He's gone (is or has?) needs an authored alternative;
  *  - `'d` is "would" only before like, love, prefer, rather; other uses stay as written;
  *  - a positive contraction cannot end a clause: "Yes, I'm." never matches "Yes, I am.";
- *  - an inverted n't stays together: "Do not you know?" never matches "Don't you know?";
+ *  - an inverted n't stays together: "Do not you know?" never matches "Don't you know?", while "She wasn't there." is "She was not there.";
  *  - no apostrophe is forgiven when that makes another word: its, were, well, ill.
  * Spoken grading spells standalone digits 0–100 and reads the recognizer's clock and
  * price formats (8:30, half past eight and eight thirty are one answer; so are $10 and
@@ -90,14 +90,26 @@ function spokenNumberFormats(text: string): string {
 
 /** A positive contraction expands only with a word after it: "Yes, I'm." is not English. */
 const WORD_FOLLOWS = "(?=\\s+[A-Za-z0-9\\u00C0-\\u1EFF])";
-/** An n't before its subject is an inverted question: "Do not you know?" is not English. */
-const NO_SUBJECT = "(?!\\s+(?:i|you|he|she|it|we|they|there)\\b)";
+const SUBJECT_FOLLOWS = /^\s+(?:i|you|he|she|it|we|they|there)\b/i;
+/** Where an inverted verb stands: the start of a clause, or right after a question word. */
+const INVERTS_HERE = /(?:^\s*|[.,;:!?"—–]\s*|\b(?:why|where|when|what|who|whom|whose|which|how|and|but|or|so)\s+)$/i;
+
+/**
+ * An inverted n't stays together: "Do not you know?" is not English. Inverted means a subject after it
+ * AND nothing of a subject before it: "She wasn't there." and "That isn't it." expand.
+ */
+function expandNegatives(text: string): string {
+  const expand = (match: string, offset: number, whole: string, full: string) =>
+    SUBJECT_FOLLOWS.test(whole.slice(offset + match.length)) && INVERTS_HERE.test(whole.slice(0, offset)) ? match : full;
+  return text
+    .replace(/\b(do|does|did|is|are|was|were|have|has|had|could|would|should|must)n'?t\b/gi, (m, aux: string, at: number, s: string) => expand(m, at, s, `${aux} not`))
+    .replace(/\bcan'?t\b/gi, (m, at: number, s: string) => expand(m, at, s, "can not"))
+    .replace(/\bwon'?t\b/gi, (m, at: number, s: string) => expand(m, at, s, "will not"));
+}
+
 const IS_HOSTS = "he|she|it|that|what|where|who|how|there|here";
 
 const CONTRACTIONS: readonly (readonly [RegExp, string])[] = [
-  [new RegExp(`\\b(do|does|did|is|are|was|were|have|has|had|could|would|should|must)n'?t\\b${NO_SUBJECT}`, "gi"), "$1 not"],
-  [new RegExp(`\\bcan'?t\\b${NO_SUBJECT}`, "gi"), "can not"],
-  [new RegExp(`\\bwon'?t\\b${NO_SUBJECT}`, "gi"), "will not"],
   [/\bcannot\b/gi, "can not"],
   [new RegExp(`\\bi'?m\\b${WORD_FOLLOWS}`, "gi"), "i am"],
   [new RegExp(`\\b(you|we|they)'re\\b${WORD_FOLLOWS}`, "gi"), "$1 are"],
@@ -113,7 +125,7 @@ const CONTRACTIONS: readonly (readonly [RegExp, string])[] = [
 ];
 
 function expandContractions(text: string): string {
-  return CONTRACTIONS.reduce((s, [re, rep]) => s.replace(re, rep), text.replace(/[‘’ʼ]/g, "'"));
+  return CONTRACTIONS.reduce((s, [re, rep]) => s.replace(re, rep), expandNegatives(text.replace(/[‘’ʼ]/g, "'")));
 }
 
 /** Word families in one line: stem + each ending, British on the left of the pair. */
@@ -284,16 +296,62 @@ function hasWord(text: string, word: string): boolean {
   return new RegExp(`(?:^| )${word}(?= |$)`).test(text);
 }
 
+const articleOf = (word: string) => (startsWithVowelSound(word) ? "an" : "a");
+
+const pairApplies = (text: string, key: string, gb: string, us: string) =>
+  hasWord(key, us) && hasWord(text, gb) && (us !== "fall" || SEASON_FALL.test(key));
+
+/** The article follows the word: "a flat" is "an apartment", and "an flat" stays wrong. */
+const wrongArticle = (text: string, gb: string) => hasWord(text, `${articleOf(gb) === "a" ? "an" : "a"} ${gb}`);
+
+function rewriteEverywhere(text: string, gb: string, us: string): string {
+  return text
+    .replace(new RegExp(`(^| )${articleOf(gb)} ${gb}(?= |$)`, "g"), `$1${articleOf(us)} ${us}`)
+    .replace(new RegExp(`(^| )${gb}(?= |$)`, "g"), `$1${us}`);
+}
+
 function alignAnswerToKey(answer: string, key: string): string {
+  return WORD_PAIRS_LONGEST.reduce(
+    (text, [gb, us]) => (!pairApplies(text, key, gb, us) || wrongArticle(text, gb) ? text : rewriteEverywhere(text, gb, us)),
+    answer
+  );
+}
+
+const DETERMINERS: ReadonlySet<string> = new Set(["a", "an", "the", "my", "your", "his", "her", "our", "their", "this", "that", "these", "those", "one"]);
+/**
+ * Closed, in the lenient form, because nothing here parses: an open slot would take a noun as subject too
+ * ("The children film it"). An unlisted adjective costs one British word its match; the US word always counts.
+ */
+const NOUN_ADJECTIVES: ReadonlySet<string> = new Set(
+  ("new old big small little large great good nice bad lovely beautiful pretty cheap expensive clean dirty quiet noisy busy empty full " +
+    "long short tall high low hot cold warm cool dark light modern old-fashioned first second third last next same own other favorite " +
+    "funny boring interesting sad happy scary red blue green black white yellow brown gray pink orange local nearby popular famous free comfortable").split(" ")
+);
+
+function inNounContext(tokens: readonly string[], at: number): boolean {
+  const before = tokens[at - 1];
+  return DETERMINERS.has(before) || (NOUN_ADJECTIVES.has(before) && DETERMINERS.has(tokens[at - 2]));
+}
+
+function rewriteNouns(text: string, gb: string, us: string): string {
+  const tokens = text.split(" ");
+  return tokens
+    .map((token, at) => {
+      if (token === gb) return inNounContext(tokens, at) ? us : token;
+      return tokens[at + 1] === gb && token === articleOf(gb) ? articleOf(us) : token;
+    })
+    .join(" ");
+}
+
+/**
+ * Free text has the same pairs and less certainty: the answer's words are the learner's own, so "The land is flat"
+ * must not meet an apartment slot. A single British word therefore counts only as a noun. A key of several words
+ * ("i like soccer") pins the meaning itself, since the whole run has to match, and so does a British phrase.
+ */
+function alignWrittenToKey(answer: string, key: string): string {
   return WORD_PAIRS_LONGEST.reduce((text, [gb, us]) => {
-    if (!hasWord(key, us) || !hasWord(text, gb) || (us === "fall" && !SEASON_FALL.test(key))) return text;
-    // The article follows the word: "a flat" is "an apartment", and "an flat" stays wrong.
-    const ownArticle = startsWithVowelSound(gb) ? "an" : "a";
-    const keyArticle = startsWithVowelSound(us) ? "an" : "a";
-    if (hasWord(text, `${ownArticle === "a" ? "an" : "a"} ${gb}`)) return text;
-    return text
-      .replace(new RegExp(`(^| )${ownArticle} ${gb}(?= |$)`, "g"), `$1${keyArticle} ${us}`)
-      .replace(new RegExp(`(^| )${gb}(?= |$)`, "g"), `$1${us}`);
+    if (!pairApplies(text, key, gb, us) || wrongArticle(text, gb)) return text;
+    return gb.includes(" ") || key.includes(" ") ? rewriteEverywhere(text, gb, us) : rewriteNouns(text, gb, us);
   }, answer);
 }
 
@@ -323,6 +381,7 @@ export const en: LanguageRules = latinRules(
     spellDigits: spellEnglishDigits,
     normalizeLenient: normalizeLenientEnglish,
     alignAnswerToKey,
+    alignWrittenToKey,
     normalizeStrict: (text) => usSpelling(normalizeStrictLatin(text)),
     foldSpoken: foldSpokenEnglish,
     // The Vietnamese wording of the note lives in the i18n catalog; these are the target's own names, as for every language.

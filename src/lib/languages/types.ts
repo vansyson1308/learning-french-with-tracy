@@ -48,6 +48,8 @@ export type LanguageRules = {
    * a unary fold would turn every "flat" into "apartment". Absent for most languages.
    */
   alignAnswerToKey?(answer: string, key: string): string;
+  /** The same for one key's run inside free writing, where the answer's words have no fixed meaning: stricter about which words it rewrites. */
+  alignWrittenToKey?(answer: string, key: string): string;
   /** Strict comparison form: case/space folded, every letter and mark kept. */
   normalizeStrict(text: string): string;
   /**

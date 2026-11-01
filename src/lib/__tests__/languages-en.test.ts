@@ -7,7 +7,7 @@ import { languageName, translateMessage } from "../i18n/translate";
 import { en as rules, englishNumber, spellEnglishDigits } from "../languages/en";
 import { gradeSpokenAttempt, normalizeSpoken } from "../speech/grader";
 import type { Exercise } from "../types";
-import { evaluateGuidedWriting } from "../writing/rubric";
+import { evaluateGuidedWriting, evaluateSimpleForm } from "../writing/rubric";
 
 const typed = (a: string, b: string) => rules.normalizeLenient(a) === rules.normalizeLenient(b);
 const spoken = (a: string, b: string) => normalizeSpoken(a, rules) === normalizeSpoken(b, rules);
@@ -207,6 +207,25 @@ describe("English contractions in typed answers", () => {
     expect(typed("Do not you know?", "Don't you know?")).toBe(false);
     expect(typed("Is not he a doctor?", "Isn't he a doctor?")).toBe(false);
     expect(typed("Dont you know?", "Don't you know?")).toBe(true);
+    expect(typed("Why do not you go?", "Why don't you go?")).toBe(false);
+    expect(typed("Is not it cold?", "Isn't it cold?")).toBe(false);
+    expect(typed("It is cold, is not it?", "It's cold, isn't it?")).toBe(false);
+    expect(typed("But can not you stay?", "But can't you stay?")).toBe(false);
+    expect(typed("Will not they come?", "Won't they come?")).toBe(false);
+  });
+
+  test("an n't before there, it or you with its subject in front is not inverted", () => {
+    const same: [string, string][] = [
+      ["She wasn't there.", "She was not there."],
+      ["They aren't there.", "They are not there."],
+      ["That isn't it.", "That is not it."],
+      ["The book isn't there.", "The book is not there."],
+    ];
+    for (const [a, b] of same) {
+      expect(typed(a, b)).toBe(true);
+      expect(typed(b, a)).toBe(true);
+    }
+    expect(spoken("she wasn't there", "she was not there")).toBe(true);
   });
 
   test("'d is expanded only before like, love, prefer, rather", () => {
@@ -379,6 +398,56 @@ describe("British forms in typed answers (QC 2026-11-01: never marked wrong)", (
     expect(evaluate("I live in an apartment").verdict).toBe("meets_rubric");
     expect(evaluate("I live in a flat").verdict).toBe("meets_rubric");
     expect(evaluate("I live in a road").verdict).toBe("does_not_meet_rubric");
+  });
+
+  const meets = (text: string, ...variants: string[]) =>
+    evaluateGuidedWriting({
+      rules,
+      targetLanguage: "English",
+      text,
+      rubric: { requiredSlots: [{ id: "slot", description: "the slot", variants, cueProvided: false }], minTokens: 2, maxTokens: 12 },
+      promptText: "Write a sentence.",
+      knownVocabulary: new Set("i a an the my this that these those land is flat live in small shop film it new big we like football soccer children people road see store movie apartment".split(" ")),
+    }).verdict === "meets_rubric";
+
+  test("in free text a single British word counts only as a noun: after a determiner, with at most one adjective between", () => {
+    expect(meets("I live in a flat", "apartment")).toBe(true);
+    expect(meets("I live in my flat", "apartment")).toBe(true);
+    expect(meets("I live in a small flat", "apartment")).toBe(true);
+    expect(meets("I see the new shop", "store")).toBe(true);
+    expect(meets("I see this film", "movie")).toBe(true);
+    expect(meets("I see these big films", "movies")).toBe(true);
+
+    expect(meets("The land is flat", "apartment")).toBe(false);
+    expect(meets("This is flat", "apartment")).toBe(false);
+    expect(meets("That land is flat", "apartment")).toBe(false);
+    expect(meets("I shop", "store")).toBe(false);
+    expect(meets("We shop in the road", "store")).toBe(false);
+    expect(meets("I film it", "movie")).toBe(false);
+    expect(meets("The children film it", "movie")).toBe(false);
+    expect(meets("I see a small big film", "movie")).toBe(false);
+    expect(meets("I live in an flat", "apartment")).toBe(false);
+  });
+
+  test("a key of several words is its own context, and a multi-word pair needs none", () => {
+    expect(meets("I like football", "i like soccer")).toBe(true);
+    expect(meets("We see a mobile phone", "cell phone")).toBe(true);
+    expect(meets("I shop in the road", "i like soccer")).toBe(false);
+  });
+
+  test("an exact-match typed answer keeps the wider alignment, as does a form field", () => {
+    expect(graded("Let's watch a movie.", "Let's watch a film.")).toBe(true);
+    expect(graded("My store.", "My shop.")).toBe(true);
+    expect(rules.alignAnswerToKey?.("flat", "apartment")).toBe("apartment");
+    expect(rules.alignWrittenToKey?.("flat", "apartment")).toBe("flat");
+    const field = evaluateSimpleForm({
+      rules,
+      targetLanguage: "English",
+      values: { home: "flat" },
+      fields: [{ id: "home", label: "Home", slotId: "home" }],
+      rubric: { requiredSlots: [{ id: "home", description: "home", variants: ["apartment"], cueProvided: false }], minTokens: 1, maxTokens: 3 },
+    });
+    expect(field.verdict).toBe("meets_rubric");
   });
 });
 

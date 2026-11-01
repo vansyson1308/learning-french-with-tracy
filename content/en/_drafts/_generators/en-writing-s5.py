@@ -115,7 +115,8 @@ RESERVED = {
 def task(slug, spec, reserved):
     fam, obj, instr, cue, slots, mn, mx, verbs, model, fields = spec
     tid = f"en.write.{slug}"
-    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": v, "cueProvided": c} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
+    # A closing is the one slot a letter may realize twice ("Thank you. Best regards").
+    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": v, "cueProvided": c, **({"repeatable": True} if i == "closing" else {})} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
     if verbs:
         rubric["requireSentenceVerbs"] = verbs
     t = {"id": tid, "taskFamily": fam, "mode": "guided", "instruction": {"vi": instr}}
