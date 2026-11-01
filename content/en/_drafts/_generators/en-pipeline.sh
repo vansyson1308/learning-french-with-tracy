@@ -45,17 +45,19 @@ python -I "$G/en-scenarios-s6.py" .
 # Checkpoints and placement use the reserved items above and write their own OUTPUT; the exam track appends its stimuli.
 python -I "$G/en-assessment.py" .
 python -I "$G/en-exam.py" .
+# Lessons: s1 starts lessons/OUTPUT.jsonl, s2 and s3 append.
+python -I "$G/en-lessons-s1.py" .
+python -I "$G/en-lessons-s2.py" .
+python -I "$G/en-lessons-s3.py" .
+# The D-10 answer review widens keys in the mirrors of a speech item or writing task too, so it runs once all of them exist.
+python -I "$G/en-review-answers.py" .
 ingest listening
 ingest readings
 ingest speech
 ingest writing
 ingest scenarios
-# Lessons: s1 starts lessons/OUTPUT.jsonl, s2 and s3 append. The ingest writes the staged course, which now loads, so its exit
-# status also counts what later steps still owe (audio): en-draft.ts validate reports those.
-# Only a record that failed the schema stops the pipeline here. The same holds for the assessment steps after it.
-python -I "$G/en-lessons-s1.py" .
-python -I "$G/en-lessons-s2.py" .
-python -I "$G/en-lessons-s3.py" .
+# The lessons ingest writes the staged course, which now loads, so its exit status also counts what later steps still owe (audio):
+# en-draft.ts validate reports those. Only a record that failed the schema stops the pipeline here. The same holds for the assessment steps after it.
 ingest lessons
 for step in checkpoints placement exam; do
   ingest "$step"

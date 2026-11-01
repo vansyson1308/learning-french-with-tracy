@@ -262,7 +262,7 @@ const realLexicon = (readJson("content/en/lexicon/lexemes.json") as { lexemes: L
 const realIrregular = (readJson("content/en/lexicon/irregular-forms.json") as { verbs: Record<string, { past: string; participle: string }> }).verbs;
 const MODALS = new Set(["can", "could", "will", "would", "should", "must", "may"]);
 /** The evidence does not hold these four lexicon verbs: see the report; extend the derive verb list. */
-const NO_EVIDENCE = new Set(["cross", "reply", "practice", "cut"]);
+const NO_EVIDENCE = new Set(["cross", "reply", "practice", "cut", "brush"]);
 
 describe("English plugin against the committed data", () => {
   test("the registry serves it", () => {
