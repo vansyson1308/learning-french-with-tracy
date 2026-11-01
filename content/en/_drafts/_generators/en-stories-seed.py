@@ -17,7 +17,7 @@ HEADS = {"i'": "I", "you'": "you", "he'": "he", "she'": "she", "it'": "it", "we'
          "what'": "what", "where'": "where", "who'": "who", "here'": "here", "how'": "how", "let'": "let"}
 # `lost` is the past of lose unless a story maps it back to the adjective. change and answer are noun lexemes, so the verb evidence does not
 # reach their verb forms. Every other verb form comes from morphology.json.
-FORMS = {"lost": "lose", "changed": "change", "changing": "change", "answered": "answer", "answering": "answer"}
+FORMS = {"mom": "mother", "grandma": "grandmother", "officer": "police", "lost": "lose", "changed": "change", "changing": "change", "answered": "answer", "answering": "answer"}
 token_map = {k: ids[v] for k, v in {**HEADS, **FORMS}.items()}
 doc = {"version": 1, "language": "en",
        "voiceCast": {"N": {"voiceId": cast["A"], "speaker": None}, "A": {"voiceId": cast["A"], "speaker": None}, "B": {"voiceId": cast["B"], "speaker": None}},

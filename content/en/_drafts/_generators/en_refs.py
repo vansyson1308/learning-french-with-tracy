@@ -23,7 +23,7 @@ FUNCTION_POS = {"pronoun", "determiner", "preposition", "conjunction"}
 
 NAMES = set("minh lan nam hoa tuan mai linh hung tran nguyen pham le vo anna tom sarah john mary david peter lee smith hanoi hue da nang sydney london abc binh hanh thu trang kim ma ha long singapore australia lam".split())
 # Not lexemes, and safe at A1: a chunk the course needs in speech, spelling variants.
-ALLOW = set("oh ok its".split())
+ALLOW = set("oh ok its m p".split())  # m, p: the letters of a.m., p.m. on a notice
 EXTRA = {"slowly": "slow"}
 BE = set("am is are was were been being".split())
 

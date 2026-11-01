@@ -14,8 +14,8 @@ kind: N V A D P T R C I E (see POS). forms: nouns = irregular plural, or "-" for
 verbs = past/participle when irregular; adjectives and adverbs = comparative/superlative when irregular.
 
 The IPA column is the authored General American transcription, kept to compare. What ships is the licensed value from
-derived/ipa-general-american.json, verbatim, with source kaikki-en; only a row with no licensed value ships the authored
-string, with source original-english-course. Every difference is listed in content/en/_drafts/review/ipa-diff.json.
+derived/ipa-general-american.json, verbatim, with source kaikki-en; a row with no licensed value, or one the D-10 review corrected
+(IPA_FIXED), ships the authored string, with source original-english-course. Every difference is listed in content/en/_drafts/review/ipa-diff.json.
 
 anchors-left-out.txt gives the reason each CEFR-J A1 lemma is not taken; a missing or stale reason stops the run.
 """
@@ -27,6 +27,8 @@ LATER = "core-a2.txt"
 POS = {"N": "noun", "V": "verb", "A": "adjective", "D": "adverb", "P": "pronoun", "T": "determiner", "R": "preposition", "C": "conjunction", "I": "interjection", "E": "expression"}
 TOPICS = {"people", "greetings", "food", "animals", "travel", "everyday", "places", "shopping", "time", "family", "home", "body", "clothing", "colors", "numbers", "weather", "nature", "work", "school", "feelings", "leisure", "technology"}
 AUTHORED_IPA = "original-english-course"
+# American titles take a period. The lemma stays the bare word: tokens never hold the period.
+TITLE_SURFACE = {"Mr": "Mr.", "Mrs": "Mrs.", "Ms": "Ms."}
 UNIT_ORDER = ["1", "2", "3", "4", "5", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v"]
 # Where a lexeme no unit's word list teaches first unlocks in the daily words (en-units.py teaches about 200 of the 750).
 # Near-first units for what a learner needs early; work words at the units about work.
@@ -61,6 +63,9 @@ ANCHOR_INFLECTED = {"are", "is", "was", "were", "had", "doing", "am", "been", "d
 
 # A selected line that is wrong for the course's word: the hand-written value ships with source original-english-course, listed for review.
 IPA_REJECTED = {"thank": "the only American line is an unlabelled /ˈðæŋk/ next to dialect lines; thank starts with /θ/"}
+
+# D-10 language review: the wrong values and the unexplained parentheses, as a teacher writes them. They ship with source original-english-course.
+IPA_FIXED = { "English": "ˈɪŋɡlɪʃ", "appointment": "əˈpɔɪntmənt", "bicycle": "ˈbaɪsɪkəl", "cafeteria": "ˌkæfəˈtɪɹiə", "clothes": "kloʊz", "community": "kəˈmjunəti", "condition": "kənˈdɪʃən", "during": "ˈdʊɹɪŋ", "eighteen": "ˌeɪˈtin", "empty": "ˈɛmpti", "engineer": "ˌɛndʒəˈnɪɹ", "every": "ˈɛvɹi", "everything": "ˈɛvɹiˌθɪŋ", "excuse me": "ɪkˈskjuz mi", "exhibition": "ˌɛksəˈbɪʃən", "experience": "ɪkˈspɪɹiəns", "fourteen": "ˌfɔɹˈtin", "grandfather": "ˈɡɹænˌfɑðɚ", "grandmother": "ˈɡɹænˌmʌðɚ", "hello": "həˈloʊ", "how are you": "ˌhaʊ ɑɹ ˈju", "internet": "ˈɪntɚˌnɛt", "interview": "ˈɪntɚˌvju", "invitation": "ˌɪnvɪˈteɪʃən", "kitchen": "ˈkɪtʃən", "landlord": "ˈlændˌlɔɹd", "mountain": "ˈmaʊntən", "once": "wʌns", "orange": "ˈɔɹɪndʒ", "quarter": "ˈkwɔɹtɚ", "restaurant": "ˈɹɛstɹɑnt", "sale": "seɪl", "supermarket": "ˈsupɚˌmɑɹkɪt", "thirteen": "ˌθɝˈtin", "thousand": "ˈθaʊzənd", "traffic light": "ˈtɹæfɪk laɪt", "university": "ˌjunɪˈvɝsəti", "usually": "ˈjuʒuəli", "volunteer": "ˌvɑlənˈtɪɹ", "wear": "wɛɹ", "website": "ˈwɛbˌsaɪt", "within": "wɪˈðɪn", "yesterday": "ˈjɛstɚˌdeɪ" }
 
 
 def read_rows(name, band):
@@ -255,7 +260,9 @@ def build(root):
         if i in ids.values():
             raise SystemExit(f"id collision {i}")
         ids[r["lemma"]] = i
-        found = None if r["lemma"] in IPA_REJECTED else licensed_ipa(ipa_table, r["lemma"], pos, r["ipa"])
+        found = None if r["lemma"] in IPA_REJECTED or r["lemma"] in IPA_FIXED else licensed_ipa(ipa_table, r["lemma"], pos, r["ipa"])
+        if r["lemma"] in IPA_FIXED:
+            r["ipa"] = IPA_FIXED[r["lemma"]]
         if found:
             pron = {"value": found["value"], "notation": "ipa", "source": "kaikki-en"}
             stats["kaikki-en"] += 1
@@ -272,7 +279,7 @@ def build(root):
             if ev.get("frequency"):
                 refs.append({"source": "frequencywords", "key": ev["lemma"]})
         refs.append({"source": "original-lexicon-etl"})
-        lex = {"id": i, "surface": r["lemma"], "lemma": r["lemma"], "lookupForm": r["lemma"], "partOfSpeech": pos, "glosses": {"en": r["en"], "vi": r["vi"]}, "pronunciation": pron}
+        lex = {"id": i, "surface": TITLE_SURFACE.get(r["lemma"], r["lemma"]), "lemma": r["lemma"], "lookupForm": TITLE_SURFACE.get(r["lemma"], r["lemma"]), "partOfSpeech": pos, "glosses": {"en": r["en"], "vi": r["vi"]}, "pronunciation": pron}
         if ev and ev.get("frequency"):
             f = ev["frequency"]
             lex["frequency"] = {"source": "frequencywords", "rawValue": f["perMillion"], "rank": f["rank"], "band": f["band"]}
@@ -437,7 +444,7 @@ def main():
         return
     rep = anchors_report(root, a1, a2)
     write_json(root, "content/en/lexicon/lexemes.json", {"version": 1, "language": "en", "lexemes": lexemes})
-    write_json(root, "content/en/lexemes.json", {r["lemma"]: r["id"] for r in a1 + a2})
+    write_json(root, "content/en/lexemes.json", {TITLE_SURFACE.get(r["lemma"], r["lemma"]): r["id"] for r in a1 + a2})
     write_json(root, "content/en/lexicon/syllabus.json", {"version": 1, "language": "en", "level": "A1", "minLexemes": 600, "derivation": DERIVATION, "entries": syllabus_entries(a1)})
     write_json(root, "content/en/lexicon/syllabus-a2-1.json", {"version": 1, "language": "en", "level": "A2-1", "minLexemes": 0, "derivation": "words the first A2 stories add beyond the A1 syllabus", "entries": syllabus_entries(a2)})
     topics = {r["topic"] for r in a1 + a2}
