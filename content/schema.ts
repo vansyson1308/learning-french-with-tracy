@@ -905,7 +905,7 @@ export type SourceManifestV1 = z.infer<typeof SourceManifestV1Schema>;
  * sha256 + bytes + date; a declared-but-not-retrieved source (SUBTLEX-PT,
  * NIKL) records the blocker and can never be referenced by a lexeme.
  */
-export const SOURCE_ROLES = ["lexicon", "gloss-vi", "frequency", "frequency-secondary", "examples", "anchor", "dictionary"] as const;
+export const SOURCE_ROLES = ["lexicon", "pronunciation-morphology", "gloss-vi", "frequency", "frequency-secondary", "examples", "anchor", "dictionary"] as const;
 export const SourceManifestV2Schema = z
   .strictObject({
     version: z.literal(2),

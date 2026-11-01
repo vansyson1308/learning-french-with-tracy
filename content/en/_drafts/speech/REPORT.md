@@ -1,6 +1,6 @@
 # speech — ingest report (en-vi)
 
-Records: 55 · schema-valid: 55 · failed: 0 · validator errors after merge: 1
+Records: 55 · schema-valid: 55 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -62,7 +62,7 @@ Records: 55 · schema-valid: 55 · failed: 0 · validator errors after merge: 1
 
 ## Validator errors (fix these records and ingest again)
 
-- reception: en-vi:uj-l0-e5: unknown clip en.clip.uj_tom_football
+- none
 
 ## Written
 

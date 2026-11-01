@@ -54,13 +54,15 @@ export type KaikkiSense = {
   categories?: { name?: string; orig?: string; kind?: string }[];
 };
 
+export type KaikkiSound = { ipa?: string; other?: string; zh_pron?: string; tags?: string[]; note?: string; hangeul?: string };
+
 export type KaikkiEntry = {
   word: string;
   pos: string;
   lang_code: string;
   senses?: KaikkiSense[];
   forms?: { form: string; tags?: string[]; raw_tags?: string[]; roman?: string }[];
-  sounds?: { ipa?: string; other?: string; zh_pron?: string; tags?: string[]; hangeul?: string }[];
+  sounds?: KaikkiSound[];
   head_templates?: { name?: string; args?: Record<string, string> }[];
   translations?: { code?: string; lang?: string; word?: string; sense?: string }[];
   categories?: { name?: string; orig?: string; kind?: string }[];
@@ -80,6 +82,8 @@ export type KaikkiLemma = {
    */
   definiteForm?: string;
   ipa?: string;
+  /** English only: which rule selected `ipa` (see generalAmericanIpa). */
+  ipaMethod?: GeneralAmericanMethod;
   /** First-sense glosses (one string per sense, cleaned), in sense order. */
   glosses: string[];
   /** Number of lemma (non form-of) senses — the weight a shared word form's count is split by. */
@@ -211,6 +215,9 @@ function genderFromHead(entry: KaikkiEntry): KaikkiLemma["gender"] | undefined {
   return undefined;
 }
 
+/** A form a learner must not be taught or credited with: goed, cutted, yode. */
+const RESTRICTED_FORM = new Set(["archaic", "obsolete", "nonstandard", "dialectal", "rare", "misspelling", "alternative"]);
+
 /**
  * Analysis atoms of an inflected form from kaikki tags, in the notation
  * the paradigm plugins consume (French Lexique style): `ind:pre:1`,
@@ -219,7 +226,7 @@ function genderFromHead(entry: KaikkiEntry): KaikkiLemma["gender"] | undefined {
  * `ger`; number as a separate atom `sg` / `pl`; nominal atoms `f`, `pl`.
  * Tags outside the vocabulary are kept raw for audit, never guessed.
  */
-export function atomsFromTags(tags: readonly string[]): string[] {
+export function atomsFromTags(tags: readonly string[], lang?: string): string[] {
   const set = new Set(tags);
   const atoms: string[] = [];
   if (set.has("combined-form") || set.has("table-tags") || set.has("inflection-template") || set.has("canonical") || set.has("romanization")) {
@@ -245,6 +252,8 @@ export function atomsFromTags(tags: readonly string[]): string[] {
               : null;
     if (tense !== null) atoms.push(`${mood}:${tense}:${person}`);
   }
+  // English states one simple past for every person (fall: fell, tagged `past` alone), so no person atom can come from it.
+  if (lang === "en" && person === null && set.has("past") && !set.has("participle") && !tags.some((t) => RESTRICTED_FORM.has(t))) atoms.push("ind:pas:*");
   if (set.has("plural")) atoms.push("pl");
   else if (set.has("singular")) atoms.push("sg");
   if (set.has("feminine")) atoms.push("f");
@@ -259,6 +268,83 @@ export function atomsFromTags(tags: readonly string[]): string[] {
   if (set.has("formal")) atoms.push("formal");
   if (set.has("informal")) atoms.push("informal");
   return atoms;
+}
+
+export type GeneralAmericanMethod = "general-american-tag" | "us-tag" | "untagged";
+
+/** Tags that may sit beside an American one without making the transcription regional: Wiktionary shares one line across varieties. */
+const NOT_REGIONAL = new Set(["General-American", "US", "Received-Pronunciation", "UK", "British", "Standard", "Southern", "Canada", "Canadian", "Atlantic-Canada", "Australia", "New-Zealand", "Ireland", "Singapore", "cot-caught-merger", "stressed"]);
+/** Not a learner's model, whichever variety it is tagged for. The pin-pen merger is regional: pen is not /pɪn/. */
+const NEVER = new Set(["obsolete", "archaic", "dated", "dialectal", "nonstandard", "proscribed", "rare", "pin-pen-merger"]);
+/** An untagged line this shape is British whatever the page says. */
+const BRITISH_SHAPE = /ɒ|əʊ|ɜː|ɪə|ɛə|ʊə/;
+const PART_OF_SPEECH_TAGS: Readonly<Record<string, string>> = { noun: "noun", verb: "verb", adj: "adjective", adv: "adverb" };
+/** Notes that describe a form or a merger and name no region. Anything else ("meal eaten after religious fasting", "Local Dublin") disqualifies the line for selection. */
+const PLAIN_NOTE = /^(?:strong form|stressed form|rhotic|wine.whine merger|without the wine.whine merger|without the cot.caught merger|lot.cloth split, without the cot.caught merger)$/i;
+const WEAK_NOTE = /\bweak\b/i;
+/** "yod-dropping, US, Canada": a note can say what a tag would, unless it narrows it. */
+const NOTE_SAYS_US = /(?:^|[ ,])US(?:,|$)/;
+const NOTE_NARROWS_US = /(?:Southern|Midland|Mid-Atlantic|Northern|Western|Eastern) US/;
+
+export type GeneralAmericanLine = { value: string; method: GeneralAmericanMethod; weak: boolean };
+
+/**
+ * The American lines of an English entry, best first. A broad /…/ line tagged General
+ * American, then tagged US (without the cot-caught merger before with it), then a note
+ * that says US, then an untagged line with no British shape; within each, a plain line
+ * before one with optional sounds. A line whose note names something else comes after
+ * its class. Weak forms are listed last and only for comparison. Never the first line
+ * of the page, usually British, and never a narrow […] or a fragment (/-ˈme/). A line
+ * tagged for another part of speech is skipped (record: noun /ˈɹɛkɚd/).
+ */
+export function generalAmericanLines(sounds: readonly KaikkiSound[], pos?: string): GeneralAmericanLine[] {
+  const posTag = pos === undefined ? undefined : PART_OF_SPEECH_TAGS[pos];
+  const scored: (GeneralAmericanLine & { rank: number })[] = [];
+  for (const s of sounds) {
+    const m = /^\/([^/]+)\//.exec(s.ipa ?? "");
+    if (!m || m[1].startsWith("-") || m[1].endsWith("-") || m[1].includes("…")) continue;
+    const taggedPos = (s.tags ?? []).filter((t) => Object.values(PART_OF_SPEECH_TAGS).includes(t));
+    if (posTag !== undefined && taggedPos.length > 0 && !taggedPos.includes(posTag)) continue;
+    const unstressed = (s.tags ?? []).includes("unstressed");
+    const tags = (s.tags ?? []).filter((t) => !taggedPos.includes(t) && t !== "unstressed");
+    const note = s.note ?? "";
+    const weak = unstressed || WEAK_NOTE.test(note);
+    const plainNote = note === "" || weak || PLAIN_NOTE.test(note);
+    if (tags.some((t) => NEVER.has(t))) continue;
+    // A line tagged General American is that, whichever other varieties share it.
+    if (!tags.includes("General-American") && !tags.every((t) => NOT_REGIONAL.has(t))) continue;
+    let rank: number;
+    let method: GeneralAmericanMethod;
+    if (tags.includes("General-American")) {
+      method = "general-american-tag";
+      rank = 0;
+    } else if (tags.includes("US")) {
+      method = "us-tag";
+      rank = tags.includes("cot-caught-merger") ? 3 : 2;
+    } else if (tags.filter((t) => t !== "stressed").length > 0) {
+      continue;
+    } else if (NOTE_SAYS_US.test(note) && !NOTE_NARROWS_US.test(note)) {
+      method = "us-tag";
+      rank = 4;
+    } else {
+      if (!plainNote || BRITISH_SHAPE.test(m[1])) continue;
+      method = "untagged";
+      rank = 6;
+    }
+    if (!plainNote && rank < 4) rank += 8;
+    scored.push({ value: m[1], method, weak, rank: rank + (m[1].includes("(") ? 0.5 : 0) });
+  }
+  return scored
+    .map((line, order) => ({ line, order }))
+    .sort((a, b) => a.line.rank - b.line.rank || a.order - b.order)
+    .filter(({ line }, i, all) => all.findIndex((x) => x.line.value === line.value) === i)
+    .map(({ line: { value, method } }) => ({ value, method, weak: scored.filter((l) => l.value === value).every((l) => l.weak) }));
+}
+
+/** The selected line, or nothing: a word with no American line stays without one rather than take a British line. */
+export function generalAmericanIpa(sounds: readonly KaikkiSound[], pos?: string): { value: string; method: GeneralAmericanMethod } | undefined {
+  const line = generalAmericanLines(sounds, pos).find((l) => !l.weak);
+  return line ? { value: line.value, method: line.method } : undefined;
 }
 
 function ipaOf(entry: KaikkiEntry): string | undefined {
@@ -390,7 +476,7 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
     for (const f of entry.forms ?? []) {
       if (typeof f.form !== "string") continue;
       const tags = f.tags ?? [];
-      const atoms = atomsFromTags(tags);
+      const atoms = atomsFromTags(tags, opts.lang);
       if (atoms.length === 0) continue;
       forms.push({ form: f.form, atoms, rawTags: tags });
     }
@@ -402,13 +488,15 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
     }
     // German: the head template names the STANDARD gender first; sense tags mix in regional ones.
     const deHead = opts.lang === "de" && pos === "noun" ? germanHead(entry) : undefined;
+    const generalAmerican = opts.lang === "en" ? generalAmericanIpa(entry.sounds ?? [], entry.pos) : undefined;
     const record: KaikkiLemma = {
       word: entry.word,
       pos,
       sourcePos: entry.pos,
       gender: pos === "noun" ? (deHead?.gender ?? genderFromTags(senseTags) ?? genderFromHead(entry)) : undefined,
       ...(deHead?.definiteForm ? { definiteForm: deHead.definiteForm } : {}),
-      ipa: ipaOf(entry),
+      ipa: opts.lang === "en" ? generalAmerican?.value : ipaOf(entry),
+      ...(generalAmerican ? { ipaMethod: generalAmerican.method } : {}),
       glosses,
       senseCount: lemmaSenses.length,
       examples,
@@ -439,7 +527,10 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
       existing.viTranslations.push(...record.viTranslations);
       if (!existing.gender && record.gender) existing.gender = record.gender;
       if (!existing.definiteForm && record.definiteForm) existing.definiteForm = record.definiteForm;
-      if (!existing.ipa && record.ipa) existing.ipa = record.ipa;
+      if (!existing.ipa && record.ipa) {
+        existing.ipa = record.ipa;
+        if (record.ipaMethod) existing.ipaMethod = record.ipaMethod;
+      }
       for (const [k, v] of Object.entries(record.readings)) if (!existing.readings[k]) existing.readings[k] = v;
     } else {
       lemmas.set(key, record);

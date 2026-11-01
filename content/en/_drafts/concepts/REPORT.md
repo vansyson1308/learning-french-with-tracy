@@ -1,6 +1,6 @@
 # concepts — ingest report (en-vi)
 
-Records: 90 · schema-valid: 90 · failed: 0 · validator errors after merge: 1
+Records: 95 · schema-valid: 95 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -54,50 +54,55 @@ Records: 90 · schema-valid: 90 · failed: 0 · validator errors after merge: 1
 - ✅ line 48 `arrive`
 - ✅ line 49 `carry`
 - ✅ line 50 `try`
-- ✅ line 51 `go`
-- ✅ line 52 `come`
-- ✅ line 53 `get`
-- ✅ line 54 `make`
-- ✅ line 55 `take`
-- ✅ line 56 `give`
-- ✅ line 57 `see`
-- ✅ line 58 `say`
-- ✅ line 59 `tell`
-- ✅ line 60 `know`
-- ✅ line 61 `think`
-- ✅ line 62 `eat`
-- ✅ line 63 `drink`
-- ✅ line 64 `buy`
-- ✅ line 65 `pay`
-- ✅ line 66 `sell`
-- ✅ line 67 `send`
-- ✅ line 68 `read`
-- ✅ line 69 `write`
-- ✅ line 70 `speak`
-- ✅ line 71 `hear`
-- ✅ line 72 `find`
-- ✅ line 73 `meet`
-- ✅ line 74 `leave`
-- ✅ line 75 `put`
-- ✅ line 76 `sit`
-- ✅ line 77 `stand`
-- ✅ line 78 `sleep`
-- ✅ line 79 `wake`
-- ✅ line 80 `begin`
-- ✅ line 81 `break`
-- ✅ line 82 `drive`
-- ✅ line 83 `understand`
-- ✅ line 84 `wear`
-- ✅ line 85 `feel`
-- ✅ line 86 `forget`
-- ✅ line 87 `bring`
-- ✅ line 88 `teach`
-- ✅ line 89 `run`
-- ✅ line 90 `spend`
+- ✅ line 51 `cross`
+- ✅ line 52 `reply`
+- ✅ line 53 `practice`
+- ✅ line 54 `go`
+- ✅ line 55 `come`
+- ✅ line 56 `get`
+- ✅ line 57 `make`
+- ✅ line 58 `take`
+- ✅ line 59 `give`
+- ✅ line 60 `see`
+- ✅ line 61 `say`
+- ✅ line 62 `tell`
+- ✅ line 63 `know`
+- ✅ line 64 `think`
+- ✅ line 65 `eat`
+- ✅ line 66 `drink`
+- ✅ line 67 `buy`
+- ✅ line 68 `pay`
+- ✅ line 69 `sell`
+- ✅ line 70 `send`
+- ✅ line 71 `read`
+- ✅ line 72 `write`
+- ✅ line 73 `speak`
+- ✅ line 74 `hear`
+- ✅ line 75 `find`
+- ✅ line 76 `meet`
+- ✅ line 77 `leave`
+- ✅ line 78 `put`
+- ✅ line 79 `sit`
+- ✅ line 80 `stand`
+- ✅ line 81 `sleep`
+- ✅ line 82 `wake`
+- ✅ line 83 `begin`
+- ✅ line 84 `break`
+- ✅ line 85 `drive`
+- ✅ line 86 `understand`
+- ✅ line 87 `wear`
+- ✅ line 88 `feel`
+- ✅ line 89 `forget`
+- ✅ line 90 `bring`
+- ✅ line 91 `teach`
+- ✅ line 92 `run`
+- ✅ line 93 `spend`
+- ✅ line 94 `cut`
+- ✅ line 95 `fall`
 
 ## Validator errors (fix these records and ingest again)
 
-- context-gate (en): en:w:soccer (en-vi:unit-v) has no context sentence — write one, or list it with a reason in lexicon/context-uncovered.json
+- none
 
 ## Written
 

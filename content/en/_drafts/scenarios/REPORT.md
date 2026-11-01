@@ -1,6 +1,6 @@
 # scenarios — ingest report (en-vi)
 
-Records: 25 · schema-valid: 25 · failed: 0 · validator errors after merge: 3
+Records: 25 · schema-valid: 25 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -32,9 +32,7 @@ Records: 25 · schema-valid: 25 · failed: 0 · validator errors after merge: 3
 
 ## Validator errors (fix these records and ingest again)
 
-- reception: en-vi:uj-l0-e5: unknown clip en.clip.uj_tom_football
-- writing: en-vi:up-l2-e0: rubric does not mirror task en.write.p_like
-- writing: en-vi:up-l2-e0: modelAnswers does not mirror task en.write.p_like
+- none
 
 ## Written
 

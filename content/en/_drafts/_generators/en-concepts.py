@@ -372,7 +372,7 @@ def evidenced(cell, atom):
     return atom in ("inf", "pl", "ind:pre:1", "ind:pre:2")
 
 
-# Lemma, Vietnamese gloss, English gloss. `cut`, `fall`, `cross`, `reply`, `practice` lack evidence and are left out (see the check below).
+# Lemma, Vietnamese gloss, English gloss. Evidence is required (see the check below); a verb without it is a data problem to fix, not a verb to drop.
 TABLES = [
     ("be", "là, ở", "to be"), ("have", "có", "to have"), ("do", "làm", "to do"),
     # regular: one per spelling pattern, then the verbs an adult worker needs first
@@ -380,7 +380,7 @@ TABLES = [
     ("want", "muốn", "to want"), ("need", "cần", "to need"), ("like", "thích", "to like"), ("love", "yêu", "to love"), ("help", "giúp", "to help"), ("call", "gọi", "to call"),
     ("ask", "hỏi", "to ask"), ("use", "dùng", "to use"), ("start", "bắt đầu", "to start"), ("finish", "xong, kết thúc", "to finish"), ("wait", "chờ", "to wait"), ("walk", "đi bộ", "to walk"),
     ("talk", "nói chuyện", "to talk"), ("listen", "nghe", "to listen"), ("look", "nhìn", "to look"), ("watch", "xem", "to watch"), ("clean", "lau dọn", "to clean"), ("check", "kiểm tra", "to check"),
-    ("arrive", "đến nơi", "to arrive"), ("carry", "mang, vác", "to carry"), ("try", "thử", "to try"),
+    ("arrive", "đến nơi", "to arrive"), ("carry", "mang, vác", "to carry"), ("try", "thử", "to try"), ("cross", "băng qua", "to cross"), ("reply", "trả lời", "to reply"), ("practice", "luyện tập", "to practice"),
     # high-frequency irregular pasts
     ("go", "đi", "to go"), ("come", "đến", "to come"), ("get", "nhận, lấy", "to get"), ("make", "làm ra", "to make"), ("take", "lấy, mang đi", "to take"), ("give", "đưa, cho", "to give"),
     ("see", "nhìn thấy", "to see"), ("say", "nói", "to say"), ("tell", "bảo, kể", "to tell"), ("know", "biết", "to know"), ("think", "nghĩ", "to think"), ("eat", "ăn", "to eat"),
@@ -388,7 +388,7 @@ TABLES = [
     ("write", "viết", "to write"), ("speak", "nói (một thứ tiếng)", "to speak"), ("hear", "nghe thấy", "to hear"), ("find", "tìm thấy", "to find"), ("meet", "gặp", "to meet"), ("leave", "rời đi", "to leave"),
     ("put", "đặt", "to put"), ("sit", "ngồi", "to sit"), ("stand", "đứng", "to stand"), ("sleep", "ngủ", "to sleep"), ("wake", "thức dậy", "to wake"), ("begin", "bắt đầu", "to begin"),
     ("break", "làm vỡ", "to break"), ("drive", "lái xe", "to drive"), ("understand", "hiểu", "to understand"), ("wear", "mặc, đội", "to wear"), ("feel", "cảm thấy", "to feel"), ("forget", "quên", "to forget"),
-    ("bring", "mang đến", "to bring"), ("teach", "dạy", "to teach"), ("run", "chạy", "to run"), ("spend", "tiêu, dành", "to spend"),
+    ("bring", "mang đến", "to bring"), ("teach", "dạy", "to teach"), ("run", "chạy", "to run"), ("spend", "tiêu, dành", "to spend"), ("cut", "cắt", "to cut"), ("fall", "ngã, rơi", "to fall"),
 ]
 lex_ids = {x["lemma"]: x["id"] for x in json.load(open(f"{ROOT}/content/en/lexicon/lexemes.json", encoding="utf-8"))["lexemes"] if x["partOfSpeech"] == "verb"}
 missing = []

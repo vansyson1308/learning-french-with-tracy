@@ -1,6 +1,6 @@
 # listening — ingest report (en-vi)
 
-Records: 280 · schema-valid: 280 · failed: 0 · validator errors after merge: 282
+Records: 280 · schema-valid: 280 · failed: 0 · validator errors after merge: 280
 
 ## Records
 
@@ -287,7 +287,6 @@ Records: 280 · schema-valid: 280 · failed: 0 · validator errors after merge: 
 
 ## Validator errors (fix these records and ingest again)
 
-- reception: en.read.uj_saturday: unknown lexeme en:w:football
 - reception: en.clip.uf_thank_you: generated asset 5e601284902c07be8f40.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.uf_excuse_me: generated asset 67dde6fec68425440c70.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.uf_of_course: generated asset a6b6b1d2eab4e403edad.mp3 missing — run the reception-audio generate workflow (P7 §26)
@@ -568,7 +567,6 @@ Records: 280 · schema-valid: 280 · failed: 0 · validator errors after merge: 
 - reception: en.clip.ix_bac2_b_social_3: generated asset 0c5dba10d462dc176496.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.ix_bac2_b_social_3_s: generated asset 1500c193b1bc627f7c10.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.ix_bac2_b_social_end: generated asset 624ef78a5a57e9bbc3fc.mp3 missing — run the reception-audio generate workflow (P7 §26)
-- reception: en-vi:uj-l0-e5: unknown clip en.clip.uj_tom_football
 
 ## Written
 

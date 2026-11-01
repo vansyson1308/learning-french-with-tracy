@@ -5,13 +5,13 @@ Hand-chosen lexicon for en-vi: 750 A1 lemmas and 30 A2-1 lemmas (core-*.txt). It
 A human still has to check:
 
 - **Vietnamese text.** Every gloss and example translation was written by an AI agent and awaits native review. There are no `TODO:vi` markers.
-- **IPA.** Authored transcriptions are the project's own General American, not checked against a dictionary. See the counts below.
+- **IPA.** Licensed General American values ship; every difference from the hand-written column and every word with no licensed value is in `content/en/_drafts/review/ipa-diff.json`, for the D-10 language pass.
 - **Unit mapping.** `topic-units.json` is authored in `TOPIC_UNITS` above; `syllabus.json` is derived from it and the unit word lists by `content/en/_drafts/_generators/en-pipeline.sh`.
 
 ## Counts
 
 - A1 by part of speech: adjective 93, adverb 42, conjunction 8, determiner 25, expression 27, interjection 7, noun 367, preposition 25, pronoun 23, verb 133
-- IPA: kaikki-en verbatim 308; original-english-course 472 (pool value differs from General American, usually British: 274; no pool value: 198)
+- IPA: kaikki-en 744 (general-american-tag 440, untagged 185, us-tag 119); original-english-course 36, no licensed value. Against the hand-written column: identical 358, notation only 354, mismatch 32.
 - Examples: 805, all original (`original-lexicon-etl`, key `add`); no Tatoeba sentence is used. Each is at most 12 words and uses only words of its band, checked by en-lex.py.
 - Irregular forms are in `noun-plurals.json` and `irregular-forms.json`: the lexeme schema has no field for them, as in Italian.
 

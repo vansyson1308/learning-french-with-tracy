@@ -13,9 +13,9 @@ Row format (core-*.txt):
 kind: N V A D P T R C I E (see POS). forms: nouns = irregular plural, or "-" for uncountable;
 verbs = past/participle when irregular; adjectives and adverbs = comparative/superlative when irregular.
 
-IPA is authored in General American for every row. When the pool's Kaikki transcription agrees with it the
-pool value is kept verbatim with source kaikki-en; otherwise (the pool holds the first broad transcription,
-usually British) the authored value ships with source original-english-course.
+The IPA column is the authored General American transcription, kept to compare. What ships is the licensed value from
+derived/ipa-general-american.json, verbatim, with source kaikki-en; only a row with no licensed value ships the authored
+string, with source original-english-course. Every difference is listed in content/en/_drafts/review/ipa-diff.json.
 
 anchors-left-out.txt gives the reason each CEFR-J A1 lemma is not taken; a missing or stale reason stops the run.
 """
@@ -59,6 +59,10 @@ NAMES = {"anna", "tom", "mai", "nam", "lan", "minh", "hoa", "hanoi", "ben", "sam
 ANCHOR_INFLECTED = {"are", "is", "was", "were", "had", "doing", "am", "been", "done", "being", "left", "lost", "worried", "used", "married"}
 
 
+# A selected line that is wrong for the course's word: the hand-written value ships with source original-english-course, listed for review.
+IPA_REJECTED = {"thank": "the only American line is an unlabelled /ˈðæŋk/ next to dialect lines; thank starts with /θ/"}
+
+
 def read_rows(name, band):
     out = []
     with open(os.path.join(HERE, name), encoding="utf-8") as f:
@@ -86,24 +90,44 @@ def slug(s):
 
 
 def norm_ipa(s, stress=False):
-    if "(" in s:
-        return None
-    s = s.replace("͡", "").replace("͜", "")
+    s = s.replace("͡", "").replace("͜", "").replace("̬", "").replace("̯", "").replace("(", "").replace(")", "").replace("ɫ", "l")
+    s = s.replace("l̩", "əl").replace("n̩", "ən").replace("m̩", "əm")
     s = re.sub(r"[ˌ.ːˑ‿/\[\] ]", "", s)
     if not stress:
         s = s.replace("ˈ", "")
     s = s.replace("g", "ɡ").replace("r", "ɹ").replace("ʍ", "w").replace("ɾ", "t")
-    s = s.replace("ɜɹ", "ɝ").replace("ɜ˞", "ɝ").replace("ə˞", "ɚ").replace("əɹ", "ɚ").replace("ɝɹ", "ɝ")
+    s = s.replace("ɜɹ", "ɝ").replace("ɜ˞", "ɝ").replace("ə˞", "ɚ").replace("əɹ", "ɚ").replace("ɝɹ", "ɝ").replace("ɝ", "ɚ").replace("ɚɹ", "ɚ")
+    # One sound in General American, written either way: horse-hoarse and the r after a vowel.
+    s = s.replace("oɹ", "ɔɹ").replace("ɛɚ", "ɛɹ").replace("ɪɚ", "ɪɹ").replace("ʊɚ", "ʊɹ").replace("ɔɚ", "ɔɹ").replace("ɑɚ", "ɑɹ").replace("aɪɚ", "aɪɹ")
     s = re.sub(r"e(?!ɪ)", "ɛ", s)
     return s
 
 
-def ipa_agrees(pool_value, authored):
+def ipa_agrees(licensed, authored):
     """Same sounds, and the primary stress in the same place when both mark one (monosyllables may or may not)."""
-    if norm_ipa(pool_value) != norm_ipa(authored):
+    if norm_ipa(licensed) != norm_ipa(authored):
         return False
-    a, b = norm_ipa(pool_value, True), norm_ipa(authored, True)
+    a, b = norm_ipa(licensed, True), norm_ipa(authored, True)
     return "ˈ" not in a or "ˈ" not in b or a == b
+
+
+def licensed_ipa(table, lemma, pos, authored):
+    """The licensed line for a row. The same part of speech first; another with the same spelling only where this one has no
+    line (Vietnamese: adjective in one list, noun in another), and letters and symbols never. Tags select the line, unless a
+    further American line of the page agrees with the authored value: then that is the common variant the course means
+    (`the`: /ðə/, not the strong /ði/), still licensed, still verbatim."""
+    key = f"{lemma}|{pos}"
+    if key in table:
+        keys = [key]
+    else:
+        keys = sorted(k for k in table if k.rsplit("|", 1)[0] == lemma and k.rsplit("|", 1)[1] not in ("character", "symbol", "letter"))
+    if not keys:
+        return None
+    lines = [line for k in keys for line in [table[k], *table[k].get("others", [])]]
+    for line in lines:
+        if ipa_agrees(line["value"], authored):
+            return line
+    return table[keys[0]]
 
 
 def inflections(lemma, kind="E"):
@@ -216,7 +240,9 @@ def build(root):
     by_lemma = {}
     for e in pool:
         by_lemma.setdefault(e["lemma"], []).append(e)
-    ids, lexemes, stats = {}, [], {"kaikki-en": 0, AUTHORED_IPA: 0, "poolBritishOrOther": 0, "poolNone": 0}
+    ipa_table = json.load(open(f"{root}/content/en/lexicon/derived/ipa-general-american.json", encoding="utf-8"))["entries"]
+    ids, lexemes = {}, []
+    stats = {"kaikki-en": 0, AUTHORED_IPA: 0, "byMethod": {}, "exact": [], "notationOnly": [], "mismatches": [], "noLicensedValue": []}
     for r in rows:
         pos = POS[r["kind"]]
         cands = [] if r["kind"] == "E" else by_lemma.get(r["lemma"], [])
@@ -229,14 +255,17 @@ def build(root):
         if i in ids.values():
             raise SystemExit(f"id collision {i}")
         ids[r["lemma"]] = i
-        pool_ipa = ev.get("ipa") if ev else None
-        if pool_ipa and ipa_agrees(pool_ipa, r["ipa"]):
-            pron = {"value": pool_ipa, "notation": "ipa", "source": "kaikki-en"}
+        found = None if r["lemma"] in IPA_REJECTED else licensed_ipa(ipa_table, r["lemma"], pos, r["ipa"])
+        if found:
+            pron = {"value": found["value"], "notation": "ipa", "source": "kaikki-en"}
             stats["kaikki-en"] += 1
+            stats["byMethod"][found["method"]] = stats["byMethod"].get(found["method"], 0) + 1
+            row = {"word": r["lemma"], "partOfSpeech": pos, "generated": found["value"], "handWritten": r["ipa"], "source": "kaikki-en", "method": found["method"]}
+            stats["exact" if found["value"] == r["ipa"] else "notationOnly" if ipa_agrees(found["value"], r["ipa"]) else "mismatches"].append(row)
         else:
             pron = {"value": r["ipa"], "notation": "ipa", "source": AUTHORED_IPA}
             stats[AUTHORED_IPA] += 1
-            stats["poolBritishOrOther" if pool_ipa else "poolNone"] += 1
+            stats["noLicensedValue"].append({"word": r["lemma"], "partOfSpeech": pos, "handWritten": r["ipa"], "source": AUTHORED_IPA, **({"rejected": IPA_REJECTED[r["lemma"]]} if r["lemma"] in IPA_REJECTED else {})})
         refs = []
         if ev:
             refs.append({"source": "kaikki-en", "key": f"{ev['lemma']}|{ev['sourcePos']}"})
@@ -341,13 +370,13 @@ def review(a1, a2, stats, rep):
         "A human still has to check:",
         "",
         "- **Vietnamese text.** Every gloss and example translation was written by an AI agent and awaits native review. There are no `TODO:vi` markers.",
-        "- **IPA.** Authored transcriptions are the project's own General American, not checked against a dictionary. See the counts below.",
+        "- **IPA.** Licensed General American values ship; every difference from the hand-written column and every word with no licensed value is in `content/en/_drafts/review/ipa-diff.json`, for the D-10 language pass.",
         "- **Unit mapping.** `topic-units.json` is authored in `TOPIC_UNITS` above; `syllabus.json` is derived from it and the unit word lists by `content/en/_drafts/_generators/en-pipeline.sh`.",
         "",
         "## Counts",
         "",
         "- A1 by part of speech: " + ", ".join(f"{k} {v}" for k, v in sorted(pos.items())),
-        f"- IPA: kaikki-en verbatim {stats['kaikki-en']}; {AUTHORED_IPA} {stats[AUTHORED_IPA]} (pool value differs from General American, usually British: {stats['poolBritishOrOther']}; no pool value: {stats['poolNone']})",
+        f"- IPA: kaikki-en {stats['kaikki-en']} ({', '.join(f'{k} {v}' for k, v in sorted(stats['byMethod'].items()))}); {AUTHORED_IPA} {stats[AUTHORED_IPA]}, no licensed value. Against the hand-written column: identical {len(stats['exact'])}, notation only {len(stats['notationOnly'])}, mismatch {len(stats['mismatches'])}.",
         f"- Examples: {sum(len(r['examples']) for r in rows)}, all original (`original-lexicon-etl`, key `add`); no Tatoeba sentence is used. Each is at most 12 words and uses only words of its band, checked by en-lex.py.",
         f"- Irregular forms are in `noun-plurals.json` and `irregular-forms.json`: the lexeme schema has no field for them, as in Italian.",
         "",
@@ -420,7 +449,13 @@ def main():
     write_json(root, "content/en/lexicon/irregular-forms.json", {"version": 1, "language": "en", "note": "Irregular past and participle of verbs, irregular comparative and superlative, authored with the curated lists in content/en/_drafts/_generators.", "verbs": dict(sorted(verbs.items())), "adjectives": dict(sorted(adjectives.items()))})
     with open(f"{root}/content/en/lexicon/REVIEW.md", "w", encoding="utf-8", newline="\n") as f:
         f.write(review(a1, a2, stats, rep))
-    print("A1", len(a1), "A2-1", len(a2), "ipa", stats)
+    os.makedirs(f"{root}/content/en/_drafts/review", exist_ok=True)
+    write_json(root, "content/en/_drafts/review/ipa-diff.json", {
+        "generator": "content/en/_drafts/_generators/en-lex.py",
+        "note": "Licensed General American IPA against the hand-written column of core-*.txt. mismatches: different sounds or stress, for the D-10 language pass. notationOnly: the same sounds written differently (r/ɹ, g/ɡ, length, syllable dots). noLicensedValue: ships the hand-written string, source original-english-course, to review.",
+        "counts": {"lexemes": len(a1) + len(a2), "kaikki-en": stats["kaikki-en"], "byMethod": dict(sorted(stats["byMethod"].items())), AUTHORED_IPA: stats[AUTHORED_IPA], "identical": len(stats["exact"]), "notationOnly": len(stats["notationOnly"]), "mismatches": len(stats["mismatches"])},
+        "mismatches": stats["mismatches"], "notationOnly": stats["notationOnly"], "noLicensedValue": stats["noLicensedValue"]})
+    print("A1", len(a1), "A2-1", len(a2), "ipa", {k: (len(v) if isinstance(v, list) else v) for k, v in stats.items()})
 
 
 main()

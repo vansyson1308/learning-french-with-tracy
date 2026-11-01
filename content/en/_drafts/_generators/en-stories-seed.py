@@ -15,11 +15,9 @@ FUNCTION = ("am is are was were not "
 # Contraction heads resolve to the word they are.
 HEADS = {"i'": "I", "you'": "you", "he'": "he", "she'": "she", "it'": "it", "we'": "we", "they'": "they", "that'": "that", "there'": "there",
          "what'": "what", "where'": "where", "who'": "who", "here'": "here", "how'": "how", "let'": "let"}
-# Forms the morphology evidence does not reach: cross, reply, practice, cut, change and answer have no rows, `fall` has no past. `lost` is the past of
-# lose unless a story maps it back to the adjective.
-FORMS = {"crosses": "cross", "crossed": "cross", "crossing": "cross", "replies": "reply", "replied": "reply", "replying": "reply",
-         "practices": "practice", "practiced": "practice", "practicing": "practice", "cuts": "cut", "cutting": "cut", "fell": "fall", "lost": "lose",
-         "changes": "change", "changed": "change", "changing": "change", "answers": "answer", "answered": "answer", "answering": "answer"}
+# `lost` is the past of lose unless a story maps it back to the adjective. change and answer are noun lexemes, so the verb evidence does not
+# reach their verb forms. Every other verb form comes from morphology.json.
+FORMS = {"lost": "lose", "changed": "change", "changing": "change", "answered": "answer", "answering": "answer"}
 token_map = {k: ids[v] for k, v in {**HEADS, **FORMS}.items()}
 doc = {"version": 1, "language": "en",
        "voiceCast": {"N": {"voiceId": cast["A"], "speaker": None}, "A": {"voiceId": cast["A"], "speaker": None}, "B": {"voiceId": cast["B"], "speaker": None}},

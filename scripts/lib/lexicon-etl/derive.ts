@@ -145,6 +145,21 @@ function sourceStamp(opts: DeriveOptions, id: string) {
   return s ? { id, sha256: s.retrieval.sha256, url: s.url, retrievedAt: s.retrieval.retrievedAt } : { id, sha256: null, url: null, retrievedAt: null };
 }
 
+/** The evidence rows of one verb: its lemma as the infinitive, then each tagged form, once. */
+export function morphologyRows(lang: string, lemma: string, entry: { forms: { form: string; atoms: string[] }[] }): { mot: string; infoVer: string }[] {
+  const rows = entry.forms.map((f) => ({ mot: normalizeFormFor(lang, f.form), infoVer: f.atoms.join(",") }));
+  rows.unshift({ mot: lemma, infoVer: "inf" });
+  const seen = new Set<string>();
+  return rows.filter((r) => (seen.has(`${r.mot}|${r.infoVer}`) ? false : (seen.add(`${r.mot}|${r.infoVer}`), true)));
+}
+
+/** Verbs the target's authored lexicon teaches: a course's verb is never left without paradigm evidence by its frequency rank (QC 2026-11-01 §2.3). */
+function authoredVerbs(lang: string): string[] {
+  const rel = `content/${lang}/lexicon/lexemes.json`;
+  if (!existsSync(safeResolve(rel))) return [];
+  return (readJson(rel) as { lexemes: { lemma: string; partOfSpeech: string }[] }).lexemes.filter((l) => l.partOfSpeech === "verb").map((l) => l.lemma);
+}
+
 export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult> {
   const { lang, dir } = opts;
   const log = opts.log ?? (() => {});
@@ -294,6 +309,14 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
     }
   }
   forced.sort((a, b) => a.lemma.localeCompare(b.lemma) || a.pos.localeCompare(b.pos));
+  for (const lemma of authoredVerbs(lang)) {
+    const key = `${lemma}|verb`;
+    if (rankedKeys.has(key) || !lemmas.has(key)) continue;
+    const agg = aggregated.get(key);
+    forced.push(eligible.find((e) => e.key === key) ?? { key, lemma, pos: "verb", count: agg?.count ?? 0, rank: Number.POSITIVE_INFINITY, forms: agg?.forms ?? new Set<string>(), perMillion: agg ? (agg.count / freq.total) * 1e6 : 0 });
+    rankedKeys.add(key);
+  }
+  forced.sort((a, b) => a.lemma.localeCompare(b.lemma) || a.pos.localeCompare(b.pos));
   const poolCandidates = [...ranked, ...forced];
   const forcedKeys = new Set(forced.map((p) => p.key));
   const poolWords = new Set(poolCandidates.map((p) => p.lemma));
@@ -427,15 +450,7 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
   }
 
   // ---- 8. morphology (verbs of the pool) ---------------------------------------
-  const verbs = pool
-    .filter((p) => p.partOfSpeech === "verb")
-    .map((p) => {
-      const entry = lemmas.get(`${p.lemma}|verb`)!;
-      const rows = entry.forms.map((f) => ({ mot: normalizeFormFor(lang, f.form), infoVer: f.atoms.join(",") }));
-      rows.unshift({ mot: p.lemma, infoVer: "inf" });
-      const seen = new Set<string>();
-      return { lemma: p.lemma, rows: rows.filter((r) => (seen.has(`${r.mot}|${r.infoVer}`) ? false : (seen.add(`${r.mot}|${r.infoVer}`), true))) };
-    });
+  const verbs = pool.filter((p) => p.partOfSpeech === "verb").map((p) => ({ lemma: p.lemma, rows: morphologyRows(lang, p.lemma, lemmas.get(`${p.lemma}|verb`)!) }));
   const atomInventory: Record<string, number> = {};
   for (const v of verbs) for (const r of v.rows) for (const a of r.infoVer.split(",")) atomInventory[a] = (atomInventory[a] ?? 0) + 1;
 
@@ -489,7 +504,7 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
     "morphology.json": {
       source: stamp("kaikki-en"),
       generator,
-      notation: "atoms per form: mood:tense:person (ind|sub|imp|con : pre|pas|imp|fut : 1|2|3), inf, par:pas, par:pre, ger, sg|pl, f|m|n, case atoms; comma-joined in infoVer (French Lexique style)",
+      notation: "atoms per form: mood:tense:person (ind|sub|imp|con : pre|pas|imp|fut : 1|2|3, or * when the form holds for every person), inf, par:pas, par:pre, ger, sg|pl, f|m|n, case atoms; comma-joined in infoVer (French Lexique style)",
       atomInventory,
       verbs,
     },
