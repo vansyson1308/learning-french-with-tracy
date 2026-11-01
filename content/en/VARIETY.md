@@ -35,4 +35,6 @@ A British word may appear in an explanation or a concept card, as a note, never 
 
 Ordinary American uses of a word that also has a British sense stay: `lift` is taught as the verb, `flat` appears as the adjective.
 
-Titles are still written Mr and Mrs, without the American full stop. Typed answers accept both. The D-10 language pass decides whether to change them.
+Titles are written the American way, with a period: Mr., Mrs., Ms., and always with the family name (D-10). Typed answers accept them with or without the period.
+
+The course says *store*, keeping *shop* for names like "coffee shop"; *check* in a restaurant (*bill* is what you pay every month); *movie theater*, *restroom*, *fill out*, *cashier*, *on the team*, *canceled*. Clock times on notices are a.m. and p.m.
