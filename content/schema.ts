@@ -2001,6 +2001,8 @@ export const examItemSchema = (lang: string) =>
     exercise: exerciseSchemas(lang).ExerciseSchema,
     exerciseNative: ExerciseNativeOverlaySchema.optional(),
     objectiveTargets: z.array(objectiveId(lang)).min(1),
+    /** A track above its course's level (QC 2026-11-01 §2.5): words of this item the course has not taught, with their gloss; the player offers them to tap. */
+    glossary: z.array(z.strictObject({ surface: z.string().min(1), gloss: nativeText() })).min(1).optional(),
   });
 
 /**

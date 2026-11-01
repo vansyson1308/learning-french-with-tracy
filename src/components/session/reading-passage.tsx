@@ -6,10 +6,10 @@
  * may show tap-to-gloss for supported unknown words; scored mode passes
  * allowGloss={false} and no lexical help exists before answering (§54, §98).
  */
-import React, { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
-import { useT } from "@/lib/i18n";
+import { WordGlossRow } from "@/components/session/word-gloss";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export type ReadingBlock =
@@ -30,10 +30,7 @@ export function ReadingPassage({
   allowGloss: boolean;
 }) {
   const styles = useStyles();
-  const { t } = useT();
-  const [openGloss, setOpenGloss] = useState<string | null>(null);
   const noticeLike = kind === "notice" || kind === "info";
-  const active = allowGloss ? glossary.find((g) => g.surface === openGloss) : undefined;
 
   return (
     <View style={[styles.card, noticeLike && styles.noticeCard]} testID="reading-passage">
@@ -52,27 +49,7 @@ export function ReadingPassage({
           </Text>
         )
       )}
-      {allowGloss && glossary.length > 0 ? (
-        <View style={styles.glossRow}>
-          {glossary.map((g) => (
-            <Pressable
-              key={g.surface}
-              onPress={() => setOpenGloss(openGloss === g.surface ? null : g.surface)}
-              accessibilityRole="button"
-              accessibilityLabel={t("reading.showMeaning", { word: g.surface })}
-              style={[styles.glossChip, openGloss === g.surface && styles.glossChipActive]}
-              testID={`gloss-${g.surface}`}
-            >
-              <Text style={styles.glossChipText}>{g.surface}</Text>
-            </Pressable>
-          ))}
-        </View>
-      ) : null}
-      {active ? (
-        <Text style={styles.glossValue} testID="gloss-value">
-          {active.surface} — {active.gloss}
-        </Text>
-      ) : null}
+      {allowGloss ? <WordGlossRow glossary={glossary} /> : null}
     </View>
   );
 }
@@ -94,16 +71,5 @@ const useStyles = makeThemedStyles((colors) =>
     lineRow: { flexDirection: "row", gap: 8, alignItems: "flex-start" },
     speaker: { fontSize: 15, fontWeight: "800", color: colors.skyDark, minWidth: 52 },
     lineText: { flex: 1, fontSize: 17, lineHeight: 25, color: colors.text },
-    glossRow: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: 2 },
-    glossChip: {
-      borderWidth: 1.5,
-      borderColor: colors.neutral200,
-      borderRadius: radius.full,
-      paddingHorizontal: 10,
-      paddingVertical: 3,
-    },
-    glossChipActive: { borderColor: colors.sky, backgroundColor: colors.sky + "22" },
-    glossChipText: { fontSize: 13, fontWeight: "600", color: colors.textMuted },
-    glossValue: { fontSize: 14, color: colors.text, fontStyle: "italic" },
   })
 );

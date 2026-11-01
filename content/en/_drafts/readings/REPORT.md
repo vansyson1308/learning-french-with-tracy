@@ -308,7 +308,7 @@ Records: 55 · schema-valid: 55 · failed: 0 · validator errors after merge: 28
 - reception: en.clip.bac2_b_l2_04: generated asset 1ced3942d7a0e1407190.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.bac2_b_l2_05: generated asset 89c1b5d27996975937c9.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.bac2_b_l3: generated asset e4e5729c8dc7c99d88a1.mp3 missing — run the reception-audio generate workflow (P7 §26)
-- reception: en.clip.bac2_b_l4: generated asset b9b0579bf24c78accd67.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: en.clip.bac2_b_l4: generated asset 5511574e9f133c060115.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.bac2_b_l5: generated asset 327c60c18ee04da27cc1.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.ix_bac2_a_greet_miss: generated asset 42119c0580248624eb9a.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.ix_bac2_a_greet_0: generated asset 6c67cf1f261d8bfbd496.mp3 missing — run the reception-audio generate workflow (P7 §26)

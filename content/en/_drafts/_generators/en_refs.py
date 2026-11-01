@@ -21,9 +21,9 @@ A1 = [l for l in LEX if l["surface"] not in LATER]
 BY_ID = {l["id"]: l for l in LEX}
 FUNCTION_POS = {"pronoun", "determiner", "preposition", "conjunction"}
 
-NAMES = set("minh lan nam hoa tuan mai linh hung tran nguyen pham le vo anna tom sarah john mary david peter lee smith hanoi hue da nang sydney london abc".split())
+NAMES = set("minh lan nam hoa tuan mai linh hung tran nguyen pham le vo anna tom sarah john mary david peter lee smith hanoi hue da nang sydney london abc binh hanh thu trang kim ma ha long singapore australia lam".split())
 # Not lexemes, and safe at A1: a chunk the course needs in speech, spelling variants.
-ALLOW = set("oh ok".split())
+ALLOW = set("oh ok its".split())
 EXTRA = {"slowly": "slow"}
 BE = set("am is are was were been being".split())
 
@@ -108,7 +108,12 @@ def _regular(t):
             cands.append((t[:-4], {"verb"}))
     for end in ("er", "est"):
         if t.endswith(end):
-            cands += [(t[: -len(end)], {"adjective", "adverb"}), (t[: -len(end)] + "e", {"adjective", "adverb"})]
+            stem = t[: -len(end)]
+            cands += [(stem, {"adjective", "adverb"}), (stem + "e", {"adjective", "adverb"})]
+            if stem.endswith("i"):
+                cands.append((stem[:-1] + "y", {"adjective", "adverb"}))
+            if len(stem) > 2 and stem[-1] == stem[-2]:
+                cands.append((stem[:-1], {"adjective", "adverb"}))
     for base, pos in cands:
         if base in SINGLE and _pos(SINGLE[base]) in pos:
             return SINGLE[base]
@@ -172,6 +177,30 @@ def _scan(text):
         if x not in out:
             out.append(x)
     return out, unknown
+
+
+def later_lexeme(raw):
+    """The band A2-1 lexeme of a word outside the A1 list: its surface, or a regular form of it. None if the lexicon has neither."""
+    t = raw.lower()
+    if t in _LATER_SINGLE:
+        return BY_ID[_LATER_SINGLE[t]]
+    if t in IRREGULAR and BY_ID[IRREGULAR[t]]["surface"] in LATER:
+        return BY_ID[IRREGULAR[t]]
+    stems = []
+    if t.endswith("ies"):
+        stems.append(t[:-3] + "y")
+    if t.endswith("es"):
+        stems.append(t[:-2])
+    if t.endswith("s"):
+        stems.append(t[:-1])
+    if t.endswith("ed"):
+        stems += [t[:-2], t[:-1]]
+    if t.endswith("ing"):
+        stems += [t[:-3], t[:-3] + "e"]
+    for s in stems:
+        if s in _LATER_SINGLE:
+            return BY_ID[_LATER_SINGLE[s]]
+    return None
 
 
 def refs(text):

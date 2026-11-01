@@ -2,9 +2,8 @@
 import { describe, expect, test } from "bun:test";
 
 import { checkAnswer } from "../grading";
-import { languageName } from "../i18n/translate";
 import { msg } from "../i18n/message";
-import { translateMessage } from "../i18n/translate";
+import { languageName, translateMessage } from "../i18n/translate";
 import { en as rules, englishNumber, spellEnglishDigits } from "../languages/en";
 import { gradeSpokenAttempt, normalizeSpoken } from "../speech/grader";
 import type { Exercise } from "../types";

@@ -189,6 +189,7 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
   for (const item of track.items) {
     if (itemIds.has(item.id)) err(`duplicate item id ${item.id}`);
     itemIds.add(item.id);
+    errors.push(...missingNativeCodes((item.glossary ?? []).map((g) => ({ where: `${item.id}.glossary.${g.surface}`, record: g.gloss })), input.nativeCodes).map((m) => `exam ${track.id}: ${m}`));
     const section = sections.get(item.sectionId);
     if (!section) {
       err(`${item.id}: unknown section ${item.sectionId}`);
@@ -370,6 +371,7 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
         exercise: localized.exercise,
         objectiveTargets: item.objectiveTargets,
         lexemeRefs: itemLexemes(item.exercise as Record<string, unknown>, sources),
+        ...(item.glossary ? { glossary: item.glossary.map((g) => ({ surface: g.surface, gloss: text(g.gloss, `${item.id}.glossary.${g.surface}`) })) } : {}),
       };
     }),
     forms: track.forms,

@@ -298,8 +298,7 @@ describe("English plugin against the committed data", () => {
         if (!ok) missing.push(`${lex.lemma} ${cell}=${form}`);
       }
     }
-    // The only gap: kaikki's row for fall lacks "fell". A fall table cannot validate until the derive is extended.
-    expect(missing).toEqual(["fall pas:s=fell", "fall pas:p=fell"]);
+    expect(missing).toEqual([]);
   });
 
   test("the group rules fire on a wrong form", () => {
@@ -341,5 +340,39 @@ describe("English plugin against the committed data", () => {
       expect(lexemeOf("the")).toBe("function");
       expect(lexemeOf("zebras")).toBe("unresolved");
     });
+  });
+});
+
+describe("the QĐ 1481 track against the committed data (QC 2026-11-01 §2.5)", () => {
+  type Item = { id: string; sectionId: string; exercise: Record<string, unknown>; glossary?: { surface: string; gloss: { vi: string } }[] };
+  const track = readJson("content/en/exam/bac2-qd1481.json") as { items: Item[]; description: { vi: string }; formatSource: { checkedAgainstOfficialGuide: boolean; note: { vi: string } } };
+  const lexemes = (readJson("content/en/lexicon/lexemes.json") as { lexemes: { surface: string; glosses: { vi: string } }[] }).lexemes;
+  const a2 = new Set((readJson("content/en/lexicon/syllabus-a2-1.json") as { entries: { lexemeId: string }[] }).entries.map((e) => e.lexemeId));
+  const a1 = (readJson("content/en/lexicon/syllabus.json") as { entries: { lexemeId: string }[] }).entries;
+
+  test("the A1 syllabus keeps its 750 words, and the glossed words sit at A2-1", () => {
+    expect(a1.length).toBe(750);
+    expect(a1.some((e) => a2.has(e.lexemeId))).toBe(false);
+    expect(a2.has("en:w:platform")).toBe(true);
+    expect(a2.has("en:w:volunteer")).toBe(true);
+  });
+
+  test("glosses come from the lexicon", () => {
+    const bySurface = new Map(lexemes.map((l) => [l.surface, l.glosses.vi]));
+    const glossed = track.items.flatMap((i) => i.glossary ?? []);
+    expect(new Set(glossed.map((g) => g.surface)).size).toBeGreaterThan(70);
+    for (const g of glossed) expect(g.gloss.vi).toBe(bySurface.get(g.surface)!);
+  });
+
+  test("writing and speaking items carry none: a word list would give the model answer away", () => {
+    for (const item of track.items) if (item.sectionId === "writing" || item.sectionId === "speaking") expect(item.glossary).toBeUndefined();
+  });
+
+  test("the page says the level gap and the conversion in Vietnamese, and the format stays unchecked until a signed copy is read", () => {
+    expect(track.description.vi).toContain("Khoá học này là A1");
+    expect(track.description.vi).toContain("bậc 2 (A2)");
+    expect(track.description.vi).toContain("chọn một trong ba đáp án");
+    expect(track.formatSource.checkedAgainstOfficialGuide).toBe(false);
+    expect(track.formatSource.note.vi).toContain("chưa đối chiếu với bản có chữ ký");
   });
 });

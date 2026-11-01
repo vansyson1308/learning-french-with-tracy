@@ -34,3 +34,5 @@ The list of tested pairs is in `src/lib/__tests__/languages-en.test.ts`.
 A British word may appear in an explanation or a concept card, as a note, never as the taught model: the spelling note on the writing concept, and "have got" on the card about have and there is. The course teaches *apartment*, not *flat*; *on the weekend*, not *at the weekend*; *parking lot*, not *car park*.
 
 Ordinary American uses of a word that also has a British sense stay: `lift` is taught as the verb, `flat` appears as the adjective.
+
+Titles are still written Mr and Mrs, without the American full stop. Typed answers accept both. The D-10 language pass decides whether to change them.

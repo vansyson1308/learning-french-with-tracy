@@ -44,6 +44,28 @@ describe("exam track availability (P3d)", () => {
   });
 });
 
+describe("word glossary of a track above its course's level (QC 2026-11-01 §2.5)", () => {
+  const glossary = [{ surface: "platform", gloss: "sân ga" }];
+  const withGloss: CompiledExamTrack = {
+    ...TRACK,
+    items: TRACK.items.map((item, i) => (i === 0 ? { ...item, glossary } : item)),
+  };
+  const first = withGloss.items[0];
+
+  test("an item's glossary reaches its step, in mock and practice alike", () => {
+    for (const mode of ["mock", "practice"] as const) {
+      const session = buildExamSectionSession({ courseId: "es-vi", track: withGloss, sectionId: first.sectionId, formId: null, mode, attemptSeed: 0 });
+      const step = session.steps.find((s) => s.stepId === first.id);
+      expect(step?.type === "exercise" ? step.glossary : undefined).toEqual(glossary);
+    }
+  });
+
+  test("an item without one has none, so other tracks are untouched", () => {
+    const session = buildExamSectionSession({ courseId: "es-vi", track: TRACK, sectionId: first.sectionId, formId: null, mode: "mock", attemptSeed: 0 });
+    for (const step of session.steps) expect(step.type === "exercise" && "glossary" in step).toBe(false);
+  });
+});
+
 describe("forms and sessions", () => {
   test("mock sittings rotate a → b → a", () => {
     expect([0, 1, 2].map((n) => selectMockForm(TRACK, n).formId)).toEqual(["a", "b", "a"]);

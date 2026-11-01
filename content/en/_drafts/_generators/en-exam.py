@@ -7,7 +7,7 @@ import json, os, sys
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from en_refs import _scan, content_refs, refs, write_jsonl  # noqa: E402
+from en_refs import _LATER_MULTI, _scan, _tokens, BY_ID, content_refs, later_lexeme, refs, write_jsonl  # noqa: E402
 
 DRAFTS = sys.argv[1] + "/content/en/_drafts"
 TRACK = "bac2_qd1481"
@@ -26,6 +26,32 @@ def seen(text):
     return text
 
 
+# What an item shows or plays, by stimulus id: the words the learner may not know come from here.
+STIMULUS = {}
+UNGLOSSED = set()
+
+
+def glossary_of(*texts):
+    """Every word outside the A1 list, in text order, with the Vietnamese gloss of its A2-1 lexeme. A word with no lexeme stops the generator."""
+    out = {}
+    for text in texts:
+        toks = _tokens(text)
+        low = [t.lower() for t in toks]
+        for words, lid in _LATER_MULTI.items():
+            n = len(words)
+            if any(tuple(low[i:i + n]) == words for i in range(len(low) - n + 1)):
+                out.setdefault(BY_ID[lid]["surface"], BY_ID[lid]["glosses"]["vi"])
+        for w in _scan(text)[1]:
+            if w.lower() in {x for words in _LATER_MULTI for x in words} and any(BY_ID[lid]["surface"] in out for words, lid in _LATER_MULTI.items() if w.lower() in words):
+                continue
+            lex = later_lexeme(w)
+            if lex is None:
+                UNGLOSSED.add(w)
+            else:
+                out.setdefault(lex["surface"], lex["glosses"]["vi"])
+    return [{"surface": s, "gloss": {"vi": g}} for s, g in sorted(out.items(), key=lambda kv: kv[0].lower())]
+
+
 def place(correct, wrong):
     p = _pos[0] % (len(wrong) + 1)
     _pos[0] += 1
@@ -34,6 +60,8 @@ def place(correct, wrong):
     return o, p
 
 
+GAP_Q = "Điền từ còn thiếu vào câu: "
+INFO_Q = "Điền vào phiếu thông tin. "
 SEC = {"l": "listening", "r": "reading", "w": "writing", "s": "speaking"}
 
 
@@ -41,12 +69,22 @@ def item(form, sec, task, n, exercise, obj):
     slug = f"{form}_{sec}{task}_{n:02d}"
     ex = dict(exercise)
     ex["id"] = f"en-exx-{TRACK}-{slug}"
-    items.append({"id": f"en.exi.{TRACK}.{slug}", "itemVersion": 1, "sectionId": SEC[sec], "taskId": f"p{task}", "exercise": ex, "objectiveTargets": [obj]})
+    rec = {"id": f"en.exi.{TRACK}.{slug}", "itemVersion": 1, "sectionId": SEC[sec], "taskId": f"p{task}", "exercise": ex, "objectiveTargets": [obj]}
+    # Writing and speaking items keep their target and model answers out: a gloss list would give them away.
+    if sec in "lr":
+        stim = STIMULUS.get(ex.get("clipId") or ex.get("readingId"), "")
+        # Questions and many options are Vietnamese: only the English ones hold words to gloss. A gap's prefix is Vietnamese, its sentence English.
+        shown = [ex.get("question", "").replace(GAP_Q, "").replace(INFO_Q, ""), *(o["text"] for o in ex.get("options", []))]
+        gloss = glossary_of(stim, *(t for t in shown if t.isascii()))
+        if gloss:
+            rec["glossary"] = gloss
+    items.append(rec)
 
 
 def clip(cid, kind, segs, obj, units=2):
     text = " ".join(t for _, t in segs)
     seen(text)
+    STIMULUS[cid] = text
     clips.append({"id": cid, "kind": kind, "segments": [{"speaker": s, "text": t} for s, t in segs], "objectiveRefs": [obj], "lexemeRefs": refs(text),
                   "sourceRef": "original-project", "authoringSpec": {"informationUnits": units, "inferenceDemand": "locate"}, "scoredPlaybackPolicy": {"maxPlays": 2, "rate": 1}, "use": "exam"})
     return cid
@@ -55,6 +93,7 @@ def clip(cid, kind, segs, obj, units=2):
 def reading(rid, kind, paras, obj, gloss=(), title=None, units=3):
     text = " ".join(paras)
     seen(text)
+    STIMULUS[rid] = text
     r = {"id": rid, "kind": kind}
     if title:
         r["title"] = title
@@ -130,8 +169,8 @@ L4 = {
  "a": ("Welcome to Green Factory. My name is Sarah and I am your manager. Work starts at seven thirty every morning. Lunch is at twelve in the cafeteria on the first floor. Please wear your gloves and a helmet near the machines. If you have a problem, call Mr Lee. You get your pay on the last Friday of the month.",
        [("Work starts at ___ every morning.", "seven thirty", ["seven fifty", "eight thirty"]), ("The cafeteria is on the ___ floor.", "first", ["second", "third"]), ("Near the machines, wear gloves and a ___.", "helmet", ["hat", "jacket"]),
         ("If you have a problem, call Mr ___.", "Lee", ["Lam", "Brown"]), ("You get your pay on the last ___ of the month.", "Friday", ["Monday", "Sunday"])]),
- "b": ("Welcome to the City Language Center. Our evening English course starts on the fifth of March and lasts ten weeks. Classes are on Tuesday and Thursday, from six to eight. The course costs ninety dollars, and books are included. You can pay at the front desk or by bank transfer. If you miss a class, please send an email to your teacher.",
-       [("The course starts on the ___ of March.", "fifth", ["fifteenth", "first"]), ("The course lasts ___ weeks.", "ten", ["two", "twelve"]), ("Classes are on Tuesday and ___.", "Thursday", ["Friday", "Saturday"]),
+ "b": ("Welcome to the City Language Center. Our evening English course starts on the fifth of March and is ten weeks long. Classes are on Tuesday and Thursday, from six to eight. The course costs ninety dollars, and books are included. You can pay at the front desk or by bank transfer. If you miss a class, please send an email to your teacher.",
+       [("The course starts on the ___ of March.", "fifth", ["fifteenth", "first"]), ("The course is ___ weeks long.", "ten", ["two", "twelve"]), ("Classes are on Tuesday and ___.", "Thursday", ["Friday", "Saturday"]),
         ("The course costs ___ dollars.", "ninety", ["nineteen", "fifty"]), ("If you miss a class, send an ___ to your teacher.", "email", ["apple", "invitation"])]),
 }
 L5 = {
@@ -142,7 +181,6 @@ L5 = {
        [("This morning we will visit ___ caves.", "two", ["three", "four"]), ("We will have lunch on the ___.", "boat", ["beach", "island"]), ("Lunch is at half past ___.", "twelve", ["two", "eleven"]),
         ("Please take a hat and some ___.", "water", ["food", "money"]), ("The boat goes back at ___ o'clock.", "five", ["four", "six"])]),
 }
-GAP_Q = "Điền từ còn thiếu vào câu: "
 for form in "ab":
     for n, (text, q, ok, wrong) in enumerate(L1[form], 1):
         lc(form, 1, n, clip(f"en.clip.bac2_{form}_l1_{n:02d}", "announcement", [("A" if n % 2 else "B", text)], LA), q, ok, wrong, LA)
@@ -166,7 +204,7 @@ R1 = {
         ("Library books must be returned within fourteen days. A late book costs one dollar a day.", 6), ("All staff: the meeting on Friday is canceled. We will meet next Tuesday instead.", 7)],
        ["You cannot use the elevator this week.", "You do not pay for your car if you buy something here.", "The restaurant needs someone to work on Saturday and Sunday.", "You need a card to go swimming.",
         "Be careful, because you could fall here.", "Someone is looking for a bag.", "You pay money if you keep a book too long.", "Workers will not have a meeting on Friday.", "You can buy a new bag here.", "The kitchen is closed on Saturday."]),
- "b": ([("CINEMA: Please switch off your phone before the movie starts.", 0), ("Children under twelve must be with an adult in the pool area.", 1), ("Room for rent near the university. No pets, please.", 2),
+ "b": ([("CINEMA: Please turn off your phone before the movie starts.", 0), ("Children under twelve must be with an adult in the pool area.", 1), ("Room for rent near the university. No pets, please.", 2),
         ("Shop closing down! Everything is half price until Saturday.", 3), ("Bus 15 does not stop here this week because of road work. Please walk to Hoa Street.", 4), ("Found: a set of keys in the parking lot. Ask at the information desk.", 5),
         ("Staff: please wash your hands before you go back to work.", 6), ("English classes for adults. Evenings, Monday to Thursday. Beginners are welcome.", 7)],
        ["You must not use your phone here.", "Young children cannot swim here alone.", "You cannot keep a cat in this room.", "Things are cheaper this week.", "You have to walk to another bus stop.",
@@ -182,11 +220,11 @@ R2 = {
    [("Tiền thuê đã gồm những gì?", "Nước và internet", ["Điện và nước", "Bữa ăn và internet"]), ("Nên gọi cho ông Hùng khi nào?", "Sau 6 giờ", ["Trước 6 giờ", "Buổi sáng"])]),
   (["Our shop will move to a bigger building on Lake Road on the first of June. The old shop will close on the twenty-fifth of May. During the week between, you can still buy from our website. Customers who visit the new shop in June will get ten percent off."], "notice",
    [("Cửa hàng cũ đóng cửa khi nào?", "Ngày 25 tháng 5", ["Ngày 1 tháng 6", "Ngày 10 tháng 6"]), ("Khách đến cửa hàng mới trong tháng 6 được gì?", "Giảm giá 10%", ["Một món quà", "Miễn phí giao hàng"])]),
-  (["Dear neighbors, we are having a small party for our son's tenth birthday this Sunday afternoon. There may be some noise until about six o'clock. We are sorry about this. If you would like to join us, please come. There will be plenty of cake! Mai and Nam, apartment 12"], "message",
+  (["Dear neighbors, we are having a small party for our son's tenth birthday this Sunday afternoon. There may be some noise until about six o'clock. We are sorry about this. If you would like to join us, please come. There will be a lot of cake! Mai and Nam, apartment 12"], "message",
    [("Vì sao có bữa tiệc?", "Sinh nhật con trai của Mai và Nam", ["Mai và Nam mới chuyển nhà", "Mai và Nam kỷ niệm ngày cưới"]), ("Có thể ồn đến khoảng mấy giờ?", "6 giờ", ["10 giờ", "12 giờ"])]),
  ],
  "b": [
-  (["Hi Linh, can you help me? I have to go to the hospital this morning because my mother is ill. Could you take my shift at the shop from ten until two? I can work for you on Sunday. Please text me before nine. Thanks a lot, Trang"], "message",
+  (["Hi Linh, can you help me? I have to go to the hospital this morning because my mother is ill. Could you take my shift at the shop from ten until two? I can work for you on Sunday. Please text me before nine. Thank you so much, Trang"], "message",
    [("Vì sao Trang phải đi bệnh viện?", "Mẹ của Trang bị ốm", ["Trang bị ốm", "Trang đi thăm bạn"]), ("Khi nào Trang làm thay cho Linh?", "Chủ nhật", ["Hôm nay", "Thứ Bảy"])]),
   (["For sale: a blue bicycle, two years old, in very good condition. I bought it for one hundred and twenty dollars and I am selling it for sixty because I am moving to Singapore next month. It comes with a lock and a helmet. You can see it on any evening this week. Please call An."], "notice",
    [("Xe đạp được bán với giá bao nhiêu?", "60 đô la", ["120 đô la", "20 đô la"]), ("Vì sao An bán xe?", "Tháng sau An chuyển đi Singapore", ["Xe đã quá cũ", "An mua một chiếc xe mới"])]),
@@ -222,7 +260,6 @@ R4 = {
        [("Ngày khai mạc: ___", "3 tháng 10", ["28 tháng 9", "15 tháng 9"]), ("Thời gian triển lãm: ___ tuần", "6", ["4", "10"]), ("Giờ làm việc: từ 10 giờ đến ___ giờ", "4", ["6", "8"]), ("Tuổi tối thiểu: ___", "18", ["16", "28"]),
         ("Tình nguyện viên được: bữa trưa và ___", "một vé cho một người bạn", ["tiền lương", "một cuốn sách"]), ("Ngày tập huấn: ___", "28 tháng 9", ["3 tháng 10", "15 tháng 9"]), ("Gửi email cho: chị ___", "Hanh", ["Lan", "Thu"])]),
 }
-INFO_Q = "Điền vào phiếu thông tin. "
 READING_WORDS = {}
 for form in "ab":
     words = 0
@@ -397,7 +434,9 @@ track = {
  "title": T(NAME),
  "description": T("Luyện theo định dạng trong Quyết định 1481/QĐ-BGDĐT (10/5/2016) của Bộ Giáo dục và Đào tạo, dành cho người lớn: Nghe, Đọc, Viết và Nói, với số phần, số câu, thời gian và thang điểm mà quyết định nêu. "
                   "Quyết định không chia câu theo từng phần và không kèm tiêu chí chấm hay đề mẫu, nên các dạng câu hỏi ở đây do khoá học tự thiết kế để luyện từng phần, không phải bản sao của đề thi thật. Mọi câu hỏi đều do khoá học tự soạn. "
-                  "Đây là mục tiêu xa hơn khoá A1: học xong khoá A1 chưa đủ cho định dạng bậc 2 này. Đây không phải kỳ thi chính thức và không có giá trị xác nhận năng lực. Đây cũng không phải VSTEP: VSTEP.3-5 dành cho các bậc 3 đến 5."),
+                  "Khoá học này là A1, còn định dạng này là bậc 2 (A2): phần này chỉ để làm quen với dạng đề, học xong khoá A1 chưa đủ cho định dạng này. Những từ ngoài A1 có nghĩa tiếng Việt ở dưới câu hỏi, chạm vào từ để xem. "
+                  "Trong đề thật bạn tự viết câu điền từ và câu trả lời ngắn; ở đây các câu đó được chuyển thành chọn một trong ba đáp án. "
+                  "Đây không phải kỳ thi chính thức và không có giá trị xác nhận năng lực. Đây cũng không phải VSTEP: VSTEP.3-5 dành cho các bậc 3 đến 5."),
  "formatSource": {
   "publisher": "Bộ Giáo dục và Đào tạo",
   "references": [{"url": URL, "title": "Quyết định 1481/QĐ-BGDĐT ngày 10/5/2016 (bản đăng trên caselaw.vn)", "retrieved": "2026-10-31"}],
@@ -453,3 +492,6 @@ write_jsonl(f"{DRAFTS}/scenarios/OUTPUT.jsonl", scenarios, "a")
 write_jsonl(f"{DRAFTS}/exam/OUTPUT.jsonl", [track])
 print(len(items), "items", dict(sorted(Counter((i["sectionId"], i["taskId"]) for i in items).items())), len(clips), "clips", len(readings), "readings", len(speech), "speech", len(tasks), "tasks", len(scenarios), "scenarios", "reading words", READING_WORDS)
 print(len(OFF_LIST), "word types outside the A1 list:", " ".join(sorted(OFF_LIST)))
+print(sum(1 for i in items if "glossary" in i), "items with a glossary;", len({g["surface"] for i in items for g in i.get("glossary", [])}), "words glossed")
+if UNGLOSSED:
+    sys.exit("no A2-1 lexeme, so no gloss: " + " ".join(sorted(UNGLOSSED)))

@@ -2,17 +2,17 @@
   "generator": "content/en/_drafts/_generators/en-lex.py",
   "note": "Licensed General American IPA against the hand-written column of core-*.txt. mismatches: different sounds or stress, for the D-10 language pass. notationOnly: the same sounds written differently (r/ɹ, g/ɡ, length, syllable dots). noLicensedValue: ships the hand-written string, source original-english-course, to review.",
   "counts": {
-    "lexemes": 780,
-    "kaikki-en": 744,
+    "lexemes": 857,
+    "kaikki-en": 804,
     "byMethod": {
-      "general-american-tag": 440,
-      "untagged": 185,
-      "us-tag": 119
+      "general-american-tag": 476,
+      "untagged": 201,
+      "us-tag": 127
     },
-    "original-english-course": 36,
-    "identical": 358,
-    "notationOnly": 354,
-    "mismatches": 32
+    "original-english-course": 53,
+    "identical": 385,
+    "notationOnly": 384,
+    "mismatches": 35
   },
   "mismatches": [
     {
@@ -270,6 +270,30 @@
       "handWritten": "pɹɪˈskɹɪpʃən",
       "source": "kaikki-en",
       "method": "untagged"
+    },
+    {
+      "word": "exhibition",
+      "partOfSpeech": "noun",
+      "generated": "ɛksɪˈbɪʃən",
+      "handWritten": "ˌɛksəˈbɪʃən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "sale",
+      "partOfSpeech": "noun",
+      "generated": "seːl",
+      "handWritten": "seɪl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "within",
+      "partOfSpeech": "preposition",
+      "generated": "wɪðˈɪn",
+      "handWritten": "wɪˈðɪn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
     }
   ],
   "notationOnly": [
@@ -3104,6 +3128,246 @@
       "handWritten": "ˈneɪbɚhʊd",
       "source": "kaikki-en",
       "method": "us-tag"
+    },
+    {
+      "word": "attention",
+      "partOfSpeech": "noun",
+      "generated": "əˈtɛn.ʃn̩",
+      "handWritten": "əˈtɛnʃən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "bicycle",
+      "partOfSpeech": "noun",
+      "generated": "ˈbaɪsɪk(ə)l",
+      "handWritten": "ˈbaɪsɪkəl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "boat",
+      "partOfSpeech": "noun",
+      "generated": "boʊ̯t",
+      "handWritten": "boʊt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "cafeteria",
+      "partOfSpeech": "noun",
+      "generated": "ˌkæ.fə.ˈtɪ(ə).ɹi.ə",
+      "handWritten": "ˌkæfəˈtɪɹiə",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "center",
+      "partOfSpeech": "noun",
+      "generated": "ˈsɛn.tɚ",
+      "handWritten": "ˈsɛntɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "cinema",
+      "partOfSpeech": "noun",
+      "generated": "ˈsɪn.ə.mə",
+      "handWritten": "ˈsɪnəmə",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "community",
+      "partOfSpeech": "noun",
+      "generated": "k(ə)ˈmju.nə.ti",
+      "handWritten": "kəˈmjuːnəti",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "condition",
+      "partOfSpeech": "noun",
+      "generated": "kənˈdɪʃ(ə)n",
+      "handWritten": "kənˈdɪʃən",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "each",
+      "partOfSpeech": "determiner",
+      "generated": "it͡ʃ",
+      "handWritten": "iːtʃ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "elevator",
+      "partOfSpeech": "noun",
+      "generated": "ˈɛləˌveɪtɚ",
+      "handWritten": "ˈɛləveɪtɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "gate",
+      "partOfSpeech": "noun",
+      "generated": "ˈɡeɪ̯t",
+      "handWritten": "ɡeɪt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "gym",
+      "partOfSpeech": "noun",
+      "generated": "d͡ʒɪm",
+      "handWritten": "dʒɪm",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "handrail",
+      "partOfSpeech": "noun",
+      "generated": "ˈhændˌɹeɪl",
+      "handWritten": "ˈhændɹeɪl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "library",
+      "partOfSpeech": "noun",
+      "generated": "ˈlaɪˌbɹɛɹ.i",
+      "handWritten": "ˈlaɪbɹɛɹi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "member",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɛm.bɚ",
+      "handWritten": "ˈmɛmbɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "museum",
+      "partOfSpeech": "noun",
+      "generated": "mjuˈziəm",
+      "handWritten": "mjuːˈziːəm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "notice",
+      "partOfSpeech": "noun",
+      "generated": "ˈnoʊ.tɪs",
+      "handWritten": "ˈnoʊtɪs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "parking",
+      "partOfSpeech": "adjective",
+      "generated": "ˈpɑɹ.kɪŋ",
+      "handWritten": "ˈpɑɹkɪŋ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "perfect",
+      "partOfSpeech": "adjective",
+      "generated": "ˈpɝ.fɪkt",
+      "handWritten": "ˈpɝfɪkt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "pool",
+      "partOfSpeech": "noun",
+      "generated": "pul",
+      "handWritten": "puːl",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "receive",
+      "partOfSpeech": "verb",
+      "generated": "ɹɪˈsiv",
+      "handWritten": "ɹɪˈsiːv",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "receptionist",
+      "partOfSpeech": "noun",
+      "generated": "ɹɪˈsɛp.ʃə.nɪst",
+      "handWritten": "ɹɪˈsɛpʃənɪst",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "repair",
+      "partOfSpeech": "verb",
+      "generated": "ɹɪˈpɛɚ",
+      "handWritten": "ɹɪˈpɛɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "share",
+      "partOfSpeech": "verb",
+      "generated": "ʃɛɚ",
+      "handWritten": "ʃɛɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "simple",
+      "partOfSpeech": "adjective",
+      "generated": "ˈsɪm.pəl",
+      "handWritten": "ˈsɪmpəl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "special",
+      "partOfSpeech": "adjective",
+      "generated": "ˈspɛʃ.əl",
+      "handWritten": "ˈspɛʃəl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "transfer",
+      "partOfSpeech": "noun",
+      "generated": "ˈtɹæns.fɚ",
+      "handWritten": "ˈtɹænsfɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "apron",
+      "partOfSpeech": "noun",
+      "generated": "ˈeɪ.pɹən",
+      "handWritten": "ˈeɪpɹən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "invitation",
+      "partOfSpeech": "noun",
+      "generated": "ɪnvɪˈteɪʃən",
+      "handWritten": "ˌɪnvɪˈteɪʃən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "island",
+      "partOfSpeech": "noun",
+      "generated": "ˈaɪ.lənd",
+      "handWritten": "ˈaɪlənd",
+      "source": "kaikki-en",
+      "method": "untagged"
     }
   ],
   "noLicensedValue": [
@@ -3322,6 +3586,108 @@
       "word": "possible",
       "partOfSpeech": "adjective",
       "handWritten": "ˈpɑsəbəl",
+      "source": "original-english-course"
+    },
+    {
+      "word": "adult",
+      "partOfSpeech": "noun",
+      "handWritten": "əˈdʌlt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "area",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɛɹiə",
+      "source": "original-english-course"
+    },
+    {
+      "word": "beginner",
+      "partOfSpeech": "noun",
+      "handWritten": "bɪˈɡɪnɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "cave",
+      "partOfSpeech": "noun",
+      "handWritten": "keɪv",
+      "source": "original-english-course"
+    },
+    {
+      "word": "certificate",
+      "partOfSpeech": "noun",
+      "handWritten": "sɚˈtɪfɪkət",
+      "source": "original-english-course"
+    },
+    {
+      "word": "fifth",
+      "partOfSpeech": "adjective",
+      "handWritten": "fɪfθ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "ID card",
+      "partOfSpeech": "expression",
+      "handWritten": "ˌaɪˈdiː kɑɹd",
+      "source": "original-english-course"
+    },
+    {
+      "word": "include",
+      "partOfSpeech": "verb",
+      "handWritten": "ɪnˈkluːd",
+      "source": "original-english-course"
+    },
+    {
+      "word": "kilo",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈkiːloʊ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "at least",
+      "partOfSpeech": "expression",
+      "handWritten": "ət ˈliːst",
+      "source": "original-english-course"
+    },
+    {
+      "word": "parking lot",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈpɑɹkɪŋ lɑt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "passenger",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈpæsəndʒɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "pet",
+      "partOfSpeech": "noun",
+      "handWritten": "pɛt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "pipe",
+      "partOfSpeech": "noun",
+      "handWritten": "paɪp",
+      "source": "original-english-course"
+    },
+    {
+      "word": "prefer",
+      "partOfSpeech": "verb",
+      "handWritten": "pɹɪˈfɝ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "recipe",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɹɛsəpi",
+      "source": "original-english-course"
+    },
+    {
+      "word": "volunteer",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌvɑlənˈtɪɹ",
       "source": "original-english-course"
     }
   ]
