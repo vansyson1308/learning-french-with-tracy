@@ -518,7 +518,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "The shop closes in five minutes. Please pay now."
+          "text": "The store closes in five minutes. Please pay now."
         }
       ],
       "objectiveRefs": [
@@ -526,7 +526,7 @@
       ],
       "lexemeRefs": [
         "en:w:the",
-        "en:w:shop",
+        "en:w:store",
         "en:w:close",
         "en:w:in",
         "en:w:five",
@@ -735,7 +735,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "The meeting is at half past nine."
+          "text": "The meeting is at nine thirty."
         }
       ],
       "objectiveRefs": [
@@ -747,9 +747,8 @@
         "en:w:meeting",
         "en:w:be",
         "en:w:at",
-        "en:w:half",
-        "en:w:past",
-        "en:w:nine"
+        "en:w:nine",
+        "en:w:thirty"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -949,7 +948,7 @@
         },
         {
           "speaker": "A",
-          "text": "It's half past two."
+          "text": "It's two thirty."
         }
       ],
       "objectiveRefs": [
@@ -962,9 +961,8 @@
         "en:w:time",
         "en:w:be",
         "en:w:it",
-        "en:w:half",
-        "en:w:past",
-        "en:w:two"
+        "en:w:two",
+        "en:w:thirty"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -1068,7 +1066,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Can I speak to Mr Brown?"
+          "text": "Can I speak to Mr. Brown?"
         },
         {
           "speaker": "A",
@@ -1380,7 +1378,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Please open your book at page twelve."
+          "text": "Please open your book to page twelve."
         }
       ],
       "objectiveRefs": [
@@ -1392,7 +1390,7 @@
         "en:w:open",
         "en:w:your",
         "en:w:book",
-        "en:w:at",
+        "en:w:to",
         "en:w:page",
         "en:w:twelve"
       ],
@@ -1852,7 +1850,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "The shop closes at six."
+          "text": "The store closes at six."
         }
       ],
       "objectiveRefs": [
@@ -1861,7 +1859,7 @@
       ],
       "lexemeRefs": [
         "en:w:the",
-        "en:w:shop",
+        "en:w:store",
         "en:w:close",
         "en:w:at",
         "en:w:six"
@@ -2473,7 +2471,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "It's half past two."
+          "text": "It's two thirty."
         }
       ],
       "objectiveRefs": [
@@ -2482,9 +2480,8 @@
       "lexemeRefs": [
         "en:w:it",
         "en:w:be",
-        "en:w:half",
-        "en:w:past",
-        "en:w:two"
+        "en:w:two",
+        "en:w:thirty"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -2529,7 +2526,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "There are ten people in my team."
+          "text": "There are ten people on my team."
         }
       ],
       "objectiveRefs": [
@@ -2540,7 +2537,7 @@
         "en:w:be",
         "en:w:ten",
         "en:w:people",
-        "en:w:in",
+        "en:w:on",
         "en:w:my",
         "en:w:team"
       ],
@@ -4333,7 +4330,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "Please wear your gloves before you start."
+          "text": "Please put on your gloves before you start."
         }
       ],
       "objectiveRefs": [
@@ -4341,7 +4338,8 @@
       ],
       "lexemeRefs": [
         "en:w:please",
-        "en:w:wear",
+        "en:w:put",
+        "en:w:on",
         "en:w:your",
         "en:w:glove",
         "en:w:before",
@@ -4364,7 +4362,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "You need gloves. Please wear them."
+          "text": "You need gloves. Please put them on."
         }
       ],
       "objectiveRefs": [
@@ -4375,8 +4373,9 @@
         "en:w:need",
         "en:w:glove",
         "en:w:please",
-        "en:w:wear",
-        "en:w:them"
+        "en:w:put",
+        "en:w:them",
+        "en:w:on"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -6793,7 +6792,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "Is this seat free?"
+          "text": "Is this seat taken?"
         },
         {
           "speaker": "B",
@@ -6807,7 +6806,7 @@
         "en:w:be",
         "en:w:this",
         "en:w:seat",
-        "en:w:free",
+        "en:w:take",
         "en:w:sorry",
         "en:w:my",
         "en:w:friend",
@@ -6817,7 +6816,8 @@
         "en:w:one",
         "en:w:by",
         "en:w:the",
-        "en:w:window"
+        "en:w:window",
+        "en:w:free"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -7116,7 +7116,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Welcome to Green Factory. My name is Sarah and I am your manager. Work starts at seven thirty every morning. Lunch is at twelve in the cafeteria on the first floor. Please wear your gloves and a helmet near the machines. If you have a problem, call Mr Lee. You get your pay on the last Friday of the month."
+          "text": "Welcome to Green Factory. My name is Sarah and I am your manager. Work starts at seven thirty every morning. Lunch is at twelve in the cafeteria on the first floor. Please wear your gloves and a helmet near the machines. If you have a problem, call Mr. Lee. You get your pay on the last Friday of the month."
         }
       ],
       "objectiveRefs": [
@@ -7451,7 +7451,7 @@
         },
         {
           "speaker": "B",
-          "text": "No, thanks. I just had one. A glass of water would be nice."
+          "text": "No, thanks. I just had some. A glass of water would be nice."
         }
       ],
       "objectiveRefs": [
@@ -7468,7 +7468,6 @@
         "en:w:i",
         "en:w:just",
         "en:w:have",
-        "en:w:one",
         "en:w:a",
         "en:w:glass",
         "en:w:of",
@@ -8032,7 +8031,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "Please tell me your name and your home town."
+          "text": "Please tell me your name and your hometown."
         }
       ],
       "objectiveRefs": [
@@ -8044,9 +8043,7 @@
         "en:w:me",
         "en:w:your",
         "en:w:name",
-        "en:w:and",
-        "en:w:home",
-        "en:w:town"
+        "en:w:and"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {

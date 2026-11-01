@@ -108,7 +108,7 @@
         },
         {
           "kind": "paragraph",
-          "text": "I'm at the coffee shop near the station. Can you come at three? I'm waiting for you."
+          "text": "I'm at the coffee shop in town, near the station. Can you come at three? I'm waiting for you."
         },
         {
           "kind": "paragraph",
@@ -126,6 +126,8 @@
         "en:w:the",
         "en:w:coffee",
         "en:w:shop",
+        "en:w:in",
+        "en:w:town",
         "en:w:near",
         "en:w:station",
         "en:w:can",
@@ -232,7 +234,7 @@
         },
         {
           "kind": "paragraph",
-          "text": "Toilets: on the left"
+          "text": "Restrooms: on the left"
         }
       ],
       "objectiveRefs": [
@@ -243,7 +245,7 @@
         "en:w:exit",
         "en:w:no",
         "en:w:smoke",
-        "en:w:toilet",
+        "en:w:restroom",
         "en:w:on",
         "en:w:the",
         "en:w:left"
@@ -265,6 +267,12 @@
           "surface": "No smoking",
           "gloss": {
             "vi": "cấm hút thuốc"
+          }
+        },
+        {
+          "surface": "Restrooms",
+          "gloss": {
+            "vi": "nhà vệ sinh"
           }
         }
       ],
@@ -339,11 +347,11 @@
         },
         {
           "kind": "paragraph",
-          "text": "Monday to Friday: 8:00–18:00"
+          "text": "Monday to Friday: 8 a.m. to 6 p.m."
         },
         {
           "kind": "paragraph",
-          "text": "Saturday: 8:00–12:00"
+          "text": "Saturday: 8 a.m. to 12 p.m."
         },
         {
           "kind": "paragraph",
@@ -360,6 +368,7 @@
         "en:w:monday",
         "en:w:to",
         "en:w:friday",
+        "en:w:a",
         "en:w:saturday",
         "en:w:sunday",
         "en:w:closed"
@@ -391,11 +400,11 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Morning shift: 6:00–14:00"
+          "text": "Morning shift: 6 a.m. to 2 p.m."
         },
         {
           "kind": "paragraph",
-          "text": "Afternoon shift: 14:00–22:00"
+          "text": "Afternoon shift: 2 p.m. to 10 p.m."
         },
         {
           "kind": "paragraph",
@@ -409,6 +418,8 @@
       "lexemeRefs": [
         "en:w:morning",
         "en:w:shift",
+        "en:w:a",
+        "en:w:to",
         "en:w:afternoon",
         "en:w:please",
         "en:w:arrive",
@@ -567,7 +578,7 @@
     {
       "id": "en.read.ui_at_shop",
       "kind": "dialogue",
-      "title": "At the shop",
+      "title": "At the store",
       "blocks": [
         {
           "kind": "line",
@@ -1098,11 +1109,11 @@
     {
       "id": "en.read.cp3_notice_shop",
       "kind": "notice",
-      "title": "Shoe shop",
+      "title": "Shoe store",
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Open every day from 9:00 to 20:00."
+          "text": "Open every day from 9 a.m. to 8 p.m."
         },
         {
           "kind": "paragraph",
@@ -1110,7 +1121,7 @@
         },
         {
           "kind": "paragraph",
-          "text": "Please pay at the cash desk."
+          "text": "Please pay at the cashier."
         }
       ],
       "objectiveRefs": [
@@ -1122,6 +1133,7 @@
         "en:w:every",
         "en:w:day",
         "en:w:from",
+        "en:w:a",
         "en:w:to",
         "en:w:closed",
         "en:w:on",
@@ -1131,12 +1143,11 @@
         "en:w:pay",
         "en:w:at",
         "en:w:the",
-        "en:w:cash",
-        "en:w:desk"
+        "en:w:cashier"
       ],
       "supportGlossary": [
         {
-          "surface": "cash desk",
+          "surface": "cashier",
           "gloss": {
             "vi": "quầy thu ngân"
           }
@@ -1420,11 +1431,11 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Lunch: 11:00–14:00"
+          "text": "Lunch: 11 a.m. to 2 p.m."
         },
         {
           "kind": "paragraph",
-          "text": "Dinner: 17:00–21:00"
+          "text": "Dinner: 5 p.m. to 9 p.m."
         },
         {
           "kind": "paragraph",
@@ -1436,6 +1447,8 @@
       ],
       "lexemeRefs": [
         "en:w:lunch",
+        "en:w:a",
+        "en:w:to",
         "en:w:dinner",
         "en:w:closed",
         "en:w:on",
@@ -1550,7 +1563,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Part-time cook wanted. Weekends only. Ask for Mrs Lan in the kitchen."
+          "text": "Part-time cook wanted. Weekends only. Ask for Mrs. Tran in the kitchen."
         }
       ],
       "objectiveRefs": [
@@ -1646,7 +1659,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Lost: a black bag near the bus stop on Monday. Please call Minh on 0903 222 111."
+          "text": "Lost: a black bag near the bus stop on Monday. Please call Minh at 0903 222 111."
         }
       ],
       "objectiveRefs": [
@@ -1663,7 +1676,8 @@
         "en:w:on",
         "en:w:monday",
         "en:w:please",
-        "en:w:call"
+        "en:w:call",
+        "en:w:at"
       ],
       "supportGlossary": [],
       "sourceRef": "original-project",
@@ -1745,7 +1759,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Hi Tom, I am sorry I missed your call yesterday. My phone was broken, so I took it to the shop near my office. It will be ready on Thursday. Until then, please send me an email or call my office number. See you on the weekend! Hoa"
+          "text": "Hi Tom, I am sorry I missed your call yesterday. My phone was broken, so I took it to the store near my office. It will be ready on Thursday. Until then, please send me an email or call my office number. See you on the weekend! Hoa"
         }
       ],
       "objectiveRefs": [
@@ -1768,7 +1782,7 @@
         "en:w:it",
         "en:w:to",
         "en:w:the",
-        "en:w:shop",
+        "en:w:store",
         "en:w:near",
         "en:w:office",
         "en:w:will",
@@ -1801,7 +1815,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Room for rent in a quiet street, ten minutes by bus from the city center. The room has a bed, a desk and a small fridge. The kitchen and bathroom are shared with one other person. The rent is two hundred dollars a month, with water and internet included. Please call Mr Hung after six."
+          "text": "Room for rent on a quiet street, ten minutes by bus from the city center. The room has a bed, a desk and a small fridge. The kitchen and bathroom are shared with one other person. The rent is two hundred dollars a month, with water and internet included. Please call Mr. Pham after six."
         }
       ],
       "objectiveRefs": [
@@ -1810,7 +1824,7 @@
       "lexemeRefs": [
         "en:w:room",
         "en:w:for",
-        "en:w:in",
+        "en:w:on",
         "en:w:a",
         "en:w:quiet",
         "en:w:street",
@@ -1860,7 +1874,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Our shop will move to a bigger building on Lake Road on the first of June. The old shop will close on the twenty-fifth of May. During the week between, you can still buy from our website. Customers who visit the new shop in June will get ten percent off."
+          "text": "Our store will move to a bigger building on Lake Road on the first of June. The old store will close on the twenty-fifth of May. During the week between, you can still buy from our website. Customers who visit the new store in June will get ten percent off."
         }
       ],
       "objectiveRefs": [
@@ -1868,7 +1882,7 @@
       ],
       "lexemeRefs": [
         "en:w:our",
-        "en:w:shop",
+        "en:w:store",
         "en:w:will",
         "en:w:move",
         "en:w:to",
@@ -2039,7 +2053,6 @@
         "en:w:and",
         "en:w:the",
         "en:w:word",
-        "en:w:piece",
         "en:w:of",
         "en:w:paper",
         "en:w:after",
@@ -2112,11 +2125,11 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Would you like to learn to cook Vietnamese food? The Community Center on Kim Ma Street has a new course this summer. The course starts on the eighth of July and finishes on the twenty-sixth of August. Classes are held every Saturday morning from nine to eleven thirty. Our teacher, Mrs Thu, worked as a chef in a large hotel for twenty years. Each class has no more than twelve students, so everyone gets help."
+          "text": "Would you like to learn to cook Vietnamese food? The Community Center on Kim Ma Street has a new course this summer. The course starts on the eighth of July and finishes on the twenty-sixth of August. Classes are held every Saturday morning from nine to eleven thirty. Our teacher, Mrs. Tran, worked as a chef in a large hotel for twenty years. Each class has no more than twelve students, so everyone gets help."
         },
         {
           "kind": "paragraph",
-          "text": "The course costs one hundred and fifty dollars. This includes all the food, but students must bring their own knife and an apron. To join, please fill in a form at the front desk before the first of July, or call Mr Binh. Students who finish the course will receive a small gift and a book of recipes."
+          "text": "The course costs one hundred and fifty dollars. This includes all the food, but students must bring their own knife and an apron. To join, please fill out a form at the front desk before the first of July, or call Mr. Nguyen. Students who finish the course will receive a small gift and a book of recipes."
         }
       ],
       "objectiveRefs": [
@@ -2190,6 +2203,7 @@
         "en:w:join",
         "en:w:please",
         "en:w:fill",
+        "en:w:out",
         "en:w:form",
         "en:w:at",
         "en:w:desk",
@@ -2231,13 +2245,14 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "CINEMA: Please turn off your phone before the movie starts."
+          "text": "MOVIE THEATER: Please turn off your phone before the movie starts."
         }
       ],
       "objectiveRefs": [
         "en.obj.reading.notices_info"
       ],
       "lexemeRefs": [
+        "en:w:movie",
         "en:w:please",
         "en:w:turn",
         "en:w:off",
@@ -2245,7 +2260,6 @@
         "en:w:phone",
         "en:w:before",
         "en:w:the",
-        "en:w:movie",
         "en:w:start"
       ],
       "supportGlossary": [],
@@ -2322,16 +2336,15 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Shop closing down! Everything is half price until Saturday."
+          "text": "Store closing! Everything is half price until Saturday."
         }
       ],
       "objectiveRefs": [
         "en.obj.reading.notices_info"
       ],
       "lexemeRefs": [
-        "en:w:shop",
+        "en:w:store",
         "en:w:close",
-        "en:w:down",
         "en:w:everything",
         "en:w:be",
         "en:w:half",
@@ -2486,7 +2499,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Hi Linh, can you help me? I have to go to the hospital this morning because my mother is ill. Could you take my shift at the shop from ten until two? I can work for you on Sunday. Please text me before nine. Thank you so much, Trang"
+          "text": "Hi Linh, can you help me? I have to go to the hospital this morning because my mother is sick. Could you take my shift at the store from ten until two? I can work for you on Sunday. Please text me before nine. Thank you so much, Trang"
         }
       ],
       "objectiveRefs": [
@@ -2510,11 +2523,12 @@
         "en:w:my",
         "en:w:mother",
         "en:w:be",
+        "en:w:sick",
         "en:w:could",
         "en:w:take",
         "en:w:shift",
         "en:w:at",
-        "en:w:shop",
+        "en:w:store",
         "en:w:from",
         "en:w:ten",
         "en:w:until",
@@ -2659,7 +2673,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Dear Ms Smith, thank you for your letter about the job in our sales team. We would like to meet you on the tenth of April at two o'clock at our office. Please bring your certificates and a list of your past jobs. If you cannot come on that day, please tell us by Friday. Best regards, Anna Lee"
+          "text": "Dear Ms. Smith, thank you for your letter about the job in our sales team. We would like to meet you on the tenth of April at two o'clock at our office. Please bring your certificates and a list of your past jobs. If you cannot come on that day, please tell us by Friday. Best regards, Anna Lee"
         }
       ],
       "objectiveRefs": [
@@ -2838,7 +2852,6 @@
         "en:w:keep",
         "en:w:can",
         "en:w:big",
-        "en:w:plan",
         "en:w:never"
       ],
       "supportGlossary": [
@@ -2867,7 +2880,7 @@
         },
         {
           "kind": "paragraph",
-          "text": "We give all volunteers a free lunch and a free ticket for one friend. Training is on the twenty-eighth of September at the museum. To apply, send an email to Ms Hanh before the fifteenth of September. Please tell us which day you prefer and why you want to help. Volunteers who help for all six weeks will also receive a letter of thanks from the museum."
+          "text": "We give all volunteers a free lunch and a free ticket for one friend. Training is on the twenty-eighth of September at the museum. To apply, send an email to Ms. Le before the fifteenth of September. Please tell us which day you prefer and why you want to help. Volunteers who help for all six weeks will also receive a letter of thanks from the museum."
         }
       ],
       "objectiveRefs": [

@@ -406,7 +406,10 @@
                   "alternatives": [
                     "Thank you very much!",
                     "Thanks!",
-                    "Thanks very much!"
+                    "Thanks very much!",
+                    "Thank you so much!",
+                    "Thanks a lot!",
+                    "Thanks so much!"
                   ]
                 },
                 {
@@ -419,7 +422,9 @@
                   "alternatives": [
                     "I am sorry!",
                     "Excuse me!",
-                    "I am so sorry!"
+                    "I am so sorry!",
+                    "Pardon me!",
+                    "So sorry!"
                   ]
                 }
               ],
@@ -611,7 +616,10 @@
                   "prompt": "Chúc ngủ ngon!",
                   "audioTarget": "Good night!",
                   "answer": "Good night!",
-                  "alternatives": []
+                  "alternatives": [
+                    "Sleep well!",
+                    "Night!"
+                  ]
                 }
               ]
             },
@@ -747,7 +755,11 @@
                   "audioTarget": "Okay, thank you.",
                   "answer": "Okay, thank you.",
                   "alternatives": [
-                    "Okay, thanks."
+                    "Okay, thanks.",
+                    "All right, thank you.",
+                    "Alright, thank you.",
+                    "All right, thanks.",
+                    "Alright, thanks."
                   ]
                 }
               ],
@@ -1529,7 +1541,8 @@
                   "audioTarget": "I am Vietnamese.",
                   "answer": "I am Vietnamese.",
                   "alternatives": [
-                    "I am from Vietnam."
+                    "I am from Vietnam.",
+                    "I am a Vietnamese person."
                   ]
                 },
                 {
@@ -1539,7 +1552,9 @@
                   "prompt": "Tôi nói tiếng Anh.",
                   "audioTarget": "I speak English.",
                   "answer": "I speak English.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I am speaking English."
+                  ]
                 }
               ]
             }
@@ -2072,7 +2087,10 @@
                   "audioTarget": "I have a sister.",
                   "answer": "I have a sister.",
                   "alternatives": [
-                    "I have an older sister."
+                    "I have an older sister.",
+                    "I have one sister.",
+                    "I have a big sister.",
+                    "I have one older sister."
                   ]
                 },
                 {
@@ -2232,7 +2250,9 @@
                   "prompt": "Chú tôi có một con chó.",
                   "audioTarget": "My uncle has a dog.",
                   "answer": "My uncle has a dog.",
-                  "alternatives": []
+                  "alternatives": [
+                    "My uncle has one dog."
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -2241,7 +2261,11 @@
                   "prompt": "Ông tôi có một con chim.",
                   "audioTarget": "My grandfather has a bird.",
                   "answer": "My grandfather has a bird.",
-                  "alternatives": []
+                  "alternatives": [
+                    "My grandpa has a bird.",
+                    "My grandfather has one bird.",
+                    "My grandpa has one bird."
+                  ]
                 },
                 {
                   "type": "match",
@@ -2811,7 +2835,9 @@
                   "audioTarget": "I want water.",
                   "answer": "I want water.",
                   "alternatives": [
-                    "I want some water."
+                    "I want some water.",
+                    "I would like water.",
+                    "I would like some water."
                   ]
                 },
                 {
@@ -2822,7 +2848,9 @@
                   "audioTarget": "I want to eat rice.",
                   "answer": "I want to eat rice.",
                   "alternatives": [
-                    "I want to eat some rice."
+                    "I want to eat some rice.",
+                    "I would like to eat rice.",
+                    "I would like to eat some rice."
                   ]
                 },
                 {
@@ -3071,7 +3099,9 @@
                   "prompt": "Tôi không ăn thịt.",
                   "audioTarget": "I don't eat meat.",
                   "answer": "I don't eat meat.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I am not eating meat."
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -3341,7 +3371,9 @@
                   "answer": "I go by train.",
                   "alternatives": [
                     "I take the train.",
-                    "I travel by train."
+                    "I travel by train.",
+                    "I am going by train.",
+                    "I am traveling by train."
                   ]
                 },
                 {
@@ -3517,7 +3549,9 @@
                   "prompt": "Tôi có một cái vé.",
                   "audioTarget": "I have a ticket.",
                   "answer": "I have a ticket.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I have one ticket."
+                  ]
                 }
               ]
             },
@@ -3702,7 +3736,9 @@
                   "prompt": "Nhà ga ở đâu?",
                   "audioTarget": "Where is the station?",
                   "answer": "Where is the station?",
-                  "alternatives": []
+                  "alternatives": [
+                    "Where is the train station?"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -3712,7 +3748,10 @@
                   "audioTarget": "I go home.",
                   "answer": "I go home.",
                   "alternatives": [
-                    "I am going home."
+                    "I am going home.",
+                    "I go back home.",
+                    "I am going back home.",
+                    "I return home."
                   ]
                 }
               ],
@@ -3889,7 +3928,9 @@
                   "prompt": "Bến xe buýt ở đâu?",
                   "audioTarget": "Where is the bus stop?",
                   "answer": "Where is the bus stop?",
-                  "alternatives": []
+                  "alternatives": [
+                    "Where is the bus station?"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -3898,7 +3939,9 @@
                   "prompt": "Tôi có một cái bản đồ.",
                   "audioTarget": "I have a map.",
                   "answer": "I have a map.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I have one map."
+                  ]
                 },
                 {
                   "type": "match",
@@ -4893,7 +4936,10 @@
                   "answer": "There is no milk.",
                   "alternatives": [
                     "There isn't any milk.",
-                    "No milk."
+                    "No milk.",
+                    "We have no milk.",
+                    "We don't have any milk.",
+                    "We don't have milk."
                   ]
                 },
                 {
@@ -5313,7 +5359,9 @@
                   "prompt": "Bạn sống ở đâu?",
                   "audioTarget": "Where do you live?",
                   "answer": "Where do you live?",
-                  "alternatives": []
+                  "alternatives": [
+                    "Where are you living?"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5485,7 +5533,9 @@
                   "prompt": "Cô ấy đang ngủ.",
                   "audioTarget": "She is sleeping.",
                   "answer": "She is sleeping.",
-                  "alternatives": []
+                  "alternatives": [
+                    "She is asleep."
+                  ]
                 },
                 {
                   "type": "select",
@@ -5621,7 +5671,10 @@
                   "prompt": "Bạn đã đi đâu?",
                   "audioTarget": "Where did you go?",
                   "answer": "Where did you go?",
-                  "alternatives": []
+                  "alternatives": [
+                    "Where have you been?",
+                    "Where did you go to?"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -5631,7 +5684,9 @@
                   "audioTarget": "I bought a ticket yesterday.",
                   "answer": "I bought a ticket yesterday.",
                   "alternatives": [
-                    "Yesterday I bought a ticket."
+                    "Yesterday I bought a ticket.",
+                    "I bought one ticket yesterday.",
+                    "Yesterday I bought one ticket."
                   ]
                 },
                 {
@@ -6034,7 +6089,9 @@
                   "prompt": "Tôi cần một cái máy tính.",
                   "audioTarget": "I need a computer.",
                   "answer": "I need a computer.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I need one computer."
+                  ]
                 }
               ],
               "flow": [
@@ -6251,7 +6308,9 @@
                   "audioTarget": "I have a photo.",
                   "answer": "I have a photo.",
                   "alternatives": [
-                    "I have a picture."
+                    "I have a picture.",
+                    "I have one photo.",
+                    "I have one picture."
                   ]
                 }
               ]
@@ -6289,7 +6348,7 @@
                   "type": "select",
                   "id": "en-vi:uc-l2-e1",
                   "mode": "nativeToTarget",
-                  "prompt": "Cái này rất tốt.",
+                  "prompt": "Nó rất tốt.",
                   "audioTarget": "It is very good.",
                   "options": [
                     {
@@ -6401,6 +6460,16 @@
                     "job",
                     "very",
                     "much"
+                  ],
+                  "alternatives": [
+                    [
+                      "I",
+                      "very",
+                      "much",
+                      "like",
+                      "my",
+                      "job"
+                    ]
                   ]
                 },
                 {
@@ -6412,7 +6481,8 @@
                   "answer": "I like it very much.",
                   "alternatives": [
                     "I really like it.",
-                    "I love it."
+                    "I love it.",
+                    "I like it a lot."
                   ]
                 },
                 {
@@ -6424,7 +6494,9 @@
                   "answer": "Why are you late?",
                   "alternatives": [
                     "Why did you come late?",
-                    "Why were you late?"
+                    "Why were you late?",
+                    "Why did you arrive late?",
+                    "Why did you get here late?"
                   ]
                 },
                 {
@@ -6436,7 +6508,8 @@
                   "answer": "How are you?",
                   "alternatives": [
                     "Are you okay?",
-                    "Are you well?"
+                    "Are you well?",
+                    "How are you doing?"
                   ]
                 },
                 {
@@ -6632,6 +6705,18 @@
                     "bag",
                     "is",
                     "small"
+                  ],
+                  "alternatives": [
+                    [
+                      "The",
+                      "small",
+                      "bag"
+                    ],
+                    [
+                      "a",
+                      "small",
+                      "bag"
+                    ]
                   ]
                 },
                 {
@@ -6665,7 +6750,9 @@
                   "audioTarget": "a small cat",
                   "answer": "a small cat",
                   "alternatives": [
-                    "a little cat"
+                    "a little cat",
+                    "one small cat",
+                    "one little cat"
                   ]
                 },
                 {
@@ -6676,7 +6763,9 @@
                   "audioTarget": "I have a big house.",
                   "answer": "I have a big house.",
                   "alternatives": [
-                    "I have a large house."
+                    "I have a large house.",
+                    "I have one big house.",
+                    "I have one large house."
                   ]
                 },
                 {
@@ -6758,7 +6847,7 @@
           "id": "en-vi:unit-d",
           "title": "Số, giờ, ngày và giá",
           "description": "Đếm đến 100, nói giờ, ngày tháng và giá tiền.",
-          "guidebook": "## Số đếm\n\n### 1 đến 20\n*one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve*. Từ 13 đến 19 có đuôi *-teen*: *thirteen, fourteen*.\n\n### Hàng chục\n*twenty, thirty, forty, fifty*: đuôi *-ty*. Số ghép có dấu gạch nối: *twenty-one*.\n\n### -teen hay -ty?\nĐây là chỗ dễ nghe nhầm nhất:\n- *thir-TEEN* (13): nhấn ở cuối\n- *THIR-ty* (30): nhấn ở đầu\n\n### Giờ\n- *It's eight o'clock.* — Tám giờ.\n- *half past eight* — tám giờ rưỡi\n- *quarter past eight* — tám giờ mười lăm\n- *quarter to nine* — chín giờ kém mười lăm\n\n### Ngày và giá\n- *on Monday* — vào thứ Hai; thứ và tháng luôn viết hoa\n- Người Mỹ viết tháng trước ngày: *5/12* là ngày 12 tháng 5. Hãy đọc kỹ!\n- *$10* đọc là *ten dollars*. Dấu đô la đứng trước số khi viết, nhưng từ *dollars* đứng sau số khi đọc.\n- *How much is it?* — Giá bao nhiêu?",
+          "guidebook": "## Số đếm\n\n### 1 đến 20\n*one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve*. Từ 13 đến 19 có đuôi *-teen*: *thirteen, fourteen*.\n\n### Hàng chục\n*twenty, thirty, forty, fifty*: đuôi *-ty*. Số ghép có dấu gạch nối: *twenty-one*.\n\n### -teen hay -ty?\nĐây là chỗ dễ nghe nhầm nhất:\n- *thir-TEEN* (13): nhấn ở cuối\n- *THIR-ty* (30): nhấn ở đầu\n\n### Giờ\n- *It's eight o'clock.* — Tám giờ.\n- *half past eight* — tám giờ rưỡi\n- *quarter past eight* — tám giờ mười lăm\n- *quarter to nine* — chín giờ kém mười lăm\n\nNgười Mỹ thường nói thẳng số: *eight thirty* (tám giờ rưỡi), *eight fifteen* (tám giờ mười lăm).\n\n### Ngày và giá\n- *on Monday* — vào thứ Hai; thứ và tháng luôn viết hoa\n- Người Mỹ viết tháng trước ngày: *5/12* là ngày 12 tháng 5. Hãy đọc kỹ!\n- *$10* đọc là *ten dollars*. Dấu đô la đứng trước số khi viết, nhưng từ *dollars* đứng sau số khi đọc.\n- *How much is it?* — Giá bao nhiêu?",
           "words": [
             {
               "target": "one",
@@ -7237,7 +7326,9 @@
                     "My mum is sixty years old.",
                     "My mother is 60.",
                     "My mom is sixty.",
-                    "My mum is sixty."
+                    "My mum is sixty.",
+                    "My mom is 60 years old.",
+                    "My mom is 60."
                   ]
                 },
                 {
@@ -7348,19 +7439,19 @@
                   "id": "en-vi:ud-l2-e0",
                   "mode": "nativeToTarget",
                   "prompt": "Tám giờ rưỡi.",
-                  "audioTarget": "It's half past eight.",
+                  "audioTarget": "It's eight thirty.",
                   "options": [
                     {
-                      "text": "It's half past nine."
+                      "text": "It's nine thirty."
                     },
                     {
-                      "text": "It's half to eight."
+                      "text": "It's eight thirteen."
                     },
                     {
-                      "text": "It's half eight past."
+                      "text": "It's thirty eight."
                     },
                     {
-                      "text": "It's half past eight."
+                      "text": "It's eight thirty."
                     }
                   ],
                   "correct": 3
@@ -7437,7 +7528,9 @@
                   "audioTarget": "What time is it?",
                   "answer": "What time is it?",
                   "alternatives": [
-                    "What is the time?"
+                    "What is the time?",
+                    "What time is it now?",
+                    "What's the time now?"
                   ]
                 },
                 {
@@ -7452,7 +7545,12 @@
                     "It's ten in the morning.",
                     "It's 10 o'clock.",
                     "It's 10.",
-                    "It's 10 in the morning."
+                    "It's 10 in the morning.",
+                    "It's ten o'clock now.",
+                    "It's ten now.",
+                    "Now it's ten o'clock.",
+                    "It's 10:00.",
+                    "It's 10:00 now."
                   ]
                 },
                 {
@@ -7460,17 +7558,18 @@
                   "id": "en-vi:ud-l2-e7",
                   "mode": "produceTarget",
                   "prompt": "Bảy giờ rưỡi.",
-                  "audioTarget": "It's half past seven.",
-                  "answer": "It's half past seven.",
+                  "audioTarget": "It's seven thirty.",
+                  "answer": "It's seven thirty.",
                   "alternatives": [
-                    "Half past seven.",
-                    "It's seven thirty.",
                     "Seven thirty.",
+                    "It's half past seven.",
+                    "Half past seven.",
                     "It's 7:30.",
+                    "It's 7 30.",
+                    "7 30.",
                     "It's half past 7.",
                     "Half past 7.",
-                    "It's 7 30.",
-                    "7 30."
+                    "7:30."
                   ]
                 },
                 {
@@ -7970,7 +8069,7 @@
             {
               "target": "watch",
               "native": "xem; (danh từ) đồng hồ đeo tay",
-              "emoji": "⌚"
+              "emoji": "🍿"
             },
             {
               "target": "bag",
@@ -8083,7 +8182,7 @@
                     },
                     {
                       "text": "xem",
-                      "emoji": "⌚"
+                      "emoji": "🍿"
                     }
                   ],
                   "correct": 2
@@ -8109,7 +8208,7 @@
                     },
                     {
                       "text": "watch",
-                      "emoji": "⌚"
+                      "emoji": "🍿"
                     }
                   ],
                   "correct": 3
@@ -8163,7 +8262,9 @@
                   "prompt": "Tôi có một cái túi.",
                   "audioTarget": "I have a bag.",
                   "answer": "I have a bag.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I have one bag."
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -8272,7 +8373,7 @@
                     },
                     {
                       "text": "xem",
-                      "emoji": "⌚"
+                      "emoji": "🍿"
                     }
                   ],
                   "correct": 0
@@ -8422,7 +8523,8 @@
                   "audioTarget": "This is mine.",
                   "answer": "This is mine.",
                   "alternatives": [
-                    "It is mine."
+                    "It is mine.",
+                    "This one is mine."
                   ]
                 }
               ],
@@ -8506,7 +8608,7 @@
                       "text": "works"
                     },
                     {
-                      "text": "washes"
+                      "text": "helps"
                     },
                     {
                       "text": "stops"
@@ -8661,7 +8763,10 @@
                   "answer": "station",
                   "alternatives": [
                     "the station",
-                    "a station"
+                    "a station",
+                    "train station",
+                    "the train station",
+                    "a train station"
                   ]
                 },
                 {
@@ -9853,7 +9958,7 @@
                       "text": "No smoking"
                     },
                     {
-                      "text": "Toilets"
+                      "text": "Restrooms"
                     }
                   ],
                   "correct": 1
@@ -9892,7 +9997,7 @@
                       "text": "Exit"
                     },
                     {
-                      "text": "Toilets"
+                      "text": "Restrooms"
                     },
                     {
                       "text": "No smoking"
@@ -9985,7 +10090,7 @@
                   "question": "Thứ Bảy chợ mở cửa đến mấy giờ?",
                   "options": [
                     {
-                      "text": "18 giờ"
+                      "text": "6 giờ"
                     },
                     {
                       "text": "8 giờ"
@@ -10033,10 +10138,10 @@
                       "text": "8 giờ"
                     },
                     {
-                      "text": "14 giờ"
+                      "text": "2 giờ"
                     },
                     {
-                      "text": "22 giờ"
+                      "text": "10 giờ"
                     }
                   ],
                   "correct": 0
@@ -10223,7 +10328,9 @@
                   "audioTarget": "Be careful!",
                   "answer": "Be careful!",
                   "alternatives": [
-                    "Careful!"
+                    "Careful!",
+                    "Watch out!",
+                    "Look out!"
                   ]
                 }
               ]
@@ -10794,9 +10901,9 @@
                 {
                   "type": "fillBlank",
                   "id": "en-vi:uh-l3-e4",
-                  "sentence": "Please open your book at ___ ten.",
+                  "sentence": "Please open your book to ___ ten.",
                   "translation": "Hãy mở sách ở trang mười.",
-                  "audioTarget": "Please open your book at page ten.",
+                  "audioTarget": "Please open your book to page ten.",
                   "options": [
                     "letter",
                     "answer",
@@ -11068,7 +11175,11 @@
                   "prompt": "Bạn có khỏe không?",
                   "audioTarget": "How are you?",
                   "answer": "How are you?",
-                  "alternatives": []
+                  "alternatives": [
+                    "How are you doing?",
+                    "Are you okay?",
+                    "Are you well?"
+                  ]
                 }
               ]
             },
@@ -11492,7 +11603,13 @@
                     "Please hold on.",
                     "Please wait.",
                     "Wait, please.",
-                    "One moment, please."
+                    "One moment, please.",
+                    "Please wait a moment.",
+                    "Wait a moment, please.",
+                    "Just a moment, please.",
+                    "One moment.",
+                    "Please wait a minute.",
+                    "Hold on a moment, please."
                   ]
                 },
                 {
@@ -11859,7 +11976,10 @@
                   "answer": "I usually drink tea.",
                   "alternatives": [
                     "I often drink tea.",
-                    "Usually I drink tea."
+                    "Usually I drink tea.",
+                    "I drink tea often.",
+                    "I normally drink tea.",
+                    "Often I drink tea."
                   ]
                 },
                 {
@@ -12431,7 +12551,9 @@
                   "prompt": "Chào buổi tối!",
                   "audioTarget": "Good evening!",
                   "answer": "Good evening!",
-                  "alternatives": []
+                  "alternatives": [
+                    "Evening!"
+                  ]
                 }
               ]
             },
@@ -12582,7 +12704,10 @@
                     "Good evening",
                     "Hello",
                     "Good evening sir",
-                    "Good evening madam"
+                    "Good evening madam",
+                    "Good evening ma'am",
+                    "Good evening, welcome",
+                    "Hi"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:good-evening"
@@ -12606,7 +12731,10 @@
                     "Bye",
                     "Bye bye",
                     "See you",
-                    "See you tomorrow"
+                    "See you tomorrow",
+                    "See you later",
+                    "Good night",
+                    "Have a good night"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:goodbye"
@@ -12628,7 +12756,10 @@
                   "acceptedVariants": [
                     "Excuse me",
                     "Excuse me please",
-                    "Sorry"
+                    "Sorry",
+                    "Pardon me",
+                    "Excuse me sir",
+                    "Excuse me ma'am"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:excuse-me"
@@ -12724,7 +12855,10 @@
                     "Bye",
                     "Bye bye",
                     "See you",
-                    "See you tomorrow"
+                    "See you tomorrow",
+                    "See you later",
+                    "Good night",
+                    "Have a good night"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:goodbye"
@@ -12773,7 +12907,11 @@
                   "answer": "Sorry, I'm late.",
                   "alternatives": [
                     "I'm sorry, I'm late.",
-                    "Sorry I am late."
+                    "Sorry I am late.",
+                    "Sorry for being late.",
+                    "I'm sorry for being late.",
+                    "Sorry, I was late.",
+                    "I'm sorry I was late."
                   ]
                 }
               ]
@@ -12955,7 +13093,10 @@
                   ],
                   "target": "I live in Hue.",
                   "acceptedVariants": [
-                    "I live in Hue"
+                    "I live in Hue",
+                    "I am living in Hue",
+                    "In Hue",
+                    "Hue"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:live"
@@ -12982,7 +13123,9 @@
                   "target": "I'm twenty-five years old.",
                   "acceptedVariants": [
                     "I'm twenty-five years old",
-                    "I'm twenty-five"
+                    "I'm twenty-five",
+                    "Twenty-five",
+                    "Twenty-five years old"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:be",
@@ -13105,7 +13248,11 @@
                   "target": "I work in a factory.",
                   "acceptedVariants": [
                     "I work in a factory",
-                    "I work at a factory"
+                    "I work at a factory",
+                    "In a factory",
+                    "At a factory",
+                    "I work in the factory",
+                    "I work at the factory"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:work",
@@ -13296,7 +13443,11 @@
                   "target": "I work in a factory.",
                   "acceptedVariants": [
                     "I work in a factory",
-                    "I work at a factory"
+                    "I work at a factory",
+                    "In a factory",
+                    "At a factory",
+                    "I work in the factory",
+                    "I work at the factory"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:work",
@@ -13366,7 +13517,9 @@
                   "prompt": "Tôi có một câu hỏi.",
                   "audioTarget": "I have a question.",
                   "answer": "I have a question.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I have one question."
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -13463,7 +13616,10 @@
                   "acceptedVariants": [
                     "I have two children",
                     "Two children",
-                    "I've got two children"
+                    "I've got two children",
+                    "I have two kids",
+                    "Two kids",
+                    "Two"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:have",
@@ -13489,11 +13645,14 @@
                       "value": "10"
                     }
                   ],
-                  "target": "There are ten people in my team.",
+                  "target": "There are ten people on my team.",
                   "acceptedVariants": [
-                    "There are ten people in my team",
+                    "There are ten people on my team",
                     "Ten people",
-                    "We have ten people"
+                    "We have ten people",
+                    "There are ten people in my team",
+                    "My team has ten people",
+                    "Ten"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:there",
@@ -13653,7 +13812,9 @@
                   "alternatives": [
                     "How much is it?",
                     "How much does it cost?",
-                    "How much does this cost?"
+                    "How much does this cost?",
+                    "How much is this one?",
+                    "How much does this one cost?"
                   ]
                 },
                 {
@@ -13676,6 +13837,15 @@
                     "costs",
                     "thirty",
                     "dollars"
+                  ],
+                  "alternatives": [
+                    [
+                      "The",
+                      "ticket",
+                      "cost",
+                      "thirty",
+                      "dollars"
+                    ]
                   ]
                 }
               ]
@@ -13724,10 +13894,10 @@
                   "id": "en-vi:um-l2-e1",
                   "speechItemId": "en.speak.m_rep_half",
                   "modelClipId": "en.clip.um_model_rep_half",
-                  "target": "It's half past two.",
+                  "target": "It's two thirty.",
                   "acceptedVariants": [
-                    "It's half past two",
-                    "Half past two"
+                    "It's two thirty",
+                    "Two thirty"
                   ],
                   "objectiveTargets": [
                     "en.obj.speaking.give_info"
@@ -13885,7 +14055,10 @@
                   "acceptedVariants": [
                     "I have two children",
                     "Two children",
-                    "I've got two children"
+                    "I've got two children",
+                    "I have two kids",
+                    "Two kids",
+                    "Two"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:have",
@@ -13935,7 +14108,9 @@
                   "audioTarget": "I have two children.",
                   "answer": "I have two children.",
                   "alternatives": [
-                    "I have 2 children."
+                    "I have 2 children.",
+                    "I have two kids.",
+                    "I have 2 kids."
                   ]
                 }
               ]
@@ -14156,7 +14331,11 @@
                     "The house is big",
                     "It's a big house",
                     "A big house",
-                    "It's big"
+                    "It's big",
+                    "The big house",
+                    "The house is large",
+                    "It's a large house",
+                    "A large house"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:house",
@@ -14182,7 +14361,11 @@
                     "The cat is small",
                     "It's a small cat",
                     "A small cat",
-                    "It's small"
+                    "It's small",
+                    "The small cat",
+                    "The cat is little",
+                    "It's a little cat",
+                    "A little cat"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:cat",
@@ -14208,7 +14391,8 @@
                     "The car is old",
                     "It's an old car",
                     "An old car",
-                    "It's old"
+                    "It's old",
+                    "The old car"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:car",
@@ -14305,7 +14489,9 @@
                   "prompt": "một chiếc ô tô màu đen",
                   "audioTarget": "a black car",
                   "answer": "a black car",
-                  "alternatives": []
+                  "alternatives": [
+                    "one black car"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -14357,11 +14543,12 @@
                   "id": "en-vi:un-l2-e0",
                   "speechItemId": "en.speak.n_room",
                   "instruction": "Nhìn hình: trong phòng có một cái bàn. Hãy nói câu đó bằng tiếng Anh.",
-                  "cueEmoji": "🛋️",
+                  "cueEmoji": "🪑",
                   "target": "There is a table in the room.",
                   "acceptedVariants": [
                     "There is a table in the room",
-                    "There is a table"
+                    "There is a table",
+                    "In the room there is a table"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:there",
@@ -14432,7 +14619,11 @@
                   "audioTarget": "There is a fridge in the kitchen.",
                   "answer": "There is a fridge in the kitchen.",
                   "alternatives": [
-                    "In the kitchen there is a fridge."
+                    "In the kitchen there is a fridge.",
+                    "There is a refrigerator in the kitchen.",
+                    "In the kitchen there is a refrigerator.",
+                    "The kitchen has a fridge.",
+                    "The kitchen has a refrigerator."
                   ]
                 },
                 {
@@ -14531,7 +14722,11 @@
                     "The house is big",
                     "It's a big house",
                     "A big house",
-                    "It's big"
+                    "It's big",
+                    "The big house",
+                    "The house is large",
+                    "It's a large house",
+                    "A large house"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:house",
@@ -14577,11 +14772,12 @@
                   "id": "en-vi:un-l3-e2",
                   "speechItemId": "en.speak.n_room",
                   "instruction": "Nhìn hình: trong phòng có một cái bàn. Hãy nói câu đó bằng tiếng Anh.",
-                  "cueEmoji": "🛋️",
+                  "cueEmoji": "🪑",
                   "target": "There is a table in the room.",
                   "acceptedVariants": [
                     "There is a table in the room",
-                    "There is a table"
+                    "There is a table",
+                    "In the room there is a table"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:there",
@@ -15026,7 +15222,9 @@
                   "audioTarget": "My address is 12 Green Street.",
                   "answer": "My address is 12 Green Street.",
                   "alternatives": [
-                    "My address is twelve Green Street."
+                    "My address is twelve Green Street.",
+                    "My address is number 12 Green Street.",
+                    "My address is 12 Green St."
                   ]
                 }
               ]
@@ -15071,7 +15269,8 @@
                         "id": "children",
                         "description": "hai đứa con",
                         "variants": [
-                          "two children"
+                          "two children",
+                          "two kids"
                         ],
                         "cueProvided": false
                       },
@@ -15157,7 +15356,9 @@
                   "prompt": "Tôi có một con gái.",
                   "audioTarget": "I have a daughter.",
                   "answer": "I have a daughter.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I have one daughter."
+                  ]
                 }
               ]
             },
@@ -15212,7 +15413,9 @@
                         "id": "city",
                         "description": "thành phố",
                         "variants": [
-                          "in hue"
+                          "in hue",
+                          "from hue",
+                          "city is hue"
                         ],
                         "cueProvided": true
                       }
@@ -15449,7 +15652,9 @@
                   "audioTarget": "Tom plays soccer.",
                   "answer": "Tom plays soccer.",
                   "alternatives": [
-                    "Tom plays football."
+                    "Tom plays football.",
+                    "Tom is playing soccer.",
+                    "Tom is playing football."
                   ]
                 }
               ]
@@ -15624,7 +15829,10 @@
                         "id": "home",
                         "description": "ở nhà",
                         "variants": [
-                          "at home"
+                          "at home",
+                          "stay home",
+                          "staying home",
+                          "am home"
                         ],
                         "cueProvided": false
                       },
@@ -15640,7 +15848,10 @@
                         "id": "sick",
                         "description": "bạn bị ốm",
                         "variants": [
-                          "i am sick"
+                          "i am sick",
+                          "i am ill",
+                          "i feel sick",
+                          "i am not well"
                         ],
                         "cueProvided": false
                       }
@@ -15648,7 +15859,10 @@
                     "minTokens": 5,
                     "maxTokens": 16,
                     "requireSentenceVerbs": [
-                      "am"
+                      "am",
+                      "feel",
+                      "stay",
+                      "staying"
                     ]
                   },
                   "modelAnswers": [
@@ -15791,7 +16005,10 @@
                         "description": "con mèo nhỏ",
                         "variants": [
                           "the cat is small",
-                          "a small cat"
+                          "a small cat",
+                          "a little cat",
+                          "the cat is little",
+                          "the small cat"
                         ],
                         "cueProvided": false
                       },
@@ -15800,7 +16017,10 @@
                         "description": "ngôi nhà to",
                         "variants": [
                           "the house is big",
-                          "a big house"
+                          "a big house",
+                          "a large house",
+                          "the house is large",
+                          "the big house"
                         ],
                         "cueProvided": false
                       }
@@ -15940,7 +16160,7 @@
           "id": "en-vi:unit-q",
           "title": "Tin nhắn và email",
           "description": "Viết tin nhắn và email ngắn: lời chào, thông tin, lời kết.",
-          "guidebook": "## Viết tin nhắn và email\n\nMột tin nhắn cần ba phần: **lời chào, thông tin, lời kết**.\n\n### Tin nhắn cho bạn bè hoặc đồng nghiệp\n*Hi Tom. I am at the station. See you at 8. Lan*\n\n### Email ở chỗ làm\n*Dear Mr Smith,*\n*I am sorry, I can't come to work today. I am sick.*\n*Best regards,*\n*Lan Nguyen*\n\n### Mở đầu và kết thúc\n| | Bắt đầu | Kết thúc |\n|---|---|---|\n| thân mật | *Hi Tom,* | *See you,* |\n| lịch sự | *Dear Ms Brown,* | *Best regards,* |\n\n### Mr, Mrs, Ms\nSau *Mr*, *Mrs*, *Ms* là **họ**, không phải tên. Ông Tom Smith là *Mr Smith*, không phải \"Mr Tom\". Khác với tiếng Việt, nơi \"ông Nam\" gọi bằng tên.\n\n### Hỏi và hẹn\n- *Are you free on Saturday?* — Thứ Bảy bạn rảnh không?\n- *Can you send me the file?* — Bạn gửi cho tôi tệp đó được không?\n- *See you at 9.* — Hẹn gặp lúc 9 giờ.\n\n### Từ dùng cho email\n*send* (gửi), *reply* (trả lời), *email*, *message*, *file*. Dòng đầu email có *Subject*: một cụm từ ngắn nói về nội dung thư.",
+          "guidebook": "## Viết tin nhắn và email\n\nMột tin nhắn cần ba phần: **lời chào, thông tin, lời kết**.\n\n### Tin nhắn cho bạn bè hoặc đồng nghiệp\n*Hi Tom. I am at the station. See you at 8. Lan*\n\n### Email ở chỗ làm\n*Dear Mr. Smith,*\n*I am sorry, I can't come to work today. I am sick.*\n*Best regards,*\n*Lan Nguyen*\n\n### Mở đầu và kết thúc\n| | Bắt đầu | Kết thúc |\n|---|---|---|\n| thân mật | *Hi Tom,* | *See you,* |\n| lịch sự | *Dear Ms. Brown,* | *Best regards,* |\n\n### Mr., Mrs., Ms.\nSau *Mr.*, *Mrs.*, *Ms.* là **họ**, không phải tên. Ông Tom Smith là *Mr. Smith*, không phải \"Mr. Tom\". Khác với tiếng Việt, nơi \"ông Nam\" gọi bằng tên. Người Mỹ viết các từ này có dấu chấm: *Mr.*, *Mrs.*, *Ms.*\n\n### Hỏi và hẹn\n- *Are you free on Saturday?* — Thứ Bảy bạn rảnh không?\n- *Can you send me the file?* — Bạn gửi cho tôi tệp đó được không?\n- *See you at 9.* — Hẹn gặp lúc 9 giờ.\n\n### Từ dùng cho email\n*send* (gửi), *reply* (trả lời), *email*, *message*, *file*. Dòng đầu email có *Subject*: một cụm từ ngắn nói về nội dung thư.",
           "words": [
             {
               "target": "dear",
@@ -16093,7 +16313,9 @@
                   "audioTarget": "Hi Lan, how are you?",
                   "answer": "Hi Lan, how are you?",
                   "alternatives": [
-                    "Hello Lan, how are you?"
+                    "Hello Lan, how are you?",
+                    "Hi Lan, how are you doing?",
+                    "Hello Lan, how are you doing?"
                   ]
                 },
                 {
@@ -16326,7 +16548,7 @@
                   "cueFacts": [
                     {
                       "label": "Gửi",
-                      "value": "Ms Brown"
+                      "value": "Ms. Brown"
                     }
                   ],
                   "rubric": {
@@ -16337,7 +16559,8 @@
                         "variants": [
                           "dear",
                           "hello",
-                          "good morning"
+                          "good morning",
+                          "good afternoon"
                         ],
                         "cueProvided": false
                       },
@@ -16356,7 +16579,10 @@
                           "best regards",
                           "regards",
                           "thank you",
-                          "thanks"
+                          "thanks",
+                          "sincerely",
+                          "best wishes",
+                          "best"
                         ],
                         "cueProvided": false
                       }
@@ -16365,7 +16591,7 @@
                     "maxTokens": 25
                   },
                   "modelAnswers": [
-                    "Dear Ms Brown, I am sending you the report today. Best regards, Minh"
+                    "Dear Ms. Brown, I am sending you the report today. Best regards, Minh"
                   ],
                   "objectiveTargets": [
                     "en.obj.writing.short_message"
@@ -16443,10 +16669,10 @@
                   "id": "en-vi:uq-l2-e2",
                   "sentence": "Dear ___ Brown,",
                   "translation": "Kính gửi chị Brown,",
-                  "audioTarget": "Dear Ms Brown,",
+                  "audioTarget": "Dear Ms. Brown,",
                   "options": [
                     "Sister",
-                    "Ms",
+                    "Ms.",
                     "Woman",
                     "My"
                   ],
@@ -16457,19 +16683,19 @@
                   "id": "en-vi:uq-l2-e3",
                   "mode": "nativeToTarget",
                   "prompt": "Ông Tom Smith được gọi là gì trong email?",
-                  "audioTarget": "Mr Smith",
+                  "audioTarget": "Mr. Smith",
                   "options": [
                     {
-                      "text": "Mr Tom"
+                      "text": "Mr. Tom"
                     },
                     {
-                      "text": "Tom Mr"
+                      "text": "Tom Mr."
                     },
                     {
-                      "text": "Mr Smith"
+                      "text": "Mr. Smith"
                     },
                     {
-                      "text": "Smith Mr"
+                      "text": "Smith Mr."
                     }
                   ],
                   "correct": 2
@@ -16484,7 +16710,8 @@
                   "alternatives": [
                     "I am sending an email to you.",
                     "I am sending you the email.",
-                    "I am sending the email to you."
+                    "I am sending the email to you.",
+                    "I am emailing you."
                   ]
                 }
               ]
@@ -16619,7 +16846,9 @@
                   "prompt": "Bạn có email của tôi không?",
                   "audioTarget": "Do you have my email?",
                   "answer": "Do you have my email?",
-                  "alternatives": []
+                  "alternatives": [
+                    "Do you have my email address?"
+                  ]
                 }
               ]
             }
@@ -16629,7 +16858,7 @@
           "id": "en-vi:unit-r",
           "title": "Biểu mẫu",
           "description": "Điền biểu mẫu xin việc, giấy tờ và lời nhắn thực tế.",
-          "guidebook": "## Biểu mẫu\n\nKhi xin việc, thuê nhà hay đi khám, bạn thường phải điền biểu mẫu.\n\n### Các ô thường gặp\n- *First name* — tên; *Last name* — họ\n- *Date of birth* — ngày sinh\n- *Address* — địa chỉ\n- *Phone number* — số điện thoại\n- *Email* — thư điện tử\n- *Passport number* — số hộ chiếu\n- *Job* — nghề nghiệp\n- *Signature* — chữ ký\n\n### Lưu ý\nNgày tháng dễ nhầm: nhiều biểu mẫu Mỹ viết tháng, ngày, năm: *05/12/1998* là ngày 12 tháng 5. Hãy nhìn gợi ý trên ô, ví dụ *MM/DD/YYYY*.\n\n### Ký tên\n*Sign here.* — Ký vào đây. *sign* cũng có nghĩa là biển báo, nên hãy nhìn câu xung quanh.\n\n### Giấy tờ\n*document* là giấy tờ nói chung. *passport* là hộ chiếu. *form* là biểu mẫu.\n- *Please fill in this form.* — Xin điền vào biểu mẫu này.\n\n### Viết lời nhắn\n*I am at the clinic. I will be back at 3. Lan*\nCâu này báo rằng Lan đang ở phòng khám và sẽ về lúc 3 giờ.\n\n### Khi không hiểu một ô\nHãy hỏi: *Excuse me, what does this mean?* — Xin lỗi, cái này nghĩa là gì?",
+          "guidebook": "## Biểu mẫu\n\nKhi xin việc, thuê nhà hay đi khám, bạn thường phải điền biểu mẫu.\n\n### Các ô thường gặp\n- *First name* — tên; *Last name* — họ\n- *Date of birth* — ngày sinh\n- *Address* — địa chỉ\n- *Phone number* — số điện thoại\n- *Email* — thư điện tử\n- *Passport number* — số hộ chiếu\n- *Job* — nghề nghiệp\n- *Signature* — chữ ký\n\n### Lưu ý\nNgày tháng dễ nhầm: nhiều biểu mẫu Mỹ viết tháng, ngày, năm: *05/12/1998* là ngày 12 tháng 5. Hãy nhìn gợi ý trên ô, ví dụ *MM/DD/YYYY*.\n\n### Ký tên\n*Sign here.* — Ký vào đây. *sign* cũng có nghĩa là biển báo, nên hãy nhìn câu xung quanh.\n\n### Giấy tờ\n*document* là giấy tờ nói chung. *passport* là hộ chiếu. *form* là biểu mẫu.\n- *Please fill out this form.* — Xin điền vào biểu mẫu này.\n\n### Viết lời nhắn\n*I am at the clinic. I will be back at 3. Lan*\nCâu này báo rằng Lan đang ở phòng khám và sẽ về lúc 3 giờ.\n\n### Khi không hiểu một ô\nHãy hỏi: *Excuse me, what does this mean?* — Xin lỗi, cái này nghĩa là gì?",
           "words": [
             {
               "target": "form",
@@ -16764,9 +16993,9 @@
                 {
                   "type": "fillBlank",
                   "id": "en-vi:ur-l0-e2",
-                  "sentence": "Please fill in this ___.",
+                  "sentence": "Please fill out this ___.",
                   "translation": "Làm ơn điền vào biểu mẫu này.",
-                  "audioTarget": "Please fill in this form.",
+                  "audioTarget": "Please fill out this form.",
                   "options": [
                     "passport",
                     "sign",
@@ -16783,7 +17012,7 @@
                   "tokens": [
                     "this",
                     "at",
-                    "in",
+                    "out",
                     "these",
                     "fill",
                     "form",
@@ -16792,7 +17021,7 @@
                   "answer": [
                     "Please",
                     "fill",
-                    "in",
+                    "out",
                     "this",
                     "form"
                   ]
@@ -16804,7 +17033,9 @@
                   "prompt": "Tôi sống ở Huế.",
                   "audioTarget": "I live in Hue.",
                   "answer": "I live in Hue.",
-                  "alternatives": []
+                  "alternatives": [
+                    "I am living in Hue."
+                  ]
                 }
               ]
             },
@@ -17001,7 +17232,9 @@
                         "id": "broken",
                         "description": "không chạy",
                         "variants": [
-                          "does not work"
+                          "does not work",
+                          "is not working",
+                          "is broken"
                         ],
                         "cueProvided": false
                       },
@@ -17009,7 +17242,10 @@
                         "id": "call",
                         "description": "gọi cho quản lý",
                         "variants": [
-                          "call the manager"
+                          "call the manager",
+                          "call your manager",
+                          "call our manager",
+                          "call my manager"
                         ],
                         "cueProvided": false
                       }
@@ -17205,7 +17441,8 @@
                         "variants": [
                           "dear",
                           "hello",
-                          "good morning"
+                          "good morning",
+                          "good afternoon"
                         ],
                         "cueProvided": false
                       },
@@ -17232,7 +17469,10 @@
                           "best regards",
                           "regards",
                           "thank you",
-                          "thanks"
+                          "thanks",
+                          "sincerely",
+                          "best wishes",
+                          "best"
                         ],
                         "cueProvided": false
                       }
@@ -17328,7 +17568,7 @@
           "id": "en-vi:unit-s",
           "title": "Làm quen và phỏng vấn",
           "description": "Giới thiệu mình ở chỗ làm và trả lời câu hỏi phỏng vấn đơn giản.",
-          "guidebook": "## Trò chuyện\n\nBây giờ bạn trò chuyện với ứng dụng. Câu trả lời của bạn quyết định câu tiếp theo. Người đối thoại rất kiên nhẫn: nhắc lại, nói cách khác, không bao giờ phạt bạn khi cần giúp.\n\n### Giữ cuộc trò chuyện\n- *Can you repeat that, please?* — Bạn nhắc lại được không?\n- *Sorry, I don't understand.* — Xin lỗi, tôi không hiểu.\n- *What does that mean?* — Câu đó nghĩa là gì?\n\n### Ngày đầu ở chỗ làm\n- *Hi, I'm Lan. I'm the new nurse.* — Chào anh chị, tôi là Lan, y tá mới.\n- *Nice to meet you.* — Rất vui được gặp bạn.\n- *Who is the manager?* — Ai là quản lý?\n\n### Phỏng vấn xin việc\nCâu hỏi thường rất đơn giản:\n- *Tell me about yourself.* — Hãy nói về bạn.\n- *Do you have experience?* — Bạn có kinh nghiệm không?\n- *Yes, I worked in a factory for two years.* — Có, tôi làm ở nhà máy hai năm.\n- *When can you start?* — Khi nào bạn bắt đầu được?\n- *I can start on Monday.* — Tôi bắt đầu từ thứ Hai được.\n\n### Xưng hô với người phỏng vấn\nChào bằng *Good morning* hoặc *Good afternoon*. Nếu người ta tự giới thiệu là *Mr Brown*, hãy gọi là *Mr Brown*. Nếu họ nói *Call me Tom*, hãy gọi là *Tom*.",
+          "guidebook": "## Trò chuyện\n\nBây giờ bạn trò chuyện với ứng dụng. Câu trả lời của bạn quyết định câu tiếp theo. Người đối thoại rất kiên nhẫn: nhắc lại, nói cách khác, không bao giờ phạt bạn khi cần giúp.\n\n### Giữ cuộc trò chuyện\n- *Can you repeat that, please?* — Bạn nhắc lại được không?\n- *Sorry, I don't understand.* — Xin lỗi, tôi không hiểu.\n- *What does that mean?* — Câu đó nghĩa là gì?\n\n### Ngày đầu ở chỗ làm\n- *Hi, I'm Lan. I'm the new nurse.* — Chào anh chị, tôi là Lan, y tá mới.\n- *Nice to meet you.* — Rất vui được gặp bạn.\n- *Who is the manager?* — Ai là quản lý?\n\n### Phỏng vấn xin việc\nCâu hỏi thường rất đơn giản:\n- *Tell me about yourself.* — Hãy giới thiệu về bản thân.\n- *Do you have experience?* — Bạn có kinh nghiệm không?\n- *Yes, I worked in a factory for two years.* — Có, tôi làm ở nhà máy hai năm.\n- *When can you start?* — Khi nào bạn bắt đầu được?\n- *I can start on Monday.* — Tôi bắt đầu từ thứ Hai được.\n\n### Xưng hô với người phỏng vấn\nChào bằng *Good morning* hoặc *Good afternoon*. Nếu người ta tự giới thiệu là *Mr. Brown*, hãy gọi là *Mr. Brown*. Nếu họ nói *Call me Tom*, hãy gọi là *Tom*.",
           "words": [
             {
               "target": "introduce",
@@ -17399,6 +17639,14 @@
                     "to",
                     "meet",
                     "you"
+                  ],
+                  "alternatives": [
+                    [
+                      "Nice",
+                      "to",
+                      "see",
+                      "you"
+                    ]
                   ]
                 },
                 {
@@ -17738,7 +17986,7 @@
           "guidebook": "## Ở cửa hàng\n\n### Hỏi và chọn\n- *Can I help you?* — Tôi giúp gì được cho bạn?\n- *I'm looking for a jacket.* — Tôi đang tìm một cái áo khoác.\n- *How much is this?* — Cái này bao nhiêu tiền?\n- *Do you have a small size?* — Bạn có cỡ nhỏ không?\n\n### Gọi lịch sự\n*I would like* lịch sự hơn *I want*. Viết tắt khi nói: *I'd like*.\n- *I'd like this one, please.* — Cho tôi cái này.\n- *I'd like a coffee, please.* — Cho tôi một ly cà phê.\n\n### Trả tiền\n- *Cash or card?* — Tiền mặt hay thẻ?\n- *Here you are.* — Đây ạ.\n- *Can I have a receipt, please?* — Cho tôi xin hóa đơn được không?\n\n### Đếm được hay không?\n- *How many apples?* — Mấy quả táo?\n- *How much rice?* — Bao nhiêu gạo?\n- *some water*, *a bottle of water*: muốn đếm nước, hãy đếm cái chai.\n\n### Lịch sự với người bán\nNgười bán thường hỏi trước, và bạn trả lời ngắn cũng được. Hãy kết thúc bằng *Thank you* hoặc *Have a nice day*. Tiếng Việt có thể chỉ cười rồi đi, nhưng tiếng Anh cần một lời.",
           "words": [
             {
-              "target": "shop",
+              "target": "store",
               "native": "cửa hàng",
               "emoji": "🏪"
             },
@@ -17826,7 +18074,7 @@
                   "id": "en-vi:ut-l0-e3",
                   "pairs": [
                     {
-                      "target": "shop",
+                      "target": "store",
                       "native": "cửa hàng"
                     },
                     {
@@ -17860,7 +18108,13 @@
                     "I want some tea.",
                     "I would like some tea.",
                     "A tea, please.",
-                    "Tea, please."
+                    "Tea, please.",
+                    "I would like a cup of tea.",
+                    "I want a cup of tea.",
+                    "A cup of tea, please.",
+                    "I would like a glass of tea.",
+                    "I want a glass of tea.",
+                    "A glass of tea, please."
                   ]
                 }
               ],
@@ -17934,7 +18188,7 @@
                       "emoji": "💴"
                     },
                     {
-                      "text": "shop",
+                      "text": "store",
                       "emoji": "🏪"
                     },
                     {
@@ -17957,7 +18211,7 @@
                   "options": [
                     "cash",
                     "market",
-                    "shop",
+                    "store",
                     "pay"
                   ],
                   "correct": 0
@@ -17974,7 +18228,12 @@
                     "I will pay with my card.",
                     "By card, please.",
                     "I want to pay by card.",
-                    "I am paying by card."
+                    "I am paying by card.",
+                    "I will pay with a card.",
+                    "I pay with a card.",
+                    "I am paying with a card.",
+                    "I pay with my card.",
+                    "With a card, please."
                   ]
                 }
               ]
@@ -18041,7 +18300,7 @@
                   "translation": "Người phục vụ rất tốt bụng.",
                   "audioTarget": "The waiter is very kind.",
                   "options": [
-                    "bill",
+                    "check",
                     "spicy",
                     "waiter",
                     "price"
@@ -18054,7 +18313,7 @@
                   "direction": "nativeToTarget",
                   "prompt": "Làm ơn cho tôi hóa đơn.",
                   "tokens": [
-                    "bill",
+                    "check",
                     "A",
                     "The",
                     "Sorry",
@@ -18062,7 +18321,7 @@
                   ],
                   "answer": [
                     "The",
-                    "bill",
+                    "check",
                     "please"
                   ]
                 },
@@ -18075,7 +18334,12 @@
                   "answer": "The food is delicious.",
                   "alternatives": [
                     "The food is very good.",
-                    "The food is very delicious."
+                    "The food is very delicious.",
+                    "The food is very tasty.",
+                    "The food is tasty.",
+                    "The food is really good.",
+                    "The food tastes very good.",
+                    "The food is really delicious."
                   ]
                 }
               ]
@@ -18128,7 +18392,7 @@
                       "text": "supermarket"
                     },
                     {
-                      "text": "shop"
+                      "text": "store"
                     },
                     {
                       "text": "price"
@@ -18142,9 +18406,9 @@
                 {
                   "type": "fillBlank",
                   "id": "en-vi:ut-l3-e3",
-                  "sentence": "I ___ a lot of money in this shop.",
+                  "sentence": "I ___ a lot of money at this store.",
                   "translation": "Tôi tiêu nhiều tiền ở cửa hàng này.",
-                  "audioTarget": "I spend a lot of money in this shop.",
+                  "audioTarget": "I spend a lot of money at this store.",
                   "options": [
                     "spend",
                     "sell",
@@ -18169,8 +18433,8 @@
                   "id": "en-vi:ut-l3-e5",
                   "pairs": [
                     {
-                      "target": "bill",
-                      "native": "hóa đơn (phải trả)"
+                      "target": "receipt",
+                      "native": "hóa đơn, biên lai"
                     },
                     {
                       "target": "free",
@@ -18354,7 +18618,10 @@
                   "audioTarget": "Turn right.",
                   "answer": "Turn right.",
                   "alternatives": [
-                    "Turn right, please."
+                    "Turn right, please.",
+                    "Take a right.",
+                    "Make a right.",
+                    "Go right."
                   ]
                 },
                 {
@@ -18486,7 +18753,9 @@
                   "audioTarget": "Excuse me, where is the station?",
                   "answer": "Excuse me, where is the station?",
                   "alternatives": [
-                    "Sorry, where is the station?"
+                    "Sorry, where is the station?",
+                    "Excuse me, where is the train station?",
+                    "Sorry, where is the train station?"
                   ]
                 }
               ]
@@ -18580,7 +18849,7 @@
                   "translation": "Tay tôi đau.",
                   "audioTarget": "My arm hurts.",
                   "options": [
-                    "hurt",
+                    "hurting",
                     "is hurt me",
                     "hurts",
                     "pain"
@@ -18757,7 +19026,7 @@
           "id": "en-vi:unit-v",
           "title": "Điện thoại và chỉ dẫn ở chỗ làm",
           "description": "Gọi điện, đặt hẹn, hỏi về email, làm theo chỉ dẫn của quản lý.",
-          "guidebook": "## Gọi điện\n\n### Bắt đầu cuộc gọi\n- *Hello, this is Lan.* — Xin chào, tôi là Lan. Trên điện thoại, người ta dùng *this is*, không dùng *I am*.\n- *Can I speak to Mr Brown, please?* — Cho tôi nói chuyện với ông Brown được không?\n- *Hold on, please.* — Xin chờ một chút.\n\n### Đặt hẹn\n- *I'd like to make an appointment.* — Tôi muốn đặt một cuộc hẹn.\n- *When can you come?* — Khi nào bạn đến được?\n- *On Friday at ten.* — Thứ Sáu lúc mười giờ.\n\n### Xin nghỉ\n*I'm sorry, I can't come to work today. I'm sick.* — Xin lỗi, hôm nay tôi không đi làm được. Tôi bị ốm.\n\n### Email\n- *Did you get my email?* — Bạn đã nhận được email của tôi chưa?\n- *I'll send it now.* — Tôi sẽ gửi ngay.\n\n## Ở chỗ làm\n\n### Lịch làm việc\n- *shift* — ca làm việc; *meeting* — cuộc họp\n- *My shift starts at six.* — Ca của tôi bắt đầu lúc sáu giờ.\n\n### Làm theo chỉ dẫn\nQuản lý thường nói bằng câu mệnh lệnh: *Check the machine. Put the boxes here.* Hãy nhắc lại để chắc chắn: *Okay, the boxes go here?* Hỏi lại là việc nên làm, không phải là không lịch sự.",
+          "guidebook": "## Gọi điện\n\n### Bắt đầu cuộc gọi\n- *Hello, this is Lan.* — Xin chào, tôi là Lan. Trên điện thoại, người ta dùng *this is*, không dùng *I am*.\n- *Can I speak to Mr. Brown, please?* — Cho tôi nói chuyện với ông Brown được không?\n- *Hold on, please.* — Xin chờ một chút.\n\n### Đặt hẹn\n- *I'd like to make an appointment.* — Tôi muốn đặt một cuộc hẹn.\n- *When can you come?* — Khi nào bạn đến được?\n- *On Friday at ten.* — Thứ Sáu lúc mười giờ.\n\n### Xin nghỉ\n*I'm sorry, I can't come to work today. I'm sick.* — Xin lỗi, hôm nay tôi không đi làm được. Tôi bị ốm.\n\n### Email\n- *Did you get my email?* — Bạn đã nhận được email của tôi chưa?\n- *I'll send it now.* — Tôi sẽ gửi ngay.\n\n## Ở chỗ làm\n\n### Lịch làm việc\n- *shift* — ca làm việc; *meeting* — cuộc họp\n- *My shift starts at six.* — Ca của tôi bắt đầu lúc sáu giờ.\n\n### Làm theo chỉ dẫn\nQuản lý thường nói bằng câu mệnh lệnh: *Check the machine. Put the boxes here.* Hãy nhắc lại để chắc chắn: *Okay, the boxes go here?* Hỏi lại là việc nên làm, không phải là không lịch sự.",
           "words": [
             {
               "target": "call",
@@ -18794,19 +19063,19 @@
                   "id": "en-vi:uv-l0-e0",
                   "mode": "nativeToTarget",
                   "prompt": "Cho tôi nói chuyện với ông Brown được không?",
-                  "audioTarget": "Can I speak to Mr Brown, please?",
+                  "audioTarget": "Can I speak to Mr. Brown, please?",
                   "options": [
                     {
-                      "text": "Can I speak Mr Brown, please?"
+                      "text": "Can I speak Mr. Brown, please?"
                     },
                     {
-                      "text": "Can I speak to Mr Brown, please?"
+                      "text": "Can I speak to Mr. Brown, please?"
                     },
                     {
-                      "text": "I can speak to Mr Brown?"
+                      "text": "I can speak to Mr. Brown?"
                     },
                     {
-                      "text": "Can I speaks to Mr Brown, please?"
+                      "text": "Can I speaks to Mr. Brown, please?"
                     }
                   ],
                   "correct": 1
@@ -18899,7 +19168,10 @@
                   "alternatives": [
                     "Hello, this is Hoa.",
                     "It's Hoa.",
-                    "Hi, this is Hoa."
+                    "Hi, this is Hoa.",
+                    "This is Hoa speaking.",
+                    "Hoa speaking.",
+                    "Hello, this is Hoa speaking."
                   ]
                 }
               ]
@@ -19082,7 +19354,9 @@
                   "audioTarget": "I will send it tomorrow.",
                   "answer": "I will send it tomorrow.",
                   "alternatives": [
-                    "Tomorrow I will send it."
+                    "Tomorrow I will send it.",
+                    "I am going to send it tomorrow.",
+                    "Tomorrow I am going to send it."
                   ]
                 },
                 {
@@ -19187,7 +19461,12 @@
                   "alternatives": [
                     "I don't understand. Can you say that again?",
                     "I don't understand. Can you repeat?",
-                    "I don't understand. Could you repeat that?"
+                    "I don't understand. Could you repeat that?",
+                    "I don't understand. Could you say that again?",
+                    "I don't understand. Can you repeat it?",
+                    "I don't understand. Could you repeat?",
+                    "I don't understand. Can you repeat that, please?",
+                    "I don't understand. Could you repeat that, please?"
                   ]
                 },
                 {

@@ -54,6 +54,7 @@
     "answering": "en:w:answer",
     "changed": "en:w:change",
     "changing": "en:w:change",
+    "grandma": "en:w:grandmother",
     "he'": "en:w:he",
     "here'": "en:w:here",
     "how'": "en:w:how",
@@ -61,6 +62,8 @@
     "it'": "en:w:it",
     "let'": "en:w:let",
     "lost": "en:w:lose",
+    "mom": "en:w:mother",
+    "officer": "en:w:police",
     "she'": "en:w:she",
     "that'": "en:w:that",
     "there'": "en:w:there",
@@ -255,8 +258,8 @@
       "band": "A1-0",
       "title": "Is it yours?",
       "blurb": {
-        "vi": "Minh hỏi cả lớp xem vật này là của ai.",
-        "en": "Minh asks the class whose thing this is."
+        "vi": "Hoa hỏi cả lớp xem quyển sách này là của ai.",
+        "en": "Hoa asks the class whose book this is."
       },
       "sentences": [
         {
@@ -287,7 +290,7 @@
           "speaker": "A",
           "text": "No, it is not mine. Is it for the teacher?",
           "translation": {
-            "vi": "Không, không phải của anh. Của thầy giáo à?",
+            "vi": "Không, không phải của anh. Để cho thầy giáo à?",
             "en": "No, it is not mine. Is it for the teacher?"
           }
         },
@@ -309,18 +312,18 @@
         },
         {
           "speaker": "B",
-          "text": "Excuse me, everyone! Is this anyone's?",
+          "text": "Excuse me, everyone! Is this anyone's book?",
           "translation": {
-            "vi": "Xin lỗi mọi người! Cái này có phải của ai không ạ?",
-            "en": "Excuse me, everyone! Is this anyone's?"
+            "vi": "Xin lỗi mọi người! Quyển sách này có phải của ai không ạ?",
+            "en": "Excuse me, everyone! Is this anyone's book?"
           }
         },
         {
           "speaker": "N",
-          "text": "It is not. Who is it from?",
+          "text": "It is not. Who is it for?",
           "translation": {
-            "vi": "Không phải của ai cả. Nó là của ai đây?",
-            "en": "It is not. Who is it from?"
+            "vi": "Không phải của ai cả. Vậy nó để cho ai đây?",
+            "en": "It is not. Who is it for?"
           }
         },
         {
@@ -503,10 +506,10 @@
         },
         {
           "speaker": "A",
-          "text": "It is me, Mother! It is me and my sister!",
+          "text": "It is me, Mom! It is me and my sister!",
           "translation": {
             "vi": "Là con đây, mẹ ơi! Con và em gái!",
-            "en": "It is me, Mother! It is me and my sister!"
+            "en": "It is me, Mom! It is me and my sister!"
           }
         },
         {
@@ -631,10 +634,10 @@
         },
         {
           "speaker": "A",
-          "text": "My father is opposite my mother.",
+          "text": "My father is across from my mother.",
           "translation": {
             "vi": "Bố tôi ngồi đối diện mẹ tôi.",
-            "en": "My father is opposite my mother."
+            "en": "My father is across from my mother."
           }
         },
         {
@@ -665,7 +668,7 @@
           "speaker": "A",
           "text": "He is not a baby, but he is a child.",
           "translation": {
-            "vi": "Nó không phải em bé, nhưng vẫn là trẻ con.",
+            "vi": "Nó không phải em bé, nhưng là trẻ con.",
             "en": "He is not a baby, but he is a child."
           }
         },
@@ -855,10 +858,10 @@
         },
         {
           "speaker": "B",
-          "text": "Thank you! So we have enough for everyone!",
+          "text": "Oh! So we have enough for everyone!",
           "translation": {
             "vi": "May quá! Vậy là chúng ta có đủ cho mọi người rồi!",
-            "en": "Thank you! So we have enough for everyone!"
+            "en": "Oh! So we have enough for everyone!"
           }
         }
       ],
@@ -967,10 +970,10 @@
         },
         {
           "speaker": "B",
-          "text": "Her name is Mai. She is a teacher, and she is near a river.",
+          "text": "Her name is Mai. She is a teacher, and her home is near a river.",
           "translation": {
-            "vi": "Bạn tôi tên là Mai. Chị ấy là giáo viên, và chị ấy ở gần một con sông.",
-            "en": "Her name is Mai. She is a teacher, and she is near a river."
+            "vi": "Bạn tôi tên là Mai. Chị ấy là giáo viên, và nhà chị ấy ở gần một con sông.",
+            "en": "Her name is Mai. She is a teacher, and her home is near a river."
           }
         },
         {
@@ -991,10 +994,10 @@
         },
         {
           "speaker": "A",
-          "text": "Her home is along this road, opposite that woman and her son.",
+          "text": "Her home is along it, across from that woman and her son.",
           "translation": {
             "vi": "Nhà chị ấy ở dọc đường này, đối diện chỗ người phụ nữ và con trai kia.",
-            "en": "Her home is along this road, opposite that woman and her son."
+            "en": "Her home is along it, across from that woman and her son."
           }
         },
         {
@@ -1007,10 +1010,10 @@
         },
         {
           "speaker": "A",
-          "text": "No, it is not. It is before him.",
+          "text": "No, it is not. It is near him.",
           "translation": {
-            "vi": "Không phải. Nó ở trước chỗ ông ấy.",
-            "en": "No, it is not. It is before him."
+            "vi": "Không phải. Nó ở gần chỗ ông ấy.",
+            "en": "No, it is not. It is near him."
           }
         },
         {
@@ -1154,10 +1157,10 @@
         },
         {
           "speaker": "A",
-          "text": "Yes, Mother. Thank you.",
+          "text": "Yes, Mom. Thank you.",
           "translation": {
             "vi": "Vâng ạ. Con cảm ơn mẹ.",
-            "en": "Yes, Mother. Thank you."
+            "en": "Yes, Mom. Thank you."
           }
         },
         {
@@ -1194,10 +1197,10 @@
         },
         {
           "speaker": "N",
-          "text": "A police car is at the corner, and a police woman is with it.",
+          "text": "A police car is at the corner, and a police officer is near it.",
           "translation": {
-            "vi": "Một xe cảnh sát đỗ ở góc phố, cùng với một nữ cảnh sát.",
-            "en": "A police car is at the corner, and a police woman is with it."
+            "vi": "Một xe cảnh sát đỗ ở góc phố, bên cạnh có một nữ cảnh sát.",
+            "en": "A police car is at the corner, and a police officer is near it."
           }
         },
         {
@@ -1258,10 +1261,10 @@
         },
         {
           "speaker": "A",
-          "text": "Mother, I am in Hanoi. The traffic is bad, but I like the city.",
+          "text": "Mom, I am in Hanoi. The traffic is bad, but I like the city.",
           "translation": {
             "vi": "Mẹ ơi, con đến Hà Nội rồi. Giao thông tệ lắm, nhưng con thích thành phố này.",
-            "en": "Mother, I am in Hanoi. The traffic is bad, but I like the city."
+            "en": "Mom, I am in Hanoi. The traffic is bad, but I like the city."
           }
         }
       ],
@@ -1367,7 +1370,7 @@
           "speaker": "N",
           "text": "His friend Tuan knows a woman with a small apartment.",
           "translation": {
-            "vi": "Bạn anh là Tuấn quen một cô có căn hộ nhỏ.",
+            "vi": "Tuấn, bạn của Nam, quen một cô có căn hộ nhỏ.",
             "en": "His friend Tuan knows a woman with a small apartment."
           }
         },
@@ -1381,10 +1384,10 @@
         },
         {
           "speaker": "B",
-          "text": "Hello, I am Mrs Ha. Please come in.",
+          "text": "Hello, I am Mrs. Tran. Please come in.",
           "translation": {
-            "vi": "Chào các cháu, cô là Hà. Mời vào.",
-            "en": "Hello, I am Mrs Ha. Please come in."
+            "vi": "Chào các cháu, cô là cô Trần. Mời vào.",
+            "en": "Hello, I am Mrs. Tran. Please come in."
           }
         },
         {
@@ -1405,18 +1408,18 @@
         },
         {
           "speaker": "A",
-          "text": "Does the bathroom have a shower, Mrs Ha?",
+          "text": "Does the bathroom have a shower, Mrs. Tran?",
           "translation": {
             "vi": "Phòng tắm có vòi hoa sen không cô?",
-            "en": "Does the bathroom have a shower, Mrs Ha?"
+            "en": "Does the bathroom have a shower, Mrs. Tran?"
           }
         },
         {
           "speaker": "B",
-          "text": "Yes, it has a shower and a toilet.",
+          "text": "Yes, it has a shower.",
           "translation": {
-            "vi": "Có, có vòi hoa sen và bồn cầu.",
-            "en": "Yes, it has a shower and a toilet."
+            "vi": "Có, có vòi hoa sen.",
+            "en": "Yes, it has a shower."
           }
         },
         {
@@ -1461,10 +1464,10 @@
         },
         {
           "speaker": "A",
-          "text": "And the money, Mrs Ha? What do you want for one month?",
+          "text": "And the money, Mrs. Tran? What is it for one month?",
           "translation": {
             "vi": "Còn tiền thì sao cô? Một tháng cô lấy bao nhiêu ạ?",
-            "en": "And the money, Mrs Ha? What do you want for one month?"
+            "en": "And the money, Mrs. Tran? What is it for one month?"
           }
         },
         {
@@ -1493,10 +1496,10 @@
         },
         {
           "speaker": "N",
-          "text": "Mrs Ha looks at him for a moment, and she thinks about it.",
+          "text": "Mrs. Tran looks at him for a moment, and she thinks about it.",
           "translation": {
-            "vi": "Cô Hà nhìn anh một lát và suy nghĩ.",
-            "en": "Mrs Ha looks at him for a moment, and she thinks about it."
+            "vi": "Cô Trần nhìn anh một lát và suy nghĩ.",
+            "en": "Mrs. Tran looks at him for a moment, and she thinks about it."
           }
         },
         {
@@ -1523,9 +1526,9 @@
       ],
       "tokenMap": {
         "dong": "name",
-        "ha": "name",
         "hanoi": "name",
         "nam": "name",
+        "tran": "name",
         "tuan": "name"
       },
       "questions": [
@@ -1576,8 +1579,8 @@
         {
           "kind": "infer",
           "prompt": {
-            "vi": "Vì sao bà Hà đồng ý giảm tiền?",
-            "en": "Why does Mrs Ha agree to a lower price?"
+            "vi": "Vì sao cô Trần đồng ý giảm tiền?",
+            "en": "Why does Mrs. Tran agree to a lower price?"
           },
           "options": [
             {
@@ -1585,11 +1588,11 @@
               "en": "Because the apartment has no light"
             },
             {
-              "vi": "Có lẽ bà thương Nam là công nhân",
+              "vi": "Có lẽ cô thương Nam là công nhân",
               "en": "Maybe she feels for him, a worker"
             },
             {
-              "vi": "Vì Tuấn đưa tiền cho bà",
+              "vi": "Vì Tuấn đưa tiền cho cô",
               "en": "Because Tuan gives her money"
             }
           ],
@@ -1609,10 +1612,10 @@
       "sentences": [
         {
           "speaker": "N",
-          "text": "Mr Kim is Tuan's boss. He is from Korea.",
+          "text": "Mr. Kim is Tuan's boss. He is from Korea.",
           "translation": {
             "vi": "Ông Kim là sếp của Tuấn. Ông đến từ Hàn Quốc.",
-            "en": "Mr Kim is Tuan's boss. He is from Korea."
+            "en": "Mr. Kim is Tuan's boss. He is from Korea."
           }
         },
         {
@@ -1705,10 +1708,10 @@
         },
         {
           "speaker": "N",
-          "text": "Mr Kim comes at seven o'clock with a cake for the children.",
+          "text": "Mr. Kim comes at seven o'clock with a cake for the children.",
           "translation": {
             "vi": "Ông Kim đến lúc bảy giờ với một chiếc bánh cho bọn trẻ.",
-            "en": "Mr Kim comes at seven o'clock with a cake for the children."
+            "en": "Mr. Kim comes at seven o'clock with a cake for the children."
           }
         },
         {
@@ -1729,10 +1732,10 @@
         },
         {
           "speaker": "B",
-          "text": "Thank you, Mr Kim. Would you like another bowl?",
+          "text": "Thank you, Mr. Kim. Would you like another bowl?",
           "translation": {
             "vi": "Cảm ơn ông Kim. Ông dùng thêm một bát nữa nhé?",
-            "en": "Thank you, Mr Kim. Would you like another bowl?"
+            "en": "Thank you, Mr. Kim. Would you like another bowl?"
           }
         },
         {
@@ -1799,7 +1802,7 @@
           "kind": "locate",
           "prompt": {
             "vi": "Ông Kim mang gì đến?",
-            "en": "What does Mr Kim bring?"
+            "en": "What does Mr. Kim bring?"
           },
           "options": [
             {
@@ -1821,7 +1824,7 @@
           "kind": "infer",
           "prompt": {
             "vi": "Ông Kim có thích món canh không?",
-            "en": "Does Mr Kim like the soup?"
+            "en": "Does Mr. Kim like the soup?"
           },
           "options": [
             {
@@ -2388,10 +2391,10 @@
         },
         {
           "speaker": "A",
-          "text": "Nothing, Mother! I am only counting.",
+          "text": "Nothing, Mom! I am only counting.",
           "translation": {
             "vi": "Không có gì đâu mẹ! Con chỉ đang đếm thôi.",
-            "en": "Nothing, Mother! I am only counting."
+            "en": "Nothing, Mom! I am only counting."
           }
         },
         {
@@ -2420,10 +2423,10 @@
         },
         {
           "speaker": "N",
-          "text": "The chair is really bad, and she can't sit well.",
+          "text": "The chair is really bad, and she can't sit on it.",
           "translation": {
-            "vi": "Chiếc ghế tệ lắm, bà không ngồi thoải mái được.",
-            "en": "The chair is really bad, and she can't sit well."
+            "vi": "Chiếc ghế tệ lắm, bà không ngồi được.",
+            "en": "The chair is really bad, and she can't sit on it."
           }
         },
         {
@@ -2444,10 +2447,10 @@
         },
         {
           "speaker": "A",
-          "text": "This is for you, Grandmother! It is a gift for your birthday.",
+          "text": "This is for you, Grandma! It is a gift for your birthday.",
           "translation": {
             "vi": "Cháu tặng bà đây ạ! Quà sinh nhật của bà.",
-            "en": "This is for you, Grandmother! It is a gift for your birthday."
+            "en": "This is for you, Grandma! It is a gift for your birthday."
           }
         },
         {
@@ -2597,10 +2600,10 @@
         },
         {
           "speaker": "A",
-          "text": "Please fill in this form and write the date of your trip.",
+          "text": "Please fill out this form and write the date of your trip.",
           "translation": {
             "vi": "Vui lòng điền vào mẫu đơn này và ghi ngày đi.",
-            "en": "Please fill in this form and write the date of your trip."
+            "en": "Please fill out this form and write the date of your trip."
           }
         },
         {
@@ -2693,17 +2696,18 @@
         },
         {
           "speaker": "B",
-          "text": "Goodbye, Mother. I will come home at Tet!",
+          "text": "Goodbye, Mom. I will come home for Tet!",
           "translation": {
             "vi": "Con chào mẹ. Tết con sẽ về!",
-            "en": "Goodbye, Mother. I will come home at Tet!"
+            "en": "Goodbye, Mom. I will come home for Tet!"
           }
         }
       ],
       "newLexemes": [
         "en:w:passport",
         "en:w:form",
-        "en:w:office"
+        "en:w:office",
+        "en:w:out"
       ],
       "tokenMap": {
         "bac": "name",
@@ -2834,10 +2838,10 @@
         },
         {
           "speaker": "A",
-          "text": "Hello, Grandmother. Are you well?",
+          "text": "Hello, Grandma. How are you?",
           "translation": {
             "vi": "Cháu chào bà. Bà có khỏe không ạ?",
-            "en": "Hello, Grandmother. Are you well?"
+            "en": "Hello, Grandma. How are you?"
           }
         },
         {
@@ -2850,10 +2854,10 @@
         },
         {
           "speaker": "A",
-          "text": "Are you sick, Grandmother? Do you need a doctor?",
+          "text": "Are you sick, Grandma? Do you need a doctor?",
           "translation": {
             "vi": "Bà có ốm không? Bà có cần bác sĩ không?",
-            "en": "Are you sick, Grandmother? Do you need a doctor?"
+            "en": "Are you sick, Grandma? Do you need a doctor?"
           }
         },
         {
@@ -2914,14 +2918,14 @@
         },
         {
           "speaker": "N",
-          "text": "On Sunday, Hung's uncle stands at the door and looks at him.",
+          "text": "On Sunday, Hung's aunt stands at the door and looks at him.",
           "translation": {
-            "vi": "Chủ nhật, chú của Hùng đứng ở cửa nhìn anh.",
-            "en": "On Sunday, Hung's uncle stands at the door and looks at him."
+            "vi": "Chủ nhật, cô của Hùng đứng ở cửa nhìn anh.",
+            "en": "On Sunday, Hung's aunt stands at the door and looks at him."
           }
         },
         {
-          "speaker": "A",
+          "speaker": "B",
           "text": "Your grandmother needs only one thing. She needs you.",
           "translation": {
             "vi": "Bà cháu chỉ cần một thứ thôi. Bà cần cháu.",
@@ -2930,17 +2934,18 @@
         },
         {
           "speaker": "A",
-          "text": "I know, Uncle. I will visit her every month.",
+          "text": "I know, Aunt. I will visit her every month.",
           "translation": {
-            "vi": "Cháu biết rồi, chú ạ. Tháng nào cháu cũng sẽ về thăm bà.",
-            "en": "I know, Uncle. I will visit her every month."
+            "vi": "Cháu biết rồi, cô ạ. Tháng nào cháu cũng sẽ về thăm bà.",
+            "en": "I know, Aunt. I will visit her every month."
           }
         }
       ],
       "newLexemes": [
         "en:w:sick",
         "en:w:sleep",
-        "en:w:doctor"
+        "en:w:doctor",
+        "en:w:how-are-you"
       ],
       "tokenMap": {
         "hanoi": "name",
@@ -3496,8 +3501,8 @@
       "band": "A1-1",
       "title": "The key on the table",
       "blurb": {
-        "vi": "Linh quên chìa khóa ở chỗ làm vào cuối tuần.",
-        "en": "Linh forgets her key on the weekend."
+        "vi": "Tối thứ Sáu, Linh không tìm thấy chìa khóa nhà.",
+        "en": "On Friday evening, Linh can't find her key."
       },
       "sentences": [
         {
@@ -3550,10 +3555,10 @@
         },
         {
           "speaker": "N",
-          "text": "Her neighbor, Mr Le, sees her at the door.",
+          "text": "Her neighbor, Mr. Le, sees her at the door.",
           "translation": {
             "vi": "Hàng xóm của cô, ông Lê, thấy cô đứng ở cửa.",
-            "en": "Her neighbor, Mr Le, sees her at the door."
+            "en": "Her neighbor, Mr. Le, sees her at the door."
           }
         },
         {
@@ -3566,10 +3571,10 @@
         },
         {
           "speaker": "B",
-          "text": "I lost my key, Mr Le. I think it is at work.",
+          "text": "I lost my key, Mr. Le. I think it is at work.",
           "translation": {
             "vi": "Cháu mất chìa khóa rồi bác ạ. Chắc nó ở chỗ làm.",
-            "en": "I lost my key, Mr Le. I think it is at work."
+            "en": "I lost my key, Mr. Le. I think it is at work."
           }
         },
         {
@@ -3592,7 +3597,7 @@
           "speaker": "B",
           "text": "Could I use your phone? My friend Mai has a key.",
           "translation": {
-            "vi": "Cháu dùng điện thoại của bác được không ạ? Bạn cháu là Mai có chìa khóa.",
+            "vi": "Cháu dùng điện thoại của bác được không ạ? Mai, bạn cháu, có chìa khóa.",
             "en": "Could I use your phone? My friend Mai has a key."
           }
         },
@@ -3606,10 +3611,10 @@
         },
         {
           "speaker": "B",
-          "text": "Thank you, Mai! Thank you, Mr Le!",
+          "text": "Thank you, Mai! Thank you, Mr. Le!",
           "translation": {
             "vi": "Cảm ơn Mai! Cháu cảm ơn bác!",
-            "en": "Thank you, Mai! Thank you, Mr Le!"
+            "en": "Thank you, Mai! Thank you, Mr. Le!"
           }
         },
         {
@@ -3638,10 +3643,10 @@
         },
         {
           "speaker": "B",
-          "text": "No! It was in the apartment, and I was the one without it!",
+          "text": "No! It was in the apartment all this time!",
           "translation": {
-            "vi": "Không! Nó ở trong nhà, còn mình thì không có nó!",
-            "en": "No! It was in the apartment, and I was the one without it!"
+            "vi": "Không! Nó ở trong nhà từ đầu đến giờ!",
+            "en": "No! It was in the apartment all this time!"
           }
         }
       ],
@@ -3691,11 +3696,11 @@
             },
             {
               "vi": "Ông Lê",
-              "en": "Mr Le"
+              "en": "Mr. Le"
             },
             {
               "vi": "Vợ ông Lê",
-              "en": "Mr Le's wife"
+              "en": "Mr. Le's wife"
             }
           ],
           "answer": 0
@@ -3736,10 +3741,10 @@
       "sentences": [
         {
           "speaker": "N",
-          "text": "Mrs Thu lives on the first floor of a building in Saigon.",
+          "text": "Mrs. Pham lives on the first floor of a building in Saigon.",
           "translation": {
-            "vi": "Bà Thu sống ở tầng một của một tòa nhà ở Sài Gòn.",
-            "en": "Mrs Thu lives on the first floor of a building in Saigon."
+            "vi": "Bà Phạm sống ở tầng một của một tòa nhà ở Sài Gòn.",
+            "en": "Mrs. Pham lives on the first floor of a building in Saigon."
           }
         },
         {
@@ -3784,18 +3789,18 @@
         },
         {
           "speaker": "N",
-          "text": "Mrs Thu goes and asks her neighbor, Mr Hung.",
+          "text": "Mrs. Pham goes and asks her neighbor, Mr. Nguyen.",
           "translation": {
-            "vi": "Bà Thu đi hỏi ông Hùng, hàng xóm của bà.",
-            "en": "Mrs Thu goes and asks her neighbor, Mr Hung."
+            "vi": "Bà Phạm đi hỏi ông Nguyễn, hàng xóm của bà.",
+            "en": "Mrs. Pham goes and asks her neighbor, Mr. Nguyen."
           }
         },
         {
           "speaker": "B",
-          "text": "Excuse me, Mr Hung. Did you see my cat?",
+          "text": "Excuse me, Mr. Nguyen. Did you see my cat?",
           "translation": {
-            "vi": "Xin lỗi ông Hùng. Ông có thấy con mèo của tôi không?",
-            "en": "Excuse me, Mr Hung. Did you see my cat?"
+            "vi": "Xin lỗi ông Nguyễn. Ông có thấy con mèo của tôi không?",
+            "en": "Excuse me, Mr. Nguyen. Did you see my cat?"
           }
         },
         {
@@ -3826,7 +3831,7 @@
           "speaker": "N",
           "text": "After an hour, they come to the stairs of the building.",
           "translation": {
-            "vi": "Sau một tiếng, họ quay lại cầu thang tòa nhà.",
+            "vi": "Sau một tiếng, họ đến cầu thang tòa nhà.",
             "en": "After an hour, they come to the stairs of the building."
           }
         },
@@ -3872,10 +3877,10 @@
         },
         {
           "speaker": "N",
-          "text": "After that, Mrs Thu keeps the door of her kitchen closed.",
+          "text": "After that, Mrs. Pham keeps her door closed.",
           "translation": {
-            "vi": "Sau đó, bà Thu luôn đóng cửa bếp.",
-            "en": "After that, Mrs Thu keeps the door of her kitchen closed."
+            "vi": "Sau đó, bà Phạm luôn đóng cửa nhà.",
+            "en": "After that, Mrs. Pham keeps her door closed."
           }
         },
         {
@@ -3893,9 +3898,9 @@
         "en:w:closed"
       ],
       "tokenMap": {
-        "hung": "name",
-        "saigon": "name",
-        "thu": "name"
+        "nguyen": "name",
+        "pham": "name",
+        "saigon": "name"
       },
       "questions": [
         {
@@ -3954,8 +3959,8 @@
               "en": "It has a friend and food there"
             },
             {
-              "vi": "Vì nó muốn tìm bà Thu",
-              "en": "It wants to find Mrs Thu"
+              "vi": "Vì nó muốn tìm bà Phạm",
+              "en": "It wants to find Mrs. Pham"
             },
             {
               "vi": "Vì trời mưa",
@@ -3994,10 +3999,10 @@
         },
         {
           "speaker": "N",
-          "text": "He arrives at the factory early, at half past six.",
+          "text": "He arrives at the factory early, at six thirty.",
           "translation": {
             "vi": "Anh đến nhà máy sớm, lúc sáu giờ rưỡi.",
-            "en": "He arrives at the factory early, at half past six."
+            "en": "He arrives at the factory early, at six thirty."
           }
         },
         {
@@ -4245,17 +4250,17 @@
         },
         {
           "speaker": "A",
-          "text": "Lan, is it really a fire? What can we do?",
+          "text": "Lan, is it really a fire? What do we do?",
           "translation": {
             "vi": "Lan ơi, có cháy thật không? Mình phải làm gì?",
-            "en": "Lan, is it really a fire? What can we do?"
+            "en": "Lan, is it really a fire? What do we do?"
           }
         },
         {
           "speaker": "B",
           "text": "Don't worry. Follow me, and don't run.",
           "translation": {
-            "vi": "Đừng lo. Đi theo tôi, đừng chạy.",
+            "vi": "Đừng lo. Đi theo mình, đừng chạy.",
             "en": "Don't worry. Follow me, and don't run."
           }
         },
@@ -4285,10 +4290,10 @@
         },
         {
           "speaker": "N",
-          "text": "Out of the building, every group stands in its place.",
+          "text": "In front of the building, every group stands in its place.",
           "translation": {
-            "vi": "Ra khỏi tòa nhà, mỗi nhóm đứng vào chỗ của mình.",
-            "en": "Out of the building, every group stands in its place."
+            "vi": "Trước tòa nhà, mỗi nhóm đứng vào chỗ của mình.",
+            "en": "In front of the building, every group stands in its place."
           }
         },
         {
@@ -4327,7 +4332,7 @@
           "speaker": "B",
           "text": "There is no fire. This was only a test.",
           "translation": {
-            "vi": "Không có cháy đâu. Đây chỉ là bài kiểm tra thôi.",
+            "vi": "Không có cháy đâu. Đây chỉ là diễn tập thôi.",
             "en": "There is no fire. This was only a test."
           }
         },
@@ -4351,7 +4356,7 @@
           "speaker": "A",
           "text": "So next time I won't be afraid.",
           "translation": {
-            "vi": "Vậy lần sau tôi sẽ không sợ nữa.",
+            "vi": "Vậy lần sau em sẽ không sợ nữa.",
             "en": "So next time I won't be afraid."
           }
         },
@@ -4422,7 +4427,7 @@
         {
           "kind": "infer",
           "prompt": {
-            "vi": "Vì sao nhà máy làm bài kiểm tra này?",
+            "vi": "Vì sao nhà máy diễn tập như vậy?",
             "en": "Why does the factory do this test?"
           },
           "options": [
@@ -4471,18 +4476,18 @@
         },
         {
           "speaker": "A",
-          "text": "Good afternoon, Ms Hoa. Please sit down. I am Mr Lee.",
+          "text": "Good afternoon, Ms. Tran. Please sit down. I am Mr. Lee.",
           "translation": {
-            "vi": "Chào chị Hoa. Mời chị ngồi. Tôi là ông Lee.",
-            "en": "Good afternoon, Ms Hoa. Please sit down. I am Mr Lee."
+            "vi": "Chào chị Trần. Mời chị ngồi. Tôi là ông Lee.",
+            "en": "Good afternoon, Ms. Tran. Please sit down. I am Mr. Lee."
           }
         },
         {
           "speaker": "B",
-          "text": "Good afternoon, Mr Lee. Thank you.",
+          "text": "Good afternoon, Mr. Lee. Thank you.",
           "translation": {
             "vi": "Chào ông Lee ạ. Cảm ơn ông.",
-            "en": "Good afternoon, Mr Lee. Thank you."
+            "en": "Good afternoon, Mr. Lee. Thank you."
           }
         },
         {
@@ -4495,10 +4500,10 @@
         },
         {
           "speaker": "B",
-          "text": "I worked in a shop for three years, and I worked with customers every day.",
+          "text": "I worked in a store for three years, and I worked with customers every day.",
           "translation": {
             "vi": "Tôi đã làm ở một cửa hàng ba năm, và ngày nào cũng làm việc với khách hàng.",
-            "en": "I worked in a shop for three years, and I worked with customers every day."
+            "en": "I worked in a store for three years, and I worked with customers every day."
           }
         },
         {
@@ -4511,10 +4516,10 @@
         },
         {
           "speaker": "B",
-          "text": "Yes, I can. I can write email and make lists of products.",
+          "text": "Yes, I can. I can write emails and make lists of products.",
           "translation": {
             "vi": "Dạ được. Tôi biết viết email và lập danh sách sản phẩm.",
-            "en": "Yes, I can. I can write email and make lists of products."
+            "en": "Yes, I can. I can write emails and make lists of products."
           }
         },
         {
@@ -4591,10 +4596,10 @@
         },
         {
           "speaker": "B",
-          "text": "Yes, of course! Thank you very much, Mr Lee.",
+          "text": "Yes, of course! Thank you very much, Mr. Lee.",
           "translation": {
             "vi": "Dạ tất nhiên ạ! Cảm ơn ông rất nhiều.",
-            "en": "Yes, of course! Thank you very much, Mr Lee."
+            "en": "Yes, of course! Thank you very much, Mr. Lee."
           }
         },
         {
@@ -4615,7 +4620,8 @@
         "dong": "name",
         "hanoi": "name",
         "hoa": "name",
-        "lee": "name"
+        "lee": "name",
+        "tran": "name"
       },
       "questions": [
         {
@@ -4675,7 +4681,7 @@
             },
             {
               "vi": "Có, vì ông Lee hỏi khi nào chị bắt đầu",
-              "en": "Yes: Mr Lee asks when she can start"
+              "en": "Yes: Mr. Lee asks when she can start"
             },
             {
               "vi": "Không biết được",
@@ -4778,10 +4784,10 @@
         },
         {
           "speaker": "A",
-          "text": "I took some medicine from the shop, with no food. Now my stomach hurts.",
+          "text": "I took some medicine from the pharmacy, without food. Now my stomach hurts.",
           "translation": {
-            "vi": "Tôi uống ít thuốc mua ở cửa hàng, lúc đói. Giờ tôi đau bụng.",
-            "en": "I took some medicine from the shop, with no food. Now my stomach hurts."
+            "vi": "Tôi uống ít thuốc mua ở hiệu thuốc, lúc đói. Giờ tôi đau bụng.",
+            "en": "I took some medicine from the pharmacy, without food. Now my stomach hurts."
           }
         },
         {
@@ -4927,7 +4933,7 @@
       "band": "A1-2",
       "title": "Bao's tooth",
       "blurb": {
-        "vi": "Bảo sợ đến nha sĩ.",
+        "vi": "Bảo đau răng và sợ đi khám.",
         "en": "Bao is afraid of going to the dentist."
       },
       "sentences": [
@@ -4957,10 +4963,10 @@
         },
         {
           "speaker": "A",
-          "text": "My tooth hurts, Mother. And my ear hurts, too.",
+          "text": "My tooth hurts, Mom. And my ear hurts, too.",
           "translation": {
             "vi": "Con đau răng, mẹ ạ. Con đau cả tai nữa.",
-            "en": "My tooth hurts, Mother. And my ear hurts, too."
+            "en": "My tooth hurts, Mom. And my ear hurts, too."
           }
         },
         {
@@ -5061,18 +5067,18 @@
         },
         {
           "speaker": "B",
-          "text": "Yes, but wash your teeth twice a day, and don't eat too much sugar.",
+          "text": "Yes, but brush your teeth twice a day, and don't eat too much sugar.",
           "translation": {
             "vi": "Được, nhưng mỗi ngày đánh răng hai lần và đừng ăn quá nhiều đường.",
-            "en": "Yes, but wash your teeth twice a day, and don't eat too much sugar."
+            "en": "Yes, but brush your teeth twice a day, and don't eat too much sugar."
           }
         },
         {
           "speaker": "N",
-          "text": "On the road home, Bao's mother buys him a banana, not a cake.",
+          "text": "On the way home, Bao's mother buys him a banana, not a cake.",
           "translation": {
             "vi": "Trên đường về, mẹ mua cho Bảo một quả chuối, không phải bánh ngọt.",
-            "en": "On the road home, Bao's mother buys him a banana, not a cake."
+            "en": "On the way home, Bao's mother buys him a banana, not a cake."
           }
         }
       ],
@@ -5160,8 +5166,8 @@
       "band": "A1-2",
       "title": "The yellow dress",
       "blurb": {
-        "vi": "Mai chọn váy cho đám cưới của bạn.",
-        "en": "Mai looks for a dress at a clothes shop."
+        "vi": "Mai chọn váy để đi dự tiệc.",
+        "en": "Mai looks for a dress for a party."
       },
       "sentences": [
         {
@@ -5174,10 +5180,10 @@
         },
         {
           "speaker": "N",
-          "text": "After work, she goes to a clothes shop with her sister Linh.",
+          "text": "After work, she goes to a clothes store with her sister Linh.",
           "translation": {
             "vi": "Sau giờ làm, cô đến cửa hàng quần áo với em gái là Linh.",
-            "en": "After work, she goes to a clothes shop with her sister Linh."
+            "en": "After work, she goes to a clothes store with her sister Linh."
           }
         },
         {
@@ -5246,10 +5252,10 @@
         },
         {
           "speaker": "B",
-          "text": "Oh! Yellow is my favorite color. Can I try it?",
+          "text": "Oh! Yellow is my favorite color. Can I try it on?",
           "translation": {
             "vi": "Ồ! Màu vàng là màu tôi thích nhất. Tôi thử được không?",
-            "en": "Oh! Yellow is my favorite color. Can I try it?"
+            "en": "Oh! Yellow is my favorite color. Can I try it on?"
           }
         },
         {
@@ -5294,10 +5300,10 @@
         },
         {
           "speaker": "A",
-          "text": "Yes, it is the same. But this one is cheaper because it is a little dirty on the side.",
+          "text": "Yes, it is the same. But I can make this one cheaper because it is a little dirty on the side.",
           "translation": {
-            "vi": "Cùng giá ạ. Nhưng cái này rẻ hơn vì hơi bẩn ở một bên.",
-            "en": "Yes, it is the same. But this one is cheaper because it is a little dirty on the side."
+            "vi": "Cùng giá ạ. Nhưng tôi có thể bớt cho chị cái này vì nó hơi bẩn ở một bên.",
+            "en": "Yes, it is the same. But I can make this one cheaper because it is a little dirty on the side."
           }
         },
         {
@@ -5425,18 +5431,18 @@
         },
         {
           "speaker": "N",
-          "text": "It is on floor 5, so it is very high.",
+          "text": "It is five floors up, so it is very high.",
           "translation": {
-            "vi": "Căn hộ ở tầng 5, nên rất cao.",
-            "en": "It is on floor 5, so it is very high."
+            "vi": "Căn hộ ở tầng năm, nên rất cao.",
+            "en": "It is five floors up, so it is very high."
           }
         },
         {
           "speaker": "N",
-          "text": "The building has no lift, so they must use the stairs.",
+          "text": "The building has no elevator, so they must use the stairs.",
           "translation": {
             "vi": "Tòa nhà không có thang máy nên họ phải đi cầu thang.",
-            "en": "The building has no lift, so they must use the stairs."
+            "en": "The building has no elevator, so they must use the stairs."
           }
         },
         {
@@ -5449,10 +5455,10 @@
         },
         {
           "speaker": "A",
-          "text": "Those are my books. I can carry it.",
+          "text": "My books are in it. I can carry it.",
           "translation": {
             "vi": "Sách của anh đấy. Anh khiêng được.",
-            "en": "Those are my books. I can carry it."
+            "en": "My books are in it. I can carry it."
           }
         },
         {
@@ -5497,10 +5503,10 @@
         },
         {
           "speaker": "A",
-          "text": "My back hurts. Is it possible to put it down?",
+          "text": "My back hurts. Can we put it down?",
           "translation": {
             "vi": "Lưng anh đau quá. Đặt xuống được không?",
-            "en": "My back hurts. Is it possible to put it down?"
+            "en": "My back hurts. Can we put it down?"
           }
         },
         {
@@ -5521,10 +5527,10 @@
         },
         {
           "speaker": "B",
-          "text": "This window is very low. Our little son can fall.",
+          "text": "This window is very low. Our little son could fall.",
           "translation": {
             "vi": "Cửa sổ này thấp quá. Con trai nhỏ của mình có thể ngã.",
-            "en": "This window is very low. Our little son can fall."
+            "en": "This window is very low. Our little son could fall."
           }
         },
         {
@@ -5572,7 +5578,8 @@
         "en:w:strong",
         "en:w:heavy",
         "en:w:high",
-        "en:w:low"
+        "en:w:low",
+        "en:w:elevator"
       ],
       "tokenMap": {
         "kien": "name",
@@ -5741,10 +5748,10 @@
         },
         {
           "speaker": "N",
-          "text": "A woman at the back of the room puts up her hand.",
+          "text": "A woman at the back of the room has her hand up.",
           "translation": {
             "vi": "Một phụ nữ ở cuối phòng giơ tay.",
-            "en": "A woman at the back of the room puts up her hand."
+            "en": "A woman at the back of the room has her hand up."
           }
         },
         {
@@ -5892,16 +5899,16 @@
       "band": "A1-2",
       "title": "The first flight",
       "blurb": {
-        "vi": "Bà Thảo lần đầu đi máy bay.",
-        "en": "Mrs Thao flies for the first time."
+        "vi": "Bà Phạm lần đầu đi máy bay.",
+        "en": "Mrs. Pham flies for the first time."
       },
       "sentences": [
         {
           "speaker": "N",
-          "text": "Mrs Thao is sixty-five, and she has never been on a plane.",
+          "text": "Mrs. Pham is sixty-five, and she has never been on a plane.",
           "translation": {
-            "vi": "Bà Thảo sáu mươi lăm tuổi và chưa bao giờ đi máy bay.",
-            "en": "Mrs Thao is sixty-five, and she has never been on a plane."
+            "vi": "Bà Phạm sáu mươi lăm tuổi và chưa bao giờ đi máy bay.",
+            "en": "Mrs. Pham is sixty-five, and she has never been on a plane."
           }
         },
         {
@@ -5914,10 +5921,10 @@
         },
         {
           "speaker": "A",
-          "text": "Mother, we fly on Friday. I already have the tickets.",
+          "text": "Mom, we fly on Friday. I already have the tickets.",
           "translation": {
             "vi": "Mẹ ơi, thứ Sáu mình bay. Con có vé rồi.",
-            "en": "Mother, we fly on Friday. I already have the tickets."
+            "en": "Mom, we fly on Friday. I already have the tickets."
           }
         },
         {
@@ -5938,10 +5945,10 @@
         },
         {
           "speaker": "N",
-          "text": "On Friday morning, Mrs Thao is excited, but she is also worried.",
+          "text": "On Friday morning, Mrs. Pham is excited, but she is also worried.",
           "translation": {
-            "vi": "Sáng thứ Sáu, bà Thảo háo hức, nhưng cũng lo lắng.",
-            "en": "On Friday morning, Mrs Thao is excited, but she is also worried."
+            "vi": "Sáng thứ Sáu, bà Phạm háo hức, nhưng cũng lo lắng.",
+            "en": "On Friday morning, Mrs. Pham is excited, but she is also worried."
           }
         },
         {
@@ -5962,10 +5969,10 @@
         },
         {
           "speaker": "A",
-          "text": "Don't worry, Mother. Hold my hand and look out of the window.",
+          "text": "Don't worry, Mom. Hold my hand and look out the window.",
           "translation": {
             "vi": "Mẹ đừng lo. Mẹ nắm tay con và nhìn ra cửa sổ đi.",
-            "en": "Don't worry, Mother. Hold my hand and look out of the window."
+            "en": "Don't worry, Mom. Hold my hand and look out the window."
           }
         },
         {
@@ -5994,10 +6001,10 @@
         },
         {
           "speaker": "A",
-          "text": "Are you thirsty, Mother?",
+          "text": "Are you thirsty, Mom?",
           "translation": {
             "vi": "Mẹ có khát không?",
-            "en": "Are you thirsty, Mother?"
+            "en": "Are you thirsty, Mom?"
           }
         },
         {
@@ -6051,7 +6058,7 @@
         "japan": "name",
         "khanh": "name",
         "nang": "name",
-        "thao": "name"
+        "pham": "name"
       },
       "questions": [
         {
@@ -6079,8 +6086,8 @@
         {
           "kind": "locate",
           "prompt": {
-            "vi": "Bà Thảo uống gì trên máy bay?",
-            "en": "What does Mrs Thao drink on the plane?"
+            "vi": "Bà Phạm uống gì trên máy bay?",
+            "en": "What does Mrs. Pham drink on the plane?"
           },
           "options": [
             {
@@ -6101,8 +6108,8 @@
         {
           "kind": "infer",
           "prompt": {
-            "vi": "Thái độ của bà Thảo thay đổi thế nào?",
-            "en": "How does Mrs Thao change?"
+            "vi": "Thái độ của bà Phạm thay đổi thế nào?",
+            "en": "How does Mrs. Pham change?"
           },
           "options": [
             {
@@ -6158,10 +6165,10 @@
         },
         {
           "speaker": "N",
-          "text": "One day, she sees an old man at the side of the road.",
+          "text": "One day, she sees an old man on the side of the road.",
           "translation": {
             "vi": "Một hôm, cô thấy một ông cụ đứng bên đường.",
-            "en": "One day, she sees an old man at the side of the road."
+            "en": "One day, she sees an old man on the side of the road."
           }
         },
         {
@@ -6504,10 +6511,10 @@
         },
         {
           "speaker": "A",
-          "text": "You said you can't sing!",
+          "text": "You said you couldn't sing!",
           "translation": {
             "vi": "Em bảo em không biết hát mà!",
-            "en": "You said you can't sing!"
+            "en": "You said you couldn't sing!"
           }
         },
         {
@@ -6691,10 +6698,10 @@
         },
         {
           "speaker": "A",
-          "text": "Maybe not. He is at a meeting, and he forgot his password.",
+          "text": "Maybe not. He is in a meeting, and he forgot his password.",
           "translation": {
             "vi": "Chắc chưa. Ông ấy đang họp, mà lại quên mật khẩu.",
-            "en": "Maybe not. He is at a meeting, and he forgot his password."
+            "en": "Maybe not. He is in a meeting, and he forgot his password."
           }
         },
         {
@@ -6723,10 +6730,10 @@
         },
         {
           "speaker": "B",
-          "text": "Excuse me, Mr Pham. I have something to tell you. I sent a bad email.",
+          "text": "Excuse me, Mr. Pham. I have something to tell you. I sent a bad email.",
           "translation": {
             "vi": "Xin lỗi ông Phạm. Tôi có chuyện muốn nói. Tôi đã gửi một email không hay.",
-            "en": "Excuse me, Mr Pham. I have something to tell you. I sent a bad email."
+            "en": "Excuse me, Mr. Pham. I have something to tell you. I sent a bad email."
           }
         },
         {
@@ -6847,10 +6854,10 @@
       "sentences": [
         {
           "speaker": "N",
-          "text": "Mrs Huong has a bad cough, so she calls the clinic on Monday morning.",
+          "text": "Mrs. Tran has a bad cough, so she calls the clinic on Monday morning.",
           "translation": {
-            "vi": "Bà Hương bị ho nặng nên sáng thứ Hai gọi điện đến phòng khám.",
-            "en": "Mrs Huong has a bad cough, so she calls the clinic on Monday morning."
+            "vi": "Bà Trần bị ho nặng nên sáng thứ Hai gọi điện đến phòng khám.",
+            "en": "Mrs. Tran has a bad cough, so she calls the clinic on Monday morning."
           }
         },
         {
@@ -6943,10 +6950,10 @@
         },
         {
           "speaker": "A",
-          "text": "Yes. Is half past three good for you?",
+          "text": "Yes. Is three thirty good for you?",
           "translation": {
             "vi": "Được ạ. Ba giờ rưỡi có tiện cho bà không?",
-            "en": "Yes. Is half past three good for you?"
+            "en": "Yes. Is three thirty good for you?"
           }
         },
         {
@@ -6975,10 +6982,10 @@
         },
         {
           "speaker": "A",
-          "text": "Thank you, Mrs Tran. See you tomorrow at half past three.",
+          "text": "Thank you, Mrs. Tran. See you tomorrow at half past three.",
           "translation": {
             "vi": "Cảm ơn bà Trần. Hẹn gặp bà ba giờ rưỡi ngày mai.",
-            "en": "Thank you, Mrs Tran. See you tomorrow at half past three."
+            "en": "Thank you, Mrs. Tran. See you tomorrow at half past three."
           }
         },
         {
@@ -7014,8 +7021,8 @@
         {
           "kind": "locate",
           "prompt": {
-            "vi": "Lần gọi đầu tiên bà Hương gọi đến đâu?",
-            "en": "Whom does Mrs Huong call first?"
+            "vi": "Lần gọi đầu tiên bà Trần gọi đến đâu?",
+            "en": "Whom does Mrs. Tran call first?"
           },
           "options": [
             {
@@ -7091,10 +7098,10 @@
       "sentences": [
         {
           "speaker": "N",
-          "text": "Trang works at a shop in the middle of Saigon.",
+          "text": "Trang works at a store in the middle of Saigon.",
           "translation": {
             "vi": "Trang làm ở một cửa hàng giữa trung tâm Sài Gòn.",
-            "en": "Trang works at a shop in the middle of Saigon."
+            "en": "Trang works at a store in the middle of Saigon."
           }
         },
         {
@@ -7107,10 +7114,10 @@
         },
         {
           "speaker": "N",
-          "text": "The schedule says that the bus comes at ten past seven.",
+          "text": "The schedule says that the bus comes at seven ten.",
           "translation": {
             "vi": "Lịch ghi xe đến lúc bảy giờ mười.",
-            "en": "The schedule says that the bus comes at ten past seven."
+            "en": "The schedule says that the bus comes at seven ten."
           }
         },
         {
@@ -7139,18 +7146,18 @@
         },
         {
           "speaker": "B",
-          "text": "I am very sorry, Mr Binh. The bus was late.",
+          "text": "I am very sorry, Mr. Vo. The bus was late.",
           "translation": {
-            "vi": "Em rất xin lỗi anh Bình. Xe buýt đến muộn ạ.",
-            "en": "I am very sorry, Mr Binh. The bus was late."
+            "vi": "Em rất xin lỗi anh Võ. Xe buýt đến muộn ạ.",
+            "en": "I am very sorry, Mr. Vo. The bus was late."
           }
         },
         {
           "speaker": "A",
-          "text": "That is the third time this week. Our customers wait for you.",
+          "text": "That is the third time this week. Our customers are waiting for you.",
           "translation": {
             "vi": "Lần thứ ba trong tuần rồi đấy. Khách hàng đang đợi em.",
-            "en": "That is the third time this week. Our customers wait for you."
+            "en": "That is the third time this week. Our customers are waiting for you."
           }
         },
         {
@@ -7211,10 +7218,10 @@
         },
         {
           "speaker": "N",
-          "text": "She arrives at the shop at five to eight, with a big smile.",
+          "text": "She arrives at the store at five to eight, with a big smile.",
           "translation": {
             "vi": "Chị đến cửa hàng lúc tám giờ kém năm, cười thật tươi.",
-            "en": "She arrives at the shop at five to eight, with a big smile."
+            "en": "She arrives at the store at five to eight, with a big smile."
           }
         },
         {
@@ -7227,10 +7234,10 @@
         },
         {
           "speaker": "B",
-          "text": "Nothing. I only changed my road to work.",
+          "text": "Nothing. I only changed my way to work.",
           "translation": {
             "vi": "Không có gì ạ. Em chỉ đổi đường đi làm thôi.",
-            "en": "Nothing. I only changed my road to work."
+            "en": "Nothing. I only changed my way to work."
           }
         }
       ],
@@ -7240,10 +7247,10 @@
         "en:w:schedule"
       ],
       "tokenMap": {
-        "binh": "name",
         "le": "name",
         "saigon": "name",
-        "trang": "name"
+        "trang": "name",
+        "vo": "name"
       },
       "questions": [
         {
@@ -7303,7 +7310,7 @@
             },
             {
               "vi": "Vì Trang đổi cửa hàng",
-              "en": "Because Trang changed shops"
+              "en": "Because Trang changed stores"
             },
             {
               "vi": "Vì Trang mặc đồng phục mới",
@@ -7334,10 +7341,10 @@
         },
         {
           "speaker": "N",
-          "text": "He is the only foreign worker in his team.",
+          "text": "He is the only foreign worker on his team.",
           "translation": {
             "vi": "Anh là người nước ngoài duy nhất trong đội.",
-            "en": "He is the only foreign worker in his team."
+            "en": "He is the only foreign worker on his team."
           }
         },
         {
@@ -7406,10 +7413,10 @@
         },
         {
           "speaker": "N",
-          "text": "He says it in Vietnamese, but the woman in the shop looks at him and laughs.",
+          "text": "He says it in Vietnamese, but the woman in the store looks at him and laughs.",
           "translation": {
             "vi": "Anh nói bằng tiếng Việt, nhưng cô bán hàng nhìn anh rồi cười.",
-            "en": "He says it in Vietnamese, but the woman in the shop looks at him and laughs."
+            "en": "He says it in Vietnamese, but the woman in the store looks at him and laughs."
           }
         },
         {
@@ -7454,10 +7461,10 @@
         },
         {
           "speaker": "N",
-          "text": "Now everyone in the team teaches him a word every day.",
+          "text": "Now everyone on the team teaches him a word every day.",
           "translation": {
             "vi": "Bây giờ mọi người trong đội mỗi ngày dạy anh một từ.",
-            "en": "Now everyone in the team teaches him a word every day."
+            "en": "Now everyone on the team teaches him a word every day."
           }
         },
         {
@@ -7580,10 +7587,10 @@
         },
         {
           "speaker": "N",
-          "text": "Their small hotel is very high, and the rooms are not warm.",
+          "text": "Their small hotel is high in the mountains, and the rooms are not warm.",
           "translation": {
             "vi": "Khách sạn nhỏ của họ ở trên cao, và các phòng không ấm.",
-            "en": "Their small hotel is very high, and the rooms are not warm."
+            "en": "Their small hotel is high in the mountains, and the rooms are not warm."
           }
         },
         {
@@ -7606,7 +7613,7 @@
           "speaker": "N",
           "text": "Their little daughter Vy doesn't want to sleep.",
           "translation": {
-            "vi": "Bé Vy con gái nhỏ của họ không chịu ngủ.",
+            "vi": "Vy, con gái nhỏ của họ, không chịu ngủ.",
             "en": "Their little daughter Vy doesn't want to sleep."
           }
         },
@@ -7620,10 +7627,10 @@
         },
         {
           "speaker": "B",
-          "text": "Vy, stop that! It is late. You can fall!",
+          "text": "Vy, stop that! It is late. You could fall!",
           "translation": {
             "vi": "Vy, thôi đi con! Muộn rồi. Ngã bây giờ!",
-            "en": "Vy, stop that! It is late. You can fall!"
+            "en": "Vy, stop that! It is late. You could fall!"
           }
         },
         {
@@ -7794,7 +7801,7 @@
       "band": "A2-1",
       "title": "The thief on the bus",
       "blurb": {
-        "vi": "Có người lấy trộm ví của Duc trên xe buýt.",
+        "vi": "Có người lấy trộm tiền của Đức trên xe buýt.",
         "en": "Someone steals Duc's money on the bus."
       },
       "sentences": [
@@ -7816,10 +7823,10 @@
         },
         {
           "speaker": "N",
-          "text": "He took the bus home because his motorbike was at the shop.",
+          "text": "He took the bus home because his motorbike was at the repair shop.",
           "translation": {
             "vi": "Anh đi xe buýt về nhà vì xe máy đang ở cửa hàng sửa.",
-            "en": "He took the bus home because his motorbike was at the shop."
+            "en": "He took the bus home because his motorbike was at the repair shop."
           }
         },
         {
@@ -7880,10 +7887,10 @@
         },
         {
           "speaker": "A",
-          "text": "My money! Someone stole all of it on the bus. It was a thief!",
+          "text": "My money! A thief took all of it on the bus!",
           "translation": {
-            "vi": "Tiền của anh! Có người lấy hết tiền trên xe buýt. Một tên trộm!",
-            "en": "My money! Someone stole all of it on the bus. It was a thief!"
+            "vi": "Tiền của anh! Có tên trộm lấy hết tiền trên xe buýt!",
+            "en": "My money! A thief took all of it on the bus!"
           }
         },
         {
@@ -8185,10 +8192,10 @@
         },
         {
           "speaker": "N",
-          "text": "When he went back to work, he drove more slowly.",
+          "text": "When he went back to work, he rode more slowly.",
           "translation": {
             "vi": "Khi đi làm lại, anh chạy xe chậm hơn.",
-            "en": "When he went back to work, he drove more slowly."
+            "en": "When he went back to work, he rode more slowly."
           }
         },
         {
@@ -8426,10 +8433,10 @@
         },
         {
           "speaker": "B",
-          "text": "Thank you for telling me.",
+          "text": "Thank you for checking.",
           "translation": {
-            "vi": "Cảm ơn anh đã nói cho tôi biết.",
-            "en": "Thank you for telling me."
+            "vi": "Cảm ơn anh đã kiểm tra lại.",
+            "en": "Thank you for checking."
           }
         },
         {
@@ -8534,10 +8541,10 @@
     {
       "id": "en.story.the_cancelled_flight",
       "band": "A2-1",
-      "title": "The cancelled flight",
+      "title": "The canceled flight",
       "blurb": {
         "vi": "Chuyến bay của Kiên bị hủy và hành lý thất lạc.",
-        "en": "Kien's flight is cancelled and his bags go missing."
+        "en": "Kien's flight is canceled and his bags go missing."
       },
       "sentences": [
         {
@@ -8654,10 +8661,10 @@
         },
         {
           "speaker": "B",
-          "text": "Please fill in this form. We will send it to your hotel.",
+          "text": "Please fill out this form. We will send it to your hotel.",
           "translation": {
             "vi": "Anh vui lòng điền mẫu đơn này. Chúng tôi sẽ gửi đến khách sạn của anh.",
-            "en": "Please fill in this form. We will send it to your hotel."
+            "en": "Please fill out this form. We will send it to your hotel."
           }
         },
         {
@@ -8678,10 +8685,10 @@
         },
         {
           "speaker": "N",
-          "text": "The manager from Korea, Ms Kim, laughed and showed him a photo from her trip.",
+          "text": "The manager from Korea, Ms. Kim, laughed and showed him a photo from her trip.",
           "translation": {
             "vi": "Bà Kim, quản lý người Hàn, cười và cho anh xem ảnh trong chuyến đi của bà.",
-            "en": "The manager from Korea, Ms Kim, laughed and showed him a photo from her trip."
+            "en": "The manager from Korea, Ms. Kim, laughed and showed him a photo from her trip."
           }
         },
         {
@@ -8710,7 +8717,7 @@
           "kind": "locate",
           "prompt": {
             "vi": "Vì sao chuyến bay bị hủy?",
-            "en": "Why was the flight cancelled?"
+            "en": "Why was the flight canceled?"
           },
           "options": [
             {
@@ -8786,10 +8793,10 @@
       "sentences": [
         {
           "speaker": "N",
-          "text": "Last Saturday, Thu bought a new machine for cooking rice at the supermarket.",
+          "text": "Last Saturday, Thu bought a new rice cooker at the supermarket.",
           "translation": {
             "vi": "Thứ Bảy trước, Thư mua một cái nồi cơm điện mới ở siêu thị.",
-            "en": "Last Saturday, Thu bought a new machine for cooking rice at the supermarket."
+            "en": "Last Saturday, Thu bought a new rice cooker at the supermarket."
           }
         },
         {
@@ -8810,10 +8817,10 @@
         },
         {
           "speaker": "N",
-          "text": "After ten minutes, there was smoke, and the light on the machine went off.",
+          "text": "After ten minutes, there was smoke, and the light on the rice cooker went off.",
           "translation": {
             "vi": "Sau mười phút, có khói, và đèn trên nồi tắt.",
-            "en": "After ten minutes, there was smoke, and the light on the machine went off."
+            "en": "After ten minutes, there was smoke, and the light on the rice cooker went off."
           }
         },
         {
@@ -8826,10 +8833,10 @@
         },
         {
           "speaker": "A",
-          "text": "Take it back to the shop. You can ask for a refund.",
+          "text": "Take it back to the store. You can ask for a refund.",
           "translation": {
             "vi": "Em mang trả cửa hàng đi. Em có thể đòi hoàn tiền.",
-            "en": "Take it back to the shop. You can ask for a refund."
+            "en": "Take it back to the store. You can ask for a refund."
           }
         },
         {
@@ -8842,10 +8849,10 @@
         },
         {
           "speaker": "B",
-          "text": "Hello. This machine is broken, and I would like a refund, please.",
+          "text": "Hello. This rice cooker is broken, and I would like a refund, please.",
           "translation": {
             "vi": "Chào anh. Cái nồi này hỏng rồi, tôi muốn được hoàn tiền.",
-            "en": "Hello. This machine is broken, and I would like a refund, please."
+            "en": "Hello. This rice cooker is broken, and I would like a refund, please."
           }
         },
         {
@@ -8906,10 +8913,10 @@
         },
         {
           "speaker": "N",
-          "text": "He looked at the receipt and at the black rice in the machine.",
+          "text": "He looked at the receipt and at the black rice in the rice cooker.",
           "translation": {
-            "vi": "Ông nhìn hóa đơn và phần cơm đen trong nồi.",
-            "en": "He looked at the receipt and at the black rice in the machine."
+            "vi": "Người quản lý nhìn hóa đơn và phần cơm đen trong nồi.",
+            "en": "He looked at the receipt and at the black rice in the rice cooker."
           }
         },
         {
@@ -8922,10 +8929,10 @@
         },
         {
           "speaker": "N",
-          "text": "Thu got her money, and she bought a machine from another shop.",
+          "text": "Thu got her money, and she bought a rice cooker from another store.",
           "translation": {
             "vi": "Thư nhận lại tiền và mua nồi ở một cửa hàng khác.",
-            "en": "Thu got her money, and she bought a machine from another shop."
+            "en": "Thu got her money, and she bought a rice cooker from another store."
           }
         },
         {
@@ -8987,7 +8994,7 @@
             },
             {
               "vi": "Cô bán hàng",
-              "en": "A woman in the shop"
+              "en": "A woman in the store"
             }
           ],
           "answer": 1
@@ -9036,17 +9043,17 @@
         },
         {
           "speaker": "N",
-          "text": "The boss, Mrs Lee, sent him a contract by email.",
+          "text": "The boss, Mrs. Lee, sent him a contract by email.",
           "translation": {
             "vi": "Bà chủ, bà Lee, gửi cho anh hợp đồng qua email.",
-            "en": "The boss, Mrs Lee, sent him a contract by email."
+            "en": "The boss, Mrs. Lee, sent him a contract by email."
           }
         },
         {
           "speaker": "B",
           "text": "Please read it and sign it by Friday. Friday is the deadline.",
           "translation": {
-            "vi": "Anh đọc rồi ký trước thứ Sáu nhé. Thứ Sáu là hạn chót.",
+            "vi": "Anh đọc rồi ký muộn nhất vào thứ Sáu nhé. Thứ Sáu là hạn chót.",
             "en": "Please read it and sign it by Friday. Friday is the deadline."
           }
         },
@@ -9116,10 +9123,10 @@
         },
         {
           "speaker": "B",
-          "text": "Call Mrs Lee, and ask her to change it. She needs a cook, too.",
+          "text": "Call Mrs. Lee, and ask her to change it. She needs a cook, too.",
           "translation": {
             "vi": "Gọi cho bà Lee, và xin bà ấy sửa lại. Bà ấy cũng cần đầu bếp mà.",
-            "en": "Call Mrs Lee, and ask her to change it. She needs a cook, too."
+            "en": "Call Mrs. Lee, and ask her to change it. She needs a cook, too."
           }
         },
         {
@@ -9132,10 +9139,10 @@
         },
         {
           "speaker": "A",
-          "text": "Good morning, Mrs Lee. I have a question about the contract.",
+          "text": "Good morning, Mrs. Lee. I have a question about the contract.",
           "translation": {
             "vi": "Chào bà Lee. Tôi có một câu hỏi về hợp đồng.",
-            "en": "Good morning, Mrs Lee. I have a question about the contract."
+            "en": "Good morning, Mrs. Lee. I have a question about the contract."
           }
         },
         {
@@ -9272,10 +9279,10 @@
       "sentences": [
         {
           "speaker": "N",
-          "text": "Ngoc finished university two months ago, and she needs a job.",
+          "text": "Ngoc finished college two months ago, and she needs a job.",
           "translation": {
             "vi": "Ngọc tốt nghiệp đại học hai tháng trước và đang cần việc làm.",
-            "en": "Ngoc finished university two months ago, and she needs a job."
+            "en": "Ngoc finished college two months ago, and she needs a job."
           }
         },
         {
@@ -9296,10 +9303,10 @@
         },
         {
           "speaker": "B",
-          "text": "Mother, I want to apply for this job. But I don't have a resume.",
+          "text": "Mom, I want to apply for this job. But I don't have a resume.",
           "translation": {
             "vi": "Mẹ ơi, con muốn xin việc này. Nhưng con chưa có sơ yếu lý lịch.",
-            "en": "Mother, I want to apply for this job. But I don't have a resume."
+            "en": "Mom, I want to apply for this job. But I don't have a resume."
           }
         },
         {
@@ -9344,10 +9351,10 @@
         },
         {
           "speaker": "B",
-          "text": "Yes, and I helped at my aunt's shop every summer.",
+          "text": "Yes, and I helped at my aunt's store every summer.",
           "translation": {
             "vi": "Vâng, và mùa hè nào em cũng phụ cửa hàng của cô.",
-            "en": "Yes, and I helped at my aunt's shop every summer."
+            "en": "Yes, and I helped at my aunt's store every summer."
           }
         },
         {
@@ -9408,10 +9415,10 @@
         },
         {
           "speaker": "B",
-          "text": "Hello, this is Ms Kim. We read your resume, and we would like to meet you.",
+          "text": "Hello, this is Ms. Kim. We read your resume, and we would like to meet you.",
           "translation": {
-            "vi": "Chào em, chị là Kim. Chúng tôi đã đọc sơ yếu lý lịch của em và muốn gặp em.",
-            "en": "Hello, this is Ms Kim. We read your resume, and we would like to meet you."
+            "vi": "Chào em, tôi là chị Kim. Chúng tôi đã đọc sơ yếu lý lịch của em và muốn gặp em.",
+            "en": "Hello, this is Ms. Kim. We read your resume, and we would like to meet you."
           }
         },
         {
@@ -9587,10 +9594,10 @@
         },
         {
           "speaker": "N",
-          "text": "They stood at the door of the factory. They were on strike.",
+          "text": "They stood at the gate of the factory. They were on strike.",
           "translation": {
             "vi": "Họ đứng ở cổng nhà máy. Họ đang đình công.",
-            "en": "They stood at the door of the factory. They were on strike."
+            "en": "They stood at the gate of the factory. They were on strike."
           }
         },
         {
@@ -9651,10 +9658,10 @@
         },
         {
           "speaker": "N",
-          "text": "On Friday, the money was in their bank cards.",
+          "text": "On Friday, the money was in their bank accounts.",
           "translation": {
-            "vi": "Thứ Sáu, tiền đã vào thẻ ngân hàng của họ.",
-            "en": "On Friday, the money was in their bank cards."
+            "vi": "Thứ Sáu, tiền đã vào tài khoản ngân hàng của họ.",
+            "en": "On Friday, the money was in their bank accounts."
           }
         },
         {
@@ -9667,10 +9674,10 @@
         },
         {
           "speaker": "B",
-          "text": "Yes, but next time I will read my pay paper on the first day.",
+          "text": "Yes, but next time I will read my pay stub on the first day.",
           "translation": {
             "vi": "Vâng, nhưng lần sau em sẽ đọc phiếu lương ngay ngày đầu.",
-            "en": "Yes, but next time I will read my pay paper on the first day."
+            "en": "Yes, but next time I will read my pay stub on the first day."
           }
         }
       ],
@@ -9773,10 +9780,10 @@
         },
         {
           "speaker": "N",
-          "text": "On Wednesday morning, his manager, Ms Hoa, came to his desk.",
+          "text": "On Wednesday morning, his manager, Ms. Pham, came to his desk.",
           "translation": {
-            "vi": "Sáng thứ Tư, quản lý của anh, chị Hoa, đến bàn anh.",
-            "en": "On Wednesday morning, his manager, Ms Hoa, came to his desk."
+            "vi": "Sáng thứ Tư, quản lý của anh, chị Phạm, đến bàn anh.",
+            "en": "On Wednesday morning, his manager, Ms. Pham, came to his desk."
           }
         },
         {
@@ -9869,10 +9876,10 @@
         },
         {
           "speaker": "A",
-          "text": "Can I borrow your computer, Ms Hoa?",
+          "text": "Can I borrow your computer, Ms. Pham?",
           "translation": {
             "vi": "Em mượn máy tính của chị được không ạ?",
-            "en": "Can I borrow your computer, Ms Hoa?"
+            "en": "Can I borrow your computer, Ms. Pham?"
           }
         },
         {
@@ -9930,8 +9937,8 @@
         "en:w:borrow"
       ],
       "tokenMap": {
-        "hoa": "name",
         "japan": "name",
+        "pham": "name",
         "tuan": "name"
       },
       "questions": [
@@ -9995,8 +10002,8 @@
               "en": "The customer changed the deadline"
             },
             {
-              "vi": "Anh đã lưu tệp và mượn máy của chị Hoa",
-              "en": "He had saved it and borrowed Ms Hoa's computer"
+              "vi": "Anh đã lưu tệp và mượn máy của chị Phạm",
+              "en": "He had saved it and borrowed Ms. Pham's computer"
             }
           ],
           "answer": 2
@@ -10023,10 +10030,10 @@
         },
         {
           "speaker": "N",
-          "text": "They pay their rent to the landlord, Mr Vo, on the first of every month.",
+          "text": "They pay their rent to the landlord, Mr. Vo, on the first of every month.",
           "translation": {
             "vi": "Họ trả tiền thuê cho chủ nhà, ông Võ, vào ngày mùng một mỗi tháng.",
-            "en": "They pay their rent to the landlord, Mr Vo, on the first of every month."
+            "en": "They pay their rent to the landlord, Mr. Vo, on the first of every month."
           }
         },
         {
@@ -10063,10 +10070,10 @@
         },
         {
           "speaker": "N",
-          "text": "Linh called Mr Vo at once.",
+          "text": "Linh called Mr. Vo at once.",
           "translation": {
             "vi": "Linh gọi ngay cho ông Võ.",
-            "en": "Linh called Mr Vo at once."
+            "en": "Linh called Mr. Vo at once."
           }
         },
         {
@@ -10079,10 +10086,10 @@
         },
         {
           "speaker": "B",
-          "text": "But Mr Vo, the water is coming into the bedroom!",
+          "text": "But Mr. Vo, the water is coming into the bedroom!",
           "translation": {
             "vi": "Nhưng ông Võ ơi, nước đang chảy vào phòng ngủ!",
-            "en": "But Mr Vo, the water is coming into the bedroom!"
+            "en": "But Mr. Vo, the water is coming into the bedroom!"
           }
         },
         {
@@ -10127,18 +10134,18 @@
         },
         {
           "speaker": "N",
-          "text": "On the first of the month, Mr Vo came for the rent.",
+          "text": "On the first of the month, Mr. Vo came for the rent.",
           "translation": {
             "vi": "Mùng một đầu tháng, ông Võ đến lấy tiền thuê.",
-            "en": "On the first of the month, Mr Vo came for the rent."
+            "en": "On the first of the month, Mr. Vo came for the rent."
           }
         },
         {
           "speaker": "B",
-          "text": "This is our rent, without five hundred thousand. This is the plumber's bill.",
+          "text": "This is our rent, minus five hundred thousand. This is the plumber's bill.",
           "translation": {
             "vi": "Đây là tiền thuê, đã trừ năm trăm nghìn. Đây là hóa đơn của thợ sửa.",
-            "en": "This is our rent, without five hundred thousand. This is the plumber's bill."
+            "en": "This is our rent, minus five hundred thousand. This is the plumber's bill."
           }
         },
         {
@@ -10151,10 +10158,10 @@
         },
         {
           "speaker": "B",
-          "text": "Look at our contract, Mr Vo. Page two says the landlord fixes the water.",
+          "text": "Look at our contract, Mr. Vo. Page two says the landlord fixes the pipes.",
           "translation": {
-            "vi": "Ông xem hợp đồng đi, ông Võ. Trang hai ghi chủ nhà phải sửa nước.",
-            "en": "Look at our contract, Mr Vo. Page two says the landlord fixes the water."
+            "vi": "Ông xem hợp đồng đi, ông Võ. Trang hai ghi chủ nhà phải sửa đường ống nước.",
+            "en": "Look at our contract, Mr. Vo. Page two says the landlord fixes the pipes."
           }
         },
         {
@@ -10236,7 +10243,7 @@
           "kind": "infer",
           "prompt": {
             "vi": "Vì sao cuối cùng ông Võ đồng ý?",
-            "en": "Why does Mr Vo agree in the end?"
+            "en": "Why does Mr. Vo agree in the end?"
           },
           "options": [
             {
@@ -10387,11 +10394,11 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "Why don't you talk to me? Give me half now, and half in October.",
+          "speaker": "N",
+          "text": "\"Why didn't you talk to me?\" said Quang. \"Give me half now, and half in October.\"",
           "translation": {
-            "vi": "Sao cậu không nói với mình? Đưa một nửa bây giờ, một nửa tháng Mười.",
-            "en": "Why don't you talk to me? Give me half now, and half in October."
+            "vi": "\"Sao cậu không nói với mình?\" Quang nói. \"Đưa một nửa bây giờ, một nửa tháng Mười.\"",
+            "en": "\"Why didn't you talk to me?\" said Quang. \"Give me half now, and half in October.\""
           }
         },
         {
@@ -10404,10 +10411,10 @@
         },
         {
           "speaker": "N",
-          "text": "In October, he came with all of the other half and a big bag of coffee.",
+          "text": "In October, he came with the other half and a big bag of coffee.",
           "translation": {
             "vi": "Tháng Mười, anh đến với nửa còn lại và một túi cà phê to.",
-            "en": "In October, he came with all of the other half and a big bag of coffee."
+            "en": "In October, he came with the other half and a big bag of coffee."
           }
         },
         {
@@ -10547,10 +10554,10 @@
         },
         {
           "speaker": "A",
-          "text": "Of course I know the way. I was a child there!",
+          "text": "Of course I know the way. I grew up there!",
           "translation": {
             "vi": "Tất nhiên anh biết đường. Hồi nhỏ anh ở đó mà!",
-            "en": "Of course I know the way. I was a child there!"
+            "en": "Of course I know the way. I grew up there!"
           }
         },
         {
@@ -10587,10 +10594,10 @@
         },
         {
           "speaker": "A",
-          "text": "Okay, I am lost. Everything is different. All the old houses are not here.",
+          "text": "Okay, I am lost. Everything is different. The old houses are all gone.",
           "translation": {
             "vi": "Thôi được, anh lạc rồi. Mọi thứ khác hết. Mấy ngôi nhà cũ không còn nữa.",
-            "en": "Okay, I am lost. Everything is different. All the old houses are not here."
+            "en": "Okay, I am lost. Everything is different. The old houses are all gone."
           }
         },
         {
@@ -10602,7 +10609,7 @@
           }
         },
         {
-          "speaker": "B",
+          "speaker": "A",
           "text": "Excuse me. We are going to a wedding in this village. Do you know the way?",
           "translation": {
             "vi": "Xin lỗi bà. Chúng cháu đi đám cưới ở làng này. Bà có biết đường không ạ?",
@@ -10619,10 +10626,10 @@
         },
         {
           "speaker": "N",
-          "text": "Thu looked at Tam, and they asked the old woman to come in the car.",
+          "text": "Thu looked at Tam, and they asked the old woman to get in the car.",
           "translation": {
             "vi": "Thu nhìn Tâm, và họ mời bà cụ lên xe.",
-            "en": "Thu looked at Tam, and they asked the old woman to come in the car."
+            "en": "Thu looked at Tam, and they asked the old woman to get in the car."
           }
         },
         {
@@ -10643,10 +10650,10 @@
         },
         {
           "speaker": "B",
-          "text": "You are late! And why are you with Mrs Yen?",
+          "text": "You are late! And why are you with Mrs. Le?",
           "translation": {
-            "vi": "Anh đến muộn! Sao anh lại đi với bà Yến?",
-            "en": "You are late! And why are you with Mrs Yen?"
+            "vi": "Anh đến muộn! Sao anh lại đi với bà Lê?",
+            "en": "You are late! And why are you with Mrs. Le?"
           }
         },
         {
@@ -10676,12 +10683,12 @@
         "hanoi": "name",
         "hien": "name",
         "hien'": "name",
+        "le": "name",
         "left": "en:w:leave",
         "lost": "en:w:lost",
         "tam": "name",
         "tam'": "name",
-        "thu": "name",
-        "yen": "name"
+        "thu": "name"
       },
       "questions": [
         {

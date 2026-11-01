@@ -1234,16 +1234,16 @@
             "question": "Cửa hàng mở cửa từ mấy giờ đến mấy giờ?",
             "options": [
               {
-                "text": "Từ 8 giờ đến 20 giờ"
+                "text": "Từ 8 giờ sáng đến 8 giờ tối"
               },
               {
-                "text": "Từ 9 giờ đến 20 giờ"
+                "text": "Từ 9 giờ sáng đến 8 giờ tối"
               },
               {
-                "text": "Từ 9 giờ đến 12 giờ"
+                "text": "Từ 9 giờ sáng đến 12 giờ trưa"
               },
               {
-                "text": "Từ 20 giờ đến 9 giờ"
+                "text": "Từ 8 giờ tối đến 9 giờ sáng"
               }
             ],
             "correct": 1
@@ -1429,7 +1429,9 @@
               "Good afternoon",
               "Hello",
               "Good afternoon sir",
-              "Good afternoon madam"
+              "Good afternoon madam",
+              "Good afternoon ma'am",
+              "Hi"
             ],
             "evidenceLexemeRefs": [
               "en:w:good-afternoon"
@@ -1547,7 +1549,8 @@
             "acceptedVariants": [
               "I'm Vietnamese",
               "I'm from Vietnam",
-              "I come from Vietnam"
+              "I come from Vietnam",
+              "Vietnamese"
             ],
             "evidenceLexemeRefs": [
               "en:w:be",
@@ -1580,7 +1583,8 @@
             "target": "I'm a driver.",
             "acceptedVariants": [
               "I'm a driver",
-              "I work as a driver"
+              "I work as a driver",
+              "A driver"
             ],
             "evidenceLexemeRefs": [
               "en:w:be",
@@ -1751,7 +1755,10 @@
               "The dog is big",
               "It's a big dog",
               "A big dog",
-              "It's big"
+              "It's big",
+              "The big dog",
+              "The dog is large",
+              "A large dog"
             ],
             "evidenceLexemeRefs": [
               "en:w:dog",
@@ -1782,7 +1789,8 @@
               "The shirt is blue",
               "It's a blue shirt",
               "A blue shirt",
-              "It's blue"
+              "It's blue",
+              "The blue shirt"
             ],
             "evidenceLexemeRefs": [
               "en:w:shirt",
@@ -1864,7 +1872,9 @@
                   "id": "city",
                   "description": "thành phố",
                   "variants": [
-                    "in hanoi"
+                    "in hanoi",
+                    "from hanoi",
+                    "city is hanoi"
                   ],
                   "cueProvided": true
                 }
@@ -1972,7 +1982,10 @@
                   "description": "bạn thích âm nhạc",
                   "variants": [
                     "i like music",
-                    "i love music"
+                    "i love music",
+                    "i really like music",
+                    "i enjoy music",
+                    "i really love music"
                   ],
                   "cueProvided": false
                 }
@@ -1981,7 +1994,8 @@
               "maxTokens": 10,
               "requireSentenceVerbs": [
                 "like",
-                "love"
+                "love",
+                "enjoy"
               ]
             },
             "modelAnswers": [
@@ -2019,7 +2033,10 @@
                   "description": "tên của chị ấy",
                   "variants": [
                     "her name is linh",
-                    "she is linh"
+                    "she is linh",
+                    "name is linh",
+                    "name's linh",
+                    "sister is linh"
                   ],
                   "cueProvided": true
                 },
@@ -2064,7 +2081,10 @@
                   "description": "cái giường to",
                   "variants": [
                     "the bed is big",
-                    "a big bed"
+                    "a big bed",
+                    "the big bed",
+                    "the bed is large",
+                    "a large bed"
                   ],
                   "cueProvided": false
                 },
@@ -2073,7 +2093,10 @@
                   "description": "cái bàn nhỏ",
                   "variants": [
                     "the table is small",
-                    "a small table"
+                    "a small table",
+                    "the small table",
+                    "the table is little",
+                    "a little table"
                   ],
                   "cueProvided": false
                 }
@@ -2081,7 +2104,10 @@
               "minTokens": 6,
               "maxTokens": 16,
               "requireSentenceVerbs": [
-                "is"
+                "is",
+                "has",
+                "have",
+                "there are"
               ]
             },
             "modelAnswers": [
@@ -2120,7 +2146,8 @@
                   "variants": [
                     "hi",
                     "hello",
-                    "dear"
+                    "dear",
+                    "hey"
                   ],
                   "cueProvided": false
                 },
@@ -2176,7 +2203,8 @@
                   "variants": [
                     "hi",
                     "hello",
-                    "dear"
+                    "dear",
+                    "hey"
                   ],
                   "cueProvided": false
                 },
@@ -2184,7 +2212,10 @@
                   "id": "sick",
                   "description": "bạn bị ốm",
                   "variants": [
-                    "sick"
+                    "sick",
+                    "ill",
+                    "not well",
+                    "not feeling well"
                   ],
                   "cueProvided": false
                 },
@@ -2196,7 +2227,8 @@
                     "bye",
                     "goodbye",
                     "thanks",
-                    "thank you"
+                    "thank you",
+                    "take care"
                   ],
                   "cueProvided": false
                 }
@@ -2225,7 +2257,7 @@
             "cueFacts": [
               {
                 "label": "Gửi",
-                "value": "Mr Lee"
+                "value": "Mr. Lee"
               },
               {
                 "label": "Ngày",
@@ -2240,7 +2272,8 @@
                   "variants": [
                     "dear",
                     "hello",
-                    "good morning"
+                    "good morning",
+                    "good afternoon"
                   ],
                   "cueProvided": false
                 },
@@ -2268,7 +2301,10 @@
                     "best regards",
                     "regards",
                     "thank you",
-                    "thanks"
+                    "thanks",
+                    "sincerely",
+                    "best wishes",
+                    "best"
                   ],
                   "cueProvided": false
                 }
@@ -2277,7 +2313,7 @@
               "maxTokens": 30
             },
             "modelAnswers": [
-              "Dear Mr Lee, I would like an appointment on Tuesday. Best regards, Hung"
+              "Dear Mr. Lee, I would like an appointment on Tuesday. Best regards, Hung"
             ]
           },
           "objectiveTargets": [
@@ -2302,7 +2338,8 @@
                   "variants": [
                     "dear",
                     "hello",
-                    "good morning"
+                    "good morning",
+                    "good afternoon"
                   ],
                   "cueProvided": false
                 },
@@ -2310,7 +2347,12 @@
                   "id": "price",
                   "description": "câu hỏi về giá",
                   "variants": [
-                    "how much"
+                    "how much",
+                    "price of",
+                    "what is the price",
+                    "what does it cost",
+                    "what does this phone cost",
+                    "what does the phone cost"
                   ],
                   "cueProvided": false
                 },
@@ -2329,7 +2371,10 @@
                     "best regards",
                     "regards",
                     "thank you",
-                    "thanks"
+                    "thanks",
+                    "sincerely",
+                    "best wishes",
+                    "best"
                   ],
                   "cueProvided": false
                 }
@@ -3052,7 +3097,10 @@
             "acceptedVariants": [
               "There are six people in my family",
               "Six people",
-              "We have six people"
+              "We have six people",
+              "My family has six people",
+              "There are six of us",
+              "Six"
             ],
             "evidenceLexemeRefs": [
               "en:w:there",
@@ -3275,7 +3323,7 @@
             "cueFacts": [
               {
                 "label": "Gửi",
-                "value": "Ms Smith"
+                "value": "Ms. Smith"
               },
               {
                 "label": "Ngày",
@@ -3306,7 +3354,10 @@
                   "id": "sick",
                   "description": "bạn bị ốm",
                   "variants": [
-                    "sick"
+                    "sick",
+                    "ill",
+                    "not well",
+                    "not feeling well"
                   ],
                   "cueProvided": false
                 },
@@ -3317,7 +3368,10 @@
                     "best regards",
                     "regards",
                     "thank you",
-                    "thanks"
+                    "thanks",
+                    "sincerely",
+                    "best wishes",
+                    "best"
                   ],
                   "cueProvided": false
                 }
@@ -3326,7 +3380,7 @@
               "maxTokens": 30
             },
             "modelAnswers": [
-              "Dear Ms Smith, I can't come to work on Thursday because I am sick. Best regards, Nam"
+              "Dear Ms. Smith, I can't come to work on Thursday because I am sick. Best regards, Nam"
             ]
           },
           "objectiveTargets": [

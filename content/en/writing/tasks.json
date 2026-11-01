@@ -187,7 +187,8 @@
               "vi": "hai đứa con"
             },
             "variants": [
-              "two children"
+              "two children",
+              "two kids"
             ],
             "cueProvided": false
           },
@@ -283,7 +284,9 @@
               "vi": "thành phố"
             },
             "variants": [
-              "in hue"
+              "in hue",
+              "from hue",
+              "city is hue"
             ],
             "cueProvided": true
           }
@@ -509,7 +512,10 @@
               "vi": "ở nhà"
             },
             "variants": [
-              "at home"
+              "at home",
+              "stay home",
+              "staying home",
+              "am home"
             ],
             "cueProvided": false
           },
@@ -529,7 +535,10 @@
               "vi": "bạn bị ốm"
             },
             "variants": [
-              "i am sick"
+              "i am sick",
+              "i am ill",
+              "i feel sick",
+              "i am not well"
             ],
             "cueProvided": false
           }
@@ -537,7 +546,10 @@
         "minTokens": 5,
         "maxTokens": 16,
         "requireSentenceVerbs": [
-          "am"
+          "am",
+          "feel",
+          "stay",
+          "staying"
         ]
       },
       "modelAnswers": [
@@ -572,7 +584,10 @@
             },
             "variants": [
               "the cat is small",
-              "a small cat"
+              "a small cat",
+              "a little cat",
+              "the cat is little",
+              "the small cat"
             ],
             "cueProvided": false
           },
@@ -583,7 +598,10 @@
             },
             "variants": [
               "the house is big",
-              "a big house"
+              "a big house",
+              "a large house",
+              "the house is large",
+              "the big house"
             ],
             "cueProvided": false
           }
@@ -776,7 +794,7 @@
           "label": {
             "vi": "Gửi"
           },
-          "value": "Ms Brown"
+          "value": "Ms. Brown"
         }
       ],
       "rubric": {
@@ -789,7 +807,8 @@
             "variants": [
               "dear",
               "hello",
-              "good morning"
+              "good morning",
+              "good afternoon"
             ],
             "cueProvided": false
           },
@@ -812,7 +831,10 @@
               "best regards",
               "regards",
               "thank you",
-              "thanks"
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
             ],
             "cueProvided": false
           }
@@ -821,7 +843,7 @@
         "maxTokens": 25
       },
       "modelAnswers": [
-        "Dear Ms Brown, I am sending you the report today. Best regards, Minh"
+        "Dear Ms. Brown, I am sending you the report today. Best regards, Minh"
       ],
       "objectiveRefs": [
         "en.obj.writing.short_message"
@@ -1320,7 +1342,9 @@
               "vi": "không chạy"
             },
             "variants": [
-              "does not work"
+              "does not work",
+              "is not working",
+              "is broken"
             ],
             "cueProvided": false
           },
@@ -1330,7 +1354,10 @@
               "vi": "gọi cho quản lý"
             },
             "variants": [
-              "call the manager"
+              "call the manager",
+              "call your manager",
+              "call our manager",
+              "call my manager"
             ],
             "cueProvided": false
           }
@@ -1382,7 +1409,8 @@
             "variants": [
               "dear",
               "hello",
-              "good morning"
+              "good morning",
+              "good afternoon"
             ],
             "cueProvided": false
           },
@@ -1415,7 +1443,10 @@
               "best regards",
               "regards",
               "thank you",
-              "thanks"
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
             ],
             "cueProvided": false
           }
@@ -1678,7 +1709,9 @@
               "vi": "thành phố"
             },
             "variants": [
-              "in hanoi"
+              "in hanoi",
+              "from hanoi",
+              "city is hanoi"
             ],
             "cueProvided": true
           }
@@ -1812,7 +1845,10 @@
             },
             "variants": [
               "i like music",
-              "i love music"
+              "i love music",
+              "i really like music",
+              "i enjoy music",
+              "i really love music"
             ],
             "cueProvided": false
           }
@@ -1821,7 +1857,8 @@
         "maxTokens": 10,
         "requireSentenceVerbs": [
           "like",
-          "love"
+          "love",
+          "enjoy"
         ]
       },
       "modelAnswers": [
@@ -1868,7 +1905,10 @@
             },
             "variants": [
               "her name is linh",
-              "she is linh"
+              "she is linh",
+              "name is linh",
+              "name's linh",
+              "sister is linh"
             ],
             "cueProvided": true
           },
@@ -1921,7 +1961,10 @@
             },
             "variants": [
               "the bed is big",
-              "a big bed"
+              "a big bed",
+              "the big bed",
+              "the bed is large",
+              "a large bed"
             ],
             "cueProvided": false
           },
@@ -1932,7 +1975,10 @@
             },
             "variants": [
               "the table is small",
-              "a small table"
+              "a small table",
+              "the small table",
+              "the table is little",
+              "a little table"
             ],
             "cueProvided": false
           }
@@ -1940,7 +1986,10 @@
         "minTokens": 6,
         "maxTokens": 16,
         "requireSentenceVerbs": [
-          "is"
+          "is",
+          "has",
+          "have",
+          "there are"
         ]
       },
       "modelAnswers": [
@@ -1991,7 +2040,8 @@
             "variants": [
               "hi",
               "hello",
-              "dear"
+              "dear",
+              "hey"
             ],
             "cueProvided": false
           },
@@ -2061,7 +2111,8 @@
             "variants": [
               "hi",
               "hello",
-              "dear"
+              "dear",
+              "hey"
             ],
             "cueProvided": false
           },
@@ -2071,7 +2122,10 @@
               "vi": "bạn bị ốm"
             },
             "variants": [
-              "sick"
+              "sick",
+              "ill",
+              "not well",
+              "not feeling well"
             ],
             "cueProvided": false
           },
@@ -2085,7 +2139,8 @@
               "bye",
               "goodbye",
               "thanks",
-              "thank you"
+              "thank you",
+              "take care"
             ],
             "cueProvided": false
           }
@@ -2126,7 +2181,7 @@
           "label": {
             "vi": "Gửi"
           },
-          "value": "Mr Lee"
+          "value": "Mr. Lee"
         },
         {
           "label": {
@@ -2145,7 +2200,8 @@
             "variants": [
               "dear",
               "hello",
-              "good morning"
+              "good morning",
+              "good afternoon"
             ],
             "cueProvided": false
           },
@@ -2179,7 +2235,10 @@
               "best regards",
               "regards",
               "thank you",
-              "thanks"
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
             ],
             "cueProvided": false
           }
@@ -2188,7 +2247,7 @@
         "maxTokens": 30
       },
       "modelAnswers": [
-        "Dear Mr Lee, I would like an appointment on Tuesday. Best regards, Hung"
+        "Dear Mr. Lee, I would like an appointment on Tuesday. Best regards, Hung"
       ],
       "objectiveRefs": [
         "en.obj.writing.short_message"
@@ -2222,7 +2281,8 @@
             "variants": [
               "dear",
               "hello",
-              "good morning"
+              "good morning",
+              "good afternoon"
             ],
             "cueProvided": false
           },
@@ -2232,7 +2292,12 @@
               "vi": "câu hỏi về giá"
             },
             "variants": [
-              "how much"
+              "how much",
+              "price of",
+              "what is the price",
+              "what does it cost",
+              "what does this phone cost",
+              "what does the phone cost"
             ],
             "cueProvided": false
           },
@@ -2255,7 +2320,10 @@
               "best regards",
               "regards",
               "thank you",
-              "thanks"
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
             ],
             "cueProvided": false
           }
@@ -2811,7 +2879,7 @@
           "label": {
             "vi": "Gửi"
           },
-          "value": "Ms Smith"
+          "value": "Ms. Smith"
         },
         {
           "label": {
@@ -2850,7 +2918,10 @@
               "vi": "bạn bị ốm"
             },
             "variants": [
-              "sick"
+              "sick",
+              "ill",
+              "not well",
+              "not feeling well"
             ],
             "cueProvided": false
           },
@@ -2863,7 +2934,10 @@
               "best regards",
               "regards",
               "thank you",
-              "thanks"
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
             ],
             "cueProvided": false
           }
@@ -2872,7 +2946,7 @@
         "maxTokens": 30
       },
       "modelAnswers": [
-        "Dear Ms Smith, I can't come to work on Thursday because I am sick. Best regards, Nam"
+        "Dear Ms. Smith, I can't come to work on Thursday because I am sick. Best regards, Nam"
       ],
       "objectiveRefs": [
         "en.obj.writing.short_message"
@@ -2940,7 +3014,8 @@
               "vi": "câu 1"
             },
             "variants": [
-              "live in a small apartment near the park"
+              "live in a small apartment near the park",
+              "live in a small apartment near a park"
             ],
             "cueProvided": false
           },
@@ -2951,7 +3026,9 @@
             },
             "variants": [
               "works in a hospital in hue",
-              "works at a hospital in hue"
+              "works at a hospital in hue",
+              "works in the hospital in hue",
+              "works at the hospital in hue"
             ],
             "cueProvided": false
           },
@@ -2961,7 +3038,10 @@
               "vi": "câu 3"
             },
             "variants": [
-              "do not go to work on sunday"
+              "do not go to work on sunday",
+              "do not go to work on sundays",
+              "did not go to work on sunday",
+              "are not going to work on sunday"
             ],
             "cueProvided": false
           },
@@ -2981,7 +3061,8 @@
               "vi": "câu 5"
             },
             "variants": [
-              "what time do you get up"
+              "what time do you get up",
+              "what time did you get up"
             ],
             "cueProvided": false
           }
@@ -3087,7 +3168,8 @@
               "vi": "câu 3"
             },
             "variants": [
-              "does not like coffee"
+              "does not like coffee",
+              "did not like coffee"
             ],
             "cueProvided": false
           },
@@ -3107,7 +3189,8 @@
               "vi": "câu 5"
             },
             "variants": [
-              "where did you buy this bag"
+              "where did you buy this bag",
+              "where do you buy this bag"
             ],
             "cueProvided": false
           }
@@ -3159,7 +3242,7 @@
           "label": {
             "vi": "Gửi"
           },
-          "value": "Mr Brown"
+          "value": "Mr. Brown"
         },
         {
           "label": {
@@ -3244,7 +3327,10 @@
               "best regards",
               "regards",
               "thank you",
-              "thanks"
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
             ],
             "cueProvided": false
           }
@@ -3253,7 +3339,7 @@
         "maxTokens": 50
       },
       "modelAnswers": [
-        "Dear Mr Brown, I am sick and I cannot work on Monday. Hoa will take my shift. I will come back on Tuesday. Best regards, Minh"
+        "Dear Mr. Brown, I am sick and I cannot work on Monday. Hoa will take my shift. I will come back on Tuesday. Best regards, Minh"
       ],
       "objectiveRefs": [
         "en.obj.writing.short_message"
@@ -3318,7 +3404,12 @@
               "dear",
               "hi",
               "hello",
-              "to all staff"
+              "to all staff",
+              "to all",
+              "to everyone",
+              "hi everyone",
+              "hello everyone",
+              "dear everyone"
             ],
             "cueProvided": false
           },
@@ -3371,7 +3462,10 @@
               "best regards",
               "regards",
               "thank you",
-              "thanks"
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
             ],
             "cueProvided": false
           }
@@ -3450,7 +3544,8 @@
               "vi": "nơi bạn đang nghỉ"
             },
             "variants": [
-              "da nang"
+              "da nang",
+              "danang"
             ],
             "cueProvided": true
           },
@@ -3460,7 +3555,22 @@
               "vi": "thời tiết"
             },
             "variants": [
-              "weather"
+              "weather",
+              "it is sunny",
+              "it is hot",
+              "it is rainy",
+              "it is raining",
+              "it is cold",
+              "it is warm",
+              "it is cloudy",
+              "it is windy",
+              "it is very hot",
+              "it is very cold",
+              "it is very sunny",
+              "sunny day",
+              "hot day",
+              "rainy day",
+              "cold day"
             ],
             "cueProvided": false
           },
@@ -3484,7 +3594,11 @@
               "bye",
               "goodbye",
               "best wishes",
-              "love"
+              "love",
+              "take care",
+              "your friend",
+              "best",
+              "regards"
             ],
             "cueProvided": false
           }
@@ -3567,7 +3681,10 @@
             },
             "variants": [
               "new house",
-              "new home"
+              "new home",
+              "new apartment",
+              "new place",
+              "new flat"
             ],
             "cueProvided": false
           },
@@ -3601,7 +3718,11 @@
               "bye",
               "goodbye",
               "best wishes",
-              "love"
+              "love",
+              "take care",
+              "your friend",
+              "best",
+              "regards"
             ],
             "cueProvided": false
           }

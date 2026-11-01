@@ -185,7 +185,10 @@
         "Good evening",
         "Hello",
         "Good evening sir",
-        "Good evening madam"
+        "Good evening madam",
+        "Good evening ma'am",
+        "Good evening, welcome",
+        "Hi"
       ],
       "objectiveRefs": [
         "en.obj.speaking.formulaic"
@@ -222,7 +225,10 @@
         "Bye",
         "Bye bye",
         "See you",
-        "See you tomorrow"
+        "See you tomorrow",
+        "See you later",
+        "Good night",
+        "Have a good night"
       ],
       "objectiveRefs": [
         "en.obj.speaking.formulaic"
@@ -290,7 +296,10 @@
       "acceptedVariants": [
         "Excuse me",
         "Excuse me please",
-        "Sorry"
+        "Sorry",
+        "Pardon me",
+        "Excuse me sir",
+        "Excuse me ma'am"
       ],
       "objectiveRefs": [
         "en.obj.speaking.formulaic"
@@ -490,7 +499,10 @@
       },
       "target": "I live in Hue.",
       "acceptedVariants": [
-        "I live in Hue"
+        "I live in Hue",
+        "I am living in Hue",
+        "In Hue",
+        "Hue"
       ],
       "objectiveRefs": [
         "en.obj.speaking.self_intro"
@@ -534,7 +546,9 @@
       "target": "I'm twenty-five years old.",
       "acceptedVariants": [
         "I'm twenty-five years old",
-        "I'm twenty-five"
+        "I'm twenty-five",
+        "Twenty-five",
+        "Twenty-five years old"
       ],
       "objectiveRefs": [
         "en.obj.speaking.self_intro"
@@ -585,7 +599,11 @@
       "target": "I work in a factory.",
       "acceptedVariants": [
         "I work in a factory",
-        "I work at a factory"
+        "I work at a factory",
+        "In a factory",
+        "At a factory",
+        "I work in the factory",
+        "I work at the factory"
       ],
       "objectiveRefs": [
         "en.obj.speaking.self_intro"
@@ -756,7 +774,10 @@
       "acceptedVariants": [
         "I have two children",
         "Two children",
-        "I've got two children"
+        "I've got two children",
+        "I have two kids",
+        "Two kids",
+        "Two"
       ],
       "objectiveRefs": [
         "en.obj.speaking.give_info"
@@ -841,10 +862,10 @@
           "vi": "Nghe, rồi nói lại."
         }
       },
-      "target": "It's half past two.",
+      "target": "It's two thirty.",
       "acceptedVariants": [
-        "It's half past two",
-        "Half past two"
+        "It's two thirty",
+        "Two thirty"
       ],
       "objectiveRefs": [
         "en.obj.speaking.give_info"
@@ -852,9 +873,8 @@
       "lexemeRefs": [
         "en:w:it",
         "en:w:be",
-        "en:w:half",
-        "en:w:past",
-        "en:w:two"
+        "en:w:two",
+        "en:w:thirty"
       ],
       "evidenceLexemeRefs": [],
       "assistancePolicy": {
@@ -932,11 +952,14 @@
           }
         ]
       },
-      "target": "There are ten people in my team.",
+      "target": "There are ten people on my team.",
       "acceptedVariants": [
-        "There are ten people in my team",
+        "There are ten people on my team",
         "Ten people",
-        "We have ten people"
+        "We have ten people",
+        "There are ten people in my team",
+        "My team has ten people",
+        "Ten"
       ],
       "objectiveRefs": [
         "en.obj.speaking.give_info"
@@ -946,7 +969,7 @@
         "en:w:be",
         "en:w:ten",
         "en:w:people",
-        "en:w:in",
+        "en:w:on",
         "en:w:my",
         "en:w:team"
       ],
@@ -1017,7 +1040,11 @@
         "The house is big",
         "It's a big house",
         "A big house",
-        "It's big"
+        "It's big",
+        "The big house",
+        "The house is large",
+        "It's a large house",
+        "A large house"
       ],
       "objectiveRefs": [
         "en.obj.speaking.describe"
@@ -1059,7 +1086,11 @@
         "The cat is small",
         "It's a small cat",
         "A small cat",
-        "It's small"
+        "It's small",
+        "The small cat",
+        "The cat is little",
+        "It's a little cat",
+        "A little cat"
       ],
       "objectiveRefs": [
         "en.obj.speaking.describe"
@@ -1101,7 +1132,8 @@
         "The car is old",
         "It's an old car",
         "An old car",
-        "It's old"
+        "It's old",
+        "The old car"
       ],
       "objectiveRefs": [
         "en.obj.speaking.describe"
@@ -1209,12 +1241,13 @@
         "instruction": {
           "vi": "Nhìn hình: trong phòng có một cái bàn. Hãy nói câu đó bằng tiếng Anh."
         },
-        "cueEmoji": "🛋️"
+        "cueEmoji": "🪑"
       },
       "target": "There is a table in the room.",
       "acceptedVariants": [
         "There is a table in the room",
-        "There is a table"
+        "There is a table",
+        "In the room there is a table"
       ],
       "objectiveRefs": [
         "en.obj.speaking.describe"
@@ -1259,7 +1292,9 @@
         "Good afternoon",
         "Hello",
         "Good afternoon sir",
-        "Good afternoon madam"
+        "Good afternoon madam",
+        "Good afternoon ma'am",
+        "Hi"
       ],
       "objectiveRefs": [
         "en.obj.speaking.formulaic"
@@ -1414,7 +1449,8 @@
       "acceptedVariants": [
         "I'm Vietnamese",
         "I'm from Vietnam",
-        "I come from Vietnam"
+        "I come from Vietnam",
+        "Vietnamese"
       ],
       "objectiveRefs": [
         "en.obj.speaking.self_intro"
@@ -1458,7 +1494,8 @@
       "target": "I'm a driver.",
       "acceptedVariants": [
         "I'm a driver",
-        "I work as a driver"
+        "I work as a driver",
+        "A driver"
       ],
       "objectiveRefs": [
         "en.obj.speaking.self_intro"
@@ -1691,7 +1728,10 @@
         "The dog is big",
         "It's a big dog",
         "A big dog",
-        "It's big"
+        "It's big",
+        "The big dog",
+        "The dog is large",
+        "A large dog"
       ],
       "objectiveRefs": [
         "en.obj.speaking.describe"
@@ -1733,7 +1773,8 @@
         "The shirt is blue",
         "It's a blue shirt",
         "A blue shirt",
-        "It's blue"
+        "It's blue",
+        "The blue shirt"
       ],
       "objectiveRefs": [
         "en.obj.speaking.describe"
@@ -1829,7 +1870,10 @@
       "acceptedVariants": [
         "There are six people in my family",
         "Six people",
-        "We have six people"
+        "We have six people",
+        "My family has six people",
+        "There are six of us",
+        "Six"
       ],
       "objectiveRefs": [
         "en.obj.speaking.give_info"
@@ -1972,7 +2016,9 @@
       "acceptedVariants": [
         "Hello",
         "Hi",
-        "Hi there"
+        "Hi there",
+        "Hey",
+        "Hey there"
       ],
       "objectiveRefs": [
         "en.obj.speaking.formulaic"
@@ -2060,7 +2106,9 @@
       "target": "I'm thirty years old.",
       "acceptedVariants": [
         "I'm thirty years old",
-        "I'm thirty"
+        "I'm thirty",
+        "Thirty",
+        "Thirty years old"
       ],
       "objectiveRefs": [
         "en.obj.speaking.self_intro"
@@ -2183,7 +2231,12 @@
           "chair"
         ],
         [
-          "cook"
+          "cook",
+          "cooking",
+          "cooks",
+          "cooked",
+          "make dinner",
+          "makes dinner"
         ]
       ],
       "objectiveRefs": [
@@ -2336,7 +2389,9 @@
           "disagree"
         ],
         [
-          "because"
+          "because",
+          "so",
+          "since"
         ]
       ],
       "objectiveRefs": [
@@ -2400,7 +2455,9 @@
           "disagree"
         ],
         [
-          "because"
+          "because",
+          "so",
+          "since"
         ]
       ],
       "objectiveRefs": [

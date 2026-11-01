@@ -465,11 +465,14 @@
                 "How much is this shirt?",
                 "How much does this shirt cost?",
                 "How much is the shirt?",
-                "Excuse me, how much is this shirt?"
+                "Excuse me, how much is this shirt?",
+                "What is the price of this shirt?"
               ],
               "requiredConcepts": [
                 [
-                  "how much"
+                  "how much",
+                  "price",
+                  "cost"
                 ],
                 [
                   "shirt"
@@ -501,11 +504,14 @@
                 "How much is this shirt?",
                 "How much does this shirt cost?",
                 "How much is the shirt?",
-                "Excuse me, how much is this shirt?"
+                "Excuse me, how much is this shirt?",
+                "What is the price of this shirt?"
               ],
               "requiredConcepts": [
                 [
-                  "how much"
+                  "how much",
+                  "price",
+                  "cost"
                 ],
                 [
                   "shirt"
@@ -606,7 +612,7 @@
         "vi": "Gọi món ở quán ăn"
       },
       "goal": {
-        "vi": "Gọi món ăn và đồ uống, rồi xin hoá đơn."
+        "vi": "Gọi món ăn và đồ uống, rồi xin hóa đơn."
       },
       "taskFamily": "transaction",
       "objectiveRefs": [
@@ -774,19 +780,22 @@
           "kind": "learner",
           "id": "l2",
           "prompt": {
-            "vi": "Hãy nói thế là đủ và xin hoá đơn."
+            "vi": "Hãy nói thế là đủ và xin hóa đơn."
           },
           "expected": [
             {
-              "intent": "ask_bill",
+              "intent": "ask_check",
               "acceptedVariants": [
-                "Yes, that's all. The bill, please.",
+                "Yes, that's all. The check, please.",
+                "The check, please.",
+                "Can I have the check, please?",
+                "No, thanks. Can I have the check?",
                 "The bill, please.",
-                "Can I have the bill, please?",
-                "No, thanks. Can I have the bill?"
+                "Can I have the bill, please?"
               ],
               "requiredConcepts": [
                 [
+                  "check",
                   "bill"
                 ]
               ],
@@ -807,19 +816,22 @@
           "kind": "learner",
           "id": "l2b",
           "prompt": {
-            "vi": "Hãy nói thế là đủ và xin hoá đơn."
+            "vi": "Hãy nói thế là đủ và xin hóa đơn."
           },
           "expected": [
             {
-              "intent": "ask_bill",
+              "intent": "ask_check",
               "acceptedVariants": [
-                "Yes, that's all. The bill, please.",
+                "Yes, that's all. The check, please.",
+                "The check, please.",
+                "Can I have the check, please?",
+                "No, thanks. Can I have the check?",
                 "The bill, please.",
-                "Can I have the bill, please?",
-                "No, thanks. Can I have the bill?"
+                "Can I have the bill, please?"
               ],
               "requiredConcepts": [
                 [
+                  "check",
                   "bill"
                 ]
               ],
@@ -886,11 +898,14 @@
               "acceptedVariants": [
                 "Excuse me, where is the post office?",
                 "Where is the post office?",
-                "Sorry, where is the post office?"
+                "Sorry, where is the post office?",
+                "How do I get to the post office?"
               ],
               "requiredConcepts": [
                 [
-                  "where"
+                  "where",
+                  "how",
+                  "way"
                 ],
                 [
                   "post office"
@@ -921,11 +936,14 @@
               "acceptedVariants": [
                 "Excuse me, where is the post office?",
                 "Where is the post office?",
-                "Sorry, where is the post office?"
+                "Sorry, where is the post office?",
+                "How do I get to the post office?"
               ],
               "requiredConcepts": [
                 [
-                  "where"
+                  "where",
+                  "how",
+                  "way"
                 ],
                 [
                   "post office"
@@ -1064,12 +1082,14 @@
               "acceptedVariants": [
                 "I have a headache and a fever.",
                 "I have a headache.",
-                "I have a fever and a headache."
+                "I have a fever and a headache.",
+                "My head hurts and I have a fever."
               ],
               "requiredConcepts": [
                 [
                   "headache",
-                  "fever"
+                  "fever",
+                  "head hurts"
                 ]
               ],
               "next": "p1"
@@ -1097,12 +1117,14 @@
               "acceptedVariants": [
                 "I have a headache and a fever.",
                 "I have a headache.",
-                "I have a fever and a headache."
+                "I have a fever and a headache.",
+                "My head hurts and I have a fever."
               ],
               "requiredConcepts": [
                 [
                   "headache",
-                  "fever"
+                  "fever",
+                  "head hurts"
                 ]
               ],
               "next": "p1"
@@ -1235,11 +1257,14 @@
                 "I'd like to make an appointment.",
                 "I want to make an appointment.",
                 "I need an appointment.",
-                "Can I make an appointment?"
+                "Can I make an appointment?",
+                "I want to see the doctor."
               ],
               "requiredConcepts": [
                 [
-                  "appointment"
+                  "appointment",
+                  "see the doctor",
+                  "see a doctor"
                 ]
               ],
               "next": "p1"
@@ -1268,11 +1293,14 @@
                 "I'd like to make an appointment.",
                 "I want to make an appointment.",
                 "I need an appointment.",
-                "Can I make an appointment?"
+                "Can I make an appointment?",
+                "I want to see the doctor."
               ],
               "requiredConcepts": [
                 [
-                  "appointment"
+                  "appointment",
+                  "see the doctor",
+                  "see a doctor"
                 ]
               ],
               "next": "p1"
@@ -1304,13 +1332,18 @@
                 "Yes, I can.",
                 "Yes, thank you.",
                 "Yes, Monday at ten is fine.",
-                "Okay, thank you."
+                "Okay, thank you.",
+                "That's good.",
+                "Thanks."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "fine"
+                  "fine",
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "t_ok"
@@ -1340,13 +1373,18 @@
                 "Yes, I can.",
                 "Yes, thank you.",
                 "Yes, Monday at ten is fine.",
-                "Okay, thank you."
+                "Okay, thank you.",
+                "That's good.",
+                "Thanks."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "fine"
+                  "fine",
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "t_ok"
@@ -1485,13 +1523,18 @@
                 "Yes, thank you.",
                 "Okay, thank you.",
                 "Okay, thanks.",
-                "Yes, please."
+                "Yes, please.",
+                "Thank you.",
+                "Thanks.",
+                "Please do. Thank you."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "sure"
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "t_ok"
@@ -1520,13 +1563,18 @@
                 "Yes, thank you.",
                 "Okay, thank you.",
                 "Okay, thanks.",
-                "Yes, please."
+                "Yes, please.",
+                "Thank you.",
+                "Thanks.",
+                "Please do. Thank you."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "sure"
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "t_ok"
@@ -1574,9 +1622,9 @@
         "p0": {
           "kind": "partner",
           "id": "p0",
-          "text": "Please wear your gloves before you start.",
+          "text": "Please put on your gloves before you start.",
           "clipId": "en.clip.ix_factory_instructions_0",
-          "rephraseText": "You need gloves. Please wear them.",
+          "rephraseText": "You need gloves. Please put them on.",
           "rephraseClipId": "en.clip.ix_factory_instructions_0_s",
           "next": "l0"
         },
@@ -1593,12 +1641,18 @@
                 "Okay, I understand.",
                 "I understand.",
                 "Yes, I understand.",
-                "Okay."
+                "Okay.",
+                "Got it."
               ],
               "requiredConcepts": [
                 [
                   "understand",
-                  "okay"
+                  "okay",
+                  "got it",
+                  "yes",
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "p1"
@@ -1610,7 +1664,7 @@
         "r0": {
           "kind": "partner",
           "id": "r0",
-          "text": "You need gloves. Please wear them.",
+          "text": "You need gloves. Please put them on.",
           "clipId": "en.clip.ix_factory_instructions_0_s",
           "next": "l0b"
         },
@@ -1627,12 +1681,18 @@
                 "Okay, I understand.",
                 "I understand.",
                 "Yes, I understand.",
-                "Okay."
+                "Okay.",
+                "Got it."
               ],
               "requiredConcepts": [
                 [
                   "understand",
-                  "okay"
+                  "okay",
+                  "got it",
+                  "yes",
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "p1"
@@ -1663,12 +1723,15 @@
                 "How do I stop the machine?",
                 "Which button stops the machine?",
                 "How can I stop it?",
-                "Where is the stop button?"
+                "Where is the stop button?",
+                "How do I turn it off?"
               ],
               "requiredConcepts": [
                 [
                   "stop",
-                  "stops"
+                  "stops",
+                  "turn it off",
+                  "turn off"
                 ]
               ],
               "next": "t_ok"
@@ -1697,12 +1760,15 @@
                 "How do I stop the machine?",
                 "Which button stops the machine?",
                 "How can I stop it?",
-                "Where is the stop button?"
+                "Where is the stop button?",
+                "How do I turn it off?"
               ],
               "requiredConcepts": [
                 [
                   "stop",
-                  "stops"
+                  "stops",
+                  "turn it off",
+                  "turn off"
                 ]
               ],
               "next": "t_ok"
@@ -1769,11 +1835,13 @@
                 "Here you are.",
                 "Here it is.",
                 "Here they are.",
-                "Here you go."
+                "Here you go.",
+                "This is my passport."
               ],
               "requiredConcepts": [
                 [
-                  "here"
+                  "here",
+                  "passport"
                 ]
               ],
               "next": "p1"
@@ -1802,11 +1870,13 @@
                 "Here you are.",
                 "Here it is.",
                 "Here they are.",
-                "Here you go."
+                "Here you go.",
+                "This is my passport."
               ],
               "requiredConcepts": [
                 [
-                  "here"
+                  "here",
+                  "passport"
                 ]
               ],
               "next": "p1"
@@ -1836,13 +1906,18 @@
               "acceptedVariants": [
                 "Yes, please.",
                 "Yes, a window seat, please.",
-                "Okay, thank you."
+                "Okay, thank you.",
+                "A window seat, please.",
+                "Please.",
+                "That's good, thanks."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "sure"
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "t_ok"
@@ -1870,13 +1945,18 @@
               "acceptedVariants": [
                 "Yes, please.",
                 "Yes, a window seat, please.",
-                "Okay, thank you."
+                "Okay, thank you.",
+                "A window seat, please.",
+                "Please.",
+                "That's good, thanks."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "sure"
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "t_ok"
@@ -2016,11 +2096,13 @@
               "acceptedVariants": [
                 "Here you are.",
                 "Here it is.",
-                "Here you go."
+                "Here you go.",
+                "This is my passport."
               ],
               "requiredConcepts": [
                 [
-                  "here"
+                  "here",
+                  "passport"
                 ]
               ],
               "next": "t_ok"
@@ -2048,11 +2130,13 @@
               "acceptedVariants": [
                 "Here you are.",
                 "Here it is.",
-                "Here you go."
+                "Here you go.",
+                "This is my passport."
               ],
               "requiredConcepts": [
                 [
-                  "here"
+                  "here",
+                  "passport"
                 ]
               ],
               "next": "t_ok"
@@ -2358,11 +2442,13 @@
               "acceptedVariants": [
                 "Yes, a little.",
                 "I speak a little English.",
-                "A little."
+                "A little.",
+                "Yes, a bit."
               ],
               "requiredConcepts": [
                 [
-                  "little"
+                  "little",
+                  "a bit"
                 ]
               ],
               "next": "t_ok"
@@ -2390,11 +2476,13 @@
               "acceptedVariants": [
                 "Yes, a little.",
                 "I speak a little English.",
-                "A little."
+                "A little.",
+                "Yes, a bit."
               ],
               "requiredConcepts": [
                 [
-                  "little"
+                  "little",
+                  "a bit"
                 ]
               ],
               "next": "t_ok"
@@ -2461,11 +2549,14 @@
                 "How much are these shoes?",
                 "How much do these shoes cost?",
                 "How much are the shoes?",
-                "Excuse me, how much are these shoes?"
+                "Excuse me, how much are these shoes?",
+                "What is the price of these shoes?"
               ],
               "requiredConcepts": [
                 [
-                  "how much"
+                  "how much",
+                  "price",
+                  "cost"
                 ],
                 [
                   "shoes"
@@ -2497,11 +2588,14 @@
                 "How much are these shoes?",
                 "How much do these shoes cost?",
                 "How much are the shoes?",
-                "Excuse me, how much are these shoes?"
+                "Excuse me, how much are these shoes?",
+                "What is the price of these shoes?"
               ],
               "requiredConcepts": [
                 [
-                  "how much"
+                  "how much",
+                  "price",
+                  "cost"
                 ],
                 [
                   "shoes"
@@ -2638,11 +2732,14 @@
               "acceptedVariants": [
                 "Excuse me, where is the bank?",
                 "Where is the bank?",
-                "Sorry, where is the bank?"
+                "Sorry, where is the bank?",
+                "How do I get to the bank?"
               ],
               "requiredConcepts": [
                 [
-                  "where"
+                  "where",
+                  "how",
+                  "way"
                 ],
                 [
                   "bank"
@@ -2673,11 +2770,14 @@
               "acceptedVariants": [
                 "Excuse me, where is the bank?",
                 "Where is the bank?",
-                "Sorry, where is the bank?"
+                "Sorry, where is the bank?",
+                "How do I get to the bank?"
               ],
               "requiredConcepts": [
                 [
-                  "where"
+                  "where",
+                  "how",
+                  "way"
                 ],
                 [
                   "bank"
@@ -2882,11 +2982,13 @@
               "acceptedVariants": [
                 "No, I don't.",
                 "No.",
-                "No, I don't have a fever."
+                "No, I don't have a fever.",
+                "I don't have a fever."
               ],
               "requiredConcepts": [
                 [
-                  "no"
+                  "no",
+                  "do not"
                 ]
               ],
               "next": "t_ok"
@@ -2914,11 +3016,13 @@
               "acceptedVariants": [
                 "No, I don't.",
                 "No.",
-                "No, I don't have a fever."
+                "No, I don't have a fever.",
+                "I don't have a fever."
               ],
               "requiredConcepts": [
                 [
-                  "no"
+                  "no",
+                  "do not"
                 ]
               ],
               "next": "t_ok"
@@ -2982,9 +3086,9 @@
             {
               "intent": "ask_person",
               "acceptedVariants": [
-                "Can I speak to Mr Brown, please?",
-                "I'd like to speak to Mr Brown.",
-                "Mr Brown, please."
+                "Can I speak to Mr. Brown, please?",
+                "I'd like to speak to Mr. Brown.",
+                "Mr. Brown, please."
               ],
               "requiredConcepts": [
                 [
@@ -3014,9 +3118,9 @@
             {
               "intent": "ask_person",
               "acceptedVariants": [
-                "Can I speak to Mr Brown, please?",
-                "I'd like to speak to Mr Brown.",
-                "Mr Brown, please."
+                "Can I speak to Mr. Brown, please?",
+                "I'd like to speak to Mr. Brown.",
+                "Mr. Brown, please."
               ],
               "requiredConcepts": [
                 [
@@ -3051,13 +3155,18 @@
                 "Yes, I can.",
                 "Okay, thank you.",
                 "Yes, I'll call later.",
-                "Okay."
+                "Okay.",
+                "I'll call later."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "sure"
+                  "sure",
+                  "all right",
+                  "alright",
+                  "call later",
+                  "call back"
                 ]
               ],
               "next": "t_ok"
@@ -3086,13 +3195,18 @@
                 "Yes, I can.",
                 "Okay, thank you.",
                 "Yes, I'll call later.",
-                "Okay."
+                "Okay.",
+                "I'll call later."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "sure"
+                  "sure",
+                  "all right",
+                  "alright",
+                  "call later",
+                  "call back"
                 ]
               ],
               "next": "t_ok"
@@ -3158,7 +3272,11 @@
               "acceptedVariants": [
                 "Yes, I am.",
                 "Yes.",
-                "Yes, that's right."
+                "Yes, that's right.",
+                "That's right.",
+                "That's me.",
+                "I am.",
+                "Right."
               ],
               "requiredConcepts": [
                 [
@@ -3190,7 +3308,11 @@
               "acceptedVariants": [
                 "Yes, I am.",
                 "Yes.",
-                "Yes, that's right."
+                "Yes, that's right.",
+                "That's right.",
+                "That's me.",
+                "I am.",
+                "Right."
               ],
               "requiredConcepts": [
                 [
@@ -3225,11 +3347,14 @@
                 "No, I don't.",
                 "No.",
                 "No, I don't have a helmet.",
-                "Sorry, no."
+                "Sorry, no.",
+                "I don't have a helmet.",
+                "I don't have one."
               ],
               "requiredConcepts": [
                 [
-                  "no"
+                  "no",
+                  "do not"
                 ]
               ],
               "next": "t_ok"
@@ -3258,11 +3383,14 @@
                 "No, I don't.",
                 "No.",
                 "No, I don't have a helmet.",
-                "Sorry, no."
+                "Sorry, no.",
+                "I don't have a helmet.",
+                "I don't have one."
               ],
               "requiredConcepts": [
                 [
-                  "no"
+                  "no",
+                  "do not"
                 ]
               ],
               "next": "t_ok"
@@ -3501,12 +3629,16 @@
                 "Yes, I am.",
                 "Yes, I'm free.",
                 "Yes, of course.",
-                "Sure."
+                "Sure.",
+                "I'm free.",
+                "Of course.",
+                "Okay."
               ],
               "requiredConcepts": [
                 [
                   "yes",
-                  "sure"
+                  "sure",
+                  "okay"
                 ]
               ],
               "next": "p1"
@@ -3535,12 +3667,16 @@
                 "Yes, I am.",
                 "Yes, I'm free.",
                 "Yes, of course.",
-                "Sure."
+                "Sure.",
+                "I'm free.",
+                "Of course.",
+                "Okay."
               ],
               "requiredConcepts": [
                 [
                   "yes",
-                  "sure"
+                  "sure",
+                  "okay"
                 ]
               ],
               "next": "p1"
@@ -3677,13 +3813,17 @@
                 "Yes, please.",
                 "Yes, I do.",
                 "Okay, thank you.",
-                "Sure."
+                "Sure.",
+                "Good idea.",
+                "I'd love to."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "sure"
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "p1"
@@ -3712,13 +3852,17 @@
                 "Yes, please.",
                 "Yes, I do.",
                 "Okay, thank you.",
-                "Sure."
+                "Sure.",
+                "Good idea.",
+                "I'd love to."
               ],
               "requiredConcepts": [
                 [
                   "yes",
                   "okay",
-                  "sure"
+                  "sure",
+                  "all right",
+                  "alright"
                 ]
               ],
               "next": "p1"
@@ -3846,7 +3990,7 @@
           "kind": "learner",
           "id": "l0",
           "prompt": {
-            "vi": "Hãy chào lại và nói bạn khoẻ."
+            "vi": "Hãy chào lại và nói bạn khỏe."
           },
           "expected": [
             {
@@ -3855,14 +3999,16 @@
                 "Good morning. I'm fine, thank you.",
                 "I'm fine, thanks.",
                 "I'm very well, thank you.",
-                "I'm okay, thank you."
+                "I'm okay, thank you.",
+                "I'm great, thanks."
               ],
               "requiredConcepts": [
                 [
                   "fine",
                   "well",
                   "okay",
-                  "good"
+                  "good",
+                  "great"
                 ]
               ],
               "next": "p1"
@@ -3882,7 +4028,7 @@
           "kind": "learner",
           "id": "l0b",
           "prompt": {
-            "vi": "Hãy chào lại và nói bạn khoẻ."
+            "vi": "Hãy chào lại và nói bạn khỏe."
           },
           "expected": [
             {
@@ -3891,14 +4037,16 @@
                 "Good morning. I'm fine, thank you.",
                 "I'm fine, thanks.",
                 "I'm very well, thank you.",
-                "I'm okay, thank you."
+                "I'm okay, thank you.",
+                "I'm great, thanks."
               ],
               "requiredConcepts": [
                 [
                   "fine",
                   "well",
                   "okay",
-                  "good"
+                  "good",
+                  "great"
                 ]
               ],
               "next": "p1"
@@ -3912,7 +4060,7 @@
           "id": "p1",
           "text": "What is your name, and where are you from?",
           "clipId": "en.clip.ix_bac2_a_greet_1",
-          "rephraseText": "Please tell me your name and your home town.",
+          "rephraseText": "Please tell me your name and your hometown.",
           "rephraseClipId": "en.clip.ix_bac2_a_greet_1_s",
           "next": "l1"
         },
@@ -3947,7 +4095,7 @@
         "r1": {
           "kind": "partner",
           "id": "r1",
-          "text": "Please tell me your name and your home town.",
+          "text": "Please tell me your name and your hometown.",
           "clipId": "en.clip.ix_bac2_a_greet_1_s",
           "next": "l1b"
         },
@@ -4028,7 +4176,7 @@
           "kind": "learner",
           "id": "l0",
           "prompt": {
-            "vi": "Hãy chào lại và nói bạn khoẻ."
+            "vi": "Hãy chào lại và nói bạn khỏe."
           },
           "expected": [
             {
@@ -4037,14 +4185,16 @@
                 "Good afternoon. I'm fine, thank you.",
                 "I'm fine, thanks.",
                 "I'm very well, thank you.",
-                "I'm okay, thank you."
+                "I'm okay, thank you.",
+                "I'm great, thanks."
               ],
               "requiredConcepts": [
                 [
                   "fine",
                   "well",
                   "okay",
-                  "good"
+                  "good",
+                  "great"
                 ]
               ],
               "next": "p1"
@@ -4064,7 +4214,7 @@
           "kind": "learner",
           "id": "l0b",
           "prompt": {
-            "vi": "Hãy chào lại và nói bạn khoẻ."
+            "vi": "Hãy chào lại và nói bạn khỏe."
           },
           "expected": [
             {
@@ -4073,14 +4223,16 @@
                 "Good afternoon. I'm fine, thank you.",
                 "I'm fine, thanks.",
                 "I'm very well, thank you.",
-                "I'm okay, thank you."
+                "I'm okay, thank you.",
+                "I'm great, thanks."
               ],
               "requiredConcepts": [
                 [
                   "fine",
                   "well",
                   "okay",
-                  "good"
+                  "good",
+                  "great"
                 ]
               ],
               "next": "p1"
@@ -4350,7 +4502,8 @@
               "acceptedVariants": [
                 "I go swimming and I cook.",
                 "I swim and cook.",
-                "I go swimming and cook."
+                "I go swimming and cook.",
+                "I go swimming and cooking."
               ],
               "requiredConcepts": [
                 [
@@ -4358,7 +4511,8 @@
                   "swimming"
                 ],
                 [
-                  "cook"
+                  "cook",
+                  "cooking"
                 ]
               ],
               "next": "p3"
@@ -4386,7 +4540,8 @@
               "acceptedVariants": [
                 "I go swimming and I cook.",
                 "I swim and cook.",
-                "I go swimming and cook."
+                "I go swimming and cook.",
+                "I go swimming and cooking."
               ],
               "requiredConcepts": [
                 [
@@ -4394,7 +4549,8 @@
                   "swimming"
                 ],
                 [
-                  "cook"
+                  "cook",
+                  "cooking"
                 ]
               ],
               "next": "p3"
@@ -4602,11 +4758,16 @@
               "acceptedVariants": [
                 "I live with my parents.",
                 "With my parents.",
-                "My parents."
+                "My parents.",
+                "With my mom and dad."
               ],
               "requiredConcepts": [
                 [
-                  "parents"
+                  "parents",
+                  "mom",
+                  "mother",
+                  "dad",
+                  "father"
                 ]
               ],
               "next": "p2"
@@ -4634,11 +4795,16 @@
               "acceptedVariants": [
                 "I live with my parents.",
                 "With my parents.",
-                "My parents."
+                "My parents.",
+                "With my mom and dad."
               ],
               "requiredConcepts": [
                 [
-                  "parents"
+                  "parents",
+                  "mom",
+                  "mother",
+                  "dad",
+                  "father"
                 ]
               ],
               "next": "p2"
