@@ -19,9 +19,12 @@ import time
 
 DESCRIPTION = "{speaker}'s voice is clear and calm, at a moderate speed, in a very close recording with very clear audio and no background noise."
 BATCH = 8
-ATTEMPTS = 3
-# Characters of text per second of speech; wider than the pipeline's QA band for short clips.
-MIN_RATE, MAX_RATE = 5.0, 24.0
+ATTEMPTS = 5
+# The QA band for Latin script is 4 to 30 characters a second, with a 0.25 s floor; a clip of up to 3 letters has its own band.
+MIN_RATE, MAX_RATE = 5.0, 28.0
+MIN_SECONDS = 0.3
+SHORT_UNITS = 3
+MAX_SHORT_SECONDS = 1.5
 SILENCE_RATIO = 0.02
 PAD_SECONDS = 0.08
 
@@ -43,14 +46,14 @@ def trim(audio, rate):
 
 
 def plausible(text, audio, rate):
-    chars = max(len(text), 1)
+    """Tighter than the pipeline's technical QA, which runs after encoding, so a clip that would fail it is sampled again."""
     seconds = audio.size / rate
-    if seconds <= 0:
+    if seconds < MIN_SECONDS:
         return False
-    per_second = chars / seconds
-    # A one-word clip is naturally slow, so only its upper length is judged by the floor.
-    floor = 2.5 if chars < 12 else MIN_RATE
-    return floor <= per_second <= MAX_RATE
+    units = sum(1 for c in text if c.isalnum())
+    if units <= SHORT_UNITS:
+        return seconds <= MAX_SHORT_SECONDS
+    return MIN_RATE <= len(text) / seconds <= MAX_RATE
 
 
 def main() -> int:
