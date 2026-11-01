@@ -1121,3 +1121,19 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  content/reports/audio-canary.json
 - compile: changed  src/content/attributions.json
+
+## 2026-11-01 — audio.yml fr generate (all) run 41333693701
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/audio-census.json
+- compile: changed  content/reports/audio-quality.json
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/reception-audio-census.json
+- compile: changed  src/content/attributions.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/fr-en.ts
+- compile: changed  src/content/reception/fr-clip-assets.ts
+- compile: changed  src/content/reception/fr-listening.json
+- compile: changed  src/content/stories/fr-stories.json
+- compile: changed  src/content/stories/fr-story-assets.ts
+- compile: changed  src/content/stories/fr-vi-stories.json

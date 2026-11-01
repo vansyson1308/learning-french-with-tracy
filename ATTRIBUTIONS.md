@@ -501,6 +501,15 @@ Audio for some courses is synthesized at pipeline time with MeloTTS (MyShell.ai,
 
 > P3b audio pipeline v2. Each MeloTTS model actually selected for a course gets its own registry entry (melotts-<lang>) at selection time, covering that language's assets.
 
+## Parler-TTS
+
+- **License:** Apache-2.0
+- **Source:** https://github.com/huggingface/parler-tts
+- **What:** TTS engine used at pipeline time (never shipped)
+- **Retrieved:** 2026-10-31
+
+Parler-TTS (Hugging Face, Apache-2.0), pinned in content/audio/engines.json, renders course audio at pipeline time. It never ships.
+
 ## Lingo Lessons (Open Apps Studio)
 
 - **License:** MIT

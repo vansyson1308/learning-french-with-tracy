@@ -1,8 +1,9 @@
 {
   "generator": "scripts/audio.ts apply",
   "language": "fr",
-  "pipelineVersion": 1,
+  "pipelineVersion": 3,
   "layers": [
+    "pack",
     "reception"
   ],
   "courses": [
@@ -10,10 +11,10 @@
       "courseId": "fr-en",
       "policy": "generated",
       "voiceCast": {
-        "A": "fr_FR-siwis-medium",
-        "B": null
+        "A": "kokoro-ff_siwis",
+        "B": "parler-fr-daniel"
       },
-      "clips": 0
+      "clips": 164
     }
   ],
   "receptionClips": 392,
