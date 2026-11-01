@@ -1,0 +1,866 @@
+[
+ {
+  "id": "en-vi:u0-l1-e6",
+  "severity": "P0",
+  "problem": "Common ways to say thanks are rejected.",
+  "fix": "Add alternative: Thank you so much! | Thanks a lot! | Thanks so much!"
+ },
+ {
+  "id": "en-vi:u0-l1-e7",
+  "severity": "P0",
+  "problem": "After bumping someone, 'Pardon me!' and 'So sorry!' are correct American responses but rejected.",
+  "fix": "Add alternative: Pardon me! | So sorry!"
+ },
+ {
+  "id": "en-vi:u0-l2-e7",
+  "severity": "P2",
+  "problem": "'Chúc ngủ ngon' also fits 'Sleep well!'; the sibling item accepts 'Morning!' but this one has no short form.",
+  "fix": "Add alternative: Sleep well! | Night!"
+ },
+ {
+  "id": "en-vi:u0-l3-e7",
+  "severity": "P0",
+  "problem": "'Được' is equally 'All right'; a correct answer is rejected.",
+  "fix": "Add alternative: All right, thank you. | Alright, thank you. | All right, thanks. | Alright, thanks."
+ },
+ {
+  "id": "en-vi:u1-l3-e6",
+  "severity": "P0",
+  "problem": "'I am a Vietnamese person.' is correct and a very likely learner answer for 'người Việt'.",
+  "fix": "Add alternative: I am a Vietnamese person."
+ },
+ {
+  "id": "en-vi:u1-l3-e7",
+  "severity": "P0",
+  "problem": "Unmarked Vietnamese verb. The course accepts the progressive for 'Tôi uống trà' but not here.",
+  "fix": "Add alternative: I am speaking English."
+ },
+ {
+  "id": "en-vi:u2-l2-e6",
+  "severity": "P0",
+  "problem": "'một' is literally 'one'; 'I have one sister.' is correct. 'big sister' is the common phrase for 'chị gái', beside the listed 'older sister'.",
+  "fix": "Add alternative: I have one sister. | I have a big sister. | I have one older sister."
+ },
+ {
+  "id": "en-vi:u2-l3-e6",
+  "severity": "P0",
+  "problem": "'một' = one; 'My uncle has one dog.' is correct and rejected.",
+  "fix": "Add alternative: My uncle has one dog."
+ },
+ {
+  "id": "en-vi:u2-l3-e7",
+  "severity": "P0",
+  "problem": "Elsewhere the course accepts dad and mom for bố and mẹ; 'grandpa' is rejected here, as is 'one bird'.",
+  "fix": "Add alternative: My grandpa has a bird. | My grandfather has one bird. | My grandpa has one bird."
+ },
+ {
+  "id": "en-vi:u3-l2-e5",
+  "severity": "P0",
+  "problem": "'I would like water' is correct for 'Tôi muốn nước' and is the polite form a learner may well use (I'd like folds to it).",
+  "fix": "Add alternative: I would like water. | I would like some water."
+ },
+ {
+  "id": "en-vi:u3-l2-e6",
+  "severity": "P0",
+  "problem": "'I would like to eat rice' is correct for 'Tôi muốn ăn cơm'.",
+  "fix": "Add alternative: I would like to eat rice. | I would like to eat some rice."
+ },
+ {
+  "id": "en-vi:u3-l3-e6",
+  "severity": "P0",
+  "problem": "Unmarked Vietnamese: 'Tôi không ăn thịt' is also 'I am not eating meat'. The course accepts progressives on the affirmative siblings.",
+  "fix": "Add alternative: I am not eating meat."
+ },
+ {
+  "id": "en-vi:u4-l0-e6",
+  "severity": "P0",
+  "problem": "Unmarked tense; the progressive is rejected although the siblings accept it.",
+  "fix": "Add alternative: I am going by train. | I am traveling by train."
+ },
+ {
+  "id": "en-vi:u4-l1-e7",
+  "severity": "P0",
+  "problem": "'một cái vé' = one ticket; 'I have one ticket.' is correct and rejected.",
+  "fix": "Add alternative: I have one ticket."
+ },
+ {
+  "id": "en-vi:u4-l2-e8",
+  "severity": "P0",
+  "problem": "'Nhà ga' is a train station, and 'Where is the train station?' is the most natural American phrasing. Rejected.",
+  "fix": "Add alternative: Where is the train station?"
+ },
+ {
+  "id": "en-vi:u4-l2-e9",
+  "severity": "P0",
+  "problem": "'về nhà' literally is 'go back home'; very likely learner answers are rejected.",
+  "fix": "Add alternative: I go back home. | I am going back home. | I return home."
+ },
+ {
+  "id": "en-vi:u4-l3-e6",
+  "severity": "P0",
+  "problem": "'Bến xe buýt' covers both bus stop and bus station. 'Where is the bus station?' is a correct translation and rejected.",
+  "fix": "Add alternative: Where is the bus station?"
+ },
+ {
+  "id": "en-vi:u4-l3-e7",
+  "severity": "P0",
+  "problem": "'một cái bản đồ' = one map; correct answer rejected.",
+  "fix": "Add alternative: I have one map."
+ },
+ {
+  "id": "en-vi:ua-l1-e6",
+  "severity": "P2",
+  "problem": "Tiles also build 'The key is on a table', a grammatical reading of unmarked 'bàn', though less natural. Listing it avoids an unfair miss.",
+  "fix": "Add alternative order: [\"The\",\"key\",\"is\",\"on\",\"a\",\"table\"]",
+  "uncertain": true,
+  "reason": "The item teaches 'the'; accepting 'a table' may weaken the point of the lesson. An author decision."
+ },
+ {
+  "id": "en-vi:ua-l3-e9",
+  "severity": "P2",
+  "problem": "'Không có sữa' has no subject, so 'We have no milk' and 'We don't have any milk' are natural readings.",
+  "fix": "Add alternative: We have no milk. | We don't have any milk. | We don't have milk.",
+  "uncertain": true,
+  "reason": "The lesson targets 'there is'; the owner may prefer to keep it narrow, but these answers are correct English for the prompt."
+ },
+ {
+  "id": "en-vi:ub-l1-e9",
+  "severity": "P0",
+  "problem": "Unmarked Vietnamese; 'Where are you living?' is correct and rejected.",
+  "fix": "Add alternative: Where are you living?"
+ },
+ {
+  "id": "en-vi:ub-l2-e8",
+  "severity": "P0",
+  "problem": "'She is asleep.' is a correct, common translation of 'Cô ấy đang ngủ.'",
+  "fix": "Add alternative: She is asleep."
+ },
+ {
+  "id": "en-vi:ub-l3-e6",
+  "severity": "P0",
+  "problem": "'Where have you been?' is a natural translation of 'Bạn đã đi đâu?'.",
+  "fix": "Add alternative: Where have you been? | Where did you go to?"
+ },
+ {
+  "id": "en-vi:ub-l3-e7",
+  "severity": "P0",
+  "problem": "'một cái vé' = one ticket.",
+  "fix": "Add alternative: I bought one ticket yesterday. | Yesterday I bought one ticket."
+ },
+ {
+  "id": "en-vi:uc-l0-e9",
+  "severity": "P0",
+  "problem": "'một cái' = one; 'I need one computer.' is correct.",
+  "fix": "Add alternative: I need one computer."
+ },
+ {
+  "id": "en-vi:uc-l1-e9",
+  "severity": "P0",
+  "problem": "'một tấm ảnh' = one photo; also picture with 'one'.",
+  "fix": "Add alternative: I have one photo. | I have one picture."
+ },
+ {
+  "id": "en-vi:uc-l2-e1",
+  "severity": "P2",
+  "problem": "Prompt 'Cái này' is 'this', but all options and the key use 'It'. No wrong answer results because there is no 'This' option, but the prompt does not match the key.",
+  "fix": "Set prompt: Nó rất tốt."
+ },
+ {
+  "id": "en-vi:uc-l2-e6",
+  "severity": "P0",
+  "problem": "The tiles also build 'I very much like my job', which is correct English.",
+  "fix": "Add alternative order: [\"I\",\"very\",\"much\",\"like\",\"my\",\"job\"]"
+ },
+ {
+  "id": "en-vi:uc-l2-e7",
+  "severity": "P0",
+  "problem": "'I like it a lot.' is the most natural spoken American version and is rejected.",
+  "fix": "Add alternative: I like it a lot."
+ },
+ {
+  "id": "en-vi:uc-l2-e8",
+  "severity": "P0",
+  "problem": "'đến' is also 'arrive'.",
+  "fix": "Add alternative: Why did you arrive late? | Why did you get here late?"
+ },
+ {
+  "id": "en-vi:uc-l2-e9",
+  "severity": "P0",
+  "problem": "'How are you doing?' is correct American English and rejected.",
+  "fix": "Add alternative: How are you doing?"
+ },
+ {
+  "id": "en-vi:uc-l3-e5",
+  "severity": "P0",
+  "problem": "'Cái túi nhỏ.' is ambiguous in Vietnamese: 'The bag is small' or 'the small bag'. The tiles build 'a small bag' and 'The small bag'. The sister item ua-l1-e8 accepts the noun-phrase reading for 'Nhà bếp nhỏ.'",
+  "fix": "Add alternative order: [\"The\",\"small\",\"bag\"] | [\"a\",\"small\",\"bag\"]"
+ },
+ {
+  "id": "en-vi:uc-l3-e7",
+  "severity": "P0",
+  "problem": "'một' = one; 'one small cat' is correct, and ua-l0-e7 accepts the 'one' form.",
+  "fix": "Add alternative: one small cat | one little cat"
+ },
+ {
+  "id": "en-vi:uc-l3-e8",
+  "severity": "P0",
+  "problem": "'một' = one.",
+  "fix": "Add alternative: I have one big house. | I have one large house."
+ },
+ {
+  "id": "en-vi:ud-l1-e9",
+  "severity": "P0",
+  "problem": "Typed grading does not spell digits, and only 'My mother' has the digit forms. 'My mom is 60.' and 'My mom is 60 years old.' are rejected (mum folds to mom).",
+  "fix": "Add alternative: My mom is 60 years old. | My mom is 60."
+ },
+ {
+  "id": "en-vi:ud-l2-e0",
+  "severity": "P2",
+  "problem": "'half past eight' is understood in the US but 'eight thirty' is what Americans say. The course model is American; the options do not offer it.",
+  "fix": "Set answer: It's eight thirty.",
+  "uncertain": true,
+  "reason": "Requires changing the options as well (Replace option: It's half past eight. => It's eight thirty.). Teaching 'half past' as passive knowledge is defensible."
+ },
+ {
+  "id": "en-vi:ud-l2-e5",
+  "severity": "P0",
+  "problem": "'Bây giờ là mấy giờ?' literally contains 'now'; 'What time is it now?' is correct and rejected.",
+  "fix": "Add alternative: What time is it now? | What's the time now?"
+ },
+ {
+  "id": "en-vi:ud-l2-e6",
+  "severity": "P0",
+  "problem": "'Bây giờ' = now, and digital time is natural; these forms are rejected. The colon is stripped by the normalizer, so '10:00' compares as '1000' and must be listed.",
+  "fix": "Add alternative: It's ten o'clock now. | It's ten now. | Now it's ten o'clock. | It's 10:00. | It's 10:00 now."
+ },
+ {
+  "id": "en-vi:ud-l2-e7",
+  "severity": "P0",
+  "problem": "'7:30.' without 'It's' is rejected; the colon is stripped, so '7 30.' in the list does not cover it. 'It's 7:30.' is listed, the bare form is not.",
+  "fix": "Add alternative: 7:30."
+ },
+ {
+  "id": "en-vi:ue-l0-e3",
+  "severity": "P2",
+  "problem": "Option 'xem' (the verb watch) has the wristwatch emoji, which is the noun sense. The same applies in ue-l0-e4 and ue-l1-e1.",
+  "fix": "Replace option: xem ⌚ => xem 👀"
+ },
+ {
+  "id": "en-vi:ue-l0-e4",
+  "severity": "P2",
+  "problem": "Prompt 'xem' (verb), option watch shows ⌚ (the noun).",
+  "fix": "Replace option: watch ⌚ => watch 👀"
+ },
+ {
+  "id": "en-vi:ue-l1-e1",
+  "severity": "P2",
+  "problem": "Option 'xem' with ⌚ shows the noun sense for a verb.",
+  "fix": "Replace option: xem ⌚ => xem 👀"
+ },
+ {
+  "id": "en-vi:ue-l0-e8",
+  "severity": "P0",
+  "problem": "'một cái túi' = one bag.",
+  "fix": "Add alternative: I have one bag."
+ },
+ {
+  "id": "en-vi:ue-l1-e9",
+  "severity": "P0",
+  "problem": "'Cái này' = 'this one'; 'This one is mine.' is correct and rejected.",
+  "fix": "Add alternative: This one is mine."
+ },
+ {
+  "id": "en-vi:ue-l2-e1",
+  "severity": "P0",
+  "problem": "Distractor 'washes' ends in /ɪz/, so its -s is also pronounced as the sound z. A learner who picks it is not wrong by the wording 'đuôi -s đọc là âm z'.",
+  "fix": "Replace option: washes => helps"
+ },
+ {
+  "id": "en-vi:ue-l3-e1",
+  "severity": "P0",
+  "problem": "'nhà ga' is a train station; 'train station' is the natural American answer and rejected.",
+  "fix": "Add alternative: train station | the train station | a train station"
+ },
+ {
+  "id": "en-vi:ug-l3-e5",
+  "severity": "P0",
+  "problem": "'Watch out!' and 'Look out!' are the normal American warnings for 'Cẩn thận!' and are rejected.",
+  "fix": "Add alternative: Watch out! | Look out!"
+ },
+ {
+  "id": "en-vi:uh-l3-e4",
+  "severity": "P1",
+  "problem": "'open your book at page ten' is British usage. American teachers say 'to page ten'. The course model is American.",
+  "fix": "Set sentence: Please open your book to ___ ten."
+ },
+ {
+  "id": "en-vi:ui-l0-e5",
+  "severity": "P0",
+  "problem": "Same Vietnamese stem as uc-l2-e9, which accepts more. 'Are you okay?', 'Are you well?' and 'How are you doing?' are rejected here.",
+  "fix": "Add alternative: How are you doing? | Are you okay? | Are you well?"
+ },
+ {
+  "id": "en-vi:ui-l3-e5",
+  "severity": "P0",
+  "problem": "'Xin chờ một chút' is literally 'wait a moment'. The most direct answers are rejected.",
+  "fix": "Add alternative: Please wait a moment. | Wait a moment, please. | Just a moment, please. | One moment. | Please wait a minute. | Hold on a moment, please."
+ },
+ {
+  "id": "en-vi:uj-l1-e7",
+  "severity": "P0",
+  "problem": "Word-order and synonym variants of a frequency adverb are rejected.",
+  "fix": "Add alternative: I drink tea often. | I normally drink tea. | Often I drink tea."
+ },
+ {
+  "id": "en-vi:uk-l0-e4",
+  "severity": "P2",
+  "problem": "u0-l2-e6 accepts 'Morning!'; the parallel short form is missing here.",
+  "fix": "Add alternative: Evening!"
+ },
+ {
+  "id": "en-vi:uk-l2-e1",
+  "severity": "P1",
+  "problem": "'madam' is the British hotel form. An American desk clerk says 'ma'am', and it is missing.",
+  "fix": "Add acceptedVariant: Good evening ma'am | Good evening, welcome | Hi"
+ },
+ {
+  "id": "en-vi:uk-l2-e2",
+  "severity": "P0",
+  "problem": "'See you later' is the commonest American parting and is not listed.",
+  "fix": "Add acceptedVariant: See you later | Good night | Have a good night"
+ },
+ {
+  "id": "en-vi:uk-l3-e2",
+  "severity": "P0",
+  "problem": "Same item as uk-l2-e2; same variants missing.",
+  "fix": "Add acceptedVariant: See you later | Good night | Have a good night"
+ },
+ {
+  "id": "en-vi:uk-l2-e3",
+  "severity": "P0",
+  "problem": "'Pardon me' is correct American English for asking to pass.",
+  "fix": "Add acceptedVariant: Pardon me | Excuse me sir | Excuse me ma'am"
+ },
+ {
+  "id": "en-vi:uk-l3-e4",
+  "severity": "P0",
+  "problem": "Unmarked tense plus a common form: 'Sorry, I was late' and 'Sorry for being late' are rejected.",
+  "fix": "Add alternative: Sorry for being late. | I'm sorry for being late. | Sorry, I was late. | I'm sorry I was late."
+ },
+ {
+  "id": "en-vi:ul-l1-e0",
+  "severity": "P0",
+  "problem": "The instruction itself says 'đang sống', and other production items accept short answers. Correct answers are rejected.",
+  "fix": "Add acceptedVariant: I am living in Hue | I'm living in Hue | In Hue | Hue"
+ },
+ {
+  "id": "en-vi:ul-l1-e1",
+  "severity": "P0",
+  "problem": "Sibling items accept bare short answers ('Two children'). 'Twenty-five' alone is a normal answer to the age prompt.",
+  "fix": "Add acceptedVariant: Twenty-five | Twenty-five years old"
+ },
+ {
+  "id": "en-vi:ul-l2-e1",
+  "severity": "P0",
+  "problem": "'Hãy nói bạn làm việc ở đâu' invites short answers, and 'the factory' is possible. Other items accept short forms.",
+  "fix": "Add acceptedVariant: In a factory | At a factory | I work in the factory | I work at the factory"
+ },
+ {
+  "id": "en-vi:ul-l3-e2",
+  "severity": "P0",
+  "problem": "Same item as ul-l2-e1.",
+  "fix": "Add acceptedVariant: In a factory | At a factory | I work in the factory | I work at the factory"
+ },
+ {
+  "id": "en-vi:ul-l3-e5",
+  "severity": "P0",
+  "problem": "'một câu hỏi'; 'I have one question.' is natural and rejected.",
+  "fix": "Add alternative: I have one question."
+ },
+ {
+  "id": "en-vi:um-l0-e0",
+  "severity": "P0",
+  "problem": "'kids' is the everyday American word for children, and is accepted in the sister item um-l0-e4 but not here.",
+  "fix": "Add acceptedVariant: I have two kids | Two kids | Two"
+ },
+ {
+  "id": "en-vi:um-l3-e2",
+  "severity": "P0",
+  "problem": "Same item as um-l0-e0.",
+  "fix": "Add acceptedVariant: I have two kids | Two kids | Two"
+ },
+ {
+  "id": "en-vi:um-l0-e1",
+  "severity": "P1",
+  "problem": "'in my team' is British. American usage is 'on my team', and a learner who says it is currently rejected.",
+  "fix": "Add acceptedVariant: There are ten people on my team | My team has ten people | Ten"
+ },
+ {
+  "id": "en-vi:um-l0-e1",
+  "severity": "P1",
+  "problem": "The model answer teaches British 'in my team' to a learner of the American model.",
+  "fix": "Set target: There are ten people on my team."
+ },
+ {
+  "id": "en-vi:um-l1-e3",
+  "severity": "P0",
+  "problem": "'Cái này' = 'this one'; 'How much is this one?' is very common and rejected.",
+  "fix": "Add alternative: How much is this one? | How much does this one cost?"
+ },
+ {
+  "id": "en-vi:um-l1-e4",
+  "severity": "P0",
+  "problem": "Distractor 'cost' is also correct: 'The ticket cost thirty dollars.' is the past tense, and the Vietnamese prompt has no tense marking.",
+  "fix": "Add alternative order: [\"The\",\"ticket\",\"cost\",\"thirty\",\"dollars\"]"
+ },
+ {
+  "id": "en-vi:um-l3-e4",
+  "severity": "P0",
+  "problem": "'kids' is rejected; um-l0-e4 accepts it in the question form.",
+  "fix": "Add alternative: I have two kids. | I have 2 kids."
+ },
+ {
+  "id": "en-vi:un-l1-e0",
+  "severity": "P0",
+  "problem": "Whole-utterance matching only. 'con/ngôi nhà to' also gives 'The big house' and 'It's a large house'.",
+  "fix": "Add acceptedVariant: The big house | The house is large | It's a large house | A large house"
+ },
+ {
+  "id": "en-vi:un-l3-e0",
+  "severity": "P0",
+  "problem": "Same item as un-l1-e0.",
+  "fix": "Add acceptedVariant: The big house | The house is large | It's a large house | A large house"
+ },
+ {
+  "id": "en-vi:un-l1-e1",
+  "severity": "P0",
+  "problem": "'con mèo nhỏ': 'little' is accepted for this phrase in uc-l3-e7 but not here, and 'The small cat' is missing.",
+  "fix": "Add acceptedVariant: The small cat | The cat is little | It's a little cat | A little cat"
+ },
+ {
+  "id": "en-vi:un-l1-e2",
+  "severity": "P0",
+  "problem": "'The old car' is a direct translation of 'chiếc ô tô cũ' and is rejected.",
+  "fix": "Add acceptedVariant: The old car"
+ },
+ {
+  "id": "en-vi:un-l1-e7",
+  "severity": "P0",
+  "problem": "'một' = one; 'one black car' is correct and rejected.",
+  "fix": "Add alternative: one black car"
+ },
+ {
+  "id": "en-vi:un-l2-e0",
+  "severity": "P1",
+  "problem": "Cue emoji 🛋️ shows a sofa, but the answer is 'table'. Also fronted order is rejected, although the word-bank sibling un-l2-e2 accepts it.",
+  "fix": "Add acceptedVariant: In the room there is a table"
+ },
+ {
+  "id": "en-vi:un-l3-e2",
+  "severity": "P1",
+  "problem": "Same item as un-l2-e0: sofa emoji for 'table', fronted order rejected.",
+  "fix": "Add acceptedVariant: In the room there is a table"
+ },
+ {
+  "id": "en-vi:un-l2-e3",
+  "severity": "P0",
+  "problem": "'refrigerator' is the full American word for 'tủ lạnh'; 'The kitchen has a fridge' is also correct.",
+  "fix": "Add alternative: There is a refrigerator in the kitchen. | In the kitchen there is a refrigerator. | The kitchen has a fridge. | The kitchen has a refrigerator."
+ },
+ {
+  "id": "en-vi:uo-l1-e4",
+  "severity": "P2",
+  "problem": "Some learners will write 'number' for 'số', or the abbreviation 'St.'.",
+  "fix": "Add alternative: My address is number 12 Green Street. | My address is 12 Green St."
+ },
+ {
+  "id": "en-vi:uo-l2-e1",
+  "severity": "P0",
+  "problem": "Rubric slot accepts only 'two children'. 'I have two kids' is correct and marked as missing the slot.",
+  "fix": "Add acceptedVariant: two kids"
+ },
+ {
+  "id": "en-vi:uo-l2-e4",
+  "severity": "P0",
+  "problem": "'một con gái' = one daughter.",
+  "fix": "Add alternative: I have one daughter."
+ },
+ {
+  "id": "en-vi:up-l0-e4",
+  "severity": "P0",
+  "problem": "Unmarked tense; progressive rejected. The football spelling is covered, its progressive is not.",
+  "fix": "Add alternative: Tom is playing soccer. | Tom is playing football."
+ },
+ {
+  "id": "en-vi:up-l2-e1",
+  "severity": "P0",
+  "problem": "Slots are too narrow. 'I am staying home today because I am sick' is the natural American answer and fails 'at home'. 'I am ill' and 'I feel sick' fail 'i am sick', though uv-l1-e4 accepts ill for 'bị ốm'.",
+  "fix": "Add acceptedVariant: stay home | staying home | am home | i am ill | i feel sick | i am not well"
+ },
+ {
+  "id": "en-vi:up-l3-e0",
+  "severity": "P0",
+  "problem": "Slots reject correct wordings: little cat, the small cat, large house, the big house.",
+  "fix": "Add acceptedVariant: a little cat | the cat is little | the small cat | a large house | the house is large | the big house"
+ },
+ {
+  "id": "en-vi:uq-l0-e4",
+  "severity": "P2",
+  "problem": "'how are you doing' is accepted nowhere for this stem.",
+  "fix": "Add alternative: Hi Lan, how are you doing? | Hello Lan, how are you doing?"
+ },
+ {
+  "id": "en-vi:uq-l2-e0",
+  "severity": "P0",
+  "problem": "'Sincerely' is the standard American business closing, and 'Best wishes' or 'Best' are common. All fail the closing slot. 'good afternoon' fails the greeting slot.",
+  "fix": "Add acceptedVariant: sincerely | best wishes | best | good afternoon"
+ },
+ {
+  "id": "en-vi:ur-l3-e1",
+  "severity": "P0",
+  "problem": "Same closing and greeting problem as uq-l2-e0.",
+  "fix": "Add acceptedVariant: sincerely | best wishes | best | good afternoon"
+ },
+ {
+  "id": "en-vi:uq-l2-e4",
+  "severity": "P0",
+  "problem": "'I am emailing you.' is the most natural American wording.",
+  "fix": "Add alternative: I am emailing you."
+ },
+ {
+  "id": "en-vi:uq-l3-e5",
+  "severity": "P0",
+  "problem": "'Do you have my email address?' is correct and more precise; rejected.",
+  "fix": "Add alternative: Do you have my email address?"
+ },
+ {
+  "id": "en-vi:ur-l0-e2",
+  "severity": "P1",
+  "problem": "For a whole form, Americans say 'fill out', and 'fill in' is mostly for blanks. Course model is American.",
+  "fix": "Set sentence: Please fill out this ___.",
+  "uncertain": true,
+  "reason": "'fill in this form' is understood and not wrong in the US, only less usual."
+ },
+ {
+  "id": "en-vi:ur-l0-e3",
+  "severity": "P1",
+  "problem": "Same usage point as ur-l0-e2. At minimum 'fill out' should be available.",
+  "fix": "Replace option: in => out",
+  "uncertain": true,
+  "reason": "Requires Set answer: [\"Please\",\"fill\",\"out\",\"this\",\"form\"] with it."
+ },
+ {
+  "id": "en-vi:ur-l0-e4",
+  "severity": "P0",
+  "problem": "Unmarked aspect; 'I am living in Hue.' is correct and rejected.",
+  "fix": "Add alternative: I am living in Hue."
+ },
+ {
+  "id": "en-vi:ur-l2-e0",
+  "severity": "P0",
+  "problem": "Slot 'does not work' rejects 'The printer is not working', the most natural way to say it, and 'is broken'. 'call the manager' rejects 'call your manager' and 'call our manager'.",
+  "fix": "Add acceptedVariant: is not working | is broken | call your manager | call our manager | call my manager"
+ },
+ {
+  "id": "en-vi:us-l0-e1",
+  "severity": "P0",
+  "problem": "Distractor tile 'see' builds 'Nice to see you', which is correct English, and 'gặp' covers see as well as meet.",
+  "fix": "Add alternative order: [\"Nice\",\"to\",\"see\",\"you\"]"
+ },
+ {
+  "id": "en-vi:ut-l0-e4",
+  "severity": "P0",
+  "problem": "'một ly trà' literally is 'a cup/glass of tea'. The most literal correct answers are all rejected.",
+  "fix": "Add alternative: I would like a cup of tea. | I want a cup of tea. | A cup of tea, please. | I would like a glass of tea. | I want a glass of tea. | A glass of tea, please."
+ },
+ {
+  "id": "en-vi:ut-l1-e4",
+  "severity": "P0",
+  "problem": "'with a card' is the normal American preposition, and only 'with my card' is listed.",
+  "fix": "Add alternative: I will pay with a card. | I pay with a card. | I am paying with a card. | I pay with my card. | With a card, please."
+ },
+ {
+  "id": "en-vi:ut-l2-e3",
+  "severity": "P1",
+  "problem": "In an American restaurant the phrase is 'The check, please.' 'bill' is understood but the course model is American. VARIETY.md keeps check out of the British pairs, so 'check' is not folded either.",
+  "fix": "Replace option: bill => check",
+  "uncertain": true,
+  "reason": "Touches the taught lexeme bill (ut-l3-e5, ut-l2-e2). If bill stays, add 'check' as a tile and Add alternative order: [\"The\",\"check\",\"please\"]."
+ },
+ {
+  "id": "en-vi:ut-l2-e4",
+  "severity": "P0",
+  "problem": "Other correct translations of 'rất ngon' are rejected.",
+  "fix": "Add alternative: The food is very tasty. | The food is tasty. | The food is really good. | The food tastes very good. | The food is really delicious."
+ },
+ {
+  "id": "en-vi:ut-l3-e3",
+  "severity": "P1",
+  "problem": "VARIETY.md lists shop as the British word for store. American: 'at this store'.",
+  "fix": "Set sentence: I ___ a lot of money at this store.",
+  "uncertain": true,
+  "reason": "'shop' is also a taught lexeme (ut-l0-e3); a global choice for the owner."
+ },
+ {
+  "id": "en-vi:uu-l0-e5",
+  "severity": "P0",
+  "problem": "'Take a right.' and 'Make a right.' are everyday American directions; 'Go right.' is also correct.",
+  "fix": "Add alternative: Take a right. | Make a right. | Go right."
+ },
+ {
+  "id": "en-vi:uu-l1-e4",
+  "severity": "P0",
+  "problem": "'nhà ga': 'train station' is rejected, as in u4-l2-e8.",
+  "fix": "Add alternative: Excuse me, where is the train station? | Sorry, where is the train station?"
+ },
+ {
+  "id": "en-vi:uu-l2-e3",
+  "severity": "P0",
+  "problem": "Distractor 'hurt' is also correct: 'My arm hurt.' is past tense, and the Vietnamese has no tense marking.",
+  "fix": "Replace option: hurt => hurting"
+ },
+ {
+  "id": "en-vi:uv-l0-e4",
+  "severity": "P0",
+  "problem": "'This is Hoa speaking.' and 'Hoa speaking.' are standard telephone English.",
+  "fix": "Add alternative: This is Hoa speaking. | Hoa speaking. | Hello, this is Hoa speaking."
+ },
+ {
+  "id": "en-vi:uv-l2-e4",
+  "severity": "P0",
+  "problem": "'sẽ' is also 'going to'. Correct answer rejected.",
+  "fix": "Add alternative: I am going to send it tomorrow. | Tomorrow I am going to send it."
+ },
+ {
+  "id": "en-vi:uv-l3-e4",
+  "severity": "P0",
+  "problem": "Polite and short forms are only partly listed: 'Could you say that again?', 'Can you repeat it?' and 'please' forms are rejected.",
+  "fix": "Add alternative: I don't understand. Could you say that again? | I don't understand. Can you repeat it? | I don't understand. Could you repeat? | I don't understand. Can you repeat that, please? | I don't understand. Could you repeat that, please?"
+ },
+ {
+  "id": "en.cpi.s4.greet_afternoon",
+  "severity": "P1",
+  "problem": "'madam' is the British form; American 'ma'am' is missing, and this is a checkpoint item. 'Hi' is a normal polite greeting to an American manager.",
+  "fix": "Add acceptedVariant: Good afternoon ma'am | Hi"
+ },
+ {
+  "id": "en.cpi.s4.vietnamese",
+  "severity": "P0",
+  "problem": "To a question about nationality, the bare answer 'Vietnamese' is natural; the short-answer pattern is accepted on other speaking items.",
+  "fix": "Add acceptedVariant: Vietnamese | I am Vietnamese"
+ },
+ {
+  "id": "en.cpi.s4.driver",
+  "severity": "P0",
+  "problem": "Other production items accept a short answer. 'A driver' is a correct reply.",
+  "fix": "Add acceptedVariant: A driver"
+ },
+ {
+  "id": "en.cpi.s4.desc_dog",
+  "severity": "P0",
+  "problem": "'con chó to': 'The big dog' is the direct translation and is rejected.",
+  "fix": "Add acceptedVariant: The big dog | The dog is large | A large dog"
+ },
+ {
+  "id": "en.cpi.s4.desc_shirt",
+  "severity": "P0",
+  "problem": "'chiếc áo màu xanh lam': 'The blue shirt' is rejected.",
+  "fix": "Add acceptedVariant: The blue shirt"
+ },
+ {
+  "id": "en.cpi.cap.speak_family",
+  "severity": "P0",
+  "problem": "Correct answers are rejected in a capstone item: 'My family has six people', 'There are six of us'.",
+  "fix": "Add acceptedVariant: My family has six people | There are six of us | Six"
+ },
+ {
+  "id": "en.pli.s4.hello",
+  "severity": "P2",
+  "problem": "'Hey' is the everyday American greeting to a friend.",
+  "fix": "Add acceptedVariant: Hey | Hey there"
+ },
+ {
+  "id": "en.pli.s4.age",
+  "severity": "P0",
+  "problem": "A placement item that scores the learner. A bare age is natural in English.",
+  "fix": "Add acceptedVariant: Thirty | Thirty years old"
+ },
+ {
+  "id": "en.exi.bac2_qd1481.a_w3_01",
+  "severity": "P0",
+  "problem": "Exam writing. Slot 'weather' requires the word itself. 'It is sunny and hot.' answers 'thời tiết thế nào' perfectly and is marked as missing the slot. A learner cannot pass this slot by describing the weather.",
+  "fix": "Add acceptedVariant: sunny | hot | rainy | raining | cold | warm | cloudy | windy"
+ },
+ {
+  "id": "en.exi.bac2_qd1481.a_w3_01",
+  "severity": "P0",
+  "problem": "'Danang' is a common one-word spelling of the place. The closing slot rejects ordinary closings.",
+  "fix": "Add acceptedVariant: danang | take care | your friend | best | regards | thanks"
+ },
+ {
+  "id": "en.exi.bac2_qd1481.b_w3_01",
+  "severity": "P0",
+  "problem": "'bạn có nhà mới' also fits 'new apartment' and 'new place'. The closing slot rejects ordinary closings.",
+  "fix": "Add acceptedVariant: new apartment | new place | new flat | take care | your friend | best | regards | thanks"
+ },
+ {
+  "id": "en.exi.bac2_qd1481.a_w1_01",
+  "severity": "P0",
+  "problem": "Cues give no article or tense, but slots fix them. Correct sentences fail: 'near a park', 'at the hospital', 'on Sundays', 'did not go to work on Sunday', 'What time did you get up'.",
+  "fix": "Add acceptedVariant: live in a small apartment near a park | works in the hospital in hue | works at the hospital in hue | do not go to work on sundays | did not go to work on sunday | are not going to work on sunday | what time did you get up"
+ },
+ {
+  "id": "en.exi.bac2_qd1481.b_w1_01",
+  "severity": "P0",
+  "problem": "'Where / you / buy / this bag?' has no tense cue. 'Where do you buy this bag?' is grammatical and fails. 'There / two bedrooms' with 'in my home' is a stretch, but past 'did not like coffee' is grammatical too.",
+  "fix": "Add acceptedVariant: where do you buy this bag | did not like coffee"
+ },
+ {
+  "id": "en.exi.bac2_qd1481.a_w2_01",
+  "severity": "P0",
+  "problem": "Closing slot rejects 'Sincerely', the standard American closing to a manager, and 'Best wishes'.",
+  "fix": "Add acceptedVariant: sincerely | best wishes | best"
+ },
+ {
+  "id": "en.exi.bac2_qd1481.b_w2_01",
+  "severity": "P0",
+  "problem": "Closing slot rejects 'Sincerely' and 'Best'. Greeting slot rejects 'To everyone' and 'To all'.",
+  "fix": "Add acceptedVariant: sincerely | best wishes | best | to all | everyone"
+ },
+ {
+  "id": "en.exi.bac2_qd1481.a_s3_01",
+  "severity": "P0",
+  "problem": "Concept forms are whole tokens. 'I like cooking there', 'My wife cooks dinner' and 'I make dinner' all fail the cook slot.",
+  "fix": "Add acceptedVariant: cooking | cooks | cooked | make dinner | makes dinner",
+  "uncertain": true,
+  "reason": "These belong in the requiredConcepts slot [\"cook\"], not acceptedVariants."
+ },
+ {
+  "id": "en.exi.bac2_qd1481.a_s4_01",
+  "severity": "P1",
+  "problem": "Only 'because' counts as giving a reason. 'The bus is cheap, so I agree.' fails. Conversely 'I agree because' with no reason passes the concepts. The second is a weak-rubric note.",
+  "fix": "Add acceptedVariant: so | since",
+  "uncertain": true,
+  "reason": "These belong in the requiredConcepts slot [\"because\"]. A stricter slot on the reason word would address the empty pass, for instance adding [\"cheap\",\"expensive\",\"slow\",\"fast\",\"more buses\"], which is an author decision."
+ },
+ {
+  "id": "en.exi.bac2_qd1481.b_s4_01",
+  "severity": "P1",
+  "problem": "Same as a_s4_01: 'so' is rejected as a reason marker, and 'I agree because' with nothing after it passes.",
+  "fix": "Add acceptedVariant: so | since",
+  "uncertain": true,
+  "reason": "These belong in the requiredConcepts slot [\"because\"]."
+ },
+ {
+  "id": "en.exi.bac2_qd1481.b_r1_04",
+  "severity": "P2",
+  "problem": "'Shop closing down!' is British. A US sign says 'Store closing!'. Key stays defensible.",
+  "fix": "Set sentence: Store closing! Everything is half price until Saturday."
+ },
+ {
+  "id": "en.cpi.s5.profile_hoa",
+  "severity": "P0",
+  "problem": "City slot takes only 'in hanoi'. The instruction says 'thành phố', so 'I am from Hanoi' or 'My city is Hanoi' is correct and fails. This is a scored checkpoint.",
+  "fix": "Add acceptedVariant: from hanoi | city is hanoi"
+ },
+ {
+  "id": "en-vi:uo-l3-e0",
+  "severity": "P0",
+  "problem": "Same as en.cpi.s5.profile_hoa: 'I am from Hue' fails the 'thành phố' slot.",
+  "fix": "Add acceptedVariant: from hue | city is hue"
+ },
+ {
+  "id": "en.cpi.s5.like_music",
+  "severity": "P0",
+  "problem": "'I really like music' and 'I enjoy music' fail the slot, and 'enjoy' also fails the verb check.",
+  "fix": "Add acceptedVariant: i really like music | i enjoy music | i really love music"
+ },
+ {
+  "id": "en.cpi.s5.sister",
+  "severity": "P0",
+  "problem": "'My sister's name is Linh' and 'My sister is Linh' are the most natural answers to an item about 'chị gái bạn' and they fail the name slot. 'Her name's Linh' fails too, since the contraction list has no 'name's'.",
+  "fix": "Add acceptedVariant: name is linh | name's linh | sister is linh"
+ },
+ {
+  "id": "en.cpi.s5.room",
+  "severity": "P0",
+  "problem": "Slots reject 'the big bed', 'a large bed'. The required verb 'is' also rejects 'My room has a big bed and a small table', which is a correct description.",
+  "fix": "Add acceptedVariant: the big bed | the bed is large | a large bed | the small table | the table is little | a little table"
+ },
+ {
+  "id": "en.cpi.s5.room",
+  "severity": "P0",
+  "problem": "requireSentenceVerbs is only ['is'], so a correct answer with has or have is turned down.",
+  "fix": "Add requireSentenceVerb: has | have | there are"
+ },
+ {
+  "id": "en.cpi.s5.note_peter",
+  "severity": "P2",
+  "problem": "'Hey' is the normal American opener to a friend and fails the greeting slot.",
+  "fix": "Add acceptedVariant: hey"
+ },
+ {
+  "id": "en.cpi.s5.note_sick",
+  "severity": "P0",
+  "problem": "Slot needs the word 'sick'. 'I am ill' and 'I am not feeling well' are correct for 'bị ốm', and exam task a_w2 accepts ill. 'Hey' fails the greeting, 'take care' the closing.",
+  "fix": "Add acceptedVariant: ill | not well | not feeling well | hey | take care"
+ },
+ {
+  "id": "en.cpi.cap.write_smith",
+  "severity": "P0",
+  "problem": "Same word problem for 'bị ốm', in a capstone item. 'Sincerely' fails the closing slot.",
+  "fix": "Add acceptedVariant: ill | not well | not feeling well | sincerely | best wishes | best"
+ },
+ {
+  "id": "en.cpi.s5.mail_boss",
+  "severity": "P0",
+  "problem": "'Sincerely' is the standard American closing for this email and fails. 'good afternoon' fails the greeting.",
+  "fix": "Add acceptedVariant: sincerely | best wishes | best | good afternoon"
+ },
+ {
+  "id": "en.cpi.s5.mail_shop",
+  "severity": "P0",
+  "problem": "'What is the price of this phone?' is a correct way to ask the price and fails 'how much'. 'Sincerely' fails the closing.",
+  "fix": "Add acceptedVariant: price | cost | sincerely | best wishes | best | good afternoon"
+ },
+ {
+  "id": "en-vi:ug-l1-e0",
+  "severity": "P1",
+  "problem": "'Toilets' on a public sign is British. A US station says 'Restrooms'. Applies to the reading en.read.ug_signs and options in ug-l1-e0 and ug-l1-e2. VARIETY.md lists toilet as the British word for restroom.",
+  "fix": "Replace option: Toilets => Restrooms"
+ },
+ {
+  "id": "en-vi:ug-l1-e2",
+  "severity": "P1",
+  "problem": "Same as ug-l1-e0. Reading text needs 'Restrooms: on the left' too.",
+  "fix": "Replace option: Toilets => Restrooms"
+ },
+ {
+  "id": "en.cpi.s3.ann_page",
+  "severity": "P1",
+  "problem": "Clip en.clip.cp3_page says 'open your book at page twelve', the British preposition. US: 'to page twelve'. The key is unaffected.",
+  "fix": "Set sentence: Please open your book to page twelve."
+ },
+ {
+  "id": "en.cpi.s3.note_pay",
+  "severity": "P1",
+  "problem": "Reading en.read.cp3_notice_shop says 'cash desk', which is British. US: 'cashier' or 'checkout'. The key is unaffected.",
+  "fix": "Set sentence: Please pay at the cashier."
+ },
+ {
+  "id": "en-vi:ug-l2-e0",
+  "severity": "P2",
+  "problem": "Reading en.read.ug_hours uses a 24-hour clock (8:00–18:00), also in ug_shift, pl_notice_cafe and cp3_notice_shop. American notices use am and pm. Keys such as '18 giờ', '14 giờ' follow it and are correct as written, and the Vietnamese reader is comfortable with it.",
+  "fix": "Set sentence: Monday to Friday: 8 am to 6 pm",
+  "uncertain": true,
+  "reason": "Variety preference, and changing it means changing the options and keys of several items."
+ },
+ {
+  "id": "en-vi:un-l2-e0",
+  "severity": "P2",
+  "problem": "cueEmoji 🛋️ is a sofa while the sentence is about a table. A learner may say 'There is a sofa' from the picture.",
+  "fix": "Set cueEmoji: 🪑",
+  "uncertain": true,
+  "reason": "No table emoji exists; a chair is closer but not exact. Also applies to un-l3-e2."
+ }
+]
