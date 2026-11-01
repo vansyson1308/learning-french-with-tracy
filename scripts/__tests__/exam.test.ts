@@ -97,6 +97,39 @@ describe("DELE A1 track — the 2020 model (P3e)", () => {
 });
 
 describe("exam track rules — every rule fires", () => {
+  describe("a gloss never hands over the keyed answer", () => {
+    const glossed = (section: string, surface: string, vi: string, optionText: string, task = "t1") => {
+      const t = clone();
+      const item = itemOf(t, "a", section, task);
+      const e = ex(item);
+      e.options[e.correct].text = optionText;
+      item.glossary = [{ surface, gloss: { vi } }];
+      return errorsOf(t);
+    };
+
+    test("the surface is the correct option, or a word in it, in reading and in listening", () => {
+      expect(glossed("reading", "lake", "hồ", "lake")).toContain(`glossary surface "lake" is in the correct option`);
+      expect(glossed("reading", "Elevator", "thang máy", "You cannot use the elevator this week.")).toContain(`glossary surface "Elevator" is in the correct option`);
+      expect(glossed("listening", "ID card", "giấy tờ", "My ID card, please")).toContain(`glossary surface "ID card" is in the correct option`);
+    });
+
+    test("the gloss's own text is the correct option, or a run in it", () => {
+      expect(glossed("reading", "apron", "tạp dề", "Tạp dề")).toContain(`the gloss of "apron" is in the correct option`);
+      expect(glossed("listening", "guest", "khách", "Nhờ khách viết ra")).toContain(`the gloss of "guest" is in the correct option`);
+    });
+
+    test("whole words only, and only the correct option", () => {
+      expect(glossed("reading", "car", "xe", "A cart is here.")).not.toContain("in the correct option");
+      const t = clone();
+      const item = itemOf(t, "a", "reading", "t1");
+      const e = ex(item);
+      const wrong = e.options.findIndex((_, i) => i !== e.correct);
+      item.glossary = [{ surface: "zzword", gloss: { vi: "zzgloss" } }];
+      e.options[wrong].text = "zzword zzgloss";
+      expect(errorsOf(t)).not.toContain("in the correct option");
+    });
+  });
+
   test("parallel forms are disjoint", () => {
     const t = clone();
     t.forms[1].itemIds.push(t.forms[0].itemIds[0]);

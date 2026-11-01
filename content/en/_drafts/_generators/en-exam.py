@@ -3,7 +3,7 @@ The decision fixes skills, parts per skill, items per skill, timing and scoring;
 the split is the course's design. Appends stimuli to listening / readings / speech / writing / scenarios OUTPUT (run after
 en-assessment.py) and writes exam/OUTPUT.jsonl. Bac 2 is above the A1 syllabus: wider words are allowed and counted, not refused.
 usage: python -I en-exam.py <repo root>"""
-import json, os, sys
+import json, os, re, sys
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -52,6 +52,15 @@ def glossary_of(*texts):
     return [{"surface": s, "gloss": {"vi": g}} for s, g in sorted(out.items(), key=lambda kv: kv[0].lower())]
 
 
+def _words(text):
+    return " ".join(re.findall(r"[\w'’-]+", text.lower()))
+
+
+def gives_answer(entry, correct):
+    """The validator's rule (scripts/lib/exam.ts, glossLeaks): the surface or its translation is a run of whole words in the correct option."""
+    return any(f" {_words(t)} " in f" {_words(correct)} " for t in (entry["surface"], entry["gloss"]["vi"]))
+
+
 def place(correct, wrong):
     p = _pos[0] % (len(wrong) + 1)
     _pos[0] += 1
@@ -76,6 +85,9 @@ def item(form, sec, task, n, exercise, obj):
         # Questions and many options are Vietnamese: only the English ones hold words to gloss. A gap's prefix is Vietnamese, its sentence English.
         shown = [ex.get("question", "").replace(GAP_Q, "").replace(INFO_Q, ""), *(o["text"] for o in ex.get("options", []))]
         gloss = glossary_of(stim, *(t for t in shown if t.isascii()))
+        # Tapping a word must not hand over the answer: nothing whose surface or translation is in the correct option (validator: glossLeaks).
+        if "correct" in ex:
+            gloss = [g for g in gloss if not gives_answer(g, ex["options"][ex["correct"]]["text"])]
         if gloss:
             rec["glossary"] = gloss
     items.append(rec)
@@ -296,7 +308,8 @@ for form in "ab":
 def write(form, task, slug, fam, instr, cue, slots, mn, mx, model, obj):
     tid = f"en.write.bac2_{form}_{slug}"
     seen(model)
-    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": v, "cueProvided": c} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
+    # A closing is the one slot a letter may realize twice ("Thank you. Best regards").
+    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": v, "cueProvided": c, **({"repeatable": True} if i == "closing" else {})} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
     t = {"id": tid, "taskFamily": fam, "mode": "guided", "instruction": {"vi": instr}, "cueFacts": [{"label": {"vi": a}, "value": b} for a, b in cue]}
     t.update({"rubric": rubric, "modelAnswers": [model], "objectiveRefs": [obj], "lexemeRefs": content_refs(model), "scoredEligibility": True, "reserved": True, "sourceRef": "original-project"})
     tasks.append(t)
