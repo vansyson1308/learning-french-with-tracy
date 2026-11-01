@@ -105,14 +105,27 @@ itself.
 - **`en-vi` (English for Vietnamese speakers, P4f) ships unreviewed**, on the same
   terms as `it-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/en-vi.profile.json`. All Vietnamese in the course is AI-written, and
-  no native speaker has read the Vietnamese or the English yet. The rest is covered by
-  the validators and the English gates (a/an by sound, third-person -s, do-support,
-  *very* before a verb, object pronouns as subjects, uncountable nouns). Level results
-  are estimates aligned to CEFR, not certificates. The course claims no exam result: the
-  only planned track models the bậc 2 format of QĐ 1481/QĐ-BGDĐT, which is above what
-  this A1 course teaches, and it is not VSTEP (`plan/authoring/en-plan.md`). There is
-  no `articleSelect` drill in this course: English declares no gendered articles, so
-  a/an/the are practised as fill-in-the-blank.
+  no native speaker has read the Vietnamese or the English. The rest is covered by the
+  validators, the English gates (a/an by sound, third-person -s, do-support, *very*
+  before a verb, object pronouns as subjects, uncountable nouns) and the LanguageTool
+  gate. An AI-simulated native review ran per D-10 (`content/en/REVIEW-AI.md`, independent
+  audit 1.2 % P0+P1), which is not a native speaker's review; the owner's acceptance
+  `ai-review:en-vi` is pending. Level results are estimates aligned to CEFR, not
+  certificates. There is no `articleSelect` drill in this course: English declares no
+  gendered articles, so a/an/the are practised as fill-in-the-blank. The IPA is a mix of
+  771 licensed kaikki values and 97 written by hand, and the kaikki values are not
+  normalized, so two entries can look different with the same sound.
+  The practice track models the bậc 2 format of QĐ 1481/QĐ-BGDĐT and is `partial`:
+  - it is above what this A1 course teaches, and it claims no exam result;
+  - it is not VSTEP, which covers bậc 3 to 5, and there is no TOEIC set, for the reasons
+    in `plan/authoring/en-plan.md`;
+  - the decision splits no items by part and has no sample paper, so the question types
+    within each part are the course's design;
+  - its figures come from a reproduction on caselaw.vn, not the signed copy, so
+    `checkedAgainstOfficialGuide` is `false` and the owner checks them before release
+    (`OWNER-FINAL-CHECKLIST.md` B);
+  - writing is graded by a rubric of required content, not for style or grammar, and
+    speaking by what the recognizer hears, which has not been tried on a phone.
 - **`it-vi` (Italian for Vietnamese speakers, P3d(it)) ships unreviewed**, on the
   same terms as `de-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/it-vi.profile.json`. The owner signs

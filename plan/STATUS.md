@@ -105,7 +105,7 @@
 | P4c | ja-vi + JLPT N5 | – | not started | | |
 | P4d | zh-vi + HSK 1–2 | – | not started | | |
 | P4e | ko-vi + TOPIK I | – | not started | | |
-| P4f | en-vi + VSTEP | – | not started | | |
+| P4f | en-vi + bậc 2 track (QĐ 1481), not VSTEP | `phase-4/en-vi` | content and AI review done, audio and CI pending; see `plan/reports/P4f-en-vi.md` | | |
 | P5a | FSRS visible | – | not started | | |
 | P5c | own-text importer | – | not started | | |
 | P5e | mistake-driven grammar | – | not started | | |

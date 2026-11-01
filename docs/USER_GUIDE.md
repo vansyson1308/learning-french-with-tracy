@@ -19,7 +19,7 @@ The first screen asks which course you want. French is the course this app is bu
 
 ## 4. Choosing French
 
-French, Spanish for Vietnamese speakers (`es-vi`), German for Vietnamese speakers (`de-vi`) and Italian for Vietnamese speakers (`it-vi`) are the courses with the full feature set: Today sessions, listening, speaking, writing, conversations, checkpoints, the starting-point check and the A1 capstone. Both French editions have it. Your French memory is shared between them: a word you review in one edition is the same memory card in the other, and the starting-point check and checkpoint results carry over — only lesson completion and XP are counted per edition. The other courses offer the learning path, practice of mistakes and word review.
+French, Spanish for Vietnamese speakers (`es-vi`), German for Vietnamese speakers (`de-vi`), Italian for Vietnamese speakers (`it-vi`) and English for Vietnamese speakers (`en-vi`) are the courses with the full feature set: Today sessions, listening, speaking, writing, conversations, checkpoints, the starting-point check and the A1 capstone. Both French editions have it. Your French memory is shared between them: a word you review in one edition is the same memory card in the other, and the starting-point check and checkpoint results carry over — only lesson completion and XP are counted per edition. The other courses offer the learning path, practice of mistakes and word review.
 
 ### Spanish for Vietnamese speakers (`es-vi`) and DELE A1 practice
 
@@ -52,6 +52,12 @@ The practice is not issued by the Goethe-Institut and does not predict a result;
 `it-vi` teaches standard Italian to A1 with the same six-section structure. Every explanation, question and piece of feedback is in Vietnamese. Nouns are taught with their article and plural (il libro, i libri); the course drills elision, the choice of *essere* or *avere* with agreement, tu and Lei, and double consonants (*sete / sette*). The older `it-en` course stays under **Other courses** so earlier progress is kept, but it is no longer offered at first launch. While the course is being reviewed, the Learn tab shows **Bản beta — nội dung đang được duyệt** (beta — content under review).
 
 The **CILS A1 practice** card on the Practice tab models the format of the CILS A1 standard module of the Università per Stranieri di Siena. Speaking is reduced to guided questions with the app as examiner. The practice is not issued by the university and does not predict a result; every question is original to the course.
+
+### English for Vietnamese speakers (`en-vi`) and level 2 practice
+
+`en-vi` teaches American English to A1 with the same six-section structure. Every explanation, question and piece of feedback is in Vietnamese. Spelling, sound and vocabulary are American and the course voices are American, but British English is not a mistake: *colour*, *centre* and *a flat* (for *an apartment*) count in what you type. The course works on what Vietnamese speakers most often miss: final sounds, -s and -ed, articles, and do and does in questions. While the course is being reviewed, the Learn tab shows **Bản beta — nội dung đang được duyệt** (beta — content under review).
+
+The **Luyện đề đánh giá năng lực tiếng Anh bậc 2** card on the Practice tab models the format that Decision 1481/QĐ-BGDĐT of the Ministry of Education and Training sets for level 2 (A2) tests for adults: listening, reading, writing and speaking. It is above what this A1 course teaches, so it is there to show you the format: finishing the course does not prepare you for it. Words above A1 have a Vietnamese meaning when you tap them. This is not VSTEP, which covers levels 3 to 5. The practice is not issued by the Ministry and does not predict a result; every question is original to the course, and the decision has no sample paper, so the question types within each part are the course's own design.
 
 ## 5. Starting-point check (placement)
 
@@ -100,7 +106,7 @@ The app schedules review with a spaced-repetition algorithm (FSRS). Every word, 
 
 The **Today** tab builds one session from what your memory needs: reviews that are due first (most at risk first), then new material from your current unit, then mixed practice, then a short matching finale. Choose a **Session length** — 5, 10 or 15 minutes — and tap **Start today's session**. On a device that can record, a **Can't speak now** switch appears above the button: turn it on and speaking reviews are left out of that session and stay due.
 
-In French, `es-vi`, `de-vi` and `it-vi`, Today also brings **new words a day** from the course's word list — only from units you have reached, in the order the course teaches them. Set how many under Profile → Learning → **New words a day** (0–15, default 5; 0 turns it off).
+In French, `es-vi`, `de-vi`, `it-vi` and `en-vi`, Today also brings **new words a day** from the course's word list — only from units you have reached, in the order the course teaches them. Set how many under Profile → Learning → **New words a day** (0–15, default 5; 0 turns it off).
 
 Below the session, **Story for today** suggests a short graded story (see *Read & listen* in section 20). It only suggests a story with at most 10 words that are new to you. Until one exists, the card says how many more words to learn first.
 
@@ -141,7 +147,7 @@ Reading passages (section 3) are short notices, messages and texts. Tap any word
 
 ### Read & listen (graded stories)
 
-French, `es-vi`, `de-vi` and `it-vi` include short stories (150–400 words) written almost entirely with words the course teaches. Each also has six very short stories (50–100 words) that use only the words of the first three units, for your first days. These are read aloud with your phone's voice. Open them from Practice → **Read & listen**, or from **Story for today** on the Today tab. The list puts first the story with **3–6 words that are new to you**, worked out from the words you have already learned; each story shows its level (1–4) and how many of its words are new to you.
+French, `es-vi`, `de-vi`, `it-vi` and `en-vi` include short stories (150–400 words) written almost entirely with words the course teaches. Each also has six very short stories (50–100 words) that use only the words of the first three units, for your first days. These are read aloud with your phone's voice. Open them from Practice → **Read & listen**, or from **Story for today** on the Today tab. The list puts first the story with **3–6 words that are new to you**, worked out from the words you have already learned; each story shows its level (1–4) and how many of its words are new to you.
 
 In the reader:
 - **Listen** plays the story sentence by sentence and highlights the sentence being read; the speaker button on a line plays from there.

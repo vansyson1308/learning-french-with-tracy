@@ -19,7 +19,7 @@ Màn hình đầu tiên hỏi bạn muốn học khóa nào. Tiếng Pháp là k
 
 ## 4. Chọn tiếng Pháp
 
-Tiếng Pháp, tiếng Tây Ban Nha (`es-vi`), tiếng Đức (`de-vi`) và tiếng Ý (`it-vi`), ba khóa sau giải thích bằng tiếng Việt, là các khóa có đầy đủ tính năng: phiên Hôm nay, nghe, nói, viết, hội thoại, bài kiểm tra, bài kiểm tra điểm bắt đầu và bài kiểm tra A1 tổng kết. Cả hai bản tiếng Pháp đều có đủ. Trí nhớ tiếng Pháp của bạn dùng chung cho hai bản: một từ bạn ôn ở bản này cũng chính là thẻ ghi nhớ ở bản kia, kết quả bài kiểm tra điểm bắt đầu và bài kiểm tra cũng được giữ chung — chỉ số bài đã hoàn thành và XP được tính riêng theo từng bản. Phần giải thích tiếng Việt của bản `fr-vi` đang chờ người bản ngữ duyệt (xem `release/KNOWN_LIMITATIONS.md`); phần tiếng Pháp, âm thanh và cách chấm giống hệt bản tiếng Anh. Các khóa khác có lộ trình học, luyện lại lỗi sai và ôn từ.
+Tiếng Pháp, tiếng Tây Ban Nha (`es-vi`), tiếng Đức (`de-vi`), tiếng Ý (`it-vi`) và tiếng Anh (`en-vi`), bốn khóa sau giải thích bằng tiếng Việt, là các khóa có đầy đủ tính năng: phiên Hôm nay, nghe, nói, viết, hội thoại, bài kiểm tra, bài kiểm tra điểm bắt đầu và bài kiểm tra A1 tổng kết. Cả hai bản tiếng Pháp đều có đủ. Trí nhớ tiếng Pháp của bạn dùng chung cho hai bản: một từ bạn ôn ở bản này cũng chính là thẻ ghi nhớ ở bản kia, kết quả bài kiểm tra điểm bắt đầu và bài kiểm tra cũng được giữ chung — chỉ số bài đã hoàn thành và XP được tính riêng theo từng bản. Phần giải thích tiếng Việt của bản `fr-vi` đang chờ người bản ngữ duyệt (xem `release/KNOWN_LIMITATIONS.md`); phần tiếng Pháp, âm thanh và cách chấm giống hệt bản tiếng Anh. Các khóa khác có lộ trình học, luyện lại lỗi sai và ôn từ.
 
 ### Tiếng Tây Ban Nha cho người Việt (`es-vi`) và luyện thi DELE A1
 
@@ -52,6 +52,12 @@ Giống kỳ thi thật, Hören Phần 1 và Phần 3 cho nghe mỗi bài hai l�
 Khóa `it-vi` dạy tiếng Ý chuẩn đến trình độ A1 với cùng cấu trúc sáu phần. Mọi lời giải thích, câu hỏi và phản hồi đều bằng tiếng Việt. Danh từ được dạy kèm mạo từ và số nhiều (il libro, i libri); khóa luyện kỹ phần nối âm (elision), cách chọn *essere* hay *avere* và sự hợp giống số, tu và Lei, và phụ âm đôi (*sete / sette*). Khóa cũ `it-en` vẫn còn trong **Khoá khác** để tiến độ cũ không mất, nhưng không còn hiện khi bắt đầu lần đầu. Trong lúc khóa còn đang được duyệt, tab Học hiện nhãn **Bản beta — nội dung đang được duyệt**.
 
 Thẻ **Luyện thi CILS A1** ở tab Luyện tập mô phỏng định dạng phần thi CILS A1 chuẩn của Đại học Ngoại ngữ Siena (Università per Stranieri di Siena). Phần Nói rút gọn thành các câu hỏi có hướng dẫn, ứng dụng đóng vai giám khảo. Đây không phải điểm thi thật, không do trường cấp và không dự đoán kết quả. Mọi câu hỏi đều do khóa học tự soạn.
+
+### Tiếng Anh cho người Việt (`en-vi`) và luyện đề bậc 2
+
+Khóa `en-vi` dạy tiếng Anh Mỹ đến trình độ A1 với cùng cấu trúc sáu phần. Mọi lời giải thích, câu hỏi và phản hồi đều bằng tiếng Việt. Chính tả, phát âm và từ vựng theo kiểu Mỹ, giọng đọc cũng là giọng Mỹ, nhưng viết kiểu Anh không bị coi là sai: *colour*, *centre* và *a flat* (thay cho *an apartment*) đều được tính khi bạn gõ. Khóa luyện kỹ những chỗ người Việt hay thiếu: âm cuối, -s và -ed, mạo từ, do và does trong câu hỏi. Trong lúc khóa còn đang được duyệt, tab Học hiện nhãn **Bản beta — nội dung đang được duyệt**.
+
+Thẻ **Luyện đề đánh giá năng lực tiếng Anh bậc 2** ở tab Luyện tập mô phỏng định dạng mà Quyết định 1481/QĐ-BGDĐT của Bộ Giáo dục và Đào tạo đặt ra cho bậc 2 (A2), dành cho người lớn: nghe, đọc, viết và nói. Định dạng này cao hơn những gì khóa A1 dạy, nên phần này chỉ để làm quen với dạng đề: học xong khóa chưa đủ cho định dạng này. Những từ ngoài A1 có nghĩa tiếng Việt khi bạn chạm vào. Đây không phải VSTEP, vì VSTEP dành cho bậc 3 đến bậc 5. Đây không phải điểm thi thật, không do Bộ cấp và không dự đoán kết quả. Mọi câu hỏi đều do khóa học tự soạn; quyết định không kèm đề mẫu nên các dạng câu hỏi trong từng phần do khóa học tự thiết kế.
 
 ## 5. Bài kiểm tra điểm bắt đầu (xếp lớp)
 
@@ -100,7 +106,7 @@ Mỗi từ tiếng Pháp trong khóa có một mục: từ loại, giống, các
 
 Tab **Hôm nay** xây một phiên từ những gì trí nhớ của bạn cần: các lượt ôn đến hạn trước (dễ quên nhất trước), rồi nội dung mới từ chương hiện tại, rồi luyện tập hỗn hợp, rồi một màn ghép từ ngắn để kết thúc. Chọn **Độ dài phiên học** — 5, 10 hoặc 15 phút — và chạm **Bắt đầu phiên hôm nay**. Trên thiết bị ghi âm được, công tắc **Lúc này không nói được** xuất hiện phía trên nút: bật lên thì các lượt ôn nói được để ngoài phiên đó và vẫn đến hạn.
 
-Với tiếng Pháp, `es-vi`, `de-vi` và `it-vi`, phiên Hôm nay còn thêm **từ mới mỗi ngày** từ danh sách từ của khóa — chỉ lấy từ những chương bạn đã học tới, theo thứ tự khóa dạy. Chọn số từ ở Hồ sơ → Đang học → **Từ mới mỗi ngày** (0–15, mặc định 5; chọn 0 để tắt).
+Với tiếng Pháp, `es-vi`, `de-vi`, `it-vi` và `en-vi`, phiên Hôm nay còn thêm **từ mới mỗi ngày** từ danh sách từ của khóa — chỉ lấy từ những chương bạn đã học tới, theo thứ tự khóa dạy. Chọn số từ ở Hồ sơ → Đang học → **Từ mới mỗi ngày** (0–15, mặc định 5; chọn 0 để tắt).
 
 ## 13. Ôn tập
 
@@ -139,7 +145,7 @@ Bài đọc (phần 3) là các thông báo, tin nhắn và văn bản ngắn. C
 
 ### Đọc & nghe (truyện phân cấp)
 
-Tiếng Pháp, `es-vi`, `de-vi` và `it-vi` có các truyện ngắn (150–400 từ) viết gần như hoàn toàn bằng những từ khóa học dạy. Mỗi khoá còn có 6 truyện siêu ngắn (50–100 từ) chỉ dùng từ của 3 unit đầu, dành cho những ngày đầu; các truyện này đọc bằng giọng của máy. Thẻ **Truyện hôm nay** chỉ gợi ý truyện có tối đa 10 từ mới với bạn; nếu chưa có truyện như vậy, thẻ cho biết bạn cần học thêm bao nhiêu từ. Mở truyện từ Luyện tập → **Đọc & nghe**, hoặc từ **Truyện hôm nay** ở thẻ Hôm nay. Danh sách đưa lên đầu truyện có **3–6 từ mới với bạn**, tính từ những từ bạn đã học; mỗi truyện ghi cấp (1–4) và số từ mới với bạn.
+Tiếng Pháp, `es-vi`, `de-vi`, `it-vi` và `en-vi` có các truyện ngắn (150–400 từ) viết gần như hoàn toàn bằng những từ khóa học dạy. Mỗi khoá còn có 6 truyện siêu ngắn (50–100 từ) chỉ dùng từ của 3 unit đầu, dành cho những ngày đầu; các truyện này đọc bằng giọng của máy. Thẻ **Truyện hôm nay** chỉ gợi ý truyện có tối đa 10 từ mới với bạn; nếu chưa có truyện như vậy, thẻ cho biết bạn cần học thêm bao nhiêu từ. Mở truyện từ Luyện tập → **Đọc & nghe**, hoặc từ **Truyện hôm nay** ở thẻ Hôm nay. Danh sách đưa lên đầu truyện có **3–6 từ mới với bạn**, tính từ những từ bạn đã học; mỗi truyện ghi cấp (1–4) và số từ mới với bạn.
 
 Trong màn hình đọc:
 - **Nghe** phát truyện từng câu một và tô sáng câu đang đọc; nút loa ở một dòng phát từ câu đó.

@@ -21,7 +21,7 @@ A learner who writes British English has not made a mistake. Typed answers are n
 | What | Examples | How it works |
 |---|---|---|
 | Same word, other spelling | colour, centre, organise, travelled, grey, learnt, mum | Folded to the US spelling on both sides, in every typed comparison and in dictation and conjugation. A closed list, so "colourless" stays itself. |
-| Different word, same thing | flat/apartment, lift/elevator, lorry/truck, petrol/gas, holiday/vacation, film/movie, shop/store | Rewritten only when the key has the US word, including the article: "a flat" for the key "an apartment". The written rubric's slots use the same seam. |
+| Different word, same thing | flat/apartment, lift/elevator, lorry/truck, petrol/gas, holiday/vacation, film/movie, shop/store | Rewritten only when the key has the US word, including the article: "a flat" for the key "an apartment". In free writing a single British word counts only as a noun, after a determiner ("I live in a small flat"); a rubric key of several words and a British phrase need no such context. |
 
 The second kind is pair-aware because these are ordinary words with other meanings. "The road is flat" does not take "apartment", and "Do not lift heavy boxes" does not take "elevator". A US word stays off the list when it has a sense the British word lacks: `line` (a queue is not a drawn line), `check` (a bill is not every check), and `first floor`, which is a different floor in each variety.
 
