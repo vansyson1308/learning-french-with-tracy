@@ -1137,3 +1137,13 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/stories/fr-stories.json
 - compile: changed  src/content/stories/fr-story-assets.ts
 - compile: changed  src/content/stories/fr-vi-stories.json
+
+## 2026-11-01 — audio.yml de generate (pack) run 41344051942
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/de/audio-census.json
+- compile: changed  content/reports/de/audio-quality.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/de-en.ts
+- compile: changed  src/content/audio/de-vi.ts
+- compile: changed  src/content/stories/de-stories.json

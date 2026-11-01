@@ -3,17 +3,15 @@
   "language": "de",
   "pipelineVersion": 3,
   "layers": [
-    "pack",
-    "lexicon",
-    "reception"
+    "pack"
   ],
   "courses": [
     {
       "courseId": "de-en",
       "policy": "generated",
       "voiceCast": {
-        "A": "de_DE-thorsten-high",
-        "B": "de_DE-kerstin-low"
+        "A": "parler-de-nicole",
+        "B": "parler-de-christopher"
       },
       "clips": 95
     },
@@ -21,15 +19,15 @@
       "courseId": "de-vi",
       "policy": "generated",
       "voiceCast": {
-        "A": "de_DE-thorsten-high",
-        "B": "de_DE-kerstin-low"
+        "A": "parler-de-nicole",
+        "B": "parler-de-christopher"
       },
-      "clips": 1048
+      "clips": 358
     }
   ],
-  "receptionClips": 677,
+  "receptionClips": 0,
   "files": {
-    "pack": 991,
+    "pack": 453,
     "reception": 649
   }
 }
