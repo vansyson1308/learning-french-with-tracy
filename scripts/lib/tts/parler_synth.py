@@ -27,6 +27,9 @@ SHORT_UNITS = 3
 MAX_SHORT_SECONDS = 1.5
 SILENCE_RATIO = 0.02
 PAD_SECONDS = 0.08
+# In 10 ms windows: a run under 80 ms, 300 ms or more from the rest.
+BLIP_WINDOWS = 8
+BLIP_GAP_WINDOWS = 30
 
 
 def trim(audio, rate):
@@ -41,8 +44,14 @@ def trim(audio, rate):
     loud = np.nonzero(energy > energy.max() * SILENCE_RATIO)[0]
     if loud.size == 0:
         return audio
+    # A blip far from the speech is not speech: run 41349465145 kept a click after 1.2 s of silence.
+    runs = np.split(loud, np.nonzero(np.diff(loud) > BLIP_GAP_WINDOWS)[0] + 1)
+    while len(runs) > 1 and runs[-1].size < BLIP_WINDOWS:
+        runs.pop()
+    while len(runs) > 1 and runs[0].size < BLIP_WINDOWS:
+        runs.pop(0)
     pad = int(PAD_SECONDS * rate)
-    return audio[max(0, loud[0] * window - pad) : min(audio.size, (loud[-1] + 1) * window + pad)]
+    return audio[max(0, runs[0][0] * window - pad) : min(audio.size, (runs[-1][-1] + 1) * window + pad)]
 
 
 def plausible(text, audio, rate):
