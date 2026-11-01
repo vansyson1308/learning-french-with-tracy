@@ -42,7 +42,8 @@ Back-translation: 3,860 pairs, 43 flags, none open; not independent, as the same
 **Pending audio.** The audio workflow has not run on this content. Nothing is claimed from CI or a phone.
 - **Audio:** pending. `validate-content` reports only missing audio: 420 `audioTarget` and 280 reception assets. `promote` therefore exits 1 at compile, as expected, and `src/content` has no compiled `en-vi` yet.
 - **Goldens:** pending. The check fails only because compiled `en-vi` output is new against the baseline; the audio bot commit re-blesses it (non-negotiable 10).
-- **Local on this branch:** see the commit's run in the session report; LanguageTool en-US: 4,724 strings, 396 matches, all allowed, 0 failing, 0 stale.
+- **Local on this branch:** typecheck and lint clean; `en-gates-draft` clean (25 scenarios); `context-draft en` 750 / 750; `en-pipeline.sh` byte-identical on a second run; LanguageTool en-US (local server): 4,724 strings, 396 matches, all allowed, 0 failing, 0 stale.
+- **`bun run test`:** 1,999 pass, 3 fail, all for the missing audio and the compile it blocks: content validation, the drift check (`src/content/packs/en-vi.json` does not exist yet) and the golden recompile. The golden differences are 33 new `en` files and 12 shared index files; no French file is among them.
 - **CI and device shards:** pending. No PR yet.
 
 ### Device
