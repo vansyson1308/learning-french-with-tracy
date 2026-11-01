@@ -8,18 +8,18 @@
   "generator": "scripts/lib/lexicon-etl/derive.ts",
   "notation": "atoms per form: mood:tense:person (ind|sub|imp|con : pre|pas|imp|fut : 1|2|3), inf, par:pas, par:pre, ger, sg|pl, f|m|n, case atoms; comma-joined in infoVer (French Lexique style)",
   "atomInventory": {
-    "inf": 969,
-    "ind:pre:1": 255,
-    "sg": 3185,
-    "ind:pas:1": 309,
-    "ind:pre:2": 506,
-    "ind:pas:2": 581,
-    "ind:pre:3": 1224,
-    "ind:pas:3": 307,
-    "pl": 563,
-    "ind:pas:*": 1545,
-    "par:pre": 985,
-    "par:pas": 1200,
+    "inf": 972,
+    "ind:pre:1": 256,
+    "sg": 3196,
+    "ind:pas:1": 310,
+    "ind:pre:2": 508,
+    "ind:pas:2": 583,
+    "ind:pre:3": 1228,
+    "ind:pas:3": 308,
+    "pl": 565,
+    "ind:pas:*": 1551,
+    "par:pre": 988,
+    "par:pas": 1204,
     "informal": 2
   },
   "verbs": [
@@ -37602,6 +37602,133 @@
         },
         {
           "mot": "practiced",
+          "infoVer": "ind:pas:*"
+        }
+      ]
+    },
+    {
+      "lemma": "include",
+      "rows": [
+        {
+          "mot": "include",
+          "infoVer": "inf"
+        },
+        {
+          "mot": "includes",
+          "infoVer": "ind:pre:3,sg"
+        },
+        {
+          "mot": "including",
+          "infoVer": "par:pre"
+        },
+        {
+          "mot": "included",
+          "infoVer": "par:pas"
+        },
+        {
+          "mot": "included",
+          "infoVer": "ind:pas:*"
+        }
+      ]
+    },
+    {
+      "lemma": "repair",
+      "rows": [
+        {
+          "mot": "repair",
+          "infoVer": "inf"
+        },
+        {
+          "mot": "repairs",
+          "infoVer": "ind:pre:3,sg"
+        },
+        {
+          "mot": "repairing",
+          "infoVer": "par:pre"
+        },
+        {
+          "mot": "repaired",
+          "infoVer": "par:pas"
+        },
+        {
+          "mot": "repaired",
+          "infoVer": "ind:pas:*"
+        },
+        {
+          "mot": "repair",
+          "infoVer": "ind:pre:1,sg"
+        },
+        {
+          "mot": "repaired",
+          "infoVer": "ind:pas:1,sg"
+        },
+        {
+          "mot": "repair",
+          "infoVer": "ind:pre:2,sg"
+        },
+        {
+          "mot": "repairest",
+          "infoVer": "ind:pre:2,sg"
+        },
+        {
+          "mot": "repaired",
+          "infoVer": "ind:pas:2,sg"
+        },
+        {
+          "mot": "repairedst",
+          "infoVer": "ind:pas:2,sg"
+        },
+        {
+          "mot": "repaireth",
+          "infoVer": "ind:pre:3,sg"
+        },
+        {
+          "mot": "repaired",
+          "infoVer": "ind:pas:3,sg"
+        },
+        {
+          "mot": "repair",
+          "infoVer": "pl"
+        },
+        {
+          "mot": "repaired",
+          "infoVer": "ind:pas:*,pl"
+        },
+        {
+          "mot": "-",
+          "infoVer": "ind:pas:*"
+        }
+      ]
+    },
+    {
+      "lemma": "text",
+      "rows": [
+        {
+          "mot": "text",
+          "infoVer": "inf"
+        },
+        {
+          "mot": "texts",
+          "infoVer": "ind:pre:3,sg"
+        },
+        {
+          "mot": "texting",
+          "infoVer": "par:pre"
+        },
+        {
+          "mot": "texted",
+          "infoVer": "par:pas"
+        },
+        {
+          "mot": "texted",
+          "infoVer": "ind:pas:*"
+        },
+        {
+          "mot": "text",
+          "infoVer": "par:pas"
+        },
+        {
+          "mot": "text",
           "infoVer": "ind:pas:*"
         }
       ]

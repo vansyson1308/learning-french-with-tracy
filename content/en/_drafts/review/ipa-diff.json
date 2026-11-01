@@ -3,16 +3,16 @@
   "note": "Licensed General American IPA against the hand-written column of core-*.txt. mismatches: different sounds or stress, for the D-10 language pass. notationOnly: the same sounds written differently (r/ɹ, g/ɡ, length, syllable dots). noLicensedValue: ships the hand-written string, source original-english-course, to review.",
   "counts": {
     "lexemes": 857,
-    "kaikki-en": 804,
+    "kaikki-en": 814,
     "byMethod": {
-      "general-american-tag": 476,
-      "untagged": 201,
-      "us-tag": 127
+      "general-american-tag": 484,
+      "untagged": 202,
+      "us-tag": 128
     },
-    "original-english-course": 53,
-    "identical": 385,
-    "notationOnly": 384,
-    "mismatches": 35
+    "original-english-course": 43,
+    "identical": 388,
+    "notationOnly": 390,
+    "mismatches": 36
   },
   "mismatches": [
     {
@@ -270,6 +270,14 @@
       "handWritten": "pɹɪˈskɹɪpʃən",
       "source": "kaikki-en",
       "method": "untagged"
+    },
+    {
+      "word": "beginner",
+      "partOfSpeech": "noun",
+      "generated": "bəˈɡɪnɚ",
+      "handWritten": "bɪˈɡɪnɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
     },
     {
       "word": "exhibition",
@@ -3170,6 +3178,14 @@
       "method": "general-american-tag"
     },
     {
+      "word": "certificate",
+      "partOfSpeech": "noun",
+      "generated": "sɚˈtɪf.ɪ.kət",
+      "handWritten": "sɚˈtɪfɪkət",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
       "word": "cinema",
       "partOfSpeech": "noun",
       "generated": "ˈsɪn.ə.mə",
@@ -3234,6 +3250,14 @@
       "method": "general-american-tag"
     },
     {
+      "word": "kilo",
+      "partOfSpeech": "noun",
+      "generated": "ˈkiloʊ",
+      "handWritten": "ˈkiːloʊ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
       "word": "library",
       "partOfSpeech": "noun",
       "generated": "ˈlaɪˌbɹɛɹ.i",
@@ -3274,10 +3298,26 @@
       "method": "general-american-tag"
     },
     {
+      "word": "passenger",
+      "partOfSpeech": "noun",
+      "generated": "ˈpæs.ən.d͡ʒɚ",
+      "handWritten": "ˈpæsəndʒɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
       "word": "perfect",
       "partOfSpeech": "adjective",
       "generated": "ˈpɝ.fɪkt",
       "handWritten": "ˈpɝfɪkt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "pipe",
+      "partOfSpeech": "noun",
+      "generated": "ˈpaɪp",
+      "handWritten": "paɪp",
       "source": "kaikki-en",
       "method": "general-american-tag"
     },
@@ -3304,6 +3344,14 @@
       "handWritten": "ɹɪˈsɛpʃənɪst",
       "source": "kaikki-en",
       "method": "us-tag"
+    },
+    {
+      "word": "recipe",
+      "partOfSpeech": "noun",
+      "generated": "ˈɹɛs.ə.pi",
+      "handWritten": "ˈɹɛsəpi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
     },
     {
       "word": "repair",
@@ -3344,6 +3392,14 @@
       "handWritten": "ˈtɹænsfɚ",
       "source": "kaikki-en",
       "method": "us-tag"
+    },
+    {
+      "word": "volunteer",
+      "partOfSpeech": "noun",
+      "generated": "ˌvɑlənˈtɪ(ə)ɹ",
+      "handWritten": "ˌvɑlənˈtɪɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
     },
     {
       "word": "apron",
@@ -3601,24 +3657,6 @@
       "source": "original-english-course"
     },
     {
-      "word": "beginner",
-      "partOfSpeech": "noun",
-      "handWritten": "bɪˈɡɪnɚ",
-      "source": "original-english-course"
-    },
-    {
-      "word": "cave",
-      "partOfSpeech": "noun",
-      "handWritten": "keɪv",
-      "source": "original-english-course"
-    },
-    {
-      "word": "certificate",
-      "partOfSpeech": "noun",
-      "handWritten": "sɚˈtɪfɪkət",
-      "source": "original-english-course"
-    },
-    {
       "word": "fifth",
       "partOfSpeech": "adjective",
       "handWritten": "fɪfθ",
@@ -3628,18 +3666,6 @@
       "word": "ID card",
       "partOfSpeech": "expression",
       "handWritten": "ˌaɪˈdiː kɑɹd",
-      "source": "original-english-course"
-    },
-    {
-      "word": "include",
-      "partOfSpeech": "verb",
-      "handWritten": "ɪnˈkluːd",
-      "source": "original-english-course"
-    },
-    {
-      "word": "kilo",
-      "partOfSpeech": "noun",
-      "handWritten": "ˈkiːloʊ",
       "source": "original-english-course"
     },
     {
@@ -3655,39 +3681,9 @@
       "source": "original-english-course"
     },
     {
-      "word": "passenger",
-      "partOfSpeech": "noun",
-      "handWritten": "ˈpæsəndʒɚ",
-      "source": "original-english-course"
-    },
-    {
-      "word": "pet",
-      "partOfSpeech": "noun",
-      "handWritten": "pɛt",
-      "source": "original-english-course"
-    },
-    {
-      "word": "pipe",
-      "partOfSpeech": "noun",
-      "handWritten": "paɪp",
-      "source": "original-english-course"
-    },
-    {
       "word": "prefer",
       "partOfSpeech": "verb",
       "handWritten": "pɹɪˈfɝ",
-      "source": "original-english-course"
-    },
-    {
-      "word": "recipe",
-      "partOfSpeech": "noun",
-      "handWritten": "ˈɹɛsəpi",
-      "source": "original-english-course"
-    },
-    {
-      "word": "volunteer",
-      "partOfSpeech": "noun",
-      "handWritten": "ˌvɑlənˈtɪɹ",
       "source": "original-english-course"
     }
   ]

@@ -10,7 +10,7 @@ import { buildPlugin } from "../lib/languages";
 import { en } from "../lib/languages/en";
 import { englishCourseErrors, REQUIRED_CONCEPTS, scenarioRegisterErrors, targetTextErrors } from "../lib/languages/en-gates";
 import { englishIng, englishParadigmCells, englishPastRegular, englishRegularPlural, englishThirdPerson } from "../lib/languages/en-morph";
-import { readJson } from "../lib/pipeline";
+import { loadRegistry, readJson, renderAttributions, shippedSources } from "../lib/pipeline";
 import { buildLexemeIndex, loadVerbForms, resolveToken, type LexemeIndex } from "../lib/stories";
 
 const verb = (lemma: string) => ({ id: `en:w:${lemma}`, surface: lemma, lemma, partOfSpeech: "verb" });
@@ -374,5 +374,16 @@ describe("the QĐ 1481 track against the committed data (QC 2026-11-01 §2.5)", 
     expect(track.description.vi).toContain("chọn một trong ba đáp án");
     expect(track.formatSource.checkedAgainstOfficialGuide).toBe(false);
     expect(track.formatSource.note.vi).toContain("chưa đối chiếu với bản có chữ ký");
+  });
+});
+
+describe("the flags are credited (QC 2026-11-01 §2.1)", () => {
+  test("circle-flags covers every flag, ships, and reaches ATTRIBUTIONS and the Licences screen's artwork section", () => {
+    const registry = loadRegistry();
+    const entry = shippedSources(registry).find((s) => s.id === "circle-flags");
+    expect(entry?.license).toBe("MIT");
+    expect(entry?.covers).toEqual(["assets/images/flags/"]);
+    expect(entry?.kind).toMatch(/^artwork/i);
+    expect(renderAttributions(registry)).toContain("circle-flags");
   });
 });
