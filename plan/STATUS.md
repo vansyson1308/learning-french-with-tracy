@@ -1,5 +1,11 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
+> **Lần thức gần nhất:** 2026-11-02 (UTC). **Lần thức kế tiếp:** sau khi run audio đang chạy kết thúc; xem `gh run list --workflow audio.yml`. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
+>
+> **Ghi chú (2026-11-01):**
+> - **Run audio fr 41166387785 thất bại lúc 2026-10-31 05:18 UTC**; phiên làm việc dừng ngay sau đó nên không ai xử lý trong khoảng 41 giờ, và câu "run tiếng Pháp vẫn đang chạy" là sai. Nguyên nhân: phần nghe của tiếng Pháp vốn đã qua pipeline v2 (392 clip được áp dụng); kế hoạch băm tên người đọc Parler thành `null`, còn validator băm đúng tên "Daniel", nên 152 file thành mồ côi và 121 clip + 40 câu truyện bị coi là thiếu. Đã sửa trong `scripts/audio.ts`, có test: kế hoạch và validator phải ra cùng một tập file cho fr, de, es.
+> - **Nhánh `phase-4/en-vi` đã push.** Từ nay mọi commit được push trong 30 phút.
+>
 > **Ghi chú (2026-10-31):**
 > - **QC-2026-10-31 (D-11 đến D-14):** thứ tự mới: it-vi → `audio/voice-lineage` → emulator-boot-hardening (đã merge #55) → P4f en-vi + VSTEP → P4b → ja → ko → zh → pt → P5 → P6a → v1.0. Gate lineage đã viết trên `audio/voice-lineage` (chưa push). Ngoài ba giọng QC nêu, gate còn đụng `fr_FR-upmc`, `vi_VN-vais1000`, audio `pt-en` cũ (`faber`) và MeloTTS. **Tiếng Hàn hiện không còn giọng sạch.**
 > - **D-14:** `plan/09-ROADMAP-BEYOND-A1.md` đã viết; 5 chỗ cản lên A2+ đã sửa, có test, trên `plan/beyond-a1`. Phần còn phải làm khi bắt đầu A2 ghi trong tài liệu đó.

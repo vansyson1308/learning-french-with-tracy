@@ -6,6 +6,9 @@ Anh làm danh sách này một lần, khi bản **v1.0 candidate** đã sẵn s�
 
 Ký hiệu: ☐ chưa làm · ☑ xong · (từ milestone nào)
 
+## 0. Giữ máy thức khi có run dài
+- ☐ Phiên làm việc dừng khi PC ngủ hoặc app tắt, và các lịch tự kiểm tra không chạy nữa (run tiếng Pháp hỏng ngày 31/10 đã nằm yên khoảng 41 giờ). Trong lúc có run dài, anh đặt Windows "Sleep: Never" khi cắm điện và để app mở.
+
 ## A. Khoá ký và tài khoản (trước khi build bản v1.0 ký)
 - ☐ **Giữ keystore an toàn**: `C:\keys\lft-upload.jks` + hai mật khẩu được sao lưu ngoại tuyến ở hai nơi (không ghi vào file văn bản thường). Đây là khoá đã ký RC3; mọi bản sau phải cùng khoá để cài đè được. (P0)
 - ☐ **Gõ mật khẩu keystore một lần** khi Claude báo bản v1.0 candidate đã build: chạy script ký trong `out\` (tên file Claude ghi ở đầu STATUS), gõ mật khẩu, báo "XONG".

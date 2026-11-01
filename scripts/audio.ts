@@ -430,7 +430,8 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
       layers.push("reception");
       problems.push(...receptionDryRunProblems(r, mode));
       const push = (clipId: string, segments: PlanClip["segments"], version = r.pipelineVersion, story = false) => {
-        const resolved = segments.map((s) => ({ voiceId: s.voiceId, speaker: typeof s.speaker === "number" ? s.speaker : null, text: s.text }));
+        // The speaker is part of the key exactly as the validator hashes it: a Parler name as well as a Piper id.
+        const resolved = segments.map((s) => ({ voiceId: s.voiceId, speaker: s.speaker, text: s.text }));
         // Lockstep with scripts/lib/reception.ts listeningClipKey: a declared re-synthesis changes a listening clip's key (never a story sentence's).
         const synthesis = story ? null : resynthesisFor(LANG, clipId, resynthesis);
         // Lockstep with scripts/lib/stories.ts storySentenceAssetKey: an opus story sentence carries its codec in the key.
@@ -451,7 +452,7 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
           }
         }
       } else if (mode === "generate" && existsSync(LISTENING_PATH)) {
-        const listening = JSON.parse(readFileSync(LISTENING_PATH, "utf8")) as { voiceCast: Record<"A" | "B", { voiceId: string; speaker: number | null }>; clips: { id: string; segments: { speaker: "A" | "B"; text: string }[] }[] };
+        const listening = JSON.parse(readFileSync(LISTENING_PATH, "utf8")) as { voiceCast: Record<"A" | "B", { voiceId: string; speaker: number | string | null }>; clips: { id: string; segments: { speaker: "A" | "B"; text: string }[] }[] };
         for (const clip of listening.clips) push(clip.id, clip.segments.map((seg) => ({ voiceId: listening.voiceCast[seg.speaker].voiceId, speaker: listening.voiceCast[seg.speaker].speaker, text: seg.text })));
       }
       // P5b graded stories: one asset per sentence (clip id <storyId>#<n>), voice from the stories' cast.
