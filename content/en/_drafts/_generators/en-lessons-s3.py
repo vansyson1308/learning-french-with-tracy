@@ -16,7 +16,7 @@ lesson("uf-l0", [
 ])
 lesson("uf-l1", [
     LC("uf_a_teacher", Q, "một giáo viên", ["một bác sĩ", "một công nhân", "một sinh viên"]), LC("uf_a_doctor", Q, "một bác sĩ", ["một giáo viên", "một y tá", "một tài xế"]), LC("uf_the_door", Q, "cửa ra vào", ["cửa sổ", "chìa khóa", "cái bàn"]), LC("uf_a_key", Q, "một chiếc chìa khóa", ["một cái cửa", "một quyển sách", "một cái túi"]), LC("uf_the_window", Q, "cửa sổ", ["cửa ra vào", "bức tường", "sàn nhà"]),
-    RC("uf_desk", "Trên bàn có mấy quyển sách?", "hai quyển", ["một quyển", "ba quyển", "bốn quyển"]), RC("uf_desk", "Trên bàn có đồ uống gì?", "một tách trà", ["một ly nước", "một tách cà phê", "một chai bia"]), D("uf_a_key", "a key", "key"),
+    RC("uf_desk", "Trên bàn có mấy quyển sách?", "hai quyển", ["một quyển", "ba quyển", "bốn quyển"]), RC("uf_desk", "Trên bàn có đồ uống gì?", "một tách trà", ["một ly nước", "một tách cà phê", "một chai bia"]), D("uf_a_key", "a key"),
 ])
 lesson("uf-l2", [
     LC("uf_what_time", "Người nói muốn biết gì?", "bây giờ là mấy giờ", ["hôm nay là thứ mấy", "nhà ga ở đâu", "vé giá bao nhiêu"]), LC("uf_not_understand", MEAN, "Tôi không hiểu.", ["Tôi không biết bạn.", "Tôi không nghe thấy.", "Tôi hiểu rồi."]), LC("uf_say_again", "Người nói muốn bạn làm gì?", "nói lại một lần nữa", ["nói nhanh hơn", "viết xuống", "đi ra ngoài"]), LC("uf_speak_slowly", "Người nói muốn bạn làm gì?", "nói chậm thôi", ["nói to lên", "nói lại", "đọc to"]), LC("uf_how_spell", "Người nói hỏi gì?", "cách đánh vần từ đó", ["nghĩa của từ đó", "cách đọc từ đó", "từ đó ở trang nào"]), LC("uf_what_mean", "Người nói hỏi gì?", "từ hoặc câu đó có nghĩa là gì", ["cái đó giá bao nhiêu", "cái đó ở đâu", "ai nói câu đó"]),

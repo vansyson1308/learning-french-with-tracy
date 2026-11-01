@@ -11,7 +11,7 @@ A human still has to check:
 ## Counts
 
 - A1 by part of speech: adjective 93, adverb 42, conjunction 8, determiner 25, expression 27, interjection 7, noun 366, preposition 25, pronoun 23, verb 134
-- IPA: kaikki-en 774 (general-american-tag 459, untagged 194, us-tag 121); original-english-course 94, no licensed value. Against the hand-written column: identical 390, notation only 372, mismatch 12.
+- IPA: kaikki-en 771 (general-american-tag 459, untagged 194, us-tag 118); original-english-course 97, no licensed value. Against the hand-written column: identical 389, notation only 370, mismatch 12.
 - Examples: 894, all original (`original-lexicon-etl`, key `add`); no Tatoeba sentence is used. Each is at most 12 words and uses only words of its band, checked by en-lex.py.
 - Irregular forms are in `noun-plurals.json` and `irregular-forms.json`: the lexeme schema has no field for them, as in Italian.
 

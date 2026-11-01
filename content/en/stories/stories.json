@@ -158,10 +158,10 @@
         },
         {
           "speaker": "B",
-          "text": "My sister is a child, but my brother is a student.",
+          "text": "My sister is a child, and my brother is a student.",
           "translation": {
-            "vi": "Em gái tôi còn nhỏ, nhưng em trai tôi là học sinh.",
-            "en": "My sister is a child, but my brother is a student."
+            "vi": "Em gái tôi còn nhỏ, còn em trai tôi là học sinh.",
+            "en": "My sister is a child, and my brother is a student."
           }
         },
         {
@@ -1336,8 +1336,8 @@
               "en": "There are no taxis"
             },
             {
-              "vi": "Anh muốn giữ tiền",
-              "en": "He wants to keep his money"
+              "vi": "Anh muốn tiết kiệm tiền",
+              "en": "He wants to save money"
             },
             {
               "vi": "Anh sợ tài xế",
@@ -3049,10 +3049,10 @@
         },
         {
           "speaker": "B",
-          "text": "Good night... I mean, hello! I have a room for one person.",
+          "text": "Good night... I mean, hello! I booked a room for one person.",
           "translation": {
             "vi": "Chúc ngủ ngon... à, chào anh! Tôi có đặt một phòng đơn.",
-            "en": "Good night... I mean, hello! I have a room for one person."
+            "en": "Good night... I mean, hello! I booked a room for one person."
           }
         },
         {
@@ -3184,6 +3184,7 @@
         "en:w:careful"
       ],
       "tokenMap": {
+        "booked": "en:w:book",
         "brown": "name",
         "da": "name",
         "emma": "name",
@@ -3385,7 +3386,7 @@
           "speaker": "B",
           "text": "It is hot, but I really like it! Can I have some vegetables with it?",
           "translation": {
-            "vi": "Nóng thật, nhưng em rất thích! Cho em thêm ít rau được không?",
+            "vi": "Cay thật, nhưng em rất thích! Cho em thêm ít rau được không?",
             "en": "It is hot, but I really like it! Can I have some vegetables with it?"
           }
         },
@@ -6027,7 +6028,7 @@
           "speaker": "B",
           "text": "That was easy! I want to do it again.",
           "translation": {
-            "vi": "Dễ mà! Mẹ muốn đi nữa.",
+            "vi": "Dễ thế mà! Mẹ muốn đi nữa.",
             "en": "That was easy! I want to do it again."
           }
         },
@@ -6942,10 +6943,10 @@
         },
         {
           "speaker": "B",
-          "text": "No, I am at work in the morning. Is the afternoon possible?",
+          "text": "No, I am at work in the morning. Is the afternoon okay?",
           "translation": {
             "vi": "Không, buổi sáng tôi đi làm. Buổi chiều có được không?",
-            "en": "No, I am at work in the morning. Is the afternoon possible?"
+            "en": "No, I am at work in the morning. Is the afternoon okay?"
           }
         },
         {
@@ -8573,10 +8574,10 @@
         },
         {
           "speaker": "N",
-          "text": "At half past five, a sign on the screen said that there was a delay.",
+          "text": "At half past five, a message on the screen said that there was a delay.",
           "translation": {
             "vi": "Năm giờ rưỡi, trên màn hình báo chuyến bay bị chậm.",
-            "en": "At half past five, a sign on the screen said that there was a delay."
+            "en": "At half past five, a message on the screen said that there was a delay."
           }
         },
         {
@@ -9059,18 +9060,18 @@
         },
         {
           "speaker": "N",
-          "text": "Hung was very excited, and he wanted to sign at once.",
+          "text": "Hung was very excited, and he wanted to sign right away.",
           "translation": {
             "vi": "Hùng rất háo hức, và muốn ký ngay.",
-            "en": "Hung was very excited, and he wanted to sign at once."
+            "en": "Hung was very excited, and he wanted to sign right away."
           }
         },
         {
           "speaker": "N",
-          "text": "But his wife Mai worked in a bank, and she was careful about papers.",
+          "text": "But his wife, Mai, worked in a bank, and she was careful about papers.",
           "translation": {
             "vi": "Nhưng vợ anh là Mai làm ở ngân hàng và rất cẩn thận với giấy tờ.",
-            "en": "But his wife Mai worked in a bank, and she was careful about papers."
+            "en": "But his wife, Mai, worked in a bank, and she was careful about papers."
           }
         },
         {
@@ -9546,10 +9547,10 @@
         },
         {
           "speaker": "N",
-          "text": "But when they got their salary in June, there was no overtime pay.",
+          "text": "But when they got paid in June, there was no overtime pay.",
           "translation": {
             "vi": "Nhưng khi nhận lương tháng Sáu, không có tiền làm thêm giờ.",
-            "en": "But when they got their salary in June, there was no overtime pay."
+            "en": "But when they got paid in June, there was no overtime pay."
           }
         },
         {
@@ -9684,7 +9685,7 @@
       "newLexemes": [
         "en:w:strike",
         "en:w:overtime",
-        "en:w:salary"
+        "en:w:promise"
       ],
       "tokenMap": {
         "haiphong": "name",

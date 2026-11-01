@@ -432,7 +432,8 @@
               "vi": "câu hỏi về nơi sống"
             },
             "variants": [
-              "where do you live"
+              "where do you live",
+              "where are you living"
             ],
             "cueProvided": false
           }
@@ -471,7 +472,13 @@
             },
             "variants": [
               "i like soccer",
-              "i love soccer"
+              "i love soccer",
+              "i really like soccer",
+              "i like playing soccer",
+              "i like to play soccer",
+              "i love playing soccer",
+              "i love to play soccer",
+              "i enjoy soccer"
             ],
             "cueProvided": false
           }
@@ -480,7 +487,8 @@
         "maxTokens": 10,
         "requireSentenceVerbs": [
           "like",
-          "love"
+          "love",
+          "enjoy"
         ]
       },
       "modelAnswers": [
@@ -758,7 +766,8 @@
               "thanks",
               "thank you"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 5,
@@ -836,7 +845,8 @@
               "best wishes",
               "best"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 6,
@@ -1011,7 +1021,8 @@
               "thanks",
               "thank you"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 5,
@@ -1448,7 +1459,8 @@
               "best wishes",
               "best"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 8,
@@ -2142,7 +2154,8 @@
               "thank you",
               "take care"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 6,
@@ -2240,7 +2253,8 @@
               "best wishes",
               "best"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 8,
@@ -2325,7 +2339,8 @@
               "best wishes",
               "best"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 6,
@@ -2841,7 +2856,8 @@
               "thanks",
               "thank you"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 6,
@@ -2939,7 +2955,8 @@
               "best wishes",
               "best"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 8,
@@ -3332,7 +3349,8 @@
               "best wishes",
               "best"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 15,
@@ -3467,7 +3485,8 @@
               "best wishes",
               "best"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 12,
@@ -3600,7 +3619,8 @@
               "best",
               "regards"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 20,
@@ -3724,7 +3744,8 @@
               "best",
               "regards"
             ],
-            "cueProvided": false
+            "cueProvided": false,
+            "repeatable": true
           }
         ],
         "minTokens": 20,

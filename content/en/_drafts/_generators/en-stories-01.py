@@ -27,7 +27,7 @@ S.append(story("nam_moves_to_hanoi", "A1-1", "Nam moves to Hanoi",
   ("A", "Mom, I am in Hanoi. The traffic is bad, but I like the city.", "Mẹ ơi, con đến Hà Nội rồi. Giao thông tệ lắm, nhưng con thích thành phố này.")],
  [Q("Mẹ đưa cho Nam gì?", "What does Nam's mother give him?", [("Va li và ít tiền", "A suitcase and some money"), ("Vé tàu", "A train ticket"), ("Xe máy", "A motorbike")]),
   Q("Vì sao Nam đứng trên xe buýt?", "Why does Nam stand on the bus?", [("Vì xe đầy người", "Because the bus is full"), ("Vì anh thích đứng", "Because he likes to stand"), ("Vì va li quá nặng", "Because his suitcase is heavy")]),
-  Q("Vì sao Nam không đi taxi?", "Why does Nam not take a taxi?", [("Anh muốn giữ tiền", "He wants to keep his money"), ("Không có taxi nào", "There are no taxis"), ("Anh sợ tài xế", "He is afraid of the driver")], "infer")]))
+  Q("Vì sao Nam không đi taxi?", "Why does Nam not take a taxi?", [("Anh muốn tiết kiệm tiền", "He wants to save money"), ("Không có taxi nào", "There are no taxis"), ("Anh sợ tài xế", "He is afraid of the driver")], "infer")]))
 S.append(story("an_apartment_for_nam", "A1-1", "An apartment for Nam",
  ("Nam đi xem một căn hộ nhỏ để thuê.", "Nam goes to see a small apartment."),
  ["small", "dark", "clean"],

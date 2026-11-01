@@ -772,14 +772,6 @@
       },
       "objectiveTargets": [
         "en.obj.listening.short_dialogues"
-      ],
-      "glossary": [
-        {
-          "surface": "ID card",
-          "gloss": {
-            "vi": "thẻ căn cước"
-          }
-        }
       ]
     },
     {
@@ -1153,12 +1145,6 @@
           "surface": "gate",
           "gloss": {
             "vi": "cổng"
-          }
-        },
-        {
-          "surface": "lake",
-          "gloss": {
-            "vi": "hồ"
           }
         },
         {
@@ -1711,12 +1697,6 @@
           }
         },
         {
-          "surface": "fifth",
-          "gloss": {
-            "vi": "thứ năm (số thứ tự)"
-          }
-        },
-        {
           "surface": "front",
           "gloss": {
             "vi": "phía trước"
@@ -2071,12 +2051,6 @@
       ],
       "glossary": [
         {
-          "surface": "boat",
-          "gloss": {
-            "vi": "thuyền"
-          }
-        },
-        {
           "surface": "cave",
           "gloss": {
             "vi": "hang động"
@@ -2261,12 +2235,6 @@
         "en.obj.reading.notices_info"
       ],
       "glossary": [
-        {
-          "surface": "elevator",
-          "gloss": {
-            "vi": "thang máy"
-          }
-        },
         {
           "surface": "notice",
           "gloss": {
@@ -3239,12 +3207,6 @@
           }
         },
         {
-          "surface": "guest",
-          "gloss": {
-            "vi": "khách"
-          }
-        },
-        {
           "surface": "mistake",
           "gloss": {
             "vi": "lỗi, sai lầm"
@@ -4153,12 +4115,6 @@
       ],
       "glossary": [
         {
-          "surface": "apron",
-          "gloss": {
-            "vi": "tạp dề"
-          }
-        },
-        {
           "surface": "center",
           "gloss": {
             "vi": "trung tâm"
@@ -4453,12 +4409,6 @@
           "surface": "adult",
           "gloss": {
             "vi": "người lớn"
-          }
-        },
-        {
-          "surface": "alone",
-          "gloss": {
-            "vi": "một mình"
           }
         },
         {
@@ -5191,12 +5141,6 @@
         "en.obj.reading.short_messages"
       ],
       "glossary": [
-        {
-          "surface": "certificate",
-          "gloss": {
-            "vi": "chứng chỉ"
-          }
-        },
         {
           "surface": "sale",
           "gloss": {
@@ -6601,7 +6545,8 @@
                 "best wishes",
                 "best"
               ],
-              "cueProvided": false
+              "cueProvided": false,
+              "repeatable": true
             }
           ],
           "minTokens": 15,
@@ -6702,7 +6647,8 @@
                 "best wishes",
                 "best"
               ],
-              "cueProvided": false
+              "cueProvided": false,
+              "repeatable": true
             }
           ],
           "minTokens": 12,
@@ -6807,7 +6753,8 @@
                 "best",
                 "regards"
               ],
-              "cueProvided": false
+              "cueProvided": false,
+              "repeatable": true
             }
           ],
           "minTokens": 20,
@@ -6900,7 +6847,8 @@
                 "best",
                 "regards"
               ],
-              "cueProvided": false
+              "cueProvided": false,
+              "repeatable": true
             }
           ],
           "minTokens": 20,

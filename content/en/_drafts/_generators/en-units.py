@@ -594,7 +594,7 @@ Tiếng Anh cần *is*: đừng nói "the house big".
 Tính từ không có số nhiều, không có giống: *a big house*, *big houses*.
 
 ### Từ dùng nhiều
-*big, small, new, old, long, short, tall, good, bad*. Màu sắc: *red, blue, green, black, white*. Từ hỏi màu là *What color is it?*
+*big, small, new, old, long, short, tall, good, bad*. Màu sắc: *red, blue, green, black, white*. Câu hỏi về màu sắc là *What color is it?*
 
 ### Có gì ở đó
 Dùng *there is* cho một thứ và *there are* cho nhiều thứ:

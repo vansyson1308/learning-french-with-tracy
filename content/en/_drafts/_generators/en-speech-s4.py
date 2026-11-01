@@ -18,7 +18,7 @@ REP = "Nghe, rồi nói lại."
 TEACHING = {
  "k": [
   ("rep_hello", "repetition", None, "Hello!", [], None, None),
-  ("greet_morning", "situation_prompt", "Buổi sáng, bạn bước vào văn phòng. Hãy chào đồng nghiệp.", "Good morning!", ["Morning", "Hello", "Hi", "Good morning everyone"], None, None),
+  ("greet_morning", "situation_prompt", "Buổi sáng, bạn bước vào văn phòng. Hãy chào đồng nghiệp.", "Good morning!", ["Morning", "Hello", "Hi", "Good morning everyone", "Hello everyone", "Hi everyone", "Morning everyone"], None, None),
   ("rep_thanks", "repetition", None, "Thank you very much!", ["Thank you"], None, None),
   ("thank", "situation_prompt", "Một đồng nghiệp giúp bạn mang thùng hàng. Hãy cảm ơn.", "Thank you!", ["Thanks", "Thanks a lot", "Thank you very much"], None, None),
   ("rep_evening", "repetition", None, "Good evening!", [], None, None),

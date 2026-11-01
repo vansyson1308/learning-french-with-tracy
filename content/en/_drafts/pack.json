@@ -9283,9 +9283,7 @@
                   "id": "en-vi:uf-l1-e7",
                   "clipId": "en.clip.uf_a_key",
                   "answer": "a key",
-                  "alternatives": [
-                    "key"
-                  ],
+                  "alternatives": [],
                   "objectiveTargets": [
                     "en.obj.listening.familiar_words"
                   ]
@@ -12483,7 +12481,10 @@
                     "Morning",
                     "Hello",
                     "Hi",
-                    "Good morning everyone"
+                    "Good morning everyone",
+                    "Hello everyone",
+                    "Hi everyone",
+                    "Morning everyone"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:good-morning"
@@ -12806,7 +12807,10 @@
                     "Morning",
                     "Hello",
                     "Hi",
-                    "Good morning everyone"
+                    "Good morning everyone",
+                    "Hello everyone",
+                    "Hi everyone",
+                    "Morning everyone"
                   ],
                   "evidenceLexemeRefs": [
                     "en:w:good-morning"
@@ -14121,7 +14125,7 @@
           "id": "en-vi:unit-n",
           "title": "Mô tả",
           "description": "Mô tả người, nơi chốn, đồ vật bằng cụm từ ngắn.",
-          "guidebook": "## Mô tả\n\n### Tính từ đứng trước danh từ\nNgược với tiếng Việt:\n- \"cái túi đỏ\" → *a red bag*\n- \"nhà to\" → *a big house*\n- \"xe mới\" → *a new car*\n\n### Sau be\n- *The house is big.* — Ngôi nhà to.\n- *It is new.* — Nó mới.\n\nTiếng Anh cần *is*: đừng nói \"the house big\".\n\n### Tính từ không đổi\nTính từ không có số nhiều, không có giống: *a big house*, *big houses*.\n\n### Từ dùng nhiều\n*big, small, new, old, long, short, tall, good, bad*. Màu sắc: *red, blue, green, black, white*. Từ hỏi màu là *What color is it?*\n\n### Có gì ở đó\nDùng *there is* cho một thứ và *there are* cho nhiều thứ:\n- *There is a table in the room.* — Trong phòng có một cái bàn.\n- *There are two beds.* — Có hai cái giường.\n\nTiếng Việt dùng một từ \"có\" cho hai ý này, còn tiếng Anh tách ra: *I have a car* là tôi có xe, còn *There is a car* là ở đó có xe.\n\n### Very và too\n- *It is very big.* — Nó rất to.\n- *It is too big.* — Nó to quá, không vừa.\n\n*too* mang ý không ổn. Đừng dùng *too* để khen.",
+          "guidebook": "## Mô tả\n\n### Tính từ đứng trước danh từ\nNgược với tiếng Việt:\n- \"cái túi đỏ\" → *a red bag*\n- \"nhà to\" → *a big house*\n- \"xe mới\" → *a new car*\n\n### Sau be\n- *The house is big.* — Ngôi nhà to.\n- *It is new.* — Nó mới.\n\nTiếng Anh cần *is*: đừng nói \"the house big\".\n\n### Tính từ không đổi\nTính từ không có số nhiều, không có giống: *a big house*, *big houses*.\n\n### Từ dùng nhiều\n*big, small, new, old, long, short, tall, good, bad*. Màu sắc: *red, blue, green, black, white*. Câu hỏi về màu sắc là *What color is it?*\n\n### Có gì ở đó\nDùng *there is* cho một thứ và *there are* cho nhiều thứ:\n- *There is a table in the room.* — Trong phòng có một cái bàn.\n- *There are two beds.* — Có hai cái giường.\n\nTiếng Việt dùng một từ \"có\" cho hai ý này, còn tiếng Anh tách ra: *I have a car* là tôi có xe, còn *There is a car* là ở đó có xe.\n\n### Very và too\n- *It is very big.* — Nó rất to.\n- *It is too big.* — Nó to quá, không vừa.\n\n*too* mang ý không ổn. Đừng dùng *too* để khen.",
           "words": [
             {
               "target": "big",
@@ -15709,7 +15713,8 @@
                         "id": "ask",
                         "description": "câu hỏi về nơi sống",
                         "variants": [
-                          "where do you live"
+                          "where do you live",
+                          "where are you living"
                         ],
                         "cueProvided": false
                       }
@@ -15798,7 +15803,13 @@
                         "description": "bạn thích bóng đá",
                         "variants": [
                           "i like soccer",
-                          "i love soccer"
+                          "i love soccer",
+                          "i really like soccer",
+                          "i like playing soccer",
+                          "i like to play soccer",
+                          "i love playing soccer",
+                          "i love to play soccer",
+                          "i enjoy soccer"
                         ],
                         "cueProvided": false
                       }
@@ -15807,7 +15818,8 @@
                     "maxTokens": 10,
                     "requireSentenceVerbs": [
                       "like",
-                      "love"
+                      "love",
+                      "enjoy"
                     ]
                   },
                   "modelAnswers": [
@@ -16396,7 +16408,8 @@
                           "thanks",
                           "thank you"
                         ],
-                        "cueProvided": false
+                        "cueProvided": false,
+                        "repeatable": true
                       }
                     ],
                     "minTokens": 5,
@@ -16455,7 +16468,8 @@
                           "thanks",
                           "thank you"
                         ],
-                        "cueProvided": false
+                        "cueProvided": false,
+                        "repeatable": true
                       }
                     ],
                     "minTokens": 5,
@@ -16584,7 +16598,8 @@
                           "best wishes",
                           "best"
                         ],
-                        "cueProvided": false
+                        "cueProvided": false,
+                        "repeatable": true
                       }
                     ],
                     "minTokens": 6,
@@ -17474,7 +17489,8 @@
                           "best wishes",
                           "best"
                         ],
-                        "cueProvided": false
+                        "cueProvided": false,
+                        "repeatable": true
                       }
                     ],
                     "minTokens": 8,
