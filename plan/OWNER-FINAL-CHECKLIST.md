@@ -6,6 +6,8 @@ Anh làm danh sách này một lần, khi bản **v1.0 candidate** đã sẵn s�
 
 Ký hiệu: ☐ chưa làm · ☑ xong · (từ milestone nào)
 
+- ☐ **Nghe 4 file mẫu giọng (5 phút) — giọng nào nghe khó chịu/sai thì ghi lại.** Tuỳ chọn, không chặn việc gì. GitHub → Actions → "Voice sampler" → lượt mới nhất → tải artifact `voice-samplers`: `fr.mp3`, `de.mp3`, `pt.mp3`, `en.mp3` (mỗi file khoảng 2 phút: 10 từ, 6 câu, 2 hội thoại, tốc độ thường rồi chậm; file `.txt` cạnh nó ghi câu nào phát lúc nào). (QC 2026-11-03)
+
 ## 0. Giữ máy thức khi có run dài
 - ☐ Phiên làm việc dừng khi PC ngủ hoặc app tắt, và các lịch tự kiểm tra không chạy nữa (run tiếng Pháp hỏng ngày 31/10 đã nằm yên khoảng 41 giờ). Trong lúc có run dài, anh đặt Windows "Sleep: Never" khi cắm điện và để app mở.
 
