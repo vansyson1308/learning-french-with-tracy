@@ -1,0 +1,2917 @@
+{
+  "version": 1,
+  "language": "en",
+  "order": [
+    "en.read.uf_desk",
+    "en.read.uf_card",
+    "en.read.ug_msg_lan",
+    "en.read.ug_msg_tom",
+    "en.read.ug_signs",
+    "en.read.ug_post",
+    "en.read.ug_hours",
+    "en.read.ug_shift",
+    "en.read.ug_rules",
+    "en.read.ui_new_worker",
+    "en.read.ui_at_shop",
+    "en.read.ui_sorry",
+    "en.read.uj_nam_day",
+    "en.read.uj_nam_family",
+    "en.read.uj_yesterday",
+    "en.read.uj_saturday",
+    "en.read.uj_station",
+    "en.read.uj_office",
+    "en.read.cp3_msg_hoa",
+    "en.read.cp3_notice_shop",
+    "en.read.cp3_mail_staff",
+    "en.read.cp3_text_linh",
+    "en.read.cp3_text_david",
+    "en.read.a1cap_msg_father",
+    "en.read.a1cap_invite",
+    "en.read.pl_notice_cafe",
+    "en.read.pl_message",
+    "en.read.bac2_a_r1_01",
+    "en.read.bac2_a_r1_02",
+    "en.read.bac2_a_r1_03",
+    "en.read.bac2_a_r1_04",
+    "en.read.bac2_a_r1_05",
+    "en.read.bac2_a_r1_06",
+    "en.read.bac2_a_r1_07",
+    "en.read.bac2_a_r1_08",
+    "en.read.bac2_a_r2_01",
+    "en.read.bac2_a_r2_02",
+    "en.read.bac2_a_r2_03",
+    "en.read.bac2_a_r2_04",
+    "en.read.bac2_a_r3",
+    "en.read.bac2_a_r4",
+    "en.read.bac2_b_r1_01",
+    "en.read.bac2_b_r1_02",
+    "en.read.bac2_b_r1_03",
+    "en.read.bac2_b_r1_04",
+    "en.read.bac2_b_r1_05",
+    "en.read.bac2_b_r1_06",
+    "en.read.bac2_b_r1_07",
+    "en.read.bac2_b_r1_08",
+    "en.read.bac2_b_r2_01",
+    "en.read.bac2_b_r2_02",
+    "en.read.bac2_b_r2_03",
+    "en.read.bac2_b_r2_04",
+    "en.read.bac2_b_r3",
+    "en.read.bac2_b_r4"
+  ],
+  "byId": {
+    "en.read.uf_desk": {
+      "id": "en.read.uf_desk",
+      "kind": "description",
+      "title": "My desk",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "A computer"
+        },
+        {
+          "kind": "paragraph",
+          "text": "A pen and a notebook"
+        },
+        {
+          "kind": "paragraph",
+          "text": "A cup of tea"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Two books"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.familiar_words"
+      ],
+      "lexemeRefs": [
+        "en:w:a",
+        "en:w:computer",
+        "en:w:pen",
+        "en:w:and",
+        "en:w:notebook",
+        "en:w:cup",
+        "en:w:of",
+        "en:w:tea",
+        "en:w:two",
+        "en:w:book"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "notebook",
+          "gloss": "quyển vở"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.uf_card": {
+      "id": "en.read.uf_card",
+      "kind": "notice",
+      "title": "Name card",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Mai Tran"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Student"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hanoi, Vietnam"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phone number: 0912 345 678"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.familiar_words"
+      ],
+      "lexemeRefs": [
+        "en:w:student",
+        "en:w:vietnam",
+        "en:w:phone-number"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "Student",
+          "gloss": "sinh viên, học sinh"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ug_msg_lan": {
+      "id": "en.read.ug_msg_lan",
+      "kind": "message",
+      "title": "A message from Lan",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hi Minh,"
+        },
+        {
+          "kind": "paragraph",
+          "text": "I'm at the coffee shop in town, near the station. Can you come at three? I'm waiting for you."
+        },
+        {
+          "kind": "paragraph",
+          "text": "See you soon, Lan"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:i",
+        "en:w:be",
+        "en:w:at",
+        "en:w:the",
+        "en:w:coffee",
+        "en:w:shop",
+        "en:w:in",
+        "en:w:town",
+        "en:w:near",
+        "en:w:station",
+        "en:w:can",
+        "en:w:you",
+        "en:w:come",
+        "en:w:three",
+        "en:w:wait",
+        "en:w:for",
+        "en:w:see-you",
+        "en:w:soon"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "coffee shop",
+          "gloss": "quán cà phê"
+        },
+        {
+          "surface": "I'm waiting for you",
+          "gloss": "mình đang đợi bạn"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ug_msg_tom": {
+      "id": "en.read.ug_msg_tom",
+      "kind": "message",
+      "title": "A message from Tom",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hello Hoa,"
+        },
+        {
+          "kind": "paragraph",
+          "text": "The meeting is at ten tomorrow, not at nine. Please bring the report."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thanks, Tom"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hello",
+        "en:w:the",
+        "en:w:meeting",
+        "en:w:be",
+        "en:w:at",
+        "en:w:ten",
+        "en:w:tomorrow",
+        "en:w:not",
+        "en:w:nine",
+        "en:w:please",
+        "en:w:bring",
+        "en:w:report",
+        "en:w:thanks"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "meeting",
+          "gloss": "cuộc họp"
+        },
+        {
+          "surface": "report",
+          "gloss": "báo cáo"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ug_signs": {
+      "id": "en.read.ug_signs",
+      "kind": "notice",
+      "title": "Signs at the station",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Entrance"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Exit"
+        },
+        {
+          "kind": "paragraph",
+          "text": "No smoking"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Restrooms: on the left"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:entrance",
+        "en:w:exit",
+        "en:w:no",
+        "en:w:smoke",
+        "en:w:restroom",
+        "en:w:on",
+        "en:w:the",
+        "en:w:left"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "Entrance",
+          "gloss": "lối vào"
+        },
+        {
+          "surface": "Exit",
+          "gloss": "lối ra"
+        },
+        {
+          "surface": "No smoking",
+          "gloss": "cấm hút thuốc"
+        },
+        {
+          "surface": "Restrooms",
+          "gloss": "nhà vệ sinh"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ug_post": {
+      "id": "en.read.ug_post",
+      "kind": "notice",
+      "title": "Post office",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Today the post office is closed."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tomorrow we open at nine."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thank you!"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:today",
+        "en:w:the",
+        "en:w:post-office",
+        "en:w:be",
+        "en:w:closed",
+        "en:w:tomorrow",
+        "en:w:we",
+        "en:w:open",
+        "en:w:at",
+        "en:w:nine",
+        "en:w:thank-you"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "closed",
+          "gloss": "đóng cửa"
+        },
+        {
+          "surface": "post office",
+          "gloss": "bưu điện"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ug_hours": {
+      "id": "en.read.ug_hours",
+      "kind": "notice",
+      "title": "Opening hours",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Green Market"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Monday to Friday: 8 a.m. to 6 p.m."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Saturday: 8 a.m. to 12 p.m."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sunday: closed"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info",
+        "en.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "en:w:green",
+        "en:w:market",
+        "en:w:monday",
+        "en:w:to",
+        "en:w:friday",
+        "en:w:a",
+        "en:w:saturday",
+        "en:w:sunday",
+        "en:w:closed"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "Market",
+          "gloss": "chợ"
+        },
+        {
+          "surface": "closed",
+          "gloss": "đóng cửa"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ug_shift": {
+      "id": "en.read.ug_shift",
+      "kind": "notice",
+      "title": "Shift schedule",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Morning shift: 6 a.m. to 2 p.m."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Afternoon shift: 2 p.m. to 10 p.m."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Please arrive ten minutes early."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info",
+        "en.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "en:w:morning",
+        "en:w:shift",
+        "en:w:a",
+        "en:w:to",
+        "en:w:afternoon",
+        "en:w:please",
+        "en:w:arrive",
+        "en:w:ten",
+        "en:w:minute",
+        "en:w:early"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "shift",
+          "gloss": "ca làm"
+        },
+        {
+          "surface": "early",
+          "gloss": "sớm"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ug_rules": {
+      "id": "en.read.ug_rules",
+      "kind": "notice",
+      "title": "Factory rules",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Wear gloves and a helmet."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Do not touch the machine."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Do not smoke."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Wash your hands before lunch."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info",
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:wear",
+        "en:w:glove",
+        "en:w:and",
+        "en:w:a",
+        "en:w:helmet",
+        "en:w:do",
+        "en:w:not",
+        "en:w:touch",
+        "en:w:the",
+        "en:w:machine",
+        "en:w:smoke",
+        "en:w:wash",
+        "en:w:your",
+        "en:w:hand",
+        "en:w:before",
+        "en:w:lunch"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "gloves",
+          "gloss": "găng tay"
+        },
+        {
+          "surface": "helmet",
+          "gloss": "mũ bảo hộ"
+        },
+        {
+          "surface": "touch",
+          "gloss": "chạm vào"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ui_new_worker": {
+      "id": "en.read.ui_new_worker",
+      "kind": "dialogue",
+      "title": "A new worker",
+      "blocks": [
+        {
+          "kind": "line",
+          "speaker": "Anna",
+          "text": "Hi! Are you the new worker?"
+        },
+        {
+          "kind": "line",
+          "speaker": "Minh",
+          "text": "Yes, I am. My name is Minh."
+        },
+        {
+          "kind": "line",
+          "speaker": "Anna",
+          "text": "Nice to meet you, Minh. I'm Anna."
+        },
+        {
+          "kind": "line",
+          "speaker": "Minh",
+          "text": "Nice to meet you too."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.listening.short_dialogues",
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:be",
+        "en:w:you",
+        "en:w:the",
+        "en:w:new",
+        "en:w:worker",
+        "en:w:yes",
+        "en:w:i",
+        "en:w:my",
+        "en:w:name",
+        "en:w:nice-to-meet-you",
+        "en:w:too"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "new worker",
+          "gloss": "công nhân mới"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ui_at_shop": {
+      "id": "en.read.ui_at_shop",
+      "kind": "dialogue",
+      "title": "At the store",
+      "blocks": [
+        {
+          "kind": "line",
+          "speaker": "Tom",
+          "text": "Excuse me, how much is this bag?"
+        },
+        {
+          "kind": "line",
+          "speaker": "Lan",
+          "text": "It's ten dollars."
+        },
+        {
+          "kind": "line",
+          "speaker": "Tom",
+          "text": "Can I pay by card?"
+        },
+        {
+          "kind": "line",
+          "speaker": "Lan",
+          "text": "Yes, of course."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.listening.short_dialogues",
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:excuse-me",
+        "en:w:how-much",
+        "en:w:be",
+        "en:w:this",
+        "en:w:bag",
+        "en:w:it",
+        "en:w:ten",
+        "en:w:dollar",
+        "en:w:can",
+        "en:w:i",
+        "en:w:pay",
+        "en:w:by",
+        "en:w:card",
+        "en:w:yes",
+        "en:w:of-course"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "pay by card",
+          "gloss": "trả bằng thẻ"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.ui_sorry": {
+      "id": "en.read.ui_sorry",
+      "kind": "message",
+      "title": "Sorry, Tom",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hi Tom,"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sorry, I can't come to the meeting today. I am sick. See you on Monday."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mai"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:sorry",
+        "en:w:i",
+        "en:w:can",
+        "en:w:not",
+        "en:w:come",
+        "en:w:to",
+        "en:w:the",
+        "en:w:meeting",
+        "en:w:today",
+        "en:w:be",
+        "en:w:sick",
+        "en:w:see-you",
+        "en:w:on",
+        "en:w:monday"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "sick",
+          "gloss": "bị ốm"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.uj_nam_day": {
+      "id": "en.read.uj_nam_day",
+      "kind": "narrative",
+      "title": "A day at work",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Nam lives in Hanoi. He works in a factory. Every morning he takes the bus at six. His shift starts at seven. In the evening he cooks dinner with his wife."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "en:w:life",
+        "en:w:in",
+        "en:w:he",
+        "en:w:work",
+        "en:w:a",
+        "en:w:factory",
+        "en:w:every",
+        "en:w:morning",
+        "en:w:take",
+        "en:w:the",
+        "en:w:bus",
+        "en:w:at",
+        "en:w:six",
+        "en:w:his",
+        "en:w:shift",
+        "en:w:start",
+        "en:w:seven",
+        "en:w:evening",
+        "en:w:cook",
+        "en:w:dinner",
+        "en:w:with",
+        "en:w:wife"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "factory",
+          "gloss": "nhà máy"
+        },
+        {
+          "surface": "shift",
+          "gloss": "ca làm"
+        },
+        {
+          "surface": "cooks",
+          "gloss": "nấu ăn"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 5,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.uj_nam_family": {
+      "id": "en.read.uj_nam_family",
+      "kind": "description",
+      "title": "Nam's family",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Nam has a small family. His wife is a nurse. They have a son and a daughter. The son is ten years old. The daughter is six. They also have a cat."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts",
+        "en.obj.reading.familiar_words"
+      ],
+      "lexemeRefs": [
+        "en:w:have",
+        "en:w:a",
+        "en:w:small",
+        "en:w:family",
+        "en:w:his",
+        "en:w:wife",
+        "en:w:be",
+        "en:w:nurse",
+        "en:w:they",
+        "en:w:son",
+        "en:w:and",
+        "en:w:daughter",
+        "en:w:the",
+        "en:w:ten",
+        "en:w:year",
+        "en:w:old",
+        "en:w:six",
+        "en:w:also",
+        "en:w:cat"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "nurse",
+          "gloss": "y tá"
+        },
+        {
+          "surface": "also",
+          "gloss": "cũng"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 5,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.uj_yesterday": {
+      "id": "en.read.uj_yesterday",
+      "kind": "narrative",
+      "title": "Yesterday",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Yesterday Lan did not go to work. She visited her mother in the village. They cooked fish and rice. Lan went home at eight in the evening. She was tired but happy."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts",
+        "en.obj.verbs.past_recognition"
+      ],
+      "lexemeRefs": [
+        "en:w:yesterday",
+        "en:w:do",
+        "en:w:not",
+        "en:w:go",
+        "en:w:to",
+        "en:w:work",
+        "en:w:she",
+        "en:w:visit",
+        "en:w:her",
+        "en:w:mother",
+        "en:w:in",
+        "en:w:the",
+        "en:w:village",
+        "en:w:they",
+        "en:w:cook",
+        "en:w:fish",
+        "en:w:and",
+        "en:w:rice",
+        "en:w:home",
+        "en:w:at",
+        "en:w:eight",
+        "en:w:evening",
+        "en:w:be",
+        "en:w:tired",
+        "en:w:but",
+        "en:w:happy"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "visited",
+          "gloss": "đã đến thăm"
+        },
+        {
+          "surface": "village",
+          "gloss": "làng"
+        },
+        {
+          "surface": "went",
+          "gloss": "đã đi (quá khứ của go)"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 5,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.uj_saturday": {
+      "id": "en.read.uj_saturday",
+      "kind": "narrative",
+      "title": "Tom's Saturday",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "On Saturday Tom wakes up late. He drinks coffee and eats an egg. In the afternoon he plays soccer with his friends. In the evening he watches a movie."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "en:w:on",
+        "en:w:saturday",
+        "en:w:wake",
+        "en:w:up",
+        "en:w:late",
+        "en:w:he",
+        "en:w:drink",
+        "en:w:coffee",
+        "en:w:and",
+        "en:w:eat",
+        "en:w:an",
+        "en:w:egg",
+        "en:w:in",
+        "en:w:the",
+        "en:w:afternoon",
+        "en:w:play",
+        "en:w:soccer",
+        "en:w:with",
+        "en:w:his",
+        "en:w:friend",
+        "en:w:evening",
+        "en:w:watch",
+        "en:w:a",
+        "en:w:movie"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "wakes up",
+          "gloss": "thức dậy"
+        },
+        {
+          "surface": "late",
+          "gloss": "muộn"
+        },
+        {
+          "surface": "movie",
+          "gloss": "bộ phim"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.uj_station": {
+      "id": "en.read.uj_station",
+      "kind": "description",
+      "title": "The station in the morning",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "It is seven o'clock. There are many people at the station. A train arrives and a train leaves. A woman buys a ticket. A boy eats a banana."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "en:w:it",
+        "en:w:be",
+        "en:w:seven",
+        "en:w:oclock",
+        "en:w:there",
+        "en:w:many",
+        "en:w:people",
+        "en:w:at",
+        "en:w:the",
+        "en:w:station",
+        "en:w:a",
+        "en:w:train",
+        "en:w:arrive",
+        "en:w:and",
+        "en:w:leave",
+        "en:w:woman",
+        "en:w:buy",
+        "en:w:ticket",
+        "en:w:boy",
+        "en:w:eat",
+        "en:w:banana"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "arrives",
+          "gloss": "đến nơi"
+        },
+        {
+          "surface": "leaves",
+          "gloss": "rời đi"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.uj_office": {
+      "id": "en.read.uj_office",
+      "kind": "description",
+      "title": "Our office",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Our office is on the third floor. There are ten desks and two printers. The manager's room is next to the stairs. The kitchen is small but clean."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts",
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:our",
+        "en:w:office",
+        "en:w:be",
+        "en:w:on",
+        "en:w:the",
+        "en:w:third",
+        "en:w:floor",
+        "en:w:there",
+        "en:w:ten",
+        "en:w:desk",
+        "en:w:and",
+        "en:w:two",
+        "en:w:printer",
+        "en:w:manager",
+        "en:w:room",
+        "en:w:next-to",
+        "en:w:stairs",
+        "en:w:kitchen",
+        "en:w:small",
+        "en:w:but",
+        "en:w:clean"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "third floor",
+          "gloss": "tầng ba"
+        },
+        {
+          "surface": "printers",
+          "gloss": "máy in"
+        },
+        {
+          "surface": "stairs",
+          "gloss": "cầu thang"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.cp3_msg_hoa": {
+      "id": "en.read.cp3_msg_hoa",
+      "kind": "message",
+      "title": "A message from Hoa",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hi Nam,"
+        },
+        {
+          "kind": "paragraph",
+          "text": "My train arrives at five. Can you meet me at the station? I have two big bags."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thanks, Hoa"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:my",
+        "en:w:train",
+        "en:w:arrive",
+        "en:w:at",
+        "en:w:five",
+        "en:w:can",
+        "en:w:you",
+        "en:w:meet",
+        "en:w:me",
+        "en:w:the",
+        "en:w:station",
+        "en:w:i",
+        "en:w:have",
+        "en:w:two",
+        "en:w:big",
+        "en:w:bag",
+        "en:w:thanks"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.cp3_notice_shop": {
+      "id": "en.read.cp3_notice_shop",
+      "kind": "notice",
+      "title": "Shoe store",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Open every day from 9 a.m. to 8 p.m."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Closed on Sunday morning."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Please pay at the cashier."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info",
+        "en.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "en:w:open",
+        "en:w:every",
+        "en:w:day",
+        "en:w:from",
+        "en:w:a",
+        "en:w:to",
+        "en:w:closed",
+        "en:w:on",
+        "en:w:sunday",
+        "en:w:morning",
+        "en:w:please",
+        "en:w:pay",
+        "en:w:at",
+        "en:w:the",
+        "en:w:cashier"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "cashier",
+          "gloss": "quầy thu ngân"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.cp3_mail_staff": {
+      "id": "en.read.cp3_mail_staff",
+      "kind": "message",
+      "title": "To all staff",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Dear colleagues,"
+        },
+        {
+          "kind": "paragraph",
+          "text": "The printer on the second floor does not work today. Please use the printer in the manager's office."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Best regards, Sarah"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages",
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:colleague",
+        "en:w:the",
+        "en:w:printer",
+        "en:w:on",
+        "en:w:second",
+        "en:w:floor",
+        "en:w:do",
+        "en:w:not",
+        "en:w:work",
+        "en:w:today",
+        "en:w:please",
+        "en:w:use",
+        "en:w:in",
+        "en:w:manager",
+        "en:w:office",
+        "en:w:best-regards"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "colleagues",
+          "gloss": "đồng nghiệp"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.cp3_text_linh": {
+      "id": "en.read.cp3_text_linh",
+      "kind": "description",
+      "title": "My friend Linh",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Linh is my friend. She is twenty-six years old. She works in a hospital in Hue. She has a small apartment near the river. She loves music."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "en:w:be",
+        "en:w:my",
+        "en:w:friend",
+        "en:w:she",
+        "en:w:twenty",
+        "en:w:six",
+        "en:w:year",
+        "en:w:old",
+        "en:w:work",
+        "en:w:in",
+        "en:w:a",
+        "en:w:hospital",
+        "en:w:have",
+        "en:w:small",
+        "en:w:apartment",
+        "en:w:near",
+        "en:w:the",
+        "en:w:river",
+        "en:w:love",
+        "en:w:music"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "apartment",
+          "gloss": "căn hộ"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 5,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.cp3_text_david": {
+      "id": "en.read.cp3_text_david",
+      "kind": "narrative",
+      "title": "David's week",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "David works from Monday to Friday. He usually drives to the office. On Saturday he goes to the market. On Sunday he stays at home and reads a book."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "en:w:work",
+        "en:w:from",
+        "en:w:monday",
+        "en:w:to",
+        "en:w:friday",
+        "en:w:he",
+        "en:w:usually",
+        "en:w:drive",
+        "en:w:the",
+        "en:w:office",
+        "en:w:on",
+        "en:w:saturday",
+        "en:w:go",
+        "en:w:market",
+        "en:w:sunday",
+        "en:w:stay",
+        "en:w:at",
+        "en:w:home",
+        "en:w:and",
+        "en:w:read",
+        "en:w:a",
+        "en:w:book"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "drives",
+          "gloss": "lái xe"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.a1cap_msg_father": {
+      "id": "en.read.a1cap_msg_father",
+      "kind": "message",
+      "title": "A message from home",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hi Mai,"
+        },
+        {
+          "kind": "paragraph",
+          "text": "I am at work until six. There is some soup in the fridge. Please wash the cups."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Your father"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:i",
+        "en:w:be",
+        "en:w:at",
+        "en:w:work",
+        "en:w:until",
+        "en:w:six",
+        "en:w:there",
+        "en:w:some",
+        "en:w:soup",
+        "en:w:in",
+        "en:w:the",
+        "en:w:fridge",
+        "en:w:please",
+        "en:w:wash",
+        "en:w:cup",
+        "en:w:your",
+        "en:w:father"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "fridge",
+          "gloss": "tủ lạnh"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.a1cap_invite": {
+      "id": "en.read.a1cap_invite",
+      "kind": "message",
+      "title": "A party",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hello Peter,"
+        },
+        {
+          "kind": "paragraph",
+          "text": "We have a party on Friday evening at my house. It starts at seven. Can you come?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Best regards, Mary"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hello",
+        "en:w:we",
+        "en:w:have",
+        "en:w:a",
+        "en:w:party",
+        "en:w:on",
+        "en:w:friday",
+        "en:w:evening",
+        "en:w:at",
+        "en:w:my",
+        "en:w:house",
+        "en:w:it",
+        "en:w:start",
+        "en:w:seven",
+        "en:w:can",
+        "en:w:you",
+        "en:w:come",
+        "en:w:best-regards"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "party",
+          "gloss": "bữa tiệc"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.pl_notice_cafe": {
+      "id": "en.read.pl_notice_cafe",
+      "kind": "notice",
+      "title": "Restaurant",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Lunch: 11 a.m. to 2 p.m."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dinner: 5 p.m. to 9 p.m."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Closed on Monday"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:lunch",
+        "en:w:a",
+        "en:w:to",
+        "en:w:dinner",
+        "en:w:closed",
+        "en:w:on",
+        "en:w:monday"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.pl_message": {
+      "id": "en.read.pl_message",
+      "kind": "message",
+      "title": "A message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hi Tuan, I'm at home today. Please call me tonight. Lan"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:i",
+        "en:w:be",
+        "en:w:at",
+        "en:w:home",
+        "en:w:today",
+        "en:w:please",
+        "en:w:call",
+        "en:w:me",
+        "en:w:tonight"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r1_01": {
+      "id": "en.read.bac2_a_r1_01",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "NOTICE: The elevator is out of order. Please use the stairs until Friday."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:the",
+        "en:w:be",
+        "en:w:out",
+        "en:w:of",
+        "en:w:order",
+        "en:w:please",
+        "en:w:use",
+        "en:w:stairs",
+        "en:w:until",
+        "en:w:friday"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r1_02": {
+      "id": "en.read.bac2_a_r1_02",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Free parking for customers. Please show your receipt at the exit."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:free",
+        "en:w:for",
+        "en:w:customer",
+        "en:w:please",
+        "en:w:show",
+        "en:w:your",
+        "en:w:receipt",
+        "en:w:at",
+        "en:w:the",
+        "en:w:exit"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r1_03": {
+      "id": "en.read.bac2_a_r1_03",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Part-time cook wanted. Weekends only. Ask for Mrs. Tran in the kitchen."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:part",
+        "en:w:time",
+        "en:w:cook",
+        "en:w:want",
+        "en:w:weekend",
+        "en:w:only",
+        "en:w:ask",
+        "en:w:for",
+        "en:w:mrs",
+        "en:w:in",
+        "en:w:the",
+        "en:w:kitchen"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r1_04": {
+      "id": "en.read.bac2_a_r1_04",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "The swimming pool is for members only. Buy your card at the front desk."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:the",
+        "en:w:swim",
+        "en:w:be",
+        "en:w:for",
+        "en:w:only",
+        "en:w:buy",
+        "en:w:your",
+        "en:w:card",
+        "en:w:at",
+        "en:w:desk"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r1_05": {
+      "id": "en.read.bac2_a_r1_05",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Wet floor. Please walk slowly and hold the handrail."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:wet",
+        "en:w:floor",
+        "en:w:please",
+        "en:w:walk",
+        "en:w:slow",
+        "en:w:and",
+        "en:w:hold",
+        "en:w:the"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r1_06": {
+      "id": "en.read.bac2_a_r1_06",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Lost: a black bag near the bus stop on Monday. Please call Minh at 0903 222 111."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:lose",
+        "en:w:a",
+        "en:w:black",
+        "en:w:bag",
+        "en:w:near",
+        "en:w:the",
+        "en:w:bus-stop",
+        "en:w:on",
+        "en:w:monday",
+        "en:w:please",
+        "en:w:call",
+        "en:w:at"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r1_07": {
+      "id": "en.read.bac2_a_r1_07",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Library books must be returned within fourteen days. A late book costs one dollar a day."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:book",
+        "en:w:must",
+        "en:w:be",
+        "en:w:fourteen",
+        "en:w:day",
+        "en:w:a",
+        "en:w:late",
+        "en:w:cost",
+        "en:w:one",
+        "en:w:dollar"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r1_08": {
+      "id": "en.read.bac2_a_r1_08",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "All staff: the meeting on Friday is canceled. We will meet next Tuesday instead."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:all",
+        "en:w:staff",
+        "en:w:the",
+        "en:w:meeting",
+        "en:w:on",
+        "en:w:friday",
+        "en:w:be",
+        "en:w:we",
+        "en:w:will",
+        "en:w:meet",
+        "en:w:next",
+        "en:w:tuesday"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r2_01": {
+      "id": "en.read.bac2_a_r2_01",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hi Tom, I am sorry I missed your call yesterday. My phone was broken, so I took it to the store near my office. It will be ready on Thursday. Until then, please send me an email or call my office number. See you on the weekend! Hoa"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:i",
+        "en:w:be",
+        "en:w:sorry",
+        "en:w:miss",
+        "en:w:your",
+        "en:w:call",
+        "en:w:yesterday",
+        "en:w:my",
+        "en:w:phone",
+        "en:w:break",
+        "en:w:so",
+        "en:w:take",
+        "en:w:it",
+        "en:w:to",
+        "en:w:the",
+        "en:w:store",
+        "en:w:near",
+        "en:w:office",
+        "en:w:will",
+        "en:w:ready",
+        "en:w:on",
+        "en:w:thursday",
+        "en:w:until",
+        "en:w:then",
+        "en:w:please",
+        "en:w:send",
+        "en:w:me",
+        "en:w:an",
+        "en:w:email",
+        "en:w:or",
+        "en:w:number",
+        "en:w:see-you",
+        "en:w:weekend"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r2_02": {
+      "id": "en.read.bac2_a_r2_02",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Room for rent on a quiet street, ten minutes by bus from the city center. The room has a bed, a desk and a small fridge. The kitchen and bathroom are shared with one other person. The rent is two hundred dollars a month, with water and internet included. Please call Mr. Pham after six."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:room",
+        "en:w:for",
+        "en:w:on",
+        "en:w:a",
+        "en:w:quiet",
+        "en:w:street",
+        "en:w:ten",
+        "en:w:minute",
+        "en:w:by",
+        "en:w:bus",
+        "en:w:from",
+        "en:w:the",
+        "en:w:city",
+        "en:w:have",
+        "en:w:bed",
+        "en:w:desk",
+        "en:w:and",
+        "en:w:small",
+        "en:w:fridge",
+        "en:w:kitchen",
+        "en:w:bathroom",
+        "en:w:be",
+        "en:w:with",
+        "en:w:one",
+        "en:w:other",
+        "en:w:person",
+        "en:w:two",
+        "en:w:hundred",
+        "en:w:dollar",
+        "en:w:month",
+        "en:w:water",
+        "en:w:internet",
+        "en:w:please",
+        "en:w:call",
+        "en:w:mr",
+        "en:w:after",
+        "en:w:six"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r2_03": {
+      "id": "en.read.bac2_a_r2_03",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Our store will move to a bigger building on Lake Road on the first of June. The old store will close on the twenty-fifth of May. During the week between, you can still buy from our website. Customers who visit the new store in June will get ten percent off."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:our",
+        "en:w:store",
+        "en:w:will",
+        "en:w:move",
+        "en:w:to",
+        "en:w:a",
+        "en:w:big",
+        "en:w:building",
+        "en:w:on",
+        "en:w:road",
+        "en:w:the",
+        "en:w:first",
+        "en:w:of",
+        "en:w:june",
+        "en:w:old",
+        "en:w:close",
+        "en:w:twenty",
+        "en:w:may-noun",
+        "en:w:during",
+        "en:w:week",
+        "en:w:between",
+        "en:w:you",
+        "en:w:can",
+        "en:w:still",
+        "en:w:buy",
+        "en:w:from",
+        "en:w:website",
+        "en:w:customer",
+        "en:w:who",
+        "en:w:visit",
+        "en:w:new",
+        "en:w:in",
+        "en:w:get",
+        "en:w:ten",
+        "en:w:off"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r2_04": {
+      "id": "en.read.bac2_a_r2_04",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Dear neighbors, we are having a small party for our son's tenth birthday this Sunday afternoon. There may be some noise until about six o'clock. We are sorry about this. If you would like to join us, please come. There will be a lot of cake! Mai and Nam, apartment 12"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:neighbor",
+        "en:w:we",
+        "en:w:be",
+        "en:w:have",
+        "en:w:a",
+        "en:w:small",
+        "en:w:party",
+        "en:w:for",
+        "en:w:our",
+        "en:w:son",
+        "en:w:birthday",
+        "en:w:this",
+        "en:w:sunday",
+        "en:w:afternoon",
+        "en:w:there",
+        "en:w:may",
+        "en:w:some",
+        "en:w:noise",
+        "en:w:until",
+        "en:w:about",
+        "en:w:six",
+        "en:w:oclock",
+        "en:w:sorry",
+        "en:w:if",
+        "en:w:you",
+        "en:w:would-like",
+        "en:w:to",
+        "en:w:join",
+        "en:w:us",
+        "en:w:please",
+        "en:w:come",
+        "en:w:will",
+        "en:w:a-lot-of",
+        "en:w:cake",
+        "en:w:and",
+        "en:w:apartment"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r3": {
+      "id": "en.read.bac2_a_r3",
+      "kind": "narrative",
+      "title": "My first job",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "When I finished school, I wanted to work in a big city, but I had no experience. My uncle told me that a hotel in Da Nang needed a receptionist. I was afraid because my English was not very good, but I decided to try. On my first day, a guest from Australia asked me where he could rent a motorbike. I did not understand him, so I asked him to write it down. He smiled and wrote the word on a piece of paper."
+        },
+        {
+          "kind": "paragraph",
+          "text": "After that, I began to study English for one hour every evening after work. I learned the words that guests used most often, and I practiced with the other receptionists. Six months later, I could answer most questions without help. The manager saw this and asked me to train two new workers. Today I am the head receptionist at that hotel. I still make mistakes, but I am no longer afraid to speak. My advice to young people is simple: do not wait until your English is perfect. Start using it now, and you will learn much faster."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "en:w:when",
+        "en:w:i",
+        "en:w:finish",
+        "en:w:school",
+        "en:w:want",
+        "en:w:to",
+        "en:w:work",
+        "en:w:in",
+        "en:w:a",
+        "en:w:big",
+        "en:w:city",
+        "en:w:but",
+        "en:w:have",
+        "en:w:no",
+        "en:w:experience",
+        "en:w:my",
+        "en:w:uncle",
+        "en:w:tell",
+        "en:w:me",
+        "en:w:that",
+        "en:w:hotel",
+        "en:w:need",
+        "en:w:be",
+        "en:w:afraid",
+        "en:w:because",
+        "en:w:english",
+        "en:w:not",
+        "en:w:very",
+        "en:w:good",
+        "en:w:decide",
+        "en:w:try",
+        "en:w:on",
+        "en:w:first",
+        "en:w:day",
+        "en:w:from",
+        "en:w:ask",
+        "en:w:where",
+        "en:w:he",
+        "en:w:could",
+        "en:w:motorbike",
+        "en:w:do",
+        "en:w:understand",
+        "en:w:him",
+        "en:w:so",
+        "en:w:write",
+        "en:w:it",
+        "en:w:down",
+        "en:w:smile",
+        "en:w:and",
+        "en:w:the",
+        "en:w:word",
+        "en:w:of",
+        "en:w:paper",
+        "en:w:after",
+        "en:w:begin",
+        "en:w:study",
+        "en:w:for",
+        "en:w:one",
+        "en:w:hour",
+        "en:w:every",
+        "en:w:evening",
+        "en:w:learn",
+        "en:w:use",
+        "en:w:most",
+        "en:w:often",
+        "en:w:practice",
+        "en:w:with",
+        "en:w:other",
+        "en:w:six",
+        "en:w:month",
+        "en:w:later",
+        "en:w:answer",
+        "en:w:question",
+        "en:w:without",
+        "en:w:help",
+        "en:w:manager",
+        "en:w:see",
+        "en:w:this",
+        "en:w:train",
+        "en:w:two",
+        "en:w:new",
+        "en:w:worker",
+        "en:w:today",
+        "en:w:head",
+        "en:w:at",
+        "en:w:still",
+        "en:w:make",
+        "en:w:long",
+        "en:w:speak",
+        "en:w:young",
+        "en:w:people",
+        "en:w:wait",
+        "en:w:until",
+        "en:w:your",
+        "en:w:start",
+        "en:w:now",
+        "en:w:you",
+        "en:w:will",
+        "en:w:much",
+        "en:w:fast"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "receptionist",
+          "gloss": "nhân viên lễ tân"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_a_r4": {
+      "id": "en.read.bac2_a_r4",
+      "kind": "description",
+      "title": "Summer cooking course",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Would you like to learn to cook Vietnamese food? The Community Center on Kim Ma Street has a new course this summer. The course starts on the eighth of July and finishes on the twenty-sixth of August. Classes are held every Saturday morning from nine to eleven thirty. Our teacher, Mrs. Tran, worked as a chef in a large hotel for twenty years. Each class has no more than twelve students, so everyone gets help."
+        },
+        {
+          "kind": "paragraph",
+          "text": "The course costs one hundred and fifty dollars. This includes all the food, but students must bring their own knife and an apron. To join, please fill out a form at the front desk before the first of July, or call Mr. Nguyen. Students who finish the course will receive a small gift and a book of recipes."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:would",
+        "en:w:you",
+        "en:w:like",
+        "en:w:to",
+        "en:w:learn",
+        "en:w:cook",
+        "en:w:vietnamese",
+        "en:w:food",
+        "en:w:the",
+        "en:w:on",
+        "en:w:street",
+        "en:w:have",
+        "en:w:a",
+        "en:w:new",
+        "en:w:this",
+        "en:w:summer",
+        "en:w:start",
+        "en:w:of",
+        "en:w:july",
+        "en:w:and",
+        "en:w:finish",
+        "en:w:twenty",
+        "en:w:august",
+        "en:w:class",
+        "en:w:be",
+        "en:w:hold",
+        "en:w:every",
+        "en:w:saturday",
+        "en:w:morning",
+        "en:w:from",
+        "en:w:nine",
+        "en:w:eleven",
+        "en:w:thirty",
+        "en:w:our",
+        "en:w:teacher",
+        "en:w:mrs",
+        "en:w:work",
+        "en:w:as",
+        "en:w:in",
+        "en:w:large",
+        "en:w:hotel",
+        "en:w:for",
+        "en:w:year",
+        "en:w:no",
+        "en:w:more",
+        "en:w:than",
+        "en:w:twelve",
+        "en:w:student",
+        "en:w:so",
+        "en:w:everyone",
+        "en:w:get",
+        "en:w:help",
+        "en:w:cost",
+        "en:w:one",
+        "en:w:hundred",
+        "en:w:fifty",
+        "en:w:dollar",
+        "en:w:all",
+        "en:w:but",
+        "en:w:must",
+        "en:w:bring",
+        "en:w:their",
+        "en:w:knife",
+        "en:w:an",
+        "en:w:join",
+        "en:w:please",
+        "en:w:fill",
+        "en:w:out",
+        "en:w:form",
+        "en:w:at",
+        "en:w:desk",
+        "en:w:before",
+        "en:w:first",
+        "en:w:or",
+        "en:w:call",
+        "en:w:mr",
+        "en:w:who",
+        "en:w:will",
+        "en:w:small",
+        "en:w:gift",
+        "en:w:book"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "apron",
+          "gloss": "tạp dề"
+        },
+        {
+          "surface": "recipes",
+          "gloss": "công thức nấu ăn"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r1_01": {
+      "id": "en.read.bac2_b_r1_01",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "MOVIE THEATER: Please turn off your phone before the movie starts."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:movie",
+        "en:w:please",
+        "en:w:turn",
+        "en:w:off",
+        "en:w:your",
+        "en:w:phone",
+        "en:w:before",
+        "en:w:the",
+        "en:w:start"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r1_02": {
+      "id": "en.read.bac2_b_r1_02",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Children under twelve must be with an adult in the pool area."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:child",
+        "en:w:under",
+        "en:w:twelve",
+        "en:w:must",
+        "en:w:be",
+        "en:w:with",
+        "en:w:an",
+        "en:w:in",
+        "en:w:the"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r1_03": {
+      "id": "en.read.bac2_b_r1_03",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Room for rent near the university. No pets, please."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:room",
+        "en:w:for",
+        "en:w:near",
+        "en:w:the",
+        "en:w:university",
+        "en:w:no",
+        "en:w:please"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r1_04": {
+      "id": "en.read.bac2_b_r1_04",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Store closing! Everything is half price until Saturday."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:store",
+        "en:w:close",
+        "en:w:everything",
+        "en:w:be",
+        "en:w:half",
+        "en:w:price",
+        "en:w:until",
+        "en:w:saturday"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r1_05": {
+      "id": "en.read.bac2_b_r1_05",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Bus 15 does not stop here this week because of road work. Please walk to Hoa Street."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:bus",
+        "en:w:do",
+        "en:w:not",
+        "en:w:stop",
+        "en:w:here",
+        "en:w:this",
+        "en:w:week",
+        "en:w:because",
+        "en:w:of",
+        "en:w:road",
+        "en:w:work",
+        "en:w:please",
+        "en:w:walk",
+        "en:w:to",
+        "en:w:street"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r1_06": {
+      "id": "en.read.bac2_b_r1_06",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Found: a set of keys in the parking lot. Ask at the information desk."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:find",
+        "en:w:a",
+        "en:w:of",
+        "en:w:key",
+        "en:w:in",
+        "en:w:the",
+        "en:w:ask",
+        "en:w:at",
+        "en:w:information",
+        "en:w:desk"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r1_07": {
+      "id": "en.read.bac2_b_r1_07",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Staff: please wash your hands before you go back to work."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:staff",
+        "en:w:please",
+        "en:w:wash",
+        "en:w:your",
+        "en:w:hand",
+        "en:w:before",
+        "en:w:you",
+        "en:w:go",
+        "en:w:back",
+        "en:w:to",
+        "en:w:work"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r1_08": {
+      "id": "en.read.bac2_b_r1_08",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "English classes for adults. Evenings, Monday to Thursday. Beginners are welcome."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:english",
+        "en:w:class",
+        "en:w:for",
+        "en:w:evening",
+        "en:w:monday",
+        "en:w:to",
+        "en:w:thursday",
+        "en:w:be",
+        "en:w:welcome"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r2_01": {
+      "id": "en.read.bac2_b_r2_01",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hi Linh, can you help me? I have to go to the hospital this morning because my mother is sick. Could you take my shift at the store from ten until two? I can work for you on Sunday. Please text me before nine. Thank you so much, Trang"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:can",
+        "en:w:you",
+        "en:w:help",
+        "en:w:me",
+        "en:w:i",
+        "en:w:have",
+        "en:w:to",
+        "en:w:go",
+        "en:w:the",
+        "en:w:hospital",
+        "en:w:this",
+        "en:w:morning",
+        "en:w:because",
+        "en:w:my",
+        "en:w:mother",
+        "en:w:be",
+        "en:w:sick",
+        "en:w:could",
+        "en:w:take",
+        "en:w:shift",
+        "en:w:at",
+        "en:w:store",
+        "en:w:from",
+        "en:w:ten",
+        "en:w:until",
+        "en:w:two",
+        "en:w:work",
+        "en:w:for",
+        "en:w:on",
+        "en:w:sunday",
+        "en:w:please",
+        "en:w:before",
+        "en:w:nine",
+        "en:w:thank-you",
+        "en:w:so",
+        "en:w:much"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r2_02": {
+      "id": "en.read.bac2_b_r2_02",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "For sale: a blue bicycle, two years old, in very good condition. I bought it for one hundred and twenty dollars and I am selling it for sixty because I am moving to Singapore next month. It comes with a lock and a helmet. You can see it on any evening this week. Please call An."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:for",
+        "en:w:a",
+        "en:w:blue",
+        "en:w:two",
+        "en:w:year",
+        "en:w:old",
+        "en:w:in",
+        "en:w:very",
+        "en:w:good",
+        "en:w:i",
+        "en:w:buy",
+        "en:w:it",
+        "en:w:one",
+        "en:w:hundred",
+        "en:w:and",
+        "en:w:twenty",
+        "en:w:dollar",
+        "en:w:be",
+        "en:w:sell",
+        "en:w:sixty",
+        "en:w:because",
+        "en:w:move",
+        "en:w:to",
+        "en:w:next",
+        "en:w:month",
+        "en:w:come",
+        "en:w:with",
+        "en:w:helmet",
+        "en:w:you",
+        "en:w:can",
+        "en:w:see",
+        "en:w:on",
+        "en:w:any",
+        "en:w:evening",
+        "en:w:this",
+        "en:w:week",
+        "en:w:please",
+        "en:w:call",
+        "en:w:an"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r2_03": {
+      "id": "en.read.bac2_b_r2_03",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "The Water Company will repair the pipes on Binh Street on Wednesday. There will be no water from nine in the morning until three in the afternoon. Please keep some water at home for that day. We are sorry for the trouble. If you have questions, please call 1900 1234."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:the",
+        "en:w:water",
+        "en:w:company",
+        "en:w:will",
+        "en:w:on",
+        "en:w:street",
+        "en:w:wednesday",
+        "en:w:there",
+        "en:w:be",
+        "en:w:no",
+        "en:w:from",
+        "en:w:nine",
+        "en:w:in",
+        "en:w:morning",
+        "en:w:until",
+        "en:w:three",
+        "en:w:afternoon",
+        "en:w:please",
+        "en:w:keep",
+        "en:w:some",
+        "en:w:at",
+        "en:w:home",
+        "en:w:for",
+        "en:w:that",
+        "en:w:day",
+        "en:w:we",
+        "en:w:sorry",
+        "en:w:if",
+        "en:w:you",
+        "en:w:have",
+        "en:w:question",
+        "en:w:call"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r2_04": {
+      "id": "en.read.bac2_b_r2_04",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Dear Ms. Smith, thank you for your letter about the job in our sales team. We would like to meet you on the tenth of April at two o'clock at our office. Please bring your certificates and a list of your past jobs. If you cannot come on that day, please tell us by Friday. Best regards, Anna Lee"
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:ms",
+        "en:w:thank-you",
+        "en:w:for",
+        "en:w:your",
+        "en:w:letter",
+        "en:w:about",
+        "en:w:the",
+        "en:w:job",
+        "en:w:in",
+        "en:w:our",
+        "en:w:team",
+        "en:w:we",
+        "en:w:would-like",
+        "en:w:to",
+        "en:w:meet",
+        "en:w:you",
+        "en:w:on",
+        "en:w:of",
+        "en:w:april",
+        "en:w:at",
+        "en:w:two",
+        "en:w:oclock",
+        "en:w:office",
+        "en:w:please",
+        "en:w:bring",
+        "en:w:and",
+        "en:w:a",
+        "en:w:list",
+        "en:w:past",
+        "en:w:if",
+        "en:w:can",
+        "en:w:not",
+        "en:w:come",
+        "en:w:that",
+        "en:w:day",
+        "en:w:tell",
+        "en:w:us",
+        "en:w:by",
+        "en:w:friday",
+        "en:w:best-regards"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r3": {
+      "id": "en.read.bac2_b_r3",
+      "kind": "narrative",
+      "title": "A small change",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Two years ago, I was always tired. I worked in an office for nine hours a day, I drove to work, and I usually ate fast food for lunch. When my doctor told me that I was heavier than I should be, I knew I had to change. I did not want to go to a gym because it was too expensive, so I started with small steps. First, I began to walk to work. It takes thirty minutes, and it is a nice way to start the day."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Next, I stopped buying lunch and started bringing rice and vegetables from home. That saved me about fifty dollars a month. I also went to bed one hour earlier. It was not easy at first, but I did not stop. After three months, I felt much better and I had lost five kilos. My wife saw the change and began to walk with me on Sundays. Now our children sometimes join us too. I am not perfect, and I still enjoy a cake on the weekend. But I have learned that a small change, if you keep doing it, can be better than a big plan that you never start."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "en:w:two",
+        "en:w:year",
+        "en:w:ago",
+        "en:w:i",
+        "en:w:be",
+        "en:w:always",
+        "en:w:tired",
+        "en:w:work",
+        "en:w:in",
+        "en:w:an",
+        "en:w:office",
+        "en:w:for",
+        "en:w:nine",
+        "en:w:hour",
+        "en:w:a",
+        "en:w:day",
+        "en:w:drive",
+        "en:w:to",
+        "en:w:and",
+        "en:w:usually",
+        "en:w:eat",
+        "en:w:fast",
+        "en:w:food",
+        "en:w:lunch",
+        "en:w:when",
+        "en:w:my",
+        "en:w:doctor",
+        "en:w:tell",
+        "en:w:me",
+        "en:w:that",
+        "en:w:heavy",
+        "en:w:than",
+        "en:w:should",
+        "en:w:know",
+        "en:w:have",
+        "en:w:change",
+        "en:w:do",
+        "en:w:not",
+        "en:w:want",
+        "en:w:go",
+        "en:w:because",
+        "en:w:it",
+        "en:w:too",
+        "en:w:expensive",
+        "en:w:so",
+        "en:w:start",
+        "en:w:with",
+        "en:w:small",
+        "en:w:first",
+        "en:w:begin",
+        "en:w:walk",
+        "en:w:take",
+        "en:w:thirty",
+        "en:w:minute",
+        "en:w:nice",
+        "en:w:way",
+        "en:w:the",
+        "en:w:next",
+        "en:w:stop",
+        "en:w:buy",
+        "en:w:bring",
+        "en:w:rice",
+        "en:w:vegetable",
+        "en:w:from",
+        "en:w:home",
+        "en:w:save",
+        "en:w:about",
+        "en:w:fifty",
+        "en:w:dollar",
+        "en:w:month",
+        "en:w:also",
+        "en:w:bed",
+        "en:w:one",
+        "en:w:early",
+        "en:w:easy",
+        "en:w:at",
+        "en:w:but",
+        "en:w:after",
+        "en:w:three",
+        "en:w:feel",
+        "en:w:much",
+        "en:w:good",
+        "en:w:lose",
+        "en:w:five",
+        "en:w:wife",
+        "en:w:see",
+        "en:w:on",
+        "en:w:sunday",
+        "en:w:now",
+        "en:w:our",
+        "en:w:child",
+        "en:w:sometimes",
+        "en:w:join",
+        "en:w:us",
+        "en:w:still",
+        "en:w:enjoy",
+        "en:w:cake",
+        "en:w:weekend",
+        "en:w:learn",
+        "en:w:if",
+        "en:w:you",
+        "en:w:keep",
+        "en:w:can",
+        "en:w:big",
+        "en:w:never"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "gym",
+          "gloss": "phòng tập thể dục"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
+      }
+    },
+    "en.read.bac2_b_r4": {
+      "id": "en.read.bac2_b_r4",
+      "kind": "description",
+      "title": "Help at the museum",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "The City Museum is looking for volunteers to help at its new exhibition about old Hanoi. The exhibition opens on the third of October and runs for six weeks. Volunteers work one day a week, on a Saturday or a Sunday, from ten o'clock until four. Your job is to welcome visitors and answer simple questions in English or Vietnamese. You do not need any experience, but you must be at least eighteen years old."
+        },
+        {
+          "kind": "paragraph",
+          "text": "We give all volunteers a free lunch and a free ticket for one friend. Training is on the twenty-eighth of September at the museum. To apply, send an email to Ms. Le before the fifteenth of September. Please tell us which day you prefer and why you want to help. Volunteers who help for all six weeks will also receive a letter of thanks from the museum."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "en:w:the",
+        "en:w:city",
+        "en:w:be",
+        "en:w:look",
+        "en:w:for",
+        "en:w:to",
+        "en:w:help",
+        "en:w:at",
+        "en:w:new",
+        "en:w:about",
+        "en:w:old",
+        "en:w:open",
+        "en:w:on",
+        "en:w:third",
+        "en:w:of",
+        "en:w:october",
+        "en:w:and",
+        "en:w:run",
+        "en:w:six",
+        "en:w:week",
+        "en:w:work",
+        "en:w:one",
+        "en:w:day",
+        "en:w:a",
+        "en:w:saturday",
+        "en:w:or",
+        "en:w:sunday",
+        "en:w:from",
+        "en:w:ten",
+        "en:w:oclock",
+        "en:w:until",
+        "en:w:four",
+        "en:w:your",
+        "en:w:job",
+        "en:w:welcome",
+        "en:w:answer",
+        "en:w:question",
+        "en:w:in",
+        "en:w:english",
+        "en:w:vietnamese",
+        "en:w:you",
+        "en:w:do",
+        "en:w:not",
+        "en:w:need",
+        "en:w:any",
+        "en:w:experience",
+        "en:w:but",
+        "en:w:must",
+        "en:w:eighteen",
+        "en:w:year",
+        "en:w:we",
+        "en:w:give",
+        "en:w:all",
+        "en:w:free",
+        "en:w:lunch",
+        "en:w:ticket",
+        "en:w:friend",
+        "en:w:twenty",
+        "en:w:september",
+        "en:w:send",
+        "en:w:an",
+        "en:w:email",
+        "en:w:ms",
+        "en:w:before",
+        "en:w:please",
+        "en:w:tell",
+        "en:w:us",
+        "en:w:which",
+        "en:w:why",
+        "en:w:want",
+        "en:w:who",
+        "en:w:will",
+        "en:w:also",
+        "en:w:letter",
+        "en:w:thanks"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "volunteers",
+          "gloss": "tình nguyện viên"
+        },
+        {
+          "surface": "exhibition",
+          "gloss": "cuộc triển lãm"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
+      }
+    }
+  }
+}

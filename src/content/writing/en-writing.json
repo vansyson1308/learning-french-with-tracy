@@ -1,0 +1,2630 @@
+{
+  "generator": "scripts/lib/writing.ts",
+  "version": 1,
+  "order": [
+    "en.write.o_name",
+    "en.write.o_age",
+    "en.write.o_home",
+    "en.write.o_family",
+    "en.write.o_all",
+    "en.write.p_who",
+    "en.write.p_neg",
+    "en.write.p_ask",
+    "en.write.p_like",
+    "en.write.p_because",
+    "en.write.p_scene",
+    "en.write.q_meet",
+    "en.write.q_late",
+    "en.write.q_report",
+    "en.write.q_meeting",
+    "en.write.q_own",
+    "en.write.r_form_course",
+    "en.write.r_form_job",
+    "en.write.r_form_hotel",
+    "en.write.r_note",
+    "en.write.r_mail_hotel",
+    "en.write.o_open",
+    "en.write.p_open",
+    "en.write.q_open",
+    "en.write.r_open"
+  ],
+  "byId": {
+    "en.write.o_name": {
+      "id": "en.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn là Mai. Hãy viết một câu tiếng Anh ngắn nói tên của bạn.",
+      "cueFacts": [
+        {
+          "label": "Tên của bạn",
+          "value": "Mai"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên của bạn",
+            "variants": [
+              "my name is mai",
+              "i am mai",
+              "my name's mai"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "am",
+          "is"
+        ]
+      },
+      "modelAnswers": [
+        "My name is Mai."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "en:w:name",
+        "en:w:be"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.o_age": {
+      "id": "en.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn 30 tuổi. Hãy viết một câu tiếng Anh nói tuổi của bạn.",
+      "cueFacts": [
+        {
+          "label": "Tuổi",
+          "value": "30"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": "tuổi của bạn",
+            "variants": [
+              "i am 30",
+              "30 years old"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "am",
+          "is"
+        ]
+      },
+      "modelAnswers": [
+        "I am 30 years old."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "en:w:be",
+        "en:w:year",
+        "en:w:old"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.o_home": {
+      "id": "en.write.o_home",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu tiếng Anh: quê của bạn và thành phố bạn đang sống.",
+      "cueFacts": [
+        {
+          "label": "Nước",
+          "value": "Vietnam"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Hanoi"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "from",
+            "description": "bạn đến từ đâu",
+            "variants": [
+              "from vietnam",
+              "vietnamese"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố bạn sống",
+            "variants": [
+              "in hanoi"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "am",
+          "come",
+          "live"
+        ]
+      },
+      "modelAnswers": [
+        "I am from Vietnam. I live in Hanoi."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "en:w:be",
+        "en:w:vietnam",
+        "en:w:live"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.o_family": {
+      "id": "en.write.o_family",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu tiếng Anh: bạn có hai đứa con và bạn là công nhân.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "children",
+            "description": "hai đứa con",
+            "variants": [
+              "two children",
+              "two kids"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "job",
+            "description": "công việc của bạn",
+            "variants": [
+              "a worker"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "have",
+          "am"
+        ]
+      },
+      "modelAnswers": [
+        "I have two children. I am a worker."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "en:w:have",
+        "en:w:two",
+        "en:w:child",
+        "en:w:be",
+        "en:w:worker"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.o_all": {
+      "id": "en.write.o_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Lan"
+        },
+        {
+          "label": "Tuổi",
+          "value": "28"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Hue"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên",
+            "variants": [
+              "my name is lan",
+              "i am lan",
+              "my name's lan"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": "tuổi",
+            "variants": [
+              "28"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố",
+            "variants": [
+              "in hue",
+              "from hue",
+              "city is hue"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 25,
+        "requireSentenceVerbs": [
+          "am",
+          "is",
+          "live"
+        ]
+      },
+      "modelAnswers": [
+        "My name is Lan. I am 28 years old. I live in Hue."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "en:w:name",
+        "en:w:be",
+        "en:w:year",
+        "en:w:old",
+        "en:w:live"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.p_who": {
+      "id": "en.write.p_who",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu: Anna uống cà phê vào buổi sáng.",
+      "cueFacts": [
+        {
+          "label": "Người",
+          "value": "Anna"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "drink",
+            "description": "uống cà phê",
+            "variants": [
+              "drinks coffee"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "morning",
+            "description": "vào buổi sáng",
+            "variants": [
+              "in the morning"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "drinks"
+        ]
+      },
+      "modelAnswers": [
+        "Anna drinks coffee in the morning."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:drink",
+        "en:w:coffee",
+        "en:w:morning"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.p_neg": {
+      "id": "en.write.p_neg",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu phủ định: bạn không uống bia.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "neg",
+            "description": "bạn không uống bia",
+            "variants": [
+              "i do not drink beer"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 10,
+        "requireSentenceVerbs": [
+          "do not"
+        ]
+      },
+      "modelAnswers": [
+        "I don't drink beer."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:do",
+        "en:w:not",
+        "en:w:drink",
+        "en:w:beer"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.p_ask": {
+      "id": "en.write.p_ask",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu hỏi: Bạn sống ở đâu?",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ask",
+            "description": "câu hỏi về nơi sống",
+            "variants": [
+              "where do you live",
+              "where are you living"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 8
+      },
+      "modelAnswers": [
+        "Where do you live?"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:where",
+        "en:w:do",
+        "en:w:live"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.p_like": {
+      "id": "en.write.p_like",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu nói rằng bạn thích bóng đá.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "like",
+            "description": "bạn thích bóng đá",
+            "variants": [
+              "i like soccer",
+              "i love soccer",
+              "i really like soccer",
+              "i like playing soccer",
+              "i like to play soccer",
+              "i love playing soccer",
+              "i love to play soccer",
+              "i enjoy soccer"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 10,
+        "requireSentenceVerbs": [
+          "like",
+          "love",
+          "enjoy"
+        ]
+      },
+      "modelAnswers": [
+        "I like soccer."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:like",
+        "en:w:soccer"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.p_because": {
+      "id": "en.write.p_because",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu: hôm nay bạn ở nhà vì bạn bị ốm.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "home",
+            "description": "ở nhà",
+            "variants": [
+              "at home",
+              "stay home",
+              "staying home",
+              "am home"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "because",
+            "description": "từ nối chỉ lý do",
+            "variants": [
+              "because"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "sick",
+            "description": "bạn bị ốm",
+            "variants": [
+              "i am sick",
+              "i am ill",
+              "i feel sick",
+              "i am not well"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "am",
+          "feel",
+          "stay",
+          "staying"
+        ]
+      },
+      "modelAnswers": [
+        "I am at home today because I am sick."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:be",
+        "en:w:home",
+        "en:w:today",
+        "en:w:sick"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.p_scene": {
+      "id": "en.write.p_scene",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu tả bức tranh: con mèo nhỏ, ngôi nhà to.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "cat",
+            "description": "con mèo nhỏ",
+            "variants": [
+              "the cat is small",
+              "a small cat",
+              "a little cat",
+              "the cat is little",
+              "the small cat"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "house",
+            "description": "ngôi nhà to",
+            "variants": [
+              "the house is big",
+              "a big house",
+              "a large house",
+              "the house is large",
+              "the big house"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "is"
+        ]
+      },
+      "modelAnswers": [
+        "The cat is small. The house is big."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:cat",
+        "en:w:be",
+        "en:w:small",
+        "en:w:house",
+        "en:w:big"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.q_meet": {
+      "id": "en.write.q_meet",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho Anna: chào cô ấy, rồi hẹn gặp ở quán cà phê lúc ba giờ.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Anna"
+        },
+        {
+          "label": "Giờ",
+          "value": "3 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "hi",
+              "hello",
+              "dear"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "place",
+            "description": "quán cà phê",
+            "variants": [
+              "coffee shop",
+              "cafe"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": "giờ hẹn",
+            "variants": [
+              "at three"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hi Anna, let's meet at the coffee shop at three."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:let",
+        "en:w:meet",
+        "en:w:coffee",
+        "en:w:shop",
+        "en:w:three"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.q_late": {
+      "id": "en.write.q_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho Lan: chào, báo hôm nay bạn đến muộn, rồi chào kết.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Lan"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "hi",
+              "hello",
+              "dear"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "late",
+            "description": "bạn đến muộn",
+            "variants": [
+              "late"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": "lời chào kết",
+            "variants": [
+              "see you",
+              "bye",
+              "goodbye",
+              "thanks",
+              "thank you"
+            ],
+            "cueProvided": false,
+            "repeatable": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hi Lan, I am late today. See you soon."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:be",
+        "en:w:late",
+        "en:w:today",
+        "en:w:see-you",
+        "en:w:soon"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.q_report": {
+      "id": "en.write.q_report",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy viết email ngắn cho chị Brown: chào trang trọng, báo bạn đang gửi báo cáo, rồi chào kết.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Ms. Brown"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào trang trọng",
+            "variants": [
+              "dear",
+              "hello",
+              "good morning",
+              "good afternoon"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "report",
+            "description": "báo cáo",
+            "variants": [
+              "report"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": "lời chào kết",
+            "variants": [
+              "best regards",
+              "regards",
+              "thank you",
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
+            ],
+            "cueProvided": false,
+            "repeatable": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "Dear Ms. Brown, I am sending you the report today. Best regards, Minh"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:ms",
+        "en:w:brown",
+        "en:w:be",
+        "en:w:send",
+        "en:w:report",
+        "en:w:today",
+        "en:w:best-regards"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.q_meeting": {
+      "id": "en.write.q_meeting",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy viết email ngắn cho Tom: báo cuộc họp vào thứ Hai lúc chín giờ.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Tom"
+        },
+        {
+          "label": "Ngày",
+          "value": "Monday"
+        },
+        {
+          "label": "Giờ",
+          "value": "9 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "hi",
+              "hello",
+              "dear"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "meeting",
+            "description": "cuộc họp",
+            "variants": [
+              "meeting"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": "ngày họp",
+            "variants": [
+              "monday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": "giờ họp",
+            "variants": [
+              "at nine"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "Hello Tom, the meeting is on Monday at nine."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:hello",
+        "en:w:meeting",
+        "en:w:be",
+        "en:w:monday",
+        "en:w:nine"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.q_own": {
+      "id": "en.write.q_own",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho Hoa: hẹn gặp vào thứ Bảy, rồi chào kết.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Hoa"
+        },
+        {
+          "label": "Ngày",
+          "value": "Saturday"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "hi",
+              "hello",
+              "dear"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": "ngày hẹn",
+            "variants": [
+              "saturday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": "lời chào kết",
+            "variants": [
+              "see you",
+              "bye",
+              "goodbye",
+              "thanks",
+              "thank you"
+            ],
+            "cueProvided": false,
+            "repeatable": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hi Hoa, let's meet on Saturday. See you!"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:let",
+        "en:w:meet",
+        "en:w:saturday",
+        "en:w:see-you"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.r_form_course": {
+      "id": "en.write.r_form_course",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Minh"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Hue"
+        },
+        {
+          "label": "Điện thoại",
+          "value": "0912 345 678"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "first_name",
+          "label": "First name",
+          "slotId": "name"
+        },
+        {
+          "id": "city",
+          "label": "City",
+          "slotId": "city"
+        },
+        {
+          "id": "phone",
+          "label": "Phone number",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên",
+            "variants": [
+              "minh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố",
+            "variants": [
+              "hue"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": "số điện thoại",
+            "variants": [
+              "0912 345 678",
+              "0912345678"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Minh | Hue | 0912 345 678"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "en.write.r_form_job": {
+      "id": "en.write.r_form_job",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền phiếu xin việc với các thông tin trên thẻ.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Lan"
+        },
+        {
+          "label": "Họ",
+          "value": "Tran"
+        },
+        {
+          "label": "Công việc",
+          "value": "nurse"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "first_name",
+          "label": "First name",
+          "slotId": "first"
+        },
+        {
+          "id": "last_name",
+          "label": "Last name",
+          "slotId": "last"
+        },
+        {
+          "id": "job",
+          "label": "Job",
+          "slotId": "job"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "first",
+            "description": "tên",
+            "variants": [
+              "lan"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "last",
+            "description": "họ của bạn",
+            "variants": [
+              "tran"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "job",
+            "description": "công việc",
+            "variants": [
+              "nurse"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Lan | Tran | nurse"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "en.write.r_form_hotel": {
+      "id": "en.write.r_form_hotel",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền phiếu khách sạn với các thông tin trên thẻ.",
+      "cueFacts": [
+        {
+          "label": "Họ",
+          "value": "Nguyen"
+        },
+        {
+          "label": "Địa chỉ",
+          "value": "12 Green Street"
+        },
+        {
+          "label": "Điện thoại",
+          "value": "0987 654 321"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "last_name",
+          "label": "Last name",
+          "slotId": "last"
+        },
+        {
+          "id": "address",
+          "label": "Address",
+          "slotId": "street"
+        },
+        {
+          "id": "phone",
+          "label": "Phone number",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "last",
+            "description": "họ của bạn",
+            "variants": [
+              "nguyen"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "street",
+            "description": "địa chỉ",
+            "variants": [
+              "12 green street"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": "số điện thoại",
+            "variants": [
+              "0987 654 321",
+              "0987654321"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Nguyen | 12 Green Street | 0987 654 321"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "en.write.r_note": {
+      "id": "en.write.r_note",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy viết lời nhắn cho Tom: máy in không chạy, xin anh ấy gọi cho quản lý.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Tom"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "printer",
+            "description": "máy in",
+            "variants": [
+              "printer"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "broken",
+            "description": "không chạy",
+            "variants": [
+              "does not work",
+              "is not working",
+              "is broken"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "call",
+            "description": "gọi cho quản lý",
+            "variants": [
+              "call the manager",
+              "call your manager",
+              "call our manager",
+              "call my manager"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "Tom, the printer does not work. Please call the manager."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:printer",
+        "en:w:do",
+        "en:w:not",
+        "en:w:work",
+        "en:w:please",
+        "en:w:call",
+        "en:w:manager"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.r_mail_hotel": {
+      "id": "en.write.r_mail_hotel",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy viết email ngắn cho một khách sạn: chào, hỏi một phòng cho thứ Bảy, rồi chào kết.",
+      "cueFacts": [
+        {
+          "label": "Ngày",
+          "value": "Saturday"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "dear",
+              "hello",
+              "good morning",
+              "good afternoon"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "room",
+            "description": "một phòng",
+            "variants": [
+              "room"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": "thứ Bảy",
+            "variants": [
+              "saturday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": "lời chào kết",
+            "variants": [
+              "best regards",
+              "regards",
+              "thank you",
+              "thanks",
+              "sincerely",
+              "best wishes",
+              "best"
+            ],
+            "cueProvided": false,
+            "repeatable": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "Dear Sir, I would like a room for Saturday. Best regards, Minh"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:sir",
+        "en:w:would-like",
+        "en:w:room",
+        "en:w:saturday",
+        "en:w:best-regards"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.o_open": {
+      "id": "en.write.o_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about",
+            "description": "một câu về bạn",
+            "variants": [
+              "i am",
+              "my name",
+              "i live",
+              "i have",
+              "i work",
+              "i like"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "My name is Hoa. I live in Hanoi and I like music."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "en:w:name",
+        "en:w:be",
+        "en:w:live",
+        "en:w:like",
+        "en:w:music"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.p_open": {
+      "id": "en.write.p_open",
+      "taskFamily": "simple_description",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về một ngày của bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "day",
+            "description": "một câu về ngày của bạn",
+            "variants": [
+              "i go",
+              "i work",
+              "i eat",
+              "i drink",
+              "every day",
+              "in the morning",
+              "in the evening"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "I work in the morning. In the evening I eat with my family."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:work",
+        "en:w:morning",
+        "en:w:evening",
+        "en:w:eat",
+        "en:w:family"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.q_open": {
+      "id": "en.write.q_open",
+      "taskFamily": "short_message",
+      "mode": "open",
+      "instruction": "Hãy viết một tin nhắn ngắn cho một người bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào hoặc lời kết",
+            "variants": [
+              "hi",
+              "hello",
+              "dear",
+              "see you",
+              "thanks",
+              "bye"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "Hi Lan, how are you? See you tomorrow."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:how-are-you",
+        "en:w:see-you",
+        "en:w:tomorrow"
+      ],
+      "scoredEligibility": false
+    },
+    "en.write.r_open": {
+      "id": "en.write.r_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về công việc của bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "work",
+            "description": "một câu về công việc",
+            "variants": [
+              "i work",
+              "my job",
+              "i am a",
+              "my company",
+              "my boss"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "I work in an office. My boss is very nice."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:work",
+        "en:w:office",
+        "en:w:boss",
+        "en:w:be",
+        "en:w:very",
+        "en:w:nice"
+      ],
+      "scoredEligibility": false
+    }
+  },
+  "knownVocabulary": [
+    "a",
+    "about",
+    "accident",
+    "account",
+    "across",
+    "address",
+    "adult",
+    "adults",
+    "advice",
+    "afraid",
+    "after",
+    "afternoon",
+    "again",
+    "age",
+    "ago",
+    "agree",
+    "airport",
+    "all",
+    "alone",
+    "along",
+    "already",
+    "also",
+    "always",
+    "am",
+    "an",
+    "and",
+    "angry",
+    "animal",
+    "anna",
+    "another",
+    "answer",
+    "any",
+    "anyone",
+    "anything",
+    "apartment",
+    "apple",
+    "apply",
+    "appointment",
+    "april",
+    "apron",
+    "are",
+    "area",
+    "aren",
+    "arm",
+    "around",
+    "arrive",
+    "arrived",
+    "arrives",
+    "arriving",
+    "as",
+    "ask",
+    "asked",
+    "asking",
+    "asks",
+    "at",
+    "ate",
+    "attachment",
+    "attention",
+    "august",
+    "aunt",
+    "away",
+    "baby",
+    "back",
+    "bad",
+    "bag",
+    "bags",
+    "banana",
+    "bank",
+    "bathroom",
+    "be",
+    "beach",
+    "beautiful",
+    "because",
+    "bed",
+    "bedroom",
+    "beef",
+    "been",
+    "beer",
+    "before",
+    "began",
+    "begin",
+    "beginner",
+    "beginners",
+    "beginning",
+    "begins",
+    "begun",
+    "behind",
+    "being",
+    "best",
+    "between",
+    "bicycle",
+    "big",
+    "bike",
+    "bill",
+    "bird",
+    "birds",
+    "birthday",
+    "black",
+    "blue",
+    "boat",
+    "body",
+    "book",
+    "borrow",
+    "boss",
+    "both",
+    "bottle",
+    "bottles",
+    "bought",
+    "bowl",
+    "box",
+    "boxes",
+    "boy",
+    "bread",
+    "break",
+    "breakfast",
+    "breaking",
+    "breaks",
+    "bring",
+    "bringing",
+    "brings",
+    "broke",
+    "broken",
+    "brother",
+    "brothers",
+    "brought",
+    "brown",
+    "brush",
+    "building",
+    "bus",
+    "business",
+    "busy",
+    "but",
+    "button",
+    "buy",
+    "buying",
+    "buys",
+    "by",
+    "bye",
+    "cafeteria",
+    "cake",
+    "call",
+    "called",
+    "calling",
+    "calls",
+    "came",
+    "can",
+    "cancel",
+    "car",
+    "card",
+    "cards",
+    "careful",
+    "carried",
+    "carries",
+    "carry",
+    "carrying",
+    "cash",
+    "cashier",
+    "cat",
+    "cave",
+    "center",
+    "certificate",
+    "chair",
+    "chairs",
+    "change",
+    "cheap",
+    "check",
+    "checked",
+    "checking",
+    "checks",
+    "chef",
+    "chicken",
+    "child",
+    "children",
+    "choose",
+    "city",
+    "class",
+    "classes",
+    "clean",
+    "cleaned",
+    "cleaning",
+    "cleans",
+    "clinic",
+    "clock",
+    "close",
+    "closed",
+    "closes",
+    "clothes",
+    "coffee",
+    "coffees",
+    "cold",
+    "colleague",
+    "college",
+    "color",
+    "come",
+    "comes",
+    "coming",
+    "community",
+    "company",
+    "complain",
+    "complains",
+    "complaint",
+    "computer",
+    "condition",
+    "contract",
+    "cook",
+    "cooker",
+    "cooks",
+    "copy",
+    "corner",
+    "cost",
+    "costs",
+    "cough",
+    "could",
+    "couldn",
+    "count",
+    "country",
+    "course",
+    "cross",
+    "crossed",
+    "crosses",
+    "crossing",
+    "cup",
+    "customer",
+    "cut",
+    "cuts",
+    "cutting",
+    "d",
+    "dance",
+    "dangerous",
+    "dark",
+    "date",
+    "daughter",
+    "day",
+    "days",
+    "deadline",
+    "dear",
+    "december",
+    "decide",
+    "delay",
+    "delicious",
+    "department",
+    "desk",
+    "did",
+    "didn",
+    "different",
+    "difficult",
+    "dinner",
+    "dirty",
+    "do",
+    "doctor",
+    "document",
+    "does",
+    "doesn",
+    "dog",
+    "dogs",
+    "doing",
+    "dollar",
+    "dollars",
+    "don",
+    "done",
+    "door",
+    "down",
+    "drank",
+    "dress",
+    "drink",
+    "drinking",
+    "drinks",
+    "drive",
+    "driven",
+    "driver",
+    "drives",
+    "driving",
+    "drove",
+    "drunk",
+    "dry",
+    "during",
+    "each",
+    "ear",
+    "early",
+    "easy",
+    "eat",
+    "eaten",
+    "eating",
+    "eats",
+    "egg",
+    "eggs",
+    "eight",
+    "eighteen",
+    "eighth",
+    "eighty",
+    "elevator",
+    "eleven",
+    "email",
+    "emergency",
+    "empty",
+    "end",
+    "ends",
+    "engineer",
+    "english",
+    "enjoy",
+    "enough",
+    "entrance",
+    "evening",
+    "every",
+    "everyone",
+    "everything",
+    "exam",
+    "example",
+    "excited",
+    "excuse",
+    "exhibition",
+    "exit",
+    "expensive",
+    "experience",
+    "eye",
+    "eyes",
+    "face",
+    "factory",
+    "fall",
+    "fallen",
+    "falling",
+    "falls",
+    "family",
+    "far",
+    "farmer",
+    "fast",
+    "father",
+    "favorite",
+    "february",
+    "feel",
+    "feeling",
+    "feels",
+    "feet",
+    "fell",
+    "felt",
+    "fever",
+    "few",
+    "fifteen",
+    "fifteenth",
+    "fifth",
+    "fifty",
+    "file",
+    "fill",
+    "find",
+    "finding",
+    "finds",
+    "fine",
+    "finger",
+    "finish",
+    "finished",
+    "finishes",
+    "finishing",
+    "fire",
+    "first",
+    "fish",
+    "five",
+    "fix",
+    "flies",
+    "flight",
+    "floor",
+    "flower",
+    "flowers",
+    "fly",
+    "follow",
+    "food",
+    "foot",
+    "for",
+    "foreign",
+    "forget",
+    "forgets",
+    "forgetting",
+    "forgot",
+    "forgotten",
+    "form",
+    "forty",
+    "found",
+    "four",
+    "fourteen",
+    "free",
+    "friday",
+    "fridge",
+    "friend",
+    "from",
+    "front",
+    "fruit",
+    "full",
+    "game",
+    "gate",
+    "gave",
+    "get",
+    "gets",
+    "getting",
+    "gift",
+    "girl",
+    "give",
+    "given",
+    "gives",
+    "giving",
+    "glass",
+    "glasses",
+    "glove",
+    "gloves",
+    "go",
+    "goes",
+    "going",
+    "gone",
+    "good",
+    "goodbye",
+    "got",
+    "grandfather",
+    "grandmother",
+    "great",
+    "green",
+    "grew",
+    "group",
+    "groups",
+    "grow",
+    "guest",
+    "guests",
+    "gym",
+    "had",
+    "hadn",
+    "hair",
+    "half",
+    "hand",
+    "handrail",
+    "hands",
+    "hanoi",
+    "happen",
+    "happened",
+    "happy",
+    "hard",
+    "has",
+    "hasn",
+    "hat",
+    "have",
+    "haven",
+    "having",
+    "he",
+    "head",
+    "headache",
+    "health",
+    "hear",
+    "heard",
+    "hearing",
+    "hears",
+    "heavy",
+    "hello",
+    "helmet",
+    "help",
+    "helped",
+    "helping",
+    "helps",
+    "her",
+    "here",
+    "hers",
+    "hi",
+    "high",
+    "him",
+    "hire",
+    "his",
+    "hoa",
+    "hobby",
+    "hold",
+    "holiday",
+    "home",
+    "hospital",
+    "hot",
+    "hotel",
+    "hour",
+    "hours",
+    "house",
+    "how",
+    "hundred",
+    "hungry",
+    "hurt",
+    "hurts",
+    "husband",
+    "i",
+    "id",
+    "idea",
+    "if",
+    "ill",
+    "important",
+    "in",
+    "include",
+    "includes",
+    "information",
+    "instead",
+    "instruction",
+    "instructions",
+    "insurance",
+    "interested",
+    "interesting",
+    "internet",
+    "interview",
+    "into",
+    "introduce",
+    "invitation",
+    "is",
+    "island",
+    "isn",
+    "it",
+    "its",
+    "jacket",
+    "january",
+    "job",
+    "join",
+    "juice",
+    "july",
+    "june",
+    "just",
+    "keep",
+    "key",
+    "keys",
+    "kilo",
+    "kilos",
+    "kind",
+    "kitchen",
+    "knew",
+    "knife",
+    "know",
+    "knowing",
+    "known",
+    "knows",
+    "lake",
+    "lan",
+    "landlord",
+    "language",
+    "large",
+    "last",
+    "late",
+    "later",
+    "laugh",
+    "learn",
+    "learning",
+    "least",
+    "leave",
+    "leaves",
+    "leaving",
+    "left",
+    "leg",
+    "lesson",
+    "let",
+    "letter",
+    "letters",
+    "library",
+    "life",
+    "lift",
+    "light",
+    "like",
+    "liked",
+    "likes",
+    "liking",
+    "line",
+    "list",
+    "listen",
+    "listened",
+    "listening",
+    "listens",
+    "little",
+    "live",
+    "lived",
+    "lives",
+    "living",
+    "ll",
+    "lock",
+    "long",
+    "look",
+    "looked",
+    "looking",
+    "looks",
+    "lose",
+    "lost",
+    "lot",
+    "love",
+    "loved",
+    "loves",
+    "loving",
+    "low",
+    "luggage",
+    "lunch",
+    "m",
+    "machine",
+    "made",
+    "mai",
+    "main",
+    "make",
+    "makes",
+    "making",
+    "man",
+    "manager",
+    "many",
+    "map",
+    "march",
+    "market",
+    "married",
+    "may",
+    "maybe",
+    "me",
+    "meal",
+    "meals",
+    "mean",
+    "meat",
+    "medicine",
+    "meet",
+    "meeting",
+    "meets",
+    "member",
+    "menu",
+    "message",
+    "met",
+    "middle",
+    "might",
+    "milk",
+    "million",
+    "mine",
+    "minh",
+    "minus",
+    "minute",
+    "minutes",
+    "miss",
+    "mistake",
+    "moment",
+    "monday",
+    "money",
+    "month",
+    "months",
+    "more",
+    "morning",
+    "most",
+    "mother",
+    "motorbike",
+    "mountain",
+    "mouth",
+    "move",
+    "movie",
+    "mr",
+    "mrs",
+    "ms",
+    "much",
+    "museum",
+    "music",
+    "must",
+    "mustn",
+    "my",
+    "nam",
+    "name",
+    "near",
+    "need",
+    "needed",
+    "needing",
+    "needs",
+    "neighbor",
+    "neighborhood",
+    "never",
+    "new",
+    "news",
+    "next",
+    "nice",
+    "night",
+    "nine",
+    "nineteen",
+    "ninety",
+    "no",
+    "noise",
+    "noodle",
+    "noodles",
+    "noon",
+    "nose",
+    "not",
+    "notebook",
+    "nothing",
+    "notice",
+    "november",
+    "now",
+    "number",
+    "nurse",
+    "o",
+    "october",
+    "of",
+    "off",
+    "office",
+    "often",
+    "ok",
+    "old",
+    "on",
+    "once",
+    "one",
+    "only",
+    "open",
+    "opens",
+    "opposite",
+    "or",
+    "orange",
+    "order",
+    "other",
+    "our",
+    "ours",
+    "out",
+    "over",
+    "overtime",
+    "own",
+    "page",
+    "paid",
+    "pain",
+    "pants",
+    "paper",
+    "parent",
+    "parents",
+    "park",
+    "parking",
+    "part",
+    "party",
+    "passenger",
+    "passengers",
+    "passport",
+    "password",
+    "past",
+    "pay",
+    "paying",
+    "pays",
+    "pen",
+    "people",
+    "percent",
+    "perfect",
+    "person",
+    "pet",
+    "pets",
+    "pharmacy",
+    "phone",
+    "photo",
+    "picture",
+    "piece",
+    "pink",
+    "pipe",
+    "place",
+    "plan",
+    "plane",
+    "platform",
+    "play",
+    "played",
+    "playing",
+    "plays",
+    "please",
+    "plumber",
+    "police",
+    "pool",
+    "pork",
+    "possible",
+    "post",
+    "practice",
+    "practiced",
+    "practices",
+    "practicing",
+    "prefer",
+    "prescription",
+    "press",
+    "price",
+    "prices",
+    "printer",
+    "problem",
+    "product",
+    "products",
+    "promise",
+    "pull",
+    "push",
+    "put",
+    "puts",
+    "putting",
+    "quarter",
+    "question",
+    "quiet",
+    "rain",
+    "raining",
+    "rains",
+    "ran",
+    "re",
+    "read",
+    "reading",
+    "reads",
+    "ready",
+    "really",
+    "reason",
+    "receipt",
+    "receive",
+    "receptionist",
+    "recipe",
+    "red",
+    "refund",
+    "regards",
+    "remember",
+    "rent",
+    "repair",
+    "repeat",
+    "replied",
+    "replies",
+    "reply",
+    "replying",
+    "report",
+    "rest",
+    "restaurant",
+    "restroom",
+    "resume",
+    "return",
+    "rice",
+    "ride",
+    "right",
+    "river",
+    "road",
+    "room",
+    "rooms",
+    "rule",
+    "rules",
+    "run",
+    "running",
+    "runs",
+    "s",
+    "sad",
+    "safe",
+    "safety",
+    "said",
+    "salary",
+    "sale",
+    "salt",
+    "same",
+    "sat",
+    "saturday",
+    "save",
+    "saw",
+    "say",
+    "saying",
+    "says",
+    "schedule",
+    "school",
+    "screen",
+    "sea",
+    "season",
+    "seat",
+    "second",
+    "see",
+    "seeing",
+    "seen",
+    "sees",
+    "sell",
+    "selling",
+    "sells",
+    "send",
+    "sending",
+    "sends",
+    "sent",
+    "sentence",
+    "september",
+    "set",
+    "seven",
+    "seventeen",
+    "seventy",
+    "shall",
+    "share",
+    "she",
+    "shift",
+    "shirt",
+    "shoe",
+    "shoes",
+    "shop",
+    "short",
+    "should",
+    "shoulder",
+    "shouldn",
+    "show",
+    "shower",
+    "sick",
+    "side",
+    "sign",
+    "simple",
+    "sing",
+    "single",
+    "sings",
+    "sir",
+    "sister",
+    "sisters",
+    "sit",
+    "sits",
+    "sitting",
+    "six",
+    "sixteen",
+    "sixth",
+    "sixty",
+    "size",
+    "skill",
+    "skills",
+    "sleep",
+    "sleeping",
+    "sleeps",
+    "slept",
+    "slow",
+    "slowly",
+    "small",
+    "smile",
+    "smoke",
+    "so",
+    "soccer",
+    "sold",
+    "some",
+    "someone",
+    "something",
+    "sometimes",
+    "son",
+    "song",
+    "soon",
+    "sorry",
+    "soup",
+    "speak",
+    "speaking",
+    "speaks",
+    "special",
+    "spell",
+    "spend",
+    "spending",
+    "spends",
+    "spent",
+    "spicy",
+    "spoke",
+    "spoken",
+    "sport",
+    "spring",
+    "staff",
+    "stairs",
+    "stand",
+    "standing",
+    "stands",
+    "start",
+    "started",
+    "starting",
+    "starts",
+    "station",
+    "stay",
+    "staying",
+    "steal",
+    "step",
+    "steps",
+    "still",
+    "stole",
+    "stomach",
+    "stood",
+    "stop",
+    "stopped",
+    "stopping",
+    "stops",
+    "store",
+    "story",
+    "straight",
+    "street",
+    "strike",
+    "strong",
+    "stub",
+    "student",
+    "studied",
+    "studies",
+    "study",
+    "studying",
+    "sugar",
+    "suitcase",
+    "summer",
+    "sun",
+    "sunday",
+    "sunny",
+    "supermarket",
+    "sure",
+    "sweet",
+    "swim",
+    "t",
+    "table",
+    "take",
+    "taken",
+    "takes",
+    "taking",
+    "talk",
+    "talked",
+    "talking",
+    "talks",
+    "tall",
+    "taller",
+    "taught",
+    "taxi",
+    "tea",
+    "teach",
+    "teacher",
+    "teachers",
+    "teaches",
+    "teaching",
+    "team",
+    "teeth",
+    "tell",
+    "telling",
+    "tells",
+    "ten",
+    "tenth",
+    "test",
+    "text",
+    "than",
+    "thank",
+    "thanks",
+    "that",
+    "the",
+    "theater",
+    "their",
+    "theirs",
+    "them",
+    "then",
+    "there",
+    "these",
+    "they",
+    "thief",
+    "thing",
+    "things",
+    "think",
+    "thinking",
+    "thinks",
+    "third",
+    "thirsty",
+    "thirteen",
+    "thirty",
+    "this",
+    "those",
+    "thought",
+    "thousand",
+    "three",
+    "thursday",
+    "ticket",
+    "time",
+    "tired",
+    "to",
+    "today",
+    "together",
+    "toilet",
+    "told",
+    "tom",
+    "tomato",
+    "tomatoes",
+    "tomorrow",
+    "tonight",
+    "too",
+    "took",
+    "tool",
+    "tools",
+    "tooth",
+    "touch",
+    "town",
+    "traffic",
+    "train",
+    "training",
+    "transfer",
+    "travel",
+    "tree",
+    "trees",
+    "tried",
+    "tries",
+    "trip",
+    "trouble",
+    "truck",
+    "try",
+    "trying",
+    "tuesday",
+    "turn",
+    "tv",
+    "twelve",
+    "twenty",
+    "twice",
+    "two",
+    "uncle",
+    "under",
+    "understand",
+    "understanding",
+    "understands",
+    "understood",
+    "uniform",
+    "university",
+    "until",
+    "up",
+    "us",
+    "use",
+    "used",
+    "uses",
+    "using",
+    "usually",
+    "vacation",
+    "ve",
+    "vegetable",
+    "vegetables",
+    "very",
+    "vietnam",
+    "vietnamese",
+    "village",
+    "visa",
+    "visit",
+    "visitor",
+    "visitors",
+    "volunteer",
+    "volunteers",
+    "wait",
+    "waited",
+    "waiter",
+    "waiting",
+    "waits",
+    "wake",
+    "wakes",
+    "waking",
+    "walk",
+    "walked",
+    "walking",
+    "walks",
+    "wall",
+    "want",
+    "wanted",
+    "wanting",
+    "wants",
+    "warm",
+    "was",
+    "wash",
+    "washed",
+    "washes",
+    "washing",
+    "wasn",
+    "watch",
+    "watched",
+    "watches",
+    "watching",
+    "water",
+    "way",
+    "we",
+    "wear",
+    "wearing",
+    "wears",
+    "weather",
+    "website",
+    "wedding",
+    "wednesday",
+    "week",
+    "weekend",
+    "welcome",
+    "well",
+    "went",
+    "were",
+    "weren",
+    "wet",
+    "what",
+    "when",
+    "where",
+    "which",
+    "while",
+    "white",
+    "who",
+    "whom",
+    "whose",
+    "why",
+    "wife",
+    "will",
+    "wind",
+    "window",
+    "winter",
+    "with",
+    "within",
+    "without",
+    "woke",
+    "woken",
+    "woman",
+    "won",
+    "word",
+    "words",
+    "wore",
+    "work",
+    "worked",
+    "worker",
+    "workers",
+    "working",
+    "works",
+    "world",
+    "worn",
+    "worried",
+    "worry",
+    "would",
+    "wouldn",
+    "write",
+    "writes",
+    "writing",
+    "written",
+    "wrong",
+    "wrote",
+    "year",
+    "years",
+    "yellow",
+    "yes",
+    "yesterday",
+    "you",
+    "young",
+    "your",
+    "yours",
+    "zero"
+  ]
+}

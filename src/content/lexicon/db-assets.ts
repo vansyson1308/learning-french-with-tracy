@@ -9,6 +9,7 @@
 export const LEXICON_DB_ASSETS: Record<string, { name: string; contentHash: string; asset: number }> = {
   "de": { name: "de-lexicon-v3-1151654113acceb4.db", contentHash: "1151654113acceb4", asset: require("../../../assets/lexicon/de-lexicon-v3-1151654113acceb4.db") },
   "de-en": { name: "de-en-lexicon-v3-c8515df28bdf3c65.db", contentHash: "c8515df28bdf3c65", asset: require("../../../assets/lexicon/de-en-lexicon-v3-c8515df28bdf3c65.db") },
+  "en": { name: "en-lexicon-v3-bd5b9205e7ceace3.db", contentHash: "bd5b9205e7ceace3", asset: require("../../../assets/lexicon/en-lexicon-v3-bd5b9205e7ceace3.db") },
   "es": { name: "es-lexicon-v3-5fde8895e73ea664.db", contentHash: "5fde8895e73ea664", asset: require("../../../assets/lexicon/es-lexicon-v3-5fde8895e73ea664.db") },
   "es-en": { name: "es-en-lexicon-v3-331e4292c6bb6e25.db", contentHash: "331e4292c6bb6e25", asset: require("../../../assets/lexicon/es-en-lexicon-v3-331e4292c6bb6e25.db") },
   "fr": { name: "fr-lexicon-v3-4fd93ff6c545b579.db", contentHash: "4fd93ff6c545b579", asset: require("../../../assets/lexicon/fr-lexicon-v3-4fd93ff6c545b579.db") },

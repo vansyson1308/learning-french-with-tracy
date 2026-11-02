@@ -1,0 +1,901 @@
+{
+  "version": 1,
+  "language": "en",
+  "order": [
+    "en:concept:be",
+    "en:concept:articles",
+    "en:concept:plurals",
+    "en:concept:present-do-does",
+    "en:concept:present-continuous",
+    "en:concept:past-did",
+    "en:concept:future-going-to-will",
+    "en:concept:there-is-have",
+    "en:concept:pronouns-possessives",
+    "en:concept:can-would-like",
+    "en:concept:prepositions-in-on-at",
+    "en:concept:wh-questions",
+    "en:concept:adjectives-very-too",
+    "en:concept:numbers-time-prices",
+    "en:concept:final-consonants",
+    "en:concept:th-sounds",
+    "en:concept:s-ed-pronunciation",
+    "en:concept:stress-weak-forms",
+    "en:concept:politeness",
+    "en:concept:spelling-sound"
+  ],
+  "byId": {
+    "en:concept:be": {
+      "id": "en:concept:be",
+      "title": "Động từ be: am, is, are",
+      "shortRule": "I am, he/she/it is, you/we/they are. Phủ định thêm not; câu hỏi đưa be lên đầu.",
+      "explanation": "Be (là, thì, ở) đổi dạng theo chủ ngữ: I am, she is, they are. Tiếng Việt nói được \"Tôi mệt\" hay \"Nhà to\", nhưng tiếng Anh phải có be: I am tired, The house is big. Be cũng không chỉ là \"là\": Lan is at home nghĩa là Lan ở nhà. Phủ định thêm not sau be: I am not, she is not. Câu hỏi đưa be lên trước chủ ngữ: Are you ready? Khi nói, dạng rút gọn rất hay dùng: I'm, she's, isn't, aren't.",
+      "examples": [
+        {
+          "en": "I am a worker.",
+          "vi": "Tôi là công nhân."
+        },
+        {
+          "en": "She is tired.",
+          "vi": "Cô ấy mệt.",
+          "note": "tiếng Việt không có động từ ở đây, tiếng Anh phải có"
+        },
+        {
+          "en": "Lan is at home.",
+          "vi": "Lan ở nhà.",
+          "note": "be còn nghĩa là \"ở\""
+        },
+        {
+          "en": "Are you ready?",
+          "vi": "Bạn sẵn sàng chưa?",
+          "note": "be đứng đầu câu hỏi"
+        },
+        {
+          "en": "He isn't here.",
+          "vi": "Anh ấy không có ở đây."
+        }
+      ],
+      "exceptions": [
+        "Không nói \"I amn't\": dạng phủ định rút gọn của I am là I'm not."
+      ],
+      "memoryHint": "Tiếng Việt bỏ được, tiếng Anh thì không: câu nào cũng cần một động từ.",
+      "objectives": [
+        "en.obj.verbs.be_there_is"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "en:concept:articles": {
+      "id": "en:concept:articles",
+      "title": "Mạo từ: a, an, the",
+      "shortRule": "a + âm phụ âm, an + âm nguyên âm, the khi người nghe biết là cái nào. Danh từ không đếm được không đi với a.",
+      "explanation": "Tiếng Việt không có mạo từ (article): \"cái\", \"con\" là loại từ, không phải mạo từ. Vì vậy người Việt rất hay gặp lỗi này. Danh từ đếm được số ít cần a hoặc an: a dog, an apple. Chọn theo âm, không theo chữ: an hour, a university. Lần đầu nhắc đến dùng a; khi cả hai đã biết cái nào thì dùng the: I have a dog. The dog is small. Danh từ không đếm được như water, money không đi với a. Nói chung về một loại thì không dùng the: I like coffee.",
+      "examples": [
+        {
+          "en": "I have a dog. The dog is small.",
+          "vi": "Tôi có một con chó. Con chó nhỏ.",
+          "note": "lần đầu a, lần sau the"
+        },
+        {
+          "en": "an hour",
+          "vi": "một giờ đồng hồ",
+          "note": "h không đọc nên âm đầu là nguyên âm"
+        },
+        {
+          "en": "a university",
+          "vi": "một trường đại học",
+          "note": "chữ u nhưng âm đầu là phụ âm"
+        },
+        {
+          "en": "I drink water.",
+          "vi": "Tôi uống nước.",
+          "note": "không đếm được: không có a"
+        },
+        {
+          "en": "I am a nurse.",
+          "vi": "Tôi là y tá.",
+          "note": "tên nghề cần a"
+        }
+      ],
+      "exceptions": [
+        "Nhiều cụm cố định không có mạo từ: go home, at work, by bus, in bed. Hãy học cả cụm."
+      ],
+      "memoryHint": "Nghe âm đầu, đừng nhìn chữ đầu.",
+      "objectives": [
+        "en.obj.articles.a_an_the"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:plurals": {
+      "id": "en:concept:plurals",
+      "title": "Số nhiều: -s, -es, -ies và từ bất quy tắc",
+      "shortRule": "Thêm -s; sau s, x, ch, sh thêm -es; phụ âm + y thành -ies. Học riêng children, men, women, people.",
+      "explanation": "Số nhiều (plural): tiếng Việt nói \"hai quyển sách\" mà danh từ không đổi, nhưng tiếng Anh phải đổi: two books. Có con số rồi vẫn phải thêm -s. Hầu hết danh từ thêm -s: book, books. Sau s, x, ch, sh thêm -es: box, boxes. Phụ âm + y đổi thành -ies: city, cities. Một số từ thường dùng đổi hẳn: child, children; man, men; woman, women; person, people; foot, feet; tooth, teeth.",
+      "examples": [
+        {
+          "en": "two books",
+          "vi": "hai quyển sách",
+          "note": "có số vẫn thêm -s"
+        },
+        {
+          "en": "three boxes",
+          "vi": "ba cái hộp"
+        },
+        {
+          "en": "two cities",
+          "vi": "hai thành phố"
+        },
+        {
+          "en": "Two children are here.",
+          "vi": "Hai đứa trẻ đang ở đây.",
+          "note": "bất quy tắc"
+        },
+        {
+          "en": "We need some information.",
+          "vi": "Chúng tôi cần một ít thông tin.",
+          "note": "không đếm được: không có -s"
+        }
+      ],
+      "exceptions": [
+        "Không đếm được, nên không thêm -s: water, rice, money, information, news.",
+        "People đã là số nhiều: people are, không nói peoples ở nghĩa \"mọi người\"."
+      ],
+      "memoryHint": "Từ hai trở lên: nhớ -s.",
+      "objectives": [
+        "en.obj.nouns.plurals_countability"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:present-do-does": {
+      "id": "en:concept:present-do-does",
+      "title": "Hiện tại đơn: thêm -s và do, does",
+      "shortRule": "He, she, it thêm -s. Hỏi và phủ định dùng do, does; sau does động từ không có -s.",
+      "explanation": "Hiện tại đơn (present simple) nói việc thường làm và điều luôn đúng. Tiếng Việt không chia động từ, nhưng tiếng Anh thêm -s sau he, she, it hoặc tên một người: I work, she works. Tiếng Việt chỉ cần \"có… không\", \"không\"; tiếng Anh cần trợ động từ (auxiliary) do hoặc does: Do you work here? Does she work here? I don't work, she doesn't work. Sau does và doesn't, -s không còn nữa: She doesn't work, không phải \"doesn't works\". Have đổi thành has, go thành goes, do thành does, study thành studies.",
+      "examples": [
+        {
+          "en": "I work in a factory.",
+          "vi": "Tôi làm ở nhà máy."
+        },
+        {
+          "en": "She works in a bank.",
+          "vi": "Cô ấy làm ở ngân hàng.",
+          "note": "she + works"
+        },
+        {
+          "en": "Do you speak English?",
+          "vi": "Bạn có nói tiếng Anh không?"
+        },
+        {
+          "en": "Does he live here?",
+          "vi": "Anh ấy có sống ở đây không?",
+          "note": "does + live, không có -s"
+        },
+        {
+          "en": "She doesn't smoke.",
+          "vi": "Cô ấy không hút thuốc."
+        }
+      ],
+      "exceptions": [
+        "Be và các động từ như can, will không dùng do: Are you…?, Can you…?"
+      ],
+      "memoryHint": "Chữ -s chỉ xuất hiện một lần: she works, does she work.",
+      "objectives": [
+        "en.obj.verbs.present_simple_do"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "en:concept:present-continuous": {
+      "id": "en:concept:present-continuous",
+      "title": "Hiện tại tiếp diễn: be + V-ing",
+      "shortRule": "am, is, are + động từ thêm -ing: việc đang diễn ra lúc này, giống \"đang\".",
+      "explanation": "Tiếng Việt thêm \"đang\" trước động từ; tiếng Anh dùng be và thêm -ing: I am working. Không được bỏ be: nói She is eating, không nói \"She eating\". Tiếng Việt có thể bỏ \"đang\" khi đã rõ, nhưng tiếng Anh thì phải chọn: I work là việc thường ngày, I am working là việc lúc này. Chính tả: make thành making, stop thành stopping, sit thành sitting.",
+      "examples": [
+        {
+          "en": "I am working now.",
+          "vi": "Bây giờ tôi đang làm việc."
+        },
+        {
+          "en": "She is eating.",
+          "vi": "Cô ấy đang ăn."
+        },
+        {
+          "en": "Are you listening?",
+          "vi": "Bạn có đang nghe không?"
+        },
+        {
+          "en": "They aren't sleeping.",
+          "vi": "Họ không ngủ."
+        }
+      ],
+      "exceptions": [
+        "Động từ chỉ trạng thái thường không có -ing: I want coffee, I know him, I like it."
+      ],
+      "memoryHint": "Đang = be + -ing, cần cả hai phần.",
+      "objectives": [
+        "en.obj.verbs.present_continuous"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "en:concept:past-did": {
+      "id": "en:concept:past-did",
+      "title": "Quá khứ đơn: was, were, -ed và did",
+      "shortRule": "Thêm -ed hoặc dùng dạng bất quy tắc: worked, went. Hỏi và phủ định dùng did + động từ nguyên thể.",
+      "explanation": "Tiếng Việt thêm \"đã\", và có thể bỏ khi đã có \"hôm qua\". Tiếng Anh đổi chính động từ, kể cả khi đã có yesterday: Yesterday I worked. Động từ thường thêm -ed: work, worked. Nhiều động từ hay gặp phải học thuộc: go, went; have, had; see, saw. Be có hai dạng: I was, you were. Hỏi và phủ định dùng did, rồi động từ trở về nguyên thể: Did you go? I didn't go, không phải \"didn't went\".",
+      "examples": [
+        {
+          "en": "Yesterday I worked.",
+          "vi": "Hôm qua tôi làm việc.",
+          "note": "đã có yesterday vẫn phải đổi động từ"
+        },
+        {
+          "en": "I went home.",
+          "vi": "Tôi đã về nhà.",
+          "note": "go → went"
+        },
+        {
+          "en": "Did you see the manager?",
+          "vi": "Bạn có gặp quản lý không?",
+          "note": "did + see"
+        },
+        {
+          "en": "He didn't come.",
+          "vi": "Anh ấy đã không đến."
+        },
+        {
+          "en": "We were at work.",
+          "vi": "Chúng tôi đã ở chỗ làm."
+        }
+      ],
+      "exceptions": [
+        "Be không dùng did: Were you there?, I wasn't there.",
+        "Một số động từ giữ nguyên dạng: put, cost, read (viết giống nhau, read đọc khác đi)."
+      ],
+      "memoryHint": "Dấu quá khứ chỉ một lần: went, hoặc did go.",
+      "objectives": [
+        "en.obj.verbs.past_recognition"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "en:concept:future-going-to-will": {
+      "id": "en:concept:future-going-to-will",
+      "title": "Going to và will",
+      "shortRule": "Going to cho việc đã định. Will cho việc vừa quyết định, lời hứa, dự đoán. Tiếng Việt đều là \"sẽ\".",
+      "explanation": "Tiếng Việt có một từ \"sẽ\"; tiếng Anh thường dùng hai cách. Be going to + động từ nói việc đã định từ trước: I am going to call him. Will + động từ nói việc vừa quyết định, lời hứa hoặc điều bạn đoán: I'll call you. It will rain. Sau will, động từ không thêm -s: She will come, không phải \"will comes\". Phủ định của will là won't. Ở trình độ này, dùng nhầm hai cách này thường vẫn được hiểu, nên đừng quá lo.",
+      "examples": [
+        {
+          "en": "I am going to call him.",
+          "vi": "Tôi định gọi cho anh ấy.",
+          "note": "việc đã định"
+        },
+        {
+          "en": "I'll send it now.",
+          "vi": "Tôi sẽ gửi ngay.",
+          "note": "vừa quyết định"
+        },
+        {
+          "en": "She will come at nine.",
+          "vi": "Cô ấy sẽ đến lúc chín giờ."
+        },
+        {
+          "en": "It won't take long.",
+          "vi": "Sẽ không lâu đâu."
+        }
+      ],
+      "exceptions": [
+        "Lịch đã cố định thường dùng hiện tại đơn: The train leaves at six."
+      ],
+      "memoryHint": "Đã định: going to. Vừa nghĩ ra: will.",
+      "objectives": [
+        "en.obj.verbs.future_can_would"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "en:concept:there-is-have": {
+      "id": "en:concept:there-is-have",
+      "title": "There is, there are và have",
+      "shortRule": "Ai có gì: have. Ở đâu có gì: there is với một thứ, there are với nhiều thứ.",
+      "explanation": "Tiếng Việt dùng một từ \"có\" cho hai ý, còn tiếng Anh tách ra. Have nói ai sở hữu gì: I have a car, she has two children. There is, there are nói ở đâu có gì: There is a bank near here, There are two beds. Câu \"Có một ngân hàng ở gần đây\" không dịch bằng have. Hỏi: Is there a bank near here? Are there any seats? Khi nói thân mật, bạn còn gặp have got với nghĩa như have: I've got a car. Người Anh dùng cách này nhiều hơn.",
+      "examples": [
+        {
+          "en": "I have a car.",
+          "vi": "Tôi có một chiếc xe.",
+          "note": "sở hữu"
+        },
+        {
+          "en": "There is a bank near here.",
+          "vi": "Gần đây có một ngân hàng.",
+          "note": "ở đâu có gì"
+        },
+        {
+          "en": "There are two beds.",
+          "vi": "Có hai cái giường."
+        },
+        {
+          "en": "Is there a bathroom here?",
+          "vi": "Ở đây có nhà vệ sinh không?"
+        },
+        {
+          "en": "I've got a brother.",
+          "vi": "Tôi có một người anh.",
+          "note": "have got: giống have"
+        }
+      ],
+      "exceptions": [
+        "There is với danh từ không đếm được: There is some water."
+      ],
+      "memoryHint": "Ai có: have. Chỗ nào có: there is.",
+      "objectives": [
+        "en.obj.verbs.be_there_is"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "en:concept:pronouns-possessives": {
+      "id": "en:concept:pronouns-possessives",
+      "title": "Đại từ và từ sở hữu: I, me, my, mine",
+      "shortRule": "I làm chủ ngữ, me làm tân ngữ, my đứng trước danh từ, mine đứng một mình.",
+      "explanation": "Tiếng Việt dùng \"tôi\" ở mọi vị trí và \"của tôi\" khi sở hữu. Tiếng Anh có bốn dạng: I help her, she helps me, this is my bag, this bag is mine. Bảng đầy đủ: I, me, my, mine; you, you, your, yours; he, him, his, his; she, her, her, hers; we, us, our, ours; they, them, their, theirs. It là đại từ cho đồ vật và con vật. Tiếng Anh cần phân biệt he với she, trong khi tiếng Việt có thể dùng một từ như \"nó\" hay \"bạn ấy\", nên hãy chú ý.",
+      "examples": [
+        {
+          "en": "She helps me.",
+          "vi": "Cô ấy giúp tôi.",
+          "note": "me sau động từ"
+        },
+        {
+          "en": "This is my bag.",
+          "vi": "Đây là túi của tôi.",
+          "note": "my trước danh từ"
+        },
+        {
+          "en": "This bag is mine.",
+          "vi": "Cái túi này là của tôi.",
+          "note": "mine đứng một mình"
+        },
+        {
+          "en": "Tom is here. His wife is a doctor.",
+          "vi": "Tom ở đây. Vợ anh ấy là bác sĩ.",
+          "note": "his theo người có vợ"
+        }
+      ],
+      "exceptions": [
+        "Her vừa là tân ngữ vừa là sở hữu: I see her, her name."
+      ],
+      "memoryHint": "My cần một danh từ theo sau, mine thì không.",
+      "objectives": [
+        "en.obj.pronouns.possessives"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:can-would-like": {
+      "id": "en:concept:can-would-like",
+      "title": "Can và would like",
+      "shortRule": "Can + động từ nguyên thể: làm được, xin phép. Would like: nói điều mình muốn một cách lịch sự.",
+      "explanation": "Can giống \"có thể\", \"biết\": I can swim. Sau can không có to và không thêm -s: She can swim, không phải \"can swims\" hay \"can to swim\". Câu hỏi đưa can lên đầu: Can I sit here? Câu này cũng là cách xin phép. Phủ định: can't. Would like lịch sự hơn want, đi với danh từ hoặc to + động từ: I would like a coffee, I would like to see a doctor. Khi nói thường rút gọn: I'd like.",
+      "examples": [
+        {
+          "en": "She can swim.",
+          "vi": "Cô ấy biết bơi."
+        },
+        {
+          "en": "Can I sit here?",
+          "vi": "Tôi ngồi đây được không?",
+          "note": "xin phép"
+        },
+        {
+          "en": "I can't come today.",
+          "vi": "Hôm nay tôi không đến được."
+        },
+        {
+          "en": "I'd like a coffee, please.",
+          "vi": "Cho tôi một ly cà phê.",
+          "note": "lịch sự hơn I want"
+        },
+        {
+          "en": "I would like to see a doctor.",
+          "vi": "Tôi muốn gặp bác sĩ."
+        }
+      ],
+      "exceptions": [
+        "Can phát âm yếu trong câu khẳng định, nhưng can't đọc rõ. Hãy nghe kỹ để không nhầm."
+      ],
+      "memoryHint": "Sau can: không to, không -s.",
+      "objectives": [
+        "en.obj.verbs.future_can_would"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:prepositions-in-on-at": {
+      "id": "en:concept:prepositions-in-on-at",
+      "title": "Giới từ in, on, at; next to, behind",
+      "shortRule": "Giờ: at. Thứ: on. Tháng, năm: in. Chỗ cụ thể: at; trên mặt: on; bên trong, thành phố: in.",
+      "explanation": "Tiếng Việt dùng \"lúc\", \"vào\", \"ở\", \"trong\"; tiếng Anh chọn theo quy luật riêng. Với thời gian: at eight o'clock, on Monday, in May. Với nơi chốn: at the station (một điểm), on the table (trên mặt), in the box, in Hanoi (bên trong, trong thành phố). Chỉ vị trí: next to (bên cạnh), behind (phía sau), in front of (phía trước), between (ở giữa). Đặt giới từ trước danh từ, giống tiếng Việt.",
+      "examples": [
+        {
+          "en": "The meeting is at nine.",
+          "vi": "Cuộc họp lúc chín giờ."
+        },
+        {
+          "en": "I don't work on Sunday.",
+          "vi": "Chủ nhật tôi không làm việc."
+        },
+        {
+          "en": "My birthday is in May.",
+          "vi": "Sinh nhật tôi vào tháng Năm."
+        },
+        {
+          "en": "He is at the station.",
+          "vi": "Anh ấy ở nhà ga."
+        },
+        {
+          "en": "The bank is next to the hotel.",
+          "vi": "Ngân hàng ở cạnh khách sạn."
+        }
+      ],
+      "exceptions": [
+        "Các cụm phải học riêng: in the morning, in the afternoon, nhưng at night; at home, at work."
+      ],
+      "memoryHint": "Giờ, thứ, tháng: at, on, in, từ nhỏ đến lớn.",
+      "objectives": [
+        "en.obj.prepositions.time_place"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:wh-questions": {
+      "id": "en:concept:wh-questions",
+      "title": "Câu hỏi với what, where, when, who, how",
+      "shortRule": "Từ để hỏi đứng đầu, rồi do, does, did hoặc be, rồi chủ ngữ: Where do you live?",
+      "explanation": "Tiếng Việt để từ để hỏi ngay chỗ của thông tin: \"Bạn sống ở đâu?\". Tiếng Anh đưa nó lên đầu câu và cần thêm trợ động từ: Where do you live? When does she start? Với be, đảo be lên trước chủ ngữ: Where is the station? What is your name? How much hỏi giá và danh từ không đếm được; how many đi với danh từ đếm được số nhiều: How much is it? How many children do you have?",
+      "examples": [
+        {
+          "en": "Where do you live?",
+          "vi": "Bạn sống ở đâu?",
+          "note": "where đứng đầu câu"
+        },
+        {
+          "en": "What time does it start?",
+          "vi": "Mấy giờ bắt đầu?"
+        },
+        {
+          "en": "Where is the station?",
+          "vi": "Nhà ga ở đâu?",
+          "note": "với be không có do"
+        },
+        {
+          "en": "How much is it?",
+          "vi": "Giá bao nhiêu?"
+        },
+        {
+          "en": "How many people are here?",
+          "vi": "Ở đây có bao nhiêu người?"
+        }
+      ],
+      "exceptions": [
+        "Khi who là chủ ngữ thì không có do: Who works here?"
+      ],
+      "memoryHint": "Từ để hỏi lên đầu, trợ động từ theo sau.",
+      "objectives": [
+        "en.obj.syntax.questions_word_order"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:adjectives-very-too": {
+      "id": "en:concept:adjectives-very-too",
+      "title": "Tính từ, very, too và so sánh hơn",
+      "shortRule": "Tính từ đứng trước danh từ và không đổi dạng. Very đi với tính từ; rất thích là like very much.",
+      "explanation": "Tính từ (adjective): tiếng Việt nói \"nhà to\"; tiếng Anh nói a big house. Tính từ không có số nhiều: big houses. Sau be, tính từ đứng một mình: The house is big. Very đi với tính từ: very big. Đừng nói \"I very like\": tiếng Anh nói I like it very much. Too mang ý quá mức, thường không tốt: too expensive. So sánh hơn: thêm -er với từ ngắn (cheaper), more với từ dài (more expensive), rồi than. Ở đây bạn chỉ cần nhận ra chúng.",
+      "examples": [
+        {
+          "en": "a big house",
+          "vi": "một ngôi nhà to",
+          "note": "tính từ trước danh từ"
+        },
+        {
+          "en": "The house is very big.",
+          "vi": "Ngôi nhà rất to."
+        },
+        {
+          "en": "I like it very much.",
+          "vi": "Tôi rất thích nó.",
+          "note": "không nói I very like"
+        },
+        {
+          "en": "It is too expensive.",
+          "vi": "Nó đắt quá."
+        },
+        {
+          "en": "This store is cheaper than that store.",
+          "vi": "Cửa hàng này rẻ hơn cửa hàng kia."
+        }
+      ],
+      "exceptions": [
+        "Một số từ đổi hẳn: good, better; bad, worse."
+      ],
+      "memoryHint": "Too không phải là lời khen.",
+      "objectives": [
+        "en.obj.adjectives.order_very"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:numbers-time-prices": {
+      "id": "en:concept:numbers-time-prices",
+      "title": "Số, giờ, ngày tháng và giá tiền",
+      "shortRule": "-teen nhấn ở cuối, -ty nhấn ở đầu. half past = rưỡi, quarter to = kém mười lăm. Người Mỹ viết tháng trước ngày.",
+      "explanation": "Nghe kỹ thirteen với thirty: thir-TEEN nhấn ở cuối, THIR-ty nhấn ở đầu. Giờ: eight o'clock (tám giờ), half past eight (tám giờ rưỡi), quarter past eight (tám giờ mười lăm), quarter to nine (chín giờ kém mười lăm). Người Mỹ thường nói thẳng số: eight thirty, eight fifteen. Tiếng Việt viết ngày trước tháng; người Mỹ thường viết tháng trước, nên 5/12 là ngày 12 tháng 5. Khi viết giá, dấu $ đứng trước số, nhưng khi đọc thì dollars đứng sau: $10 đọc là ten dollars. Thứ và tháng luôn viết hoa.",
+      "examples": [
+        {
+          "en": "It's half past eight.",
+          "vi": "Tám giờ rưỡi."
+        },
+        {
+          "en": "It's quarter to nine.",
+          "vi": "Chín giờ kém mười lăm."
+        },
+        {
+          "en": "The meeting is on May 12.",
+          "vi": "Cuộc họp vào ngày 12 tháng 5."
+        },
+        {
+          "en": "It costs ten dollars.",
+          "vi": "Giá mười đô la.",
+          "note": "viết là $10"
+        },
+        {
+          "en": "twenty-one",
+          "vi": "hai mươi mốt",
+          "note": "có dấu gạch nối"
+        }
+      ],
+      "exceptions": [
+        "Số điện thoại đọc từng chữ số; 0 có thể đọc là zero hoặc oh."
+      ],
+      "memoryHint": "Teen ở cuối, ty ở đầu: nhấn đúng chỗ là khác số.",
+      "objectives": [
+        "en.obj.numbers.0_100",
+        "en.obj.vocab.time_calendar"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:final-consonants": {
+      "id": "en:concept:final-consonants",
+      "title": "Phụ âm cuối và cụm phụ âm",
+      "shortRule": "Đọc rõ âm cuối từ: bag khác back. Cụm phụ âm đọc liền, không chen thêm nguyên âm: street.",
+      "explanation": "Tiếng Việt có âm cuối nhưng không bật hơi, và không có các âm cuối như s, z, sh, âm cuối của watch hay của bridge. Vì vậy người Việt hay bỏ đuôi: bus thành \"bớt\", watch mất đuôi. Tiếng Anh dùng âm cuối để phân biệt từ: bag và back, card và car. Cụm phụ âm là hai, ba phụ âm đứng liền: street, desk, asked. Đừng chen thêm nguyên âm (\"sơ-tơ-rít\") và đừng bỏ âm nào. Hãy tập đọc chậm, rồi nhanh dần.",
+      "examples": [
+        {
+          "en": "bag / back",
+          "vi": "cái túi / phía sau",
+          "note": "chỉ khác âm cuối"
+        },
+        {
+          "en": "card / car",
+          "vi": "cái thẻ / ô tô",
+          "note": "đọc rõ âm d"
+        },
+        {
+          "en": "I take the bus.",
+          "vi": "Tôi đi xe buýt.",
+          "note": "đọc rõ âm s cuối"
+        },
+        {
+          "en": "The street is long.",
+          "vi": "Con đường dài.",
+          "note": "ba phụ âm: s, t, r"
+        },
+        {
+          "en": "He asked me.",
+          "vi": "Anh ấy đã hỏi tôi.",
+          "note": "cuối từ có âm s, k, t liền nhau"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Không có âm cuối, người nghe sẽ đoán sai từ.",
+      "objectives": [
+        "en.obj.pronunciation.final_sounds"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:th-sounds": {
+      "id": "en:concept:th-sounds",
+      "title": "Âm th, và cặp sit, seat",
+      "shortRule": "Th: đặt lưỡi nhẹ giữa hai hàm răng. Think không rung cổ, this có rung cổ. Sit ngắn, seat dài.",
+      "explanation": "Tiếng Việt không có hai âm th này, nên người Việt hay thay bằng \"t\", \"d\" hay \"s\". Hãy đặt đầu lưỡi nhẹ giữa hai hàm răng rồi đẩy hơi ra. Think, three, thank không rung cổ. This, the, mother có rung cổ. Nguyên âm cũng cần chú ý: sit ngắn và lỏng, seat dài và căng hơn. Bad mở miệng rộng hơn bed. Chúng là những từ khác nhau, nên hãy nghe và nhắc lại theo cặp.",
+      "examples": [
+        {
+          "en": "think / this",
+          "vi": "nghĩ / cái này",
+          "note": "không rung cổ / có rung cổ"
+        },
+        {
+          "en": "three",
+          "vi": "số ba",
+          "note": "đừng đọc thành tree"
+        },
+        {
+          "en": "sit / seat",
+          "vi": "ngồi / chỗ ngồi",
+          "note": "ngắn / dài"
+        },
+        {
+          "en": "bad / bed",
+          "vi": "tệ / cái giường",
+          "note": "miệng rộng / miệng hẹp hơn"
+        }
+      ],
+      "exceptions": [
+        "Th trong Thomas và Thailand đọc là \"t\"."
+      ],
+      "memoryHint": "Lưỡi thò ra một chút là đúng chỗ.",
+      "objectives": [
+        "en.obj.pronunciation.final_sounds"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:s-ed-pronunciation": {
+      "id": "en:concept:s-ed-pronunciation",
+      "title": "Đọc -s và -ed: ba cách",
+      "shortRule": "-s: s, z, hoặc thêm một âm tiết sau các âm s, z, sh, ch, j. -ed: t, d, hoặc thêm một âm tiết sau t, d.",
+      "explanation": "Đuôi -s và -ed mang nghĩa (ngôi thứ ba, số nhiều, quá khứ), nên không được bỏ, dù tiếng Việt không có âm s, z cuối từ. -s đọc là s sau âm không rung (works, books), là z sau âm rung (lives, dogs), và thêm một âm tiết sau các âm s, z, sh, ch, j (washes, watches, boxes, changes). -ed đọc là t sau âm không rung (worked, stopped), là d sau âm rung (lived, called), và thêm một âm tiết chỉ sau t, d (wanted, needed). Đừng đọc worked thành hai âm tiết.",
+      "examples": [
+        {
+          "en": "She works.",
+          "vi": "Cô ấy làm việc.",
+          "note": "đuôi s"
+        },
+        {
+          "en": "He lives here.",
+          "vi": "Anh ấy sống ở đây.",
+          "note": "đuôi z"
+        },
+        {
+          "en": "She washes her hands.",
+          "vi": "Cô ấy rửa tay.",
+          "note": "thêm một âm tiết"
+        },
+        {
+          "en": "I worked.",
+          "vi": "Tôi đã làm việc.",
+          "note": "đuôi t, một âm tiết"
+        },
+        {
+          "en": "We lived in Hue.",
+          "vi": "Chúng tôi đã sống ở Huế.",
+          "note": "đuôi d"
+        },
+        {
+          "en": "I wanted it.",
+          "vi": "Tôi đã muốn nó.",
+          "note": "thêm một âm tiết"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Chỉ sau t, d thì -ed mới thành âm tiết riêng.",
+      "objectives": [
+        "en.obj.pronunciation.final_sounds",
+        "en.obj.verbs.present_simple_do"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:stress-weak-forms": {
+      "id": "en:concept:stress-weak-forms",
+      "title": "Trọng âm, dạng yếu và ngữ điệu",
+      "shortRule": "Mỗi từ có một âm tiết được nhấn. Từ nhỏ như to, of, can đọc yếu. Câu hỏi yes/no thường lên giọng.",
+      "explanation": "Tiếng Việt mỗi tiếng có thanh điệu riêng và đọc đều nhau; tiếng Anh không có thanh, mà có trọng âm (stress): nhấn một âm tiết rồi đọc lướt các âm còn lại: WA-ter, ho-TEL, com-PU-ter. Nhấn sai có thể khiến người nghe không hiểu. Trong câu, từ nội dung được nhấn, còn từ nhỏ đọc yếu: to, of, a, can, and có nguyên âm rất ngắn. Câu hỏi yes/no thường lên giọng ở cuối (Are you ready?), câu hỏi có từ để hỏi thường xuống giọng (Where do you live?). Đừng đọc từng tiếng rời nhau như tiếng Việt.",
+      "examples": [
+        {
+          "en": "water",
+          "vi": "nước",
+          "note": "nhấn âm đầu"
+        },
+        {
+          "en": "hotel",
+          "vi": "khách sạn",
+          "note": "nhấn âm sau"
+        },
+        {
+          "en": "I can swim.",
+          "vi": "Tôi biết bơi.",
+          "note": "can đọc yếu, swim đọc mạnh"
+        },
+        {
+          "en": "I go to work.",
+          "vi": "Tôi đi làm.",
+          "note": "to đọc rất nhẹ"
+        },
+        {
+          "en": "Are you ready?",
+          "vi": "Bạn sẵn sàng chưa?",
+          "note": "lên giọng ở cuối"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Nhấn một âm, lướt các âm còn lại.",
+      "objectives": [
+        "en.obj.pronunciation.final_sounds"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:politeness": {
+      "id": "en:concept:politeness",
+      "title": "Lịch sự: please, could you, sorry, excuse me",
+      "shortRule": "Tiếng Anh lịch sự bằng please, could you, would like. Excuse me trước khi làm phiền, sorry sau đó.",
+      "explanation": "Tiếng Việt thể hiện lịch sự bằng xưng hô và từ \"ạ\". Tiếng Anh chỉ có you, nên sự lịch sự nằm ở cách nói: thêm please, dùng Could you…? thay cho câu mệnh lệnh, và nói thank you sau mỗi việc nhỏ. Help me nghe như ra lệnh; Could you help me, please? thì lịch sự. Excuse me dùng trước khi hỏi hoặc xin đi qua. Sorry dùng sau khi đã làm phiền. Ở chỗ làm, hãy gọi người khác đúng cách họ giới thiệu.",
+      "examples": [
+        {
+          "en": "Could you help me, please?",
+          "vi": "Bạn giúp tôi được không?"
+        },
+        {
+          "en": "Excuse me, where is the bank?",
+          "vi": "Xin lỗi, ngân hàng ở đâu?",
+          "note": "trước khi hỏi"
+        },
+        {
+          "en": "Sorry, I'm late.",
+          "vi": "Xin lỗi, tôi đến muộn.",
+          "note": "sau khi đã làm phiền"
+        },
+        {
+          "en": "Thank you very much.",
+          "vi": "Cảm ơn bạn rất nhiều."
+        },
+        {
+          "en": "Good morning, Mr. Smith.",
+          "vi": "Chào ông Smith.",
+          "note": "Mr. + họ"
+        }
+      ],
+      "exceptions": [
+        "Mr., Mrs., Ms. đi với họ, không đi với tên: Mr. Smith, không nói Mr. Tom. Khác với \"ông Nam\" trong tiếng Việt."
+      ],
+      "memoryHint": "Câu nhờ nào cũng thêm được please.",
+      "objectives": [
+        "en.obj.speaking.formulaic",
+        "en.obj.greetings.basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    },
+    "en:concept:spelling-sound": {
+      "id": "en:concept:spelling-sound",
+      "title": "Chính tả không theo âm: -tion, -ough",
+      "shortRule": "Chữ viết tiếng Anh không đọc theo một quy tắc. Đuôi -tion đọc giống nhau, nhóm -ough thì nhiều cách.",
+      "explanation": "Chữ quốc ngữ gần như viết sao đọc vậy, còn tiếng Anh thì không. Hãy học những nhóm hay gặp. Đuôi -tion thường đọc gần giống \"sần\" nhẹ: station, information. Nhóm -ough có nhiều cách đọc: enough kết thúc bằng âm f, though kết thúc bằng nguyên âm, through nghe như \"thru\". Nhiều chữ không đọc: k trong know, w trong write, h trong hour, gh trong daughter. Vì vậy, mỗi khi học từ mới, hãy nghe âm và nhìn chữ cùng lúc.",
+      "examples": [
+        {
+          "en": "station",
+          "vi": "nhà ga",
+          "note": "đuôi -tion"
+        },
+        {
+          "en": "information",
+          "vi": "thông tin",
+          "note": "đuôi -tion"
+        },
+        {
+          "en": "enough",
+          "vi": "đủ",
+          "note": "kết thúc bằng âm f"
+        },
+        {
+          "en": "I know the answer.",
+          "vi": "Tôi biết câu trả lời.",
+          "note": "k không đọc"
+        },
+        {
+          "en": "My daughter is here.",
+          "vi": "Con gái tôi ở đây.",
+          "note": "gh không đọc"
+        }
+      ],
+      "exceptions": [
+        "Tiếng Anh Mỹ và Anh viết khác nhau một số từ: color, colour. Khoá học dùng cách viết Mỹ."
+      ],
+      "memoryHint": "Từ mới: nghe trước, rồi mới nhìn chữ.",
+      "objectives": [
+        "en.obj.writing.familiar_words",
+        "en.obj.pronunciation.final_sounds"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-english-course"
+        }
+      ]
+    }
+  }
+}

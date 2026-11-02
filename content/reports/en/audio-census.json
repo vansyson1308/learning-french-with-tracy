@@ -1,0 +1,26 @@
+{
+  "generator": "scripts/audio.ts apply",
+  "language": "en",
+  "pipelineVersion": 3,
+  "layers": [
+    "pack",
+    "lexicon",
+    "reception"
+  ],
+  "courses": [
+    {
+      "courseId": "en-vi",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "kokoro-am_michael",
+        "B": "kokoro-af_heart"
+      },
+      "clips": 1526
+    }
+  ],
+  "receptionClips": 613,
+  "files": {
+    "pack": 1057,
+    "reception": 600
+  }
+}

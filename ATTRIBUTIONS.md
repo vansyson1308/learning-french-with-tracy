@@ -28,6 +28,17 @@ English CEFR level anchors from The CEFR-J Wordlist Version 1.5, compiled by Yuk
 
 > P3a English anchor. Build-time only: level labels in content/en/lexicon/derived/anchors.json drive selection; no CEFR-J text ships in the app.
 
+## circle-flags (HatScripts)
+
+- **License:** MIT
+- **Source:** https://github.com/HatScripts/circle-flags/tree/379588b5da95482d6bbf10bd45644a35b0609ea6
+- **What:** artwork: round country flag icons
+- **Retrieved:** 2026-11-02
+
+Round country flags from circle-flags by HatScripts, used under the MIT License.
+
+> All course flags in assets/images/flags/ come from this set (flags/<code>.svg); xx.svg is the test language's. us.svg was retrieved at the pinned commit; the other flags were added in earlier milestones without a recorded commit.
+
 ## FrequencyWords (hermitdave) — OpenSubtitles 2018 word frequencies
 
 - **License:** CC-BY-SA-4.0
@@ -247,6 +258,17 @@ English rank anchors from the New General Service List 1.2 (Browne, Culligan & P
 JLPT level anchors from OpenJLPT 0.1.0 (CC BY-SA 4.0; levels from Jonathan Waller's JLPT resources, CC BY; readings/glosses via JMdict, EDRDG, CC BY-SA 4.0; examples via Tatoeba, CC BY 2.0 FR).
 
 > P3a Japanese anchor (N5/N4 first). The JLPT publishes no official lists; these groupings are community-standard approximations (OpenJLPT NOTICE.md).
+
+## Learning French with Tracy — authored en-vi course (English for Vietnamese speakers)
+
+- **License:** MIT
+- **Source:** https://github.com/vansyson1308/learning-french-with-tracy
+- **What:** authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items) and General American IPA transcriptions authored for the English lexicon
+- **Retrieved:** 2026-10-31
+
+English course content for Vietnamese speakers and project-authored IPA transcriptions by the Learning French with Tracy project.
+
+> P4f: clean-room authored; Vietnamese learner-facing text pending native review. In content/en/lexicon/lexemes.json a pronunciation with this source is a transcription written by the project because the Kaikki value in the candidate pool is missing or not General American; it was not checked against a dictionary. The hand-chosen lexicon itself is recorded under original-lexicon-etl. Ships under the repository's MIT grant like the other course packs.
 
 ## Learning French with Tracy — authored French lexicon
 
