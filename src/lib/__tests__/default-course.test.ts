@@ -9,6 +9,7 @@ import { catalog, orderedCoursesFor } from "../content";
 import { courseProfile, defaultCourseForUi } from "../course-profile";
 import { LEGACY_FLAT_COURSE_ID, migrateProgress } from "../persistence/migrations";
 import { DEFAULT_COURSE } from "../store";
+import enClaim from "../../content/assessment/en-claim.json";
 
 describe("default course", () => {
   test("onboarding/default course is fr-en and exists in the catalog", () => {
@@ -20,7 +21,9 @@ describe("default course", () => {
   });
 
   test("P3e §7: a Vietnamese UI preselects the first -vi course, an English UI fr-en", () => {
-    expect(defaultCourseForUi("vi")).toBe("fr-vi");
+    // P4f: en-vi becomes the Vietnamese suggestion only once English passes the A1 claim gate.
+    const enA1 = enClaim.levels.some((l) => l.level === "A1" && l.courseClaimable === true);
+    expect(defaultCourseForUi("vi")).toBe(enA1 ? "en-vi" : "fr-vi");
     expect(defaultCourseForUi("en")).toBe("fr-en");
     for (const lang of ["vi", "en"]) {
       const id = defaultCourseForUi(lang);
