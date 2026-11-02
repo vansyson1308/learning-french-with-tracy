@@ -2,13 +2,18 @@
 
 v1.0 vẫn là **A1 cho cả 9 khoá** cộng các tính năng P5. Tài liệu này chỉ là kế hoạch, xây sau v1.0, để việc làm hôm nay không chặn đường lên A2 → B1 → B2.
 
+**D-15 (QC 2026-11-03):** thang đầy đủ A1 → C2, các bản phát hành, số từ mục tiêu và cách phân phối gói theo cấp nằm ở `plan/10-LADDER-A1-C2.md`. Chỗ nào khác nhau thì theo tài liệu đó; tài liệu này giữ chi tiết A2–B2 và kết quả rà soát engine.
+
 ## 1. Thứ tự
+
+Theo D-15, mỗi cấp mới đi theo thứ tự **en, ja, ko, zh, de, fr**, rồi **es, it, pt** (trước đây de đứng trước zh và fr cùng nhóm với zh).
 
 1. **en** (A2–B2, VSTEP): nhu cầu lớn nhất ở thị trường Việt Nam.
 2. **ja** (JLPT N4–N3), **ko** (TOPIK I lên TOPIK II 3–4): du học và làm việc.
-3. **de** (A2–B1 Goethe): làm việc, Ausbildung, điều dưỡng.
-4. **zh** (HSK 3–4), **fr** (A2–B1 DELF).
-5. **es, it, pt** (A2–B1).
+3. **zh** (HSK 3–4): thương mại, du học.
+4. **de** (A2–B1 Goethe): làm việc, Ausbildung, điều dưỡng.
+5. **fr** (A2–B1 DELF): du học.
+6. **es, it, pt** (A2–B1).
 
 Tiếng Hàn phụ thuộc giọng: `ko` hiện không có giọng sạch (D-11). Phải có quyết định về giọng trước P4e, và quyết định đó cũng áp dụng cho các cấp sau.
 
@@ -87,4 +92,10 @@ Chưa đọc kỹ: `backup-core.ts`, `store.ts`, giới hạn của bài tập v
 
 ## 5. Âm thanh
 
-Ngân sách A1 đã gần chạm trần: tiếng Ý 10,3 MB trên trần 12 MB mỗi ngôn ngữ. A2 trở lên cần gói theo cấp hoặc giọng của thiết bị; xem `release/ASSET_DELIVERY.md`. Quyết định khi bắt đầu A2, không phải bây giờ.
+Ngân sách A1 đã gần chạm trần: tiếng Ý 10,3 MB trên trần 12 MB mỗi ngôn ngữ.
+
+**Đã quyết (D-15):** từ v1.1, nội dung và audio A2 trở lên đi theo gói tải tuỳ chọn cho từng ngôn ngữ và cấp, qua Play Asset Delivery (on-demand), có màn hình đồng ý và cập nhật chính sách riêng tư; chưa có gói thì dùng giọng của thiết bị. v1.0 không tải gì. Chi tiết ở `plan/10-LADDER-A1-C2.md` §5 và `release/ASSET_DELIVERY.md`.
+
+## 6. Quy mô
+
+Test quy mô tổng hợp (12.000 từ, 300 unit) và kết quả: `plan/10-LADDER-A1-C2.md` §7–8.

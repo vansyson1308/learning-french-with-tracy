@@ -5,7 +5,7 @@
  * tier. Same compiled source, same search contract as native.
  */
 
-import { foldForSearch, rankMatches, searchTokens } from "../learning/lexicon-search";
+import { foldForSearch, foldSearchable, rankMatches, searchTokens, type FoldedSearchable } from "../learning/lexicon-search";
 import type {
   LexemeDetail,
   LexemeExample,
@@ -70,10 +70,24 @@ function toDetail(e: Entry): LexemeDetail {
 export class GeneratedLexiconRepository implements LexiconRepository {
   private readonly entries: Entry[];
   private readonly byId: Map<string, Entry>;
+  /** Folded search words per entry (by ord), built on the first search — never at startup. */
+  private folded: FoldedSearchable[] | null = null;
+  /** Alphabetical sort keys per entry (by ord), built on the first alphabetical list. */
+  private sortKeys: string[] | null = null;
 
   constructor(data: GeneratedLexiconData) {
     this.entries = data.entries.map((e, ord) => ({ ...e, ord }));
     this.byId = new Map(this.entries.map((e) => [e.id, e]));
+  }
+
+  private foldedEntries(): FoldedSearchable[] {
+    if (this.folded === null) this.folded = this.entries.map(foldSearchable);
+    return this.folded;
+  }
+
+  private alphaKeys(): string[] {
+    if (this.sortKeys === null) this.sortKeys = this.entries.map((e) => foldForSearch(e.lookupForm));
+    return this.sortKeys;
   }
 
   async getById(id: string): Promise<LexemeDetail | null> {
@@ -84,7 +98,8 @@ export class GeneratedLexiconRepository implements LexiconRepository {
   async search(query: string): Promise<LexemeSummary[]> {
     const tokens = searchTokens(query);
     if (tokens.length === 0) return [];
-    return rankMatches(this.entries, tokens).map(toSummary);
+    const folded = this.foldedEntries();
+    return rankMatches(this.entries, tokens, (e) => folded[e.ord]).map(toSummary);
   }
 
   async list(options?: ListOptions): Promise<LexemeSummary[]> {
@@ -94,9 +109,11 @@ export class GeneratedLexiconRepository implements LexiconRepository {
     if (sort === "alpha") {
       // Same deterministic key the database precomputes (sort_key): the
       // accent/ligature-folded lookup form. No locale/ICU variance.
+      // Keys folded once per entry, not twice per comparison (D-15 §7).
+      const keys = this.alphaKeys();
       rows.sort((a, b) => {
-        const ka = foldForSearch(a.lookupForm);
-        const kb = foldForSearch(b.lookupForm);
+        const ka = keys[a.ord];
+        const kb = keys[b.ord];
         return ka < kb ? -1 : ka > kb ? 1 : a.ord - b.ord;
       });
     } else if (sort === "frequency") {

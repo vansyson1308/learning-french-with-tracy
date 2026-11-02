@@ -2,6 +2,12 @@
 
 Each entry: the failing run, the passing re-run on the **same** commit, what failed, and what was changed so the next one costs less. A failure is only recorded here after a re-run on the same commit was green; a second red on the same commit is a bug, not a flake.
 
+## 2026-11-02 — Device acceptance on `main` 4a8d1e8 (after PR #60)
+
+- **Failed:** run [41525391190](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/41525391190) attempt 1: API 34 **core** and API 30 **backup-upgrade**, before any test ran. `sdkmanager` reported "Error reading Zip content from a SeekableByteChannel" while installing a package from Google's repository (the API 34 system image; the emulator package on API 30), then the emulator never started. PR #60 changed only a CI workflow, a script and the owner checklist.
+- **Passed:** attempt 2 of the same run (failed jobs re-run on the same commit), all 6 shards green.
+- **Changed:** nothing; a corrupt download inside the emulator action is outside the suite. If it recurs, cache the SDK packages or add a retry around the action.
+
 ## 2026-10-31 — Device acceptance on `main` cc6c93f (after PR #57)
 
 - **Failed:** run [41156642768](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/41156642768), 2026-10-31 01:42 UTC: API 34 **core** and API 34 **lessons**; the four API 30 / backup-upgrade shards were green.
