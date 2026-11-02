@@ -30,17 +30,20 @@ echo "fake maestro call $n: $*"
 if [ -z "${HANG_ONCE:-}" ] || [ "$n" = 1 ]; then exec sleep 3600; fi
 exit 0
 EOF
-chmod +x "$WORK/bin/adb" "$WORK/bin/fake-maestro"
+# pkill stub: the real one would kill the Maestro of whoever runs the tests.
+printf '#!/usr/bin/env bash\nexit 1\n' > "$WORK/bin/pkill"
+chmod +x "$WORK/bin/adb" "$WORK/bin/fake-maestro" "$WORK/bin/pkill"
 
 export PATH="$WORK/bin:$PATH" HOME="$WORK/home" WORK
+PKG=org.example.app
 export FLOW_TIMEOUT=2 FLOW_KILL_AFTER=2s
 MAESTRO="$WORK/bin/fake-maestro"
 fails=0
 check() { if eval "$2"; then echo "ok    $1"; else echo "FAIL  $1"; fails=1; fi; }
 
 setup_case() {
-  OUT="$WORK/out-$1"; REPORT="$OUT/REPORT.md"; FAILED=0; RUNS=0
-  rm -f "$WORK/calls"
+  OUT="$WORK/out-$1"; REPORT="$OUT/REPORT.md"; FAILED=0; RUNS=0; FIRST_FAILURE=""
+  rm -f "$WORK/calls" "$WORK/adb-calls"
   mkdir -p "$OUT/flows" "$OUT/logs" "$OUT/shots" "$OUT/maestro"
   : > "$REPORT"; : > "$OUT/flows/hang.yaml"
 }
@@ -61,6 +64,10 @@ check "hang diagnostics folder" '[ -s "$OUT/logs/lesson_de-en.hang/adb-devices.t
 check "retry diagnostics folder" '[ -d "$OUT/logs/lesson_de-en.retry.hang" ]'
 check "maestro pinned to the device" 'grep -q -- "--device emulator-5554 test" "$OUT/logs/lesson_de-en.log"'
 check "a hang uninstalls the Maestro driver apps before the retry" 'grep -q "^uninstall dev.mobile.maestro.test$" "$WORK/adb-calls" && grep -q "^uninstall dev.mobile.maestro$" "$WORK/adb-calls"'
+check "the app restarts before the retry and after the FAIL" '[ "$(grep -c "^shell am force-stop org.example.app$" "$WORK/adb-calls")" = 2 ] && [ "$(grep -c "^shell am start -W -n org.example.app/.MainActivity$" "$WORK/adb-calls")" = 2 ]'
+check "the first failure is kept apart" '[ "$FIRST_FAILURE" = "lesson de-en: timeout after 2s (diagnostics: logs/lesson_de-en.hang/)" ]'
+flow "today" hang.yaml > /dev/null
+check "a later failure does not replace it" 'case "$FIRST_FAILURE" in "lesson de-en:"*) true ;; *) false ;; esac'
 
 # 2. Hangs once → the retry passes, and the row keeps the first failure.
 setup_case once
@@ -70,6 +77,7 @@ unset HANG_ONCE
 check "retry after a hang passes" '[ "$rc" = 0 ] && [ "$FAILED" = 0 ]'
 check "the row names the timeout" 'grep -q "| PASS | .*passed on retry; first failure: timeout after 2s" "$REPORT"'
 check "diagnostics kept for the first hang" '[ -d "$OUT/logs/lesson_de-en.hang" ]'
+check "a pass on retry restarts the app once and is no first failure" '[ "$(grep -c "^shell am force-stop org.example.app$" "$WORK/adb-calls")" = 1 ] && [ -z "$FIRST_FAILURE" ]'
 
 echo "elapsed for the double hang: ${elapsed}s"
 [ "$fails" = 0 ] && echo "FLOW TIMEOUT TESTS PASSED" || echo "FLOW TIMEOUT TESTS FAILED"

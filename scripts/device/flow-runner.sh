@@ -16,6 +16,7 @@ FLOW_TIMEOUT=${FLOW_TIMEOUT:-600}
 FLOW_KILL_AFTER=${FLOW_KILL_AFTER:-30s}
 FAILED=${FAILED:-0}
 RUNS=${RUNS:-0}
+FIRST_FAILURE=${FIRST_FAILURE:-}
 
 # Report names hold ':' and spaces; artifact paths may not (upload-artifact).
 slug() { printf '%s' "$1" | tr -c 'A-Za-z0-9._-' '_'; }
@@ -91,6 +92,17 @@ reset_driver() {
   if command -v pkill > /dev/null; then pkill -f maestro-cli || true; fi
 }
 
+# A failed flow can leave the app on any screen, and every later flow of the
+# shard then fails on it (run 41156642768, API 34: one story scroll timed out,
+# the four flows after it failed). The app is stopped and started again on its
+# home route before the retry and after a FAIL, so a failure stays one row.
+restart_app() {
+  [ -n "${PKG:-}" ] || return 0
+  adb_t shell am force-stop "$PKG" > /dev/null 2>&1
+  adb_t shell am start -W -n "${ACTIVITY:-$PKG/.MainActivity}" > /dev/null 2>&1
+  return 0
+}
+
 failure_reason() { # log rc hang-dir
   if timed_out "$2"; then
     echo "timeout after ${FLOW_TIMEOUT}s (diagnostics: logs/$(basename "$3")/)"
@@ -114,6 +126,7 @@ flow() { # name file [extra maestro args]
   fi
   if timed_out "$rc"; then hung=1; hang_diagnostics "$log.hang"; reset_driver; fi
   first=$(failure_reason "$log.log" "$rc" "$log.hang" | cut -c1-120)
+  restart_app
   rc=0
   run_flow "$log.retry.log" "$file" "$@" || rc=$?
   if [ "$rc" = 0 ]; then
@@ -121,6 +134,8 @@ flow() { # name file [extra maestro args]
   else
     if timed_out "$rc"; then hung=1; hang_diagnostics "$log.retry.hang"; reset_driver; fi
     record "$name" FAIL "$(failure_reason "$log.retry.log" "$rc" "$log.retry.hang") (logs/$(slug "$name").retry.log)"
+    [ -n "$FIRST_FAILURE" ] || FIRST_FAILURE="$name: $first"
+    restart_app
   fi
   # After a hang the next flow gets a fresh driver; otherwise it is reused
   # (restarting it on every flow costs minutes on API 34).
