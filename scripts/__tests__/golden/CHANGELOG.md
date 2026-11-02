@@ -1168,3 +1168,8 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/audio/pt-en.ts
 - compile: new      content/reports/pt/audio-census.json
 - compile: new      content/reports/pt/audio-quality.json
+
+## 2026-11-02 — D-11 voice lineage
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json

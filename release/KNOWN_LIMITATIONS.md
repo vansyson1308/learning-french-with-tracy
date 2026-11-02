@@ -299,3 +299,8 @@ itself.
   the active course, as before.
 - Web tier: the lexicon SQLite is replaced by a generated fallback; speech
   recognition is unavailable and the app says so.
+
+## Voices after D-11 (2026-11-02)
+- French and German audio comes from voices whose whole lineage passes the licence allowlist (`release/AUDIO_PROVENANCE_FINAL.md`). German and the French second voice use Parler-TTS, whose speech some listeners find less natural than the Piper voices it replaced; the clips passed the technical QA and the ASR audit, but nobody has listened to them on a phone yet.
+- Korean and Chinese have no bundled audio: MeloTTS declares no training data. `ko-en` and `zh-en` use the device voice. Korean has no clean voice in the pipeline today.
+

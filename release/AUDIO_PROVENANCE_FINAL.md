@@ -157,7 +157,36 @@ A language whose every candidate fails the gate or the 0.6 intelligibility
 floor is recorded as `no-clean-voice` in `voice-casts.json` and its courses
 keep `audio.policy = device-tts` — never a guessed voice.
 
-## Open: finetuning lineage of Piper voices (2026-10-31)
+## D-11: voice lineage (QC 2026-10-31), closed 2026-11-02
+
+The licence gate now reads a voice's whole lineage, back to the first checkpoint (`scripts/lib/voice-lineage.ts`): every link must be on the allowlist and an unknown link fails. A Piper voice passes only when its card says it was trained from scratch; Kokoro and Parler declare their lineage in `content/audio/engines.json`, with the author's statement quoted. The registry check (`lineageErrors` in `validateRegistry`) runs on every validation.
+
+**Replaced:** `fr_FR-siwis-medium` and `fr_FR-upmc-medium` (French, finetuned from `lessac`), `de_DE-thorsten-high` (from `lessac`) and `de_DE-kerstin-low` (from `ryan`, CC BY-NC-SA). `pt-en` audio, last rendered with `pt_BR-faber-medium` (from `lessac`), is regenerated with its selected Kokoro cast. MeloTTS declares no training data, so `zh-en` and `ko-en` use the device voice; Korean has no clean voice in the pipeline today. `vi_VN-vais1000-medium` (from `lessac`) is not used; no Vietnamese audio ships.
+
+**Candidates and selection** (canary, ASR WER/CER, floor 0.6):
+
+| Language | Candidates | Selected |
+|---|---|---|
+| French | `kokoro-ff_siwis` 0.1575 (A); 8 Multilingual LibriSpeech Piper speakers 2.19–3.24; Parler Daniel 0.348, Christine 0.692 | A `kokoro-ff_siwis`, B `parler-fr-daniel` |
+| German | 8 Multilingual LibriSpeech Piper speakers 1.39–2.01; Parler Nicole 0.194, Christopher 0.286, Michelle 0.296 | A `parler-de-nicole`, B `parler-de-christopher` |
+
+Parler-TTS Mini Multilingual v1.1 is Apache-2.0, trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0), with a Flan-T5 text encoder (Apache-2.0) and the DAC codec (MIT). On the runner's CPU it renders at about 4–9 times real time, so its runs are long; `audio.yml` can reuse an earlier run's clips (`reuse_run`).
+
+**Generate runs:** French 41333693701 (556 clips, 0 technical failures, 15 for review; kokoro-ff_siwis reception 231 clips, mean WER 0.0776; parler-fr-daniel#Daniel reception 153 clips, mean WER 0.0856; mixed reception 8 clips, mean WER 0.141; kokoro-ff_siwis pack 164 clips, mean WER 0.1286). German 41397563989 (1820 clips, 0 technical failures, 31 for review; parler-de-christopher#Christopher reception 103 clips, mean WER 0.0459; parler-de-nicole#Nicole reception 552 clips, mean WER 0.0727; mixed reception 22 clips, mean WER 0.0781; parler-de-nicole#Nicole pack 95 clips, mean WER 0.136; parler-de-nicole#Nicole lexicon 1048 clips, mean WER 0.2519).
+
+| Asset folder | Before (`010d51a`) | After |
+|---|---|---|
+| `assets/audio/fr` | 164 files, 1.33 MB | 164 files, 0.64 MB |
+| `assets/audio/fr-reception` | 381 files, 6.79 MB | 381 files, 2.84 MB |
+| `assets/audio/de` | 991 files, 3.67 MB | 991 files, 4.01 MB |
+| `assets/audio/de-reception` | 649 files, 4.75 MB | 649 files, 5.55 MB |
+| `assets/audio/pt` | 96 files, 0.73 MB | 96 files, 0.54 MB |
+
+Portuguese pack run 41415900815 (Kokoro cast; 96 clips, 0 technical failures, 2 for review). Its first attempt, 41413385790, hung for 7 hours in the bot-commit gate on `device-emulator-health.test.ts` and was cancelled; that test now runs under a process-group timeout and stubs `pkill`.
+
+French left its frozen pipeline version 1 (64 kbps, no loudness normalisation) for the current one, so two engines mix evenly; most of the size drop comes from that. The owner authorised this one change to French audio (D-11 §3); French text is unchanged.
+
+## Superseded by D-11: finetuning lineage of Piper voices (2026-10-31)
 
 The licence gate reads a voice's dataset licence. The model cards also state a finetuning base, which the gate does not read:
 
