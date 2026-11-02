@@ -136,6 +136,8 @@ CLIPS += [
  C("cp3_dlg_doctor", "dialogue", [("B", "What's wrong?"), ("A", "I have a headache.")], [DLG], 1),
  C("cp3_dict_night", "message", A("I work at night."), [FW], 1),
  C("cp3_dict_bus", "message", B("The bus leaves at nine."), [FW], 1),
+ # An announcement dictation: the second task family of spoken reception at A1 (claim gate breadth, like fr "voie quatre").
+ C("cp3_dict_busno", "announcement", A("Bus number seven."), [ANN, NUM], 1),
  # Capstone: 4 listening items across two forms. Placement: 3.
  C("a1cap_bank", "factual", A("The bank opens at nine o'clock."), [INFO, NUM], 2),
  C("a1cap_bus", "announcement", B("Bus number twelve stops near the hospital."), [ANN, INFO, NUM], 2),

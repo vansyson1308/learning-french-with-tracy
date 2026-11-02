@@ -1697,6 +1697,34 @@
       }
     },
     {
+      "id": "en.clip.cp3_dict_busno",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "Bus number seven."
+        }
+      ],
+      "objectiveRefs": [
+        "en.obj.listening.announcements",
+        "en.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "en:w:bus",
+        "en:w:number",
+        "en:w:seven"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
       "id": "en.clip.a1cap_bank",
       "kind": "factual",
       "segments": [

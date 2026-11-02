@@ -105,6 +105,20 @@ Cách ghi của các giá trị kaikki chưa đồng nhất: xem mục 1 ở "Ch
 7. **en.story.yuki_and_the_menu#14:** *hot* đã dịch là "Cay thật" thay vì "Nóng thật", vì cả
    truyện nói về độ cay. Tiếng Anh giữ nguyên nên vẫn hiểu được cả hai nghĩa.
 
+## Bổ sung sau đợt duyệt (2026-11-03)
+
+Gate claim A1 cho thấy tiếng Anh thiếu dạng bài thứ hai ở hai kỹ năng tiếp nhận: nghe chỉ có
+nghe hiểu, đọc chỉ có đọc hiểu. Tiếng Pháp có đủ nhờ ba câu tương ứng. Đã thêm ba câu vào bài
+kiểm tra Phần 3, theo đúng mẫu tiếng Pháp; vị trí đáp án của mọi câu cũ giữ nguyên.
+
+- `en.cpi.s3.ann_busno`: nghe chép thông báo "Bus number seven." (clip `en.clip.cp3_dict_busno`).
+- `en.cpi.s3.msg_closed`: đọc tin ngắn "The store is closed today."
+- `en.cpi.s3.note_exit`: đọc biển "Exit".
+
+Một người duyệt mới (bản ngữ Anh Mỹ và Việt) đã xem ba câu: không có lỗi P0/P1. Ba góp ý P2 đã
+sửa: "shop" thành "store" cho đúng tiếng Anh Mỹ; nhận thêm "Bus #7", "Bus # 7", "Bus No.7";
+bỏ hai dạng chép trùng nhau.
+
 ## Chấp nhận
 
 Profile `en-vi` chỉ được ghi `review: { kind: "ai-simulated", … }` sau khi anh đánh ☑

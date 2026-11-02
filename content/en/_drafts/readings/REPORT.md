@@ -1,6 +1,6 @@
 # readings — ingest report (en-vi)
 
-Records: 55 · schema-valid: 55 · failed: 0 · validator errors after merge: 280
+Records: 55 · schema-valid: 55 · failed: 0 · validator errors after merge: 281
 
 ## Records
 
@@ -116,6 +116,7 @@ Records: 55 · schema-valid: 55 · failed: 0 · validator errors after merge: 28
 - reception: en.clip.cp3_dlg_doctor: generated asset 68f37c7f612267c9310a.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.cp3_dict_night: generated asset 55e90186d547791257c6.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.cp3_dict_bus: generated asset f2dbfe5c7199516ebdb4.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: en.clip.cp3_dict_busno: generated asset 9184a20d52732900fbbd.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.a1cap_bank: generated asset c347a71a4111fb6167a5.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.a1cap_bus: generated asset f90e2c69575cfaff8007.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: en.clip.a1cap_pharmacy: generated asset b8d1ac52049132a227db.mp3 missing — run the reception-audio generate workflow (P7 §26)

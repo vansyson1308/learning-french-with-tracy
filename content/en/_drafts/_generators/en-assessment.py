@@ -34,6 +34,16 @@ def place(correct, wrong):
     return o, p
 
 
+def fixed(p, make):
+    """An item added after review: its correct option sits at p, and the rotation of every other item is left as it was."""
+    saved = _pos[0]
+    _pos[0] = p
+    try:
+        return make()
+    finally:
+        _pos[0] = saved
+
+
 def sel(prompt, correct, wrong, mode, audio=False):
     check(prompt, prompt if mode == "targetToNative" else correct)
     o, p = place(correct, wrong)
@@ -188,6 +198,10 @@ RM, RN, RT = O("reading.short_messages"), O("reading.notices_info"), O("reading.
 s3 = items("s3", [
  ("fam_night", (dict_("cp3_dict_night", "I work at night.", "I work at night"), LF)),
  ("fam_bus", (dict_("cp3_dict_bus", "The bus leaves at nine.", "The bus leaves at nine", "The bus leaves at 9."), LF)),
+ # Second task families at A1 for both reception domains (the claim gate needs two per domain; fr has the same three).
+ ("ann_busno", (dict_("cp3_dict_busno", "Bus number seven.", "Bus number 7.", "Bus No. 7", "Bus No.7", "Bus #7", "Bus # 7"), LA)),
+ ("msg_closed", (fixed(1, lambda: sel("The store is closed today.", "Hôm nay cửa hàng đóng cửa.", ["Hôm nay cửa hàng mở cửa.", "Ngày mai cửa hàng mở cửa.", "Cửa hàng ở cạnh nhà ga."], "targetToNative")), RM)),
+ ("note_exit", (fixed(3, lambda: sel("Exit", "Lối ra", ["Lối vào", "Quầy vé", "Nhà vệ sinh"], "targetToNative")), RN)),
  ("info_shirt", (lc("cp3_shirt_price", "Chiếc áo giá bao nhiêu?", "Ba mươi đô la", ["Mười ba đô la", "Ba đô la", "Ba trăm đô la"]), LI)),
  ("info_class", (lc("cp3_class", "Lớp tiếng Anh bắt đầu lúc mấy giờ?", "Lúc bảy giờ", ["Lúc sáu giờ", "Lúc mười một giờ", "Lúc bảy giờ rưỡi"]), LI)),
  ("info_party", (lc("cp3_party", "Bữa tiệc vào khi nào?", "Tối thứ Bảy", ["Sáng thứ Bảy", "Tối thứ Sáu", "Tối Chủ nhật"]), LI)),

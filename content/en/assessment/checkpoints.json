@@ -819,6 +819,85 @@
           "essential": true
         },
         {
+          "id": "en.cpi.s3.ann_busno",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "dictation",
+            "id": "en-cpx-s3-ann_busno",
+            "clipId": "en.clip.cp3_dict_busno",
+            "answer": "Bus number seven.",
+            "alternatives": [
+              "Bus number 7.",
+              "Bus No. 7",
+              "Bus No.7",
+              "Bus #7",
+              "Bus # 7"
+            ]
+          },
+          "objectiveTargets": [
+            "en.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "en.cpi.s3.msg_closed",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "en-cpx-s3-msg_closed",
+            "mode": "targetToNative",
+            "prompt": "The store is closed today.",
+            "options": [
+              {
+                "text": "Hôm nay cửa hàng mở cửa."
+              },
+              {
+                "text": "Hôm nay cửa hàng đóng cửa."
+              },
+              {
+                "text": "Ngày mai cửa hàng mở cửa."
+              },
+              {
+                "text": "Cửa hàng ở cạnh nhà ga."
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "en.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "en.cpi.s3.note_exit",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "en-cpx-s3-note_exit",
+            "mode": "targetToNative",
+            "prompt": "Exit",
+            "options": [
+              {
+                "text": "Lối vào"
+              },
+              {
+                "text": "Quầy vé"
+              },
+              {
+                "text": "Nhà vệ sinh"
+              },
+              {
+                "text": "Lối ra"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "en.obj.reading.notices_info"
+          ],
+          "essential": true
+        },
+        {
           "id": "en.cpi.s3.info_shirt",
           "itemVersion": 1,
           "exercise": {
