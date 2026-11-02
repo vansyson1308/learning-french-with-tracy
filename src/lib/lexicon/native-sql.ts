@@ -9,19 +9,22 @@
  * prefix operator per token, and even that string is bound, not inlined.
  */
 
-import { rankMatches, searchTokens } from "../learning/lexicon-search";
+import { foldSearchable, rankMatches, searchTokens, type FoldedSearchable } from "../learning/lexicon-search";
 import type { LexemeDetail, LexemeExample, LexemeSummary } from "./types";
 
 export const SQL = {
   byId: `SELECT id, ord, surface, lookup_form, lemma, pos, gender, gloss, topic,
       ipa, ipa_notation, freq_band, freq_rank, freq_per_million
     FROM lexemes WHERE id = ?`,
-  /** Candidate ids for a search, via FTS5 (AND semantics over prefix tokens). */
-  searchCandidates: `SELECT id FROM lexeme_fts WHERE lexeme_fts MATCH ?`,
-  /** Hydrate summaries+folded fields for ranking; id list is expanded to bound placeholders. */
-  rowsByIds: (count: number) =>
-    `SELECT id, ord, surface, lookup_form, lemma, pos, gender, gloss, topic, freq_band
-     FROM lexemes WHERE id IN (${Array.from({ length: count }, () => "?").join(", ")})`,
+  /**
+   * Search candidates via FTS5 (AND semantics over prefix tokens), hydrated
+   * for ranking in ONE statement with ONE bound parameter. A short prefix
+   * matches thousands of rows at C2 scale (D-15 §7); binding one `?` per
+   * hit would build a new statement per query and can exceed SQLite's
+   * bound-variable limit.
+   */
+  searchRows: `SELECT id, ord, surface, lookup_form, lemma, pos, gender, gloss, topic, freq_band
+    FROM lexemes WHERE id IN (SELECT id FROM lexeme_fts WHERE lexeme_fts MATCH ?)`,
   listBase: `SELECT id, ord, surface, lookup_form, lemma, pos, gender, gloss, topic, freq_band
     FROM lexemes`,
   listWherePos: ` WHERE pos = ?`,
@@ -136,16 +139,36 @@ export type SqlExecutor = {
   first: <T>(sql: string, params: (string | number)[]) => Promise<T | null>;
 };
 
+/**
+ * Folded search words per row id, per executor (one per opened database).
+ * A short prefix hydrates thousands of rows at C2 scale (D-15 §7); each is
+ * folded once, not once per query. An entry is reused only while the row's
+ * texts are unchanged, so the ranking is exactly the uncached one.
+ */
+const FOLDED_ROWS = new WeakMap<SqlExecutor, Map<string, { surface: string; lemma: string; gloss: string; folded: FoldedSearchable }>>();
+
+function foldedRow(exec: SqlExecutor, row: LexemeRow): FoldedSearchable {
+  let cache = FOLDED_ROWS.get(exec);
+  if (cache === undefined) {
+    cache = new Map();
+    FOLDED_ROWS.set(exec, cache);
+  }
+  const hit = cache.get(row.id);
+  if (hit !== undefined && hit.surface === row.surface && hit.lemma === row.lemma && hit.gloss === row.gloss) return hit.folded;
+  const folded = foldSearchable(row);
+  cache.set(row.id, { surface: row.surface, lemma: row.lemma, gloss: row.gloss, folded });
+  return folded;
+}
+
 export async function runNativeSearch(exec: SqlExecutor, query: string): Promise<LexemeSummary[]> {
   const tokens = searchTokens(query);
   if (tokens.length === 0) return [];
-  const candidates = await exec.all<{ id: string }>(SQL.searchCandidates, [ftsMatchString(tokens)]);
-  if (candidates.length === 0) return [];
-  const ids = candidates.map((c) => c.id);
-  const rows = await exec.all<LexemeRow>(SQL.rowsByIds(ids.length), ids);
+  const rows = await exec.all<LexemeRow>(SQL.searchRows, [ftsMatchString(tokens)]);
+  if (rows.length === 0) return [];
   const ranked = rankMatches(
     rows.map((row) => ({ ...rowToSearchable(row), row })),
-    tokens
+    tokens,
+    (candidate) => foldedRow(exec, candidate.row)
   );
   return ranked.map((r) => rowToSummary(r.row));
 }

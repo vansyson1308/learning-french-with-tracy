@@ -76,9 +76,21 @@ export function matchesAllTokens(fields: SearchableFields, tokens: string[]): bo
  * stable course order (`ord`) as the tiebreak.
  */
 export function searchScore(fields: SearchableFields, tokens: string[]): number {
-  const surfaceWords = words(foldForSearch(fields.surface));
-  const lemmaWords = words(foldForSearch(fields.lemma));
-  const glossWords = words(foldForSearch(fields.gloss));
+  return scoreFolded(foldSearchable(fields), tokens);
+}
+
+/** A candidate's folded words per field — what the ranker compares tokens against. */
+export type FoldedSearchable = { surfaceWords: string[]; lemmaWords: string[]; glossWords: string[] };
+
+export function foldSearchable(fields: SearchableFields): FoldedSearchable {
+  return {
+    surfaceWords: words(foldForSearch(fields.surface)),
+    lemmaWords: words(foldForSearch(fields.lemma)),
+    glossWords: words(foldForSearch(fields.gloss)),
+  };
+}
+
+function scoreFolded({ surfaceWords, lemmaWords, glossWords }: FoldedSearchable, tokens: string[]): number {
   let score = 0;
   for (const t of tokens) {
     let best = 0;
@@ -92,12 +104,19 @@ export function searchScore(fields: SearchableFields, tokens: string[]): number 
   return score;
 }
 
+/**
+ * `folded` lets a caller that searches the same candidates repeatedly (the
+ * web tier: every query ranks all ~12,000 entries at C2 scale, D-15 §7)
+ * fold each candidate once instead of once per query. Same words, same
+ * scores, same order.
+ */
 export function rankMatches<T extends SearchableFields & { ord: number }>(
   candidates: T[],
-  tokens: string[]
+  tokens: string[],
+  folded: (candidate: T) => FoldedSearchable = foldSearchable
 ): T[] {
   return candidates
-    .map((c) => ({ c, score: searchScore(c, tokens) }))
+    .map((c) => ({ c, score: scoreFolded(folded(c), tokens) }))
     .filter((x) => x.score > 0)
     .sort((a, b) => b.score - a.score || a.c.ord - b.c.ord)
     .map((x) => x.c);

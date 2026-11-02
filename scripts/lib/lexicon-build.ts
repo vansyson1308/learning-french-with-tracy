@@ -164,6 +164,16 @@ export function buildRuntimeIndex(
   targetCode: string,
   nativeCode: string
 ): { entries: LexiconIndexEntry[] } {
+  // Regional forms grouped by the lexeme they are a form of, in authored
+  // order — one pass instead of a scan of every lexeme per lexeme (O(n²)
+  // at C2 scale, D-15 §7).
+  const variantsOf = new Map<string, { region: string; surface: string }[]>();
+  for (const v of lexicon.lexemes) {
+    if (v.variety === undefined) continue;
+    const list = variantsOf.get(v.variety.equivalent) ?? [];
+    list.push({ region: v.variety.region, surface: v.surface });
+    variantsOf.set(v.variety.equivalent, list);
+  }
   return {
     entries: lexicon.lexemes.map((source) => {
       const lex = localizeLexeme(source, nativeCode);
@@ -185,8 +195,8 @@ export function buildRuntimeIndex(
         entry.example = { [targetCode]: lex.examples[0].target, [nativeCode]: lex.examples[0].native };
       }
       if (lex.relations?.confusables !== undefined) entry.confusables = [...lex.relations.confusables];
-      const variants = lexicon.lexemes.filter((v) => v.variety?.equivalent === source.id).map((v) => ({ region: v.variety!.region, surface: v.surface }));
-      if (variants.length > 0) entry.regionalVariants = variants;
+      const variants = variantsOf.get(source.id);
+      if (variants !== undefined) entry.regionalVariants = variants;
       if (source.variety) entry.variety = { region: source.variety.region, equivalent: source.variety.equivalent };
       return entry;
     }),
@@ -374,6 +384,10 @@ export function buildSqliteDb(
     const insFts = prepare("INSERT INTO lexeme_fts (id, surface, lemma, gloss) VALUES (?, ?, ?, ?)");
 
     const localized = lexicon.lexemes.map((lex) => localizeLexeme(lex, nativeCode));
+    // One transaction for every row: in autocommit mode each INSERT is its
+    // own journaled, fsynced commit — minutes at C2 scale (D-15 §7). The
+    // rows, and therefore the logical dump, are the same either way.
+    db.exec("BEGIN;");
     // Two passes: all lexeme rows first, then the tables referencing them
     // (relations may point at lexemes that come later in authored order).
     localized.forEach((lex, ord) => {
@@ -403,6 +417,7 @@ export function buildSqliteDb(
       for (const target of lex.relations?.confusables ?? []) insRelation.run(lex.id, target);
       lex.sourceRefs.forEach((ref, refIdx) => insLexSource.run(lex.id, ref.source, ref.key ?? null, refIdx));
     }
+    db.exec("COMMIT;");
 
     const integrity = prepare("PRAGMA integrity_check").get() as { integrity_check: string } | null;
     if (integrity?.integrity_check !== "ok") {

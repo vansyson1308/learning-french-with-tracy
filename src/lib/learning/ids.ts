@@ -13,7 +13,7 @@
  */
 
 import { ID_REGISTRIES } from "../../content/ids";
-import { courseProfile } from "../course-profile";
+import { courseTargetCode } from "../course-profile";
 
 export type IdRegistry = {
   language: string;
@@ -42,6 +42,16 @@ export function __registerIdRegistryForTests(code: string, registry: IdRegistry 
   RESOLVED.delete(code);
 }
 
+/** id → its legacy surfaces in registry order — one pass (a spread per entry is O(n²) at C2 scale, D-15 §7). */
+function invertLegacy(legacySurfaces: Record<string, string>): Record<string, string[]> {
+  const out: Record<string, string[]> = {};
+  for (const [surface, id] of Object.entries(legacySurfaces)) {
+    if (Object.prototype.hasOwnProperty.call(out, id)) out[id].push(surface);
+    else out[id] = [surface];
+  }
+  return out;
+}
+
 function registryForLanguage(code: string): Resolved | null {
   const hit = RESOLVED.get(code);
   if (hit !== undefined) return hit;
@@ -50,7 +60,7 @@ function registryForLanguage(code: string): Resolved | null {
     ? {
         ...raw,
         idToSurface: Object.fromEntries(Object.entries(raw.surfaceToId).map(([s, id]) => [id, s])),
-        idToLegacy: Object.entries(raw.legacySurfaces ?? {}).reduce<Record<string, string[]>>((acc, [s, id]) => ({ ...acc, [id]: [...(acc[id] ?? []), s] }), {}),
+        idToLegacy: invertLegacy(raw.legacySurfaces ?? {}),
       }
     : null;
   RESOLVED.set(code, resolved);
@@ -58,7 +68,7 @@ function registryForLanguage(code: string): Resolved | null {
 }
 
 function registryFor(courseId: string): Resolved | null {
-  return registryForLanguage(courseProfile(courseId).targetCode);
+  return registryForLanguage(courseTargetCode(courseId));
 }
 
 /** True when the course's target language ships a stable-id registry. */
