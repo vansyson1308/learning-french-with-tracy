@@ -1,4 +1,24 @@
 {
+  "policy": [
+    {
+      "licence": "Unicode-3.0",
+      "scope": "data",
+      "decision": "QC 2026-11-03 §2",
+      "note": "Unihan readings (kVietnamese, kMandarin, kJapaneseOn, kJapaneseKun, kHangul): permissive, attribution kept; data files only, never code."
+    },
+    {
+      "licence": "CC-BY-SA-3.0",
+      "scope": "data",
+      "decision": "QC 2026-11-03 §2",
+      "note": "Stroke data such as KanjiVG: handled like our CC BY-SA 4.0 data (share-alike, attribution, data files only, never code). Anything LGPL or Arphic (e.g. Make Me a Hanzi graphics) stays out."
+    },
+    {
+      "licence": "OFL-1.1",
+      "scope": "font",
+      "decision": "QC 2026-11-03 §2",
+      "note": "CJK fonts only, and only if a test shows the system font (Android ships Noto CJK) lacks glyphs; the bundled size is measured and recorded."
+    }
+  ],
   "sources": [
     {
       "id": "upstream-lingo-lessons",

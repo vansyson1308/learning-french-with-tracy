@@ -32,6 +32,7 @@ import {
   CourseProfileOverrideSchema,
 } from "../../content/schema";
 
+import { scopeErrors } from "./licence-scope";
 import { lineageErrors, selectedVoiceErrors, type ManifestVoice } from "./voice-lineage";
 import { resolveCourseRoles, type CourseRef, type CourseRole, type CourseRoles } from "./course-roles";
 import { lessonShapeErrors, templateDefectErrors } from "./lesson-shape";
@@ -766,6 +767,7 @@ export function validateRegistry(): ValidationResult {
     }
   }
   if (!covered("assets/audio/")) errors.push("provenance gap: assets/audio/ uncovered");
+  errors.push(...scopeErrors(registry.sources, registry.policy));
   errors.push(...lineageErrors(registry.sources));
   errors.push(...selectedVoiceErrors(selectedVoices(), registry.sources));
   return { errors, warnings: [] };

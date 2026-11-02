@@ -1095,8 +1095,25 @@ const LICENSE_ALLOWLIST = [
    * the app. Registered explicitly so the allowlist stays the gate.
    */
   "CEFR-J-terms",
+  // QC 2026-11-03 §2 (P4b): three narrowly scoped additions; SCOPED_LICENSES says what each may cover.
+  "Unicode-3.0",
+  "OFL-1.1",
+  "CC-BY-SA-3.0",
 ] as const;
 export const ALLOWED_LICENSES: readonly string[] = LICENSE_ALLOWLIST;
+
+/**
+ * Licences allowed only for one kind of file (QC 2026-11-03 §2). `data`:
+ * data files only, never code (Unihan readings; KanjiVG-style stroke data,
+ * handled like our CC BY-SA 4.0 data). `font`: font files only, bundled only
+ * when a test shows the system font lacks glyphs. Anything LGPL or Arphic
+ * (e.g. Make Me a Hanzi graphics) stays off the allowlist.
+ */
+export const SCOPED_LICENSES: Readonly<Record<string, "data" | "font">> = {
+  "Unicode-3.0": "data",
+  "CC-BY-SA-3.0": "data",
+  "OFL-1.1": "font",
+};
 
 /**
  * content/sources/registry.json — provenance registry. Every content/audio
@@ -1105,6 +1122,10 @@ export const ALLOWED_LICENSES: readonly string[] = LICENSE_ALLOWLIST;
  * registered, so its data cannot be ingested. That is the gate, by design.
  */
 export const SourceRegistrySchema = z.strictObject({
+  /** Licence decisions beyond the plain allowlist (QC 2026-11-03 §2): one entry per scoped licence. */
+  policy: z
+    .array(z.strictObject({ licence: z.enum(LICENSE_ALLOWLIST), scope: z.enum(["data", "font"]), decision: z.string().min(1), note: z.string().min(10) }))
+    .optional(),
   sources: z
     .array(
       z.strictObject({
