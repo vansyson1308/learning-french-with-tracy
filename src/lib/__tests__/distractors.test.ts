@@ -6,7 +6,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { pickDistractors, tierOf } from "../learning/distractors";
+import { pickDistractors, prepareDistractorPool, tierOf } from "../learning/distractors";
 import { frItemIdFor } from "../learning/ids-fr";
 import { lexemeMetaFor, type LexemeMeta } from "../learning/lexicon-index";
 import { PENDING_LEXIQUE_IMPORT } from "./pending-lexique-import";
@@ -215,6 +215,38 @@ describe("determinism", () => {
       const a = pick("le pain", direction, 123).map((w) => w.target);
       const b = pick("le pain", direction, 123).map((w) => w.target);
       expect(a).toEqual(b);
+    }
+  });
+
+  test("a prepared pool picks exactly what the plain pool picks, with the same rng draws", () => {
+    // Duplicate glosses and an answer word whose pool gloss differs exercise
+    // the indexed path's first-occurrence rule.
+    const pool: Word[] = [
+      ...frPool,
+      { target: "le matou", native: "the cat", emoji: "🐱" },
+      { target: "la flotte", native: "the water", emoji: "🌊" },
+    ];
+    // Small pools force the production relaxation pass (deferred duplicate glosses).
+    const small: Word[] = [
+      { target: "le chat", native: "the cat", emoji: "🐈" },
+      { target: "le matou", native: "the cat", emoji: "🐱" },
+      { target: "le chien", native: "the dog", emoji: "🐕" },
+      { target: "la vache", native: "the cow", emoji: "🐄" },
+      { target: "la poule", native: "the hen", emoji: "🐔" },
+    ];
+    const extra = [{ target: "le chat", native: "the tomcat", emoji: "🐈" }, { target: "le dragon", native: "the dragon", emoji: "🐉" }];
+    for (const candidates of [pool, small, small.slice(0, 3)]) {
+      const prepared = prepareDistractorPool(FR, candidates);
+      for (const direction of ["targetToNative", "nativeToTarget"] as const) {
+        for (const [i, word] of [...candidates, ...extra].entries()) {
+          const plainRng = seededRng(i + 1);
+          const preparedRng = seededRng(i + 1);
+          const plain = pickDistractors({ courseId: FR, word, pool: candidates, rng: plainRng, direction });
+          const fast = pickDistractors({ courseId: FR, word, pool: prepared, rng: preparedRng, direction });
+          expect(fast).toEqual(plain);
+          expect(preparedRng()).toBe(plainRng());
+        }
+      }
     }
   });
 });

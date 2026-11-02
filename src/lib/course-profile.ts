@@ -198,6 +198,18 @@ export function courseProfile(courseId: string): CourseProfile {
   };
 }
 
+/**
+ * The course's target language code — `courseProfile(courseId).targetCode`
+ * without building a fresh profile view. For per-item hot paths (id and
+ * lexicon lookups run once per pool word, D-15 §7); never mutable.
+ */
+export function courseTargetCode(courseId: string): string {
+  const base = TEST_PROFILES.get(courseId) ?? PROFILES[courseId];
+  if (base) return base.targetCode;
+  const [targetCode = ""] = courseId.split("-");
+  return targetCode;
+}
+
 export function hasCapability(courseId: string, capability: keyof CourseCapabilities): boolean {
   return courseProfile(courseId).capabilities[capability] === true;
 }

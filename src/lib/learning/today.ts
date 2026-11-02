@@ -32,8 +32,8 @@ import type {
   Word,
 } from "../types";
 
-import { pickDistractors } from "./distractors";
-import { dueReviewQueue } from "./engine";
+import { pickDistractors, prepareDistractorPool, type DistractorPool } from "./distractors";
+import { dueReviewQueue, type DueItem } from "./engine";
 import { isCuratedItemId, surfaceFor } from "./ids";
 import { isUnpicturedWord, withPictureCues } from "./picture-cues";
 import type { FsrsCardState } from "./scheduler";
@@ -194,7 +194,7 @@ export function buildSelect(args: {
   courseId: string;
   id: string;
   word: Word;
-  pool: Word[];
+  pool: readonly Word[] | DistractorPool;
   rng: () => number;
   direction: "targetToNative" | "nativeToTarget";
 }): SelectExercise | null {
@@ -267,16 +267,14 @@ export function composeTodayFromSnapshot(args: {
 }): TodayPlan {
   const now = args.now ?? Date.now();
   const day = args.day ?? dayString(new Date(now));
-  const dueKeys = [
-    ...dueReviewQueue(args.courseId, args.cards, now),
-    ...dueReviewQueue(args.courseId, args.cards, now, "listen"),
-    ...dueReviewQueue(args.courseId, args.cards, now, "speak"),
-  ]
+  // The seed and the plan read the same due queues: computed once (D-15 §7).
+  const queues = dueQueues(args.courseId, args.cards, now);
+  const dueKeys = [...queues.recognize, ...queues.listen, ...queues.speak]
     .map((d) => `${d.key}@${d.dueAt}`)
     .join(",");
   const frontier = pathFrontierLesson(args.pack, args.completedLessons, args.placementFloor ?? 0);
   const seed = hashSeed(`${day}|${args.preset}|${frontier?.lessonId ?? "-"}|${dueKeys}`);
-  return composeTodaySession({
+  return composeWithQueues({
     courseId: args.courseId,
     pack: args.pack,
     completedLessons: args.completedLessons,
@@ -290,10 +288,24 @@ export function composeTodayFromSnapshot(args: {
     seed,
     now,
     placementFloor: args.placementFloor,
-  });
+  }, queues);
+}
+
+type DueQueues = { recognize: DueItem[]; listen: DueItem[]; speak: DueItem[] };
+
+function dueQueues(courseId: string, cards: Record<string, FsrsCardState> | undefined, now: number): DueQueues {
+  return {
+    recognize: dueReviewQueue(courseId, cards, now),
+    listen: dueReviewQueue(courseId, cards, now, "listen"),
+    speak: dueReviewQueue(courseId, cards, now, "speak"),
+  };
 }
 
 export function composeTodaySession(input: TodayPlanInput): TodayPlan {
+  return composeWithQueues(input, dueQueues(input.courseId, input.cards, input.now));
+}
+
+function composeWithQueues(input: TodayPlanInput, queues: DueQueues): TodayPlan {
   const budgets = TODAY_PRESETS[input.preset];
   const rng = seededRng(input.seed);
   const packPool = packWords(input.pack);
@@ -302,8 +314,11 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   const packSurfaces = new Set(packPool.map((w) => w.target));
   const extra = [...(input.lexiconWords ?? []), ...(input.dailyWords ?? []).map((d) => d.word)];
   const extraBySurface = new Map(extra.filter((w) => !packSurfaces.has(w.target)).map((w) => [w.target, w]));
-  const pool = [...packPool, ...extraBySurface.values()];
-  const wordBySurface = new Map(pool.map((w) => [w.target, w]));
+  const words = [...packPool, ...extraBySurface.values()];
+  const wordBySurface = new Map(words.map((w) => [w.target, w]));
+  // Every distractor pick of the session draws from this one pool: resolve
+  // its lexicon metadata once (D-15 §7 — a C2 syllabus is ~12,000 words).
+  const pool = prepareDistractorPool(input.courseId, words);
   const steps: SessionStep[] = [];
 
   // ---- 1. WARM-UP: most at-risk due cards, capped by budget only --------
@@ -313,7 +328,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   const listenClips = input.listenClips ?? {};
   // Backlog honesty: EVERY due listen card counts, sessionable or not — a
   // card whose clip asset is not bundled stays due and stays visible.
-  const allListenDue = dueReviewQueue(input.courseId, input.cards, input.now, "listen");
+  const allListenDue = queues.listen;
   const listenQueue = allListenDue.filter(
     (d) => listenClips[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
   );
@@ -329,7 +344,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   // the route provided a production exercise for the due lexeme; every due
   // speak card still counts toward the honest backlog.
   const speakExercises = input.speakExercises ?? {};
-  const allSpeakDue = dueReviewQueue(input.courseId, input.cards, input.now, "speak");
+  const allSpeakDue = queues.speak;
   const speakBudget = todaySpeakBudget(budgets.review, listenItems.length);
   const speakPicks: { itemId: string; exercise: SpeakProductionExercise }[] = [];
   for (const due of allSpeakDue) {
@@ -340,7 +355,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
     speakPicks.push({ itemId, exercise: { ...exercise, id: `today-speak-${itemId}` } });
   }
 
-  const dueQueue = dueReviewQueue(input.courseId, input.cards, input.now);
+  const dueQueue = queues.recognize;
   const warmupItems: Item[] = [];
   for (const due of dueQueue) {
     if (warmupItems.length + listenItems.length + speakPicks.length >= budgets.review) break;
