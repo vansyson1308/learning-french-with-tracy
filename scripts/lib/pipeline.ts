@@ -31,6 +31,8 @@ import {
   type SourceRegistry,
   CourseProfileOverrideSchema,
 } from "../../content/schema";
+
+import { lineageErrors, selectedVoiceErrors, type ManifestVoice } from "./voice-lineage";
 import { resolveCourseRoles, type CourseRef, type CourseRole, type CourseRoles } from "./course-roles";
 import { lessonShapeErrors, templateDefectErrors } from "./lesson-shape";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
@@ -764,7 +766,19 @@ export function validateRegistry(): ValidationResult {
     }
   }
   if (!covered("assets/audio/")) errors.push("provenance gap: assets/audio/ uncovered");
+  errors.push(...lineageErrors(registry.sources));
+  errors.push(...selectedVoiceErrors(selectedVoices(), registry.sources));
   return { errors, warnings: [] };
+}
+
+/** Every voice a manifest marks as selected: pack layer and each language's reception layer. */
+function selectedVoices(): ManifestVoice[] {
+  const voices = (readJson("content/audio/pack-audio-manifest.json") as { voices: ManifestVoice[] }).voices;
+  const reception = readdirSync(safeResolve("content"))
+    .map((lang) => `content/${lang}/reception/audio-source-manifest.json`)
+    .filter((rel) => existsSync(safeResolve(rel)))
+    .flatMap((rel) => (readJson(rel) as { voices: ManifestVoice[] }).voices);
+  return [...voices, ...reception].filter((v) => v.status === "selected");
 }
 
 export function loadRegistry(): SourceRegistry {

@@ -45,6 +45,7 @@ is fully satisfied; it becomes `v1.0.0`.
 | RC4 | `3ff3b96` (`release/rc4`: `main` `4a0bc7e` after PR #40 + the build bump) | none (never signed) | **1.0.0 / build 2 / versionCode 2** (`bun run release:bump`) | local Windows build: unsigned `app-release.apk` 133,664,309 bytes SHA-256 `79abde99bb8753424e2054fb8f20d39c4b623424aaf0b26a19c884dd7471fbc3`; per-ABI ≈ 67.2 (arm64) / 60.0 (v7a) / 68.5 (x86) / 68.7 (x86_64) MB; signed APK pending the owner (`ANDROID_RC4.md` §3) | local gates green on the commit (typecheck, 1,538 bun tests, content/audio checks, identity); CI green on PR #40 | not re-run | **not run** — owner decision 2026-10-27 | **parked** — RC4 (build 2, 3ff3b96) built, unsigned, not device-tested — superseded by the v1.0 candidate per owner decision 2026-10-27 (`plan/prompts/00-MASTER-PROMPT-v2.md`) |
 
 ## Notes
+- **D-11 (2026-11-02): French and German audio re-rendered for voice lineage.** The owner authorised this one change to French audio (QC 2026-10-31 D-11 §3). French text and learner data are unchanged; audio is not persisted. Goldens re-blessed by the audio runs (French 41333693701, German 41397563989) under the reason "D-11 voice lineage". French audio 8.11 MB → 3.48 MB, German 8.42 MB → 9.56 MB. The next RC carries it; no device result is claimed.
 
 - The Phase 10 QA artifacts (debug-signed APK, iOS simulator report) in
   `RC_ARTIFACTS.md` predate this program and are not RCs: they carry the

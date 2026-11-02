@@ -6,7 +6,8 @@
  */
 import { describe, expect, test } from "bun:test";
 import { spawnSync } from "child_process";
-import { readFileSync } from "fs";
+import { closeSync, mkdtempSync, openSync, readFileSync, rmSync } from "fs";
+import { tmpdir } from "os";
 import { join } from "path";
 
 const ROOT = join(import.meta.dir, "..", "..");
@@ -17,9 +18,20 @@ describe("device acceptance: emulator boot", () => {
   test.skipIf(process.platform === "win32")(
     "healthy costs no reboot; dead gets one wipe and reboot; dead twice fails",
     () => {
-      const run = spawnSync("bash", [join(ROOT, "scripts/device/test-emulator-health.sh")], { encoding: "utf8", timeout: 120_000 });
-      expect(run.stdout).toContain("EMULATOR HEALTH TESTS PASSED");
-      expect(run.status).toBe(0);
+      // Audio run 41413385790 hung here for 7 hours. GNU timeout signals its whole process
+      // group, and the output goes to a file, so no leftover child can hold a pipe open.
+      const dir = mkdtempSync(join(tmpdir(), "emu-health-"));
+      const out = join(dir, "out.txt");
+      const fd = openSync(out, "w");
+      try {
+        const run = spawnSync("timeout", ["-k", "5", "100", "bash", join(ROOT, "scripts/device/test-emulator-health.sh")], { stdio: ["ignore", fd, fd] });
+        const stdout = readFileSync(out, "utf8");
+        expect(stdout).toContain("EMULATOR HEALTH TESTS PASSED");
+        expect(run.status).toBe(0);
+      } finally {
+        closeSync(fd);
+        rmSync(dir, { recursive: true, force: true });
+      }
     },
     130_000,
   );

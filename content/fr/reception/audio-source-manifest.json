@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "pipelineVersion": 1,
+  "pipelineVersion": 3,
   "storyAudio": {
     "bundled": "band-1",
     "stories": [
@@ -17,81 +17,125 @@
     ],
     "reason": "QC 2026-10-29b §2.3: band-1 story audio is bundled. French has 10 stories, all already bundled (frozen pipeline 1, 64 kbps); they stay. Stories added later use the device voice (release/ASSET_DELIVERY.md)."
   },
-  "note": "Pinned TTS sources for the French reception audio (Phase 7, now audio pipeline v2 shape): each voice carries its engine; pins were written by the reception recon from a double-download that agreed byte-for-byte and are verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed — only these pins, the model cards and the generated audio assets.",
+  "note": "Pinned TTS sources for the reception audio, replaced under D-11 (QC 2026-10-31) so that every voice's whole lineage passes the licence allowlist: the cast of content/audio/voice-casts.json, with the same pins as the pack manifest. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
   "engines": "content/audio/engines.json",
   "voices": [
     {
-      "id": "fr_FR-siwis-medium",
-      "role": "speaker A — primary voice for announcements and monologue",
-      "multiSpeaker": false,
+      "id": "kokoro-ff_siwis",
+      "engine": "kokoro",
+      "language": "fr",
+      "note": "Kokoro-82M French female, grade B-; trained on SIWIS (CC BY 4.0) per VOICES.md",
+      "speaker": null,
       "files": {
         "model": {
-          "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx",
-          "sha256": "641d1ab097da2b81128c076810edb052b385decc8be3381814802a64a73baf99",
-          "bytes": 63201294
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
-          "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx.json",
-          "sha256": "39479916c2db192b5ac9764daddd0c744d83e023ad890c6976c0633ae4df8959",
-          "bytes": 4875
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/ff_siwis.pt",
+          "sha256": "8073bf2d2c4b9543a90f2f0fd2144de4ed157e2d4b79ddeb0d5123066171fbc9",
+          "bytes": 523425
         },
         "modelCard": {
-          "path": "fr/fr_FR/siwis/medium/MODEL_CARD",
-          "sha256": "bd8b8d079d4d3d2c4cc20345889bbcd586d72f021a132f93357a763eb5232cce",
-          "bytes": 284
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": "* License: CC-BY 4.0",
-      "engine": "piper",
-      "language": "fr",
+      "declaredLicense": "license: apache-2.0",
       "status": "selected",
-      "gateReason": "pinned by the Phase-7 recon (CC BY 4.0 / CC BY-SA 4.0 cards committed under content/fr/reception/model-cards/)"
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker A — female voice for announcements, monologues and dialogue turns",
+      "multiSpeaker": false
     },
     {
-      "id": "fr_FR-upmc-medium",
-      "role": "speaker B — dialogue second voice (speaker 1, male; pinned by the canary ASR audit, run 33231334069)",
-      "multiSpeaker": true,
-      "canarySpeakers": [
-        0,
-        1
-      ],
-      "pinnedSpeakers": [
-        1
-      ],
+      "id": "parler-fr-daniel",
+      "engine": "parler",
+      "language": "fr",
+      "note": "D-11: Parler-TTS Mini Multilingual v1.1, named speaker Daniel",
+      "speaker": "Daniel",
       "files": {
         "model": {
-          "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx",
-          "sha256": "9abb3800c199148897a9ed64e100d224f3de83579f100044174ad19418f1786f",
-          "bytes": 76733615
+          "path": "model.safetensors",
+          "sha256": "79c64e3705e0ccce122988c7817f0d65efa3fd37625906d90765858bdab38412",
+          "bytes": 3751321772
         },
         "config": {
-          "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx.json",
-          "sha256": "e8636ec15dfd5d72db37a02cb5320a20f2b8d339f2a0e4337da64c58a33a5868",
-          "bytes": 4996
+          "path": "config.json",
+          "sha256": "06d4cb727521542cab6b26d3ad1c8517d51fd1f551600ec67a59575364e221c6",
+          "bytes": 7467
+        },
+        "generationConfig": {
+          "path": "generation_config.json",
+          "sha256": "3bb518e78ea5f32fbbcfc7f0aaed388e7aefede474d2bf4b8cf4502fd6b27a92",
+          "bytes": 218
+        },
+        "preprocessorConfig": {
+          "path": "preprocessor_config.json",
+          "sha256": "c7d295758ce5777d6d88fef1996e94adc8ef3e2237ddfc5ecc24d1407aaddd7d",
+          "bytes": 206
+        },
+        "specialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f",
+          "bytes": 552
+        },
+        "tokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de",
+          "bytes": 10272460
+        },
+        "tokenizerModel": {
+          "path": "tokenizer.model",
+          "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5",
+          "bytes": 1795391
+        },
+        "tokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f",
+          "bytes": 990
         },
         "modelCard": {
-          "path": "fr/fr_FR/upmc/medium/MODEL_CARD",
-          "sha256": "cf1ac7309e0e04bb159b7e6ae80bc8f66bfce9bdfb3e62ae93a6f57e210ab98a",
-          "bytes": 316
+          "path": "README.md",
+          "sha256": "c4e8c77218ed982b11e5356f5549b62fbaca3072ecfe78def475c0396ac72530",
+          "bytes": 9934
+        },
+        "descTokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a",
+          "bytes": 2424064
+        },
+        "descTokenizerModel": {
+          "path": "spiece.model",
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+          "bytes": 791656
+        },
+        "descTokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56",
+          "bytes": 2539
+        },
+        "descSpecialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f",
+          "bytes": 2201
         }
       },
       "declaredDataset": null,
-      "declaredLicense": "* License: http://creativecommons.org/licenses/by-sa/4.0/",
-      "engine": "piper",
-      "language": "fr",
+      "declaredLicense": "license: apache-2.0",
       "status": "selected",
-      "gateReason": "pinned by the Phase-7 recon (CC BY 4.0 / CC BY-SA 4.0 cards committed under content/fr/reception/model-cards/)"
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker B — male voice for the second speaker of dialogues",
+      "multiSpeaker": false
     }
   ],
-  "excludedVoices": [
-    {
-      "id": "fr_FR-tom-medium",
-      "reason": "Upstream metadata associates its training dataset with AGPLv3 — excluded to avoid the licensing complication (P7 §31). Re-evaluate only with an explicit legal review."
-    },
-    {
-      "id": "fr_FR-mls-medium",
-      "reason": "Failed the canary ASR quality audit (workflow run 33230542810): mean WER ≈ 0.98–2.47 across all eight sampled speakers vs 0.19 for siwis through the identical pipeline — the audio is not reliably intelligible, so it may never be a scored stimulus (P7 §40, §56-60). License itself was clean (CC-BY 4.0); exclusion is quality-based."
-    }
-  ]
+  "excludedVoices": [],
+  "storyPipelineVersion": 4
 }

@@ -72,7 +72,7 @@ export function loadListening(lang: string): Listening | null {
 // Shared asset identity (P7 §27, §131-132)
 // ---------------------------------------------------------------------------
 
-export type ResolvedSegment = { voiceId: string; speaker: number | null; text: string };
+export type ResolvedSegment = { voiceId: string; speaker: number | string | null; text: string };
 
 /**
  * MUST stay in lockstep with scripts/reception-audio.ts (same hash inputs).

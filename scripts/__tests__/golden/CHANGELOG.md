@@ -991,6 +991,23 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/stories/de-stories.json
 - compile: changed  src/content/stories/de-story-assets.ts
 
+## 2026-10-30 — audio.yml de recon (pack) run 41139331911
+
+- compile: changed  content/reports/de/audio-recon.json
+
+## 2026-10-30 — audio.yml de canary (pack) run 41139850849
+
+- compile: changed  content/reports/de/audio-canary.json
+
+## 2026-10-30 — audio.yml fr recon (pack) run 41141864687
+
+- compile: new      content/reports/audio-recon.json
+
+## 2026-10-30 — audio.yml fr canary (pack) run 41142564235
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/audio-canary.json
 ## 2026-10-30 — audio.yml it generate (all) run 41117377680
 
 - compile: changed  ATTRIBUTIONS.md
@@ -1064,3 +1081,95 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/reception/it-listening.json
 - compile: changed  src/content/stories/it-stories.json
 - compile: changed  src/content/stories/it-story-assets.ts
+
+## 2026-10-30 — merge main (it-vi, PR #56) into audio/voice-lineage: D-11 recon and canary manifests
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/de/audio-canary.json
+- compile: changed  content/reports/de/audio-recon.json
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/audio-canary.json
+- compile: new      content/reports/audio-recon.json
+
+## 2026-10-30 — audio.yml de recon (pack) run 41146745656
+
+- compile: changed  content/reports/de/audio-recon.json
+
+## 2026-10-31 — audio.yml de canary (pack) run 41148825482
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/de/audio-canary.json
+- compile: changed  src/content/attributions.json
+
+## 2026-10-31 — audio.yml fr recon (pack) run 41153190179
+
+- compile: changed  content/reports/audio-recon.json
+
+## 2026-10-31 — audio.yml fr canary (pack) run 41153923121
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/audio-canary.json
+
+## 2026-10-31 — audio.yml de canary (pack) run 41156630437
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/de/audio-canary.json
+- compile: changed  src/content/attributions.json
+
+## 2026-10-31 — audio.yml fr canary (pack) run 41159613788
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/audio-canary.json
+- compile: changed  src/content/attributions.json
+
+## 2026-11-01 — audio.yml fr generate (all) run 41333693701
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/audio-census.json
+- compile: changed  content/reports/audio-quality.json
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/reception-audio-census.json
+- compile: changed  src/content/attributions.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/fr-en.ts
+- compile: changed  src/content/reception/fr-clip-assets.ts
+- compile: changed  src/content/reception/fr-listening.json
+- compile: changed  src/content/stories/fr-stories.json
+- compile: changed  src/content/stories/fr-story-assets.ts
+- compile: changed  src/content/stories/fr-vi-stories.json
+
+## 2026-11-01 — audio.yml de generate (pack) run 41344051942
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/de/audio-census.json
+- compile: changed  content/reports/de/audio-quality.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/de-en.ts
+- compile: changed  src/content/audio/de-vi.ts
+- compile: changed  src/content/stories/de-stories.json
+
+## 2026-11-02 — audio.yml de generate (all) run 41397563989
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/de/audio-census.json
+- compile: changed  content/reports/de/audio-quality.json
+- compile: changed  content/reports/de/reception-audio-census.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/de-vi.ts
+- compile: changed  src/content/reception/de-clip-assets.ts
+- compile: changed  src/content/reception/de-listening.json
+- compile: changed  src/content/stories/de-stories.json
+- compile: changed  src/content/stories/de-story-assets.ts
+
+## 2026-11-02 — audio.yml pt generate (pack) run 41415900815
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/pt-en.ts
+- compile: new      content/reports/pt/audio-census.json
+- compile: new      content/reports/pt/audio-quality.json
+
+## 2026-11-02 — D-11 voice lineage
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json

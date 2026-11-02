@@ -11,9 +11,8 @@ import path from "path";
 
 import { asrCacheKey, asrModelId, mergeAsrResults, splitPlanByCache, type AsrPlan } from "../lib/asr-cache";
 import { ownerListeningLines, splitReview, techQaDoc } from "../lib/audio-qa";
-import { loadResynthesis, packClipRecipe, receptionClipRecipe, resynthesisProblems } from "../lib/audio-recipe";
+import { packClipRecipe, resynthesisProblems } from "../lib/audio-recipe";
 import { packAssetKey, parseDecodedSec, parseEdgeSilence, QA_THRESHOLDS, technicalIssues, type ClipMeasurement, type TechnicalQa } from "../lib/piper-audio";
-import { listeningClipKey, loadListening, receptionAssetKey, resolveClipSegments, receptionPipelineVersion } from "../lib/reception";
 import { buildSynthScript, loadEngines, type Voice } from "../lib/tts";
 
 const tmp = mkdtempSync(path.join(os.tmpdir(), "audio-qc29b-"));
@@ -212,54 +211,12 @@ describe("incremental ASR cache (sha256 of clip bytes + model id + transcript)",
   });
 });
 
-describe("German re-synthesis of the 11 flagged sentence clips (§3.4)", () => {
-  const declared = loadResynthesis("de");
-  // The review list of de run 40815633778, pinned: the re-synthesis run rewrites the report, so it cannot be the reference.
-  const FLAGGED_BY_RUN_40815633778 = [
-    "de-en:Die Milch ist kalt.",
-    "de-en:Du bist eine Frau.",
-    "de-en:Gehen Sie geradeaus.",
-    "de-vi:Was darf es sein?",
-    "de-vi:Wir haben Pizza gegessen.",
-    "de.clip.cp3_dikt_zug",
-    "de.clip.goethe_a_h1_06",
-    "de.clip.ix_goethe_a_thema_miss",
-    "de.clip.ix_goethe_b_thema_miss",
-    "de.clip.ix_plaene_0_s",
-    "de.clip.uh_brot_preis",
-  ];
-
-  test("the de voice manifest declares exactly the clips the last de run flagged, with another noise scale, same voices", () => {
-    expect(declared).not.toBeNull();
-    expect(resynthesisProblems(declared)).toEqual([]);
-    expect([...declared!.clips].sort()).toEqual(FLAGGED_BY_RUN_40815633778);
-    expect(declared!.clips).toHaveLength(11);
-    // Piper's defaults are 0.667 / 0.8: the declared values differ.
-    expect(declared!.piper.noiseScale).not.toBe(0.667);
-    expect(declared!.piper.noiseW).not.toBe(0.8);
-  });
-
-  test("every declared listening clip gets a new key, so its blessed file is not reused and it is re-rendered and re-audited", () => {
-    // Keys only: before the re-synthesis run the new file is absent, after it the old one is (release hygiene checks both).
-    const listening = loadListening("de")!;
-    const version = receptionPipelineVersion("de");
-    const reception = declared!.clips.filter((id) => id.startsWith("de.clip."));
-    expect(reception.length).toBe(6);
-    for (const id of reception) {
-      const clip = listening.clips.find((c) => c.id === id);
-      expect(clip, `${id} is a de listening clip`).toBeDefined();
-      const old = receptionAssetKey("de", resolveClipSegments(listening, clip!), version);
-      const now = listeningClipKey("de", listening, clip!);
-      expect(now).not.toBe(old);
-    }
-    // An undeclared clip keeps its key.
-    const other = listening.clips.find((c) => !declared!.clips.includes(c.id))!;
-    expect(listeningClipKey("de", listening, other)).toBe(receptionAssetKey("de", resolveClipSegments(listening, other), version));
-    expect(receptionClipRecipe("de", other.id)).toBeNull();
-  });
+describe("re-synthesis of flagged clips with Piper (§3.4)", () => {
+  // D-11: the committed German voices are no longer Piper, so the mechanism is pinned on a fixture.
+  const declared = { reason: "fixture", piper: { noiseScale: 0.5, noiseW: 0.6 }, clips: ["de-en:Die Milch ist kalt.", "de.clip.uh_brot_preis"] };
 
   test("declared pack clips get a new key; the synthesis script passes the noise scale to Piper only", () => {
-    const synthesis = declared!.piper;
+    const synthesis = declared.piper;
     const recipe = packClipRecipe({ engine: "piper", text: "Die Milch ist kalt.", pipelineVersion: 3, synthesis });
     expect(recipe).toContain("piper-noise=");
     expect(packAssetKey("de-en", "de_DE-thorsten-high", null, "Die Milch ist kalt.", 3, recipe)).not.toBe(packAssetKey("de-en", "de_DE-thorsten-high", null, "Die Milch ist kalt.", 3));
@@ -277,7 +234,7 @@ describe("German re-synthesis of the 11 flagged sentence clips (§3.4)", () => {
 
   test("clips still flagged after the re-synthesis go to the owner checklist; other flagged clips are next candidates", () => {
     const row = (clipId: string) => ({ clipId, voiceId: "de_DE-thorsten-high", transcript: "Die Milch ist kalt.", heard: "Himmelig ist kalt.", wer: 0.5, durationSec: 1.2 });
-    const { ownerListening, resynthesisCandidates } = splitReview([row("de-en:Die Milch ist kalt."), row("de.clip.neu")], declared!.clips);
+    const { ownerListening, resynthesisCandidates } = splitReview([row("de-en:Die Milch ist kalt."), row("de.clip.neu")], declared.clips);
     expect(ownerListening.map((r) => r.clipId)).toEqual(["de-en:Die Milch ist kalt."]);
     expect(resynthesisCandidates.map((r) => r.clipId)).toEqual(["de.clip.neu"]);
     const lines = ownerListeningLines("de", [{ ...ownerListening[0], assetPath: "assets/audio/de/abc.mp3" }]);

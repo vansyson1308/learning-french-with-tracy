@@ -127,6 +127,17 @@ Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 
 > Selected by the audio canary ASR audit (mean WER/CER 0.1302 over 24 sampled strings, 0 technical failures). Model weights are never committed.
 
+## Kokoro-82M voice kokoro-ff_siwis
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-31
+
+Course audio for fr-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/ff_siwis.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1988 over 26 sampled strings, 0 technical failures). Model weights are never committed.
+
 ## Kokoro-82M voice kokoro-if_sara
 
 - **License:** CC-BY-4.0
@@ -214,28 +225,6 @@ Course audio for zh-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org).
 
 > Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md).
-
-## MeloTTS KR model (melotts-ko)
-
-- **License:** MIT
-- **Source:** https://huggingface.co/myshell-ai/MeloTTS-Korean/tree/0207e5adfc90129a51b6b03d89be6d84360ed323
-- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-22
-
-Course audio for ko-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the KR model (MIT), pinned at repository revision 0207e5adfc90129a51b6b03d89be6d84360ed323; the model card is preserved verbatim in content/audio/model-cards/.
-
-> Selected by the audio canary ASR audit (mean WER/CER 0.1473 over 24 sampled strings, 0 technical failures). Model weights are never committed.
-
-## MeloTTS ZH model (melotts-zh)
-
-- **License:** MIT
-- **Source:** https://huggingface.co/myshell-ai/MeloTTS-Chinese/tree/af5d207a364ea4208c6f589c89f57f88414bdd16
-- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-22
-
-Course audio for zh-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the ZH model (MIT), pinned at repository revision af5d207a364ea4208c6f589c89f57f88414bdd16; the model card is preserved verbatim in content/audio/model-cards/.
-
-> Selected by the audio canary ASR audit (mean WER/CER 0.1328 over 24 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## New General Service List 1.2 — frequency statistics
 
@@ -325,82 +314,49 @@ Spanish course content for Vietnamese speakers authored by the Learning French w
 
 > P3d: clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/es-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/es/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public DELE A1 formats only, never official items. Ships under the repository's MIT grant like the other course packs.
 
-## Piper voice es_ES-davefx-medium
+## Parler-TTS Mini Multilingual speaker Christopher (de)
 
-- **License:** CC0-1.0
-- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/es/es_ES/davefx/medium
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-09-02
+- **Retrieved:** 2026-10-31
 
-Course audio for es-en synthesized with Piper (MIT, rhasspy/piper) using the es_ES-davefx-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Christopher; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the pack-audio canary ASR audit (mean WER 0.4417 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
+> Selected by the audio canary ASR audit (mean WER/CER 0.286 over 36 sampled strings, 0 technical failures). Model weights are never committed.
 
-## Piper voice pt_BR-faber-medium
+## Parler-TTS Mini Multilingual speaker Michelle (de)
 
-- **License:** CC0-1.0
-- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/pt/pt_BR/faber/medium
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-09-02
+- **Retrieved:** 2026-10-31
 
-Course audio for pt-en synthesized with Piper (MIT, rhasspy/piper) using the pt_BR-faber-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Michelle; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the pack-audio canary ASR audit (mean WER 0.2292 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
+> Selected by the audio canary ASR audit (mean WER/CER 0.1532 over 36 sampled strings, 1 technical failures). Model weights are never committed.
 
-## Piper voice de_DE-kerstin-low
+## Parler-TTS Mini Multilingual speaker Nicole (de)
 
-- **License:** CC0-1.0
-- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/kerstin/low
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-21
+- **Retrieved:** 2026-10-31
 
-Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-kerstin-low voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Nicole; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.5387 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+> Selected by the audio canary ASR audit (mean WER/CER 0.1937 over 36 sampled strings, 0 technical failures). Model weights are never committed.
 
-## Piper voice fr_FR-siwis-medium
+## Parler-TTS Mini Multilingual speaker Daniel (fr)
 
-- **License:** CC-BY-4.0
-- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/siwis/medium
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-09-02
+- **Retrieved:** 2026-10-31
 
-Course audio for fr-en synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-siwis-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+Course audio for fr-en synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Daniel; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the pack-audio canary ASR audit (mean WER 0.1667 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
-
-## Piper voice de_DE-thorsten-high
-
-- **License:** CC0-1.0
-- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/thorsten/high
-- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-21
-
-Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-high voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
-
-> Selected by the audio canary ASR audit (mean WER/CER 0.2055 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
-
-## Piper voice fr_FR-upmc-medium (UPMC French speech corpus, speakers Jessica and Pierre)
-
-- **License:** CC-BY-SA-4.0
-- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/upmc/medium
-- **What:** neural TTS voice used at pipeline time to synthesize bundled reception audio
-- **Retrieved:** 2026-08-29
-
-Reception dialogue audio synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-upmc-medium voice (CC BY-SA 4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/fr/reception/model-cards/. Audio clips voiced by this model are distributed under CC BY-SA 4.0 with attribution, matching the project's existing share-alike posture (see LEXICON_LICENSE.md).
-
-> Speaker B of the reception voice cast (dialogue second voice), adopted after fr_FR-mls-medium failed the canary ASR quality audit. CC BY-SA 4.0 share-alike accepted deliberately: the project already publishes its derived French dataset under CC BY-SA 4.0 (approved plan, section AC2) and ships an in-app attributions screen, so the obligations are already implemented. The reception audio derived from this voice carries the same license and attribution.
-
-## Piper voice vi_VN-vais1000-medium
-
-- **License:** CC-BY-4.0
-- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/vi/vi_VN/vais1000/medium
-- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-22
-
-Course audio for vi (no course yet) synthesized with Piper (MIT, rhasspy/piper) using the vi_VN-vais1000-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
-
-> Selected by the audio canary ASR audit (mean WER/CER 0.2925 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+> Selected by the audio canary ASR audit (mean WER/CER 0.3484 over 26 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## Tatoeba — sentences and translation links
 
@@ -435,16 +391,14 @@ Audio for some courses is synthesized at pipeline time with Kokoro-82M (hexgrad,
 
 > P3b audio pipeline v2. Each Kokoro voice actually selected for a course gets its own registry entry (kokoro-voice-<name>) at selection time, covering that language's assets.
 
-## MeloTTS (MyShell.ai) — neural TTS engine and per-language models
+## Parler-TTS
 
-- **License:** MIT
-- **Source:** https://github.com/myshell-ai/MeloTTS
+- **License:** Apache-2.0
+- **Source:** https://github.com/huggingface/parler-tts
 - **What:** TTS engine used at pipeline time (never shipped)
-- **Retrieved:** 2026-10-15
+- **Retrieved:** 2026-10-31
 
-Audio for some courses is synthesized at pipeline time with MeloTTS (MyShell.ai, MIT) and its MIT per-language models (myshell-ai/MeloTTS-<Language> on Hugging Face), pinned by commit and repository revision in content/audio/engines.json; weights are used on the runner and never committed.
-
-> P3b audio pipeline v2. Each MeloTTS model actually selected for a course gets its own registry entry (melotts-<lang>) at selection time, covering that language's assets.
+Parler-TTS (Hugging Face, Apache-2.0), pinned in content/audio/engines.json, renders course audio at pipeline time. It never ships.
 
 ## Lingo Lessons (Open Apps Studio)
 

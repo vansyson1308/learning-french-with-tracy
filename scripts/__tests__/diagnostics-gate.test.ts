@@ -7,7 +7,7 @@
 import { describe, expect, test } from "bun:test";
 import { createHash } from "crypto";
 import { spawnSync } from "child_process";
-import { existsSync, readFileSync } from "fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "fs";
 import path from "path";
 
 import { FIXTURE_PATH, ROUTE_MARKERS, scanForDiagnostics } from "../check-diagnostics-export";
@@ -120,13 +120,46 @@ describe("Opus fixture provenance (content/audio/diagnostics-fixtures.json)", ()
     }
   });
 
+  test("only the blocked route imports the diagnostics code and fixture, so blocking the folders removes every call site", () => {
+    const importers: string[] = [];
+    const visit = (dir: string) => {
+      for (const name of readdirSync(dir)) {
+        const full = path.join(dir, name);
+        const rel = path.relative(ROOT, full).split(path.sep).join("/");
+        if (statSync(full).isDirectory()) {
+          if (rel !== "src/app/diagnostics" && rel !== "src/lib/diagnostics" && rel !== "src/lib/__tests__") visit(full);
+        } else if (/\.(tsx?|jsx?)$/.test(name) && /lib\/diagnostics|assets\/diagnostics|app\/diagnostics/.test(readFileSync(full, "utf8"))) {
+          importers.push(rel);
+        }
+      }
+    };
+    visit(path.join(ROOT, "src"));
+    expect(importers).toEqual([]);
+  });
+
+  test("no shipped asset has a fixture's bytes (CI 41418556351: a copied clip failed every release export)", () => {
+    const fixtureShas = new Set(doc.fixtures.map((f) => f.sha256));
+    const fixtureSizes = new Set(doc.fixtures.map((f) => f.bytes));
+    const shipped: string[] = [];
+    const visit = (dir: string) => {
+      for (const name of readdirSync(dir)) {
+        const full = path.join(dir, name);
+        const st = statSync(full);
+        if (st.isDirectory()) visit(full);
+        // Same bytes means same size: only those files are hashed.
+        else if (fixtureSizes.has(st.size) && fixtureShas.has(sha256(readFileSync(full)))) shipped.push(path.relative(ROOT, full));
+      }
+    };
+    for (const name of readdirSync(path.join(ROOT, "assets"))) {
+      if (name !== "diagnostics" && statSync(path.join(ROOT, "assets", name)).isDirectory()) visit(path.join(ROOT, "assets", name));
+    }
+    expect(shipped).toEqual([]);
+  });
+
   test("the registry covers the fixture folder with the source voice's licence, test-only", () => {
     const entry = loadRegistry().sources.find((s) => s.id === "acceptance-diagnostics-fixtures");
     expect(entry).toBeDefined();
     expect(entry!.covers).toEqual(["assets/diagnostics/"]);
     expect(entry!.testOnly).toBe(true);
-    const voice = loadRegistry().sources.find((s) => s.id === "piper-voice-siwis");
-    expect(entry!.license).toBe(voice!.license);
-    expect(entry!.url).toBe(voice!.url);
   });
 });

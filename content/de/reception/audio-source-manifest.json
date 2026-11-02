@@ -26,89 +26,169 @@
     ],
     "reason": "QC 2026-10-29b §2.3 + Opus (CI-proven 2026-10-30, PR #51): band-1 story audio only — the first 18 stories of the reading order after the A1-0 micro-stories (the eleven A1-2 stories, then the first A2-1 ones) bundle sentence audio as Opus 16 kbps (about the bytes of 12 at MP3 24 kbps, under the 12 MB cap); the micro-stories and every other story are read with the device voice, labelled \"Giọng đọc của máy\" (release/ASSET_DELIVERY.md)."
   },
-  "note": "Pinned TTS sources for the German reception audio (P3d-de, QC 2026-10-29): the two Piper voices of the de voice cast (content/audio/pack-audio-manifest.json courses.de-vi.voiceCast, A thorsten-high, B kerstin-low), with the same pins as the pack manifest; verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
+  "note": "Pinned TTS sources for the reception audio, replaced under D-11 (QC 2026-10-31) so that every voice's whole lineage passes the licence allowlist: the cast of content/audio/voice-casts.json, with the same pins as the pack manifest. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
   "engines": "content/audio/engines.json",
   "voices": [
     {
-      "id": "de_DE-thorsten-high",
-      "engine": "piper",
+      "id": "parler-de-nicole",
+      "engine": "parler",
       "language": "de",
-      "note": "Thorsten Müller's German voice, high quality (CC0)",
-      "speaker": null,
+      "note": "D-11: Parler-TTS Mini Multilingual v1.1, named speaker Nicole",
+      "speaker": "Nicole",
       "files": {
         "model": {
-          "path": "de/de_DE/thorsten/high/de_DE-thorsten-high.onnx",
-          "sha256": "9df1c43c61149ef9b39e618e2b861fbe41e1fcea9390b2dac62e8761573ea4f1",
-          "bytes": 113895201
+          "path": "model.safetensors",
+          "sha256": "79c64e3705e0ccce122988c7817f0d65efa3fd37625906d90765858bdab38412",
+          "bytes": 3751321772
         },
         "config": {
-          "path": "de/de_DE/thorsten/high/de_DE-thorsten-high.onnx.json",
-          "sha256": "6de734444e4c3f9e33b7ebe2746dbc19b71e85f613e79c65acf623200b99a76a",
-          "bytes": 4875
+          "path": "config.json",
+          "sha256": "06d4cb727521542cab6b26d3ad1c8517d51fd1f551600ec67a59575364e221c6",
+          "bytes": 7467
+        },
+        "generationConfig": {
+          "path": "generation_config.json",
+          "sha256": "3bb518e78ea5f32fbbcfc7f0aaed388e7aefede474d2bf4b8cf4502fd6b27a92",
+          "bytes": 218
+        },
+        "preprocessorConfig": {
+          "path": "preprocessor_config.json",
+          "sha256": "c7d295758ce5777d6d88fef1996e94adc8ef3e2237ddfc5ecc24d1407aaddd7d",
+          "bytes": 206
+        },
+        "specialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f",
+          "bytes": 552
+        },
+        "tokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de",
+          "bytes": 10272460
+        },
+        "tokenizerModel": {
+          "path": "tokenizer.model",
+          "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5",
+          "bytes": 1795391
+        },
+        "tokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f",
+          "bytes": 990
         },
         "modelCard": {
-          "path": "de/de_DE/thorsten/high/MODEL_CARD",
-          "sha256": "35cd458c7691a668ec59c63eec3ccad5c7ce7ed36c9f946766616b266a038d57",
-          "bytes": 281
+          "path": "README.md",
+          "sha256": "c4e8c77218ed982b11e5356f5549b62fbaca3072ecfe78def475c0396ac72530",
+          "bytes": 9934
+        },
+        "descTokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a",
+          "bytes": 2424064
+        },
+        "descTokenizerModel": {
+          "path": "spiece.model",
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+          "bytes": 791656
+        },
+        "descTokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56",
+          "bytes": 2539
+        },
+        "descSpecialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f",
+          "bytes": 2201
         }
       },
       "declaredDataset": null,
-      "declaredLicense": "* License: CC0",
+      "declaredLicense": "license: apache-2.0",
       "status": "selected",
-      "gateReason": "matched CC0",
-      "role": "speaker A — male voice for announcements, monologues, narration and dialogue turns",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker A — female voice for announcements, monologues and dialogue turns",
       "multiSpeaker": false
     },
     {
-      "id": "de_DE-kerstin-low",
-      "engine": "piper",
+      "id": "parler-de-christopher",
+      "engine": "parler",
       "language": "de",
-      "note": "Kerstin German female voice (CC0); low quality, 16 kHz — B candidate only",
-      "speaker": null,
+      "note": "D-11: Parler-TTS Mini Multilingual v1.1, named speaker Christopher",
+      "speaker": "Christopher",
       "files": {
         "model": {
-          "path": "de/de_DE/kerstin/low/de_DE-kerstin-low.onnx",
-          "sha256": "d352a7641892cebf2903859af94e9ba81a141110215fe3943bcda7f7da401b7a",
-          "bytes": 63104526
+          "path": "model.safetensors",
+          "sha256": "79c64e3705e0ccce122988c7817f0d65efa3fd37625906d90765858bdab38412",
+          "bytes": 3751321772
         },
         "config": {
-          "path": "de/de_DE/kerstin/low/de_DE-kerstin-low.onnx.json",
-          "sha256": "56e708556b7b9b7a53c4f8957e021421e69f11a600962bba554cffbe72cf2d47",
-          "bytes": 4158
+          "path": "config.json",
+          "sha256": "06d4cb727521542cab6b26d3ad1c8517d51fd1f551600ec67a59575364e221c6",
+          "bytes": 7467
+        },
+        "generationConfig": {
+          "path": "generation_config.json",
+          "sha256": "3bb518e78ea5f32fbbcfc7f0aaed388e7aefede474d2bf4b8cf4502fd6b27a92",
+          "bytes": 218
+        },
+        "preprocessorConfig": {
+          "path": "preprocessor_config.json",
+          "sha256": "c7d295758ce5777d6d88fef1996e94adc8ef3e2237ddfc5ecc24d1407aaddd7d",
+          "bytes": 206
+        },
+        "specialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f",
+          "bytes": 552
+        },
+        "tokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de",
+          "bytes": 10272460
+        },
+        "tokenizerModel": {
+          "path": "tokenizer.model",
+          "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5",
+          "bytes": 1795391
+        },
+        "tokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f",
+          "bytes": 990
         },
         "modelCard": {
-          "path": "de/de_DE/kerstin/low/MODEL_CARD",
-          "sha256": "7019006374a5fe5358186d5f3333e9f904385e7bdfbb68bc85dafce1a3cddae5",
-          "bytes": 272
+          "path": "README.md",
+          "sha256": "c4e8c77218ed982b11e5356f5549b62fbaca3072ecfe78def475c0396ac72530",
+          "bytes": 9934
+        },
+        "descTokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a",
+          "bytes": 2424064
+        },
+        "descTokenizerModel": {
+          "path": "spiece.model",
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+          "bytes": 791656
+        },
+        "descTokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56",
+          "bytes": 2539
+        },
+        "descSpecialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f",
+          "bytes": 2201
         }
       },
       "declaredDataset": null,
-      "declaredLicense": "* License: CC0",
+      "declaredLicense": "license: apache-2.0",
       "status": "selected",
-      "gateReason": "matched CC0",
-      "role": "speaker B — female voice for dialogue turns (16 kHz model, the only eligible female German Piper voice)",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker B — male voice for the second speaker of dialogues",
       "multiSpeaker": false
     }
   ],
-  "excludedVoices": [],
-  "resynthesis": {
-    "reason": "QC 2026-10-29b §3.4: the 11 sentence clips flagged for review (ASR WER ≥ 0.5) in content/reports/de/audio-quality.json are re-rendered with the same voice and a lower Piper noise scale, then re-audited. Any clip still flagged after that run goes to plan/OWNER-FINAL-CHECKLIST.md for a listening check (bun scripts/audio.ts owner-checklist --lang de --report content/reports/de/audio-quality.json).",
-    "piper": {
-      "noiseScale": 0.5,
-      "noiseW": 0.6
-    },
-    "clips": [
-      "de-en:Die Milch ist kalt.",
-      "de-en:Du bist eine Frau.",
-      "de-en:Gehen Sie geradeaus.",
-      "de-vi:Was darf es sein?",
-      "de-vi:Wir haben Pizza gegessen.",
-      "de.clip.cp3_dikt_zug",
-      "de.clip.goethe_a_h1_06",
-      "de.clip.ix_goethe_a_thema_miss",
-      "de.clip.ix_goethe_b_thema_miss",
-      "de.clip.ix_plaene_0_s",
-      "de.clip.uh_brot_preis"
-    ]
-  }
+  "excludedVoices": []
 }

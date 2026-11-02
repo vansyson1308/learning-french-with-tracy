@@ -16,6 +16,9 @@ import type { DownloadItem, EnginesDoc, LicenseCard, SynthJob, TtsEngine, Voice 
 
 export const KOKORO_HELPER = "scripts/lib/tts/kokoro_synth.py";
 
+/** Kokoro's French voice leaves long edge silence on short words, which fails the speaking-rate check ("merci": 0.55 s of speech in 1.25 s). */
+const TRIM_EDGES = new Set(["fr"]);
+
 export const kokoroEngine: TtsEngine = {
   id: "kokoro",
   install: (engines) => engines.engines.kokoro.install,
@@ -44,7 +47,7 @@ export const kokoroEngine: TtsEngine = {
       const payload = list.map((j) => JSON.stringify({ text: j.text, out: j.wavPath })).join("\n");
       lines.push(`printf '%s\\n' ${shq(payload)} > ${shq(jobsFile)}`);
       lines.push(
-        `python3 ${KOKORO_HELPER} --lang-code ${shq(langCode)} --model ${shq(`${downloadsDir}/${voiceId}.model.1`)} --config ${shq(`${downloadsDir}/${voiceId}.config.1`)} --voice ${shq(`${downloadsDir}/${voiceId}.voiceFile.1`)} --jobs ${shq(jobsFile)}`
+        `python3 ${KOKORO_HELPER} --lang-code ${shq(langCode)} --model ${shq(`${downloadsDir}/${voiceId}.model.1`)} --config ${shq(`${downloadsDir}/${voiceId}.config.1`)} --voice ${shq(`${downloadsDir}/${voiceId}.voiceFile.1`)} --jobs ${shq(jobsFile)}${TRIM_EDGES.has(voice.language) ? " --trim-edges" : ""}`
       );
     }
     return lines;

@@ -237,12 +237,12 @@ describe("micro-stories, band A1-0 (QC 2026-10-30 §2.2)", () => {
 });
 
 describe("story audio budget", () => {
-  test("Spanish story sentences use pipeline 4 (24 kbps speech); French keeps its frozen pipeline 1", () => {
+  test("Spanish story sentences use pipeline 4 (24 kbps speech), French too since D-11", () => {
     const engines = JSON.parse(readFileSync(safeResolve("content/audio/engines.json"), "utf8"));
     expect(storyPipelineVersion("es")).toBe(4);
     expect(mp3KbpsFor(engines, 4)).toBe(24);
     expect(mp3KbpsFor(engines, 3)).toBe(32); // listening clips unchanged
-    expect(storyPipelineVersion("fr")).toBe(1);
+    expect(storyPipelineVersion("fr")).toBe(4);
     expect(mp3KbpsFor(engines, 1)).toBe(64);
   });
 });

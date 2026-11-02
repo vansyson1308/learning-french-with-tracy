@@ -7,9 +7,12 @@
  * V1 plan (pipelineVersion 1, unchanged keys).
  */
 import { describe, expect, test } from "bun:test";
+import { mkdtempSync, readFileSync, rmSync } from "fs";
+import { tmpdir } from "os";
+import path from "path";
 
 import { safeResolve } from "../lib/pipeline";
-import { loadListening, receptionAssetKey, resolveClipSegments } from "../lib/reception";
+import { listeningClipKey, loadListening, receptionAssetKey, resolveClipSegments } from "../lib/reception";
 import { bundledStoryIds, loadStories, storyAudioPolicy, storySentenceAssetKey } from "../lib/stories";
 
 function run(args: string[]): { code: number; out: string } {
@@ -22,7 +25,49 @@ function run(args: string[]): { code: number; out: string } {
   return { code: proc.exitCode, out: `${proc.stdout.toString()}${proc.stderr.toString()}` };
 }
 
+describe("the plan writes exactly the reception files the validator wants", () => {
+  // Run 41166387785: a Parler speaker's name was hashed as null by the plan and as the name by the
+  // validator, so a voice change left 152 orphans and 121 clips missing.
+  const expected = (lang: string) => {
+    const listening = loadListening(lang)!;
+    const stories = loadStories(lang)!;
+    const bundled = bundledStoryIds(stories, storyAudioPolicy(lang));
+    return new Set([
+      ...listening.clips.map((c) => listeningClipKey(lang, listening, c)),
+      ...stories.stories.filter((s) => bundled.has(s.id)).flatMap((s) => s.sentences).map((s) => storySentenceAssetKey(lang, stories, s)),
+    ]);
+  };
+
+  for (const lang of ["fr", "de", "es"]) {
+    test(`${lang}: no orphan and no missing clip after a generate`, () => {
+      const dir = mkdtempSync(path.join(tmpdir(), "audio-plan-"));
+      try {
+        const file = path.join(dir, "plan.json");
+        const { code, out } = run(["plan", "--lang", lang, "--layer", "reception", "--mode", "generate", "--out", file]);
+        expect(code, out).toBe(0);
+        const plan = JSON.parse(readFileSync(file, "utf8")) as { clips: { assetKey: string }[] };
+        expect(new Set(plan.clips.map((c) => c.assetKey))).toEqual(expected(lang));
+      } finally {
+        rmSync(dir, { recursive: true, force: true });
+      }
+    });
+  }
+
+  test("a voice's speaker changes the key, so a recast regenerates its clips", () => {
+    const seg = (speaker: number | string | null) => [{ voiceId: "parler-fr-daniel", speaker, text: "Bonjour." }];
+    expect(receptionAssetKey("fr", seg("Daniel"), 3)).not.toBe(receptionAssetKey("fr", seg(null), 3));
+  });
+});
+
 describe("audio.ts plan --dry-run", () => {
+  test("a language with lexicon audio cannot generate pack or lexicon alone: apply would delete the other", () => {
+    for (const layer of ["pack", "lexicon"]) {
+      const { code, out } = run(["plan", "--lang", "de", "--layer", layer, "--mode", "generate", "--dry-run"]);
+      expect(out).toContain(`layer ${layer} alone would delete`);
+      expect(code).toBe(1);
+    }
+  });
+
   test("French generate plan validates offline and reports the authored clip count", () => {
     const listening = loadListening("fr")!;
     // P5b: the reception layer also carries one clip per sentence of a bundled
@@ -31,7 +76,7 @@ describe("audio.ts plan --dry-run", () => {
     const bundled = bundledStoryIds(stories, storyAudioPolicy("fr"));
     const sentences = stories.stories.filter((s) => bundled.has(s.id)).flatMap((s) => s.sentences);
     const keys = new Set([
-      ...listening.clips.map((c) => receptionAssetKey("fr", resolveClipSegments(listening, c))),
+      ...listening.clips.map((c) => listeningClipKey("fr", listening, c)),
       ...sentences.map((s) => storySentenceAssetKey("fr", stories, s)),
     ]);
     const { code, out } = run(["plan", "--lang", "fr", "--layer", "reception", "--mode", "generate", "--dry-run"]);

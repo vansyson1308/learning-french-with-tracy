@@ -23,7 +23,7 @@ import { initialProbe, PROBE_PHASE_TIMEOUT_MS, probeReducer, probeSummary, probe
 import { SLOW_RATE } from "@/lib/reception/listening-player";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
-// Encoded from fr.story.le_chat_et_la_souris#1 (content/audio/diagnostics-fixtures.json).
+// Remuxed from es.story.el_perro_de_ana#18 (content/audio/diagnostics-fixtures.json).
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const FIXTURE = require("@/assets/diagnostics/opus/story-sentence-16k.opus");
 

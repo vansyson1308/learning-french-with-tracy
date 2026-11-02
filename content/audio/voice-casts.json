@@ -6,21 +6,51 @@
       "status": "selected",
       "candidates": [
         {
-          "voiceId": "fr_FR-siwis-medium",
-          "engine": "piper"
+          "voiceId": "kokoro-ff_siwis",
+          "engine": "kokoro",
+          "gender": "female"
         },
         {
-          "voiceId": "fr_FR-upmc-medium",
-          "engine": "piper"
+          "voiceId": "parler-fr-christine",
+          "engine": "parler",
+          "gender": "female"
+        },
+        {
+          "voiceId": "parler-fr-daniel",
+          "engine": "parler",
+          "gender": "male"
         }
       ],
       "cast": {
-        "A": "fr_FR-siwis-medium",
-        "B": "fr_FR-upmc-medium"
+        "A": "kokoro-ff_siwis",
+        "B": "parler-fr-daniel"
       },
       "canary": {
-        "note": "Phase 7 / V1 publication canary (content/reports/reception-audio-canary.json, pack-audio-canary.json): siwis 0.184, upmc#1 0.197; French audio is frozen at pipelineVersion 1"
-      }
+        "reportedAt": "2026-10-31",
+        "report": "content/reports/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-ff_siwis",
+            "clips": 26,
+            "meanWer": 0.1988,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "parler-fr-daniel",
+            "clips": 26,
+            "meanWer": 0.3484,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "parler-fr-christine",
+            "clips": 26,
+            "meanWer": 0.6917,
+            "technicalFailures": 1
+          }
+        ]
+      },
+      "castNote": "A=kokoro-ff_siwis (Kokoro voice pack ff_siwis); B=parler-fr-daniel: different speaker (Parler speaker Daniel), other gender (male vs female), mean WER/CER 0.3484 ≤ 0.6; skipped parler-fr-christine (mean WER/CER 0.6917 > 0.6)",
+      "candidateSearch": "2026-10-31 (D-11): the Multilingual LibriSpeech Piper voices were tried first, eight speakers each. German mean WER 1.39 to 2.01, French 2.19 to 3.24, against the 0.6 floor, so they left. Kokoro has no German."
     },
     "es": {
       "status": "selected",
@@ -86,61 +116,51 @@
       "status": "selected",
       "candidates": [
         {
-          "voiceId": "de_DE-thorsten-high",
-          "engine": "piper",
-          "gender": "male"
-        },
-        {
-          "voiceId": "de_DE-thorsten-medium",
-          "engine": "piper",
-          "gender": "male"
-        },
-        {
-          "voiceId": "de_DE-kerstin-low",
-          "engine": "piper",
+          "voiceId": "parler-de-nicole",
+          "engine": "parler",
           "gender": "female"
         },
         {
-          "voiceId": "de_DE-mls-medium",
-          "engine": "piper"
+          "voiceId": "parler-de-michelle",
+          "engine": "parler",
+          "gender": "female"
+        },
+        {
+          "voiceId": "parler-de-christopher",
+          "engine": "parler",
+          "gender": "male"
         }
       ],
       "cast": {
-        "A": "de_DE-thorsten-high",
-        "B": "de_DE-kerstin-low"
+        "A": "parler-de-nicole",
+        "B": "parler-de-christopher"
       },
       "canary": {
-        "reportedAt": "2026-10-21",
+        "reportedAt": "2026-10-31",
         "report": "content/reports/de/audio-canary.json",
         "voices": [
           {
-            "voiceId": "de_DE-thorsten-high",
-            "clips": 24,
-            "meanWer": 0.2055,
+            "voiceId": "parler-de-nicole",
+            "clips": 36,
+            "meanWer": 0.1937,
             "technicalFailures": 0
           },
           {
-            "voiceId": "de_DE-thorsten-medium",
-            "clips": 24,
-            "meanWer": 0.2416,
+            "voiceId": "parler-de-christopher",
+            "clips": 36,
+            "meanWer": 0.286,
             "technicalFailures": 0
           },
           {
-            "voiceId": "de_DE-kerstin-low",
-            "clips": 24,
-            "meanWer": 0.5387,
+            "voiceId": "parler-de-michelle",
+            "clips": 36,
+            "meanWer": 0.2959,
             "technicalFailures": 0
-          },
-          {
-            "voiceId": "de_DE-mls-medium",
-            "clips": 24,
-            "meanWer": 1.1024,
-            "technicalFailures": 5
           }
         ]
       },
-      "castNote": "A=de_DE-thorsten-high (model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice); B=de_DE-kerstin-low: different speaker (model card: voice kerstin, dataset github.com/rhasspy/dataset-voice-kerstin), other gender (female vs male), mean WER/CER 0.5387 ≤ 0.6; skipped de_DE-thorsten-medium (same speaker as A or unverifiable: model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice), de_DE-mls-medium (mean WER/CER 1.1024 > 0.6)",
-      "candidateSearch": "2026-10-21: no better German B exists at rhasspy/piper-voices v1.0.0 — the licence gate excludes eva_k, karlsson and ramona (M-AILABS, 'License: See URL') and pavoque (CC BY-NC-SA 4.0); thorsten_emotional passes (CC0) but is Thorsten Müller again (8 emotion styles, same dataset). kerstin-low (CC0, 16 kHz low quality, mean WER 0.49) is the only licence-clean second speaker, so B = kerstin-low."
+      "castNote": "A=parler-de-nicole (Parler speaker Nicole); B=parler-de-christopher: different speaker (Parler speaker Christopher), other gender (male vs female), mean WER/CER 0.286 ≤ 0.6",
+      "candidateSearch": "2026-10-31 (D-11): the Multilingual LibriSpeech Piper voices were tried first, eight speakers each. German mean WER 1.39 to 2.01, French 2.19 to 3.24, against the 0.6 floor, so they left. Kokoro has no German."
     },
     "it": {
       "status": "selected",
@@ -280,12 +300,8 @@
       "castNote": "A=kokoro-jf_alpha (Kokoro voice pack jf_alpha); B=kokoro-jm_kumo: different speaker (Kokoro voice pack jm_kumo), other gender (male vs female), mean WER/CER 0.5026 ≤ 0.6"
     },
     "zh": {
-      "status": "selected",
+      "status": "pending-canary",
       "candidates": [
-        {
-          "voiceId": "melotts-zh",
-          "engine": "melotts"
-        },
         {
           "voiceId": "kokoro-zf_xiaobei",
           "engine": "kokoro"
@@ -296,8 +312,8 @@
         }
       ],
       "cast": {
-        "A": "melotts-zh",
-        "B": "kokoro-zm_yunjian"
+        "A": null,
+        "B": null
       },
       "canary": {
         "reportedAt": "2026-10-22",
@@ -326,15 +342,10 @@
       "castNote": "A=melotts-zh (MeloTTS melotts-zh speaker ZH); B=kokoro-zm_yunjian: different speaker (Kokoro voice pack zm_yunjian), gender male (no other-gender candidate within the floor), mean WER/CER 0.1475 ≤ 0.6"
     },
     "ko": {
-      "status": "selected",
-      "candidates": [
-        {
-          "voiceId": "melotts-ko",
-          "engine": "melotts"
-        }
-      ],
+      "status": "no-clean-voice",
+      "candidates": [],
       "cast": {
-        "A": "melotts-ko",
+        "A": null,
         "B": null
       },
       "canary": {
@@ -349,7 +360,8 @@
           }
         ]
       },
-      "castNote": "A=melotts-ko (MeloTTS melotts-ko speaker KR); no second voice: no other candidate is a verified different speaker within the floor"
+      "castNote": "A=melotts-ko (MeloTTS melotts-ko speaker KR); no second voice: no other candidate is a verified different speaker within the floor",
+      "reason": "D-11: MeloTTS, the only Korean engine in the pipeline, declares no training data; unknown link fails closed"
     },
     "en": {
       "status": "selected",
@@ -392,15 +404,10 @@
       "castNote": "A=kokoro-am_michael (Kokoro voice pack am_michael); B=kokoro-af_heart: different speaker (Kokoro voice pack af_heart), other gender (female vs male), mean WER/CER 0.1331 ≤ 0.6"
     },
     "vi": {
-      "status": "selected",
-      "candidates": [
-        {
-          "voiceId": "vi_VN-vais1000-medium",
-          "engine": "piper"
-        }
-      ],
+      "status": "no-clean-voice",
+      "candidates": [],
       "cast": {
-        "A": "vi_VN-vais1000-medium",
+        "A": null,
         "B": null
       },
       "canary": {
@@ -415,7 +422,8 @@
           }
         ]
       },
-      "castNote": "A=vi_VN-vais1000-medium (model card: voice vais1000, dataset ieee-dataport.org/documents/vais-1000-vietnamese-speech-synthesis-corpus); no second voice: no other candidate is a verified different speaker within the floor"
+      "castNote": "A=vi_VN-vais1000-medium (model card: voice vais1000, dataset ieee-dataport.org/documents/vais-1000-vietnamese-speech-synthesis-corpus); no second voice: no other candidate is a verified different speaker within the floor",
+      "reason": "D-11: vais1000 is finetuned from lessac; no Vietnamese audio ships today"
     }
   }
 }

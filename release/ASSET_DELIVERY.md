@@ -38,6 +38,9 @@ The binding constraint is the **150 MB phone APK**.
   file and to this document.
 - `content/reports/audio-size.json` records the sizes and both caps.
 
+## Sizes after D-11 (2026-11-02, measured)
+French 3.48 MB (was 8.11 MB; it left the frozen 64 kbps pipeline), German 9.56 MB (was 8.42 MB).
+
 ## Which stories bundle audio
 Declared per language in `content/<lang>/reception/audio-source-manifest.json`:
 

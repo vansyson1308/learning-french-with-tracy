@@ -5,7 +5,7 @@
  */
 import { afterAll, describe, expect, test } from "bun:test";
 import { spawnSync } from "child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
+import { mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "fs";
 import os from "os";
 import path from "path";
 
@@ -13,12 +13,7 @@ import { CLIPPING, clippingIssue, f32leSamples, ffClipping, scanClipping } from 
 import { blessedBySha, committedBlessedSha256 } from "../lib/audio-qa";
 import { QA_THRESHOLDS, technicalQa } from "../lib/piper-audio";
 
-const FROZEN_FR = [
-  "assets/audio/fr/6151b3ba3c15a20f5d91.mp3",
-  "assets/audio/fr/a2354e82adc4bebb03f9.mp3",
-  "assets/audio/fr-reception/0dc39b0688bd4633d05d.mp3",
-  "assets/audio/fr-reception/2da1374014c3c417aa7d.mp3",
-];
+const BLESSED_ES = `assets/audio/es/${readdirSync(path.resolve(import.meta.dir, "../../assets/audio/es")).sort()[0]}`;
 
 const ROOT = path.resolve(import.meta.dir, "../..");
 const hasFfmpeg = spawnSync("ffmpeg", ["-version"]).status === 0 && spawnSync("ffprobe", ["-version"]).status === 0;
@@ -98,42 +93,27 @@ describe("ffClipping decodes the file at its own rate (needs ffmpeg)", () => {
     expect(s.hotSamples).toBe(6);
   });
 
-  // The 4 frozen French clips the old peak test (> -0.2 dB) failed. Re-measured
-  // 2026-10-29: no clipped run in any of them, so no waiver and no re-generation.
-  test.skipIf(!hasFfmpeg)("the 4 frozen French clips have no clipped run", () => {
-    const expected: Record<string, { peakAbsMin: number; hotSamples: number; longestRun: number }> = {
-      "assets/audio/fr/6151b3ba3c15a20f5d91.mp3": { peakAbsMin: 0.99, hotSamples: 0, longestRun: 0 },
-      "assets/audio/fr/a2354e82adc4bebb03f9.mp3": { peakAbsMin: 0.98, hotSamples: 0, longestRun: 0 },
-      "assets/audio/fr-reception/0dc39b0688bd4633d05d.mp3": { peakAbsMin: 1.09, hotSamples: 1, longestRun: 1 },
-      "assets/audio/fr-reception/2da1374014c3c417aa7d.mp3": { peakAbsMin: 1.0, hotSamples: 1, longestRun: 1 },
-    };
-    // Measured with ffmpeg 7.1 (mp3float). The exact hot-sample count may move by one
-    // between decoder builds; the verdict (no run of 3) must not.
-    for (const [file, e] of Object.entries(expected)) {
-      const s = ffClipping(path.join(ROOT, file));
-      expect({ file, runs: s.runs, rate: s.sampleRate }).toEqual({ file, runs: 0, rate: 22050 });
-      expect(s.longestRun).toBeLessThan(CLIPPING.minRun);
-      expect(Math.abs(s.hotSamples - e.hotSamples)).toBeLessThanOrEqual(1);
-      expect(Math.abs(s.longestRun - e.longestRun)).toBeLessThanOrEqual(1);
-      expect(s.peakAbs).toBeGreaterThanOrEqual(e.peakAbsMin);
-    }
+  // D-11 replaced the French clips this was first measured on; a generated clip pins the rule.
+  test.skipIf(!hasFfmpeg)("a hot peak with no clipped run passes when blessed and fails the peak gate as a new render", () => {
+    const tone = Array.from({ length: 22050 }, (_, i) => 0.5 * Math.sin((2 * Math.PI * 220 * i) / 22050));
+    tone[5000] = 1;
+    const abs = path.join(tmp, "hot-peak.wav");
+    writeFileSync(abs, wav16(tone, 22050));
+    const s = ffClipping(abs);
+    expect(s.runs).toBe(0);
+    expect(s.hotSamples).toBeGreaterThanOrEqual(1);
+    const blessed = technicalQa(abs, "x", "fr", [0, 1000], { newlyRendered: false });
+    expect(blessed.technicalIssues.filter((i) => /clipping|peak/.test(i))).toEqual([]);
+    const fresh = technicalQa(abs, "x", "fr", [0, 1000], { newlyRendered: true });
+    expect(fresh.technicalIssues.join()).toContain("(newly rendered clip)");
   });
 
-  // Coordinator follow-up 2026-10-29: the 4 clips are blessed, so the old peak gate (new clips only)
-  // does not touch them; the same bytes as a NEW render would still fail it.
-  test.skipIf(!hasFfmpeg)("blessed: the 4 French clips pass without a waiver; as new renders they fail the peak gate", () => {
+  test("blessing goes by the file's bytes, not its name", () => {
     const isBlessed = blessedBySha(committedBlessedSha256());
-    for (const file of FROZEN_FR) {
-      const abs = path.join(ROOT, file);
-      expect({ file, blessed: isBlessed(abs) }).toEqual({ file, blessed: true });
-      const blessed = technicalQa(abs, "x", "fr", [0, 1000], { newlyRendered: false });
-      expect({ file, issues: blessed.technicalIssues.filter((i) => /clipping|peak/.test(i)) }).toEqual({ file, issues: [] });
-      const fresh = technicalQa(abs, "x", "fr", [0, 1000], { newlyRendered: true });
-      expect(fresh.technicalIssues.join()).toContain("(newly rendered clip)");
-    }
-    // A changed byte is a new render, whatever its name.
-    const copy = path.join(tmp, path.basename(FROZEN_FR[0]));
-    writeFileSync(copy, Buffer.concat([readFileSync(path.join(ROOT, FROZEN_FR[0])), Buffer.from([0])]));
+    const file = path.join(ROOT, BLESSED_ES);
+    expect(isBlessed(file)).toBe(true);
+    const copy = path.join(tmp, path.basename(BLESSED_ES));
+    writeFileSync(copy, Buffer.concat([readFileSync(file), Buffer.from([0])]));
     expect(isBlessed(copy)).toBe(false);
   });
 });

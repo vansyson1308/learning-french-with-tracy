@@ -389,6 +389,8 @@ case "$SHARD" in
 esac
 
 echo >> "$REPORT"
+# The first failed flow, apart from the rows: the later ones may only follow from it.
+[ -n "$FIRST_FAILURE" ] && echo "**First failure:** $FIRST_FAILURE" >> "$REPORT" && echo >> "$REPORT"
 echo "Screenshots: \`shots/\`. Logs: \`logs/\` (a hung flow leaves \`logs/<flow>.hang/\`)." >> "$REPORT"
 echo
 [ "$FAILED" = 0 ] && echo "DEVICE ACCEPTANCE PASSED (emulator API $API, shard $SHARD)" || echo "DEVICE ACCEPTANCE FAILED (emulator API $API, shard $SHARD)"
