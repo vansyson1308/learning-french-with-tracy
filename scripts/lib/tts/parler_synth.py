@@ -27,8 +27,8 @@ SHORT_UNITS = 3
 MAX_SHORT_SECONDS = 1.5
 SILENCE_RATIO = 0.02
 PAD_SECONDS = 0.08
-# In 10 ms windows: a run under 80 ms, 300 ms or more from the rest.
-BLIP_WINDOWS = 8
+# In 10 ms windows: a run under 150 ms, 300 ms or more from the rest. Run 41364808723 kept a 90 ms click after 1.4 s of silence.
+BLIP_WINDOWS = 15
 BLIP_GAP_WINDOWS = 30
 
 

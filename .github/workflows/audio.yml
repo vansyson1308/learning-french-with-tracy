@@ -52,6 +52,10 @@ on:
         required: false
         default: ""
         type: string
+      reuse_run:
+        description: "run id of an earlier generate of this language and layer: its clips are reused, except those its technical QA failed"
+        required: false
+        default: ""
       pending:
         description: "other languages whose audio run comes next (e.g. de): only THEIR missing-audio errors are deferred; never the run's own language"
         required: false
@@ -182,6 +186,22 @@ jobs:
           done
           piper --version 2>/dev/null || true
 
+      # Parler takes hours: a run that failed on a few clips hands over the rest. Every reused clip
+      # still goes through the technical QA and the ASR audit of this run.
+      - name: Reuse the clips of an earlier run
+        if: inputs.mode == 'generate' && inputs.reuse_run != ''
+        timeout-minutes: 20
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REUSE_RUN: ${{ inputs.reuse_run }}
+          REUSE_LAYER: ${{ inputs.layer }}
+        run: |
+          set -euo pipefail
+          [[ "$REUSE_RUN" =~ ^[0-9]+$ ]] || { echo "::error::reuse_run must be a run id"; exit 1; }
+          gh run download "$REUSE_RUN" --repo "$GITHUB_REPOSITORY" -n "audio-$LANG_INPUT-generate-$REUSE_LAYER" -D /tmp/reuse
+          bun -e "const fs=require('fs');const q=JSON.parse(fs.readFileSync('/tmp/reuse/tmp/audio-tech-qa.json','utf8'));for(const c of q.clips){if(c.technical==='pass')continue;for(const e of ['mp3','opus']){const f='/tmp/reuse/tmp/audio-mp3/'+c.assetKey+'.'+e;if(fs.existsSync(f)){fs.rmSync(f);console.log('resynthesise',c.clipId)}}}"
+          ls /tmp/reuse/tmp/audio-mp3 | wc -l
+
       - name: Synthesize
         timeout-minutes: 300 # Kokoro and Piper about 30 min; Parler runs at about 6 times real time on the CPU
         if: inputs.mode != 'recon'
@@ -200,6 +220,7 @@ jobs:
               [ -d "$d" ] && EXISTING_DIRS="${EXISTING_DIRS:+$EXISTING_DIRS,}$d"
             done
           fi
+          [ -d /tmp/reuse/tmp/audio-mp3 ] && EXISTING_DIRS="${EXISTING_DIRS:+$EXISTING_DIRS,}/tmp/reuse/tmp/audio-mp3"
           EXISTING=$([ -n "$EXISTING_DIRS" ] && echo "--existing $EXISTING_DIRS" || echo "")
           bun scripts/audio.ts synth-script --lang "$LANG_INPUT" --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" $EXISTING > /tmp/synth.sh
           bash /tmp/synth.sh
