@@ -30,7 +30,13 @@ echo "$*" >> "$WORK/emulator-calls"
 [ -n "${HEAL_ON_BOOT:-}" ] && : > "$WORK/healthy"
 exit 0
 EOF
-chmod +x "$WORK/bin/adb" "$WORK/sdk/emulator/emulator"
+# pkill stub: the real one would kill the emulators of whoever runs the tests.
+cat > "$WORK/bin/pkill" <<'EOF'
+#!/usr/bin/env bash
+echo "$*" >> "$WORK/pkill-calls"
+exit 1
+EOF
+chmod +x "$WORK/bin/adb" "$WORK/sdk/emulator/emulator" "$WORK/bin/pkill"
 
 export PATH="$WORK/bin:$PATH" WORK ANDROID_HOME="$WORK/sdk"
 export HEALTH_TIMEOUT=1 HEALTH_POLL=1 AVD_NAME=test EMULATOR_OPTIONS="-no-window -noaudio"
@@ -67,6 +73,7 @@ check "retry: exactly one boot" '[ "$(wc -l < "$WORK/emulator-calls")" = 1 ]'
 check "retry: boots the same AVD with the same options, wiped" 'grep -q -- "-avd test -no-window -noaudio -wipe-data" "$WORK/emulator-calls"'
 check "retry: the report says infra retry and the count" 'grep -q "| emulator health | INFO | infra retry, 1 infra retries" "$REPORT"'
 check "retry: the run is not failed by it" '[ "$FAILED" = 0 ]'
+check "retry: pkill went to the stub" 'grep -q "qemu-system" "$WORK/pkill-calls"'
 
 # 3. Dead after the reboot too: fails, still one boot.
 reset_case
