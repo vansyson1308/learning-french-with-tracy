@@ -103,7 +103,7 @@
   Content: 6 sections / 27 units / 108 lessons / 704 exercises (all 15 types, concept steps in 25 lessons, 23 of 23 cards shown), 35 objectives, 23 concepts + 12 paradigms, 1,288 lexemes (vi; A1 syllabus 690), 40 readings, 244 clips, 54 speech / 36 writing / 22 scenarios, 7 checkpoints, 28-item placement, Goethe A1 practice 2 forms × 35 items; Tier-1 review files vi 378 / de 309 lines; back-translation 5,043 pairs (`content/de/_drafts/BACKTRANSLATION.md`). Report `plan/reports/P3d-de.md` |
 | P3d(it) | it-vi + CILS A1 | `phase-4/it-vi` | merged, PR #56 (4190d82); see `plan/reports/P3d-it.md` | | |
 | P3d(pt) | pt-vi + CAPLE A1 | – | not started | | |
-| P4b | CJK plugins + Hán-Việt readings (Unihan kVietnamese + reviewed overrides) | – | not started | | |
+| P4b | CJK plugins + Hán-Việt readings (Unihan kVietnamese + reviewed overrides) | `phase-4/cjk-plugins` | in progress — stage 2 (Hán-Việt) done: 118 pairs ja/zh/ko in `content/hanviet/`, checked against Unihan 17.0.0, `hanVietFor` runtime helper; D-10 sheet `content/hanviet/REVIEW.md` pending | | |
 | P4c | ja-vi + JLPT N5 | – | not started | | |
 | P4d | zh-vi + HSK 1–2 | – | not started | | |
 | P4e | ko-vi + TOPIK I | – | not started | | |

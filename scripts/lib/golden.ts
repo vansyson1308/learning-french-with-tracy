@@ -1,7 +1,8 @@
 /**
  * Compile goldens (P1a): a committed manifest of sha256 hashes for every
  * generated artifact — every file under src/content/**, every
- * content/reports/**.json, ATTRIBUTIONS.md, src/content/attributions.json —
+ * content/reports/**.json, ATTRIBUTIONS.md, src/content/attributions.json,
+ * content/hanviet/REVIEW.md —
  * plus the logical dump of every prebuilt SQLite lexicon (one per target
  * language since P1c). The golden test
  * (scripts/__tests__/golden/compile-golden.test.ts) checks the committed
@@ -17,6 +18,7 @@ import os from "os";
 import path from "path";
 
 import { compileAllArtifacts } from "./compile-artifacts";
+import { HANVIET_REVIEW_REL } from "./hanviet";
 import { buildSqliteDb, dbAssetLanguage, logicalDump } from "./lexicon-build";
 import { loadRegistry, readJson, removeTempDirSync, safeResolve } from "./pipeline";
 
@@ -73,6 +75,8 @@ export function pinnedGeneratedFiles(): string[] {
     ...walkFiles("src/content"),
     ...walkFiles("content/reports", (rel) => rel.endsWith(".json")),
     "ATTRIBUTIONS.md",
+    // P4b stage 2: the generated Hán-Việt D-10 review sheet (scripts/lib/hanviet.ts).
+    ...(existsSync(safeResolve(HANVIET_REVIEW_REL)) ? [HANVIET_REVIEW_REL] : []),
   ].sort();
 }
 

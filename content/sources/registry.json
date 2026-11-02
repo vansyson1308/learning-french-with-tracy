@@ -427,6 +427,39 @@
       "notes": "P4f: clean-room authored; Vietnamese learner-facing text pending native review. In content/en/lexicon/lexemes.json a pronunciation with this source is a transcription written by the project because the Kaikki value in the candidate pool is missing or not General American; it was not checked against a dictionary. The hand-chosen lexicon itself is recorded under original-lexicon-etl. Ships under the repository's MIT grant like the other course packs."
     },
     {
+      "id": "unihan",
+      "name": "Unihan Database — Unicode Character Database 17.0.0",
+      "kind": "character data (kVietnamese, kMandarin, kJapanese/On/Kun, kHangul readings; variant links) used at build time to check the Hán-Việt tables",
+      "license": "Unicode-3.0",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+      "attribution": "Character readings and variant data from the Unihan Database, part of the Unicode Character Database (Unicode 17.0.0). Copyright © 1991-2026 Unicode, Inc. Used under the Unicode License v3 (https://www.unicode.org/license.txt); the full copyright and permission notice is in content/hanviet/UNICODE-LICENSE.txt.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/hanviet/unihan-readings.json",
+        "content/hanviet/UNICODE-LICENSE.txt"
+      ],
+      "notes": "P4b stage 2 (QC 2026-11-03 §2). Pinned zip (sha256 f7a48b2b545acfaa77b2d607ae28747404ce02baefee16396c5d2d7a8ef34b5e, 8,518,517 bytes, content/hanviet/source-manifest.json) is never committed; scripts/hanviet-unihan.ts derives a subset (the characters of the ja/zh candidate pools and of the Hán-Việt tables, plus variants). Build-time only: the validator confirms every syllable of the authored readings against kVietnamese; no Unihan data ships in the app.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "original-hanviet-readings",
+      "name": "Learning French with Tracy — authored Hán-Việt readings (ja, zh, ko)",
+      "kind": "authored word → Sino-Vietnamese reading tables and their D-10 review sheet",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Hán-Việt (Sino-Vietnamese) readings of Japanese, Chinese and Korean words authored by the Learning French with Tracy project, checked against the Unihan Database.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/hanviet/ja.json",
+        "content/hanviet/ko.json",
+        "content/hanviet/zh.json",
+        "content/hanviet/source-manifest.json",
+        "content/hanviet/REVIEW.md",
+        "src/content/hanviet/"
+      ],
+      "notes": "P4b stage 2: Sino-Vietnamese words only (ja on'yomi kanji compounds, zh hanzi words, ko Sino-Korean words with hanja); readings pending the D-10 review (content/hanviet/REVIEW.md). Ships under the repository's MIT grant like the course packs."
+    },
+    {
       "id": "tts-engine-kokoro",
       "name": "Kokoro-82M (hexgrad) — neural TTS engine and model",
       "kind": "TTS engine used at pipeline time (never shipped)",

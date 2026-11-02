@@ -1226,3 +1226,12 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/stories/en-story-assets.ts
 - compile: new      src/content/writing/en-writing.json
 - compile: new      lexicon-db:en:en-lexicon-v3-bd5b9205e7ceace3.db
+
+## 2026-11-02 — P4b Unihan attribution
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: new      content/hanviet/REVIEW.md
+- compile: new      src/content/hanviet/ja.json
+- compile: new      src/content/hanviet/ko.json
+- compile: new      src/content/hanviet/zh.json

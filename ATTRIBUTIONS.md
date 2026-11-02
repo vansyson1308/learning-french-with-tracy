@@ -303,6 +303,17 @@ German course content for Vietnamese speakers authored by the Learning French wi
 
 > P3d(de): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/de-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/de/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public Goethe-Zertifikat A1: Start Deutsch 1 formats only, never official items. Ships under the repository's MIT grant like the other course packs.
 
+## Learning French with Tracy — authored Hán-Việt readings (ja, zh, ko)
+
+- **License:** MIT
+- **Source:** https://github.com/vansyson1308/learning-french-with-tracy
+- **What:** authored word → Sino-Vietnamese reading tables and their D-10 review sheet
+- **Retrieved:** 2026-11-03
+
+Hán-Việt (Sino-Vietnamese) readings of Japanese, Chinese and Korean words authored by the Learning French with Tracy project, checked against the Unihan Database.
+
+> P4b stage 2: Sino-Vietnamese words only (ja on'yomi kanji compounds, zh hanzi words, ko Sino-Korean words with hanja); readings pending the D-10 review (content/hanviet/REVIEW.md). Ships under the repository's MIT grant like the course packs.
+
 ## Learning French with Tracy — authored it-vi course (Italian for Vietnamese speakers)
 
 - **License:** MIT
@@ -421,6 +432,17 @@ Audio for some courses is synthesized at pipeline time with Kokoro-82M (hexgrad,
 - **Retrieved:** 2026-10-31
 
 Parler-TTS (Hugging Face, Apache-2.0), pinned in content/audio/engines.json, renders course audio at pipeline time. It never ships.
+
+## Unihan Database — Unicode Character Database 17.0.0
+
+- **License:** Unicode-3.0
+- **Source:** https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip
+- **What:** character data (kVietnamese, kMandarin, kJapanese/On/Kun, kHangul readings; variant links) used at build time to check the Hán-Việt tables
+- **Retrieved:** 2026-11-03
+
+Character readings and variant data from the Unihan Database, part of the Unicode Character Database (Unicode 17.0.0). Copyright © 1991-2026 Unicode, Inc. Used under the Unicode License v3 (https://www.unicode.org/license.txt); the full copyright and permission notice is in content/hanviet/UNICODE-LICENSE.txt.
+
+> P4b stage 2 (QC 2026-11-03 §2). Pinned zip (sha256 f7a48b2b545acfaa77b2d607ae28747404ce02baefee16396c5d2d7a8ef34b5e, 8,518,517 bytes, content/hanviet/source-manifest.json) is never committed; scripts/hanviet-unihan.ts derives a subset (the characters of the ja/zh candidate pools and of the Hán-Việt tables, plus variants). Build-time only: the validator confirms every syllable of the authored readings against kVietnamese; no Unihan data ships in the app.
 
 ## Lingo Lessons (Open Apps Studio)
 
