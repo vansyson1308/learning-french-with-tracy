@@ -93,6 +93,12 @@ describe("target strings (es-vi)", () => {
     expect(collectStoryStrings("xx")).toEqual([]);
   });
 
+  test("a voice cast is not prose: its voice ids are never checked (CI 41418556351: parler-de-nicole)", () => {
+    for (const course of ["de-vi", "fr-vi", "es-vi"]) {
+      expect(collectTargetStrings(course).filter((s) => s.where.includes(".voiceCast"))).toEqual([]);
+    }
+  });
+
   test("dedupes with every location kept", () => {
     const u = uniqueTargetStrings(all);
     expect(u.length).toBeLessThan(all.length);

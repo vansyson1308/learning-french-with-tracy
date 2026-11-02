@@ -29,7 +29,7 @@ const NON_TEXT_KEYS = new Set([
   "targetCode", "nativeCode", "exerciseNativeCode", "conceptRefs", "conceptId", "paradigmRef", "lemma", "lookupForm", "variety", "attributes",
   "cells", "domain", "register", "tags", "references", "formatSource", "scoring", "passRule", "timing",
   "mode", "direction", "inferenceDemand", "sectionId", "taskId", "slotId", "recognitionLocale", "writingMode", "taskFamily",
-  "elicitationType", "formId", "name",
+  "elicitationType", "formId", "name", "voiceCast", "voiceId",
 ]);
 
 /** Letters Vietnamese has and Spanish never uses: a string containing one is native text. */

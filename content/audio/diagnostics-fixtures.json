@@ -1,10 +1,10 @@
 {
-  "note": "Acceptance-only audio fixtures. Bundled ONLY by builds that set LFT_ACCEPTANCE_DIAGNOSTICS=1 (metro.config.js, scripts/lib/diagnostics-gate.js); the release APK/AAB and the web export never carry them (scripts/check-diagnostics-export.ts). Each fixture is derived from a committed, baselined clip and keeps that clip's voice licence; provenance: registry entry acceptance-diagnostics-fixtures (testOnly).",
+  "note": "Acceptance-only audio fixtures. Bundled ONLY by builds that set LFT_ACCEPTANCE_DIAGNOSTICS=1 (metro.config.js, scripts/lib/diagnostics-gate.js); the release APK/AAB and the web export never carry them (scripts/check-diagnostics-export.ts). Each fixture is derived from a committed, baselined clip and keeps that clip's voice licence; provenance: registry entry acceptance-diagnostics-fixtures (testOnly). A fixture's bytes must differ from every shipped asset: the export check finds the fixture by its hash.",
   "fixtures": [
     {
       "file": "assets/diagnostics/opus/story-sentence-16k.opus",
-      "sha256": "905ebe5c1e60488f9829ed0bc1ee05321fae96976b73459f1b2ad1b583616757",
-      "bytes": 5387,
+      "sha256": "fbf183803de19a449baa686c61297915d3da8bdd45512b2431283e0b7c435b98",
+      "bytes": 5398,
       "codec": "opus",
       "container": "ogg",
       "bitrateKbps": 16,
@@ -18,8 +18,8 @@
         "sha256": "905ebe5c1e60488f9829ed0bc1ee05321fae96976b73459f1b2ad1b583616757",
         "baseline": "content/audio/baseline/es-reception.json"
       },
-      "command": "cp assets/audio/es-reception/183ea9c4263138dd544a.opus assets/diagnostics/opus/story-sentence-16k.opus",
-      "encoder": "copied from the committed Spanish story sentence, already Opus 16 kbps",
+      "command": "ffmpeg -i assets/audio/es-reception/183ea9c4263138dd544a.opus -map 0:a -c:a copy -fflags +bitexact -flags:a +bitexact -map_metadata -1 -metadata comment=\"LFT acceptance diagnostics fixture\" assets/diagnostics/opus/story-sentence-16k.opus",
+      "encoder": "remuxed from the committed Spanish story sentence (Opus 16 kbps, packets unchanged); the comment tag makes its bytes differ from the shipped clip",
       "date": "2026-11-02"
     }
   ]
