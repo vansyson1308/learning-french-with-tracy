@@ -32,6 +32,7 @@ import { ExerciseRenderer } from "@/components/session/exercise-renderer";
 import { PostAnswerPanel } from "@/components/session/post-answer-panel";
 import { SessionSummary, type TodaySummaryStats } from "@/components/session/session-summary";
 import { TeachCard } from "@/components/session/teach-card";
+import { WordGlossRow } from "@/components/session/word-gloss";
 import { behaviorFor } from "@/lib/exercise-registry";
 import { exitScreen } from "@/lib/navigation";
 import { useSessionController, type SessionController } from "@/lib/session/controller";
@@ -275,6 +276,7 @@ export function SessionScreen({
                   definition.kind === "checkpoint" || definition.kind === "placement",
               }}
             />
+            {step.glossary ? <WordGlossRow key={step.stepId} title={t("exam.glossTitle")} glossary={step.glossary} /> : null}
             </View>
           )}
         </ScrollView>

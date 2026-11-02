@@ -26,6 +26,13 @@
  *           source-version drift — refuse), then run the derivation and
  *           write content/es/lexicon/derived/*.json.
  *
+ *   supplement --lang en --dir <scratch>
+ *           A later kaikki retrieval, filtered to the course's words by
+ *           content/en/_drafts/_generators/en-kaikki-subset.py into
+ *           <scratch>/en/{subset.jsonl,identity.json}: pin its identity and write
+ *           derived/ipa-general-american.json and the verb rows of morphology.json.
+ *           The pool stays on its own pin (lib/lexicon-etl/supplement.ts).
+ *
  * Raw dumps live only in the scratch directory (and, for the small ones,
  * as workflow run artifacts); nothing of them is committed.
  */
@@ -37,6 +44,7 @@ import path from "path";
 import { SourceManifestV2Schema, type SourceManifestV2 } from "../content/schema";
 
 import { deriveLanguage } from "./lib/lexicon-etl/derive";
+import { generalAmericanEntries, refreshedMorphology, SUPPLEMENT_GENERATOR, type MorphologyDoc } from "./lib/lexicon-etl/supplement";
 import { cacheKey, download, headMeta, linkOrCopy, SourceCache } from "./lib/lexicon-etl/fetch";
 import { fileIdentity, readLines } from "./lib/lexicon-etl/jsonl";
 import { buildManifestV2, type ArtifactIdentity } from "./lib/lexicon-etl/manifest";
@@ -55,8 +63,8 @@ const opt = (name: string): string | undefined => {
 };
 const flag = (name: string) => rest.includes(`--${name}`);
 
-if (!["fetch", "recon", "extract", "cache-key"].includes(command ?? "")) {
-  fail("usage: bun scripts/lexicon-etl.ts <fetch|recon|extract|cache-key> --lang <code> --dir <scratch-dir> [--twice] [--cache <dir>]");
+if (!["fetch", "recon", "extract", "cache-key", "supplement"].includes(command ?? "")) {
+  fail("usage: bun scripts/lexicon-etl.ts <fetch|recon|extract|cache-key|supplement> --lang <code> --dir <scratch-dir> [--twice] [--cache <dir>]");
 }
 const lang = opt("lang") ?? fail("--lang <code> is required");
 const scratch = opt("dir") ?? (command === "cache-key" ? path.join("/tmp", "lexicon-src") : fail("--dir <scratch-dir> is required"));
@@ -221,7 +229,40 @@ async function extract(): Promise<void> {
   console.log(`summary: ${JSON.stringify(result.summary)}`);
 }
 
+async function supplement(): Promise<void> {
+  const spec = sourcesFor(lang).find((s) => s.role === "pronunciation-morphology") ?? fail(`${lang}: no supplement source is catalogued`);
+  const subset = path.join(dir, "subset.jsonl");
+  const identity = JSON.parse(readFileSync(path.join(dir, "identity.json"), "utf8")) as { gzSha256: string; gzBytes: number; badLines: number };
+  if (identity.badLines !== 0) fail(`${subset}: ${identity.badLines} bad line(s) in the dump`);
+  const manifest = loadManifest() ?? fail(`${manifestRel} is missing`);
+  const pinned = manifest.sources.find((s) => s.artifactFilename === spec.artifactFilename);
+  const retrievedAt = pinned?.retrieval.sha256 === identity.gzSha256 && pinned.retrieval.retrievedAt ? pinned.retrieval.retrievedAt : today;
+  const ids = new Map<string, ArtifactIdentity | null>([[spec.artifactFilename, { sha256: identity.gzSha256, bytes: identity.gzBytes, retrievedAt }]]);
+  const next = buildManifestV2(lang, ids, manifest);
+  SourceManifestV2Schema.parse(next);
+  writeFileSync(safeResolve(manifestRel), `${JSON.stringify(next, null, 2)}\n`);
+  const stamp = { id: spec.id, sha256: identity.gzSha256, url: spec.url, retrievedAt };
+  const entries = await generalAmericanEntries(subset, lang);
+  writeFileSync(
+    path.join(derivedDir, "ipa-general-american.json"),
+    canonicalJson({
+      generator: SUPPLEMENT_GENERATOR,
+      source: stamp,
+      license: spec.license,
+      note: "General American IPA per lemma|pos, verbatim from Wiktionary through kaikki, selected by tags (generalAmericanIpa). method: general-american-tag, us-tag, or untagged (no accent label, no regional note, no British shape). others: further American lines of the page, for comparison.",
+      entries,
+    })
+  );
+  const morphologyPath = path.join(derivedDir, "morphology.json");
+  const lexemes = (readJson(`content/${lang}/lexicon/lexemes.json`) as { lexemes: { lemma: string; partOfSpeech: string }[] }).lexemes;
+  const wanted = new Set(lexemes.filter((l) => l.partOfSpeech === "verb").map((l) => l.lemma));
+  const morphology = await refreshedMorphology(subset, lang, JSON.parse(readFileSync(morphologyPath, "utf8")) as MorphologyDoc, wanted, stamp);
+  writeFileSync(morphologyPath, canonicalJson(morphology));
+  console.log(`pinned ${spec.artifactFilename} ${identity.gzSha256}; ${Object.keys(entries).length} IPA entries; ${morphology.verbs.length} verbs`);
+}
+
 if (command === "cache-key") console.log(cacheKey(lang, sourcesFor(lang).map((spec) => headMeta(spec.url))));
 else if (command === "fetch") await fetchAll();
 else if (command === "recon") await recon();
+else if (command === "supplement") await supplement();
 else await extract();

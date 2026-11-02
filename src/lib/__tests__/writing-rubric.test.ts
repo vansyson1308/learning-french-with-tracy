@@ -60,6 +60,35 @@ function grade(text: string) {
   return evaluateGuidedWriting({ rules: languageRules("fr"), targetLanguage: "French", text, rubric, promptText: PROMPT, knownVocabulary: KNOWN });
 }
 
+describe("guided writing: a repeatable slot", () => {
+  const closing = (repeatable?: boolean): WritingRubric => ({
+    requiredSlots: [{ id: "closing", description: "a closing", variants: ["thank you", "best regards"], cueProvided: false, ...(repeatable === undefined ? {} : { repeatable }) }],
+    minTokens: 2,
+    maxTokens: 12,
+  });
+  const run = (text: string, slots: WritingRubric) =>
+    evaluateGuidedWriting({
+      rules: languageRules("en"),
+      targetLanguage: "English",
+      text,
+      rubric: slots,
+      promptText: "Write to Mr. Brown.",
+      knownVocabulary: new Set(["thank", "you", "best", "regards"]),
+    });
+
+  test("two closings in a row are one way to end a letter", () => {
+    expect(run("Thank you. Best regards", closing(true)).verdict).toBe("meets_rubric");
+  });
+
+  test("a slot not marked repeatable still fails as stuffing", () => {
+    for (const rubric of [closing(), closing(false)]) {
+      const r = run("Thank you. Best regards", rubric);
+      expect(r.verdict).toBe("does_not_meet_rubric");
+      expect(text(r.feedback)).toContain("a closing");
+    }
+  });
+});
+
 describe("guided writing: acceptance (§77)", () => {
   test("a valid guided response meets the rubric", () => {
     const r = grade("Je m'appelle Marie, j'ai 21 ans et j'habite à Paris.");

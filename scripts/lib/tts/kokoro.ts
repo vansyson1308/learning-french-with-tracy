@@ -16,8 +16,11 @@ import type { DownloadItem, EnginesDoc, LicenseCard, SynthJob, TtsEngine, Voice 
 
 export const KOKORO_HELPER = "scripts/lib/tts/kokoro_synth.py";
 
-/** Kokoro's French voice leaves long edge silence on short words, which fails the speaking-rate check ("merci": 0.55 s of speech in 1.25 s). */
-const TRIM_EDGES = new Set(["fr"]);
+/**
+ * Kokoro leaves long edge silence on short words, which fails the speaking-rate check: French "merci"
+ * (0.55 s of speech in 1.25 s), English run 41474632304 (302 of 1,656 clips, "about": 0.51 s in 1.25 s).
+ */
+export const TRIM_EDGES: ReadonlySet<string> = new Set(["fr", "en"]);
 
 export const kokoroEngine: TtsEngine = {
   id: "kokoro",

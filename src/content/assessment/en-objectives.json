@@ -1,0 +1,805 @@
+{
+  "version": 1,
+  "language": "en",
+  "order": [
+    "en.obj.greetings.basic",
+    "en.obj.vocab.everyday_basics",
+    "en.obj.vocab.places_work",
+    "en.obj.vocab.time_calendar",
+    "en.obj.numbers.0_100",
+    "en.obj.reading.familiar_words",
+    "en.obj.writing.familiar_words",
+    "en.obj.articles.a_an_the",
+    "en.obj.nouns.plurals_countability",
+    "en.obj.verbs.be_there_is",
+    "en.obj.verbs.present_simple_do",
+    "en.obj.syntax.questions_word_order",
+    "en.obj.verbs.present_continuous",
+    "en.obj.verbs.past_recognition",
+    "en.obj.verbs.future_can_would",
+    "en.obj.pronouns.possessives",
+    "en.obj.prepositions.time_place",
+    "en.obj.adjectives.order_very",
+    "en.obj.pronunciation.final_sounds",
+    "en.obj.strategy.loanwords_false_friends",
+    "en.obj.listening.familiar_words",
+    "en.obj.listening.short_info",
+    "en.obj.listening.announcements",
+    "en.obj.listening.short_dialogues",
+    "en.obj.reading.short_messages",
+    "en.obj.reading.notices_info",
+    "en.obj.reading.short_texts",
+    "en.obj.speaking.formulaic",
+    "en.obj.speaking.self_intro",
+    "en.obj.speaking.give_info",
+    "en.obj.speaking.describe",
+    "en.obj.writing.personal_info",
+    "en.obj.writing.phrases_sentences",
+    "en.obj.writing.short_message",
+    "en.obj.writing.form_filling",
+    "en.obj.interaction.everyday_conversation",
+    "en.obj.interaction.practical_needs"
+  ],
+  "byId": {
+    "en.obj.greetings.basic": {
+      "id": "en.obj.greetings.basic",
+      "title": "Lời chào và câu lịch sự hằng ngày",
+      "canDo": "Tôi có thể nhận ra và viết các lời chào và câu lịch sự hằng ngày bằng tiếng Anh — hello, good morning, thank you, please, sorry, excuse me — và chọn đúng câu cho tình huống.",
+      "category": "lexical",
+      "essential": true,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Conversation (spoken interaction)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:conversation"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sociolinguistic appropriateness",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+        }
+      ]
+    },
+    "en.obj.vocab.everyday_basics": {
+      "id": "en.obj.vocab.everyday_basics",
+      "title": "Từ thông dụng hằng ngày",
+      "canDo": "Tôi có thể hiểu và gọi tên những từ hằng ngày của khoá học — người, gia đình, đồ ăn thức uống và đồ vật quen thuộc — khi đọc thấy chúng.",
+      "category": "lexical",
+      "essential": true,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ]
+    },
+    "en.obj.vocab.places_work": {
+      "id": "en.obj.vocab.places_work",
+      "title": "Từ về nơi chốn, đi lại và chỗ làm",
+      "canDo": "Tôi có thể hiểu các từ chỉ nơi chốn, đi lại và chỗ làm — station, ticket, street, office, factory, manager — khi đọc thấy chúng.",
+      "category": "lexical",
+      "essential": false,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ]
+    },
+    "en.obj.vocab.time_calendar": {
+      "id": "en.obj.vocab.time_calendar",
+      "title": "Từ về thời gian và lịch",
+      "canDo": "Tôi có thể dùng từ tiếng Anh để nói về thời gian — today, tomorrow, week, month — cùng các thứ trong tuần và các tháng, như Monday, May.",
+      "category": "lexical",
+      "essential": false,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ]
+    },
+    "en.obj.numbers.0_100": {
+      "id": "en.obj.numbers.0_100",
+      "title": "Số từ 0 đến 100",
+      "canDo": "Tôi có thể hiểu và viết các số tiếng Anh từ zero đến one hundred, và phân biệt thirteen với thirty, fifteen với fifty.",
+      "category": "lexical",
+      "essential": true,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ]
+    },
+    "en.obj.reading.familiar_words": {
+      "id": "en.obj.reading.familiar_words",
+      "title": "Đọc từ quen thuộc và cụm từ ngắn",
+      "canDo": "Tôi có thể nhận ra từ quen thuộc và cụm từ rất ngắn đã học khi thấy chúng được viết ra, và nối chúng với nghĩa.",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall reading comprehension",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall reading comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        }
+      ]
+    },
+    "en.obj.writing.familiar_words": {
+      "id": "en.obj.writing.familiar_words",
+      "title": "Viết đúng chính tả từ quen thuộc",
+      "canDo": "Tôi có thể gõ đúng chính tả các từ quen thuộc đã học, kể cả từ không viết như đọc — daughter, hour, know — và viết hoa I, tên người, thứ và tháng.",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:orthographic-control"
+        }
+      ]
+    },
+    "en.obj.articles.a_an_the": {
+      "id": "en.obj.articles.a_an_the",
+      "title": "Mạo từ a, an, the",
+      "canDo": "Tôi có thể chọn a, an hay the cho danh từ quen thuộc theo âm đầu và theo việc người nghe đã biết vật đó chưa — a dog, an apple, an hour, the door — và bỏ mạo từ trước water, money.",
+      "category": "grammar",
+      "essential": true,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.nouns.plurals_countability": {
+      "id": "en.obj.nouns.plurals_countability",
+      "title": "Số nhiều và danh từ không đếm được",
+      "canDo": "Tôi có thể viết số nhiều thường gặp — books, boxes, cities — và dạng bất quy tắc như children, people; tôi biết water, money, information không có số nhiều.",
+      "category": "grammar",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.articles.a_an_the"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.verbs.be_there_is": {
+      "id": "en.obj.verbs.be_there_is",
+      "title": "Động từ be và there is / there are",
+      "canDo": "Tôi có thể dùng am, is, are ở câu khẳng định, phủ định và câu hỏi để nói mình là ai, ở đâu và thế nào, và dùng there is, there are để nói ở đâu có gì.",
+      "category": "grammar",
+      "essential": true,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.verbs.present_simple_do": {
+      "id": "en.obj.verbs.present_simple_do",
+      "title": "Hiện tại đơn với do và does",
+      "canDo": "Tôi có thể nói việc thường ngày ở thì hiện tại đơn, thêm -s ở ngôi thứ ba — she works, he goes — và dùng do, does khi hỏi và phủ định.",
+      "category": "grammar",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.verbs.be_there_is"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.syntax.questions_word_order": {
+      "id": "en.obj.syntax.questions_word_order",
+      "title": "Từ để hỏi và trật tự từ trong câu hỏi",
+      "canDo": "Tôi có thể đặt câu hỏi với what, where, when, who, how much, how many đúng trật tự từ — Where do you live? How much is it?",
+      "category": "grammar",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.verbs.present_simple_do"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.verbs.present_continuous": {
+      "id": "en.obj.verbs.present_continuous",
+      "title": "Hiện tại tiếp diễn",
+      "canDo": "Tôi có thể nói việc đang diễn ra bằng be + V-ing — I am working, She is eating — ở chỗ tiếng Việt dùng “đang”.",
+      "category": "grammar",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.verbs.be_there_is"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.verbs.past_recognition": {
+      "id": "en.obj.verbs.past_recognition",
+      "title": "Nhận biết quá khứ đơn",
+      "canDo": "Tôi có thể nhận ra và dùng một số dạng quá khứ rất thông dụng — was, were, worked, went, had, saw — và hỏi với did, ở chỗ tiếng Việt chỉ thêm “đã”.",
+      "category": "grammar",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.verbs.present_simple_do"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A2",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.verbs.future_can_would": {
+      "id": "en.obj.verbs.future_can_would",
+      "title": "Going to, will, can, would like",
+      "canDo": "Tôi có thể nói việc sắp làm bằng going to, will; nói việc làm được hoặc xin phép bằng can; và nói điều mình muốn một cách lịch sự bằng would like.",
+      "category": "grammar",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.verbs.be_there_is"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A2",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.pronouns.possessives": {
+      "id": "en.obj.pronouns.possessives",
+      "title": "Đại từ và từ sở hữu",
+      "canDo": "Tôi có thể phân biệt I, me, my, mine và các đại từ tương tự — He helps me, This is my bag — ở chỗ tiếng Việt dùng một từ “tôi”.",
+      "category": "grammar",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.verbs.be_there_is"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.prepositions.time_place": {
+      "id": "en.obj.prepositions.time_place",
+      "title": "In, on, at và từ chỉ vị trí",
+      "canDo": "Tôi có thể dùng in, on, at cho giờ, ngày, tháng và nơi chốn — at eight, on Monday, in May, at the station — và next to, behind khi chỉ vị trí.",
+      "category": "grammar",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.vocab.time_calendar"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.adjectives.order_very": {
+      "id": "en.obj.adjectives.order_very",
+      "title": "Tính từ, very và too",
+      "canDo": "Tôi có thể đặt tính từ trước danh từ — a big house — dùng very, too đúng chỗ, và nhận ra dạng so sánh hơn như bigger, cheaper.",
+      "category": "grammar",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.verbs.be_there_is"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.pronunciation.final_sounds": {
+      "id": "en.obj.pronunciation.final_sounds",
+      "title": "Âm cuối, âm th và trọng âm",
+      "canDo": "Tôi có thể nghe phân biệt những cặp như bag / back, think / this, sit / seat, biết ba cách đọc -s và -ed, và biết trọng âm rơi vào đâu trong từ quen thuộc.",
+      "category": "phonology",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.writing.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Phonological control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:phonological-control"
+        }
+      ]
+    },
+    "en.obj.strategy.loanwords_false_friends": {
+      "id": "en.obj.strategy.loanwords_false_friends",
+      "title": "Từ quen tai và “bạn giả”",
+      "canDo": "Tôi có thể đoán nghĩa từ mới nhờ những từ tiếng Việt đã quen — bus, taxi, TV, coffee — và tránh bẫy như photo (tấm ảnh, còn “phô-tô” là copy).",
+      "category": "strategy",
+      "essential": false,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Identifying cues and inferring (reception strategy)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:identifying-cues-inferring"
+        }
+      ]
+    },
+    "en.obj.listening.familiar_words": {
+      "id": "en.obj.listening.familiar_words",
+      "title": "Nghe từ quen thuộc và cụm từ ngắn",
+      "canDo": "Tôi có thể nhận ra từ quen thuộc và cụm từ ngắn đã học khi nghe chúng được đọc rõ và chậm.",
+      "category": "spoken_reception",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.vocab.everyday_basics"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall listening comprehension",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall listening comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        }
+      ]
+    },
+    "en.obj.listening.short_info": {
+      "id": "en.obj.listening.short_info",
+      "title": "Nghe thông tin trong đoạn ghi âm ngắn",
+      "canDo": "Tôi có thể nghe ra thông tin cụ thể như giờ, giá, con số, địa điểm trong một đoạn ghi âm ngắn, rõ và chậm về chuyện hằng ngày.",
+      "category": "spoken_reception",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.listening.familiar_words",
+        "en.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to audio media and recordings",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:audio-media-recordings"
+        },
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall listening comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        }
+      ]
+    },
+    "en.obj.listening.announcements": {
+      "id": "en.obj.listening.announcements",
+      "title": "Thông báo và chỉ dẫn",
+      "canDo": "Tôi có thể hiểu thông báo và chỉ dẫn rất ngắn nói rõ và chậm — ở nhà ga, trong cửa hàng, ở nhà máy hay văn phòng.",
+      "category": "spoken_reception",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.listening.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to announcements and instructions",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:announcements-instructions"
+        }
+      ]
+    },
+    "en.obj.listening.short_dialogues": {
+      "id": "en.obj.listening.short_dialogues",
+      "title": "Nghe hiểu hội thoại ngắn",
+      "canDo": "Tôi có thể hiểu ý chính khi hai người nói rõ ràng với nhau vài câu về chuyện hằng ngày hoặc công việc.",
+      "category": "spoken_reception",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.listening.familiar_words",
+        "en.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Understanding conversation between other speakers",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:understanding-conversation"
+        }
+      ]
+    },
+    "en.obj.reading.short_messages": {
+      "id": "en.obj.reading.short_messages",
+      "title": "Đọc tin nhắn ngắn",
+      "canDo": "Tôi có thể hiểu tin nhắn và thư điện tử ngắn, đơn giản về lịch làm, cuộc hẹn và việc cần làm hằng ngày.",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading correspondence",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-correspondence"
+        }
+      ]
+    },
+    "en.obj.reading.notices_info": {
+      "id": "en.obj.reading.notices_info",
+      "title": "Tìm thông tin trên biển báo",
+      "canDo": "Tôi có thể tìm thông tin cần thiết trên biển báo, nội quy, giờ mở cửa và lịch làm việc đơn giản.",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading for orientation",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-orientation"
+        }
+      ]
+    },
+    "en.obj.reading.short_texts": {
+      "id": "en.obj.reading.short_texts",
+      "title": "Đọc đoạn văn rất ngắn",
+      "canDo": "Tôi có thể đọc hiểu đoạn văn rất ngắn về người và sinh hoạt quen thuộc, đọc chậm và đọc lại khi cần.",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.reading.familiar_words",
+        "en.obj.verbs.be_there_is"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall reading comprehension",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        },
+        {
+          "level": "A2",
+          "scaleName": "Overall reading comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        }
+      ]
+    },
+    "en.obj.speaking.formulaic": {
+      "id": "en.obj.speaking.formulaic",
+      "title": "Nói các câu lịch sự quen thuộc",
+      "canDo": "Tôi có thể nói thành tiếng các câu chào, cảm ơn, xin lỗi và nhờ vả hằng ngày — hello, thank you, excuse me, could you help me — và chọn đúng câu cho tình huống.",
+      "category": "spoken_production",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sociolinguistic appropriateness",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+        }
+      ]
+    },
+    "en.obj.speaking.self_intro": {
+      "id": "en.obj.speaking.self_intro",
+      "title": "Tự giới thiệu thành tiếng",
+      "canDo": "Tôi có thể tự giới thiệu thành tiếng từng câu ngắn — tên (My name is …), quê (I am from Vietnam), việc làm, nơi sống và điều mình thích — ở lớp hay nơi làm việc.",
+      "category": "spoken_production",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.verbs.be_there_is",
+        "en.obj.verbs.present_simple_do"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: describing experience",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        }
+      ]
+    },
+    "en.obj.speaking.give_info": {
+      "id": "en.obj.speaking.give_info",
+      "title": "Nói thông tin đơn giản",
+      "canDo": "Tôi có thể nói thông tin đơn giản bằng con số và từ thông dụng — số điện thoại, giá, giờ, số lượng.",
+      "category": "spoken_production",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: giving information",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-giving-information"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        }
+      ]
+    },
+    "en.obj.speaking.describe": {
+      "id": "en.obj.speaking.describe",
+      "title": "Mô tả thành tiếng",
+      "canDo": "Tôi có thể tả người, nơi chốn và đồ vật quen thuộc bằng cụm từ ngắn: đó là gì và một đặc điểm đơn giản của nó.",
+      "category": "spoken_production",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.vocab.everyday_basics"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: describing experience",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
+        }
+      ]
+    },
+    "en.obj.writing.personal_info": {
+      "id": "en.obj.writing.personal_info",
+      "title": "Viết về bản thân",
+      "canDo": "Tôi có thể viết những câu ngắn về bản thân — tên, tuổi, quê, nơi ở và công việc.",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.writing.familiar_words",
+        "en.obj.verbs.be_there_is"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall written production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall written interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-interaction"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:orthographic-control"
+        }
+      ]
+    },
+    "en.obj.writing.phrases_sentences": {
+      "id": "en.obj.writing.phrases_sentences",
+      "title": "Viết câu đơn giản",
+      "canDo": "Tôi có thể viết câu ngắn về người và việc quen thuộc — ai làm gì, ở đâu, thích gì — và nối câu bằng and, but, because.",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.writing.personal_info",
+        "en.obj.verbs.present_simple_do"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall written production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "en.obj.writing.short_message": {
+      "id": "en.obj.writing.short_message",
+      "title": "Viết tin nhắn hoặc email ngắn",
+      "canDo": "Tôi có thể viết tin nhắn hoặc email rất ngắn: lời chào, một hai thông tin như giờ hoặc địa điểm, và lời kết.",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.writing.personal_info",
+        "en.obj.vocab.time_calendar"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Correspondence",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:correspondence"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall written interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-interaction"
+        }
+      ]
+    },
+    "en.obj.writing.form_filling": {
+      "id": "en.obj.writing.form_filling",
+      "title": "Điền biểu mẫu",
+      "canDo": "Tôi có thể điền biểu mẫu đơn giản bằng tiếng Anh — first name, last name, address, phone number và những thông tin tương tự.",
+      "category": "written_production",
+      "essential": false,
+      "prerequisites": [
+        "en.obj.writing.familiar_words",
+        "en.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Notes, messages and forms",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:notes-messages-forms"
+        }
+      ]
+    },
+    "en.obj.interaction.everyday_conversation": {
+      "id": "en.obj.interaction.everyday_conversation",
+      "title": "Trò chuyện ngắn",
+      "canDo": "Tôi có thể tham gia cuộc trò chuyện ngắn với người đối thoại kiên nhẫn — chào hỏi, giới thiệu mình ở chỗ làm, trả lời câu hỏi phỏng vấn đơn giản — và nhờ nhắc lại khi cần (Can you repeat that?).",
+      "category": "interaction",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.speaking.formulaic",
+        "en.obj.speaking.self_intro",
+        "en.obj.listening.short_dialogues"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall oral interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-interaction"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Conversation (spoken interaction)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:conversation"
+        }
+      ]
+    },
+    "en.obj.interaction.practical_needs": {
+      "id": "en.obj.interaction.practical_needs",
+      "title": "Việc thực tế",
+      "canDo": "Tôi có thể xử lý việc rất đơn giản — mua hàng, hỏi đường, đi khám, đặt hẹn qua điện thoại, làm theo chỉ dẫn ở chỗ làm — và hiểu câu trả lời ngắn.",
+      "category": "interaction",
+      "essential": true,
+      "prerequisites": [
+        "en.obj.speaking.give_info",
+        "en.obj.listening.short_info",
+        "en.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Obtaining goods and services",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:obtaining-goods-services"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Information exchange",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:information-exchange"
+        }
+      ]
+    }
+  }
+}

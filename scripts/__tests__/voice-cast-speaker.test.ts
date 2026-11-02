@@ -11,6 +11,7 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync } from "fs";
 
 import { safeResolve } from "../lib/pipeline";
+import { TRIM_EDGES } from "../lib/tts/kokoro";
 import { pickCast, piperCardFacts, sameSpeaker, speakerIdentity, type CastRow } from "../lib/tts/speaker";
 
 const card = (rel: string) => readFileSync(safeResolve(`content/audio/model-cards/${rel}`), "utf8");
@@ -101,6 +102,12 @@ describe("pickCast", () => {
     const cast = pickCast([row("de_DE-mls-medium", 0.9)], ids);
     expect(cast.A).toBeNull();
     expect(cast.B).toBeNull();
+  });
+});
+
+describe("Kokoro edge trim", () => {
+  test("French and English Kokoro clips are trimmed (their short words failed the speaking-rate check)", () => {
+    expect([...TRIM_EDGES].sort()).toEqual(["en", "fr"]);
   });
 });
 

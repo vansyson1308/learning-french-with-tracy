@@ -440,8 +440,11 @@ function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
  * appears after v8 first reaches a device (pt, …) needs its own numbered step
  * that calls rekeyRegistryCourses for it — pinned by migrations-v8.test.ts, so a
  * new registry can never silently strand surface-keyed progress again.
+ * v8 has not reached a device yet (RC3, the last device build, predates it), so
+ * the registries added before it ships join this list: it, then en (en-vi,
+ * P4f; no English-target course ever shipped, so nothing is re-keyed today).
  */
-export const V8_REKEYED_TARGETS: readonly string[] = ["de", "es", "fr", "it"];
+export const V8_REKEYED_TARGETS: readonly string[] = ["de", "en", "es", "fr", "it"];
 
 /** Every target whose surface-keyed progress a numbered step re-keyed. */
 export const REKEYED_TARGETS: readonly string[] = [...V8_REKEYED_TARGETS];

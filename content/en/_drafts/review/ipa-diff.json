@@ -1,0 +1,3662 @@
+{
+  "generator": "content/en/_drafts/_generators/en-lex.py",
+  "note": "Licensed General American IPA against the hand-written column of core-*.txt. mismatches: different sounds or stress, for the D-10 language pass. notationOnly: the same sounds written differently (r/ɹ, g/ɡ, length, syllable dots). noLicensedValue: ships the hand-written string, source original-english-course, to review.",
+  "counts": {
+    "lexemes": 868,
+    "kaikki-en": 771,
+    "byMethod": {
+      "general-american-tag": 459,
+      "untagged": 194,
+      "us-tag": 118
+    },
+    "original-english-course": 97,
+    "identical": 389,
+    "notationOnly": 370,
+    "mismatches": 12
+  },
+  "mismatches": [
+    {
+      "word": "Vietnam",
+      "partOfSpeech": "noun",
+      "generated": "ˌvi.ɪtˈnɑm",
+      "handWritten": "ˌviːɛtˈnɑm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "eleven",
+      "partOfSpeech": "noun",
+      "generated": "əˈlɛv.ən",
+      "handWritten": "ɪˈlɛvən",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "July",
+      "partOfSpeech": "noun",
+      "generated": "d͡ʒəˈlaɪ",
+      "handWritten": "dʒʊˈlaɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "uniform",
+      "partOfSpeech": "noun",
+      "generated": "ˈjunɪˌfɔɹm",
+      "handWritten": "ˈjuːnəfɔɹm",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "exit",
+      "partOfSpeech": "noun",
+      "generated": "ˈɛɡzət",
+      "handWritten": "ˈɛɡzɪt",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "document",
+      "partOfSpeech": "noun",
+      "generated": "ˈdɑkjʊmənt",
+      "handWritten": "ˈdɑkjəmənt",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "schedule",
+      "partOfSpeech": "noun",
+      "generated": "ˈskɛd͡ʒ.ʊl",
+      "handWritten": "ˈskɛdʒuːl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "beautiful",
+      "partOfSpeech": "adjective",
+      "generated": "ˈbju.tɪ.fəl",
+      "handWritten": "ˈbjuːtəfəl",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "favorite",
+      "partOfSpeech": "adjective",
+      "generated": "ˈfeɪv.ɹɪt",
+      "handWritten": "ˈfeɪvəɹɪt",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "interesting",
+      "partOfSpeech": "adjective",
+      "generated": "ˈɪntəɹəstɪŋ",
+      "handWritten": "ˈɪntɹəstɪŋ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "prescription",
+      "partOfSpeech": "noun",
+      "generated": "pɹəˈskɹɪp.ʃən",
+      "handWritten": "pɹɪˈskɹɪpʃən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "beginner",
+      "partOfSpeech": "noun",
+      "generated": "bəˈɡɪnɚ",
+      "handWritten": "bɪˈɡɪnɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    }
+  ],
+  "notationOnly": [
+    {
+      "word": "you",
+      "partOfSpeech": "pronoun",
+      "generated": "ju",
+      "handWritten": "juː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "he",
+      "partOfSpeech": "pronoun",
+      "generated": "ˈhiː",
+      "handWritten": "hiː",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "she",
+      "partOfSpeech": "pronoun",
+      "generated": "ʃi",
+      "handWritten": "ʃiː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "we",
+      "partOfSpeech": "pronoun",
+      "generated": "wi",
+      "handWritten": "wiː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "they",
+      "partOfSpeech": "pronoun",
+      "generated": "ˈðeɪ̯",
+      "handWritten": "ðeɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "me",
+      "partOfSpeech": "pronoun",
+      "generated": "mi",
+      "handWritten": "miː",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "him",
+      "partOfSpeech": "pronoun",
+      "generated": "ˈhɪm",
+      "handWritten": "hɪm",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "them",
+      "partOfSpeech": "pronoun",
+      "generated": "ˈðɛm",
+      "handWritten": "ðɛm",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "our",
+      "partOfSpeech": "determiner",
+      "generated": "ˈaʊɚ",
+      "handWritten": "aʊɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "their",
+      "partOfSpeech": "determiner",
+      "generated": "ðɛɚ",
+      "handWritten": "ðɛɹ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "mine",
+      "partOfSpeech": "pronoun",
+      "generated": "maɪ̯n",
+      "handWritten": "maɪn",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "yours",
+      "partOfSpeech": "pronoun",
+      "generated": "jʊɚz",
+      "handWritten": "jʊɹz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "these",
+      "partOfSpeech": "determiner",
+      "generated": "ðiz",
+      "handWritten": "ðiːz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "anyone",
+      "partOfSpeech": "pronoun",
+      "generated": "ˈɛ.ni.wʌn",
+      "handWritten": "ˈɛniwʌn",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "everyone",
+      "partOfSpeech": "pronoun",
+      "generated": "ˈɛv.ɹiː.wʌn",
+      "handWritten": "ˈɛvɹiwʌn",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "something",
+      "partOfSpeech": "pronoun",
+      "generated": "ˈsʌm.θɪŋ",
+      "handWritten": "ˈsʌmθɪŋ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "anything",
+      "partOfSpeech": "pronoun",
+      "generated": "ˈɛn.i.θɪŋ",
+      "handWritten": "ˈɛniθɪŋ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "who",
+      "partOfSpeech": "pronoun",
+      "generated": "hu",
+      "handWritten": "huː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "which",
+      "partOfSpeech": "determiner",
+      "generated": "wɪt͡ʃ",
+      "handWritten": "wɪtʃ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "where",
+      "partOfSpeech": "adverb",
+      "generated": "ˈwɛɚ",
+      "handWritten": "wɛɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "why",
+      "partOfSpeech": "adverb",
+      "generated": "waɪ̯",
+      "handWritten": "waɪ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "any",
+      "partOfSpeech": "determiner",
+      "generated": "ɛni",
+      "handWritten": "ˈɛni",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "much",
+      "partOfSpeech": "determiner",
+      "generated": "mʌt͡ʃ",
+      "handWritten": "mʌtʃ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "more",
+      "partOfSpeech": "determiner",
+      "generated": "mɔːɹ",
+      "handWritten": "mɔɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "most",
+      "partOfSpeech": "determiner",
+      "generated": "ˈmoʊst",
+      "handWritten": "moʊst",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "another",
+      "partOfSpeech": "determiner",
+      "generated": "əˈnʌð.ɚ",
+      "handWritten": "əˈnʌðɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "a few",
+      "partOfSpeech": "expression",
+      "generated": "ə ˈfjuː",
+      "handWritten": "ə fjuː",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "from",
+      "partOfSpeech": "preposition",
+      "generated": "ˈfɹʌm",
+      "handWritten": "fɹʌm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "for",
+      "partOfSpeech": "preposition",
+      "generated": "foɹ",
+      "handWritten": "fɔɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "about",
+      "partOfSpeech": "preposition",
+      "generated": "əˈbaʊ̯t",
+      "handWritten": "əˈbaʊt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "over",
+      "partOfSpeech": "preposition",
+      "generated": "ˈoʊ̯.vɚ",
+      "handWritten": "ˈoʊvɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "between",
+      "partOfSpeech": "preposition",
+      "generated": "bɪˈtwin",
+      "handWritten": "bɪˈtwiːn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "next to",
+      "partOfSpeech": "expression",
+      "generated": "ˈnɛkst ˌtu",
+      "handWritten": "ˈnɛkst tuː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "into",
+      "partOfSpeech": "preposition",
+      "generated": "ˈɪn.tu",
+      "handWritten": "ˈɪntuː",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "after",
+      "partOfSpeech": "preposition",
+      "generated": "ˈæftəɹ",
+      "handWritten": "ˈæftɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "before",
+      "partOfSpeech": "preposition",
+      "generated": "bɪˈfoɹ",
+      "handWritten": "bɪˈfɔɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "down",
+      "partOfSpeech": "adverb",
+      "generated": "daʊ̯n",
+      "handWritten": "daʊn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "out",
+      "partOfSpeech": "adverb",
+      "generated": "ˈaʊ̯t",
+      "handWritten": "aʊt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "and",
+      "partOfSpeech": "conjunction",
+      "generated": "ˈænd",
+      "handWritten": "ænd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "but",
+      "partOfSpeech": "conjunction",
+      "generated": "ˈbʌt",
+      "handWritten": "bʌt",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "or",
+      "partOfSpeech": "conjunction",
+      "generated": "oɹ",
+      "handWritten": "ɔɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "be",
+      "partOfSpeech": "verb",
+      "generated": "ˈbiː",
+      "handWritten": "biː",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "have",
+      "partOfSpeech": "verb",
+      "generated": "ˈhæv",
+      "handWritten": "hæv",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "too",
+      "partOfSpeech": "adverb",
+      "generated": "tu",
+      "handWritten": "tuː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "also",
+      "partOfSpeech": "adverb",
+      "generated": "ˈɔl.soʊ",
+      "handWritten": "ˈɔlsoʊ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "only",
+      "partOfSpeech": "adverb",
+      "generated": "ˈoʊn.li",
+      "handWritten": "ˈoʊnli",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "just",
+      "partOfSpeech": "adverb",
+      "generated": "d͡ʒʌst",
+      "handWritten": "dʒʌst",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "really",
+      "partOfSpeech": "adverb",
+      "generated": "ˈɹi.ə.li",
+      "handWritten": "ˈɹiːəli",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "maybe",
+      "partOfSpeech": "adverb",
+      "generated": "ˈmeɪ.bi",
+      "handWritten": "ˈmeɪbi",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "always",
+      "partOfSpeech": "adverb",
+      "generated": "ˈɔl.weɪz",
+      "handWritten": "ˈɔlweɪz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "sometimes",
+      "partOfSpeech": "adverb",
+      "generated": "ˈsʌm.taɪmz",
+      "handWritten": "ˈsʌmtaɪmz",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "never",
+      "partOfSpeech": "adverb",
+      "generated": "ˈnɛv.ɚ",
+      "handWritten": "ˈnɛvɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "there",
+      "partOfSpeech": "adverb",
+      "generated": "ðɛɚ",
+      "handWritten": "ðɛɹ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "still",
+      "partOfSpeech": "adverb",
+      "generated": "ˈstɪl",
+      "handWritten": "stɪl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "soon",
+      "partOfSpeech": "adverb",
+      "generated": "sun",
+      "handWritten": "suːn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "later",
+      "partOfSpeech": "adverb",
+      "generated": "ˈleɪ.tɚ",
+      "handWritten": "ˈleɪtɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "well",
+      "partOfSpeech": "adverb",
+      "generated": "ˈwɛl",
+      "handWritten": "wɛl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "good morning",
+      "partOfSpeech": "expression",
+      "generated": "ˌɡʊd ˈmɔɹnɪŋ",
+      "handWritten": "ɡʊd ˈmɔɹnɪŋ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "thank you",
+      "partOfSpeech": "expression",
+      "generated": "ˈθæŋk ˌju",
+      "handWritten": "ˈθæŋk juː",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "thanks",
+      "partOfSpeech": "noun",
+      "generated": "ˈθæŋks",
+      "handWritten": "θæŋks",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "please",
+      "partOfSpeech": "interjection",
+      "generated": "pliz",
+      "handWritten": "pliːz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "welcome",
+      "partOfSpeech": "adjective",
+      "generated": "ˈwɛl.kəm",
+      "handWritten": "ˈwɛlkəm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "Mrs",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɪs.ɪz",
+      "handWritten": "ˈmɪsɪz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "Ms",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɪz",
+      "handWritten": "mɪz",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "sir",
+      "partOfSpeech": "noun",
+      "generated": "sɜɹ",
+      "handWritten": "sɝ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "man",
+      "partOfSpeech": "noun",
+      "generated": "ˈmæn",
+      "handWritten": "mæn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "girl",
+      "partOfSpeech": "noun",
+      "generated": "ˈɡɜɹl",
+      "handWritten": "ɡɝl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "baby",
+      "partOfSpeech": "noun",
+      "generated": "ˈbeɪ.bi",
+      "handWritten": "ˈbeɪbi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "person",
+      "partOfSpeech": "noun",
+      "generated": "ˈpɝ.sən",
+      "handWritten": "ˈpɝsən",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "people",
+      "partOfSpeech": "noun",
+      "generated": "ˈpi.pəl",
+      "handWritten": "ˈpiːpəl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "neighbor",
+      "partOfSpeech": "noun",
+      "generated": "ˈneɪ.bɚ",
+      "handWritten": "ˈneɪbɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "age",
+      "partOfSpeech": "noun",
+      "generated": "eɪd͡ʒ",
+      "handWritten": "eɪdʒ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "language",
+      "partOfSpeech": "noun",
+      "generated": "ˈlæŋ.ɡwɪd͡ʒ",
+      "handWritten": "ˈlæŋɡwɪdʒ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "married",
+      "partOfSpeech": "adjective",
+      "generated": "ˈmɛɹ.id",
+      "handWritten": "ˈmɛɹid",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "father",
+      "partOfSpeech": "noun",
+      "generated": "ˈfɑ.ðɚ",
+      "handWritten": "ˈfɑðɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "parent",
+      "partOfSpeech": "noun",
+      "generated": "ˈpɛəɹənt",
+      "handWritten": "ˈpɛɹənt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "daughter",
+      "partOfSpeech": "noun",
+      "generated": "ˈdɔ.tɚ",
+      "handWritten": "ˈdɔtɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "sister",
+      "partOfSpeech": "noun",
+      "generated": "ˈsɪs.tɚ",
+      "handWritten": "ˈsɪstɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "uncle",
+      "partOfSpeech": "noun",
+      "generated": "ˈʌŋ.kl̩",
+      "handWritten": "ˈʌŋkəl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "hair",
+      "partOfSpeech": "noun",
+      "generated": "ˈhɛɚ",
+      "handWritten": "hɛɹ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "face",
+      "partOfSpeech": "noun",
+      "generated": "feɪ̯s",
+      "handWritten": "feɪs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "eye",
+      "partOfSpeech": "noun",
+      "generated": "ˈaɪ̯",
+      "handWritten": "aɪ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "ear",
+      "partOfSpeech": "noun",
+      "generated": "ɪɚ",
+      "handWritten": "ɪɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "nose",
+      "partOfSpeech": "noun",
+      "generated": "noʊ̯z",
+      "handWritten": "noʊz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "tooth",
+      "partOfSpeech": "noun",
+      "generated": "tuθ",
+      "handWritten": "tuːθ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "pain",
+      "partOfSpeech": "noun",
+      "generated": "peɪ̯n",
+      "handWritten": "peɪn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "fever",
+      "partOfSpeech": "noun",
+      "generated": "ˈfivɚ",
+      "handWritten": "ˈfiːvɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "sick",
+      "partOfSpeech": "adjective",
+      "generated": "ˈsɪk",
+      "handWritten": "sɪk",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "hospital",
+      "partOfSpeech": "noun",
+      "generated": "ˈhɑs.pɪ.tl̩",
+      "handWritten": "ˈhɑspɪtəl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "clinic",
+      "partOfSpeech": "noun",
+      "generated": "ˈklɪn.ɪk",
+      "handWritten": "ˈklɪnɪk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "medicine",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɛd.ə.sən",
+      "handWritten": "ˈmɛdəsən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "health",
+      "partOfSpeech": "noun",
+      "generated": "ˈhɛlθ",
+      "handWritten": "hɛlθ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "sad",
+      "partOfSpeech": "adjective",
+      "generated": "ˈsæd",
+      "handWritten": "sæd",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "angry",
+      "partOfSpeech": "adjective",
+      "generated": "ˈæŋ.ɡɹi",
+      "handWritten": "ˈæŋɡɹi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "worried",
+      "partOfSpeech": "adjective",
+      "generated": "ˈwɝ.id",
+      "handWritten": "ˈwɝid",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "excited",
+      "partOfSpeech": "adjective",
+      "generated": "ɪkˈsaɪ.tɪd",
+      "handWritten": "ɪkˈsaɪtɪd",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "interested",
+      "partOfSpeech": "adjective",
+      "generated": "ˈɪn.tɹəs.tɪd",
+      "handWritten": "ˈɪntɹəstɪd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "hungry",
+      "partOfSpeech": "adjective",
+      "generated": "ˈhʌŋ.ɡɹi",
+      "handWritten": "ˈhʌŋɡɹi",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "thirsty",
+      "partOfSpeech": "adjective",
+      "generated": "ˈθɝs.ti",
+      "handWritten": "ˈθɝsti",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "busy",
+      "partOfSpeech": "adjective",
+      "generated": "ˈbɪz.i",
+      "handWritten": "ˈbɪzi",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "ready",
+      "partOfSpeech": "adjective",
+      "generated": "ˈɹɛd.i",
+      "handWritten": "ˈɹɛdi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "fine",
+      "partOfSpeech": "adjective",
+      "generated": "ˈfaɪ̯n",
+      "handWritten": "faɪn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "like",
+      "partOfSpeech": "verb",
+      "generated": "laɪ̯k",
+      "handWritten": "laɪk",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "introduce",
+      "partOfSpeech": "verb",
+      "generated": "ˌɪntɹəˈdus",
+      "handWritten": "ˌɪntɹəˈduːs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "number",
+      "partOfSpeech": "noun",
+      "generated": "ˈnʌmbər",
+      "handWritten": "ˈnʌmbɚ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "two",
+      "partOfSpeech": "noun",
+      "generated": "tu",
+      "handWritten": "tuː",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "four",
+      "partOfSpeech": "noun",
+      "generated": "foɹ",
+      "handWritten": "fɔɹ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "five",
+      "partOfSpeech": "noun",
+      "generated": "ˈfaɪ̯v",
+      "handWritten": "faɪv",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "nineteen",
+      "partOfSpeech": "noun",
+      "generated": "ˌnaɪnˈtin",
+      "handWritten": "ˌnaɪnˈtiːn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "forty",
+      "partOfSpeech": "noun",
+      "generated": "ˈfoɹti",
+      "handWritten": "ˈfɔɹti",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "seventy",
+      "partOfSpeech": "noun",
+      "generated": "ˈsɛv.ən.ti",
+      "handWritten": "ˈsɛvənti",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "eighty",
+      "partOfSpeech": "noun",
+      "generated": "ˈeɪ.ti",
+      "handWritten": "ˈeɪti",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "ninety",
+      "partOfSpeech": "noun",
+      "generated": "ˈnaɪn.ti",
+      "handWritten": "ˈnaɪnti",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "hundred",
+      "partOfSpeech": "noun",
+      "generated": "ˈhʌn.dɹəd",
+      "handWritten": "ˈhʌndɹəd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "million",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɪl.jən",
+      "handWritten": "ˈmɪljən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "first",
+      "partOfSpeech": "adjective",
+      "generated": "fɚst",
+      "handWritten": "fɝst",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "second",
+      "partOfSpeech": "adjective",
+      "generated": "ˈsɛk.ənd",
+      "handWritten": "ˈsɛkənd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "half",
+      "partOfSpeech": "noun",
+      "generated": "ˈhæf",
+      "handWritten": "hæf",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "day",
+      "partOfSpeech": "noun",
+      "generated": "deɪ̯",
+      "handWritten": "deɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "year",
+      "partOfSpeech": "noun",
+      "generated": "ˈjɪɚ",
+      "handWritten": "jɪɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "weekend",
+      "partOfSpeech": "noun",
+      "generated": "ˈwiˌkɛnd",
+      "handWritten": "ˈwiːkɛnd",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "morning",
+      "partOfSpeech": "noun",
+      "generated": "ˈmoɹnɪŋ",
+      "handWritten": "ˈmɔɹnɪŋ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "afternoon",
+      "partOfSpeech": "noun",
+      "generated": "ˌæf.tɚˈnun",
+      "handWritten": "ˌæftɚˈnuːn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "evening",
+      "partOfSpeech": "noun",
+      "generated": "ˈiv.nɪŋ",
+      "handWritten": "ˈiːvnɪŋ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "night",
+      "partOfSpeech": "noun",
+      "generated": "naɪ̯t",
+      "handWritten": "naɪt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "noon",
+      "partOfSpeech": "noun",
+      "generated": "nun",
+      "handWritten": "nuːn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "Monday",
+      "partOfSpeech": "noun",
+      "generated": "ˈmʌn.deɪ",
+      "handWritten": "ˈmʌndeɪ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "Tuesday",
+      "partOfSpeech": "noun",
+      "generated": "ˈtuz.deɪ",
+      "handWritten": "ˈtuːzdeɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "Wednesday",
+      "partOfSpeech": "noun",
+      "generated": "ˈwɛnz.deɪ",
+      "handWritten": "ˈwɛnzdeɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "Thursday",
+      "partOfSpeech": "noun",
+      "generated": "ˈθɝz.deɪ",
+      "handWritten": "ˈθɝzdeɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "Friday",
+      "partOfSpeech": "noun",
+      "generated": "ˈfɹaɪ.deɪ",
+      "handWritten": "ˈfɹaɪdeɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "Saturday",
+      "partOfSpeech": "noun",
+      "generated": "ˈsæt.ɚ.deɪ",
+      "handWritten": "ˈsætɚdeɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "Sunday",
+      "partOfSpeech": "noun",
+      "generated": "ˈsʌn.deɪ",
+      "handWritten": "ˈsʌndeɪ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "January",
+      "partOfSpeech": "noun",
+      "generated": "ˈd͡ʒæn.juˌɛɹi",
+      "handWritten": "ˈdʒænjuɛɹi",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "February",
+      "partOfSpeech": "noun",
+      "generated": "ˈfɛb.ɹuˌɛɹi",
+      "handWritten": "ˈfɛbɹuɛɹi",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "March",
+      "partOfSpeech": "noun",
+      "generated": "mɑɹt͡ʃ",
+      "handWritten": "mɑɹtʃ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "April",
+      "partOfSpeech": "noun",
+      "generated": "ˈeɪ.pɹəl",
+      "handWritten": "ˈeɪpɹəl",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "June",
+      "partOfSpeech": "noun",
+      "generated": "d͡ʒun",
+      "handWritten": "dʒuːn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "August",
+      "partOfSpeech": "noun",
+      "generated": "ˈɔ.ɡəst",
+      "handWritten": "ˈɔɡəst",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "October",
+      "partOfSpeech": "noun",
+      "generated": "ɑkˈtoʊ.bəɹ",
+      "handWritten": "ɑkˈtoʊbɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "December",
+      "partOfSpeech": "noun",
+      "generated": "dɪˈsɛm.bɚ",
+      "handWritten": "dɪˈsɛmbɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "spring",
+      "partOfSpeech": "noun",
+      "generated": "ˈspɹɪŋ",
+      "handWritten": "spɹɪŋ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "birthday",
+      "partOfSpeech": "noun",
+      "generated": "ˈbɝθˌdeɪ",
+      "handWritten": "ˈbɝθdeɪ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "holiday",
+      "partOfSpeech": "noun",
+      "generated": "ˈhɑləˌdeɪ",
+      "handWritten": "ˈhɑlədeɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "color",
+      "partOfSpeech": "noun",
+      "generated": "ˈkʌl.ɚ",
+      "handWritten": "ˈkʌlɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "blue",
+      "partOfSpeech": "adjective",
+      "generated": "blu",
+      "handWritten": "bluː",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "green",
+      "partOfSpeech": "adjective",
+      "generated": "ɡɹin",
+      "handWritten": "ɡɹiːn",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "white",
+      "partOfSpeech": "adjective",
+      "generated": "ˈwaɪt",
+      "handWritten": "waɪt",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "brown",
+      "partOfSpeech": "adjective",
+      "generated": "bɹaʊ̯n",
+      "handWritten": "bɹaʊn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "pink",
+      "partOfSpeech": "adjective",
+      "generated": "ˈpɪŋk",
+      "handWritten": "pɪŋk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "wind",
+      "partOfSpeech": "noun",
+      "generated": "ˈwɪnd",
+      "handWritten": "wɪnd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "dry",
+      "partOfSpeech": "adjective",
+      "generated": "ˈdɹaɪ̯",
+      "handWritten": "dɹaɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "beach",
+      "partOfSpeech": "noun",
+      "generated": "biːt͡ʃ",
+      "handWritten": "biːtʃ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "flower",
+      "partOfSpeech": "noun",
+      "generated": "ˈflaʊ̯.ɚ",
+      "handWritten": "ˈflaʊɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "cat",
+      "partOfSpeech": "noun",
+      "generated": "ˈkæt",
+      "handWritten": "kæt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "bird",
+      "partOfSpeech": "noun",
+      "generated": "ˈbɝd",
+      "handWritten": "bɝd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "water",
+      "partOfSpeech": "noun",
+      "generated": "ˈwɔ.tɚ",
+      "handWritten": "ˈwɔtɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "noodle",
+      "partOfSpeech": "noun",
+      "generated": "ˈnu.dəl",
+      "handWritten": "ˈnuːdəl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "meat",
+      "partOfSpeech": "noun",
+      "generated": "mit",
+      "handWritten": "miːt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "chicken",
+      "partOfSpeech": "noun",
+      "generated": "ˈt͡ʃɪkən",
+      "handWritten": "ˈtʃɪkən",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "beef",
+      "partOfSpeech": "noun",
+      "generated": "bif",
+      "handWritten": "biːf",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "pork",
+      "partOfSpeech": "noun",
+      "generated": "poɹk",
+      "handWritten": "pɔɹk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "vegetable",
+      "partOfSpeech": "noun",
+      "generated": "ˈvɛd͡ʒ.tə.bəl",
+      "handWritten": "ˈvɛdʒtəbəl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "fruit",
+      "partOfSpeech": "noun",
+      "generated": "fɹut",
+      "handWritten": "fɹuːt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "tomato",
+      "partOfSpeech": "noun",
+      "generated": "təˈmeɪ.toʊ",
+      "handWritten": "təˈmeɪtoʊ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "soup",
+      "partOfSpeech": "noun",
+      "generated": "sup",
+      "handWritten": "suːp",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "tea",
+      "partOfSpeech": "noun",
+      "generated": "ti",
+      "handWritten": "tiː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "beer",
+      "partOfSpeech": "noun",
+      "generated": "ˈbɪɚ",
+      "handWritten": "bɪɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "breakfast",
+      "partOfSpeech": "noun",
+      "generated": "ˈbɹɛk.fəst",
+      "handWritten": "ˈbɹɛkfəst",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "lunch",
+      "partOfSpeech": "noun",
+      "generated": "lʌnt͡ʃ",
+      "handWritten": "lʌntʃ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "meal",
+      "partOfSpeech": "noun",
+      "generated": "ˈmiːl",
+      "handWritten": "miːl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "menu",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɛn.ju",
+      "handWritten": "ˈmɛnjuː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "waiter",
+      "partOfSpeech": "noun",
+      "generated": "ˈweɪ̯tɚ",
+      "handWritten": "ˈweɪtɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "eat",
+      "partOfSpeech": "verb",
+      "generated": "it",
+      "handWritten": "iːt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "drink",
+      "partOfSpeech": "verb",
+      "generated": "ˈdɹɪŋk",
+      "handWritten": "dɹɪŋk",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "delicious",
+      "partOfSpeech": "adjective",
+      "generated": "dɪˈlɪ.ʃəs",
+      "handWritten": "dɪˈlɪʃəs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "sweet",
+      "partOfSpeech": "adjective",
+      "generated": "swit",
+      "handWritten": "swiːt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "cup",
+      "partOfSpeech": "noun",
+      "generated": "ˈkʌp",
+      "handWritten": "kʌp",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "knife",
+      "partOfSpeech": "noun",
+      "generated": "ˈnaɪ̯f",
+      "handWritten": "naɪf",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "money",
+      "partOfSpeech": "noun",
+      "generated": "ˈmʌn.i",
+      "handWritten": "ˈmʌni",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "price",
+      "partOfSpeech": "noun",
+      "generated": "ˈpɹaɪ̯s",
+      "handWritten": "pɹaɪs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "dollar",
+      "partOfSpeech": "noun",
+      "generated": "ˈdɑ.lɚ",
+      "handWritten": "ˈdɑlɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "change",
+      "partOfSpeech": "noun",
+      "generated": "ˈt͡ʃeɪnd͡ʒ",
+      "handWritten": "tʃeɪndʒ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "receipt",
+      "partOfSpeech": "noun",
+      "generated": "ɹɪˈsit",
+      "handWritten": "ɹɪˈsiːt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "cheap",
+      "partOfSpeech": "adjective",
+      "generated": "ˈt͡ʃiːp",
+      "handWritten": "tʃiːp",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "free",
+      "partOfSpeech": "adjective",
+      "generated": "fɹi",
+      "handWritten": "fɹiː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "open",
+      "partOfSpeech": "verb",
+      "generated": "ˈoʊ.pən",
+      "handWritten": "ˈoʊpən",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "need",
+      "partOfSpeech": "verb",
+      "generated": "nid",
+      "handWritten": "niːd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "shirt",
+      "partOfSpeech": "noun",
+      "generated": "ʃɜɹt",
+      "handWritten": "ʃɝt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "jacket",
+      "partOfSpeech": "noun",
+      "generated": "ˈd͡ʒæk.ɪt",
+      "handWritten": "ˈdʒækɪt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "shoe",
+      "partOfSpeech": "noun",
+      "generated": "ʃu",
+      "handWritten": "ʃuː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "order",
+      "partOfSpeech": "verb",
+      "generated": "ˈoɹ.dɚ",
+      "handWritten": "ˈɔɹdɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "house",
+      "partOfSpeech": "noun",
+      "generated": "haʊ̯s",
+      "handWritten": "haʊs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "apartment",
+      "partOfSpeech": "noun",
+      "generated": "əˈpɑɹt.mənt",
+      "handWritten": "əˈpɑɹtmənt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "room",
+      "partOfSpeech": "noun",
+      "generated": "ɹum",
+      "handWritten": "ɹuːm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "bedroom",
+      "partOfSpeech": "noun",
+      "generated": "ˈbɛdˌɹum",
+      "handWritten": "ˈbɛdɹuːm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "bathroom",
+      "partOfSpeech": "noun",
+      "generated": "ˈbæθˌɹum",
+      "handWritten": "ˈbæθɹuːm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "door",
+      "partOfSpeech": "noun",
+      "generated": "doɹ",
+      "handWritten": "dɔɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "floor",
+      "partOfSpeech": "noun",
+      "generated": "floɹ",
+      "handWritten": "flɔɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "stairs",
+      "partOfSpeech": "noun",
+      "generated": "ˈstɛɹz",
+      "handWritten": "stɛɹz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "chair",
+      "partOfSpeech": "noun",
+      "generated": "t͡ʃɛɚ",
+      "handWritten": "tʃɛɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "table",
+      "partOfSpeech": "noun",
+      "generated": "ˈteɪbl̩",
+      "handWritten": "ˈteɪbəl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "fridge",
+      "partOfSpeech": "noun",
+      "generated": "fɹɪd͡ʒ",
+      "handWritten": "fɹɪdʒ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "shower",
+      "partOfSpeech": "noun",
+      "generated": "ˈʃaʊ.ɚ",
+      "handWritten": "ˈʃaʊɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "key",
+      "partOfSpeech": "noun",
+      "generated": "ki",
+      "handWritten": "kiː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "live",
+      "partOfSpeech": "verb",
+      "generated": "ˈlɪv",
+      "handWritten": "lɪv",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "wake",
+      "partOfSpeech": "verb",
+      "generated": "ˈweɪ̯k",
+      "handWritten": "weɪk",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "place",
+      "partOfSpeech": "noun",
+      "generated": "ˈpleɪ̯s",
+      "handWritten": "pleɪs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "street",
+      "partOfSpeech": "noun",
+      "generated": "stɹit",
+      "handWritten": "stɹiːt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "town",
+      "partOfSpeech": "noun",
+      "generated": "ˈtaʊ̯n",
+      "handWritten": "taʊn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "city",
+      "partOfSpeech": "noun",
+      "generated": "ˈsɪt.i",
+      "handWritten": "ˈsɪti",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "village",
+      "partOfSpeech": "noun",
+      "generated": "ˈvɪlɪd͡ʒ",
+      "handWritten": "ˈvɪlɪdʒ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "bank",
+      "partOfSpeech": "noun",
+      "generated": "ˈbæŋk",
+      "handWritten": "bæŋk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "building",
+      "partOfSpeech": "noun",
+      "generated": "ˈbɪl.dɪŋ",
+      "handWritten": "ˈbɪldɪŋ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "corner",
+      "partOfSpeech": "noun",
+      "generated": "ˈkɔɹ.nɚ",
+      "handWritten": "ˈkɔɹnɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "entrance",
+      "partOfSpeech": "noun",
+      "generated": "ˈɛn.tɹəns",
+      "handWritten": "ˈɛntɹəns",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "police",
+      "partOfSpeech": "noun",
+      "generated": "pəˈlis",
+      "handWritten": "pəˈliːs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "left",
+      "partOfSpeech": "adjective",
+      "generated": "ˈɫɛft",
+      "handWritten": "lɛft",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "turn",
+      "partOfSpeech": "verb",
+      "generated": "tɜɹn",
+      "handWritten": "tɝn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "ticket",
+      "partOfSpeech": "noun",
+      "generated": "ˈtɪk.ɪt",
+      "handWritten": "ˈtɪkɪt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "visa",
+      "partOfSpeech": "noun",
+      "generated": "ˈviː.zə",
+      "handWritten": "ˈviːzə",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "suitcase",
+      "partOfSpeech": "noun",
+      "generated": "ˈsutkeɪs",
+      "handWritten": "ˈsuːtkeɪs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "airport",
+      "partOfSpeech": "noun",
+      "generated": "ˈɛɹ.pɔɹt",
+      "handWritten": "ˈɛɹpɔɹt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "flight",
+      "partOfSpeech": "noun",
+      "generated": "ˈflaɪ̯t",
+      "handWritten": "flaɪt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "train",
+      "partOfSpeech": "noun",
+      "generated": "ˈtɹeɪn",
+      "handWritten": "tɹeɪn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "motorbike",
+      "partOfSpeech": "noun",
+      "generated": "ˈmoʊtɚˌbaɪk",
+      "handWritten": "ˈmoʊtɚbaɪk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "leave",
+      "partOfSpeech": "verb",
+      "generated": "ˈliːv",
+      "handWritten": "liːv",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "phone",
+      "partOfSpeech": "noun",
+      "generated": "ˈfoʊ̯n",
+      "handWritten": "foʊn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "message",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɛs.ɪdʒ",
+      "handWritten": "ˈmɛsɪdʒ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "email",
+      "partOfSpeech": "noun",
+      "generated": "ˈiˌmeɪl",
+      "handWritten": "ˈiːmeɪl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "computer",
+      "partOfSpeech": "noun",
+      "generated": "kəmˈpju.tɚ",
+      "handWritten": "kəmˈpjuːtɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "password",
+      "partOfSpeech": "noun",
+      "generated": "ˈpæs.wɜɹd",
+      "handWritten": "ˈpæswɝd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "photo",
+      "partOfSpeech": "noun",
+      "generated": "ˈfoʊ̯.toʊ̯",
+      "handWritten": "ˈfoʊtoʊ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "screen",
+      "partOfSpeech": "noun",
+      "generated": "ˈskɹiːn",
+      "handWritten": "skɹiːn",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "job",
+      "partOfSpeech": "noun",
+      "generated": "d͡ʒɑb",
+      "handWritten": "dʒɑb",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "worker",
+      "partOfSpeech": "noun",
+      "generated": "ˈwɝ.kɚ",
+      "handWritten": "ˈwɝkɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "factory",
+      "partOfSpeech": "noun",
+      "generated": "ˈfæk.tɚ.i",
+      "handWritten": "ˈfæktəɹi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "office",
+      "partOfSpeech": "noun",
+      "generated": "ˈɔ.fɪs",
+      "handWritten": "ˈɔfɪs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "business",
+      "partOfSpeech": "noun",
+      "generated": "ˈbɪz.nəs",
+      "handWritten": "ˈbɪznəs",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "manager",
+      "partOfSpeech": "noun",
+      "generated": "ˈmæn.ə.dʒəɹ",
+      "handWritten": "ˈmænədʒɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "colleague",
+      "partOfSpeech": "noun",
+      "generated": "ˈkɑliɡ",
+      "handWritten": "ˈkɑliːɡ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "team",
+      "partOfSpeech": "noun",
+      "generated": "ˈtiːm",
+      "handWritten": "tiːm",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "meeting",
+      "partOfSpeech": "noun",
+      "generated": "ˈmitɪŋ",
+      "handWritten": "ˈmiːtɪŋ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "shift",
+      "partOfSpeech": "noun",
+      "generated": "ˈʃɪft",
+      "handWritten": "ʃɪft",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "machine",
+      "partOfSpeech": "noun",
+      "generated": "məˈʃin",
+      "handWritten": "məˈʃiːn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "tool",
+      "partOfSpeech": "noun",
+      "generated": "tul",
+      "handWritten": "tuːl",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "safe",
+      "partOfSpeech": "adjective",
+      "generated": "ˈseɪ̯f",
+      "handWritten": "seɪf",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "dangerous",
+      "partOfSpeech": "adjective",
+      "generated": "ˈdeɪn.d͡ʒɚ.əs",
+      "handWritten": "ˈdeɪndʒəɹəs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "product",
+      "partOfSpeech": "noun",
+      "generated": "ˈpɹɑ.dʌkt",
+      "handWritten": "ˈpɹɑdʌkt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "report",
+      "partOfSpeech": "noun",
+      "generated": "ɹɪˈpoɹt",
+      "handWritten": "ɹɪˈpɔɹt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "paper",
+      "partOfSpeech": "noun",
+      "generated": "ˈpeɪ̯.pəɹ",
+      "handWritten": "ˈpeɪpɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "notebook",
+      "partOfSpeech": "noun",
+      "generated": "ˈnoʊtˌbʊk",
+      "handWritten": "ˈnoʊtbʊk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "check",
+      "partOfSpeech": "verb",
+      "generated": "t͡ʃɛk",
+      "handWritten": "tʃɛk",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "touch",
+      "partOfSpeech": "verb",
+      "generated": "tʌt͡ʃ",
+      "handWritten": "tʌtʃ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "rule",
+      "partOfSpeech": "noun",
+      "generated": "ɹul",
+      "handWritten": "ɹuːl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "teacher",
+      "partOfSpeech": "noun",
+      "generated": "ˈti.t͡ʃɚ",
+      "handWritten": "ˈtiːtʃɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "farmer",
+      "partOfSpeech": "noun",
+      "generated": "ˈfɑɹ.mɚ",
+      "handWritten": "ˈfɑɹmɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "question",
+      "partOfSpeech": "noun",
+      "generated": "ˈkwɛs.tʃən",
+      "handWritten": "ˈkwɛstʃən",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "answer",
+      "partOfSpeech": "noun",
+      "generated": "ˈæn.sɚ",
+      "handWritten": "ˈænsɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "important",
+      "partOfSpeech": "adjective",
+      "generated": "ɪmˈpɔɹ.tənt",
+      "handWritten": "ɪmˈpɔɹtənt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "school",
+      "partOfSpeech": "noun",
+      "generated": "skul",
+      "handWritten": "skuːl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "student",
+      "partOfSpeech": "noun",
+      "generated": "ˈstu.dn̩t",
+      "handWritten": "ˈstuːdənt",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "lesson",
+      "partOfSpeech": "noun",
+      "generated": "ˈlɛs.ən",
+      "handWritten": "ˈlɛsən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "word",
+      "partOfSpeech": "noun",
+      "generated": "wɜɹd",
+      "handWritten": "wɝd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "sentence",
+      "partOfSpeech": "noun",
+      "generated": "ˈsɛn.təns",
+      "handWritten": "ˈsɛntəns",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "page",
+      "partOfSpeech": "noun",
+      "generated": "peɪd͡ʒ",
+      "handWritten": "peɪdʒ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "study",
+      "partOfSpeech": "verb",
+      "generated": "ˈstʌd.i",
+      "handWritten": "ˈstʌdi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "teach",
+      "partOfSpeech": "verb",
+      "generated": "tiːt͡ʃ",
+      "handWritten": "tiːtʃ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "read",
+      "partOfSpeech": "verb",
+      "generated": "ɹid",
+      "handWritten": "ɹiːd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "mean",
+      "partOfSpeech": "verb",
+      "generated": "min",
+      "handWritten": "miːn",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "repeat",
+      "partOfSpeech": "verb",
+      "generated": "ɹɪˈpit",
+      "handWritten": "ɹɪˈpiːt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "speak",
+      "partOfSpeech": "verb",
+      "generated": "spik",
+      "handWritten": "spiːk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "information",
+      "partOfSpeech": "noun",
+      "generated": "ˌɪn.fɚˈmeɪ.ʃn̩",
+      "handWritten": "ˌɪnfɚˈmeɪʃən",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "fire",
+      "partOfSpeech": "noun",
+      "generated": "ˈfaɪ.ɚ",
+      "handWritten": "ˈfaɪɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "group",
+      "partOfSpeech": "noun",
+      "generated": "ɡɹup",
+      "handWritten": "ɡɹuːp",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "join",
+      "partOfSpeech": "verb",
+      "generated": "ˈd͡ʒɔɪn",
+      "handWritten": "dʒɔɪn",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "take",
+      "partOfSpeech": "verb",
+      "generated": "ˈteɪ̯k",
+      "handWritten": "teɪk",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "give",
+      "partOfSpeech": "verb",
+      "generated": "ˈɡɪv",
+      "handWritten": "ɡɪv",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "see",
+      "partOfSpeech": "verb",
+      "generated": "si",
+      "handWritten": "siː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "watch",
+      "partOfSpeech": "verb",
+      "generated": "ˈwɑt͡ʃ",
+      "handWritten": "wɑtʃ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "hear",
+      "partOfSpeech": "verb",
+      "generated": "ˈhɪɚ",
+      "handWritten": "hɪɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "think",
+      "partOfSpeech": "verb",
+      "generated": "ˈθɪŋk",
+      "handWritten": "θɪŋk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "remember",
+      "partOfSpeech": "verb",
+      "generated": "ɹɪˈmɛm.bɚ",
+      "handWritten": "ɹɪˈmɛmbɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "find",
+      "partOfSpeech": "verb",
+      "generated": "ˈfaɪ̯nd",
+      "handWritten": "faɪnd",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "lose",
+      "partOfSpeech": "verb",
+      "generated": "luz",
+      "handWritten": "luːz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "use",
+      "partOfSpeech": "verb",
+      "generated": "juz",
+      "handWritten": "juːz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "bring",
+      "partOfSpeech": "verb",
+      "generated": "ˈbɹɪŋ",
+      "handWritten": "bɹɪŋ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "meet",
+      "partOfSpeech": "verb",
+      "generated": "mit",
+      "handWritten": "miːt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "play",
+      "partOfSpeech": "verb",
+      "generated": "pleɪ̯",
+      "handWritten": "pleɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "sing",
+      "partOfSpeech": "verb",
+      "generated": "ˈsɪŋ",
+      "handWritten": "sɪŋ",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "enjoy",
+      "partOfSpeech": "verb",
+      "generated": "ɪnˈd͡ʒɔɪ",
+      "handWritten": "ɪnˈdʒɔɪ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "smile",
+      "partOfSpeech": "verb",
+      "generated": "ˈsmaɪl",
+      "handWritten": "smaɪl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "choose",
+      "partOfSpeech": "verb",
+      "generated": "t͡ʃuz",
+      "handWritten": "tʃuːz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "close",
+      "partOfSpeech": "verb",
+      "generated": "ˈkloʊ̯z",
+      "handWritten": "kloʊz",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "agree",
+      "partOfSpeech": "verb",
+      "generated": "əˈɡɹi",
+      "handWritten": "əˈɡɹiː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "large",
+      "partOfSpeech": "adjective",
+      "generated": "lɑɹd͡ʒ",
+      "handWritten": "lɑɹdʒ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "little",
+      "partOfSpeech": "adjective",
+      "generated": "ˈlɪ.tl̩",
+      "handWritten": "ˈlɪtəl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "short",
+      "partOfSpeech": "adjective",
+      "generated": "ʃoɹt",
+      "handWritten": "ʃɔɹt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "old",
+      "partOfSpeech": "adjective",
+      "generated": "ˈoʊld",
+      "handWritten": "oʊld",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "new",
+      "partOfSpeech": "adjective",
+      "generated": "nu",
+      "handWritten": "nuː",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "low",
+      "partOfSpeech": "adjective",
+      "generated": "ˈloʊ",
+      "handWritten": "loʊ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "different",
+      "partOfSpeech": "adjective",
+      "generated": "ˈdɪf.ɹənt",
+      "handWritten": "ˈdɪfɹənt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "wrong",
+      "partOfSpeech": "adjective",
+      "generated": "ˈɹɔŋ",
+      "handWritten": "ɹɔŋ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "heavy",
+      "partOfSpeech": "adjective",
+      "generated": "ˈhɛv.i",
+      "handWritten": "ˈhɛvi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "nice",
+      "partOfSpeech": "adjective",
+      "generated": "naɪ̯s",
+      "handWritten": "naɪs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "great",
+      "partOfSpeech": "adjective",
+      "generated": "ˈɡɹeɪt",
+      "handWritten": "ɡɹeɪt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "quiet",
+      "partOfSpeech": "adjective",
+      "generated": "ˈkwaɪ̯.ət",
+      "handWritten": "ˈkwaɪət",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "idea",
+      "partOfSpeech": "noun",
+      "generated": "aɪ̯ˈdi.ə",
+      "handWritten": "aɪˈdiːə",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "example",
+      "partOfSpeech": "noun",
+      "generated": "ɪɡˈzæm.pəl",
+      "handWritten": "ɪɡˈzæmpəl",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "side",
+      "partOfSpeech": "noun",
+      "generated": "ˈsaɪ̯d",
+      "handWritten": "saɪd",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "middle",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɪdl̩",
+      "handWritten": "ˈmɪdəl",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "story",
+      "partOfSpeech": "noun",
+      "generated": "ˈstɔɹ.i",
+      "handWritten": "ˈstɔɹi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "music",
+      "partOfSpeech": "noun",
+      "generated": "ˈmju.zɪk",
+      "handWritten": "ˈmjuːzɪk",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "sport",
+      "partOfSpeech": "noun",
+      "generated": "spoɹt",
+      "handWritten": "spɔɹt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "soccer",
+      "partOfSpeech": "noun",
+      "generated": "ˈsɑk.ɚ",
+      "handWritten": "ˈsɑkɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "picture",
+      "partOfSpeech": "noun",
+      "generated": "ˈpɪk.t͡ʃɚ",
+      "handWritten": "ˈpɪktʃɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "hobby",
+      "partOfSpeech": "noun",
+      "generated": "ˈhɑ.bi",
+      "handWritten": "ˈhɑbi",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "vacation",
+      "partOfSpeech": "noun",
+      "generated": "veɪˈkeɪ.ʃən",
+      "handWritten": "veɪˈkeɪʃən",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "noise",
+      "partOfSpeech": "noun",
+      "generated": "ˈnɔɪ̯z",
+      "handWritten": "nɔɪz",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "life",
+      "partOfSpeech": "noun",
+      "generated": "ˈlaɪ̯f",
+      "handWritten": "laɪf",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "thief",
+      "partOfSpeech": "noun",
+      "generated": "ˈθiːf",
+      "handWritten": "θiːf",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "accident",
+      "partOfSpeech": "noun",
+      "generated": "ˈæk.sə.dənt",
+      "handWritten": "ˈæksədənt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "emergency",
+      "partOfSpeech": "noun",
+      "generated": "ɪˈmɝ.d͡ʒən.si",
+      "handWritten": "ɪˈmɝdʒənsi",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "insurance",
+      "partOfSpeech": "noun",
+      "generated": "ɪnˈʃʊɹ.əns",
+      "handWritten": "ɪnˈʃʊɹəns",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "cancel",
+      "partOfSpeech": "verb",
+      "generated": "ˈkæn.sl̩",
+      "handWritten": "ˈkænsəl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "luggage",
+      "partOfSpeech": "noun",
+      "generated": "ˈlʌɡɪd͡ʒ",
+      "handWritten": "ˈlʌɡɪdʒ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "deadline",
+      "partOfSpeech": "noun",
+      "generated": "ˈdɛdˌlaɪn",
+      "handWritten": "ˈdɛdlaɪn",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "overtime",
+      "partOfSpeech": "noun",
+      "generated": "ˈoʊ.vɚˌtaɪm",
+      "handWritten": "ˈoʊvɚtaɪm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "resume",
+      "partOfSpeech": "noun",
+      "generated": "ˈɹɛz.ə.meɪ",
+      "handWritten": "ˈɹɛzəmeɪ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "hire",
+      "partOfSpeech": "verb",
+      "generated": "ˈhaɪɹ",
+      "handWritten": "ˈhaɪɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "attachment",
+      "partOfSpeech": "noun",
+      "generated": "əˈtæt͡ʃmənt",
+      "handWritten": "əˈtætʃmənt",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "rent",
+      "partOfSpeech": "noun",
+      "generated": "ˈɹɛnt",
+      "handWritten": "ɹɛnt",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "plumber",
+      "partOfSpeech": "noun",
+      "generated": "ˈplʌm.əɹ",
+      "handWritten": "ˈplʌmɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "broken",
+      "partOfSpeech": "adjective",
+      "generated": "ˈbɹoʊ.kən",
+      "handWritten": "ˈbɹoʊkən",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "borrow",
+      "partOfSpeech": "verb",
+      "generated": "ˈbɑɹ.oʊ",
+      "handWritten": "ˈbɑɹoʊ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "neighborhood",
+      "partOfSpeech": "noun",
+      "generated": "ˈneɪbɚˌhʊd",
+      "handWritten": "ˈneɪbɚhʊd",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "attention",
+      "partOfSpeech": "noun",
+      "generated": "əˈtɛn.ʃn̩",
+      "handWritten": "əˈtɛnʃən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "boat",
+      "partOfSpeech": "noun",
+      "generated": "boʊ̯t",
+      "handWritten": "boʊt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "center",
+      "partOfSpeech": "noun",
+      "generated": "ˈsɛn.tɚ",
+      "handWritten": "ˈsɛntɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "certificate",
+      "partOfSpeech": "noun",
+      "generated": "sɚˈtɪf.ɪ.kət",
+      "handWritten": "sɚˈtɪfɪkət",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "each",
+      "partOfSpeech": "determiner",
+      "generated": "it͡ʃ",
+      "handWritten": "iːtʃ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "elevator",
+      "partOfSpeech": "noun",
+      "generated": "ˈɛləˌveɪtɚ",
+      "handWritten": "ˈɛləveɪtɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "gate",
+      "partOfSpeech": "noun",
+      "generated": "ˈɡeɪ̯t",
+      "handWritten": "ɡeɪt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "gym",
+      "partOfSpeech": "noun",
+      "generated": "d͡ʒɪm",
+      "handWritten": "dʒɪm",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "handrail",
+      "partOfSpeech": "noun",
+      "generated": "ˈhændˌɹeɪl",
+      "handWritten": "ˈhændɹeɪl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "kilo",
+      "partOfSpeech": "noun",
+      "generated": "ˈkiloʊ",
+      "handWritten": "ˈkiːloʊ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "library",
+      "partOfSpeech": "noun",
+      "generated": "ˈlaɪˌbɹɛɹ.i",
+      "handWritten": "ˈlaɪbɹɛɹi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "member",
+      "partOfSpeech": "noun",
+      "generated": "ˈmɛm.bɚ",
+      "handWritten": "ˈmɛmbɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "museum",
+      "partOfSpeech": "noun",
+      "generated": "mjuˈziəm",
+      "handWritten": "mjuːˈziːəm",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "notice",
+      "partOfSpeech": "noun",
+      "generated": "ˈnoʊ.tɪs",
+      "handWritten": "ˈnoʊtɪs",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "parking",
+      "partOfSpeech": "adjective",
+      "generated": "ˈpɑɹ.kɪŋ",
+      "handWritten": "ˈpɑɹkɪŋ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "passenger",
+      "partOfSpeech": "noun",
+      "generated": "ˈpæs.ən.d͡ʒɚ",
+      "handWritten": "ˈpæsəndʒɚ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "perfect",
+      "partOfSpeech": "adjective",
+      "generated": "ˈpɝ.fɪkt",
+      "handWritten": "ˈpɝfɪkt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "pipe",
+      "partOfSpeech": "noun",
+      "generated": "ˈpaɪp",
+      "handWritten": "paɪp",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "pool",
+      "partOfSpeech": "noun",
+      "generated": "pul",
+      "handWritten": "puːl",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "receive",
+      "partOfSpeech": "verb",
+      "generated": "ɹɪˈsiv",
+      "handWritten": "ɹɪˈsiːv",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "receptionist",
+      "partOfSpeech": "noun",
+      "generated": "ɹɪˈsɛp.ʃə.nɪst",
+      "handWritten": "ɹɪˈsɛpʃənɪst",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "recipe",
+      "partOfSpeech": "noun",
+      "generated": "ˈɹɛs.ə.pi",
+      "handWritten": "ˈɹɛsəpi",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "repair",
+      "partOfSpeech": "verb",
+      "generated": "ɹɪˈpɛɚ",
+      "handWritten": "ɹɪˈpɛɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "share",
+      "partOfSpeech": "verb",
+      "generated": "ʃɛɚ",
+      "handWritten": "ʃɛɹ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "simple",
+      "partOfSpeech": "adjective",
+      "generated": "ˈsɪm.pəl",
+      "handWritten": "ˈsɪmpəl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "special",
+      "partOfSpeech": "adjective",
+      "generated": "ˈspɛʃ.əl",
+      "handWritten": "ˈspɛʃəl",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "transfer",
+      "partOfSpeech": "noun",
+      "generated": "ˈtɹæns.fɚ",
+      "handWritten": "ˈtɹænsfɚ",
+      "source": "kaikki-en",
+      "method": "us-tag"
+    },
+    {
+      "word": "apron",
+      "partOfSpeech": "noun",
+      "generated": "ˈeɪ.pɹən",
+      "handWritten": "ˈeɪpɹən",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "island",
+      "partOfSpeech": "noun",
+      "generated": "ˈaɪ.lənd",
+      "handWritten": "ˈaɪlənd",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "bill",
+      "partOfSpeech": "noun",
+      "generated": "ˈbɪl",
+      "handWritten": "bɪl",
+      "source": "kaikki-en",
+      "method": "untagged"
+    },
+    {
+      "word": "opposite",
+      "partOfSpeech": "preposition",
+      "generated": "ˈɑ.pə.zɪt",
+      "handWritten": "ˈɑpəzɪt",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "toilet",
+      "partOfSpeech": "noun",
+      "generated": "ˈtɔɪ.lət",
+      "handWritten": "ˈtɔɪlət",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "college",
+      "partOfSpeech": "noun",
+      "generated": "ˈkɑ.lɪdʒ",
+      "handWritten": "ˈkɑlɪdʒ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    },
+    {
+      "word": "grow",
+      "partOfSpeech": "verb",
+      "generated": "ˈɡɹoʊ",
+      "handWritten": "ɡɹoʊ",
+      "source": "kaikki-en",
+      "method": "general-american-tag"
+    }
+  ],
+  "noLicensedValue": [
+    {
+      "word": "everything",
+      "partOfSpeech": "pronoun",
+      "handWritten": "ˈɛvɹiˌθɪŋ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "every",
+      "partOfSpeech": "determiner",
+      "handWritten": "ˈɛvɹi",
+      "source": "original-english-course"
+    },
+    {
+      "word": "a lot of",
+      "partOfSpeech": "expression",
+      "handWritten": "ə ˈlɑt ʌv",
+      "source": "original-english-course"
+    },
+    {
+      "word": "a little",
+      "partOfSpeech": "expression",
+      "handWritten": "ə ˈlɪtəl",
+      "source": "original-english-course"
+    },
+    {
+      "word": "on",
+      "partOfSpeech": "preposition",
+      "handWritten": "ɑn",
+      "source": "original-english-course"
+    },
+    {
+      "word": "to",
+      "partOfSpeech": "preposition",
+      "handWritten": "tuː",
+      "source": "original-english-course"
+    },
+    {
+      "word": "across from",
+      "partOfSpeech": "preposition",
+      "handWritten": "əˈkɹɔs fɹʌm",
+      "source": "original-english-course"
+    },
+    {
+      "word": "in front of",
+      "partOfSpeech": "expression",
+      "handWritten": "ɪn ˈfɹʌnt ʌv",
+      "source": "original-english-course"
+    },
+    {
+      "word": "during",
+      "partOfSpeech": "preposition",
+      "handWritten": "ˈdʊɹɪŋ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "could",
+      "partOfSpeech": "verb",
+      "handWritten": "kʊd",
+      "source": "original-english-course"
+    },
+    {
+      "word": "would",
+      "partOfSpeech": "verb",
+      "handWritten": "wʊd",
+      "source": "original-english-course"
+    },
+    {
+      "word": "usually",
+      "partOfSpeech": "adverb",
+      "handWritten": "ˈjuʒuəli",
+      "source": "original-english-course"
+    },
+    {
+      "word": "once",
+      "partOfSpeech": "adverb",
+      "handWritten": "wʌns",
+      "source": "original-english-course"
+    },
+    {
+      "word": "hello",
+      "partOfSpeech": "interjection",
+      "handWritten": "həˈloʊ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "good afternoon",
+      "partOfSpeech": "expression",
+      "handWritten": "ɡʊd ˌæftɚˈnuːn",
+      "source": "original-english-course"
+    },
+    {
+      "word": "good evening",
+      "partOfSpeech": "expression",
+      "handWritten": "ɡʊd ˈiːvnɪŋ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "you're welcome",
+      "partOfSpeech": "expression",
+      "handWritten": "jʊɹ ˈwɛlkəm",
+      "source": "original-english-course"
+    },
+    {
+      "word": "excuse me",
+      "partOfSpeech": "expression",
+      "handWritten": "ɪkˈskjuz mi",
+      "source": "original-english-course"
+    },
+    {
+      "word": "okay",
+      "partOfSpeech": "interjection",
+      "handWritten": "oʊˈkeɪ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "how are you",
+      "partOfSpeech": "expression",
+      "handWritten": "ˌhaʊ ɑɹ ˈju",
+      "source": "original-english-course"
+    },
+    {
+      "word": "nice to meet you",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈnaɪs tə ˈmiːt juː",
+      "source": "original-english-course"
+    },
+    {
+      "word": "Mr",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈmɪstɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "first name",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈfɝst neɪm",
+      "source": "original-english-course"
+    },
+    {
+      "word": "last name",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈlæst neɪm",
+      "source": "original-english-course"
+    },
+    {
+      "word": "phone number",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈfoʊn ˌnʌmbɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "Vietnamese",
+      "partOfSpeech": "adjective",
+      "handWritten": "ˌviːɛtnəˈmiːz",
+      "source": "original-english-course"
+    },
+    {
+      "word": "English",
+      "partOfSpeech": "adjective",
+      "handWritten": "ˈɪŋɡlɪʃ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "family",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈfæməli",
+      "source": "original-english-course"
+    },
+    {
+      "word": "grandmother",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɡɹænˌmʌðɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "grandfather",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɡɹænˌfɑðɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "tired",
+      "partOfSpeech": "adjective",
+      "handWritten": "ˈtaɪɚd",
+      "source": "original-english-course"
+    },
+    {
+      "word": "worry",
+      "partOfSpeech": "verb",
+      "handWritten": "ˈwɝi",
+      "source": "original-english-course"
+    },
+    {
+      "word": "appointment",
+      "partOfSpeech": "noun",
+      "handWritten": "əˈpɔɪntmənt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "thirteen",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌθɝˈtin",
+      "source": "original-english-course"
+    },
+    {
+      "word": "fourteen",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌfɔɹˈtin",
+      "source": "original-english-course"
+    },
+    {
+      "word": "fifteen",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌfɪfˈtin",
+      "source": "original-english-course"
+    },
+    {
+      "word": "sixteen",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌsɪksˈtin",
+      "source": "original-english-course"
+    },
+    {
+      "word": "seventeen",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌsɛvənˈtin",
+      "source": "original-english-course"
+    },
+    {
+      "word": "eighteen",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌeɪˈtin",
+      "source": "original-english-course"
+    },
+    {
+      "word": "thousand",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈθaʊzənd",
+      "source": "original-english-course"
+    },
+    {
+      "word": "quarter",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈkwɔɹtɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "yesterday",
+      "partOfSpeech": "adverb",
+      "handWritten": "ˈjɛstɚˌdeɪ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "season",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈsiːzən",
+      "source": "original-english-course"
+    },
+    {
+      "word": "orange",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɔɹɪndʒ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "mountain",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈmaʊntən",
+      "source": "original-english-course"
+    },
+    {
+      "word": "juice",
+      "partOfSpeech": "noun",
+      "handWritten": "dʒuːs",
+      "source": "original-english-course"
+    },
+    {
+      "word": "restaurant",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɹɛstɹɑnt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "supermarket",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈsupɚˌmɑɹkɪt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "customer",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈkʌstəmɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "expensive",
+      "partOfSpeech": "adjective",
+      "handWritten": "ɪkˈspɛnsɪv",
+      "source": "original-english-course"
+    },
+    {
+      "word": "how much",
+      "partOfSpeech": "expression",
+      "handWritten": "ˌhaʊ ˈmʌtʃ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "how many",
+      "partOfSpeech": "expression",
+      "handWritten": "ˌhaʊ ˈmɛni",
+      "source": "original-english-course"
+    },
+    {
+      "word": "would like",
+      "partOfSpeech": "expression",
+      "handWritten": "wʊd ˈlaɪk",
+      "source": "original-english-course"
+    },
+    {
+      "word": "clothes",
+      "partOfSpeech": "noun",
+      "handWritten": "kloʊz",
+      "source": "original-english-course"
+    },
+    {
+      "word": "wear",
+      "partOfSpeech": "verb",
+      "handWritten": "wɛɹ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "cashier",
+      "partOfSpeech": "noun",
+      "handWritten": "kæˈʃɪɹ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "kitchen",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈkɪtʃən",
+      "source": "original-english-course"
+    },
+    {
+      "word": "hotel",
+      "partOfSpeech": "noun",
+      "handWritten": "hoʊˈtɛl",
+      "source": "original-english-course"
+    },
+    {
+      "word": "traffic light",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈtɹæfɪk laɪt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "bus stop",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈbʌs stɑp",
+      "source": "original-english-course"
+    },
+    {
+      "word": "internet",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɪntɚˌnɛt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "website",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈwɛbˌsaɪt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "hold on",
+      "partOfSpeech": "expression",
+      "handWritten": "ˌhoʊld ˈɑn",
+      "source": "original-english-course"
+    },
+    {
+      "word": "best regards",
+      "partOfSpeech": "expression",
+      "handWritten": "ˌbɛst ɹɪˈɡɑɹdz",
+      "source": "original-english-course"
+    },
+    {
+      "word": "restroom",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɹɛstˌɹum",
+      "source": "original-english-course"
+    },
+    {
+      "word": "interview",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɪntɚˌvju",
+      "source": "original-english-course"
+    },
+    {
+      "word": "experience",
+      "partOfSpeech": "noun",
+      "handWritten": "ɪkˈspɪɹiəns",
+      "source": "original-english-course"
+    },
+    {
+      "word": "carry",
+      "partOfSpeech": "verb",
+      "handWritten": "ˈkæɹi",
+      "source": "original-english-course"
+    },
+    {
+      "word": "follow",
+      "partOfSpeech": "verb",
+      "handWritten": "ˈfɑloʊ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "engineer",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌɛndʒəˈnɪɹ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "university",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌjunɪˈvɝsəti",
+      "source": "original-english-course"
+    },
+    {
+      "word": "thank",
+      "partOfSpeech": "verb",
+      "handWritten": "θæŋk",
+      "source": "original-english-course",
+      "rejected": "the only American line is an unlabelled /ˈðæŋk/ next to dialect lines; thank starts with /θ/"
+    },
+    {
+      "word": "easy",
+      "partOfSpeech": "adjective",
+      "handWritten": "ˈiːzi",
+      "source": "original-english-course"
+    },
+    {
+      "word": "empty",
+      "partOfSpeech": "adjective",
+      "handWritten": "ˈɛmpti",
+      "source": "original-english-course"
+    },
+    {
+      "word": "possible",
+      "partOfSpeech": "adjective",
+      "handWritten": "ˈpɑsəbəl",
+      "source": "original-english-course"
+    },
+    {
+      "word": "brush",
+      "partOfSpeech": "verb",
+      "handWritten": "bɹʌʃ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "landlord",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈlændˌlɔɹd",
+      "source": "original-english-course"
+    },
+    {
+      "word": "adult",
+      "partOfSpeech": "noun",
+      "handWritten": "əˈdʌlt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "area",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈɛɹiə",
+      "source": "original-english-course"
+    },
+    {
+      "word": "bicycle",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈbaɪsɪkəl",
+      "source": "original-english-course"
+    },
+    {
+      "word": "cafeteria",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌkæfəˈtɪɹiə",
+      "source": "original-english-course"
+    },
+    {
+      "word": "movie theater",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈmuvi ˌθiətɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "community",
+      "partOfSpeech": "noun",
+      "handWritten": "kəˈmjunəti",
+      "source": "original-english-course"
+    },
+    {
+      "word": "condition",
+      "partOfSpeech": "noun",
+      "handWritten": "kənˈdɪʃən",
+      "source": "original-english-course"
+    },
+    {
+      "word": "exhibition",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌɛksəˈbɪʃən",
+      "source": "original-english-course"
+    },
+    {
+      "word": "fifth",
+      "partOfSpeech": "adjective",
+      "handWritten": "fɪfθ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "ID card",
+      "partOfSpeech": "expression",
+      "handWritten": "ˌaɪˈdiː kɑɹd",
+      "source": "original-english-course"
+    },
+    {
+      "word": "at least",
+      "partOfSpeech": "expression",
+      "handWritten": "ət ˈliːst",
+      "source": "original-english-course"
+    },
+    {
+      "word": "parking lot",
+      "partOfSpeech": "noun",
+      "handWritten": "ˈpɑɹkɪŋ lɑt",
+      "source": "original-english-course"
+    },
+    {
+      "word": "prefer",
+      "partOfSpeech": "verb",
+      "handWritten": "pɹɪˈfɝ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "sale",
+      "partOfSpeech": "noun",
+      "handWritten": "seɪl",
+      "source": "original-english-course"
+    },
+    {
+      "word": "volunteer",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌvɑlənˈtɪɹ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "within",
+      "partOfSpeech": "preposition",
+      "handWritten": "wɪˈðɪn",
+      "source": "original-english-course"
+    },
+    {
+      "word": "invitation",
+      "partOfSpeech": "noun",
+      "handWritten": "ˌɪnvɪˈteɪʃən",
+      "source": "original-english-course"
+    },
+    {
+      "word": "rice cooker",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈɹaɪs ˌkʊkɚ",
+      "source": "original-english-course"
+    },
+    {
+      "word": "pay stub",
+      "partOfSpeech": "expression",
+      "handWritten": "ˈpeɪ ˌstʌb",
+      "source": "original-english-course"
+    },
+    {
+      "word": "minus",
+      "partOfSpeech": "preposition",
+      "handWritten": "ˈmaɪnəs",
+      "source": "original-english-course"
+    }
+  ]
+}

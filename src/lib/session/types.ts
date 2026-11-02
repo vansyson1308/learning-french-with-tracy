@@ -47,6 +47,8 @@ export type ExerciseStep = {
   phase?: TodayPhase;
   /** Exam listening parts (QC 2026-10-29 §1.4): plays allowed, overriding the clip's scored policy. */
   maxPlays?: number;
+  /** A track above its course's level: words the course has not taught, to tap for their meaning (QC 2026-11-01 §2.5). */
+  glossary?: { surface: string; gloss: string }[];
   /** Exam message parts (QC 2026-10-29 §1.5): score the first answer in points with this rubric spec. */
   writingPoints?: MessagePointsSpec;
 };

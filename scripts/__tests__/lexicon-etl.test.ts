@@ -14,11 +14,12 @@ import { SourceManifestV2Schema, type SourceManifestV2 } from "../../content/sch
 import { parseCsv, readCefrJ, readHsk30, readNgsl } from "../lib/lexicon-etl/adapters/anchors";
 import { pinyinNumbersToMarks, readCedict, readJmdict } from "../lib/lexicon-etl/adapters/dictionaries";
 import { readFrequencyWords, readWordfreqCsv } from "../lib/lexicon-etl/adapters/frequency";
-import { atomsFromTags, cleanGloss, scanKaikki, viGlossFromSense } from "../lib/lexicon-etl/adapters/kaikki";
+import { atomsFromTags, cleanGloss, generalAmericanIpa, generalAmericanLines, scanKaikki, viGlossFromSense } from "../lib/lexicon-etl/adapters/kaikki";
 import { isLearnerSentence } from "../lib/lexicon-etl/adapters/tatoeba";
-import { deriveLanguage, normalizeFormFor, wordShapeFor } from "../lib/lexicon-etl/derive";
+import { authoredVerbs, deriveLanguage, normalizeFormFor, wordShapeFor } from "../lib/lexicon-etl/derive";
 import { buildManifestV2, manifestView } from "../lib/lexicon-etl/manifest";
 import { DECLARED_NOT_RETRIEVED, LEXICON_SOURCES, sourceIdsFor, sourcesFor } from "../lib/lexicon-etl/sources";
+import { generalAmericanEntries, refreshedMorphology } from "../lib/lexicon-etl/supplement";
 import { projectTopicFor } from "../lib/lexicon-etl/topics";
 import { loadRegistry } from "../lib/pipeline";
 
@@ -163,6 +164,101 @@ describe("sentences, shapes, topics", () => {
     expect(projectTopicFor(["dogs"])).toEqual({ topic: "animals", matched: "dogs" });
     expect(projectTopicFor(["astrology", "fruits"])).toEqual({ topic: "food", matched: "fruits" });
     expect(projectTopicFor(["quantum-mechanics"])).toEqual({ topic: "everyday", matched: null });
+  });
+});
+
+describe("General American IPA (QC 2026-11-01 §2.2)", () => {
+  const GO = [{ ipa: "/ɡəʊ/", tags: ["Received-Pronunciation", "UK"] }, { ipa: "/ɡə/", note: "weak form", tags: ["UK"] }, { ipa: "/ɡoʊ/", tags: ["General-American"] }, { ipa: "[ɡoː]", tags: ["Canada"] }];
+  const FALL = [{ ipa: "/fɔːl/", tags: ["Received-Pronunciation", "UK"] }, { ipa: "/fɔl/", note: "without the cot–caught merger", tags: ["US"] }, { ipa: "/fɑl/", tags: ["US", "cot-caught-merger"] }];
+  test("takes the American line, not the first one", () => {
+    expect(generalAmericanIpa(GO)).toEqual({ value: "ɡoʊ", method: "general-american-tag" });
+    expect(generalAmericanIpa(FALL)).toEqual({ value: "fɔl", method: "us-tag" });
+    expect(generalAmericanIpa([{ ipa: "/kʌt/", tags: ["General-American", "Received-Pronunciation"] }, { ipa: "/kɐt/", tags: ["Australia", "New-Zealand"] }])).toEqual({ value: "kʌt", method: "general-american-tag" });
+    expect(generalAmericanIpa([{ ipa: "/təˈmɑː.təʊ/", tags: ["Australia", "Received-Pronunciation"] }, { ipa: "/təˈmeɪ.toʊ/", tags: ["US"] }])).toEqual({ value: "təˈmeɪ.toʊ", method: "us-tag" });
+  });
+  test("an untagged line counts only when it has no note and no British shape", () => {
+    expect(generalAmericanIpa([{ ipa: "/ɹɪˈplaɪ/" }])).toEqual({ value: "ɹɪˈplaɪ", method: "untagged" });
+    expect(generalAmericanIpa([{ ipa: "/dɑːns/", note: "Received Pronunciation, trap–bath split" }])).toBeUndefined();
+    expect(generalAmericanIpa([{ ipa: "/ɡəʊ/" }])).toBeUndefined();
+    expect(generalAmericanIpa([{ ipa: "/ɡəʊ/", tags: ["UK"] }])).toBeUndefined();
+  });
+  test("regional American lines, narrow lines and fragments never count", () => {
+    expect(generalAmericanIpa([{ ipa: "/pɪn/", tags: ["US", "pin-pen-merger"] }])).toBeUndefined();
+    expect(generalAmericanIpa([{ ipa: "/ˈfæm.li/", tags: ["General-American", "Northern-England", "Received-Pronunciation"] }])?.value).toBe("ˈfæm.li");
+    expect(generalAmericanIpa([{ ipa: "/kɹɒs/", tags: ["Eastern-New-England", "US"] }])).toBeUndefined();
+    expect(generalAmericanIpa([{ ipa: "[ɡoː]", tags: ["General-American"] }, { ipa: "/-ˈme/", tags: ["US"] }])).toBeUndefined();
+  });
+  test("notes: a form or a merger is fine, a region or a sense is not", () => {
+    expect(generalAmericanIpa([{ ipa: "/ˈbiː/", note: "stressed form" }, { ipa: "/ˈbə/", tags: ["unstressed"], note: "weak vowel merger" }])?.value).toBe("ˈbiː");
+    expect(generalAmericanIpa([{ ipa: "/dɒɡ/", tags: ["Received-Pronunciation"] }, { ipa: "/dɔɡ/", note: "lot–cloth split, without the cot–caught merger" }])?.value).toBe("dɔɡ");
+    expect(generalAmericanIpa([{ ipa: "/ˈstjuː.dn̩t/", note: "Wales" }, { ipa: "/ˈstu.dn̩t/", note: "yod-dropping, US, Canada" }])).toEqual({ value: "ˈstu.dn̩t", method: "us-tag" });
+    expect(generalAmericanIpa([{ ipa: "/ˈflæʊ̯.ɚ/", note: "rhotic; Southern US, Midland US" }])).toBeUndefined();
+    expect(generalAmericanIpa([{ ipa: "/ˈflaʊ̯.ɚ/", tags: ["Canadian", "General-American", "Standard"], note: "rhotic" }])?.method).toBe("general-american-tag");
+    expect(generalAmericanLines([{ ipa: "/ˈbɹeɪkˌfæst/", tags: ["General-American"], note: "meal eaten after religious fasting, also" }, { ipa: "/ˈbɹɛk.fəst/", tags: ["General-American"] }])[0].value).toBe("ˈbɹɛk.fəst");
+  });
+  test("weak lines are for comparison only", () => {
+    const the = [{ ipa: "/ðə/", tags: ["General-American"], note: "weak form before consonants" }, { ipa: "/ði/ [ðɪj]", tags: ["General-American"], note: "strong form" }];
+    expect(generalAmericanIpa(the)?.value).toBe("ði");
+    expect(generalAmericanLines(the).map((l) => l.value)).toEqual(["ðə", "ði"]);
+    // One value that is weak in one context and strong in another is not a weak line.
+    expect(generalAmericanIpa([{ ipa: "/ði/", tags: ["General-American"], note: "weak form before vowels" }, { ipa: "/ði/", tags: ["General-American"], note: "strong form" }])?.value).toBe("ði");
+  });
+  test("a line tagged for another part of speech is skipped", () => {
+    const record = [{ ipa: "/ˈɹɛkɚd/", tags: ["General-American", "noun"] }, { ipa: "/ɹɪˈkɔɹd/", tags: ["General-American", "verb"] }];
+    expect(generalAmericanIpa(record, "noun")?.value).toBe("ˈɹɛkɚd");
+    expect(generalAmericanIpa(record, "verb")?.value).toBe("ɹɪˈkɔɹd");
+  });
+  test("an English scan selects by tags, and no other language changes", async () => {
+    const en = (o: Record<string, unknown>) => JSON.stringify({ lang_code: "en", ...o });
+    const file = write("en/ga.jsonl", en({ word: "go", pos: "verb", senses: [{ glosses: ["to move"] }], sounds: GO }));
+    const scan = await scanKaikki(file, { lang: "en", sourceId: "kaikki-en", glossLanguage: "en" });
+    expect(scan.lemmas.get("go|verb")!.ipa).toBe("ɡoʊ");
+    expect(scan.lemmas.get("go|verb")!.ipaMethod).toBe("general-american-tag");
+    const es = write("es/ipa.jsonl", entry({ word: "go", pos: "verb", senses: [{ glosses: ["x"] }], sounds: GO }));
+    const other = await scanKaikki(es, { lang: "es", sourceId: "kaikki-en", glossLanguage: "en" });
+    expect(other.lemmas.get("go|verb")!.ipa).toBe("ɡəʊ");
+  });
+});
+
+describe("English verb evidence (QC 2026-11-01 §2.3)", () => {
+  test("the authored verbs reach the pool for English only: a re-extract of another language must not change", () => {
+    expect(authoredVerbs("en")).toContain("brush");
+    for (const lang of ["es", "de", "fr", "it"]) expect(authoredVerbs(lang)).toEqual([]);
+  });
+
+  const en = (o: Record<string, unknown>) => JSON.stringify({ lang_code: "en", ...o });
+  test("a bare past is an English past, unless the form is restricted; other languages keep their atoms", () => {
+    expect(atomsFromTags(["past"], "en")).toEqual(["ind:pas:*"]);
+    expect(atomsFromTags(["participle", "past"], "en")).toEqual(["par:pas"]);
+    expect(atomsFromTags(["archaic", "nonstandard", "past"], "en")).toEqual([]);
+    expect(atomsFromTags(["nonstandard", "past"], "en")).toEqual([]);
+    expect(atomsFromTags(["first-person", "past", "singular"], "en")).toEqual(["ind:pas:1", "sg"]);
+    expect(atomsFromTags(["past"], "es")).toEqual([]);
+    expect(atomsFromTags(["past"])).toEqual([]);
+  });
+  test("the supplement fills verbs the pool lost, in the shape paradigms read", async () => {
+    const file = write("en/verbs.jsonl", [
+      en({ word: "cut", pos: "verb", senses: [{ glosses: ["to divide"] }], forms: [{ form: "cuts", tags: ["present", "singular", "third-person"] }, { form: "cutting", tags: ["participle", "present"] }, { form: "cut", tags: ["past"] }, { form: "cutted", tags: ["archaic", "nonstandard", "past"] }, { form: "cut", tags: ["participle", "past"] }], sounds: [{ ipa: "/kʌt/", tags: ["General-American", "Received-Pronunciation"] }] }),
+      en({ word: "fall", pos: "verb", senses: [{ glosses: ["to go down"] }], forms: [{ form: "falls", tags: ["present", "singular", "third-person"] }, { form: "fell", tags: ["past"] }, { form: "fallen", tags: ["participle", "past"] }] }),
+    ].join("\n"));
+    const stamp = { id: "kaikki-en", sha256: "d".repeat(64), url: "https://kaikki.org/x.gz", retrievedAt: "2026-11-02" };
+    const current = { source: {}, generator: "g", notation: "n", atomInventory: {}, verbs: [{ lemma: "fall", rows: [{ mot: "fall", infoVer: "inf" }] }, { lemma: "gone-from-the-dump", rows: [{ mot: "x", infoVer: "inf" }] }] };
+    const doc = await refreshedMorphology(file, "en", current, new Set(["cut", "fall", "not-in-the-dump"]), stamp);
+    expect(doc.verbs.map((v) => v.lemma)).toEqual(["fall", "gone-from-the-dump", "cut"]);
+    expect(doc.verbs[0].rows).toContainEqual({ mot: "fell", infoVer: "ind:pas:*" });
+    expect(doc.verbs[2].rows).toEqual([
+      { mot: "cut", infoVer: "inf" },
+      { mot: "cuts", infoVer: "ind:pre:3,sg" },
+      { mot: "cutting", infoVer: "par:pre" },
+      { mot: "cut", infoVer: "ind:pas:*" },
+      { mot: "cut", infoVer: "par:pas" },
+    ]);
+    expect(doc.supplement).toEqual(stamp);
+    expect(await generalAmericanEntries(file, "en")).toEqual({ "cut|verb": { value: "kʌt", method: "general-american-tag" } });
+    // An American spelling is an alt-of sense, and it has the sounds and the forms all the same.
+    const alt = write("en/alt.jsonl", en({ word: "practice", pos: "verb", senses: [{ glosses: ["US spelling of practise"], tags: ["alt-of"], alt_of: [{ word: "practise" }] }], forms: [{ form: "practiced", tags: ["past"] }], sounds: [{ ipa: "/ˈpɹæktɪs/" }] }));
+    expect((await refreshedMorphology(alt, "en", current, new Set(["practice"]), stamp)).verbs.at(-1)).toEqual({ lemma: "practice", rows: [{ mot: "practice", infoVer: "inf" }, { mot: "practiced", infoVer: "ind:pas:*" }] });
+    expect(await generalAmericanEntries(alt, "en")).toEqual({ "practice|verb": { value: "ˈpɹæktɪs", method: "untagged" } });
   });
 });
 

@@ -122,7 +122,7 @@ export default function VocabularyScreen() {
         <TextInput
           value={query}
           onChangeText={setQuery}
-          placeholder={t("vocab.searchPlaceholder", { target: languageName(profile.targetCode, profile.targetLanguage), native: languageName(profile.nativeCode, profile.nativeLanguage) })}
+          placeholder={t("vocab.searchPlaceholder", { target: languageName(profile.targetCode, profile.targetLanguage), native: languageName(profile.nativeCode, profile.nativeLanguage, "native") })}
           placeholderTextColor={colors.textMuted}
           autoCapitalize="none"
           autoCorrect={false}

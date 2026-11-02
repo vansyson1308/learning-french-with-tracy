@@ -1,0 +1,1403 @@
+[
+ {
+  "id": "en.story.micro_is_it_yours.blurb",
+  "severity": "P0",
+  "problem": "Blurb says Minh asks the class, but in the story Hoa ([B], #6) asks everyone. The summary contradicts the events.",
+  "fix": "Hoa hỏi cả lớp xem quyển sách này là của ai.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.micro_is_it_yours#3",
+  "severity": "P0",
+  "problem": "English 'Is it for the teacher?' means it is meant for the teacher; Vietnamese 'Của thầy giáo à?' means it belongs to the teacher. Meaning differs.",
+  "fix": "[A] No, it is not mine. Is it for the teacher? || Không, không phải của anh. Để cho thầy giáo à?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.micro_is_it_yours#7",
+  "severity": "P0",
+  "problem": "'It is not.' from the narrator answers nothing clear. 'Who is it from?' asks about the sender; Vietnamese 'Nó là của ai đây?' asks about the owner.",
+  "fix": "[N] No one says yes. Whose is it? || Không ai nhận cả. Vậy nó là của ai?",
+  "uncertain": true,
+  "reason": "The micro story has a limited word list; check that 'whose' and 'says' are allowed at this point. If not: '[N] It is not. Who is it for? || Không phải của ai cả. Vậy nó để cho ai đây?'",
+  "decision": "fixed with the finding's fallback: whose and says are beyond band A1-0."
+ },
+ {
+  "id": "en.story.micro_is_it_yours#6",
+  "severity": "P2",
+  "problem": "'Is this anyone's?' is grammatical but a native would say 'Is this anyone's book?' or 'Whose is this?'.",
+  "fix": "[B] Excuse me, everyone! Is this anyone's book? || Xin lỗi mọi người! Quyển sách này có phải của ai không ạ?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.micro_anyone_home#7",
+  "severity": "P1",
+  "problem": "An American child calling out to a parent says 'Mom', not 'Mother'. 'Mother' as a form of address is very formal and old-fashioned. The same occurs in the other stories listed separately.",
+  "fix": "[A] It is me, Mom! It is me and my sister! || Là con đây, mẹ ơi! Con và em gái!",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.micro_anyone_home#5",
+  "severity": "P2",
+  "problem": "The mother asks about 'someone'; the natural reply pairs with a person: 'No one is behind it.' 'Nothing' is acceptable but the Vietnamese and English drift from the question.",
+  "fix": "[N] No one is behind it. || Không có ai sau đó cả.",
+  "decision": "Kept: 'no one' is beyond band A1-0; Nothing is acceptable. The Vietnamese now says the same as the English."
+ },
+ {
+  "id": "en.story.micro_family_dinner#3",
+  "severity": "P1",
+  "problem": "'opposite' as a preposition for seating is British-leaning; General American says 'across from'. The same applies to micro_road_into_hanoi#5.",
+  "fix": "[A] My father is across from my mother. || Bố tôi ngồi đối diện mẹ tôi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.micro_family_dinner#7",
+  "severity": "P2",
+  "problem": "'He is not a baby, but he is a child.' The contrast only works with 'still', which the Vietnamese has ('vẫn').",
+  "fix": "[A] He is not a baby, but he is still a child. || Nó không phải em bé, nhưng vẫn là trẻ con.",
+  "decision": "Kept: still is beyond band A1-0. The Vietnamese now says the same as the English."
+ },
+ {
+  "id": "en.story.micro_enough#10",
+  "severity": "P1",
+  "problem": "'Thank you!' has no addressee here, and the Vietnamese says 'May quá!' (what luck). English and Vietnamese disagree.",
+  "fix": "[B] Oh, good! So we have enough for everyone! || May quá! Vậy là chúng ta có đủ cho mọi người rồi!",
+  "decision": "fixed as 'Oh! So we have enough for everyone!': good is beyond band A1-0."
+ },
+ {
+  "id": "en.story.micro_road_into_hanoi#2",
+  "severity": "P1",
+  "problem": "'she is near a river' does not say that she lives there; a native would not describe a person's home this way.",
+  "fix": "[B] Her name is Mai. She is a teacher, and her home is near a river. || Bạn tôi tên là Mai. Chị ấy là giáo viên, và nhà chị ấy ở gần một con sông.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.micro_road_into_hanoi#5",
+  "severity": "P1",
+  "problem": "'opposite that woman' is British-leaning, and a house located relative to passers-by is odd but tolerable in a pointing scene. American: 'across from'.",
+  "fix": "[A] Her home is along this road, across from that woman and her son. || Nhà chị ấy ở dọc đường này, đối diện chỗ người phụ nữ và con trai kia.",
+  "decision": "fixed: across from; 'along it' for 'along this road', to hold the 95 % known share of band A1-0."
+ },
+ {
+  "id": "en.story.micro_road_into_hanoi#7",
+  "severity": "P1",
+  "problem": "'before' for place ('It is before him') is not modern English. It teaches a wrong use of 'before'. Use 'in front of'.",
+  "fix": "[A] No, it is not. It is in front of him. || Không phải. Nó ở phía trước chỗ ông ấy.",
+  "decision": "fixed as 'It is near him': in front of is beyond band A1-0, and before for place is gone."
+ },
+ {
+  "id": "en.story.nam_moves_to_hanoi#4",
+  "severity": "P1",
+  "problem": "'Yes, Mother.' is formal and dated for an American son. Use 'Mom'.",
+  "fix": "[A] Yes, Mom. Thank you. || Vâng ạ. Con cảm ơn mẹ.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.nam_moves_to_hanoi#9",
+  "severity": "P1",
+  "problem": "'a police woman' is written as two words; the normal American term is 'police officer'. 'with it' is also odd for a person and a car.",
+  "fix": "[N] A police car is at the corner, and a police officer is next to it. || Một xe cảnh sát đỗ ở góc phố, bên cạnh có một nữ cảnh sát.",
+  "decision": "fixed as 'a police officer is near it': next to is beyond band A1-1."
+ },
+ {
+  "id": "en.story.nam_moves_to_hanoi#12",
+  "severity": "P2",
+  "problem": "'A taxi is too much money for Nam' is understandable; 'costs too much' is what a native says.",
+  "fix": "[N] A taxi costs too much for Nam, so he takes the bus. || Đi taxi quá đắt với Nam, nên anh đi xe buýt.",
+  "uncertain": true,
+  "reason": "Check that 'cost' is allowed at this unit.",
+  "decision": "Kept: cost is beyond band A1-1 (the reviewer asked to check). The line is understandable."
+ },
+ {
+  "id": "en.story.nam_moves_to_hanoi#17",
+  "severity": "P1",
+  "problem": "'Mother,' as an address in a message from a son. American: 'Mom,'.",
+  "fix": "[A] Mom, I am in Hanoi. The traffic is bad, but I like the city. || Mẹ ơi, con đến Hà Nội rồi. Giao thông tệ lắm, nhưng con thích thành phố này.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.an_apartment_for_nam#1",
+  "severity": "P2",
+  "problem": "'Bạn anh là Tuấn quen một cô' reads as translationese.",
+  "fix": "[N] His friend Tuan knows a woman with a small apartment. || Tuấn, bạn của Nam, quen một cô có căn hộ nhỏ.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.an_apartment_for_nam#13",
+  "severity": "P1",
+  "problem": "'What do you want for one month?' sounds like haggling over goods. For rent a native asks 'How much is it for one month?'. The Vietnamese already says 'bao nhiêu'.",
+  "fix": "[A] And the money, Mrs Ha? How much is it for one month? || Còn tiền thì sao cô? Một tháng cô lấy bao nhiêu ạ?",
+  "decision": "fixed as 'What is it for one month?': how much and rent are beyond band A1-1. It no longer sounds like haggling over goods."
+ },
+ {
+  "id": "en.story.an_apartment_for_nam.q2",
+  "severity": "P2",
+  "problem": "The story calls her 'cô Hà' and she calls herself 'cô'; the question switches to 'bà Hà'.",
+  "fix": "Vì sao cô Hà đồng ý giảm tiền? => Vì căn hộ không có đèn / *Có lẽ cô thương Nam là công nhân / Vì Tuấn đưa tiền cho cô",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_box_under_the_bed#7",
+  "severity": "P1",
+  "problem": "'Nothing, Mother!' from a ten-year-old. American: 'Mom'.",
+  "fix": "[A] Nothing, Mom! I am only counting. || Không có gì đâu mẹ! Con chỉ đang đếm thôi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_box_under_the_bed#11",
+  "severity": "P2",
+  "problem": "'she can't sit well' is awkward; 'it is not comfortable' is what a native says, and the Vietnamese means this.",
+  "fix": "[N] The chair is really bad, and she can't sit on it for long. || Chiếc ghế tệ lắm, bà không ngồi lâu được.",
+  "decision": "fixed without 'for long': long is beyond band A1-1."
+ },
+ {
+  "id": "en.story.the_box_under_the_bed#14",
+  "severity": "P1",
+  "problem": "'Grandmother!' as an address from a child is formal. American: 'Grandma'. Applies also to #15-type replies and how_is_your_grandmother #5, #7.",
+  "fix": "[A] This is for you, Grandma! It is a gift for your birthday. || Cháu tặng bà đây ạ! Quà sinh nhật của bà.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.thu_and_the_visa#5",
+  "severity": "P1",
+  "problem": "'fill in this form' is the British default; General American is 'fill out this form'.",
+  "fix": "[A] Please fill out this form and write the date of your trip. || Vui lòng điền vào mẫu đơn này và ghi ngày đi.",
+  "decision": "fixed: fill out, with out declared new in the story."
+ },
+ {
+  "id": "en.story.thu_and_the_visa#12",
+  "severity": "P2",
+  "problem": "'comes to the office with it' misses that she returns.",
+  "fix": "[N] Thu runs to the bank, makes a copy and comes back to the office with it. || Thu chạy đến ngân hàng, sao giấy rồi mang về văn phòng.",
+  "decision": "Kept: back is beyond band A1-1, and fill out already spends the story's one new word (out). The Vietnamese now says the same."
+ },
+ {
+  "id": "en.story.thu_and_the_visa#17",
+  "severity": "P1",
+  "problem": "'Goodbye, Mother.' is formal, and 'at Tet' is less natural than 'for Tet'.",
+  "fix": "[B] Goodbye, Mom. I will come home for Tet! || Con chào mẹ. Tết con sẽ về!",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.how_is_your_grandmother#5",
+  "severity": "P1",
+  "problem": "'Are you well?' is stiff; a grandson would ask 'How are you?', and 'Grandmother' as address is formal.",
+  "fix": "[A] Hello, Grandma. How are you? || Cháu chào bà. Bà có khỏe không ạ?",
+  "decision": "fixed: how are you, declared new in the story."
+ },
+ {
+  "id": "en.story.how_is_your_grandmother#7",
+  "severity": "P1",
+  "problem": "'Grandmother' as address is formal for American English.",
+  "fix": "[A] Are you sick, Grandma? Do you need a doctor? || Bà có ốm không? Bà có cần bác sĩ không?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.how_is_your_grandmother#16",
+  "severity": "P1",
+  "problem": "Uncle (#16) and Hung (#17) are both [A], so one voice speaks both sides of the exchange and the learner cannot tell them apart. Fix by making the speaker Hung's aunt, who is already in the story. Change #15, #16 and #17 together.",
+  "fix": "#15: [N] On Sunday, Hung's aunt stands at the door and looks at him. || Chủ nhật, cô của Hùng đứng ở cửa nhìn anh. #16: [B] Your grandmother needs only one thing. She needs you. || Bà cháu chỉ cần một thứ thôi. Bà cần cháu. #17: [A] I know, Aunt. I will visit her every month. || Cháu biết rồi, cô ạ. Tháng nào cháu cũng sẽ về thăm bà.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_key_on_the_table.blurb",
+  "severity": "P0",
+  "problem": "Blurb says Linh left the key at work. In the story she only thinks so; it was in her apartment (q2 asks this). The blurb is false and spoils the question.",
+  "fix": "Tối thứ Sáu, Linh không tìm thấy chìa khóa nhà.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_key_on_the_table#11",
+  "severity": "P2",
+  "problem": "'Bạn cháu là Mai có chìa khóa' is translationese and hard to parse.",
+  "fix": "[B] Could I use your phone? My friend Mai has a key. || Cháu dùng điện thoại của bác được không ạ? Mai, bạn cháu, có chìa khóa.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_key_on_the_table#17",
+  "severity": "P1",
+  "problem": "'and I was the one without it' is an awkward punchline for a native, and the Vietnamese is equally strained.",
+  "fix": "[B] No! It was in the apartment all this time! || Không! Nó ở trong nhà từ đầu đến giờ!",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_cat_on_the_stairs#11",
+  "severity": "P2",
+  "problem": "'they come to the stairs' loses 'back', which the Vietnamese has ('quay lại').",
+  "fix": "[N] After an hour, they come back to the stairs of the building. || Sau một tiếng, họ quay lại cầu thang tòa nhà.",
+  "decision": "Kept: back is beyond band A1-1. The Vietnamese now says the same."
+ },
+ {
+  "id": "en.story.the_cat_on_the_stairs#17",
+  "severity": "P2",
+  "problem": "The cat escaped by the apartment door, not the kitchen door, so closing the kitchen door does not follow from the story.",
+  "fix": "[N] After that, Mrs Thu keeps her door closed. || Sau đó, bà Thu luôn đóng cửa nhà.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.first_day_at_the_factory#2",
+  "severity": "P2",
+  "problem": "'half past six' is understood in the US, but the everyday American form is 'six thirty'. The American model should appear at least alongside it.",
+  "fix": "[N] He arrives at the factory early, at six thirty. || Anh đến nhà máy sớm, lúc sáu giờ rưỡi.",
+  "uncertain": true,
+  "reason": "The brief lists 'half past' as a target. Keep it if the time concept teaches it as a recognition item, and teach 'six thirty' first.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.fire_at_the_factory#4",
+  "severity": "P2",
+  "problem": "'What can we do?' does not match 'Mình phải làm gì?'; in an emergency the native form is 'What do we do?'.",
+  "fix": "[A] Lan, is it really a fire? What do we do? || Lan ơi, có cháy thật không? Mình phải làm gì?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.fire_at_the_factory#5",
+  "severity": "P2",
+  "problem": "Minh says 'mình' to his friend; Lan answers 'tôi'. Friends should match.",
+  "fix": "[B] Don't worry. Follow me, and don't run. || Đừng lo. Đi theo mình, đừng chạy.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.fire_at_the_factory#9",
+  "severity": "P2",
+  "problem": "'Out of the building, every group...' is not a natural opener.",
+  "fix": "[N] Outside the building, every group stands in its place. || Ra khỏi tòa nhà, mỗi nhóm đứng vào chỗ của mình.",
+  "decision": "fixed as 'In front of the building': outside is not in the lexicon."
+ },
+ {
+  "id": "en.story.fire_at_the_factory#14",
+  "severity": "P1",
+  "problem": "'bài kiểm tra' is what a school gives; for a fire exercise Vietnamese says 'diễn tập', as the blurb does. English 'drill' would be the real word, but 'test' is acceptable at A1.",
+  "fix": "[B] There is no fire. This was only a test. || Không có cháy đâu. Đây chỉ là diễn tập thôi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.fire_at_the_factory#17",
+  "severity": "P2",
+  "problem": "Minh says 'Dạ' at #13 and is an 'em' to this manager in first_day_at_the_factory; 'tôi' here is inconsistent.",
+  "fix": "[A] So next time I won't be afraid. || Vậy lần sau em sẽ không sợ nữa.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.fire_at_the_factory.q2",
+  "severity": "P1",
+  "problem": "Same wording problem as #14: 'bài kiểm tra' for a fire drill.",
+  "fix": "Vì sao nhà máy diễn tập như vậy? => *Để công nhân biết cách làm khi có cháy / Vì máy bị hỏng / Để cho công nhân nghỉ",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_interview#5",
+  "severity": "P1",
+  "problem": "'in a shop' is British-leaning for this sense; American is 'in a store'. VARIETY names shop/store as a pair where US is the model.",
+  "fix": "[B] I worked in a store for three years, and I worked with customers every day. || Tôi đã làm ở một cửa hàng ba năm, và ngày nào cũng làm việc với khách hàng.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_interview#7",
+  "severity": "P2",
+  "problem": "'write email' is possible, but 'write emails' is what a learner should model.",
+  "fix": "[B] Yes, I can. I can write emails and make lists of products. || Dạ được. Tôi biết viết email và lập danh sách sản phẩm.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.at_the_clinic#10",
+  "severity": "P1",
+  "problem": "'medicine from the shop, with no food' is British and unnatural. American: 'from the pharmacy, without food'. The word 'pharmacy' is already used in crossing_the_road.",
+  "fix": "[A] I took some medicine from the pharmacy, without food. Now my stomach hurts. || Tôi uống ít thuốc mua ở hiệu thuốc, lúc đói. Giờ tôi đau bụng.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_tooth#3",
+  "severity": "P1",
+  "problem": "A ten-year-old says 'Mom', not 'Mother'.",
+  "fix": "[A] My tooth hurts, Mom. And my ear hurts, too. || Con đau răng, mẹ ạ. Con đau cả tai nữa.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_tooth#16",
+  "severity": "P1",
+  "problem": "'wash your teeth' is a typical learner error; English says 'brush your teeth'. The course must not model it.",
+  "fix": "[B] Yes, but brush your teeth twice a day, and don't eat too much sugar. || Được, nhưng mỗi ngày đánh răng hai lần và đừng ăn quá nhiều đường.",
+  "decision": "fixed: brush is a new A1 lexeme."
+ },
+ {
+  "id": "en.story.the_tooth#17",
+  "severity": "P1",
+  "problem": "'On the road home' is not idiomatic; the phrase is 'On the way home'.",
+  "fix": "[N] On the way home, Bao's mother buys him a banana, not a cake. || Trên đường về, mẹ mua cho Bảo một quả chuối, không phải bánh ngọt.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_tooth.blurb",
+  "severity": "P2",
+  "problem": "Blurb says 'nha sĩ' but the English and Vietnamese of the story say 'doctor / bác sĩ' throughout.",
+  "fix": "Bảo đau răng và sợ đi khám.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_yellow_dress.blurb",
+  "severity": "P0",
+  "problem": "Blurb says a friend's wedding; the story says only a party. Nothing about a wedding appears.",
+  "fix": "Mai chọn váy để đi dự tiệc.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_yellow_dress#1",
+  "severity": "P1",
+  "problem": "'clothes shop' is British; American is 'clothing store'.",
+  "fix": "[N] After work, she goes to a clothing store with her sister Linh. || Sau giờ làm, cô đến cửa hàng quần áo với em gái là Linh.",
+  "decision": "fixed as 'clothes store': clothing is not in the lexicon, clothes is."
+ },
+ {
+  "id": "en.story.the_yellow_dress#11",
+  "severity": "P2",
+  "problem": "'The room' has no reference for a learner; the Vietnamese says 'Phòng thử'.",
+  "fix": "[A] Of course. The fitting room is on your right. || Tất nhiên rồi. Phòng thử ở bên phải chị.",
+  "uncertain": true,
+  "reason": "'fitting room' may be off the word list; if so keep the English and accept P2.",
+  "decision": "Kept in English (the reviewer's own fallback): fitting is off the word list. The Vietnamese says Phòng thử, so the learner has the reference."
+ },
+ {
+  "id": "en.story.the_yellow_dress#16",
+  "severity": "P0",
+  "problem": "Self-contradiction: the pink dress is 'the same' price as the yellow one, then the yellow is 'cheaper'. The learner cannot resolve this. The discount needs to be an offer.",
+  "fix": "[A] Yes, it is the same. But I can make this one cheaper because it is a little dirty on the side. || Cùng giá ạ. Nhưng tôi có thể bớt cho chị cái này vì nó hơi bẩn ở một bên.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.moving_day#1",
+  "severity": "P1",
+  "problem": "'on floor 5' is not how a native says it.",
+  "fix": "[N] It is on the fifth floor, so it is very high. || Căn hộ ở tầng năm, nên rất cao.",
+  "decision": "fixed as 'It is five floors up': fifth is beyond band A1-2."
+ },
+ {
+  "id": "en.story.moving_day#2",
+  "severity": "P1",
+  "problem": "'lift' as a noun is British, and VARIETY says the course teaches the American word. This is a modeled story line, not a note.",
+  "fix": "[N] The building has no elevator, so they must use the stairs. || Tòa nhà không có thang máy nên họ phải đi cầu thang.",
+  "decision": "fixed: elevator, declared new in the story."
+ },
+ {
+  "id": "en.story.moving_day#4",
+  "severity": "P1",
+  "problem": "'Those are my books. I can carry it.' clashes: 'those' (books) and 'it' (box), and it does not answer 'What is in it?'.",
+  "fix": "[A] My books are in it. I can carry it. || Sách của anh đấy. Anh khiêng được.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.moving_day#10",
+  "severity": "P1",
+  "problem": "'Is it possible to put it down?' is far too formal for two brothers with a fridge. Register is wrong.",
+  "fix": "[A] My back hurts. Can we put it down? || Lưng anh đau quá. Đặt xuống được không?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.moving_day#13",
+  "severity": "P1",
+  "problem": "'can fall' states ability; the warning needs 'could fall'. This is a common learner error to avoid modeling.",
+  "fix": "[B] This window is very low. Our little son could fall. || Cửa sổ này thấp quá. Con trai nhỏ của mình có thể ngã.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_english_class#10",
+  "severity": "P1",
+  "problem": "'puts up her hand' is British; American is 'raises her hand'.",
+  "fix": "[N] A woman at the back of the room raises her hand. || Một phụ nữ ở cuối phòng giơ tay.",
+  "decision": "fixed as 'has her hand up': raise is not in the lexicon; the British 'puts up' is gone."
+ },
+ {
+  "id": "en.story.the_first_flight#2",
+  "severity": "P1",
+  "problem": "An adult American son says 'Mom'.",
+  "fix": "[A] Mom, we fly on Friday. I already have the tickets. || Mẹ ơi, thứ Sáu mình bay. Con có vé rồi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_first_flight#8",
+  "severity": "P1",
+  "problem": "'look out of the window' is British; American is 'look out the window'. 'Mother' is also formal.",
+  "fix": "[A] Don't worry, Mom. Hold my hand and look out the window. || Mẹ đừng lo. Mẹ nắm tay con và nhìn ra cửa sổ đi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_first_flight#12",
+  "severity": "P1",
+  "problem": "Address form: 'Mom'.",
+  "fix": "[A] Are you thirsty, Mom? || Mẹ có khát không?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.crossing_the_road#3",
+  "severity": "P2",
+  "problem": "American usage is 'on the side of the road'.",
+  "fix": "[N] One day, she sees an old man on the side of the road. || Một hôm, cô thấy một ông cụ đứng bên đường.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_company_party#17",
+  "severity": "P1",
+  "problem": "'You said you can't sing!' Reported past needs 'couldn't'. the_first_flight#16 has it right ('You said you were too old').",
+  "fix": "[A] You said you couldn't sing! || Em bảo em không biết hát mà!",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_email#10",
+  "severity": "P1",
+  "problem": "American is 'in a meeting'; 'at a meeting' is a different emphasis and not what a colleague says.",
+  "fix": "[A] Maybe not. He is in a meeting, and he forgot his password. || Chắc chưa. Ông ấy đang họp, mà lại quên mật khẩu.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.wrong_number#12",
+  "severity": "P2",
+  "problem": "'half past three' is understood; the American everyday form is 'three thirty'. Same in #16.",
+  "fix": "[A] Yes. Is three thirty good for you? || Được ạ. Ba giờ rưỡi có tiện cho bà không?",
+  "uncertain": true,
+  "reason": "Keep if the course wants 'half past' as a recognition item; teach 'three thirty' as the model.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_late_bus#0",
+  "severity": "P1",
+  "problem": "'at a shop' is British-leaning for retail work; American is 'at a store'.",
+  "fix": "[N] Trang works at a store in the middle of Saigon. || Trang làm ở một cửa hàng giữa trung tâm Sài Gòn.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_late_bus#2",
+  "severity": "P2",
+  "problem": "'ten past seven' is less common in the US than 'seven ten'.",
+  "fix": "[N] The schedule says that the bus comes at seven ten. || Lịch ghi xe đến lúc bảy giờ mười.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_late_bus#7",
+  "severity": "P2",
+  "problem": "Simple present 'wait' does not fit a scene happening now; the Vietnamese says 'đang đợi'.",
+  "fix": "[A] That is the third time this week. Our customers are waiting for you. || Lần thứ ba trong tuần rồi đấy. Khách hàng đang đợi em.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_late_bus#15",
+  "severity": "P1",
+  "problem": "'at the shop' should be 'at the store', matching #0.",
+  "fix": "[N] She arrives at the store at five to eight, with a big smile. || Chị đến cửa hàng lúc tám giờ kém năm, cười thật tươi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_late_bus#17",
+  "severity": "P1",
+  "problem": "'changed my road to work' is not English; the word is 'way'.",
+  "fix": "[B] Nothing. I only changed my way to work. || Không có gì ạ. Em chỉ đổi đường đi làm thôi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.raj_learns_vietnamese#1",
+  "severity": "P1",
+  "problem": "American is 'on his team'; 'in his team' is British.",
+  "fix": "[N] He is the only foreign worker on his team. || Anh là người nước ngoài duy nhất trong đội.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.raj_learns_vietnamese#11",
+  "severity": "P2",
+  "problem": "The joke rests on 'one small change makes a different word' (#12), but cá and chó are not a small change for a Vietnamese reader. A tone pair is both funnier and true: cá / cà.",
+  "fix": "[B] Two what? You want two eggplants? || Hai gì cơ? Anh muốn hai quả cà à?",
+  "uncertain": true,
+  "reason": "'eggplant' is above A1 and may not be on the word list. Owner's call whether the joke is worth one extra word.",
+  "decision": "Kept for the owner: eggplant is above A1; whether the joke is worth an extra word is an author's call.",
+  "forOwner": true
+ },
+ {
+  "id": "en.story.raj_learns_vietnamese#16",
+  "severity": "P1",
+  "problem": "American is 'on the team'.",
+  "fix": "[N] Now everyone on the team teaches him a word every day. || Bây giờ mọi người trong đội mỗi ngày dạy anh một từ.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.a_cold_night#2",
+  "severity": "P1",
+  "problem": "'Their small hotel is very high' suggests a tall building; the Vietnamese means high up.",
+  "fix": "[N] Their small hotel is high in the mountains, and the rooms are not warm. || Khách sạn nhỏ của họ ở trên cao, và các phòng không ấm.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.a_cold_night#5",
+  "severity": "P2",
+  "problem": "'Bé Vy con gái nhỏ của họ' needs punctuation to read.",
+  "fix": "[N] Their little daughter Vy doesn't want to sleep. || Vy, con gái nhỏ của họ, không chịu ngủ.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.a_cold_night#7",
+  "severity": "P1",
+  "problem": "'You can fall!' states ability; a warning needs 'You could fall!'. Same error as moving_day#13.",
+  "fix": "[B] Vy, stop that! It is late. You could fall! || Vy, thôi đi con! Muộn rồi. Ngã bây giờ!",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_thief_on_the_bus.blurb",
+  "severity": "P0",
+  "problem": "Blurb says a wallet ('ví') was stolen; the story has cash in a bag and no wallet. Also 'Duc' lacks diacritics while the Vietnamese lines write 'Đức'.",
+  "fix": "Có người lấy trộm tiền của Đức trên xe buýt.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_thief_on_the_bus#10",
+  "severity": "P2",
+  "problem": "'It was a thief!' adds nothing after 'Someone stole'; a native would not say it.",
+  "fix": "[A] My money! A thief took all of it on the bus! || Tiền của anh! Có tên trộm lấy hết tiền trên xe buýt!",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_accident#17",
+  "severity": "P2",
+  "problem": "He rides a motorbike (#0 'rides'); 'drove' switches verb.",
+  "fix": "[N] When he went back to work, he rode more slowly. || Khi đi làm lại, anh chạy xe chậm hơn.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_prescription#16",
+  "severity": "P1",
+  "problem": "'Thank you for telling me.' She found the mistake and called him; he told her nothing new. The line belongs to the other person, as in the_email#17.",
+  "fix": "[B] Thank you for checking. || Cảm ơn anh đã kiểm tra lại.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_cancelled_flight.title",
+  "severity": "P1",
+  "problem": "'cancelled' is the British spelling; American is 'canceled'. The id slug can stay.",
+  "fix": "The canceled flight",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_cancelled_flight#14",
+  "severity": "P1",
+  "problem": "'fill in this form' is British; American is 'fill out this form'.",
+  "fix": "[B] Please fill out this form. We will send it to your hotel. || Anh vui lòng điền mẫu đơn này. Chúng tôi sẽ gửi đến khách sạn của anh.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.a_refund_please#0",
+  "severity": "P1",
+  "problem": "'a machine for cooking rice' is a paraphrase; every speaker says 'rice cooker'. The Vietnamese correctly has 'nồi cơm điện'. Replace in #3, #7, #15, #17 as well.",
+  "fix": "[N] Last Saturday, Thu bought a new rice cooker at the supermarket. || Thứ Bảy trước, Thư mua một cái nồi cơm điện mới ở siêu thị.",
+  "decision": "fixed: rice cooker is a new A2-1 lexeme."
+ },
+ {
+  "id": "en.story.a_refund_please#3",
+  "severity": "P1",
+  "problem": "See #0: 'rice cooker'.",
+  "fix": "[N] After ten minutes, there was smoke, and the light on the rice cooker went off. || Sau mười phút, có khói, và đèn trên nồi tắt.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.a_refund_please#5",
+  "severity": "P1",
+  "problem": "American: 'store'.",
+  "fix": "[A] Take it back to the store. You can ask for a refund. || Em mang trả cửa hàng đi. Em có thể đòi hoàn tiền.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.a_refund_please#7",
+  "severity": "P1",
+  "problem": "See #0: 'rice cooker'.",
+  "fix": "[B] Hello. This rice cooker is broken, and I would like a refund, please. || Chào anh. Cái nồi này hỏng rồi, tôi muốn được hoàn tiền.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.a_refund_please#15",
+  "severity": "P2",
+  "problem": "Thư calls him 'anh' in #14, but the narrator calls him 'Ông'. Also 'rice cooker', see #0.",
+  "fix": "[N] He looked at the receipt and at the black rice in the rice cooker. || Người quản lý nhìn hóa đơn và phần cơm đen trong nồi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.a_refund_please#17",
+  "severity": "P1",
+  "problem": "See #0: 'rice cooker'; 'store'.",
+  "fix": "[N] Thu got her money, and she bought a rice cooker from another store. || Thư nhận lại tiền và mua nồi ở một cửa hàng khác.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_contract#2",
+  "severity": "P0",
+  "problem": "'by Friday' includes Friday; 'trước thứ Sáu' means before Friday. A real difference on a contract deadline, and #2 also says Friday is the deadline.",
+  "fix": "[B] Please read it and sign it by Friday. Friday is the deadline. || Anh đọc rồi ký muộn nhất vào thứ Sáu nhé. Thứ Sáu là hạn chót.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.applying_for_a_job#0",
+  "severity": "P1",
+  "problem": "'finished university' is British; American is 'finished college'.",
+  "fix": "[N] Ngoc finished college two months ago, and she needs a job. || Ngọc tốt nghiệp đại học hai tháng trước và đang cần việc làm.",
+  "decision": "fixed: college is a new A2-1 lexeme."
+ },
+ {
+  "id": "en.story.applying_for_a_job#3",
+  "severity": "P1",
+  "problem": "American daughter: 'Mom'.",
+  "fix": "[B] Mom, I want to apply for this job. But I don't have a resume. || Mẹ ơi, con muốn xin việc này. Nhưng con chưa có sơ yếu lý lịch.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_strike#9",
+  "severity": "P2",
+  "problem": "English 'door', Vietnamese 'cổng' (gate). Workers on strike stand at the gate.",
+  "fix": "[N] They stood at the gate of the factory. They were on strike. || Họ đứng ở cổng nhà máy. Họ đang đình công.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_strike#17",
+  "severity": "P1",
+  "problem": "'in their bank cards' is not English: money goes into an account. The Vietnamese follows the same error.",
+  "fix": "[N] On Friday, the money was in their bank accounts. || Thứ Sáu, tiền đã vào tài khoản ngân hàng của họ.",
+  "decision": "fixed: account is a new A2-1 lexeme."
+ },
+ {
+  "id": "en.story.the_strike#19",
+  "severity": "P1",
+  "problem": "'pay paper' is not an English term. American is 'pay stub'.",
+  "fix": "[B] Yes, but next time I will read my pay stub on the first day. || Vâng, nhưng lần sau em sẽ đọc phiếu lương ngay ngày đầu.",
+  "decision": "fixed: pay stub is a new A2-1 lexeme."
+ },
+ {
+  "id": "en.story.the_landlord_and_the_plumber#15",
+  "severity": "P2",
+  "problem": "'without five hundred thousand' is unidiomatic; a native says 'minus'.",
+  "fix": "[B] This is our rent, minus five hundred thousand. This is the plumber's bill. || Đây là tiền thuê, đã trừ năm trăm nghìn. Đây là hóa đơn của thợ sửa.",
+  "decision": "fixed: minus is a new A2-1 lexeme."
+ },
+ {
+  "id": "en.story.the_landlord_and_the_plumber#17",
+  "severity": "P2",
+  "problem": "'fixes the water' is unidiomatic; one fixes pipes.",
+  "fix": "[B] Look at our contract, Mr Vo. Page two says the landlord fixes the pipes. || Ông xem hợp đồng đi, ông Võ. Trang hai ghi chủ nhà phải sửa đường ống nước.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.borrowing_money#15",
+  "severity": "P1",
+  "problem": "Khanh (#14) and Quang (#15) are both [A], so one voice plays both men in one exchange. Also 'Why don't you talk to me?' should be past: he stayed away earlier.",
+  "fix": "[N] \"Why didn't you talk to me?\" said Quang. \"Give me half now, and half in October.\" || \"Sao cậu không nói với mình?\" Quang nói. \"Đưa một nửa bây giờ, một nửa tháng Mười.\"",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.borrowing_money#17",
+  "severity": "P2",
+  "problem": "'all of the other half' is clumsy.",
+  "fix": "[N] In October, he came with the other half and a big bag of coffee. || Tháng Mười, anh đến với nửa còn lại và một túi cà phê to.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.lost_on_the_way_to_the_wedding#4",
+  "severity": "P2",
+  "problem": "'I was a child there' is odd; a native says 'I grew up there', and q2 says 'lớn lên ở đó'.",
+  "fix": "[A] Of course I know the way. I grew up there! || Tất nhiên anh biết đường. Hồi nhỏ anh ở đó mà!",
+  "decision": "fixed: grow (grew up) is a new A2-1 lexeme."
+ },
+ {
+  "id": "en.story.lost_on_the_way_to_the_wedding#9",
+  "severity": "P1",
+  "problem": "'All the old houses are not here' is a non-native negation; the Vietnamese means they are gone.",
+  "fix": "[A] Okay, I am lost. Everything is different. The old houses are all gone. || Thôi được, anh lạc rồi. Mọi thứ khác hết. Mấy ngôi nhà cũ không còn nữa.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.lost_on_the_way_to_the_wedding#11",
+  "severity": "P1",
+  "problem": "Thu (#11) and the old woman (#12) are both [B], so one voice asks and answers. Give the question to Tam, who is driving.",
+  "fix": "[A] Excuse me. We are going to a wedding in this village. Do you know the way? || Xin lỗi bà. Chúng cháu đi đám cưới ở làng này. Bà có biết đường không ạ?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.lost_on_the_way_to_the_wedding#13",
+  "severity": "P1",
+  "problem": "'come in the car' should be 'get in the car'.",
+  "fix": "[N] Thu looked at Tam, and they asked the old woman to get in the car. || Thu nhìn Tâm, và họ mời bà cụ lên xe.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.read.ug_signs",
+  "severity": "P1",
+  "problem": "A public sign reading 'Toilets' is British; American signs say 'Restrooms'.",
+  "fix": "Entrance ¶ Exit ¶ No smoking ¶ Restrooms: on the left",
+  "uncertain": true,
+  "reason": "Check whether a question or lexeme ties this reading to 'toilet'.",
+  "decision": "fixed: Restrooms, with the options; restroom is a new A1 lexeme."
+ },
+ {
+  "id": "en.read.ug_hours",
+  "severity": "P2",
+  "problem": "24-hour times are not the American norm on a notice. Same in en.read.ug_shift, en.read.pl_notice_cafe, en.read.cp3_notice_shop.",
+  "fix": "Green Market ¶ Monday to Friday: 8 a.m. – 6 p.m. ¶ Saturday: 8 a.m. – 12 p.m. ¶ Sunday: closed",
+  "uncertain": true,
+  "reason": "Vietnamese learners read 24-hour notices at home, and the course may keep them on purpose. Questions on these readings would need checking.",
+  "decision": "fixed on all four notices (ug_hours, ug_shift, pl_notice_cafe, cp3_notice_shop) with their options: no question depends on the 24-hour clock."
+ },
+ {
+  "id": "en.read.cp3_notice_shop",
+  "severity": "P1",
+  "problem": "'cash desk' is British; American is 'register'.",
+  "fix": "Open every day from 9:00 to 20:00. ¶ Closed on Sunday morning. ¶ Please pay at the register.",
+  "decision": "fixed with cashier, the word the owner chose, not register; cashier is a new A1 lexeme. Hours in a.m. and p.m."
+ },
+ {
+  "id": "en.read.bac2_a_r1_06",
+  "severity": "P1",
+  "problem": "'call Minh on 0903...' is British; American is 'at'.",
+  "fix": "Lost: a black bag near the bus stop on Monday. Please call Minh at 0903 222 111.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.read.bac2_a_r2_02",
+  "severity": "P1",
+  "problem": "'in a quiet street' is British; American is 'on a quiet street'.",
+  "fix": "Room for rent on a quiet street, ten minutes by bus from the city center. The room has a bed, a desk and a small fridge. The kitchen and bathroom are shared with one other person. The rent is two hundred dollars a month, with water and internet included. Please call Mr Hung after six.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.read.bac2_a_r2_03",
+  "severity": "P1",
+  "problem": "'shop' throughout a retail notice; American is 'store'.",
+  "fix": "Our store will move to a bigger building on Lake Road on the first of June. The old store will close on the twenty-fifth of May. During the week between, you can still buy from our website. Customers who visit the new store in June will get ten percent off.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.read.bac2_a_r4",
+  "severity": "P1",
+  "problem": "'fill in a form' is British; American is 'fill out a form'. Replace that sentence only.",
+  "fix": "Replace 'To join, please fill in a form at the front desk before the first of July, or call Mr Binh.' with 'To join, please fill out a form at the front desk before the first of July, or call Mr Binh.'",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.read.bac2_b_r1_01",
+  "severity": "P1",
+  "problem": "'CINEMA' is British on a US model notice; American is 'MOVIE THEATER'.",
+  "fix": "MOVIE THEATER: Please turn off your phone before the movie starts.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.read.bac2_b_r1_04",
+  "severity": "P1",
+  "problem": "'Shop closing down!' is British; American is 'Store closing!'.",
+  "fix": "Store closing! Everything is half price until Saturday.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.read.bac2_b_r2_01",
+  "severity": "P1",
+  "problem": "'my mother is ill' and 'at the shop' are British; American is 'sick' and 'store'.",
+  "fix": "Hi Linh, can you help me? I have to go to the hospital this morning because my mother is sick. Could you take my shift at the store from ten until two? I can work for you on Sunday. Please text me before nine. Thank you so much, Trang",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.uh_shop_close",
+  "severity": "P1",
+  "problem": "American announcement: 'store'. The audio needs regenerating if changed.",
+  "fix": "A: The store closes in five minutes. Please pay now.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.cp3_page",
+  "severity": "P1",
+  "problem": "'open your book at page twelve' is British; American is 'to page twelve', which the_english_class#4 already has.",
+  "fix": "B: Please open your book to page twelve.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.pl_shop",
+  "severity": "P1",
+  "problem": "American: 'store'.",
+  "fix": "B: The store closes at six.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.um_model_team",
+  "severity": "P1",
+  "problem": "American is 'on my team'.",
+  "fix": "A: There are ten people on my team.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.ix_factory_instructions_0",
+  "severity": "P1",
+  "problem": "'wear your gloves before you start' is off: before starting one 'puts on' gloves. The same line appears as en.scenario.factory_instructions.p0.",
+  "fix": "A: Please put on your gloves before you start.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.ix_bac2_a_greet_1_s",
+  "severity": "P2",
+  "problem": "American spelling is one word: 'hometown'.",
+  "fix": "A: Please tell me your name and your hometown.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.bac2_a_l2_01",
+  "severity": "P2",
+  "problem": "The usual American question is 'Is this seat taken?'. 'Free' is understood.",
+  "fix": "A: Is this seat taken? | B: Sorry, my friend is sitting here. That one by the window is free.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.bac2_b_l2_01",
+  "severity": "P1",
+  "problem": "'some tea ... I just had one' mismatches a mass noun and 'one'.",
+  "fix": "A: Would you like some tea? | B: No, thanks. I just had some. A glass of water would be nice.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.clip.bac2_a_l1_01",
+  "severity": "P2",
+  "problem": "American stations say 'track four', though 'platform' is understood and a Vietnamese station is the setting.",
+  "fix": "A: Attention, please. The train to Da Nang will leave from track four at ten fifteen.",
+  "uncertain": true,
+  "reason": "Exam listening, and a question may key on 'platform'.",
+  "decision": "Kept for the owner: platform is understood, the setting is a Vietnamese station, the lexeme platform is the one A2-1 teaches and the key is Số 4 either way.",
+  "forOwner": true
+ },
+ {
+  "id": "en.scenario.restaurant_order.l2",
+  "severity": "P1",
+  "problem": "American restaurants use 'check'. 'bill' is the British model answer. VARIETY keeps 'check' out of the typed fold, so both must be listed. Vietnamese spelling should also match 'hóa đơn' in the stories.",
+  "fix": "Hãy nói thế là đủ và xin hóa đơn. => Yes, that's all. The check, please. / The check, please. / Can I have the check, please? / No, thanks. Can I have the check? / The bill, please. / Can I have the bill, please?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.scenario.restaurant_order",
+  "severity": "P2",
+  "problem": "'hoá đơn' here against 'hóa đơn' in the stories. Choose one spelling.",
+  "fix": "Gọi món ở quán ăn — Gọi món ăn và đồ uống, rồi xin hóa đơn.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.scenario.factory_instructions.p0",
+  "severity": "P1",
+  "problem": "Same as en.clip.ix_factory_instructions_0: 'put on' before starting. Unit H teaches 'Put on your gloves' correctly.",
+  "fix": "Please put on your gloves before you start. // You need gloves. Please put them on.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.scenario.bac2_a_greet.p1",
+  "severity": "P2",
+  "problem": "American spelling: 'hometown'. Also in .r1.",
+  "fix": "What is your name, and where are you from? // Please tell me your name and your hometown.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.scenario.bac2_a_greet.l0",
+  "severity": "P2",
+  "problem": "'khoẻ' here against 'khỏe' in the stories, and 'Khoá' in the spelling concept. The course mixes old and new tone placement. Same in bac2_b_greet.l0.",
+  "fix": "Hãy chào lại và nói bạn khỏe. => Good morning. I'm fine, thank you. / I'm fine, thanks. / I'm very well, thank you. / I'm okay, thank you.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en-vi:unit-d.guidebook",
+  "severity": "P1",
+  "problem": "For an American course, the clock section teaches only 'half past' and 'quarter past/to'. These are understood, but Americans most often say 'eight thirty' and 'eight fifteen'. Add one line after the 'quarter to nine' bullet.",
+  "fix": "Add after '*quarter to nine* — chín giờ kém mười lăm': 'Người Mỹ thường nói thẳng số: *eight thirty* (tám giờ rưỡi), *eight fifteen* (tám giờ mười lăm).'",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:concept:numbers-time-prices",
+  "severity": "P1",
+  "problem": "Same gap as unit D: American clock forms missing from the explanation.",
+  "fix": "Add after 'quarter to nine (chín giờ kém mười lăm).': 'Người Mỹ thường nói thẳng số: eight thirty, eight fifteen.'",
+  "decision": "fixed"
+ },
+ {
+  "id": "en-vi:unit-q.guidebook",
+  "severity": "P1",
+  "problem": "The rule 'after Mr, Mrs, Ms comes the family name, not the given name' is true, but the course breaks it constantly: Mrs Ha, Mrs Thu, Mr Hung, Ms Hoa, Mr Binh, and the lexeme example 'Mrs Hoa is my teacher'. A learner sees the rule contradicted. Either rename or explain; explaining is cheaper and true of English in Vietnam. Same for en:concept:politeness.",
+  "fix": "Replace 'Khác với tiếng Việt, nơi \"ông Nam\" gọi bằng tên.' with 'Khác với tiếng Việt, nơi \"ông Nam\" gọi bằng tên. Ở Việt Nam, người ta vẫn hay nói *Mrs Hoa* theo tên, và bạn sẽ gặp cách này trong khóa học. Với người nước ngoài, hãy dùng họ.'",
+  "decision": "Not applied as written. Owner's decision: the rule holds, so characters and examples were renamed instead (Mrs. Tran, Mrs. Pham, Mr. Nguyen, Ms. Le …) and no exception is explained. Periods added."
+ },
+ {
+  "id": "en-vi:unit-r.guidebook",
+  "severity": "P1",
+  "problem": "'Please fill in this form.' is British; the American model is 'fill out'.",
+  "fix": "Replace '*Please fill in this form.*' with '*Please fill out this form.*'",
+  "decision": "fixed"
+ },
+ {
+  "id": "en-vi:unit-s.guidebook",
+  "severity": "P2",
+  "problem": "'Hãy nói về bạn' is a calque of 'Tell me about yourself'.",
+  "fix": "Replace 'Hãy nói về bạn.' with 'Hãy giới thiệu về bản thân.'",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:concept:articles",
+  "severity": "P2",
+  "problem": "'lỗi người Việt gặp nhiều nhất' is an unsupported superlative (STYLE §4), and unit P says the -s error is 'lỗi hay gặp nhất' in writing.",
+  "fix": "Replace 'Vì vậy đây là lỗi người Việt gặp nhiều nhất.' with 'Vì vậy người Việt rất hay gặp lỗi này.'",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:concept:there-is-have",
+  "severity": "P2",
+  "problem": "'Trong cách nói của người Anh' implies Americans do not say 'have got'. They do, informally ('I've got a car').",
+  "fix": "Replace 'Trong cách nói của người Anh, bạn còn gặp have got với nghĩa như have: I've got a car.' with 'Khi nói thân mật, bạn còn gặp have got với nghĩa như have: I've got a car. Người Anh dùng cách này nhiều hơn.'",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:concept:s-ed-pronunciation",
+  "severity": "P0",
+  "problem": "False rule. The extra syllable in -s comes after s, z, sh, ch and j sounds, not only s, sh, ch. As written, 'changes', 'pages', 'languages', 'oranges', 'sizes' would follow the z rule (voiced sound) and be read one syllable short. Also false: 'tiếng Việt không có các âm cuối này' covers -ed, but Vietnamese has final t.",
+  "fix": "Short rule: '-s: s, z, hoặc thêm một âm tiết sau các âm s, z, sh, ch, j. -ed: t, d, hoặc thêm một âm tiết sau t, d.' Explanation: replace 'dù tiếng Việt không có các âm cuối này' with 'dù tiếng Việt không có âm s, z cuối từ'; replace 'và thêm một âm tiết sau s, sh, ch (washes, watches, boxes)' with 'và thêm một âm tiết sau các âm s, z, sh, ch, j (washes, watches, boxes, changes)'.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:how",
+  "severity": "P1",
+  "problem": "'How do you go to work?' is a classic learner form; natives say 'get to work', and en.clip.bac2_b_l2_03 has it.",
+  "fix": "how = thế nào, bằng cách nào | How do you get to work? || Bạn đi làm bằng gì?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:opposite",
+  "severity": "P2",
+  "problem": "Prepositional 'opposite' is uncommon in American speech; 'across from' is the norm. The word stays worth recognizing. Note it in the gloss, and use 'store'.",
+  "fix": "opposite = đối diện (người Mỹ hay nói across from) | The store is opposite the hotel. || Cửa hàng ở đối diện khách sạn.",
+  "decision": "fixed: moved to A2-1 with the note; across from takes its place in A1."
+ },
+ {
+  "id": "en:w:ago",
+  "severity": "P2",
+  "problem": "'đến đây cách đây' repeats 'đây' and reads badly.",
+  "fix": "ago = cách đây | I came here two years ago. || Tôi đến đây hai năm trước.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:hour",
+  "severity": "P1",
+  "problem": "'The meeting is one hour.' needs 'long'.",
+  "fix": "hour = giờ, tiếng đồng hồ | The meeting is one hour long. || Cuộc họp kéo dài một tiếng.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:mr",
+  "severity": "P1",
+  "problem": "Gloss says 'trước họ tên', but unit Q teaches that the title goes before the family name only.",
+  "fix": "Mr = ông, anh (trước họ) | Mr Brown is our manager. || Ông Brown là quản lý của chúng tôi.",
+  "decision": "fixed, with a period."
+ },
+ {
+  "id": "en:w:mrs",
+  "severity": "P1",
+  "problem": "The example breaks the course's own rule (unit Q: not before a given name), and it is the first place a learner meets the word.",
+  "fix": "Mrs = bà (trước họ) | Mrs Brown is my teacher. || Bà Brown là giáo viên của tôi.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:ms",
+  "severity": "P1",
+  "problem": "Same as en:w:mrs.",
+  "fix": "Ms = cô, chị (trước họ) | Ms Brown is in her office. || Chị Brown đang ở văn phòng.",
+  "decision": "fixed, with a period."
+ },
+ {
+  "id": "en:w:mrs",
+  "severity": "P2",
+  "problem": "VARIETY leaves this to the language pass. American punctuation is 'Mr.', 'Mrs.', 'Ms.' with a period; the course writes them without. Recommendation: change the display form throughout, since a learner copies what they see, and typed answers already accept both.",
+  "fix": "Mrs. = bà (trước họ) | Mrs. Brown is my teacher. || Bà Brown là giáo viên của tôi.",
+  "uncertain": true,
+  "reason": "Global change across stories, clips and scenarios, and TTS must not read the period as a pause. Owner's call.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:shop",
+  "severity": "P1",
+  "problem": "'shop' is taught as the basic word for a retail business, and 24 dump lines use it, while VARIETY lists store as the US model and no en:w:store lexeme exists. 'coffee shop', 'repair shop', 'gift shop' are American, but 'The shop opens at eight' is not. Fixes are filed for story and reading lines; the lexeme needs an owner decision: add en:w:store and keep shop for recognition.",
+  "fix": "shop = cửa hàng (người Mỹ thường nói store) | The coffee shop opens at eight. || Quán cà phê mở cửa lúc tám giờ.",
+  "uncertain": true,
+  "reason": "Adding a lexeme is outside a language pass. The other lexeme examples using shop (en:w:five, en:w:opposite, en:w:open, en:w:corner, en:w:uncle) should move to 'store' if the lexeme is added.",
+  "decision": "fixed: store is a new A1 lexeme; shop stays with a note and a coffee shop example."
+ },
+ {
+  "id": "en:w:bill",
+  "severity": "P1",
+  "problem": "'Can I have the bill, please?' is the British restaurant phrase. In American English a bill is what you pay monthly; a restaurant gives a check.",
+  "fix": "bill = hóa đơn (phải trả) | I pay the phone bill every month. || Tháng nào tôi cũng trả hóa đơn điện thoại.",
+  "decision": "fixed; bill moved to the A2-1 list, since lessons now say check."
+ },
+ {
+  "id": "en:w:check",
+  "severity": "P2",
+  "problem": "The restaurant sense is missing from the gloss, and the scenario fix uses it.",
+  "fix": "check = kiểm tra; hóa đơn (ở nhà hàng) | Please check your email. || Vui lòng kiểm tra email của bạn.",
+  "decision": "fixed, with The check, please as a second example."
+ },
+ {
+  "id": "en:w:chair",
+  "severity": "P2",
+  "problem": "'Please take a chair.' is dated; the idiom is 'take a seat'.",
+  "fix": "chair = cái ghế | Please sit in this chair. || Mời ngồi ghế này.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:form",
+  "severity": "P1",
+  "problem": "American is 'fill out this form'.",
+  "fix": "form = mẫu đơn, biểu mẫu | Please fill out this form. || Vui lòng điền vào mẫu này.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:fill",
+  "severity": "P1",
+  "problem": "American is 'fill out'.",
+  "fix": "fill = đổ đầy; điền (fill out) | Fill out this form, please. || Vui lòng điền vào mẫu này.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:try",
+  "severity": "P1",
+  "problem": "For clothes the verb is 'try on'; 'try this shirt' is a learner error.",
+  "fix": "try = thử, cố gắng | Can I try on this shirt? || Tôi thử chiếc áo sơ mi này được không?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en.story.the_yellow_dress#10",
+  "severity": "P1",
+  "problem": "For clothes the phrase is 'try it on'.",
+  "fix": "[B] Oh! Yellow is my favorite color. Can I try it on? || Ồ! Màu vàng là màu tôi thích nhất. Tôi thử được không?",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:cinema",
+  "severity": "P1",
+  "problem": "British word in a model sentence; the American is 'movie theater'. Keep it as a recognized word with a note, as VARIETY permits, or drop the lexeme once en.read.bac2_b_r1_01 changes.",
+  "fix": "cinema = rạp chiếu phim (người Mỹ nói movie theater) | The cinema is near my house. || Rạp chiếu phim ở gần nhà tôi.",
+  "uncertain": true,
+  "reason": "Dropping a lexeme is the owner's call.",
+  "decision": "fixed: the lexeme is replaced by movie theater (en:w:movie-theater, A2-1). Owner's decision on American forms; no modelled text says cinema."
+ },
+ {
+  "id": "en:w:at-least",
+  "severity": "P2",
+  "problem": "'Bạn phải ít nhất mười tám tuổi' lacks a verb and reads badly.",
+  "fix": "at least = ít nhất | You must be at least eighteen. || Bạn phải từ mười tám tuổi trở lên.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:instead",
+  "severity": "P2",
+  "problem": "'Tôi muốn nước thay vào đó' is translationese.",
+  "fix": "instead = thay vào đó | I do not want tea. I want water instead. || Tôi không muốn trà. Cho tôi nước thì hơn.",
+  "decision": "fixed"
+ },
+ {
+  "id": "en:w:during",
+  "severity": "P0",
+  "problem": "IPA /ˈd(j)ʊɚ.ɪŋ/ offers a /j/ that General American does not have (no yod after d here). Use the hand-written value.",
+  "fix": "IPA: /ˈdʊɹɪŋ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:thirteen",
+  "severity": "P0",
+  "problem": "IPA /ˌθɝtˈtin/ writes a double t. A learner would say two t's.",
+  "fix": "IPA: /ˌθɝˈtin/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:fourteen",
+  "severity": "P0",
+  "problem": "IPA /ˈfɔɹ.tin/ stresses the first syllable, and contradicts the course's own rule (units D and M, numbers concept: -teen is stressed at the end). A contrastive form belongs with 'forty', not as the citation.",
+  "fix": "IPA: /ˌfɔɹˈtin/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:eighteen",
+  "severity": "P0",
+  "problem": "IPA /ˈeɪ(t).tin/ stresses the first syllable, against the -teen rule, and has a doubled optional t.",
+  "fix": "IPA: /ˌeɪˈtin/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:yesterday",
+  "severity": "P0",
+  "problem": "IPA /ˈjɛstɹdeɪ/ has no vowel in the second syllable. Should have /ɚ/.",
+  "fix": "IPA: /ˈjɛstɚˌdeɪ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:appointment",
+  "severity": "P0",
+  "problem": "IPA /əˈpɔɪnt.mɛnt/ gives a full /ɛ/ in the unstressed -ment. General American reduces it to /ə/, which is exactly what the course teaches about schwa.",
+  "fix": "IPA: /əˈpɔɪntmənt/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:supermarket",
+  "severity": "P0",
+  "problem": "IPA /ˌsupɚˈmɑɹkət/ puts main stress on -mar-. American main stress is on the first syllable.",
+  "fix": "IPA: /ˈsupɚˌmɑɹkɪt/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:sale",
+  "severity": "P0",
+  "problem": "IPA /seːl/ is a monophthong; it is not General American. Untagged Kaikki value from another accent.",
+  "fix": "IPA: /seɪl/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:excuse-me",
+  "severity": "P1",
+  "problem": "IPA /ɛksˈkjuːz mi/ is attested but not the standard; the usual form starts /ɪk-/ and the s belongs to the second syllable.",
+  "fix": "IPA: /ɪkˈskjuz mi/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:hello",
+  "severity": "P2",
+  "problem": "/hɛˈloʊ/ is valid, but /həˈloʊ/ is more common and matches the schwa teaching.",
+  "fix": "IPA: /həˈloʊ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:orange",
+  "severity": "P2",
+  "problem": "/ˈoɹənd͡ʒ/ is valid; the usual written form is /ɔɹ/, and the second vowel is commonly /ɪ/.",
+  "fix": "IPA: /ˈɔɹɪndʒ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:how-are-you",
+  "severity": "P2",
+  "problem": "Stress on 'are' is one reading; the neutral greeting stresses 'you'.",
+  "fix": "IPA: /ˌhaʊ ɑɹ ˈju/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:university",
+  "severity": "P2",
+  "problem": "Secondary stress missing at the start.",
+  "fix": "IPA: /ˌjunɪˈvɝsəti/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:exhibition",
+  "severity": "P2",
+  "problem": "Secondary stress missing at the start.",
+  "fix": "IPA: /ˌɛksəˈbɪʃən/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:invitation",
+  "severity": "P2",
+  "problem": "Secondary stress missing at the start.",
+  "fix": "IPA: /ˌɪnvɪˈteɪʃən/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:within",
+  "severity": "P2",
+  "problem": "Syllable break /wɪðˈɪn/ suggests a pause after ð.",
+  "fix": "IPA: /wɪˈðɪn/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:traffic-light",
+  "severity": "P2",
+  "problem": "Secondary stress mark inside 'traffic' is misleading.",
+  "fix": "IPA: /ˈtɹæfɪk laɪt/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:everything",
+  "severity": "P2",
+  "problem": "Parentheses for optional sounds are dictionary notation with no explanation for a beginner. Same for the entries below.",
+  "fix": "IPA: /ˈɛvɹiˌθɪŋ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:every",
+  "severity": "P2",
+  "problem": "Parentheses, see en:w:everything.",
+  "fix": "IPA: /ˈɛvɹi/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:usually",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈjuʒuəli/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:once",
+  "severity": "P2",
+  "problem": "Parentheses around a t a beginner should not aim for.",
+  "fix": "IPA: /wʌns/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:english",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈɪŋɡlɪʃ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:grandmother",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈɡɹænˌmʌðɚ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:grandfather",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈɡɹænˌfɑðɚ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:thousand",
+  "severity": "P2",
+  "problem": "Parentheses in two places.",
+  "fix": "IPA: /ˈθaʊzənd/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:quarter",
+  "severity": "P2",
+  "problem": "Parentheses; /k(w)/ suggests dropping w is equal. A learner should say it.",
+  "fix": "IPA: /ˈkwɔɹtɚ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:mountain",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈmaʊntən/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:restaurant",
+  "severity": "P2",
+  "problem": "Parentheses with a stress mark inside.",
+  "fix": "IPA: /ˈɹɛstɹɑnt/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:clothes",
+  "severity": "P2",
+  "problem": "Parentheses; /kloʊz/ is the everyday form and spares a beginner a hard cluster.",
+  "fix": "IPA: /kloʊz/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:wear",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /wɛɹ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:kitchen",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈkɪtʃən/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:internet",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈɪntɚˌnɛt/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:website",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈwɛbˌsaɪt/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:interview",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈɪntɚˌvju/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:experience",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ɪkˈspɪɹiəns/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:engineer",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˌɛndʒəˈnɪɹ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:empty",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈɛmpti/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:landlord",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈlændˌlɔɹd/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:bicycle",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˈbaɪsɪkəl/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:cafeteria",
+  "severity": "P2",
+  "problem": "Parentheses and a syllable dot after the stress mark.",
+  "fix": "IPA: /ˌkæfəˈtɪɹiə/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:community",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /kəˈmjunəti/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:condition",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /kənˈdɪʃən/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:volunteer",
+  "severity": "P2",
+  "problem": "Parentheses.",
+  "fix": "IPA: /ˌvɑlənˈtɪɹ/",
+  "decision": "fixed; source original-english-course."
+ },
+ {
+  "id": "en:w:he",
+  "severity": "P2",
+  "problem": "Global notation: the licensed values mix he /ˈhiː/ with she /ʃi/ and we /wi/; sir /sɜɹ/, first /fɚst/ with bird /ˈbɝd/; after /ˈæftəɹ/ and number /ˈnʌmbər/ with water /ˈwɔ.tɚ/; for /foɹ/ with more /mɔːɹ/; stress marks on one-syllable words; glide marks and tie bars (/ˈaɪ̯/, /d͡ʒ/); syllable dots. The sounds are right, but a learner comparing two entries sees differences that do not exist, and the course teaches /iː/ against /ɪ/ by length. Normalize at display or compile time.",
+  "fix": "Normalization, applied to all values: remove . and ̯ and the tie bar; drop ˈ on one-syllable words; ɜɹ and stressed ɚ to ɝ; unstressed əɹ to ɚ; oɹ and ɔːɹ to ɔɹ; pick one policy for iː/i and uː/u.",
+  "uncertain": true,
+  "reason": "Values are CC BY-SA 'verbatim' per the derived file's note. Normalizing may need a provenance note, and it is an engineering decision.",
+  "decision": "Kept for the owner: the sounds are right. A global normalization would rewrite about 770 kaikki values and their provenance; it belongs at display or compile time, an engineering decision.",
+  "forOwner": true
+ }
+]

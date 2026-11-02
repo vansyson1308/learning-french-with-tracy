@@ -351,11 +351,18 @@ export function compileCourseProfileArtifacts(args: {
       a.localeCompare(b)
     );
   });
-  const defaultCourseId = defaultOrder[0];
   // P3e §7: the same order per native language — a Vietnamese UI preselects
-  // the first `-vi` course (fr-vi today; en-vi sorts first once it exists).
+  // the first `-vi` course. A course is preferred only once its target passes
+  // the A1 claim gate (P4f: en-vi becomes the Vietnamese suggestion when it
+  // does; before that fr-vi stays first).
+  const claimed = (id: string) => claimA1ByTarget[packById.get(id)?.targetCode ?? ""] === true;
   const defaultCourseByNative: Record<string, string> = {};
-  for (const id of defaultOrder) defaultCourseByNative[profiles[id].nativeCode] ??= id;
+  for (const id of [...defaultOrder.filter(claimed), ...defaultOrder.filter((id) => !claimed(id))]) {
+    defaultCourseByNative[profiles[id].nativeCode] ??= id;
+  }
+  // The global default serves a UI language with no course of its own, which
+  // the app shows in English: so it is the English UI's course (P0: fr-en).
+  const defaultCourseId = defaultCourseByNative.en ?? defaultOrder[0];
   out.push({
     relPath: `${root}/course-profiles.json`,
     contents: canonicalJson({ version: 1, defaultCourseId, defaultCourseByNative, profiles }),

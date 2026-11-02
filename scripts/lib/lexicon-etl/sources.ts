@@ -21,6 +21,7 @@ export type SourceRole =
   | "frequency-secondary" // wordfreq Zipf (exported at acquisition time by a pinned Python package)
   | "examples" // Tatoeba sentence pairs
   | "anchor" // exam / CEFR level lists
+  | "pronunciation-morphology" // a later retrieval read only for General American IPA and verb rows (lexicon-etl.ts supplement)
   | "dictionary"; // JMdict / CC-CEDICT readings + glosses
 
 export type SourceSpec = {
@@ -71,6 +72,19 @@ function kaikkiEn(lang: string, kaikkiName: string, skipUpload = true): SourceSp
       "Wiktionary content under CC BY-SA 4.0 (and GFDL); used under CC BY-SA 4.0 with attribution to Wiktionary contributors and kaikki.org. Per-entry provenance is the word|pos key in sourceRefs.",
   };
 }
+
+/**
+ * QC 2026-11-01 §2.2-2.3. Pinned apart from `kaikki-en-en.jsonl`, which the pool, frequency and
+ * anchors were derived from: the dump is republished weekly, and re-pinning it would move all of them.
+ */
+const KAIKKI_EN_SUPPLEMENT: SourceSpec = {
+  ...kaikkiEn("en", "English"),
+  role: "pronunciation-morphology",
+  url: "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+  artifactFilename: "kaikki-en-en-supplement.jsonl.gz",
+  notes:
+    "The same dump, later retrieval, gzip as published (the sha256 is of the .gz). Read only for derived/ipa-general-american.json and the verb rows of derived/morphology.json. Wiktionary content under CC BY-SA 4.0 (and GFDL); used under CC BY-SA 4.0 with attribution to Wiktionary contributors and kaikki.org. The subset is filtered from the stream by content/en/_drafts/_generators/en-kaikki-subset.py; nothing of the dump is committed.",
+};
 
 /** kaikki Vietnamese-edition dump per language (page name in Vietnamese). */
 function kaikkiVi(lang: string, viName: string, skipUpload = false): SourceSpec {
@@ -263,7 +277,7 @@ export const LEXICON_SOURCES: Record<string, SourceSpec[]> = {
   // The Vietnamese Wiktionary has no Korean extract on kaikki (checked 2026-10-15); glosses stay TODO:vi until P4e.
   ko: [kaikkiEn("ko", "Korean"), frequencyWords("ko", "2018/ko/ko_50k.txt"), wordfreq("ko"), tatoeba("ko", "kor", "sentences"), tatoeba("ko", "kor", "links-en"), tatoeba("ko", "kor", "links-vi"), TATOEBA_EN_SENTENCES, TATOEBA_VI_SENTENCES],
   zh: [kaikkiEn("zh", "Chinese"), kaikkiVi("zh", "Tiếng Trung Quốc"), frequencyWords("zh", "2018/zh_cn/zh_cn_full.txt"), wordfreq("zh"), HSK30, CEDICT, tatoeba("zh", "cmn", "sentences"), tatoeba("zh", "cmn", "links-en"), tatoeba("zh", "cmn", "links-vi"), TATOEBA_EN_SENTENCES, TATOEBA_VI_SENTENCES],
-  en: [kaikkiEn("en", "English"), kaikkiVi("en", "Tiếng Anh", true), frequencyWords("en", "2018/en/en_50k.txt"), wordfreq("en"), CEFRJ, NGSL, tatoeba("en", "eng", "sentences"), tatoeba("en", "eng", "links-vi"), TATOEBA_VI_SENTENCES],
+  en: [kaikkiEn("en", "English"), KAIKKI_EN_SUPPLEMENT, kaikkiVi("en", "Tiếng Anh", true), frequencyWords("en", "2018/en/en_50k.txt"), wordfreq("en"), CEFRJ, NGSL, tatoeba("en", "eng", "sentences"), tatoeba("en", "eng", "links-vi"), TATOEBA_VI_SENTENCES],
 };
 
 /** Sources the research names but no machine-fetchable, licence-confirmed artifact exists for (recorded, never guessed). */

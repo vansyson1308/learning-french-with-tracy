@@ -74,12 +74,15 @@ export type CompiledExamItem = {
   exercise: Exercise;
   objectiveTargets: string[];
   lexemeRefs: string[];
+  /** Words of this item above the course's level, with their gloss (a track above its course's level). */
+  glossary?: { surface: string; gloss: string }[];
 };
 export type CompiledExamTrack = {
   id: string;
   trackVersion: number;
   name: string;
   level: string;
+  formatFidelity?: "full" | "partial";
   title: string;
   description: string;
   formatSource: { publisher: string; references: { url: string; title: string; retrieved?: string }[]; checkedAgainstOfficialGuide: boolean; checkedBy?: string; checkedAt?: string; note: string };
@@ -157,6 +160,7 @@ export function buildExamSectionSession(args: {
     ...(writingSpecFor(section, item) ? { writingPoints: writingSpecFor(section, item)! } : {}),
     // The exam player enforces the part's play count in mock and practice alike.
     ...(section?.skill === "listening" && playsForTask(section, item.taskId) !== undefined ? { maxPlays: playsForTask(section, item.taskId) } : {}),
+    ...(item.glossary ? { glossary: item.glossary } : {}),
     // A lettered shared pool keeps its order (the letters ARE the answer
     // sheet), so do richtig / falsch and a / b; every other scored option
     // set is reshuffled per sitting.

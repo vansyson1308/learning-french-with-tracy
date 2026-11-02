@@ -116,8 +116,8 @@ describe("compiler: round-trip and determinism", () => {
     const catalog = JSON.parse(byPath.get("src/content/catalog.json")!) as { courses: { id: string; nativeCode: string }[] };
     expect(catalog.courses.map((c) => c.id)).not.toContain("xx-en");
     // P2b: the catalogue carries one course per (target, native) — French
-    // is explained in English and in Vietnamese, Spanish (P3d), German (P3d(de)) and Italian (P3d(it)) too.
-    expect(catalog.courses.filter((c) => c.nativeCode !== "en").map((c) => c.id)).toEqual(["de-vi", "es-vi", "fr-vi", "it-vi"]);
+    // is explained in English and in Vietnamese, Spanish (P3d), German (P3d(de)) and Italian (P3d(it)) too. English (P4f) exists from Vietnamese only.
+    expect(catalog.courses.filter((c) => c.nativeCode !== "en").map((c) => c.id)).toEqual(["de-vi", "en-vi", "es-vi", "fr-vi", "it-vi"]);
   });
 
   test("compiling twice yields identical bytes (deterministic)", () => {
@@ -168,7 +168,7 @@ describe("compiler: round-trip and determinism", () => {
       // P3a: Spanish has an id registry, so its unambiguous selects (240) and matches (40) carry targets;
       // P3d/P3e: es-vi's unambiguous selects and matches (248 after the P3e lesson fill).
       // P3d(de), P3d(it): German and Italian have id registries, so the unambiguous selects and matches of both editions carry targets.
-      const expected: Record<string, number> = { "xx-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140, "de-vi": 196, "it-en": 140, "it-vi": 195 };
+      const expected: Record<string, number> = { "xx-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140, "de-vi": 196, "it-en": 140, "it-vi": 195, "en-vi": 190 };
       expect({ courseId, targets: row.withGradeTargets }).toEqual({ courseId, targets: expected[courseId] ?? 0 });
     }
   });

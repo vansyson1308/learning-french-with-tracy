@@ -1,0 +1,148 @@
+[
+ {
+  "id": "en-vi:uk-l3-e0",
+  "severity": "P0",
+  "problem": "Prompt: greet your colleagues on entering the office. The item has no requiredConcepts, so spoken variants must match whole. 'Good morning everyone' is listed, but 'Hello everyone', 'Hi everyone' and 'Morning everyone' are rejected, although 'Hello', 'Hi' and 'Morning' alone pass. These are the most natural greetings to a group.",
+  "fix": "Add alternative: Hello everyone | Hi everyone | Morning everyone",
+  "uncertain": false,
+  "decision": "fixed: the three greetings added to the speech item, in en-speech-s4.py."
+ },
+ {
+  "id": "en-vi:up-l2-e0",
+  "severity": "P0",
+  "problem": "Prompt: write a sentence saying you like soccer. The slot needs the contiguous run 'i like soccer' or 'i love soccer' (rubric.ts containsRun). Correct sentences fail with 'don't forget': 'I really like soccer.', 'I like playing soccer.', 'I like to play soccer.', 'I enjoy soccer.' 'football' is not a problem, it is a listed pair.",
+  "fix": "Add alternative: i really like soccer | i like playing soccer | i like to play soccer | i love playing soccer | i love to play soccer | i enjoy soccer",
+  "uncertain": false,
+  "decision": "fixed: the six phrasings added to the slot, in en-writing-s5.py; enjoy also added to the required verbs, or 'I enjoy soccer' fails on the verb. 'I like football' passes through the British pair."
+ },
+ {
+  "id": "en:w:so",
+  "severity": "P1",
+  "problem": "'It is raining, so I stay at home.' mixes a right-now situation with the simple present, which reads as a habit. A teacher would correct the verb. This is the model sentence for the word, and it models the tense error Vietnamese learners already make.",
+  "fix": "so = nên, vì vậy; rất | It is raining, so I am staying at home. || Trời đang mưa nên tôi ở nhà.",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en.story.a_room_at_the_hotel#2",
+  "severity": "P1",
+  "problem": "A guest saying 'I have a room for one person' sounds like the clerk offering a room. The Vietnamese ('Tôi có đặt một phòng đơn') says she booked, which the English does not. The speaker is a native English speaker from London. 'reservation' is not in lexemes.json; 'book' is, but check that its verb sense and the past form suit this present-tense story.",
+  "fix": "[B] Good night... I mean, hello! I booked a room for one person. || Chúc ngủ ngon... à, chào anh! Tôi có đặt một phòng đơn.",
+  "uncertain": false,
+  "decision": "fixed: book is a verb in the lexicon, and a past booking fits inside a present-tense story."
+ },
+ {
+  "id": "en.story.wrong_number#11",
+  "severity": "P2",
+  "problem": "'Is the afternoon possible?' is grammatical but stiff for booking by phone.",
+  "fix": "[B] No, I am at work in the morning. Is the afternoon okay? || Không, buổi sáng tôi đi làm. Buổi chiều có được không?",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en.story.the_cancelled_flight#3",
+  "severity": "P2",
+  "problem": "'a sign on the screen' is an odd collocation: a screen shows a message. 'message' is in the lexicon.",
+  "fix": "[N] At half past five, a message on the screen said that there was a delay. || Năm giờ rưỡi, trên màn hình báo chuyến bay bị chậm.",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en.story.the_contract#3",
+  "severity": "P2",
+  "problem": "'at once' is correct but dated in everyday American speech; 'right away' is the usual form.",
+  "fix": "[N] Hung was very excited, and he wanted to sign right away. || Hùng rất háo hức, và muốn ký ngay.",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en.story.the_contract#4",
+  "severity": "P2",
+  "problem": "A man has one wife, so the name takes commas. The course punctuates this correctly elsewhere ('Quang's wife, Ha, was not happy').",
+  "fix": "[N] But his wife, Mai, worked in a bank, and she was careful about papers. || Nhưng vợ anh là Mai làm ở ngân hàng và rất cẩn thận với giấy tờ.",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en.story.the_strike#3",
+  "severity": "P2",
+  "problem": "'salary' is for monthly office pay; factory workers on overtime 'get paid'. Also avoids a clash with 'overtime pay' in the same sentence.",
+  "fix": "[N] But when they got paid in June, there was no overtime pay. || Nhưng khi nhận lương tháng Sáu, không có tiền làm thêm giờ.",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en.story.micro_my_family#9",
+  "severity": "P2",
+  "problem": "'but' sets up a contrast between 'a child' and 'a student' that does not exist, since a child can be a student. The Vietnamese 'còn nhỏ' shows the intended sense.",
+  "fix": "[B] My sister is a child, and my brother is a student. || Em gái tôi còn nhỏ, còn em trai tôi là học sinh.",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en.story.nam_moves_to_hanoi.q2",
+  "severity": "P2",
+  "problem": "The correct option 'Anh muốn giữ tiền' is a calque of 'keep his money'. The story says a taxi costs too much, and the natural Vietnamese is 'tiết kiệm'. The key itself is right.",
+  "fix": "Set prompt: Vì sao Nam không đi taxi? => Không có taxi nào / *Anh muốn tiết kiệm tiền / Anh sợ tài xế",
+  "uncertain": false,
+  "decision": "fixed, with the English of the option: He wants to save money."
+ },
+ {
+  "id": "en.story.the_first_flight#15",
+  "severity": "P2",
+  "problem": "'Dễ mà!' carries a 'you see, I told you' tone that belongs to someone reassuring another person. Here the mother is pleasantly surprised after being afraid.",
+  "fix": "[B] That was easy! I want to do it again. || Dễ thế mà! Mẹ muốn đi nữa.",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en:w:keep",
+  "severity": "P2",
+  "problem": "'Giữ cửa đóng' is close to a literal translation. It is acceptable on a sign but stiff as a spoken instruction. The course's own story renders 'keeps her door closed' as 'luôn đóng cửa nhà'.",
+  "fix": "keep = giữ | Keep the door closed. || Nhớ luôn đóng cửa nhé.",
+  "uncertain": false,
+  "decision": "fixed."
+ },
+ {
+  "id": "en-vi:unit-n.guidebook",
+  "severity": "P2",
+  "problem": "'Từ hỏi màu là What color is it?' calls a whole sentence a question word.",
+  "fix": "Set prompt: replace 'Từ hỏi màu là *What color is it?*' with 'Câu hỏi về màu sắc là *What color is it?*'",
+  "uncertain": false,
+  "decision": "fixed, in en-units.py."
+ },
+ {
+  "id": "en-vi:up-l1-e1",
+  "severity": "P2",
+  "problem": "Vietnamese has no aspect marking, so 'Bạn sống ở đâu?' also allows 'Where are you living?', which is correct English and is rejected. Low frequency at A1.",
+  "fix": "Add alternative: where are you living",
+  "uncertain": false,
+  "decision": "fixed: where are you living is a second variant of the slot."
+ },
+ {
+  "id": "en-vi:uf-l1-e7",
+  "severity": "P2",
+  "problem": "The clip says 'a key' and the dictation also accepts 'key'. A dictation that passes a missing word teaches Vietnamese learners, who have no articles, that the article is optional.",
+  "fix": "Remove alternative: key",
+  "uncertain": "The clip's objective is familiar_words and its lexemeRefs name only 'key', so the leniency may be a deliberate design choice. I did not find an authoring note on it.",
+  "decision": "fixed: the alternative is gone. A dictation grades the exact form, and this was the only one that let a word drop. Listed for the owner, since the reviewer could not tell whether it was deliberate.",
+  "forOwner": true
+ },
+ {
+  "id": "en.story.yuki_and_the_menu#14",
+  "severity": "P2",
+  "problem": "English 'hot' can mean temperature or spicy; the Vietnamese 'Nóng thật' commits to temperature. The next lines are about spice (Tuan's bowl is 'very spicy'), and asking for vegetables suggests she may mean spicy. I read lines 11 to 16 only.",
+  "fix": "[B] It is hot, but I really like it! Can I have some vegetables with it? || Cay thật, nhưng em rất thích! Cho em thêm ít rau được không?",
+  "uncertain": "Depends on what the author meant by 'hot'. If it means temperature, the line is fine as it stands.",
+  "decision": "fixed: Cay thật. The story is about spice from its first question to its last line, so hot here reads as spicy. Listed for the owner.",
+  "forOwner": true
+ },
+ {
+  "id": "en:w:fifteen, en:w:sixteen, en:w:seventeen",
+  "severity": "seen outside the sample",
+  "problem": "These teens had /iː/ from kaikki while thirteen, fourteen, eighteen and nineteen have /i/; fifteen had no secondary stress.",
+  "fix": "ˌfɪfˈtin | ˌsɪksˈtin | ˌsɛvənˈtin",
+  "uncertain": false,
+  "decision": "fixed, in IPA_FIXED, so these ship with source original-english-course. The brief named fifteen and sixteen; seventeen had the same /iː/."
+ }
+]

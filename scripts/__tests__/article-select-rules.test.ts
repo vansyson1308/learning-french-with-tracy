@@ -57,6 +57,18 @@ describe("articleSelect validation rules", () => {
     expect(errorsFor("fr-en", drill({ articles: ["un", "une"], noun: "eau", correct: 1 }))).toEqual([]);
   });
 
+  test("English drills a/an/the; articles of other languages are refused", () => {
+    const en = { type: "articleSelect", id: "en1", articles: ["a", "an"], noun: "apple", gloss: "quả táo", correct: 1 };
+    const collect = (exercise: unknown) => {
+      const errors: string[] = [];
+      validateExercise("en-vi", exercise as never, (m) => errors.push(m), "en");
+      return errors.filter((m) => !m.includes("needs authored pedagogy")).join("\n");
+    };
+    expect(collect(en)).toBe("");
+    expect(collect({ ...en, articles: ["a", "la"] })).toContain('"la" is not an article of en');
+    expect(collect({ ...en, articles: ["a", "a"] })).toContain("duplicate articles");
+  });
+
   test("articleSelect outside the French course fails", () => {
     // P3d(de), P3d(it): German and Italian have authored pedagogy (de-vi, it-vi); Portuguese has none yet.
     expect(errorsFor("pt-en", drill()).join("\n")).toContain("needs authored pedagogy");

@@ -2,8 +2,8 @@
   "version": 1,
   "defaultCourseId": "fr-en",
   "defaultCourseByNative": {
-    "en": "fr-en",
-    "vi": "fr-vi"
+    "vi": "en-vi",
+    "en": "fr-en"
   },
   "profiles": {
     "de-en": {
@@ -92,6 +92,59 @@
         "dailyWords": "src/content/lexicon/de-daily.json",
         "stories": "src/content/stories/de-stories.json",
         "storyAssets": "src/content/stories/de-story-assets.ts"
+      },
+      "beta": true
+    },
+    "en-vi": {
+      "id": "en-vi",
+      "targetCode": "en",
+      "nativeCode": "vi",
+      "targetLanguage": "English",
+      "nativeLanguage": "Vietnamese",
+      "flag": "🇬🇧",
+      "flagAsset": "us",
+      "recognitionLocale": "en-US",
+      "ttsLocale": "en-US",
+      "script": "latin",
+      "idPrefix": "en:w:",
+      "legacyIdPrefix": "en:legacy:",
+      "capabilities": {
+        "fsrs": true,
+        "dailySession": true,
+        "lexicon": true,
+        "concepts": true,
+        "placement": true,
+        "checkpoints": true,
+        "goals": true,
+        "listening": true,
+        "reading": true,
+        "speaking": true,
+        "writing": true,
+        "conversation": true,
+        "exam": true,
+        "stories": true
+      },
+      "artifacts": {
+        "ids": "src/content/ids/en.json",
+        "lexiconIndex": "src/content/lexicon/en-index.json",
+        "lexiconFallback": "src/content/lexicon/en-web-fallback.json",
+        "lexiconDb": "assets/lexicon/en-lexicon-v3-bd5b9205e7ceace3.db",
+        "concepts": "src/content/concepts/en-concepts.json",
+        "objectives": "src/content/assessment/en-objectives.json",
+        "checkpoints": "src/content/assessment/en-checkpoints.json",
+        "placement": "src/content/assessment/en-placement.json",
+        "attainment": "src/content/assessment/en-attainment.json",
+        "claim": "src/content/assessment/en-claim.json",
+        "listening": "src/content/reception/en-listening.json",
+        "reading": "src/content/reception/en-reading.json",
+        "clipAssets": "src/content/reception/en-clip-assets.ts",
+        "speech": "src/content/speech/en-speech-items.json",
+        "writing": "src/content/writing/en-writing.json",
+        "scenarios": "src/content/interaction/en-scenarios.json",
+        "examTracks": "src/content/exam/en-exam-tracks.json",
+        "dailyWords": "src/content/lexicon/en-daily.json",
+        "stories": "src/content/stories/en-stories.json",
+        "storyAssets": "src/content/stories/en-story-assets.ts"
       },
       "beta": true
     },

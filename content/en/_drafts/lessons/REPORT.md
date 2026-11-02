@@ -1,0 +1,123 @@
+# lessons — ingest report (en-vi)
+
+Records: 108 · schema-valid: 108 · failed: 0 · validator errors after merge: 0
+
+## Records
+
+- ✅ line 1 `en-vi:u0-l0`
+- ✅ line 2 `en-vi:u0-l1`
+- ✅ line 3 `en-vi:u0-l2`
+- ✅ line 4 `en-vi:u0-l3`
+- ✅ line 5 `en-vi:u1-l0`
+- ✅ line 6 `en-vi:u1-l1`
+- ✅ line 7 `en-vi:u1-l2`
+- ✅ line 8 `en-vi:u1-l3`
+- ✅ line 9 `en-vi:u2-l0`
+- ✅ line 10 `en-vi:u2-l1`
+- ✅ line 11 `en-vi:u2-l2`
+- ✅ line 12 `en-vi:u2-l3`
+- ✅ line 13 `en-vi:u3-l0`
+- ✅ line 14 `en-vi:u3-l1`
+- ✅ line 15 `en-vi:u3-l2`
+- ✅ line 16 `en-vi:u3-l3`
+- ✅ line 17 `en-vi:u4-l0`
+- ✅ line 18 `en-vi:u4-l1`
+- ✅ line 19 `en-vi:u4-l2`
+- ✅ line 20 `en-vi:u4-l3`
+- ✅ line 21 `en-vi:ua-l0`
+- ✅ line 22 `en-vi:ua-l1`
+- ✅ line 23 `en-vi:ua-l2`
+- ✅ line 24 `en-vi:ua-l3`
+- ✅ line 25 `en-vi:ub-l0`
+- ✅ line 26 `en-vi:ub-l1`
+- ✅ line 27 `en-vi:ub-l2`
+- ✅ line 28 `en-vi:ub-l3`
+- ✅ line 29 `en-vi:uc-l0`
+- ✅ line 30 `en-vi:uc-l1`
+- ✅ line 31 `en-vi:uc-l2`
+- ✅ line 32 `en-vi:uc-l3`
+- ✅ line 33 `en-vi:ud-l0`
+- ✅ line 34 `en-vi:ud-l1`
+- ✅ line 35 `en-vi:ud-l2`
+- ✅ line 36 `en-vi:ud-l3`
+- ✅ line 37 `en-vi:ue-l0`
+- ✅ line 38 `en-vi:ue-l1`
+- ✅ line 39 `en-vi:ue-l2`
+- ✅ line 40 `en-vi:ue-l3`
+- ✅ line 41 `en-vi:uf-l0`
+- ✅ line 42 `en-vi:uf-l1`
+- ✅ line 43 `en-vi:uf-l2`
+- ✅ line 44 `en-vi:uf-l3`
+- ✅ line 45 `en-vi:ug-l0`
+- ✅ line 46 `en-vi:ug-l1`
+- ✅ line 47 `en-vi:ug-l2`
+- ✅ line 48 `en-vi:ug-l3`
+- ✅ line 49 `en-vi:uh-l0`
+- ✅ line 50 `en-vi:uh-l1`
+- ✅ line 51 `en-vi:uh-l2`
+- ✅ line 52 `en-vi:uh-l3`
+- ✅ line 53 `en-vi:ui-l0`
+- ✅ line 54 `en-vi:ui-l1`
+- ✅ line 55 `en-vi:ui-l2`
+- ✅ line 56 `en-vi:ui-l3`
+- ✅ line 57 `en-vi:uj-l0`
+- ✅ line 58 `en-vi:uj-l1`
+- ✅ line 59 `en-vi:uj-l2`
+- ✅ line 60 `en-vi:uj-l3`
+- ✅ line 61 `en-vi:uk-l0`
+- ✅ line 62 `en-vi:uk-l1`
+- ✅ line 63 `en-vi:uk-l2`
+- ✅ line 64 `en-vi:uk-l3`
+- ✅ line 65 `en-vi:ul-l0`
+- ✅ line 66 `en-vi:ul-l1`
+- ✅ line 67 `en-vi:ul-l2`
+- ✅ line 68 `en-vi:ul-l3`
+- ✅ line 69 `en-vi:um-l0`
+- ✅ line 70 `en-vi:um-l1`
+- ✅ line 71 `en-vi:um-l2`
+- ✅ line 72 `en-vi:um-l3`
+- ✅ line 73 `en-vi:un-l0`
+- ✅ line 74 `en-vi:un-l1`
+- ✅ line 75 `en-vi:un-l2`
+- ✅ line 76 `en-vi:un-l3`
+- ✅ line 77 `en-vi:uo-l0`
+- ✅ line 78 `en-vi:uo-l1`
+- ✅ line 79 `en-vi:uo-l2`
+- ✅ line 80 `en-vi:uo-l3`
+- ✅ line 81 `en-vi:up-l0`
+- ✅ line 82 `en-vi:up-l1`
+- ✅ line 83 `en-vi:up-l2`
+- ✅ line 84 `en-vi:up-l3`
+- ✅ line 85 `en-vi:uq-l0`
+- ✅ line 86 `en-vi:uq-l1`
+- ✅ line 87 `en-vi:uq-l2`
+- ✅ line 88 `en-vi:uq-l3`
+- ✅ line 89 `en-vi:ur-l0`
+- ✅ line 90 `en-vi:ur-l1`
+- ✅ line 91 `en-vi:ur-l2`
+- ✅ line 92 `en-vi:ur-l3`
+- ✅ line 93 `en-vi:us-l0`
+- ✅ line 94 `en-vi:us-l1`
+- ✅ line 95 `en-vi:us-l2`
+- ✅ line 96 `en-vi:us-l3`
+- ✅ line 97 `en-vi:ut-l0`
+- ✅ line 98 `en-vi:ut-l1`
+- ✅ line 99 `en-vi:ut-l2`
+- ✅ line 100 `en-vi:ut-l3`
+- ✅ line 101 `en-vi:uu-l0`
+- ✅ line 102 `en-vi:uu-l1`
+- ✅ line 103 `en-vi:uu-l2`
+- ✅ line 104 `en-vi:uu-l3`
+- ✅ line 105 `en-vi:uv-l0`
+- ✅ line 106 `en-vi:uv-l1`
+- ✅ line 107 `en-vi:uv-l2`
+- ✅ line 108 `en-vi:uv-l3`
+
+## Validator errors (fix these records and ingest again)
+
+- none
+
+## Written
+
+- content/en/_drafts/pack.json
+- content/courses/en-vi.json

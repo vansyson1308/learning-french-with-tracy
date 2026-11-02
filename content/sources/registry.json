@@ -70,6 +70,19 @@
       "notes": "FSRS-6 scheduler. The SM-2 migration math is an independent TypeScript implementation of the published memory_state_from_sm2 formula from fsrs-rs (also MIT)."
     },
     {
+      "id": "circle-flags",
+      "name": "circle-flags (HatScripts)",
+      "kind": "artwork: round country flag icons",
+      "license": "MIT",
+      "url": "https://github.com/HatScripts/circle-flags/tree/379588b5da95482d6bbf10bd45644a35b0609ea6",
+      "attribution": "Round country flags from circle-flags by HatScripts, used under the MIT License.",
+      "retrievedAt": "2026-11-02",
+      "covers": [
+        "assets/images/flags/"
+      ],
+      "notes": "All course flags in assets/images/flags/ come from this set (flags/<code>.svg); xx.svg is the test language's. us.svg was retrieved at the pinned commit; the other flags were added in earlier milestones without a recorded commit."
+    },
+    {
       "id": "synthetic-test-language",
       "name": "Synthetic test language (xx)",
       "kind": "test fixtures — a two-word invented language that exercises every validator and the compiler for a non-French target (P1c); never shipped",
@@ -371,6 +384,27 @@
         "content/it/exam/"
       ],
       "notes": "P3d(it): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/it-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/it/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public CILS A1 standard formats only, never official items. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
+      "id": "original-english-course",
+      "name": "Learning French with Tracy — authored en-vi course (English for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items) and General American IPA transcriptions authored for the English lexicon",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "English course content for Vietnamese speakers and project-authored IPA transcriptions by the Learning French with Tracy project.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "content/courses/en-vi.json",
+        "content/en/pedagogy/",
+        "content/en/reception/reading.json",
+        "content/en/reception/listening.json",
+        "content/en/speech/",
+        "content/en/writing/",
+        "content/en/interaction/",
+        "content/en/assessment/",
+        "content/en/exam/"
+      ],
+      "notes": "P4f: clean-room authored; Vietnamese learner-facing text pending native review. In content/en/lexicon/lexemes.json a pronunciation with this source is a transcription written by the project because the Kaikki value in the candidate pool is missing or not General American; it was not checked against a dictionary. The hand-chosen lexicon itself is recorded under original-lexicon-etl. Ships under the repository's MIT grant like the other course packs."
     },
     {
       "id": "tts-engine-kokoro",

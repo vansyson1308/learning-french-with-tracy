@@ -39,6 +39,8 @@ export type WritingSlot = {
   description: string;
   variants: string[];
   cueProvided: boolean;
+  /** A letter's closing: "Thank you. Best regards" is one ending, so realizing it twice is not keyword stuffing. */
+  repeatable?: boolean;
 };
 
 export type WritingRubric = {
@@ -85,10 +87,14 @@ function containsRun(haystack: string[], needle: string[]): boolean {
   return false;
 }
 
-function slotMatched(answerTokens: string[], slot: WritingSlot, rules: LanguageRules): boolean {
-  return slot.variants.some((variant) =>
-    containsRun(answerTokens, tokensOf(normalizeWritten(variant, rules)))
-  );
+type AlignToKey = LanguageRules["alignAnswerToKey"];
+
+function slotMatched(answerTokens: string[], slot: WritingSlot, rules: LanguageRules, align: AlignToKey): boolean {
+  return slot.variants.some((variant) => {
+    const key = normalizeWritten(variant, rules);
+    const aligned = align?.(answerTokens.join(" "), key);
+    return containsRun(aligned === undefined ? answerTokens : tokensOf(aligned), tokensOf(key));
+  });
 }
 
 /** Every [start, end) run where `needle` occurs in `haystack`. */
@@ -153,7 +159,7 @@ export function evaluateGuidedWriting(input: {
   const answerTokens = tokensOf(normalized);
   const tokenCount = answerTokens.length;
 
-  const matched = rubric.requiredSlots.filter((s) => slotMatched(answerTokens, s, rules));
+  const matched = rubric.requiredSlots.filter((s) => slotMatched(answerTokens, s, rules, rules.alignWrittenToKey));
   const missing = rubric.requiredSlots
     .filter((s) => !matched.includes(s))
     .map((s) => ({ id: s.id, description: s.description }));
@@ -243,11 +249,11 @@ export function evaluateGuidedWriting(input: {
   //    phrasings realized in several separate places is a list of guesses,
   //    not one answer. Single-phrasing slots (a name, "demain") are exempt:
   //    repeating one fact ("… demain à dix heures. À demain !") is not a
-  //    list of alternatives.
+  //    list of alternatives. Nor is a slot the author marked repeatable.
   const stuffed =
     (input.mode ?? "guided") === "guided"
       ? matched.filter(
-          (s) => s.variants.length >= 2 && slotRealizations(answerTokens, s, rules) >= 2
+          (s) => !s.repeatable && s.variants.length >= 2 && slotRealizations(answerTokens, s, rules) >= 2
         )
       : [];
   if (stuffed.length > 0) {
@@ -289,7 +295,8 @@ export function evaluateSimpleForm(input: {
       continue;
     }
     filled += 1;
-    if (slotMatched(answerTokens, slot, rules)) {
+    // A form field holds one value, not the learner's sentence: it aligns as a typed answer does.
+    if (slotMatched(answerTokens, slot, rules, rules.alignAnswerToKey)) {
       matchedSlotIds.push(slot.id);
     } else {
       missingSlots.push({ id: slot.id, description: slot.description });

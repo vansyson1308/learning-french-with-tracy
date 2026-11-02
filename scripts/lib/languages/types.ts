@@ -57,6 +57,12 @@ export type ArticleRules = {
    * take `el`). Removing evidence only — never adds a gender.
    */
   neutralBefore?: { articles: readonly string[]; noun: RegExp };
+  /**
+   * P4 en-vi: the language has articles but no grammatical gender (English a/an/the). The table
+   * then only says which articles an articleSelect drill may offer: nouns carry no gender, and a
+   * surface never loses a leading word to the splitter ("a few" stays whole).
+   */
+  genderless?: true;
 };
 
 /** A paradigm-evidence row: a form with its analysis atoms (e.g. "ind:pre:1"). */

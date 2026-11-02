@@ -381,7 +381,7 @@ for (const sel of selected) {
   const e = sel.entry;
   const pos: PartOfSpeech = e?.partOfSpeech ?? (sel.packGloss.en && /^to /.test(sel.packGloss.en) ? "verb" : "noun");
   let gender: RichLexeme["gender"] = pos === "noun" ? (e?.gender ?? "unknown") : undefined;
-  if (pos === "noun" && plugin.articleRules) {
+  if (pos === "noun" && plugin.articleRules && !plugin.articleRules.genderless) {
     // Gender = what the evidence agrees on: the source reading, the course surface's own article
     // (the learner sees it) and the determiners in the examples. Any disagreement — or an epicene
     // source reading — is "both" (el/la estudiante); nothing at all stays "unknown".

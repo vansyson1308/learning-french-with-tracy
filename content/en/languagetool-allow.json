@@ -1,0 +1,893 @@
+{
+  "version": 1,
+  "language": "en-US",
+  "disabledRules": [],
+  "allow": [
+    {
+      "rule": "ALL_OF_THE",
+      "match": "all of the",
+      "text": "What? You can't do that! You must pay all of the rent.",
+      "reason": "All of the rent is correct; the rule only prefers a shorter style."
+    },
+    {
+      "rule": "A_CD_NNS",
+      "match": "a two",
+      "text": "I have a two books.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "A_MY",
+      "match": "This our",
+      "text": "This our is daughter.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "A_MY",
+      "match": "the my",
+      "text": "This is the my father.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "A_UNCOUNTABLE",
+      "match": "a money",
+      "text": "I have a money.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "A_UNCOUNTABLE",
+      "match": "a water",
+      "text": "I drink a water.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "BEEN_PART_AGREEMENT",
+      "match": "know",
+      "text": "I am not know.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "CAFE_DIACRITIC",
+      "match": "cafe",
+      "text": "cafe",
+      "reason": "A rubric key: a learner's cafe, without the accent, is the American spelling."
+    },
+    {
+      "rule": "CAN_I_VBD",
+      "match": "helps",
+      "text": "Could you helps me?",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "CAN_I_VBD",
+      "match": "speaks",
+      "text": "Can I speaks to Mr. Brown, please?",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "COMMA_COMPOUND_SENTENCE",
+      "match": " and",
+      "text": "Dear Mr. Brown, I am sick and I cannot work on Monday. Hoa will take my shift. I will come back on Tuesday. Best regards, Minh",
+      "reason": "An optional comma in a simple sentence; short clauses read better without it at this level."
+    },
+    {
+      "rule": "COMMA_COMPOUND_SENTENCE",
+      "match": " and",
+      "text": "For sale: a blue bicycle, two years old, in very good condition. I bought it for one hundred and twenty dollars and I am selling it for sixty because I am moving to Singapore next month. It comes with a lock and a helmet. You can see it on any evening this week. Please call An.",
+      "reason": "An optional comma in a simple sentence; short clauses read better without it at this level."
+    },
+    {
+      "rule": "COMMA_COMPOUND_SENTENCE_2",
+      "match": " and",
+      "text": "Linh says the pink one is too short and the blue one is too large.",
+      "reason": "An optional comma in a simple sentence; short clauses read better without it at this level."
+    },
+    {
+      "rule": "CONFUSION_OF_MANS_MEN",
+      "match": "mans",
+      "text": "mans",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "DO_HE_VERB",
+      "match": "Do",
+      "text": "Do she live here?",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "ENGLISH_WORD_REPEAT_BEGINNING_RULE",
+      "match": "She",
+      "text": "Linh is my friend. She is twenty-six years old. She works in a hospital in Hue. She has a small apartment near the river. She loves music.",
+      "reason": "Repeating She in a graded reading is deliberate at A1."
+    },
+    {
+      "rule": "EN_A_VS_AN",
+      "match": "An",
+      "text": "An coffee, please.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "EN_A_VS_AN",
+      "match": "an",
+      "text": "an big",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "EN_COMPOUNDS_FORTY_SEVEN",
+      "match": "forty seven",
+      "text": "forty seven",
+      "reason": "An accepted typed alternative: the grader folds the hyphen."
+    },
+    {
+      "rule": "EN_COMPOUNDS_THIRTY_EIGHT",
+      "match": "thirty eight",
+      "text": "It's thirty eight.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "EN_COMPOUNDS_TWENTY_ONE",
+      "match": "twenty one",
+      "text": "twenty one",
+      "reason": "An accepted typed alternative: the grader folds the hyphen."
+    },
+    {
+      "rule": "EXTREME_ADJECTIVES",
+      "match": "really bad",
+      "text": "The chair is really bad, and she can't sit on it.",
+      "reason": "Really good and really bad are ordinary spoken English at A1; the rule is a style hint."
+    },
+    {
+      "rule": "EXTREME_ADJECTIVES",
+      "match": "really bad",
+      "text": "The traffic in the city is really bad.",
+      "reason": "Really good and really bad are ordinary spoken English at A1; the rule is a style hint."
+    },
+    {
+      "rule": "EXTREME_ADJECTIVES",
+      "match": "really good",
+      "text": "The food is really good.",
+      "reason": "Really good and really bad are ordinary spoken English at A1; the rule is a style hint."
+    },
+    {
+      "rule": "GO_TO_HOME",
+      "match": "go to home",
+      "text": "I go to home.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "HAD_TWO",
+      "match": "two book",
+      "text": "I have two book.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "HAVE_A_SHOWER",
+      "match": "has",
+      "text": "Yes, it has a shower.",
+      "reason": "False alarm: a room that has a shower, not taking a shower."
+    },
+    {
+      "rule": "HE_VERB_AGR",
+      "match": "live",
+      "text": "Do she live here?",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "HOW_DOES_THIS_CHANGES",
+      "match": "means",
+      "text": "What does this means?",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "INFORMATIONS",
+      "match": "informations",
+      "text": "I need informations.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "I_A",
+      "match": "a",
+      "text": "I a student.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "I_IF",
+      "match": "I",
+      "text": "I a student.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "I_IF",
+      "match": "I",
+      "text": "I no know.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "I_IF",
+      "match": "I",
+      "text": "I no smoke.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am 30",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am a",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am from Vietnam.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am from vietnam.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am hoa",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am ill",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am lan",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am mai",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am not well",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am sick",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i am tuan",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i do not drink beer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i drink",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i eat",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i enjoy music",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i feel sick",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i go",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i have",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i like",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i like music",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i like soccer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i live",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i love music",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i love soccer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i really like music",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i really love music",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i work",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i enjoy soccer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i like playing soccer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i like to play soccer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i love playing soccer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i love to play soccer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "I_LOWERCASE",
+      "match": "i",
+      "text": "i really like soccer",
+      "reason": "A rubric key: keys are written in lower case, and grading folds case."
+    },
+    {
+      "rule": "MISSING_COMMA_AFTER_INTRODUCTORY_PHRASE",
+      "match": "course",
+      "text": "Of course I know the way. I grew up there!",
+      "reason": "An optional comma after a short opener; correct as written."
+    },
+    {
+      "rule": "MISSING_COMMA_AFTER_INTRODUCTORY_PHRASE",
+      "match": "night",
+      "text": "At night he writes to his mother.",
+      "reason": "An optional comma after a short opener; correct as written."
+    },
+    {
+      "rule": "MISSING_VERB_AFTER_WHAT",
+      "match": "Where",
+      "text": "Where the airport?",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Bac",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Binh",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Da",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Duc",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Duc told",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Hien",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Hoa",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Huong",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Khanh",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Kien",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Lan",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Linh",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Linh is",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Nang",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Ngoc",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Ninh",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Phuong",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Quang",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Sapa",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Thao",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Thu",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Thu sits",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Trang",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Tuan",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Vo",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "Vy",
+      "reason": "A person's or place's name (Vietnamese), spelled without diacritics for the voice: not an English dictionary word."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "bigs",
+      "reason": "A distractor: the wrong plural a Vietnamese learner may write, wrong on purpose."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "boxs",
+      "reason": "A distractor: the wrong plural a Vietnamese learner may write, wrong on purpose."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "childs",
+      "reason": "A distractor: the wrong plural a Vietnamese learner may write, wrong on purpose."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "citys",
+      "reason": "A distractor: the wrong plural a Vietnamese learner may write, wrong on purpose."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "da",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "danang",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "hanoi",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "hoa",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "inf",
+      "reason": "A form label or rubric token, not running English."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "ing",
+      "reason": "A form label or rubric token, not running English."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "lan",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "le",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "linh",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "mai",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "minh",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "monday",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "nam",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "nang",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "nguyen",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "pham",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "saturday",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "sunday",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "sundays",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "thursday",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "tran",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "tuan",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "tuesday",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "vietnam",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "vietnamese",
+      "reason": "A rubric key or lower-case answer form of a name, weekday or nationality: grading folds case."
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_EN_US",
+      "match": "womans",
+      "reason": "A distractor: the wrong plural a Vietnamese learner may write, wrong on purpose."
+    },
+    {
+      "rule": "MUCH_COUNTABLE",
+      "match": "much",
+      "text": "How much brothers and sisters do you have?",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "NODT_DOZEN",
+      "match": "hundred",
+      "text": "hundred",
+      "reason": "A word on its own in a word list: hundred, thousand and million need no article there."
+    },
+    {
+      "rule": "NODT_DOZEN",
+      "match": "million",
+      "text": "million",
+      "reason": "A word on its own in a word list: hundred, thousand and million need no article there."
+    },
+    {
+      "rule": "NODT_DOZEN",
+      "match": "thousand",
+      "text": "thousand",
+      "reason": "A word on its own in a word list: hundred, thousand and million need no article there."
+    },
+    {
+      "rule": "NON3PRS_VERB",
+      "match": "drinks",
+      "text": "I drinks water.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "NON3PRS_VERB",
+      "match": "likes",
+      "text": "I would likes this one, please.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PERS_PRONOUN_AGREEMENT",
+      "match": "are",
+      "text": "She are a teacher.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PERS_PRONOUN_AGREEMENT",
+      "match": "are",
+      "text": "She are young and beautiful.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PERS_PRONOUN_AGREEMENT",
+      "match": "is",
+      "text": "We is students.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PRP_JJ",
+      "match": "I",
+      "text": "I hungry.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PRP_JJ",
+      "match": "She young",
+      "text": "She young and beautiful.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PRP_RB_JJ",
+      "match": "It",
+      "text": "It very good.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PRP_VB",
+      "match": "I headache",
+      "text": "I headache.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PRP_VB",
+      "match": "I student",
+      "text": "I student.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "PRP_VB",
+      "match": "She teacher",
+      "text": "She teacher.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "SEND_AN_EMAIL",
+      "match": "send an email to",
+      "text": "We give all volunteers a free lunch and a free ticket for one friend. Training is on the twenty-eighth of September at the museum. To apply, send an email to Ms. Le before the fifteenth of September. Please tell us which day you prefer and why you want to help. Volunteers who help for all six weeks will also receive a letter of thanks from the museum.",
+      "reason": "Send an email to is ordinary English; the rule only prefers a shorter style."
+    },
+    {
+      "rule": "SEND_AN_EMAIL",
+      "match": "send an email to",
+      "text": "Welcome to the City Language Center. Our evening English course starts on the fifth of March and is ten weeks long. Classes are on Tuesday and Thursday, from six to eight. The course costs ninety dollars, and books are included. You can pay at the front desk or by bank transfer. If you miss a class, please send an email to your teacher.",
+      "reason": "Send an email to is ordinary English; the rule only prefers a shorter style."
+    },
+    {
+      "rule": "SEND_PRP_AN_EMAIL",
+      "match": "send me an email",
+      "text": "Hi Tom, I am sorry I missed your call yesterday. My phone was broken, so I took it to the store near my office. It will be ready on Thursday. Until then, please send me an email or call my office number. See you on the weekend! Hoa",
+      "reason": "Send you an email is ordinary English; the rule only prefers a shorter style."
+    },
+    {
+      "rule": "SEND_PRP_AN_EMAIL",
+      "match": "send you an email",
+      "text": "Good. We will send you an email.",
+      "reason": "Send you an email is ordinary English; the rule only prefers a shorter style."
+    },
+    {
+      "rule": "SEND_PRP_AN_EMAIL",
+      "match": "send you an email",
+      "text": "I will send you an email.",
+      "reason": "Send you an email is ordinary English; the rule only prefers a shorter style."
+    },
+    {
+      "rule": "SEND_PRP_AN_EMAIL",
+      "match": "sending you an email",
+      "text": "I am sending you an email.",
+      "reason": "Send you an email is ordinary English; the rule only prefers a shorter style."
+    },
+    {
+      "rule": "SEND_PRP_AN_EMAIL",
+      "match": "sent you an email",
+      "text": "I sent you an email. Did you read it?",
+      "reason": "Send you an email is ordinary English; the rule only prefers a shorter style."
+    },
+    {
+      "rule": "SHE_LIVE",
+      "match": "work",
+      "text": "Where ___ he work?",
+      "reason": "False alarm: the blank in the sentence holds does."
+    },
+    {
+      "rule": "SHE_LIVE",
+      "match": "work",
+      "text": "Where ___ she work?",
+      "reason": "False alarm: the blank in the sentence holds does."
+    },
+    {
+      "rule": "SUBJECT_DROP",
+      "match": "I cannot",
+      "text": "Dear Mr. Brown, I am sick and I cannot work on Monday. Hoa will take my shift. I will come back on Tuesday. Best regards, Minh",
+      "reason": "False alarm: the subject I is there."
+    },
+    {
+      "rule": "THAN_I",
+      "match": "me",
+      "text": "My brother is taller than me.",
+      "reason": "Taller than me is the normal spoken form; than I is formal."
+    },
+    {
+      "rule": "THE_PUNCT",
+      "match": "a,",
+      "text": "Coffee a, please.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "THE_SENT_END",
+      "match": "a.",
+      "text": "I have headache a.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "THIS_MISSING_VERB",
+      "match": "This",
+      "text": "This my father.",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    },
+    {
+      "rule": "WERE_WHERE",
+      "match": "Where you",
+      "text": "Where you work?",
+      "reason": "A distractor: wrong English on purpose, the Vietnamese learner's trap."
+    }
+  ]
+}

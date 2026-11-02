@@ -32,6 +32,8 @@ type AttributionEntry = {
 const registry = (attributions as { sources: AttributionEntry[] }).sources;
 /** Voices used at pipeline time to synthesize the bundled audio (CC BY / CC0 credits). */
 const voiceEntries = registry.filter((e) => /TTS voice/i.test(e.kind));
+/** Icons and images from outside the project (the round course flags). */
+const artworkEntries = registry.filter((e) => /^artwork/i.test(e.kind));
 /**
  * Target languages that ship a lexicon (P3a: one section per language), and
  * the registered sources backing each one — read from the generated
@@ -95,6 +97,19 @@ export default function LicensesScreen() {
               </Text>
               <Text style={styles.text}>{v.attribution}</Text>
               <Text style={styles.url}>{v.url}</Text>
+            </View>
+          ))}
+        </Section>
+
+        <Section title={t("licenses.artwork")}>
+          <Text style={styles.text}>{t("licenses.artworkBody")}</Text>
+          {artworkEntries.map((a) => (
+            <View key={a.id} style={styles.sourceRow}>
+              <Text style={styles.sourceName}>
+                {a.name} — {a.license}
+              </Text>
+              <Text style={styles.text}>{a.attribution}</Text>
+              <Text style={styles.url}>{a.url}</Text>
             </View>
           ))}
         </Section>

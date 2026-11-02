@@ -1173,3 +1173,56 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  src/content/attributions.json
+
+## 2026-11-02 — audio.yml en generate (all) run 41503268148
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/artifacts/index.ts
+- compile: changed  src/content/attributions.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/catalog.json
+- compile: changed  src/content/course-bundles.ts
+- compile: changed  src/content/course-loaders.ts
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/flags.ts
+- compile: changed  src/content/ids/index.ts
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/packs/index.ts
+- compile: new      content/reports/en/audio-census.json
+- compile: new      content/reports/en/audio-quality.json
+- compile: new      content/reports/en/cefr-alignment.json
+- compile: new      content/reports/en/cefr-claim-gate.json
+- compile: new      content/reports/en/checkpoint-coverage.json
+- compile: new      content/reports/en/context-coverage.json
+- compile: new      content/reports/en/course-objective-coverage.json
+- compile: new      content/reports/en/lexicon-quality.json
+- compile: new      content/reports/en/lexicon-source-audit.json
+- compile: new      content/reports/en/placement-coverage.json
+- compile: new      content/reports/en/reception-audio-census.json
+- compile: new      content/reports/en/stories-coverage.json
+- compile: new      src/content/artifacts/en-vi.ts
+- compile: new      src/content/assessment/en-attainment.json
+- compile: new      src/content/assessment/en-checkpoints.json
+- compile: new      src/content/assessment/en-claim.json
+- compile: new      src/content/assessment/en-objectives.json
+- compile: new      src/content/assessment/en-placement.json
+- compile: new      src/content/audio/en-vi.ts
+- compile: new      src/content/concepts/en-concepts.json
+- compile: new      src/content/courses/en-vi.ts
+- compile: new      src/content/exam/en-exam-tracks.json
+- compile: new      src/content/ids/en.json
+- compile: new      src/content/interaction/en-scenarios.json
+- compile: new      src/content/lexicon/en-daily.json
+- compile: new      src/content/lexicon/en-index.json
+- compile: new      src/content/lexicon/en-web-fallback.json
+- compile: new      src/content/packs/en-vi.json
+- compile: new      src/content/reception/en-clip-assets.ts
+- compile: new      src/content/reception/en-listening.json
+- compile: new      src/content/reception/en-reading.json
+- compile: new      src/content/speech/en-speech-items.json
+- compile: new      src/content/stories/en-stories.json
+- compile: new      src/content/stories/en-story-assets.ts
+- compile: new      src/content/writing/en-writing.json
+- compile: new      lexicon-db:en:en-lexicon-v3-bd5b9205e7ceace3.db

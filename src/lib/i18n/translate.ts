@@ -26,8 +26,14 @@ export function translateMessage(lang: UiLanguage, message: Message): string {
   return translate(lang, message.key, message.params);
 }
 
-/** The name of a language code in the UI language (`language.<code>`), or the given fallback. */
-export function languageName(lang: UiLanguage, code: string, fallback: string): string {
+/**
+ * The name of a language code in the UI language (`language.<code>`), or the given fallback.
+ * The plain name is what a course teaches, so it may carry the course's variety ("Tiếng Anh (Mỹ)").
+ * `native` asks for the language explanations are written in, where the variety says nothing (`language.native.<code>`).
+ */
+export function languageName(lang: UiLanguage, code: string, fallback: string, role: "target" | "native" = "target"): string {
   const key = `language.${code}`;
-  return CATALOGS[lang][key] ?? CATALOGS.en[key] ?? fallback;
+  const nativeKey = `language.native.${code}`;
+  const native = role === "native" ? (CATALOGS[lang][nativeKey] ?? CATALOGS.en[nativeKey]) : undefined;
+  return native ?? CATALOGS[lang][key] ?? CATALOGS.en[key] ?? fallback;
 }

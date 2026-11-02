@@ -149,6 +149,8 @@ function writingSlotSchema<D extends z.ZodTypeAny>(description: D) {
      * appearing there are an answer leak and fail validation.
      */
     cueProvided: z.boolean(),
+    /** The slot may be realized in several places without counting as keyword stuffing: a letter's closing ("Thank you. Best regards"). */
+    repeatable: z.boolean().optional(),
   });
 }
 
@@ -905,7 +907,7 @@ export type SourceManifestV1 = z.infer<typeof SourceManifestV1Schema>;
  * sha256 + bytes + date; a declared-but-not-retrieved source (SUBTLEX-PT,
  * NIKL) records the blocker and can never be referenced by a lexeme.
  */
-export const SOURCE_ROLES = ["lexicon", "gloss-vi", "frequency", "frequency-secondary", "examples", "anchor", "dictionary"] as const;
+export const SOURCE_ROLES = ["lexicon", "pronunciation-morphology", "gloss-vi", "frequency", "frequency-secondary", "examples", "anchor", "dictionary"] as const;
 export const SourceManifestV2Schema = z
   .strictObject({
     version: z.literal(2),
@@ -2001,6 +2003,8 @@ export const examItemSchema = (lang: string) =>
     exercise: exerciseSchemas(lang).ExerciseSchema,
     exerciseNative: ExerciseNativeOverlaySchema.optional(),
     objectiveTargets: z.array(objectiveId(lang)).min(1),
+    /** A track above its course's level (QC 2026-11-01 §2.5): words of this item the course has not taught, with their gloss; the player offers them to tap. */
+    glossary: z.array(z.strictObject({ surface: z.string().min(1), gloss: nativeText() })).min(1).optional(),
   });
 
 /**
@@ -2019,6 +2023,12 @@ export const examTrackSchema = (lang: string) =>
     trackVersion: z.number().int().min(1),
     name: z.string().min(2),
     level: z.string().min(1),
+    /**
+     * D-12: how much of the real paper the public source fixes. "partial": the source gives
+     * parts, timing or scoring but not the item types, so the question types are the course's
+     * own design and the description says so. Absent on tracks modelled on a full sample.
+     */
+    formatFidelity: z.enum(["full", "partial"]).optional(),
     title: nativeText(),
     description: nativeText(),
     formatSource: z.strictObject({

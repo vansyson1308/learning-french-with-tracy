@@ -203,7 +203,7 @@ export function validateLexiconData(input: {
     const where = lex.id;
 
     // Gender ⟺ noun (only meaningful where the language has grammatical gender).
-    if (articles !== null && lex.partOfSpeech === "noun" && lex.gender === undefined) {
+    if (articles !== null && !articles.genderless && lex.partOfSpeech === "noun" && lex.gender === undefined) {
       err(`${where}: nouns must carry gender (use "unknown" only when genuinely unknown)`);
     }
     if (lex.partOfSpeech !== "noun" && lex.gender !== undefined) {

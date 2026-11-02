@@ -92,6 +92,21 @@ function nativeRecords(track: ExamTrack): { where: string; record: Record<string
 
 type Options = { text: string; emoji?: string }[];
 
+/** Is `phrase` a contiguous run of whole words in `text`? Case-folded, punctuation ignored. */
+function containsWords(text: string, phrase: string): boolean {
+  const words = (s: string) => (s.toLowerCase().match(/[\p{L}\p{M}\p{N}'’-]+/gu) ?? []).join(" ");
+  const run = words(phrase);
+  return run.length > 0 && ` ${words(text)} `.includes(` ${run} `);
+}
+
+/** A scored item's gloss must not hand over the keyed answer: neither its surface nor its translation may be in the correct option. */
+function glossLeaks(glossary: readonly { surface: string; gloss: Record<string, string> }[], correct: string): string[] {
+  return glossary.flatMap((g) => [
+    ...(containsWords(correct, g.surface) ? [`glossary surface "${g.surface}" is in the correct option ("${correct}")`] : []),
+    ...(Object.values(g.gloss).some((text) => containsWords(correct, text)) ? [`the gloss of "${g.surface}" is in the correct option ("${correct}")`] : []),
+  ]);
+}
+
 /** Structure, honesty, references, format and parallel-form rules of one exam track. */
 export function validateExamTrackData(input: { track: ExamTrack; lang: string; pack: PackSource; refs: ExamRefs; nativeCodes: readonly string[] }): ValidationResult {
   const { track, refs } = input;
@@ -99,6 +114,12 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
   const err = (m: string) => errors.push(`exam ${track.id}: ${m}`);
 
   if (track.language !== input.lang) err(`language "${track.language}" ≠ content/${input.lang}/`);
+  // D-12: a partial track tells the learner that its question types are the course's own design.
+  if (track.formatFidelity === "partial") {
+    for (const code of input.nativeCodes) {
+      if (!track.description[code]?.trim()) err(`formatFidelity "partial" needs a description in ${code} that says what is the course's own design`);
+    }
+  }
   if (track.formatSource.checkedAgainstOfficialGuide) {
     if (!track.formatSource.references.some((r) => r.retrieved !== undefined)) err("checkedAgainstOfficialGuide needs a retrieval date on the document(s) actually read");
     if (track.formatSource.checkedBy === undefined || track.formatSource.checkedAt === undefined) err("checkedAgainstOfficialGuide needs checkedBy and checkedAt");
@@ -183,6 +204,7 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
   for (const item of track.items) {
     if (itemIds.has(item.id)) err(`duplicate item id ${item.id}`);
     itemIds.add(item.id);
+    errors.push(...missingNativeCodes((item.glossary ?? []).map((g) => ({ where: `${item.id}.glossary.${g.surface}`, record: g.gloss })), input.nativeCodes).map((m) => `exam ${track.id}: ${m}`));
     const section = sections.get(item.sectionId);
     if (!section) {
       err(`${item.id}: unknown section ${item.sectionId}`);
@@ -197,6 +219,9 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
     if (!TYPES_BY_SKILL[section.skill].includes(e.type)) err(`${item.id}: ${e.type} cannot assess ${section.skill}`);
     if (!TYPES_BY_FORMAT[task.format].includes(e.type)) err(`${item.id}: ${e.type} is not a ${task.format} item`);
     const options = Array.isArray(e.options) ? e.options : null;
+    if ((section.skill === "reading" || section.skill === "listening") && options && typeof e.correct === "number") {
+      for (const message of glossLeaks(item.glossary ?? [], options[e.correct]?.text ?? "")) err(`${item.id}: ${message}`);
+    }
     if ((task.format === "mcq3" || task.format === "pictureMcq") && options && options.length !== 3) err(`${item.id}: ${task.format} items offer exactly 3 options (the public format)`);
     if (task.format === "mcq2" && options && options.length !== 2) err(`${item.id}: mcq2 items offer exactly 2 options (the public format)`);
     if (task.format === "pictureMcq" && options && options.some((o) => !o.emoji)) err(`${item.id}: pictureMcq options are pictures — every option needs an emoji`);
@@ -300,6 +325,7 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
     trackVersion: track.trackVersion,
     name: track.name,
     level: track.level,
+    ...(track.formatFidelity !== undefined ? { formatFidelity: track.formatFidelity } : {}),
     title: text(track.title, `${track.id}.title`),
     description: text(track.description, `${track.id}.description`),
     formatSource: {
@@ -363,6 +389,7 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
         exercise: localized.exercise,
         objectiveTargets: item.objectiveTargets,
         lexemeRefs: itemLexemes(item.exercise as Record<string, unknown>, sources),
+        ...(item.glossary ? { glossary: item.glossary.map((g) => ({ surface: g.surface, gloss: text(g.gloss, `${item.id}.glossary.${g.surface}`) })) } : {}),
       };
     }),
     forms: track.forms,

@@ -29,7 +29,7 @@ export function TypeAnswer({
   const styles = useStyles();
   const scheme = useResolvedScheme();
   const { t, languageName } = useT();
-  const nativeName = languageName(courseProfile(courseId).nativeCode, courseProfile(courseId).nativeLanguage);
+  const nativeName = languageName(courseProfile(courseId).nativeCode, courseProfile(courseId).nativeLanguage, "native");
   const isListen = exercise.mode === "listen";
   const isProduceTarget = exercise.mode === "produceTarget";
 
