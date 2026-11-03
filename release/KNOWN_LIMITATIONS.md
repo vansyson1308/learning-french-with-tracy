@@ -126,17 +126,22 @@ itself.
     (`OWNER-FINAL-CHECKLIST.md` B);
   - writing is graded by a rubric of required content, not for style or grammar, and
     speaking by what the recognizer hears, which has not been tried on a phone.
-- **`ja-vi` (Japanese for Vietnamese speakers, P4c) is in authoring and will ship
-  unreviewed**, on the same terms as `en-vi`: `allowUnreviewed: true` and
-  `betaUntilReviewed` in its profile (staged; promoted with the course). All Japanese and
-  Vietnamese in the course is AI-written. No native speaker of either language has read it,
-  and the AI-simulated review (D-10) has not run yet. What has run: the validators, the
-  reading checks of every generator (kanji only inside a lexicon surface or an inflection
-  key, so furigana come from the lexicon) and the answer-key self-check
-  (`content/ja/_drafts/REVIEW-NOTES.md`, 0 findings). What is not verified:
+- **`ja-vi` (Japanese for Vietnamese speakers, P4c) ships unreviewed**, on the same
+  terms as `en-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
+  `content/courses/ja-vi.profile.json`. All Japanese and Vietnamese in the course is
+  AI-written. No native speaker of either language has read it. An AI-simulated native
+  review ran per D-10 (`content/ja/REVIEW-AI.md`, independent audit 0.74 % P0+P1; the
+  answer keys alone 2.54 %, whose three classes were then closed by generator rules), which
+  is not a native speaker's review; the owner's acceptance `ai-review:ja-vi` is pending.
+  Also run: the validators, the reading checks of every generator (kanji only inside a
+  lexicon surface or an inflection key, so furigana come from the lexicon) and the
+  answer-key self-check (0 findings). A typed item that asks for katakana rejects the
+  word in hiragana (`typeAnswer.script`); a form field that asks for a name in katakana
+  still accepts hiragana. What is not verified:
   - **audio**: no ja clip has been generated or heard on a phone; the course lists 268
     clips that wait for the Kokoro voices (`jf_alpha`, `jm_kumo`, whose canary CER is high),
-    and the primer uses the device voice until then;
+    and the primer uses the device voice until then. Phone numbers written in digits
+    (`um-l0-e5`, `e6`) must be read digit by digit; the audio audit checks this;
   - **speech**: the `ja-JP` recogniser's behaviour is untried. Its kana for a stored word or
     an inflected verb (はたらいています for 働いています) matches through the stored readings;
     whether a phone writes kanji, kana or a mix, and how it handles long vowels, っ and
@@ -148,7 +153,7 @@ itself.
   - **Hán-Việt** readings are shown only where they help; they were checked against
     Unihan, not by a Vietnamese teacher of Japanese.
   Level results are estimates aligned to CEFR, not certificates, and JLPT N5 is not a CEFR
-  level. The JLPT N5 practice track (`content/ja/exam/jlpt-n5.json`, staged) is `partial`:
+  level. The JLPT N5 practice track (`content/ja/exam/jlpt-n5.json`) is `partial`:
   times, question types, options and pass marks follow the official jlpt.jp pages, but the
   number of items per question type, the split of the 120 points, the single play of each
   recording and the raw-share scoring are the course's choices (JLPT uses scaled scores), and

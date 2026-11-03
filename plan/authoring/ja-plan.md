@@ -137,6 +137,9 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
   must not map) and keeps a reversible `ja:legacy:` id.
 - No `src/content/ids/ja.json` is compiled yet. At promote, the first compile creates it: add `ja` to `V8_REKEYED_TARGETS`
   (v8 never ran on a device), with a fixture `v3-rc3-ja.json` and a test like `migrations-v8-it.test.ts`. No v9.
+  Done at the promote (2026-11-03): `migrations-v8-ja.test.ts` registers, until the audio bot commit compiles the
+  registry, the one the compiler writes from the same sources, and checks the compiled one equals it afterwards;
+  `migrations-v8.test.ts` lets a target join the list one compile early when its `content/<code>/lexemes.json` exists.
 
 ## 10. Decisions taken in session 1
 

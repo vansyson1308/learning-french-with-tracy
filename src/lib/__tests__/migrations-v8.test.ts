@@ -12,6 +12,7 @@
  * and a backup round-trips.
  */
 import { afterEach, describe, expect, test } from "bun:test";
+import { existsSync } from "fs";
 
 import { ID_REGISTRIES } from "../../content/ids";
 import { idRegistryForLanguage, itemIdFor } from "../learning/ids";
@@ -43,7 +44,11 @@ describe("v7 → v8: legacy re-key of registry courses", () => {
   });
 
   test("every id registry the app ships was re-keyed by a numbered step (a new registry needs its own migration)", () => {
-    expect([...REKEYED_TARGETS].sort()).toEqual(Object.keys(ID_REGISTRIES).sort());
+    // A target may join the list one compile early: its registry's sources exist (content/<code>/lexemes.json) and
+    // the first compile after the promote writes src/content/ids/<code>.json (P4c: ja, written by the audio bot commit).
+    const pending = REKEYED_TARGETS.filter((code) => !(code in ID_REGISTRIES));
+    for (const code of pending) expect(existsSync(`content/${code}/lexemes.json`), code).toBe(true);
+    expect([...REKEYED_TARGETS].filter((code) => !pending.includes(code)).sort()).toEqual(Object.keys(ID_REGISTRIES).sort());
   });
 
   test("RC3 es-en progress: every key becomes the id the runtime writes; counts are preserved", () => {
