@@ -105,4 +105,49 @@ describe("lexical syllabus (P3e)", () => {
     expect(r.stats.withContext + r.stats.withoutContext).toBe(ES.entries.length);
     expect(r.findings.every((f) => f.rule === "syllabus-context" && f.severity === "warn")).toBe(true);
   });
+
+  // P4d: scripts written without spaces are read by the language plugin's dictionary tokenizer (withLexicon), so a
+  // sentence of three words counts and a word inside it is found; a Latin language keeps the whitespace path.
+  const miniPack = (lang: string, sentences: string[]) =>
+    ({
+      id: `${lang}-vi`,
+      targetCode: lang,
+      nativeCode: "vi",
+      sections: [{ id: `${lang}-vi:section-1`, units: [{ id: `${lang}-vi:u1`, words: [], lessons: [{ id: `${lang}-vi:u1-l0`, exercises: sentences.map((s, i) => ({ id: `${lang}-vi:u1-l0-e${i}`, type: "select", mode: "targetToNative", prompt: s })) }] }] }],
+    }) as unknown as typeof esPack;
+  const miniCase = (lang: string, sentences: string[], surfaces: string[]) => {
+    const lexicon = surfaces.map((surface, i) => ({ id: `${lang}:w:t${i}`, surface }));
+    return lintSyllabusContext(miniPack(lang, sentences), lang, { entries: lexicon.map((l) => ({ lexemeId: l.id })) }, lexicon);
+  };
+
+  test("P4d: an unspaced Chinese sentence counts its words through the dictionary tokenizer", () => {
+    // 鼹鼠 (mole) is in no sentence; the other four are.
+    const r = miniCase("zh", ["我今天很忙。", "我们去超市。"], ["我", "今天", "忙", "超市", "鼹鼠"]);
+    expect(r.stats).toEqual({ withContext: 4, withoutContext: 1 });
+    expect(r.findings.map((f) => f.where)).toEqual(["zh:w:t4"]);
+  });
+
+  // The committed content of the language joins the sentences, so the words expected without context are ones no
+  // course text will ever use (鼹鼠 "mole").
+  test("P4d: a word is matched whole, never inside a longer stored word", () => {
+    // 鼹 is inside 鼹鼠 only, so it has no sentence of its own; 鼹鼠 has one.
+    const r = miniCase("zh", ["我看见鼹鼠了。"], ["我", "看见", "鼹鼠", "了", "鼹"]);
+    expect(r.findings.map((f) => f.where)).toEqual(["zh:w:t4"]);
+  });
+
+  test("P4d: a one-word Chinese line is not a sentence", () => {
+    const r = miniCase("zh", ["鼹鼠", "我很忙。"], ["鼹鼠", "我", "很", "忙"]);
+    expect(r.findings.map((f) => f.where)).toEqual(["zh:w:t0"]);
+  });
+
+  test("P4d: Japanese is read by the dictionary tokenizer too", () => {
+    const r = miniCase("ja", ["わたしは学生です。"], ["わたし", "は", "学生", "です", "鼹鼠"]);
+    expect(r.findings.map((f) => f.where)).toEqual(["ja:w:t4"]);
+  });
+
+  test("P4d: a Latin-script language keeps the whitespace path (a word glued to punctuation counts, a substring does not)", () => {
+    // "qq": a Latin-script code with no content folder, so no committed reading, clip or story joins the sentences.
+    const r = miniCase("qq", ["Yo como pan, gracias.", "Hola amigo"], ["pan", "como", "amigo", "hola", "pa"]);
+    expect(r.findings.map((f) => f.where).sort()).toEqual(["qq:w:t2", "qq:w:t3", "qq:w:t4"]);
+  });
 });
