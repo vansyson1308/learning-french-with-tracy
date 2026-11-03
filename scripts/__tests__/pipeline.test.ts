@@ -169,7 +169,8 @@ describe("compiler: round-trip and determinism", () => {
       // P3d/P3e: es-vi's unambiguous selects and matches (248 after the P3e lesson fill).
       // P3d(de), P3d(it): German and Italian have id registries, so the unambiguous selects and matches of both editions carry targets.
       // P4b stage 4: the synthetic CJK variant xc-en has an id registry too (one select, one match).
-      const expected: Record<string, number> = { "xx-en": 2, "xc-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140, "de-vi": 196, "it-en": 140, "it-vi": 195, "en-vi": 190 };
+      // P4c: Japanese has an id registry from its lexicon on, so ja-en's unambiguous selects and matches carry targets.
+      const expected: Record<string, number> = { "xx-en": 2, "xc-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140, "de-vi": 196, "it-en": 140, "it-vi": 195, "en-vi": 190, "ja-en": 137 };
       expect({ courseId, targets: row.withGradeTargets }).toEqual({ courseId, targets: expected[courseId] ?? 0 });
     }
   });

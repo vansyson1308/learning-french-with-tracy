@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "language": "ja",
+  "note": "Surfaces of the inherited ja-en pack that map to no lexeme: their learner progress keeps a reversible ja:legacy: id (src/lib/learning/ids.ts).",
+  "surfaces": [
+    {
+      "courseId": "ja-en",
+      "surface": "さかな",
+      "reason": "ja-en teaches both さかな ('the fish') and 魚 ('fish'): one lexeme cannot carry both English glosses, so 魚 is the lexeme and さかな keeps its legacy key."
+    }
+  ]
+}

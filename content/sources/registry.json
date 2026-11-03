@@ -285,7 +285,9 @@
       "retrievedAt": "2026-11-03",
       "covers": [
         "content/ja/lexicon/readings-manifest.json",
-        "content/ja/lexicon/derived/lexeme-readings.json"
+        "content/ja/lexicon/derived/lexeme-readings.json",
+        "content/ja/lexicon/derived/jlpt-course.json",
+        "content/ja/lexicon/lexemes.json"
       ],
       "notes": "P4b stage 4: kana + furigana per Japanese lemma (scripts/cjk-readings.ts). Release 2.3.1+2026-10-25, JmdictFurigana.json pinned by sha256 57c2afa7d153d42df97811d4a44865d10fb9104f6a7bacbbe32a0bf0c38e5abc (34,760,497 bytes) in content/ja/lexicon/readings-manifest.json; the file is never committed, only the derived readings of the pool's lemmas. The README states the data is distributed under the same licence as JMdict (CC BY-SA 4.0); the repository's code is MIT and is not used."
     },
@@ -441,6 +443,27 @@
         "content/en/exam/"
       ],
       "notes": "P4f: clean-room authored; Vietnamese learner-facing text pending native review. In content/en/lexicon/lexemes.json a pronunciation with this source is a transcription written by the project because the Kaikki value in the candidate pool is missing or not General American; it was not checked against a dictionary. The hand-chosen lexicon itself is recorded under original-lexicon-etl. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
+      "id": "original-japanese-course",
+      "name": "Learning French with Tracy — authored ja-vi course (Japanese for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Japanese course content for Vietnamese speakers by the Learning French with Tracy project.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/courses/ja-vi.json",
+        "content/ja/pedagogy/",
+        "content/ja/reception/reading.json",
+        "content/ja/reception/listening.json",
+        "content/ja/speech/",
+        "content/ja/writing/",
+        "content/ja/interaction/",
+        "content/ja/assessment/",
+        "content/ja/exam/"
+      ],
+      "notes": "P4c: clean-room authored; Vietnamese learner-facing text pending the D-10 review. The hand-chosen lexicon is recorded under original-lexicon-etl, its readings under jmdict-furigana. JLPT levels (OpenJLPT) are a build-time anchor only. Ships under the repository's MIT grant like the other course packs."
     },
     {
       "id": "unihan",
