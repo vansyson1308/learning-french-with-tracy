@@ -22,8 +22,8 @@ generator, run `bash content/ja/_drafts/_generators/ja-pipeline.sh` (byte-determ
 | ja-en (basic pack) | never edited; 57 of 58 words map (9 through `legacySurfaces`), さかな listed in `legacy-unmapped.json`; standalone profile staged | `content/ja/lexicon/legacy-unmapped.json` |
 | Session 3 | kana primer (full tables + 20-item checkpoint, pass 16), persist v9 `primerPassed`, profile `romajiUntilPrimer` (ja-vi), romaji line; free writing in kana/pinyin = practice; morphology re-derived (supplement pin, nine cells tagged); 22 conjugationCloze on 25 tables; 8 proper nouns (kind R) → 952 lexemes | `_generators/ja-primer.py`, `ja_paradigms.py`, `src/lib/languages/ja-romaji.ts`, `scripts/lib/lexicon-etl/ja-morphology.ts` |
 | Session 4 | readings 28 (19 teaching, 9 reserved); clips 220 (64 reception of which 21 reserved, 30 speech models, 126 partner turns; one voice: A jf_alpha 116, B jm_kumo 91, two-voice dialogues 13); speech 50 (20 reserved, ja-JP); writing 35 (15 guided, 4 open, 16 reserved); scenarios 21 (11 teaching, 10 reserved); Sections 3–6 +163 exercises (LC 44, RC 42, dictation 5, speakProduction 33, speakRepetition 9, guidedWriting 17, simpleForm 2, interactionScenario 11) → 1,020; self-check extended, 0 findings; proper nouns `proper: true`, never a daily new word | `_generators/ja-reception-s3.py`, `ja-speech-s4.py`, `ja-writing-s5.py`, `ja-scenarios-s6.py`, `ja_layers.py`, `ja_lesson_refs.py`; staged `content/ja/{reception,speech,writing,interaction}/` |
-
 | Session 5 | checkpoints 7 (112 items; capstone 2 forms of 10), placement 4 stages (21 items), 2 more reserved speech items (22); JLPT N5 track `jlpt-n5.json` (staged): 3 sections 20/40/30 min, 14 question types, 2 forms × 67 items, 48 exam clips, 10 exam readings, pass rule 38/120 + 19/60 + total 80/180, `formatFidelity: partial`, checked against jlpt.jp; exam engine: `mcq4`, a task's own skill, item `lexemeRefs`, `select.scriptAid`; signs 立入禁止 安全第一 禁煙 足元注意 消火器 as lexemes (957); spoken kana of inflected verbs matches; KNOWN_LIMITATIONS entry | `_generators/ja-assessment.py`, `ja-exam.py`; `content/ja/exam/FORMAT-SOURCES.md`; staged `content/ja/{assessment,exam}/` |
+| Session 6 | graded stories 45 (A1-0 7, A1-1 14, A1-2 14, A2-1 10), 1,084 sentences, 62–227 word tokens, 135 questions (vi, one inference each); stories engine: unspaced scripts (ja, zh) segment by dictionary maximal match with one step of lookahead, never Intl.Segmenter (fr/en unchanged); 26 function words; inflected forms and names in each story's tokenMap; story self-check 0 findings; band-1 audio list (18) for the audio session | `_generators/ja-stories-00…06.py`, `ja_stories_lib.py`, `ja-check-stories.py`, `ja-stories-seed.py`; `scripts/lib/stories.ts`; staged `content/ja/stories/stories.json`; `_drafts/stories/story-audio.json` |
 
 ## 2. Course shape (BLUEPRINT §1)
 
@@ -192,6 +192,23 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
 17. **Spoken kana for inflected forms**: whole variants compare by an utterance reading that includes the
     ja-inflection keys; concept slots stay word-level (no fuzzy substring match).
 
+### Session 6 (2026-11-03)
+
+18. **Stories segment ja by dictionary** (`scripts/lib/stories.ts`, test first): for a target whose script has no
+    spaces (build plugin `script` japanese / han) a story sentence is cut by left-to-right maximal match over the keys
+    the resolver knows — lexicon lemma and lookup forms (one key each, never split), the verb rows of morphology.json,
+    the function words and the token-map keys — with one step of lookahead: the longest key gives way to a shorter one
+    when the character after it would start no key (パン は いくら, not パン はい く ら). Deterministic on every runtime;
+    Latin targets keep Intl.Segmenter, so fr/en/es/de/it analyses are unchanged.
+19. **Function words** are the particles, the copula forms and な/たち/ごろ/だけ (26); the particles stay A1-1 lexemes
+    for the lessons. Inflected forms outside the morphology and names go into each story's `tokenMap` (explicit), so
+    the file-level map is empty. Authors write a space between words; the builder checks the engine's cut against it.
+20. **Register and script**: polite sentence ends throughout; plain forms inside A2-1 sentences only; kanji only inside
+    lexicon surfaces and inflection keys (the lesson rule), digits before counters. The reader does not render
+    furigana yet (open, §11).
+21. **Audio**: voice cast A/B as §7 (N narrates with A); band-1 audio = the first 18 stories after the micro-stories
+    (`_drafts/stories/story-audio.json`); the audio session writes it into the reception voice manifest.
+
 ## 11. Next sessions
 
 1. ~~**Lessons**~~ done in session 2 (one session): 108 lessons, 835 exercises, 25 cards. Left for the layer sessions:
@@ -203,6 +220,8 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
 4. ~~**Scenarios**~~ done in session 4: 21 (10 reserved), interactionScenario in units s–v (§5).
 5. ~~**Assessment + JLPT N5 track**~~ done in session 5 (one session): 7 checkpoints, placement, the exam file with 2
    mock forms, format sources (decisions 14–17 below).
-6. **Stories** (1–2): 40–50 graded stories A1-0…A2-1, context coverage of the A1 syllabus.
+6. ~~**Stories**~~ done in session 6: 45 graded stories A1-0…A2-1 (decisions 18–21). Open: the story reader
+   (`src/components/story/sentence-row.tsx`) shows no furigana or romaji line; the lessons do (RubyText). Wire the
+   script reading into the reader before ja-vi ships stories, or keep kanji in stories to the 100 taught kanji.
 7. **D-10 review** (AI pass, then the owner), **audio** (canary + generate, CER audit), promote, compile, V8 re-key, claim gate,
    KNOWN_LIMITATIONS entry, STATUS.

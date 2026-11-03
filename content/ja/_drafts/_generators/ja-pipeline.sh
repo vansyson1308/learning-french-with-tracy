@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# ja-vi, sessions 1-5 of P4c (lexicon, objectives, units; concept cards and lessons; primer; reception, speech, writing,
-# scenarios; checkpoints, placement and the JLPT N5 track): regenerate the drafts and ingest
+# ja-vi, sessions 1-6 of P4c (lexicon, objectives, units; concept cards and lessons; primer; reception, speech, writing,
+# scenarios; checkpoints, placement and the JLPT N5 track; graded stories): regenerate the drafts and ingest
 # them through the toolkit. Byte-deterministic: run it twice, the outputs are identical. Offline: ja-subset.py (the
 # one-time slice of the pinned OpenJLPT and JmdictFurigana files) is not part of it; its output
 # content/ja/lexicon/derived/jlpt-course.json is.
@@ -70,3 +70,11 @@ if ! python -I -c "import json,sys; p=json.load(open('content/ja/_drafts/pack.js
 fi
 bun scripts/course-draft.ts syllabus --target ja
 python -I "$G/ja-lex.py" . split
+# Session 6: graded stories. They are graded by the staged syllabus (bands), so they come after it; each batch checks
+# that the story engine cuts every sentence where the author did, and ja-check-stories.py stops on a finding. The seed
+# writes the head of the staged stories.json afresh (voice cast, function words) and the band-1 audio list.
+rm -rf content/ja/_drafts/stories/batches
+for story_batch in "$G"/ja-stories-[0-9]*.py; do python -I "$story_batch" .; done
+python -I "$G/ja-check-stories.py" .
+python -I "$G/ja-stories-seed.py" .
+ingest stories

@@ -1,4 +1,4 @@
-# ja-vi — review notes (P4c sessions 2–4: lessons, concept cards, reception, speech, writing, scenarios)
+# ja-vi — review notes (P4c sessions 2–6: lessons, concept cards, reception, speech, writing, scenarios, assessment, stories)
 
 Self-check of the answer keys, run by the session that wrote them. It is not the D-10 review: that is a later session
 (AI pass, then the owner), and it reads these notes first.
@@ -57,6 +57,18 @@ outside their length band (lengthened), 3 kanji without furigana (練習 and 日
 spelling distractor that was the key's own word (テレビー). Decisions of the coordinator done: 立入禁止, 安全第一, 禁煙,
 足元注意 and 消火器 are lexemes (A2-1, read through the pinned JmdictFurigana) and the factory signs and rules show them
 (ug-l0 +3 reading questions, ug-l1 +1); a kana transcript of an inflected verb matches the spoken variant (item 5 below).
+
+Session 6 (2026-11-03): the graded stories, with their own self-check (`_generators/ja-check-stories.py`, rule 7 of
+the ja-vi self-check; the stories are graded by the staged syllabus, so they run after it at the end of the pipeline).
+45 stories (A1-0 7, A1-1 14, A1-2 14, A2-1 10), 1,084 sentences, 135 questions, 0 findings, 0 decided; output
+`review/stories-selfcheck.json`. A story's sentences are authored with a space between words (`ja_stories_lib.py`):
+the builder removes the spaces and checks that the story engine cuts every sentence exactly there and resolves each
+word to the lexeme meant; its port of the engine agrees with `scripts/lib/stories.ts` on every token, unknown count and
+lexeme of the 45 stories (checked once against the TypeScript analysis). Found and fixed while writing: 9 sentences the
+engine cut elsewhere (わたしたち: わたした is a kana row of 渡す; はいくら before the lookahead existed; 運転 は しないで:
+はし + ない, a kana row of ある; コンビニ で も: でも; いのうえ after は: はい), 6 set phrases written as two words
+(大丈夫です, いいですよ, そうですね are lexemes), 5 kanji next to kanji (毎月国, 来週家; 名古屋駅 is read apart now,
+`READS_APART` in ja_text.py), 4 titles with a non-lexeme word (結婚, 相談, 残業, 日), stories below 150 tokens (lengthened).
 
 ## Open for the D-10 reviewer
 
@@ -120,3 +132,24 @@ spelling distractor that was the key's own word (テレビー). Decisions of the
       と/や, ね/よ, は/も) are never offered together. Context words (たかかったです, ちょっと) decide m3 a2 and b3.
     - Listening: the questions are Vietnamese and the options printed — an adaptation the track states. Recordings play
       once in the exam; the dialogues have no narrator line (the cast has two voices).
+12. **Graded stories** (session 6, `_generators/ja-stories-00…06.py`, `ja_stories_lib.py`). Read these first:
+    - Segmentation: ja has no spaces, so `scripts/lib/stories.ts` cuts a ja story by maximal match over every key the
+      resolver knows (lexicon forms, morphology rows, function words, token-map keys) with one step of lookahead
+      (パン は いくら, not パン はい く ら) — never Intl.Segmenter. fr/en/es/de/it keep their path.
+    - Function words: the particles, です/でした/でしょう/じゃありません/ではありません, な, たち, ごろ, だけ (26). The
+      particles are A1-1 lexemes too; as function words they are known at every band and have no tap gloss.
+    - Inflected forms the morphology does not list (飲みます, 行きましょう, 食べたい, 高かった, 広くない) are in each
+      story's own `tokenMap`, explicitly; so are names (Vietnamese names in katakana, すずき/やまだ/こばやし, ハノイ…).
+      In the micro-stories 木村 is mapped as a name (the lexeme is A1-1); なん is mapped to 何 where 何 is read なん.
+      わかりません is mapped to わかる in two A1-1 stories (the expression lexeme is A1-2).
+    - Register: every sentence ends polite; plain forms appear only inside A2-1 sentences (寝る前に, 食べた後で,
+      止まった機械, 話すのが好き); before A2-1 no plain verb form at all.
+    - Micro-stories (A1-0) use only the words of units 1–3, so they have no verb: noun sentences with です and 3–5 new
+      words. Check that they still read as small scenes, not drills.
+    - Voices: A (female, jf_alpha) narrates and speaks for women, B (male, jm_kumo) for men; two people of the same sex
+      share a voice. Band-1 audio: the first 18 stories after the micro-stories (`_drafts/stories/story-audio.json`,
+      the `storyAudio` block the audio session copies into `content/ja/reception/audio-source-manifest.json`).
+    - The story reader shows no furigana yet (`src/components/story/sentence-row.tsx` renders plain text); kanji in the
+      stories are only lexicon surfaces and inflection keys, so the readings exist — see ja-plan.md §11.
+    - Questions: Vietnamese, three per story, one an inference; options are written so that only one fits — read the
+      inference questions against the text.
