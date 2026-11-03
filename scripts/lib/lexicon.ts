@@ -29,6 +29,8 @@ import {
   type SourceManifest,
   type SourceManifestV1,
 } from "../../content/schema";
+import { lexemeReadingErrors } from "./cjk-readings/lexeme";
+import { displayReading } from "./cjk-readings/validate";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { isV2, manifestView } from "./lexicon-etl/manifest";
 import { idsArtifactRoot, isTestOnlyTarget, loadRegistry, packsForTarget, readJson, safeResolve, type LoadedPack, type ValidationResult } from "./pipeline";
@@ -291,6 +293,8 @@ export function validateLexiconData(input: {
     ) {
       err(`${where}: lexique-4 pronunciation labeled "ipa" contains Lexique-ASCII alphabet characters — genuine IPA comes verbatim from 3_Phono_IPA only (2_Phono is notation "phonology")`);
     }
+    // P4b stage 4: a language with reading notations (ja/zh/ko) — every lexeme carries its reading.
+    for (const m of lexemeReadingErrors(plugin.readings ?? [], lex)) err(`${where}: ${m}`);
     if (lex.frequency && (externalSourceId === null || lex.frequency.source !== externalSourceId)) {
       err(
         externalSourceId === null
@@ -373,6 +377,22 @@ export function validateLexicon(lang: string, packs: LoadedPack[]): ValidationRe
     packGlosses: packGlossesOf(mine),
     bandThresholds,
   });
+
+  // P4b stage 4: a course word's reading is compiled from its lexeme; an authored one must agree.
+  const shownBySurface = new Map<string, string>();
+  for (const lex of lexicon.lexemes) {
+    const shown = lex.reading ? displayReading(lex.reading) : undefined;
+    if (shown) for (const s of [lex.surface, ...(lex.legacySurfaces ?? [])]) shownBySurface.set(s, JSON.stringify(shown));
+  }
+  for (const { pack } of mine)
+    for (const section of pack.sections)
+      for (const unit of section.units)
+        for (const word of unit.words) {
+          if (word.reading === undefined) continue;
+          const expected = shownBySurface.get(word.target);
+          if (expected === undefined) result.errors.push(`lexicon: ${pack.id} word "${word.target}" carries a reading but its lexeme stores none`);
+          else if (JSON.stringify(word.reading) !== expected) result.errors.push(`lexicon: ${pack.id} word "${word.target}" reading differs from its lexeme's — leave it out, the compiler copies it`);
+        }
 
   // Manual match overrides validate against the committed evidence subset.
   let overrides: MatchOverrides;

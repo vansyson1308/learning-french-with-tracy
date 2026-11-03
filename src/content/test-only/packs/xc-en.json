@@ -1,0 +1,139 @@
+{
+  "id": "xc-en",
+  "version": 1,
+  "targetLanguage": "Testish CJK",
+  "targetCode": "xc",
+  "nativeLanguage": "English",
+  "nativeCode": "en",
+  "flag": "🏳️",
+  "audio": {
+    "policy": "device-tts",
+    "reason": "Synthetic CJK test variant (P4b stage 4): exists only to run the reading validators and the compiler on kana, pinyin and Revised Romanization readings; nothing here ever ships or speaks."
+  },
+  "sections": [
+    {
+      "id": "xc-en:section-1",
+      "title": "Section 1: Test",
+      "units": [
+        {
+          "id": "xc-en:unit-1",
+          "title": "Readings",
+          "description": "Five synthetic words, one per reading notation case: kana with furigana, pinyin with a traditional spelling, Revised Romanization with and without a compound boundary.",
+          "guidebook": "Each word carries its reading: **学生** がくせい, **汉语** hàn yǔ, **신라** silla.",
+          "words": [
+            {
+              "target": "学生",
+              "native": "student",
+              "emoji": "🧑‍🎓",
+              "reading": {
+                "kana": "がくせい",
+                "furigana": [
+                  {
+                    "base": "学",
+                    "ruby": "がく"
+                  },
+                  {
+                    "base": "生",
+                    "ruby": "せい"
+                  }
+                ]
+              }
+            },
+            {
+              "target": "食べる",
+              "native": "to eat",
+              "emoji": "🍚",
+              "reading": {
+                "kana": "たべる",
+                "furigana": [
+                  {
+                    "base": "食",
+                    "ruby": "た"
+                  },
+                  {
+                    "base": "べる"
+                  }
+                ]
+              }
+            },
+            {
+              "target": "汉语",
+              "native": "Chinese (language)",
+              "emoji": "🀄",
+              "reading": {
+                "pinyin": "hàn yǔ"
+              }
+            },
+            {
+              "target": "신라",
+              "native": "Silla (the kingdom)",
+              "emoji": "👑",
+              "reading": {
+                "rr": "silla"
+              }
+            },
+            {
+              "target": "학여울",
+              "native": "Hangnyeoul (a place)",
+              "emoji": "📍",
+              "reading": {
+                "rr": "hangnyeoul"
+              }
+            }
+          ],
+          "lessons": [
+            {
+              "id": "xc-en:u0-l0",
+              "title": "Readings",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "xc-en:u0-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "学生",
+                  "options": [
+                    {
+                      "text": "student",
+                      "emoji": "🧑‍🎓"
+                    },
+                    {
+                      "text": "to eat",
+                      "emoji": "🍚"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "xc:w:gakusei"
+                  ]
+                },
+                {
+                  "type": "match",
+                  "id": "xc-en:u0-l0-e1",
+                  "pairs": [
+                    {
+                      "target": "汉语",
+                      "native": "Chinese (language)"
+                    },
+                    {
+                      "target": "신라",
+                      "native": "Silla (the kingdom)"
+                    },
+                    {
+                      "target": "학여울",
+                      "native": "Hangnyeoul (a place)"
+                    }
+                  ],
+                  "gradeTargets": [
+                    "xc:w:hanyu",
+                    "xc:w:silla",
+                    "xc:w:hangnyeoul"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

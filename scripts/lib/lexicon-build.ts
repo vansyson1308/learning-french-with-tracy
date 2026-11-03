@@ -35,6 +35,7 @@ import { existsSync } from "fs";
 
 import type { RichLexicon, SourceManifest, SourceRegistry } from "../../content/schema";
 import { foldLigatures } from "../../src/lib/languages/base";
+import { displayReading } from "./cjk-readings/validate";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { localizeLexeme } from "./native-text";
 import { manifestView } from "./lexicon-etl/manifest";
@@ -150,6 +151,10 @@ export type LexiconIndexEntry = {
   topic?: string;
   band?: string;
   pronunciation?: { value: string; notation: string };
+  /** P4b stage 4: the lexeme's reading for display (ja kana + furigana, zh pinyin, ko rr). */
+  reading?: { kana?: string; furigana?: { base: string; ruby?: string }[]; pinyin?: string; rr?: string };
+  /** P4b stage 4 (zh): the traditional spelling beside the simplified surface (src/lib/languages binds it as a variant). */
+  traditional?: string;
   /** First example keyed by language code: `{ [targetCode]: …, [nativeCode]: … }`. */
   example?: Record<string, string>;
   confusables?: string[];
@@ -190,6 +195,11 @@ export function buildRuntimeIndex(
       if (lex.frequency !== undefined) entry.band = lex.frequency.band;
       if (lex.pronunciation !== undefined) {
         entry.pronunciation = { value: lex.pronunciation.value, notation: lex.pronunciation.notation };
+      }
+      if (lex.reading !== undefined) {
+        const shown = displayReading(lex.reading);
+        if (shown !== undefined) entry.reading = shown;
+        if (lex.reading.traditional !== undefined) entry.traditional = lex.reading.traditional;
       }
       if (lex.examples.length > 0) {
         entry.example = { [targetCode]: lex.examples[0].target, [nativeCode]: lex.examples[0].native };
@@ -242,6 +252,8 @@ export function buildWebFallback(
         ...(lex.pronunciation !== undefined
           ? { pronunciation: { value: lex.pronunciation.value, notation: lex.pronunciation.notation } }
           : {}),
+        ...(lex.reading !== undefined && displayReading(lex.reading) !== undefined ? { reading: displayReading(lex.reading) } : {}),
+        ...(lex.reading?.traditional !== undefined ? { traditional: lex.reading.traditional } : {}),
         examples: lex.examples.map((ex) => ({ [targetCode]: ex.target, [nativeCode]: ex.native, source: ex.source })),
         ...(lex.relations?.confusables !== undefined ? { confusables: [...lex.relations.confusables] } : {}),
         sourceRefs: lex.sourceRefs.map((r) => ({ source: r.source, ...(r.key !== undefined ? { key: r.key } : {}) })),

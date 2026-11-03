@@ -105,7 +105,7 @@
     {
       "id": "synthetic-test-language",
       "name": "Synthetic test language (xx)",
-      "kind": "test fixtures — a two-word invented language that exercises every validator and the compiler for a non-French target (P1c); never shipped",
+      "kind": "test fixtures — a two-word invented language that exercises every validator and the compiler for a non-French target (P1c), and its CJK variant xc (P4b stage 4: five words with kana/furigana, pinyin and Revised Romanization readings); never shipped",
       "license": "original",
       "url": "https://github.com/vansyson1308/learning-french-with-tracy/tree/main/content/xx",
       "attribution": "Original project test fixtures; test-only, excluded from the app bundle, catalog, audio baseline and attributions.",
@@ -113,7 +113,9 @@
       "covers": [
         "content/xx/",
         "content/courses/xx-en.json",
-        "assets/audio/xx-reception/"
+        "assets/audio/xx-reception/",
+        "content/xc/",
+        "content/courses/xc-en.json"
       ],
       "notes": "Marked testOnly: provenance is recorded like any source, but nothing it covers reaches learners.",
       "testOnly": true
@@ -274,6 +276,20 @@
       "notes": "P3a: kana readings and English senses for the Japanese pool (readings.json). The EDRDG requires the acknowledgement on a separate About/Sources screen — the Licences screen lists this entry."
     },
     {
+      "id": "jmdict-furigana",
+      "name": "JmdictFurigana — furigana for JMdict entries (Doublevil)",
+      "kind": "dictionary data (kana reading and furigana segments per JMdict text/reading pair)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/Doublevil/JmdictFurigana",
+      "attribution": "Furigana from JmdictFurigana by Doublevil, built from the JMdict dictionary files of the Electronic Dictionary Research and Development Group and distributed under the same licence as JMdict, CC BY-SA 4.0 (https://www.edrdg.org/edrdg/licence.html).",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/ja/lexicon/readings-manifest.json",
+        "content/ja/lexicon/derived/lexeme-readings.json"
+      ],
+      "notes": "P4b stage 4: kana + furigana per Japanese lemma (scripts/cjk-readings.ts). Release 2.3.1+2026-10-25, JmdictFurigana.json pinned by sha256 57c2afa7d153d42df97811d4a44865d10fb9104f6a7bacbbe32a0bf0c38e5abc (34,760,497 bytes) in content/ja/lexicon/readings-manifest.json; the file is never committed, only the derived readings of the pool's lemmas. The README states the data is distributed under the same licence as JMdict (CC BY-SA 4.0); the repository's code is MIT and is not used."
+    },
+    {
       "id": "cedict",
       "name": "CC-CEDICT (MDBG) — Chinese–English dictionary",
       "kind": "dictionary (pinyin, senses)",
@@ -284,7 +300,7 @@
       "covers": [
         "content/zh/lexicon/"
       ],
-      "notes": "P3a: pinyin (tone marks derived from the numbered export) for readings.json."
+      "notes": "P3a: pinyin (tone marks derived from the numbered export) for readings.json. P4b stage 4: tone-marked pinyin per syllable and the traditional spelling per Chinese lemma (content/zh/lexicon/derived/lexeme-readings.json, scripts/cjk-readings.ts) from a 2026-11-03 retrieval pinned by sha256 e203bbf4a28c2ab54762e9b1fb813e53aa9112939704e71a5117f3b3555a46cb (3,983,033 bytes) in content/zh/lexicon/readings-manifest.json; the export is never committed."
     },
     {
       "id": "cefr-j",

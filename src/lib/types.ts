@@ -1,10 +1,22 @@
 /** Content pack types — keep in sync with content/schema.ts */
 
+/** P4b: one furigana segment — `ruby` (kana) over the kanji run `base`; absent on kana runs. */
+export type FuriganaSegment = { base: string; ruby?: string };
+
+/** P4b: a word's reading, precomputed at build time from its lexeme (ja kana + furigana, zh pinyin, ko Revised Romanization). */
+export type WordReading = {
+  kana?: string;
+  furigana?: FuriganaSegment[];
+  pinyin?: string;
+  rr?: string;
+};
+
 export type Word = {
   target: string;
   native: string;
   emoji: string;
   romanization?: string;
+  reading?: WordReading;
 };
 
 export type SelectExercise = {

@@ -1235,3 +1235,27 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/hanviet/ja.json
 - compile: new      src/content/hanviet/ko.json
 - compile: new      src/content/hanviet/zh.json
+
+## 2026-11-03 — P4b CJK readings
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: changed  src/content/test-only/artifacts/index.ts
+- compile: changed  src/content/test-only/course-bundles.ts
+- compile: changed  src/content/test-only/course-loaders.ts
+- compile: changed  src/content/test-only/course-profiles.json
+- compile: changed  src/content/test-only/flags.ts
+- compile: changed  src/content/test-only/ids/index.ts
+- compile: changed  src/content/test-only/lexicon/db-assets.ts
+- compile: changed  src/content/test-only/packs/index.ts
+- compile: new      content/reports/xc/context-coverage.json
+- compile: new      content/reports/xc/lexicon-quality.json
+- compile: new      content/reports/xc/lexicon-source-audit.json
+- compile: new      src/content/test-only/artifacts/xc-en.ts
+- compile: new      src/content/test-only/courses/xc-en.ts
+- compile: new      src/content/test-only/ids/xc.json
+- compile: new      src/content/test-only/lexicon/xc-daily.json
+- compile: new      src/content/test-only/lexicon/xc-index.json
+- compile: new      src/content/test-only/lexicon/xc-web-fallback.json
+- compile: new      src/content/test-only/packs/xc-en.json
+- compile: new      lexicon-db:xc:xc-lexicon-v3-7d3e6ca9534c6cc0.db

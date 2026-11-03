@@ -26,12 +26,14 @@ export const BUILD_LANGUAGES: Record<string, BuildLanguage> = {
   it: { code: "it", recognitionLocale: "it-IT", ttsLocale: "it-IT", script: "latin", flagAsset: "it" },
   // The inherited Portuguese pack is Brazilian Portuguese (content and voice).
   pt: { code: "pt", recognitionLocale: "pt-BR", ttsLocale: "pt-BR", script: "latin", flagAsset: "br" },
-  ja: { code: "ja", recognitionLocale: "ja-JP", ttsLocale: "ja-JP", script: "japanese", flagAsset: "jp" },
-  ko: { code: "ko", recognitionLocale: "ko-KR", ttsLocale: "ko-KR", script: "hangul", flagAsset: "kr" },
-  zh: { code: "zh", recognitionLocale: "zh-CN", ttsLocale: "zh-CN", script: "han", flagAsset: "cn" },
+  ja: { code: "ja", recognitionLocale: "ja-JP", ttsLocale: "ja-JP", script: "japanese", flagAsset: "jp", readings: ["kana"] },
+  ko: { code: "ko", recognitionLocale: "ko-KR", ttsLocale: "ko-KR", script: "hangul", flagAsset: "kr", readings: ["rr"] },
+  zh: { code: "zh", recognitionLocale: "zh-CN", ttsLocale: "zh-CN", script: "han", flagAsset: "cn", readings: ["pinyin"] },
   vi: { code: "vi", recognitionLocale: "vi-VN", ttsLocale: "vi-VN", script: "latin", flagAsset: "vn" },
   /** Synthetic test language (test-only courses). */
   xx: { code: "xx", recognitionLocale: "xx-XX", ttsLocale: "xx-XX", script: "latin", flagAsset: "xx" },
+  /** P4b stage 4: synthetic CJK test variant of xx (test-only course xc-en) — one lexeme per reading notation. */
+  xc: { code: "xc", recognitionLocale: "xc-XC", ttsLocale: "xc-XC", script: "han", flagAsset: "xx", readings: ["kana", "pinyin", "rr"] },
 };
 
 export function buildLanguage(code: string): BuildLanguage {

@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "language": "xc",
+  "lexemes": [
+    {
+      "id": "xc:w:gakusei",
+      "surface": "学生",
+      "lemma": "学生",
+      "lookupForm": "学生",
+      "partOfSpeech": "noun",
+      "glosses": { "en": "student" },
+      "pronunciation": { "value": "がくせい", "notation": "kana", "source": "synthetic-test-language" },
+      "reading": {
+        "kana": "がくせい",
+        "furigana": [
+          { "base": "学", "ruby": "がく" },
+          { "base": "生", "ruby": "せい" }
+        ]
+      },
+      "topic": "people",
+      "examples": [
+        {
+          "target": "学生です。",
+          "translations": { "en": "I am a student." },
+          "source": "synthetic-test-language"
+        }
+      ],
+      "sourceRefs": [{ "source": "synthetic-test-language" }]
+    },
+    {
+      "id": "xc:w:taberu",
+      "surface": "食べる",
+      "lemma": "食べる",
+      "lookupForm": "食べる",
+      "partOfSpeech": "verb",
+      "glosses": { "en": "to eat" },
+      "pronunciation": { "value": "たべる", "notation": "kana", "source": "synthetic-test-language" },
+      "reading": {
+        "kana": "たべる",
+        "furigana": [
+          { "base": "食", "ruby": "た" },
+          { "base": "べる" }
+        ]
+      },
+      "topic": "food",
+      "examples": [
+        {
+          "target": "パンを食べる。",
+          "translations": { "en": "I eat bread." },
+          "source": "synthetic-test-language"
+        }
+      ],
+      "sourceRefs": [{ "source": "synthetic-test-language" }]
+    },
+    {
+      "id": "xc:w:hanyu",
+      "surface": "汉语",
+      "lemma": "汉语",
+      "lookupForm": "汉语",
+      "partOfSpeech": "noun",
+      "glosses": { "en": "Chinese (language)" },
+      "pronunciation": { "value": "hàn yǔ", "notation": "pinyin", "source": "synthetic-test-language" },
+      "reading": { "pinyin": "hàn yǔ", "traditional": "漢語" },
+      "topic": "ideas",
+      "examples": [
+        {
+          "target": "我学汉语。",
+          "translations": { "en": "I study Chinese." },
+          "source": "synthetic-test-language"
+        }
+      ],
+      "sourceRefs": [{ "source": "synthetic-test-language" }]
+    },
+    {
+      "id": "xc:w:silla",
+      "surface": "신라",
+      "lemma": "신라",
+      "lookupForm": "신라",
+      "partOfSpeech": "noun",
+      "glosses": { "en": "Silla (the kingdom)" },
+      "pronunciation": { "value": "silla", "notation": "rr", "source": "synthetic-test-language" },
+      "reading": { "rr": "silla" },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "신라는 왕국이었다.",
+          "translations": { "en": "Silla was a kingdom." },
+          "source": "synthetic-test-language"
+        }
+      ],
+      "sourceRefs": [{ "source": "synthetic-test-language" }]
+    },
+    {
+      "id": "xc:w:hangnyeoul",
+      "surface": "학여울",
+      "lemma": "학여울",
+      "lookupForm": "학여울",
+      "partOfSpeech": "noun",
+      "glosses": { "en": "Hangnyeoul (a place)" },
+      "pronunciation": { "value": "hangnyeoul", "notation": "rr", "source": "synthetic-test-language" },
+      "reading": { "rr": "hangnyeoul", "rrSpelling": "학+여울" },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "학여울에 가요.",
+          "translations": { "en": "I am going to Hangnyeoul." },
+          "source": "synthetic-test-language"
+        }
+      ],
+      "sourceRefs": [{ "source": "synthetic-test-language" }]
+    }
+  ]
+}

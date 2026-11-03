@@ -31,6 +31,12 @@ export type BuildLanguage = {
    * language's speller is verified — the rule then does not apply.
    */
   numberDrill?: { accepted(n: number): string[]; expected(n: number): string };
+  /**
+   * P4b stage 4: the reading notations a lexeme of this language must carry
+   * (ja kana, zh pinyin, ko rr; the synthetic CJK test language all three,
+   * one per lexeme by its pronunciation). Absent = no reading required.
+   */
+  readings?: readonly ("kana" | "pinyin" | "rr")[];
 };
 
 export type ArticleGender = "masculine" | "feminine" | "neuter";

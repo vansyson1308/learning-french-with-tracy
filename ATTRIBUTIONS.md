@@ -15,7 +15,7 @@ provenance registry. It supplements — and never replaces — the repository's
 
 Pinyin and English senses from CC-CEDICT, a community-maintained free Chinese–English dictionary published by MDBG under CC BY-SA 4.0.
 
-> P3a: pinyin (tone marks derived from the numbered export) for readings.json.
+> P3a: pinyin (tone marks derived from the numbered export) for readings.json. P4b stage 4: tone-marked pinyin per syllable and the traditional spelling per Chinese lemma (content/zh/lexicon/derived/lexeme-readings.json, scripts/cjk-readings.ts) from a 2026-11-03 retrieval pinned by sha256 e203bbf4a28c2ab54762e9b1fb813e53aa9112939704e71a5117f3b3555a46cb (3,983,033 bytes) in content/zh/lexicon/readings-manifest.json; the export is never committed.
 
 ## CEFR-J Vocabulary Profile 1.5 (Tono Lab, TUFS) via Open Language Profiles
 
@@ -71,6 +71,17 @@ HSK 3.0 level labels via ivankra/hsk30 (MIT) — a transcription of the 2021 sta
 This app uses the JMdict dictionary files. These files are the property of the Electronic Dictionary Research and Development Group, and are used in conformance with the Group's licence (https://www.edrdg.org/edrdg/licence.html), CC BY-SA 4.0.
 
 > P3a: kana readings and English senses for the Japanese pool (readings.json). The EDRDG requires the acknowledgement on a separate About/Sources screen — the Licences screen lists this entry.
+
+## JmdictFurigana — furigana for JMdict entries (Doublevil)
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://github.com/Doublevil/JmdictFurigana
+- **What:** dictionary data (kana reading and furigana segments per JMdict text/reading pair)
+- **Retrieved:** 2026-11-03
+
+Furigana from JmdictFurigana by Doublevil, built from the JMdict dictionary files of the Electronic Dictionary Research and Development Group and distributed under the same licence as JMdict, CC BY-SA 4.0 (https://www.edrdg.org/edrdg/licence.html).
+
+> P4b stage 4: kana + furigana per Japanese lemma (scripts/cjk-readings.ts). Release 2.3.1+2026-10-25, JmdictFurigana.json pinned by sha256 57c2afa7d153d42df97811d4a44865d10fb9104f6a7bacbbe32a0bf0c38e5abc (34,760,497 bytes) in content/ja/lexicon/readings-manifest.json; the file is never committed, only the derived readings of the pool's lemmas. The README states the data is distributed under the same licence as JMdict (CC BY-SA 4.0); the repository's code is MIT and is not used.
 
 ## kaikki.org Wiktextract (English Wiktionary edition)
 

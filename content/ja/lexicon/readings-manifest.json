@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "language": "ja",
+  "generator": "scripts/cjk-readings.ts",
+  "notation": "kana",
+  "sources": [
+    {
+      "id": "jmdict-furigana",
+      "name": "JmdictFurigana 2.3.1+2026-10-25 (furigana for JMdict entries)",
+      "license": "CC-BY-SA-4.0",
+      "licenceStatement": "README of https://github.com/Doublevil/JmdictFurigana (read 2026-11-03): \"This resource is distributed under the same licence as JMDict (Creative Commons Attribution-ShareAlike Licence).\" JMdict's licence (https://www.edrdg.org/edrdg/licence.html, read 2026-11-03): \"The dictionary files are made available under a Creative Commons Attribution-ShareAlike Licence (V4.0).\" The repository's code is MIT; only the data file is used.",
+      "url": "https://github.com/Doublevil/JmdictFurigana/releases/download/2.3.1%2B2026-10-25/JmdictFurigana.json",
+      "retrievedAt": "2026-11-03",
+      "sha256": "57c2afa7d153d42df97811d4a44865d10fb9104f6a7bacbbe32a0bf0c38e5abc",
+      "bytes": 34760497
+    }
+  ],
+  "method": "kana + furigana per candidate-pool lemma from JmdictFurigana (one entry per JMdict text/reading pair). A reading is confirmed when the pool's kana (derived/readings.json: kaikki, else JMdict 2026-10-14) is one of JMdict's readings of the lemma, or, without pool kana, when JMdict has exactly one reading; kana-only lemmas are their own reading. Everything else is listed in `unresolved` with its reason. Pitch accent is not derived yet: the pool's kaikki extraction does not keep it (optional per P4b; needs a re-scan of the pinned kaikki dump)."
+}

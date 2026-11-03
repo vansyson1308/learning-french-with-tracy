@@ -44,6 +44,7 @@ import { courseLangOf, demotePendingAudio, pendingAudioLangs } from "./audio-pen
 import { examTrackPaths } from "./exam-bank";
 import { compileDailyWordsArtifact, deriveSyllabus, loadLaterSyllabus, loadSyllabus, loadTopicUnits, validateLaterSyllabus, validateSyllabusData, validateTopicUnits } from "./syllabus";
 import { validateEnglishFields } from "./english-fields";
+import { validateCjkPoolReadings } from "./cjk-readings/pool";
 import { compileHanVietFiles, validateHanViet } from "./hanviet";
 import { compileContextCoverageReport, computeContextCoverage, contextGateErrors, contextGatePath, type ContextGate } from "./context-coverage";
 import { varietyErrors } from "./variety";
@@ -593,6 +594,8 @@ export function validateAllSources(): string[] {
   errors.push(...validateEnglishFields());
   // P4b stage 2 (QC 2026-11-03 §2): Hán-Việt tables against Unihan.
   errors.push(...validateHanViet());
+  // P4b stage 4: every ja/zh/ko candidate-pool entry has a confirmed reading or a listed reason.
+  errors.push(...validateCjkPoolReadings());
   return errors;
 }
 

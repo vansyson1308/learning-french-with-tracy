@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "language": "ko",
+  "generator": "scripts/cjk-readings.ts",
+  "notation": "rr",
+  "sources": [],
+  "method": "Revised Romanization of every candidate-pool lemma by the project's own rule set (scripts/lib/cjk-readings/korean-rr.ts, written from the official rule text of the National Institute of Korean Language, https://www.korean.go.kr/front_eng/roman/roman_01.do; nouns keep ㅎ after ㄱ ㄷ ㅂ). No data source. A reading is confirmed when the rule output agrees, letters only, with the lemma's romanization in kaikki (Wiktionary, derived/readings.json); when the plain spelling disagrees, a single `+` compound boundary (ㄴ insertion, [ㄴㄴ]) is tried and kept as `rrSpelling` when exactly one placement agrees. Everything else is listed in `unresolved` with its reason."
+}
