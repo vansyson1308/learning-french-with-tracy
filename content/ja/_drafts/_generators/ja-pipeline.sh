@@ -22,6 +22,8 @@ ingest() {
 }
 
 python -I "$G/ja-lex.py" .
+# The kana primer (session 3) is language-level content like the lexicon: written to content/ja/primer/ directly.
+python -I "$G/ja-primer.py" .
 # Full replacement, so a record the generators dropped does not linger. The draft pack is rebuilt from the units.
 rm -f "$STAGED/content/ja/assessment/objectives.json" "$STAGED/content/courses/ja-vi.json" content/ja/_drafts/pack.json
 rm -f "$STAGED/content/ja/pedagogy/concepts.json"

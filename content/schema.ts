@@ -696,6 +696,13 @@ export const CourseProfileOverrideSchema = z.strictObject({
    * Default: practice only — evidence requires the target script.
    */
   readingInputIsProduction: z.boolean().optional(),
+  /**
+   * P4c: show a Hepburn romaji line under Japanese target text until the
+   * learner passes the kana primer's checkpoint (persisted `primerPassed`).
+   * Only for a target whose script primer has kana tables and a checkpoint
+   * (validated in scripts/lib/pipeline.ts romajiUntilPrimerErrors).
+   */
+  romajiUntilPrimer: z.boolean().optional(),
   enabled: z
     .strictObject({
       fsrs: z.boolean().optional(),
@@ -931,6 +938,30 @@ export const HangulSectionSchema = z.strictObject({
   notes: z.array(PrimerTextSchema).optional(),
 });
 
+const checkpointItemId = z.string().regex(/^c[0-9]{2}$/);
+const checkpointOptions = z.array(z.string().min(1)).min(2).max(4);
+
+/**
+ * P4c: the primer's checkpoint (kana primers only). Two item kinds: read a
+ * kana and pick its rōmaji, or hear a sound and pick the kana (minimal pairs
+ * are sound items with two options). Passing (`passMark` correct) is the only
+ * thing it records: the course's persisted `primerPassed`.
+ */
+export const PrimerCheckpointSchema = z.strictObject({
+  title: PrimerTextSchema,
+  intro: PrimerTextSchema,
+  passMark: z.number().int().min(1),
+  items: z
+    .array(
+      z.discriminatedUnion("kind", [
+        z.strictObject({ kind: z.literal("kanaToRomaji"), id: checkpointItemId, kana: z.string().min(1), options: checkpointOptions, correct: z.number().int().min(0) }),
+        z.strictObject({ kind: z.literal("soundToKana"), id: checkpointItemId, audio: PrimerAudioSchema, options: checkpointOptions, correct: z.number().int().min(0) }),
+      ])
+    )
+    .min(10),
+});
+export type PrimerCheckpoint = z.infer<typeof PrimerCheckpointSchema>;
+
 export const ScriptPrimerSchema = z.strictObject({
   version: z.literal(1),
   language: z.enum(["ja", "zh", "ko"]),
@@ -939,6 +970,7 @@ export const ScriptPrimerSchema = z.strictObject({
   title: PrimerTextSchema,
   intro: PrimerTextSchema,
   sections: z.array(z.discriminatedUnion("kind", [KanaTableSectionSchema, TonesSectionSchema, StrokesSectionSchema, HangulSectionSchema])).min(1),
+  checkpoint: PrimerCheckpointSchema.optional(),
 });
 export type ScriptPrimer = z.infer<typeof ScriptPrimerSchema>;
 

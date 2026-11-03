@@ -1275,3 +1275,16 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/primer/zh.json
 - compile: new      lexicon-db:xc:xc-lexicon-v3-c01fdeb190986778.db
 - compile: missing  lexicon-db:xc:xc-lexicon-v3-7d3e6ca9534c6cc0.db
+
+## 2026-11-03 — P4c persist v9 (primerPassed): the migration runtime goldens only
+
+Persisted-shape change next to its numbered migration (src/lib/persistence/migrations.ts v8 → v9): every persona's
+migrated state gains `"primerPassed": {}`, the envelope's persistVersion and the golden's toVersion become 9. Nothing
+else in the five files moved; no French learner value changed. Written with GOLDEN_UPDATE=1 on
+migrations.golden.test.ts alone — the compile manifest was not re-blessed (the ja drift waits for the ja-vi promote).
+
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json

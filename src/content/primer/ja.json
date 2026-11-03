@@ -7,20 +7,20 @@
     "en": "Getting started with kana"
   },
   "intro": {
-    "vi": "Tiếng Nhật dùng ba loại chữ cùng lúc: hiragana (cho từ thuần Nhật và đuôi ngữ pháp), katakana (cho từ mượn tiếng nước ngoài) và kanji (chữ Hán). Mỗi chữ kana ghi trọn một âm tiết chứ không phải một chữ cái, nên học thuộc bảng kana là đọc được mọi từ.",
-    "en": "Japanese mixes three scripts: hiragana (native words and grammatical endings), katakana (loanwords) and kanji (Chinese characters). Each kana stands for a whole syllable, not a single letter, so once you know the kana tables you can read any word aloud."
+    "vi": "Tiếng Nhật dùng ba loại chữ cùng lúc: hiragana (cho từ thuần Nhật và đuôi ngữ pháp), katakana (cho từ mượn tiếng nước ngoài) và kanji (chữ Hán). Mỗi chữ kana ghi trọn một âm tiết chứ không phải một chữ cái, nên học thuộc bảng kana là đọc được mọi từ. Bấm vào một chữ để nghe.",
+    "en": "Japanese mixes three scripts: hiragana (native words and grammatical endings), katakana (loanwords) and kanji (Chinese characters). Each kana stands for a whole syllable, not a single letter, so once you know the kana tables you can read any word aloud. Tap a kana to hear it."
   },
   "sections": [
     {
       "kind": "kanaTable",
-      "id": "hiragana-a-k",
+      "id": "hiragana-basic",
       "title": {
-        "vi": "Hiragana: năm nguyên âm và hàng K",
-        "en": "Hiragana: the five vowels and the K row"
+        "vi": "Hiragana: bảng cơ bản",
+        "en": "Hiragana: the basic table"
       },
       "explanation": {
-        "vi": "Năm nguyên âm a, i, u, e, o là nền của cả bảng. Đọc ngắn, gọn: あ là «a», い là «i», う gần «ư» (môi không tròn), え là «ê», お là «ô». Hàng K ghép phụ âm k với từng nguyên âm: か ka, き ki, く ku, け ke, こ ko — đọc gần như «ca, ki, cư, kê, cô».",
-        "en": "The five vowels a, i, u, e, o are the base of the whole table. Keep them short; say う with unrounded lips. The K row joins k to each vowel: か ka, き ki, く ku, け ke, こ ko."
+        "vi": "Năm nguyên âm a, i, u, e, o là nền của cả bảng. Đọc ngắn, gọn: あ là «a», い là «i», う gần «ư» (môi không tròn), え là «ê», お là «ô». Mỗi hàng ghép một phụ âm với năm nguyên âm: か ka, き ki, く ku, け ke, こ ko. Vài chữ không theo đúng hàng: し shi, ち chi, つ tsu, ふ fu. ん là âm «n» đứng một mình ở cuối âm tiết.",
+        "en": "The five vowels a, i, u, e, o are the base of the whole table; keep them short and say う with unrounded lips. Each row joins one consonant to the five vowels: か ka, き ki, く ku, け ke, こ ko. A few kana break the pattern: し shi, ち chi, つ tsu, ふ fu. ん is a syllable-final n on its own."
       },
       "script": "hiragana",
       "columns": [
@@ -120,29 +120,1058 @@
               }
             }
           ]
+        },
+        {
+          "consonant": "s",
+          "cells": [
+            {
+              "kana": "さ",
+              "romaji": "sa",
+              "audio": {
+                "say": "さ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "し",
+              "romaji": "shi",
+              "audio": {
+                "say": "し",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "す",
+              "romaji": "su",
+              "audio": {
+                "say": "す",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "せ",
+              "romaji": "se",
+              "audio": {
+                "say": "せ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "そ",
+              "romaji": "so",
+              "audio": {
+                "say": "そ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "t",
+          "cells": [
+            {
+              "kana": "た",
+              "romaji": "ta",
+              "audio": {
+                "say": "た",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ち",
+              "romaji": "chi",
+              "audio": {
+                "say": "ち",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "つ",
+              "romaji": "tsu",
+              "audio": {
+                "say": "つ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "て",
+              "romaji": "te",
+              "audio": {
+                "say": "て",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "と",
+              "romaji": "to",
+              "audio": {
+                "say": "と",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "n",
+          "cells": [
+            {
+              "kana": "な",
+              "romaji": "na",
+              "audio": {
+                "say": "な",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "に",
+              "romaji": "ni",
+              "audio": {
+                "say": "に",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぬ",
+              "romaji": "nu",
+              "audio": {
+                "say": "ぬ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ね",
+              "romaji": "ne",
+              "audio": {
+                "say": "ね",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "の",
+              "romaji": "no",
+              "audio": {
+                "say": "の",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "h",
+          "cells": [
+            {
+              "kana": "は",
+              "romaji": "ha",
+              "audio": {
+                "say": "は",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ひ",
+              "romaji": "hi",
+              "audio": {
+                "say": "ひ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ふ",
+              "romaji": "fu",
+              "audio": {
+                "say": "ふ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "へ",
+              "romaji": "he",
+              "audio": {
+                "say": "へ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ほ",
+              "romaji": "ho",
+              "audio": {
+                "say": "ほ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "m",
+          "cells": [
+            {
+              "kana": "ま",
+              "romaji": "ma",
+              "audio": {
+                "say": "ま",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "み",
+              "romaji": "mi",
+              "audio": {
+                "say": "み",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "む",
+              "romaji": "mu",
+              "audio": {
+                "say": "む",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "め",
+              "romaji": "me",
+              "audio": {
+                "say": "め",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "も",
+              "romaji": "mo",
+              "audio": {
+                "say": "も",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "y",
+          "cells": [
+            {
+              "kana": "や",
+              "romaji": "ya",
+              "audio": {
+                "say": "や",
+                "status": "pending"
+              }
+            },
+            null,
+            {
+              "kana": "ゆ",
+              "romaji": "yu",
+              "audio": {
+                "say": "ゆ",
+                "status": "pending"
+              }
+            },
+            null,
+            {
+              "kana": "よ",
+              "romaji": "yo",
+              "audio": {
+                "say": "よ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "r",
+          "cells": [
+            {
+              "kana": "ら",
+              "romaji": "ra",
+              "audio": {
+                "say": "ら",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "り",
+              "romaji": "ri",
+              "audio": {
+                "say": "り",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "る",
+              "romaji": "ru",
+              "audio": {
+                "say": "る",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "れ",
+              "romaji": "re",
+              "audio": {
+                "say": "れ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ろ",
+              "romaji": "ro",
+              "audio": {
+                "say": "ろ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "w",
+          "cells": [
+            {
+              "kana": "わ",
+              "romaji": "wa",
+              "audio": {
+                "say": "わ",
+                "status": "pending"
+              }
+            },
+            null,
+            null,
+            null,
+            {
+              "kana": "を",
+              "romaji": "o",
+              "audio": {
+                "say": "を",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "n",
+          "cells": [
+            {
+              "kana": "ん",
+              "romaji": "n",
+              "audio": {
+                "say": "ん",
+                "status": "pending"
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ]
         }
       ],
       "notes": [
         {
-          "vi": "Thêm dấu ゛ (dakuten) thì k thành g: か ka → が ga, き ki → ぎ gi.",
-          "en": "Adding the mark ゛ (dakuten) voices k into g: か ka → が ga, き ki → ぎ gi."
+          "vi": "Ba chữ đọc khác khi làm trợ từ: は đọc «wa» (わたしは), へ đọc «ê» (がっこうへ), を đọc «ô» (パンを).",
+          "en": "Three kana are read differently as particles: は is «wa» (わたしは), へ is «e» (がっこうへ), を is «o» (パンを)."
         },
         {
-          "vi": "Trong tiếng Nhật, độ dài nguyên âm làm đổi nghĩa: おばさん (cô, dì) khác おばあさん (bà).",
-          "en": "Vowel length changes meaning: おばさん (aunt) is not おばあさん (grandmother)."
+          "vi": "Chữ ん đứng trước nguyên âm thì tách âm: きんえん đọc «kin-en», khác きねん «ki-nen».",
+          "en": "ん before a vowel keeps its own beat: きんえん is kin'en, not きねん kinen."
         }
       ]
     },
     {
       "kind": "kanaTable",
-      "id": "katakana-a-k",
+      "id": "hiragana-dakuten",
+      "title": {
+        "vi": "Hiragana: dấu ゛ và ゜",
+        "en": "Hiragana: the marks ゛ and ゜"
+      },
+      "explanation": {
+        "vi": "Hai vạch ゛ (dakuten) làm phụ âm đục hơn: k thành g, s thành z, t thành d, h thành b. Vòng tròn nhỏ ゜ (handakuten) chỉ đi với hàng h: h thành p. じ và ぢ cùng đọc «ji», ず và づ cùng đọc «zu»; thường gặp じ và ず.",
+        "en": "Two strokes ゛ (dakuten) voice the consonant: k becomes g, s becomes z, t becomes d, h becomes b. The small circle ゜ (handakuten) goes only on the h row: h becomes p. じ and ぢ are both «ji», ず and づ both «zu»; じ and ず are the usual ones."
+      },
+      "script": "hiragana",
+      "columns": [
+        "a",
+        "i",
+        "u",
+        "e",
+        "o"
+      ],
+      "rows": [
+        {
+          "consonant": "g",
+          "cells": [
+            {
+              "kana": "が",
+              "romaji": "ga",
+              "audio": {
+                "say": "が",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぎ",
+              "romaji": "gi",
+              "audio": {
+                "say": "ぎ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぐ",
+              "romaji": "gu",
+              "audio": {
+                "say": "ぐ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "げ",
+              "romaji": "ge",
+              "audio": {
+                "say": "げ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ご",
+              "romaji": "go",
+              "audio": {
+                "say": "ご",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "z",
+          "cells": [
+            {
+              "kana": "ざ",
+              "romaji": "za",
+              "audio": {
+                "say": "ざ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "じ",
+              "romaji": "ji",
+              "audio": {
+                "say": "じ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ず",
+              "romaji": "zu",
+              "audio": {
+                "say": "ず",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぜ",
+              "romaji": "ze",
+              "audio": {
+                "say": "ぜ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぞ",
+              "romaji": "zo",
+              "audio": {
+                "say": "ぞ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "d",
+          "cells": [
+            {
+              "kana": "だ",
+              "romaji": "da",
+              "audio": {
+                "say": "だ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぢ",
+              "romaji": "ji",
+              "audio": {
+                "say": "ぢ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "づ",
+              "romaji": "zu",
+              "audio": {
+                "say": "づ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "で",
+              "romaji": "de",
+              "audio": {
+                "say": "で",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ど",
+              "romaji": "do",
+              "audio": {
+                "say": "ど",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "b",
+          "cells": [
+            {
+              "kana": "ば",
+              "romaji": "ba",
+              "audio": {
+                "say": "ば",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "び",
+              "romaji": "bi",
+              "audio": {
+                "say": "び",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぶ",
+              "romaji": "bu",
+              "audio": {
+                "say": "ぶ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "べ",
+              "romaji": "be",
+              "audio": {
+                "say": "べ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぼ",
+              "romaji": "bo",
+              "audio": {
+                "say": "ぼ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "p",
+          "cells": [
+            {
+              "kana": "ぱ",
+              "romaji": "pa",
+              "audio": {
+                "say": "ぱ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぴ",
+              "romaji": "pi",
+              "audio": {
+                "say": "ぴ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぷ",
+              "romaji": "pu",
+              "audio": {
+                "say": "ぷ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぺ",
+              "romaji": "pe",
+              "audio": {
+                "say": "ぺ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぽ",
+              "romaji": "po",
+              "audio": {
+                "say": "ぽ",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "kanaTable",
+      "id": "hiragana-yoon",
+      "title": {
+        "vi": "Hiragana: âm ghép với ゃ ゅ ょ nhỏ",
+        "en": "Hiragana: combined sounds with small ゃ ゅ ょ"
+      },
+      "explanation": {
+        "vi": "Một chữ hàng i (き, し, ち…) cộng với ゃ, ゅ, ょ viết nhỏ thành một âm tiết: きゃ «kya», しゅ «shu», ちょ «cho». Viết nhỏ hay viết to làm đổi nghĩa: びょういん (bệnh viện) khác びよういん (tiệm làm tóc).",
+        "en": "An i-row kana (き, し, ち…) plus a small ゃ, ゅ or ょ makes one syllable: きゃ kya, しゅ shu, ちょ cho. Small or full size changes the word: びょういん (hospital) is not びよういん (hair salon)."
+      },
+      "script": "hiragana",
+      "columns": [
+        "ya",
+        "yu",
+        "yo"
+      ],
+      "rows": [
+        {
+          "consonant": "ky",
+          "cells": [
+            {
+              "kana": "きゃ",
+              "romaji": "kya",
+              "audio": {
+                "say": "きゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "きゅ",
+              "romaji": "kyu",
+              "audio": {
+                "say": "きゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "きょ",
+              "romaji": "kyo",
+              "audio": {
+                "say": "きょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "sh",
+          "cells": [
+            {
+              "kana": "しゃ",
+              "romaji": "sha",
+              "audio": {
+                "say": "しゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "しゅ",
+              "romaji": "shu",
+              "audio": {
+                "say": "しゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "しょ",
+              "romaji": "sho",
+              "audio": {
+                "say": "しょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "ch",
+          "cells": [
+            {
+              "kana": "ちゃ",
+              "romaji": "cha",
+              "audio": {
+                "say": "ちゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ちゅ",
+              "romaji": "chu",
+              "audio": {
+                "say": "ちゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ちょ",
+              "romaji": "cho",
+              "audio": {
+                "say": "ちょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "ny",
+          "cells": [
+            {
+              "kana": "にゃ",
+              "romaji": "nya",
+              "audio": {
+                "say": "にゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "にゅ",
+              "romaji": "nyu",
+              "audio": {
+                "say": "にゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "にょ",
+              "romaji": "nyo",
+              "audio": {
+                "say": "にょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "hy",
+          "cells": [
+            {
+              "kana": "ひゃ",
+              "romaji": "hya",
+              "audio": {
+                "say": "ひゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ひゅ",
+              "romaji": "hyu",
+              "audio": {
+                "say": "ひゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ひょ",
+              "romaji": "hyo",
+              "audio": {
+                "say": "ひょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "my",
+          "cells": [
+            {
+              "kana": "みゃ",
+              "romaji": "mya",
+              "audio": {
+                "say": "みゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "みゅ",
+              "romaji": "myu",
+              "audio": {
+                "say": "みゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "みょ",
+              "romaji": "myo",
+              "audio": {
+                "say": "みょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "ry",
+          "cells": [
+            {
+              "kana": "りゃ",
+              "romaji": "rya",
+              "audio": {
+                "say": "りゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "りゅ",
+              "romaji": "ryu",
+              "audio": {
+                "say": "りゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "りょ",
+              "romaji": "ryo",
+              "audio": {
+                "say": "りょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "gy",
+          "cells": [
+            {
+              "kana": "ぎゃ",
+              "romaji": "gya",
+              "audio": {
+                "say": "ぎゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぎゅ",
+              "romaji": "gyu",
+              "audio": {
+                "say": "ぎゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぎょ",
+              "romaji": "gyo",
+              "audio": {
+                "say": "ぎょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "j",
+          "cells": [
+            {
+              "kana": "じゃ",
+              "romaji": "ja",
+              "audio": {
+                "say": "じゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "じゅ",
+              "romaji": "ju",
+              "audio": {
+                "say": "じゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "じょ",
+              "romaji": "jo",
+              "audio": {
+                "say": "じょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "by",
+          "cells": [
+            {
+              "kana": "びゃ",
+              "romaji": "bya",
+              "audio": {
+                "say": "びゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "びゅ",
+              "romaji": "byu",
+              "audio": {
+                "say": "びゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "びょ",
+              "romaji": "byo",
+              "audio": {
+                "say": "びょ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "py",
+          "cells": [
+            {
+              "kana": "ぴゃ",
+              "romaji": "pya",
+              "audio": {
+                "say": "ぴゃ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぴゅ",
+              "romaji": "pyu",
+              "audio": {
+                "say": "ぴゅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ぴょ",
+              "romaji": "pyo",
+              "audio": {
+                "say": "ぴょ",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "kanaTable",
+      "id": "hiragana-small-tsu-long-vowels",
+      "title": {
+        "vi": "っ nhỏ và nguyên âm dài",
+        "en": "Small っ and long vowels"
+      },
+      "explanation": {
+        "vi": "っ viết nhỏ không có âm riêng: nó là một nhịp ngắt trước phụ âm sau, nên phụ âm ấy viết đôi trong romaji: きって «kit-te» (tem). Nguyên âm dài kéo dài gấp đôi: おばあさん (bà) dài hơn おばさん (cô, dì). Dòng thứ hai là những từ có nguyên âm dài.",
+        "en": "A small っ has no sound of its own: it is a short pause before the next consonant, which is written double in rōmaji: きって kitte (stamp). A long vowel lasts twice as long: おばあさん (grandmother) is longer than おばさん (aunt). The second row holds words with long vowels."
+      },
+      "script": "hiragana",
+      "columns": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "rows": [
+        {
+          "consonant": "",
+          "cells": [
+            {
+              "kana": "きって",
+              "romaji": "kitte",
+              "audio": {
+                "say": "きって",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "がっこう",
+              "romaji": "gakkou",
+              "audio": {
+                "say": "がっこう",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ざっし",
+              "romaji": "zasshi",
+              "audio": {
+                "say": "ざっし",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ちょっと",
+              "romaji": "chotto",
+              "audio": {
+                "say": "ちょっと",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "",
+          "cells": [
+            {
+              "kana": "おばあさん",
+              "romaji": "obaasan",
+              "audio": {
+                "say": "おばあさん",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "おにいさん",
+              "romaji": "oniisan",
+              "audio": {
+                "say": "おにいさん",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "すうじ",
+              "romaji": "suuji",
+              "audio": {
+                "say": "すうじ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "おとうさん",
+              "romaji": "otousan",
+              "audio": {
+                "say": "おとうさん",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "vi": "おう và えい thường đọc thành ô dài và ê dài: おとうさん «ô-tô-san», とけい «tô-kê».",
+          "en": "おう and えい are usually said as a long o and a long e: おとうさん, とけい."
+        }
+      ]
+    },
+    {
+      "kind": "kanaTable",
+      "id": "katakana-basic",
       "title": {
         "vi": "Katakana: cùng những âm ấy, nét thẳng hơn",
         "en": "Katakana: the same sounds, straighter strokes"
       },
       "explanation": {
-        "vi": "Katakana ghi đúng những âm của hiragana nhưng bằng nét thẳng, góc cạnh. Từ mượn như コーヒー (cà phê) hay ケーキ (bánh ngọt) viết bằng katakana; dấu gạch ー kéo dài nguyên âm đứng trước nó.",
-        "en": "Katakana writes the same sounds as hiragana with straight, angular strokes. Loanwords such as コーヒー (coffee) or ケーキ (cake) are written in katakana; the bar ー lengthens the vowel before it."
+        "vi": "Katakana ghi đúng những âm của hiragana nhưng bằng nét thẳng, góc cạnh. Dùng cho từ mượn tiếng nước ngoài (コーヒー cà phê), tên nước ngoài (ナム, ベトナム) và chữ trên biển báo. Dễ nhầm: シ (shi) và ツ (tsu), ソ (so) và ン (n) — xem hướng của nét ngắn.",
+        "en": "Katakana writes the same sounds as hiragana with straight, angular strokes: loanwords (コーヒー coffee), foreign names (ナム, ベトナム) and many signs. Easy to confuse: シ (shi) and ツ (tsu), ソ (so) and ン (n) — look at the direction of the short strokes."
       },
       "script": "katakana",
       "columns": [
@@ -242,8 +1271,1299 @@
               }
             }
           ]
+        },
+        {
+          "consonant": "s",
+          "cells": [
+            {
+              "kana": "サ",
+              "romaji": "sa",
+              "audio": {
+                "say": "サ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "シ",
+              "romaji": "shi",
+              "audio": {
+                "say": "シ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ス",
+              "romaji": "su",
+              "audio": {
+                "say": "ス",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "セ",
+              "romaji": "se",
+              "audio": {
+                "say": "セ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ソ",
+              "romaji": "so",
+              "audio": {
+                "say": "ソ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "t",
+          "cells": [
+            {
+              "kana": "タ",
+              "romaji": "ta",
+              "audio": {
+                "say": "タ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "チ",
+              "romaji": "chi",
+              "audio": {
+                "say": "チ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ツ",
+              "romaji": "tsu",
+              "audio": {
+                "say": "ツ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "テ",
+              "romaji": "te",
+              "audio": {
+                "say": "テ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ト",
+              "romaji": "to",
+              "audio": {
+                "say": "ト",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "n",
+          "cells": [
+            {
+              "kana": "ナ",
+              "romaji": "na",
+              "audio": {
+                "say": "ナ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ニ",
+              "romaji": "ni",
+              "audio": {
+                "say": "ニ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ヌ",
+              "romaji": "nu",
+              "audio": {
+                "say": "ヌ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ネ",
+              "romaji": "ne",
+              "audio": {
+                "say": "ネ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ノ",
+              "romaji": "no",
+              "audio": {
+                "say": "ノ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "h",
+          "cells": [
+            {
+              "kana": "ハ",
+              "romaji": "ha",
+              "audio": {
+                "say": "ハ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ヒ",
+              "romaji": "hi",
+              "audio": {
+                "say": "ヒ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "フ",
+              "romaji": "fu",
+              "audio": {
+                "say": "フ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ヘ",
+              "romaji": "he",
+              "audio": {
+                "say": "ヘ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ホ",
+              "romaji": "ho",
+              "audio": {
+                "say": "ホ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "m",
+          "cells": [
+            {
+              "kana": "マ",
+              "romaji": "ma",
+              "audio": {
+                "say": "マ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ミ",
+              "romaji": "mi",
+              "audio": {
+                "say": "ミ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ム",
+              "romaji": "mu",
+              "audio": {
+                "say": "ム",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "メ",
+              "romaji": "me",
+              "audio": {
+                "say": "メ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "モ",
+              "romaji": "mo",
+              "audio": {
+                "say": "モ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "y",
+          "cells": [
+            {
+              "kana": "ヤ",
+              "romaji": "ya",
+              "audio": {
+                "say": "ヤ",
+                "status": "pending"
+              }
+            },
+            null,
+            {
+              "kana": "ユ",
+              "romaji": "yu",
+              "audio": {
+                "say": "ユ",
+                "status": "pending"
+              }
+            },
+            null,
+            {
+              "kana": "ヨ",
+              "romaji": "yo",
+              "audio": {
+                "say": "ヨ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "r",
+          "cells": [
+            {
+              "kana": "ラ",
+              "romaji": "ra",
+              "audio": {
+                "say": "ラ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "リ",
+              "romaji": "ri",
+              "audio": {
+                "say": "リ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ル",
+              "romaji": "ru",
+              "audio": {
+                "say": "ル",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "レ",
+              "romaji": "re",
+              "audio": {
+                "say": "レ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ロ",
+              "romaji": "ro",
+              "audio": {
+                "say": "ロ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "w",
+          "cells": [
+            {
+              "kana": "ワ",
+              "romaji": "wa",
+              "audio": {
+                "say": "ワ",
+                "status": "pending"
+              }
+            },
+            null,
+            null,
+            null,
+            {
+              "kana": "ヲ",
+              "romaji": "o",
+              "audio": {
+                "say": "ヲ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "n",
+          "cells": [
+            {
+              "kana": "ン",
+              "romaji": "n",
+              "audio": {
+                "say": "ン",
+                "status": "pending"
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "kanaTable",
+      "id": "katakana-dakuten",
+      "title": {
+        "vi": "Katakana: dấu ゛ và ゜",
+        "en": "Katakana: the marks ゛ and ゜"
+      },
+      "explanation": {
+        "vi": "Dấu ゛ và ゜ dùng y như ở hiragana: カ ka → ガ ga, ハ ha → バ ba → パ pa.",
+        "en": "The marks ゛ and ゜ work as in hiragana: カ ka → ガ ga, ハ ha → バ ba → パ pa."
+      },
+      "script": "katakana",
+      "columns": [
+        "a",
+        "i",
+        "u",
+        "e",
+        "o"
+      ],
+      "rows": [
+        {
+          "consonant": "g",
+          "cells": [
+            {
+              "kana": "ガ",
+              "romaji": "ga",
+              "audio": {
+                "say": "ガ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ギ",
+              "romaji": "gi",
+              "audio": {
+                "say": "ギ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "グ",
+              "romaji": "gu",
+              "audio": {
+                "say": "グ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ゲ",
+              "romaji": "ge",
+              "audio": {
+                "say": "ゲ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ゴ",
+              "romaji": "go",
+              "audio": {
+                "say": "ゴ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "z",
+          "cells": [
+            {
+              "kana": "ザ",
+              "romaji": "za",
+              "audio": {
+                "say": "ザ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ジ",
+              "romaji": "ji",
+              "audio": {
+                "say": "ジ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ズ",
+              "romaji": "zu",
+              "audio": {
+                "say": "ズ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ゼ",
+              "romaji": "ze",
+              "audio": {
+                "say": "ゼ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ゾ",
+              "romaji": "zo",
+              "audio": {
+                "say": "ゾ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "d",
+          "cells": [
+            {
+              "kana": "ダ",
+              "romaji": "da",
+              "audio": {
+                "say": "ダ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ヂ",
+              "romaji": "ji",
+              "audio": {
+                "say": "ヂ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ヅ",
+              "romaji": "zu",
+              "audio": {
+                "say": "ヅ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "デ",
+              "romaji": "de",
+              "audio": {
+                "say": "デ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ド",
+              "romaji": "do",
+              "audio": {
+                "say": "ド",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "b",
+          "cells": [
+            {
+              "kana": "バ",
+              "romaji": "ba",
+              "audio": {
+                "say": "バ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ビ",
+              "romaji": "bi",
+              "audio": {
+                "say": "ビ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ブ",
+              "romaji": "bu",
+              "audio": {
+                "say": "ブ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ベ",
+              "romaji": "be",
+              "audio": {
+                "say": "ベ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ボ",
+              "romaji": "bo",
+              "audio": {
+                "say": "ボ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "p",
+          "cells": [
+            {
+              "kana": "パ",
+              "romaji": "pa",
+              "audio": {
+                "say": "パ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ピ",
+              "romaji": "pi",
+              "audio": {
+                "say": "ピ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "プ",
+              "romaji": "pu",
+              "audio": {
+                "say": "プ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ペ",
+              "romaji": "pe",
+              "audio": {
+                "say": "ペ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ポ",
+              "romaji": "po",
+              "audio": {
+                "say": "ポ",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "kanaTable",
+      "id": "katakana-yoon",
+      "title": {
+        "vi": "Katakana: âm ghép với ャ ュ ョ nhỏ",
+        "en": "Katakana: combined sounds with small ャ ュ ョ"
+      },
+      "explanation": {
+        "vi": "Âm ghép viết giống hiragana, bằng ャ ュ ョ nhỏ: キャ «kya», シュ «shu», チョ «cho».",
+        "en": "Combined sounds work as in hiragana, with a small ャ ュ ョ: キャ kya, シュ shu, チョ cho."
+      },
+      "script": "katakana",
+      "columns": [
+        "ya",
+        "yu",
+        "yo"
+      ],
+      "rows": [
+        {
+          "consonant": "ky",
+          "cells": [
+            {
+              "kana": "キャ",
+              "romaji": "kya",
+              "audio": {
+                "say": "キャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "キュ",
+              "romaji": "kyu",
+              "audio": {
+                "say": "キュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "キョ",
+              "romaji": "kyo",
+              "audio": {
+                "say": "キョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "sh",
+          "cells": [
+            {
+              "kana": "シャ",
+              "romaji": "sha",
+              "audio": {
+                "say": "シャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "シュ",
+              "romaji": "shu",
+              "audio": {
+                "say": "シュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ショ",
+              "romaji": "sho",
+              "audio": {
+                "say": "ショ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "ch",
+          "cells": [
+            {
+              "kana": "チャ",
+              "romaji": "cha",
+              "audio": {
+                "say": "チャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "チュ",
+              "romaji": "chu",
+              "audio": {
+                "say": "チュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "チョ",
+              "romaji": "cho",
+              "audio": {
+                "say": "チョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "ny",
+          "cells": [
+            {
+              "kana": "ニャ",
+              "romaji": "nya",
+              "audio": {
+                "say": "ニャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ニュ",
+              "romaji": "nyu",
+              "audio": {
+                "say": "ニュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ニョ",
+              "romaji": "nyo",
+              "audio": {
+                "say": "ニョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "hy",
+          "cells": [
+            {
+              "kana": "ヒャ",
+              "romaji": "hya",
+              "audio": {
+                "say": "ヒャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ヒュ",
+              "romaji": "hyu",
+              "audio": {
+                "say": "ヒュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ヒョ",
+              "romaji": "hyo",
+              "audio": {
+                "say": "ヒョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "my",
+          "cells": [
+            {
+              "kana": "ミャ",
+              "romaji": "mya",
+              "audio": {
+                "say": "ミャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ミュ",
+              "romaji": "myu",
+              "audio": {
+                "say": "ミュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ミョ",
+              "romaji": "myo",
+              "audio": {
+                "say": "ミョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "ry",
+          "cells": [
+            {
+              "kana": "リャ",
+              "romaji": "rya",
+              "audio": {
+                "say": "リャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "リュ",
+              "romaji": "ryu",
+              "audio": {
+                "say": "リュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "リョ",
+              "romaji": "ryo",
+              "audio": {
+                "say": "リョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "gy",
+          "cells": [
+            {
+              "kana": "ギャ",
+              "romaji": "gya",
+              "audio": {
+                "say": "ギャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ギュ",
+              "romaji": "gyu",
+              "audio": {
+                "say": "ギュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ギョ",
+              "romaji": "gyo",
+              "audio": {
+                "say": "ギョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "j",
+          "cells": [
+            {
+              "kana": "ジャ",
+              "romaji": "ja",
+              "audio": {
+                "say": "ジャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ジュ",
+              "romaji": "ju",
+              "audio": {
+                "say": "ジュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ジョ",
+              "romaji": "jo",
+              "audio": {
+                "say": "ジョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "by",
+          "cells": [
+            {
+              "kana": "ビャ",
+              "romaji": "bya",
+              "audio": {
+                "say": "ビャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ビュ",
+              "romaji": "byu",
+              "audio": {
+                "say": "ビュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ビョ",
+              "romaji": "byo",
+              "audio": {
+                "say": "ビョ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "py",
+          "cells": [
+            {
+              "kana": "ピャ",
+              "romaji": "pya",
+              "audio": {
+                "say": "ピャ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ピュ",
+              "romaji": "pyu",
+              "audio": {
+                "say": "ピュ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ピョ",
+              "romaji": "pyo",
+              "audio": {
+                "say": "ピョ",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "kanaTable",
+      "id": "katakana-long-vowels",
+      "title": {
+        "vi": "Katakana: dấu ー và ッ nhỏ",
+        "en": "Katakana: the bar ー and small ッ"
+      },
+      "explanation": {
+        "vi": "Trong katakana, nguyên âm dài viết bằng dấu gạch ー: コーヒー «kô-hi», ケーキ «kê-ki». Romaji ghi nguyên âm dài bằng dấu gạch trên đầu: kōhī. ッ nhỏ là nhịp ngắt như っ: カップ «kap-pư» (cái cốc).",
+        "en": "In katakana a long vowel is written with the bar ー: コーヒー, ケーキ. Rōmaji marks it with a macron: kōhī. A small ッ is the same pause as っ: カップ kappu (cup)."
+      },
+      "script": "katakana",
+      "columns": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "rows": [
+        {
+          "consonant": "",
+          "cells": [
+            {
+              "kana": "コーヒー",
+              "romaji": "kōhī",
+              "audio": {
+                "say": "コーヒー",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ケーキ",
+              "romaji": "kēki",
+              "audio": {
+                "say": "ケーキ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "スーパー",
+              "romaji": "sūpā",
+              "audio": {
+                "say": "スーパー",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ノート",
+              "romaji": "nōto",
+              "audio": {
+                "say": "ノート",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "",
+          "cells": [
+            {
+              "kana": "カップ",
+              "romaji": "kappu",
+              "audio": {
+                "say": "カップ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ベッド",
+              "romaji": "beddo",
+              "audio": {
+                "say": "ベッド",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ネット",
+              "romaji": "netto",
+              "audio": {
+                "say": "ネット",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "チェック",
+              "romaji": "chekku",
+              "audio": {
+                "say": "チェック",
+                "status": "pending"
+              }
+            }
+          ]
         }
       ]
     }
-  ]
+  ],
+  "checkpoint": {
+    "title": {
+      "vi": "Kiểm tra nhanh bảng kana",
+      "en": "Quick kana check"
+    },
+    "intro": {
+      "vi": "20 câu: đọc chữ rồi chọn cách đọc, nghe rồi chọn chữ. Đúng từ 16 câu là qua. Khi qua, dòng romaji (chữ La-tinh) dưới chữ Nhật trong bài học sẽ tắt — lúc đó bạn đọc bằng kana. Làm lại bao nhiêu lần cũng được.",
+      "en": "20 questions: read a kana and pick its sound, listen and pick the kana. 16 correct passes. Once you pass, the rōmaji line under Japanese text in the lessons turns off and you read the kana. Retake it as often as you like."
+    },
+    "passMark": 16,
+    "items": [
+      {
+        "kind": "kanaToRomaji",
+        "id": "c01",
+        "kana": "し",
+        "options": [
+          "tsu",
+          "chi",
+          "su",
+          "shi"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c02",
+        "kana": "つ",
+        "options": [
+          "su",
+          "chi",
+          "tsu",
+          "to"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c03",
+        "kana": "ふ",
+        "options": [
+          "ho",
+          "fu",
+          "ha",
+          "mu"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c04",
+        "kana": "ね",
+        "options": [
+          "ne",
+          "re",
+          "wa",
+          "nu"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c05",
+        "kana": "シ",
+        "options": [
+          "tsu",
+          "so",
+          "n",
+          "shi"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c06",
+        "kana": "ツ",
+        "options": [
+          "shi",
+          "n",
+          "tsu",
+          "so"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c07",
+        "kana": "ン",
+        "options": [
+          "so",
+          "n",
+          "shi",
+          "tsu"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c08",
+        "kana": "じゃ",
+        "options": [
+          "ja",
+          "jo",
+          "ju",
+          "sha"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c09",
+        "kana": "きょ",
+        "options": [
+          "kyu",
+          "ko",
+          "kya",
+          "kyo"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "kanaToRomaji",
+        "id": "c10",
+        "kana": "ぱ",
+        "options": [
+          "ba",
+          "ha",
+          "pa",
+          "po"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c11",
+        "audio": {
+          "say": "き",
+          "status": "pending"
+        },
+        "options": [
+          "さ",
+          "ち",
+          "き"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c12",
+        "audio": {
+          "say": "ぬ",
+          "status": "pending"
+        },
+        "options": [
+          "ぬ",
+          "め",
+          "ね"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c13",
+        "audio": {
+          "say": "わ",
+          "status": "pending"
+        },
+        "options": [
+          "れ",
+          "わ",
+          "ね"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c14",
+        "audio": {
+          "say": "ソ",
+          "status": "pending"
+        },
+        "options": [
+          "ン",
+          "リ",
+          "ソ"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c15",
+        "audio": {
+          "say": "ジュ",
+          "status": "pending"
+        },
+        "options": [
+          "ジュ",
+          "シュ",
+          "チュ"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c16",
+        "audio": {
+          "say": "おばあさん",
+          "status": "pending"
+        },
+        "options": [
+          "おばあさん",
+          "おばさん"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c17",
+        "audio": {
+          "say": "きって",
+          "status": "pending"
+        },
+        "options": [
+          "きて",
+          "きって"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c18",
+        "audio": {
+          "say": "ビール",
+          "status": "pending"
+        },
+        "options": [
+          "ビール",
+          "ビル"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c19",
+        "audio": {
+          "say": "びょういん",
+          "status": "pending"
+        },
+        "options": [
+          "びよういん",
+          "びょういん"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToKana",
+        "id": "c20",
+        "audio": {
+          "say": "コーヒー",
+          "status": "pending"
+        },
+        "options": [
+          "コーヒー",
+          "コピー"
+        ],
+        "correct": 0
+      }
+    ]
+  }
 }

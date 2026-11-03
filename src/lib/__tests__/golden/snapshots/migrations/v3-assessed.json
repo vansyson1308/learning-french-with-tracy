@@ -165,10 +165,11 @@
         "uiLanguage",
         "assessmentByTarget",
         "dailyNewWords",
-        "readingAid"
+        "readingAid",
+        "primerPassed"
       ]
     },
-    "persistVersion": 8
+    "persistVersion": 9
   },
   "fromVersion": 3,
   "invariants": [],
@@ -372,6 +373,7 @@
     "heartsUpdatedAt": 1767000000000,
     "lastActiveDay": "2026-01-10",
     "onboardingDone": true,
+    "primerPassed": {},
     "readingAid": {},
     "reviewLog": [
       {
@@ -740,6 +742,7 @@
       "heartsUpdatedAt": 1767000000000,
       "lastActiveDay": "2026-01-10",
       "onboardingDone": true,
+      "primerPassed": {},
       "readingAid": {},
       "speechNoticeAckAt": 1781265600000,
       "streak": 5,
@@ -747,5 +750,5 @@
       "uiLanguage": "system"
     }
   },
-  "toVersion": 8
+  "toVersion": 9
 }

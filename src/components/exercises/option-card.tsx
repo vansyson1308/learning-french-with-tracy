@@ -45,6 +45,8 @@ type OptionCardProps = {
   onPress: () => void;
   disabled?: boolean;
   compact?: boolean;
+  /** P4c: show the romaji line of `script` (default true; off on options that are a production answer). */
+  showRomaji?: boolean;
 };
 
 export function OptionCard({
@@ -56,10 +58,13 @@ export function OptionCard({
   onPress,
   disabled,
   compact,
+  showRomaji = true,
 }: OptionCardProps) {
   const c = stateColors(useThemeColors())[state];
   const cue = STATE_CUE[state];
   const { t } = useT();
+  // A romaji-only script (no furigana) adds nothing to the spoken label.
+  const scriptRead = script !== undefined && script.segments.some((s) => s.ruby !== undefined);
   return (
     <Pressable
       onPress={() => {
@@ -68,7 +73,7 @@ export function OptionCard({
       }}
       disabled={disabled}
       accessibilityRole="button"
-      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${script ? ` (${readingLine(script)})` : reading ? ` (${reading})` : ""}${cue.label ? t(cue.label) : ""}`}
+      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${script ? (scriptRead ? ` (${readingLine(script)})` : "") : reading ? ` (${reading})` : ""}${cue.label ? t(cue.label) : ""}`}
       testID="option-card"
       accessibilityState={{ disabled: !!disabled, selected: state === "selected" }}
       style={({ pressed }) => [
@@ -85,7 +90,7 @@ export function OptionCard({
       {/* Per-option id for device flows (the card keeps the shared "option-card"). */}
       <View style={styles.textWrap} testID={optionTestId(text)} collapsable={false}>
         {script ? (
-          <RubyText text={text} reading={script} textStyle={[styles.text, { color: c.text }]} readingColor={c.text} center />
+          <RubyText text={text} reading={script} textStyle={[styles.text, { color: c.text }]} readingColor={c.text} center showRomaji={showRomaji} />
         ) : (
           <Text style={[styles.text, { color: c.text }]}>{text}</Text>
         )}

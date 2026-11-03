@@ -197,6 +197,62 @@ describe("ko: Revised Romanization under hangul", () => {
   });
 });
 
+describe("P4c: romaji until the kana primer checkpoint is passed", () => {
+  const COURSE = "ja-xcromaji";
+  beforeAll(() => {
+    __registerCourseProfileForTests({ ...courseProfile("ja-en"), id: COURSE, nativeCode: "vi", romajiUntilPrimer: true });
+    registerCourseBundle({ id: COURSE, pack: { ...(xcPack as unknown as Pack), id: COURSE }, artifacts: { lexiconIndex: xcIndex }, audio: {} });
+  });
+  afterAll(() => __registerCourseProfileForTests(null, COURSE));
+
+  const at = (primerPassed: Record<string, true>, readingAid: Record<string, boolean> = {}) =>
+    useProgress.setState({ activeCourseId: COURSE, readingAid, primerPassed });
+  const romaji = () => screen.queryAllByTestId("reading-romaji").map((n) => String(n.props.children));
+
+  test("before the checkpoint: a romaji line under the prompt, read from the stored kana", () => {
+    at({});
+    const view = renderStep(COURSE, selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(view.toJSON()).toMatchSnapshot();
+    expect(romaji()).toEqual(["gakusei desu."]);
+    expect(readings()).toEqual(["がく", "せい"]);
+  });
+
+  test("after the checkpoint: no romaji, furigana as before", () => {
+    at({ [COURSE]: true });
+    const view = renderStep(COURSE, selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(view.toJSON()).toMatchSnapshot();
+    expect(romaji()).toEqual([]);
+    expect(readings()).toEqual(["がく", "せい"]);
+  });
+
+  test("the reading-aid switch still controls the furigana; the romaji line follows the primer only", () => {
+    at({}, { [COURSE]: false });
+    renderStep(COURSE, selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(readings()).toEqual([]);
+    expect(romaji()).toEqual(["gakusei desu."]);
+    at({ [COURSE]: true }, { [COURSE]: false });
+    renderStep(COURSE, selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(screen.queryAllByTestId("ruby-text")).toHaveLength(0);
+    expect(romaji()).toEqual([]);
+  });
+
+  test("never on a production answer: word-bank tiles and fill-blank options carry no romaji", () => {
+    at({});
+    const bank: Exercise = { type: "wordBank", id: "xc-t:bank", direction: "nativeToTarget", prompt: "Tôi là sinh viên.", tokens: ["学生", "です"], answer: ["学生", "です"] };
+    renderStep(COURSE, bank, "Tiếng Nhật");
+    expect(romaji()).toEqual([]);
+    const fill: Exercise = { type: "fillBlank", id: "xc-t:fill", sentence: "パンを___。", translation: "Tôi ăn bánh mì.", options: ["食べる", "学生"], correct: 0 };
+    renderStep(COURSE, fill, "Tiếng Nhật");
+    expect(romaji()).toHaveLength(1); // the sentence only; the options (食べる, 学生) have none
+  });
+
+  test("other courses never show it", () => {
+    onCourse("ja-xcvi");
+    renderStep("ja-xcvi", selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(romaji()).toEqual([]);
+  });
+});
+
 describe("Hán-Việt: Vietnamese-native courses, Sino-Vietnamese words only", () => {
   test("ja: 学生 shows học sinh; the kun word 食べる and a sentence show none", () => {
     onCourse("ja-xcvi");

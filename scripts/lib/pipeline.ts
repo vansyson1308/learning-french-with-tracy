@@ -31,6 +31,7 @@ import {
   type PackSource,
   type SourceRegistry,
   CourseProfileOverrideSchema,
+  ScriptPrimerSchema,
 } from "../../content/schema";
 
 import { displayReading, type DisplayReading, type StoredReading } from "./cjk-readings/validate";
@@ -226,6 +227,23 @@ export function reviewGateErrors(courseId: string, data: ReviewFields | null, do
   return docs.knownLimitations.includes(courseId) ? [] : [`${courseId}: allowUnreviewed requires an entry naming the course in release/KNOWN_LIMITATIONS.md`];
 }
 
+/**
+ * P4c: `romajiUntilPrimer` needs something to pass — a script primer of the course's target language with kana
+ * tables (romaji is a Hepburn reading of kana) and a checkpoint.
+ */
+export function romajiUntilPrimerErrors(
+  courseId: string,
+  data: { romajiUntilPrimer?: boolean } | null,
+  primer: { sections: { kind: string }[]; checkpoint?: unknown } | null
+): string[] {
+  if (data?.romajiUntilPrimer !== true) return [];
+  if (primer === null) return [`${courseId}: romajiUntilPrimer needs a script primer of the course's target language`];
+  const errors: string[] = [];
+  if (!primer.sections.some((s) => s.kind === "kanaTable")) errors.push(`${courseId}: romajiUntilPrimer needs a primer with kana tables (romaji is read from kana)`);
+  if (primer.checkpoint === undefined) errors.push(`${courseId}: romajiUntilPrimer needs a primer checkpoint the learner can pass`);
+  return errors;
+}
+
 /** D-10: the course carries an owner-accepted AI-simulated review (the app shows an honest note). */
 export function courseReviewIsAi(courseId: string): boolean {
   const rel = `content/courses/${courseId}.profile.json`;
@@ -246,7 +264,7 @@ export function courseIsBeta(courseId: string): boolean {
 /** A boolean flag of a course's profile (content/courses/<id>.profile.json), undefined when absent. */
 export function courseProfileFlag(
   courseId: string,
-  flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack" | "readingInputIsProduction"
+  flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack" | "readingInputIsProduction" | "romajiUntilPrimer"
 ): boolean | undefined {
   const rel = `content/courses/${courseId}.profile.json`;
   if (!existsSync(safeResolve(rel))) return undefined;
@@ -626,6 +644,17 @@ export function validateContent(): ValidationResult {
     const data = profile?.success ? profile.data : null;
     if (profile && !profile.success) err(`${courseId}: ${rel} is invalid — ${profile.error.issues[0]?.message}`);
     else for (const e of reviewGateErrors(courseId, data, { knownLimitations, ownerChecklist })) err(e);
+  }
+
+  // P4c: a course that shows romaji until its primer is passed needs a kana primer with a checkpoint.
+  for (const { courseId, pack } of packs) {
+    const rel = `content/courses/${courseId}.profile.json`;
+    if (!existsSync(safeResolve(rel))) continue;
+    const profile = CourseProfileOverrideSchema.safeParse(readJson(rel));
+    if (!profile.success || profile.data.romajiUntilPrimer !== true) continue;
+    const primerRel = `content/${pack.targetCode}/primer/script-primer.json`;
+    const primer = existsSync(safeResolve(primerRel)) ? ScriptPrimerSchema.safeParse(readJson(primerRel)) : null;
+    for (const e of romajiUntilPrimerErrors(courseId, profile.data, primer?.success ? primer.data : null)) err(e);
   }
 
   // Every language folder needs at least one course — except an

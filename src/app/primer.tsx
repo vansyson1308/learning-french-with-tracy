@@ -17,7 +17,8 @@ import { speakTarget } from "@/lib/audio";
 import { courseProfile } from "@/lib/course-profile";
 import { useT } from "@/lib/i18n";
 import { exitScreen } from "@/lib/navigation";
-import { coursePrimer, primerText, type PrimerSection, type PrimerText } from "@/lib/script-primer";
+import { primerPassedFor } from "@/lib/learning/primer-progress";
+import { coursePrimer, primerText, scorePrimerCheckpoint, type PrimerCheckpoint, type PrimerSection, type PrimerText } from "@/lib/script-primer";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -62,6 +63,7 @@ export default function PrimerScreen() {
               : null}
           </View>
         ))}
+        {primer.checkpoint ? <Checkpoint checkpoint={primer.checkpoint} ctx={ctx} /> : null}
       </ScrollView>
     </SafeAreaView>
   );
@@ -84,6 +86,137 @@ function Sound({ say, ctx, children, testID }: { say: string; ctx: Ctx; children
   );
 }
 
+/**
+ * P4c: the kana checkpoint at the end of the primer. One item at a time: read a kana and pick its rōmaji, or hear a
+ * sound (device voice) and pick the kana. Reaching the pass mark records `primerPassed` for the course — which turns
+ * off the romaji line of a `romajiUntilPrimer` course; nothing else is written (no XP, no lesson, no evidence). A
+ * failed attempt changes nothing, and it can be retaken at once; no lesson is ever locked behind it.
+ */
+function Checkpoint({ checkpoint, ctx }: { checkpoint: PrimerCheckpoint; ctx: Ctx }) {
+  const styles = useStyles();
+  const colors = useThemeColors();
+  const { t } = useT();
+  const tx = (text: PrimerText) => primerText(text, ctx.native);
+  const passedBefore = useProgress((s) => primerPassedFor(s.primerPassed, ctx.courseId));
+  const markPrimerPassed = useProgress((s) => s.markPrimerPassed);
+  const [answers, setAnswers] = React.useState<(number | null)[] | null>(null);
+  const [index, setIndex] = React.useState(0);
+
+  const start = () => {
+    setAnswers(checkpoint.items.map(() => null));
+    setIndex(0);
+  };
+  const total = checkpoint.items.length;
+  const done = answers !== null && index >= total;
+  const result = done ? scorePrimerCheckpoint(checkpoint, answers) : null;
+  React.useEffect(() => {
+    if (result?.passed) markPrimerPassed(ctx.courseId);
+  }, [result?.passed, markPrimerPassed, ctx.courseId]);
+
+  const header = (
+    <>
+      <Text style={styles.heading}>{tx(checkpoint.title)}</Text>
+      {passedBefore && answers === null ? (
+        <View style={styles.badge} testID="primer-checkpoint-passed-badge">
+          <Ionicons name="checkmark-circle" size={18} color={colors.greenDark} />
+          <Text style={styles.badgeText}>{t("primer.checkpoint.passedBadge")}</Text>
+        </View>
+      ) : null}
+    </>
+  );
+
+  if (answers === null) {
+    return (
+      <View style={styles.section} testID="primer-checkpoint">
+        {header}
+        <Text style={styles.paragraph}>{tx(checkpoint.intro)}</Text>
+        <Pressable onPress={start} accessibilityRole="button" style={({ pressed }) => [styles.primaryButton, pressed && styles.pressed]} testID="primer-checkpoint-start">
+          <Text style={styles.primaryButtonText}>{t("primer.checkpoint.start")}</Text>
+        </Pressable>
+      </View>
+    );
+  }
+
+  if (result !== null) {
+    return (
+      <View style={styles.section} testID="primer-checkpoint">
+        {header}
+        <Text style={styles.subheading} testID="primer-checkpoint-score">
+          {t("primer.checkpoint.score", { correct: result.correct, total: result.total })}
+        </Text>
+        <Text style={styles.paragraph} testID={result.passed ? "primer-checkpoint-passed" : "primer-checkpoint-not-yet"}>
+          {result.passed ? t("primer.checkpoint.passed") : t("primer.checkpoint.notYet", { passMark: checkpoint.passMark })}
+        </Text>
+        <Pressable onPress={start} accessibilityRole="button" style={({ pressed }) => [styles.secondaryButton, pressed && styles.pressed]} testID="primer-checkpoint-retry">
+          <Text style={styles.secondaryButtonText}>{t("primer.checkpoint.retry")}</Text>
+        </Pressable>
+      </View>
+    );
+  }
+
+  const item = checkpoint.items[index]!;
+  const chosen = answers[index] ?? null;
+  const choose = (option: number) => {
+    if (chosen !== null) return;
+    setAnswers(answers.map((a, i) => (i === index ? option : a)));
+  };
+  return (
+    <View style={styles.section} testID="primer-checkpoint">
+      {header}
+      <Text style={styles.label}>{t("primer.checkpoint.progress", { n: index + 1, total })}</Text>
+      {item.kind === "kanaToRomaji" ? (
+        <>
+          <Text style={styles.paragraph}>{t("primer.checkpoint.readKana")}</Text>
+          <Text style={[styles.glyph, styles.bigGlyph]} testID="primer-checkpoint-kana">
+            {item.kana}
+          </Text>
+        </>
+      ) : (
+        <>
+          <Text style={styles.paragraph}>{t("primer.checkpoint.listenPick")}</Text>
+          <Pressable
+            onPress={() => speakTarget(ctx.courseId, item.audio.say)}
+            accessibilityRole="button"
+            accessibilityLabel={t("primer.checkpoint.play")}
+            style={({ pressed }) => [styles.tile, styles.speaker, pressed && styles.pressed]}
+            testID="primer-checkpoint-play"
+          >
+            <Ionicons name="volume-high" size={28} color={colors.skyDark} />
+          </Pressable>
+        </>
+      )}
+      <View style={styles.wrap}>
+        {item.options.map((option, i) => {
+          const state = chosen === null ? null : i === item.correct ? "correct" : i === chosen ? "wrong" : null;
+          return (
+            <Pressable
+              key={option}
+              onPress={() => choose(i)}
+              disabled={chosen !== null}
+              accessibilityRole="button"
+              accessibilityLabel={state === null ? option : `${option}${t(state === "correct" ? "ex.state.correct" : "ex.state.wrong")}`}
+              style={[styles.tile, styles.optionTile, state === "correct" && styles.correctTile, state === "wrong" && styles.wrongTile]}
+              testID={`primer-checkpoint-option-${i}`}
+            >
+              <Text style={styles.glyph}>{option}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+      {chosen !== null ? (
+        <Pressable
+          onPress={() => setIndex(index + 1)}
+          accessibilityRole="button"
+          style={({ pressed }) => [styles.primaryButton, pressed && styles.pressed]}
+          testID="primer-checkpoint-next"
+        >
+          <Text style={styles.primaryButtonText}>{index + 1 < total ? t("primer.checkpoint.next") : t("primer.checkpoint.seeResult")}</Text>
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
 function SectionBody({ section, ctx }: { section: PrimerSection; ctx: Ctx }) {
   const styles = useStyles();
   const { t } = useT();
@@ -92,8 +225,8 @@ function SectionBody({ section, ctx }: { section: PrimerSection; ctx: Ctx }) {
     case "kanaTable":
       return (
         <View style={styles.table}>
-          {section.rows.map((row) => (
-            <View key={row.consonant || "vowels"} style={styles.tableRow}>
+          {section.rows.map((row, rowIndex) => (
+            <View key={`${rowIndex}-${row.consonant}`} style={styles.tableRow}>
               {row.cells.map((cell, i) =>
                 cell === null ? (
                   <View key={i} style={[styles.tile, styles.empty]} />
@@ -233,7 +366,18 @@ const useStyles = makeThemedStyles((colors) =>
     tip: { fontSize: 14, color: colors.textMuted, lineHeight: 20, fontStyle: "italic" },
     label: { fontSize: 14, fontWeight: "700", color: colors.textMuted },
     table: { gap: 8 },
-    tableRow: { flexDirection: "row", gap: 8 },
+    tableRow: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
+    bigGlyph: { fontSize: 48, textAlign: "center" },
+    speaker: { alignSelf: "center", paddingVertical: 12, paddingHorizontal: 20 },
+    optionTile: { minWidth: 72 },
+    correctTile: { borderColor: colors.greenLight, backgroundColor: colors.correctBg },
+    wrongTile: { borderColor: colors.rose, backgroundColor: colors.wrongBg },
+    badge: { flexDirection: "row", gap: 6, alignItems: "center" },
+    badgeText: { fontSize: 14, fontWeight: "700", color: colors.greenDark },
+    primaryButton: { backgroundColor: colors.green, borderRadius: radius.md, paddingVertical: 12, alignItems: "center", borderBottomWidth: 4, borderBottomColor: colors.greenDark },
+    primaryButtonText: { fontSize: 16, fontWeight: "800", color: colors.white },
+    secondaryButton: { borderWidth: 2, borderColor: colors.neutral200, borderRadius: radius.md, paddingVertical: 12, alignItems: "center" },
+    secondaryButtonText: { fontSize: 16, fontWeight: "800", color: colors.skyDark },
     row: { flexDirection: "row", gap: 12, alignItems: "center" },
     wrap: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
     tile: {

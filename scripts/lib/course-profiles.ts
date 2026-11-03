@@ -180,6 +180,8 @@ export function deriveProfiles(args: {
       ...(courseReviewIsAi(pack.id) ? { reviewNote: "ai-simulated" as const } : {}),
       // P4b: reading-notation answers (kana / pinyin) count as production evidence only when the profile says so.
       ...(courseProfileFlag(pack.id, "readingInputIsProduction") === true ? { readingInputIsProduction: true as const } : {}),
+      // P4c: a romaji line under Japanese text until the learner passes the kana primer checkpoint.
+      ...(courseProfileFlag(pack.id, "romajiUntilPrimer") === true ? { romajiUntilPrimer: true as const } : {}),
     };
   }
   return profiles;

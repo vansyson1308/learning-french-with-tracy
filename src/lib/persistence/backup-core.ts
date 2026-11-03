@@ -15,6 +15,7 @@
 
 import { hasCapability } from "../course-profile";
 import { msg, type Message } from "../i18n/message";
+import { isPrimerPassedRecord } from "../learning/primer-progress";
 import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
 import type { SrsEntry } from "../srs";
@@ -338,6 +339,9 @@ export function runInvariants(state: PersistedProgress, now: Date, learner?: Lea
       Object.values(state.readingAid).some((on) => typeof on !== "boolean"))
   ) {
     problems.push("invalid reading aid settings");
+  }
+  if (state.primerPassed !== undefined && !isPrimerPassedRecord(state.primerPassed)) {
+    problems.push("invalid primer record");
   }
 
   if (!Array.isArray(learnerData.reviewLog)) {

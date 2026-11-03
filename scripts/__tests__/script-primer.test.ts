@@ -5,7 +5,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { ScriptPrimerSchema, type ScriptPrimer } from "../../content/schema";
-import { readJson } from "../lib/pipeline";
+import { readJson, romajiUntilPrimerErrors } from "../lib/pipeline";
 import {
   BASIC_CONSONANTS,
   BASIC_VOWELS,
@@ -39,10 +39,22 @@ describe("committed primers", () => {
     expect(validateScriptPrimers()).toEqual([]);
     for (const lang of PRIMER_LANGS) expect(validateScriptPrimerData(lang, load(lang))).toEqual([]);
   });
-  test("they are small but real: ja vowels + K row in both kana, zh 4 tones + neutral and 4 minimal pairs, ko 14 + 10 jamo and 3 blocks", () => {
-    const ja = load("ja").sections.filter((s) => s.kind === "kanaTable");
-    expect(ja.map((s) => (s as Section<"kanaTable">).script)).toEqual(["hiragana", "katakana"]);
-    for (const s of ja) expect((s as Section<"kanaTable">).rows.flatMap((r) => r.cells).length).toBe(10);
+  test("ja: full hiragana and katakana (46 + 25 dakuten + 33 yōon each) with っ and long vowels, and a 20-item checkpoint; zh 4 tones + neutral and 4 minimal pairs, ko 14 + 10 jamo and 3 blocks", () => {
+    const ja = load("ja").sections.filter((s) => s.kind === "kanaTable") as Section<"kanaTable">[];
+    const cells = (id: string) => ja.find((s) => s.id === id)!.rows.flatMap((r) => r.cells).filter((c) => c !== null).length;
+    for (const script of ["hiragana", "katakana"]) {
+      expect(cells(`${script}-basic`)).toBe(46);
+      expect(cells(`${script}-dakuten`)).toBe(25);
+      expect(cells(`${script}-yoon`)).toBe(33);
+    }
+    expect(cells("hiragana-small-tsu-long-vowels")).toBe(8);
+    expect(cells("katakana-long-vowels")).toBe(8);
+    const checkpoint = load("ja").checkpoint!;
+    expect(checkpoint.items).toHaveLength(20);
+    expect(checkpoint.passMark).toBe(16);
+    expect(new Set(checkpoint.items.map((i) => i.kind))).toEqual(new Set(["kanaToRomaji", "soundToKana"]));
+    expect(load("zh").checkpoint).toBeUndefined();
+    expect(load("ko").checkpoint).toBeUndefined();
     const tones = section(load("zh"), "tones");
     expect(tones.tones.map((t) => t.tone)).toEqual([1, 2, 3, 4, 5]);
     expect(tones.minimalPairs).toHaveLength(4);
@@ -70,20 +82,89 @@ describe("committed primers", () => {
 });
 
 describe("kana rules", () => {
-  test("Hepburn readings of basic kana, hiragana and katakana", () => {
+  test("Hepburn readings of kana cells (the app's rules), hiragana and katakana", () => {
     expect(kanaRomaji("し")).toBe("shi");
     expect(kanaRomaji("ツ")).toBe("tsu");
     expect(kanaRomaji("を")).toBe("o");
-    expect(kanaRomaji("が")).toBeUndefined(); // not a basic kana
+    expect(kanaRomaji("が")).toBe("ga");
+    expect(kanaRomaji("ぢ")).toBe("ji");
+    expect(kanaRomaji("ショ")).toBe("sho");
     expect(kanaRomaji("a")).toBeUndefined();
   });
   test("a wrong rōmaji, a cell of the other script, a wrong audio and a short row are rejected", () => {
     expect(errorsAfter("ja", (p) => (section(p, "kanaTable").rows[1]!.cells[1]!.romaji = "chi"))).toEqual([
-      'primer (ja): hiragana-a-k: き reads "ki", not "chi"',
+      'primer (ja): hiragana-basic: き reads "ki", not "chi"',
+    ]);
+    expect(errorsAfter("ja", (p) => (p.sections.find((s) => s.id === "katakana-long-vowels") as Section<"kanaTable">).rows[0]!.cells[0]!.romaji = "koohii")).toEqual([
+      'primer (ja): katakana-long-vowels: コーヒー reads "kōhī", not "koohii"',
     ]);
     expect(errorsAfter("ja", (p) => (section(p, "kanaTable").rows[0]!.cells[0]!.kana = "ア")).join()).toContain("ア is not hiragana");
     expect(errorsAfter("ja", (p) => (section(p, "kanaTable").rows[0]!.cells[0]!.audio.say = "か")).join()).toContain('audio of あ says "か"');
     expect(errorsAfter("ja", (p) => section(p, "kanaTable").rows[0]!.cells.pop()).join()).toContain("has 4 cells for 5 columns");
+  });
+});
+
+describe("checkpoint rules (P4c)", () => {
+  type Item = NonNullable<ScriptPrimer["checkpoint"]>["items"][number];
+  const item = (p: ScriptPrimer, kind: Item["kind"]) => p.checkpoint!.items.find((i) => i.kind === kind)!;
+
+  test("a key that is not the Hepburn reading, and a sound item whose audio is not its key", () => {
+    expect(
+      errorsAfter("ja", (p) => {
+        const i = item(p, "kanaToRomaji");
+        i.options[i.correct] = "si";
+      }).join()
+    ).toContain('reads "shi", not "si"');
+    expect(
+      errorsAfter("ja", (p) => {
+        const i = item(p, "soundToKana") as Extract<Item, { kind: "soundToKana" }>;
+        i.audio.say = "か";
+      }).join()
+    ).toContain('audio says "か"');
+  });
+  test("two options that sound the same (じ / ぢ) and a kana the tables do not teach", () => {
+    expect(
+      errorsAfter("ja", (p) => {
+        const i = item(p, "soundToKana") as Extract<Item, { kind: "soundToKana" }>;
+        i.options = ["じ", "ぢ"];
+        i.audio.say = "じ";
+        i.correct = 0;
+      }).join()
+    ).toContain("two options sound the same");
+    expect(
+      errorsAfter("ja", (p) => {
+        const i = item(p, "kanaToRomaji") as Extract<Item, { kind: "kanaToRomaji" }>;
+        i.kana = "ゐ";
+      }).join()
+    ).toContain("ゐ is not kana");
+  });
+  test("pass mark bounds, repeated ids, a fixed key position, and a checkpoint on a primer without kana", () => {
+    expect(errorsAfter("ja", (p) => (p.checkpoint!.passMark = 10)).join()).toContain("below 75%");
+    expect(errorsAfter("ja", (p) => (p.checkpoint!.passMark = 21)).join()).toContain("more than the 20 items");
+    expect(errorsAfter("ja", (p) => (p.checkpoint!.items[1]!.id = p.checkpoint!.items[0]!.id)).join()).toContain("item ids repeat");
+    expect(
+      errorsAfter("ja", (p) => {
+        for (const i of p.checkpoint!.items) {
+          const key = i.options[i.correct]!;
+          i.options = [key, ...i.options.filter((o) => o !== key)];
+          i.correct = 0;
+        }
+      }).join()
+    ).toContain("always in the same position");
+    expect(errorsAfter("zh", (p) => (p.checkpoint = structuredClone(load("ja").checkpoint))).join()).toContain("only a kana primer has a checkpoint");
+  });
+});
+
+describe("profile romajiUntilPrimer (P4c)", () => {
+  test("allowed only with a kana primer that has a checkpoint; absent = nothing to check", () => {
+    expect(romajiUntilPrimerErrors("ja-vi", { romajiUntilPrimer: true }, load("ja"))).toEqual([]);
+    expect(romajiUntilPrimerErrors("zh-vi", { romajiUntilPrimer: true }, load("zh")).join()).toContain("needs a primer with kana tables");
+    const noCheckpoint = structuredClone(load("ja"));
+    delete noCheckpoint.checkpoint;
+    expect(romajiUntilPrimerErrors("ja-vi", { romajiUntilPrimer: true }, noCheckpoint).join()).toContain("needs a primer checkpoint");
+    expect(romajiUntilPrimerErrors("fr-vi", { romajiUntilPrimer: true }, null).join()).toContain("needs a script primer");
+    expect(romajiUntilPrimerErrors("fr-vi", {}, null)).toEqual([]);
+    expect(romajiUntilPrimerErrors("fr-vi", null, null)).toEqual([]);
   });
 });
 

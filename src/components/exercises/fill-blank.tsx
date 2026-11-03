@@ -54,6 +54,8 @@ export function FillBlank({ exercise, answer, onAnswer, status, readingOf = () =
             text={option}
             reading={readingOf(option)}
             script={scriptOf(option)}
+            // P4c: the chosen option is the learner's answer — no romaji line on it.
+            showRomaji={false}
             state={optionState(index)}
             onPress={() => onAnswer(index)}
             disabled={status !== "none"}

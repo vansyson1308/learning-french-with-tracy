@@ -24,6 +24,7 @@
 import { existsSync, readFileSync } from "fs";
 
 import { ScriptPrimerSchema, type ScriptPrimer } from "../../content/schema";
+import { hepburn, kanaHepburn } from "../../src/lib/languages/ja-romaji";
 import { composeJamo } from "../../src/lib/languages/ko";
 import { parsePinyinReading } from "../../src/lib/languages/zh";
 import { romanizeKorean } from "./cjk-readings/korean-rr";
@@ -42,30 +43,15 @@ export function primerReviewRel(lang: PrimerLang): string {
 }
 
 // --- kana -------------------------------------------------------------------
-
-/** Hepburn readings of the basic hiragana (gojūon + ん). */
-const HIRAGANA_ROMAJI: Readonly<Record<string, string>> = {
-  あ: "a", い: "i", う: "u", え: "e", お: "o",
-  か: "ka", き: "ki", く: "ku", け: "ke", こ: "ko",
-  さ: "sa", し: "shi", す: "su", せ: "se", そ: "so",
-  た: "ta", ち: "chi", つ: "tsu", て: "te", と: "to",
-  な: "na", に: "ni", ぬ: "nu", ね: "ne", の: "no",
-  は: "ha", ひ: "hi", ふ: "fu", へ: "he", ほ: "ho",
-  ま: "ma", み: "mi", む: "mu", め: "me", も: "mo",
-  や: "ya", ゆ: "yu", よ: "yo",
-  ら: "ra", り: "ri", る: "ru", れ: "re", ろ: "ro",
-  わ: "wa", を: "o", ん: "n",
-};
+// P4c: the Hepburn rules live in the app (src/lib/languages/ja-romaji.ts), which also writes the romaji line shown
+// until the primer checkpoint is passed — one set of rules for both.
 
 const isHiragana = (ch: string) => /^[ぁ-ゖ]$/.test(ch);
 const isKatakana = (ch: string) => /^[ァ-ヺ]$/.test(ch);
-const toHiragana = (ch: string) => String.fromCharCode(ch.charCodeAt(0) - 0x60);
 
-/** The Hepburn reading of one basic kana (hiragana or katakana), or undefined. */
+/** The Hepburn reading of one kana cell (a kana, or a kana with its small ゃ/ゅ/ょ), hiragana or katakana; else undefined. */
 export function kanaRomaji(kana: string): string | undefined {
-  if (isHiragana(kana)) return HIRAGANA_ROMAJI[kana];
-  if (isKatakana(kana)) return HIRAGANA_ROMAJI[toHiragana(kana)];
-  return undefined;
+  return kanaHepburn(kana);
 }
 
 // --- hangul -----------------------------------------------------------------
@@ -112,18 +98,21 @@ function texts(primer: ScriptPrimer): { where: string; text: Text }[] {
     if (s.kind === "hangulBlocks") for (const b of s.blocks) out.push({ where: `${s.id}.${b.block}`, text: b.layout });
     if ("notes" in s) (s.notes ?? []).forEach((n, i) => out.push({ where: `${s.id}.note${i + 1}`, text: n }));
   }
+  if (primer.checkpoint) out.push({ where: "checkpoint.title", text: primer.checkpoint.title }, { where: "checkpoint.intro", text: primer.checkpoint.intro });
   return out;
 }
 
 function checkKana(s: Extract<ScriptPrimer["sections"][number], { kind: "kanaTable" }>, err: (m: string) => void): void {
-  const inScript = s.script === "hiragana" ? isHiragana : isKatakana;
+  // ー lengthens a vowel in katakana words; every other character is the table's script.
+  const inScript = s.script === "hiragana" ? isHiragana : (ch: string) => isKatakana(ch) || ch === "ー";
   for (const row of s.rows) {
     if (row.cells.length !== s.columns.length) err(`${s.id}: row "${row.consonant}" has ${row.cells.length} cells for ${s.columns.length} columns`);
     for (const cell of row.cells) {
       if (cell === null) continue;
       if (![...cell.kana].every(inScript)) err(`${s.id}: ${cell.kana} is not ${s.script}`);
-      const expected = kanaRomaji(cell.kana);
-      if (expected === undefined) err(`${s.id}: ${cell.kana} is not a basic kana`);
+      // A cell is one kana (or a yōon pair), or a word of the っ / long-vowel rows: both read by the app's Hepburn rules.
+      const expected = kanaRomaji(cell.kana) ?? hepburn(cell.kana);
+      if (expected === undefined) err(`${s.id}: ${cell.kana} is not kana`);
       else if (expected !== cell.romaji) err(`${s.id}: ${cell.kana} reads "${expected}", not "${cell.romaji}"`);
       if (cell.audio.say !== cell.kana) err(`${s.id}: audio of ${cell.kana} says "${cell.audio.say}"`);
     }
@@ -189,6 +178,58 @@ function checkHangul(s: Extract<ScriptPrimer["sections"][number], { kind: "hangu
   }
 }
 
+/** Every kana the primer's tables teach (each character of every cell). */
+function taughtKana(primer: ScriptPrimer): Set<string> {
+  const out = new Set<string>();
+  for (const s of primer.sections) {
+    if (s.kind !== "kanaTable") continue;
+    for (const row of s.rows) for (const cell of row.cells) if (cell) for (const ch of cell.kana) out.add(ch);
+  }
+  return out;
+}
+
+/** P4c: the checkpoint (kana primers only) — each key is the app's Hepburn reading, no two options read alike, every kana is taught. */
+function checkCheckpoint(primer: ScriptPrimer, err: (m: string) => void): void {
+  const cp = primer.checkpoint;
+  if (cp === undefined) return;
+  if (!primer.sections.some((s) => s.kind === "kanaTable")) {
+    err("checkpoint: only a kana primer has a checkpoint (its items read kana)");
+    return;
+  }
+  const ids = cp.items.map((i) => i.id);
+  if (new Set(ids).size !== ids.length) err("checkpoint: item ids repeat");
+  if (cp.passMark > cp.items.length) err(`checkpoint: passMark ${cp.passMark} is more than the ${cp.items.length} items`);
+  if (cp.passMark < Math.ceil(cp.items.length * 0.75)) err(`checkpoint: passMark ${cp.passMark} is below 75% of ${cp.items.length} items`);
+  const taught = taughtKana(primer);
+  const untaught = (text: string) => [...text].filter((ch) => !taught.has(ch));
+  const keyPositions = new Set<number>();
+  for (const item of cp.items) {
+    const where = `checkpoint ${item.id}`;
+    if (item.correct >= item.options.length) {
+      err(`${where}: correct ${item.correct} is not an option`);
+      continue;
+    }
+    keyPositions.add(item.correct);
+    if (new Set(item.options).size !== item.options.length) err(`${where}: options repeat`);
+    if (item.kind === "kanaToRomaji") {
+      const reading = kanaHepburn(item.kana) ?? hepburn(item.kana);
+      if (reading === undefined) err(`${where}: ${item.kana} is not kana`);
+      else if (item.options[item.correct] !== reading) err(`${where}: ${item.kana} reads "${reading}", not "${item.options[item.correct]}"`);
+      for (const o of item.options) if (!/^[a-zāīūēō']+$/.test(o)) err(`${where}: option "${o}" is not rōmaji`);
+      for (const ch of untaught(item.kana)) err(`${where}: ${ch} is not taught by the tables`);
+    } else {
+      if (item.audio.say !== item.options[item.correct]) err(`${where}: audio says "${item.audio.say}", the key is "${item.options[item.correct]}"`);
+      const readings = item.options.map((o) => hepburn(o));
+      item.options.forEach((o, i) => {
+        if (readings[i] === undefined) err(`${where}: option ${o} is not kana`);
+        for (const ch of untaught(o)) err(`${where}: ${ch} is not taught by the tables`);
+      });
+      if (new Set(readings).size !== readings.length) err(`${where}: two options sound the same (${readings.join(", ")})`);
+    }
+  }
+  if (cp.items.length >= 4 && keyPositions.size < 2) err("checkpoint: the key is always in the same position");
+}
+
 /** Every content rule of one parsed primer (pure). */
 export function validateScriptPrimerData(lang: PrimerLang, primer: ScriptPrimer): string[] {
   const errors: string[] = [];
@@ -205,6 +246,7 @@ export function validateScriptPrimerData(lang: PrimerLang, primer: ScriptPrimer)
     else if (s.kind === "tones") checkTones(s, err);
     else if (s.kind === "hangulBlocks") checkHangul(s, err);
   }
+  checkCheckpoint(primer, err);
   // Each language teaches its own script.
   const kinds = new Set(primer.sections.map((s) => s.kind));
   const needs: Record<PrimerLang, string> = { ja: "kanaTable", zh: "tones", ko: "hangulBlocks" };

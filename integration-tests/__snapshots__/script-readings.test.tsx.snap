@@ -2783,6 +2783,683 @@ exports[`Latin course renders as before (fr-en) wordBank snapshot is unchanged a
 </View>
 `;
 
+exports[`P4c: romaji until the kana primer checkpoint is passed after the checkpoint: no romaji, furigana as before 1`] = `
+<View
+  style={
+    {
+      "gap": 20,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#404040",
+        "fontSize": 22,
+        "fontWeight": "800",
+      }
+    }
+  >
+    What does this mean?
+  </Text>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "gap": 12,
+      }
+    }
+  >
+    <View>
+      <View
+        accessibilityLabel="学生です。 (がくせいです。)"
+        accessible={true}
+        testID="ruby-text"
+      >
+        <View
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+              },
+              undefined,
+              {
+                "alignItems": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#737373",
+                  "fontSize": 11,
+                  "lineHeight": 14,
+                  "textAlign": "center",
+                }
+              }
+              testID="ruby-reading"
+            >
+              がく
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "#3c3c3c",
+                  "flexShrink": 1,
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              学
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#737373",
+                  "fontSize": 11,
+                  "lineHeight": 14,
+                  "textAlign": "center",
+                }
+              }
+              testID="ruby-reading"
+            >
+              せい
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "#3c3c3c",
+                  "flexShrink": 1,
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              生
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#737373",
+                  "fontSize": 11,
+                  "lineHeight": 14,
+                  "textAlign": "center",
+                }
+              }
+            >
+               
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "#3c3c3c",
+                  "flexShrink": 1,
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              です。
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "gap": 10,
+        },
+        false,
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="student"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 16,
+            "borderWidth": 2,
+            "justifyContent": "center",
+          },
+          {
+            "flexDirection": "row",
+            "gap": 12,
+            "paddingHorizontal": 16,
+            "paddingVertical": 14,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "borderBottomWidth": 4,
+            "borderColor": "#e5e5e5",
+          },
+        ]
+      }
+      testID="option-card"
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+        testID="option-student"
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 17,
+                "fontWeight": "700",
+                "textAlign": "center",
+              },
+              {
+                "color": "#3c3c3c",
+              },
+            ]
+          }
+        >
+          student
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityLabel="to eat"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 16,
+            "borderWidth": 2,
+            "justifyContent": "center",
+          },
+          {
+            "flexDirection": "row",
+            "gap": 12,
+            "paddingHorizontal": 16,
+            "paddingVertical": 14,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "borderBottomWidth": 4,
+            "borderColor": "#e5e5e5",
+          },
+        ]
+      }
+      testID="option-card"
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+        testID="option-to-eat"
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 17,
+                "fontWeight": "700",
+                "textAlign": "center",
+              },
+              {
+                "color": "#3c3c3c",
+              },
+            ]
+          }
+        >
+          to eat
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`P4c: romaji until the kana primer checkpoint is passed before the checkpoint: a romaji line under the prompt, read from the stored kana 1`] = `
+<View
+  style={
+    {
+      "gap": 20,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#404040",
+        "fontSize": 22,
+        "fontWeight": "800",
+      }
+    }
+  >
+    What does this mean?
+  </Text>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "gap": 12,
+      }
+    }
+  >
+    <View>
+      <View
+        accessibilityLabel="学生です。 (がくせいです。)"
+        accessible={true}
+        testID="ruby-text"
+      >
+        <View
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+              },
+              undefined,
+              {
+                "alignItems": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#737373",
+                  "fontSize": 11,
+                  "lineHeight": 14,
+                  "textAlign": "center",
+                }
+              }
+              testID="ruby-reading"
+            >
+              がく
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "#3c3c3c",
+                  "flexShrink": 1,
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              学
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#737373",
+                  "fontSize": 11,
+                  "lineHeight": 14,
+                  "textAlign": "center",
+                }
+              }
+              testID="ruby-reading"
+            >
+              せい
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "#3c3c3c",
+                  "flexShrink": 1,
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              生
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#737373",
+                  "fontSize": 11,
+                  "lineHeight": 14,
+                  "textAlign": "center",
+                }
+              }
+            >
+               
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "#3c3c3c",
+                  "flexShrink": 1,
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                }
+              }
+            >
+              です。
+            </Text>
+          </View>
+        </View>
+        <Text
+          style={
+            [
+              {
+                "fontSize": 13,
+                "marginTop": 2,
+              },
+              {
+                "color": "#737373",
+                "textAlign": "left",
+              },
+            ]
+          }
+          testID="reading-romaji"
+        >
+          gakusei desu.
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "gap": 10,
+        },
+        false,
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="student"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 16,
+            "borderWidth": 2,
+            "justifyContent": "center",
+          },
+          {
+            "flexDirection": "row",
+            "gap": 12,
+            "paddingHorizontal": 16,
+            "paddingVertical": 14,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "borderBottomWidth": 4,
+            "borderColor": "#e5e5e5",
+          },
+        ]
+      }
+      testID="option-card"
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+        testID="option-student"
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 17,
+                "fontWeight": "700",
+                "textAlign": "center",
+              },
+              {
+                "color": "#3c3c3c",
+              },
+            ]
+          }
+        >
+          student
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityLabel="to eat"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 16,
+            "borderWidth": 2,
+            "justifyContent": "center",
+          },
+          {
+            "flexDirection": "row",
+            "gap": 12,
+            "paddingHorizontal": 16,
+            "paddingVertical": 14,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "borderBottomWidth": 4,
+            "borderColor": "#e5e5e5",
+          },
+        ]
+      }
+      testID="option-card"
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+        testID="option-to-eat"
+      >
+        <Text
+          style={
+            [
+              {
+                "fontSize": 17,
+                "fontWeight": "700",
+                "textAlign": "center",
+              },
+              {
+                "color": "#3c3c3c",
+              },
+            ]
+          }
+        >
+          to eat
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`ja: furigana above kanji a word prompt carries its furigana segments above the base text 1`] = `
 <View
   style={

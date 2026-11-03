@@ -43,10 +43,11 @@
         "uiLanguage",
         "assessmentByTarget",
         "dailyNewWords",
-        "readingAid"
+        "readingAid",
+        "primerPassed"
       ]
     },
-    "persistVersion": 8
+    "persistVersion": 9
   },
   "fromVersion": 0,
   "invariants": [],
@@ -174,6 +175,7 @@
     "dailyXpDay": "2026-01-08",
     "lastActiveDay": "2026-01-08",
     "onboardingDone": true,
+    "primerPassed": {},
     "readingAid": {},
     "reviewLog": [],
     "streak": 12,
@@ -311,11 +313,12 @@
       "dailyXpDay": "2026-01-08",
       "lastActiveDay": "2026-01-08",
       "onboardingDone": true,
+      "primerPassed": {},
       "readingAid": {},
       "streak": 12,
       "themePreference": "system",
       "uiLanguage": "system"
     }
   },
-  "toVersion": 8
+  "toVersion": 9
 }

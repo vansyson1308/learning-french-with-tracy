@@ -780,7 +780,8 @@ with open(f"{ROOT}/content/ja/_drafts/units/OUTPUT.jsonl", "w", encoding="utf-8"
 profile = f"{ROOT}/content/ja/_drafts/staged/content/courses/{C}.profile.json"
 os.makedirs(os.path.dirname(profile), exist_ok=True)
 with open(profile, "w", encoding="utf-8", newline="\n") as f:
-    json.dump({"role": "primary", "allowUnreviewed": True, "betaUntilReviewed": True}, f, indent=2)
+    # P4c task 5: romaji under Japanese text only until the learner passes the kana primer checkpoint.
+    json.dump({"role": "primary", "allowUnreviewed": True, "betaUntilReviewed": True, "romajiUntilPrimer": True}, f, indent=2)
     f.write("\n")
 # The inherited ja-en basic pack is never edited; once ja-vi is the primary course it stands alone like it-en and de-en:
 # its own lessons, no shared daily words or FSRS stream (the syllabus and its units belong to ja-vi).

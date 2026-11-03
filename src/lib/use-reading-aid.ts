@@ -5,6 +5,7 @@ import { artifactsFor } from "./content-registry";
 import { courseProfile } from "./course-profile";
 import { languageRules } from "./languages";
 import { japaneseInflectionSources } from "./languages/ja-inflection";
+import { primerPassedFor, type PrimerPassedRecord } from "./learning/primer-progress";
 import { readingAidOn, readingFor, readingMap } from "./learning/reading-aid";
 import {
   buildScriptReadingIndex,
@@ -56,7 +57,15 @@ export function scriptReadingIndexFor(courseId: string, pack: Pack): ScriptReadi
     }
   }
   const inflected = languageRules(profile.targetCode).readingInput === "kana" ? japaneseInflectionSources(sources) : [];
-  return buildScriptReadingIndex([...sources, ...inflected]);
+  return buildScriptReadingIndex([...sources, ...inflected.map((s) => ({ ...s, stem: true as const }))]);
+}
+
+/**
+ * P4c: whether a course shows the romaji line — its profile says `romajiUntilPrimer` and the learner has not
+ * passed the course's kana primer checkpoint yet. Independent of the reading-aid switch (that one is furigana).
+ */
+export function romajiShown(courseId: string, record: PrimerPassedRecord | undefined): boolean {
+  return courseProfile(courseId).romajiUntilPrimer === true && !primerPassedFor(record, courseId);
 }
 
 /**
@@ -69,14 +78,15 @@ export function useScriptReading(courseId?: string): (text: string) => ScriptRea
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const id = courseId ?? activeCourseId;
   const on = useProgress((s) => readingAidOn(s.readingAid, id));
+  const romaji = useProgress((s) => romajiShown(id, s.primerPassed));
   const pack = getPack(id);
   const index = useMemo(() => scriptReadingIndexFor(id, pack), [id, pack]);
   return useMemo(() => {
-    if (!on || index.bySurface.size === 0) return noScript;
+    if ((!on && !romaji) || index.bySurface.size === 0) return noScript;
     const profile = courseProfile(id);
-    const opts = { targetCode: profile.targetCode, showHanViet: profile.nativeCode === "vi" };
+    const opts = { targetCode: profile.targetCode, showHanViet: profile.nativeCode === "vi", furigana: on, romaji };
     return (text: string) => scriptReadingFor(text, index, opts);
-  }, [on, index, id]);
+  }, [on, romaji, index, id]);
 }
 
 /** Whether a course has any reading aid to offer (the Profile switch shows only then). */
