@@ -14,8 +14,8 @@ import {
   SQL,
   rowToExample,
   runNativeGetById,
+  runNativeLexiconSearch,
   runNativeList,
-  runNativeSearch,
   type ExampleKeys,
   type ExampleRow,
   type SqlExecutor,
@@ -45,7 +45,8 @@ export class NativeSqliteLexiconRepository implements LexiconRepository {
   }
 
   search(query: string): Promise<LexemeSummary[]> {
-    return runNativeSearch(this.exec, query);
+    // P4b stage 5: a CJK database (searchMode = cjk) searches by reading keys; Latin databases are unchanged.
+    return runNativeLexiconSearch(this.exec, query);
   }
 
   list(options?: ListOptions): Promise<LexemeSummary[]> {

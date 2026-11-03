@@ -7,6 +7,6 @@
  * the assets).
  */
 export const LEXICON_DB_ASSETS: Record<string, { name: string; contentHash: string; asset: number }> = {
-  "xc": { name: "xc-lexicon-v3-7d3e6ca9534c6cc0.db", contentHash: "7d3e6ca9534c6cc0", asset: require("../../../../assets/lexicon/xc-lexicon-v3-7d3e6ca9534c6cc0.db") },
+  "xc": { name: "xc-lexicon-v3-c01fdeb190986778.db", contentHash: "c01fdeb190986778", asset: require("../../../../assets/lexicon/xc-lexicon-v3-c01fdeb190986778.db") },
   "xx": { name: "xx-lexicon-v3-c228fce0a96c54c4.db", contentHash: "c228fce0a96c54c4", asset: require("../../../../assets/lexicon/xx-lexicon-v3-c228fce0a96c54c4.db") },
 };
