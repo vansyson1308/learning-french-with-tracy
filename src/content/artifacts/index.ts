@@ -9,6 +9,7 @@ import { ARTIFACTS as fr_vi } from "./fr-vi";
 import { ARTIFACTS as it_en } from "./it-en";
 import { ARTIFACTS as it_vi } from "./it-vi";
 import { ARTIFACTS as ja_en } from "./ja-en";
+import { ARTIFACTS as ja_vi } from "./ja-vi";
 import { ARTIFACTS as ko_en } from "./ko-en";
 import { ARTIFACTS as pt_en } from "./pt-en";
 import { ARTIFACTS as zh_en } from "./zh-en";
@@ -25,6 +26,7 @@ export const COURSE_ARTIFACTS: Record<string, CourseArtifacts> = {
   "it-en": it_en,
   "it-vi": it_vi,
   "ja-en": ja_en,
+  "ja-vi": ja_vi,
   "ko-en": ko_en,
   "pt-en": pt_en,
   "zh-en": zh_en,

@@ -1,0 +1,35 @@
+{
+  "generator": "scripts/audio.ts apply",
+  "language": "ja",
+  "pipelineVersion": 3,
+  "layers": [
+    "pack",
+    "lexicon",
+    "reception"
+  ],
+  "courses": [
+    {
+      "courseId": "ja-en",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "kokoro-jf_alpha",
+        "B": "kokoro-jm_kumo"
+      },
+      "clips": 98
+    },
+    {
+      "courseId": "ja-vi",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "kokoro-jf_alpha",
+        "B": "kokoro-jm_kumo"
+      },
+      "clips": 1595
+    }
+  ],
+  "receptionClips": 728,
+  "files": {
+    "pack": 1323,
+    "reception": 713
+  }
+}

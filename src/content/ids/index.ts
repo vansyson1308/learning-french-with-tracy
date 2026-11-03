@@ -5,6 +5,7 @@ import en from "./en.json";
 import es from "./es.json";
 import fr from "./fr.json";
 import it from "./it.json";
+import ja from "./ja.json";
 
 export const ID_REGISTRIES: Record<string, IdRegistry> = {
   "de": de,
@@ -12,4 +13,5 @@ export const ID_REGISTRIES: Record<string, IdRegistry> = {
   "es": es,
   "fr": fr,
   "it": it,
+  "ja": ja,
 };

@@ -13,6 +13,7 @@ export const COURSE_LOADERS: Record<string, () => Promise<CourseBundle>> = {
   "it-en": () => import("./courses/it-en").then((m) => m.COURSE),
   "it-vi": () => import("./courses/it-vi").then((m) => m.COURSE),
   "ja-en": () => import("./courses/ja-en").then((m) => m.COURSE),
+  "ja-vi": () => import("./courses/ja-vi").then((m) => m.COURSE),
   "ko-en": () => import("./courses/ko-en").then((m) => m.COURSE),
   "pt-en": () => import("./courses/pt-en").then((m) => m.COURSE),
   "zh-en": () => import("./courses/zh-en").then((m) => m.COURSE),

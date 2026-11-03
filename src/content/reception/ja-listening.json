@@ -1,0 +1,7170 @@
+{
+  "version": 1,
+  "language": "ja",
+  "order": [
+    "ja.clip.uf_arigatou",
+    "ja.clip.uf_sumimasen",
+    "ja.clip.uf_daijoubu",
+    "ja.clip.uf_kikai",
+    "ja.clip.uf_herumetto",
+    "ja.clip.uf_tebukuro",
+    "ja.clip.uf_kaidan",
+    "ja.clip.uf_mado",
+    "ja.clip.uf_nanji",
+    "ja.clip.uf_wakarimasen",
+    "ja.clip.uf_mouichido",
+    "ja.clip.uf_yukkuri",
+    "ja.clip.uf_imi",
+    "ja.clip.uf_nihongo",
+    "ja.clip.uh_train_tokyo",
+    "ja.clip.uh_train_late",
+    "ja.clip.uh_platform",
+    "ja.clip.uh_next_station",
+    "ja.clip.uh_doors",
+    "ja.clip.uh_shop_close",
+    "ja.clip.uh_shop_floor",
+    "ja.clip.uh_press",
+    "ja.clip.uh_stop",
+    "ja.clip.uh_gloves",
+    "ja.clip.uh_coffee_price",
+    "ja.clip.uh_bento_price",
+    "ja.clip.uh_meeting_time",
+    "ja.clip.uh_shift_end",
+    "ja.clip.uh_break",
+    "ja.clip.ui_meet",
+    "ja.clip.ui_genki",
+    "ja.clip.ui_order",
+    "ja.clip.ui_pay",
+    "ja.clip.ui_time",
+    "ja.clip.ui_box",
+    "ja.clip.ui_late",
+    "ja.clip.ui_phone",
+    "ja.clip.ui_thanks",
+    "ja.clip.uj_nam_osaka",
+    "ja.clip.uj_lin_father",
+    "ja.clip.uj_lan_park",
+    "ja.clip.uj_station",
+    "ja.clip.uj_dorm",
+    "ja.clip.cp3_train_kyoto",
+    "ja.clip.cp3_plane",
+    "ja.clip.cp3_supermarket",
+    "ja.clip.cp3_page",
+    "ja.clip.cp3_shirt_price",
+    "ja.clip.cp3_class",
+    "ja.clip.cp3_party",
+    "ja.clip.cp3_dlg_tea",
+    "ja.clip.cp3_dlg_live",
+    "ja.clip.cp3_dlg_movie",
+    "ja.clip.cp3_dlg_doctor",
+    "ja.clip.cp3_dict_work",
+    "ja.clip.cp3_dict_station",
+    "ja.clip.cp3_dict_door",
+    "ja.clip.a1cap_bank",
+    "ja.clip.a1cap_bus",
+    "ja.clip.a1cap_pharmacy",
+    "ja.clip.a1cap_bag",
+    "ja.clip.pl_mizu",
+    "ja.clip.pl_shop",
+    "ja.clip.pl_pay",
+    "ja.clip.uk_model_rep_ohayou",
+    "ja.clip.uk_model_greet_morning",
+    "ja.clip.uk_model_rep_otsukare",
+    "ja.clip.uk_model_otsukare",
+    "ja.clip.uk_model_thanks",
+    "ja.clip.uk_model_rep_osaki",
+    "ja.clip.uk_model_osaki",
+    "ja.clip.uk_model_sorry",
+    "ja.clip.uk_model_excuse",
+    "ja.clip.ul_model_rep_hajimemashite",
+    "ja.clip.ul_model_name",
+    "ja.clip.ul_model_from",
+    "ja.clip.ul_model_age",
+    "ja.clip.ul_model_work",
+    "ja.clip.ul_model_like",
+    "ja.clip.ul_model_rep_yoroshiku",
+    "ja.clip.um_model_rep_price",
+    "ja.clip.um_model_price",
+    "ja.clip.um_model_time",
+    "ja.clip.um_model_rep_half",
+    "ja.clip.um_model_day",
+    "ja.clip.um_model_birthday",
+    "ja.clip.um_model_tickets",
+    "ja.clip.un_model_rep_ookii",
+    "ja.clip.un_model_box",
+    "ja.clip.un_model_car",
+    "ja.clip.un_model_cat",
+    "ja.clip.un_model_rep_shiroi",
+    "ja.clip.un_model_room",
+    "ja.clip.un_model_person",
+    "ja.clip.ix_konbini_bento_miss",
+    "ja.clip.ix_konbini_bento_0",
+    "ja.clip.ix_konbini_bento_0_s",
+    "ja.clip.ix_konbini_bento_1",
+    "ja.clip.ix_konbini_bento_1_s",
+    "ja.clip.ix_konbini_bento_end",
+    "ja.clip.ix_restaurant_order_miss",
+    "ja.clip.ix_restaurant_order_0",
+    "ja.clip.ix_restaurant_order_0_s",
+    "ja.clip.ix_restaurant_order_1",
+    "ja.clip.ix_restaurant_order_1_s",
+    "ja.clip.ix_restaurant_order_end",
+    "ja.clip.ix_ask_station_miss",
+    "ja.clip.ix_ask_station_0",
+    "ja.clip.ix_ask_station_0_s",
+    "ja.clip.ix_ask_station_1",
+    "ja.clip.ix_ask_station_1_s",
+    "ja.clip.ix_ask_station_end",
+    "ja.clip.ix_train_platform_miss",
+    "ja.clip.ix_train_platform_0",
+    "ja.clip.ix_train_platform_0_s",
+    "ja.clip.ix_train_platform_1",
+    "ja.clip.ix_train_platform_1_s",
+    "ja.clip.ix_train_platform_end",
+    "ja.clip.ix_clinic_reception_miss",
+    "ja.clip.ix_clinic_reception_0",
+    "ja.clip.ix_clinic_reception_0_s",
+    "ja.clip.ix_clinic_reception_1",
+    "ja.clip.ix_clinic_reception_1_s",
+    "ja.clip.ix_clinic_reception_end",
+    "ja.clip.ix_clinic_doctor_miss",
+    "ja.clip.ix_clinic_doctor_0",
+    "ja.clip.ix_clinic_doctor_0_s",
+    "ja.clip.ix_clinic_doctor_1",
+    "ja.clip.ix_clinic_doctor_1_s",
+    "ja.clip.ix_clinic_doctor_end",
+    "ja.clip.ix_call_sick_miss",
+    "ja.clip.ix_call_sick_0",
+    "ja.clip.ix_call_sick_0_s",
+    "ja.clip.ix_call_sick_1",
+    "ja.clip.ix_call_sick_1_s",
+    "ja.clip.ix_call_sick_end",
+    "ja.clip.ix_call_late_miss",
+    "ja.clip.ix_call_late_0",
+    "ja.clip.ix_call_late_0_s",
+    "ja.clip.ix_call_late_1",
+    "ja.clip.ix_call_late_1_s",
+    "ja.clip.ix_call_late_end",
+    "ja.clip.ix_city_office_miss",
+    "ja.clip.ix_city_office_0",
+    "ja.clip.ix_city_office_0_s",
+    "ja.clip.ix_city_office_1",
+    "ja.clip.ix_city_office_1_s",
+    "ja.clip.ix_city_office_end",
+    "ja.clip.ix_interview_basics_miss",
+    "ja.clip.ix_interview_basics_0",
+    "ja.clip.ix_interview_basics_0_s",
+    "ja.clip.ix_interview_basics_1",
+    "ja.clip.ix_interview_basics_1_s",
+    "ja.clip.ix_interview_basics_end",
+    "ja.clip.ix_factory_safety_miss",
+    "ja.clip.ix_factory_safety_0",
+    "ja.clip.ix_factory_safety_0_s",
+    "ja.clip.ix_factory_safety_1",
+    "ja.clip.ix_factory_safety_1_s",
+    "ja.clip.ix_factory_safety_end",
+    "ja.clip.ix_cp6_new_colleague_miss",
+    "ja.clip.ix_cp6_new_colleague_0",
+    "ja.clip.ix_cp6_new_colleague_0_s",
+    "ja.clip.ix_cp6_new_colleague_1",
+    "ja.clip.ix_cp6_new_colleague_1_s",
+    "ja.clip.ix_cp6_new_colleague_end",
+    "ja.clip.ix_cp6_interview_miss",
+    "ja.clip.ix_cp6_interview_0",
+    "ja.clip.ix_cp6_interview_0_s",
+    "ja.clip.ix_cp6_interview_1",
+    "ja.clip.ix_cp6_interview_1_s",
+    "ja.clip.ix_cp6_interview_end",
+    "ja.clip.ix_cp6_konbini_pay_miss",
+    "ja.clip.ix_cp6_konbini_pay_0",
+    "ja.clip.ix_cp6_konbini_pay_0_s",
+    "ja.clip.ix_cp6_konbini_pay_1",
+    "ja.clip.ix_cp6_konbini_pay_1_s",
+    "ja.clip.ix_cp6_konbini_pay_end",
+    "ja.clip.ix_cp6_way_bank_miss",
+    "ja.clip.ix_cp6_way_bank_0",
+    "ja.clip.ix_cp6_way_bank_0_s",
+    "ja.clip.ix_cp6_way_bank_1",
+    "ja.clip.ix_cp6_way_bank_1_s",
+    "ja.clip.ix_cp6_way_bank_end",
+    "ja.clip.ix_cp6_clinic_cough_miss",
+    "ja.clip.ix_cp6_clinic_cough_0",
+    "ja.clip.ix_cp6_clinic_cough_0_s",
+    "ja.clip.ix_cp6_clinic_cough_1",
+    "ja.clip.ix_cp6_clinic_cough_1_s",
+    "ja.clip.ix_cp6_clinic_cough_end",
+    "ja.clip.ix_cp6_call_office_miss",
+    "ja.clip.ix_cp6_call_office_0",
+    "ja.clip.ix_cp6_call_office_0_s",
+    "ja.clip.ix_cp6_call_office_1",
+    "ja.clip.ix_cp6_call_office_1_s",
+    "ja.clip.ix_cp6_call_office_end",
+    "ja.clip.ix_a1cap_first_day_miss",
+    "ja.clip.ix_a1cap_first_day_0",
+    "ja.clip.ix_a1cap_first_day_0_s",
+    "ja.clip.ix_a1cap_first_day_1",
+    "ja.clip.ix_a1cap_first_day_1_s",
+    "ja.clip.ix_a1cap_first_day_end",
+    "ja.clip.ix_a1cap_neighbor_miss",
+    "ja.clip.ix_a1cap_neighbor_0",
+    "ja.clip.ix_a1cap_neighbor_0_s",
+    "ja.clip.ix_a1cap_neighbor_1",
+    "ja.clip.ix_a1cap_neighbor_1_s",
+    "ja.clip.ix_a1cap_neighbor_end",
+    "ja.clip.ix_a1cap_friend_plan_miss",
+    "ja.clip.ix_a1cap_friend_plan_0",
+    "ja.clip.ix_a1cap_friend_plan_0_s",
+    "ja.clip.ix_a1cap_friend_plan_1",
+    "ja.clip.ix_a1cap_friend_plan_1_s",
+    "ja.clip.ix_a1cap_friend_plan_end",
+    "ja.clip.ix_a1cap_lunch_miss",
+    "ja.clip.ix_a1cap_lunch_0",
+    "ja.clip.ix_a1cap_lunch_0_s",
+    "ja.clip.ix_a1cap_lunch_1",
+    "ja.clip.ix_a1cap_lunch_1_s",
+    "ja.clip.ix_a1cap_lunch_end",
+    "ja.clip.jlpt_n5_a_c1_01",
+    "ja.clip.jlpt_n5_a_c1_02",
+    "ja.clip.jlpt_n5_a_c1_03",
+    "ja.clip.jlpt_n5_a_c1_04",
+    "ja.clip.jlpt_n5_a_c1_05",
+    "ja.clip.jlpt_n5_a_c1_06",
+    "ja.clip.jlpt_n5_a_c1_07",
+    "ja.clip.jlpt_n5_a_c2_01",
+    "ja.clip.jlpt_n5_a_c2_02",
+    "ja.clip.jlpt_n5_a_c2_03",
+    "ja.clip.jlpt_n5_a_c2_04",
+    "ja.clip.jlpt_n5_a_c2_05",
+    "ja.clip.jlpt_n5_a_c2_06",
+    "ja.clip.jlpt_n5_a_c3_01",
+    "ja.clip.jlpt_n5_a_c3_02",
+    "ja.clip.jlpt_n5_a_c3_03",
+    "ja.clip.jlpt_n5_a_c3_04",
+    "ja.clip.jlpt_n5_a_c3_05",
+    "ja.clip.jlpt_n5_a_c4_01",
+    "ja.clip.jlpt_n5_a_c4_02",
+    "ja.clip.jlpt_n5_a_c4_03",
+    "ja.clip.jlpt_n5_a_c4_04",
+    "ja.clip.jlpt_n5_a_c4_05",
+    "ja.clip.jlpt_n5_a_c4_06",
+    "ja.clip.jlpt_n5_b_c1_01",
+    "ja.clip.jlpt_n5_b_c1_02",
+    "ja.clip.jlpt_n5_b_c1_03",
+    "ja.clip.jlpt_n5_b_c1_04",
+    "ja.clip.jlpt_n5_b_c1_05",
+    "ja.clip.jlpt_n5_b_c1_06",
+    "ja.clip.jlpt_n5_b_c1_07",
+    "ja.clip.jlpt_n5_b_c2_01",
+    "ja.clip.jlpt_n5_b_c2_02",
+    "ja.clip.jlpt_n5_b_c2_03",
+    "ja.clip.jlpt_n5_b_c2_04",
+    "ja.clip.jlpt_n5_b_c2_05",
+    "ja.clip.jlpt_n5_b_c2_06",
+    "ja.clip.jlpt_n5_b_c3_01",
+    "ja.clip.jlpt_n5_b_c3_02",
+    "ja.clip.jlpt_n5_b_c3_03",
+    "ja.clip.jlpt_n5_b_c3_04",
+    "ja.clip.jlpt_n5_b_c3_05",
+    "ja.clip.jlpt_n5_b_c4_01",
+    "ja.clip.jlpt_n5_b_c4_02",
+    "ja.clip.jlpt_n5_b_c4_03",
+    "ja.clip.jlpt_n5_b_c4_04",
+    "ja.clip.jlpt_n5_b_c4_05",
+    "ja.clip.jlpt_n5_b_c4_06"
+  ],
+  "byId": {
+    "ja.clip.uf_arigatou": {
+      "id": "ja.clip.uf_arigatou",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "65245cffb815fc9ee484",
+      "durationSec": null
+    },
+    "ja.clip.uf_sumimasen": {
+      "id": "ja.clip.uf_sumimasen",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7cf664c10a2bdbd10d66",
+      "durationSec": null
+    },
+    "ja.clip.uf_daijoubu": {
+      "id": "ja.clip.uf_daijoubu",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "大丈夫です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:daijoubudesu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d1f233896a85412443fc",
+      "durationSec": null
+    },
+    "ja.clip.uf_kikai": {
+      "id": "ja.clip.uf_kikai",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "機械"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:kikai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3c75e9ee2d569bb5947f",
+      "durationSec": null
+    },
+    "ja.clip.uf_herumetto": {
+      "id": "ja.clip.uf_herumetto",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ヘルメット"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:herumetto"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4e0b013ece7393288680",
+      "durationSec": null
+    },
+    "ja.clip.uf_tebukuro": {
+      "id": "ja.clip.uf_tebukuro",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "手袋"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:tebukuro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "58485f940d64769d6d60",
+      "durationSec": null
+    },
+    "ja.clip.uf_kaidan": {
+      "id": "ja.clip.uf_kaidan",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "階段"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:kaidan"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ecbf36861ef385b5574c",
+      "durationSec": null
+    },
+    "ja.clip.uf_mado": {
+      "id": "ja.clip.uf_mado",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "窓"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:mado"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5769216a2f6df67ba467",
+      "durationSec": null
+    },
+    "ja.clip.uf_nanji": {
+      "id": "ja.clip.uf_nanji",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "今、何時ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:ima",
+        "ja:w:nanji",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cbaf53a389a8a36c6e8a",
+      "durationSec": null
+    },
+    "ja.clip.uf_wakarimasen": {
+      "id": "ja.clip.uf_wakarimasen",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "わかりません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimasen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c36fd81aad37ee088efb",
+      "durationSec": null
+    },
+    "ja.clip.uf_mouichido": {
+      "id": "ja.clip.uf_mouichido",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b6a1c8f290a1fb8afef5",
+      "durationSec": null
+    },
+    "ja.clip.uf_yukkuri": {
+      "id": "ja.clip.uf_yukkuri",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ゆっくり話してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:yukkurihanashitekudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9a95ce765ff2c91385a0",
+      "durationSec": null
+    },
+    "ja.clip.uf_imi": {
+      "id": "ja.clip.uf_imi",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "これはどういう意味ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:kore",
+        "ja:w:dou",
+        "ja:w:imi",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fc32c9686b3daaca0dc5",
+      "durationSec": null
+    },
+    "ja.clip.uf_nihongo": {
+      "id": "ja.clip.uf_nihongo",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "日本語でお願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "332314cf584610af79c0",
+      "durationSec": null
+    },
+    "ja.clip.uh_train_tokyo": {
+      "id": "ja.clip.uh_train_tokyo",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "東京行きの電車は8時に出ます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:toukyou",
+        "ja:w:iku",
+        "ja:w:densha",
+        "ja:w:ji",
+        "ja:w:deru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cc35b5ecec6405891ca9",
+      "durationSec": null
+    },
+    "ja.clip.uh_train_late": {
+      "id": "ja.clip.uh_train_late",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "電車は15分ぐらい遅れています。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:densha",
+        "ja:w:fun",
+        "ja:w:gurai",
+        "ja:w:okureru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "607003df3f6cfa89eb44",
+      "durationSec": null
+    },
+    "ja.clip.uh_platform": {
+      "id": "ja.clip.uh_platform",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "3番のホームに電車が来ます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:ban",
+        "ja:w:densha",
+        "ja:w:kuru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "783705f9d3ee3d2eef29",
+      "durationSec": null
+    },
+    "ja.clip.uh_next_station": {
+      "id": "ja.clip.uh_next_station",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "次は大阪です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "ja:w:tsugi",
+        "ja:w:oosaka",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4179feddd371abbb4141",
+      "durationSec": null
+    },
+    "ja.clip.uh_doors": {
+      "id": "ja.clip.uh_doors",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ドアが閉まります。ご注意ください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "ja:w:doa",
+        "ja:w:shimaru",
+        "ja:w:chuui",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "902dd7ecfaacc8a55b24",
+      "durationSec": null
+    },
+    "ja.clip.uh_shop_close": {
+      "id": "ja.clip.uh_shop_close",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "この店は9時に閉まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:mise",
+        "ja:w:ji",
+        "ja:w:shimaru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "897f159bc4a8614411e4",
+      "durationSec": null
+    },
+    "ja.clip.uh_shop_floor": {
+      "id": "ja.clip.uh_shop_floor",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "靴は2階です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kutsu",
+        "ja:w:kai-floor",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2e970cfebfc3f3985d0d",
+      "durationSec": null
+    },
+    "ja.clip.uh_press": {
+      "id": "ja.clip.uh_press",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "緑のボタンを押してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:midori",
+        "ja:w:botan",
+        "ja:w:osu",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "92517cf4af02fa24b1ac",
+      "durationSec": null
+    },
+    "ja.clip.uh_stop": {
+      "id": "ja.clip.uh_stop",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "機械を止めて、上司を呼んでください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:kikai",
+        "ja:w:tomeru",
+        "ja:w:joushi",
+        "ja:w:yobu",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6a6e7c53f458186332cf",
+      "durationSec": null
+    },
+    "ja.clip.uh_gloves": {
+      "id": "ja.clip.uh_gloves",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "手袋をして、ヘルメットをかぶってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:tebukuro",
+        "ja:w:herumetto",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dffd331044492d4ff37d",
+      "durationSec": null
+    },
+    "ja.clip.uh_coffee_price": {
+      "id": "ja.clip.uh_coffee_price",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "コーヒーは150円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:koohii",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3e8d9cdcb138ddd35f80",
+      "durationSec": null
+    },
+    "ja.clip.uh_bento_price": {
+      "id": "ja.clip.uh_bento_price",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "お弁当は500円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:obentou",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d19a636b0830dd5ac9ca",
+      "durationSec": null
+    },
+    "ja.clip.uh_meeting_time": {
+      "id": "ja.clip.uh_meeting_time",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "会議は9時半からです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kaigi",
+        "ja:w:ji",
+        "ja:w:han",
+        "ja:w:kara",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "36cda3028bcc293aae55",
+      "durationSec": null
+    },
+    "ja.clip.uh_shift_end": {
+      "id": "ja.clip.uh_shift_end",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "朝のシフトは2時に終わります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:asa",
+        "ja:w:shifuto",
+        "ja:w:ji",
+        "ja:w:owaru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6689838c78da5eb5aac9",
+      "durationSec": null
+    },
+    "ja.clip.uh_break": {
+      "id": "ja.clip.uh_break",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "休憩は12時から1時までです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyuukei",
+        "ja:w:ji",
+        "ja:w:kara",
+        "ja:w:made",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "15ae03663fa88f93445f",
+      "durationSec": null
+    },
+    "ja.clip.ui_meet": {
+      "id": "ja.clip.ui_meet",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "はじめまして。木村です。"
+        },
+        {
+          "speaker": "A",
+          "text": "はじめまして。リンです。よろしくおねがいします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:hajimemashite",
+        "ja:w:kimura",
+        "ja:w:desu",
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "375af94fa76554fb0be2",
+      "durationSec": null
+    },
+    "ja.clip.ui_genki": {
+      "id": "ja.clip.ui_genki",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "お元気ですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい、元気です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ogenkidesuka",
+        "ja:w:hai",
+        "ja:w:genki",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d316203b344cdaa2ab26",
+      "durationSec": null
+    },
+    "ja.clip.ui_order": {
+      "id": "ja.clip.ui_order",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "何にしますか。"
+        },
+        {
+          "speaker": "B",
+          "text": "ラーメンを一つお願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:raamen",
+        "ja:w:hitotsu",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "328730c37ad87f3e7fcc",
+      "durationSec": null
+    },
+    "ja.clip.ui_pay": {
+      "id": "ja.clip.ui_pay",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "全部で680円です。"
+        },
+        {
+          "speaker": "B",
+          "text": "カードでいいですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "はい、どうぞ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:zenbu",
+        "ja:w:en",
+        "ja:w:desu",
+        "ja:w:kaado",
+        "ja:w:ii",
+        "ja:w:hai",
+        "ja:w:douzo"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "daf57cec5468e889ebc0",
+      "durationSec": null
+    },
+    "ja.clip.ui_time": {
+      "id": "ja.clip.ui_time",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、今、何時ですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "3時半です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:ima",
+        "ja:w:nanji",
+        "ja:w:desu",
+        "ja:w:ji",
+        "ja:w:han"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "46949014b7aff3a5c3ce",
+      "durationSec": null
+    },
+    "ja.clip.ui_box": {
+      "id": "ja.clip.ui_box",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "この箱を運んでください。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい。どこに置きますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "ドアの横にお願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:hako",
+        "ja:w:hakobu",
+        "ja:w:kudasai",
+        "ja:w:hai",
+        "ja:w:doko",
+        "ja:w:oku",
+        "ja:w:doa",
+        "ja:w:yoko",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d6efa3a188c3d82537b3",
+      "durationSec": null
+    },
+    "ja.clip.ui_late": {
+      "id": "ja.clip.ui_late",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どうして遅れましたか。"
+        },
+        {
+          "speaker": "A",
+          "text": "すみません。電車が遅れました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:doushite",
+        "ja:w:okureru",
+        "ja:w:sumimasen",
+        "ja:w:densha"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "20636f167207fe557ab9",
+      "durationSec": null
+    },
+    "ja.clip.ui_phone": {
+      "id": "ja.clip.ui_phone",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "もしもし、田中さんはいらっしゃいますか。"
+        },
+        {
+          "speaker": "B",
+          "text": "ちょっと待ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanaka",
+        "ja:w:san",
+        "ja:w:hai",
+        "ja:w:chottomattekudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8b0e50078cd13571cf4f",
+      "durationSec": null
+    },
+    "ja.clip.ui_thanks": {
+      "id": "ja.clip.ui_thanks",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございました。"
+        },
+        {
+          "speaker": "B",
+          "text": "どういたしまして。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatou",
+        "ja:w:douitashimashite"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "491adcfc160100a9f295",
+      "durationSec": null
+    },
+    "ja.clip.uj_nam_osaka": {
+      "id": "ja.clip.uj_nam_osaka",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ナムさんは大阪の工場で働いています。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:oosaka",
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c528f7a95603e4670303",
+      "durationSec": null
+    },
+    "ja.clip.uj_lin_father": {
+      "id": "ja.clip.uj_lin_father",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "リンさんのお父さんは医者です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:otousan",
+        "ja:w:isha",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4d21228d25046f11f79b",
+      "durationSec": null
+    },
+    "ja.clip.uj_lan_park": {
+      "id": "ja.clip.uj_lan_park",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ランさんは日曜日に友達と公園へ行きました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:nichiyoubi",
+        "ja:w:tomodachi",
+        "ja:w:kouen",
+        "ja:w:iku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a3cb33f1a2a508674c6e",
+      "durationSec": null
+    },
+    "ja.clip.uj_station": {
+      "id": "ja.clip.uj_station",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "女の人が駅で切符を買います。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:onnanohito",
+        "ja:w:eki",
+        "ja:w:kippu",
+        "ja:w:kau"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e325c65c16d594f7deb2",
+      "durationSec": null
+    },
+    "ja.clip.uj_dorm": {
+      "id": "ja.clip.uj_dorm",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "夜10時から静かにしてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:yoru",
+        "ja:w:ji",
+        "ja:w:kara",
+        "ja:w:shizuka",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9c20d779cd7638646e6c",
+      "durationSec": null
+    },
+    "ja.clip.cp3_train_kyoto": {
+      "id": "ja.clip.cp3_train_kyoto",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "京都行きの電車は6時に出ます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyouto",
+        "ja:w:iku",
+        "ja:w:densha",
+        "ja:w:ji",
+        "ja:w:deru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b66e6d4f1c4acbee4c84",
+      "durationSec": null
+    },
+    "ja.clip.cp3_plane": {
+      "id": "ja.clip.cp3_plane",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "飛行機は12時に着きます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:hikouki",
+        "ja:w:ji",
+        "ja:w:tsuku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6180f0da412d6bae8927",
+      "durationSec": null
+    },
+    "ja.clip.cp3_supermarket": {
+      "id": "ja.clip.cp3_supermarket",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "スーパーは夜10時に閉まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:suupaa",
+        "ja:w:yoru",
+        "ja:w:ji",
+        "ja:w:shimaru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9a9354dc538505b4808b",
+      "durationSec": null
+    },
+    "ja.clip.cp3_page": {
+      "id": "ja.clip.cp3_page",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "本の12ページを見てください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:hon",
+        "ja:w:peeji",
+        "ja:w:miru",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a9409098650b0320f83a",
+      "durationSec": null
+    },
+    "ja.clip.cp3_shirt_price": {
+      "id": "ja.clip.cp3_shirt_price",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "このシャツは3000円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:shatsu",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1f3338ab621771b3ea23",
+      "durationSec": null
+    },
+    "ja.clip.cp3_class": {
+      "id": "ja.clip.cp3_class",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "日本語の授業は7時からです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo",
+        "ja:w:jugyou",
+        "ja:w:ji",
+        "ja:w:kara",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d160aacce3d8347f5f6b",
+      "durationSec": null
+    },
+    "ja.clip.cp3_party": {
+      "id": "ja.clip.cp3_party",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "パーティーは土曜日の夜です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "ja:w:paatii",
+        "ja:w:doyoubi",
+        "ja:w:yoru",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "94517993319a1c5b5d9a",
+      "durationSec": null
+    },
+    "ja.clip.cp3_dlg_tea": {
+      "id": "ja.clip.cp3_dlg_tea",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "お茶とコーヒーと、どちらがいいですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "お茶をお願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ocha",
+        "ja:w:koohii",
+        "ja:w:dochira",
+        "ja:w:ii",
+        "ja:w:desu",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dd1a3b2b8b2a3598a729",
+      "durationSec": null
+    },
+    "ja.clip.cp3_dlg_live": {
+      "id": "ja.clip.cp3_dlg_live",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どこに住んでいますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "駅の近くに住んでいます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:sumu",
+        "ja:w:eki",
+        "ja:w:chikaku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fb88029b5e5c45b2c484",
+      "durationSec": null
+    },
+    "ja.clip.cp3_dlg_movie": {
+      "id": "ja.clip.cp3_dlg_movie",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "今晩、暇ですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい。一緒に映画を見ませんか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:konban",
+        "ja:w:hima",
+        "ja:w:desu",
+        "ja:w:hai",
+        "ja:w:isshoni",
+        "ja:w:eiga",
+        "ja:w:miru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "eb6f7a5407ddf63ed3ee",
+      "durationSec": null
+    },
+    "ja.clip.cp3_dlg_doctor": {
+      "id": "ja.clip.cp3_dlg_doctor",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どうしましたか。"
+        },
+        {
+          "speaker": "A",
+          "text": "頭が痛いです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou",
+        "ja:w:atama",
+        "ja:w:itai",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "63d1ba216d20967ebe60",
+      "durationSec": null
+    },
+    "ja.clip.cp3_dict_work": {
+      "id": "ja.clip.cp3_dict_work",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "毎日、工場で働きます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:mainichi",
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6456857d949b9bc91ad7",
+      "durationSec": null
+    },
+    "ja.clip.cp3_dict_station": {
+      "id": "ja.clip.cp3_dict_station",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "駅は近いです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:eki",
+        "ja:w:chikai",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ebe2319616ff5b808258",
+      "durationSec": null
+    },
+    "ja.clip.cp3_dict_door": {
+      "id": "ja.clip.cp3_dict_door",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ドアが閉まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "ja:w:doa",
+        "ja:w:shimaru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "128181d79f940f75910e",
+      "durationSec": null
+    },
+    "ja.clip.a1cap_bank": {
+      "id": "ja.clip.a1cap_bank",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "銀行は9時に開きます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:ginkou",
+        "ja:w:ji",
+        "ja:w:aku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "35e8762d0777d0f2384c",
+      "durationSec": null
+    },
+    "ja.clip.a1cap_bus": {
+      "id": "ja.clip.a1cap_bus",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "5番のバスは病院の前に止まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:ban",
+        "ja:w:basu",
+        "ja:w:byouin",
+        "ja:w:mae",
+        "ja:w:tomaru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3128e53762592d897859",
+      "durationSec": null
+    },
+    "ja.clip.a1cap_pharmacy": {
+      "id": "ja.clip.a1cap_pharmacy",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "薬局は郵便局の隣です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:yakkyoku",
+        "ja:w:yuubinkyoku",
+        "ja:w:tonari",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b85b85507ae458dcb8c6",
+      "durationSec": null
+    },
+    "ja.clip.a1cap_bag": {
+      "id": "ja.clip.a1cap_bag",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "このかばんは2500円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:kaban",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "87a59f3bdbbf587c927f",
+      "durationSec": null
+    },
+    "ja.clip.pl_mizu": {
+      "id": "ja.clip.pl_mizu",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "水"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:mizu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "542b5e39cfb86879013d",
+      "durationSec": null
+    },
+    "ja.clip.pl_shop": {
+      "id": "ja.clip.pl_shop",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "店は6時に閉まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:mise",
+        "ja:w:ji",
+        "ja:w:shimaru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "79287756db075713e3fe",
+      "durationSec": null
+    },
+    "ja.clip.pl_pay": {
+      "id": "ja.clip.pl_pay",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "レジで払ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "ja:w:reji",
+        "ja:w:harau",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "22c9bbd1eda332906097",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_rep_ohayou": {
+      "id": "ja.clip.uk_model_rep_ohayou",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "おはようございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "020c041b023e65e5509e",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_greet_morning": {
+      "id": "ja.clip.uk_model_greet_morning",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "おはようございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "020c041b023e65e5509e",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_rep_otsukare": {
+      "id": "ja.clip.uk_model_rep_otsukare",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "お疲れさまです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dff1d821da81e45bc0bf",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_otsukare": {
+      "id": "ja.clip.uk_model_otsukare",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "お疲れさまです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a658d01128b45282cd2a",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_thanks": {
+      "id": "ja.clip.uk_model_thanks",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "65245cffb815fc9ee484",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_rep_osaki": {
+      "id": "ja.clip.uk_model_rep_osaki",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "お先に失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:osakinishitsureishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a4c6a0b9361ad0636510",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_osaki": {
+      "id": "ja.clip.uk_model_osaki",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "お先に失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:osakinishitsureishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e88d671ac201ef1f06c8",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_sorry": {
+      "id": "ja.clip.uk_model_sorry",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "遅れて、すみません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:okureru",
+        "ja:w:sumimasen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "87d46d4e3ae44c4b3647",
+      "durationSec": null
+    },
+    "ja.clip.uk_model_excuse": {
+      "id": "ja.clip.uk_model_excuse",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7cf664c10a2bdbd10d66",
+      "durationSec": null
+    },
+    "ja.clip.ul_model_rep_hajimemashite": {
+      "id": "ja.clip.ul_model_rep_hajimemashite",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "はじめまして。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:hajimemashite"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "121945fcf765af44f025",
+      "durationSec": null
+    },
+    "ja.clip.ul_model_name": {
+      "id": "ja.clip.ul_model_name",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ナムです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fe59f56c32ff1d1985c9",
+      "durationSec": null
+    },
+    "ja.clip.ul_model_from": {
+      "id": "ja.clip.ul_model_from",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ベトナムから来ました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:betonamu",
+        "ja:w:kara",
+        "ja:w:kuru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7c7d98777f6ef1999f81",
+      "durationSec": null
+    },
+    "ja.clip.ul_model_age": {
+      "id": "ja.clip.ul_model_age",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "25歳です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:sai",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "98f877d25425aec81a1e",
+      "durationSec": null
+    },
+    "ja.clip.ul_model_work": {
+      "id": "ja.clip.ul_model_work",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "工場で働いています。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c291779722032e862b87",
+      "durationSec": null
+    },
+    "ja.clip.ul_model_like": {
+      "id": "ja.clip.ul_model_like",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "サッカーが好きです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:sakkaa",
+        "ja:w:suki",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d1bc97906513ecfa1d46",
+      "durationSec": null
+    },
+    "ja.clip.ul_model_rep_yoroshiku": {
+      "id": "ja.clip.ul_model_rep_yoroshiku",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "よろしくおねがいします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7b686ed9b16e8cb1079f",
+      "durationSec": null
+    },
+    "ja.clip.um_model_rep_price": {
+      "id": "ja.clip.um_model_rep_price",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "500円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "93079a185c0b358674bf",
+      "durationSec": null
+    },
+    "ja.clip.um_model_price": {
+      "id": "ja.clip.um_model_price",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "450円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7a68186bbb4fcbdd3f5d",
+      "durationSec": null
+    },
+    "ja.clip.um_model_time": {
+      "id": "ja.clip.um_model_time",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "8時です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:ji",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "22a90450760feb751833",
+      "durationSec": null
+    },
+    "ja.clip.um_model_rep_half": {
+      "id": "ja.clip.um_model_rep_half",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "3時半です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:ji",
+        "ja:w:han",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "41490e2361825a1391f0",
+      "durationSec": null
+    },
+    "ja.clip.um_model_day": {
+      "id": "ja.clip.um_model_day",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "今日は月曜日です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyou",
+        "ja:w:getsuyoubi",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6669750d310115aae52a",
+      "durationSec": null
+    },
+    "ja.clip.um_model_birthday": {
+      "id": "ja.clip.um_model_birthday",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "誕生日は五月十日です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanjoubi",
+        "ja:w:gogatsu",
+        "ja:w:tooka",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4b61222f76b40e0cf4a5",
+      "durationSec": null
+    },
+    "ja.clip.um_model_tickets": {
+      "id": "ja.clip.um_model_tickets",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "切符を2枚ください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kippu",
+        "ja:w:mai",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "86ae39bf93cfffb3b46a",
+      "durationSec": null
+    },
+    "ja.clip.un_model_rep_ookii": {
+      "id": "ja.clip.un_model_rep_ookii",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "この箱は大きいです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:hako",
+        "ja:w:ookii",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3d27440f404bed88c679",
+      "durationSec": null
+    },
+    "ja.clip.un_model_box": {
+      "id": "ja.clip.un_model_box",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "大きい箱です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:ookii",
+        "ja:w:hako",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "02b062b770d206ecaff3",
+      "durationSec": null
+    },
+    "ja.clip.un_model_car": {
+      "id": "ja.clip.un_model_car",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "新しい車です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:atarashii",
+        "ja:w:kuruma",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4a3ec55b805907f0cf85",
+      "durationSec": null
+    },
+    "ja.clip.un_model_cat": {
+      "id": "ja.clip.un_model_cat",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "小さい猫です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:chiisai",
+        "ja:w:neko",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a82333054b546a486b83",
+      "durationSec": null
+    },
+    "ja.clip.un_model_rep_shiroi": {
+      "id": "ja.clip.un_model_rep_shiroi",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "白いシャツです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:shiroi",
+        "ja:w:shatsu",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fa61702aae4da9b44507",
+      "durationSec": null
+    },
+    "ja.clip.un_model_room": {
+      "id": "ja.clip.un_model_room",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "この部屋は広いです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:heya",
+        "ja:w:hiroi",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "abca5f8208f1122c59ed",
+      "durationSec": null
+    },
+    "ja.clip.un_model_person": {
+      "id": "ja.clip.un_model_person",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "背が高いです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:se",
+        "ja:w:takai",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1d946707baa538e18c90",
+      "durationSec": null
+    },
+    "ja.clip.ix_konbini_bento_miss": {
+      "id": "ja.clip.ix_konbini_bento_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "わかりました。ありがとうございました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:arigatou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fc7d970c16bef9c21ec4",
+      "durationSec": null
+    },
+    "ja.clip.ix_konbini_bento_0": {
+      "id": "ja.clip.ix_konbini_bento_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "いらっしゃいませ。お弁当はあたためますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:irasshaimase",
+        "ja:w:obentou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c283d75ca8077ecf9b32",
+      "durationSec": null
+    },
+    "ja.clip.ix_konbini_bento_0_s": {
+      "id": "ja.clip.ix_konbini_bento_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "お弁当、あたためますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:obentou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2657140ce0abd63a57fc",
+      "durationSec": null
+    },
+    "ja.clip.ix_konbini_bento_1": {
+      "id": "ja.clip.ix_konbini_bento_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "袋はいりますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:fukuro",
+        "ja:w:hai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d56a342868c0632fce35",
+      "durationSec": null
+    },
+    "ja.clip.ix_konbini_bento_1_s": {
+      "id": "ja.clip.ix_konbini_bento_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "袋、いりますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:fukuro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e38d5b83be4be31e429d",
+      "durationSec": null
+    },
+    "ja.clip.ix_konbini_bento_end": {
+      "id": "ja.clip.ix_konbini_bento_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "全部で650円です。ありがとうございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:zenbu",
+        "ja:w:en",
+        "ja:w:desu",
+        "ja:w:arigatougozaimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4aab7cef57e007ab32a6",
+      "durationSec": null
+    },
+    "ja.clip.ix_restaurant_order_miss": {
+      "id": "ja.clip.ix_restaurant_order_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0937d216b9c9f05ee05c",
+      "durationSec": null
+    },
+    "ja.clip.ix_restaurant_order_0": {
+      "id": "ja.clip.ix_restaurant_order_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "いらっしゃいませ。なんめいさまですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:irasshaimase",
+        "ja:w:made"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1f092adaba8441e2defb",
+      "durationSec": null
+    },
+    "ja.clip.ix_restaurant_order_0_s": {
+      "id": "ja.clip.ix_restaurant_order_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "何人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nannin",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cc8d77e20ef740fa2c9f",
+      "durationSec": null
+    },
+    "ja.clip.ix_restaurant_order_1": {
+      "id": "ja.clip.ix_restaurant_order_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "こちらへどうぞ。何にしますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kochira",
+        "ja:w:douzo",
+        "ja:w:nani"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "26ef1a46465704fc1721",
+      "durationSec": null
+    },
+    "ja.clip.ix_restaurant_order_1_s": {
+      "id": "ja.clip.ix_restaurant_order_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "何を食べますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:taberu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "41501da04a1ec7c594b0",
+      "durationSec": null
+    },
+    "ja.clip.ix_restaurant_order_end": {
+      "id": "ja.clip.ix_restaurant_order_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "はい、ラーメンと水ですね。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:raamen",
+        "ja:w:mizu",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e425107bb9a0ad117c5e",
+      "durationSec": null
+    },
+    "ja.clip.ix_ask_station_miss": {
+      "id": "ja.clip.ix_ask_station_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "すみません、わかりません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:wakarimasen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cc5156e1f7d21584d19d",
+      "durationSec": null
+    },
+    "ja.clip.ix_ask_station_0": {
+      "id": "ja.clip.ix_ask_station_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "はい、なんでしょうか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9c600523c67f35336f87",
+      "durationSec": null
+    },
+    "ja.clip.ix_ask_station_0_s": {
+      "id": "ja.clip.ix_ask_station_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "80ca9ba68b38310faf8e",
+      "durationSec": null
+    },
+    "ja.clip.ix_ask_station_1": {
+      "id": "ja.clip.ix_ask_station_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "まっすぐ行って、二つ目の角を右に曲がってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:massugu",
+        "ja:w:iku",
+        "ja:w:futatsu",
+        "ja:w:me",
+        "ja:w:kado",
+        "ja:w:migi",
+        "ja:w:magaru",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f92f48f92730fbf40e9c",
+      "durationSec": null
+    },
+    "ja.clip.ix_ask_station_1_s": {
+      "id": "ja.clip.ix_ask_station_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "まっすぐ行って、右です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:massugu",
+        "ja:w:iku",
+        "ja:w:migi",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "927211acc0c8cce60e97",
+      "durationSec": null
+    },
+    "ja.clip.ix_ask_station_end": {
+      "id": "ja.clip.ix_ask_station_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "どういたしまして。気をつけて。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:douitashimashite",
+        "ja:w:kiwotsukete"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9d369438b88791b38c1b",
+      "durationSec": null
+    },
+    "ja.clip.ix_train_platform_miss": {
+      "id": "ja.clip.ix_train_platform_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、もう一度言ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:iu",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0f70172b38a40cd9b466",
+      "durationSec": null
+    },
+    "ja.clip.ix_train_platform_0": {
+      "id": "ja.clip.ix_train_platform_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "83c6e2c8becf00d5020f",
+      "durationSec": null
+    },
+    "ja.clip.ix_train_platform_0_s": {
+      "id": "ja.clip.ix_train_platform_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "何か困っていますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:komaru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2932631fc2fb0641783e",
+      "durationSec": null
+    },
+    "ja.clip.ix_train_platform_1": {
+      "id": "ja.clip.ix_train_platform_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "いいえ。名古屋は3番のホームです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:iie",
+        "ja:w:nagoya",
+        "ja:w:ban",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b9a066aee2b817f0cd3b",
+      "durationSec": null
+    },
+    "ja.clip.ix_train_platform_1_s": {
+      "id": "ja.clip.ix_train_platform_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "3番です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:ban",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "16e2be34c1407636c10a",
+      "durationSec": null
+    },
+    "ja.clip.ix_train_platform_end": {
+      "id": "ja.clip.ix_train_platform_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "はい、そうです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:sou",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ecbc9387e083731bb957",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_reception_miss": {
+      "id": "ja.clip.ix_clinic_reception_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f1199565253e837944c8",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_reception_0": {
+      "id": "ja.clip.ix_clinic_reception_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "こんにちは。初めてですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:konnichiha",
+        "ja:w:hajimete",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2d479a8a97e0c68e213c",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_reception_0_s": {
+      "id": "ja.clip.ix_clinic_reception_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "この病院は初めてですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:byouin",
+        "ja:w:hajimete",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "007e449426ea1523544e",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_reception_1": {
+      "id": "ja.clip.ix_clinic_reception_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "保険証はありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hokenshou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a670a1c5252019b0a603",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_reception_1_s": {
+      "id": "ja.clip.ix_clinic_reception_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "保険証を見せてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hokenshou",
+        "ja:w:miseru",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "556dea2072880369483a",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_reception_end": {
+      "id": "ja.clip.ix_clinic_reception_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございます。少し待ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu",
+        "ja:w:sukoshi",
+        "ja:w:matsu",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5867979e493a5da01421",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_doctor_miss": {
+      "id": "ja.clip.ix_clinic_doctor_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "わかりました。看護師と話してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:kangoshi",
+        "ja:w:hanasu",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fda3aa249166892e526b",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_doctor_0": {
+      "id": "ja.clip.ix_clinic_doctor_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "83c6e2c8becf00d5020f",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_doctor_0_s": {
+      "id": "ja.clip.ix_clinic_doctor_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どこが痛いですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:itai",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "394b7586a74198a77dd6",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_doctor_1": {
+      "id": "ja.clip.ix_clinic_doctor_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "いつからですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:itsu",
+        "ja:w:kara",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "be2396270bf8d6a77b5e",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_doctor_1_s": {
+      "id": "ja.clip.ix_clinic_doctor_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "昨日からですか、今日からですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kinou",
+        "ja:w:kara",
+        "ja:w:desu",
+        "ja:w:kyou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1497ce50b0db548526c8",
+      "durationSec": null
+    },
+    "ja.clip.ix_clinic_doctor_end": {
+      "id": "ja.clip.ix_clinic_doctor_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "この薬を一日3回飲んでください。お大事に。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:kusuri",
+        "ja:w:ichinichi",
+        "ja:w:kai",
+        "ja:w:nomu",
+        "ja:w:kudasai",
+        "ja:w:odaijini"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "77acaf1a094610d75508",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_sick_miss": {
+      "id": "ja.clip.ix_call_sick_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f1199565253e837944c8",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_sick_0": {
+      "id": "ja.clip.ix_call_sick_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "はい、田中です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:tanaka",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "97430ae07f05e5a4354f",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_sick_0_s": {
+      "id": "ja.clip.ix_call_sick_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "もしもし、田中です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanaka",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "77848b258f2365729fb1",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_sick_1": {
+      "id": "ja.clip.ix_call_sick_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "グエンさん、どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:dou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4ff11383103187b48eec",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_sick_1_s": {
+      "id": "ja.clip.ix_call_sick_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "何かありましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "20f69f40d31496eed40a",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_sick_end": {
+      "id": "ja.clip.ix_call_sick_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "わかりました。お大事に。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:odaijini"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2721e391525c2dafac36",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_late_miss": {
+      "id": "ja.clip.ix_call_late_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "わかりました。また電話してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:denwasuru",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c4f985d1ab3523e803a0",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_late_0": {
+      "id": "ja.clip.ix_call_late_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "もしもし、木村です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:kimura",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d605d67d0782bcfb97e0",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_late_0_s": {
+      "id": "ja.clip.ix_call_late_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "はい、木村です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:kimura",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4e215d0fd65041f41a48",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_late_1": {
+      "id": "ja.clip.ix_call_late_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "そうですか。どのぐらい遅れますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:soudesuka",
+        "ja:w:donogurai",
+        "ja:w:okureru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c992d6433149b58bb2ae",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_late_1_s": {
+      "id": "ja.clip.ix_call_late_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "何時に来ますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nanji",
+        "ja:w:kuru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bb0b615c7ffbc6e76e9e",
+      "durationSec": null
+    },
+    "ja.clip.ix_call_late_end": {
+      "id": "ja.clip.ix_call_late_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "わかりました。気をつけて来てください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:kiwotsukete",
+        "ja:w:kuru",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c1a9bf22d611292e8faa",
+      "durationSec": null
+    },
+    "ja.clip.ix_city_office_miss": {
+      "id": "ja.clip.ix_city_office_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f1199565253e837944c8",
+      "durationSec": null
+    },
+    "ja.clip.ix_city_office_0": {
+      "id": "ja.clip.ix_city_office_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "こんにちは。今日はどうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:konnichiha",
+        "ja:w:kyou",
+        "ja:w:dou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f46939198099995cde52",
+      "durationSec": null
+    },
+    "ja.clip.ix_city_office_0_s": {
+      "id": "ja.clip.ix_city_office_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "今日はどんなごようですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyou",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1f26691af80888f12c43",
+      "durationSec": null
+    },
+    "ja.clip.ix_city_office_1": {
+      "id": "ja.clip.ix_city_office_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "在留カードを見せてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:zairyuukaado",
+        "ja:w:miseru",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "74f7a7f1df03355cefa2",
+      "durationSec": null
+    },
+    "ja.clip.ix_city_office_1_s": {
+      "id": "ja.clip.ix_city_office_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "在留カードはありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:zairyuukaado"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "45031e455ff8623e2ae8",
+      "durationSec": null
+    },
+    "ja.clip.ix_city_office_end": {
+      "id": "ja.clip.ix_city_office_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございます。この書類に新しい住所を書いてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu",
+        "ja:w:kono",
+        "ja:w:shorui",
+        "ja:w:atarashii",
+        "ja:w:juusho",
+        "ja:w:kaku",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "08abfb12bf70f2b5604d",
+      "durationSec": null
+    },
+    "ja.clip.ix_interview_basics_miss": {
+      "id": "ja.clip.ix_interview_basics_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "わかりました。また連絡します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:renraku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8907ff1b64f3c57744c4",
+      "durationSec": null
+    },
+    "ja.clip.ix_interview_basics_0": {
+      "id": "ja.clip.ix_interview_basics_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ナムさんは前、どこで働きましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:mae",
+        "ja:w:doko",
+        "ja:w:hataraku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6ca4c4dcded21d46d014",
+      "durationSec": null
+    },
+    "ja.clip.ix_interview_basics_0_s": {
+      "id": "ja.clip.ix_interview_basics_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "前の仕事はなんですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:mae",
+        "ja:w:shigoto",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4f864756bd68f5268ce0",
+      "durationSec": null
+    },
+    "ja.clip.ix_interview_basics_1": {
+      "id": "ja.clip.ix_interview_basics_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どうして日本で働きたいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:doushite",
+        "ja:w:nihon",
+        "ja:w:hataraku",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "06b27ee1f915e3912043",
+      "durationSec": null
+    },
+    "ja.clip.ix_interview_basics_1_s": {
+      "id": "ja.clip.ix_interview_basics_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "日本で働きたい理由はなんですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihon",
+        "ja:w:hataraku",
+        "ja:w:riyuu",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e14615d531bb70e505df",
+      "durationSec": null
+    },
+    "ja.clip.ix_interview_basics_end": {
+      "id": "ja.clip.ix_interview_basics_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "そうですか。頑張ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:soudesuka",
+        "ja:w:ganbaru",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ba75ca637d2570ad8924",
+      "durationSec": null
+    },
+    "ja.clip.ix_factory_safety_miss": {
+      "id": "ja.clip.ix_factory_safety_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "わからないときは、先輩に聞いてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kara",
+        "ja:w:senpai",
+        "ja:w:kiku",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b99e90825fbf151cf84b",
+      "durationSec": null
+    },
+    "ja.clip.ix_factory_safety_0": {
+      "id": "ja.clip.ix_factory_safety_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "仕事の前に、ヘルメットをかぶって、手袋をしてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:shigoto",
+        "ja:w:mae",
+        "ja:w:herumetto",
+        "ja:w:tebukuro",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5e9ad20c08cd106e3ce9",
+      "durationSec": null
+    },
+    "ja.clip.ix_factory_safety_0_s": {
+      "id": "ja.clip.ix_factory_safety_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ヘルメットと手袋ですよ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:herumetto",
+        "ja:w:tebukuro",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9ace17374fa17730730b",
+      "durationSec": null
+    },
+    "ja.clip.ix_factory_safety_1": {
+      "id": "ja.clip.ix_factory_safety_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "機械は緑のボタンで動きます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kikai",
+        "ja:w:midori",
+        "ja:w:botan",
+        "ja:w:ugoku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d678f54963b9f8d8a975",
+      "durationSec": null
+    },
+    "ja.clip.ix_factory_safety_1_s": {
+      "id": "ja.clip.ix_factory_safety_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "緑のボタンで動きます。止めるボタンもありますよ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:midori",
+        "ja:w:botan",
+        "ja:w:ugoku",
+        "ja:w:tomeru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "87bf6e0ff4228a2a3c85",
+      "durationSec": null
+    },
+    "ja.clip.ix_factory_safety_end": {
+      "id": "ja.clip.ix_factory_safety_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "赤いボタンです。気をつけてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:akai",
+        "ja:w:botan",
+        "ja:w:desu",
+        "ja:w:kiwotsukete",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "284f0cd8fc58c1dd6911",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_new_colleague_miss": {
+      "id": "ja.clip.ix_cp6_new_colleague_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "わかりました。また後で。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:ato"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "79c80111e4b5dcb988ed",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_new_colleague_0": {
+      "id": "ja.clip.ix_cp6_new_colleague_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "はじめまして。木村です。新しい人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hajimemashite",
+        "ja:w:kimura",
+        "ja:w:desu",
+        "ja:w:atarashii",
+        "ja:w:hito"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3d399f4aee9236e5abf5",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_new_colleague_0_s": {
+      "id": "ja.clip.ix_cp6_new_colleague_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "新しい社員ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:atarashii",
+        "ja:w:shain",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7fd44f34b9a15dea899a",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_new_colleague_1": {
+      "id": "ja.clip.ix_cp6_new_colleague_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ホアさんの国はどこですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:kuni",
+        "ja:w:doko",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5ee309cee24443842343",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_new_colleague_1_s": {
+      "id": "ja.clip.ix_cp6_new_colleague_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "どこから来ましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:kara",
+        "ja:w:kuru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f47d62171e074a8c7cbd",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_new_colleague_end": {
+      "id": "ja.clip.ix_cp6_new_colleague_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "そうですか。よろしくおねがいします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:soudesuka",
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "679e98c0253ef2078b07",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_interview_miss": {
+      "id": "ja.clip.ix_cp6_interview_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ありがとうございました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "48b2e98b08066f4b206a",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_interview_0": {
+      "id": "ja.clip.ix_cp6_interview_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "おはようございます。お名前は。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu",
+        "ja:w:namae"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0f6157a2a2df48ca0ce0",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_interview_0_s": {
+      "id": "ja.clip.ix_cp6_interview_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "名前を教えてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:namae",
+        "ja:w:oshieru",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1e5d274796331e4c6dcc",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_interview_1": {
+      "id": "ja.clip.ix_cp6_interview_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "日本語ができますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b97066a90f0acd3f893c",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_interview_1_s": {
+      "id": "ja.clip.ix_cp6_interview_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "日本語は大丈夫ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo",
+        "ja:w:daijoubudesu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a3f993bdb81132ed6b53",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_interview_end": {
+      "id": "ja.clip.ix_cp6_interview_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "わかりました。来週、電話します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:raishuu",
+        "ja:w:denwasuru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2a083ae06df56f1183a7",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_konbini_pay_miss": {
+      "id": "ja.clip.ix_cp6_konbini_pay_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f1199565253e837944c8",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_konbini_pay_0": {
+      "id": "ja.clip.ix_cp6_konbini_pay_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "全部で820円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:zenbu",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d912e3e17cb27b7966e7",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_konbini_pay_0_s": {
+      "id": "ja.clip.ix_cp6_konbini_pay_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "820円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a5c515088cbe325f68a7",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_konbini_pay_1": {
+      "id": "ja.clip.ix_cp6_konbini_pay_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "はい、大丈夫です。レシートはいりますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:daijoubudesu",
+        "ja:w:reshiito"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "038fca6753d63c59e345",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_konbini_pay_1_s": {
+      "id": "ja.clip.ix_cp6_konbini_pay_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "レシート、いりますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:reshiito"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "10ce64c06f3fcb909550",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_konbini_pay_end": {
+      "id": "ja.clip.ix_cp6_konbini_pay_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b08e55c82e22fcd25b43",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_way_bank_miss": {
+      "id": "ja.clip.ix_cp6_way_bank_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、わかりません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:wakarimasen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ea2d97b5a1a5f6d02009",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_way_bank_0": {
+      "id": "ja.clip.ix_cp6_way_bank_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "83c6e2c8becf00d5020f",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_way_bank_0_s": {
+      "id": "ja.clip.ix_cp6_way_bank_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "何か困っていますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:komaru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2932631fc2fb0641783e",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_way_bank_1": {
+      "id": "ja.clip.ix_cp6_way_bank_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "銀行は駅の前です。近いですよ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:ginkou",
+        "ja:w:eki",
+        "ja:w:mae",
+        "ja:w:desu",
+        "ja:w:chikai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3681b6551a2f556e66f9",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_way_bank_1_s": {
+      "id": "ja.clip.ix_cp6_way_bank_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "駅の前です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:eki",
+        "ja:w:mae",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9617596209217b9f286b",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_way_bank_end": {
+      "id": "ja.clip.ix_cp6_way_bank_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どういたしまして。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:douitashimashite"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "97b04a7fb37e04ba11bb",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_clinic_cough_miss": {
+      "id": "ja.clip.ix_cp6_clinic_cough_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "わかりました。少し待ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:sukoshi",
+        "ja:w:matsu",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "df1b6f94ce5d113f7f2f",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_clinic_cough_0": {
+      "id": "ja.clip.ix_cp6_clinic_cough_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "80ca9ba68b38310faf8e",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_clinic_cough_0_s": {
+      "id": "ja.clip.ix_cp6_clinic_cough_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "どこか悪いですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:warui",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d7c337b5ba19a6048d5c",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_clinic_cough_1": {
+      "id": "ja.clip.ix_cp6_clinic_cough_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "熱はありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:netsu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "62b5b571ad6300d061be",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_clinic_cough_1_s": {
+      "id": "ja.clip.ix_cp6_clinic_cough_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "熱、ありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:netsu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d1907d37a7fb501f31e7",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_clinic_cough_end": {
+      "id": "ja.clip.ix_cp6_clinic_cough_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "わかりました。水をたくさん飲んで、休んでください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mizu",
+        "ja:w:takusan",
+        "ja:w:nomu",
+        "ja:w:yasumu",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bf7e1eee41e92b1b77b0",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_call_office_miss": {
+      "id": "ja.clip.ix_cp6_call_office_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません。失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:shitsureishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dd867ee0bb08c49b6562",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_call_office_0": {
+      "id": "ja.clip.ix_cp6_call_office_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "はい、さくら工場です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:koujou",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "79a646221cfa3e304c9a",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_call_office_0_s": {
+      "id": "ja.clip.ix_cp6_call_office_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "さくら工場です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:koujou",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fdd6230ff7787c1b9999",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_call_office_1": {
+      "id": "ja.clip.ix_cp6_call_office_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません。田中は今、いません。後でまたお電話ください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:tanaka",
+        "ja:w:ima",
+        "ja:w:ato",
+        "ja:w:mata",
+        "ja:w:denwa",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0b719306b8b5b922845b",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_call_office_1_s": {
+      "id": "ja.clip.ix_cp6_call_office_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "田中は今、いません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanaka",
+        "ja:w:ima"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "eb35e8d957792186b64d",
+      "durationSec": null
+    },
+    "ja.clip.ix_cp6_call_office_end": {
+      "id": "ja.clip.ix_cp6_call_office_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ありがとうございます。失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu",
+        "ja:w:shitsureishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bb3104ed553a59738154",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_first_day_miss": {
+      "id": "ja.clip.ix_a1cap_first_day_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "わかりました。先輩に聞いてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:senpai",
+        "ja:w:kiku",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "36703af5d0ca8647d1fd",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_first_day_0": {
+      "id": "ja.clip.ix_a1cap_first_day_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "おはようございます。新しい人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu",
+        "ja:w:atarashii",
+        "ja:w:hito",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ed0133e839b7542471a9",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_first_day_0_s": {
+      "id": "ja.clip.ix_a1cap_first_day_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "今日から働く人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyou",
+        "ja:w:kara",
+        "ja:w:hataraku",
+        "ja:w:hito",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ab6815f7bc80faf86474",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_first_day_1": {
+      "id": "ja.clip.ix_a1cap_first_day_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ヘルメットはありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:herumetto"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "85352175553167a10ead",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_first_day_1_s": {
+      "id": "ja.clip.ix_a1cap_first_day_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ヘルメット、ありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:herumetto"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8a3a0416a3f1895822ba",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_first_day_end": {
+      "id": "ja.clip.ix_a1cap_first_day_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "じゃあ、このヘルメットをかぶってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:jaa",
+        "ja:w:kono",
+        "ja:w:herumetto",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "eaa9485a61f7bd5b6cc7",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_neighbor_miss": {
+      "id": "ja.clip.ix_a1cap_neighbor_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "では、失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:shitsureishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dd30ed25f67c474da3fe",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_neighbor_0": {
+      "id": "ja.clip.ix_a1cap_neighbor_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "こんにちは。隣の部屋の人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:konnichiha",
+        "ja:w:tonari",
+        "ja:w:heya",
+        "ja:w:hito",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f29a9662fada62a94267",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_neighbor_0_s": {
+      "id": "ja.clip.ix_a1cap_neighbor_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "隣の部屋の方ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:tonari",
+        "ja:w:heya",
+        "ja:w:kata",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "22ecf4815390ce185b71",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_neighbor_1": {
+      "id": "ja.clip.ix_a1cap_neighbor_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "マイさんの仕事はなんですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:shigoto",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8a09135485d30a0da094",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_neighbor_1_s": {
+      "id": "ja.clip.ix_a1cap_neighbor_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どこで働いていますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:hataraku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1175b378dc03f2934e28",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_neighbor_end": {
+      "id": "ja.clip.ix_a1cap_neighbor_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "そうですか。よろしくおねがいします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:soudesuka",
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "af59cc60048b962a3030",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_friend_plan_miss": {
+      "id": "ja.clip.ix_a1cap_friend_plan_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "わかりました。また来週。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:raishuu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "07db253670c4a5a27304",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_friend_plan_0": {
+      "id": "ja.clip.ix_a1cap_friend_plan_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "日曜日は暇ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nichiyoubi",
+        "ja:w:hima",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9607a641ec47a1390109",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_friend_plan_0_s": {
+      "id": "ja.clip.ix_a1cap_friend_plan_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "日曜日、時間がありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nichiyoubi",
+        "ja:w:jikan"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0df7730eb4b0bcb1ea60",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_friend_plan_1": {
+      "id": "ja.clip.ix_a1cap_friend_plan_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "何時に会いましょうか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nanji",
+        "ja:w:au"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "951279a0c6389a588125",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_friend_plan_1_s": {
+      "id": "ja.clip.ix_a1cap_friend_plan_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "何時がいいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nanji",
+        "ja:w:ii",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4148b61964bbe3ff2a58",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_friend_plan_end": {
+      "id": "ja.clip.ix_a1cap_friend_plan_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "じゃあ、日曜日の3時に会いましょう。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:jaa",
+        "ja:w:nichiyoubi",
+        "ja:w:ji",
+        "ja:w:au"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "95fd491b23d7c08a8e61",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_lunch_miss": {
+      "id": "ja.clip.ix_a1cap_lunch_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "わかりました。また明日。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:ashita"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "691b9497e351d9ce6b97",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_lunch_0": {
+      "id": "ja.clip.ix_a1cap_lunch_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "12時ですね。一緒に昼ご飯を食べませんか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:ji",
+        "ja:w:desu",
+        "ja:w:isshoni",
+        "ja:w:hirugohan",
+        "ja:w:taberu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ee4f9fc4690913d2d112",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_lunch_0_s": {
+      "id": "ja.clip.ix_a1cap_lunch_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "昼ご飯、食べませんか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hirugohan",
+        "ja:w:taberu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c87f5ba5a38f17c36ad4",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_lunch_1": {
+      "id": "ja.clip.ix_a1cap_lunch_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "何を食べたいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:taberu",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d894f77cae548a522a12",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_lunch_1_s": {
+      "id": "ja.clip.ix_a1cap_lunch_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "何がいいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:ii",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c2517ccd91dcb0749c78",
+      "durationSec": null
+    },
+    "ja.clip.ix_a1cap_lunch_end": {
+      "id": "ja.clip.ix_a1cap_lunch_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "いいですね。行きましょう。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:ii",
+        "ja:w:desu",
+        "ja:w:iku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ff98be9b721cb3882292",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c1_01": {
+      "id": "ja.clip.jlpt_n5_a_c1_01",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ナムさん、明日は8時に工場に来てください。"
+        },
+        {
+          "speaker": "B",
+          "text": "8時ですね。わかりました。"
+        },
+        {
+          "speaker": "A",
+          "text": "あ、すみません。7時半に来てください。会議があります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:ashita",
+        "ja:w:ji",
+        "ja:w:koujou",
+        "ja:w:kuru",
+        "ja:w:kudasai",
+        "ja:w:desu",
+        "ja:w:wakarimashita",
+        "ja:w:sumimasen",
+        "ja:w:han",
+        "ja:w:kaigi"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "96a0f578b0178d784620",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c1_02": {
+      "id": "ja.clip.jlpt_n5_a_c1_02",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、切手を3枚ください。"
+        },
+        {
+          "speaker": "A",
+          "text": "はい。封筒もいりますか。"
+        },
+        {
+          "speaker": "B",
+          "text": "いいえ、封筒はいりません。あ、はがきを2枚ください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:kitte",
+        "ja:w:mai",
+        "ja:w:kudasai",
+        "ja:w:hai",
+        "ja:w:fuutou",
+        "ja:w:iie",
+        "ja:w:hagaki"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "75bd8a62099d7cb16ca3",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c1_03": {
+      "id": "ja.clip.jlpt_n5_a_c1_03",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "明日、みんなで山へ行きます。お弁当を持って来てください。"
+        },
+        {
+          "speaker": "B",
+          "text": "飲み物も持って来ますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "飲み物はいりません。わたしが持って行きます。かさを持って来てください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ashita",
+        "ja:w:minna",
+        "ja:w:yama",
+        "ja:w:iku",
+        "ja:w:obentou",
+        "ja:w:mottekuru",
+        "ja:w:kudasai",
+        "ja:w:nomimono",
+        "ja:w:hai",
+        "ja:w:watashi",
+        "ja:w:motteiku",
+        "ja:w:kasa"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5ea90b61a94d5460fb19",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c1_04": {
+      "id": "ja.clip.jlpt_n5_a_c1_04",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、駅はどこですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "この道をまっすぐ行って、二つ目の信号を左に曲がってください。"
+        },
+        {
+          "speaker": "B",
+          "text": "二つ目の信号を左ですね。ありがとうございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:eki",
+        "ja:w:doko",
+        "ja:w:desu",
+        "ja:w:kono",
+        "ja:w:michi",
+        "ja:w:massugu",
+        "ja:w:iku",
+        "ja:w:futatsu",
+        "ja:w:me",
+        "ja:w:shingou",
+        "ja:w:hidari",
+        "ja:w:magaru",
+        "ja:w:kudasai",
+        "ja:w:arigatougozaimasu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8cfd7bfe69d41771e6bf",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c1_05": {
+      "id": "ja.clip.jlpt_n5_a_c1_05",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "グエンさん、この箱を倉庫に運んでください。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい。全部ですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "いいえ、大きい箱だけです。小さい箱はここに置いてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:kono",
+        "ja:w:hako",
+        "ja:w:souko",
+        "ja:w:hakobu",
+        "ja:w:kudasai",
+        "ja:w:hai",
+        "ja:w:zenbu",
+        "ja:w:desu",
+        "ja:w:iie",
+        "ja:w:ookii",
+        "ja:w:chiisai",
+        "ja:w:koko",
+        "ja:w:oku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "49dbb7a7199cbf481ccd",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c1_06": {
+      "id": "ja.clip.jlpt_n5_a_c1_06",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "明日の面接は何時からですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "10時からです。在留カードと写真を持って来てください。"
+        },
+        {
+          "speaker": "B",
+          "text": "履歴書も持って行きますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "履歴書はもうもらいました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ashita",
+        "ja:w:mensetsu",
+        "ja:w:nanji",
+        "ja:w:kara",
+        "ja:w:desu",
+        "ja:w:ji",
+        "ja:w:zairyuukaado",
+        "ja:w:shashin",
+        "ja:w:mottekuru",
+        "ja:w:kudasai",
+        "ja:w:rirekisho",
+        "ja:w:motteiku",
+        "ja:w:mou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "19916f24d57eb057eb99",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c1_07": {
+      "id": "ja.clip.jlpt_n5_a_c1_07",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "すみません、この薬はいつ飲みますか。"
+        },
+        {
+          "speaker": "B",
+          "text": "朝と晩、ご飯の後に飲んでください。"
+        },
+        {
+          "speaker": "A",
+          "text": "昼は飲みませんか。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい、昼は飲みません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:kono",
+        "ja:w:kusuri",
+        "ja:w:hai",
+        "ja:w:nomu",
+        "ja:w:asa",
+        "ja:w:ban-evening",
+        "ja:w:gohan",
+        "ja:w:ato",
+        "ja:w:kudasai",
+        "ja:w:hiru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f5173d19d02da620d9e9",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c2_01": {
+      "id": "ja.clip.jlpt_n5_a_c2_01",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "昨日、どうして休みましたか。"
+        },
+        {
+          "speaker": "A",
+          "text": "熱がありましたから。今日はもう大丈夫です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:kinou",
+        "ja:w:doushite",
+        "ja:w:yasumu",
+        "ja:w:netsu",
+        "ja:w:kara",
+        "ja:w:kyou",
+        "ja:w:mou",
+        "ja:w:daijoubudesu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8c9484e5619594832ce0",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c2_02": {
+      "id": "ja.clip.jlpt_n5_a_c2_02",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "週末は何をしましたか。"
+        },
+        {
+          "speaker": "B",
+          "text": "土曜日は友達と映画を見ました。日曜日はうちで本を読みました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:shuumatsu",
+        "ja:w:nani",
+        "ja:w:doyoubi",
+        "ja:w:tomodachi",
+        "ja:w:eiga",
+        "ja:w:miru",
+        "ja:w:nichiyoubi",
+        "ja:w:uchi",
+        "ja:w:hon",
+        "ja:w:yomu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f36fa4403ca9f847bb9e",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c2_03": {
+      "id": "ja.clip.jlpt_n5_a_c2_03",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "このシャツはいくらですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "2000円です。白いシャツは1500円です。"
+        },
+        {
+          "speaker": "A",
+          "text": "じゃあ、白いのをください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:shatsu",
+        "ja:w:hai",
+        "ja:w:desu",
+        "ja:w:en",
+        "ja:w:shiroi",
+        "ja:w:jaa",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bdbec1352f433633b8ec",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c2_04": {
+      "id": "ja.clip.jlpt_n5_a_c2_04",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ランさんのお兄さんは何をしていますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "兄は銀行で働いています。姉は看護師です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:oniisan",
+        "ja:w:nani",
+        "ja:w:ani",
+        "ja:w:ginkou",
+        "ja:w:hataraku",
+        "ja:w:ane",
+        "ja:w:kangoshi",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "df67b116ec9d7b42f3ba",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c2_05": {
+      "id": "ja.clip.jlpt_n5_a_c2_05",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "明日の天気はどうですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "朝は雨ですが、午後は晴れます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ashita",
+        "ja:w:tenki",
+        "ja:w:dou",
+        "ja:w:desu",
+        "ja:w:asa",
+        "ja:w:ame",
+        "ja:w:gogo",
+        "ja:w:hareru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "00e0a08a530224d79be9",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c2_06": {
+      "id": "ja.clip.jlpt_n5_a_c2_06",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "日本語の授業は何曜日ですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "火曜日と金曜日です。時間は7時から9時までです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo",
+        "ja:w:jugyou",
+        "ja:w:nanyoubi",
+        "ja:w:desu",
+        "ja:w:kayoubi",
+        "ja:w:kinyoubi",
+        "ja:w:jikan",
+        "ja:w:ji",
+        "ja:w:kara",
+        "ja:w:made"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "11751bd9de7ef16c2787",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c3_01": {
+      "id": "ja.clip.jlpt_n5_a_c3_01",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "友達にプレゼントをもらいました。なんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:tomodachi",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a434e89a2acfee39b6d1",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c3_02": {
+      "id": "ja.clip.jlpt_n5_a_c3_02",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "朝、会社で先輩に会いました。なんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:asa",
+        "ja:w:kaisha",
+        "ja:w:senpai",
+        "ja:w:au",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d34433be6cffc28fd7b6",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c3_03": {
+      "id": "ja.clip.jlpt_n5_a_c3_03",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "今からご飯を食べます。なんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:ima",
+        "ja:w:kara",
+        "ja:w:gohan",
+        "ja:w:taberu",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dec49c1684c41ef5f43c",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c3_04": {
+      "id": "ja.clip.jlpt_n5_a_c3_04",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "仕事が終わりました。先に帰ります。なんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:shigoto",
+        "ja:w:owaru",
+        "ja:w:saki",
+        "ja:w:kaeru",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "13a3f908c303f5b63011",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c3_05": {
+      "id": "ja.clip.jlpt_n5_a_c3_05",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "道がわかりません。人に聞きます。なんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:michi",
+        "ja:w:wakarimasen",
+        "ja:w:hito",
+        "ja:w:kiku",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8a02a0c9caf8560d4011",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c4_01": {
+      "id": "ja.clip.jlpt_n5_a_c4_01",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "お名前はなんですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:namae",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2523334789ca79006e0c",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c4_02": {
+      "id": "ja.clip.jlpt_n5_a_c4_02",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "コーヒーとお茶と、どちらがいいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:koohii",
+        "ja:w:ocha",
+        "ja:w:dochira",
+        "ja:w:ii",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "faa0293cc62fd73371e6",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c4_03": {
+      "id": "ja.clip.jlpt_n5_a_c4_03",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "いつ日本へ来ましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:itsu",
+        "ja:w:nihon",
+        "ja:w:kuru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9ffa84a1facce900ccda",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c4_04": {
+      "id": "ja.clip.jlpt_n5_a_c4_04",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "これ、どうぞ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:kore",
+        "ja:w:douzo"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "37e881213b3b0a8271f5",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c4_05": {
+      "id": "ja.clip.jlpt_n5_a_c4_05",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "お国はどちらですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:kuni",
+        "ja:w:dochira",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e74908ef6abf6092aba8",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_a_c4_06": {
+      "id": "ja.clip.jlpt_n5_a_c4_06",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "明日、一緒に昼ご飯を食べませんか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ashita",
+        "ja:w:isshoni",
+        "ja:w:hirugohan",
+        "ja:w:taberu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "650e894798a15697f6d9",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c1_01": {
+      "id": "ja.clip.jlpt_n5_b_c1_01",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "明日の会議は2時からです。"
+        },
+        {
+          "speaker": "B",
+          "text": "2時ですね。"
+        },
+        {
+          "speaker": "A",
+          "text": "あ、すみません。3時からになりました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ashita",
+        "ja:w:kaigi",
+        "ja:w:ji",
+        "ja:w:kara",
+        "ja:w:desu",
+        "ja:w:sumimasen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e0a0b14265f4b512fbe3",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c1_02": {
+      "id": "ja.clip.jlpt_n5_b_c1_02",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、りんごを五つください。"
+        },
+        {
+          "speaker": "A",
+          "text": "はい。みかんもいかがですか。今日は安いですよ。"
+        },
+        {
+          "speaker": "B",
+          "text": "じゃあ、みかんも三つください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:ringo",
+        "ja:w:itsutsu",
+        "ja:w:kudasai",
+        "ja:w:hai",
+        "ja:w:mikan",
+        "ja:w:ikaga",
+        "ja:w:desu",
+        "ja:w:kyou",
+        "ja:w:yasui",
+        "ja:w:jaa",
+        "ja:w:mittsu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9767fad3d9dcdca7973f",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c1_03": {
+      "id": "ja.clip.jlpt_n5_b_c1_03",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "明日は雨ですから、かさを持って来てください。"
+        },
+        {
+          "speaker": "B",
+          "text": "ヘルメットも持って来ますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "ヘルメットは工場にあります。手袋を持って来てください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ashita",
+        "ja:w:ame",
+        "ja:w:desu",
+        "ja:w:kara",
+        "ja:w:kasa",
+        "ja:w:mottekuru",
+        "ja:w:kudasai",
+        "ja:w:herumetto",
+        "ja:w:koujou",
+        "ja:w:tebukuro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "97b98fed157d53560b07",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c1_04": {
+      "id": "ja.clip.jlpt_n5_b_c1_04",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、銀行はどこですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "この道をまっすぐ行って、一つ目の角を右に曲がってください。銀行は郵便局の隣です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:ginkou",
+        "ja:w:doko",
+        "ja:w:desu",
+        "ja:w:kono",
+        "ja:w:michi",
+        "ja:w:massugu",
+        "ja:w:iku",
+        "ja:w:hitotsu",
+        "ja:w:me",
+        "ja:w:kado",
+        "ja:w:migi",
+        "ja:w:magaru",
+        "ja:w:kudasai",
+        "ja:w:yuubinkyoku",
+        "ja:w:tonari"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6a0c3d901f8a019c33de",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c1_05": {
+      "id": "ja.clip.jlpt_n5_b_c1_05",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "リンさん、このいすを教室に並べてください。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい。いくつですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "十です。机はもうあります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:kono",
+        "ja:w:isu",
+        "ja:w:kyoushitsu",
+        "ja:w:naraberu",
+        "ja:w:kudasai",
+        "ja:w:hai",
+        "ja:w:ikutsu",
+        "ja:w:desu",
+        "ja:w:juu",
+        "ja:w:tsukue",
+        "ja:w:mou"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "da654dbe8fbc930df9c1",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c1_06": {
+      "id": "ja.clip.jlpt_n5_b_c1_06",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "明日、市役所へ行きます。何を持って行きますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "在留カードと保険証を持って行ってください。"
+        },
+        {
+          "speaker": "B",
+          "text": "写真もいりますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "写真はいりません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ashita",
+        "ja:w:shiyakusho",
+        "ja:w:iku",
+        "ja:w:nani",
+        "ja:w:motteiku",
+        "ja:w:zairyuukaado",
+        "ja:w:hokenshou",
+        "ja:w:kudasai",
+        "ja:w:shashin",
+        "ja:w:hai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ada5ee3f00c6a2b28320",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c1_07": {
+      "id": "ja.clip.jlpt_n5_b_c1_07",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "すみません、この薬は一日になんかい飲みますか。"
+        },
+        {
+          "speaker": "B",
+          "text": "1回です。寝る前に飲んでください。"
+        },
+        {
+          "speaker": "A",
+          "text": "わかりました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:kono",
+        "ja:w:kusuri",
+        "ja:w:ichinichi",
+        "ja:w:nomu",
+        "ja:w:kai",
+        "ja:w:desu",
+        "ja:w:neru",
+        "ja:w:mae",
+        "ja:w:kudasai",
+        "ja:w:wakarimashita"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3e8d759a9e2d47be9079",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c2_01": {
+      "id": "ja.clip.jlpt_n5_b_c2_01",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "どうして遅れましたか。"
+        },
+        {
+          "speaker": "A",
+          "text": "すみません。電車が遅れましたから。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:doushite",
+        "ja:w:okureru",
+        "ja:w:sumimasen",
+        "ja:w:densha",
+        "ja:w:kara"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d99b3dd5e37c728dff1b",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c2_02": {
+      "id": "ja.clip.jlpt_n5_b_c2_02",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "昨日の夜は何をしましたか。"
+        },
+        {
+          "speaker": "B",
+          "text": "友達に手紙を書きました。それから、10時に寝ました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:kinou",
+        "ja:w:yoru",
+        "ja:w:nani",
+        "ja:w:tomodachi",
+        "ja:w:tegami",
+        "ja:w:kaku",
+        "ja:w:sorekara",
+        "ja:w:ji",
+        "ja:w:neru"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "96629516a16f0982b706",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c2_03": {
+      "id": "ja.clip.jlpt_n5_b_c2_03",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "このかばんはいくらですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "3000円です。黒いかばんは2500円です。"
+        },
+        {
+          "speaker": "A",
+          "text": "じゃあ、黒いのをください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:kaban",
+        "ja:w:hai",
+        "ja:w:desu",
+        "ja:w:en",
+        "ja:w:kuroi",
+        "ja:w:jaa",
+        "ja:w:kudasai"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "91354872a0a8d32396c1",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c2_04": {
+      "id": "ja.clip.jlpt_n5_b_c2_04",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "ナムさんの弟さんは学生ですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "いいえ、弟は会社員です。妹は学生です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:otouto",
+        "ja:w:gakusei",
+        "ja:w:desu",
+        "ja:w:iie",
+        "ja:w:kaishain",
+        "ja:w:imouto"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "871641fc91b5431db857",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c2_05": {
+      "id": "ja.clip.jlpt_n5_b_c2_05",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "明日は寒いですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "いいえ、明日は暖かいです。でも、風が強いですよ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ashita",
+        "ja:w:samui",
+        "ja:w:desu",
+        "ja:w:iie",
+        "ja:w:atatakai",
+        "ja:w:demo",
+        "ja:w:kaze-wind",
+        "ja:w:tsuyoi"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6965cad60523aef84cf9",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c2_06": {
+      "id": "ja.clip.jlpt_n5_b_c2_06",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "図書館は何時までですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "月曜日から金曜日までは8時までです。土曜日は5時までです。日曜日は休みです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:toshokan",
+        "ja:w:nanji",
+        "ja:w:made",
+        "ja:w:desu",
+        "ja:w:getsuyoubi",
+        "ja:w:kara",
+        "ja:w:kinyoubi",
+        "ja:w:ji",
+        "ja:w:doyoubi",
+        "ja:w:nichiyoubi",
+        "ja:w:yasumi"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "885add52c46fa24e6736",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c3_01": {
+      "id": "ja.clip.jlpt_n5_b_c3_01",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "夜、寝ます。家族になんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:yoru",
+        "ja:w:neru",
+        "ja:w:kazoku",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d506f6324c5e261258f7",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c3_02": {
+      "id": "ja.clip.jlpt_n5_b_c3_02",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "ご飯を食べました。なんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:gohan",
+        "ja:w:taberu",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "09cb6a6b28a89c1540e7",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c3_03": {
+      "id": "ja.clip.jlpt_n5_b_c3_03",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "朝、うちを出ます。家族になんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:asa",
+        "ja:w:uchi",
+        "ja:w:deru",
+        "ja:w:kazoku",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3cfad61bec4246f7cf15",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c3_04": {
+      "id": "ja.clip.jlpt_n5_b_c3_04",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "お客さんが店に来ました。店員はなんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:okyakusan",
+        "ja:w:mise",
+        "ja:w:kuru",
+        "ja:w:tenin",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "55f90f9424ec57e105aa",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c3_05": {
+      "id": "ja.clip.jlpt_n5_b_c3_05",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "先生の話がわかりませんでした。なんと言いますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:sensei",
+        "ja:w:hanashi",
+        "ja:w:wakarimasen",
+        "ja:w:iu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "18e81991fde2d0831d55",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c4_01": {
+      "id": "ja.clip.jlpt_n5_b_c4_01",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "おいくつですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ikutsu",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a773c799a200b0786104",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c4_02": {
+      "id": "ja.clip.jlpt_n5_b_c4_02",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "すみません、今、何時ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:ima",
+        "ja:w:nanji",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "43a04ef241ea4744c5f0",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c4_03": {
+      "id": "ja.clip.jlpt_n5_b_c4_03",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "どこに住んでいますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:sumu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7a69bcd0cde2f4f633a0",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c4_04": {
+      "id": "ja.clip.jlpt_n5_b_c4_04",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "お元気ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ogenkidesuka"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "26c6cc1fcc922da10264",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c4_05": {
+      "id": "ja.clip.jlpt_n5_b_c4_05",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "それはだれのかさですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:sore",
+        "ja:w:kasa",
+        "ja:w:desu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3a968452733f9165bdba",
+      "durationSec": null
+    },
+    "ja.clip.jlpt_n5_b_c4_06": {
+      "id": "ja.clip.jlpt_n5_b_c4_06",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "週末、どこかへ行きましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:shuumatsu",
+        "ja:w:doko",
+        "ja:w:iku"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2afc579ea91582c16e80",
+      "durationSec": null
+    }
+  }
+}

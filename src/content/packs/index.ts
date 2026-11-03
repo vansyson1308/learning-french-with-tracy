@@ -9,6 +9,7 @@ import fr_vi from "./fr-vi.json";
 import it_en from "./it-en.json";
 import it_vi from "./it-vi.json";
 import ja_en from "./ja-en.json";
+import ja_vi from "./ja-vi.json";
 import ko_en from "./ko-en.json";
 import pt_en from "./pt-en.json";
 import zh_en from "./zh-en.json";
@@ -25,6 +26,7 @@ export const PACKS: Record<string, Pack> = {
   "it-en": it_en as Pack,
   "it-vi": it_vi as Pack,
   "ja-en": ja_en as Pack,
+  "ja-vi": ja_vi as Pack,
   "ko-en": ko_en as Pack,
   "pt-en": pt_en as Pack,
   "zh-en": zh_en as Pack,

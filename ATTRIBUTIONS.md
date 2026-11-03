@@ -248,6 +248,17 @@ Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., P
 
 > Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md).
 
+## misaki 0.9.4 Japanese kana table (hexgrad), adapted from cutlet (Paul O'Leary McCann)
+
+- **License:** Apache-2.0
+- **Source:** https://github.com/hexgrad/misaki/blob/main/misaki/cutlet.py
+- **What:** code adapted at pipeline time (kana → Kokoro phoneme table and rules of the Japanese audio front-end; never shipped)
+- **Retrieved:** 2026-11-03
+
+The Japanese audio front-end's kana → phoneme table and rules are adapted from misaki 0.9.4 misaki/cutlet.py (Copyright hexgrad, Apache-2.0), which is itself adapted from cutlet (https://github.com/polm/cutlet, Copyright Paul O'Leary McCann, MIT). Both licence notices are kept in scripts/lib/tts/ja-phonemes.ts.
+
+> P4c (plan/reports/P4c-ja-audio-frontend.md): misaki[ja] is no longer installed — its G2P needs a MeCab dictionary (UniDic / NAIST-jdic, BSD). Only the dictionary-free kana table and rules were ported, read from the misaki 0.9.4 sdist (PyPI); the readings come from the course lexicon (JmdictFurigana, CC BY-SA 4.0) and content/audio/ja-spoken-readings.json (original). Upstream chain: cutlet MIT → misaki Apache-2.0 → this port, both allowlisted.
+
 ## New General Service List 1.2 — frequency statistics
 
 - **License:** CC-BY-SA-4.0
@@ -335,6 +346,17 @@ Hán-Việt (Sino-Vietnamese) readings of Japanese, Chinese and Korean words aut
 Italian course content for Vietnamese speakers authored by the Learning French with Tracy project.
 
 > P3d(it): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/it-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/it/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public CILS A1 standard formats only, never official items. Ships under the repository's MIT grant like the other course packs.
+
+## Learning French with Tracy — authored ja-vi course (Japanese for Vietnamese speakers)
+
+- **License:** MIT
+- **Source:** https://github.com/vansyson1308/learning-french-with-tracy
+- **What:** authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)
+- **Retrieved:** 2026-11-03
+
+Japanese course content for Vietnamese speakers by the Learning French with Tracy project.
+
+> P4c: clean-room authored; Vietnamese learner-facing text pending the D-10 review. The hand-chosen lexicon is recorded under original-lexicon-etl, its readings under jmdict-furigana. JLPT levels (OpenJLPT) are a build-time anchor only. Ships under the repository's MIT grant like the other course packs.
 
 ## Lexicon ETL v2 authored selection (this project)
 

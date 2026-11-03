@@ -1,0 +1,1043 @@
+{
+  "generator": "scripts/lib/speech.ts",
+  "version": 1,
+  "order": [
+    "ja.speak.k_rep_ohayou",
+    "ja.speak.k_greet_morning",
+    "ja.speak.k_rep_otsukare",
+    "ja.speak.k_otsukare",
+    "ja.speak.k_thanks",
+    "ja.speak.k_rep_osaki",
+    "ja.speak.k_osaki",
+    "ja.speak.k_sorry",
+    "ja.speak.k_excuse",
+    "ja.speak.l_rep_hajimemashite",
+    "ja.speak.l_name",
+    "ja.speak.l_from",
+    "ja.speak.l_age",
+    "ja.speak.l_work",
+    "ja.speak.l_like",
+    "ja.speak.l_rep_yoroshiku",
+    "ja.speak.m_rep_price",
+    "ja.speak.m_price",
+    "ja.speak.m_time",
+    "ja.speak.m_rep_half",
+    "ja.speak.m_day",
+    "ja.speak.m_birthday",
+    "ja.speak.m_tickets",
+    "ja.speak.n_rep_ookii",
+    "ja.speak.n_box",
+    "ja.speak.n_car",
+    "ja.speak.n_cat",
+    "ja.speak.n_rep_shiroi",
+    "ja.speak.n_room",
+    "ja.speak.n_person"
+  ],
+  "byId": {
+    "ja.speak.k_rep_ohayou": {
+      "id": "ja.speak.k_rep_ohayou",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "おはようございます。",
+      "acceptedVariants": [
+        "おはようございます"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.uk_model_rep_ohayou",
+      "allowedAttempts": 2
+    },
+    "ja.speak.k_greet_morning": {
+      "id": "ja.speak.k_greet_morning",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Buổi sáng, bạn đến nhà máy. Hãy chào mọi người."
+      },
+      "target": "おはようございます。",
+      "acceptedVariants": [
+        "おはようございます",
+        "皆さん、おはようございます",
+        "みなさん、おはようございます"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:ohayougozaimasu"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.uk_model_greet_morning",
+      "allowedAttempts": 2
+    },
+    "ja.speak.k_rep_otsukare": {
+      "id": "ja.speak.k_rep_otsukare",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "お疲れさまです。",
+      "acceptedVariants": [
+        "お疲れさまです",
+        "お疲れ様です"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.uk_model_rep_otsukare",
+      "allowedAttempts": 2
+    },
+    "ja.speak.k_otsukare": {
+      "id": "ja.speak.k_otsukare",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Một đồng nghiệp đi ngang qua bạn trong giờ làm. Hãy chào theo cách ở chỗ làm."
+      },
+      "target": "お疲れさまです。",
+      "acceptedVariants": [
+        "お疲れさまです",
+        "お疲れ様です"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:otsukaresamadesu"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.uk_model_otsukare",
+      "allowedAttempts": 2
+    },
+    "ja.speak.k_thanks": {
+      "id": "ja.speak.k_thanks",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Đàn anh giúp bạn khiêng thùng hàng. Hãy cảm ơn."
+      },
+      "target": "ありがとうございます。",
+      "acceptedVariants": [
+        "ありがとうございます",
+        "どうもありがとうございます",
+        "ありがとうございました",
+        "どうもありがとうございました"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:arigatougozaimasu"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.uk_model_thanks",
+      "allowedAttempts": 2
+    },
+    "ja.speak.k_rep_osaki": {
+      "id": "ja.speak.k_rep_osaki",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "お先に失礼します。",
+      "acceptedVariants": [
+        "お先に失礼します"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:osakinishitsureishimasu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.uk_model_rep_osaki",
+      "allowedAttempts": 2
+    },
+    "ja.speak.k_osaki": {
+      "id": "ja.speak.k_osaki",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Ca của bạn đã hết, đồng nghiệp còn làm. Hãy xin phép về trước."
+      },
+      "target": "お先に失礼します。",
+      "acceptedVariants": [
+        "お先に失礼します",
+        "すみません、お先に失礼します",
+        "では、お先に失礼します",
+        "お先に失礼いたします"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:osakinishitsureishimasu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:osakinishitsureishimasu"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.uk_model_osaki",
+      "allowedAttempts": 2
+    },
+    "ja.speak.k_sorry": {
+      "id": "ja.speak.k_sorry",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Bạn đến muộn năm phút. Hãy xin lỗi đàn anh."
+      },
+      "target": "遅れて、すみません。",
+      "acceptedVariants": [
+        "遅れて、すみません",
+        "遅れて、すみませんでした",
+        "すみません",
+        "すみませんでした",
+        "遅くなってすみません",
+        "遅くなってすみませんでした",
+        "遅れてごめんなさい",
+        "申し訳ありません",
+        "申し訳ありませんでした",
+        "すみません、遅れました",
+        "遅れて申し訳ありません",
+        "遅れて申し訳ありませんでした"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:okureru",
+        "ja:w:sumimasen"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:okureru",
+        "ja:w:sumimasen"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.uk_model_sorry",
+      "allowedAttempts": 2
+    },
+    "ja.speak.k_excuse": {
+      "id": "ja.speak.k_excuse",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Bạn muốn hỏi đường một người lạ. Hãy mở lời lịch sự."
+      },
+      "target": "すみません。",
+      "acceptedVariants": [
+        "すみません",
+        "あのう、すみません",
+        "すみません、ちょっといいですか",
+        "あの、すみません",
+        "あの、すみません、ちょっといいですか"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:sumimasen"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.uk_model_excuse",
+      "allowedAttempts": 2
+    },
+    "ja.speak.l_rep_hajimemashite": {
+      "id": "ja.speak.l_rep_hajimemashite",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "はじめまして。",
+      "acceptedVariants": [
+        "はじめまして"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:hajimemashite"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.ul_model_rep_hajimemashite",
+      "allowedAttempts": 2
+    },
+    "ja.speak.l_name": {
+      "id": "ja.speak.l_name",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói tên của bạn.",
+        "cueFacts": [
+          {
+            "label": "Tên",
+            "value": "Nam"
+          }
+        ]
+      },
+      "target": "ナムです。",
+      "acceptedVariants": [
+        "ナムです",
+        "わたしはナムです",
+        "私はナムです",
+        "はじめまして、ナムです",
+        "ナムと申します",
+        "わたしの名前はナムです",
+        "名前はナムです",
+        "私の名前はナムです",
+        "はじめまして、ナムと申します",
+        "ナムです。よろしくおねがいします",
+        "ナムです。よろしくお願いします"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.ul_model_name",
+      "allowedAttempts": 2
+    },
+    "ja.speak.l_from": {
+      "id": "ja.speak.l_from",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn đến từ đâu.",
+        "cueFacts": [
+          {
+            "label": "Nước",
+            "value": "Việt Nam"
+          }
+        ]
+      },
+      "target": "ベトナムから来ました。",
+      "acceptedVariants": [
+        "ベトナムから来ました",
+        "わたしはベトナムから来ました",
+        "私はベトナムから来ました",
+        "ベトナム人です",
+        "わたしはベトナム人です",
+        "ベトナムです",
+        "ベトナムのハノイから来ました"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:betonamu",
+        "ja:w:kara",
+        "ja:w:kuru"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:betonamu",
+        "ja:w:kuru"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.ul_model_from",
+      "allowedAttempts": 2
+    },
+    "ja.speak.l_age": {
+      "id": "ja.speak.l_age",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói tuổi của bạn.",
+        "cueFacts": [
+          {
+            "label": "Tuổi",
+            "value": "25"
+          }
+        ]
+      },
+      "target": "25歳です。",
+      "acceptedVariants": [
+        "25歳です",
+        "わたしは25歳です",
+        "私は25歳です"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:sai",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.ul_model_age",
+      "allowedAttempts": 2
+    },
+    "ja.speak.l_work": {
+      "id": "ja.speak.l_work",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn làm việc ở đâu.",
+        "cueFacts": [
+          {
+            "label": "Nơi làm việc",
+            "value": "nhà máy"
+          }
+        ]
+      },
+      "target": "工場で働いています。",
+      "acceptedVariants": [
+        "工場で働いています",
+        "工場で働きます",
+        "わたしは工場で働いています",
+        "私は工場で働いています"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.ul_model_work",
+      "allowedAttempts": 2
+    },
+    "ja.speak.l_like": {
+      "id": "ja.speak.l_like",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng bạn thích bóng đá.",
+        "cueEmoji": "⚽"
+      },
+      "target": "サッカーが好きです。",
+      "acceptedVariants": [
+        "サッカーが好きです",
+        "サッカーが大好きです",
+        "わたしはサッカーが好きです",
+        "趣味はサッカーです"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:sakkaa",
+        "ja:w:suki",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:sakkaa",
+        "ja:w:suki"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.ul_model_like",
+      "allowedAttempts": 2
+    },
+    "ja.speak.l_rep_yoroshiku": {
+      "id": "ja.speak.l_rep_yoroshiku",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "よろしくおねがいします。",
+      "acceptedVariants": [
+        "よろしくおねがいします",
+        "よろしくお願いします"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.ul_model_rep_yoroshiku",
+      "allowedAttempts": 2
+    },
+    "ja.speak.m_rep_price": {
+      "id": "ja.speak.m_rep_price",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "500円です。",
+      "acceptedVariants": [
+        "500円です"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.um_model_rep_price",
+      "allowedAttempts": 2
+    },
+    "ja.speak.m_price": {
+      "id": "ja.speak.m_price",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Một vị khách hỏi giá hộp cơm. Hãy trả lời.",
+        "cueFacts": [
+          {
+            "label": "Giá",
+            "value": "450 yên"
+          }
+        ]
+      },
+      "target": "450円です。",
+      "acceptedVariants": [
+        "450円です",
+        "お弁当は450円です",
+        "450円"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.um_model_price",
+      "allowedAttempts": 2
+    },
+    "ja.speak.m_time": {
+      "id": "ja.speak.m_time",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Có người hỏi giờ. Hãy trả lời.",
+        "cueEmoji": "🕗",
+        "cueFacts": [
+          {
+            "label": "Giờ",
+            "value": "8 giờ"
+          }
+        ]
+      },
+      "target": "8時です。",
+      "acceptedVariants": [
+        "8時です",
+        "今、8時です",
+        "8時"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:ji",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.um_model_time",
+      "allowedAttempts": 2
+    },
+    "ja.speak.m_rep_half": {
+      "id": "ja.speak.m_rep_half",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "3時半です。",
+      "acceptedVariants": [
+        "3時半です"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:ji",
+        "ja:w:han",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.um_model_rep_half",
+      "allowedAttempts": 2
+    },
+    "ja.speak.m_day": {
+      "id": "ja.speak.m_day",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói hôm nay là thứ mấy.",
+        "cueFacts": [
+          {
+            "label": "Hôm nay",
+            "value": "thứ Hai"
+          }
+        ]
+      },
+      "target": "今日は月曜日です。",
+      "acceptedVariants": [
+        "今日は月曜日です",
+        "月曜日です"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyou",
+        "ja:w:getsuyoubi",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:kyou",
+        "ja:w:getsuyoubi"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.um_model_day",
+      "allowedAttempts": 2
+    },
+    "ja.speak.m_birthday": {
+      "id": "ja.speak.m_birthday",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói sinh nhật của bạn.",
+        "cueEmoji": "🎂",
+        "cueFacts": [
+          {
+            "label": "Sinh nhật",
+            "value": "ngày 10 tháng 5"
+          }
+        ]
+      },
+      "target": "誕生日は五月十日です。",
+      "acceptedVariants": [
+        "誕生日は五月十日です",
+        "五月十日です",
+        "わたしの誕生日は五月十日です"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanjoubi",
+        "ja:w:gogatsu",
+        "ja:w:tooka",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:tanjoubi",
+        "ja:w:gogatsu",
+        "ja:w:tooka"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.um_model_birthday",
+      "allowedAttempts": 2
+    },
+    "ja.speak.m_tickets": {
+      "id": "ja.speak.m_tickets",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Ở ga, bạn mua vé. Hãy nói bạn muốn hai vé.",
+        "cueEmoji": "🎫",
+        "cueFacts": [
+          {
+            "label": "Số vé",
+            "value": "2"
+          }
+        ]
+      },
+      "target": "切符を2枚ください。",
+      "acceptedVariants": [
+        "切符を2枚ください",
+        "2枚ください",
+        "切符を2枚お願いします",
+        "切符、2枚お願いします",
+        "2枚お願いします"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kippu",
+        "ja:w:mai",
+        "ja:w:kudasai"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:kippu",
+        "ja:w:kudasai"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.um_model_tickets",
+      "allowedAttempts": 2
+    },
+    "ja.speak.n_rep_ookii": {
+      "id": "ja.speak.n_rep_ookii",
+      "taskFamily": "description",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "この箱は大きいです。",
+      "acceptedVariants": [
+        "この箱は大きいです"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:hako",
+        "ja:w:ookii",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.un_model_rep_ookii",
+      "allowedAttempts": 2
+    },
+    "ja.speak.n_box": {
+      "id": "ja.speak.n_box",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: cái thùng to. Hãy nói câu đó bằng tiếng Nhật.",
+        "cueEmoji": "📦"
+      },
+      "target": "大きい箱です。",
+      "acceptedVariants": [
+        "大きい箱です",
+        "大きな箱です",
+        "この箱は大きいです",
+        "箱は大きいです",
+        "大きいです",
+        "箱が大きいです"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:ookii",
+        "ja:w:hako",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:ookii",
+        "ja:w:hako"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.un_model_box",
+      "allowedAttempts": 2
+    },
+    "ja.speak.n_car": {
+      "id": "ja.speak.n_car",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: chiếc ô tô mới. Hãy nói câu đó bằng tiếng Nhật.",
+        "cueEmoji": "🚗"
+      },
+      "target": "新しい車です。",
+      "acceptedVariants": [
+        "新しい車です",
+        "この車は新しいです",
+        "車は新しいです",
+        "新しいです"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:atarashii",
+        "ja:w:kuruma",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:atarashii",
+        "ja:w:kuruma"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.un_model_car",
+      "allowedAttempts": 2
+    },
+    "ja.speak.n_cat": {
+      "id": "ja.speak.n_cat",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: con mèo nhỏ. Hãy nói câu đó bằng tiếng Nhật.",
+        "cueEmoji": "🐈"
+      },
+      "target": "小さい猫です。",
+      "acceptedVariants": [
+        "小さい猫です",
+        "小さな猫です",
+        "この猫は小さいです",
+        "猫は小さいです",
+        "小さいです",
+        "猫が小さいです"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:chiisai",
+        "ja:w:neko",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:chiisai",
+        "ja:w:neko"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.un_model_cat",
+      "allowedAttempts": 2
+    },
+    "ja.speak.n_rep_shiroi": {
+      "id": "ja.speak.n_rep_shiroi",
+      "taskFamily": "description",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "白いシャツです。",
+      "acceptedVariants": [
+        "白いシャツです"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:shiroi",
+        "ja:w:shatsu",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "ja.clip.un_model_rep_shiroi",
+      "allowedAttempts": 2
+    },
+    "ja.speak.n_room": {
+      "id": "ja.speak.n_room",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: căn phòng này rộng. Hãy nói câu đó bằng tiếng Nhật.",
+        "cueEmoji": "🛋️"
+      },
+      "target": "この部屋は広いです。",
+      "acceptedVariants": [
+        "この部屋は広いです",
+        "部屋は広いです",
+        "広い部屋です",
+        "広いです"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:heya",
+        "ja:w:hiroi",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:heya",
+        "ja:w:hiroi"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.un_model_room",
+      "allowedAttempts": 2
+    },
+    "ja.speak.n_person": {
+      "id": "ja.speak.n_person",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: người phụ nữ này cao. Hãy nói câu đó bằng tiếng Nhật.",
+        "cueEmoji": "👩"
+      },
+      "target": "背が高いです。",
+      "acceptedVariants": [
+        "背が高いです",
+        "この人は背が高いです",
+        "女の人は背が高いです",
+        "背の高い人です"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:se",
+        "ja:w:takai",
+        "ja:w:desu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:se",
+        "ja:w:takai"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "ja.clip.un_model_person",
+      "allowedAttempts": 2
+    }
+  }
+}
