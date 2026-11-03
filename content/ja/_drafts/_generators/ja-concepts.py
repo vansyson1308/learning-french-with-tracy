@@ -1,15 +1,16 @@
 """Concept cards of ja-vi: content/ja/_drafts/concepts/OUTPUT.jsonl.
 
 Twenty-three cards cover the 18 points of plan/authoring/briefs/ja-vi.md §3 (point 5, the particles, is three cards;
-points 6 and 11 are two each) plus family words and invitations, which Section 1 and unit b teach. No paradigm table:
-the ja tables need morphology rows for every cell (scripts/lib/languages/ja.ts) and today's derivation tags only the
-dictionary and ます forms, so verb forms are taught through these cards and fill-in items, not conjugationCloze.
-Every Japanese example passes the same checks as the lessons (ja_text.Index). usage: python -I ja-concepts.py <repo root>
+points 6 and 11 are two each) plus family words and invitations, which Section 1 and unit b teach. Session 3 adds the
+paradigm tables of the conjugationCloze verbs (ja_paradigms.py: every cell from the kaikki morphology rows, which now
+tag the nine cells). Every Japanese example passes the same checks as the lessons (ja_text.Index).
+usage: python -I ja-concepts.py <repo root>
 """
 import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+from ja_paradigms import table_records  # noqa: E402
 from ja_text import Index, load_lexicon  # noqa: E402
 
 ROOT = sys.argv[1]
@@ -214,7 +215,7 @@ concept("kosoado",
         [ex("これはわたしのかばんです。", "Đây là cái túi của tôi.", "This is my bag."),
          ex("そのかさはいくらですか。", "Cái ô đó bao nhiêu tiền?", "How much is that umbrella?", "その đứng trước danh từ", "その comes before a noun"),
          ex("トイレはあそこです。", "Nhà vệ sinh ở đằng kia.", "The toilet is over there."),
-         ex("こちらはやまださんです。", "Đây là anh Yamada.", "This is Mr Yamada.", "giới thiệu người: こちら", "introducing someone: こちら")],
+         ex("こちらは木村さんです。", "Đây là chị Kimura.", "This is Ms Kimura.", "giới thiệu người: こちら", "introducing someone: こちら")],
         [("Không nói この một mình: この本 là đúng, \"これ本\" là sai.", "この never stands alone: この本, not これ本.")],
         ("こ-そ-あ-ど: này, đó, kia, nào.", "ko-so-a-do: this, that, that over there, which."),
         ["questions.question_words", "vocab.everyday_basics"])
@@ -378,7 +379,10 @@ if problems:
         print(p, file=sys.stderr)
     raise SystemExit(f"{len(problems)} problem(s)")
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
+# P4c session 3: the paradigm tables of the conjugationCloze verbs ride with the cards (the concepts ingest writes them to
+# content/ja/pedagogy/paradigms.json); every cell comes from the kaikki morphology rows (ja_paradigms.py).
+paradigms = table_records(ROOT, load_lexicon(ROOT))
 with open(OUT, "w", encoding="utf-8", newline="\n") as f:
-    for r in recs:
+    for r in recs + paradigms:
         f.write(json.dumps(r, ensure_ascii=False) + "\n")
-print(len(recs), "concept cards")
+print(len(recs), "concept cards,", len(paradigms), "paradigm tables")

@@ -20,6 +20,7 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+from ja_paradigms import tables as _paradigm_tables  # noqa: E402
 from ja_text import HAN, KANA, POLITE_END, PLAIN_END, Index, load_lexicon, sentence_ends  # noqa: E402
 
 ROOT = sys.argv[1]
@@ -28,6 +29,7 @@ COURSE = "ja-vi"
 LEXL = load_lexicon(ROOT)
 LEX = {x["surface"]: x for x in LEXL}
 INDEX = Index(LEXL)
+PARADIGMS = _paradigm_tables(ROOT, LEXL)
 
 
 def _jsonl(path):
@@ -193,6 +195,20 @@ def WT(ja, vi, extra):
     return {"type": "wordBank", "direction": "targetToNative", "prompt": ja, "audioTarget": ja, "tokens": _tiles(ans, extra, ja), "answer": ans}
 
 
+def K(sentence, verb, cell, vi):
+    """conjugationCloze (P4c session 3): the key is the verb's paradigm cell, read from the kaikki morphology rows
+    (ja_paradigms.py). The same form typed in kana is accepted too: the drill is the ending, and a cloze is practice
+    evidence by design (never lexical FSRS)."""
+    t = PARADIGMS.get(verb)
+    if t is None or cell not in t["cells"]:
+        PROBLEMS.append(f"{sentence}: {verb} has no paradigm cell {cell}")
+        return {"type": "conjugationCloze", "sentence": sentence, "translation": vi, "verb": verb, "cell": cell, "answer": "?", "alternatives": []}
+    if sentence.count("___") != 1:
+        PROBLEMS.append(f"{sentence}: a cloze has exactly one ___")
+    alts = [t["kana"][cell]] if cell in t["kana"] else []
+    return {"type": "conjugationCloze", "sentence": sentence, "translation": vi, "verb": verb, "cell": cell, "answer": t["cells"][cell], "alternatives": alts}
+
+
 def C(concept):
     return {"concept": f"ja:concept:{concept}"}
 
@@ -219,6 +235,8 @@ def keyed(e):
         return [e["audioTarget"]]
     if t == "typeAnswer":
         return [e["answer"]]  # the alternatives are never shown
+    if t == "conjugationCloze":
+        return [e["sentence"].replace("___", e["answer"])]
     return []
 
 
@@ -226,6 +244,8 @@ def shown(e):
     """Every Japanese string the learner sees, distractors included."""
     t = e["type"]
     out = list(keyed(e))
+    if t == "conjugationCloze":
+        out.append(e["verb"])  # the hint: the dictionary form
     if t == "select" and e["mode"] != "targetToNative":
         out += [o["text"] for o in e["options"]]
     if t == "wordBank" and e["direction"] == "nativeToTarget":
@@ -251,7 +271,7 @@ def _check(eid, e):
     prompt = None
     if e["type"] in ("typeAnswer",) or (e["type"] == "wordBank" and e["direction"] == "nativeToTarget") or (e["type"] == "select" and e["mode"] == "nativeToTarget"):
         prompt = e["prompt"]
-    if e["type"] == "fillBlank":
+    if e["type"] in ("fillBlank", "conjugationCloze"):
         prompt = e["translation"]
     if prompt and JA.search(prompt):
         PROBLEMS.append(f"{eid}: Vietnamese prompt {prompt!r} holds Japanese")

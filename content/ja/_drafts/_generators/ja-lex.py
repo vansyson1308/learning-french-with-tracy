@@ -10,7 +10,8 @@ content/ja/_drafts/review/kanji.json; and content/hanviet/ja.json, merging hanvi
 
 Row format (core-*.txt):  kind|surface|kana|vi|en|topic|example|example vi|example en
 kind: N noun, V verb, I i-adjective, A na-adjective, D adverb, P pronoun, T determiner (この), C conjunction,
-J interjection, E expression, X other (particles, counters, the copula, name suffixes).
+J interjection, E expression, X other (particles, counters, the copula, name suffixes), R proper noun (a family name or a
+place, P4c session 3: a noun read with furigana, never a kanji target, no Hán-Việt).
 kana: the whole reading (hiragana; a katakana part stays katakana). The surface is the dictionary form.
 
 Readings: kana-only surfaces are their own reading. Kanji surfaces take their furigana from JmdictFurigana
@@ -33,11 +34,11 @@ MODE = sys.argv[2] if len(sys.argv) > 2 else "all"
 CORE = ["core-0.txt", "core-1.txt", "core-2.txt", "core-3.txt", "core-4.txt", "core-5.txt", "core-6.txt", "core-7.txt"]
 LATER = "core-a2.txt"
 STAGED = "content/ja/_drafts/staged"
-POS = {"N": "noun", "V": "verb", "I": "adjective", "A": "adjective", "D": "adverb", "P": "pronoun", "T": "determiner", "C": "conjunction", "J": "interjection", "E": "expression", "X": "other"}
+POS = {"N": "noun", "V": "verb", "I": "adjective", "A": "adjective", "D": "adverb", "P": "pronoun", "T": "determiner", "C": "conjunction", "J": "interjection", "E": "expression", "X": "other", "R": "noun"}
 TOPICS = {"people", "greetings", "food", "animals", "travel", "everyday", "places", "shopping", "time", "family", "home", "body", "clothing", "colors", "numbers", "weather", "nature", "work", "school", "feelings", "leisure", "technology"}
 KANA_ONLY = re.compile(r"^[ぁ-ゖァ-ヺー゛゜]+$")
 # Names in examples: characters, not vocabulary.
-NAMES = ["北海道", "富士山", "田中", "山田", "木村", "東京", "大阪", "京都", "ハノイ", "グエン", "ラン", "ミン", "ナム", "ハナ", "リン", "トム"]
+NAMES = ["北海道", "富士山", "田中", "木村", "東京", "大阪", "京都", "名古屋", "ハノイ", "グエン", "ラン", "ミン", "ナム", "ハナ", "リン", "トム"]
 # The ja-en basic pack is never edited: its kana surfaces map to the lexeme that writes the word in kanji (learner data keys).
 LEGACY = {"水": ["みず"], "牛乳": ["ぎゅうにゅう"], "食べる": ["たべます"], "飲む": ["のみます"], "お茶": ["おちゃ"], "ご飯": ["ごはん"], "卵": ["たまご"], "果物": ["くだもの"], "肉": ["にく"]}
 # ja-en surfaces with no lexeme of their own (content/ja/lexicon/legacy-unmapped.json): progress keeps a reversible legacy id.
@@ -227,8 +228,9 @@ def build():
             errors.append(f"{r['surface']}: draft marker")
         if KANA_ONLY.match(r["surface"]) and r["kana"] != r["surface"]:
             errors.append(f"{r['surface']}: a kana surface is its own reading, found {r['kana']}")
-    k1 = {c for r in a1 for c in r["surface"] if HAN.search(c)}
-    kall = {c for r in rows for c in r["surface"] if HAN.search(c)}
+    # Proper nouns (R) teach no kanji: names stay outside the bands, as the NAMES list keeps them out of the examples.
+    k1 = {c for r in a1 if r["kind"] != "R" for c in r["surface"] if HAN.search(c)}
+    kall = {c for r in rows if r["kind"] != "R" for c in r["surface"] if HAN.search(c)}
     for r in a1:
         errors += example_errors(r, k1)
     for r in a2:
@@ -375,6 +377,8 @@ def anchors_report(rows, subset):
 def kanji_report(a1, a2, subset):
     count = {}
     for r in a1:
+        if r["kind"] == "R":
+            continue  # names are read with furigana, never a kanji target
         for c in r["surface"]:
             if HAN.search(c):
                 count[c] = count.get(c, 0) + 1

@@ -182,8 +182,9 @@ class Index:
         return found
 
 
-# Two characters where a single-kanji word next to another kanji keeps its own reading (時半: じ + はん).
-READS_APART = {"時半", "万円", "千円", "百円"}
+# Two characters where a single-kanji word next to another kanji keeps its own reading (時半: じ + はん). P4c: a station
+# after a place name keeps えき (大阪駅: おおさか + えき).
+READS_APART = {"時半", "万円", "千円", "百円", "阪駅"}
 # Counters a digit may precede with the stored ruby still right (the digit carries the sound change: 1回 いっかい).
 DIGIT_COUNTERS = {"時": "", "円": "", "歳": "", "枚": "", "個": "", "回": "", "番": "", "台": "", "万": "", "分": "2579", "階": "124567890"}
 

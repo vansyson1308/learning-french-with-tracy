@@ -943,10 +943,10 @@
       "topic": "greetings",
       "examples": [
         {
-          "target": "山田さん、お元気ですか。",
+          "target": "木村さん、お元気ですか。",
           "translations": {
-            "en": "How are you, Ms. Yamada?",
-            "vi": "Chị Yamada có khoẻ không?"
+            "en": "How are you, Ms. Kimura?",
+            "vi": "Chị Kimura có khoẻ không?"
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -2415,10 +2415,10 @@
       "topic": "places",
       "examples": [
         {
-          "target": "こちらは山田さんです。",
+          "target": "こちらは木村さんです。",
           "translations": {
-            "en": "This is Ms. Yamada.",
-            "vi": "Đây là chị Yamada."
+            "en": "This is Ms. Kimura.",
+            "vi": "Đây là chị Kimura."
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -34860,6 +34860,432 @@
         }
       ],
       "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "ja:w:tanaka",
+      "surface": "田中",
+      "lemma": "田中",
+      "lookupForm": "田中",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "Tanaka (a Japanese family name)",
+        "vi": "Tanaka (họ người Nhật)"
+      },
+      "pronunciation": {
+        "value": "たなか",
+        "notation": "kana",
+        "source": "jmdict-furigana"
+      },
+      "reading": {
+        "kana": "たなか",
+        "furigana": [
+          {
+            "base": "田",
+            "ruby": "た"
+          },
+          {
+            "base": "中",
+            "ruby": "なか"
+          }
+        ]
+      },
+      "topic": "people",
+      "examples": [
+        {
+          "target": "田中さんは日本人です。",
+          "translations": {
+            "en": "Mr Tanaka is Japanese.",
+            "vi": "Anh Tanaka là người Nhật."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "jmdict-furigana",
+          "key": "田中"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "ja:w:kimura",
+      "surface": "木村",
+      "lemma": "木村",
+      "lookupForm": "木村",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "Kimura (a Japanese family name)",
+        "vi": "Kimura (họ người Nhật)"
+      },
+      "pronunciation": {
+        "value": "きむら",
+        "notation": "kana",
+        "source": "jmdict-furigana"
+      },
+      "reading": {
+        "kana": "きむら",
+        "furigana": [
+          {
+            "base": "木",
+            "ruby": "き"
+          },
+          {
+            "base": "村",
+            "ruby": "むら"
+          }
+        ]
+      },
+      "topic": "people",
+      "examples": [
+        {
+          "target": "木村さんは先生です。",
+          "translations": {
+            "en": "Ms Kimura is a teacher.",
+            "vi": "Chị Kimura là giáo viên."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "jmdict-furigana",
+          "key": "木村"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "ja:w:toukyou",
+      "surface": "東京",
+      "lemma": "東京",
+      "lookupForm": "東京",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "Tokyo (the capital of Japan)",
+        "vi": "Tokyo (thủ đô Nhật Bản)"
+      },
+      "pronunciation": {
+        "value": "とうきょう",
+        "notation": "kana",
+        "source": "jmdict-furigana"
+      },
+      "reading": {
+        "kana": "とうきょう",
+        "furigana": [
+          {
+            "base": "東",
+            "ruby": "とう"
+          },
+          {
+            "base": "京",
+            "ruby": "きょう"
+          }
+        ]
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 162.982,
+        "rank": 499,
+        "band": "common"
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "東京に住んでいます。",
+          "translations": {
+            "en": "I live in Tokyo.",
+            "vi": "Tôi sống ở Tokyo."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "東京|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "東京"
+        },
+        {
+          "source": "jmdict-furigana",
+          "key": "東京|とうきょう"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "ja:w:oosaka",
+      "surface": "大阪",
+      "lemma": "大阪",
+      "lookupForm": "大阪",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "Osaka (a city)",
+        "vi": "Osaka (thành phố)"
+      },
+      "pronunciation": {
+        "value": "おおさか",
+        "notation": "kana",
+        "source": "jmdict-furigana"
+      },
+      "reading": {
+        "kana": "おおさか",
+        "furigana": [
+          {
+            "base": "大",
+            "ruby": "おお"
+          },
+          {
+            "base": "阪",
+            "ruby": "さか"
+          }
+        ]
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "大阪の工場で働いています。",
+          "translations": {
+            "en": "I work at a factory in Osaka.",
+            "vi": "Tôi làm việc ở một nhà máy tại Osaka."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "jmdict-furigana",
+          "key": "大阪|おおさか"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "ja:w:kyouto",
+      "surface": "京都",
+      "lemma": "京都",
+      "lookupForm": "京都",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "Kyoto (a city)",
+        "vi": "Kyoto (thành phố)"
+      },
+      "pronunciation": {
+        "value": "きょうと",
+        "notation": "kana",
+        "source": "jmdict-furigana"
+      },
+      "reading": {
+        "kana": "きょうと",
+        "furigana": [
+          {
+            "base": "京",
+            "ruby": "きょう"
+          },
+          {
+            "base": "都",
+            "ruby": "と"
+          }
+        ]
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "京都へ行きました。",
+          "translations": {
+            "en": "I went to Kyoto.",
+            "vi": "Tôi đã đi Kyoto."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "jmdict-furigana",
+          "key": "京都|きょうと"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "ja:w:nagoya",
+      "surface": "名古屋",
+      "lemma": "名古屋",
+      "lookupForm": "名古屋",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "Nagoya (a city)",
+        "vi": "Nagoya (thành phố)"
+      },
+      "pronunciation": {
+        "value": "なごや",
+        "notation": "kana",
+        "source": "jmdict-furigana"
+      },
+      "reading": {
+        "kana": "なごや",
+        "furigana": [
+          {
+            "base": "名",
+            "ruby": "な"
+          },
+          {
+            "base": "古",
+            "ruby": "ご"
+          },
+          {
+            "base": "屋",
+            "ruby": "や"
+          }
+        ]
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "名古屋まで電車で行きます。",
+          "translations": {
+            "en": "I go to Nagoya by train.",
+            "vi": "Tôi đi tàu điện đến Nagoya."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "jmdict-furigana",
+          "key": "名古屋|なごや"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "ja:w:hokkaidou",
+      "surface": "北海道",
+      "lemma": "北海道",
+      "lookupForm": "北海道",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "Hokkaido (Japan's northern island)",
+        "vi": "Hokkaido (đảo phía bắc Nhật Bản)"
+      },
+      "pronunciation": {
+        "value": "ほっかいどう",
+        "notation": "kana",
+        "source": "jmdict-furigana"
+      },
+      "reading": {
+        "kana": "ほっかいどう",
+        "furigana": [
+          {
+            "base": "北",
+            "ruby": "ほっ"
+          },
+          {
+            "base": "海",
+            "ruby": "かい"
+          },
+          {
+            "base": "道",
+            "ruby": "どう"
+          }
+        ]
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "北海道の冬は寒いです。",
+          "translations": {
+            "en": "Winter in Hokkaido is cold.",
+            "vi": "Mùa đông ở Hokkaido lạnh."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "jmdict-furigana",
+          "key": "北海道|ほっかいどう"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "ja:w:fujisan",
+      "surface": "富士山",
+      "lemma": "富士山",
+      "lookupForm": "富士山",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "Mount Fuji",
+        "vi": "núi Phú Sĩ"
+      },
+      "pronunciation": {
+        "value": "ふじさん",
+        "notation": "kana",
+        "source": "jmdict-furigana"
+      },
+      "reading": {
+        "kana": "ふじさん",
+        "furigana": [
+          {
+            "base": "富",
+            "ruby": "ふ"
+          },
+          {
+            "base": "士",
+            "ruby": "じ"
+          },
+          {
+            "base": "山",
+            "ruby": "さん"
+          }
+        ]
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "富士山はとても高いです。",
+          "translations": {
+            "en": "Mount Fuji is very high.",
+            "vi": "Núi Phú Sĩ rất cao."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "jmdict-furigana",
+          "key": "富士山|ふじさん"
+        },
         {
           "source": "original-lexicon-etl"
         }

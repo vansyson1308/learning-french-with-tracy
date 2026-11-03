@@ -34,6 +34,9 @@ finding (a standing finding needs a reason in its `DECIDED` table, which is empt
 
 End state: 108 lessons, 835 exercises, 0 findings, 0 decided.
 
+Session 3 (2026-11-03): 857 exercises (+22 conjugationCloze), still 0 findings, 0 decided. One rule widened in
+`ja_text.READS_APART`: 阪駅 (大阪駅 reads おおさか + えき).
+
 ## Open for the D-10 reviewer
 
 1. **Typed answers are narrow by nature.** Alternatives cover わたしは dropped, 私 for わたし, に/へ with motion,
@@ -46,14 +49,28 @@ End state: 108 lessons, 835 exercises, 0 findings, 0 decided.
    through the new inflection keys (`src/lib/languages/ja-inflection.ts`). A form two verbs share (降ります) gets none;
    any other kanji in a lesson is a lexicon surface. Numbers are written in digits where a kanji numeral + counter
    would get a wrong reading (三百, 四時, 三人).
-4. **No conjugationCloze.** A ja paradigm table needs morphology rows for all nine cells; the committed derivation
-   tags only the dictionary form and the ます form (scripts/lib/languages/ja.ts). ます forms are drilled as fill-ins
-   (ub-l0…ub-l3) and the te form through the cards and fill-ins until the derivation tags the other cells.
+4. **conjugationCloze (session 3): 22 items** — ub-l0…ub-l3 15 (polite non-past / past, affirmative / negative),
+   te form in ug-l1 3, uq-l3 2, uv-l1 2 — on 25 paradigm tables (`_generators/ja_paradigms.py`, emitted with the
+   cards). Every cell is a row of the kaikki morphology (re-derived this session: the nine cells are tagged); the
+   group rules check the same tables. Read with that in mind:
+   - 7 tables use a cell the Wiktionary page states nowhere, composed from a stated row of the same page and marked
+     `composed` in morphology.json: 来る, 寝る, 勉強する, 読む, 入る, 見せる, 持つ (the polite negative / past cells).
+   - The key's kana spelling is accepted (alternatives): the drill is the ending, and a cloze is practice by design.
+   - 飲む, 休む, 出す, 取る, 続ける have no conjugation table in the retrieval, so no cloze drills them.
 5. **Sections 3–6 wait for their layers.** Listening/reading comprehension, dictation, speech, writing and scenario
    exercises are added to these lessons when reception, speech, writing and scenarios exist (sessions 3–4); today
    those lessons use listen-selects (49), reading selects of signs and messages, word banks and typed answers.
-6. **Names**: Vietnamese names in katakana (ナム, ラン, グエン), Japanese names and cities in hiragana (たなかさん,
-   やまださん, おおさか, なごや) because their kanji are not lexemes. Latin spellings of Japanese names appear only in
-   Vietnamese text ("anh Tanaka", "ga Osaka"), never in a Japanese string.
+6. **Names** (session 3): Japanese names and places are lexemes now (row kind R in core-7.txt): 田中, 木村, 東京,
+   大阪, 京都, 名古屋, 北海道, 富士山 — kanji with furigana from JmdictFurigana, Vietnamese gloss, no Hán-Việt, never a
+   kanji target. 山田 has no JmdictFurigana chain (やまだ: rendaku), so its two uses became 木村. The lessons write
+   them in kanji (田中さん, 大阪, 名古屋); Vietnamese names stay in katakana (ナム, ラン, グエン). Latin spellings of
+   Japanese names appear only in Vietnamese text ("anh Tanaka", "ga Osaka"), never in a Japanese string. They are
+   syllabus members like every authored lexeme, so TODAY can offer one as a new word (open question for the coordinator).
 7. **Hán-Việt** appears in the card "Kanji và âm Hán-Việt" and in ue-l1 only; the false friends 工場 and 勉強 are
    taught there.
+8. **Free writing in kana** (decided in session 3, P4b open item): a guided-writing answer typed entirely in kana is
+   aligned to its slots through the stored readings and accepted as practice, never production evidence — the same
+   rule as typed answers and simple forms.
+9. **Romaji** (session 3): the ja-vi profile sets `romajiUntilPrimer`; a Hepburn line under Japanese text shows until
+   the learner passes the primer checkpoint (16/20). Read the kana primer (`content/ja/primer/REVIEW.md`) and its 20
+   checkpoint items in `_generators/ja-primer.py`.

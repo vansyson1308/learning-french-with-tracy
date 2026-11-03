@@ -1,12 +1,12 @@
 """ja-vi Section 2 lessons (building blocks): noun sentences and particles (unit a), polite verbs and the three groups
 (b), あります/います and adjectives (c), time, dates and counters (d), the scripts, kanji through Hán-Việt, long vowels
 and the small っ (e). Every lesson shows a concept card. Particle fill-ins take the slot of the blueprint's article
-exercise; ます forms are drilled as fill-ins (no conjugationCloze: ja paradigm tables cannot be evidenced yet, see
-ja-concepts.py). Writes lessons/parts/s2.jsonl. usage: python -I ja-lessons-s2.py <repo root>"""
+exercise; ます forms are drilled as fill-ins and, from session 3, as conjugationCloze items (K) whose keys are the
+paradigm cells of the kaikki morphology rows (ja_paradigms.py). Writes lessons/parts/s2.jsonl. usage: python -I ja-lessons-s2.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ja_lesson_lib import C, F, H, M, N, NX, T, TX, W, Y, finish, lesson
+from ja_lesson_lib import C, F, H, K, M, N, NX, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- ua: noun sentences and particles
 lesson("ua-l0", [
@@ -66,6 +66,10 @@ lesson("ub-l0", [
     W("Hôm qua tôi đã về nhà.", "昨日|うち|へ|帰りました", ["帰ります", "を"]),
     Y("Tôi đã xem ti vi.", "テレビを見ました"),
     M("行く", "来る", "帰る", "寝る", "起きる"),
+    K("毎朝6時に___。", "起きる", "polite:nonpast:aff", "Sáng nào tôi cũng dậy lúc sáu giờ."),
+    K("日曜日は会社へ___。", "行く", "polite:nonpast:neg", "Chủ nhật tôi không đi làm."),
+    K("昨日、映画を___。", "見る", "polite:past:aff", "Hôm qua tôi đã xem phim."),
+    K("昨日はテレビを___。", "見る", "polite:past:neg", "Hôm qua tôi đã không xem ti vi."),
 ])
 lesson("ub-l1", [
     C("verb-groups"),
@@ -78,6 +82,11 @@ lesson("ub-l1", [
     W("Tôi làm việc ở nhà máy.", "工場|で|働きます", ["に", "行きます"]),
     Y("Tôi mua bánh mì.", "パンを買います"),
     M("見る", "聞く", "買う", "する", "働く"),
+    K("毎晩11時に___。", "寝る", "polite:nonpast:aff", "Tối nào tôi cũng đi ngủ lúc mười một giờ."),
+    K("ナムさんは工場で___。", "働く", "polite:nonpast:aff", "Anh Nam làm việc ở nhà máy."),
+    K("友達がうちへ___。", "来る", "polite:past:aff", "Bạn tôi đã đến nhà tôi."),
+    K("日本語で手紙を___。", "書く", "polite:nonpast:aff", "Tôi viết thư bằng tiếng Nhật."),
+    K("今日は何も___。", "買う", "polite:past:neg", "Hôm nay tôi đã không mua gì cả."),
 ])
 lesson("ub-l2", [
     C("particles-ni-de-he"),
@@ -91,6 +100,9 @@ lesson("ub-l2", [
     W("Thứ hai tôi đi đến công ty.", "月曜日|に|会社|へ|行きます", ["で", "を"], alts=("会社|へ|月曜日|に|行きます",)),
     Y("Tôi đi đến nhà ga.", "駅へ行きます", "駅に行きます"),
     M("毎日", "毎朝", "毎晩", "今日", "明日"),
+    K("週末は日本語を___。", "勉強する", "polite:past:aff", "Cuối tuần tôi đã học tiếng Nhật."),
+    K("駅で友達を___。", "待つ", "polite:nonpast:aff", "Tôi đợi bạn ở nhà ga."),
+    K("昨日はうちへ___。", "帰る", "polite:past:neg", "Hôm qua tôi đã không về nhà."),
 ])
 lesson("ub-l3", [
     C("invitations"),
@@ -104,6 +116,9 @@ lesson("ub-l3", [
     Y("Cùng đi không?", "一緒に行きませんか"),
     H("いつも", ["もう", "まだ", "また"]),
     M("いつも", "時々", "よく", "もう", "まだ"),
+    K("先週は新聞を___。", "読む", "polite:past:neg", "Tuần trước tôi đã không đọc báo."),
+    K("先生と日本語で___。", "話す", "polite:past:aff", "Tôi đã nói chuyện với thầy giáo bằng tiếng Nhật."),
+    K("今朝は朝ご飯を___。", "食べる", "polite:past:neg", "Sáng nay tôi đã không ăn sáng."),
 ])
 
 # ---------------------------------------------------------------- uc: あります・います and adjectives

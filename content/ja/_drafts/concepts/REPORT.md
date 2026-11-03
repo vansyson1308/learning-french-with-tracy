@@ -1,6 +1,6 @@
 # concepts — ingest report (ja-vi)
 
-Records: 25 · schema-valid: 25 · failed: 0 · validator errors after merge: 0
+Records: 50 · schema-valid: 50 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -29,6 +29,31 @@ Records: 25 · schema-valid: 25 · failed: 0 · validator errors after merge: 0
 - ✅ line 23 `ja:concept:tai-suki`
 - ✅ line 24 `ja:concept:politeness`
 - ✅ line 25 `ja:concept:family-terms`
+- ✅ line 26 `行く`
+- ✅ line 27 `来る`
+- ✅ line 28 `帰る`
+- ✅ line 29 `食べる`
+- ✅ line 30 `見る`
+- ✅ line 31 `する`
+- ✅ line 32 `起きる`
+- ✅ line 33 `寝る`
+- ✅ line 34 `買う`
+- ✅ line 35 `書く`
+- ✅ line 36 `聞く`
+- ✅ line 37 `話す`
+- ✅ line 38 `待つ`
+- ✅ line 39 `働く`
+- ✅ line 40 `勉強する`
+- ✅ line 41 `読む`
+- ✅ line 42 `使う`
+- ✅ line 43 `座る`
+- ✅ line 44 `開ける`
+- ✅ line 45 `閉める`
+- ✅ line 46 `入る`
+- ✅ line 47 `見せる`
+- ✅ line 48 `持つ`
+- ✅ line 49 `洗う`
+- ✅ line 50 `着る`
 
 ## Validator errors (fix these records and ingest again)
 
@@ -37,3 +62,4 @@ Records: 25 · schema-valid: 25 · failed: 0 · validator errors after merge: 0
 ## Written
 
 - content/ja/pedagogy/concepts.json
+- content/ja/pedagogy/paradigms.json

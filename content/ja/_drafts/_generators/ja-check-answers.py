@@ -73,6 +73,8 @@ def key_texts(e):
         return [e["prompt"]]
     if t == "typeAnswer":
         return [e["answer"]]
+    if t == "conjugationCloze":
+        return [e["sentence"].replace("___", e["answer"])]
     return []
 
 

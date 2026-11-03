@@ -6,7 +6,7 @@ usage: python -I ja-lessons-s5.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ja_lesson_lib import C, F, H, M, MP, N, NX, T, TX, W, Y, finish, lesson
+from ja_lesson_lib import C, F, H, K, M, MP, N, NX, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- uo: writing about yourself (kana input)
 lesson("uo-l0", [
@@ -32,7 +32,7 @@ lesson("uo-l2", [
     W("Tôi đến từ Việt Nam.", "ベトナム|から|来ました", ["まで", "行きました"]),
     W("Ngày nào tôi cũng làm việc ở nhà máy.", "毎日|工場|で|働いています", ["に", "会社"], alts=("工場|で|毎日|働いています",)),
     Y("Tôi làm việc ở công ty.", "会社で働いています", "会社で働きます", kana=True),
-    NX("Bây giờ tôi làm việc ở Osaka.", "今、おおさかで働いています。", ["今、おおさかを働いています。", "今、おおさかへ働いています。", "今、おおさかで働いていますか。"]),
+    NX("Bây giờ tôi làm việc ở Osaka.", "今、大阪で働いています。", ["今、大阪を働いています。", "今、大阪へ働いています。", "今、大阪で働いていますか。"]),
     M("住所", "自分", "仕事", "工場", "会社"),
 ])
 lesson("uo-l3", [
@@ -118,6 +118,8 @@ lesson("uq-l3", [
     TX("お疲れさまです。ナムです。風邪です。今日は休みます。", "Chào anh. Tôi là Nam. Tôi bị cảm. Hôm nay tôi nghỉ.", ["Chào anh. Tôi là Nam. Tôi bị cảm. Mai tôi nghỉ.", "Chào anh. Tôi là Nam. Tôi khoẻ rồi. Hôm nay tôi đi làm.", "Chào anh. Tôi là Nam. Tôi đến muộn."]),
     F("メールを___ください。", "見て", ["見ます", "見る", "見た"], "Xin hãy xem email."),
     M("遅刻する", "休む", "病院", "薬", "上司"),
+    K("ちょっと___ください。", "待つ", "te", "Xin đợi một chút."),
+    K("ここに名前を___ください。", "書く", "te", "Hãy viết tên vào đây."),
 ])
 
 # ---------------------------------------------------------------- ur: forms at the city office
@@ -148,7 +150,7 @@ lesson("ur-l2", [
 ])
 lesson("ur-l3", [
     F("電話番号___書いてください。", "も", ["で", "が", "へ"], "Hãy viết cả số điện thoại."),
-    W("Địa chỉ của tôi ở Osaka.", "住所|は|おおさか|です", ["を", "名前"]),
+    W("Địa chỉ của tôi ở Osaka.", "住所|は|大阪|です", ["を", "名前"]),
     NX("Nhân viên muốn bạn đóng dấu. Bạn không có con dấu. Bạn hỏi:", "はんこがありません。サインでもいいですか。", ["はんこがありません。サインをください。", "はんこがあります。サインでもいいですか。", "はんこはいりません。ありがとうございます。"]),
     T("窓口", ["受付", "入口", "出口"]),
     Y("Đây là thẻ cư trú của tôi.", "これはわたしの在留カードです", "わたしの在留カードです", "これ、在留カードです"),

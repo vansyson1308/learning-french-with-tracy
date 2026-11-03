@@ -26,7 +26,7 @@ python -I "$G/ja-lex.py" .
 python -I "$G/ja-primer.py" .
 # Full replacement, so a record the generators dropped does not linger. The draft pack is rebuilt from the units.
 rm -f "$STAGED/content/ja/assessment/objectives.json" "$STAGED/content/courses/ja-vi.json" content/ja/_drafts/pack.json
-rm -f "$STAGED/content/ja/pedagogy/concepts.json"
+rm -f "$STAGED/content/ja/pedagogy/concepts.json" "$STAGED/content/ja/pedagogy/paradigms.json"
 python -I "$G/ja-objectives.py" .
 python -I "$G/ja-units.py" .
 python -I "$G/ja-concepts.py" .

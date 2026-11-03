@@ -20,6 +20,7 @@ generator, run `bash content/ja/_drafts/_generators/ja-pipeline.sh` (byte-determ
 | Furigana of inflected forms (session 2) | verbs and い-adjectives read through inflection keys at run time; kana typed for them aligns as practice | `src/lib/languages/ja-inflection.ts` (+ test), ported in `_generators/ja_text.py` |
 | Syllabus | A1 718 by unit, A2-1 226 | staged `content/ja/lexicon/syllabus*.json`, `topic-units.json` |
 | ja-en (basic pack) | never edited; 57 of 58 words map (9 through `legacySurfaces`), さかな listed in `legacy-unmapped.json`; standalone profile staged | `content/ja/lexicon/legacy-unmapped.json` |
+| Session 3 | kana primer (full tables + 20-item checkpoint, pass 16), persist v9 `primerPassed`, profile `romajiUntilPrimer` (ja-vi), romaji line; free writing in kana/pinyin = practice; morphology re-derived (supplement pin, nine cells tagged); 22 conjugationCloze on 25 tables; 8 proper nouns (kind R) → 952 lexemes | `_generators/ja-primer.py`, `ja_paradigms.py`, `src/lib/languages/ja-romaji.ts`, `scripts/lib/lexicon-etl/ja-morphology.ts` |
 
 ## 2. Course shape (BLUEPRINT §1)
 
@@ -62,10 +63,11 @@ pitch, and Hán-Việt.
   `content/ja/exam/FORMAT-SOURCES.md` before authoring), **original items only**, ≥ 2 parallel mock forms, weak areas →
   FSRS, readiness wording "mức sẵn sàng ước tính", never "sẽ đỗ". JLPT N5 is not a CEFR level and the app never says so.
 
-## 4. Kana primer and the romaji gate (engine work, session 3)
+## 4. Kana primer and the romaji gate (engine work, session 3) — done
 
-P4c task 5: romaji is shown only until the learner passes the primer checkpoint. Today P4b shows romanization on basic packs
-and has no primer checkpoint. Needed:
+Done in session 3 as planned below: migration v9, fixture `v8-before-primer.json`; the checkpoint is 20 items (10 kana →
+rōmaji, 10 sound → kana of which 5 are minimal pairs), pass mark 16; the romaji line is kana-faithful Hepburn (ー = macron,
+おう stays ou), never on word-bank tiles or fill-blank options. Planned:
 1. `scriptPrimer` content: full hiragana and katakana tables, dakuten, small kana, っ, ー, plus a `checkpoint` block
    (≈ 20 items: kana → sound select, sound → kana, minimal pairs).
 2. A learner flag `primerPassed[courseId]` set by the checkpoint. It is a persisted-shape change → a numbered migration,
@@ -150,6 +152,21 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
 9. Lessons are written per section into `_drafts/lessons/parts/<s>.jsonl`; `ja-check-answers.py` joins them into
    `lessons/OUTPUT.jsonl` and is the self-check of the answer keys (`REVIEW-NOTES.md`).
 
+### Session 3 (2026-11-03)
+
+10. **Romaji until the primer** (§4): `romajiUntilPrimer` in the staged ja-vi profile; v9 `primerPassed`; Section 1 is
+    never locked, the primer card is first and says "recommended" / "passed".
+11. **Free writing in kana / pinyin = understood practice** (P4b open item): ja and zh align free-writing slots through
+    the stored readings (`alignWrittenToKey`), kana / pinyin spellings of course words count as known vocabulary; the
+    slot is reading-only, so no production evidence. Latin plugins unchanged.
+12. **Morphology**: the 2026-10-14 jsonl pin is no longer served; a supplement retrieval of the .gz is pinned apart
+    (sha256 1e0b1e48…, 2026-11-03) and read only for verb / i-adjective rows. A cell no table states is composed from a
+    stated row of the same page and marked `composed` (7 of the 25 cloze tables use one). Decision 6 is re-opened and
+    closed: conjugationCloze exists (22 items).
+13. **Proper nouns** are lexemes of kind R (noun): furigana from JmdictFurigana, no Hán-Việt, not counted as kanji
+    targets; 山田 dropped for 木村 (no reading chain). Re-run `ja-subset.py` (pinned OpenJLPT + JmdictFurigana) after
+    adding kanji words.
+
 ## 11. Next sessions
 
 1. ~~**Lessons**~~ done in session 2 (one session): 108 lessons, 835 exercises, 25 cards. Left for the layer sessions:
@@ -158,7 +175,7 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
    (22 reserved, ja-JP), 34 writing tasks (16 reserved, kana input; decide P4b's open item: free writing typed all in
    kana = practice). Then add to the Section 3–6 lessons: listeningComprehension, readingComprehension and dictation
    (units f–j), speakRepetition/speakProduction (k–n), guidedWriting/simpleForm (o–r), with ids like `en_lesson_refs.py`.
-3. **Primer + romaji gate** (1): §4 above, with the migration.
+3. ~~**Primer + romaji gate**~~ done in session 3, with the free-writing decision, the morphology and the names.
 4. **Scenarios** (1): §5, 18 with 10 reserved; interactionScenario exercises in units s–v.
 5. **Assessment + JLPT N5 track** (1–2): 7 checkpoints, placement, the exam file with ≥ 2 mock forms, format sources.
 6. **Stories** (1–2): 40–50 graded stories A1-0…A2-1, context coverage of the A1 syllabus.

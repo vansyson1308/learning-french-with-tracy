@@ -6,7 +6,7 @@ usage: python -I ja-lessons-s3.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ja_lesson_lib import C, F, H, M, N, NX, T, TX, W, WT, Y, finish, lesson
+from ja_lesson_lib import C, F, H, K, M, N, NX, T, TX, W, WT, Y, finish, lesson
 
 # ---------------------------------------------------------------- uf: words and phrases by ear
 lesson("uf-l0", [
@@ -63,6 +63,9 @@ lesson("ug-l1", [
     F("廊下を___ないでください。", "走ら", ["走り", "走る", "走って"], "Đừng chạy ở hành lang."),
     W("Đừng chạy ở hành lang.", "廊下|を|走らないでください", ["で", "走ってください"]),
     Y("Hãy đội mũ bảo hộ.", "ヘルメットをかぶってください"),
+    K("ここに___ください。", "座る", "te", "Xin mời ngồi ở đây."),
+    K("窓を___ください。", "開ける", "te", "Hãy mở cửa sổ."),
+    K("ドアを___ください。", "閉める", "te", "Hãy đóng cửa."),
 ])
 lesson("ug-l2", [
     TX("明日は7時からです。", "Ngày mai làm từ bảy giờ.", ["Ngày mai làm đến bảy giờ.", "Hôm nay làm từ bảy giờ.", "Ngày mai được nghỉ."]),

@@ -6,7 +6,7 @@ usage: python -I ja-lessons-s6.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ja_lesson_lib import C, F, H, M, MP, N, NX, T, TX, W, Y, finish, lesson
+from ja_lesson_lib import C, F, H, K, M, MP, N, NX, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- us: shop and restaurant
 lesson("us-l0", [
@@ -68,9 +68,9 @@ lesson("ut-l2", [
     C("particles-ni-de-he"),
     F("電車___乗ります。", "に", ["を", "で", "が"], "Tôi lên tàu điện."),
     F("どこ___乗り換えますか。", "で", ["を", "が", "と"], "Đổi tàu ở đâu?"),
-    NX("Bạn hỏi tàu này có đi Nagoya không.", "この電車はなごやへ行きますか。", ["この電車はなごやを行きますか。", "この電車はなごやへ行きました。", "なごやはこの電車へ行きますか。"]),
+    NX("Bạn hỏi tàu này có đi Nagoya không.", "この電車は名古屋へ行きますか。", ["この電車は名古屋を行きますか。", "この電車は名古屋へ行きました。", "名古屋はこの電車へ行きますか。"]),
     TX("3番のホームです。", "Ở sân ga số 3.", ["Ở sân ga số 8.", "Đi 3 ga nữa.", "Tàu chạy lúc 3 giờ."]),
-    W("Tôi đổi tàu ở ga Osaka.", "おおさか|駅|で|乗り換えます", ["に", "降りて"]),
+    W("Tôi đổi tàu ở ga Osaka.", "大阪|駅|で|乗り換えます", ["に", "降りて"]),
     Y("Tôi lên tàu điện.", "電車に乗ります"),
 ])
 lesson("ut-l3", [
@@ -125,7 +125,7 @@ lesson("uu-l3", [
 lesson("uv-l0", [
     T("風邪", ["熱", "けが", "病気"]),
     NX("Bạn gọi điện cho chỗ làm. Câu đầu tiên:", "もしもし、グエンです。", ["もしもし、グエンさんです。", "いらっしゃいませ、グエンです。", "はじめまして、グエンですか。"]),
-    TX("たなかさんはいらっしゃいますか。", "Anh Tanaka có ở đó không ạ?", ["Anh Tanaka đi đâu ạ?", "Anh Tanaka khoẻ không ạ?", "Anh Tanaka đến chưa ạ?"]),
+    TX("田中さんはいらっしゃいますか。", "Anh Tanaka có ở đó không ạ?", ["Anh Tanaka đi đâu ạ?", "Anh Tanaka khoẻ không ạ?", "Anh Tanaka đến chưa ạ?"]),
     H("ちょっと待ってください。", ["ちょっと待ちました。", "ゆっくり話してください。", "もう一度お願いします。"]),
     F("風邪___ひきました。", "を", ["に", "が", "で"], "Tôi bị cảm."),
     W("Tôi bị cảm. Hôm nay tôi nghỉ.", "風邪|を|ひきました|今日|は|休みます", ["働きます", "に"]),
@@ -139,6 +139,8 @@ lesson("uv-l1", [
     W("Xin lỗi. Xin phép tôi cúp máy.", "すみません|失礼します", ["いただきます", "ただいま"]),
     Y("Hôm nay tôi nghỉ được không ạ?", "今日は休んでもいいですか", "今日、休んでもいいですか"),
     NX("Bạn kết thúc cuộc gọi với cấp trên.", "よろしくおねがいします。失礼します。", ["よろしくおねがいします。いただきます。", "はじめまして。失礼します。", "よろしくおねがいします。いってきます。"]),
+    K("すみません、もう一度___ください。", "話す", "te", "Xin lỗi, xin anh nói lại một lần nữa."),
+    K("在留カードを___ください。", "見せる", "te", "Xin cho tôi xem thẻ cư trú."),
 ])
 lesson("uv-l2", [
     T("先輩", ["上司", "友達", "社長"]),
