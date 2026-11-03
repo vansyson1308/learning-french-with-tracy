@@ -22,7 +22,7 @@ import path from "path";
 import { existsSync } from "fs";
 
 import type { ExamTrack, PackSource } from "../../content/schema";
-import { buildPlugin } from "./languages";
+import { buildPlugin, lexiconBoundPlugin } from "./languages";
 import {
   assessmentSourcePath,
   collectAssessmentItemTargets,
@@ -223,6 +223,10 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
   } catch {
     // reported by validateLexicon
   }
+  // P4d: speech, writing and interaction answers are checked with the tokens the app grades with — a dictionary
+  // plugin (ja, zh, ko) bound to the target's own words, as languageRulesForCourse binds a course — not with
+  // Intl.Segmenter's (whose zh words 我是, 住在, 点到 the app never makes). Latin-script plugins are unchanged.
+  const graded = lexiconBoundPlugin(plugin, lexicon?.lexemes ?? null);
   let objectives = null as ReturnType<typeof loadCourseObjectives> | null;
   try {
     objectives = hasAssessment(lang) ? loadCourseObjectives(lang) : null;
@@ -291,7 +295,7 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
         lexemeIds,
         packs: mine.map((p) => p.pack),
         assessmentSpeech: nativeCodes.map((nativeCode) => ({ nativeCode, exercises: assessmentBankSpeechExercises(lang, nativeCode) })),
-        plugin,
+        plugin: graded,
       }).errors
     );
   } catch (e) {
@@ -312,11 +316,11 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
         writing,
         objectives,
         lexemeIds,
-        knownVocabulary: new Set(buildKnownVocabulary({ plugin, lexicon, paradigms })),
+        knownVocabulary: new Set(buildKnownVocabulary({ plugin: graded, lexicon, paradigms })),
         nativeCodes,
         packs: mine.map((p) => p.pack),
         assessmentWriting: nativeCodes.map((nativeCode) => ({ nativeCode, exercises: assessmentBankWritingExercises(lang, nativeCode) })),
-        plugin,
+        plugin: graded,
       }).errors
     );
   } catch (e) {
@@ -333,7 +337,7 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
         listening,
         packs: mine.map((p) => p.pack),
         assessmentInteraction: assessmentBankInteractionExercises(lang),
-        plugin,
+        plugin: graded,
       }).errors
     );
   } catch (e) {
