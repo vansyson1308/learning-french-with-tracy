@@ -31,6 +31,9 @@ const SOURCES: ReadingSource[] = [
   kana("コーヒー", "コーヒー"),
   kana("ください", "ください"),
   kana("時", "じ"),
+  kana("下", "した"),
+  kana("何", "なに"),
+  kana("か", "か"),
 ];
 const INDEX = buildScriptReadingIndex([...SOURCES, ...japaneseInflectionSources(SOURCES).map((s) => ({ ...s, stem: true as const }))]);
 const line = (text: string) => romajiLine(text, INDEX);
@@ -47,6 +50,17 @@ describe("romajiLine", () => {
   test("names, set expressions, katakana and numbers", () => {
     expect(line("田中さん、こんにちは！")).toBe("tanaka san, konnichiwa!");
     expect(line("コーヒーをください")).toBe("kōhī o kudasai");
+  });
+  test("words stay apart: を is its own word, the n-apostrophe only inside a word", () => {
+    // ぱん is no stored word here: the kana run used to be read as one word, "pan'o".
+    expect(line("ぱんをください")).toBe("pan o kudasai");
+    expect(line("きんえんです")).toBe("kin'en desu");
+    expect(line("べんきょうをします")).toBe("benkyou o shimasu");
+  });
+  test("an inflection key keeps its whole ending, even when the ending spells a stored word (した)", () => {
+    expect(line("毎日食べました。")).toBe("mainichi tabemashita.");
+    expect(line("毎日食べませんでした")).toBe("mainichi tabemasendeshita");
+    expect(line("何かありましたか")).toBe("nani ka arimashita ka");
   });
   test("a kanji with no stored reading: no line at all (never a guess)", () => {
     expect(line("私は猫です。")).toBeUndefined();

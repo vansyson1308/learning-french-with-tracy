@@ -7,6 +7,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { buildScriptReadingIndex, EMPTY_SCRIPT_INDEX } from "../learning/script-reading";
+import type { StoryPieceTuple } from "../stories/content";
 import { storySentenceRomaji, storyTokenReading } from "../stories/story-reading";
 
 const GAKUSEI = { kana: "がくせい", furigana: [{ base: "学", ruby: "がく" }, { base: "生", ruby: "せい" }] };
@@ -52,14 +53,24 @@ describe("storyTokenReading", () => {
 });
 
 describe("storySentenceRomaji", () => {
+  const GAKUSEI_DESU: StoryPieceTuple[] = [["学生", "ja:w:gakusei"], ["です"], ["。"]];
   test("the whole sentence's romaji while the course shows it", () => {
-    expect(storySentenceRomaji("学生です。", INDEX, ON)).toBe("gakusei desu.");
-    expect(storySentenceRomaji("学生です。", INDEX, { ...ON, furigana: false })).toBe("gakusei desu.");
+    expect(storySentenceRomaji(GAKUSEI_DESU, INDEX, ON)).toBe("gakusei desu.");
+    expect(storySentenceRomaji(GAKUSEI_DESU, INDEX, { ...ON, furigana: false })).toBe("gakusei desu.");
+  });
+
+  test("word-spaced by the story's own pieces: a particle is never joined to the word before it", () => {
+    // ぱん is no stored word: read from the joined text, ぱんを was one kana run, "pan'o".
+    expect(storySentenceRomaji([["ぱん", "ja:w:pan"], ["を"], ["食べました", "ja:w:taberu"], ["。"]], INDEX, ON)).toBe("pan o tabemashita.");
+    // Function words next to each other are one merged piece: each particle stays a word (は read wa).
+    expect(storySentenceRomaji([["今日", "ja:w:kyou"], ["には"], ["学生", "ja:w:gakusei"], ["です"]], INDEX, ON)).toBe("kyou ni wa gakusei desu");
+    // One word piece keeps its own apostrophe.
+    expect(storySentenceRomaji([["きんえん", "ja:w:kinen"], ["です"]], INDEX, ON)).toBe("kin'en desu");
   });
 
   test("none after the primer, for a Latin text or an empty index", () => {
-    expect(storySentenceRomaji("学生です。", INDEX, { ...ON, romaji: false })).toBeUndefined();
-    expect(storySentenceRomaji("Le chat dort.", INDEX, ON)).toBeUndefined();
-    expect(storySentenceRomaji("学生です。", EMPTY_SCRIPT_INDEX, ON)).toBeUndefined();
+    expect(storySentenceRomaji(GAKUSEI_DESU, INDEX, { ...ON, romaji: false })).toBeUndefined();
+    expect(storySentenceRomaji([["Le"], [" "], ["chat"], [" dort."]], INDEX, ON)).toBeUndefined();
+    expect(storySentenceRomaji(GAKUSEI_DESU, EMPTY_SCRIPT_INDEX, ON)).toBeUndefined();
   });
 });

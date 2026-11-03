@@ -172,7 +172,25 @@ const WA_EXPRESSIONS: Readonly<Record<string, string>> = { こんにちは: "kon
 /** A particle written alone between words: は reads wa, へ reads e (を is o by its own spelling). */
 const PARTICLE_ROMAJI: Readonly<Record<string, string>> = { は: "wa", へ: "e" };
 
-type RomajiToken = { kana: string; kind: "word" | "stem" | "plain" } | { kind: "punct" | "other"; text: string };
+type RomajiToken = { kana: string; kind: "word" | "stem" | "plain" | "particle" } | { kind: "punct" | "other"; text: string };
+
+/**
+ * The ending an inflection key takes, by the key's last kana (食べま + した, 食べた + い, 食べな + かった, 高く + ない,
+ * 高か + った): read with the key as one word, even where the ending spells a stored kana word (した is 下).
+ */
+const STEM_ENDINGS: Readonly<Record<string, readonly string[]>> = {
+  ま: ["せんでした", "しょう", "した", "せん", "す"],
+  た: ["くなかった", "かった", "くない", "くて", "い"],
+  な: ["かった", "くて", "いで", "い"],
+  か: ["った"],
+  く: ["なかった", "ない", "て"],
+};
+/** Kana forms of する / ある / いる (and でした, でしょう) read as words after a particle or another word: 勉強をします → o shimasu. */
+const KANA_FORMS: ReadonlySet<string> = new Set(
+  ["し", "あり", "い"].flatMap((s) => ["ます", "ました", "ません", "ませんでした", "ましょう"].map((e) => s + e)).concat(["でした", "でしょう"])
+);
+/** Particles a kana run may end in before a kana form (何か + ありました). */
+const PARTICLE_RUNS: ReadonlySet<string> = new Set(["は", "が", "を", "に", "で", "へ", "と", "も", "の", "か", "ね", "よ", "や", "から", "まで"]);
 
 /** The kana of one stored word: its kana, else its furigana spelt through. */
 function kanaOfReading(surface: string, reading: WordReading): string | undefined {
@@ -206,25 +224,40 @@ function romajiTokens(text: string, index: ScriptReadingIndex): RomajiToken[] | 
   const { words: kanaWords, maxLength } = kanaWordsOf(index);
   const cps = [...text];
   const out: RomajiToken[] = [];
+  const at = (i: number, s: string) => cps.slice(i, i + [...s].length).join("") === s;
   let i = 0;
+  let stemEnd = ""; // the last kana of an inflection key just read
   while (i < cps.length) {
+    const ending = stemEnd ? STEM_ENDINGS[stemEnd]?.find((e) => at(i, e)) : undefined;
+    const last = out[out.length - 1];
+    stemEnd = "";
+    if (ending !== undefined && last !== undefined && "kana" in last) {
+      out[out.length - 1] = { kana: last.kana + ending, kind: "word" };
+      i += [...ending].length;
+      continue;
+    }
+    // A kana form of する/ある/いる starts a word only at a word boundary: after a word, a particle or the start.
+    const boundary = last === undefined || last.kind !== "plain" || PARTICLE_RUNS.has(last.kana);
     let matched = false;
     for (let len = Math.min(maxLength, cps.length - i); len >= 1; len--) {
       const word = cps.slice(i, i + len).join("");
       // One kana alone is never a word here: a particle or a stray kana stays in the plain run.
       if (len === 1 && !HAN.test(word)) break;
       const reading = index.bySurface.get(word);
-      const kana = reading ? kanaOfReading(word, reading) : kanaWords.has(word) ? word : undefined;
+      const kana = reading ? kanaOfReading(word, reading) : kanaWords.has(word) || (boundary && KANA_FORMS.has(word)) ? word : undefined;
       if (kana === undefined) continue;
-      out.push({ kana, kind: index.stems?.has(word) ? "stem" : "word" });
+      const stem = index.stems?.has(word) === true;
+      out.push({ kana, kind: stem ? "stem" : "word" });
+      if (stem) stemEnd = cps[i + len - 1]!;
       i += len;
       matched = true;
       break;
     }
     if (matched) continue;
     const ch = cps[i]!;
-    const last = out[out.length - 1];
-    if (KANA_CHAR.test(ch)) {
+    if (ch === "を") {
+      out.push({ kana: ch, kind: "particle" }); // を is only ever the particle: never part of the word before or after
+    } else if (KANA_CHAR.test(ch)) {
       if (last !== undefined && last.kind === "plain") out[out.length - 1] = { kana: last.kana + ch, kind: "plain" };
       else out.push({ kana: ch, kind: "plain" });
     } else if (HAN.test(ch)) {
@@ -271,6 +304,58 @@ export function romajiLine(text: string, index: ScriptReadingIndex): string | un
     if (romaji === undefined) return undefined;
     out += (glue && token.kind === "plain") || out.length === 0 || out.endsWith(" ") ? romaji : ` ${romaji}`;
     glue = token.kind === "stem";
+  }
+  const line = out.replace(/\s+/g, " ").trim();
+  return line.length > 0 ? line : undefined;
+}
+
+/** Function words a story may merge into one piece (には, では): kept apart when the piece is nothing else. */
+const FUNCTION_KANA = ["から", "まで", "より", "だけ", "ごろ", "たち", "は", "が", "を", "に", "で", "へ", "と", "も", "の", "か", "ね", "よ", "や", "な"];
+
+function functionWordsApart(text: string): string {
+  const parts: string[] = [];
+  let rest = text;
+  while (rest.length > 0) {
+    const w = FUNCTION_KANA.find((f) => rest.startsWith(f));
+    if (w === undefined) return text;
+    parts.push(w);
+    rest = rest.slice(w.length);
+  }
+  return parts.join(" ");
+}
+
+/** One word piece as one romaji word: 千円 → sen'en, the n-apostrophe inside the word (never across words). */
+function romajiWord(text: string, index: ScriptReadingIndex): string | undefined {
+  const tokens = romajiTokens(text, index);
+  if (tokens === null) return undefined;
+  if (tokens.length > 1 && tokens.every((t) => "kana" in t)) {
+    const kana = tokens.map((t) => ("kana" in t ? t.kana : "")).join("");
+    return WA_EXPRESSIONS[kana] ?? hepburn(kana);
+  }
+  return romajiLine(text, index);
+}
+
+/**
+ * P4c: the romaji line of a story sentence, word-spaced by the story engine's own pieces: a word piece is one
+ * romaji word, a piece between words (particles, です, punctuation) goes through romajiLine. Read from the joined
+ * text instead, a kana word and its particle ran together (ぱんを → "pan'o"). Undefined as romajiLine is.
+ */
+export function romajiOfPieces(pieces: readonly (readonly [string] | readonly [string, string])[], index: ScriptReadingIndex): string | undefined {
+  const all = pieces.map((p) => p[0]).join("");
+  if (!KANA_CHAR.test(all) && !HAN.test(all)) return undefined;
+  let out = "";
+  for (const [text, lexemeId] of pieces) {
+    if (!KANA_CHAR.test(text) && !HAN.test(text)) {
+      for (const ch of text) {
+        if (PUNCTUATION[ch] !== undefined) out = out.trimEnd() + PUNCTUATION[ch];
+        else if (/\s/.test(ch)) out += " ";
+        else out += `${out.length > 0 && !out.endsWith(" ") && !/[0-9]$/.test(out) ? " " : ""}${ch}`;
+      }
+      continue;
+    }
+    const romaji = lexemeId !== undefined ? romajiWord(text, index) : romajiLine(functionWordsApart(text), index);
+    if (romaji === undefined) return undefined;
+    out += out.length === 0 || out.endsWith(" ") ? romaji : ` ${romaji}`;
   }
   const line = out.replace(/\s+/g, " ").trim();
   return line.length > 0 ? line : undefined;

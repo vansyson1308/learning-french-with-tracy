@@ -16,6 +16,7 @@ import {
   type ScriptReading,
   type ScriptReadingIndex,
 } from "./learning/script-reading";
+import type { StoryPieceTuple } from "./stories/content";
 import { storySentenceRomaji, storyTokenReading } from "./stories/story-reading";
 import { useProgress } from "./store";
 import type { Pack, WordReading } from "./types";
@@ -95,8 +96,8 @@ export function useScriptReading(courseId?: string): (text: string) => ScriptRea
 export type StoryReadingAid = {
   /** Furigana / pinyin / RR over one word token; the token's own lexeme reading first. */
   token: (word: string, lexemeId?: string) => ScriptReading | undefined;
-  /** The romaji line under a whole sentence (P4c, until the kana primer is passed). */
-  romaji: (text: string) => string | undefined;
+  /** The romaji line under a whole sentence, word-spaced by its pieces (P4c, until the kana primer is passed). */
+  romaji: (pieces: readonly StoryPieceTuple[]) => string | undefined;
   /** A single word (the tap-to-gloss sheet): the lessons' reading, Hán-Việt included for a vi-native course. */
   word: (surface: string) => ScriptReading | undefined;
 };
@@ -118,7 +119,7 @@ export function useStoryReading(courseId: string): StoryReadingAid | null {
     const wordOpts = { targetCode: profile.targetCode, showHanViet: profile.nativeCode === "vi", furigana: on, romaji };
     return {
       token: (word, lexemeId) => storyTokenReading(word, lexemeId ? lexemeMetaFor(courseId, lexemeId) : undefined, index, opts),
-      romaji: (text) => storySentenceRomaji(text, index, opts),
+      romaji: (pieces) => storySentenceRomaji(pieces, index, opts),
       word: (surface) => scriptReadingFor(surface, index, wordOpts),
     };
   }, [on, romaji, index, courseId]);

@@ -15,8 +15,9 @@
  * A course without stored readings (every Latin-script course) hands in the
  * empty index and gets nothing, so its reader renders as before.
  */
-import { buildScriptReadingIndex, romajiLine, scriptReadingFor, type ScriptReading, type ScriptReadingIndex } from "../learning/script-reading";
+import { buildScriptReadingIndex, romajiOfPieces, scriptReadingFor, type ScriptReading, type ScriptReadingIndex } from "../learning/script-reading";
 import type { WordReading } from "../types";
+import type { StoryPieceTuple } from "./content";
 
 export type StoryReadingOptions = {
   targetCode: string;
@@ -46,8 +47,11 @@ export function storyTokenReading(
   return scriptReadingFor(word, index, layout);
 }
 
-/** The romaji line under a whole story sentence, while the course shows romaji. */
-export function storySentenceRomaji(text: string, index: ScriptReadingIndex, opts: StoryReadingOptions): string | undefined {
+/**
+ * The romaji line under a whole story sentence, while the course shows romaji: word-spaced by the sentence's
+ * pieces (the story engine's segmentation), so a particle never runs into the word before it (パンを → "pan o").
+ */
+export function storySentenceRomaji(pieces: readonly StoryPieceTuple[], index: ScriptReadingIndex, opts: StoryReadingOptions): string | undefined {
   if (!opts.romaji || index.bySurface.size === 0) return undefined;
-  return romajiLine(text, index);
+  return romajiOfPieces(pieces, index);
 }

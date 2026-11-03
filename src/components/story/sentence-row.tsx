@@ -42,7 +42,7 @@ export function SentenceRow(props: {
   const { sentence, index, reading } = props;
   const tokens = useMemo(() => readingTokens(sentence.pieces), [sentence]);
   const scripts = useMemo(() => (reading ? tokens.map((tok) => tokenScript(tok, reading)) : null), [tokens, reading]);
-  const romaji = useMemo(() => reading?.romaji(sentence.text), [reading, sentence]);
+  const romaji = useMemo(() => reading?.romaji(sentence.pieces), [reading, sentence]);
   const hasRuby = scripts?.some((s) => s !== undefined) ?? false;
   const dialogue = sentence.speaker !== "N";
 
