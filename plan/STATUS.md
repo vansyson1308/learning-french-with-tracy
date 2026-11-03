@@ -2,6 +2,16 @@
 
 > **Lần thức gần nhất:** 2026-11-03 01:00 UTC. **Lần thức kế tiếp:** khoảng 50 phút sau, hoặc khi agent giai đoạn 4 của P4b báo xong. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
 >
+> **Cần quyết định của điều phối viên (2026-11-03): giấy phép bộ đọc tiếng Nhật cho audio.**
+>
+> Audio ja-vi lần chạy 41633821152 dừng ở bước Synthesize. Bộ chuyển chữ thành âm tiếng Nhật của Kokoro (`misaki[ja]`) cần từ điển MeCab, cụ thể là UniDic qua fugashi. Mọi từ điển MeCab (UniDic, unidic-lite, NAIST-jdic, IPADIC) đều dùng giấy phép BSD hoặc bộ ba BSD/GPL/LGPL, và BSD không nằm trong allowlist. Trước đây quy trình chạy được chỉ vì bước cài MeloTTS có tải UniDic; MeloTTS đã bị loại theo D-11. Chưa có audio tiếng Nhật nào được phát hành: ja-en vẫn dùng giọng của thiết bị, và chỉ có canary P3e đã dùng từ điển này trên runner.
+>
+> Có hai hướng:
+> - **(A)** Thêm BSD-3-Clause vào allowlist, chỉ cho công cụ chạy lúc build, với điều kiện không có gì của công cụ đó nằm trong APK.
+> - **(B)** Bỏ hẳn MeCab. Dùng kana đã lưu sẵn cho mọi từ (JmdictFurigana, CC BY-SA) và chuyển kana thành âm vị theo bảng của misaki (Apache-2.0).
+>
+> Tôi đang thử hướng B; kết quả sẽ ghi ở `plan/reports/P4c-ja-audio-frontend.md`. Rủi ro của B là có thể mất trọng âm cao độ nếu misaki lấy trọng âm từ MeCab. Khi chưa có quyết định thì không chạy audio tiếng Nhật bằng UniDic.
+>
 > **Ghi chú (2026-11-03, tối):**
 > - **PR #62 (P4b) đã merge (a17e021):** 22/22 check xanh; `main` xanh (CI, Device acceptance, Pages).
 > - **P4c ja-vi (`phase-4/ja-vi`), phiên 1 xong:**
