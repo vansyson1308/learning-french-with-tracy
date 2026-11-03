@@ -5,6 +5,7 @@ import { artifactsFor } from "./content-registry";
 import { courseProfile } from "./course-profile";
 import { languageRules } from "./languages";
 import { japaneseInflectionSources } from "./languages/ja-inflection";
+import { lexemeMetaFor } from "./learning/lexicon-index";
 import { primerPassedFor, type PrimerPassedRecord } from "./learning/primer-progress";
 import { readingAidOn, readingFor, readingMap } from "./learning/reading-aid";
 import {
@@ -15,6 +16,7 @@ import {
   type ScriptReading,
   type ScriptReadingIndex,
 } from "./learning/script-reading";
+import { storySentenceRomaji, storyTokenReading } from "./stories/story-reading";
 import { useProgress } from "./store";
 import type { Pack, WordReading } from "./types";
 
@@ -87,6 +89,39 @@ export function useScriptReading(courseId?: string): (text: string) => ScriptRea
     const opts = { targetCode: profile.targetCode, showHanViet: profile.nativeCode === "vi", furigana: on, romaji };
     return (text: string) => scriptReadingFor(text, index, opts);
   }, [on, romaji, index, id]);
+}
+
+/** The graded-story reader's reading display of a CJK course (see stories/story-reading.ts). */
+export type StoryReadingAid = {
+  /** Furigana / pinyin / RR over one word token; the token's own lexeme reading first. */
+  token: (word: string, lexemeId?: string) => ScriptReading | undefined;
+  /** The romaji line under a whole sentence (P4c, until the kana primer is passed). */
+  romaji: (text: string) => string | undefined;
+  /** A single word (the tap-to-gloss sheet): the lessons' reading, Hán-Việt included for a vi-native course. */
+  word: (surface: string) => ScriptReading | undefined;
+};
+
+/**
+ * The story reader's reading layer, behind the same switches as the lessons: the per-course reading aid
+ * (furigana) and `romajiUntilPrimer` until the primer is passed (romaji). Null for a Latin-script course,
+ * or when both are off — the reader then renders exactly as it did before the layer existed.
+ */
+export function useStoryReading(courseId: string): StoryReadingAid | null {
+  const on = useProgress((s) => readingAidOn(s.readingAid, courseId));
+  const romaji = useProgress((s) => romajiShown(courseId, s.primerPassed));
+  const pack = getPack(courseId);
+  const index = useMemo(() => scriptReadingIndexFor(courseId, pack), [courseId, pack]);
+  return useMemo(() => {
+    if ((!on && !romaji) || index.bySurface.size === 0) return null;
+    const profile = courseProfile(courseId);
+    const opts = { targetCode: profile.targetCode, furigana: on, romaji };
+    const wordOpts = { targetCode: profile.targetCode, showHanViet: profile.nativeCode === "vi", furigana: on, romaji };
+    return {
+      token: (word, lexemeId) => storyTokenReading(word, lexemeId ? lexemeMetaFor(courseId, lexemeId) : undefined, index, opts),
+      romaji: (text) => storySentenceRomaji(text, index, opts),
+      word: (surface) => scriptReadingFor(surface, index, wordOpts),
+    };
+  }, [on, romaji, index, courseId]);
 }
 
 /** Whether a course has any reading aid to offer (the Profile switch shows only then). */

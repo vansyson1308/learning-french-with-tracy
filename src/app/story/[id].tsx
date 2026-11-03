@@ -30,6 +30,7 @@ import { useStoryPlayer } from "@/lib/stories/use-story-player";
 import { storyCheckLexemes } from "@/lib/stories/word-check";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
+import { useStoryReading } from "@/lib/use-reading-aid";
 
 type Phase = "read" | "questions" | "finished";
 
@@ -78,6 +79,8 @@ function StoryReader({ courseId, story }: { courseId: string; story: CompiledSto
   const [selected, setSelected] = useState<string | null>(null);
   const [picked, setPicked] = useState<string[]>([]);
   const [score, setScore] = useState(0);
+  // CJK: the lessons' reading display (furigana / romaji / Hán-Việt); null for a Latin-script course.
+  const storyReading = useStoryReading(courseId);
   const meta = selected ? lexemeMetaFor(courseId, selected) : undefined;
   const checkCount = storyCheckLexemes(story, picked).length;
 
@@ -146,6 +149,7 @@ function StoryReader({ courseId, story }: { courseId: string; story: CompiledSto
                 onToggleTranslation={() => setShown((s) => (s[i] ? omit(s, i) : { ...s, [i]: true }))}
                 onPlay={() => (mode === "device-voice" ? reader.playFrom(i) : player.playFrom(i))}
                 onWord={(lexemeId) => setSelected((cur) => (cur === lexemeId ? null : lexemeId))}
+                reading={storyReading}
               />
             ))}
             <DuoButton label={t("stories.finishReading")} variant="primary" onPress={finishReading} testID="story-finish-reading" />
@@ -157,6 +161,7 @@ function StoryReader({ courseId, story }: { courseId: string; story: CompiledSto
               picked={picked.includes(meta.id)}
               onTogglePick={() => togglePick(meta.id)}
               onClose={() => setSelected(null)}
+              reading={storyReading?.word(meta.surface)}
             />
           ) : null}
         </>
