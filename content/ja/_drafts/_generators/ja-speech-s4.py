@@ -1,6 +1,6 @@
-"""ja-vi speech (P4c session 4), after en-speech-s4.py: 30 teaching items with model clips (units k-n), 20 reserved items
-for checkpoint 4, the capstone (four give_info items, two in each form) and placement. Recogniser ja-JP. Exam speech
-items are added by the exam step. Writes content/ja/_drafts/speech/OUTPUT.jsonl and appends the model clips to
+"""ja-vi speech (P4c session 4), after en-speech-s4.py: 30 teaching items with model clips (units k-n), 22 reserved items
+(two added in session 5) for checkpoint 4, the capstone (four give_info items, two in each form) and placement.
+Recogniser ja-JP. The JLPT N5 track has no speaking section, so the exam step adds no speech item. Writes content/ja/_drafts/speech/OUTPUT.jsonl and appends the model clips to
 listening/OUTPUT.jsonl.
 
 Variants: the grader folds digits 0–100 to kanji numerals (25歳 = 二十五歳) and compares the reading when the recogniser
@@ -73,6 +73,10 @@ RESERVED = [
  ("cp4_tickets_three", "m", "information_prompt", "Ở ga, bạn mua vé. Hãy nói bạn muốn ba vé.", "切符を3枚ください。", ["3枚ください", "切符を3枚お願いします", "3枚お願いします"], [("Số vé", "3")], None),
  ("cp4_desc_dog", "n", "picture_prompt", "Nhìn hình: con chó to. " + SAY, "大きい犬です。", ["この犬は大きいです", "犬は大きいです", "大きいです"], None, "🐕"),
  ("cp4_desc_shirt", "n", "picture_prompt", "Nhìn hình: chiếc áo sơ mi trắng. " + SAY, "白いシャツです。", ["このシャツは白いです", "シャツは白いです", "白いです"], None, "👕"),
+ # Session 5: two more for checkpoint 4 (22 reserved, as the template). The second checks the spoken kana readings of
+ # inflected verbs (a recogniser may write はたらいています).
+ ("cp4_congrats", "k", "situation_prompt", "Hôm nay là sinh nhật của một đồng nghiệp. Hãy chúc mừng.", "おめでとうございます。", ["お誕生日おめでとうございます", "誕生日おめでとうございます"], None, "🎉"),
+ ("cp4_work_konbini", "l", "information_prompt", "Hãy nói bạn làm việc ở đâu.", "コンビニで働いています。", ["わたしはコンビニで働いています", "私はコンビニで働いています", "コンビニで働きます"], [("Nơi làm việc", "cửa hàng tiện lợi")], None),
  ("a1cap_time_nine", "m", "information_prompt", "Có người hỏi giờ. Hãy trả lời.", "9時です。", ["今、9時です", "9時"], [("Giờ", "9 giờ")], None),
  ("a1cap_price_coffee", "m", "information_prompt", "Một vị khách hỏi giá cà phê. Hãy trả lời.", "200円です。", ["コーヒーは200円です", "200円"], [("Giá", "200 yên")], None),
  ("a1cap_day_sunday", "m", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "今日は日曜日です。", ["日曜日です"], [("Hôm nay", "Chủ nhật")], None),

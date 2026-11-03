@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# ja-vi, sessions 1-4 of P4c (lexicon, objectives, units; concept cards and lessons; primer; reception, speech, writing,
-# scenarios): regenerate the drafts and ingest
+# ja-vi, sessions 1-5 of P4c (lexicon, objectives, units; concept cards and lessons; primer; reception, speech, writing,
+# scenarios; checkpoints, placement and the JLPT N5 track): regenerate the drafts and ingest
 # them through the toolkit. Byte-deterministic: run it twice, the outputs are identical. Offline: ja-subset.py (the
 # one-time slice of the pinned OpenJLPT and JmdictFurigana files) is not part of it; its output
 # content/ja/lexicon/derived/jlpt-course.json is.
@@ -41,6 +41,12 @@ python -I "$G/ja-reception-s3.py" .
 python -I "$G/ja-speech-s4.py" .
 python -I "$G/ja-writing-s5.py" .
 python -I "$G/ja-scenarios-s6.py" .
+# Session 5: checkpoints and placement point at the reserved records above and write their own OUTPUT; the JLPT N5 track
+# appends its exam stimuli (use: "exam") to listening and readings. Both run before the lessons so that the self-check
+# reads their items too.
+rm -f "$STAGED/content/ja/assessment/checkpoints.json" "$STAGED/content/ja/assessment/placement.json" "$STAGED/content/ja/exam/jlpt-n5.json"
+python -I "$G/ja-assessment.py" .
+if [ -f "$G/ja-exam.py" ]; then python -I "$G/ja-exam.py" .; fi
 # Lessons: each section's generator writes lessons/parts/<section>.jsonl; the self-check joins them into
 # lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json).
 rm -rf content/ja/_drafts/lessons/parts
@@ -54,6 +60,10 @@ ingest speech
 ingest writing
 ingest scenarios
 ingest lessons
+for step in checkpoints placement; do
+  ingest "$step"
+done
+if [ -f content/ja/_drafts/exam/OUTPUT.jsonl ]; then ingest exam; fi
 if ! python -I -c "import json,sys; p=json.load(open('content/ja/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then
   mkdir -p "$STAGED/content/courses"
   cp content/ja/_drafts/pack.json "$STAGED/content/courses/ja-vi.json"

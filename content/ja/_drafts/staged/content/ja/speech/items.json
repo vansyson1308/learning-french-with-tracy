@@ -1634,6 +1634,88 @@
       "sourceRef": "original-project"
     },
     {
+      "id": "ja.speak.cp4_congrats",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": {
+          "vi": "Hôm nay là sinh nhật của một đồng nghiệp. Hãy chúc mừng."
+        },
+        "cueEmoji": "🎉"
+      },
+      "target": "おめでとうございます。",
+      "acceptedVariants": [
+        "おめでとうございます",
+        "お誕生日おめでとうございます",
+        "誕生日おめでとうございます"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:omedetougozaimasu"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:omedetougozaimasu"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "ja-JP",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.speak.cp4_work_konbini",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": {
+          "vi": "Hãy nói bạn làm việc ở đâu."
+        },
+        "cueFacts": [
+          {
+            "label": {
+              "vi": "Nơi làm việc"
+            },
+            "value": "cửa hàng tiện lợi"
+          }
+        ]
+      },
+      "target": "コンビニで働いています。",
+      "acceptedVariants": [
+        "コンビニで働いています",
+        "わたしはコンビニで働いています",
+        "私はコンビニで働いています",
+        "コンビニで働きます"
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:konbini",
+        "ja:w:hataraku"
+      ],
+      "evidenceLexemeRefs": [
+        "ja:w:konbini",
+        "ja:w:hataraku"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "ja-JP",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
       "id": "ja.speak.a1cap_time_nine",
       "taskFamily": "information_giving",
       "elicitationType": "information_prompt",

@@ -1,6 +1,6 @@
 # speech — ingest report (ja-vi)
 
-Records: 50 · schema-valid: 50 · failed: 0 · validator errors after merge: 0
+Records: 52 · schema-valid: 52 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -46,14 +46,16 @@ Records: 50 · schema-valid: 50 · failed: 0 · validator errors after merge: 0
 - ✅ line 40 `ja.speak.cp4_tickets_three`
 - ✅ line 41 `ja.speak.cp4_desc_dog`
 - ✅ line 42 `ja.speak.cp4_desc_shirt`
-- ✅ line 43 `ja.speak.a1cap_time_nine`
-- ✅ line 44 `ja.speak.a1cap_price_coffee`
-- ✅ line 45 `ja.speak.a1cap_day_sunday`
-- ✅ line 46 `ja.speak.a1cap_birthday`
-- ✅ line 47 `ja.speak.pl_hello`
-- ✅ line 48 `ja.speak.pl_name_minh`
-- ✅ line 49 `ja.speak.pl_age`
-- ✅ line 50 `ja.speak.pl_big_car`
+- ✅ line 43 `ja.speak.cp4_congrats`
+- ✅ line 44 `ja.speak.cp4_work_konbini`
+- ✅ line 45 `ja.speak.a1cap_time_nine`
+- ✅ line 46 `ja.speak.a1cap_price_coffee`
+- ✅ line 47 `ja.speak.a1cap_day_sunday`
+- ✅ line 48 `ja.speak.a1cap_birthday`
+- ✅ line 49 `ja.speak.pl_hello`
+- ✅ line 50 `ja.speak.pl_name_minh`
+- ✅ line 51 `ja.speak.pl_age`
+- ✅ line 52 `ja.speak.pl_big_car`
 
 ## Validator errors (fix these records and ingest again)
 
