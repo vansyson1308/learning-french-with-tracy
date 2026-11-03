@@ -32,15 +32,18 @@ it must grow to all of hiragana and katakana with dakuten, small kana, っ and �
 
 | Section | Units (ids) | Lessons | Exercise mix (per blueprint) |
 |---|---|---|---|
-| 1 Nhập môn | 1 Lời chào · 2 Tôi là ai? · 3 Gia đình · 4 Ăn và uống · 5 Số và tiền | 20 | select, wordBank, fillBlank, match, typeAnswer (kana) |
-| 2 Viên gạch nền | a Câu danh từ và trợ từ · b Động từ thể ます · c あります・います và tính từ · d Giờ, ngày, lượng từ · e Chữ và âm tiếng Nhật | 20 | select, conjugationCloze (ます forms), fillBlank (particles), typeAnswer; concept steps in `flow` |
+| 1 Nhập môn | 1 Lời chào · 2 Tôi là ai? · 3 Gia đình · 4 Ăn và uống · 5 Số và tiền | 20 | select, wordBank, fillBlank (with options), match; **no typed kana** (decision 22): production by word bank, or a choice for a single word |
+| 2 Viên gạch nền | a Câu danh từ và trợ từ · b Động từ thể ます · c あります・います và tính từ · d Giờ, ngày, lượng từ · e Chữ và âm tiếng Nhật | 20 | select, conjugationCloze (ます forms), fillBlank (particles), typeAnswer (kana typing starts here); concept steps in `flow` |
 | 3 Hiểu tiếng Nhật hằng ngày | f Nghe từ · g Biển báo và nội quy ở nhà máy · h Thông báo ở nhà ga · i Hội thoại ở konbini · j Chuyện ở ký túc xá | 20 | listening/reading comprehension, dictation (kana), select, match |
 | 4 Nói | k Chào hỏi ở chỗ làm · l Tự giới thiệu khi phỏng vấn · m Nói số · n Mô tả | 16 | speakProduction, speakRepetition (ja-JP recogniser), select |
 | 5 Viết | o Viết về mình (kana input) · p Câu đơn giản · q Tin nhắn cho cấp trên · r Giấy tờ ở toà thị chính | 16 | guidedWriting, wordBank, simpleForm (フリガナ, 住所, 生年月日) |
 | 6 Trò chuyện | s Konbini và quán ăn · t Hỏi đường, đi tàu · u Phòng khám · v Gọi điện cho chỗ làm | 16 | interactionScenario, select, wordBank |
 
 `articleSelect` has no Japanese counterpart: its slot in Section 2 goes to particle `fillBlank` items (は/が/を/に/で/へ), and the
-"15 exercise types" rule of later QCs must say so. Section 2's "connected speech" unit becomes unit e: long vowels, っ, ん,
+"15 exercise types" rule of later QCs must say so. Likewise the blueprint's Section 1 `typeAnswer` (the French mix of
+`scripts/lib/authoring/lint.ts` `BLUEPRINT_MIX`, an info-level reference) has no ja-vi counterpart: its production slot
+goes to word banks built from the same sentence, and `author.ts lint` reports Section 1 "missing: typeAnswer" by design.
+`typeAnswer` stays in every later section. Section 2's "connected speech" unit becomes unit e: long vowels, っ, ん,
 pitch, and Hán-Việt.
 
 ## 3. JLPT N5 targets
@@ -162,7 +165,8 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
    dropped. Exercise text therefore writes: kanji only inside lexicon surfaces or their inflected forms, numbers before
    a counter in digits (7時, 2枚; kanji numeral compounds only when they are lexemes: 一人, 二つ, 五月), non-lexicon words
    and Japanese names in kana, 何 before です/で/の as なん.
-8. **Kana as production**: Section 1 and unit o list the kana spelling of a kanji key; elsewhere kana is practice.
+8. **Kana as production**: unit o lists the kana spelling of a kanji key; elsewhere kana is practice. (Section 1 did too
+   until decision 22 removed typing from it.)
 9. Lessons are written per section into `_drafts/lessons/parts/<s>.jsonl`; `ja-check-answers.py` joins them into
    `lessons/OUTPUT.jsonl` and is the self-check of the answer keys (`REVIEW-NOTES.md`).
 
@@ -212,6 +216,17 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
 21. **Audio**: voice cast A/B as §7 (N narrates with A); band-1 audio = the first 18 stories after the micro-stories
     (`_drafts/stories/story-audio.json`); the audio session writes it into the reception voice manifest.
 
+### 2026-11-04 (coordinator)
+
+22. **No free kana typing in Section 1.** Section 1 comes before the learner is expected to have done the kana primer:
+    such a learner cannot read kana yet and may have no Japanese keyboard (and Maestro cannot type kana on Android, so
+    the first lesson was not automatable). The 23 Section 1 `typeAnswer` items became 16 word banks (tiles that join to
+    the old key, so every `audioTarget` and audio key is unchanged) and 7 `nativeToTarget` choices where the answer is
+    one word (こんにちは, はい, いいえ, はじめまして, 五, 十, 三つ); same ids, lesson objectives and exercise counts.
+    Kana typing starts in Section 2. `ja-check-answers.py` rule 10 stops on any typed-Japanese exercise (typeAnswer,
+    dictation, conjugationCloze, a fill-in without options, guidedWriting, simpleForm) in a Section 1 lesson, checkpoint
+    or placement item.
+
 ## 11. Next sessions
 
 1. ~~**Lessons**~~ done in session 2 (one session): 108 lessons, 835 exercises, 25 cards. Left for the layer sessions:
@@ -228,3 +243,5 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
    script reading into the reader before ja-vi ships stories, or keep kanji in stories to the 100 taught kanji.
 7. **D-10 review** (AI pass, then the owner), **audio** (canary + generate, CER audit), promote, compile, V8 re-key, claim gate,
    KNOWN_LIMITATIONS entry, STATUS.
+8. ~~**Section 1 without kana typing**~~ done 2026-11-04 (decision 22): the first ja-vi lesson is automatable by the
+   Maestro suite; typed answers start in Section 2.

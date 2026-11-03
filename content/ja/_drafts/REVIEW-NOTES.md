@@ -74,10 +74,14 @@ engine cut elsewhere (わたしたち: わたした is a kana row of 渡す; は
 
 1. **Typed answers are narrow by nature.** Alternatives cover わたしは dropped, 私 for わたし, に/へ with motion,
    ください/お願いします, digit/kanji numerals where listed. Other correct orders (time word moved, は vs が in a
-   subordinate spot) are not generated: read every `typeAnswer` (110) with that in mind.
-2. **Kana as production** is listed only in Section 1 (23 typed answers carry the kana spelling) and unit o
-   (`kana=True`). Everywhere else kana typed for a kanji key aligns through the readings and counts as practice
-   (P4b evidence guard; session 2 extends the readings to inflected forms, see below).
+   subordinate spot) are not generated: read every `typeAnswer` (87 since 2026-11-04, Sections 2–6) with that in mind.
+2. **Kana as production** is listed only in unit o (`kana=True`). Everywhere else kana typed for a kanji key aligns
+   through the readings and counts as practice (P4b evidence guard; session 2 extends the readings to inflected forms,
+   see below). **Section 1 has no typing at all** (coordinator decision 2026-11-04, ja-plan.md decision 22): its 23
+   typed answers became 16 word banks whose tiles join to the old key (same audio text) and 7 choices for one-word
+   answers; self-check rule 10 (`section1-typing`) keeps it so. Read the new distractor tiles (u0-l0-e7 … u4-l3-e7)
+   for a second correct sentence; option and tile order moved in 66 other Section 1 items (the generator's rotation),
+   nothing else.
 3. **Furigana come from the lexicon at run time**, not from the exercise text. Inflected verbs and い-adjectives read
    through the new inflection keys (`src/lib/languages/ja-inflection.ts`). A form two verbs share (降ります) gets none;
    any other kanji in a lesson is a lexicon surface. Numbers are written in digits where a kanji numeral + counter

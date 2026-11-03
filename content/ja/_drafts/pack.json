@@ -250,22 +250,47 @@
                   "correct": 1
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u0-l0-e7",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Chào buổi sáng!",
                   "audioTarget": "おはようございます",
-                  "answer": "おはようございます",
-                  "alternatives": []
+                  "tokens": [
+                    "ございます",
+                    "おはよう",
+                    "さようなら",
+                    "こんばんは"
+                  ],
+                  "answer": [
+                    "おはよう",
+                    "ございます"
+                  ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "select",
                   "id": "ja-vi:u0-l0-e8",
-                  "mode": "produceTarget",
+                  "mode": "nativeToTarget",
                   "prompt": "Xin chào! (buổi trưa, buổi chiều)",
                   "audioTarget": "こんにちは",
-                  "answer": "こんにちは",
-                  "alternatives": []
+                  "options": [
+                    {
+                      "text": "おはようございます",
+                      "emoji": "🌅"
+                    },
+                    {
+                      "text": "こんばんは",
+                      "emoji": "🌆"
+                    },
+                    {
+                      "text": "こんにちは",
+                      "emoji": "👋"
+                    },
+                    {
+                      "text": "おやすみなさい",
+                      "emoji": "🌙"
+                    }
+                  ],
+                  "correct": 2
                 }
               ],
               "flow": [
@@ -325,15 +350,15 @@
                       "emoji": "🤲"
                     },
                     {
-                      "text": "cảm ơn (lịch sự)",
-                      "emoji": "🙏"
-                    },
-                    {
                       "text": "tạm biệt",
                       "emoji": "🚶"
+                    },
+                    {
+                      "text": "cảm ơn (lịch sự)",
+                      "emoji": "🙏"
                     }
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -343,6 +368,9 @@
                   "audioTarget": "すみません",
                   "options": [
                     {
+                      "text": "xin lỗi"
+                    },
+                    {
                       "text": "cảm ơn"
                     },
                     {
@@ -350,12 +378,9 @@
                     },
                     {
                       "text": "vâng"
-                    },
-                    {
-                      "text": "xin lỗi"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -365,12 +390,12 @@
                   "audioTarget": "お願いします",
                   "options": [
                     {
-                      "text": "お願いします",
-                      "emoji": "🤲"
-                    },
-                    {
                       "text": "ありがとうございます",
                       "emoji": "🙏"
+                    },
+                    {
+                      "text": "お願いします",
+                      "emoji": "🤲"
                     },
                     {
                       "text": "すみません",
@@ -381,7 +406,7 @@
                       "emoji": "❌"
                     }
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -394,16 +419,16 @@
                       "text": "xin lỗi (thân mật)"
                     },
                     {
-                      "text": "không có gì"
+                      "text": "chúc mừng"
                     },
                     {
-                      "text": "chúc mừng"
+                      "text": "không có gì"
                     },
                     {
                       "text": "xin phép (khi vào/ra phòng)"
                     }
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -414,10 +439,10 @@
                   "options": [
                     "ありがとう",
                     "さようなら",
-                    "お願いします",
-                    "おやすみなさい"
+                    "おやすみなさい",
+                    "お願いします"
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -427,6 +452,9 @@
                   "audioTarget": "ありがとうございます。",
                   "options": [
                     {
+                      "text": "ありがとうございます。"
+                    },
+                    {
                       "text": "おめでとうございます。"
                     },
                     {
@@ -434,12 +462,9 @@
                     },
                     {
                       "text": "おやすみなさい。"
-                    },
-                    {
-                      "text": "ありがとうございます。"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -449,10 +474,10 @@
                   "audioTarget": "すみません。",
                   "options": [
                     {
-                      "text": "すみません。"
+                      "text": "ありがとうございます。"
                     },
                     {
-                      "text": "ありがとうございます。"
+                      "text": "すみません。"
                     },
                     {
                       "text": "いただきます。"
@@ -461,7 +486,7 @@
                       "text": "どういたしまして。"
                     }
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "wordBank",
@@ -470,10 +495,10 @@
                   "prompt": "Cảm ơn anh rất nhiều.",
                   "audioTarget": "どうもありがとうございます",
                   "tokens": [
-                    "ありがとうございます",
-                    "どうも",
                     "はい",
-                    "すみません"
+                    "すみません",
+                    "ありがとうございます",
+                    "どうも"
                   ],
                   "answer": [
                     "どうも",
@@ -481,14 +506,27 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u0-l1-e8",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Cảm ơn (lịch sự).",
                   "audioTarget": "ありがとうございます",
-                  "answer": "ありがとうございます",
+                  "tokens": [
+                    "ございます",
+                    "ありがとう",
+                    "ください",
+                    "どうも"
+                  ],
+                  "answer": [
+                    "ありがとう",
+                    "ございます"
+                  ],
                   "alternatives": [
-                    "どうもありがとうございます"
+                    [
+                      "どうも",
+                      "ありがとう",
+                      "ございます"
+                    ]
                   ]
                 },
                 {
@@ -534,16 +572,16 @@
                       "text": "không"
                     },
                     {
-                      "text": "vâng"
+                      "text": "cảm ơn"
                     },
                     {
-                      "text": "cảm ơn"
+                      "text": "vâng"
                     },
                     {
                       "text": "xin lỗi"
                     }
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -559,13 +597,13 @@
                       "text": "どうぞ"
                     },
                     {
-                      "text": "いいえ"
+                      "text": "ありがとう"
                     },
                     {
-                      "text": "ありがとう"
+                      "text": "いいえ"
                     }
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -575,6 +613,9 @@
                   "audioTarget": "失礼します",
                   "options": [
                     {
+                      "text": "xin phép (khi vào/ra phòng)"
+                    },
+                    {
                       "text": "anh/chị vất vả rồi (chào đồng nghiệp)"
                     },
                     {
@@ -582,12 +623,9 @@
                     },
                     {
                       "text": "chúc mừng"
-                    },
-                    {
-                      "text": "xin phép (khi vào/ra phòng)"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -597,10 +635,10 @@
                   "audioTarget": "お疲れさまです",
                   "options": [
                     {
-                      "text": "anh/chị vất vả rồi (chào đồng nghiệp)"
+                      "text": "xin phép (khi vào/ra phòng)"
                     },
                     {
-                      "text": "xin phép (khi vào/ra phòng)"
+                      "text": "anh/chị vất vả rồi (chào đồng nghiệp)"
                     },
                     {
                       "text": "chúc ngủ ngon"
@@ -609,7 +647,7 @@
                       "text": "cảm ơn vì bữa ăn (sau khi ăn)"
                     }
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -622,16 +660,16 @@
                       "text": "いただきます。"
                     },
                     {
-                      "text": "失礼します。"
+                      "text": "おやすみなさい。"
                     },
                     {
-                      "text": "おやすみなさい。"
+                      "text": "失礼します。"
                     },
                     {
                       "text": "ただいま。"
                     }
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -647,13 +685,13 @@
                       "text": "いただきます。"
                     },
                     {
-                      "text": "お疲れさまです。"
+                      "text": "ごちそうさまでした。"
                     },
                     {
-                      "text": "ごちそうさまでした。"
+                      "text": "お疲れさまです。"
                     }
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "fillBlank",
@@ -662,30 +700,56 @@
                   "translation": "Vâng, tôi là Nam.",
                   "audioTarget": "はい、ナムです。",
                   "options": [
+                    "はい",
                     "いいえ",
                     "どうも",
-                    "さようなら",
-                    "はい"
+                    "さようなら"
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "select",
                   "id": "ja-vi:u0-l2-e7",
-                  "mode": "produceTarget",
+                  "mode": "nativeToTarget",
                   "prompt": "Vâng.",
                   "audioTarget": "はい",
-                  "answer": "はい",
-                  "alternatives": []
+                  "options": [
+                    {
+                      "text": "いいえ"
+                    },
+                    {
+                      "text": "はい"
+                    },
+                    {
+                      "text": "どうも"
+                    },
+                    {
+                      "text": "すみません"
+                    }
+                  ],
+                  "correct": 1
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "select",
                   "id": "ja-vi:u0-l2-e8",
-                  "mode": "produceTarget",
+                  "mode": "nativeToTarget",
                   "prompt": "Không.",
                   "audioTarget": "いいえ",
-                  "answer": "いいえ",
-                  "alternatives": []
+                  "options": [
+                    {
+                      "text": "はい"
+                    },
+                    {
+                      "text": "どうぞ"
+                    },
+                    {
+                      "text": "いいえ"
+                    },
+                    {
+                      "text": "すみません"
+                    }
+                  ],
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -727,9 +791,6 @@
                   "audioTarget": "いただきます",
                   "options": [
                     {
-                      "text": "câu nói trước khi ăn (≈ mời cả nhà ăn cơm)"
-                    },
-                    {
                       "text": "cảm ơn vì bữa ăn (sau khi ăn)"
                     },
                     {
@@ -737,9 +798,12 @@
                     },
                     {
                       "text": "tạm biệt"
+                    },
+                    {
+                      "text": "câu nói trước khi ăn (≈ mời cả nhà ăn cơm)"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -749,10 +813,10 @@
                   "audioTarget": "ごちそうさまでした",
                   "options": [
                     {
-                      "text": "いただきます"
+                      "text": "ごちそうさまでした"
                     },
                     {
-                      "text": "ごちそうさまでした"
+                      "text": "いただきます"
                     },
                     {
                       "text": "おやすみなさい"
@@ -761,7 +825,7 @@
                       "text": "どういたしまして"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -774,16 +838,16 @@
                       "text": "chúc mừng"
                     },
                     {
-                      "text": "cẩn thận nhé"
+                      "text": "anh/chị có khoẻ không?"
                     },
                     {
-                      "text": "anh/chị có khoẻ không?"
+                      "text": "cẩn thận nhé"
                     },
                     {
                       "text": "xin phép (khi vào/ra phòng)"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -799,13 +863,13 @@
                       "text": "おやすみなさい"
                     },
                     {
-                      "text": "ありがとう"
+                      "text": "さようなら"
                     },
                     {
-                      "text": "さようなら"
+                      "text": "ありがとう"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -815,9 +879,6 @@
                   "audioTarget": "いただきます。",
                   "options": [
                     {
-                      "text": "いただきます。"
-                    },
-                    {
                       "text": "ごちそうさまでした。"
                     },
                     {
@@ -825,9 +886,12 @@
                     },
                     {
                       "text": "おめでとうございます。"
+                    },
+                    {
+                      "text": "いただきます。"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -837,10 +901,10 @@
                   "audioTarget": "お元気ですか。",
                   "options": [
                     {
-                      "text": "Bạn tên là gì?"
+                      "text": "Bạn có khoẻ không?"
                     },
                     {
-                      "text": "Bạn có khoẻ không?"
+                      "text": "Bạn tên là gì?"
                     },
                     {
                       "text": "Bạn đi đâu đấy?"
@@ -849,7 +913,7 @@
                       "text": "Bạn có rảnh không?"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -858,11 +922,11 @@
                   "prompt": "Chào buổi sáng, anh Nam.",
                   "audioTarget": "ナムさんおはようございます",
                   "tokens": [
-                    "です",
                     "おはようございます",
                     "さん",
                     "さようなら",
-                    "ナム"
+                    "ナム",
+                    "です"
                   ],
                   "answer": [
                     "ナム",
@@ -878,13 +942,21 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u0-l3-e7",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Chúc mừng!",
                   "audioTarget": "おめでとうございます",
-                  "answer": "おめでとうございます",
-                  "alternatives": []
+                  "tokens": [
+                    "おめでとう",
+                    "いただきます",
+                    "ありがとう",
+                    "ございます"
+                  ],
+                  "answer": [
+                    "おめでとう",
+                    "ございます"
+                  ]
                 },
                 {
                   "type": "match",
@@ -1004,19 +1076,19 @@
                       "emoji": "🏷️"
                     },
                     {
-                      "text": "thầy, cô giáo",
-                      "emoji": "👩‍🏫"
-                    },
-                    {
                       "text": "tôi",
                       "emoji": "🙋"
+                    },
+                    {
+                      "text": "thầy, cô giáo",
+                      "emoji": "👩‍🏫"
                     },
                     {
                       "text": "học sinh, sinh viên",
                       "emoji": "🧑‍🎓"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -1032,13 +1104,13 @@
                       "text": "会社員"
                     },
                     {
-                      "text": "日本人"
+                      "text": "学生"
                     },
                     {
-                      "text": "学生"
+                      "text": "日本人"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -1047,12 +1119,12 @@
                   "translation": "Tôi là Nam.",
                   "audioTarget": "わたしはナムです。",
                   "options": [
-                    "は",
                     "を",
                     "の",
-                    "か"
+                    "か",
+                    "は"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "fillBlank",
@@ -1061,12 +1133,12 @@
                   "translation": "Tôi là sinh viên.",
                   "audioTarget": "わたしは学生です。",
                   "options": [
-                    "さん",
                     "です",
+                    "さん",
                     "ベトナム",
                     "日本"
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -1075,12 +1147,12 @@
                   "prompt": "Tôi là sinh viên.",
                   "audioTarget": "わたしは学生です",
                   "tokens": [
+                    "学生",
+                    "先生",
                     "は",
                     "を",
                     "わたし",
-                    "です",
-                    "学生",
-                    "先生"
+                    "です"
                   ],
                   "answer": [
                     "わたし",
@@ -1100,29 +1172,36 @@
                       "text": "わたしを会社員です。"
                     },
                     {
-                      "text": "わたしの会社員です。"
+                      "text": "わたしは会社員です。"
                     },
                     {
-                      "text": "わたしは会社員です。"
+                      "text": "わたしの会社員です。"
                     },
                     {
                       "text": "わたしは会社員さんです。"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u1-l0-e6",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Tôi là sinh viên.",
                   "audioTarget": "わたしは学生です",
-                  "answer": "わたしは学生です",
-                  "alternatives": [
-                    "学生です",
-                    "私は学生です",
-                    "わたしはがくせいです",
-                    "がくせいです"
+                  "tokens": [
+                    "わたし",
+                    "です",
+                    "学生",
+                    "会社員",
+                    "は",
+                    "の"
+                  ],
+                  "answer": [
+                    "わたし",
+                    "は",
+                    "学生",
+                    "です"
                   ]
                 },
                 {
@@ -1204,13 +1283,13 @@
                       "text": "Việt Nam"
                     },
                     {
-                      "text": "người nước ngoài"
+                      "text": "người Việt Nam"
                     },
                     {
-                      "text": "người Việt Nam"
+                      "text": "người nước ngoài"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -1220,9 +1299,6 @@
                   "audioTarget": "日本",
                   "options": [
                     {
-                      "text": "日本"
-                    },
-                    {
                       "text": "ベトナム"
                     },
                     {
@@ -1230,9 +1306,12 @@
                     },
                     {
                       "text": "国"
+                    },
+                    {
+                      "text": "日本"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "fillBlank",
@@ -1241,12 +1320,12 @@
                   "translation": "Tôi là người Việt Nam.",
                   "audioTarget": "わたしはベトナム人です。",
                   "options": [
-                    "語",
                     "人",
+                    "語",
                     "さん",
                     "の"
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -1259,16 +1338,16 @@
                       "text": "Tôi ở Việt Nam."
                     },
                     {
-                      "text": "Tôi là người Nhật."
+                      "text": "Tôi là người Việt Nam."
                     },
                     {
-                      "text": "Tôi là người Việt Nam."
+                      "text": "Tôi là người Nhật."
                     },
                     {
                       "text": "Tôi học tiếng Việt."
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -1284,13 +1363,13 @@
                       "text": "ナムさんをベトナム人です。"
                     },
                     {
-                      "text": "ベトナム人はナムさんですか。"
+                      "text": "ナムさんはベトナム人です。"
                     },
                     {
-                      "text": "ナムさんはベトナム人です。"
+                      "text": "ベトナム人はナムさんですか。"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "wordBank",
@@ -1299,12 +1378,12 @@
                   "prompt": "Cô ấy là người Nhật.",
                   "audioTarget": "かのじょは日本人です",
                   "tokens": [
-                    "日本人",
                     "を",
                     "は",
                     "ベトナム人",
                     "かのじょ",
-                    "です"
+                    "です",
+                    "日本人"
                   ],
                   "answer": [
                     "かのじょ",
@@ -1314,17 +1393,24 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u1-l1-e6",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Tôi là người Việt Nam.",
                   "audioTarget": "わたしはベトナム人です",
-                  "answer": "わたしはベトナム人です",
-                  "alternatives": [
-                    "ベトナム人です",
-                    "私はベトナム人です",
-                    "わたしはベトナムじんです",
-                    "ベトナムじんです"
+                  "tokens": [
+                    "です",
+                    "ベトナム人",
+                    "日本人",
+                    "は",
+                    "を",
+                    "わたし"
+                  ],
+                  "answer": [
+                    "わたし",
+                    "は",
+                    "ベトナム人",
+                    "です"
                   ]
                 },
                 {
@@ -1371,9 +1457,6 @@
                   "audioTarget": "はじめまして",
                   "options": [
                     {
-                      "text": "rất vui được gặp (lần đầu)"
-                    },
-                    {
                       "text": "rất mong được giúp đỡ"
                     },
                     {
@@ -1381,9 +1464,12 @@
                     },
                     {
                       "text": "tạm biệt"
+                    },
+                    {
+                      "text": "rất vui được gặp (lần đầu)"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -1393,12 +1479,12 @@
                   "audioTarget": "よろしくおねがいします",
                   "options": [
                     {
-                      "text": "はじめまして",
-                      "emoji": "🤝"
-                    },
-                    {
                       "text": "よろしくおねがいします",
                       "emoji": "🙇‍♂️"
+                    },
+                    {
+                      "text": "はじめまして",
+                      "emoji": "🤝"
                     },
                     {
                       "text": "ありがとうございます",
@@ -1409,7 +1495,7 @@
                       "emoji": "🚪"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "fillBlank",
@@ -1419,11 +1505,11 @@
                   "audioTarget": "はじめまして。グエンです。",
                   "options": [
                     "さん",
-                    "は",
                     "です",
+                    "は",
                     "か"
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -1439,13 +1525,13 @@
                       "text": "いただきます。"
                     },
                     {
-                      "text": "おやすみなさい。"
+                      "text": "よろしくおねがいします。"
                     },
                     {
-                      "text": "よろしくおねがいします。"
+                      "text": "おやすみなさい。"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "wordBank",
@@ -1454,11 +1540,11 @@
                   "prompt": "Rất vui được gặp. Tôi là Lan.",
                   "audioTarget": "はじめましてランです",
                   "tokens": [
+                    "ラン",
                     "は",
                     "はじめまして",
                     "さん",
-                    "です",
-                    "ラン"
+                    "です"
                   ],
                   "answer": [
                     "はじめまして",
@@ -1474,9 +1560,6 @@
                   "audioTarget": "ナムさんは先生ですか。",
                   "options": [
                     {
-                      "text": "Anh Nam là giáo viên à?"
-                    },
-                    {
                       "text": "Anh Nam là giáo viên."
                     },
                     {
@@ -1484,18 +1567,34 @@
                     },
                     {
                       "text": "Giáo viên của anh Nam là ai?"
+                    },
+                    {
+                      "text": "Anh Nam là giáo viên à?"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "ja-vi:u1-l2-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "Rất vui được gặp anh chị.",
+                  "audioTarget": "はじめまして",
+                  "options": [
+                    {
+                      "text": "はじめまして"
+                    },
+                    {
+                      "text": "さようなら"
+                    },
+                    {
+                      "text": "おやすみなさい"
+                    },
+                    {
+                      "text": "いただきます"
                     }
                   ],
                   "correct": 0
-                },
-                {
-                  "type": "typeAnswer",
-                  "id": "ja-vi:u1-l2-e6",
-                  "mode": "produceTarget",
-                  "prompt": "Rất vui được gặp anh chị.",
-                  "audioTarget": "はじめまして",
-                  "answer": "はじめまして",
-                  "alternatives": []
                 },
                 {
                   "type": "match",
@@ -1664,14 +1763,14 @@
                   "prompt": "Tên tôi là Hoa.",
                   "audioTarget": "わたしの名前はホアです",
                   "tokens": [
+                    "を",
                     "名前",
                     "です",
                     "の",
                     "ホア",
                     "わたし",
                     "さん",
-                    "は",
-                    "を"
+                    "は"
                   ],
                   "answer": [
                     "わたし",
@@ -1683,17 +1782,36 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u1-l3-e7",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Tên tôi là Minh.",
                   "audioTarget": "わたしの名前はミンです",
-                  "answer": "わたしの名前はミンです",
+                  "tokens": [
+                    "ミン",
+                    "わたし",
+                    "か",
+                    "は",
+                    "を",
+                    "名前",
+                    "です",
+                    "の"
+                  ],
+                  "answer": [
+                    "わたし",
+                    "の",
+                    "名前",
+                    "は",
+                    "ミン",
+                    "です"
+                  ],
                   "alternatives": [
-                    "名前はミンです",
-                    "私の名前はミンです",
-                    "わたしのなまえはミンです",
-                    "なまえはミンです"
+                    [
+                      "名前",
+                      "は",
+                      "ミン",
+                      "です"
+                    ]
                   ]
                 }
               ]
@@ -1905,14 +2023,14 @@
                   "prompt": "Đây là gia đình tôi.",
                   "audioTarget": "これはわたしの家族です",
                   "tokens": [
-                    "これ",
-                    "友達",
-                    "の",
-                    "を",
                     "わたし",
                     "です",
                     "は",
-                    "家族"
+                    "家族",
+                    "これ",
+                    "友達",
+                    "の",
+                    "を"
                   ],
                   "answer": [
                     "これ",
@@ -1924,17 +2042,24 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u2-l0-e6",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Bố tôi là giáo viên.",
                   "audioTarget": "父は先生です",
-                  "answer": "父は先生です",
-                  "alternatives": [
-                    "わたしの父は先生です",
-                    "私の父は先生です",
-                    "ちちはせんせいです",
-                    "わたしのちちはせんせいです"
+                  "tokens": [
+                    "父",
+                    "です",
+                    "先生",
+                    "お父さん",
+                    "は",
+                    "を"
+                  ],
+                  "answer": [
+                    "父",
+                    "は",
+                    "先生",
+                    "です"
                   ]
                 },
                 {
@@ -2141,32 +2266,24 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u2-l1-e6",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Tôi có một em trai.",
                   "audioTarget": "弟が一人います",
-                  "answer": "弟が一人います",
-                  "alternatives": [
-                    "弟は一人います",
-                    "わたしは弟が一人います",
-                    "わたしは弟は一人います",
-                    "私は弟が一人います",
-                    "私は弟は一人います",
-                    "弟が1人います",
-                    "弟は1人います",
-                    "わたしは弟が1人います",
-                    "わたしは弟は1人います",
-                    "私は弟が1人います",
-                    "私は弟は1人います",
-                    "おとうとがひとりいます",
-                    "おとうとはひとりいます",
-                    "わたしはおとうとがひとりいます",
-                    "わたしはおとうとはひとりいます",
-                    "おとうとが1ひといます",
-                    "おとうとは1ひといます",
-                    "わたしはおとうとが1ひといます",
-                    "わたしはおとうとは1ひといます"
+                  "tokens": [
+                    "います",
+                    "一人",
+                    "あります",
+                    "が",
+                    "を",
+                    "弟"
+                  ],
+                  "answer": [
+                    "弟",
+                    "が",
+                    "一人",
+                    "います"
                   ]
                 },
                 {
@@ -2336,12 +2453,12 @@
                   "prompt": "Con trai tôi là học sinh.",
                   "audioTarget": "息子は学生です",
                   "tokens": [
-                    "です",
-                    "学生",
-                    "を",
                     "は",
                     "娘",
-                    "息子"
+                    "息子",
+                    "です",
+                    "学生",
+                    "を"
                   ],
                   "answer": [
                     "息子",
@@ -2351,17 +2468,24 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u2-l2-e7",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Vợ tôi là người Việt Nam.",
                   "audioTarget": "妻はベトナム人です",
-                  "answer": "妻はベトナム人です",
-                  "alternatives": [
-                    "わたしの妻はベトナム人です",
-                    "私の妻はベトナム人です",
-                    "つまはベトナムじんです",
-                    "わたしのつまはベトナムじんです"
+                  "tokens": [
+                    "ベトナム人",
+                    "夫",
+                    "は",
+                    "を",
+                    "妻",
+                    "です"
+                  ],
+                  "answer": [
+                    "妻",
+                    "は",
+                    "ベトナム人",
+                    "です"
                   ]
                 },
                 {
@@ -2535,12 +2659,12 @@
                   "prompt": "Bạn tôi là người Nhật.",
                   "audioTarget": "友達は日本人です",
                   "tokens": [
-                    "は",
                     "を",
                     "友達",
                     "です",
                     "日本人",
-                    "ベトナム人"
+                    "ベトナム人",
+                    "は"
                   ],
                   "answer": [
                     "友達",
@@ -2550,19 +2674,26 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u2-l3-e7",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Bố mẹ tôi ở Việt Nam.",
                   "audioTarget": "両親はベトナムにいます",
-                  "answer": "両親はベトナムにいます",
-                  "alternatives": [
-                    "両親がベトナムにいます",
-                    "わたしの両親はベトナムにいます",
-                    "私の両親はベトナムにいます",
-                    "りょうしんはベトナムにいます",
-                    "りょうしんがベトナムにいます",
-                    "わたしのりょうしんはベトナムにいます"
+                  "tokens": [
+                    "ベトナム",
+                    "で",
+                    "は",
+                    "います",
+                    "両親",
+                    "に",
+                    "あります"
+                  ],
+                  "answer": [
+                    "両親",
+                    "は",
+                    "ベトナム",
+                    "に",
+                    "います"
                   ]
                 },
                 {
@@ -2806,11 +2937,11 @@
                   "prompt": "Tôi ăn bánh mì.",
                   "audioTarget": "パンを食べます",
                   "tokens": [
+                    "パン",
+                    "飲みます",
                     "食べます",
                     "を",
-                    "に",
-                    "パン",
-                    "飲みます"
+                    "に"
                   ],
                   "answer": [
                     "パン",
@@ -2819,17 +2950,22 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u3-l0-e7",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Tôi uống nước.",
                   "audioTarget": "水を飲みます",
-                  "answer": "水を飲みます",
-                  "alternatives": [
-                    "わたしは水を飲みます",
-                    "私は水を飲みます",
-                    "みずをのみます",
-                    "わたしはみずをのみます"
+                  "tokens": [
+                    "を",
+                    "で",
+                    "水",
+                    "食べます",
+                    "飲みます"
+                  ],
+                  "answer": [
+                    "水",
+                    "を",
+                    "飲みます"
                   ]
                 },
                 {
@@ -3017,13 +3153,13 @@
                   "prompt": "Tôi ăn cá và rau.",
                   "audioTarget": "魚と野菜を食べます",
                   "tokens": [
-                    "食べます",
-                    "魚",
                     "を",
                     "で",
                     "野菜",
                     "飲みます",
-                    "と"
+                    "と",
+                    "食べます",
+                    "魚"
                   ],
                   "answer": [
                     "魚",
@@ -3043,17 +3179,22 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u3-l1-e6",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Tôi ăn thịt.",
                   "audioTarget": "肉を食べます",
-                  "answer": "肉を食べます",
-                  "alternatives": [
-                    "わたしは肉を食べます",
-                    "私は肉を食べます",
-                    "にくをたべます",
-                    "わたしはにくをたべます"
+                  "tokens": [
+                    "を",
+                    "が",
+                    "肉",
+                    "飲みます",
+                    "食べます"
+                  ],
+                  "answer": [
+                    "肉",
+                    "を",
+                    "食べます"
                   ]
                 },
                 {
@@ -3218,28 +3359,29 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u3-l2-e6",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Cho tôi nước.",
                   "audioTarget": "水をお願いします",
-                  "answer": "水をお願いします",
+                  "tokens": [
+                    "ください",
+                    "水",
+                    "に",
+                    "お願いします",
+                    "を"
+                  ],
+                  "answer": [
+                    "水",
+                    "を",
+                    "お願いします"
+                  ],
                   "alternatives": [
-                    "水をください",
-                    "水、お願いします",
-                    "お水をお願いします",
-                    "お水、お願いします",
-                    "お水をください",
-                    "みずをおねがいします",
-                    "みずをください",
-                    "みず、おねがいします",
-                    "おみずをおねがいします",
-                    "おみず、おねがいします",
-                    "おみずをください",
-                    "みずをお願いします",
-                    "みず、お願いします",
-                    "おみずをお願いします",
-                    "おみず、お願いします"
+                    [
+                      "水",
+                      "を",
+                      "ください"
+                    ]
                   ]
                 },
                 {
@@ -3395,11 +3537,11 @@
                   "prompt": "Tôi ăn cơm hộp.",
                   "audioTarget": "お弁当を食べます",
                   "tokens": [
-                    "お弁当",
-                    "飲みます",
                     "食べます",
                     "を",
-                    "に"
+                    "に",
+                    "お弁当",
+                    "飲みます"
                   ],
                   "answer": [
                     "お弁当",
@@ -3408,17 +3550,22 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u3-l3-e6",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Tôi uống cà phê.",
                   "audioTarget": "コーヒーを飲みます",
-                  "answer": "コーヒーを飲みます",
-                  "alternatives": [
-                    "わたしはコーヒーを飲みます",
-                    "私はコーヒーを飲みます",
-                    "コーヒーをのみます",
-                    "わたしはコーヒーをのみます"
+                  "tokens": [
+                    "コーヒー",
+                    "食べます",
+                    "飲みます",
+                    "を",
+                    "に"
+                  ],
+                  "answer": [
+                    "コーヒー",
+                    "を",
+                    "飲みます"
                   ]
                 },
                 {
@@ -3689,26 +3836,48 @@
                   "correct": 0
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "select",
                   "id": "ja-vi:u4-l0-e6",
-                  "mode": "produceTarget",
+                  "mode": "nativeToTarget",
                   "prompt": "số năm",
                   "audioTarget": "五",
-                  "answer": "五",
-                  "alternatives": [
-                    "ご"
-                  ]
+                  "options": [
+                    {
+                      "text": "三"
+                    },
+                    {
+                      "text": "五"
+                    },
+                    {
+                      "text": "八"
+                    },
+                    {
+                      "text": "九"
+                    }
+                  ],
+                  "correct": 1
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "select",
                   "id": "ja-vi:u4-l0-e7",
-                  "mode": "produceTarget",
+                  "mode": "nativeToTarget",
                   "prompt": "số mười",
                   "audioTarget": "十",
-                  "answer": "十",
-                  "alternatives": [
-                    "じゅう"
-                  ]
+                  "options": [
+                    {
+                      "text": "一"
+                    },
+                    {
+                      "text": "六"
+                    },
+                    {
+                      "text": "十"
+                    },
+                    {
+                      "text": "百"
+                    }
+                  ],
+                  "correct": 2
                 }
               ],
               "flow": [
@@ -3761,19 +3930,19 @@
                       "emoji": "🪙"
                     },
                     {
-                      "text": "một trăm",
-                      "emoji": "💯"
-                    },
-                    {
                       "text": "mười nghìn",
                       "emoji": "💴"
                     },
                     {
                       "text": "mười",
                       "emoji": "🔟"
+                    },
+                    {
+                      "text": "một trăm",
+                      "emoji": "💯"
                     }
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -3783,6 +3952,10 @@
                   "audioTarget": "万",
                   "options": [
                     {
+                      "text": "万",
+                      "emoji": "💴"
+                    },
+                    {
                       "text": "千",
                       "emoji": "🪙"
                     },
@@ -3791,15 +3964,11 @@
                       "emoji": "💯"
                     },
                     {
-                      "text": "万",
-                      "emoji": "💴"
-                    },
-                    {
                       "text": "円",
                       "emoji": "💰"
                     }
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -3813,19 +3982,19 @@
                       "emoji": "💴"
                     },
                     {
+                      "text": "yên (tiền Nhật)",
+                      "emoji": "💰"
+                    },
+                    {
                       "text": "một nghìn",
                       "emoji": "🪙"
                     },
                     {
                       "text": "bao nhiêu tiền",
                       "emoji": "💲"
-                    },
-                    {
-                      "text": "yên (tiền Nhật)",
-                      "emoji": "💰"
                     }
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "fillBlank",
@@ -3834,12 +4003,12 @@
                   "translation": "Cái này bao nhiêu tiền?",
                   "audioTarget": "これはいくらですか。",
                   "options": [
-                    "いくら",
                     "いくつ",
                     "どこ",
+                    "いくら",
                     "なん"
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -3852,16 +4021,16 @@
                       "text": "Ba nghìn yên."
                     },
                     {
-                      "text": "Ba trăm yên."
-                    },
-                    {
                       "text": "Ba mươi yên."
                     },
                     {
                       "text": "Ba vạn yên."
+                    },
+                    {
+                      "text": "Ba trăm yên."
                     }
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -3871,19 +4040,19 @@
                   "audioTarget": "これはいくらですか。",
                   "options": [
                     {
+                      "text": "これはいくらですか。"
+                    },
+                    {
                       "text": "これはどこですか。"
                     },
                     {
                       "text": "いくらはこれですか。"
                     },
                     {
-                      "text": "これはいくらですか。"
-                    },
-                    {
                       "text": "これはいくらです。"
                     }
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -3905,13 +4074,23 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u4-l1-e7",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Bao nhiêu tiền?",
                   "audioTarget": "いくらですか",
-                  "answer": "いくらですか",
-                  "alternatives": []
+                  "tokens": [
+                    "どこ",
+                    "か",
+                    "です",
+                    "いくつ",
+                    "いくら"
+                  ],
+                  "answer": [
+                    "いくら",
+                    "です",
+                    "か"
+                  ]
                 },
                 {
                   "type": "match",
@@ -3960,16 +4139,16 @@
                       "text": "hai cái"
                     },
                     {
+                      "text": "một cái"
+                    },
+                    {
                       "text": "ba cái"
                     },
                     {
                       "text": "bốn cái"
-                    },
-                    {
-                      "text": "một cái"
                     }
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -3979,19 +4158,19 @@
                   "audioTarget": "三つ",
                   "options": [
                     {
-                      "text": "三つ"
-                    },
-                    {
                       "text": "一つ"
                     },
                     {
                       "text": "五つ"
                     },
                     {
+                      "text": "三つ"
+                    },
+                    {
                       "text": "八つ"
                     }
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -4001,11 +4180,11 @@
                   "audioTarget": "りんごを二つください。",
                   "options": [
                     "二人",
-                    "二つ",
                     "二日",
-                    "二月"
+                    "二月",
+                    "二つ"
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -4015,19 +4194,19 @@
                   "audioTarget": "いくつありますか。",
                   "options": [
                     {
+                      "text": "Có mấy cái?"
+                    },
+                    {
                       "text": "Bao nhiêu tiền?"
                     },
                     {
                       "text": "Có mấy người?"
                     },
                     {
-                      "text": "Có mấy cái?"
-                    },
-                    {
                       "text": "Nó ở đâu?"
                     }
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -4040,16 +4219,16 @@
                       "text": "りんごを三日ください。"
                     },
                     {
+                      "text": "りんごを三つください。"
+                    },
+                    {
                       "text": "りんごに三つください。"
                     },
                     {
                       "text": "三つをりんごください。"
-                    },
-                    {
-                      "text": "りんごを三つください。"
                     }
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "wordBank",
@@ -4058,12 +4237,12 @@
                   "prompt": "Cho tôi một cái bánh mì.",
                   "audioTarget": "パンを一つください",
                   "tokens": [
-                    "ください",
-                    "一つ",
-                    "に",
                     "を",
                     "一人",
-                    "パン"
+                    "パン",
+                    "ください",
+                    "一つ",
+                    "に"
                   ],
                   "answer": [
                     "パン",
@@ -4073,16 +4252,26 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "select",
                   "id": "ja-vi:u4-l2-e6",
-                  "mode": "produceTarget",
+                  "mode": "nativeToTarget",
                   "prompt": "ba cái",
                   "audioTarget": "三つ",
-                  "answer": "三つ",
-                  "alternatives": [
-                    "3つ",
-                    "みっつ"
-                  ]
+                  "options": [
+                    {
+                      "text": "三日"
+                    },
+                    {
+                      "text": "三月"
+                    },
+                    {
+                      "text": "三つ"
+                    },
+                    {
+                      "text": "二つ"
+                    }
+                  ],
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -4128,9 +4317,6 @@
                   "audioTarget": "お金",
                   "options": [
                     {
-                      "text": "tiền"
-                    },
-                    {
                       "text": "ví"
                     },
                     {
@@ -4138,9 +4324,12 @@
                     },
                     {
                       "text": "giá"
+                    },
+                    {
+                      "text": "tiền"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -4150,10 +4339,10 @@
                   "audioTarget": "財布",
                   "options": [
                     {
-                      "text": "お金"
+                      "text": "財布"
                     },
                     {
-                      "text": "財布"
+                      "text": "お金"
                     },
                     {
                       "text": "かばん"
@@ -4162,7 +4351,7 @@
                       "text": "袋"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -4175,16 +4364,16 @@
                       "text": "một ít"
                     },
                     {
-                      "text": "nhiều"
+                      "text": "tất cả"
                     },
                     {
-                      "text": "tất cả"
+                      "text": "nhiều"
                     },
                     {
                       "text": "bao nhiêu cái"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "fillBlank",
@@ -4195,10 +4384,10 @@
                   "options": [
                     "だれ",
                     "どこ",
-                    "いつ",
-                    "いくら"
+                    "いくら",
+                    "いつ"
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -4208,9 +4397,6 @@
                   "audioTarget": "スーパーで買い物をします。",
                   "options": [
                     {
-                      "text": "Tôi mua sắm ở siêu thị."
-                    },
-                    {
                       "text": "Tôi làm việc ở siêu thị."
                     },
                     {
@@ -4218,9 +4404,12 @@
                     },
                     {
                       "text": "Tôi mua sắm ở cửa hàng tiện lợi."
+                    },
+                    {
+                      "text": "Tôi mua sắm ở siêu thị."
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -4230,10 +4419,10 @@
                   "audioTarget": "お金がありません。",
                   "options": [
                     {
-                      "text": "お金がいません。"
+                      "text": "お金がありません。"
                     },
                     {
-                      "text": "お金がありません。"
+                      "text": "お金がいません。"
                     },
                     {
                       "text": "お金をありません。"
@@ -4242,7 +4431,7 @@
                       "text": "お金がありますか。"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -4251,15 +4440,15 @@
                   "prompt": "Ví của tôi ở đâu?",
                   "audioTarget": "わたしの財布はどこですか",
                   "tokens": [
+                    "か",
+                    "財布",
+                    "です",
                     "の",
                     "だれ",
                     "どこ",
                     "わたし",
                     "を",
-                    "は",
-                    "か",
-                    "財布",
-                    "です"
+                    "は"
                   ],
                   "answer": [
                     "わたし",
@@ -4272,22 +4461,34 @@
                   ]
                 },
                 {
-                  "type": "typeAnswer",
+                  "type": "wordBank",
                   "id": "ja-vi:u4-l3-e7",
-                  "mode": "produceTarget",
+                  "direction": "nativeToTarget",
                   "prompt": "Tôi mua sắm ở siêu thị.",
                   "audioTarget": "スーパーで買い物をします",
-                  "answer": "スーパーで買い物をします",
+                  "tokens": [
+                    "します",
+                    "スーパー",
+                    "を",
+                    "店",
+                    "買い物",
+                    "に",
+                    "で"
+                  ],
+                  "answer": [
+                    "スーパー",
+                    "で",
+                    "買い物",
+                    "を",
+                    "します"
+                  ],
                   "alternatives": [
-                    "スーパーで買い物します",
-                    "わたしはスーパーで買い物をします",
-                    "わたしはスーパーで買い物します",
-                    "私はスーパーで買い物をします",
-                    "私はスーパーで買い物します",
-                    "スーパーでかいものをします",
-                    "スーパーでかいものします",
-                    "わたしはスーパーでかいものをします",
-                    "わたしはスーパーでかいものします"
+                    [
+                      "スーパー",
+                      "で",
+                      "買い物",
+                      "します"
+                    ]
                   ]
                 },
                 {

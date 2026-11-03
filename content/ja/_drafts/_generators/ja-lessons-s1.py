@@ -1,11 +1,14 @@
-"""ja-vi Section 1 lessons: the first words after the kana primer, and Japanese production from the first lesson (word
-banks, typed answers). Typed answers here also accept the whole answer in kana as production (ja-plan.md §2: Section 1
-types kana). Six lessons show a concept card. Writes lessons/parts/s1.jsonl.
+"""ja-vi Section 1 lessons: the first words after the kana primer, and Japanese production from the first lesson by tap
+(word banks, choices). Coordinator decision (2026-11-04, ja-plan.md §2 and decision 8): Section 1 has no free kana
+typing. A learner who has not done the primer cannot read kana yet and may have no Japanese keyboard, and Maestro cannot
+type kana on Android. Every production item that used to be typed is a word bank built from the same sentence (the tiles
+join to the old key, so its audio text is unchanged), or a choice where the answer is a single word. Kana typing starts in
+Section 2; ja-check-answers.py stops on a typed item here. Six lessons show a concept card. Writes lessons/parts/s1.jsonl.
 usage: python -I ja-lessons-s1.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ja_lesson_lib import C, F, H, M, N, NX, T, TX, W, Y, finish, lesson
+from ja_lesson_lib import C, F, H, M, N, NX, T, TX, W, finish, lesson
 
 # ---------------------------------------------------------------- u0: greetings
 lesson("u0-l0", [
@@ -15,7 +18,8 @@ lesson("u0-l0", [
     M("おはようございます", "こんにちは", "こんばんは", "おやすみなさい"),
     NX("Buổi sáng, bạn gặp đồng nghiệp ở nhà máy. Bạn nói gì?", "おはようございます。", ["こんばんは。", "おやすみなさい。", "さようなら。"]),
     NX("Bảy giờ tối, bạn gặp hàng xóm trước cửa. Bạn chào thế nào?", "こんばんは。", ["おはようございます。", "いただきます。", "おやすみなさい。"]),
-    Y("Chào buổi sáng!", "おはようございます", kana=True), Y("Xin chào! (buổi trưa, buổi chiều)", "こんにちは", kana=True),
+    W("Chào buổi sáng!", "おはよう|ございます", ["こんばんは", "さようなら"]),
+    N("こんにちは", ["おはようございます", "こんばんは", "おやすみなさい"], prompt="Xin chào! (buổi trưa, buổi chiều)"),
 ])
 lesson("u0-l1", [
     T("ありがとうございます", ["すみません", "お願いします", "さようなら"]), T("すみません", ["ありがとう", "お願いします", "はい"]),
@@ -24,7 +28,7 @@ lesson("u0-l1", [
     NX("Một đồng nghiệp giúp bạn khiêng thùng hàng. Bạn nói gì?", "ありがとうございます。", ["おめでとうございます。", "いただきます。", "おやすみなさい。"]),
     NX("Trên tàu, bạn lỡ giẫm vào chân một người lạ. Bạn nói gì?", "すみません。", ["ありがとうございます。", "いただきます。", "どういたしまして。"]),
     W("Cảm ơn anh rất nhiều.", "どうも|ありがとうございます", ["すみません", "はい"]),
-    Y("Cảm ơn (lịch sự).", "ありがとうございます", "どうもありがとうございます", kana=True),
+    W("Cảm ơn (lịch sự).", "ありがとう|ございます", ["どうも", "ください"], alts=("どうも|ありがとう|ございます",)),
     M("ありがとう", "すみません", "お願いします", "どういたしまして"),
 ])
 lesson("u0-l2", [
@@ -33,7 +37,7 @@ lesson("u0-l2", [
     NX("Bạn gõ cửa và bước vào phòng của cấp trên. Bạn nói gì?", "失礼します。", ["いただきます。", "おやすみなさい。", "ただいま。"]),
     NX("Giữa ca, bạn gặp một đồng nghiệp ở hành lang. Bạn chào thế nào?", "お疲れさまです。", ["おやすみなさい。", "いただきます。", "ごちそうさまでした。"]),
     F("___、ナムです。", "はい", ["いいえ", "どうも", "さようなら"], "Vâng, tôi là Nam."),
-    Y("Vâng.", "はい", kana=True), Y("Không.", "いいえ", kana=True),
+    N("はい", ["いいえ", "どうも", "すみません"], prompt="Vâng."), N("いいえ", ["はい", "どうぞ", "すみません"], prompt="Không."),
     M("はい", "いいえ", "失礼します", "お疲れさまです"),
 ])
 lesson("u0-l3", [
@@ -42,7 +46,7 @@ lesson("u0-l3", [
     NX("Trước bữa ăn ở căng tin, mọi người cùng nói:", "いただきます。", ["ごちそうさまでした。", "お疲れさまです。", "おめでとうございます。"]),
     TX("お元気ですか。", "Bạn có khoẻ không?", ["Bạn tên là gì?", "Bạn đi đâu đấy?", "Bạn có rảnh không?"]),
     W("Chào buổi sáng, anh Nam.", "ナム|さん|おはようございます", ["です", "さようなら"], alts=("おはようございます|ナム|さん",)),
-    Y("Chúc mừng!", "おめでとうございます", kana=True),
+    W("Chúc mừng!", "おめでとう|ございます", ["ありがとう", "いただきます"]),
     M("いただきます", "ごちそうさまでした", "さようなら", "おめでとうございます", "気をつけて"),
 ])
 
@@ -53,7 +57,7 @@ lesson("u1-l0", [
     F("わたし___ナムです。", "は", ["を", "の", "か"], "Tôi là Nam."), F("わたしは学生___。", "です", ["さん", "ベトナム", "日本"], "Tôi là sinh viên."),
     W("Tôi là sinh viên.", "わたし|は|学生|です", ["を", "先生"]),
     NX("Tôi là nhân viên công ty.", "わたしは会社員です。", ["わたしを会社員です。", "わたしの会社員です。", "わたしは会社員さんです。"]),
-    Y("Tôi là sinh viên.", "わたしは学生です", kana=True),
+    W("Tôi là sinh viên.", "わたし|は|学生|です", ["の", "会社員"]),
     M("わたし", "学生", "会社員", "先生", "名前"),
 ])
 lesson("u1-l1", [
@@ -62,7 +66,7 @@ lesson("u1-l1", [
     TX("わたしはベトナム人です。", "Tôi là người Việt Nam.", ["Tôi ở Việt Nam.", "Tôi là người Nhật.", "Tôi học tiếng Việt."]),
     NX("Anh Nam là người Việt Nam.", "ナムさんはベトナム人です。", ["ナムさんはベトナムです。", "ナムさんをベトナム人です。", "ベトナム人はナムさんですか。"]),
     W("Cô ấy là người Nhật.", "かのじょ|は|日本人|です", ["ベトナム人", "を"]),
-    Y("Tôi là người Việt Nam.", "わたしはベトナム人です", kana=True),
+    W("Tôi là người Việt Nam.", "わたし|は|ベトナム人|です", ["を", "日本人"]),
     M("ベトナム", "日本", "ベトナム人", "日本人", "外国人"),
 ])
 lesson("u1-l2", [
@@ -71,7 +75,7 @@ lesson("u1-l2", [
     NX("Bạn tự giới thiệu lần đầu. Câu cuối cùng bạn nói là:", "よろしくおねがいします。", ["はじめまして。", "いただきます。", "おやすみなさい。"]),
     W("Rất vui được gặp. Tôi là Lan.", "はじめまして|ラン|です", ["さん", "は"]),
     TX("ナムさんは先生ですか。", "Anh Nam là giáo viên à?", ["Anh Nam là giáo viên.", "Anh Nam không phải là giáo viên.", "Giáo viên của anh Nam là ai?"]),
-    Y("Rất vui được gặp anh chị.", "はじめまして", kana=True),
+    N("はじめまして", ["さようなら", "おやすみなさい", "いただきます"], prompt="Rất vui được gặp anh chị."),
     M("はじめまして", "よろしくおねがいします", "さん", "です"),
 ])
 lesson("u1-l3", [
@@ -81,7 +85,7 @@ lesson("u1-l3", [
     TX("あの人は先生です。", "Người kia là giáo viên.", ["Người này là giáo viên.", "Người kia là sinh viên.", "Giáo viên ở đằng kia."]),
     NX("Tên bạn là gì?", "お名前はなんですか。", ["お名前はどこですか。", "お名前はいくらですか。", "お名前はいつですか。"]),
     W("Tên tôi là Hoa.", "わたし|の|名前|は|ホア|です", ["を", "さん"]),
-    Y("Tên tôi là Minh.", "わたしの名前はミンです", "名前はミンです", kana=True),
+    W("Tên tôi là Minh.", "わたし|の|名前|は|ミン|です", ["を", "か"], alts=("名前|は|ミン|です",)),
 ])
 
 # ---------------------------------------------------------------- u2: family
@@ -91,7 +95,7 @@ lesson("u2-l0", [
     N("お母さん", ["お父さん", "お姉さん", "お兄さん"], prompt="mẹ (của người khác)"),
     NX("Bạn kể với đồng nghiệp: \"Bố tôi là giáo viên.\"", "父は先生です。", ["お父さんは先生です。", "父を先生です。", "父は先生さんです。"]),
     W("Đây là gia đình tôi.", "これ|は|わたし|の|家族|です", ["を", "友達"]),
-    Y("Bố tôi là giáo viên.", "父は先生です", kana=True),
+    W("Bố tôi là giáo viên.", "父|は|先生|です", ["を", "お父さん"]),
     M("父", "母", "兄", "姉"),
 ])
 lesson("u2-l1", [
@@ -99,7 +103,7 @@ lesson("u2-l1", [
     F("弟___一人います。", "が", ["を", "で", "へ"], "Tôi có một em trai."),
     NX("Tôi có một em gái.", "妹が一人います。", ["妹が一人あります。", "妹を一人います。", "弟が一人います。"]),
     W("Tôi có anh trai và chị gái.", "兄|と|姉|が|います", ["を", "あります"], alts=("姉|と|兄|が|います",)),
-    Y("Tôi có một em trai.", "弟が一人います", "弟は一人います", kana=True),
+    W("Tôi có một em trai.", "弟|が|一人|います", ["を", "あります"]),
     M("兄", "姉", "弟", "妹", "兄弟"),
 ])
 lesson("u2-l2", [
@@ -108,7 +112,7 @@ lesson("u2-l2", [
     TX("妻は日本人です。", "Vợ tôi là người Nhật.", ["Chồng tôi là người Nhật.", "Vợ tôi là người Việt Nam.", "Vợ anh có phải người Nhật không?"]),
     NX("Tôi có hai con.", "子供が二人います。", ["子供が二人あります。", "子供を二人います。", "子供が二ついます。"]),
     W("Con trai tôi là học sinh.", "息子|は|学生|です", ["娘", "を"]),
-    Y("Vợ tôi là người Việt Nam.", "妻はベトナム人です", kana=True),
+    W("Vợ tôi là người Việt Nam.", "妻|は|ベトナム人|です", ["を", "夫"]),
     M("夫", "妻", "息子", "娘", "子供"),
 ])
 lesson("u2-l3", [
@@ -117,7 +121,7 @@ lesson("u2-l3", [
     TX("家族は何人ですか。", "Gia đình bạn có mấy người?", ["Gia đình bạn ở đâu?", "Bạn có mấy người bạn?", "Bố mẹ bạn bao nhiêu tuổi?"]),
     NX("Bố mẹ tôi ở Việt Nam.", "両親はベトナムにいます。", ["両親はベトナムにあります。", "両親をベトナムにいます。", "両親はベトナムでいます。"]),
     W("Bạn tôi là người Nhật.", "友達|は|日本人|です", ["を", "ベトナム人"]),
-    Y("Bố mẹ tôi ở Việt Nam.", "両親はベトナムにいます", "両親がベトナムにいます", kana=True),
+    W("Bố mẹ tôi ở Việt Nam.", "両親|は|ベトナム|に|います", ["で", "あります"]),
     M("両親", "友達", "おじいさん", "おばあさん", "お父さん"),
 ])
 
@@ -128,7 +132,7 @@ lesson("u3-l0", [
     F("パン___食べます。", "を", ["に", "で", "の"], "Tôi ăn bánh mì."),
     F("水を___。", "飲みます", ["食べます", "行きます", "来ます"], "Tôi uống nước."),
     W("Tôi ăn bánh mì.", "パン|を|食べます", ["飲みます", "に"]),
-    Y("Tôi uống nước.", "水を飲みます", kana=True),
+    W("Tôi uống nước.", "水|を|飲みます", ["食べます", "で"]),
     M("ご飯", "パン", "水", "お茶", "コーヒー"),
 ])
 lesson("u3-l1", [
@@ -136,7 +140,7 @@ lesson("u3-l1", [
     F("毎朝、卵___食べます。", "を", ["に", "が", "で"], "Sáng nào tôi cũng ăn trứng."),
     NX("Tôi không ăn thịt.", "肉を食べません。", ["肉を食べます。", "肉を飲みません。", "肉が食べません。"]),
     W("Tôi ăn cá và rau.", "魚|と|野菜|を|食べます", ["飲みます", "で"], alts=("野菜|と|魚|を|食べます",)),
-    Y("Tôi ăn thịt.", "肉を食べます", kana=True),
+    W("Tôi ăn thịt.", "肉|を|食べます", ["飲みます", "が"]),
     M("肉", "魚", "野菜", "卵", "牛乳"),
 ])
 lesson("u3-l2", [
@@ -145,7 +149,7 @@ lesson("u3-l2", [
     NX("Tôi không uống rượu.", "お酒を飲みません。", ["お酒を食べません。", "お酒を飲みます。", "お酒に飲みません。"]),
     TX("ジュースを飲みますか。", "Bạn có uống nước ép không?", ["Bạn uống nước ép nhé.", "Tôi không uống nước ép.", "Nước ép ở đâu?"]),
     W("Cho tôi trà.", "お茶|を|お願いします", ["水", "に"]),
-    Y("Cho tôi nước.", "水をお願いします", "水をください", "水、お願いします", "お水をお願いします", "お水、お願いします", "お水をください", kana=True),
+    W("Cho tôi nước.", "水|を|お願いします", ["に", "ください"], alts=("水|を|ください",)),
     M("ジュース", "ビール", "お酒", "牛乳", "お茶"),
 ])
 lesson("u3-l3", [
@@ -154,7 +158,7 @@ lesson("u3-l3", [
     H("ラーメン", ["メニュー", "ジュース", "バナナ"]),
     NX("Bữa trưa tôi ăn mì ramen.", "昼ご飯はラーメンを食べます。", ["昼ご飯はラーメンを飲みます。", "昼ご飯はラーメンに食べます。", "ラーメンは昼ご飯を食べます。"]),
     W("Tôi ăn cơm hộp.", "お弁当|を|食べます", ["飲みます", "に"]),
-    Y("Tôi uống cà phê.", "コーヒーを飲みます", kana=True),
+    W("Tôi uống cà phê.", "コーヒー|を|飲みます", ["食べます", "に"]),
     M("ラーメン", "バナナ", "りんご", "ジュース", "メニュー"),
 ])
 
@@ -164,7 +168,7 @@ lesson("u4-l0", [
     T("三", ["五", "八", "十"]), N("七", ["一", "四", "九"]), H("六", ["九", "七", "八"]),
     M("一", "二", "三", "四", "五"), M("六", "七", "八", "九", "十"),
     F("___、二、三、四", "一", ["五", "十", "百"], "một, hai, ba, bốn"),
-    Y("số năm", "五", kana=True), Y("số mười", "十", kana=True),
+    N("五", ["三", "八", "九"], prompt="số năm"), N("十", ["一", "六", "百"], prompt="số mười"),
 ])
 lesson("u4-l1", [
     T("百", ["千", "万", "十"]), N("万", ["千", "百", "円"]), T("円", ["万", "千", "いくら"]),
@@ -172,7 +176,7 @@ lesson("u4-l1", [
     TX("300円です。", "Ba trăm yên.", ["Ba nghìn yên.", "Ba mươi yên.", "Ba vạn yên."]),
     NX("Cái này bao nhiêu tiền?", "これはいくらですか。", ["これはどこですか。", "いくらはこれですか。", "これはいくらです。"]),
     W("Một nghìn yên.", "千|円|です", ["百", "万"]),
-    Y("Bao nhiêu tiền?", "いくらですか", kana=True),
+    W("Bao nhiêu tiền?", "いくら|です|か", ["どこ", "いくつ"]),
     M("百", "千", "万", "円", "いくら"),
 ])
 lesson("u4-l2", [
@@ -181,7 +185,7 @@ lesson("u4-l2", [
     TX("いくつありますか。", "Có mấy cái?", ["Bao nhiêu tiền?", "Có mấy người?", "Nó ở đâu?"]),
     NX("Cho tôi ba quả táo.", "りんごを三つください。", ["りんごを三日ください。", "りんごに三つください。", "三つをりんごください。"]),
     W("Cho tôi một cái bánh mì.", "パン|を|一つ|ください", ["一人", "に"]),
-    Y("ba cái", "三つ", kana=True),
+    N("三つ", ["三日", "三月", "二つ"], prompt="ba cái"),
     M("一つ", "二つ", "三つ", "四つ", "五つ"),
 ])
 lesson("u4-l3", [
@@ -190,7 +194,7 @@ lesson("u4-l3", [
     TX("スーパーで買い物をします。", "Tôi mua sắm ở siêu thị.", ["Tôi làm việc ở siêu thị.", "Siêu thị ở đâu?", "Tôi mua sắm ở cửa hàng tiện lợi."]),
     NX("Tôi không có tiền.", "お金がありません。", ["お金がいません。", "お金をありません。", "お金がありますか。"]),
     W("Ví của tôi ở đâu?", "わたし|の|財布|は|どこ|です|か", ["を", "だれ"]),
-    Y("Tôi mua sắm ở siêu thị.", "スーパーで買い物をします", "スーパーで買い物します", kana=True),
+    W("Tôi mua sắm ở siêu thị.", "スーパー|で|買い物|を|します", ["に", "店"], alts=("スーパー|で|買い物|します",)),
     M("お金", "財布", "店", "スーパー", "買い物"),
 ])
 finish("s1")

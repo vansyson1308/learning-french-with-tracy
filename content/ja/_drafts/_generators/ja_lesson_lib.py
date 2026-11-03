@@ -8,8 +8,11 @@ a Vietnamese prompt that shows Japanese, or an option whose Vietnamese gloss is 
 Answer keys:
  - Y() is a typed Japanese answer in the standard script. It adds the other renderings a learner may fairly type: the
    sentence without わたしは (Japanese drops a known subject), 私 for わたし (the phone keyboard offers it), and, only
-   where the course plan lets kana count as production (Section 1, the kana-input unit o), the answer spelt in kana.
-   Elsewhere kana typed for kanji is accepted by the app as practice only (P4b evidence guard), so it is not listed.
+   where the course plan lets kana count as production (the kana-input unit o), the answer spelt in kana. Elsewhere
+   kana typed for kanji is accepted by the app as practice only (P4b evidence guard), so it is not listed.
+   Section 1 never uses Y() (coordinator decision 2026-11-04: no free kana typing before the learner is expected to
+   have done the kana primer); its production items are W() word banks and N() choices. ja-check-answers.py stops on
+   a typed item there.
  - W() takes tiles written with | between them; a distractor tile may not repeat a tile of the answer.
  - Particle fill-ins (F with a particle key) never offer two particles that both fit: the self-check
    (ja-check-answers.py) reads the pairs は/が, に/へ, と/や, ね/よ, は/も against the Vietnamese translation.
@@ -170,7 +173,7 @@ def _variants(answer, alts, vi=""):
 
 
 def Y(vi, ja, *alts, kana=False, plain=False, script=None):
-    """Typed Japanese from a Vietnamese prompt. kana=True (Section 1, unit o) also accepts the answer in kana as production.
+    """Typed Japanese from a Vietnamese prompt (Section 2 on). kana=True (unit o) also accepts the answer in kana as production.
     D-10 owner decision (2026-11-03): a prompt that asks for katakana ("Gõ bằng katakana") marks the item script
     "katakana", so the grader does not fold hiragana into it (ぱん is not パン); script= marks another item so."""
     if script is None and "katakana" in vi.lower():

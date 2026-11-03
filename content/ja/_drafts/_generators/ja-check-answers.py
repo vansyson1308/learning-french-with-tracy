@@ -35,6 +35,12 @@ later session). It joins lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then f
     count between noun + が/は and あります/います (ベッドが一つあり, ベッドが1つあり), as the rubric matches unbroken runs.
     Owner decision: a typed item whose prompt asks for katakana carries script "katakana" (graded without the
     katakana → hiragana fold) and accepts katakana keys only.
+10. (coordinator decision, 2026-11-04) no kana typing in Section 1: a learner who has not done the kana primer cannot
+    read kana yet and may have no Japanese keyboard (and Maestro cannot type kana on Android). A Section 1 lesson
+    (by its unit's sectionId in units/OUTPUT.jsonl) and a Section 1 checkpoint or placement item (ja-cpx-s1-*,
+    ja-plx-s1-*) hold no exercise that asks for typed Japanese: typeAnswer, dictation, conjugationCloze, a fill-in
+    without options, guidedWriting, simpleForm. Production there is by tap (word banks, choices); typing starts in
+    Section 2.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I ja-check-answers.py <repo root>
 """
@@ -77,6 +83,21 @@ for track in _jsonl("exam").values():
     BANKS["exam"] += [i["exercise"] for i in track["items"]]
 GAP = "（　）"
 findings = []
+# Rule 10: the lessons of Section 1, read from the units (not from the generator file that wrote them).
+SECTION1_LESSONS = {l["id"] for u in (json.loads(x) for x in open(f"{D}/units/OUTPUT.jsonl", encoding="utf-8") if x.strip())
+                    if u["sectionId"] == "ja-vi:section-1" for l in u["lessons"]}
+SECTION1_BANK = re.compile(r"^ja-(?:cpx|plx)-s1-")
+TYPED_TYPES = {"typeAnswer", "dictation", "conjugationCloze", "guidedWriting", "simpleForm"}
+
+
+def typed_japanese(e):
+    """An exercise the learner answers by typing Japanese (rule 10)."""
+    return e["type"] in TYPED_TYPES or (e["type"] == "fillBlank" and not e.get("options"))
+
+
+def section1_rules(eid, e):
+    if typed_japanese(e):
+        flag(eid, "section1-typing", f"{e['type']}: Section 1 has no kana typing (word bank or choice instead; typing starts in Section 2)")
 
 
 def flag(eid, rule, msg):
@@ -403,6 +424,8 @@ for r in records:
         register(eid, e)
         layer_rules(eid, e)
         review_rules(eid, e)
+        if r["lessonId"] in SECTION1_LESSONS:
+            section1_rules(eid, e)
         if e["type"] == "fillBlank" and e["options"][e["correct"]] in PARTICLES:
             particle_items[e["options"][e["correct"]]] += 1
 
@@ -428,6 +451,8 @@ for bank, exercises in BANKS.items():
         register(eid, e)
         layer_rules(eid, e)
         review_rules(eid, e)
+        if SECTION1_BANK.match(eid):
+            section1_rules(eid, e)
 
 scenario_rules()
 reading_rules()
