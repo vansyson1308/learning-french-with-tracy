@@ -35,6 +35,7 @@ Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, l
 - ☐ Danh sách từ học tiếng Hàn NIKL 한국어 학습용 어휘 목록 (KOGL Type 1) — korean.go.kr từ chối tải tự động; đặt file vào `sources/ko/nikl-learner-list.tsv` hoặc gửi Claude. Không có thì neo từ vựng tiếng Hàn theo tần suất. (P3a)
 - ☐ **Thư cần gửi dưới tên anh (tuỳ chọn):** logus2k (`kokoro_tts_eu_pt`, hỏi tên và giấy phép của corpus, cho giọng pt-PT thứ hai, D-12); caple@letras.ulisboa.pt (đề mẫu và số câu của ACESSO).
 - ☐ (Tuỳ chọn) Nghe thử các bản canary giọng ja/zh/ko trong artifact của workflow audio trước khi sinh audio đầy đủ. (P3b)
+- ☐ (Tuỳ chọn) **Câu nhận dạng giọng nói thật cho ja/zh/ko**: trên điện thoại, mỗi thứ tiếng đọc khoảng 20 câu ngắn vào ô nhập bằng giọng nói (bàn phím Google, đặt ngôn ngữ ja-JP / zh-CN / ko-KR) và chép lại **đúng chữ máy viết ra** — chỉ chữ, không ghi âm, không gửi audio — vào `src/lib/__fixtures__/speech/owner-recognizer-transcripts.json` (mỗi dòng: câu đã đọc, chữ máy nghe ra) hoặc gửi Claude; test chấm điểm nói sẽ chạy trên đó. (P4b)
 
 ### C1. Nghe thử các câu audio máy chấm "đáng ngờ" (QC 2026-10-29b §3.4)
 Anh không cần biết ngôn ngữ đó: chỉ nghe xem âm thanh có bị **méo/rè** (vỡ tiếng, rè, nuốt chữ, lặp âm) hay không. Câu nào bị nhận dạng giọng nói (ASR) chấm lệch được sinh lại một lần; câu nào **vẫn bị chấm lệch sau lần sinh lại** được Claude chép vào đây (`bun scripts/audio.ts owner-checklist --lang <mã> --report <báo cáo>`), mỗi dòng có đường dẫn file. Nghe được thì đánh ☑; méo/rè thì ghi "LỖI" bên cạnh, Claude sẽ thay câu hoặc đổi giọng.

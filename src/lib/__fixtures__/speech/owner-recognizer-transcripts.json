@@ -1,0 +1,6 @@
+{
+  "about": "P4b task 3: real speech-recognizer output for ja/zh/ko, collected by the owner on the phone (text only, never audio; plan/OWNER-FINAL-CHECKLIST.md section C). Each sample: `said` = the sentence read aloud (graded as the authored variant), `heard` = exactly what the phone's recognizer wrote, `alternatives` = its other n-best results if shown, `expected` = whether the grader should pass it, optional `readings` = word -> kana (ja) or pinyin (zh) for the words of `said`. Empty until the owner adds them; src/lib/__tests__/speech-grader-owner-transcripts.test.ts grades every sample.",
+  "ja": [],
+  "zh": [],
+  "ko": []
+}
