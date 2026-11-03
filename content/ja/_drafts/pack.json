@@ -10158,16 +10158,75 @@
                   "correct": 3
                 },
                 {
-                  "type": "select",
+                  "type": "readingComprehension",
                   "id": "ja-vi:ug-l0-e3",
+                  "readingId": "ja.read.ug_signs",
+                  "question": "Biển nào nói bạn không được vào?",
+                  "options": [
+                    {
+                      "text": "立入禁止"
+                    },
+                    {
+                      "text": "入口"
+                    },
+                    {
+                      "text": "安全第一"
+                    },
+                    {
+                      "text": "出口"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "ja-vi:ug-l0-e4",
+                  "readingId": "ja.read.ug_signs",
+                  "question": "Biển nào nói không được hút thuốc?",
+                  "options": [
+                    {
+                      "text": "非常口"
+                    },
+                    {
+                      "text": "禁煙"
+                    },
+                    {
+                      "text": "足元注意"
+                    },
+                    {
+                      "text": "安全第一"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "ja-vi:ug-l0-e5",
+                  "readingId": "ja.read.ug_signs",
+                  "question": "Biển nào nhắc bạn nhìn dưới chân?",
+                  "options": [
+                    {
+                      "text": "立入禁止"
+                    },
+                    {
+                      "text": "禁煙"
+                    },
+                    {
+                      "text": "足元注意"
+                    },
+                    {
+                      "text": "出口"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "ja-vi:ug-l0-e6",
                   "mode": "targetToNative",
                   "prompt": "禁止",
                   "audioTarget": "禁止",
                   "options": [
-                    {
-                      "text": "cấm",
-                      "emoji": "🚫"
-                    },
                     {
                       "text": "chú ý",
                       "emoji": "❗"
@@ -10179,22 +10238,26 @@
                     {
                       "text": "lối ra",
                       "emoji": "🏃"
+                    },
+                    {
+                      "text": "cấm",
+                      "emoji": "🚫"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
-                  "id": "ja-vi:ug-l0-e4",
+                  "id": "ja-vi:ug-l0-e7",
                   "mode": "nativeToTarget",
                   "prompt": "lối ra",
                   "audioTarget": "出口",
                   "options": [
                     {
-                      "text": "入口"
+                      "text": "出口"
                     },
                     {
-                      "text": "出口"
+                      "text": "入口"
                     },
                     {
                       "text": "非常口"
@@ -10203,11 +10266,11 @@
                       "text": "受付"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
-                  "id": "ja-vi:ug-l0-e5",
+                  "id": "ja-vi:ug-l0-e8",
                   "mode": "targetToNative",
                   "prompt": "危ない",
                   "audioTarget": "危ない",
@@ -10216,20 +10279,20 @@
                       "text": "an toàn"
                     },
                     {
-                      "text": "bận"
+                      "text": "nguy hiểm"
                     },
                     {
-                      "text": "nguy hiểm"
+                      "text": "bận"
                     },
                     {
                       "text": "nặng"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
-                  "id": "ja-vi:ug-l0-e6",
+                  "id": "ja-vi:ug-l0-e9",
                   "mode": "targetToNative",
                   "prompt": "たばこは禁止です。",
                   "audioTarget": "たばこは禁止です。",
@@ -10241,24 +10304,21 @@
                       "text": "Thuốc lá ở đây."
                     },
                     {
-                      "text": "Hãy mua thuốc lá."
+                      "text": "Cấm hút thuốc."
                     },
                     {
-                      "text": "Cấm hút thuốc."
+                      "text": "Hãy mua thuốc lá."
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
-                  "id": "ja-vi:ug-l0-e7",
+                  "id": "ja-vi:ug-l0-e10",
                   "mode": "targetToNative",
                   "prompt": "ここは危ないです。",
                   "audioTarget": "ここは危ないです。",
                   "options": [
-                    {
-                      "text": "Chỗ này nguy hiểm."
-                    },
                     {
                       "text": "Chỗ này an toàn."
                     },
@@ -10267,22 +10327,25 @@
                     },
                     {
                       "text": "Chỗ này yên tĩnh."
+                    },
+                    {
+                      "text": "Chỗ này nguy hiểm."
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
-                  "id": "ja-vi:ug-l0-e8",
+                  "id": "ja-vi:ug-l0-e11",
                   "mode": "listen",
                   "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
                   "audioTarget": "出口",
                   "options": [
                     {
-                      "text": "入口"
+                      "text": "出口"
                     },
                     {
-                      "text": "出口"
+                      "text": "入口"
                     },
                     {
                       "text": "非常口"
@@ -10291,25 +10354,25 @@
                       "text": "窓口"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "fillBlank",
-                  "id": "ja-vi:ug-l0-e9",
+                  "id": "ja-vi:ug-l0-e12",
                   "sentence": "ここ___たばこを吸わないでください。",
                   "translation": "Đừng hút thuốc ở đây.",
                   "audioTarget": "ここでたばこを吸わないでください。",
                   "options": [
                     "を",
-                    "が",
                     "で",
+                    "が",
                     "に"
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "match",
-                  "id": "ja-vi:ug-l0-e10",
+                  "id": "ja-vi:ug-l0-e13",
                   "pairs": [
                     {
                       "target": "工場",
@@ -10356,13 +10419,13 @@
                       "text": "găng tay"
                     },
                     {
-                      "text": "kính bảo hộ"
+                      "text": "mũ bảo hộ"
                     },
                     {
-                      "text": "mũ bảo hộ"
+                      "text": "kính bảo hộ"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "readingComprehension",
@@ -10371,9 +10434,6 @@
                   "question": "Bạn không được làm gì?",
                   "options": [
                     {
-                      "text": "chạm vào máy"
-                    },
-                    {
                       "text": "đi giày bảo hộ"
                     },
                     {
@@ -10381,9 +10441,12 @@
                     },
                     {
                       "text": "rửa tay"
+                    },
+                    {
+                      "text": "chạm vào máy"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "readingComprehension",
@@ -10392,10 +10455,10 @@
                   "question": "Nội quy nói gì về thuốc lá?",
                   "options": [
                     {
-                      "text": "được hút ở nhà ăn"
+                      "text": "cấm hút thuốc"
                     },
                     {
-                      "text": "cấm hút thuốc"
+                      "text": "được hút ở nhà ăn"
                     },
                     {
                       "text": "chỉ được hút buổi trưa"
@@ -10404,11 +10467,32 @@
                       "text": "phải mua ở cửa hàng"
                     }
                   ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "ja-vi:ug-l1-e3",
+                  "readingId": "ja.read.ug_rules",
+                  "question": "Bình chữa cháy ở đâu?",
+                  "options": [
+                    {
+                      "text": "cạnh lối thoát hiểm"
+                    },
+                    {
+                      "text": "cạnh lối vào"
+                    },
+                    {
+                      "text": "trong nhà ăn"
+                    },
+                    {
+                      "text": "ở tầng hai"
+                    }
+                  ],
                   "correct": 1
                 },
                 {
                   "type": "select",
-                  "id": "ja-vi:ug-l1-e3",
+                  "id": "ja-vi:ug-l1-e4",
                   "mode": "targetToNative",
                   "prompt": "ヘルメットをかぶってください。",
                   "audioTarget": "ヘルメットをかぶってください。",
@@ -10430,7 +10514,7 @@
                 },
                 {
                   "type": "select",
-                  "id": "ja-vi:ug-l1-e4",
+                  "id": "ja-vi:ug-l1-e5",
                   "mode": "targetToNative",
                   "prompt": "機械に触らないでください。",
                   "audioTarget": "機械に触らないでください。",
@@ -10452,7 +10536,7 @@
                 },
                 {
                   "type": "select",
-                  "id": "ja-vi:ug-l1-e5",
+                  "id": "ja-vi:ug-l1-e6",
                   "mode": "nativeToTarget",
                   "prompt": "Biển ghi: Hãy đeo găng tay.",
                   "audioTarget": "手袋をしてください。",
@@ -10474,7 +10558,7 @@
                 },
                 {
                   "type": "fillBlank",
-                  "id": "ja-vi:ug-l1-e6",
+                  "id": "ja-vi:ug-l1-e7",
                   "sentence": "ボタン___押してください。",
                   "translation": "Hãy ấn nút.",
                   "audioTarget": "ボタンを押してください。",
@@ -10488,7 +10572,7 @@
                 },
                 {
                   "type": "fillBlank",
-                  "id": "ja-vi:ug-l1-e7",
+                  "id": "ja-vi:ug-l1-e8",
                   "sentence": "廊下を___ないでください。",
                   "translation": "Đừng chạy ở hành lang.",
                   "audioTarget": "廊下を走らないでください。",
@@ -10502,7 +10586,7 @@
                 },
                 {
                   "type": "wordBank",
-                  "id": "ja-vi:ug-l1-e8",
+                  "id": "ja-vi:ug-l1-e9",
                   "direction": "nativeToTarget",
                   "prompt": "Đừng chạy ở hành lang.",
                   "audioTarget": "廊下を走らないでください",
@@ -10521,7 +10605,7 @@
                 },
                 {
                   "type": "typeAnswer",
-                  "id": "ja-vi:ug-l1-e9",
+                  "id": "ja-vi:ug-l1-e10",
                   "mode": "produceTarget",
                   "prompt": "Hãy đội mũ bảo hộ.",
                   "audioTarget": "ヘルメットをかぶってください",
@@ -10530,7 +10614,7 @@
                 },
                 {
                   "type": "conjugationCloze",
-                  "id": "ja-vi:ug-l1-e10",
+                  "id": "ja-vi:ug-l1-e11",
                   "sentence": "ここに___ください。",
                   "translation": "Xin mời ngồi ở đây.",
                   "verb": "座る",
@@ -10542,7 +10626,7 @@
                 },
                 {
                   "type": "conjugationCloze",
-                  "id": "ja-vi:ug-l1-e11",
+                  "id": "ja-vi:ug-l1-e12",
                   "sentence": "窓を___ください。",
                   "translation": "Hãy mở cửa sổ.",
                   "verb": "開ける",
@@ -10554,7 +10638,7 @@
                 },
                 {
                   "type": "conjugationCloze",
-                  "id": "ja-vi:ug-l1-e12",
+                  "id": "ja-vi:ug-l1-e13",
                   "sentence": "ドアを___ください。",
                   "translation": "Hãy đóng cửa.",
                   "verb": "閉める",
@@ -10607,6 +10691,9 @@
                 },
                 {
                   "exercise": "ja-vi:ug-l1-e12"
+                },
+                {
+                  "exercise": "ja-vi:ug-l1-e13"
                 }
               ]
             },

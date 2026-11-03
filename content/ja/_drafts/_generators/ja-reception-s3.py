@@ -7,8 +7,8 @@ gender sits on the matching voice. Exam-track texts belong to the exam step (ses
 Furigana come from the lexicon at run time, so the text holds no readings: every kanji is inside a lexicon surface or
 an inflection key (ja_layers.check), numbers before a counter are digits only where the stored ruby stays right (7時,
 2階, 15分; never 10分), and words outside the lexicon are written in kana, glossed in supportGlossary when they carry
-meaning. Signs that need a kanji compound the lexicon lacks (立入禁止, 安全第一, 禁煙) wait for their lexemes: adding
-them needs ja-subset.py and the pinned JmdictFurigana file. A block that is a sentence (。！？) is register-checked;
+meaning. The factory signs (立入禁止, 安全第一, 禁煙, 足元注意, 消火器) are lexemes since session 5 (core-a2.txt, read
+through ja-subset.py and the pinned JmdictFurigana file). A block that is a sentence (。！？) is register-checked;
 a sign or a list line is a noun phrase. usage: python -I ja-reception-s3.py <repo root>
 """
 import os, sys
@@ -41,8 +41,8 @@ READINGS = [
  ("uf_room", "description", "わたしの部屋", para(["机といす", "ベッド", "テレビとパソコン", "窓が二つあります。"]), [R_WORDS, EXIST], [], 4),
  ("uf_card", "notice", "名前と住所", para(["名前：グエン・ミン", "国：ベトナム", "仕事：会社員", "住所：大阪", "電話番号：080-1234-5678"]), [R_WORDS], [], 5),
  # Unit g: signs, rules, notices and messages at work.
- ("ug_signs", "notice", "工場の中", para(["入口", "出口", "非常口", "危険", "注意"]), [R_NOTICE, WORK], [], 5),
- ("ug_rules", "notice", "工場の規則", para(["ヘルメットをかぶってください。", "安全靴をはいてください。", "機械に触らないでください。", "たばこは禁止です。"]), [R_NOTICE, WORK], [], 4),
+ ("ug_signs", "notice", "工場の中", para(["安全第一", "入口", "出口", "非常口", "危険", "立入禁止", "禁煙", "足元注意"]), [R_NOTICE, WORK], [], 6),
+ ("ug_rules", "notice", "工場の規則", para(["ヘルメットをかぶってください。", "安全靴をはいてください。", "機械に触らないでください。", "工場の中は禁煙です。", "消火器は入口の横にあります。"]), [R_NOTICE, WORK], [], 5),
  ("ug_msg_senpai", "message", "メール", para(["ナムさん", "明日は7時からです。食堂の前で会いましょう。", "田中"]), [R_MSG], [], 3),
  ("ug_msg_boss", "message", "会議", para(["グエンさん、お疲れさまです。", "今日の会議は2時から4時までです。書類を持って来てください。", "木村"]), [R_MSG, TIME], [], 3),
  ("ug_shift", "notice", "シフト", para(["朝のシフト：6時から2時まで", "午後のシフト：2時から10時まで", "少し早く来てください。"]), [R_NOTICE, NUM], [], 3),
