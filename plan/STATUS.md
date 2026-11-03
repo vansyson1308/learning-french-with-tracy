@@ -10,7 +10,12 @@
 > - **(A)** Thêm BSD-3-Clause vào allowlist, chỉ cho công cụ chạy lúc build, với điều kiện không có gì của công cụ đó nằm trong APK.
 > - **(B)** Bỏ hẳn MeCab. Dùng kana đã lưu sẵn cho mọi từ (JmdictFurigana, CC BY-SA) và chuyển kana thành âm vị theo bảng của misaki (Apache-2.0).
 >
-> Tôi đang thử hướng B; kết quả sẽ ghi ở `plan/reports/P4c-ja-audio-frontend.md`. Rủi ro của B là có thể mất trọng âm cao độ nếu misaki lấy trọng âm từ MeCab. Khi chưa có quyết định thì không chạy audio tiếng Nhật bằng UniDic.
+> **Đã chọn hướng B (03/11), không cần đổi allowlist.**
+> - Kokoro đọc tiếng Nhật từ kana đã lưu sẵn. Bảng chuyển kana thành âm vị lấy từ misaki/cutlet (Apache-2.0/MIT), không dùng từ điển BSD nào; chi tiết ở `plan/reports/P4c-ja-audio-frontend.md`.
+> - Mất trọng âm cao độ hoá ra không phải rủi ro: đường misaki cũ cũng không dùng trọng âm.
+> - Canary run 41653925472, so với đường misaki cũ: giọng A jf_alpha 0,2301 (cũ 0,2255); giọng B jm_kumo 0,3977 (cũ 0,5026).
+> - Có chốt tạo lại audio: khi dữ liệu cách đọc đổi thì phải tăng `phonemeFrontends.ja.version`, nếu không test sẽ báo lỗi.
+> - Điều phối viên vẫn có thể chọn hướng A, nhưng giờ không còn việc gì bị chặn.
 >
 > **Ghi chú (2026-11-03, tối):**
 > - **PR #62 (P4b) đã merge (a17e021):** 22/22 check xanh; `main` xanh (CI, Device acceptance, Pages).
