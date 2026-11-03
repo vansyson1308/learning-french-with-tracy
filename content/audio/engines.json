@@ -25,8 +25,10 @@
       "modelLicense": "Apache-2.0",
       "modelFile": "kokoro-v1_0.pth",
       "configFile": "config.json",
-      "install": ["pip install \"kokoro==0.9.4\" \"misaki[ja,zh]==0.9.4\" soundfile", "apt-get install -y espeak-ng"],
+      "install": ["pip install \"kokoro==0.9.4\" \"misaki[zh]==0.9.4\" soundfile", "apt-get install -y espeak-ng"],
       "langCodes": { "en": "a", "es": "e", "fr": "f", "it": "i", "pt": "p", "ja": "j", "zh": "z", "hi": "h" },
+      "phonemeFrontends": { "ja": "course-readings" },
+      "phonemeFrontendNote": "P4c (plan/reports/P4c-ja-audio-frontend.md): misaki[ja] is not installed — its G2P needs a MeCab dictionary (UniDic / NAIST-jdic, BSD: not allowlisted). For ja the plan builds Kokoro's phonemes from the course's stored kana readings (scripts/lib/tts/ja-kana.ts; kana table adapted from misaki 0.9.4 cutlet.py, Apache-2.0 ← polm/cutlet, MIT) and the helper feeds them to the model (--input phonemes).",
       "sampleRateHz": 24000,
       "lineage": [{ "model": "Kokoro-82M v1.0", "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)", "licence": "Apache-2.0", "url": "https://huggingface.co/hexgrad/Kokoro-82M", "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data" }],
       "note": "Kokoro-82M (Apache-2.0, trained on permissive / non-copyrighted audio per the model card). Non-English G2P is thin (espeak-ng fallback for es/it/pt/fr); VOICES.md grades ja C+ / zh D — the canary audit decides. No Korean, no Vietnamese."

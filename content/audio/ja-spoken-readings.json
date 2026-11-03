@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "language": "ja",
+  "note": "P4c audio front-end (plan/reports/P4c-ja-audio-frontend.md): kana readings of words that course text and the audio canary use but the rich lexicon (content/ja/lexicon/lexemes.json) does not store. Read ONLY by the Kokoro Japanese front-end (scripts/lib/tts/ja-kana.ts), after the lexicon: a lexicon reading always wins. Each entry is checked at plan time (kana only, the kana fits the surface). Remove an entry once the lexicon stores the word. Original project data.",
+  "readings": [
+    { "surface": "私", "partOfSpeech": "pronoun", "kana": "わたし" },
+    { "surface": "箸", "partOfSpeech": "noun", "kana": "はし" },
+    { "surface": "子", "partOfSpeech": "noun", "kana": "こ" },
+    { "surface": "可愛い", "partOfSpeech": "adjective", "kana": "かわいい" },
+    { "surface": "農場", "partOfSpeech": "noun", "kana": "のうじょう" },
+    { "surface": "泊まる", "partOfSpeech": "verb", "kana": "とまる" }
+  ]
+}

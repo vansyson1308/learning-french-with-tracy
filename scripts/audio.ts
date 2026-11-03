@@ -38,7 +38,7 @@ import { listeningSchema, storiesSchema } from "../content/schema";
 import { writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "./lib/audio";
 import { buildPlugin } from "./lib/languages";
 import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScript, sha256File, technicalQa, type TechnicalQa } from "./lib/piper-audio";
-import { courseRolesFor, loadPacks } from "./lib/pipeline";
+import { courseRolesFor, loadPacks, readJson } from "./lib/pipeline";
 import { engineLineageVerdict, piperLineageVerdict, registryIdFor, type LineageLink } from "./lib/voice-lineage";
 import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
 import { writeAudioSizeReport } from "./lib/audio-size";
@@ -50,6 +50,8 @@ import { packClipRecipe, receptionClipRecipe, resynthesisFor, resynthesisProblem
 import { asrModelId, mergeAsrResults, splitPlanByCache, type AsrResult } from "./lib/asr-cache";
 import { blessedBySha, committedBlessedSha256, ownerListeningLines, splitReview, techQaDoc, type ReviewRow } from "./lib/audio-qa";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
+import { loadJaSpeechIndex } from "./lib/tts/ja-kana";
+import { attachKokoroPhonemes } from "./lib/tts/kokoro";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
 
 const ROOT = path.resolve(import.meta.dir, "..");
@@ -102,7 +104,8 @@ export type PlanClip = {
   courseId: string | null;
   language: string;
   text: string;
-  segments: { voiceId: string; speaker: number | string | null; text: string }[];
+  /** P4c: `phonemes` is set by the plan for a Kokoro front-end language (ja: scripts/lib/tts/ja-kana.ts); not in the key. */
+  segments: { voiceId: string; speaker: number | string | null; text: string; phonemes?: string }[];
   assetKey: string;
   pipelineVersion: number;
   /** A declared re-synthesis of this clip (part of its asset key). */
@@ -481,8 +484,11 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
     // Layer-filtered runs plan only part of the list; a stale id (its text was edited) is reported, never fatal.
     if (absent.length > 0) console.log(`  not in this plan (other layer, or text changed): ${absent.join(" | ")}`);
   }
+  // P4c: a Kokoro front-end language (ja) gets its phonemes here, from the course's stored readings — never a guess.
+  const fronted = attachKokoroPhonemes(clips, new Map(allVoices().map((v) => [v.id, v])), engines, () => loadJaSpeechIndex(readJson, (rel) => existsSync(path.join(ROOT, rel))));
+  problems.push(...fronted.problems);
   const plugin = buildPlugin(LANG);
-  const doc: PlanDoc = { language: LANG, mode, layers: [...new Set(layers)], normalization: plugin.normalizeForAsr, charsPerSecBand: [plugin.charsPerSecBand.min, plugin.charsPerSecBand.max], clips };
+  const doc: PlanDoc = { language: LANG, mode, layers: [...new Set(layers)], normalization: plugin.normalizeForAsr, charsPerSecBand: [plugin.charsPerSecBand.min, plugin.charsPerSecBand.max], clips: fronted.clips };
   if (DRY_RUN) {
     for (const p of problems) console.error(`ERROR: ${p}`);
     if (problems.length > 0) fail(`dry run found ${problems.length} problem(s) for ${LANG}`);

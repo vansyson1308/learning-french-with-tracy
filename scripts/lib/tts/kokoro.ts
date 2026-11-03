@@ -5,6 +5,14 @@
  * file hashes recorded on the voice's `files.model` / `files.config` at
  * recon); every voice pins its own `.pt`. Synthesis runs one Python
  * process per voice over a JSONL job list (the model loads once).
+ *
+ * P4c: a language listed in `engines.kokoro.phonemeFrontends` is NOT handed
+ * to Kokoro's own G2P. Its phonemes are built at plan time from the course's
+ * stored readings ("course-readings": ja, scripts/lib/tts/ja-kana.ts — misaki's
+ * Japanese G2P needs a MeCab dictionary, and every one is BSD), carried on
+ * each plan segment, and the helper feeds them to the model directly
+ * (`--input phonemes`). Every other language is unchanged: text in, misaki /
+ * espeak-ng G2P inside the helper.
  */
 
 import { readFileSync } from "fs";
@@ -12,6 +20,7 @@ import path from "path";
 
 import { shq } from "../piper-audio";
 
+import { jaClipPhonemes, type JaSpeechIndex } from "./ja-kana";
 import type { DownloadItem, EnginesDoc, LicenseCard, SynthJob, TtsEngine, Voice } from "./types";
 
 export const KOKORO_HELPER = "scripts/lib/tts/kokoro_synth.py";
@@ -21,6 +30,49 @@ export const KOKORO_HELPER = "scripts/lib/tts/kokoro_synth.py";
  * (0.55 s of speech in 1.25 s), English run 41474632304 (302 of 1,656 clips, "about": 0.51 s in 1.25 s).
  */
 export const TRIM_EDGES: ReadonlySet<string> = new Set(["fr", "en"]);
+
+export type PhonemeFrontend = "course-readings";
+
+/** The plan-time phoneme front-end of a language's Kokoro voices, or null (Kokoro's own G2P reads the text). */
+export function kokoroFrontend(engines: Pick<EnginesDoc, "engines">, language: string): PhonemeFrontend | null {
+  return engines.engines.kokoro.phonemeFrontends?.[language] ?? null;
+}
+
+type PhonemeSegment = { voiceId: string; text: string; phonemes?: string };
+
+/**
+ * Plan step (P4c): the Kokoro phonemes of every segment whose voice is a Kokoro voice of a front-end language,
+ * as new segments (inputs untouched); a segment the front-end cannot read without a guess is a problem.
+ */
+export function attachKokoroPhonemes<C extends { clipId: string; segments: S[] }, S extends PhonemeSegment>(
+  clips: readonly C[],
+  voicesById: ReadonlyMap<string, Pick<Voice, "engine" | "language">>,
+  engines: Pick<EnginesDoc, "engines">,
+  jaIndex: () => { index: JaSpeechIndex | null; problems: string[] }
+): { clips: C[]; problems: string[] } {
+  const wants = (s: PhonemeSegment) => {
+    const v = voicesById.get(s.voiceId);
+    return v !== undefined && v.engine === "kokoro" && kokoroFrontend(engines, v.language) === "course-readings";
+  };
+  if (!clips.some((c) => c.segments.some(wants))) return { clips: [...clips], problems: [] };
+  const loaded = jaIndex();
+  if (loaded.index === null) return { clips: [...clips], problems: loaded.problems };
+  const index = loaded.index;
+  const problems: string[] = [];
+  const out = clips.map((clip) => ({
+    ...clip,
+    segments: clip.segments.map((seg) => {
+      if (!wants(seg)) return seg;
+      const r = jaClipPhonemes(seg.text, index);
+      if (!r.ok) {
+        problems.push(`kokoro ja front-end: ${clip.clipId}: ${r.error}`);
+        return seg;
+      }
+      return { ...seg, phonemes: r.phonemes };
+    }),
+  }));
+  return { clips: out, problems };
+}
 
 export const kokoroEngine: TtsEngine = {
   id: "kokoro",
@@ -46,11 +98,14 @@ export const kokoroEngine: TtsEngine = {
       if (!voice) throw new Error(`kokoro: unknown voice ${voiceId}`);
       const langCode = engines.engines.kokoro.langCodes[voice.language];
       if (!langCode) throw new Error(`kokoro: no lang code for ${voice.language}`);
+      const frontend = kokoroFrontend(engines, voice.language);
+      const missing = frontend === null ? undefined : list.find((j) => !j.phonemes);
+      if (missing) throw new Error(`kokoro: ${voice.language} reads phonemes from the plan (${frontend}), but the segment "${missing.text}" has none — re-run plan`);
       const jobsFile = `${scratchDir}/kokoro-${voiceId}.jobs.jsonl`;
-      const payload = list.map((j) => JSON.stringify({ text: j.text, out: j.wavPath })).join("\n");
+      const payload = list.map((j) => JSON.stringify(frontend === null ? { text: j.text, out: j.wavPath } : { phonemes: j.phonemes, text: j.text, out: j.wavPath })).join("\n");
       lines.push(`printf '%s\\n' ${shq(payload)} > ${shq(jobsFile)}`);
       lines.push(
-        `python3 ${KOKORO_HELPER} --lang-code ${shq(langCode)} --model ${shq(`${downloadsDir}/${voiceId}.model.1`)} --config ${shq(`${downloadsDir}/${voiceId}.config.1`)} --voice ${shq(`${downloadsDir}/${voiceId}.voiceFile.1`)} --jobs ${shq(jobsFile)}${TRIM_EDGES.has(voice.language) ? " --trim-edges" : ""}`
+        `python3 ${KOKORO_HELPER} --lang-code ${shq(langCode)} --model ${shq(`${downloadsDir}/${voiceId}.model.1`)} --config ${shq(`${downloadsDir}/${voiceId}.config.1`)} --voice ${shq(`${downloadsDir}/${voiceId}.voiceFile.1`)} --jobs ${shq(jobsFile)}${frontend === null ? "" : " --input phonemes"}${TRIM_EDGES.has(voice.language) ? " --trim-edges" : ""}`
       );
     }
     return lines;

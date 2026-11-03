@@ -172,7 +172,11 @@ const WA_EXPRESSIONS: Readonly<Record<string, string>> = { こんにちは: "kon
 /** A particle written alone between words: は reads wa, へ reads e (を is o by its own spelling). */
 const PARTICLE_ROMAJI: Readonly<Record<string, string>> = { は: "wa", へ: "e" };
 
-type RomajiToken = { kana: string; kind: "word" | "stem" | "plain" | "particle" } | { kind: "punct" | "other"; text: string };
+/**
+ * One token of a Japanese text read through the index (`romajiTokens`). `surface`: the text a stored word (or an
+ * inflection key with its ending) matched — the audio front-end looks its part of speech up by it.
+ */
+export type RomajiToken = { kana: string; kind: "word" | "stem" | "plain" | "particle"; surface?: string } | { kind: "punct" | "other"; text: string };
 
 /**
  * The ending an inflection key takes, by the key's last kana (食べま + した, 食べた + い, 食べな + かった, 高く + ない,
@@ -219,8 +223,11 @@ function kanaWordsOf(index: ScriptReadingIndex): { words: ReadonlySet<string>; m
   return built;
 }
 
-/** Words of a text for the romaji line: stored words (and their kana spellings) longest first; other kana runs plain. */
-function romajiTokens(text: string, index: ScriptReadingIndex): RomajiToken[] | null {
+/**
+ * Words of a text for the romaji line: stored words (and their kana spellings) longest first; other kana runs plain.
+ * Null when a kanji has no stored reading. Exported for the Japanese audio front-end (scripts/lib/tts/ja-kana.ts).
+ */
+export function romajiTokens(text: string, index: ScriptReadingIndex): RomajiToken[] | null {
   const { words: kanaWords, maxLength } = kanaWordsOf(index);
   const cps = [...text];
   const out: RomajiToken[] = [];
@@ -232,7 +239,7 @@ function romajiTokens(text: string, index: ScriptReadingIndex): RomajiToken[] | 
     const last = out[out.length - 1];
     stemEnd = "";
     if (ending !== undefined && last !== undefined && "kana" in last) {
-      out[out.length - 1] = { kana: last.kana + ending, kind: "word" };
+      out[out.length - 1] = { kana: last.kana + ending, kind: "word", surface: (last.surface ?? last.kana) + ending };
       i += [...ending].length;
       continue;
     }
@@ -247,7 +254,7 @@ function romajiTokens(text: string, index: ScriptReadingIndex): RomajiToken[] | 
       const kana = reading ? kanaOfReading(word, reading) : kanaWords.has(word) || (boundary && KANA_FORMS.has(word)) ? word : undefined;
       if (kana === undefined) continue;
       const stem = index.stems?.has(word) === true;
-      out.push({ kana, kind: stem ? "stem" : "word" });
+      out.push({ kana, kind: stem ? "stem" : "word", surface: word });
       if (stem) stemEnd = cps[i + len - 1]!;
       i += len;
       matched = true;
