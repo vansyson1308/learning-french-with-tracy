@@ -39,7 +39,7 @@ unit(1, "unit-1", "u0", "Lời chào đầu tiên", "Chào theo giờ, cảm ơn
 ## Chào theo giờ trong ngày
 
 Người Nhật đổi lời chào theo buổi:
-- *おはようございます* — chào buổi sáng, ở chỗ làm dùng cả khi vào ca chiều
+- *おはようございます* — chào buổi sáng; ở nhiều chỗ làm theo ca, dùng cả khi vào ca chiều
 - *こんにちは* — xin chào, từ trưa đến chiều
 - *こんばんは* — chào buổi tối
 - *おやすみなさい* — chúc ngủ ngon
@@ -66,27 +66,27 @@ unit(1, "unit-2", "u1", "Tôi là ai?", "Nói tên, nói bạn là người Vi�
 ## Câu đầu tiên về bạn
 
 Câu tiếng Nhật đơn giản nhất có dạng *A は B です*: A là B.
-- *わたしはグエンです。* — Tôi là Nguyễn.
+- *わたしはナムです。* — Tôi là Nam.
 - *わたしはベトナム人（じん）です。* — Tôi là người Việt Nam.
 - *わたしは学生（がくせい）です。* — Tôi là sinh viên.
 
 *は* ở đây là trợ từ chủ đề. Viết bằng chữ は nhưng đọc như わ.
 
 ### です ở cuối câu
-*です* luôn đứng cuối câu và làm câu lịch sự. Tiếng Việt đặt "là" ở giữa, tiếng Nhật đặt *です* ở cuối.
+*です* đứng ở cuối câu (chỉ *か*, *ね*, *よ* có thể theo sau) và làm câu lịch sự. Tiếng Việt đặt "là" ở giữa, tiếng Nhật đặt *です* ở cuối.
 
 ### Gọi tên người khác
 Thêm *さん* sau họ hoặc tên người khác: *田中（たなか）さん*. Không bao giờ thêm *さん* sau tên của chính mình.
 
 ### Lần đầu gặp mặt
 - *はじめまして。* — Rất vui được gặp.
-- *グエンです。* — Tôi là Nguyễn.
+- *ナムです。* — Tôi là Nam.
 - *よろしくおねがいします。* — Rất mong được giúp đỡ.
 
 Ba câu này là phần mở đầu của mọi buổi tự giới thiệu, kể cả buổi phỏng vấn.
 
 ### Nghề nghiệp
-*会社員（かいしゃいん）* là nhân viên công ty, *先生（せんせい）* là thầy cô giáo. Tiếng Nhật không cần thêm "một" như tiếng Anh: *会社員です* là đủ.
+*会社員（かいしゃいん）* là nhân viên công ty, *先生（せんせい）* là thầy cô giáo. Tiếng Nhật không cần thêm "một" trước danh từ: *会社員です* là "tôi là nhân viên công ty".
 """, [("わたし", "🙋"), ("名前", "🏷️"), ("さん", "🧑"), ("ベトナム", "🇻🇳"), ("日本", "🇯🇵"), ("ベトナム人", "🗣️"), ("学生", "🧑‍🎓"), ("会社員", "💼"), ("先生", "👩‍🏫"), ("です", "🟰"), ("はじめまして", "🤝"), ("よろしくおねがいします", "🙇‍♂️")],
      [("Bài 1", O("sentences.noun_desu", "vocab.everyday_basics"))] * 4)
 
@@ -260,7 +260,7 @@ unit(2, "unit-d", "ud", "Giờ, ngày và lượng từ", "Hỏi giờ, nói th�
 *月曜日（げつようび）* thứ hai, rồi 火, 水, 木, 金, 土, *日曜日* chủ nhật. Mỗi ngày gắn với một chữ kanji: mặt trăng, lửa, nước, cây, vàng, đất, mặt trời.
 
 ### Ngày trong tháng
-Ngày 1 đến 10 và ngày 20 có cách đọc riêng: *ついたち*, *二日（ふつか）*, *三日（みっか）*... *二十日（はつか）*. Những ngày khác đọc theo số + *日（にち）*.
+Ngày 1 đến 10, ngày 14, 20 và 24 có cách đọc riêng: *ついたち*, *二日（ふつか）*, *三日（みっか）*... *十四日（じゅうよっか）*, *二十日（はつか）*, *二十四日（にじゅうよっか）*. Những ngày khác đọc theo số + *日（にち）*.
 
 ### Lượng từ
 Tiếng Việt có "cái", "con", "tờ". Tiếng Nhật cũng thế, và số đứng trước lượng từ:
@@ -415,7 +415,7 @@ Nhiều thực tập sinh sống ở *寮（りょう）* của công ty. Các c
 - *着（き）る* — mặc áo; *お風呂（ふろ）に入ります* — tắm bồn
 
 ### Đọc chuyện ngắn
-Mỗi câu chuyện chỉ có vài câu. Đọc chậm, đọc lại, và dùng furigana trên chữ kanji. Câu hỏi sau truyện hỏi ai, làm gì, khi nào.
+Mỗi câu chuyện chỉ có vài câu. Đọc chậm, đọc lại, và dùng furigana trên chữ kanji. Câu hỏi sau truyện hỏi ai, làm gì, khi nào. Trong truyện, mọi người nói です/ます cho bạn dễ học; trong gia đình, người Nhật thường nói thân mật hơn.
 
 ### Nội quy ký túc xá
 Nội quy thường có giờ yên lặng và giờ tắm: *夜十時から静かにしてください。* — Từ mười giờ tối hãy giữ yên lặng.
@@ -427,7 +427,7 @@ unit(4, "unit-k", "uk", "Chào hỏi ở chỗ làm", "Nói lời chào khi vào
 ## Những câu nói mỗi ngày
 
 ### Ở chỗ làm
-- *おはようございます* — khi bắt đầu ca, bất kể giờ nào
+- *おはようございます* — khi bắt đầu ca (ở nhiều chỗ làm, kể cả ca chiều)
 - *お疲れさまです* — khi gặp đồng nghiệp trong ngày
 - *お先（さき）に失礼します* — khi về trước người khác
 - *わかりました* — tôi hiểu rồi, sau khi nhận chỉ dẫn
@@ -437,7 +437,7 @@ unit(4, "unit-k", "uk", "Chào hỏi ở chỗ làm", "Nói lời chào khi vào
 - *ただいま* — tôi về rồi; người ở nhà đáp *おかえりなさい*
 
 ### Nói to và rõ
-Ứng dụng nghe bạn bằng bộ nhận dạng giọng nói tiếng Nhật của điện thoại. Mình chỉ kiểm tra từ nghe được, không chấm phát âm. Nói đủ trường âm: *おはようございます* có hai chỗ kéo dài.
+Ứng dụng nghe bạn bằng bộ nhận dạng giọng nói tiếng Nhật của điện thoại. Mình chỉ kiểm tra từ nghe được, không chấm phát âm. Nói đủ trường âm: *おはようございます* có một chỗ kéo dài, *よう* (yô-ô).
 
 ### Khi chưa nghe rõ
 *すみません、もう一度お願いします。* — Xin lỗi, xin nói lại một lần nữa.
@@ -492,7 +492,7 @@ unit(4, "unit-m", "um", "Nói số: điện thoại, giá, giờ", "Đọc số 
 Số bạn nói có thể hiện ra dưới dạng chữ số hoặc kanji. Hai cách đều được tính là một. Sai số là sai thông tin, nên hãy nói chậm.
 
 ### Ngày tháng
-*五月十四日（ごがつじゅうよっか）*: tháng đọc theo số + がつ, ngày có cách đọc riêng đến ngày mười và ngày hai mươi.
+*五月十四日（ごがつじゅうよっか）*: tháng đọc theo số + がつ; ngày 1 đến 10, ngày 14, 20 và 24 có cách đọc riêng (như *十四日 じゅうよっか*).
 """, [("電話", "📞"), ("番号", "#️⃣"), ("時間", "⏳"), ("何時", "🕐")],
      [("Số điện thoại", O("speaking.give_info", "numbers.counters")), ("Giá tiền", O("speaking.give_info")), ("Giờ giấc", O("speaking.give_info", "vocab.time_calendar")), ("Ôn tập", O("speaking.give_info"))])
 
@@ -585,8 +585,8 @@ Tin nhắn cho *上司（じょうし）* cần ngắn, rõ và lịch sự.
 
 ### Xin nghỉ, đến muộn
 - *今日は休みます。* — Hôm nay tôi nghỉ.
-- *電車が遅れています。十分遅刻します。* — Tàu bị trễ, tôi đến muộn mười phút.
-- *明日は大丈夫です。* — Mai tôi đi làm được.
+- *電車が遅れています。10分（じゅっぷん）ぐらい遅れます。* — Tàu bị trễ, tôi đến muộn khoảng mười phút.
+- *明日は大丈夫です。* — Ngày mai thì tôi ổn (đi làm được).
 
 ### Lý do ngắn
 Một lý do là đủ: *風邪です*, *病院へ行きます*. Không cần xin lỗi nhiều lần.
@@ -602,7 +602,7 @@ Nếu phải nghỉ hay đến muộn, hãy nhắn trước giờ làm, không �
 unit(5, "unit-r", "ur", "Giấy tờ ở toà thị chính", "Điền tên, địa chỉ, ngày sinh vào biểu mẫu đơn giản.", """
 ## Ở toà thị chính
 
-Khi mới đến Nhật, bạn khai báo địa chỉ ở *市役所（しやくしょ）* và mang theo *在留（ざいりゅう）カード*.
+Khi mới đến Nhật hay chuyển nhà, trong 14 ngày bạn khai báo địa chỉ ở *市役所（しやくしょ）* (ở thành phố lớn là *区役所（くやくしょ）*) và mang theo *在留（ざいりゅう）カード*.
 
 ### Ô trong biểu mẫu
 - *名前* / *氏名（しめい）* — họ tên
@@ -691,7 +691,7 @@ Tiếng Việt nói "tôi đau đầu"; tiếng Nhật nói "đầu đau":
 - *昨日からです。* — Từ hôm qua.
 
 ### Thuốc
-- *薬（くすり）を飲んでください。* — Hãy uống thuốc. Tiếng Nhật "uống" thuốc cả với thuốc viên.
+- *薬（くすり）を飲んでください。* — Hãy uống thuốc. Giống tiếng Việt, tiếng Nhật nói "uống" thuốc: *薬を飲みます*.
 - *一日三回、食後（しょくご）です。* — Ngày ba lần, sau bữa ăn.
 
 ### Nghe kỹ con số
@@ -706,7 +706,7 @@ unit(6, "unit-v", "uv", "Gọi điện cho chỗ làm", "Gọi điện báo ốm
 ## Gọi điện
 
 ### Mở đầu cuộc gọi
-- *もしもし、グエンです。* — A lô, tôi là Nguyễn.
+- *もしもし、グエンです。* — A lô, Nguyễn đây ạ. (Ở chỗ làm, người Nhật gọi bạn bằng họ, nên bạn xưng họ.)
 - *田中さんはいらっしゃいますか。* — Anh Tanaka có ở đó không ạ?
 - *少々（しょうしょう）お待ちください。* — Xin chờ một chút.
 

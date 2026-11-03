@@ -69,7 +69,7 @@ lesson("ub-l0", [
     K("毎朝6時に___。", "起きる", "polite:nonpast:aff", "Sáng nào tôi cũng dậy lúc sáu giờ."),
     K("日曜日は会社へ___。", "行く", "polite:nonpast:neg", "Chủ nhật tôi không đi làm."),
     K("昨日、映画を___。", "見る", "polite:past:aff", "Hôm qua tôi đã xem phim."),
-    K("昨日はテレビを___。", "見る", "polite:past:neg", "Hôm qua tôi đã không xem ti vi."),
+    K("昨日はテレビを___。", "見る", "polite:past:neg", "Hôm qua tôi không xem ti vi."),
 ])
 lesson("ub-l1", [
     C("verb-groups"),
@@ -86,7 +86,7 @@ lesson("ub-l1", [
     K("ナムさんは工場で___。", "働く", "polite:nonpast:aff", "Anh Nam làm việc ở nhà máy."),
     K("友達がうちへ___。", "来る", "polite:past:aff", "Bạn tôi đã đến nhà tôi."),
     K("日本語で手紙を___。", "書く", "polite:nonpast:aff", "Tôi viết thư bằng tiếng Nhật."),
-    K("今日は何も___。", "買う", "polite:past:neg", "Hôm nay tôi đã không mua gì cả."),
+    K("今日は何も___。", "買う", "polite:past:neg", "Hôm nay tôi chẳng mua gì cả."),
 ])
 lesson("ub-l2", [
     C("particles-ni-de-he"),
@@ -102,7 +102,7 @@ lesson("ub-l2", [
     M("毎日", "毎朝", "毎晩", "今日", "明日"),
     K("週末は日本語を___。", "勉強する", "polite:past:aff", "Cuối tuần tôi đã học tiếng Nhật."),
     K("駅で友達を___。", "待つ", "polite:nonpast:aff", "Tôi đợi bạn ở nhà ga."),
-    K("昨日はうちへ___。", "帰る", "polite:past:neg", "Hôm qua tôi đã không về nhà."),
+    K("昨日はうちへ___。", "帰る", "polite:past:neg", "Hôm qua tôi không về nhà."),
 ])
 lesson("ub-l3", [
     C("invitations"),
@@ -116,9 +116,9 @@ lesson("ub-l3", [
     Y("Cùng đi không?", "一緒に行きませんか"),
     H("いつも", ["もう", "まだ", "また"]),
     M("いつも", "時々", "よく", "もう", "まだ"),
-    K("先週は新聞を___。", "読む", "polite:past:neg", "Tuần trước tôi đã không đọc báo."),
+    K("先週は新聞を___。", "読む", "polite:past:neg", "Tuần trước tôi không đọc báo."),
     K("先生と日本語で___。", "話す", "polite:past:aff", "Tôi đã nói chuyện với thầy giáo bằng tiếng Nhật."),
-    K("今朝は朝ご飯を___。", "食べる", "polite:past:neg", "Sáng nay tôi đã không ăn sáng."),
+    K("今朝は朝ご飯を___。", "食べる", "polite:past:neg", "Sáng nay tôi không ăn sáng."),
 ])
 
 # ---------------------------------------------------------------- uc: あります・います and adjectives
@@ -152,7 +152,7 @@ lesson("uc-l2", [
     F("静か___部屋です。", "な", ["の", "い", "が"], "Đó là căn phòng yên tĩnh."),
     NX("công ty mới", "新しい会社", ["新しいな会社", "会社新しい", "新しく会社"]),
     W("Cái túi này rẻ.", "この|かばん|は|安い|です", ["高い", "な"]),
-    Y("Phòng này nhỏ.", "この部屋は小さいです"),
+    Y("Phòng này nhỏ.", "この部屋は小さいです", "この部屋は狭いです"),
     M("大きい", "小さい", "新しい", "古い", "安い"),
 ])
 lesson("uc-l3", [

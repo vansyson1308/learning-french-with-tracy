@@ -157,6 +157,16 @@ class Index:
         """The text spelt in kana through the stored readings (kanji not covered stay)."""
         return "".join("".join(s.get("ruby", s["base"]) for s in segs) if segs else t for t, segs in self.tokens(text))
 
+    def mixes(self, text):
+        """Every spelling of a text with each kanji word in kanji or in its kana (D-10 review: a dictation accepts the
+        mixed spellings of correct orthography, ドアがしまります。ご注意ください。), the text itself first."""
+        toks = self.tokens(text)
+        options = [[t] if not (segs and HAN.search(t)) else [t, "".join(s.get("ruby", s["base"]) for s in segs)] for t, segs in toks]
+        out = [""]
+        for opts in options:
+            out = [o + x for o in out for x in opts]
+        return [x for x in dict.fromkeys(out)]
+
     def problems(self, text):
         """Reading problems of one Japanese string."""
         found = []
@@ -186,7 +196,8 @@ class Index:
 # after a place name keeps えき (大阪駅: おおさか + えき, 名古屋駅: なごや + えき).
 READS_APART = {"時半", "万円", "千円", "百円", "阪駅", "屋駅"}
 # Counters a digit may precede with the stored ruby still right (the digit carries the sound change: 1回 いっかい).
-DIGIT_COUNTERS = {"時": "", "円": "", "歳": "", "枚": "", "個": "", "回": "", "番": "", "台": "", "万": "", "分": "2579", "階": "124567890"}
+DIGIT_COUNTERS = {"時": "", "円": "", "歳": "", "枚": "", "個": "", "回": "", "番": "", "台": "", "万": "", "分": "2579", "階": "124567890",
+                  "本": "24579", "杯": "24579"}
 
 
 def _after_digit_ok(t, digit):
@@ -204,6 +215,129 @@ def sentence_ends(text):
     """The ends of the sentences of a Japanese string, without punctuation."""
     parts = [p.strip() for p in re.split(r"[。！？!?]", text) if p.strip()]
     return [re.sub(r"[、…\s]+$", "", p) for p in parts]
+
+
+# ---------------------------------------------------------------- D-10 review (2026-11-03): spellings a learner may fairly
+# type or a recogniser writes, which the grader does not fold. ja-check-answers.py reads the same tables, so a key that
+# leaves one out is a finding.
+# Kana spelling → the kanji spelling the phone keyboard (IME) offers first; the course writes the kana.
+IME_SPELLINGS = [("わかり", "分かり"), ("いってきます", "行ってきます"), ("いってきます", "行って来ます"),
+                 ("いってらっしゃい", "行ってらっしゃい"), ("かのじょ", "彼女"), ("お疲れさま", "お疲れ様"),
+                 ("おつかれさま", "お疲れ様"), ("気をつけ", "気を付け"), ("おねがい", "お願い")]
+# An い-adjective of size before a noun has a spoken prenominal form (大きい箱 = 大きな箱).
+ADNOMINAL = [("大きい", "大きな"), ("小さい", "小さな")]
+NUMERAL_KANJI = "〇一二三四五六七八九"
+COUNTERS = ("週間", "時間", "ページ", "人", "つ", "月", "時", "歳", "円", "分", "日", "年", "回", "枚", "本", "杯", "個", "階", "台")
+_KANJI_NUM = re.compile(r"[一二三四五六七八九十百千万]+")
+_DIGITS = re.compile(r"[0-9]+")
+# A kanji numeral that is part of a word, not a number (一緒, 一番 'most'; 一人で 'alone' stays a number: 1人で is fine).
+_NOT_A_NUMBER = ("一緒", "一番")
+
+
+def kanji_number(n):
+    """1-99999 in kanji numerals (11 十一, 200 二百, 10000 一万)."""
+    if n >= 10000:
+        return kanji_number(n // 10000) + "万" + (kanji_number(n % 10000) if n % 10000 else "")
+    out = ""
+    for value, sign in ((1000, "千"), (100, "百"), (10, "十")):
+        d = n // value
+        n %= value
+        if d:
+            out += ("" if d == 1 else NUMERAL_KANJI[d]) + sign
+    return out + (NUMERAL_KANJI[n] if n else "")
+
+
+def number_of_kanji(s):
+    """The value of a kanji numeral run, or None."""
+    total, part, digit = 0, 0, None
+    for ch in s:
+        if ch in NUMERAL_KANJI:
+            digit = NUMERAL_KANJI.index(ch)
+        elif ch in "十百千":
+            part += (digit if digit is not None else 1) * {"十": 10, "百": 100, "千": 1000}[ch]
+            digit = None
+        elif ch == "万":
+            total += (part + (digit or 0) or 1) * 10000
+            part, digit = 0, None
+        else:
+            return None
+    return total + part + (digit or 0)
+
+
+def numeral_spellings(text):
+    """The other spellings of every number before a counter: 11時 ⇄ 十一時, 三つ ⇄ 3つ, 1万円 ⇄ 一万円 / 10000円."""
+    out = []
+    for m in _DIGITS.finditer(text):
+        rest = text[m.end():]
+        if rest.startswith(COUNTERS) or rest.startswith("万"):
+            n = int(m.group())
+            if 0 < n < 100000:
+                out.append(text[:m.start()] + kanji_number(n) + rest)
+    for m in _KANJI_NUM.finditer(text):
+        rest = text[m.end():]
+        if not rest.startswith(COUNTERS) or text[m.start():].startswith(_NOT_A_NUMBER):
+            continue
+        n = number_of_kanji(m.group())
+        if n:
+            out.append(text[:m.start()] + str(n) + rest)
+            if "万" in m.group() and n % 10000 == 0:
+                out.append(text[:m.start()] + str(n // 10000) + "万" + rest)
+    return out
+
+
+def natural_spellings(text):
+    """IME kanji spellings and the prenominal 大きな / 小さな of one accepted answer (none when it has neither)."""
+    out = []
+    for kana, kanji in IME_SPELLINGS:
+        if kana in text:
+            out.append(text.replace(kana, kanji))
+    for adj, pre in ADNOMINAL:
+        if re.search(rf"{adj}[一-鿿ァ-ヺ]", text):
+            out.append(re.sub(rf"{adj}(?=[一-鿿ァ-ヺ])", pre, text))
+    return out
+
+
+# The first person the Vietnamese prompt states and Japanese may drop: "Tôi uống nước." (subject) → わたしは水を飲みます;
+# "Bố tôi …" / "Sở thích của tôi …" (owner) → わたしの父は… A verb of asking ("Cho tôi nước") is no owner.
+VI_SUBJECT = re.compile(r"^(?:(?:Hôm nay|Hôm qua|Ngày mai|Mai|Sáng nay|Tối nay|Tuần trước|Tuần sau)\s+)?Tôi\s")
+VI_OWNER = re.compile(r"^(?!(?:Tôi|Cho|Hãy|Xin|Nhờ|Mời|Gọi|Giúp)\b)[^\s.,!?]+(?:\s[^\s.,!?]+)?\s(?:của\s)?tôi\b")
+TIMES = sorted(["今日", "明日", "昨日", "今", "今朝", "今晩", "今週", "来週", "先週", "毎日", "毎朝", "週末", "今年", "来年", "去年",
+                "おととい", "あさって"], key=len, reverse=True)
+_TOPIC_TIME = re.compile(rf"^({'|'.join(TIMES)})(は|、)(.+)$")
+
+
+def subject_spellings(vi, key):
+    """わたしは / わたしの in front of a key whose Vietnamese prompt says "Tôi …" or "<noun> tôi …" (none for a set phrase:
+    a key with no particle, わかりません, いってきます)."""
+    if key.startswith(("わたし", "私")):
+        return []
+    if VI_OWNER.search(vi) and re.match(r"^[^、。]+?は", key):
+        return ["わたしの" + key]
+    if VI_SUBJECT.search(vi) and re.search(r"[をにへでがはもと]|から", key):
+        out = ["わたしは" + key]
+        m = _TOPIC_TIME.match(key)
+        if m:
+            out.append(m.group(1) + "、わたしは" + m.group(3))
+        return out
+    return []
+
+
+def topic_spellings(key):
+    """A leading time word with or without は: 昨日は暑かったです ⇄ 昨日、暑かったです (the grader strips the comma)."""
+    m = _TOPIC_TIME.match(key)
+    if not m or m.group(3).startswith(("は", "、")) or (m.group(1).startswith("毎") and m.group(2) == "、"):
+        return []  # 毎日は… is contrastive, not the plain sentence
+    return [m.group(1) + ("、" if m.group(2) == "は" else "は") + m.group(3)]
+
+
+def widen(answers):
+    """Every accepted answer plus its numeral, IME and prenominal spellings, in order, without repeats."""
+    out = []
+    for a in answers:
+        for x in [a] + numeral_spellings(a) + natural_spellings(a):
+            if x not in out:
+                out.append(x)
+    return out
 
 
 def load_lexicon(root):

@@ -19,6 +19,15 @@ later session). It joins lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then f
     1-5 like a lesson exercise. A select whose prompt has a gap （　） is read as a fill-in (the key fills the gap; particle
     pairs are checked); a reading-comprehension key that fills a numbered gap of its text (文章の文法) is not looked for
     in the text; a payload repeated across lessons and banks is a finding.
+ 8. (D-10 review, 2026-11-03: the patterns of the fresh reviewers' findings, so that they cannot come back) every typed
+    answer lists the subject or owner its Vietnamese prompt states (わたしは… for "Tôi …", わたしの… for "Bố tôi …"),
+    its leading time word with and without は, every number before a counter in digits and in kanji, and the IME's kanji
+    spelling of its kana (分かりました, 行ってきます, 彼女, お疲れ様です, 気を付けて); speech, scenario and writing
+    answers list the IME spellings and 大きな / 小さな too; a conjugation cloze lists its kana spelling; a dictation lists
+    every mix of its kanji words in kanji or kana; a Vietnamese option closes its brackets; a reading does not give a
+    character's family the humble kin words (リンさんの家族は父と母); every lexicon example passes the reading check
+    of the lessons (numbers before a counter in digits where the stored ruby stays right, なん before です) and the
+    particle rules (おととい, no に) — the kanji numeral headwords (二, 三 …) show themselves, read by hand.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I ja-check-answers.py <repo root>
 """
@@ -27,7 +36,8 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from ja_text import PLAIN_END, POLITE_END, Index, load_lexicon, sentence_ends  # noqa: E402
+from ja_text import (PLAIN_END, POLITE_END, Index, load_lexicon, natural_spellings, numeral_spellings, sentence_ends,  # noqa: E402
+                     subject_spellings, topic_spellings)
 
 ROOT = sys.argv[1]
 D = f"{ROOT}/content/ja/_drafts"
@@ -82,7 +92,8 @@ def options(e):
 
 
 MOTION = re.compile(r"(?:行き|来|帰り|行っ|帰っ|来て)")
-TIME_WORDS = ["今日", "明日", "昨日", "毎日", "毎朝", "毎晩", "毎週", "毎月", "今", "今朝", "今週", "来週", "先週", "今月", "来月", "先月", "今年", "来年", "去年", "あさって"]
+TIME_WORDS = ["今日", "明日", "昨日", "毎日", "毎朝", "毎晩", "毎週", "毎月", "今", "今朝", "今週", "来週", "先週", "今月", "来月", "先月", "今年", "来年", "去年", "あさって",
+              "おととい", "きのう", "あした"]
 LIKE_PRED = re.compile(r"を(?:好き|嫌い|上手|下手|欲しい|わかり)")
 
 
@@ -140,11 +151,9 @@ def layer_rules(eid, e):
     if t == "dictation":
         if re.search(r"[0-9０-９]", e["answer"]):
             flag(eid, "dictation-digits", f"{e['answer']!r}: a number has two spellings")
-        for a in e["alternatives"]:
-            if HAN_RE.search(a):
-                flag(eid, "dictation-alternative", f"{a!r}: the one alternative is the kana spelling")
-            if INDEX.kana(e["answer"]) != a:
-                flag(eid, "dictation-alternative", f"{a!r} is not the kana spelling of {e['answer']!r}")
+        # D-10 review: every mix of the kanji words in kanji or in kana is correct orthography (ドアがしまります).
+        if e["alternatives"] != INDEX.mixes(e["answer"])[1:]:
+            flag(eid, "dictation-alternative", f"{e['alternatives']!r}: the alternatives are every kanji/kana mix of {e['answer']!r}")
     if t in ("speakRepetition", "speakProduction"):
         plain = e["target"].rstrip("。！")
         if plain not in e["acceptedVariants"]:
@@ -170,6 +179,71 @@ def layer_rules(eid, e):
                     flag(eid, "form-value", f"{value!r} is not a variant of slot {slot['id']}")
 
 
+def _bare(s):
+    return re.sub(r"[。、！？!?\s]", "", s)
+
+
+def missing(accepted, wanted):
+    have = {_bare(a) for a in accepted}
+    return [w for w in wanted if _bare(w) not in have]
+
+
+def review_rules(eid, e):
+    """Rule 8: the renderings the D-10 reviewers found missing, checked on every item (lessons and banks)."""
+    t = e["type"]
+    if t == "typeAnswer":
+        acc = [e["answer"]] + list(e["alternatives"])
+        want = subject_spellings(e["prompt"], e["answer"]) + topic_spellings(e["answer"])
+        for a in acc:
+            want += numeral_spellings(a) + natural_spellings(a)
+        for w in missing(acc, want):
+            flag(eid, "typed-rendering", f"{w!r} is a correct answer to {e['prompt']!r} and is not accepted")
+    if t == "conjugationCloze":
+        k = INDEX.kana(e["answer"])
+        if k != e["answer"] and not HAN_RE.search(k) and k not in e["alternatives"]:
+            flag(eid, "cloze-kana", f"{k!r}, the kana spelling of {e['answer']!r}, is not accepted")
+    if t in ("speakRepetition", "speakProduction"):
+        for w in missing(e["acceptedVariants"], [x for v in e["acceptedVariants"] for x in natural_spellings(v)]):
+            flag(eid, "spoken-spelling", f"{w!r} (a recogniser's spelling) is not among the variants")
+    if t in ("guidedWriting", "simpleForm"):
+        for slot in e["rubric"]["requiredSlots"]:
+            for w in missing(slot["variants"], [x for v in slot["variants"] for x in natural_spellings(v)]):
+                flag(eid, "written-spelling", f"slot {slot['id']}: {w!r} (the IME's spelling) is not a variant")
+    if t == "select":
+        for o in e["options"]:
+            if not JA.search(o["text"]) and o["text"].count("(") != o["text"].count(")"):
+                flag(eid, "vi-bracket", f"{o['text']!r}: a bracket is not closed")
+
+
+KIN_OF_OTHERS = re.compile(r"さんの(?:家族は)?(?:父|母|兄|姉)(?!さん)")
+
+
+def reading_rules():
+    """Rule 8: a reading about a character does not give the character's family the humble kin words."""
+    for rid, r in READINGS.items():
+        for b in r["blocks"]:
+            if KIN_OF_OTHERS.search(b["text"]):
+                flag(rid, "kin-of-others", f"{b['text']!r}: someone else's family takes お父さん, お母さん …")
+
+
+NUMERAL_HEADWORD = re.compile(r"^[一二三四五六七八九十百千万]$")
+
+
+def lexicon_rules():
+    """Rule 8: every lexicon example is read as the lessons are (its furigana come from the same index)."""
+    for x in LEXL:
+        ex = (x.get("examples") or [{}])[0].get("target") if isinstance(x.get("examples"), list) else None
+        if not ex:
+            continue
+        where = x["id"]
+        particle_rules(where, ex)
+        for p in INDEX.problems(ex):
+            # A numeral headword shows itself (三時 さんじ, 九百円 きゅうひゃくえん): read by hand, so the reading stays right.
+            if NUMERAL_HEADWORD.match(x["surface"]) and " is read " in p:
+                continue
+            flag(where, "lexicon-example", p)
+
+
 def scenario_rules():
     """Every learner answer a scenario accepts: polite, Japanese only, the right particles."""
     for s in SCENARIOS.values():
@@ -185,6 +259,8 @@ def scenario_rules():
                     for end in sentence_ends(v):
                         if len(end) > 3 and PLAIN_END.search(end) and not POLITE_END.search(end):
                             flag(where, "scenario-register", f"{v!r}: the learner speaks です/ます")
+                for w in missing(x["acceptedVariants"], [y for v in x["acceptedVariants"] for y in natural_spellings(v)]):
+                    flag(f"{s['id']}/{node['id']}", "spoken-spelling", f"{w!r} (a recogniser's spelling) is not among the variants")
 
 
 def particle_rules(eid, text):
@@ -299,6 +375,7 @@ for r in records:
         ambiguity(eid, e, vi)
         register(eid, e)
         layer_rules(eid, e)
+        review_rules(eid, e)
         if e["type"] == "fillBlank" and e["options"][e["correct"]] in PARTICLES:
             particle_items[e["options"][e["correct"]]] += 1
 
@@ -323,8 +400,11 @@ for bank, exercises in BANKS.items():
         ambiguity(eid, e, vi)
         register(eid, e)
         layer_rules(eid, e)
+        review_rules(eid, e)
 
 scenario_rules()
+reading_rules()
+lexicon_rules()
 os.makedirs(f"{D}/lessons", exist_ok=True)
 with open(f"{D}/lessons/OUTPUT.jsonl", "w", encoding="utf-8", newline="\n") as f:
     for r in records:

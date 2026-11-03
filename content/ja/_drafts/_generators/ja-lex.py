@@ -45,6 +45,13 @@ LEGACY = {"水": ["みず"], "牛乳": ["ぎゅうにゅう"], "食べる": ["�
 UNMAPPED = {"さかな": "ja-en teaches both さかな ('the fish') and 魚 ('fish'): one lexeme cannot carry both English glosses, so 魚 is the lexeme and さかな keeps its legacy key."}
 # The 45 Hán-Việt pairs P4b authored in content/hanviet/ja.json; ja-lex.py keeps them as they are and adds hanviet-ja.txt.
 P4B_WORDS = set("世界 中国 会社 便利 先生 写真 勉強 動物 問題 図書館 国家 外国 大丈夫 大学 天気 学校 学生 安心 家族 意味 教室 文化 新聞 旅行 日本 映画 時間 有名 注意 生活 留学生 病院 社会 簡単 経済 練習 言語 説明 質問 運動 銀行 電話 電車 音楽 食堂".split())
+# D-10 review (2026-11-03): false-friend notes on P4b entries, which otherwise stay as P4b wrote them.
+P4B_NOTES = {
+    "大丈夫": "False friend: 大丈夫 means 'all right, no problem'; Vietnamese đại trượng phu means a man of great character.",
+    "意味": "False friend: 意味 means meaning (ý nghĩa); Vietnamese ý vị means flavour or charm.",
+    "家族": "False friend: 家族 is a family (gia đình); Vietnamese gia tộc is a clan.",
+    "学生": "Partly a false friend: 学生 usually means a university student (sinh viên); a school pupil is 生徒 (Vietnamese học sinh).",
+}
 # Polite-form stems an example may show for verbs whose dictionary form gives no usable stem.
 VERB_FORMS = {"する": ["し", "す"], "来る": ["来", "き"], "くる": ["き"], "ある": ["あり", "ある"], "いる": ["い"], "要る": ["要り", "要る"], "なる": ["なり", "なっ"], "やる": ["やり", "やっ"], "できる": ["でき"], "わかる": ["わかり", "わから"], "つける": ["つけ"], "あげる": ["あげ"], "くれる": ["くれ"], "かける": ["かけ"], "かかる": ["かかり"], "はく": ["はき", "はい"], "かぶる": ["かぶ"], "もらう": ["もらい"], "あびる": ["あび"]}
 UNIT_ORDER = ["1", "2", "3", "4", "5", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v"]
@@ -408,6 +415,8 @@ def hanviet_merge(rows):
     table = json.load(open(path, encoding="utf-8"))
     # The table is rebuilt from the P4b entries plus hanviet-ja.txt, so an entry removed from the text file leaves the table.
     entries = {e["word"]: e for e in table["entries"] if e["word"] in P4B_WORDS}
+    for word, note in P4B_NOTES.items():
+        entries[word] = {**entries[word], "note": note}
     errors, added = [], 0
     for n, line in enumerate(open(os.path.join(HERE, "hanviet-ja.txt"), encoding="utf-8"), 1):
         line = line.rstrip("\n")

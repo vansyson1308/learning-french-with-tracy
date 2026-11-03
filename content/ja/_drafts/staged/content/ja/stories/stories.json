@@ -192,7 +192,7 @@
               "vi": "Người Nhật"
             },
             {
-              "vi": "Câu chuyện không nói"
+              "vi": "Người Hàn Quốc"
             }
           ],
           "answer": 1
@@ -284,9 +284,9 @@
         },
         {
           "speaker": "A",
-          "text": "姉は会社員です。子供は二人です。",
+          "text": "姉は会社員です。姉の子供は二人です。",
           "translation": {
-            "vi": "Chị em là nhân viên công ty. Chị có hai con."
+            "vi": "Chị em là nhân viên công ty. Chị ấy có hai con."
           }
         },
         {
@@ -314,7 +314,7 @@
           "speaker": "B",
           "text": "いい家族ですね。",
           "translation": {
-            "vi": "Gia đình em tốt quá nhỉ."
+            "vi": "Gia đình em thật tuyệt nhỉ."
           }
         },
         {
@@ -408,9 +408,9 @@
         },
         {
           "speaker": "N",
-          "text": "ミンさんは新しい会社員です。",
+          "text": "ここはミンさんの新しい会社です。",
           "translation": {
-            "vi": "Minh là nhân viên mới."
+            "vi": "Đây là công ty mới của Minh."
           }
         },
         {
@@ -429,9 +429,9 @@
         },
         {
           "speaker": "A",
-          "text": "ここはみんなの会社です。",
+          "text": "ミンさん、よろしくおねがいします。",
           "translation": {
-            "vi": "Đây là công ty của tất cả chúng ta."
+            "vi": "Anh Minh, rất mong được làm việc cùng anh."
           }
         },
         {
@@ -480,7 +480,7 @@
           "speaker": "A",
           "text": "ミンさんはベトナムのどこですか。",
           "translation": {
-            "vi": "Anh Minh ở đâu tại Việt Nam?"
+            "vi": "Anh Minh quê ở đâu bên Việt Nam?"
           }
         },
         {
@@ -988,7 +988,7 @@
         },
         {
           "speaker": "A",
-          "text": "じゃあ、あなたは?",
+          "text": "じゃあ、あなたは？",
           "translation": {
             "vi": "Còn em?"
           }
@@ -1171,16 +1171,16 @@
         },
         {
           "speaker": "B",
-          "text": "こばやしさんはここの会社員ですか。",
+          "text": "こばやしさんも会社員ですか。",
           "translation": {
-            "vi": "Chị Kobayashi là nhân viên ở đây ạ?"
+            "vi": "Chị Kobayashi cũng là nhân viên công ty ạ?"
           }
         },
         {
           "speaker": "A",
-          "text": "はい。わたしもここの会社員です。",
+          "text": "はい。わたしも会社員です。",
           "translation": {
-            "vi": "Vâng. Tôi cũng là nhân viên ở đây."
+            "vi": "Vâng. Tôi cũng là nhân viên công ty."
           }
         },
         {
@@ -1208,7 +1208,7 @@
           "speaker": "A",
           "text": "はじめまして。ナムさんはベトナムのどこですか。",
           "translation": {
-            "vi": "Rất vui được gặp anh. Anh Nam ở đâu tại Việt Nam?"
+            "vi": "Rất vui được gặp anh. Anh Nam quê ở đâu bên Việt Nam?"
           }
         },
         {
@@ -1308,7 +1308,7 @@
           "speaker": "N",
           "text": "二人は大阪のアパートにいます。",
           "translation": {
-            "vi": "Hai người sống trong một căn hộ ở Osaka."
+            "vi": "Hai người đang ở căn hộ của mình ở Osaka."
           }
         },
         {
@@ -1432,7 +1432,7 @@
         },
         {
           "speaker": "B",
-          "text": "いつもこのスーパーは安いですよ。",
+          "text": "このスーパーはいつも安いですよ。",
           "translation": {
             "vi": "Siêu thị này lúc nào cũng rẻ đấy."
           }
@@ -2144,7 +2144,7 @@
         },
         {
           "speaker": "A",
-          "text": "冷たいお茶を飲みます。ナムさんは?",
+          "text": "冷たいお茶を飲みます。ナムさんは？",
           "translation": {
             "vi": "Em uống trà lạnh. Còn anh?"
           }
@@ -2181,7 +2181,7 @@
           "speaker": "B",
           "text": "それから、ビールと冷たいお茶をお願いします。",
           "translation": {
-            "vi": "Thêm một cốc bia và một trà lạnh."
+            "vi": "Thêm một cốc bia và một cốc trà lạnh."
           }
         },
         {
@@ -2440,9 +2440,9 @@
         },
         {
           "speaker": "A",
-          "text": "お父さんはどうですか。",
+          "text": "お父さんはお元気ですか。",
           "translation": {
-            "vi": "Bố thế nào rồi ạ?"
+            "vi": "Bố có khoẻ không ạ?"
           }
         },
         {
@@ -2468,9 +2468,9 @@
         },
         {
           "speaker": "A",
-          "text": "さようなら。ホア",
+          "text": "お母さんもお元気で。ホア",
           "translation": {
-            "vi": "Con chào mẹ. Hoa"
+            "vi": "Mẹ cũng giữ gìn sức khoẻ nhé. Hoa"
           }
         }
       ],
@@ -2481,6 +2481,7 @@
         "ja:w:mainichi"
       ],
       "tokenMap": {
+        "お元気": "ja:w:genki",
         "ホア": "name",
         "食べたい": "ja:w:taberu"
       },
@@ -2863,7 +2864,7 @@
           "speaker": "B",
           "text": "ランさんですね。いらっしゃいませ。",
           "translation": {
-            "vi": "Chị Lan phải không ạ. Xin chào mừng chị."
+            "vi": "Chị Lan phải không ạ. Xin chào quý khách."
           }
         },
         {
@@ -3366,9 +3367,9 @@
         },
         {
           "speaker": "N",
-          "text": "おばあさんの名前はこばやしさんです。",
+          "text": "おばあさんはこばやしさんです。",
           "translation": {
-            "vi": "Bà tên là Kobayashi."
+            "vi": "Bà ấy là bà Kobayashi."
           }
         },
         {
@@ -3499,7 +3500,7 @@
         },
         {
           "speaker": "A",
-          "text": "ナムさんの子供は何人ですか。",
+          "text": "ナムさんのおこさんは何人ですか。",
           "translation": {
             "vi": "Nam có mấy đứa con?"
           }
@@ -3539,6 +3540,7 @@
         "ja:w:shashin"
       ],
       "tokenMap": {
+        "おこさん": "ja:w:kodomo",
         "こばやし": "name",
         "なん": "ja:w:nani",
         "ナム": "name",
@@ -3642,9 +3644,9 @@
         },
         {
           "speaker": "A",
-          "text": "はい、わかります。",
+          "text": "はい、わかりました。",
           "translation": {
-            "vi": "Vâng, em hiểu ạ."
+            "vi": "Vâng, em hiểu rồi ạ."
           }
         },
         {
@@ -3728,7 +3730,7 @@
           "speaker": "B",
           "text": "何かありませんか。",
           "translation": {
-            "vi": "Em có hỏi gì không?"
+            "vi": "Em còn gì muốn hỏi không?"
           }
         },
         {
@@ -3801,6 +3803,7 @@
         "ja:w:shizuka"
       ],
       "tokenMap": {
+        "わかりました": "ja:w:wakaru",
         "ホア": "name",
         "ラン": "name"
       },
@@ -3879,9 +3882,9 @@
         },
         {
           "speaker": "N",
-          "text": "お父さんの誕生日の物を買います。",
+          "text": "お父さんの誕生日に、時計を買います。",
           "translation": {
-            "vi": "Anh mua quà sinh nhật cho bố."
+            "vi": "Anh mua đồng hồ tặng sinh nhật bố."
           }
         },
         {
@@ -3907,7 +3910,7 @@
         },
         {
           "speaker": "A",
-          "text": "お父さんはいくつですか。",
+          "text": "お父さんはおいくつですか。",
           "translation": {
             "vi": "Bố anh bao nhiêu tuổi ạ?"
           }
@@ -3951,7 +3954,7 @@
           "speaker": "A",
           "text": "3万円です。",
           "translation": {
-            "vi": "Ba vạn yên ạ."
+            "vi": "Ba mươi nghìn yên ạ."
           }
         },
         {
@@ -3972,7 +3975,7 @@
           "speaker": "A",
           "text": "はい。こちらは1万円です。",
           "translation": {
-            "vi": "Có ạ. Chiếc này một vạn yên."
+            "vi": "Có ạ. Chiếc này mười nghìn yên."
           }
         },
         {
@@ -4060,6 +4063,7 @@
         "ja:w:takai"
       ],
       "tokenMap": {
+        "おいくつ": "ja:w:ikutsu",
         "トゥアン": "name",
         "買いたい": "ja:w:kau"
       },
@@ -4229,7 +4233,7 @@
         },
         {
           "speaker": "A",
-          "text": "ランさん、かさは?",
+          "text": "ランさん、かさは？",
           "translation": {
             "vi": "Lan ơi, ô của cậu đâu?"
           }
@@ -4285,7 +4289,7 @@
         },
         {
           "speaker": "A",
-          "text": "これです!ありがとう、マイさん。",
+          "text": "これです！ありがとう、マイさん。",
           "translation": {
             "vi": "Đây rồi! Cảm ơn Mai."
           }
@@ -4384,9 +4388,9 @@
       "sentences": [
         {
           "speaker": "N",
-          "text": "ベトナムの兄からホアさんに手紙が来ました。",
+          "text": "ベトナムのお兄さんからホアさんに手紙が来ました。",
           "translation": {
-            "vi": "Hoa nhận được thư của anh trai từ Việt Nam."
+            "vi": "Hoa nhận được thư của anh trai ở Việt Nam."
           }
         },
         {
@@ -4412,7 +4416,7 @@
         },
         {
           "speaker": "A",
-          "text": "兄が結婚します!",
+          "text": "兄が結婚します！",
           "translation": {
             "vi": "Anh mình sắp cưới vợ!"
           }
@@ -4517,9 +4521,9 @@
         },
         {
           "speaker": "N",
-          "text": "来月、お兄さんが結婚しました。",
+          "text": "そして、お兄さんは結婚しました。",
           "translation": {
-            "vi": "Tháng sau đó, anh trai Hoa cưới vợ."
+            "vi": "Rồi anh trai Hoa cưới vợ."
           }
         },
         {
@@ -4538,9 +4542,9 @@
         },
         {
           "speaker": "B",
-          "text": "妻も「ありがとうございます」と言いますよ。",
+          "text": "妻も「ありがとう」と言っていますよ。",
           "translation": {
-            "vi": "Vợ anh cũng bảo cảm ơn em đấy."
+            "vi": "Vợ anh cũng gửi lời cảm ơn em đấy."
           }
         },
         {
@@ -4552,9 +4556,9 @@
         },
         {
           "speaker": "A",
-          "text": "お父さんとお母さんはどうですか。",
+          "text": "お父さんとお母さんはお元気ですか。",
           "translation": {
-            "vi": "Bố mẹ thế nào hả anh?"
+            "vi": "Bố mẹ có khoẻ không anh?"
           }
         },
         {
@@ -4670,7 +4674,7 @@
           "speaker": "B",
           "text": "暗いです。何もわかりません。",
           "translation": {
-            "vi": "Tối quá. Chẳng thấy gì cả."
+            "vi": "Tối quá. Chẳng biết gì cả."
           }
         },
         {
@@ -4724,13 +4728,6 @@
         },
         {
           "speaker": "A",
-          "text": "たぶん少し待ちますね。",
-          "translation": {
-            "vi": "Chắc phải đợi một lúc nhỉ."
-          }
-        },
-        {
-          "speaker": "A",
           "text": "ナムさん、一緒に外で待ちましょう。",
           "translation": {
             "vi": "Anh Nam, mình cùng đợi ở ngoài nhé."
@@ -4761,7 +4758,7 @@
           "speaker": "A",
           "text": "ナムさんはベトナムのどこの人ですか。",
           "translation": {
-            "vi": "Anh Nam là người ở đâu tại Việt Nam?"
+            "vi": "Anh Nam quê ở đâu bên Việt Nam?"
           }
         },
         {
@@ -5309,7 +5306,7 @@
           "speaker": "B",
           "text": "大丈夫です。事故は大変でしたね。",
           "translation": {
-            "vi": "Không sao. Vụ tai nạn vất vả cho em quá."
+            "vi": "Không sao. Gặp tai nạn như vậy chắc vất vả lắm."
           }
         },
         {
@@ -5827,9 +5824,9 @@
         },
         {
           "speaker": "A",
-          "text": "ナムさん、在留カードの後ろに新しい住所を書きました。確認してください。",
+          "text": "ナムさん、在留カードに新しい住所を書きました。確認してください。",
           "translation": {
-            "vi": "Anh Nam, tôi đã ghi địa chỉ mới ở mặt sau thẻ cư trú. Anh kiểm tra lại nhé."
+            "vi": "Anh Nam, tôi đã ghi địa chỉ mới vào thẻ cư trú. Anh kiểm tra lại nhé."
           }
         },
         {
@@ -5961,9 +5958,9 @@
         },
         {
           "speaker": "N",
-          "text": "アパートの前にごみの所があります。",
+          "text": "アパートの前にごみの箱があります。",
           "translation": {
-            "vi": "Trước căn hộ có chỗ để rác."
+            "vi": "Trước căn hộ có thùng rác."
           }
         },
         {
@@ -6101,9 +6098,9 @@
         },
         {
           "speaker": "A",
-          "text": "おはようございます。今日はいいですね。",
+          "text": "おはようございます。今日は大丈夫ですね。",
           "translation": {
-            "vi": "Chào buổi sáng. Hôm nay đúng rồi nhé."
+            "vi": "Chào buổi sáng. Hôm nay đúng ngày rồi nhé."
           }
         },
         {
@@ -6255,7 +6252,7 @@
         },
         {
           "speaker": "A",
-          "text": "はい、そうです。じゃあ、これは?",
+          "text": "はい、そうです。じゃあ、これは？",
           "translation": {
             "vi": "Đúng rồi. Vậy còn chữ này?"
           }
@@ -6437,7 +6434,7 @@
               "vi": "Vì cô giáo làm bài giúp Mai"
             },
             {
-              "vi": "Vì Mai đã học cùng Tuấn ở thư viện"
+              "vi": "Vì Mai đã cùng một bạn học ở thư viện"
             }
           ],
           "answer": 2
@@ -6539,14 +6536,14 @@
         },
         {
           "speaker": "A",
-          "text": "リンさん、誕生日おめでとうございます!",
+          "text": "リンさん、誕生日おめでとうございます！",
           "translation": {
             "vi": "Linh ơi, chúc mừng sinh nhật!"
           }
         },
         {
           "speaker": "A",
-          "text": "本当に?ありがとうございます!",
+          "text": "本当に？ありがとうございます！",
           "translation": {
             "vi": "Thật á? Cảm ơn mọi người!"
           }
@@ -6854,7 +6851,7 @@
           "speaker": "A",
           "text": "本は来週の日曜日までに返してください。",
           "translation": {
-            "vi": "Anh trả sách trước chủ nhật tuần sau nhé."
+            "vi": "Anh trả sách chậm nhất là chủ nhật tuần sau nhé."
           }
         },
         {
@@ -6886,10 +6883,10 @@
           }
         },
         {
-          "speaker": "B",
-          "text": "来週、また図書館へ行きましょう。",
+          "speaker": "N",
+          "text": "来週、トゥアンさんはまた図書館へ行きます。",
           "translation": {
-            "vi": "Tuần sau mình lại đi thư viện."
+            "vi": "Tuần sau Tuấn sẽ lại đến thư viện."
           }
         }
       ],
@@ -6901,8 +6898,7 @@
       "tokenMap": {
         "おいしかった": "ja:w:oishii",
         "トゥアン": "name",
-        "借りたい": "ja:w:kariru",
-        "行きましょう": "ja:w:iku"
+        "借りたい": "ja:w:kariru"
       },
       "questions": [
         {
@@ -6933,7 +6929,7 @@
               "vi": "Ngày mai"
             },
             {
-              "vi": "Trước chủ nhật tuần sau"
+              "vi": "Chậm nhất là chủ nhật tuần sau"
             },
             {
               "vi": "Cuối tháng"
@@ -7077,7 +7073,7 @@
         },
         {
           "speaker": "N",
-          "text": "ナムさんは父の名前と番号を書きます。",
+          "text": "ナムさんはお父さんの名前と口座の番号を書きます。",
           "translation": {
             "vi": "Nam viết tên bố và số tài khoản."
           }
@@ -7126,7 +7122,7 @@
         },
         {
           "speaker": "N",
-          "text": "その夜、ナムさんは母に電話しました。",
+          "text": "その夜、ナムさんはお母さんに電話しました。",
           "translation": {
             "vi": "Tối hôm đó, Nam gọi điện cho mẹ."
           }
@@ -7323,9 +7319,9 @@
         },
         {
           "speaker": "B",
-          "text": "疲れましたから、甘い物がいいですよ。",
+          "text": "甘いコーヒーです。元気になりますよ。",
           "translation": {
-            "vi": "Mệt thì ăn uống đồ ngọt là tốt đấy."
+            "vi": "Cà phê ngọt đấy. Uống vào sẽ khoẻ lại."
           }
         },
         {
@@ -7579,9 +7575,9 @@
         },
         {
           "speaker": "N",
-          "text": "水は少し冷たいです。でも、涼しいです。",
+          "text": "水は少し冷たいです。でも、いいですね。",
           "translation": {
-            "vi": "Nước hơi lạnh. Nhưng mát."
+            "vi": "Nước hơi lạnh. Nhưng thích thật."
           }
         },
         {
@@ -7600,14 +7596,14 @@
         },
         {
           "speaker": "B",
-          "text": "できました!",
+          "text": "できました！",
           "translation": {
             "vi": "Được rồi!"
           }
         },
         {
           "speaker": "A",
-          "text": "上手ですよ!",
+          "text": "上手ですよ！",
           "translation": {
             "vi": "Giỏi lắm!"
           }
@@ -7792,7 +7788,7 @@
         },
         {
           "speaker": "A",
-          "text": "雪です!初めてです。",
+          "text": "雪です！初めてです。",
           "translation": {
             "vi": "Tuyết kìa! Lần đầu mình thấy đấy."
           }
@@ -7806,14 +7802,14 @@
         },
         {
           "speaker": "A",
-          "text": "ホアさん、こちらです!",
+          "text": "ホアさん、こちらです！",
           "translation": {
             "vi": "Hoa ơi, ở đây này!"
           }
         },
         {
           "speaker": "A",
-          "text": "リンさん!元気ですか。",
+          "text": "リンさん！元気ですか。",
           "translation": {
             "vi": "Linh ơi! Cậu khoẻ không?"
           }
@@ -7869,7 +7865,7 @@
         },
         {
           "speaker": "A",
-          "text": "長いですね!",
+          "text": "長いですね！",
           "translation": {
             "vi": "Dài thật!"
           }
@@ -7911,7 +7907,7 @@
         },
         {
           "speaker": "A",
-          "text": "わたしも遊びたいです!",
+          "text": "わたしも遊びたいです！",
           "translation": {
             "vi": "Mình cũng muốn chơi!"
           }
@@ -7925,14 +7921,14 @@
         },
         {
           "speaker": "A",
-          "text": "冷たいです!でも、楽しいです。",
+          "text": "冷たいです！でも、楽しいです。",
           "translation": {
             "vi": "Lạnh quá! Nhưng vui."
           }
         },
         {
           "speaker": "A",
-          "text": "ホアさんはどの季節が好きですか。",
+          "text": "ホアさんはどの季節がいちばん好きですか。",
           "translation": {
             "vi": "Hoa thích mùa nào nhất?"
           }
@@ -8038,9 +8034,9 @@
         },
         {
           "speaker": "N",
-          "text": "駅で急いで電車から出ました。",
+          "text": "駅で急いで電車を降りて、外に出ました。",
           "translation": {
-            "vi": "Đến ga, anh vội vàng ra khỏi tàu."
+            "vi": "Đến ga, anh vội vàng xuống tàu rồi đi ra ngoài."
           }
         },
         {
@@ -8052,7 +8048,7 @@
         },
         {
           "speaker": "B",
-          "text": "わたしのかばん!電車の中です。",
+          "text": "わたしのかばん！電車の中です。",
           "translation": {
             "vi": "Cái cặp của mình! Nó còn ở trên tàu."
           }
@@ -8150,7 +8146,7 @@
         },
         {
           "speaker": "B",
-          "text": "よかったです。ありがとうございます!",
+          "text": "よかったです。ありがとうございます！",
           "translation": {
             "vi": "May quá. Cảm ơn chị!"
           }
@@ -8416,7 +8412,7 @@
         },
         {
           "speaker": "B",
-          "text": "自転車の電気は?暗いですよ。",
+          "text": "自転車の電気は？暗いですよ。",
           "translation": {
             "vi": "Đèn xe của anh đâu? Tối lắm đấy."
           }
@@ -8879,9 +8875,9 @@
         },
         {
           "speaker": "B",
-          "text": "いらっしゃいませ。今日はなんの用事ですか。",
+          "text": "いらっしゃいませ。こちらへどうぞ。",
           "translation": {
-            "vi": "Xin chào quý khách. Hôm nay quý khách cần gì ạ?"
+            "vi": "Xin chào quý khách. Mời chị đi lối này."
           }
         },
         {
@@ -8965,7 +8961,7 @@
           "speaker": "B",
           "text": "カードの番号は誰にも言わないでください。",
           "translation": {
-            "vi": "Chị đừng nói số mật mã của thẻ cho ai biết."
+            "vi": "Chị đừng nói số thẻ cho ai biết."
           }
         },
         {
@@ -9012,7 +9008,6 @@
       "tokenMap": {
         "かかります": "ja:w:kakaru",
         "しましょう": "ja:w:suru",
-        "なん": "ja:w:nani",
         "よかった": "ja:w:ii",
         "ホア": "name",
         "マイ": "name",
@@ -9222,7 +9217,7 @@
         },
         {
           "speaker": "B",
-          "text": "ありがとうございます!",
+          "text": "ありがとうございます！",
           "translation": {
             "vi": "Em cảm ơn chị!"
           }
@@ -9400,7 +9395,7 @@
         },
         {
           "speaker": "B",
-          "text": "地震です!すぐ機械を止めてください。",
+          "text": "地震です！すぐ機械を止めてください。",
           "translation": {
             "vi": "Có động đất! Hãy dừng máy ngay."
           }
@@ -9625,9 +9620,9 @@
         },
         {
           "speaker": "N",
-          "text": "面接の前に、トイレで服を見ました。",
+          "text": "面接の前に、トイレで服を確認しました。",
           "translation": {
-            "vi": "Trước buổi phỏng vấn, cô vào nhà vệ sinh xem lại quần áo."
+            "vi": "Trước buổi phỏng vấn, cô vào nhà vệ sinh kiểm tra lại quần áo."
           }
         },
         {
@@ -9774,7 +9769,7 @@
           "speaker": "A",
           "text": "ありがとうございます。よろしくおねがいします。",
           "translation": {
-            "vi": "Em cảm ơn ạ. Mong anh giúp đỡ."
+            "vi": "Em cảm ơn ạ. Rất mong được công ty xem xét."
           }
         },
         {
@@ -9800,7 +9795,7 @@
         },
         {
           "speaker": "A",
-          "text": "ありがとうございます!頑張ります。",
+          "text": "ありがとうございます！頑張ります。",
           "translation": {
             "vi": "Em cảm ơn ạ! Em sẽ cố gắng."
           }
@@ -10042,7 +10037,7 @@
         },
         {
           "speaker": "A",
-          "text": "壊れた機械を触るのは本当に危ないです。",
+          "text": "壊れた機械に触るのは本当に危ないです。",
           "translation": {
             "vi": "Chạm vào máy hỏng thật sự rất nguy hiểm."
           }
@@ -10197,7 +10192,7 @@
         },
         {
           "speaker": "B",
-          "text": "こんばんは、田中さん。たくさんの人ですね。",
+          "text": "こんばんは、田中さん。人がたくさんいますね。",
           "translation": {
             "vi": "Chào chị Tanaka. Đông người quá nhỉ."
           }
@@ -10225,7 +10220,7 @@
         },
         {
           "speaker": "A",
-          "text": "わたしは甘い物が食べたいです!",
+          "text": "わたしは甘い物が食べたいです！",
           "translation": {
             "vi": "Cháu muốn ăn đồ ngọt!"
           }
@@ -10676,9 +10671,9 @@
         },
         {
           "speaker": "N",
-          "text": "先輩の名前は田中さんです。子供が二人います。",
+          "text": "先輩は田中さんです。子供が二人います。",
           "translation": {
-            "vi": "Đàn anh tên là Tanaka. Anh có hai con."
+            "vi": "Đàn anh là anh Tanaka. Anh có hai con."
           }
         },
         {
@@ -10690,7 +10685,7 @@
         },
         {
           "speaker": "A",
-          "text": "ナムさん、パンダが見たいです!",
+          "text": "ナムさん、パンダが見たいです！",
           "translation": {
             "vi": "Chú Nam ơi, cháu muốn xem gấu trúc!"
           }
@@ -10725,7 +10720,7 @@
         },
         {
           "speaker": "A",
-          "text": "大きいですね!",
+          "text": "大きいですね！",
           "translation": {
             "vi": "To quá!"
           }
@@ -10781,7 +10776,7 @@
         },
         {
           "speaker": "A",
-          "text": "ナムさんの子供も動物が好きですか。",
+          "text": "ナムさんのおこさんも動物が好きですか。",
           "translation": {
             "vi": "Con của Nam cũng thích động vật chứ?"
           }
@@ -10823,7 +10818,7 @@
         },
         {
           "speaker": "A",
-          "text": "かわいい!",
+          "text": "かわいい！",
           "translation": {
             "vi": "Dễ thương quá!"
           }
@@ -10844,7 +10839,7 @@
         },
         {
           "speaker": "N",
-          "text": "娘は「わたしも見たいです!」と言いました。",
+          "text": "娘は「わたしも見たいです！」と言いました。",
           "translation": {
             "vi": "Con gái anh nói: \"Con cũng muốn xem!\""
           }
@@ -10857,6 +10852,7 @@
         "ja:w:saru"
       ],
       "tokenMap": {
+        "おこさん": "ja:w:kodomo",
         "ナム": "name",
         "撮りました": "ja:w:toru-take",
         "来たい": "ja:w:kuru",
@@ -11086,7 +11082,7 @@
         },
         {
           "speaker": "A",
-          "text": "二人に会いたいです。",
+          "text": "お父さんとお母さんに会いたいです。",
           "translation": {
             "vi": "Con nhớ bố mẹ lắm."
           }

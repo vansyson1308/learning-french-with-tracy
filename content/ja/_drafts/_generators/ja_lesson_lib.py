@@ -22,8 +22,8 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from ja_paradigms import tables as _paradigm_tables  # noqa: E402
-from ja_text import HAN, KANA, POLITE_END, PLAIN_END, Index, load_lexicon, sentence_ends  # noqa: E402
+from ja_paradigms import cloze_kana, tables as _paradigm_tables  # noqa: E402
+from ja_text import HAN, KANA, POLITE_END, PLAIN_END, Index, load_lexicon, sentence_ends, subject_spellings, topic_spellings, widen  # noqa: E402
 
 ROOT = sys.argv[1]
 DRAFTS = f"{ROOT}/content/ja/_drafts"
@@ -58,8 +58,9 @@ JA = re.compile(r"[ぁ-ゖァ-ヺー㐀-䶿一-鿿]")
 
 
 def g(surface):
-    """The first Vietnamese gloss of a lexeme."""
-    return LEX[surface]["glosses"]["vi"].split(";")[0].strip()
+    """The first Vietnamese gloss of a lexeme; a bracket the ; cut open is closed (mẹ (người khác; gọi mẹ) → mẹ (người khác))."""
+    first = LEX[surface]["glosses"]["vi"].split(";")[0].strip()
+    return first + ")" if first.count("(") > first.count(")") else first
 
 
 def head(gloss):
@@ -142,7 +143,9 @@ def F(sentence, answer, wrong, vi, plain=False):
     return _mark(e, plain)
 
 
-def _variants(answer, alts):
+def _variants(answer, alts, vi=""):
+    """The renderings a learner may fairly type (D-10 review, 2026-11-03: the subject or owner the Vietnamese states,
+    the time word with or without は, numbers in digits or kanji, the IME's kanji spellings, 大きな / 小さな)."""
     out, seen = [], {answer}
 
     def add(x):
@@ -153,21 +156,27 @@ def _variants(answer, alts):
     for a in alts:
         add(a)
     for base in [answer] + list(alts):
+        for x in subject_spellings(vi, base) + topic_spellings(base):
+            add(x)
+    for base in [answer] + list(out):
         if base.startswith("わたしは") and len(base) > 6:
             add(base[4:])
         if "わたし" in base:
             add(base.replace("わたし", "私"))
+    for x in widen([answer] + list(out)):
+        add(x)
     return out
 
 
 def Y(vi, ja, *alts, kana=False, plain=False):
     """Typed Japanese from a Vietnamese prompt. kana=True (Section 1, unit o) also accepts the answer in kana as production."""
-    more = _variants(ja, alts)
+    more = _variants(ja, alts, vi)
     if kana:
         for base in [ja] + [a for a in more if "私" not in a]:
             k = INDEX.kana(base)
             if k != base and not HAN.search(k) and k not in more:
                 more.append(k)
+        more += [x for x in widen(more) if x not in more and x != ja]
     e = {"type": "typeAnswer", "mode": "produceTarget", "prompt": vi, "audioTarget": ja, "answer": ja, "alternatives": more}
     return _mark(e, plain)
 
@@ -185,10 +194,22 @@ def _tiles(answer, extra, label):
     return [toks[i] for i in order]
 
 
+LINKS = ("でも", "それから", "そして", "だから", "じゃあ")
+
+
+def _spoken(tiles):
+    """The audio script of a word bank: tiles joined, a sentence break before a linking word and a comma after it (D-10
+    review: 日本語は難しいですでも楽しいです was read as one run-on sentence)."""
+    out = ""
+    for i, t in enumerate(tiles):
+        out += ("。" + t + "、") if t in LINKS and i > 0 else t
+    return out
+
+
 def W(vi, ja, extra, alts=(), plain=False):
     """Tiles to a Japanese sentence; ja is written with | between the tiles."""
     ans = [x.strip() for x in ja.split("|")]
-    e = {"type": "wordBank", "direction": "nativeToTarget", "prompt": vi, "audioTarget": "".join(ans), "tokens": _tiles(ans, extra, ja), "answer": ans}
+    e = {"type": "wordBank", "direction": "nativeToTarget", "prompt": vi, "audioTarget": _spoken(ans), "tokens": _tiles(ans, extra, ja), "answer": ans}
     if alts:
         e["alternatives"] = [[x.strip() for x in a.split("|")] for a in alts]
         for a in e["alternatives"]:
@@ -213,8 +234,8 @@ def K(sentence, verb, cell, vi):
         return {"type": "conjugationCloze", "sentence": sentence, "translation": vi, "verb": verb, "cell": cell, "answer": "?", "alternatives": []}
     if sentence.count("___") != 1:
         PROBLEMS.append(f"{sentence}: a cloze has exactly one ___")
-    alts = [t["kana"][cell]] if cell in t["kana"] else []
-    return {"type": "conjugationCloze", "sentence": sentence, "translation": vi, "verb": verb, "cell": cell, "answer": t["cells"][cell], "alternatives": alts}
+    ans = t["cells"][cell]
+    return {"type": "conjugationCloze", "sentence": sentence, "translation": vi, "verb": verb, "cell": cell, "answer": ans, "alternatives": cloze_kana(t, cell, ans, INDEX)}
 
 
 def C(concept):
@@ -248,8 +269,9 @@ def RC(reading, q, ans, wrong):
 
 
 def D(clip):
-    """dictation of a clip: the key is its transcript in the standard script; the same text typed all in kana (through the
-    stored readings) is the one alternative. Dictation is strict (kanji vs kana counts), so a digit-free clip is chosen."""
+    """dictation of a clip: the key is its transcript in the standard script; the alternatives are every spelling with each
+    kanji word in kanji or kana (through the stored readings; D-10 review: a correct mixed spelling is not wrong).
+    Dictation is strict (kanji vs kana counts), so a digit-free clip is chosen."""
     c = _need(CLIPS, f"ja.clip.{clip}", "clip")
     text = "".join(s["text"] for s in c["segments"]) if c else "?"
     if DIGIT_RE.search(text):
@@ -257,7 +279,7 @@ def D(clip):
     kana = INDEX.kana(text)
     if HAN.search(kana):
         PROBLEMS.append(f"dictation {clip}: no kana spelling for {text!r}")
-    alts = [kana] if kana != text else []
+    alts = INDEX.mixes(text)[1:]
     return {"type": "dictation", "clipId": f"ja.clip.{clip}", "answer": text, "alternatives": alts, "objectiveTargets": ["ja.obj.listening.familiar_words"]}
 
 

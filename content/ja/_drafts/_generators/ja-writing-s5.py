@@ -16,11 +16,13 @@ from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ja_layers import DRAFTS, check, check_vi, content_refs, report, write_jsonl  # noqa: E402
+from ja_text import natural_spellings  # noqa: E402
 
 PROFILE, SENT, MSG, FORM = "ja.obj.writing.personal_info", "ja.obj.writing.phrases_sentences", "ja.obj.writing.short_message", "ja.obj.writing.form_filling"
 GREET = ["お疲れさまです", "おはようございます", "こんにちは"]
-SORRY = ["すみません", "申し訳ありません"]
-REST = ["休みます", "休んでもいいですか", "休ませてください"]
+SORRY = ["すみません", "申し訳ありません", "申し訳ございません"]
+# D-10 review: 休みたいです is the likeliest A1 way to ask for leave (cp5_mail_shift already took it).
+REST = ["休みます", "休んでもいいですか", "休ませてください", "休みたい", "休ませてもらえますか"]
 VERBS = ["です", "ます", "ました"]
 FIELDS = {"name": ("name", "名前"), "address": ("address", "住所"), "phone": ("phone", "電話番号"), "birthday": ("birthday", "誕生日"), "country": ("country", "国")}
 # slug -> (family, objective, instruction, cue facts, slots (id, description, variants, cue provided), min, max, sentence verbs, model, form fields)
@@ -28,13 +30,14 @@ GUIDED = {
  "o_name": ("personal_profile", PROFILE, "Bạn là Nam. Hãy viết một câu tiếng Nhật nói tên của bạn.", [("Tên", "Nam (viết bằng katakana)")],
             [("name", "tên của bạn", ["ナム"], True)], 2, 12, ["です"], "わたしはナムです。", None),
  "o_age": ("personal_profile", PROFILE, "Bạn 23 tuổi. Hãy viết một câu tiếng Nhật nói tuổi của bạn.", [("Tuổi", "23")],
-           [("age", "tuổi của bạn", ["23歳"], True)], 2, 12, ["です"], "わたしは23歳です。", None),
+           [("age", "tuổi của bạn", ["23歳", "23さい"], True)], 2, 12, ["です"], "わたしは23歳です。", None),
  "o_home": ("personal_profile", PROFILE, "Hãy viết hai câu: bạn đến từ nước nào và bây giờ bạn sống ở thành phố nào.", [("Nước", "Việt Nam"), ("Thành phố", "Osaka")],
             [("from", "bạn đến từ đâu", ["ベトナムから", "ベトナム人"], True), ("city", "thành phố bạn sống", ["大阪"], True)], 4, 20, VERBS, "ベトナムから来ました。今、大阪に住んでいます。", None),
  "o_family": ("personal_profile", PROFILE, "Hãy viết hai câu: bạn có hai em gái, và bạn thích nấu ăn.", None,
-              [("sisters", "hai em gái", ["妹が二人"], False), ("like", "bạn thích nấu ăn", ["料理が好き", "料理が大好き"], False)], 4, 20, VERBS, "妹が二人います。料理が好きです。", None),
+              [("sisters", "hai em gái", ["妹が二人", "妹は二人", "二人の妹"], False),
+               ("like", "bạn thích nấu ăn", ["料理が好き", "料理が大好き", "料理をするのが好き", "料理するのが好き", "料理を作るのが好き"], False)], 4, 20, VERBS, "妹が二人います。料理が好きです。", None),
  "o_all": ("personal_profile", PROFILE, "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố bạn sống.", [("Tên", "Lan"), ("Tuổi", "28"), ("Thành phố", "Nagoya")],
-           [("name", "tên", ["ラン"], True), ("age", "tuổi", ["28歳"], True), ("city", "thành phố", ["名古屋"], True)], 6, 30, VERBS, "ランです。28歳です。名古屋に住んでいます。", None),
+           [("name", "tên", ["ラン"], True), ("age", "tuổi", ["28歳", "28さい"], True), ("city", "thành phố", ["名古屋"], True)], 6, 30, VERBS, "ランです。28歳です。名古屋に住んでいます。", None),
  "p_who": ("simple_description", SENT, "Hãy viết một câu: anh Nam uống cà phê vào buổi sáng.", [("Người", "Nam")],
            [("drink", "uống cà phê", ["コーヒーを飲み"], False), ("morning", "vào buổi sáng", ["朝", "毎朝"], False)], 3, 15, VERBS, "ナムさんは朝、コーヒーを飲みます。", None),
  "p_neg": ("simple_description", SENT, "Hãy viết một câu phủ định: bạn không uống rượu.", None,
@@ -49,7 +52,7 @@ GUIDED = {
  "q_late": ("short_message", MSG, "Hãy nhắn cho anh Tanaka: chào, báo tàu điện bị trễ, rồi xin lỗi.", [("Gửi", "anh Tanaka")],
             [("greeting", "lời chào", GREET, False), ("train", "tàu điện bị trễ", ["電車が遅れ"], False), ("sorry", "lời xin lỗi", SORRY, False)], 5, 30, None, "田中さん、お疲れさまです。電車が遅れています。すみません。", None),
  "q_reply": ("short_message", MSG, "Cấp trên nhắn: mai làm từ 7 giờ. Hãy trả lời: bạn đã hiểu, và cảm ơn.", None,
-             [("ok", "bạn đã hiểu", ["わかりました"], False), ("thanks", "lời cảm ơn", ["ありがとうございます", "ありがとうございました"], False)], 2, 20, None, "わかりました。ありがとうございます。", None),
+             [("ok", "bạn đã hiểu", ["わかりました", "承知しました"], False), ("thanks", "lời cảm ơn", ["ありがとうございます", "ありがとうございました"], False)], 2, 20, None, "わかりました。ありがとうございます。", None),
  "r_form_office": ("simple_form", FORM, "Hãy điền phiếu ở toà thị chính với các thông tin trên thẻ. Tên viết bằng katakana.", [("Tên", "Nguyễn Nam"), ("Địa chỉ", "Osaka"), ("Điện thoại", "080-1234-5678")],
                    [("name", "tên (katakana)", ["グエン・ナム"], True), ("address", "địa chỉ", ["大阪"], True), ("phone", "số điện thoại", ["080-1234-5678"], True)], 2, 12, None, "グエン・ナム | 大阪 | 080-1234-5678",
                    ["name", "address", "phone"]),
@@ -57,7 +60,7 @@ GUIDED = {
                    [("name", "tên (katakana)", ["ラン"], True), ("birthday", "ngày sinh", ["九月二十日"], True), ("phone", "số điện thoại", ["090-8765-4321"], True)], 2, 12, None, "ラン | 九月二十日 | 090-8765-4321",
                    ["name", "birthday", "phone"]),
  "r_note": ("short_message", SENT, "Hãy viết lời nhắn cho đàn anh: máy không chạy, xin anh gọi cấp trên.", None,
-            [("machine", "cái máy", ["機械"], False), ("broken", "máy không chạy", ["動きません", "止まりました", "壊れ"], False), ("call", "gọi cấp trên", ["上司を呼んで", "上司に電話して"], False)], 4, 25, None,
+            [("machine", "cái máy", ["機械"], False), ("broken", "máy không chạy", ["動きません", "止まりました", "壊れ", "止まって", "動いていません"], False), ("call", "gọi cấp trên", ["上司を呼んで", "上司に電話して"], False)], 4, 25, None,
             "先輩、機械が動きません。上司を呼んでください。", None),
 }
 # Open practice: menu slots, never scored.
@@ -69,7 +72,7 @@ OPEN = {
 }
 RESERVED = {
  "cp5_profile_hoa": ("personal_profile", PROFILE, "Bạn là Hoa. Hãy tự giới thiệu: tên, tuổi và thành phố, bằng câu hoàn chỉnh.", [("Tên", "Hoa"), ("Tuổi", "24"), ("Thành phố", "Kyoto")],
-                     [("name", "tên", ["ホア"], True), ("age", "tuổi", ["24歳"], True), ("city", "thành phố", ["京都"], True)], 6, 30, VERBS, "ホアです。24歳です。京都に住んでいます。", None),
+                     [("name", "tên", ["ホア"], True), ("age", "tuổi", ["24歳", "24さい"], True), ("city", "thành phố", ["京都"], True)], 6, 30, VERBS, "ホアです。24歳です。京都に住んでいます。", None),
  "cp5_profile_tuan": ("personal_profile", PROFILE, "Bạn là Tuấn. Hãy viết về bạn: tên, nước của bạn và nơi bạn làm việc.", [("Tên", "Tuấn (viết トゥアン)"), ("Nước", "Việt Nam"), ("Nơi làm việc", "nhà máy")],
                       [("name", "tên", ["トゥアン"], True), ("from", "nước của bạn", ["ベトナムから", "ベトナム人"], True), ("work", "nơi làm việc", ["工場"], True)], 6, 30, VERBS,
                       "トゥアンです。ベトナムから来ました。工場で働いています。", None),
@@ -109,11 +112,23 @@ RESERVED = {
 }
 
 
+def _widen(variants):
+    """D-10 review: a slot also takes the kanji the IME offers for the course's kana (お疲れ様です, 分かりました) and 大きな /
+    小さな. Numbers, the middle dot, hyphens and spaces need nothing: the writing fold reads digits as kanji numerals and drops
+    ・, - and the space between Japanese characters (normalizeWritten → foldSpokenJapanese)."""
+    out = []
+    for v in variants:
+        for x in [v] + natural_spellings(v):
+            if x not in out:
+                out.append(x)
+    return out
+
+
 def task(slug, spec, reserved):
     fam, obj, instr, cue, slots, mn, mx, verbs, model, fields = spec
     tid = f"ja.write.{slug}"
     check_vi(tid, instr)
-    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": v, "cueProvided": c} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
+    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v), "cueProvided": c} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
     for _, d, v, _c in slots:
         check_vi(tid, d)
     if verbs:
@@ -136,7 +151,7 @@ def open_task(slug, spec):
     tid = f"ja.write.{slug}"
     check(tid, model)
     check_vi(tid, instr)
-    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": v, "cueProvided": False} for i, d, v in slots], "minTokens": mn, "maxTokens": mx}
+    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v), "cueProvided": False} for i, d, v in slots], "minTokens": mn, "maxTokens": mx}
     return {"id": tid, "taskFamily": fam, "mode": "open", "instruction": {"vi": instr}, "rubric": rubric, "modelAnswers": [model], "objectiveRefs": [obj], "lexemeRefs": content_refs(model), "scoredEligibility": False, "reserved": False, "sourceRef": "original-project"}
 
 

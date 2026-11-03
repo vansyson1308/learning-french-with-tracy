@@ -321,7 +321,12 @@ JA = re.compile(r"[ぁ-ゖァ-ヺー㐀-䶿一-鿿]")
 SET_PHRASES = sorted({x["surface"] for x in LEX if x["partOfSpeech"] in ("expression", "interjection") and len(x["surface"]) >= 2})
 VI_MARK = re.compile(r"[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]", re.I)
 # The pairs the lesson self-check reads as two defensible answers, in a sentence's own particles.
-_TIME_NI = re.compile(r"(?:今日|明日|昨日|毎日|毎朝|毎晩|毎週|毎月|今朝|今週|来週|先週|今月|来月|先月|今年|来年|去年)に(?![ぁ-ゖ]*(?:なり|入))(?!は|も)")
+_TIME_NI = re.compile(r"(?:今日|明日|昨日|毎日|毎朝|毎晩|毎週|毎月|今朝|今週|来週|先週|今月|来月|先月|今年|来年|去年|おととい|あさって)に(?![ぁ-ゖ]*(?:なり|入))(?!は|も)")
+# D-10 review (2026-11-03): a time word counted from now cannot go with a past verb (来月、…結婚しました: "the following
+# month" is another word); a narrator speaks of a character's family with the respectful words (お父さん, not 父: 父 is
+# the speaker's own father).
+_FUTURE_PAST = re.compile(r"(?:来月|来週|来年|明日|あした|あさって)[^。！？]*?(?:ました|でした)")
+_NARRATOR_KIN = re.compile(r"(?<![お])(?:父|母|兄|姉)(?!さん|弟|妹|親)")
 
 
 def check_story(r):
@@ -363,6 +368,12 @@ def check_story(r):
             msgs.append(f"#{n}: wrong particle in {text!r}")
         if re.search(r"(?<!道)(?<!角)(?<!橋)(?<!交差点)を(?:行き|来ま|帰り)", text):
             msgs.append(f"#{n}: を before a verb of motion in {text!r}")
+        if _FUTURE_PAST.search(re.sub(r"「[^」]*」", "", text)):  # reported speech keeps its own time
+            msgs.append(f"#{n}: a time word counted from now with a past verb in {text!r}")
+        if s["speaker"] == "N" and _NARRATOR_KIN.search(text):
+            msgs.append(f"#{n}: the narrator uses a humble kin word (父/母/兄/姉) for a character's family in {text!r}")
+        if re.search(r"[?!]", text):
+            msgs.append(f"#{n}: half-width ? or ! in Japanese text {text!r} (write ？ ！)")
         for end in sentence_ends(text):
             if len(end) > 3 and PLAIN_END.search(end) and not POLITE_END.search(end) and not end.endswith("でしょう") and not any(end.endswith(x) for x in SET_PHRASES):
                 msgs.append(f"#{n}: plain sentence end {end!r} (stories speak です/ます)")
@@ -452,7 +463,9 @@ def story(sid, band, title, blurb, new, sentences, questions):
         out["newLexemes"].append(lid)
     if tm:
         out["tokenMap"] = dict(sorted(tm.items()))
-    out["sentences"] = [{"speaker": s, "text": re.sub(r"=[a-z0-9_-]+", "", t).replace(" ", ""), "translation": {"vi": vi}} for s, t, vi in sentences]
+    # D-10 review: Japanese text takes the full-width ？ and ！ (the authored lines use the ASCII ones).
+    out["sentences"] = [{"speaker": s, "text": re.sub(r"=[a-z0-9_-]+", "", t).replace(" ", "").replace("?", "？").replace("!", "！"), "translation": {"vi": vi}}
+                        for s, t, vi in sentences]
     seed = sum(ord(c) for c in full)
     rows = []
     for i, (kind, qv, opts) in enumerate(questions):

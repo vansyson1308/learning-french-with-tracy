@@ -14,7 +14,10 @@ own script). It reads _drafts/stories/OUTPUT.jsonl and flags, per story:
     に after 今日/毎日…, no を before a verb of motion);
  5. Vietnamese: every translation, blurb, question and option in Vietnamese with no kana or kanji; questions end with "?";
  6. questions: three, one an inference, 3-4 distinct options, the answer an option; the answer positions vary;
- 7. the file: unique ids and titles, sentence counts 8-60, no sentence over 220 characters, voices N/A/B.
+ 7. the file: unique ids and titles, sentence counts 8-60, no sentence over 220 characters, voices N/A/B;
+ 8. (D-10 review, 2026-11-03) no time word counted from now (来月, 来週, 明日 …) with a past verb outside a quotation; no
+    humble kin word (父, 母, 兄, 姉) in a narrator line, which speaks of a character's family; ？ and ！ full width in
+    Japanese text; おととい and あさって join the time words that take no に.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/stories-selfcheck.json and,
 by hand, to REVIEW-NOTES.md. usage: python -I ja-check-stories.py <repo root>
 """

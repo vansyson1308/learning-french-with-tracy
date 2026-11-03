@@ -112,7 +112,7 @@ lesson("ug-l2", [
     F("先輩___メールが来ました。", "から", ["まで", "を", "で"], "Có email từ đàn anh."),
     N("先輩", ["上司", "社長", "店員"]),
     W("Mai làm từ tám giờ.", "明日|は|8時|から|です", ["まで", "を"]),
-    Y("Tôi hiểu rồi.", "わかりました"),
+    Y("Tôi hiểu rồi.", "わかりました", "はい、わかりました"),
     M("先輩", "上司", "会議", "給料", "休み"),
 ])
 lesson("ug-l3", [
@@ -156,7 +156,7 @@ lesson("uh-l1", [
     NX("Tàu đang bị trễ.", "電車が遅れています。", ["電車を遅れています。", "電車が遅いです。", "電車に遅れました。"]),
     H("10時半", ["10時", "4時半", "11時半"]),
     W("Tàu đi đến sân bay.", "電車|は|空港|へ|行きます", ["で", "を"]),
-    Y("Chuyến tàu tiếp theo lúc mấy giờ?", "次の電車は何時ですか", "次の電車は何時に来ますか"),
+    Y("Chuyến tàu tiếp theo lúc mấy giờ?", "次の電車は何時ですか", "次の電車は何時に来ますか", "次の電車は何時に出ますか"),
 ])
 lesson("uh-l2", [
     LC("uh_press", "Bạn phải ấn nút màu gì?", "màu xanh lá", ["màu đỏ", "màu trắng", "màu đen"]),
@@ -195,7 +195,7 @@ lesson("ui-l0", [
     TX("袋はいりますか。", "Bạn có cần túi không?", ["Bạn có túi không?", "Túi bao nhiêu tiền?", "Bạn mua túi à?"]),
     NX("Nhân viên hỏi bạn có cần túi không. Bạn không cần.", "いいえ、結構です。", ["はい、お願いします。", "いらっしゃいませ。", "いただきます。"]),
     M("コンビニ", "レジ", "袋", "レシート", "ポイントカード"),
-    W("Không, tôi không cần túi.", "袋|は|いりません", ["を", "あります"]),
+    W("Không, tôi không cần túi.", "いいえ|袋|は|いりません", ["を", "あります"], alts=("袋|は|いりません",)),
     Y("Vâng, nhờ anh.", "はい、お願いします"),
 ])
 lesson("ui-l1", [
@@ -209,7 +209,7 @@ lesson("ui-l1", [
     TX("ポイントカードはありますか。", "Bạn có thẻ tích điểm không?", ["Bạn có trả bằng thẻ không?", "Thẻ tích điểm ở đâu?", "Bạn có cần túi không?"]),
     TX("お弁当をあたためますか。", "Có hâm nóng cơm hộp không?", ["Bạn có ăn cơm hộp không?", "Cơm hộp bao nhiêu tiền?", "Bạn có cần đũa không?"]),
     NX("Bạn muốn nhân viên hâm nóng cơm hộp.", "お弁当をあたためてください。", ["お弁当をあたためないでください。", "お弁当にあたためてください。", "お弁当があたためてください。"]),
-    F("はし___いりますか。", "は", ["を", "で", "へ"], "Bạn có cần đũa không?"),
+    F("おはし___いりますか。", "は", ["を", "で", "へ"], "Bạn có cần đũa không?"),
     Y("Không cần đâu ạ.", "大丈夫です", "結構です", "いいえ、大丈夫です", "いいえ、結構です"),
     M("お弁当", "はし", "スプーン", "袋", "カード"),
 ])
@@ -252,9 +252,9 @@ lesson("uj-l0", [
     TX("ナムさんは毎朝6時に起きます。", "Sáng nào Nam cũng dậy lúc sáu giờ.", ["Sáng nào Nam cũng ngủ đến sáu giờ.", "Tối nào Nam cũng ngủ lúc sáu giờ.", "Sáng nay Nam dậy lúc sáu giờ."]),
     TX("朝ご飯を食べて、7時に寮を出ます。", "Ăn sáng xong, bảy giờ Nam rời ký túc xá.", ["Bảy giờ Nam ăn sáng ở ký túc xá.", "Bảy giờ Nam về ký túc xá.", "Nam không ăn sáng."]),
     T("寮", ["部屋", "家", "会社"]),
-    F("夜は___で晩ご飯を食べます。", "食堂", ["銀行", "空港", "郵便局"], "Buổi tối Nam ăn tối ở nhà ăn."),
+    F("夜は___で晩ご飯を食べます。", "寮", ["銀行", "空港", "郵便局"], "Buổi tối Nam ăn tối ở ký túc xá."),
     WT("ナムさんは工場で働きます。", "Nam|làm việc|ở|nhà máy", ["công ty", "học"]),
-    Y("Ký túc xá ở gần ga.", "寮は駅の近くです", "寮は駅から近いです"),
+    Y("Ký túc xá ở gần ga.", "寮は駅の近くです", "寮は駅から近いです", "寮は駅に近いです"),
 ])
 lesson("uj-l1", [
     RC("uj_family", "Mẹ của Linh làm nghề gì?", "y tá", ["bác sĩ", "giáo viên", "nhân viên công ty"]),
@@ -282,7 +282,7 @@ lesson("uj-l2", [
     M("シャツ", "ズボン", "靴", "靴下", "帽子"),
     F("帽子を___ます。", "かぶり", ["着", "はき", "洗い"], "Tôi đội mũ."),
     W("Tôi đi giày.", "靴|を|はきます", ["着ます", "に"]),
-    Y("Tôi giặt quần áo.", "服を洗います", "服を洗濯します"),
+    Y("Tôi giặt quần áo.", "服を洗います", "服を洗濯します", "洗濯します", "洗濯をします", "わたしは洗濯します"),
 ])
 lesson("uj-l3", [
     RC("uj_station", "Bây giờ là mấy giờ?", "7 giờ sáng", ["8 giờ sáng", "7 giờ tối", "6 giờ sáng"]),

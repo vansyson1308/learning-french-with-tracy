@@ -15,7 +15,7 @@ A human still has to check:
 - Readings: kana-only surfaces 261 (their own reading); JmdictFurigana entry for the whole surface 673; a chain of JmdictFurigana entries and kana 23.
 - Frequency (FrequencyWords, through the candidate pool): 210 of 957; the others are outside the pool's top 3,000 or are particles and set phrases.
 - Examples: 957, all original (`original-lexicon-etl`, key `add`), with Vietnamese and English translations; no Tatoeba sentence is used.
-- Hán-Việt: 115 course words added to `content/hanviet/ja.json` (160 entries in all); 145 lexemes have a reading there. Only Sino-Japanese words where the reading helps; false friends carry a note.
+- Hán-Việt: 114 course words added to `content/hanviet/ja.json` (159 entries in all); 144 lexemes have a reading there. Only Sino-Japanese words where the reading helps; false friends carry a note.
 - Kanji: 422 distinct kanji in A1 surfaces (79 of the 79 N5 kanji, 137 N4, 206 beyond N4). Course target: 100 kanji (`content/ja/_drafts/review/kanji.json`). N5 kanji no A1 word uses: none.
 - ja-en (basic pack, never edited): every word maps to a lexeme, directly or through `legacySurfaces`, except さかな (`content/ja/lexicon/legacy-unmapped.json`).
 

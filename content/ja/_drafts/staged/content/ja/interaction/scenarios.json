@@ -121,7 +121,8 @@
                 "いいえ、大丈夫です",
                 "大丈夫です",
                 "いいえ、いりません",
-                "袋はいりません"
+                "袋はいりません",
+                "いいえ"
               ],
               "requiredConcepts": [
                 [
@@ -159,7 +160,8 @@
                 "いいえ、大丈夫です",
                 "大丈夫です",
                 "いいえ、いりません",
-                "袋はいりません"
+                "袋はいりません",
+                "いいえ"
               ],
               "requiredConcepts": [
                 [
@@ -392,7 +394,7 @@
         "p0": {
           "kind": "partner",
           "id": "p0",
-          "text": "はい、なんですか。",
+          "text": "はい、なんでしょうか。",
           "clipId": "ja.clip.ix_ask_station_0",
           "rephraseText": "どうしましたか。",
           "rephraseClipId": "ja.clip.ix_ask_station_0_s",
@@ -485,7 +487,8 @@
                 "ありがとうございます",
                 "どうもありがとうございます",
                 "ありがとうございました",
-                "わかりました。ありがとうございます"
+                "わかりました。ありがとうございます",
+                "分かりました。ありがとうございます"
               ],
               "requiredConcepts": [
                 [
@@ -520,7 +523,8 @@
                 "ありがとうございます",
                 "どうもありがとうございます",
                 "ありがとうございました",
-                "わかりました。ありがとうございます"
+                "わかりました。ありがとうございます",
+                "分かりました。ありがとうございます"
               ],
               "requiredConcepts": [
                 [
@@ -754,7 +758,7 @@
           "kind": "learner",
           "id": "l0",
           "prompt": {
-            "vi": "Hãy nói đúng, đây là lần đầu."
+            "vi": "Hãy trả lời: đúng, đây là lần đầu bạn đến."
           },
           "expected": [
             {
@@ -787,7 +791,7 @@
           "kind": "learner",
           "id": "l0b",
           "prompt": {
-            "vi": "Hãy nói đúng, đây là lần đầu."
+            "vi": "Hãy trả lời: đúng, đây là lần đầu bạn đến."
           },
           "expected": [
             {
@@ -1078,7 +1082,7 @@
         "vi": "Gọi điện xin nghỉ ốm"
       },
       "goal": {
-        "vi": "Gọi cho anh Tanaka ở chỗ làm, nói bạn bị sốt và hôm nay xin nghỉ."
+        "vi": "Gọi cho chị Tanaka ở chỗ làm, nói bạn bị sốt và hôm nay xin nghỉ."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -1113,6 +1117,7 @@
               "intent": "give_name",
               "acceptedVariants": [
                 "お疲れさまです。グエンです",
+                "お疲れ様です。グエンです",
                 "グエンです",
                 "もしもし、グエンです",
                 "おはようございます。グエンです"
@@ -1146,6 +1151,7 @@
               "intent": "give_name",
               "acceptedVariants": [
                 "お疲れさまです。グエンです",
+                "お疲れ様です。グエンです",
                 "グエンです",
                 "もしもし、グエンです",
                 "おはようございます。グエンです"
@@ -1258,7 +1264,7 @@
         "vi": "Gọi điện báo đến muộn"
       },
       "goal": {
-        "vi": "Báo cho chị Kimura tàu điện bị trễ, và bạn sẽ đến muộn khoảng 20 phút."
+        "vi": "Báo cho anh Kimura tàu điện bị trễ, và bạn sẽ đến muộn khoảng 20 phút."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -1456,7 +1462,7 @@
           "id": "p0",
           "text": "こんにちは。今日はどうしましたか。",
           "clipId": "ja.clip.ix_city_office_0",
-          "rephraseText": "何をしに来ましたか。",
+          "rephraseText": "今日はどんなごようですか。",
           "rephraseClipId": "ja.clip.ix_city_office_0_s",
           "next": "l0"
         },
@@ -1489,7 +1495,7 @@
         "r0": {
           "kind": "partner",
           "id": "r0",
-          "text": "何をしに来ましたか。",
+          "text": "今日はどんなごようですか。",
           "clipId": "ja.clip.ix_city_office_0_s",
           "next": "l0b"
         },
@@ -1821,9 +1827,12 @@
               "intent": "understood",
               "acceptedVariants": [
                 "わかりました",
+                "分かりました",
                 "はい、わかりました",
+                "はい、分かりました",
                 "はい",
-                "はい、わかりました。かぶります"
+                "はい、わかりました。かぶります",
+                "はい、分かりました。かぶります"
               ],
               "requiredConcepts": [
                 [
@@ -1855,9 +1864,12 @@
               "intent": "understood",
               "acceptedVariants": [
                 "わかりました",
+                "分かりました",
                 "はい、わかりました",
+                "はい、分かりました",
                 "はい",
-                "はい、わかりました。かぶります"
+                "はい、わかりました。かぶります",
+                "はい、分かりました。かぶります"
               ],
               "requiredConcepts": [
                 [
@@ -1876,7 +1888,7 @@
           "id": "p1",
           "text": "機械は緑のボタンで動きます。",
           "clipId": "ja.clip.ix_factory_safety_1",
-          "rephraseText": "緑のボタンです。",
+          "rephraseText": "緑のボタンで動きます。止めるボタンもありますよ。",
           "rephraseClipId": "ja.clip.ix_factory_safety_1_s",
           "next": "l1"
         },
@@ -1911,7 +1923,7 @@
         "r1": {
           "kind": "partner",
           "id": "r1",
-          "text": "緑のボタンです。",
+          "text": "緑のボタンで動きます。止めるボタンもありますよ。",
           "clipId": "ja.clip.ix_factory_safety_1_s",
           "next": "l1b"
         },
@@ -2000,6 +2012,7 @@
               "acceptedVariants": [
                 "はい、ホアです",
                 "はい、ホアです。よろしくおねがいします",
+                "はい、ホアです。よろしくお願いします",
                 "ホアです",
                 "はじめまして、ホアです"
               ],
@@ -2033,6 +2046,7 @@
               "acceptedVariants": [
                 "はい、ホアです",
                 "はい、ホアです。よろしくおねがいします",
+                "はい、ホアです。よろしくお願いします",
                 "ホアです",
                 "はじめまして、ホアです"
               ],
@@ -2415,7 +2429,8 @@
                 "はい、お願いします",
                 "お願いします",
                 "はい、ください",
-                "はい、いります"
+                "はい、いります",
+                "はい"
               ],
               "requiredConcepts": [
                 [
@@ -2450,7 +2465,8 @@
                 "はい、お願いします",
                 "お願いします",
                 "はい、ください",
-                "はい、いります"
+                "はい、いります",
+                "はい"
               ],
               "requiredConcepts": [
                 [
@@ -2597,7 +2613,8 @@
                 "ありがとうございます",
                 "どうもありがとうございます",
                 "ありがとうございました",
-                "わかりました。ありがとうございます"
+                "わかりました。ありがとうございます",
+                "分かりました。ありがとうございます"
               ],
               "requiredConcepts": [
                 [
@@ -2632,7 +2649,8 @@
                 "ありがとうございます",
                 "どうもありがとうございます",
                 "ありがとうございました",
-                "わかりました。ありがとうございます"
+                "わかりました。ありがとうございます",
+                "分かりました。ありがとうございます"
               ],
               "requiredConcepts": [
                 [
@@ -2680,7 +2698,7 @@
           "kind": "terminal",
           "id": "t_miss",
           "outcome": "goal_not_met",
-          "text": "看護師と話してください。",
+          "text": "わかりました。少し待ってください。",
           "clipId": "ja.clip.ix_cp6_clinic_cough_miss"
         },
         "p0": {
@@ -2705,11 +2723,16 @@
                 "せきが出ます",
                 "せきがあります",
                 "せきです",
-                "せきが出ています"
+                "せきが出ています",
+                "咳が出ます",
+                "咳があります",
+                "咳です",
+                "咳が出ています"
               ],
               "requiredConcepts": [
                 [
-                  "せき"
+                  "せき",
+                  "咳"
                 ]
               ],
               "next": "p1"
@@ -2738,11 +2761,16 @@
                 "せきが出ます",
                 "せきがあります",
                 "せきです",
-                "せきが出ています"
+                "せきが出ています",
+                "咳が出ます",
+                "咳があります",
+                "咳です",
+                "咳が出ています"
               ],
               "requiredConcepts": [
                 [
-                  "せき"
+                  "せき",
+                  "咳"
                 ]
               ],
               "next": "p1"
@@ -2928,7 +2956,7 @@
         "p1": {
           "kind": "partner",
           "id": "p1",
-          "text": "すみません。田中は今、いません。後で電話してください。",
+          "text": "すみません。田中は今、いません。後でまたお電話ください。",
           "clipId": "ja.clip.ix_cp6_call_office_1",
           "rephraseText": "田中は今、いません。",
           "rephraseClipId": "ja.clip.ix_cp6_call_office_1_s",
@@ -2945,7 +2973,9 @@
               "intent": "agree",
               "acceptedVariants": [
                 "わかりました。また電話します",
+                "分かりました。また電話します",
                 "わかりました",
+                "分かりました",
                 "また後で電話します",
                 "はい、また電話します"
               ],
@@ -2980,7 +3010,9 @@
               "intent": "agree",
               "acceptedVariants": [
                 "わかりました。また電話します",
+                "分かりました。また電話します",
                 "わかりました",
+                "分かりました",
                 "また後で電話します",
                 "はい、また電話します"
               ],
@@ -3018,7 +3050,7 @@
         "vi": "Ngày đầu ở nhà máy"
       },
       "goal": {
-        "vi": "Trả lời đàn anh trong ngày đầu đi làm."
+        "vi": "Trả lời đàn chị trong ngày đầu đi làm."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -3230,6 +3262,7 @@
               "acceptedVariants": [
                 "はい、マイです",
                 "はい、マイです。よろしくおねがいします",
+                "はい、マイです。よろしくお願いします",
                 "マイです",
                 "はじめまして、マイです"
               ],
@@ -3263,6 +3296,7 @@
               "acceptedVariants": [
                 "はい、マイです",
                 "はい、マイです。よろしくおねがいします",
+                "はい、マイです。よろしくお願いします",
                 "マイです",
                 "はじめまして、マイです"
               ],

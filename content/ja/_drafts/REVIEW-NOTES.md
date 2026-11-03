@@ -149,7 +149,23 @@ engine cut elsewhere (わたしたち: わたした is a kana row of 渡す; は
     - Voices: A (female, jf_alpha) narrates and speaks for women, B (male, jm_kumo) for men; two people of the same sex
       share a voice. Band-1 audio: the first 18 stories after the micro-stories (`_drafts/stories/story-audio.json`,
       the `storyAudio` block the audio session copies into `content/ja/reception/audio-source-manifest.json`).
-    - The story reader shows no furigana yet (`src/components/story/sentence-row.tsx` renders plain text); kanji in the
-      stories are only lexicon surfaces and inflection keys, so the readings exist — see ja-plan.md §11.
+    - The story reader shows the lessons' furigana and romaji line since commit 6a72e3bc (feat(stories): reader shows the
+      lessons' CJK reading display); kanji in the stories are only lexicon surfaces and inflection keys, so the readings
+      exist. Since the D-10 review the romaji line is word-spaced by the story's own pieces (パンを → "pan o").
+
+## D-10 review (2026-11-03)
+
+Two fresh reviewers read the course (`review/findings-answers.json`, 87 findings; `review/findings-language.json`, 107);
+every decision is in `review/decisions-answers.json` and `review/decisions-language.json`, the summary in
+`content/ja/REVIEW-AI.md`. What changed in the generators, beyond the single fixes:
+- typed answers (`Y()`): the subject or owner the Vietnamese prompt states, the time word with and without は, numbers in
+  digits and kanji, the IME's kanji spellings (`ja_text.subject_spellings`, `topic_spellings`, `numeral_spellings`,
+  `natural_spellings`); speech, scenario and writing answers get the IME spellings and 大きな / 小さな too;
+- every conjugation cloze lists its kana spelling (`ja_paradigms.cloze_kana`); a dictation lists every kanji/kana mix of
+  its words (`Index.mixes`), so a correct mixed spelling passes;
+- lexicon examples follow the lessons' reading rule (digits before a counter where the ruby stays right, なん before です);
+- stories: ？ ！ full width; the story check flags a future time word with a past verb and a narrator's humble kin word.
+`ja-check-answers.py` rule 8 and `ja-check-stories.py` rule 8 check every one of these, so a generator edit cannot bring
+them back. Item 1 of "Open for the D-10 reviewer" is answered by the first point; item 5's dictation note by the second.
     - Questions: Vietnamese, three per story, one an inference; options are written so that only one fits — read the
       inference questions against the text.

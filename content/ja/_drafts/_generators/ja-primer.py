@@ -105,7 +105,7 @@ sections = [
         "hiragana",
         t("Hiragana: bảng cơ bản", "Hiragana: the basic table"),
         t(
-            "Năm nguyên âm a, i, u, e, o là nền của cả bảng. Đọc ngắn, gọn: あ là «a», い là «i», う gần «ư» (môi không tròn), え là «ê», お là «ô». Mỗi hàng ghép một phụ âm với năm nguyên âm: か ka, き ki, く ku, け ke, こ ko. Vài chữ không theo đúng hàng: し shi, ち chi, つ tsu, ふ fu. ん là âm «n» đứng một mình ở cuối âm tiết.",
+            "Năm nguyên âm a, i, u, e, o là nền của cả bảng. Đọc ngắn, gọn: あ là «a», い là «i», う gần «ư» (môi không tròn), え gần «ê», お gần «ô». Mỗi hàng ghép một phụ âm với năm nguyên âm: か ka, き ki, く ku, け ke, こ ko. Vài chữ không theo đúng hàng: し shi, ち chi, つ tsu, ふ fu. ん là âm «n» đứng một mình ở cuối âm tiết.",
             "The five vowels a, i, u, e, o are the base of the whole table; keep them short and say う with unrounded lips. Each row joins one consonant to the five vowels: か ka, き ki, く ku, け ke, こ ko. A few kana break the pattern: し shi, ち chi, つ tsu, ふ fu. ん is a syllable-final n on its own.",
         ),
         VOWELS,
@@ -198,7 +198,7 @@ sections = [
         "katakana",
         t("Katakana: dấu ー và ッ nhỏ", "Katakana: the bar ー and small ッ"),
         t(
-            "Trong katakana, nguyên âm dài viết bằng dấu gạch ー: コーヒー «kô-hi», ケーキ «kê-ki». Romaji ghi nguyên âm dài bằng dấu gạch trên đầu: kōhī. ッ nhỏ là nhịp ngắt như っ: カップ «kap-pư» (cái cốc).",
+            "Trong katakana, nguyên âm dài viết bằng dấu gạch ー: コーヒー «kô-hii», ケーキ «kêê-ki» (nguyên âm có ー kéo dài gấp đôi). Romaji ghi nguyên âm dài bằng dấu gạch trên đầu: kōhī. ッ nhỏ là nhịp ngắt như っ: カップ «kap-pư» (cái cốc).",
             "In katakana a long vowel is written with the bar ー: コーヒー, ケーキ. Rōmaji marks it with a macron: kōhī. A small ッ is the same pause as っ: カップ kappu (cup).",
         ),
         ["1", "2", "3", "4"],
@@ -253,7 +253,7 @@ primer = {
     "id": "ja.primer.script",
     "title": t("Làm quen với chữ kana", "Getting started with kana"),
     "intro": t(
-        "Tiếng Nhật dùng ba loại chữ cùng lúc: hiragana (cho từ thuần Nhật và đuôi ngữ pháp), katakana (cho từ mượn tiếng nước ngoài) và kanji (chữ Hán). Mỗi chữ kana ghi trọn một âm tiết chứ không phải một chữ cái, nên học thuộc bảng kana là đọc được mọi từ. Bấm vào một chữ để nghe.",
+        "Tiếng Nhật dùng ba loại chữ cùng lúc: hiragana (cho từ thuần Nhật và đuôi ngữ pháp), katakana (cho từ mượn tiếng nước ngoài) và kanji (chữ Hán). Mỗi chữ kana ghi trọn một âm tiết chứ không phải một chữ cái, nên học thuộc bảng kana là đọc được mọi từ viết bằng kana; trên chữ kanji, ứng dụng ghi cách đọc nhỏ bằng kana. Bấm vào một chữ để nghe.",
         "Japanese mixes three scripts: hiragana (native words and grammatical endings), katakana (loanwords) and kanji (Chinese characters). Each kana stands for a whole syllable, not a single letter, so once you know the kana tables you can read any word aloud. Tap a kana to hear it.",
     ),
     "sections": sections,

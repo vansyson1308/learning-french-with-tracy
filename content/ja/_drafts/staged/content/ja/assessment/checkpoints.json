@@ -522,7 +522,9 @@
             "verb": "見る",
             "cell": "polite:past:aff",
             "answer": "見ました",
-            "alternatives": []
+            "alternatives": [
+              "みました"
+            ]
           },
           "objectiveTargets": [
             "ja.obj.verbs.masu_forms"
@@ -540,7 +542,9 @@
             "verb": "行く",
             "cell": "polite:nonpast:neg",
             "answer": "行きません",
-            "alternatives": []
+            "alternatives": [
+              "いきません"
+            ]
           },
           "objectiveTargets": [
             "ja.obj.verbs.masu_forms"
@@ -892,6 +896,12 @@
             "clipId": "ja.clip.cp3_dict_work",
             "answer": "毎日、工場で働きます。",
             "alternatives": [
+              "毎日、工場ではたらきます。",
+              "毎日、こうじょうで働きます。",
+              "毎日、こうじょうではたらきます。",
+              "まいにち、工場で働きます。",
+              "まいにち、工場ではたらきます。",
+              "まいにち、こうじょうで働きます。",
               "まいにち、こうじょうではたらきます。"
             ]
           },
@@ -909,6 +919,8 @@
             "clipId": "ja.clip.cp3_dict_station",
             "answer": "駅は近いです。",
             "alternatives": [
+              "駅はちかいです。",
+              "えきは近いです。",
               "えきはちかいです。"
             ]
           },
@@ -1847,7 +1859,9 @@
             "acceptedVariants": [
               "学生です",
               "わたしは学生です",
-              "私は学生です"
+              "私は学生です",
+              "大学生です",
+              "わたしは大学生です"
             ],
             "evidenceLexemeRefs": [
               "ja:w:gakusei"
@@ -2039,6 +2053,7 @@
             "target": "大きい犬です。",
             "acceptedVariants": [
               "大きい犬です",
+              "大きな犬です",
               "この犬は大きいです",
               "犬は大きいです",
               "大きいです"
@@ -2142,7 +2157,8 @@
                   "id": "age",
                   "description": "tuổi",
                   "variants": [
-                    "24歳"
+                    "24歳",
+                    "24さい"
                   ],
                   "cueProvided": true
                 },
@@ -2346,6 +2362,7 @@
                   "variants": [
                     "部屋は小さい",
                     "小さい部屋",
+                    "小さな部屋",
                     "部屋は狭い",
                     "狭い部屋"
                   ],
@@ -2453,6 +2470,7 @@
                   "description": "lời chào",
                   "variants": [
                     "お疲れさまです",
+                    "お疲れ様です",
                     "おはようございます",
                     "こんにちは"
                   ],
@@ -2472,7 +2490,9 @@
                   "variants": [
                     "休みます",
                     "休んでもいいですか",
-                    "休ませてください"
+                    "休ませてください",
+                    "休みたい",
+                    "休ませてもらえますか"
                   ],
                   "cueProvided": false
                 }
@@ -2511,7 +2531,8 @@
                   "description": "lời xin lỗi",
                   "variants": [
                     "すみません",
-                    "申し訳ありません"
+                    "申し訳ありません",
+                    "申し訳ございません"
                   ],
                   "cueProvided": false
                 },
@@ -2567,6 +2588,7 @@
                   "description": "lời chào",
                   "variants": [
                     "お疲れさまです",
+                    "お疲れ様です",
                     "おはようございます",
                     "こんにちは"
                   ],
@@ -3510,6 +3532,7 @@
                   "description": "lời chào",
                   "variants": [
                     "お疲れさまです",
+                    "お疲れ様です",
                     "おはようございます",
                     "こんにちは"
                   ],
@@ -3537,7 +3560,9 @@
                   "variants": [
                     "休みます",
                     "休んでもいいですか",
-                    "休ませてください"
+                    "休ませてください",
+                    "休みたい",
+                    "休ませてもらえますか"
                   ],
                   "cueProvided": false
                 }

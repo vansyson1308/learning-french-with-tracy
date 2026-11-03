@@ -75,6 +75,13 @@ def tables(root, lexicon):
     return out
 
 
+def cloze_kana(table, cell, answer, index):
+    """The cloze's one alternative, its kana spelling (D-10 review: every cloze lists it, strict grading folds no
+    kanji): the kana row of the cell, else the answer read through the inflection keys (行きません → いきません)."""
+    k = table["kana"].get(cell) or index.kana(answer)
+    return [k] if k != answer and not HAN(k) else []
+
+
 def table_records(root, lexicon):
     """The {paradigm: …} records the concepts ingest writes to content/ja/pedagogy/paradigms.json."""
     out = []

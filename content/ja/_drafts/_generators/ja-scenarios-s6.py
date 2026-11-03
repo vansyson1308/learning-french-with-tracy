@@ -16,6 +16,7 @@ from collections import Counter
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ja_lesson_refs import REFS  # noqa: E402
 from ja_layers import DRAFTS, check_vi, clip, read_jsonl, report, write_jsonl  # noqa: E402
+from ja_text import natural_spellings  # noqa: E402
 
 CONV, PRAC = "ja.obj.interaction.everyday_conversation", "ja.obj.interaction.practical_needs"
 THANKS = ["ありがとうございます", "どうもありがとうございます", "ありがとうございました", "わかりました。ありがとうございます"]
@@ -24,14 +25,14 @@ SORRY_AGAIN = "すみません、もう一度お願いします。"
 TEACHING = [
  ("konbini_bento", "transaction", PRAC, "Ở cửa hàng tiện lợi", "Nhờ nhân viên hâm nóng cơm hộp, rồi nói bạn không cần túi.",
   [("いらっしゃいませ。お弁当はあたためますか。", "お弁当、あたためますか。", "Hãy nhờ nhân viên hâm nóng.", "heat", ["はい、お願いします", "お願いします", "はい", "はい、あたためてください", "あたためてください"], [["お願いします", "はい", "あたためて"]]),
-   ("袋はいりますか。", "袋、いりますか。", "Hãy nói bạn không cần túi.", "no_bag", ["いいえ、結構です", "結構です", "いいえ、大丈夫です", "大丈夫です", "いいえ、いりません", "袋はいりません"], [["結構", "大丈夫", "大丈夫です", "いりません"]])],
+   ("袋はいりますか。", "袋、いりますか。", "Hãy nói bạn không cần túi.", "no_bag", ["いいえ、結構です", "結構です", "いいえ、大丈夫です", "大丈夫です", "いいえ、いりません", "袋はいりません", "いいえ"], [["結構", "大丈夫", "大丈夫です", "いりません"]])],
   "全部で650円です。ありがとうございます。", "わかりました。ありがとうございました。"),
  ("restaurant_order", "transaction", PRAC, "Gọi món ở quán ăn", "Nói bạn đi một mình, rồi gọi một bát ramen và một cốc nước.",
   [("いらっしゃいませ。なんめいさまですか。", "何人ですか。", "Hãy nói bạn đi một mình.", "one_person", ["一人です", "一人", "一人でお願いします"], [["一人"]]),
    ("こちらへどうぞ。何にしますか。", "何を食べますか。", "Hãy gọi một bát ramen và một cốc nước.", "order", ["ラーメンと水をお願いします", "ラーメンと水をください", "ラーメンとお水をお願いします", "ラーメンとお水をください", "ラーメンを一つと水をお願いします"], [["ラーメン"], ["水"]])],
   "はい、ラーメンと水ですね。", SORRY_AGAIN),
  ("ask_station", "information_exchange", PRAC, "Hỏi đường đến ga", "Hỏi một người lạ ga ở đâu, rồi cảm ơn.",
-  [("はい、なんですか。", "どうしましたか。", "Hãy hỏi ga ở đâu.", "ask_way", ["駅はどこですか", "すみません、駅はどこですか", "駅はどこにありますか", "すみません、駅はどこにありますか"], [["駅"], ["どこ"]]),
+  [("はい、なんでしょうか。", "どうしましたか。", "Hãy hỏi ga ở đâu.", "ask_way", ["駅はどこですか", "すみません、駅はどこですか", "駅はどこにありますか", "すみません、駅はどこにありますか"], [["駅"], ["どこ"]]),
    ("まっすぐ行って、二つ目の角を右に曲がってください。", "まっすぐ行って、右です。", "Hãy cảm ơn.", "thank", THANKS, [["ありがとう", "ありがとうございます", "どうも"]])],
   "どういたしまして。気をつけて。", "すみません、わかりません。"),
  ("train_platform", "information_exchange", PRAC, "Ở sân ga", "Hỏi nhân viên nhà ga tàu này có đi Nagoya không, rồi nhắc lại số sân ga.",
@@ -39,23 +40,23 @@ TEACHING = [
    ("いいえ。名古屋は3番のホームです。", "3番です。", "Hãy nhắc lại số sân ga để chắc chắn.", "repeat", ["3番ですね", "3番のホームですね", "3番ですか"], [["3番"]])],
   "はい、そうです。", "すみません、もう一度言ってください。"),
  ("clinic_reception", "information_exchange", PRAC, "Ở quầy lễ tân phòng khám", "Nói đây là lần đầu bạn đến, rồi đưa thẻ bảo hiểm.",
-  [("こんにちは。初めてですか。", "この病院は初めてですか。", "Hãy nói đúng, đây là lần đầu.", "first", ["はい、初めてです", "初めてです", "はい"], [["初めて", "はい"]]),
+  [("こんにちは。初めてですか。", "この病院は初めてですか。", "Hãy trả lời: đúng, đây là lần đầu bạn đến.", "first", ["はい、初めてです", "初めてです", "はい"], [["初めて", "はい"]]),
    ("保険証はありますか。", "保険証を見せてください。", "Hãy đưa thẻ bảo hiểm và nói một câu lịch sự.", "hand_over", ["はい、これです", "はい、どうぞ", "これです", "どうぞ", "はい、あります"], [["どうぞ", "これ", "あります"]])],
   "ありがとうございます。少し待ってください。", SORRY_AGAIN),
  ("clinic_doctor", "information_exchange", PRAC, "Đi khám bệnh", "Nói với bác sĩ bạn đau đầu và bị sốt từ hôm qua.",
   [("どうしましたか。", "どこが痛いですか。", "Hãy nói bạn đau đầu và bị sốt.", "symptom", ["頭が痛いです。熱もあります", "頭が痛いです", "熱があります", "頭が痛くて、熱があります", "頭が痛いです。熱があります"], [["頭", "熱"]]),
    ("いつからですか。", "昨日からですか、今日からですか。", "Hãy nói từ hôm qua.", "since", ["昨日からです", "昨日から", "昨日です"], [["昨日"]])],
   "この薬を一日3回飲んでください。お大事に。", "わかりました。看護師と話してください。"),
- ("call_sick", "information_exchange", CONV, "Gọi điện xin nghỉ ốm", "Gọi cho anh Tanaka ở chỗ làm, nói bạn bị sốt và hôm nay xin nghỉ.",
+ ("call_sick", "information_exchange", CONV, "Gọi điện xin nghỉ ốm", "Gọi cho chị Tanaka ở chỗ làm, nói bạn bị sốt và hôm nay xin nghỉ.",
   [("はい、田中です。", "もしもし、田中です。", "Hãy chào và nói bạn là Nguyễn.", "give_name", ["お疲れさまです。グエンです", "グエンです", "もしもし、グエンです", "おはようございます。グエンです"], [["グエン"]]),
    ("グエンさん、どうしましたか。", "何かありましたか。", "Hãy nói bạn bị sốt và hôm nay xin nghỉ.", "sick", ["熱があります。今日は休みます", "熱があります。今日は休んでもいいですか", "今日は休みます", "熱があります", "風邪をひきました。今日は休みます"], [["熱", "風邪", "休みます", "休んで"]])],
   "わかりました。お大事に。", SORRY_AGAIN),
- ("call_late", "information_exchange", CONV, "Gọi điện báo đến muộn", "Báo cho chị Kimura tàu điện bị trễ, và bạn sẽ đến muộn khoảng 20 phút.",
+ ("call_late", "information_exchange", CONV, "Gọi điện báo đến muộn", "Báo cho anh Kimura tàu điện bị trễ, và bạn sẽ đến muộn khoảng 20 phút.",
   [("もしもし、木村です。", "はい、木村です。", "Hãy nói tàu điện bị trễ.", "train_late", ["電車が遅れています", "すみません、電車が遅れています", "電車が遅れました", "すみません、電車が遅れました"], [["電車"], ["遅れ"]]),
    ("そうですか。どのぐらい遅れますか。", "何時に来ますか。", "Hãy nói bạn đến muộn khoảng 20 phút.", "minutes", ["20分ぐらい遅れます", "20分ぐらいです", "20分遅れます", "20分ぐらい遅れると思います"], [["20分"]])],
   "わかりました。気をつけて来てください。", "わかりました。また電話してください。"),
  ("city_office", "transaction", PRAC, "Ở toà thị chính", "Nói với nhân viên toà thị chính bạn mới chuyển nhà, rồi đưa thẻ cư trú.",
-  [("こんにちは。今日はどうしましたか。", "何をしに来ましたか。", "Hãy nói bạn mới chuyển nhà.", "moved", ["引っ越しました", "先週引っ越しました", "新しいアパートに引っ越しました", "大阪に引っ越しました"], [["引っ越し"]]),
+  [("こんにちは。今日はどうしましたか。", "今日はどんなごようですか。", "Hãy nói bạn mới chuyển nhà.", "moved", ["引っ越しました", "先週引っ越しました", "新しいアパートに引っ越しました", "大阪に引っ越しました"], [["引っ越し"]]),
    ("在留カードを見せてください。", "在留カードはありますか。", "Hãy đưa thẻ cư trú và nói một câu lịch sự.", "hand_over", ["はい、これです", "はい、どうぞ", "これです", "どうぞ", "はい、あります"], [["どうぞ", "これ", "あります"]])],
   "ありがとうございます。この書類に新しい住所を書いてください。", SORRY_AGAIN),
  ("interview_basics", "information_exchange", CONV, "Buổi phỏng vấn đầu tiên", "Trả lời người phỏng vấn: bạn đã làm việc ở đâu, và vì sao bạn muốn đến Nhật.",
@@ -64,7 +65,7 @@ TEACHING = [
   "そうですか。頑張ってください。", "わかりました。また連絡します。"),
  ("factory_safety", "information_exchange", PRAC, "Chỉ dẫn an toàn ở nhà máy", "Nghe chỉ dẫn an toàn, nói bạn đã hiểu, rồi hỏi cách dừng máy.",
   [("仕事の前に、ヘルメットをかぶって、手袋をしてください。", "ヘルメットと手袋ですよ。", "Hãy nói bạn đã hiểu.", "understood", ["わかりました", "はい、わかりました", "はい", "はい、わかりました。かぶります"], [["わかりました", "はい"]]),
-   ("機械は緑のボタンで動きます。", "緑のボタンです。", "Hãy hỏi làm sao để dừng máy.", "ask_stop", ["どうやって止めますか", "止めるボタンはどれですか", "どのボタンで止めますか", "機械はどうやって止めますか", "どうやって止まりますか"], [["止め", "止ま"]])],
+   ("機械は緑のボタンで動きます。", "緑のボタンで動きます。止めるボタンもありますよ。", "Hãy hỏi làm sao để dừng máy.", "ask_stop", ["どうやって止めますか", "止めるボタンはどれですか", "どのボタンで止めますか", "機械はどうやって止めますか", "どうやって止まりますか"], [["止め", "止ま"]])],
   "赤いボタンです。気をつけてください。", "わからないときは、先輩に聞いてください。"),
 ]
 RESERVED = [
@@ -78,21 +79,23 @@ RESERVED = [
   "わかりました。来週、電話します。", "ありがとうございました。"),
  ("cp6_konbini_pay", "transaction", PRAC, "Trả tiền ở cửa hàng tiện lợi", "Hỏi trả bằng thẻ được không, rồi nói bạn cần hoá đơn.",
   [("全部で820円です。", "820円です。", "Hãy hỏi trả bằng thẻ được không.", "card", ["カードでいいですか", "カードで払えますか", "カードでお願いします", "カードでもいいですか"], [["カード"]]),
-   ("はい、大丈夫です。レシートはいりますか。", "レシート、いりますか。", "Hãy nói bạn cần hoá đơn.", "receipt", ["はい、お願いします", "お願いします", "はい、ください", "はい、いります"], [["お願いします", "ください", "いります"]])],
+   ("はい、大丈夫です。レシートはいりますか。", "レシート、いりますか。", "Hãy nói bạn cần hoá đơn.", "receipt", ["はい、お願いします", "お願いします", "はい、ください", "はい、いります", "はい"], [["お願いします", "ください", "いります"]])],
   "ありがとうございました。", SORRY_AGAIN),
  ("cp6_way_bank", "information_exchange", PRAC, "Tìm ngân hàng", "Hỏi một người lạ ngân hàng ở đâu, rồi cảm ơn.",
   [("どうしましたか。", "何か困っていますか。", "Hãy hỏi ngân hàng ở đâu.", "ask_way", ["銀行はどこですか", "すみません、銀行はどこですか", "銀行はどこにありますか", "すみません、銀行はどこにありますか"], [["銀行"], ["どこ"]]),
    ("銀行は駅の前です。近いですよ。", "駅の前です。", "Hãy cảm ơn.", "thank", THANKS, [["ありがとう", "ありがとうございます", "どうも"]])],
   "どういたしまして。", "すみません、わかりません。"),
  ("cp6_clinic_cough", "information_exchange", PRAC, "Ở phòng khám", "Nói với y tá bạn bị ho, và bạn không sốt.",
-  [("どうしましたか。", "どこか悪いですか。", "Hãy nói bạn bị ho.", "symptom", ["せきが出ます", "せきがあります", "せきです", "せきが出ています"], [["せき"]]),
+  [("どうしましたか。", "どこか悪いですか。", "Hãy nói bạn bị ho.", "symptom", ["せきが出ます", "せきがあります", "せきです", "せきが出ています",
+    # D-10 review: a ja-JP recogniser writes 咳 in kanji, which is no lexicon surface (the lexeme is せき).
+    "咳が出ます", "咳があります", "咳です", "咳が出ています"], [["せき", "咳"]]),
    ("熱はありますか。", "熱、ありますか。", "Hãy nói bạn không sốt.", "no_fever", ["いいえ、ありません", "ありません", "熱はありません", "いいえ"], [["ありません", "いいえ"]])],
-  "わかりました。水をたくさん飲んで、休んでください。", "看護師と話してください。"),
+  "わかりました。水をたくさん飲んで、休んでください。", "わかりました。少し待ってください。"),
  ("cp6_call_office", "information_exchange", CONV, "Gọi điện đến công ty", "Xin nói chuyện với anh Tanaka; anh ấy không có ở đó, nên bạn sẽ gọi lại.",
   [("はい、さくら工場です。", "さくら工場です。", "Hãy xin nói chuyện với anh Tanaka.", "ask_person", ["田中さんはいらっしゃいますか", "田中さん、お願いします", "田中さんをお願いします", "田中さんと話したいです"], [["田中"]]),
-   ("すみません。田中は今、いません。後で電話してください。", "田中は今、いません。", "Hãy đồng ý gọi lại sau.", "agree", ["わかりました。また電話します", "わかりました", "また後で電話します", "はい、また電話します"], [["わかりました", "電話します", "はい"]])],
+   ("すみません。田中は今、いません。後でまたお電話ください。", "田中は今、いません。", "Hãy đồng ý gọi lại sau.", "agree", ["わかりました。また電話します", "わかりました", "また後で電話します", "はい、また電話します"], [["わかりました", "電話します", "はい"]])],
   "ありがとうございます。失礼します。", "すみません。失礼します。"),
- ("a1cap_first_day", "conversation", CONV, "Ngày đầu ở nhà máy", "Trả lời đàn anh trong ngày đầu đi làm.",
+ ("a1cap_first_day", "conversation", CONV, "Ngày đầu ở nhà máy", "Trả lời đàn chị trong ngày đầu đi làm.",
   [("おはようございます。新しい人ですか。", "今日から働く人ですか。", "Hãy trả lời là đúng.", "confirm", ["はい、そうです", "はい", "そうです", "はい、今日からです"], [["はい", "そう"]]),
    ("ヘルメットはありますか。", "ヘルメット、ありますか。", "Hãy nói bạn không có.", "no_helmet", ["いいえ、ありません", "ありません", "すみません、ありません", "いいえ"], [["ありません", "いいえ"]])],
   "じゃあ、このヘルメットをかぶってください。", "わかりました。先輩に聞いてください。"),
@@ -133,7 +136,13 @@ for rows, reserved in ((TEACHING, False), (RESERVED, True)):
             add_clip(f"{base}_{i}", p, obj, speaker)
             add_clip(f"{base}_{i}_s", rp, obj, speaker)
             nodes[f"p{i}"] = {"kind": "partner", "id": f"p{i}", "text": p, "clipId": f"{base}_{i}", "rephraseText": rp, "rephraseClipId": f"{base}_{i}_s", "next": f"l{i}"}
-            exp = [{"intent": intent, "acceptedVariants": variants, "requiredConcepts": concepts, "next": nxt}]
+            # D-10 review: the kanji a recogniser writes for the course's kana (分かりました, よろしくお願いします).
+            heard = []
+            for v in variants:
+                for x in [v] + natural_spellings(v):
+                    if x not in heard:
+                        heard.append(x)
+            exp = [{"intent": intent, "acceptedVariants": heard, "requiredConcepts": concepts, "next": nxt}]
             nodes[f"l{i}"] = {"kind": "learner", "id": f"l{i}", "prompt": {"vi": prompt}, "expected": exp, "noMatchNext": f"r{i}", "scored": True}
             nodes[f"r{i}"] = {"kind": "partner", "id": f"r{i}", "text": rp, "clipId": f"{base}_{i}_s", "next": f"l{i}b"}
             nodes[f"l{i}b"] = {"kind": "learner", "id": f"l{i}b", "prompt": {"vi": prompt}, "expected": exp, "noMatchNext": "t_miss", "scored": False}

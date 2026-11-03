@@ -11,7 +11,7 @@ import json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ja_layers import DRAFTS, ROOT, check, check_vi, read_jsonl, report, write_jsonl, PROBLEMS  # noqa: E402
-from ja_paradigms import tables as _paradigm_tables  # noqa: E402
+from ja_paradigms import cloze_kana, tables as _paradigm_tables  # noqa: E402
 from ja_text import load_lexicon  # noqa: E402
 
 PAR = _paradigm_tables(ROOT, load_lexicon(ROOT))
@@ -91,8 +91,8 @@ def conj(sent, vi, verb, cell):
     ans = t["cells"][cell]
     check(sent, sent.replace("___", ans))
     check_vi(sent, vi)
-    alts = [t["kana"][cell]] if cell in t["kana"] else []
-    return {"type": "conjugationCloze", "sentence": sent, "translation": vi, "verb": verb, "cell": cell, "answer": ans, "alternatives": alts}
+    from ja_layers import INDEX  # noqa: E402
+    return {"type": "conjugationCloze", "sentence": sent, "translation": vi, "verb": verb, "cell": cell, "answer": ans, "alternatives": cloze_kana(t, cell, ans, INDEX)}
 
 
 def typ(prompt, ans, *alts):
@@ -140,8 +140,7 @@ def dict_(clip):
     text = "".join(s["text"] for s in CLIPS[cid]["segments"]) if cid in CLIPS else "?"
     if re.search(r"[0-9]", text):
         PROBLEMS.append(f"dictation {clip}: a number has two spellings")
-    kana = INDEX.kana(text)
-    return {"type": "dictation", "clipId": cid, "answer": text, "alternatives": [kana] if kana != text else []}
+    return {"type": "dictation", "clipId": cid, "answer": text, "alternatives": INDEX.mixes(text)[1:]}
 
 
 def speak(slug):

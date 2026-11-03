@@ -1,0 +1,1028 @@
+[
+ {
+  "id": "ja.story.japanese_class.q2",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-03.py)",
+  "severity": "P0",
+  "quote": "*Vì Mai đã học cùng Tuấn ở thư viện",
+  "problem": "The key names Tuấn, who is not in the story. The classmate at #7 and #19 has no name (tokenMap holds only やまだ and マイ). The correct answer states a false fact.",
+  "fix": "Vì sao bài kiểm tra của Mai tốt? => Vì Mai không làm bài / Vì cô giáo làm bài giúp Mai / *Vì Mai đã cùng một bạn học ở thư viện",
+  "decision": "fixed: the key is 'Vì Mai đã cùng một bạn học ở thư viện'."
+ },
+ {
+  "id": "ja.story.brothers_wedding#19",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P0",
+  "quote": "来月、お兄さんが結婚しました。",
+  "problem": "来月 means 'next month' counted from now and cannot go with a past verb. A learner would copy the wrong time word. The narrative needs 'the following month'.",
+  "fix": "[N] 次の月、お兄さんは結婚しました。 || Tháng sau đó, anh trai Hoa cưới vợ.",
+  "decision": "fixed differently: 次の月 has no lexeme (月 alone is none) and その後 is beyond the A1-1 band, so the sentence is そして、お兄さんは結婚しました。 'Rồi anh trai Hoa cưới vợ.' The story check now flags a time word counted from now with a past verb."
+ },
+ {
+  "id": "ja:w:ototoi",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P0",
+  "quote": "おとといに日本に来ました。",
+  "problem": "Relative time words take no に. The course card ja:concept:particles-ni-de-he teaches this rule, and lessons use 明日に and 昨日に as wrong options. This lexicon example models the error the course marks wrong.",
+  "fix": "おととい、日本に来ました。 || Hôm kia tôi đến Nhật.",
+  "decision": "fixed: おととい、日本に来ました。 おととい, きのう and あした joined the time words of the particle rule, which rule 8 now runs on every lexicon example (and the story check)."
+ },
+ {
+  "id": "ja.story.micro_family_photo#8",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-00.py)",
+  "severity": "P1",
+  "quote": "姉は会社員です。子供は二人です。",
+  "problem": "'子供は二人です' has no owner. Right after #4–#5 used 子供 for Lan's brother, it reads as 'there are two children (in the photo/family)'. q2 asks how many children the sister has, and the text does not clearly say.",
+  "fix": "[A] 姉は会社員です。姉の子供は二人です。 || Chị em là nhân viên công ty. Chị ấy có hai con.",
+  "decision": "fixed: 姉の子供は二人です。 'Chị ấy có hai con.'"
+ },
+ {
+  "id": "ja.story.micro_first_morning#1",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-00.py)",
+  "severity": "P1",
+  "quote": "ミンさんは新しい会社員です。",
+  "problem": "会社員 is a job category ('office worker'), so 新しい会社員 sounds like 'a brand-new office worker' in general. A native says 新しい社員 or 新入社員.",
+  "fix": "[N] ミンさんはこの会社の新しい社員です。 || Minh là nhân viên mới của công ty này.",
+  "uncertain": true,
+  "reason": "社員 (ja:w:shain) exists; check that the micro-story band allows it. Otherwise: [N] ミンさんは会社の新しい人です。",
+  "decision": "fixed differently: 社員 (A2-1) and 人 (A1-1) are beyond the A1-0 band. #1 is now ここはミンさんの新しい会社です。 'Đây là công ty mới của Minh.', and #6 ここはみんなの会社です, which repeated it, is now ミンさん、よろしくおねがいします。 so the story keeps its coverage."
+ },
+ {
+  "id": "ja.story.micro_where_is_it#10",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-00.py)",
+  "severity": "P1",
+  "quote": "こばやしさんはここの会社員ですか。 / #11 わたしもここの会社員です。",
+  "problem": "Same problem as above: ここの会社員 is not idiomatic. Use 'a person of this company' (the guidebook of unit a teaches 会社の人). The fix also covers #11.",
+  "fix": "#10: [B] こばやしさんはこの会社の人ですか。 || Chị Kobayashi làm ở công ty này ạ? #11: [A] はい。わたしもこの会社の人です。 || Vâng. Tôi cũng làm ở công ty này.",
+  "decision": "fixed differently: この会社の人 needs 人, beyond A1-0. #10 is こばやしさんも会社員ですか。 and #11 はい。わたしも会社員です。"
+ },
+ {
+  "id": "ja.story.letter_home#21",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-01.py)",
+  "severity": "P1",
+  "quote": "さようなら。ホア",
+  "problem": "さようなら closing a letter to one's mother sounds like a long or final farewell. The unit 1 guidebook itself says さようなら is little used. A learner would copy it into messages home.",
+  "fix": "[A] お元気で。ホア || Mẹ giữ gìn sức khoẻ nhé. Hoa",
+  "decision": "fixed differently: the closing is お母さんもお元気で。ホア 'Mẹ cũng giữ gìn sức khoẻ nhé. Hoa' (お元気 mapped to 元気)."
+ },
+ {
+  "id": "ja.story.dorm_rules#4",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P1",
+  "quote": "はい、わかります。",
+  "problem": "The reply to an instruction is わかりました. わかります means 'I (generally) understand / know' and is the wrong answer to a rule. The course teaches わかりました in unit k.",
+  "fix": "[A] はい、わかりました。 || Vâng, em hiểu rồi ạ.",
+  "decision": "fixed: はい、わかりました。 (mapped to わかる: the expression lexeme わかりました is A1-2, above this A1-1 story)."
+ },
+ {
+  "id": "ja.story.watch_for_father#1",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P1",
+  "quote": "お父さんの誕生日の物を買います。",
+  "problem": "'誕生日の物' is not Japanese for 'birthday present'. A native says 誕生日プレゼント, and プレゼント is not a lexeme.",
+  "fix": "[N] お父さんの誕生日に、時計を買います。 || Anh mua đồng hồ tặng sinh nhật bố.",
+  "decision": "fixed: お父さんの誕生日に、時計を買います。"
+ },
+ {
+  "id": "ja.story.watch_for_father#5",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P1",
+  "quote": "お父さんはいくつですか。",
+  "problem": "A shop clerk asking about a customer's father's age must use おいくつ. Plain いくつ about an adult is too casual.",
+  "fix": "[A] お父さんはおいくつですか。 || Bố anh bao nhiêu tuổi ạ?",
+  "decision": "fixed: お父さんはおいくつですか。 (おいくつ mapped to いくつ)."
+ },
+ {
+  "id": "ja.story.brothers_wedding#0",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P1",
+  "quote": "ベトナムの兄からホアさんに手紙が来ました。",
+  "problem": "The narrator uses the humble kin word 兄 for Hoa's brother; #1 to #3 then say お兄さん. ja:concept:family-terms teaches this exact contrast.",
+  "fix": "[N] ベトナムのお兄さんからホアさんに手紙が来ました。 || Hoa nhận được thư của anh trai ở Việt Nam.",
+  "decision": "fixed: ベトナムのお兄さんから…; the story check now flags a humble kin word (父, 母, 兄, 姉) in a narrator line."
+ },
+ {
+  "id": "ja.story.brothers_wedding#22",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P1",
+  "quote": "妻も「ありがとうございます」と言いますよ。",
+  "problem": "This passes on a message, so it needs 言っています. 言います reads as 'will say' or 'habitually says'. A wife thanking her sister-in-law also says ありがとう.",
+  "fix": "[B] 妻も「ありがとう」と言っていますよ。 || Vợ anh cũng gửi lời cảm ơn em đấy.",
+  "decision": "fixed: 妻も「ありがとう」と言っていますよ。 'Vợ anh cũng gửi lời cảm ơn em đấy.'"
+ },
+ {
+  "id": "ja.story.power_cut#3",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P1",
+  "quote": "暗いです。何もわかりません。 || Tối quá. Chẳng thấy gì cả.",
+  "problem": "何もわかりません means 'I understand nothing', not 'I can't see anything'. The Japanese and Vietnamese disagree, and 'can't see' is 見えない.",
+  "fix": "[B] 暗いです。何もみえません。 || Tối quá. Chẳng thấy gì cả.",
+  "uncertain": true,
+  "reason": "見える is not a lexeme, so it is written in kana under the lesson rule (the JLPT reading already writes みえます). If that is not wanted, keep the Japanese and write: Tối quá. Chẳng biết gì cả.",
+  "decision": "fixed with the reviewer's fallback: 見える is no lexeme, so the Japanese stays and the Vietnamese follows it: 'Tối quá. Chẳng biết gì cả.'"
+ },
+ {
+  "id": "ja.story.power_cut#11",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P1",
+  "quote": "たぶん少し待ちますね。",
+  "problem": "'たぶん…待ちますね' (probably we wait, right?) is not natural. It does not express 'we'll probably have to wait a bit'.",
+  "fix": "[A] たぶん少し時間がかかりますね。 || Chắc phải đợi một lúc nhỉ.",
+  "uncertain": true,
+  "reason": "かかる (ja:w:kakaru) is used in A1-2/A2-1 stories; check that it is allowed in A1-1. Otherwise drop #11, since #12 already says 一緒に外で待ちましょう.",
+  "decision": "fixed: the sentence is dropped (時間 is A1-2, beyond the band; #12 already says 一緒に外で待ちましょう)."
+ },
+ {
+  "id": "ja.story.city_office#19",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-03.py)",
+  "severity": "P1",
+  "quote": "在留カードの後ろに新しい住所を書きました。",
+  "problem": "後ろ means 'behind (a thing)'. The back side of a card is 裏. The fact itself is accurate: the new address is written on the back of the residence card.",
+  "fix": "[A] ナムさん、在留カードのうらに新しい住所を書きました。確認してください。 || Anh Nam, tôi đã ghi địa chỉ mới vào mặt sau thẻ cư trú. Anh kiểm tra lại nhé.",
+  "uncertain": true,
+  "reason": "裏 is not a lexeme, so it is in kana. Alternatively drop the place: 在留カードに新しい住所を書きました。",
+  "decision": "fixed with the reviewer's alternative: 在留カードに新しい住所を書きました。"
+ },
+ {
+  "id": "ja.story.garbage_day#23",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-03.py)",
+  "severity": "P1",
+  "quote": "おはようございます。今日はいいですね。 || Hôm nay đúng rồi nhé.",
+  "problem": "A native hears 今日はいいですね as 'nice weather today'. 'Today it's the right day' needs 大丈夫 (which #21 already uses).",
+  "fix": "[A] おはようございます。今日は大丈夫ですね。 || Chào buổi sáng. Hôm nay đúng ngày rồi nhé.",
+  "decision": "fixed: 今日は大丈夫ですね。 'Hôm nay đúng ngày rồi nhé.'"
+ },
+ {
+  "id": "ja.story.money_home#15",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-04.py)",
+  "severity": "P1",
+  "quote": "ナムさんは父の名前と番号を書きます。",
+  "problem": "The third-person narrator uses humble 父 for Nam's father. That reads as the narrator's own father and contradicts ja:concept:family-terms. 番号 alone is also vague.",
+  "fix": "[N] ナムさんはお父さんの名前と口座の番号を書きます。 || Nam viết tên bố và số tài khoản.",
+  "decision": "fixed: ナムさんはお父さんの名前と口座の番号を書きます。"
+ },
+ {
+  "id": "ja.story.money_home#22",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-04.py)",
+  "severity": "P1",
+  "quote": "その夜、ナムさんは母に電話しました。",
+  "problem": "Same as #15: the narrator says 母 about Nam's mother.",
+  "fix": "[N] その夜、ナムさんはお母さんに電話しました。 || Tối hôm đó, Nam gọi điện cho mẹ.",
+  "decision": "fixed: その夜、ナムさんはお母さんに電話しました。"
+ },
+ {
+  "id": "ja.story.overtime#13",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-04.py)",
+  "severity": "P1",
+  "quote": "疲れましたから、甘い物がいいですよ。",
+  "problem": "'疲れましたから' (because I/you got tired) cannot state general advice. It would need 疲れたときは, which is plain form and not allowed in A1-2. Coffee is also not 甘い物 unless it is sweetened.",
+  "fix": "[B] 甘いコーヒーです。元気になりますよ。 || Cà phê ngọt đấy. Uống vào sẽ khoẻ lại.",
+  "decision": "fixed: 甘いコーヒーです。元気になりますよ。"
+ },
+ {
+  "id": "ja.story.summer_sea#11",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-04.py)",
+  "severity": "P1",
+  "quote": "水は少し冷たいです。でも、涼しいです。",
+  "problem": "涼しい describes air or the weather, not water. 'The water is cold but cool' is also self-contradictory. A native says 気持ちがいい.",
+  "fix": "[N] 水は少し冷たいです。でも、きもちがいいです。 || Nước hơi lạnh. Nhưng dễ chịu.",
+  "uncertain": true,
+  "reason": "気持ち is not a lexeme, so it is in kana. Alternatively: でも、いいですね。",
+  "decision": "fixed with the reviewer's alternative: でも、いいですね。 'Nhưng thích thật.' (気持ち is no lexeme)."
+ },
+ {
+  "id": "ja.story.bank_account#9",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-05.py)",
+  "severity": "P1",
+  "quote": "いらっしゃいませ。今日はなんの用事ですか。",
+  "problem": "'なんの用事ですか' is blunt (like 'what do you want?'). No bank clerk says this, and a learner would copy it as polite. The natural form ご用件は is above level.",
+  "fix": "[B] いらっしゃいませ。どうぞこちらへ。 || Xin chào quý khách. Mời chị đi lối này.",
+  "decision": "fixed differently: いらっしゃいませ。こちらへどうぞ。 (a sentence may end on the set phrase どうぞ, not on the particle へ)."
+ },
+ {
+  "id": "ja.story.bank_account#21",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-05.py)",
+  "severity": "P1",
+  "quote": "カードの番号は誰にも言わないでください。 || Chị đừng nói số mật mã của thẻ cho ai biết.",
+  "problem": "Japanese says the card number; Vietnamese says the PIN (暗証番号). The two lines mean different things.",
+  "fix": "[B] カードの番号は誰にも言わないでください。 || Chị đừng nói số thẻ cho ai biết.",
+  "uncertain": true,
+  "reason": "The realistic warning is about the PIN. If wanted: カードのあんしょうばんごうは… (not a lexeme, kana) || …mã PIN… — an authoring choice.",
+  "decision": "fixed: the Vietnamese follows the Japanese ('số thẻ'); a PIN warning would need あんしょうばんごう, a non-lexeme."
+ },
+ {
+  "id": "ja.story.summer_evening#7",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-06.py)",
+  "severity": "P1",
+  "quote": "たくさんの人ですね。",
+  "problem": "'たくさんの人ですね' is not how a native remarks on a crowd. Use 人がたくさんいますね or 人が多いですね.",
+  "fix": "[B] こんばんは、田中さん。人がたくさんいますね。 || Chào chị Tanaka. Đông người quá nhỉ.",
+  "decision": "fixed: 人がたくさんいますね。"
+ },
+ {
+  "id": "ja.read.uj_family",
+  "file": "content/ja/_drafts/staged/content/ja/reception/reading.json (source _generators/ja-reception-s3.py)",
+  "severity": "P1",
+  "quote": "リンさんの家族は父と母と弟です。お父さんは医者です。",
+  "problem": "A third-person text about Linh's family uses humble 父, 母 and then respectful お父さん. That mixes both sets the card ja:concept:family-terms teaches apart, inside one paragraph.",
+  "fix": "リンさんの家族はお父さんとお母さんと弟です。お父さんは医者です。お母さんは看護師です。弟は学生です。犬もいます。",
+  "decision": "fixed: お父さんとお母さんと弟さん … 弟さんは学生です (弟 is humble too)."
+ },
+ {
+  "id": "ja.read.a1cap_msg_mother",
+  "file": "content/ja/_drafts/staged/content/ja/reception/reading.json (source _generators/ja-assessment.py)",
+  "severity": "P1",
+  "quote": "マイさん / … / 母",
+  "problem": "A mother writing to her daughter does not address her as マイさん. A note from a parent opens with マイへ (or the bare name).",
+  "fix": "b0: マイへ (b1, b2 unchanged)",
+  "decision": "fixed: the note opens with マイへ."
+ },
+ {
+  "id": "ja.clip.ix_city_office_0_s",
+  "file": "content/ja/_drafts/staged/content/ja/reception/listening.json; content/ja/_drafts/staged/content/ja/interaction/scenarios.json (ja.scenario.city_office p0.rephraseText, r0.text; source _generators/ja-scenarios-s6.py)",
+  "severity": "P1",
+  "quote": "何をしに来ましたか。",
+  "problem": "From a city-office clerk this sounds rude, like 'What did you come here for?'. It is the rephrase a learner hears when stuck, and it models the wrong register.",
+  "fix": "今日はどんなご用ですか。",
+  "uncertain": true,
+  "reason": "ご用 is not a lexeme. If the lesson rule needs it in kana: 今日はどんなごようですか。 Or reuse the safe 手続きですか? Either way the clip needs a re-record.",
+  "decision": "fixed: the re-prompt is 今日はどんなごようですか。 (ご用 in kana: not a lexeme). The clip text changed (audio is still to be generated for ja)."
+ },
+ {
+  "id": "ja.scenario.call_sick",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json; listening.json ja.clip.ix_call_sick_*",
+  "severity": "P1",
+  "quote": "goal: Gọi cho anh Tanaka … / clip speaker A (jf_alpha, female): はい、田中です。",
+  "problem": "The goal says anh (a man), but the partner voice is female. The learner hears a woman answer as 'anh Tanaka'.",
+  "fix": "goal: Gọi cho chị Tanaka ở chỗ làm, nói bạn bị sốt và hôm nay xin nghỉ. (or recast the clips with voice B)",
+  "decision": "fixed: the goal says chị Tanaka (the partner voice A is female)."
+ },
+ {
+  "id": "ja.scenario.call_late",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json; listening.json ja.clip.ix_call_late_*",
+  "severity": "P1",
+  "quote": "goal: Báo cho chị Kimura … / clip speaker B (jm_kumo, male): もしもし、木村です。",
+  "problem": "The goal says chị (a woman), but the partner voice is male.",
+  "fix": "goal: Báo cho anh Kimura tàu điện bị trễ, và bạn sẽ đến muộn khoảng 20 phút. (or recast with voice A)",
+  "decision": "fixed: the goal says anh Kimura (the partner voice B is male)."
+ },
+ {
+  "id": "ja-vi:unit-k",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json (guidebook; source _generators/ja-units.py)",
+  "severity": "P1",
+  "quote": "Nói đủ trường âm: *おはようございます* có hai chỗ kéo dài.",
+  "problem": "おはようございます has one long vowel (よう). ご-ざ-い has none. This is wrong pronunciation guidance.",
+  "fix": "Nói đủ trường âm: *おはようございます* có một chỗ kéo dài: *よう* (yô-ô).",
+  "decision": "fixed: 'có một chỗ kéo dài, よう (yô-ô)'."
+ },
+ {
+  "id": "ja-vi:unit-q",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json (guidebook; source _generators/ja-units.py)",
+  "severity": "P1",
+  "quote": "*電車が遅れています。十分遅刻します。*",
+  "problem": "十分 without a reading is the classic trap: learners read じゅうぶん ('enough'). With a duration, a native also says 遅れます, not 遅刻します. The course's own rule writes digits before counters.",
+  "fix": "*電車が遅れています。10分ぐらい遅れます。* — Tàu bị trễ, tôi đến muộn khoảng mười phút.",
+  "decision": "fixed: 電車が遅れています。10分（じゅっぷん）ぐらい遅れます。 — 'tôi đến muộn khoảng mười phút'."
+ },
+ {
+  "id": "ja-vi:unit-j",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json (guidebook; source _generators/ja-units.py)",
+  "severity": "P1",
+  "quote": "Đọc chậm, đọc lại, và dùng furigana trên chữ kanji.",
+  "problem": "ja-plan.md §11.6 and REVIEW-NOTES §12 say the story reader shows no furigana yet. The guidebook promises something the reader does not do.",
+  "fix": "Đọc chậm, đọc lại. Chạm vào một từ để xem nghĩa.",
+  "uncertain": true,
+  "reason": "If furigana is wired into the story reader before ship (ja-plan §11.6), the sentence can stay.",
+  "decision": "kept: the story reader shows the lessons' furigana since commit 6a72e3bc (feat(stories): reader shows the lessons' CJK reading display), so the sentence is true; REVIEW-NOTES §12 said otherwise and is corrected."
+ },
+ {
+  "id": "ja.primer.script",
+  "file": "content/ja/primer/script-primer.json (intro.vi; source _generators/ja-primer.py)",
+  "severity": "P1",
+  "quote": "học thuộc bảng kana là đọc được mọi từ",
+  "problem": "This overclaims: kana does not let a learner read words written in kanji, and the same intro says kanji is the third script.",
+  "fix": "…nên học thuộc bảng kana là đọc được mọi từ viết bằng kana; kanji sẽ có cách đọc nhỏ bên trên.",
+  "decision": "fixed: '… là đọc được mọi từ viết bằng kana; trên chữ kanji, ứng dụng ghi cách đọc nhỏ bằng kana.'"
+ },
+ {
+  "id": "ja:concept:katakana-loanwords",
+  "file": "content/ja/_drafts/staged/content/ja/pedagogy/concepts.json (explanation.vi; source _generators/ja-concepts.py)",
+  "severity": "P1",
+  "quote": "nên phụ âm được thêm nguyên âm: bus → バス, bread → パン (từ tiếng Bồ Đào Nha).",
+  "problem": "The Vietnamese text implies パン comes from 'bread' by adding a vowel. パン comes from Portuguese pão and ends in ン. The en text is correct; the vi line misleads.",
+  "fix": "Âm tiếng Nhật hầu như không có phụ âm cuối, nên phụ âm được thêm nguyên âm: bus → バス. Riêng パン (bánh mì) đến từ tiếng Bồ Đào Nha (pão), không phải từ tiếng Anh.",
+  "decision": "fixed: 'bus → バス. Riêng パン (bánh mì) đến từ tiếng Bồ Đào Nha (pão), không phải từ tiếng Anh.'"
+ },
+ {
+  "id": "大丈夫",
+  "file": "content/hanviet/ja.json (source _generators/hanviet-ja.txt)",
+  "severity": "P1",
+  "quote": "大丈夫 だいじょうぶ đại trượng phu (no note)",
+  "problem": "A false friend with no note. Vietnamese đại trượng phu means 'a real man, a hero'; 大丈夫 means 'all right, no problem'. 丈夫 has a note, but this commoner word does not.",
+  "fix": "note: False friend: 大丈夫 means 'it's all right / no problem'; Vietnamese đại trượng phu means a man of great character.",
+  "decision": "fixed: a false-friend note on the P4b entry (ja-lex.py P4B_NOTES, merged into content/hanviet/ja.json)."
+ },
+ {
+  "id": "必要",
+  "file": "content/hanviet/ja.json",
+  "severity": "P1",
+  "quote": "必要 ひつよう tất yếu (no note)",
+  "problem": "A false friend with no note. Vietnamese tất yếu means 'inevitable'; 必要 means 'necessary' (cần thiết).",
+  "fix": "note: False friend: 必要 means necessary (cần thiết); Vietnamese tất yếu means inevitable.",
+  "decision": "fixed: false-friend note (hanviet-ja.txt)."
+ },
+ {
+  "id": "意味",
+  "file": "content/hanviet/ja.json",
+  "severity": "P1",
+  "quote": "意味 いみ ý vị (no note)",
+  "problem": "A false friend with no note. Vietnamese ý vị means 'flavour, charm' (đầy ý vị); 意味 means 'meaning' (ý nghĩa).",
+  "fix": "note: False friend: 意味 means meaning (ý nghĩa); Vietnamese ý vị means flavour or charm.",
+  "decision": "fixed: false-friend note on the P4b entry (P4B_NOTES)."
+ },
+ {
+  "id": "誕生日",
+  "file": "content/hanviet/ja.json",
+  "severity": "P1",
+  "quote": "誕生日 たんじょうび đản sinh nhật — 日: the kana び is the kun reading",
+  "problem": "This is a mixed on+kun word. The rule is that Hán-Việt is shown only for sino words, and ja-plan §6 leaves mixed words out (豚肉, 家賃). Here 'nhật' sits over a kun び.",
+  "fix": "Remove the entry, or keep it only as 誕生 たんじょう đản sinh (if 誕生 becomes a lexeme).",
+  "decision": "fixed: the entry is removed from hanviet-ja.txt (誕生 is no lexeme, and the word is mixed on + kun)."
+ },
+ {
+  "id": "ja:w:otouto",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P1",
+  "quote": "弟は高校の学生です。",
+  "problem": "'高校の学生' is not Japanese: a high-school student is 高校生, and 学生 usually means a university student.",
+  "fix": "弟は高校で勉強しています。 || Em trai tôi đang học cấp ba.",
+  "uncertain": true,
+  "reason": "高校生 is not a lexeme. If it is added: 弟は高校生です。",
+  "decision": "fixed differently: 高校 is no lexeme either; 弟は大学で勉強しています。 'Em trai tôi đang học đại học.'"
+ },
+ {
+  "id": "ja:w:ojiisan",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P1",
+  "quote": "おじいさんは八十歳です。 || Ông tôi tám mươi tuổi.",
+  "problem": "Talking to an outsider about one's own grandfather, a speaker uses 祖父, not おじいさん. The translation 'Ông tôi' teaches the wrong set (see ja:concept:family-terms). おじいさん here reads as 'the old man / his grandfather'.",
+  "fix": "おじいさんは八十歳です。 || Ông cụ tám mươi tuổi.",
+  "decision": "fixed: 'Ông cụ tám mươi tuổi.', and 80歳 by the lexicon reading rule (finding ja:w:gozen)."
+ },
+ {
+  "id": "ja:w:obasan",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P1",
+  "quote": "おばさんはやさしいです。 || Cô tôi hiền.",
+  "problem": "Same uchi/soto error: one's own aunt to an outsider is おば. The gloss itself says 'phụ nữ lớn tuổi'.",
+  "fix": "隣のおばさんはやさしいです。 || Cô hàng xóm hiền lắm.",
+  "decision": "fixed: 隣のおばさんはやさしいです。 'Cô hàng xóm hiền lắm.'"
+ },
+ {
+  "id": "ja:w:juu",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P1",
+  "quote": "十分休みます。 || Nghỉ mười phút.",
+  "problem": "十分 is also the word じゅうぶん ('enough, fully'). The sentence reads 'I rest fully', and with lexicon furigana (十 じゅう + 分 ふん) it shows a wrong reading for じゅっぷん. The same trap occurs in ja:w:aruku (駅まで十分歩きます) and ja:w:modoru (十分後に戻ります).",
+  "fix": "教室に十人います。 || Trong lớp có mười người. — ja:w:aruku: 駅まで10分歩きます。 — ja:w:modoru: 10分後に戻ります。",
+  "decision": "fixed: ja:w:juu 十時に寝ます。; ja:w:aruku 駅まで5分歩きます。; ja:w:modoru 5分で戻ります。 (5分後 would show あと over 後, read ご)."
+ },
+ {
+  "id": "ja:w:kyuu",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P1",
+  "quote": "九時に寝ます。",
+  "problem": "The card teaches 九 = きゅう, but its only example reads 九 as く (九時 くじ). Lexicon furigana would show きゅうじ. The example contradicts its own headword. The same applies to ja:w:nana (七時から仕事です: しちじ, not ななじ) and ja:w:yon (四人で来ました: よにん, not よんにん).",
+  "fix": "ja:w:kyuu: 九つあります。 or 九百円です。 (きゅう) — ja:w:nana: 七つ目の駅です。/ 七人います。(ななにん) — ja:w:yon: 四月に来ました。 is also し; use 四百円です。(よんひゃく)",
+  "uncertain": true,
+  "reason": "Choose examples where the headword keeps its taught reading; the exact sentence is an authoring choice.",
+  "decision": "fixed: 九百円です。 / 七百円です。 / 四百円です。 — each headword keeps its taught reading."
+ },
+ {
+  "id": "ja:w:gozen",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P1",
+  "quote": "午前九時に来てください。 (also 七時/九時/四人/三百/一杯/一本/十歳/十八歳/八十歳/十ページ/三十分 in ja:w:itsumo, choudo, kara, ni-at, taitei, deru, suupaa, kaisha, jugyou, mon, kazoku, guramu, seito, hai-cupful, banana, imouto, boku, ojiisan, peeji, kakaru)",
+  "problem": "Lexicon examples write kanji numerals before counters. Decision 7 bans this in exercises because the run-time furigana (one reading per lexeme) gives くじ→きゅうじ, しちじ→ななじ, よにん→よんにん, さんびゃく→さんひゃく, いっぱい→いちはい, いっぽん→いちほん, じゅっさい→じゅうさい, じゅっぺーじ→じゅうページ, さんじゅっぷん→さんじゅうふん.",
+  "fix": "Apply decision 7 to lexicon examples: digits before counters (9時, 7時, 4人, 300グラム, 1杯, 1本, 10歳, 18歳, 80歳, 10ページ, 30分). Keep kanji numerals only where the compound is itself a lexeme (一人, 二人, 五月, 二十歳). Extend the ja_text reading check to lexicon examples.",
+  "uncertain": true,
+  "reason": "Depends on whether lexicon example sentences get run-time furigana. If they show no readings, the problem is only the reading conflict with the headword (see ja:w:kyuu).",
+  "decision": "fixed systematically: lexicon examples get the same run-time furigana as the lessons, so rule 8 of ja-check-answers.py now runs the lessons' reading check and particle rules on every lexicon example (the kanji numeral headwords show themselves and are read by hand). 108 examples changed in core-*.txt (ja7f one-off edit of the authored rows): numbers before a counter in digits where the stored ruby stays right (DIGIT_COUNTERS gained 本 and 杯 for 2, 4, 5, 7, 9), 何 before です written なん, and examples with a kanji that has no reading reworded (お子さん, 高校, 東口, 降ります, 失礼, 日 …)."
+ },
+ {
+  "id": "ja.story.micro_first_morning#11",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-00.py)",
+  "severity": "P2",
+  "quote": "Anh Minh ở đâu tại Việt Nam?",
+  "problem": "The Vietnamese is a calque. A Vietnamese speaker asks about someone's home region this way: quê ở đâu.",
+  "fix": "[A] ミンさんはベトナムのどこですか。 || Anh Minh quê ở đâu bên Việt Nam?",
+  "decision": "fixed: 'Anh Minh quê ở đâu bên Việt Nam?'"
+ },
+ {
+  "id": "ja.story.micro_where_is_it#15",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-00.py)",
+  "severity": "P2",
+  "quote": "Anh Nam ở đâu tại Việt Nam?",
+  "problem": "The same calque as micro_first_morning#11.",
+  "fix": "[A] はじめまして。ナムさんはベトナムのどこですか。 || Rất vui được gặp anh. Anh Nam quê ở đâu bên Việt Nam?",
+  "decision": "fixed: 'Anh Nam quê ở đâu bên Việt Nam?'"
+ },
+ {
+  "id": "ja.story.power_cut#16",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P2",
+  "quote": "Anh Nam là người ở đâu tại Việt Nam?",
+  "problem": "The same calque.",
+  "fix": "[A] ナムさんはベトナムのどこの人ですか。 || Anh Nam quê ở đâu bên Việt Nam?",
+  "decision": "fixed: 'Anh Nam quê ở đâu bên Việt Nam?'"
+ },
+ {
+  "id": "ja.story.micro_family_photo#12",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-00.py)",
+  "severity": "P2",
+  "quote": "Gia đình em tốt quá nhỉ.",
+  "problem": "'tốt quá' is a literal rendering of いい. Here いい家族 means 'what a lovely family'.",
+  "fix": "[B] いい家族ですね。 || Gia đình em thật tuyệt nhỉ.",
+  "decision": "fixed: 'Gia đình em thật tuyệt nhỉ.'"
+ },
+ {
+  "id": "ja.story.supermarket#1",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-01.py)",
+  "severity": "P2",
+  "quote": "二人は大阪のアパートにいます。 || Hai người sống trong một căn hộ ở Osaka.",
+  "problem": "にいます means 'are (now) at', while 'sống' means 住んでいます. The translation drifts from the Japanese.",
+  "fix": "[N] 二人は大阪のアパートにいます。 || Hai người đang ở căn hộ của mình ở Osaka.",
+  "decision": "fixed: 'Hai người đang ở căn hộ của mình ở Osaka.'"
+ },
+ {
+  "id": "ja.story.supermarket#19",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-01.py)",
+  "severity": "P2",
+  "quote": "いつもこのスーパーは安いですよ。",
+  "problem": "The word order is awkward. The topic comes first: このスーパーは.",
+  "fix": "[B] このスーパーはいつも安いですよ。 || Siêu thị này lúc nào cũng rẻ đấy.",
+  "decision": "fixed: このスーパーはいつも安いですよ。"
+ },
+ {
+  "id": "ja.story.letter_home#17",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-01.py)",
+  "severity": "P2",
+  "quote": "お父さんはどうですか。",
+  "problem": "Asking after someone's health uses お元気ですか. 〜はどうですか asks for an opinion. The same occurs in brothers_wedding#24.",
+  "fix": "[A] お父さんはお元気ですか。 || Bố có khoẻ không ạ?",
+  "decision": "fixed: お父さんはお元気ですか。"
+ },
+ {
+  "id": "ja.story.brothers_wedding#24",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P2",
+  "quote": "お父さんとお母さんはどうですか。",
+  "problem": "The same issue as letter_home#17.",
+  "fix": "[A] お父さんとお母さんはお元気ですか。 || Bố mẹ có khoẻ không anh?",
+  "decision": "fixed: お父さんとお母さんはお元気ですか。"
+ },
+ {
+  "id": "ja.story.neighbours_tea#1",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P2",
+  "quote": "おばあさんの名前はこばやしさんです。",
+  "problem": "'名前は〜さんです' is odd, because さん is not part of a name. zoo#1 has the same pattern (先輩の名前は田中さんです).",
+  "fix": "[N] おばあさんはこばやしさんです。 || Bà tên là Kobayashi. — zoo#1: [N] 先輩は田中さんです。子供が二人います。",
+  "decision": "fixed: おばあさんはこばやしさんです。 and 先輩は田中さんです。"
+ },
+ {
+  "id": "ja.story.neighbours_tea#20",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P2",
+  "quote": "ナムさんの子供は何人ですか。",
+  "problem": "Asking about someone else's children takes お子さん. The same occurs in zoo#16 (ナムさんの子供も動物が好きですか).",
+  "fix": "[A] ナムさんのお子さんは何人ですか。 — zoo#16: [A] ナムさんのお子さんも動物が好きですか。",
+  "uncertain": true,
+  "reason": "お子さん is not a lexeme. In kana: おこさん. Or keep 子供 at this band.",
+  "decision": "fixed: おこさん in kana, mapped to the lexeme 子供 in each story's tokenMap (neighbours_tea#20, zoo#16)."
+ },
+ {
+  "id": "ja.story.watch_for_father#11",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P2",
+  "quote": "Ba vạn yên ạ. / #14 Chiếc này một vạn yên.",
+  "problem": "'vạn' is old-fashioned in everyday Vietnamese prices, and q1 of the same story says 10.000 yên. The concept card numbers.vi already explains 万 = vạn, so the translation can be natural.",
+  "fix": "#11: [A] 3万円です。 || Ba mươi nghìn yên ạ. — #14: [A] はい。こちらは1万円です。 || Có ạ. Chiếc này mười nghìn yên.",
+  "decision": "fixed: 'Ba mươi nghìn yên ạ.' and 'Chiếc này mười nghìn yên.' (the Japanese already wrote 3万円, 1万円)."
+ },
+ {
+  "id": "ja.story.watch_for_father#18",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P2",
+  "quote": "白の時計をお願いします。 / #19 白の時計を買いました。",
+  "problem": "Before a noun the い-adjective is the default (白い時計). The guidebook of unit n teaches exactly this.",
+  "fix": "#18: [B] じゃあ、白い時計をお願いします。 — #19: [N] トゥアンさんは白い時計を買いました。",
+  "decision": "kept: 白い is an A1-2 word, beyond this A1-1 story; 白の時計 (a colour noun with の) is grammatical."
+ },
+ {
+  "id": "ja.story.dorm_rules#16",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P2",
+  "quote": "何かありませんか。 || Em có hỏi gì không?",
+  "problem": "何かありませんか is vague ('anything missing?'). The usual line is 何か質問はありますか, which the guidebook of unit l teaches.",
+  "fix": "[B] 何か質問はありますか。 || Em có câu hỏi gì không?",
+  "decision": "kept (Japanese): 質問 is an A1-2 word, beyond the A1-1 band; 何かありませんか stays and the Vietnamese now says 'Em còn gì muốn hỏi không?'."
+ },
+ {
+  "id": "ja.story.hokkaido_winter#24",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-04.py)",
+  "severity": "P2",
+  "quote": "ホアさんはどの季節が好きですか。 || Hoa thích mùa nào nhất?",
+  "problem": "Vietnamese adds 'nhất' and the answer at #25 uses いちばん, but the question lacks it.",
+  "fix": "[A] ホアさんはどの季節がいちばん好きですか。 || Hoa thích mùa nào nhất?",
+  "decision": "fixed: どの季節がいちばん好きですか。"
+ },
+ {
+  "id": "ja.story.bag_on_the_train#2",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-04.py)",
+  "severity": "P2",
+  "quote": "駅で急いで電車から出ました。",
+  "problem": "Getting off a train is 電車を降りる. 電車から出る sounds like leaving a building.",
+  "fix": "[N] 駅で急いで電車を降りました。 || Đến ga, anh vội vàng xuống tàu.",
+  "uncertain": true,
+  "reason": "降ります is dropped from inflection keys (ふります/おります). Check whether 降りました is also unreadable; if so keep the line.",
+  "decision": "fixed differently: 降りました has no furigana (降り is shared by 降る and 降りる), 降りて has: 駅で急いで電車を降りて、外に出ました。"
+ },
+ {
+  "id": "ja.story.interview#3",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-05.py)",
+  "severity": "P2",
+  "quote": "トイレで服を見ました。",
+  "problem": "服を見ました means 'looked at clothes'. The intended 'checked her outfit' is 確認しました (a lexeme).",
+  "fix": "[N] 面接の前に、トイレで服を確認しました。 || Trước buổi phỏng vấn, cô vào nhà vệ sinh kiểm tra lại quần áo.",
+  "decision": "fixed: 面接の前に、トイレで服を確認しました。"
+ },
+ {
+  "id": "ja.story.broken_machine#22",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-06.py)",
+  "severity": "P2",
+  "quote": "壊れた機械を触るのは本当に危ないです。",
+  "problem": "The story and the lessons teach 機械に触る (#6, #9). Switching to を in the same story confuses the particle being drilled.",
+  "fix": "[A] 壊れた機械に触るのは本当に危ないです。",
+  "decision": "fixed: 壊れた機械に触るのは本当に危ないです。"
+ },
+ {
+  "id": "ja.story.library#20",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-04.py)",
+  "severity": "P2",
+  "quote": "本は来週の日曜日までに返してください。 || Anh trả sách trước chủ nhật tuần sau nhé.",
+  "problem": "までに means 'by' and includes Sunday; Vietnamese 'trước chủ nhật' excludes it. q1 has the same wording.",
+  "fix": "|| Anh trả sách chậm nhất là chủ nhật tuần sau nhé. — q1 option: *Chậm nhất là chủ nhật tuần sau",
+  "decision": "fixed: 'chậm nhất là chủ nhật tuần sau', in the sentence and the q1 option."
+ },
+ {
+  "id": "ja.story.library#25",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-04.py)",
+  "severity": "P2",
+  "quote": "[B] 来週、また図書館へ行きましょう。",
+  "problem": "Tuấn is alone. 〜ましょう addressed to nobody reads as an invitation.",
+  "fix": "[N] 来週、トゥアンさんはまた図書館へ行きます。 || Tuần sau Tuấn sẽ lại đến thư viện.",
+  "decision": "fixed: [N] 来週、トゥアンさんはまた図書館へ行きます。 'Tuần sau Tuấn sẽ lại đến thư viện.'"
+ },
+ {
+  "id": "ja.story.garbage_day#8",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-03.py)",
+  "severity": "P2",
+  "quote": "火曜日と金曜日は食べ物のごみです。",
+  "problem": "Japanese sorting calendars say 燃えるごみ; food waste goes into it. The lessons and the JLPT notice already teach もえるごみ, and a learner should recognise the word on the real calendar. #3 'ごみの所' is also unnatural (ごみ置き場).",
+  "fix": "#8: [A] 火曜日と金曜日はもえるごみです。 || Thứ ba và thứ sáu là ngày đổ rác cháy được. — q0: Ngày nào đổ rác cháy được? — #3: [N] アパートの前にごみの箱があります。 || Trước căn hộ có chỗ để rác.",
+  "decision": "partly fixed: #3 is アパートの前にごみの箱があります。 'Trước căn hộ có thùng rác.' #8 kept: もえる is a plain verb form, which no story before band A2-1 may contain, and 燃える is no lexeme; the lessons and the JLPT notice teach もえるごみ."
+ },
+ {
+  "id": "ja.story.train_stops#22",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-03.py)",
+  "severity": "P2",
+  "quote": "Vụ tai nạn vất vả cho em quá.",
+  "problem": "The Vietnamese is ungrammatical and a calque of 事故は大変でしたね.",
+  "fix": "|| Không sao. Gặp sự cố như thế thì vất vả thật.",
+  "decision": "fixed differently: 'Không sao. Gặp tai nạn như vậy chắc vất vả lắm.' (事故 is an accident; sự cố is the false friend its Hán-Việt note now names)."
+ },
+ {
+  "id": "ja.story.letter_after_a_year#22",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-06.py)",
+  "severity": "P2",
+  "quote": "二人に会いたいです。",
+  "problem": "Writing to one's parents, '二人に' is odd. A native writes お父さんとお母さんに.",
+  "fix": "[A] お父さんとお母さんに会いたいです。 || Con nhớ bố mẹ lắm.",
+  "decision": "fixed: お父さんとお母さんに会いたいです。"
+ },
+ {
+  "id": "ja.story.ramen#17",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-01.py)",
+  "severity": "P2",
+  "quote": "Thêm một cốc bia và một trà lạnh.",
+  "problem": "The classifier is missing before trà.",
+  "fix": "|| Thêm một cốc bia và một cốc trà lạnh.",
+  "decision": "fixed: 'Thêm một cốc bia và một cốc trà lạnh.'"
+ },
+ {
+  "id": "ja.story.hotel_tokyo#5",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-01.py)",
+  "severity": "P2",
+  "quote": "Xin chào mừng chị.",
+  "problem": "This is translationese for いらっしゃいませ. The course glosses it elsewhere as 'Xin chào quý khách'.",
+  "fix": "|| Chị Lan phải không ạ. Xin chào quý khách.",
+  "decision": "fixed: 'Chị Lan phải không ạ. Xin chào quý khách.'"
+ },
+ {
+  "id": "ja.story.umbrella#13",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-02.py)",
+  "severity": "P2",
+  "quote": "外はもう晴れです。",
+  "problem": "晴れです suits forecasts (明日は晴れです). A change that has just happened is 晴れています.",
+  "fix": "[N] 外はもう晴れています。 || Bên ngoài trời đã nắng.",
+  "uncertain": true,
+  "reason": "晴れる as a verb may not be in the A1-1 band; keep 晴れです if not.",
+  "decision": "kept: 晴れる is an A2-1 word, beyond this A1-1 story; 晴れです stays."
+ },
+ {
+  "id": "ja.story.interview#24",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (source _generators/ja-stories-05.py)",
+  "severity": "P2",
+  "quote": "Em cảm ơn ạ. Mong anh giúp đỡ.",
+  "problem": "At the end of an interview, よろしくお願いします means 'please consider me'. 'Mong anh giúp đỡ' is the self-introduction sense.",
+  "fix": "|| Em cảm ơn ạ. Rất mong được công ty xem xét.",
+  "decision": "fixed: 'Em cảm ơn ạ. Rất mong được công ty xem xét.'"
+ },
+ {
+  "id": "ja.story.micro_first_class#10",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (all 45 stories)",
+  "severity": "P2",
+  "quote": "じゃあ、あなたは? / これです! (27 sentences)",
+  "problem": "The Japanese strings use half-width ? and ! (27 story sentences, none full-width). Japanese typesetting uses ？ and ！.",
+  "fix": "Replace ? ! with ？ ！ in Japanese text (story builder or generators); leave Vietnamese text unchanged.",
+  "decision": "fixed in the story builder: ja_stories_lib.story writes ？ and ！ in Japanese text (27 sentences); the story check flags ASCII ? or ! there."
+ },
+ {
+  "id": "ja.story.supermarket#4",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json (family dialogues in supermarket, letter_home, brothers_wedding, money_home)",
+  "severity": "P2",
+  "quote": "ホアさんは何が食べたいですか。 (husband to wife)",
+  "problem": "Spouses and siblings speak です/ます and address each other with さん. Natives use plain speech at home. This follows decision 20 (polite throughout), but a native reader notices it.",
+  "fix": "Keep for A1, and add one sentence to the guidebook of unit 3 or the card ja:concept:politeness: 'Trong truyện, mọi người nói です/ます cho bạn dễ học; trong gia đình người Nhật thường nói thân mật hơn.'",
+  "uncertain": true,
+  "reason": "Register is a coordinator decision (ja-plan §10 decision 20).",
+  "decision": "fixed: the unit j guidebook, which introduces the stories, says 'Trong truyện, mọi người nói です/ます cho bạn dễ học; trong gia đình, người Nhật thường nói thân mật hơn.' The stories stay polite (decision 20)."
+ },
+ {
+  "id": "ja:concept:aru-iru",
+  "file": "content/ja/_drafts/staged/content/ja/pedagogy/concepts.json (exceptions[0].vi)",
+  "severity": "P2",
+  "quote": "Rô-bốt, xe chạy được vẫn dùng あります.",
+  "problem": "Natives often say ロボットがいる, and a waiting bus or taxi often takes いる (タクシーがいます). Stated as a rule, the line is not reliable.",
+  "fix": "Cây, hoa là vật: あります. Xe cộ, máy móc thường dùng あります.",
+  "decision": "fixed: 'Cây, hoa là vật: あります. Xe cộ, máy móc thường dùng あります.'"
+ },
+ {
+  "id": "ja:concept:wa-ga",
+  "file": "content/ja/_drafts/staged/content/ja/pedagogy/concepts.json",
+  "severity": "P2",
+  "quote": "わたしはグエンです。 || Tôi là Nguyễn. / exceptions: Trong câu phủ định và câu so sánh…",
+  "problem": "No Vietnamese introduces himself by family name ('Tôi là Nguyễn'), so the line jars in Vietnamese. The same occurs in the guidebook of unit 2 and unit v. 'câu so sánh' translates 'contrast' wrongly: so sánh means comparison.",
+  "fix": "example: わたしはナムです。 || Tôi là Nam. — exceptions.vi: Trong câu phủ định và câu nhấn sự đối lập, が thường đổi thành は: テレビはありません.",
+  "decision": "fixed: example わたしはナムです。 'Tôi là Nam.'; the exception says 'câu nhấn sự đối lập'; the sov-subject card had the same 'so sánh' and is fixed too. Unit 2 uses ナム; unit v keeps もしもし、グエンです with 'A lô, Nguyễn đây ạ.' and a note that at work you give your family name."
+ },
+ {
+  "id": "ja:concept:noun-desu",
+  "file": "content/ja/_drafts/staged/content/ja/pedagogy/concepts.json (explanation.vi)",
+  "severity": "P2",
+  "quote": "Tiếng Nhật không có \"một\" như a/an",
+  "problem": "This is an English contrast (TRANSLATION-STYLE: use the Vietnamese reality). Vietnamese does say 'một nhân viên'. The same sentence is in the guidebook of unit 2 ('như tiếng Anh').",
+  "fix": "Tiếng Nhật không cần thêm \"một\" trước danh từ: 会社員です là \"tôi là nhân viên công ty\".",
+  "decision": "fixed: card and unit 2 say 'Tiếng Nhật không cần thêm \"một\" trước danh từ'."
+ },
+ {
+  "id": "ja:concept:masu-form",
+  "file": "content/ja/_drafts/staged/content/ja/pedagogy/concepts.json (examples[3])",
+  "severity": "P2",
+  "quote": "今朝、ご飯を食べませんでした。 || Sáng nay tôi đã không ăn cơm.",
+  "problem": "'đã không' is translationese. With a time word Vietnamese just says 'không'. The lessons use the same pattern (ja-vi:ub-l0-e12, ub-l1-e14, ub-l3-e10).",
+  "fix": "|| Sáng nay tôi không ăn sáng. — ub-l1-e14: Hôm nay tôi chẳng mua gì cả. — ub-l0-e12: Hôm qua tôi không xem ti vi. — ub-l3-e10: Tuần trước tôi không đọc báo.",
+  "decision": "fixed: the card example and six lesson translations with a time word drop 'đã' (ub-l0-e12, ub-l1-e14, ub-l3-e10 as named, and the 帰る, 食べる clozes and one select of the same pattern)."
+ },
+ {
+  "id": "ja:concept:greetings",
+  "file": "content/ja/_drafts/staged/content/ja/pedagogy/concepts.json (explanation.vi); guidebooks ja-vi:unit-1, ja-vi:unit-k",
+  "severity": "P2",
+  "quote": "おはようございます dùng khi bắt đầu ca, kể cả ca chiều. / unit-k: bất kể giờ nào",
+  "problem": "This holds in many shift workplaces, not all. STYLE-vi §4 allows 'luôn' only with evidence.",
+  "fix": "Ở nhiều chỗ làm theo ca, おはようございます dùng khi bắt đầu ca, kể cả ca chiều. — unit-k: khi bắt đầu ca (ở nhiều chỗ làm, kể cả ca chiều)",
+  "decision": "fixed: 'Ở nhiều chỗ làm theo ca …' in the card (vi and en), unit 1 and unit k."
+ },
+ {
+  "id": "ja:concept:time-dates",
+  "file": "content/ja/_drafts/staged/content/ja/pedagogy/concepts.json (explanation.vi); guidebooks ja-vi:unit-d, ja-vi:unit-m",
+  "severity": "P2",
+  "quote": "Ngày mùng 1 đến 10 và ngày 20 có cách đọc riêng",
+  "problem": "The 14th and 24th (じゅうよっか, にじゅうよっか) are also irregular, and the guidebook of unit m uses 五月十四日（ごがつじゅうよっか） right after the same claim.",
+  "fix": "Ngày mùng 1 đến 10, ngày 14, 20 và 24 có cách đọc riêng: ついたち, 二日 ふつか… 十四日 じゅうよっか, 二十日 はつか.",
+  "decision": "fixed: days 14 and 24 in the card (vi and en), unit d and unit m."
+ },
+ {
+  "id": "ja:concept:kosoado",
+  "file": "content/ja/_drafts/staged/content/ja/pedagogy/concepts.json (exceptions[0].vi)",
+  "severity": "P2",
+  "quote": "Không nói この một mình: この本 là đúng, \"これ本\" là sai.",
+  "problem": "Two rules are merged into one, and the example shows これ, not この.",
+  "fix": "この luôn đi kèm danh từ: この本. これ đứng một mình: これは本です. Không nói \"これ本\".",
+  "decision": "fixed: 'この luôn đi kèm danh từ: この本. これ đứng một mình: これは本です. Không nói \"これ本\".'"
+ },
+ {
+  "id": "ja-vi:unit-2",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json (guidebook)",
+  "severity": "P2",
+  "quote": "*です* luôn đứng cuối câu",
+  "problem": "か, ね and よ follow です (学生ですか, 安いですね), and the course teaches them. 'luôn' breaks STYLE-vi §4.",
+  "fix": "*です* đứng ở cuối câu (chỉ có か, ね, よ có thể theo sau) và làm câu lịch sự.",
+  "decision": "fixed: '*です* đứng ở cuối câu (chỉ *か*, *ね*, *よ* có thể theo sau)'."
+ },
+ {
+  "id": "ja-vi:unit-u",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json (guidebook)",
+  "severity": "P2",
+  "quote": "Tiếng Nhật \"uống\" thuốc cả với thuốc viên.",
+  "problem": "This is an English-based remark ('take' vs 'drink'). Vietnamese already says 'uống thuốc', so the note confuses.",
+  "fix": "Remove the sentence, or: Giống tiếng Việt, tiếng Nhật nói \"uống\" thuốc: 薬を飲みます.",
+  "decision": "fixed: 'Giống tiếng Việt, tiếng Nhật nói \"uống\" thuốc: 薬を飲みます.'"
+ },
+ {
+  "id": "ja-vi:unit-r",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json (guidebook)",
+  "severity": "P2",
+  "quote": "Khi mới đến Nhật, bạn khai báo địa chỉ ở *市役所*",
+  "problem": "In large cities (Osaka, Nagoya, Tokyo's wards) the office is 区役所, and there is a 14-day deadline. These are useful, accurate facts for this audience.",
+  "fix": "Khi mới đến Nhật hay chuyển nhà, trong 14 ngày bạn khai báo địa chỉ ở *市役所* (ở thành phố lớn là *区役所*, くやくしょ) và mang theo *在留カード*.",
+  "decision": "fixed: 14 days, 区役所 in large cities, the residence card."
+ },
+ {
+  "id": "ja.primer.script",
+  "file": "content/ja/primer/script-primer.json (sections[hiragana-basic].explanation.vi; sections[katakana-long-vowels].explanation.vi)",
+  "severity": "P2",
+  "quote": "え là «ê», お là «ô» / コーヒー «kô-hi», ケーキ «kê-ki»",
+  "problem": "STYLE-vi §1 requires 'gần giống' for Vietnamese approximations. Japanese え and お lie between e/ê and o/ô. The katakana approximations drop the very length the section teaches.",
+  "fix": "え gần «ê», お gần «ô» — コーヒー «kô-hii», ケーキ «kêê-ki» (nguyên âm có ー kéo dài gấp đôi).",
+  "decision": "fixed: え gần «ê», お gần «ô»; コーヒー «kô-hii», ケーキ «kêê-ki»."
+ },
+ {
+  "id": "社長",
+  "file": "content/hanviet/ja.json",
+  "severity": "P2",
+  "quote": "社長 しゃちょう xã trưởng (no note)",
+  "problem": "A mild false friend: Vietnamese xã trưởng is a village or commune head. 社長 is a company president (giám đốc).",
+  "fix": "note: 社長 is a company president (giám đốc); Vietnamese xã trưởng is a commune head.",
+  "decision": "fixed: false-friend note added to the Unihan note (hanviet-ja.txt)."
+ },
+ {
+  "id": "社員",
+  "file": "content/hanviet/ja.json",
+  "severity": "P2",
+  "quote": "社員 しゃいん xã viên (no note)",
+  "problem": "Vietnamese xã viên is a cooperative member. 社員 is a company employee.",
+  "fix": "note: 社員 is a company employee; Vietnamese xã viên is a member of a cooperative.",
+  "decision": "fixed: false-friend note (hanviet-ja.txt)."
+ },
+ {
+  "id": "家族",
+  "file": "content/hanviet/ja.json",
+  "severity": "P2",
+  "quote": "家族 かぞく gia tộc (no note)",
+  "problem": "Vietnamese gia tộc means clan or lineage. 家族 is an ordinary family (gia đình).",
+  "fix": "note: 家族 is a family (gia đình); Vietnamese gia tộc is a clan.",
+  "decision": "fixed: false-friend note on the P4b entry (P4B_NOTES)."
+ },
+ {
+  "id": "約束",
+  "file": "content/hanviet/ja.json",
+  "severity": "P2",
+  "quote": "約束 やくそく ước thúc (no note)",
+  "problem": "Vietnamese ước thúc (archaic) means to restrain. 約束 is a promise or an appointment (lời hứa, cuộc hẹn).",
+  "fix": "note: 約束 is a promise or an appointment; Vietnamese ước thúc means to restrain.",
+  "decision": "fixed: false-friend note added to the Unihan note."
+ },
+ {
+  "id": "事故",
+  "file": "content/hanviet/ja.json",
+  "severity": "P2",
+  "quote": "事故 じこ sự cố (no note)",
+  "problem": "Vietnamese sự cố is an incident or breakdown. 事故 is an accident (tai nạn). The stories translate it as 'tai nạn', which is correct.",
+  "fix": "note: 事故 is an accident (tai nạn); Vietnamese sự cố is closer to an incident or breakdown.",
+  "decision": "fixed: false-friend note (hanviet-ja.txt)."
+ },
+ {
+  "id": "学生",
+  "file": "content/hanviet/ja.json",
+  "severity": "P2",
+  "quote": "学生 がくせい học sinh (no note)",
+  "problem": "学生 usually means a university student; Vietnamese học sinh is a school pupil. The stories translate it either way.",
+  "fix": "note: 学生 usually means a university student (sinh viên); a school pupil is 生徒.",
+  "decision": "fixed: note 'Partly a false friend …' on the P4b entry (P4B_NOTES)."
+ },
+ {
+  "id": "ja.clip.ix_ask_station_0",
+  "file": "content/ja/_drafts/staged/content/ja/reception/listening.json; scenarios.json ja.scenario.ask_station p0",
+  "severity": "P2",
+  "quote": "はい、なんですか。",
+  "problem": "From a stranger who has been stopped in the street, this sounds curt. The soft form is はい、何でしょうか.",
+  "fix": "はい、なんでしょうか。",
+  "decision": "fixed: はい、なんでしょうか。 (the clip text changed; audio is still to be generated for ja)."
+ },
+ {
+  "id": "ja.clip.ix_cp6_call_office_1",
+  "file": "content/ja/_drafts/staged/content/ja/reception/listening.json; scenarios.json ja.scenario.cp6_call_office p1",
+  "severity": "P2",
+  "quote": "田中は今、いません。後で電話してください。",
+  "problem": "The receptionist tells an outside caller to call back. A native offers 後でもう一度お電話ください or asks for a message. 田中 without さん is correct uchi/soto.",
+  "fix": "すみません。田中は今、いません。後でもう一度お電話ください。",
+  "decision": "fixed differently: すみません。田中は今、いません。後でまたお電話ください。 (もう一度 has no reading outside the set phrase もう一度お願いします)."
+ },
+ {
+  "id": "ja.scenario.cp6_clinic_cough",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json",
+  "severity": "P2",
+  "quote": "goal: Nói với y tá bạn bị ho… / t_miss: 看護師と話してください。",
+  "problem": "The partner is the nurse per the goal, yet the fail line tells the learner to talk to the nurse.",
+  "fix": "t_miss: わかりました。少し待ってください。 (or goal: Nói với bác sĩ…)",
+  "decision": "fixed: t_miss is わかりました。少し待ってください。"
+ },
+ {
+  "id": "ja.scenario.a1cap_first_day",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json",
+  "severity": "P2",
+  "quote": "goal: Trả lời đàn anh … / clips speaker A (female)",
+  "problem": "The goal says đàn anh (male), but the voice is female.",
+  "fix": "goal: Trả lời đàn chị trong ngày đầu đi làm.",
+  "decision": "fixed: the goal says đàn chị (the partner voice A is female)."
+ },
+ {
+  "id": "ja.scenario.clinic_reception",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json (l0.prompt, l0b.prompt)",
+  "severity": "P2",
+  "quote": "Hãy nói đúng, đây là lần đầu.",
+  "problem": "The Vietnamese is awkward ('nói đúng' reads as 'speak correctly').",
+  "fix": "Hãy trả lời: đúng, đây là lần đầu bạn đến.",
+  "decision": "fixed: 'Hãy trả lời: đúng, đây là lần đầu bạn đến.'"
+ },
+ {
+  "id": "ja.write.r_form_clinic",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json (also ja.write.cp5_form_clinic, ja-vi:ur-l2-e0)",
+  "severity": "P2",
+  "quote": "formFields label 誕生日",
+  "problem": "Japanese clinic and office forms say 生年月日 (with the year). The guidebook of unit r teaches 生年月日, and ja-plan lists it for simpleForm, but the form shows 誕生日.",
+  "fix": "label: 生年月日, cue 'ngày 20 tháng 9 năm 2000', variant 2000年9月20日 (or keep 誕生日 and say in the instruction that real forms write 生年月日)",
+  "uncertain": true,
+  "reason": "A changed label needs the rubric variants and the answer-key reviewer to agree.",
+  "decision": "kept: the task asks for day and month only (the cue is 'ngày 20 tháng 9'), which 誕生日 names; 生年月日 would need a year in the cue and the rubric. The unit r guidebook still teaches 生年月日 for real forms."
+ },
+ {
+  "id": "ja:w:kureru",
+  "file": "content/ja/lexicon/lexemes.json (also ja:w:tanomu)",
+  "severity": "P2",
+  "quote": "Anh khoá trên cho tôi bánh kẹo. / Tôi nhờ anh khoá trên việc.",
+  "problem": "'khoá trên' is a school senior. The course glossary for 先輩 is 'đàn anh, đàn chị' (ja:w:senpai, guidebooks). The tanomu line is also clumsy.",
+  "fix": "kureru: Đàn anh cho tôi bánh kẹo. — tanomu: Tôi nhờ đàn anh một việc.",
+  "decision": "fixed: 'Đàn anh cho tôi bánh kẹo.' / 'Tôi nhờ đàn anh một việc.'"
+ },
+ {
+  "id": "ja:w:itadakimasu",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "vi=xin phép ăn (câu trước bữa ăn)",
+  "problem": "'xin phép ăn' is not how a Vietnamese speaker names it, and the gloss appears as a lesson option (ja-vi:u0-l2-e2). The Vietnamese equivalent is the 'mời' formula.",
+  "fix": "vi: câu nói trước khi ăn (≈ mời cả nhà ăn cơm)",
+  "decision": "fixed: gloss 'câu nói trước khi ăn (≈ mời cả nhà ăn cơm)'."
+ },
+ {
+  "id": "ja:w:kekkou",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "vi=đủ rồi; khá",
+  "problem": "The learner meets 結構です first as a polite refusal (the konbini lessons and scenario), so that sense should come first.",
+  "fix": "vi: không cần ạ (từ chối lịch sự); khá",
+  "decision": "fixed: gloss 'không cần ạ (từ chối lịch sự); khá'."
+ },
+ {
+  "id": "ja:w:donata",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "失礼ですが、どなたですか。 || Xin lỗi, ngài là ai ạ?",
+  "problem": "'ngài' is far too formal; どなた is everyday polite.",
+  "fix": "|| Xin lỗi, anh/chị là ai ạ?",
+  "decision": "fixed: すみません、どなたですか。 'Xin lỗi, anh/chị là ai ạ?' (失礼 alone has no reading)."
+ },
+ {
+  "id": "ja:w:peeji",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "十ページを開けてください。",
+  "problem": "A book is opened with 開いてください (開ける is for doors and lids). Write the number in digits (see ja:w:gozen).",
+  "fix": "10ページを開いてください。 || Hãy mở trang mười.",
+  "uncertain": true,
+  "reason": "開く may not be a lexeme. If not: 10ページを見てください。",
+  "decision": "fixed with the reviewer's alternative: 10ページを見てください。 (開く is the lexeme あく)."
+ },
+ {
+  "id": "ja:w:shingou",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "信号を渡ってください。 || Hãy qua đèn giao thông.",
+  "problem": "The Vietnamese is unnatural, and the example does not show what a learner needs (turning or waiting at the light).",
+  "fix": "信号を右に曲がってください。 || Đến đèn giao thông thì rẽ phải.",
+  "decision": "fixed: 信号を右に曲がってください。 'Đến đèn giao thông thì rẽ phải.'"
+ },
+ {
+  "id": "ja:w:koucha",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "vi=hồng trà",
+  "problem": "Everyday Vietnamese says 'trà đen' for black tea; 'hồng trà' is a shop or Hán-Việt word.",
+  "fix": "vi: trà đen (hồng trà)",
+  "decision": "fixed: gloss 'trà đen (hồng trà)', and the example says trà đen."
+ },
+ {
+  "id": "ja:w:okaasan",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "お母さんは何歳ですか。",
+  "problem": "Asking about someone's mother's age politely uses おいくつ.",
+  "fix": "お母さんはおいくつですか。 || Mẹ bạn bao nhiêu tuổi?",
+  "decision": "fixed: お母さんはおいくつですか。"
+ },
+ {
+  "id": "ja:w:man",
+  "file": "content/ja/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "一万円をください。 || Cho tôi mười nghìn yên.",
+  "problem": "There is no plausible situation for this line. A price is what a learner hears.",
+  "fix": "これは一万円です。 || Cái này mười nghìn yên.",
+  "decision": "fixed: これは一万円です。 'Cái này mười nghìn yên.'"
+ },
+ {
+  "id": "ja-vi:ue-l2-e3",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json (source _generators/ja-lessons-s2.py)",
+  "severity": "P2",
+  "quote": "bố (người khác",
+  "problem": "The option text is missing its closing parenthesis.",
+  "fix": "bố (người khác)",
+  "decision": "fixed in the generator library (g(), see the answers finding ja-vi:u2-l3-e2)."
+ },
+ {
+  "id": "ja-vi:up-l1-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json (also ja-vi:up-l3-e1)",
+  "severity": "P2",
+  "quote": "audioTarget: 日本語は難しいですでも楽しいです / スーパーでパンを買いましたそれからうちへ帰りました",
+  "problem": "The audio text joins two sentences without 。、, so TTS reads them run-on. The tokens drop punctuation, but the audio script should keep it.",
+  "fix": "日本語は難しいです。でも、楽しいです。 — スーパーでパンを買いました。それから、うちへ帰りました。",
+  "decision": "fixed in the generator library: a word bank's audio script breaks the sentence before a linking word (でも, それから, そして, だから, じゃあ) and puts a comma after it: 日本語は難しいです。でも、楽しいです."
+ },
+ {
+  "id": "ja-vi:uj-l0-e8",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P2",
+  "quote": "夜は___で晩ご飯を食べます。 => 食堂 || Buổi tối Nam ăn tối ở nhà ăn.",
+  "problem": "The same lesson's reading ja.read.uj_nam_day and question uj-l0-e2 say Nam eats dinner in the dorm (寮). The fill-in teaches the opposite fact about the same Nam.",
+  "fix": "translation: Buổi tối tôi ăn tối ở nhà ăn. (drop 'Nam'), or key 寮 with options 寮 / 銀行 / 空港 / 郵便局",
+  "decision": "fixed: the key is 寮 (options 寮 / 銀行 / 空港 / 郵便局), 'Buổi tối Nam ăn tối ở ký túc xá.'"
+ },
+ {
+  "id": "ja-vi:ui-l1-e10",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P2",
+  "quote": "はし___いりますか。",
+  "problem": "Bare はし is ambiguous (bridge, edge or chopsticks). Staff say お箸, and the guidebook of unit i writes お箸.",
+  "fix": "おはし___いりますか。 / audioTarget おはしはいりますか。",
+  "decision": "fixed: おはし___いりますか。"
+ },
+ {
+  "id": "_summary",
+  "severity": "info",
+  "file": "C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\C--Users-MSI-Documents-app-hoc-ngoai-ngu\\82ea6b33-e22d-4a2d-907b-9b4441f9e202\\scratchpad\\ja-review\\findings-language.json",
+  "problem": "D-10 language pass, ja-vi, reviewer persona: native Vietnamese, native-level Japanese teacher. Read-only on C:\\src\\lft-ja.",
+  "linesRead": {
+   "stories": "45/45 stories: 1084 sentences + 135 questions + 45 blurbs (all)",
+   "conceptCards": "25/25 (all fields vi + examples)",
+   "kanaPrimer": "intro + 8 sections (tables, explanations, notes) + 20/20 checkpoint items (all)",
+   "hanViet": "160/160 entries, including all 70 with a note (15 false-friend notes)",
+   "readings": "38/38 (all blocks)",
+   "listeningClips": "268/268 (all segments)",
+   "scenarios": "21/21 (all nodes, goals, prompts, variants)",
+   "speechItems": "52/52",
+   "writingTasks": "35/35",
+   "guidebooks": "27/27 units + word lists",
+   "lexiconGlossesAndExamples": "319/957 (33 %) read line by line: every 3rd lexeme in file order (index % 3 == 0); plus a regex scan of all 957 examples for relative-time+に, kanji numeral+counter and 十分",
+   "lessonExercises": "342/1024 (33 %) read: every 3rd exercise in course order across all 108 lessons; plus a regex scan of every Japanese string in all 1024 exercises (wrong-particle hits were all distractors)"
+  },
+  "counts": {
+   "P0": 3,
+   "P1": 40,
+   "P2": 64,
+   "total": 107,
+   "uncertain": 17
+  },
+  "method": "Dumps built by scripts in the session scratchpad (ja-lang-work); fixes name the staged file and, for stories, the generator that is the source of truth.",
+  "decision": "not a finding: the reviewer's scope summary."
+ }
+]

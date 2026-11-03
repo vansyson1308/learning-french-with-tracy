@@ -13,6 +13,7 @@ from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ja_layers import DRAFTS, check, check_vi, clip, content_refs, refs, report, write_jsonl  # noqa: E402
+from ja_text import natural_spellings  # noqa: E402
 
 OBJ = {"k": "ja.obj.speaking.formulaic", "l": "ja.obj.speaking.self_intro", "m": "ja.obj.speaking.give_info", "n": "ja.obj.speaking.describe"}
 FAM = {"k": "formulaic_exchange", "l": "self_introduction", "m": "information_giving", "n": "description"}
@@ -27,14 +28,17 @@ TEACHING = {
   ("otsukare", "situation_prompt", "Một đồng nghiệp đi ngang qua bạn trong giờ làm. Hãy chào theo cách ở chỗ làm.", "お疲れさまです。", ["お疲れ様です"], None, None),
   ("thanks", "situation_prompt", "Đàn anh giúp bạn khiêng thùng hàng. Hãy cảm ơn.", "ありがとうございます。", ["どうもありがとうございます", "ありがとうございました", "どうもありがとうございました"], None, None),
   ("rep_osaki", "repetition", None, "お先に失礼します。", [], None, None),
-  ("osaki", "situation_prompt", "Ca của bạn đã hết, đồng nghiệp còn làm. Hãy xin phép về trước.", "お先に失礼します。", ["すみません、お先に失礼します", "では、お先に失礼します"], None, None),
-  ("sorry", "situation_prompt", "Bạn đến muộn năm phút. Hãy xin lỗi đàn anh.", "遅れて、すみません。", ["すみません", "遅くなってすみません", "遅れてごめんなさい", "申し訳ありません"], None, None),
-  ("excuse", "situation_prompt", "Bạn muốn hỏi đường một người lạ. Hãy mở lời lịch sự.", "すみません。", ["あのう、すみません", "すみません、ちょっといいですか"], None, None),
+  ("osaki", "situation_prompt", "Ca của bạn đã hết, đồng nghiệp còn làm. Hãy xin phép về trước.", "お先に失礼します。", ["すみません、お先に失礼します", "では、お先に失礼します", "お先に失礼いたします"], None, None),
+  ("sorry", "situation_prompt", "Bạn đến muộn năm phút. Hãy xin lỗi đàn anh.", "遅れて、すみません。", ["すみません", "遅くなってすみません", "遅れてごめんなさい", "申し訳ありません",
+   "すみません、遅れました", "遅れてすみませんでした", "遅くなってすみませんでした", "遅れて申し訳ありません"], None, None),
+  ("excuse", "situation_prompt", "Bạn muốn hỏi đường một người lạ. Hãy mở lời lịch sự.", "すみません。", ["あのう、すみません", "すみません、ちょっといいですか", "あの、すみません", "あの、すみません、ちょっといいですか"], None, None),
  ],
  "l": [
   ("rep_hajimemashite", "repetition", None, "はじめまして。", [], None, None),
-  ("name", "information_prompt", "Hãy nói tên của bạn.", "ナムです。", ["わたしはナムです", "私はナムです", "はじめまして、ナムです", "ナムと申します"], [("Tên", "Nam")], None),
-  ("from", "information_prompt", "Hãy nói bạn đến từ đâu.", "ベトナムから来ました。", ["わたしはベトナムから来ました", "私はベトナムから来ました", "ベトナム人です", "わたしはベトナム人です"], [("Nước", "Việt Nam")], None),
+  ("name", "information_prompt", "Hãy nói tên của bạn.", "ナムです。", ["わたしはナムです", "私はナムです", "はじめまして、ナムです", "ナムと申します", "わたしの名前はナムです", "名前はナムです",
+   "私の名前はナムです", "はじめまして、ナムと申します", "ナムです。よろしくおねがいします"], [("Tên", "Nam")], None),
+  ("from", "information_prompt", "Hãy nói bạn đến từ đâu.", "ベトナムから来ました。", ["わたしはベトナムから来ました", "私はベトナムから来ました", "ベトナム人です", "わたしはベトナム人です",
+   "ベトナムです", "ベトナムのハノイから来ました"], [("Nước", "Việt Nam")], None),
   ("age", "information_prompt", "Hãy nói tuổi của bạn.", "25歳です。", ["わたしは25歳です", "私は25歳です"], [("Tuổi", "25")], None),
   ("work", "information_prompt", "Hãy nói bạn làm việc ở đâu.", "工場で働いています。", ["工場で働きます", "わたしは工場で働いています", "私は工場で働いています"], [("Nơi làm việc", "nhà máy")], None),
   ("like", "semantic_prompt", "Hãy nói rằng bạn thích bóng đá.", "サッカーが好きです。", ["サッカーが大好きです", "わたしはサッカーが好きです", "趣味はサッカーです"], None, "⚽"),
@@ -51,9 +55,9 @@ TEACHING = {
  ],
  "n": [
   ("rep_ookii", "repetition", None, "この箱は大きいです。", [], None, None),
-  ("box", "picture_prompt", "Nhìn hình: cái thùng to. " + SAY, "大きい箱です。", ["この箱は大きいです", "箱は大きいです", "大きいです"], None, "📦"),
+  ("box", "picture_prompt", "Nhìn hình: cái thùng to. " + SAY, "大きい箱です。", ["この箱は大きいです", "箱は大きいです", "大きいです", "箱が大きいです"], None, "📦"),
   ("car", "picture_prompt", "Nhìn hình: chiếc ô tô mới. " + SAY, "新しい車です。", ["この車は新しいです", "車は新しいです", "新しいです"], None, "🚗"),
-  ("cat", "picture_prompt", "Nhìn hình: con mèo nhỏ. " + SAY, "小さい猫です。", ["この猫は小さいです", "猫は小さいです", "小さいです"], None, "🐈"),
+  ("cat", "picture_prompt", "Nhìn hình: con mèo nhỏ. " + SAY, "小さい猫です。", ["この猫は小さいです", "猫は小さいです", "小さいです", "猫が小さいです"], None, "🐈"),
   ("rep_shiroi", "repetition", None, "白いシャツです。", [], None, None),
   ("room", "picture_prompt", "Nhìn hình: căn phòng này rộng. " + SAY, "この部屋は広いです。", ["部屋は広いです", "広い部屋です", "広いです"], None, "🛋️"),
   ("person", "picture_prompt", "Nhìn hình: người phụ nữ này cao. " + SAY, "背が高いです。", ["この人は背が高いです", "女の人は背が高いです", "背の高い人です"], None, "👩"),
@@ -66,7 +70,7 @@ RESERVED = [
  ("cp4_sorry_cup", "k", "situation_prompt", "Bạn làm rơi cốc của đồng nghiệp. Hãy xin lỗi.", "すみません。", ["ごめんなさい", "本当にすみません", "申し訳ありません"], None, None),
  ("cp4_name_lan", "l", "information_prompt", "Hãy nói tên của bạn.", "ランです。", ["わたしはランです", "私はランです", "ランと申します"], [("Tên", "Lan")], None),
  ("cp4_vietnamese", "l", "situation_prompt", "Có người hỏi quốc tịch của bạn. Hãy trả lời rằng bạn là người Việt.", "ベトナム人です。", ["わたしはベトナム人です", "私はベトナム人です", "ベトナムから来ました"], None, None),
- ("cp4_student", "l", "information_prompt", "Hãy nói bạn làm nghề gì.", "学生です。", ["わたしは学生です", "私は学生です"], [("Công việc", "sinh viên")], None),
+ ("cp4_student", "l", "information_prompt", "Hãy nói bạn làm nghề gì.", "学生です。", ["わたしは学生です", "私は学生です", "大学生です", "わたしは大学生です"], [("Công việc", "sinh viên")], None),
  ("cp4_price_tea", "m", "information_prompt", "Một vị khách hỏi giá chai trà. Hãy trả lời.", "150円です。", ["お茶は150円です", "150円"], [("Giá", "150 yên")], None),
  ("cp4_time_ten", "m", "information_prompt", "Có người hỏi giờ. Hãy trả lời.", "10時です。", ["今、10時です", "10時"], [("Giờ", "10 giờ")], None),
  ("cp4_day_friday", "m", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "今日は金曜日です。", ["金曜日です"], [("Hôm nay", "thứ Sáu")], None),
@@ -82,7 +86,7 @@ RESERVED = [
  ("a1cap_day_sunday", "m", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "今日は日曜日です。", ["日曜日です"], [("Hôm nay", "Chủ nhật")], None),
  ("a1cap_birthday", "m", "information_prompt", "Hãy nói sinh nhật của bạn.", "誕生日は九月二十日です。", ["九月二十日です", "わたしの誕生日は九月二十日です"], [("Sinh nhật", "ngày 20 tháng 9")], None),
  ("pl_hello", "k", "situation_prompt", "Buổi trưa, bạn gặp một người quen trên phố. Hãy chào.", "こんにちは。", [], None, None),
- ("pl_name_minh", "l", "information_prompt", "Hãy nói tên của bạn.", "ミンです。", ["わたしはミンです", "私はミンです"], [("Tên", "Minh")], None),
+ ("pl_name_minh", "l", "information_prompt", "Hãy nói tên của bạn.", "ミンです。", ["わたしはミンです", "私はミンです", "ミンと申します"], [("Tên", "Minh")], None),
  ("pl_age", "l", "information_prompt", "Hãy nói tuổi của bạn.", "30歳です。", ["わたしは30歳です", "私は30歳です"], [("Tuổi", "30")], None),
  ("pl_big_car", "n", "picture_prompt", "Nhìn hình: chiếc ô tô to. " + SAY, "大きい車です。", ["この車は大きいです", "車は大きいです", "大きいです"], None, "🚙"),
 ]
@@ -107,8 +111,15 @@ def item(sid, u, elic, instr, target, more, facts, emoji, reserved, model):
     lex = refs(target)
     evidence = [] if rep else [i for i in content_refs(target) if i in lex]
     plain = target.rstrip("。！")
+    # D-10 review: the kanji a recogniser writes for the course's kana (お疲れ様です) and 大きな / 小さな before a noun.
+    # Numbers are not widened: the grader folds digits to kanji numerals itself.
+    variants = []
+    for v in [plain] + list(more):
+        for x in [v] + natural_spellings(v):
+            if x not in variants:
+                variants.append(x)
     return {"id": sid, "taskFamily": FAM[u], "elicitationType": elic, "prompt": prompt(instr or REP, facts, emoji), "target": target,
-            "acceptedVariants": [plain] + [v for v in more if v != plain], "objectiveRefs": [OBJ[u]], "lexemeRefs": lex, "evidenceLexemeRefs": evidence,
+            "acceptedVariants": variants, "objectiveRefs": [OBJ[u]], "lexemeRefs": lex, "evidenceLexemeRefs": evidence,
             "assistancePolicy": {"allowContextualBias": rep, "revealTargetAfterAttempts": None if rep or reserved else 2}, "scoredEligibility": not rep,
             "modelAudioRef": model, "recognitionLocale": "ja-JP", "allowedAttempts": 2, "reserved": reserved, "sourceRef": "original-project"}
 
