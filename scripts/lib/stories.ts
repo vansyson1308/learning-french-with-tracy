@@ -7,7 +7,8 @@
  * lexicon (directly, through the committed verb morphology, or through a
  * plural/gender ending), to a closed-class function word, to a declared
  * name, or to an explicit `tokenMap` entry. Nothing is guessed silently: an
- * unresolved token is a validation error.
+ * unresolved token is a validation error. Scripts without spaces (ja, zh)
+ * are segmented by maximal match over exactly those keys (P4c).
  *
  * Grading: lexemes take a band from their position in the target's syllabus
  * (first / second half of its level, `lexemeBands`). A story of band X may
@@ -35,6 +36,7 @@ import {
 } from "../../content/schema";
 import { assetFileName, codecFor, codecRecipe, type AudioCodec, type CodecSettings } from "./audio-codec";
 import { buildPlugin } from "./languages";
+import type { ScriptKind } from "./languages/types";
 import { pickNative } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 import { receptionAssetKey, receptionAssetsDir, receptionPipelineVersion } from "./reception";
@@ -69,11 +71,94 @@ export type StoryPiece = { text: string; word: boolean };
 const APOSTROPHE = /['’]/;
 
 /**
+ * P4c (ja): scripts written without spaces between words. Their stories take
+ * the dictionary path of the P4b runtime tokenizer (src/lib/languages/cjk.ts):
+ * left-to-right maximal match over the language's lexicon forms, its
+ * morphology rows, the story's function words and token-map keys (here with
+ * one step of lookahead, `matchUnspaced`) — never Intl.Segmenter, whose
+ * dictionary differs by ICU build.
+ */
+const UNSPACED_SCRIPTS: ReadonlySet<ScriptKind> = new Set(["japanese", "han"]);
+
+export function segmentsByDictionary(lang: string): boolean {
+  return UNSPACED_SCRIPTS.has(buildPlugin(lang).script);
+}
+
+const NUMBER_TOKEN = /^\p{N}+(?:[.,:]\p{N}+)*$/u;
+const LETTER = /\p{L}/u;
+
+/**
+ * The keys an unspaced-script story is segmented with, one-character keys
+ * (particles: は, を) included: the matcher needs them to know where a word
+ * may end. The P4b dictionary (cjk.ts) keeps only words of two or more.
+ */
+export type StoryDictionary = { keys: ReadonlySet<string>; maxLength: number };
+
+/** The dictionary an unspaced-script story is segmented with: every key the resolver knows. */
+export function storyDictionary(index: LexemeIndex, functionWords: Iterable<string>, tokenMap: Record<string, string>): StoryDictionary {
+  const keys = new Set([...index.single.keys(), ...functionWords, ...Object.keys(tokenMap)].map((k) => tokenKey(k).replace(/\s+/gu, "")).filter((k) => k.length > 0));
+  let maxLength = 1;
+  for (const k of keys) maxLength = Math.max(maxLength, [...k].length);
+  return { keys, maxLength };
+}
+
+/**
+ * Maximal match over one chunk (no spaces), as cjk.ts matchChunk, with one
+ * step of lookahead: the longest key wins unless the character after it
+ * would start no key, no number and no punctuation while a shorter key
+ * (down to a one-character particle) leaves a clean start — パンはいくら is
+ * パン は いくら, not パン はい く ら. Deterministic; no Intl.Segmenter.
+ */
+function matchUnspaced(chunk: string, dict: StoryDictionary): string[] {
+  const cps = [...chunk];
+  const { keys, maxLength } = dict;
+  const keyAt = (i: number, len: number) => keys.has(cps.slice(i, i + len).join(""));
+  const cleanStart = (j: number): boolean => {
+    if (j >= cps.length) return true;
+    if (!LETTER.test(cps[j]!)) return true; // digits, punctuation
+    for (let len = Math.min(maxLength, cps.length - j); len >= 1; len--) if (keyAt(j, len)) return true;
+    return false;
+  };
+  const out: string[] = [];
+  let i = 0;
+  while (i < cps.length) {
+    const lengths: number[] = [];
+    for (let len = Math.min(maxLength, cps.length - i); len >= 1; len--) if (keyAt(i, len)) lengths.push(len);
+    let end = 0;
+    if (lengths.length > 0) end = i + (lengths.find((len) => cleanStart(i + len)) ?? lengths[0]!);
+    else if (/[\p{Script=Latin}\p{Nd}]/u.test(cps[i]!)) {
+      end = i + 1;
+      while (end < cps.length && /[\p{Script=Latin}\p{Nd}]/u.test(cps[end]!)) end++;
+    } else end = i + 1;
+    out.push(cps.slice(i, end).join(""));
+    i = end;
+  }
+  return out;
+}
+
+/** Pieces of an unspaced-script sentence: whitespace kept, each chunk split by `matchUnspaced`; a word has a letter and is no number. */
+function segmentByDictionary(text: string, dictionary: StoryDictionary): StoryPiece[] {
+  const out: StoryPiece[] = [];
+  for (const part of text.split(/(\s+)/u)) {
+    if (part === "") continue;
+    if (/^\s+$/u.test(part)) {
+      out.push({ text: part, word: false });
+      continue;
+    }
+    for (const token of matchUnspaced(part, dictionary)) out.push({ text: token, word: LETTER.test(token) && !NUMBER_TOKEN.test(token) });
+  }
+  return out;
+}
+
+/**
  * Word segmentation (Intl.Segmenter, word granularity). An elided word is
  * split after its apostrophe — "l'homme" → "l'" + "homme", "s'il" → "s'" +
  * "il" — so the clitic resolves as a function word and the rest on its own.
+ * An unspaced script with a dictionary (`storyDictionary`) is split by maximal
+ * match instead (P4c).
  */
-export function segmentSentence(lang: string, text: string): StoryPiece[] {
+export function segmentSentence(lang: string, text: string, dictionary?: StoryDictionary): StoryPiece[] {
+  if (dictionary && segmentsByDictionary(lang)) return segmentByDictionary(text, dictionary);
   const out: StoryPiece[] = [];
   const segmenter = new Intl.Segmenter(lang, { granularity: "word" });
   for (const seg of segmenter.segment(text)) {
@@ -125,6 +210,8 @@ export type LexemeIndex = {
 };
 
 function keysOf(lang: string, form: string): string[] {
+  // An unspaced-script form is one key: the dictionary path matches it whole.
+  if (segmentsByDictionary(lang)) return /\p{L}/u.test(form) ? [tokenKey(form.replace(/\s+/gu, ""))] : [];
   return segmentSentence(lang, form).filter((p) => p.word).map((p) => tokenKey(p.text));
 }
 
@@ -343,8 +430,9 @@ export function analyzeStory(
       if (!newSet.has(id)) undeclared.add(id);
     }
   };
+  const dictionary = segmentsByDictionary(lang) ? storyDictionary(ctx.index, ctx.functionWords, tokenMap) : undefined;
   const sentences = story.sentences.map((sentence) => {
-    const pieces = segmentSentence(lang, sentence.text);
+    const pieces = segmentSentence(lang, sentence.text, dictionary);
     const out: AnalyzedPiece[] = [];
     for (let i = 0; i < pieces.length; i++) {
       const piece = pieces[i];
