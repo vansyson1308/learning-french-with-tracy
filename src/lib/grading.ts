@@ -152,12 +152,49 @@ function stripPunctuation(text: string): string {
  * "schoen" = "schön"; English: "a flat" for the key "an apartment"). Other languages compare exactly as before.
  */
 function lenientEquals(rules: LanguageRules, a: string, b: string): boolean {
+  return lenientMatch(rules, a, b) !== null;
+}
+
+/**
+ * How typed text `b` matches key `a`: in the target script ("script":
+ * the lenient or alternate form, or a same-script alignment such as an
+ * English variety), ONLY through the plugin's reading notation ("reading":
+ * ja kana for a kanji key, zh pinyin for a hanzi key — P4b), or not at all.
+ */
+function lenientMatch(rules: LanguageRules, a: string, b: string): "script" | "reading" | null {
   const key = rules.normalizeLenient(a);
   const attempt = rules.normalizeLenient(b);
-  if (key === attempt) return true;
-  if (rules.alignAnswerToKey?.(attempt, key) === key) return true;
+  if (key === attempt) return "script";
   const alternate = rules.normalizeLenientAlternate;
-  return alternate !== undefined && alternate(a) === alternate(b);
+  if (alternate !== undefined && alternate(a) === alternate(b)) return "script";
+  if (rules.alignAnswerToKey?.(attempt, key) === key) return rules.readingInput === undefined ? "script" : "reading";
+  return null;
+}
+
+/**
+ * P4b evidence guard: a typed answer accepted ONLY because it spells the
+ * key in the reading notation (kana for 学生, pinyin for 汉语) is practice —
+ * the learner sees it accepted, but it is never production evidence: the
+ * session withholds its first-attempt result (scored surfaces then have no
+ * evidence for the item) and the evidence plan drops to "practice". A
+ * course profile with `readingInputIsProduction` opts out. Latin-script
+ * plugins declare no reading notation, so this is always false for them.
+ */
+export function readingOnlyAnswer(exercise: Exercise, answer: Answer, courseId: string): boolean {
+  if (courseId === "") return false;
+  const rules = languageRulesForCourse(courseId);
+  if (rules.readingInput === undefined || courseProfile(courseId).readingInputIsProduction === true) return false;
+  let keys: string[];
+  let attempt: string;
+  if (exercise.type === "typeAnswer" && typeof answer === "string") {
+    keys = [exercise.answer, ...exercise.alternatives];
+    attempt = answer;
+  } else if (exercise.type === "wordBank" && Array.isArray(answer)) {
+    keys = [exercise.answer, ...(exercise.alternatives ?? [])].map((a) => a.join(" "));
+    attempt = answer.map((i) => exercise.tokens[i]).join(" ");
+  } else return false;
+  const matches = keys.map((k) => lenientMatch(rules, k, attempt));
+  return matches.includes("reading") && !matches.includes("script");
 }
 
 export function strictEquals(a: string, b: string, courseId?: string): boolean {

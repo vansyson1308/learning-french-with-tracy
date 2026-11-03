@@ -80,6 +80,15 @@ export type LanguageRules = {
    * a unary fold would turn every "flat" into "apartment". Absent for most languages.
    */
   alignAnswerToKey?(answer: string, key: string): string;
+  /**
+   * P4b: the reading notation alignAnswerToKey accepts for a key written in
+   * the target script (ja: kana for kanji, zh: pinyin for hanzi). An answer
+   * that matches ONLY through it is practice, never production evidence,
+   * unless the course profile sets `readingInputIsProduction`
+   * (src/lib/grading.ts readingOnlyAnswer). Absent = every alignment this
+   * plugin makes is a same-script match (English varieties).
+   */
+  readingInput?: "kana" | "pinyin";
   /** The same for one key's run inside free writing, where the answer's words have no fixed meaning: stricter about which words it rewrites. */
   alignWrittenToKey?(answer: string, key: string): string;
   /** Strict comparison form: case/space folded, every letter and mark kept. */

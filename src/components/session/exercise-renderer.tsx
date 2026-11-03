@@ -22,7 +22,7 @@ import { SpeakProduction } from "@/components/exercises/speak-production";
 import { SpeakRepetition } from "@/components/exercises/speak-repetition";
 import { TypeAnswer } from "@/components/exercises/type-answer";
 import { WordBank } from "@/components/exercises/word-bank";
-import { useReadingAid } from "@/lib/use-reading-aid";
+import { useReadingAid, useScriptReading } from "@/lib/use-reading-aid";
 import { speakTarget } from "@/lib/audio";
 import type { Answer, Status } from "@/lib/grading";
 import { clipAudioSource, clipFor } from "@/lib/reception/content";
@@ -155,6 +155,8 @@ export function ExerciseRenderer({
   writing?: WritingContext;
 }) {
   const readingOf = useReadingAid(courseId);
+  // P4b: furigana / pinyin / RR (+ Hán-Việt for vi-native courses); always undefined on a Latin-script course.
+  const scriptOf = useScriptReading(courseId);
   const receptionCtx: ReceptionContext =
     reception ?? { scored: false, revealTranscript: true };
   switch (exercise.type) {
@@ -166,6 +168,7 @@ export function ExerciseRenderer({
           onAnswer={onAnswer}
           status={status}
           targetLanguage={targetLanguage}
+          scriptOf={scriptOf}
         />
       );
     case "wordBank":
@@ -175,6 +178,7 @@ export function ExerciseRenderer({
           answer={Array.isArray(answer) ? answer : []}
           onAnswer={onAnswer}
           status={status}
+          scriptOf={scriptOf}
         />
       );
     case "match":
@@ -185,6 +189,7 @@ export function ExerciseRenderer({
           onWordResult={onMatchWordResult}
           onSpeak={(target) => speakTarget(courseId, target)}
           readingOf={readingOf}
+          scriptOf={scriptOf}
         />
       );
     case "typeAnswer":
@@ -195,12 +200,14 @@ export function ExerciseRenderer({
           onAnswer={onAnswer}
           status={status}
           targetLanguage={targetLanguage}
+          scriptOf={scriptOf}
         />
       );
     case "fillBlank":
       return (
         <FillBlank
           readingOf={readingOf}
+          scriptOf={scriptOf}
           exercise={exercise}
           answer={typeof answer === "number" ? answer : null}
           onAnswer={onAnswer}

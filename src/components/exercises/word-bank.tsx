@@ -1,7 +1,9 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { RubyText } from "@/components/reading/ruby-text";
 import { useT } from "@/lib/i18n";
+import type { ScriptReading } from "@/lib/learning/script-reading";
 import { SpeakerButton } from "@/components/speaker-button";
 import { haptics } from "@/lib/haptics";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
@@ -13,13 +15,17 @@ type WordBankProps = {
   answer: number[];
   onAnswer: (tokenIndexes: number[]) => void;
   status: "none" | "correct" | "wrong";
+  /** P4b script reading of the prompt and tiles (furigana / pinyin / RR); none by default. */
+  scriptOf?: (text: string) => ScriptReading | undefined;
 };
 
-export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) {
+export function WordBank({ exercise, answer, onAnswer, status, scriptOf = () => undefined }: WordBankProps) {
   const colors = useThemeColors();
   const styles = useStyles();
   const { t } = useT();
   const locked = status !== "none";
+
+  const promptScript = scriptOf(exercise.prompt);
 
   const pick = (index: number) => {
     if (locked || answer.includes(index)) return;
@@ -37,7 +43,11 @@ export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) 
 
       <View style={styles.promptRow}>
         {exercise.audioTarget ? <SpeakerButton text={exercise.audioTarget} /> : null}
-        <Text style={styles.prompt}>{exercise.prompt}</Text>
+        {promptScript ? (
+          <RubyText text={exercise.prompt} reading={promptScript} textStyle={styles.prompt} />
+        ) : (
+          <Text style={styles.prompt}>{exercise.prompt}</Text>
+        )}
       </View>
 
       <View
@@ -51,6 +61,7 @@ export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) 
           <Chip
             key={tokenIndex}
             label={exercise.tokens[tokenIndex]}
+            script={scriptOf(exercise.tokens[tokenIndex])}
             onPress={() => unpick(tokenIndex)}
             testID="wordbank-answer"
           />
@@ -60,12 +71,17 @@ export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) 
       <View style={styles.pool}>
         {exercise.tokens.map((token, index) => {
           const used = answer.includes(index);
+          const script = scriptOf(token);
           return used ? (
             <View key={index} style={[styles.chip, styles.chipGhost]}>
-              <Text style={[styles.chipText, { color: "transparent" }]}>{token}</Text>
+              {script ? (
+                <RubyText text={token} reading={script} textStyle={[styles.chipText, { color: "transparent" }]} readingColor="transparent" />
+              ) : (
+                <Text style={[styles.chipText, { color: "transparent" }]}>{token}</Text>
+              )}
             </View>
           ) : (
-            <Chip key={index} label={token} onPress={() => pick(index)} testID="wordbank-token" />
+            <Chip key={index} label={token} script={script} onPress={() => pick(index)} testID="wordbank-token" />
           );
         })}
       </View>
@@ -73,7 +89,7 @@ export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) 
   );
 }
 
-function Chip({ label, onPress, testID }: { label: string; onPress: () => void; testID?: string }) {
+function Chip({ label, script, onPress, testID }: { label: string; script?: ScriptReading; onPress: () => void; testID?: string }) {
   const styles = useStyles();
   return (
     <Pressable
@@ -86,7 +102,7 @@ function Chip({ label, onPress, testID }: { label: string; onPress: () => void; 
       testID={testID}
       style={({ pressed }) => [styles.chip, { borderBottomWidth: pressed ? 2 : 4 }]}
     >
-      <Text style={styles.chipText}>{label}</Text>
+      {script ? <RubyText text={label} reading={script} textStyle={styles.chipText} /> : <Text style={styles.chipText}>{label}</Text>}
     </Pressable>
   );
 }

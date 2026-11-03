@@ -216,6 +216,7 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
       const bringsKanji = lenientTokens(a).some((t) => HAN.test(t) && !keyTokens.has(t));
       return bringsKanji ? answer : key;
     },
+    readingInput: "kana",
     normalizeStrict: normalizeStrictJapanese,
     foldSpoken: foldSpokenJapanese,
     tokenize,

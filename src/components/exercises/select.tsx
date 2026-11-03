@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { RubyText } from "@/components/reading/ruby-text";
 import { useT } from "@/lib/i18n";
 import { SpeakerButton } from "@/components/speaker-button";
+import type { ScriptReading } from "@/lib/learning/script-reading";
 import { speakTarget } from "@/lib/audio";
 import { useProgress } from "@/lib/store";
 import { useReadingAid } from "@/lib/use-reading-aid";
@@ -17,6 +19,8 @@ type SelectProps = {
   onAnswer: (index: number) => void;
   status: "none" | "correct" | "wrong";
   targetLanguage: string;
+  /** P4b script reading of a target text (furigana / pinyin / RR); none by default. */
+  scriptOf?: (text: string) => ScriptReading | undefined;
 };
 
 export function Select({
@@ -25,6 +29,7 @@ export function Select({
   onAnswer,
   status,
   targetLanguage,
+  scriptOf = () => undefined,
 }: SelectProps) {
   const courseId = useProgress((s) => s.activeCourseId);
   const readingOf = useReadingAid(courseId);
@@ -51,6 +56,8 @@ export function Select({
         ? t("ex.pickWord", { language: targetLanguage })
         : t("ex.tapWhatYouHear");
 
+  const promptScript = isListen ? undefined : scriptOf(exercise.prompt);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -59,8 +66,12 @@ export function Select({
         {exercise.audioTarget ? <SpeakerButton text={exercise.audioTarget} /> : null}
         {!isListen ? (
           <View>
-            <Text style={styles.prompt}>{exercise.prompt}</Text>
-            {readingOf(exercise.prompt) ? (
+            {promptScript ? (
+              <RubyText text={exercise.prompt} reading={promptScript} textStyle={styles.prompt} />
+            ) : (
+              <Text style={styles.prompt}>{exercise.prompt}</Text>
+            )}
+            {!promptScript && readingOf(exercise.prompt) ? (
               <Text style={styles.reading} testID="prompt-reading">{readingOf(exercise.prompt)}</Text>
             ) : null}
           </View>
@@ -73,6 +84,7 @@ export function Select({
             key={option.text + index}
             text={option.text}
             reading={readingOf(option.text)}
+            script={scriptOf(option.text)}
             emoji={option.emoji}
             compact={hasEmoji}
             state={optionState(index)}

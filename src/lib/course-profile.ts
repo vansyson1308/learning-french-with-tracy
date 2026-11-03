@@ -97,6 +97,13 @@ export type CourseProfile = {
   hiddenFromOnboarding?: true;
   /** P3e §8: content still under native review — the Learn tab shows a beta banner. */
   beta?: true;
+  /**
+   * P4b: an answer typed in the reading notation (ja kana for kanji, zh
+   * pinyin for hanzi) counts as production evidence. Absent (the default) =
+   * such an answer is accepted as practice only; evidence needs the target
+   * script. Set from content/courses/<id>.profile.json.
+   */
+  readingInputIsProduction?: true;
   /** D-10: reviewed by an AI-simulated native reviewer (owner-accepted) — course info and Licences show an honest note. */
   reviewNote?: "ai-simulated";
   /**

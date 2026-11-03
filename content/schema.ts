@@ -690,6 +690,12 @@ export const CourseProfileOverrideSchema = z.strictObject({
    * target's lexicon.
    */
   role: z.enum(["primary", "standalone"]).optional(),
+  /**
+   * P4b: answers typed in the reading notation (ja kana for a kanji key, zh
+   * pinyin for a hanzi key) count as production evidence in this course.
+   * Default: practice only — evidence requires the target script.
+   */
+  readingInputIsProduction: z.boolean().optional(),
   enabled: z
     .strictObject({
       fsrs: z.boolean().optional(),

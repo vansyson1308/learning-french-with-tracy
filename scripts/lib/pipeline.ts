@@ -238,7 +238,10 @@ export function courseIsBeta(courseId: string): boolean {
 }
 
 /** A boolean flag of a course's profile (content/courses/<id>.profile.json), undefined when absent. */
-export function courseProfileFlag(courseId: string, flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack"): boolean | undefined {
+export function courseProfileFlag(
+  courseId: string,
+  flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack" | "readingInputIsProduction"
+): boolean | undefined {
   const rel = `content/courses/${courseId}.profile.json`;
   if (!existsSync(safeResolve(rel))) return undefined;
   const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));

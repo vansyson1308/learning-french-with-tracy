@@ -8,7 +8,7 @@
  * controller, keyed off state transitions.
  */
 
-import { checkAnswer, evaluateWrittenAnswer, type Answer } from "../grading";
+import { checkAnswer, evaluateWrittenAnswer, readingOnlyAnswer, type Answer } from "../grading";
 import { messagePoints } from "../writing/message-points";
 import type { Exercise } from "../types";
 
@@ -40,6 +40,13 @@ export type SessionMachineState = {
   firstResults: Record<string, boolean>;
   /** stepId → rubric credit 0..1 of the FIRST attempt, for exam message parts only (QC 2026-10-29 §1.5). */
   firstCredits?: Record<string, number>;
+  /**
+   * P4b: stepId → accepted only through the reading notation (ja kana / zh
+   * pinyin for a target-script key). Practice: such a step has no entry in
+   * firstResults, so scored surfaces see no evidence for it. Absent when no
+   * step was answered that way (every Latin-script session).
+   */
+  readingOnly?: Record<string, true>;
   /**
    * stepId → explicitly skipped via "I don't know" (§117). Distinct from a
    * wrong answer: counted once as a gap, never as a failure — skipped steps
@@ -175,14 +182,18 @@ export function sessionReducer(
       if (!step || step.type !== "exercise" || state.status !== "idle") return state;
       const correct = checkAnswer(step.exercise, state.answer, state.courseId);
       const attempt = state.attempts[step.stepId] ?? 0;
+      // P4b: a reading-notation answer (kana / pinyin for a target-script key)
+      // is accepted as practice but yields no first-attempt evidence.
+      const readingOnly = correct && readingOnlyAnswer(step.exercise, state.answer, state.courseId);
       const firstResults =
-        attempt === 0
+        attempt === 0 && !readingOnly
           ? { ...state.firstResults, [step.stepId]: correct }
           : state.firstResults;
       const credit = attempt === 0 && step.writingPoints ? writingCredit(step, state.answer, state.courseId) : null;
       return {
         ...state,
         ...(credit !== null ? { firstCredits: { ...(state.firstCredits ?? {}), [step.stepId]: credit } } : {}),
+        ...(readingOnly ? { readingOnly: { ...(state.readingOnly ?? {}), [step.stepId]: true } } : {}),
         status: correct ? "correct" : "wrong",
         attempts: { ...state.attempts, [step.stepId]: attempt + 1 },
         firstResults,

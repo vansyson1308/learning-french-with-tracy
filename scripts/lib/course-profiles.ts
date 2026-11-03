@@ -178,6 +178,8 @@ export function deriveProfiles(args: {
       ...(courseIsBeta(pack.id) ? { beta: true as const } : {}),
       // D-10: an owner-accepted AI-simulated review — an honest note instead of the beta label.
       ...(courseReviewIsAi(pack.id) ? { reviewNote: "ai-simulated" as const } : {}),
+      // P4b: reading-notation answers (kana / pinyin) count as production evidence only when the profile says so.
+      ...(courseProfileFlag(pack.id, "readingInputIsProduction") === true ? { readingInputIsProduction: true as const } : {}),
     };
   }
   return profiles;

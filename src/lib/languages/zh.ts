@@ -220,6 +220,7 @@ export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
       const syllables = keySyllables(key.replace(/ /g, ""));
       return syllables !== null && pinyinMatches(answer, syllables) ? key : answer;
     },
+    readingInput: "pinyin",
     normalizeStrict: normalizeStrictChinese,
     foldSpoken,
     tokenize: (folded) => {
