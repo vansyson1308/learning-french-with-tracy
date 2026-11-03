@@ -99,9 +99,18 @@ describe("courseProfile", () => {
     expect(p.capabilities.dailySession).toBe(false);
   });
 
+  test("ja-en (standalone since ja-vi) ships the Japanese lexicon read-only: lexicon on, scheduler unchanged", () => {
+    const p = courseProfile("ja-en");
+    expect(p.idPrefix).toBe("ja:w:");
+    expect(p.capabilities.lexicon).toBe(true);
+    expect(p.capabilities.fsrs).toBe(false);
+    expect(p.capabilities.dailySession).toBe(false);
+    expect(p.artifacts.lexiconIndex).toBe("src/content/lexicon/ja-en-index.json");
+  });
+
   test("every inherited course has no rich capability and no artifacts", () => {
     for (const course of catalog.courses) {
-      if (["fr-en", "fr-vi", "es-en", "es-vi", "de-en", "de-vi", "it-en", "it-vi", "en-vi"].includes(course.id)) continue;
+      if (["fr-en", "fr-vi", "es-en", "es-vi", "de-en", "de-vi", "it-en", "it-vi", "en-vi", "ja-en", "ja-vi"].includes(course.id)) continue;
       const p = courseProfile(course.id);
       for (const flag of ALL_FLAGS) expect(p.capabilities[flag]).toBe(false);
       expect(p.artifacts).toEqual({});

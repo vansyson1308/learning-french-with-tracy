@@ -230,8 +230,10 @@ describe("ja search fold, locales, reading speed, registry", () => {
 
 describe("ja course binding (languageRulesForCourse reads the course's lexicon index)", () => {
   afterEach(() => {
-    __registerCourseArtifactsForTests("ja-zz", null);
-    __registerCourseProfileForTests(null, "ja-zz");
+    for (const id of ["ja-zz", "ja-yy"]) {
+      __registerCourseArtifactsForTests(id, null);
+      __registerCourseProfileForTests(null, id);
+    }
   });
   test("a course with a lexicon index tokenizes and reads by its words", () => {
     __registerCourseProfileForTests({ ...courseProfile("ja-en"), id: "ja-zz", nativeCode: "zz" });
@@ -242,5 +244,10 @@ describe("ja course binding (languageRulesForCourse reads the course's lexicon i
     expect(rules.tokenize("学生です")).toEqual(["学生", "です"]);
     expect(rules.spokenReading!("学生 です")).toBe("がくせい です");
   });
-  test("a course without a lexicon index keeps the plain plugin", () => expect(languageRulesForCourse("ja-en")).toBe(ja));
+  // A test-only course: since the first ja-vi compile ja-en ships its lexicon index (a standalone course, like es-en).
+  test("a course without a lexicon index keeps the plain plugin", () => {
+    __registerCourseProfileForTests({ ...courseProfile("ja-en"), id: "ja-yy", nativeCode: "yy" });
+    __registerCourseArtifactsForTests("ja-yy", {});
+    expect(languageRulesForCourse("ja-yy")).toBe(ja);
+  });
 });
