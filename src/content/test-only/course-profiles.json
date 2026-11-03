@@ -5,6 +5,41 @@
     "en": "xx-en"
   },
   "profiles": {
+    "xc-en": {
+      "id": "xc-en",
+      "targetCode": "xc",
+      "nativeCode": "en",
+      "targetLanguage": "Testish CJK",
+      "nativeLanguage": "English",
+      "flag": "🏳️",
+      "flagAsset": "xx",
+      "recognitionLocale": "xc-XC",
+      "ttsLocale": "xc-XC",
+      "script": "han",
+      "idPrefix": "xc:w:",
+      "legacyIdPrefix": "xc:legacy:",
+      "capabilities": {
+        "fsrs": true,
+        "dailySession": true,
+        "lexicon": true,
+        "concepts": false,
+        "placement": false,
+        "checkpoints": false,
+        "goals": false,
+        "listening": false,
+        "reading": false,
+        "speaking": false,
+        "writing": false,
+        "conversation": false
+      },
+      "artifacts": {
+        "ids": "src/content/test-only/ids/xc.json",
+        "lexiconIndex": "src/content/test-only/lexicon/xc-index.json",
+        "lexiconFallback": "src/content/test-only/lexicon/xc-web-fallback.json",
+        "lexiconDb": "assets/lexicon/xc-lexicon-v3-c01fdeb190986778.db",
+        "dailyWords": "src/content/test-only/lexicon/xc-daily.json"
+      }
+    },
     "xx-en": {
       "id": "xx-en",
       "targetCode": "xx",

@@ -109,11 +109,35 @@ export const CueFactSourceSchema = z.strictObject({ label: nativeText(), value: 
 /* Course packs (per course: ONE native language, plain strings)       */
 /* ------------------------------------------------------------------ */
 
+/**
+ * P4b stage 4: one furigana segment — `base` is a run of the surface,
+ * `ruby` its kana when the run holds kanji (absent on kana runs). The
+ * bases spell the surface; rubies (or kana bases) spell the reading.
+ */
+export const FuriganaSegmentSchema = z.strictObject({ base: z.string().min(1), ruby: z.string().min(1).optional() });
+
+const readingFields = {
+  kana: z.string().min(1).optional(),
+  furigana: z.array(FuriganaSegmentSchema).min(1).optional(),
+  pinyin: z.string().min(1).optional(),
+  rr: z.string().min(1).optional(),
+};
+
+/**
+ * P4b stage 4: a course word's reading. The compiler copies it from the
+ * word's lexeme (never authored by hand in a pack: a pack value that
+ * differs from the lexeme's fails validation).
+ */
+export const WordReadingSchema = z
+  .strictObject(readingFields)
+  .refine((r) => Object.keys(r).length > 0, { message: "a reading needs at least one field" });
+
 export const WordSchema = z.strictObject({
   target: z.string().min(1),
   native: z.string().min(1),
   emoji: z.string().min(1),
   romanization: z.string().min(1).optional(),
+  reading: WordReadingSchema.optional(),
 });
 
 const gradeTargets = z.array(z.string().min(1)).min(1).optional();
@@ -666,6 +690,12 @@ export const CourseProfileOverrideSchema = z.strictObject({
    * target's lexicon.
    */
   role: z.enum(["primary", "standalone"]).optional(),
+  /**
+   * P4b: answers typed in the reading notation (ja kana for a kanji key, zh
+   * pinyin for a hanzi key) count as production evidence in this course.
+   * Default: practice only — evidence requires the target script.
+   */
+  readingInputIsProduction: z.boolean().optional(),
   enabled: z
     .strictObject({
       fsrs: z.boolean().optional(),
@@ -754,9 +784,177 @@ export type FrequencyBand = (typeof FREQUENCY_BAND_VALUES)[number];
  */
 export const PronunciationSchema = z.strictObject({
   value: z.string().min(1),
-  notation: z.enum(["ipa", "phonology"]),
+  /** P4b stage 4: `kana` (ja), `pinyin` (zh, tone-marked syllables space-separated), `rr` (ko, Revised Romanization). */
+  notation: z.enum(["ipa", "phonology", "kana", "pinyin", "rr"]),
   source: z.string().min(1),
 });
+
+/**
+ * P4b stage 4: a lexeme's reading, precomputed at build time (JMdict /
+ * JmdictFurigana, CC-CEDICT, the Revised Romanization rules) and checked
+ * by scripts/lib/cjk-readings/validate.ts. zh stores the traditional
+ * spelling beside the simplified surface (simplified is shown by default); ko may store
+ * `rrSpelling`, the surface with `+` at a compound boundary the rules need
+ * (학+여울 → hangnyeoul).
+ */
+export const LexemeReadingSchema = z
+  .strictObject({
+    ...readingFields,
+    traditional: z.string().min(1).optional(),
+    /** zh candidate pools only: the simplified spelling of a lemma the pool lists in traditional characters (a course surface is always simplified). */
+    simplified: z.string().min(1).optional(),
+    rrSpelling: z.string().min(1).optional(),
+  })
+  .refine((r) => Object.keys(r).length > 0, { message: "a reading needs at least one field" });
+
+/**
+ * content/<lang>/lexicon/readings-manifest.json (P4b stage 4): the pinned
+ * sources of a CJK pool's readings. Fail-closed like the other manifests:
+ * the derivation refuses a source that does not hash to its pin.
+ */
+export const ReadingsManifestSchema = z.strictObject({
+  version: z.literal(1),
+  language: languageCode,
+  generator: z.literal("scripts/cjk-readings.ts"),
+  notation: z.enum(["kana", "pinyin", "rr"]),
+  sources: z.array(
+    z.strictObject({
+      id,
+      name: z.string().min(1),
+      license: z.string().min(1),
+      /** The licence statement as the source's own page words it (verified on retrieval). */
+      licenceStatement: z.string().min(1),
+      url: z.string().min(1),
+      retrievedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+      sha256: z.string().regex(/^[a-f0-9]{64}$/),
+      bytes: z.number().int().positive(),
+    })
+  ),
+  method: z.string().min(1),
+});
+export type ReadingsManifest = z.infer<typeof ReadingsManifestSchema>;
+
+/**
+ * P4b stage 5 (task 5): script onboarding — content/<lang>/primer/script-primer.json
+ * for ja / zh / ko. Explanations are keyed by native code ({vi, en}); the
+ * Vietnamese text goes through the D-10 review (generated
+ * content/<lang>/primer/REVIEW.md). Rules beyond the shape (kana ↔ rōmaji,
+ * tone marks ↔ tone numbers, minimal pairs, jamo ↔ blocks ↔ RR) live in
+ * scripts/lib/script-primer.ts.
+ */
+export const PrimerTextSchema = z.strictObject({ vi: z.string().min(1), en: z.string().min(1) });
+
+/** What a clip would voice; `pending` = no recorded clip yet (the app speaks it with the device voice). */
+export const PrimerAudioSchema = z.strictObject({ say: z.string().min(1), status: z.literal("pending") });
+
+const primerSectionId = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+
+export const KanaTableSectionSchema = z.strictObject({
+  kind: z.literal("kanaTable"),
+  id: primerSectionId,
+  title: PrimerTextSchema,
+  explanation: PrimerTextSchema,
+  script: z.enum(["hiragana", "katakana"]),
+  /** Column headings (the vowels a i u e o). */
+  columns: z.array(z.string().min(1)).min(1),
+  rows: z
+    .array(
+      z.strictObject({
+        /** The row's consonant in rōmaji ("" for the vowel row). */
+        consonant: z.string(),
+        /** One cell per column; null where the row has no kana (や row: yi, ye). */
+        cells: z.array(z.union([z.null(), z.strictObject({ kana: z.string().min(1), romaji: z.string().min(1), audio: PrimerAudioSchema })])),
+      })
+    )
+    .min(1),
+  notes: z.array(PrimerTextSchema).optional(),
+});
+
+const PrimerHanziSchema = z.strictObject({ hanzi: z.string().min(1), pinyin: z.string().min(1), gloss: PrimerTextSchema });
+
+export const TonesSectionSchema = z.strictObject({
+  kind: z.literal("tones"),
+  id: primerSectionId,
+  title: PrimerTextSchema,
+  explanation: PrimerTextSchema,
+  tones: z
+    .array(
+      z.strictObject({
+        tone: z.number().int().min(1).max(5),
+        /** The tone mark on a ("ā", "á", "ǎ", "à"; "a" for the neutral tone). */
+        mark: z.string().min(1),
+        /** Chao tone letters (55, 35, 214, 51). */
+        contour: z.string().regex(/^[1-5]{1,3}$/).optional(),
+        description: PrimerTextSchema,
+        example: PrimerHanziSchema,
+        audio: PrimerAudioSchema,
+      })
+    )
+    .min(4),
+  minimalPairs: z
+    .array(z.strictObject({ a: PrimerHanziSchema, b: PrimerHanziSchema, note: PrimerTextSchema.optional() }))
+    .min(1),
+  notes: z.array(PrimerTextSchema).optional(),
+});
+
+export const StrokesSectionSchema = z.strictObject({
+  kind: z.literal("strokes"),
+  id: primerSectionId,
+  title: PrimerTextSchema,
+  explanation: PrimerTextSchema,
+  /** Basic strokes: the stroke shape, its Chinese name in pinyin, what it looks like. */
+  strokes: z.array(z.strictObject({ shape: z.string().min(1), name: z.string().min(1), description: PrimerTextSchema })).min(1),
+  /** Stroke-order rules, each with a character it shows. */
+  rules: z.array(z.strictObject({ rule: PrimerTextSchema, example: z.string().min(1) })).min(1),
+});
+
+export const HangulSectionSchema = z.strictObject({
+  kind: z.literal("hangulBlocks"),
+  id: primerSectionId,
+  title: PrimerTextSchema,
+  explanation: PrimerTextSchema,
+  /** Basic consonants: compatibility jamo, their RR before a vowel and at the end of a block. */
+  consonants: z.array(z.strictObject({ jamo: z.string().length(1), initial: z.string(), final: z.string().optional(), name: z.string().min(1) })).min(1),
+  vowels: z.array(z.strictObject({ jamo: z.string().length(1), rr: z.string().min(1) })).min(1),
+  /** Syllable blocks built from the jamo above (parts in writing order), with their RR. */
+  blocks: z
+    .array(
+      z.strictObject({
+        block: z.string().length(1),
+        parts: z.array(z.string().length(1)).min(2).max(4),
+        rr: z.string().min(1),
+        layout: PrimerTextSchema,
+        audio: PrimerAudioSchema,
+      })
+    )
+    .min(1),
+  notes: z.array(PrimerTextSchema).optional(),
+});
+
+export const ScriptPrimerSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.enum(["ja", "zh", "ko"]),
+  /** `<lang>.primer.script` */
+  id: z.string().regex(/^(ja|zh|ko)\.primer\.script$/),
+  title: PrimerTextSchema,
+  intro: PrimerTextSchema,
+  sections: z.array(z.discriminatedUnion("kind", [KanaTableSectionSchema, TonesSectionSchema, StrokesSectionSchema, HangulSectionSchema])).min(1),
+});
+export type ScriptPrimer = z.infer<typeof ScriptPrimerSchema>;
+
+/** content/<lang>/lexicon/derived/lexeme-readings.json — generated by scripts/cjk-readings.ts. */
+export const LexemeReadingsFileSchema = z.strictObject({
+  generator: z.literal("scripts/cjk-readings.ts"),
+  language: languageCode,
+  notation: z.enum(["kana", "pinyin", "rr"]),
+  sources: z.array(z.strictObject({ id, sha256: z.string().regex(/^[a-f0-9]{64}$/), url: z.string().min(1), retrievedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) })),
+  method: z.string().min(1),
+  coverage: z.strictObject({ entries: z.number().int().nonnegative(), confirmed: z.number().int().nonnegative(), unresolved: z.number().int().nonnegative() }),
+  readings: z.record(z.string(), LexemeReadingSchema),
+  unresolved: z.record(z.string(), z.string().min(1)),
+  traditionalAmbiguous: z.record(z.string(), z.array(z.string().min(1)).min(2)).optional(),
+});
+export type LexemeReadingsFile = z.infer<typeof LexemeReadingsFileSchema>;
 
 /** One example sentence: target text + its translation per native code. */
 export const LexemeExampleSchema = z.strictObject({
@@ -811,6 +1009,8 @@ export const richLexemeSchema = (lang: string) =>
     /** Native-language gloss per native code; byte-identical to the course word's `native`. */
     glosses: nativeText(),
     pronunciation: PronunciationSchema.optional(),
+    /** P4b stage 4: the reading of a ja/zh/ko lexeme (required there; see LexemeReadingSchema). */
+    reading: LexemeReadingSchema.optional(),
     frequency: LexemeFrequencySchema.optional(),
     topic: z.enum(TOPIC_VALUES).optional(),
     examples: z.array(LexemeExampleSchema),
@@ -1095,8 +1295,25 @@ const LICENSE_ALLOWLIST = [
    * the app. Registered explicitly so the allowlist stays the gate.
    */
   "CEFR-J-terms",
+  // QC 2026-11-03 §2 (P4b): three narrowly scoped additions; SCOPED_LICENSES says what each may cover.
+  "Unicode-3.0",
+  "OFL-1.1",
+  "CC-BY-SA-3.0",
 ] as const;
 export const ALLOWED_LICENSES: readonly string[] = LICENSE_ALLOWLIST;
+
+/**
+ * Licences allowed only for one kind of file (QC 2026-11-03 §2). `data`:
+ * data files only, never code (Unihan readings; KanjiVG-style stroke data,
+ * handled like our CC BY-SA 4.0 data). `font`: font files only, bundled only
+ * when a test shows the system font lacks glyphs. Anything LGPL or Arphic
+ * (e.g. Make Me a Hanzi graphics) stays off the allowlist.
+ */
+export const SCOPED_LICENSES: Readonly<Record<string, "data" | "font">> = {
+  "Unicode-3.0": "data",
+  "CC-BY-SA-3.0": "data",
+  "OFL-1.1": "font",
+};
 
 /**
  * content/sources/registry.json — provenance registry. Every content/audio
@@ -1105,6 +1322,10 @@ export const ALLOWED_LICENSES: readonly string[] = LICENSE_ALLOWLIST;
  * registered, so its data cannot be ingested. That is the gate, by design.
  */
 export const SourceRegistrySchema = z.strictObject({
+  /** Licence decisions beyond the plain allowlist (QC 2026-11-03 §2): one entry per scoped licence. */
+  policy: z
+    .array(z.strictObject({ licence: z.enum(LICENSE_ALLOWLIST), scope: z.enum(["data", "font"]), decision: z.string().min(1), note: z.string().min(10) }))
+    .optional(),
   sources: z
     .array(
       z.strictObject({

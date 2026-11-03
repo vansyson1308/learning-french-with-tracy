@@ -25,6 +25,7 @@
  */
 
 import { msg, type Message } from "../i18n/message";
+import { alignedMatchKind, bestMatchKind, type MatchKind } from "../languages/reading-input";
 import type { LanguageRules } from "../languages/types";
 import { normalizeSpoken } from "../speech/grader";
 
@@ -59,6 +60,15 @@ export type WritingEvaluation = {
   tokenCount: number;
   /** Honest, specific problem feedback as message references (the UI formats them) — empty when the rubric is met. */
   feedback: Message[];
+  /**
+   * P4b: matched slots realized ONLY through the plugin's reading notation
+   * (ja kana / zh pinyin for a variant in the target script). They count
+   * for the verdict the learner sees; whether they count as production is
+   * the course's call (grading.ts readingOnlyAnswer /
+   * productionWritingEvaluation). Absent when there are none — always for
+   * Latin-script plugins.
+   */
+  readingOnlySlotIds?: string[];
 };
 
 /**
@@ -89,12 +99,27 @@ function containsRun(haystack: string[], needle: string[]): boolean {
 
 type AlignToKey = LanguageRules["alignAnswerToKey"];
 
-function slotMatched(answerTokens: string[], slot: WritingSlot, rules: LanguageRules, align: AlignToKey): boolean {
-  return slot.variants.some((variant) => {
-    const key = normalizeWritten(variant, rules);
-    const aligned = align?.(answerTokens.join(" "), key);
-    return containsRun(aligned === undefined ? answerTokens : tokensOf(aligned), tokensOf(key));
-  });
+/**
+ * How the answer realizes one slot: in the target script, ONLY through the
+ * plugin's reading notation (P4b: kana for a kanji variant, pinyin for a
+ * hanzi variant — languages/reading-input.ts), or not at all. Whether it
+ * matches is exactly the plain containment-after-alignment test.
+ */
+function slotMatch(answerTokens: string[], slot: WritingSlot, rules: LanguageRules, align: AlignToKey): MatchKind {
+  return bestMatchKind(
+    slot.variants.map((variant) => {
+      const key = normalizeWritten(variant, rules);
+      const aligned = align?.(answerTokens.join(" "), key);
+      const keyTokens = tokensOf(key);
+      if (!containsRun(aligned === undefined ? answerTokens : tokensOf(aligned), keyTokens)) return null;
+      return aligned === undefined || containsRun(answerTokens, keyTokens) ? "script" : alignedMatchKind(rules);
+    })
+  );
+}
+
+/** The optional evaluation field, present only when some slot was realized through the reading notation alone. */
+function readingOnlyField(slotIds: string[]): { readingOnlySlotIds?: string[] } {
+  return slotIds.length === 0 ? {} : { readingOnlySlotIds: slotIds };
 }
 
 /** Every [start, end) run where `needle` occurs in `haystack`. */
@@ -159,7 +184,8 @@ export function evaluateGuidedWriting(input: {
   const answerTokens = tokensOf(normalized);
   const tokenCount = answerTokens.length;
 
-  const matched = rubric.requiredSlots.filter((s) => slotMatched(answerTokens, s, rules, rules.alignWrittenToKey));
+  const kinds = new Map(rubric.requiredSlots.map((s) => [s, slotMatch(answerTokens, s, rules, rules.alignWrittenToKey)]));
+  const matched = rubric.requiredSlots.filter((s) => kinds.get(s) !== null);
   const missing = rubric.requiredSlots
     .filter((s) => !matched.includes(s))
     .map((s) => ({ id: s.id, description: s.description }));
@@ -178,7 +204,13 @@ export function evaluateGuidedWriting(input: {
   ).length;
   const knownShare = tokenCount === 0 ? 1 : knownCount / tokenCount;
 
-  const base = { matchedSlotIds, missingSlots: missing, knownShare, tokenCount };
+  const base = {
+    matchedSlotIds,
+    missingSlots: missing,
+    knownShare,
+    tokenCount,
+    ...readingOnlyField(matched.filter((s) => kinds.get(s) === "reading").map((s) => s.id)),
+  };
 
   // 1. Nothing written → nothing to judge.
   if (tokenCount === 0) {
@@ -278,6 +310,7 @@ export function evaluateSimpleForm(input: {
   const { rules } = input;
   const slotsById = new Map(input.rubric.requiredSlots.map((s) => [s.id, s]));
   const matchedSlotIds: string[] = [];
+  const readingOnlySlotIds: string[] = [];
   const missingSlots: { id: string; description: string }[] = [];
   const feedback: Message[] = [];
   let filled = 0;
@@ -296,8 +329,10 @@ export function evaluateSimpleForm(input: {
     }
     filled += 1;
     // A form field holds one value, not the learner's sentence: it aligns as a typed answer does.
-    if (slotMatched(answerTokens, slot, rules, rules.alignAnswerToKey)) {
+    const kind = slotMatch(answerTokens, slot, rules, rules.alignAnswerToKey);
+    if (kind !== null) {
       matchedSlotIds.push(slot.id);
+      if (kind === "reading") readingOnlySlotIds.push(slot.id);
     } else {
       missingSlots.push({ id: slot.id, description: slot.description });
       feedback.push(msg("rubric.checkField", { field: field.label }));
@@ -309,6 +344,7 @@ export function evaluateSimpleForm(input: {
     missingSlots,
     knownShare: 1,
     tokenCount: totalTokens,
+    ...readingOnlyField(readingOnlySlotIds),
   };
   if (filled === 0) {
     return {

@@ -1,7 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { RubyText } from "@/components/reading/ruby-text";
 import { useT } from "@/lib/i18n";
+import type { ScriptReading } from "@/lib/learning/script-reading";
 import { makeThemedStyles } from "@/lib/theme";
 import type { FillBlankExercise } from "@/lib/types";
 
@@ -14,15 +16,19 @@ type FillBlankProps = {
   status: "none" | "correct" | "wrong";
   /** P4a reading aid for the options (romanization); none by default. */
   readingOf?: (text: string) => string | undefined;
+  /** P4b script reading of the sentence and options (furigana / pinyin / RR); none by default. */
+  scriptOf?: (text: string) => ScriptReading | undefined;
 };
 
-export function FillBlank({ exercise, answer, onAnswer, status, readingOf = () => undefined }: FillBlankProps) {
+export function FillBlank({ exercise, answer, onAnswer, status, readingOf = () => undefined, scriptOf = () => undefined }: FillBlankProps) {
   const styles = useStyles();
   const { t } = useT();
   const filled =
     answer !== null
       ? exercise.sentence.replace("___", exercise.options[answer])
       : exercise.sentence;
+
+  const sentenceScript = scriptOf(filled);
 
   const optionState = (index: number): OptionState => {
     if (status === "none") return answer === index ? "selected" : "idle";
@@ -34,7 +40,11 @@ export function FillBlank({ exercise, answer, onAnswer, status, readingOf = () =
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t("ex.completeSentence")}</Text>
-      <Text style={styles.sentence}>{filled}</Text>
+      {sentenceScript ? (
+        <RubyText text={filled} reading={sentenceScript} textStyle={styles.sentence} />
+      ) : (
+        <Text style={styles.sentence}>{filled}</Text>
+      )}
       <Text style={styles.translation}>{exercise.translation}</Text>
 
       <View style={styles.options}>
@@ -43,6 +53,7 @@ export function FillBlank({ exercise, answer, onAnswer, status, readingOf = () =
             key={option + index}
             text={option}
             reading={readingOf(option)}
+            script={scriptOf(option)}
             state={optionState(index)}
             onPress={() => onAnswer(index)}
             disabled={status !== "none"}

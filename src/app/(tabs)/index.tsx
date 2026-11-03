@@ -15,6 +15,7 @@ import { useT } from "@/lib/i18n";
 import { Flag } from "@/components/flag";
 import { useCourseContent } from "@/lib/content";
 import { courseProfile, hasCapability } from "@/lib/course-profile";
+import { coursePrimer } from "@/lib/script-primer";
 import {
   activeToday,
   assessmentFor,
@@ -67,6 +68,8 @@ export default function LearnScreen() {
     hasCapability(activeCourseId, "placement") &&
     !assessment.placement &&
     Object.keys(courseProgress.completedLessons).length === 0;
+
+  const hasPrimer = coursePrimer(activeCourseId) !== null;
 
   // Units cycle through the palette across the whole course.
   const unitColor = new Map<string, (typeof unitPalette)[number]>();
@@ -144,9 +147,26 @@ export default function LearnScreen() {
             <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
           </Pressable>
         ) : null}
-        {pack.sections.map((section) => (
+        {pack.sections.map((section, sectionIndex) => (
           <View key={section.id}>
             <Text style={styles.sectionTitle} testID={`learn-section-${section.id}`}>{section.title}</Text>
+            {sectionIndex === 0 && hasPrimer ? (
+              // P4b stage 5: the script primer opens Section 1 of a ja / zh / ko course.
+              <Pressable
+                style={[styles.placementCard, { marginBottom: 12 }]}
+                onPress={() => router.push("/primer")}
+                accessibilityRole="button"
+                accessibilityLabel={t("primer.entryTitle")}
+                testID="script-primer-entry"
+              >
+                <Ionicons name="language" size={24} color={colors.skyDark} />
+                <View style={{ flex: 1, gap: 2 }}>
+                  <Text style={styles.placementTitle}>{t("primer.entryTitle")}</Text>
+                  <Text style={styles.placementSubtitle}>{t("primer.entrySubtitle")}</Text>
+                </View>
+                <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
+              </Pressable>
+            ) : null}
             {section.units.map((unit) => {
               const unitLessons = allLessons.filter((l) => l.unit.id === unit.id);
               const color = unitColor.get(unit.id) ?? unitPalette[0];

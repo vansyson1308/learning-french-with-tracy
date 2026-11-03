@@ -32,6 +32,8 @@ import {
   CourseProfileOverrideSchema,
 } from "../../content/schema";
 
+import { displayReading, type DisplayReading, type StoredReading } from "./cjk-readings/validate";
+import { scopeErrors } from "./licence-scope";
 import { lineageErrors, selectedVoiceErrors, type ManifestVoice } from "./voice-lineage";
 import { resolveCourseRoles, type CourseRef, type CourseRole, type CourseRoles } from "./course-roles";
 import { lessonShapeErrors, templateDefectErrors } from "./lesson-shape";
@@ -80,6 +82,14 @@ export const GENERATED_TARGETS = [
   "src/content/stories",
   "src/content/audio",
   "src/content/courses",
+  // P4b stage 2: Hán-Việt runtime tables + their D-10 review sheet (scripts/lib/hanviet.ts).
+  "src/content/hanviet",
+  "content/hanviet/REVIEW.md",
+  // P4b stage 5: script primers + their D-10 review sheets (scripts/lib/script-primer.ts).
+  "src/content/primer",
+  "content/ja/primer/REVIEW.md",
+  "content/ko/primer/REVIEW.md",
+  "content/zh/primer/REVIEW.md",
   "src/content/course-loaders.ts",
   "src/content/course-bundles.ts",
   TEST_ONLY_ROOT,
@@ -233,7 +243,10 @@ export function courseIsBeta(courseId: string): boolean {
 }
 
 /** A boolean flag of a course's profile (content/courses/<id>.profile.json), undefined when absent. */
-export function courseProfileFlag(courseId: string, flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack"): boolean | undefined {
+export function courseProfileFlag(
+  courseId: string,
+  flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack" | "readingInputIsProduction"
+): boolean | undefined {
   const rel = `content/courses/${courseId}.profile.json`;
   if (!existsSync(safeResolve(rel))) return undefined;
   const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));
@@ -766,6 +779,7 @@ export function validateRegistry(): ValidationResult {
     }
   }
   if (!covered("assets/audio/")) errors.push("provenance gap: assets/audio/ uncovered");
+  errors.push(...scopeErrors(registry.sources, registry.policy));
   errors.push(...lineageErrors(registry.sources));
   errors.push(...selectedVoiceErrors(selectedVoices(), registry.sources));
   return { errors, warnings: [] };
@@ -866,7 +880,9 @@ export function gradeTargetsFor(e: AnyExercise, map: Record<string, string>): st
 export function compilePack(
   pack: PackSource,
   /** The target language's frozen surface → id map; undefined = no registry (legacy course). */
-  idMap: Record<string, string> | undefined
+  idMap: Record<string, string> | undefined,
+  /** P4b stage 4: surface → the lexeme's display reading (ja/zh/ko); undefined = the language stores none. */
+  readings?: Record<string, DisplayReading>
 ): { pack: PackSource; coverage: CoverageRow } {
   const coverage: CoverageRow = { total: 0, withGradeTargets: 0, byType: {} };
   // Build-only pack fields never reach the runtime pack.
@@ -877,6 +893,9 @@ export function compilePack(
       ...section,
       units: section.units.map((unit) => ({
         ...unit,
+        ...(readings !== undefined && unit.words !== undefined
+          ? { words: unit.words.map((w) => (readings[w.target] !== undefined ? { ...w, reading: readings[w.target] } : w)) }
+          : {}),
         lessons: unit.lessons.map((lesson) => ({
           ...lesson,
           exercises: lesson.exercises.map((e) => {
@@ -932,6 +951,27 @@ export function loadLegacyMaps(packs: LoadedPack[] = loadPacks()): Record<string
   return maps;
 }
 
+/**
+ * P4b stage 4: per target language whose rich lexicon stores readings,
+ * surface (and legacy surface) → the lexeme's display reading, which the
+ * compiler copies onto each course word (`Word.reading`).
+ */
+export function loadReadingMaps(packs: LoadedPack[] = loadPacks()): Record<string, Record<string, DisplayReading>> {
+  const maps: Record<string, Record<string, DisplayReading>> = {};
+  for (const code of discoverTargets(packs)) {
+    const rel = `content/${code}/lexicon/lexemes.json`;
+    if (!existsSync(safeResolve(rel))) continue;
+    const map: Record<string, DisplayReading> = {};
+    for (const lex of (readJson(rel) as { lexemes: { surface: string; legacySurfaces?: string[]; reading?: StoredReading }[] }).lexemes) {
+      const shown = lex.reading ? displayReading(lex.reading) : undefined;
+      if (shown === undefined) continue;
+      for (const s of [lex.surface, ...(lex.legacySurfaces ?? [])]) map[s] = shown;
+    }
+    if (Object.keys(map).length > 0) maps[code] = map;
+  }
+  return maps;
+}
+
 export function compileAll(packs: LoadedPack[] = loadPacks()): {
   files: CompiledFile[];
   coverage: Record<string, CoverageRow>;
@@ -941,6 +981,7 @@ export function compileAll(packs: LoadedPack[] = loadPacks()): {
 } {
   const idMaps = loadIdMaps(packs);
   const legacyMaps = loadLegacyMaps(packs);
+  const readingMaps = loadReadingMaps(packs);
   const files: CompiledFile[] = [];
   const coverage: Record<string, CoverageRow> = {};
   const courseIds: string[] = [];
@@ -950,7 +991,7 @@ export function compileAll(packs: LoadedPack[] = loadPacks()): {
   for (const { pack: source } of packs) {
     const canonical = idMaps[source.targetCode];
     const lookup = canonical && legacyMaps[source.targetCode] ? { ...legacyMaps[source.targetCode], ...canonical } : canonical;
-    const { pack, coverage: row } = compilePack(source, lookup);
+    const { pack, coverage: row } = compilePack(source, lookup, readingMaps[source.targetCode]);
     sources.push(source);
     coverage[pack.id] = row;
     if (source.testOnly === true) {

@@ -5,7 +5,7 @@
  * the allowlist. An unknown link fails. An author's published statement counts
  * as a link (Kokoro-82M: record the quote and URL).
  */
-import { ALLOWED_LICENSES } from "../../content/schema";
+import { ALLOWED_LICENSES, SCOPED_LICENSES } from "../../content/schema";
 
 import type { GateVerdict } from "./piper-audio";
 
@@ -30,7 +30,8 @@ export function piperLineageVerdict(cardText: string): GateVerdict {
   return { ok: false, matched: null, reason: `model card states no training lineage (saw: ${t.line ?? "nothing"})` };
 }
 
-const badLinks = (links: LineageLink[]) => links.filter((l) => !ALLOWED_LICENSES.includes(l.licence));
+// A scoped licence (data-only or font-only, QC 2026-11-03 §2) never clears a voice's lineage.
+const badLinks = (links: LineageLink[]) => links.filter((l) => !ALLOWED_LICENSES.includes(l.licence) || SCOPED_LICENSES[l.licence] !== undefined);
 
 /** Kokoro, MeloTTS and Parler voices share their engine's model: the lineage is declared per engine in content/audio/engines.json. */
 export function engineLineageVerdict(engine: string, links: LineageLink[] | undefined): GateVerdict {

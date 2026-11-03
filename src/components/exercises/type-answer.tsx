@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
+import { RubyText } from "@/components/reading/ruby-text";
 import { courseProfile } from "@/lib/course-profile";
+import type { ScriptReading } from "@/lib/learning/script-reading";
 import { useT } from "@/lib/i18n";
 import { SpeakerButton } from "@/components/speaker-button";
 import { speakTarget } from "@/lib/audio";
@@ -15,6 +17,8 @@ type TypeAnswerProps = {
   onAnswer: (text: string) => void;
   status: "none" | "correct" | "wrong";
   targetLanguage: string;
+  /** P4b script reading of a target prompt (furigana / pinyin / RR); none by default. */
+  scriptOf?: (text: string) => ScriptReading | undefined;
 };
 
 export function TypeAnswer({
@@ -23,6 +27,7 @@ export function TypeAnswer({
   onAnswer,
   status,
   targetLanguage,
+  scriptOf = () => undefined,
 }: TypeAnswerProps) {
   const courseId = useProgress((s) => s.activeCourseId);
   const colors = useThemeColors();
@@ -37,6 +42,8 @@ export function TypeAnswer({
     if (isListen && exercise.audioTarget) speakTarget(courseId, exercise.audioTarget);
   }, [courseId, exercise.id, isListen, exercise.audioTarget]);
 
+  const promptScript = isListen ? undefined : scriptOf(exercise.prompt);
+
   const title = isListen
     ? t("ex.typeWhatYouHearIn", { language: targetLanguage })
     : isProduceTarget
@@ -49,7 +56,11 @@ export function TypeAnswer({
 
       <View style={styles.promptRow}>
         {exercise.audioTarget ? <SpeakerButton text={exercise.audioTarget} /> : null}
-        {!isListen ? <Text style={styles.prompt}>{exercise.prompt}</Text> : null}
+        {isListen ? null : promptScript ? (
+          <RubyText text={exercise.prompt} reading={promptScript} textStyle={styles.prompt} />
+        ) : (
+          <Text style={styles.prompt}>{exercise.prompt}</Text>
+        )}
       </View>
 
       <TextInput

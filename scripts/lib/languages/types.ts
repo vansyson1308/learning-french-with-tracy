@@ -31,6 +31,12 @@ export type BuildLanguage = {
    * language's speller is verified — the rule then does not apply.
    */
   numberDrill?: { accepted(n: number): string[]; expected(n: number): string };
+  /**
+   * P4b stage 4: the reading notations a lexeme of this language must carry
+   * (ja kana, zh pinyin, ko rr; the synthetic CJK test language all three,
+   * one per lexeme by its pronunciation). Absent = no reading required.
+   */
+  readings?: readonly ("kana" | "pinyin" | "rr")[];
 };
 
 export type ArticleGender = "masculine" | "feminine" | "neuter";
@@ -90,6 +96,14 @@ export type ParadigmSpec = {
   attributes?: Record<string, readonly string[]>;
 };
 
+/** P4b: a plugin-declared grammar concept (see BuildLanguagePlugin.grammarConcepts). */
+export type GrammarConcept = {
+  id: string;
+  kind: "measure-word" | "aspect-particle";
+  /** The words the concept is about (zh 个 本 张 …; 了). */
+  forms: readonly string[];
+};
+
 /**
  * ASR-normalisation spec (consumed by scripts/reception-asr-audit.py via
  * the generation plan, so the Python audit never re-implements language
@@ -122,6 +136,13 @@ export type BuildLanguagePlugin = BuildLanguage & {
   charsPerSecBand: { min: number; max: number };
   tokenize(text: string): string[];
   paradigm?: ParadigmSpec;
+  /**
+   * P4b: grammar concepts a language WITHOUT a verb paradigm teaches instead
+   * (zh: measure words, aspect particles) — pedagogy concept ids
+   * (`<lang>:concept:<slug>`) the course's concepts.json is expected to
+   * author, each with the forms it is about.
+   */
+  grammarConcepts?: readonly GrammarConcept[];
   /** FTS5 tokenizer clause for the lexicon database, chosen by script. */
   ftsTokenizer: string;
   /** High-frequency function words the writing plausibility floor accepts (not lexicon headwords). */

@@ -36,7 +36,7 @@ export type SpeechGradeResult = {
   correct: boolean;
   /** Index into [finalTranscript, ...alternatives] that matched; null = none. */
   matchedTranscriptIndex: number | null;
-  /** The authored variant that matched verbatim-after-normalization, if any. */
+  /** The authored variant that matched verbatim-after-normalization (or, ja, by stored reading), if any. */
   matchedVariant: string | null;
   /** True when the pass came from requiredConcepts rather than a variant. */
   matchedByConcepts: boolean;
@@ -83,10 +83,34 @@ function containsRun(haystack: string[], needle: string[]): boolean {
   return false;
 }
 
-function conceptsSatisfied(transcriptTokens: string[], slots: string[][], rules: LanguageRules): boolean {
+/**
+ * P4b: the reading form of a normalized utterance (ja: 学生 → がくせい),
+ * or null for languages without a reading layer — every language but the
+ * CJK plugins, whose results therefore never change.
+ */
+function readingOf(normalized: string, rules: LanguageRules): string | null {
+  return rules.spokenReading ? rules.spokenReading(normalized) : null;
+}
+
+/** Whole-utterance reading comparison ignores token boundaries (kana and kanji may segment differently). */
+function compact(reading: string): string {
+  return reading.replace(/ /g, "");
+}
+
+function conceptsSatisfied(
+  transcriptTokens: string[],
+  transcriptReading: string[] | null,
+  slots: string[][],
+  rules: LanguageRules
+): boolean {
   if (slots.length === 0) return false;
   return slots.every((slot) =>
-    slot.some((form) => containsRun(transcriptTokens, tokens(normalizeSpoken(form, rules))))
+    slot.some((form) => {
+      const normalized = normalizeSpoken(form, rules);
+      if (containsRun(transcriptTokens, tokens(normalized))) return true;
+      const reading = transcriptReading === null ? null : readingOf(normalized, rules);
+      return reading !== null && containsRun(transcriptReading!, tokens(reading));
+    })
   );
 }
 
@@ -101,16 +125,22 @@ export function gradeSpokenAttempt(
   rules: LanguageRules
 ): SpeechGradeResult {
   const transcripts = [finals.finalTranscript, ...finals.alternatives];
-  const normalizedVariants = spec.acceptedVariants.map((v) => ({
-    authored: v,
-    normalized: normalizeSpoken(v, rules),
-  }));
+  const normalizedVariants = spec.acceptedVariants.map((v) => {
+    const normalized = normalizeSpoken(v, rules);
+    const reading = readingOf(normalized, rules);
+    return { authored: v, normalized, reading: reading === null ? null : compact(reading) };
+  });
 
   for (let index = 0; index < transcripts.length; index++) {
     const normalized = normalizeSpoken(transcripts[index], rules);
     if (normalized.length === 0) continue;
+    const heardReading = readingOf(normalized, rules);
+    const heardCompact = heardReading === null ? null : compact(heardReading);
+    // P4b: or the same READING (ja: the recognizer wrote in kana what the author wrote in kanji).
     const variant = normalizedVariants.find(
-      (v) => v.normalized.length > 0 && v.normalized === normalized
+      (v) =>
+        v.normalized.length > 0 &&
+        (v.normalized === normalized || (heardCompact !== null && v.reading !== null && v.reading.length > 0 && v.reading === heardCompact))
     );
     if (variant) {
       return {
@@ -121,7 +151,7 @@ export function gradeSpokenAttempt(
         heard: finals.finalTranscript,
       };
     }
-    if (spec.requiredConcepts && conceptsSatisfied(tokens(normalized), spec.requiredConcepts, rules)) {
+    if (spec.requiredConcepts && conceptsSatisfied(tokens(normalized), heardReading === null ? null : tokens(heardReading), spec.requiredConcepts, rules)) {
       return {
         correct: true,
         matchedTranscriptIndex: index,

@@ -133,6 +133,12 @@ export function buildCheckEvidence(args: {
   latencyMs: number;
   /** Practice assistance active when the answer was produced (P8 §13). */
   assisted?: boolean;
+  /**
+   * P4b: the answer was accepted only through the reading notation (ja kana
+   * / zh pinyin for a target-script key; grading.ts readingOnlyAnswer) —
+   * logged as practice, never an assessment.
+   */
+  readingOnly?: boolean;
 }): ReviewEvidence | null {
   const { definition, step } = args;
   const plan = evidencePlanFor(definition, step);
@@ -143,7 +149,7 @@ export function buildCheckEvidence(args: {
     sessionId: args.sessionId,
     exerciseId: exercise.id,
     modality: behaviorFor(exercise).modality(exercise),
-    srsRole: plan.srsRole,
+    srsRole: args.readingOnly === true && plan.srsRole === "assessment" ? "practice" : plan.srsRole,
     source: definition.evidenceSource,
     correct: args.correct,
     hinted: false,

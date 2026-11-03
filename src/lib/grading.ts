@@ -3,6 +3,7 @@ import type { Exercise, GuidedWritingExercise, SimpleFormExercise } from "./type
 import { courseProfile } from "./course-profile";
 import { languageRulesForCourse } from "./languages";
 import { normalizeLenientLatin, normalizeStrictLatin } from "./languages/base";
+import { alignedMatchKind, bestMatchKind } from "./languages/reading-input";
 import type { LanguageRules } from "./languages/types";
 import { gradeSpokenAttempt } from "./speech/grader";
 import { knownVocabulary } from "./writing/content";
@@ -152,12 +153,81 @@ function stripPunctuation(text: string): string {
  * "schoen" = "schön"; English: "a flat" for the key "an apartment"). Other languages compare exactly as before.
  */
 function lenientEquals(rules: LanguageRules, a: string, b: string): boolean {
+  return lenientMatch(rules, a, b) !== null;
+}
+
+/**
+ * How typed text `b` matches key `a`: in the target script ("script":
+ * the lenient or alternate form, or a same-script alignment such as an
+ * English variety), ONLY through the plugin's reading notation ("reading":
+ * ja kana for a kanji key, zh pinyin for a hanzi key — P4b), or not at all.
+ */
+function lenientMatch(rules: LanguageRules, a: string, b: string): "script" | "reading" | null {
   const key = rules.normalizeLenient(a);
   const attempt = rules.normalizeLenient(b);
-  if (key === attempt) return true;
-  if (rules.alignAnswerToKey?.(attempt, key) === key) return true;
+  if (key === attempt) return "script";
   const alternate = rules.normalizeLenientAlternate;
-  return alternate !== undefined && alternate(a) === alternate(b);
+  if (alternate !== undefined && alternate(a) === alternate(b)) return "script";
+  if (rules.alignAnswerToKey?.(attempt, key) === key) return alignedMatchKind(rules);
+  return null;
+}
+
+/** Whether the P4b guard applies: the course's plugin declares a reading notation and its profile does not count it as production. */
+function readingInputGuarded(courseId: string): boolean {
+  if (courseId === "") return false;
+  return languageRulesForCourse(courseId).readingInput !== undefined && courseProfile(courseId).readingInputIsProduction !== true;
+}
+
+/**
+ * P4b evidence guard: a typed answer accepted ONLY because it spells the
+ * key in the reading notation (kana for 学生, pinyin for 汉语) is practice —
+ * the learner sees it accepted, but it is never production evidence: the
+ * session withholds its first-attempt result (scored surfaces then have no
+ * evidence for the item) and the evidence plan drops to "practice". A
+ * course profile with `readingInputIsProduction` opts out. Latin-script
+ * plugins declare no reading notation, so this is always false for them.
+ *
+ * Writing (guided writing, simple forms): the rubric's verdict is ONE
+ * result for the whole task, so a task that meets its rubric while any
+ * slot was realized only through the reading notation is reading-only as a
+ * whole (the slot-level scoring view is productionWritingEvaluation).
+ */
+export function readingOnlyAnswer(exercise: Exercise, answer: Answer, courseId: string): boolean {
+  if (!readingInputGuarded(courseId)) return false;
+  if (exercise.type === "guidedWriting" || exercise.type === "simpleForm") {
+    const evaluation = evaluateWrittenAnswer(exercise, answer, courseId);
+    return evaluation?.verdict === "meets_rubric" && evaluation.readingOnlySlotIds !== undefined;
+  }
+  const rules = languageRulesForCourse(courseId);
+  let keys: string[];
+  let attempt: string;
+  if (exercise.type === "typeAnswer" && typeof answer === "string") {
+    keys = [exercise.answer, ...exercise.alternatives];
+    attempt = answer;
+  } else if (exercise.type === "wordBank" && Array.isArray(answer)) {
+    keys = [exercise.answer, ...(exercise.alternatives ?? [])].map((a) => a.join(" "));
+    attempt = answer.map((i) => exercise.tokens[i]).join(" ");
+  } else return false;
+  return bestMatchKind(keys.map((k) => lenientMatch(rules, k, attempt))) === "reading";
+}
+
+/**
+ * The SCORING view of a writing evaluation (P4b): slots realized only
+ * through the reading notation earn nothing — per slot, because message
+ * points score per slot. Under the profile opt-out, for Latin-script
+ * courses, and whenever no slot was matched that way, this is the
+ * evaluation itself. The learner-facing verdict and feedback are the plain
+ * evaluateWrittenAnswer result.
+ */
+export function productionWritingEvaluation(
+  exercise: GuidedWritingExercise | SimpleFormExercise,
+  answer: Answer,
+  courseId: string
+): WritingEvaluation | null {
+  const evaluation = evaluateWrittenAnswer(exercise, answer, courseId);
+  const readingOnly = evaluation?.readingOnlySlotIds;
+  if (!evaluation || readingOnly === undefined || !readingInputGuarded(courseId)) return evaluation;
+  return { ...evaluation, matchedSlotIds: evaluation.matchedSlotIds.filter((id) => !readingOnly.includes(id)) };
 }
 
 export function strictEquals(a: string, b: string, courseId?: string): boolean {

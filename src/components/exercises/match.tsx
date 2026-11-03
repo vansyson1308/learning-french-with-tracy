@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { useT } from "@/lib/i18n";
 import { haptics } from "@/lib/haptics";
+import type { ScriptReading } from "@/lib/learning/script-reading";
 import { makeThemedStyles } from "@/lib/theme";
 import type { MatchExercise } from "@/lib/types";
 
@@ -16,6 +17,8 @@ type MatchProps = {
   onSpeak: (target: string) => void;
   /** Session-provided reading aid (P4a romanization) for the target column. */
   readingOf?: (target: string) => string | undefined;
+  /** P4b script reading of the target column (furigana / pinyin / RR); none by default. */
+  scriptOf?: (target: string) => ScriptReading | undefined;
 };
 
 function shuffleBy<T>(items: T[], seedText: string): T[] {
@@ -38,7 +41,7 @@ function shuffleBy<T>(items: T[], seedText: string): T[] {
   return out;
 }
 
-export function Match({ exercise, onComplete, onWordResult, onSpeak, readingOf = () => undefined }: MatchProps) {
+export function Match({ exercise, onComplete, onWordResult, onSpeak, readingOf = () => undefined, scriptOf = () => undefined }: MatchProps) {
   const styles = useStyles();
   const { t } = useT();
   const left = useMemo(
@@ -100,6 +103,7 @@ export function Match({ exercise, onComplete, onWordResult, onSpeak, readingOf =
               key={target}
               text={target}
               reading={readingOf(target)}
+              script={scriptOf(target)}
               state={stateFor(target, target, selectedTarget === target)}
               disabled={matched.has(target)}
               onPress={() => {

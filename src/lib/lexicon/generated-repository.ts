@@ -6,6 +6,7 @@
  */
 
 import { foldForSearch, foldSearchable, rankMatches, searchTokens, type FoldedSearchable } from "../learning/lexicon-search";
+import { cjkReadingKeys, cjkSearchPatterns, rankCjk, type CjkReading } from "./cjk-search";
 import type {
   LexemeDetail,
   LexemeExample,
@@ -16,6 +17,8 @@ import type {
 
 export type GeneratedLexiconData = {
   contentHash: string;
+  /** P4b stage 5: "cjk" = the CJK search contract (src/lib/lexicon/cjk-search.ts); absent = Latin. */
+  searchMode?: "cjk";
   entries: {
     id: string;
     surface: string;
@@ -27,6 +30,8 @@ export type GeneratedLexiconData = {
     topic?: string;
     frequency?: { band: string; rank?: number; perMillion: number };
     pronunciation?: { value: string; notation: string };
+    /** P4b: the CJK reading (ja kana, zh pinyin, ko rr) — the source of the CJK search keys. */
+    reading?: CjkReading;
     /** Keyed by language code (target + native) plus the registered `source` id. */
     examples: Record<string, string>[];
     confusables?: string[];
@@ -75,7 +80,13 @@ export class GeneratedLexiconRepository implements LexiconRepository {
   /** Alphabetical sort keys per entry (by ord), built on the first alphabetical list. */
   private sortKeys: string[] | null = null;
 
+  /** P4b: the CJK search contract, or undefined for the Latin one. */
+  private readonly searchMode: "cjk" | undefined;
+  /** CJK search keys per entry (by ord), built on the first search. */
+  private readingKeys: string[] | null = null;
+
   constructor(data: GeneratedLexiconData) {
+    this.searchMode = data.searchMode;
     this.entries = data.entries.map((e, ord) => ({ ...e, ord }));
     this.byId = new Map(this.entries.map((e) => [e.id, e]));
   }
@@ -96,6 +107,15 @@ export class GeneratedLexiconRepository implements LexiconRepository {
   }
 
   async search(query: string): Promise<LexemeSummary[]> {
+    if (this.searchMode === "cjk") {
+      if (cjkSearchPatterns(query) === null) return [];
+      if (this.readingKeys === null) this.readingKeys = this.entries.map(cjkReadingKeys);
+      const keys = this.readingKeys;
+      return rankCjk(
+        this.entries.map((e) => ({ surface: e.surface, gloss: e.gloss, readingKeys: keys[e.ord]!, ord: e.ord, e })),
+        query
+      ).map((r) => toSummary(r.e));
+    }
     const tokens = searchTokens(query);
     if (tokens.length === 0) return [];
     const folded = this.foldedEntries();

@@ -1,0 +1,9686 @@
+{
+  "generator": "scripts/cjk-readings.ts",
+  "language": "ko",
+  "notation": "rr",
+  "sources": [
+    {
+      "id": "kaikki-en",
+      "sha256": "b98abdab081d6b73d6c2935897a2d7a116fbd6a81e3a4c72d8c527ebf5bb1b9f",
+      "url": "https://kaikki.org/dictionary/Korean/kaikki.org-dictionary-Korean.jsonl",
+      "retrievedAt": "2026-10-21"
+    }
+  ],
+  "method": "Revised Romanization of every candidate-pool lemma by the project's own rule set (scripts/lib/cjk-readings/korean-rr.ts, written from the official rule text of the National Institute of Korean Language, https://www.korean.go.kr/front_eng/roman/roman_01.do; nouns keep ㅎ after ㄱ ㄷ ㅂ). No data source. A reading is confirmed when the rule output agrees, letters only, with the lemma's romanization in kaikki (Wiktionary, derived/readings.json); when the plain spelling disagrees, a single `+` compound boundary (ㄴ insertion, [ㄴㄴ]) is tried and kept as `rrSpelling` when exactly one placement agrees. Everything else is listed in `unresolved` with its reason.",
+  "coverage": {
+    "entries": 3230,
+    "confirmed": 3212,
+    "unresolved": 18
+  },
+  "readings": {
+    "거야|noun": {
+      "rr": "geoya"
+    },
+    "있어|verb": {
+      "rr": "isseo"
+    },
+    "널다|verb": {
+      "rr": "neolda"
+    },
+    "그리고|adverb": {
+      "rr": "geurigo"
+    },
+    "어떻게|adverb": {
+      "rr": "eotteoke"
+    },
+    "그냥|adverb": {
+      "rr": "geunyang"
+    },
+    "조금|adverb": {
+      "rr": "jogeum"
+    },
+    "조금|noun": {
+      "rr": "jogeum"
+    },
+    "이제|noun": {
+      "rr": "ije"
+    },
+    "좋다|adjective": {
+      "rr": "jota"
+    },
+    "우린|noun": {
+      "rr": "urin"
+    },
+    "가다|verb": {
+      "rr": "gada"
+    },
+    "자다|verb": {
+      "rr": "jada"
+    },
+    "너무|adverb": {
+      "rr": "neomu"
+    },
+    "그래서|adverb": {
+      "rr": "geuraeseo"
+    },
+    "그렇게|adverb": {
+      "rr": "geureoke"
+    },
+    "하다|verb": {
+      "rr": "hada"
+    },
+    "하지만|adverb": {
+      "rr": "hajiman"
+    },
+    "하지만|verb": {
+      "rr": "hajiman"
+    },
+    "되다|verb": {
+      "rr": "doeda"
+    },
+    "하고|verb": {
+      "rr": "hago"
+    },
+    "정말|adverb": {
+      "rr": "jeongmal"
+    },
+    "정말|noun": {
+      "rr": "jeongmal"
+    },
+    "나다|verb": {
+      "rr": "nada"
+    },
+    "잘다|adjective": {
+      "rr": "jalda"
+    },
+    "아주|adverb": {
+      "rr": "aju"
+    },
+    "걸다|adjective": {
+      "rr": "geolda"
+    },
+    "걸다|verb": {
+      "rr": "geolda"
+    },
+    "지금|adverb": {
+      "rr": "jigeum"
+    },
+    "지금|noun": {
+      "rr": "jigeum"
+    },
+    "다시|adverb": {
+      "rr": "dasi"
+    },
+    "아직|adverb": {
+      "rr": "ajik"
+    },
+    "어서|adverb": {
+      "rr": "eoseo"
+    },
+    "날다|verb": {
+      "rr": "nalda"
+    },
+    "위해|noun": {
+      "rr": "wihae"
+    },
+    "하지|noun": {
+      "rr": "haji"
+    },
+    "엄마|noun": {
+      "rr": "eomma"
+    },
+    "바로|adverb": {
+      "rr": "baro"
+    },
+    "근데|adverb": {
+      "rr": "geunde"
+    },
+    "이렇게|adverb": {
+      "rr": "ireoke"
+    },
+    "빨리|adverb": {
+      "rr": "ppalli"
+    },
+    "얼마나|adverb": {
+      "rr": "eolmana"
+    },
+    "제발|adverb": {
+      "rr": "jebal"
+    },
+    "좋아요|noun": {
+      "rr": "joayo"
+    },
+    "같이|adverb": {
+      "rr": "gachi"
+    },
+    "그렇지|adverb": {
+      "rr": "geureochi"
+    },
+    "때문에|adverb": {
+      "rr": "ttaemune"
+    },
+    "아빠|noun": {
+      "rr": "appa"
+    },
+    "모두|adverb": {
+      "rr": "modu"
+    },
+    "사람|noun": {
+      "rr": "saram"
+    },
+    "수도|noun": {
+      "rr": "sudo"
+    },
+    "많이|adverb": {
+      "rr": "mani"
+    },
+    "거지|noun": {
+      "rr": "geoji"
+    },
+    "함께|adverb": {
+      "rr": "hamkke"
+    },
+    "주다|verb": {
+      "rr": "juda"
+    },
+    "만약|adverb": {
+      "rr": "manyak"
+    },
+    "이야기|noun": {
+      "rr": "iyagi"
+    },
+    "오늘|noun": {
+      "rr": "oneul"
+    },
+    "항상|adverb": {
+      "rr": "hangsang"
+    },
+    "보고|noun": {
+      "rr": "bogo"
+    },
+    "되다|adjective": {
+      "rr": "doeda"
+    },
+    "많다|adjective": {
+      "rr": "manta"
+    },
+    "모르다|verb": {
+      "rr": "moreuda"
+    },
+    "그만|adverb": {
+      "rr": "geuman"
+    },
+    "계속|adverb": {
+      "rr": "gyesok"
+    },
+    "아니면|adverb": {
+      "rr": "animyeon"
+    },
+    "이미|adverb": {
+      "rr": "imi"
+    },
+    "그런데|adverb": {
+      "rr": "geureonde"
+    },
+    "아니라|adjective": {
+      "rr": "anira"
+    },
+    "절대|adverb": {
+      "rr": "jeoldae"
+    },
+    "다시|noun": {
+      "rr": "dasi"
+    },
+    "그래도|adverb": {
+      "rr": "geuraedo"
+    },
+    "전부|noun": {
+      "rr": "jeonbu"
+    },
+    "진짜|adverb": {
+      "rr": "jinjja"
+    },
+    "진짜|noun": {
+      "rr": "jinjja"
+    },
+    "자기|noun": {
+      "rr": "jagi"
+    },
+    "가지고|noun": {
+      "rr": "gajigo"
+    },
+    "대한|noun": {
+      "rr": "daehan"
+    },
+    "다들|adverb": {
+      "rr": "dadeul"
+    },
+    "이젠|noun": {
+      "rr": "ijen"
+    },
+    "오늘|adverb": {
+      "rr": "oneul"
+    },
+    "크다|adjective": {
+      "rr": "keuda"
+    },
+    "왜냐하면|adverb": {
+      "rr": "waenyahamyeon"
+    },
+    "먼저|adverb": {
+      "rr": "meonjeo"
+    },
+    "잠깐|adverb": {
+      "rr": "jamkkan"
+    },
+    "방금|adverb": {
+      "rr": "banggeum"
+    },
+    "동안|noun": {
+      "rr": "dong-an"
+    },
+    "친구|noun": {
+      "rr": "chin-gu"
+    },
+    "혼자|noun": {
+      "rr": "honja"
+    },
+    "줄다|verb": {
+      "rr": "julda"
+    },
+    "절다|verb": {
+      "rr": "jeolda"
+    },
+    "가장|noun": {
+      "rr": "gajang"
+    },
+    "선생님|noun": {
+      "rr": "seonsaengnim"
+    },
+    "다음|noun": {
+      "rr": "da-eum"
+    },
+    "물론|adverb": {
+      "rr": "mullon"
+    },
+    "그러면|adverb": {
+      "rr": "geureomyeon"
+    },
+    "시간|noun": {
+      "rr": "sigan"
+    },
+    "갈다|verb": {
+      "rr": "galda"
+    },
+    "당장|noun": {
+      "rr": "dangjang"
+    },
+    "이상|noun": {
+      "rr": "isang"
+    },
+    "보다|verb": {
+      "rr": "boda"
+    },
+    "전혀|adverb": {
+      "rr": "jeonhyeo"
+    },
+    "여자|noun": {
+      "rr": "yeoja"
+    },
+    "아직도|adverb": {
+      "rr": "ajikdo"
+    },
+    "알다|verb": {
+      "rr": "alda"
+    },
+    "필요|noun": {
+      "rr": "piryo"
+    },
+    "몰라요|verb": {
+      "rr": "mollayo"
+    },
+    "혹시|adverb": {
+      "rr": "hoksi"
+    },
+    "살다|verb": {
+      "rr": "salda"
+    },
+    "해도|noun": {
+      "rr": "haedo"
+    },
+    "가지|noun": {
+      "rr": "gaji"
+    },
+    "없이|adverb": {
+      "rr": "eopsi"
+    },
+    "계속|noun": {
+      "rr": "gyesok"
+    },
+    "아버지|noun": {
+      "rr": "abeoji"
+    },
+    "나랑|noun": {
+      "rr": "narang"
+    },
+    "크다|verb": {
+      "rr": "keuda"
+    },
+    "그저|adverb": {
+      "rr": "geujeo"
+    },
+    "생각|noun": {
+      "rr": "saenggak"
+    },
+    "해서|noun": {
+      "rr": "haeseo"
+    },
+    "마지막|noun": {
+      "rr": "majimak"
+    },
+    "엄청|adverb": {
+      "rr": "eomcheong"
+    },
+    "가장|adverb": {
+      "rr": "gajang"
+    },
+    "한번|adverb": {
+      "rr": "hanbeon"
+    },
+    "지나다|verb": {
+      "rr": "jinada"
+    },
+    "제대로|adverb": {
+      "rr": "jedaero"
+    },
+    "아니다|adjective": {
+      "rr": "anida"
+    },
+    "남자|noun": {
+      "rr": "namja"
+    },
+    "있다|verb": {
+      "rr": "itda"
+    },
+    "그렇지만|adverb": {
+      "rr": "geureochiman"
+    },
+    "여러분|noun": {
+      "rr": "yeoreobun"
+    },
+    "완전히|adverb": {
+      "rr": "wanjeonhi"
+    },
+    "소리|noun": {
+      "rr": "sori"
+    },
+    "벌써|adverb": {
+      "rr": "beolsseo"
+    },
+    "대체|noun": {
+      "rr": "daeche"
+    },
+    "정말로|adverb": {
+      "rr": "jeongmallo"
+    },
+    "와서|verb": {
+      "rr": "waseo"
+    },
+    "모두|noun": {
+      "rr": "modu"
+    },
+    "여보|noun": {
+      "rr": "yeobo"
+    },
+    "매우|adverb": {
+      "rr": "mae-u"
+    },
+    "확실히|adverb": {
+      "rr": "hwaksilhi"
+    },
+    "당연히|adverb": {
+      "rr": "dang-yeonhi"
+    },
+    "나의|noun": {
+      "rr": "naui"
+    },
+    "여전히|adverb": {
+      "rr": "yeojeonhi"
+    },
+    "부인|noun": {
+      "rr": "bu-in"
+    },
+    "아마|adverb": {
+      "rr": "ama"
+    },
+    "아마|noun": {
+      "rr": "ama"
+    },
+    "훨씬|adverb": {
+      "rr": "hwolssin"
+    },
+    "뭔지|noun": {
+      "rr": "mwonji"
+    },
+    "수술|noun": {
+      "rr": "susul"
+    },
+    "잠깐|noun": {
+      "rr": "jamkkan"
+    },
+    "아마도|adverb": {
+      "rr": "amado"
+    },
+    "준비|noun": {
+      "rr": "junbi"
+    },
+    "전화|noun": {
+      "rr": "jeonhwa"
+    },
+    "도대체|adverb": {
+      "rr": "dodaeche"
+    },
+    "차다|verb": {
+      "rr": "chada"
+    },
+    "누가|noun": {
+      "rr": "nuga"
+    },
+    "갑자기|adverb": {
+      "rr": "gapjagi"
+    },
+    "내일|noun": {
+      "rr": "naeil"
+    },
+    "완전|adverb": {
+      "rr": "wanjeon"
+    },
+    "완전|noun": {
+      "rr": "wanjeon"
+    },
+    "거의|adverb": {
+      "rr": "geoui"
+    },
+    "어쨌든|adverb": {
+      "rr": "eojjaetdeun"
+    },
+    "이번|noun": {
+      "rr": "ibeon"
+    },
+    "아침|noun": {
+      "rr": "achim"
+    },
+    "처음|noun": {
+      "rr": "cheo-eum"
+    },
+    "신경|noun": {
+      "rr": "sin-gyeong"
+    },
+    "분명히|adverb": {
+      "rr": "bunmyeonghi"
+    },
+    "일단|adverb": {
+      "rr": "ildan"
+    },
+    "걱정|noun": {
+      "rr": "geokjeong"
+    },
+    "이리|adverb": {
+      "rr": "iri"
+    },
+    "이리|noun": {
+      "rr": "iri"
+    },
+    "사실|adverb": {
+      "rr": "sasil"
+    },
+    "사실|noun": {
+      "rr": "sasil"
+    },
+    "한다|verb": {
+      "rr": "handa"
+    },
+    "금방|adverb": {
+      "rr": "geumbang"
+    },
+    "결국|adverb": {
+      "rr": "gyeolguk"
+    },
+    "그때|noun": {
+      "rr": "geuttae"
+    },
+    "직접|noun": {
+      "rr": "jikjeop"
+    },
+    "오래|noun": {
+      "rr": "orae"
+    },
+    "기분|noun": {
+      "rr": "gibun"
+    },
+    "가면|noun": {
+      "rr": "gamyeon"
+    },
+    "있다|adjective": {
+      "rr": "itda"
+    },
+    "앞으로|adverb": {
+      "rr": "apeuro"
+    },
+    "애가|noun": {
+      "rr": "aega"
+    },
+    "언제나|adverb": {
+      "rr": "eonjena"
+    },
+    "아들|noun": {
+      "rr": "adeul"
+    },
+    "하세요|verb": {
+      "rr": "haseyo"
+    },
+    "당장|adverb": {
+      "rr": "dangjang"
+    },
+    "아기|noun": {
+      "rr": "agi"
+    },
+    "조용히|adverb": {
+      "rr": "joyonghi"
+    },
+    "보다|adjective": {
+      "rr": "boda"
+    },
+    "머리|noun": {
+      "rr": "meori"
+    },
+    "없다|adjective": {
+      "rr": "eopda"
+    },
+    "고맙습니다|verb": {
+      "rr": "gomapseumnida"
+    },
+    "환자|noun": {
+      "rr": "hwanja"
+    },
+    "게다가|adverb": {
+      "rr": "gedaga"
+    },
+    "보지|noun": {
+      "rr": "boji"
+    },
+    "얼른|adverb": {
+      "rr": "eolleun"
+    },
+    "대로|noun": {
+      "rr": "daero"
+    },
+    "충분히|adverb": {
+      "rr": "chungbunhi"
+    },
+    "제일|noun": {
+      "rr": "jeil"
+    },
+    "거의|noun": {
+      "rr": "geoui"
+    },
+    "아저씨|noun": {
+      "rr": "ajeossi"
+    },
+    "별로|adverb": {
+      "rr": "byeollo"
+    },
+    "평생|noun": {
+      "rr": "pyeongsaeng"
+    },
+    "분명|adverb": {
+      "rr": "bunmyeong"
+    },
+    "카메라|noun": {
+      "rr": "kamera"
+    },
+    "역시|adverb": {
+      "rr": "yeoksi"
+    },
+    "문제|noun": {
+      "rr": "munje"
+    },
+    "천천히|adverb": {
+      "rr": "cheoncheonhi"
+    },
+    "저녁|noun": {
+      "rr": "jeonyeok"
+    },
+    "적어도|adverb": {
+      "rr": "jeogeodo"
+    },
+    "그러나|adverb": {
+      "rr": "geureona"
+    },
+    "가끔|adverb": {
+      "rr": "gakkeum"
+    },
+    "하자|noun": {
+      "rr": "haja"
+    },
+    "내일|adverb": {
+      "rr": "naeil"
+    },
+    "정도|noun": {
+      "rr": "jeongdo"
+    },
+    "싫어요|noun": {
+      "rr": "sireoyo"
+    },
+    "아이|noun": {
+      "rr": "ai"
+    },
+    "영원히|adverb": {
+      "rr": "yeong-wonhi"
+    },
+    "정신|noun": {
+      "rr": "jeongsin"
+    },
+    "그대로|adverb": {
+      "rr": "geudaero"
+    },
+    "한번|noun": {
+      "rr": "hanbeon"
+    },
+    "앞에서|adverb": {
+      "rr": "apeseo"
+    },
+    "요즘|noun": {
+      "rr": "yojeum"
+    },
+    "매일|adverb": {
+      "rr": "maeil"
+    },
+    "피다|verb": {
+      "rr": "pida"
+    },
+    "어머니|noun": {
+      "rr": "eomeoni"
+    },
+    "언니|noun": {
+      "rr": "eonni"
+    },
+    "하루|noun": {
+      "rr": "haru"
+    },
+    "대체|adverb": {
+      "rr": "daeche"
+    },
+    "사랑|noun": {
+      "rr": "sarang"
+    },
+    "마치|noun": {
+      "rr": "machi"
+    },
+    "직접|adverb": {
+      "rr": "jikjeop"
+    },
+    "가게|noun": {
+      "rr": "gage"
+    },
+    "만큼|noun": {
+      "rr": "mankeum"
+    },
+    "이름|noun": {
+      "rr": "ireum"
+    },
+    "번째|noun": {
+      "rr": "beonjjae"
+    },
+    "어제|adverb": {
+      "rr": "eoje"
+    },
+    "오빠|noun": {
+      "rr": "oppa"
+    },
+    "단지|adverb": {
+      "rr": "danji"
+    },
+    "단지|noun": {
+      "rr": "danji"
+    },
+    "거짓말|noun": {
+      "rr": "geojinmal"
+    },
+    "없다|verb": {
+      "rr": "eopda"
+    },
+    "사실은|adverb": {
+      "rr": "sasireun"
+    },
+    "그리|adverb": {
+      "rr": "geuri"
+    },
+    "하기|noun": {
+      "rr": "hagi"
+    },
+    "제일|adverb": {
+      "rr": "jeil"
+    },
+    "아까|adverb": {
+      "rr": "akka"
+    },
+    "점점|noun": {
+      "rr": "jeomjeom"
+    },
+    "학교|noun": {
+      "rr": "hakgyo"
+    },
+    "아가씨|noun": {
+      "rr": "agassi"
+    },
+    "딸딸이|noun": {
+      "rr": "ttalttari"
+    },
+    "예쁘다|adjective": {
+      "rr": "yeppeuda"
+    },
+    "모두들|noun": {
+      "rr": "modudeul"
+    },
+    "사다|verb": {
+      "rr": "sada"
+    },
+    "경찰|noun": {
+      "rr": "gyeongchal"
+    },
+    "기억|noun": {
+      "rr": "gieok"
+    },
+    "했다|verb": {
+      "rr": "haetda"
+    },
+    "쓰다|verb": {
+      "rr": "sseuda"
+    },
+    "해요|verb": {
+      "rr": "haeyo"
+    },
+    "가족|noun": {
+      "rr": "gajok"
+    },
+    "영화|noun": {
+      "rr": "yeonghwa"
+    },
+    "쉽다|adjective": {
+      "rr": "swipda"
+    },
+    "마이크|noun": {
+      "rr": "maikeu"
+    },
+    "얼마|noun": {
+      "rr": "eolma"
+    },
+    "사진|noun": {
+      "rr": "sajin"
+    },
+    "바보|noun": {
+      "rr": "babo"
+    },
+    "주지|noun": {
+      "rr": "juji"
+    },
+    "가만히|adverb": {
+      "rr": "gamanhi"
+    },
+    "또한|adverb": {
+      "rr": "ttohan"
+    },
+    "노래|noun": {
+      "rr": "norae"
+    },
+    "열심히|adverb": {
+      "rr": "yeolsimhi"
+    },
+    "드디어|adverb": {
+      "rr": "deudieo"
+    },
+    "굉장히|adverb": {
+      "rr": "goengjanghi"
+    },
+    "일찍|adverb": {
+      "rr": "iljjik"
+    },
+    "새로|adverb": {
+      "rr": "saero"
+    },
+    "절대로|adverb": {
+      "rr": "jeoldaero"
+    },
+    "마음대로|adverb": {
+      "rr": "ma-eumdaero"
+    },
+    "심지어|adverb": {
+      "rr": "simjieo"
+    },
+    "오랫동안|noun": {
+      "rr": "oraetdong-an"
+    },
+    "사건|noun": {
+      "rr": "sageon"
+    },
+    "상관|noun": {
+      "rr": "sanggwan"
+    },
+    "커피|noun": {
+      "rr": "keopi"
+    },
+    "만날|adverb": {
+      "rr": "mannal"
+    },
+    "차다|adjective": {
+      "rr": "chada"
+    },
+    "의사|noun": {
+      "rr": "uisa"
+    },
+    "얼굴|noun": {
+      "rr": "eolgul"
+    },
+    "결혼|noun": {
+      "rr": "gyeolhon"
+    },
+    "겨우|adverb": {
+      "rr": "gyeou"
+    },
+    "마구|adverb": {
+      "rr": "magu"
+    },
+    "마구|noun": {
+      "rr": "magu"
+    },
+    "말씀|noun": {
+      "rr": "malsseum"
+    },
+    "자식|noun": {
+      "rr": "jasik"
+    },
+    "일로|adverb": {
+      "rr": "illo"
+    },
+    "오래|adverb": {
+      "rr": "orae"
+    },
+    "달다|verb": {
+      "rr": "dalda"
+    },
+    "마음|noun": {
+      "rr": "ma-eum"
+    },
+    "할머니|noun": {
+      "rr": "halmeoni"
+    },
+    "음악|noun": {
+      "rr": "eumak"
+    },
+    "순간|noun": {
+      "rr": "sun-gan"
+    },
+    "그날|noun": {
+      "rr": "geunal"
+    },
+    "새끼|noun": {
+      "rr": "saekki"
+    },
+    "화가|noun": {
+      "rr": "hwaga"
+    },
+    "저리|adverb": {
+      "rr": "jeori"
+    },
+    "들다|verb": {
+      "rr": "deulda"
+    },
+    "좆나|adverb": {
+      "rr": "jonna"
+    },
+    "어차피|adverb": {
+      "rr": "eochapi"
+    },
+    "잘못|adverb": {
+      "rr": "jalmot"
+    },
+    "잘못|noun": {
+      "rr": "jalmot"
+    },
+    "비밀|noun": {
+      "rr": "bimil"
+    },
+    "자주|noun": {
+      "rr": "jaju"
+    },
+    "같다|adjective": {
+      "rr": "gatda"
+    },
+    "병원|noun": {
+      "rr": "byeong-won"
+    },
+    "가도|noun": {
+      "rr": "gado"
+    },
+    "내내|adverb": {
+      "rr": "naenae"
+    },
+    "한잔|noun": {
+      "rr": "hanjan"
+    },
+    "원래|adverb": {
+      "rr": "wollae"
+    },
+    "원래|noun": {
+      "rr": "wollae"
+    },
+    "반드시|adverb": {
+      "rr": "bandeusi"
+    },
+    "아무리|adverb": {
+      "rr": "amuri"
+    },
+    "그러다|verb": {
+      "rr": "geureoda"
+    },
+    "이해|noun": {
+      "rr": "ihae"
+    },
+    "며칠|noun": {
+      "rr": "myeochil"
+    },
+    "그동안|adverb": {
+      "rr": "geudong-an"
+    },
+    "죽지|noun": {
+      "rr": "jukji"
+    },
+    "녀석|noun": {
+      "rr": "nyeoseok"
+    },
+    "박사|noun": {
+      "rr": "baksa"
+    },
+    "관심|noun": {
+      "rr": "gwansim"
+    },
+    "오직|adverb": {
+      "rr": "ojik"
+    },
+    "옛날|noun": {
+      "rr": "yennal"
+    },
+    "인간|noun": {
+      "rr": "in-gan"
+    },
+    "대신|adverb": {
+      "rr": "daesin"
+    },
+    "대신|noun": {
+      "rr": "daesin"
+    },
+    "별로|adjective": {
+      "rr": "byeollo"
+    },
+    "실제로|adverb": {
+      "rr": "siljero"
+    },
+    "가까이|noun": {
+      "rr": "gakkai"
+    },
+    "이따가|adverb": {
+      "rr": "ittaga"
+    },
+    "데이트|noun": {
+      "rr": "deiteu"
+    },
+    "세상|noun": {
+      "rr": "sesang"
+    },
+    "비행기|noun": {
+      "rr": "bihaenggi"
+    },
+    "고맙다|adjective": {
+      "rr": "gomapda"
+    },
+    "언젠가|adverb": {
+      "rr": "eonjen-ga"
+    },
+    "세계|noun": {
+      "rr": "segye"
+    },
+    "자꾸|adverb": {
+      "rr": "jakku"
+    },
+    "길다|adjective": {
+      "rr": "gilda"
+    },
+    "길다|verb": {
+      "rr": "gilda"
+    },
+    "타다|verb": {
+      "rr": "tada"
+    },
+    "마약|noun": {
+      "rr": "mayak"
+    },
+    "몰래|adverb": {
+      "rr": "mollae"
+    },
+    "결코|adverb": {
+      "rr": "gyeolko"
+    },
+    "잠시|adverb": {
+      "rr": "jamsi"
+    },
+    "잠시|noun": {
+      "rr": "jamsi"
+    },
+    "귀엽다|adjective": {
+      "rr": "gwiyeopda"
+    },
+    "현재|noun": {
+      "rr": "hyeonjae"
+    },
+    "어째서|adverb": {
+      "rr": "eojjaeseo"
+    },
+    "차라리|adverb": {
+      "rr": "charari"
+    },
+    "할아버지|noun": {
+      "rr": "harabeoji"
+    },
+    "남편|noun": {
+      "rr": "nampyeon"
+    },
+    "생일|noun": {
+      "rr": "saeng-il"
+    },
+    "저렇게|adverb": {
+      "rr": "jeoreoke"
+    },
+    "위로|noun": {
+      "rr": "wiro"
+    },
+    "가지다|verb": {
+      "rr": "gajida"
+    },
+    "지도|noun": {
+      "rr": "jido"
+    },
+    "실은|adverb": {
+      "rr": "sireun"
+    },
+    "확인|noun": {
+      "rr": "hwagin"
+    },
+    "약간|adverb": {
+      "rr": "yakgan"
+    },
+    "파티|noun": {
+      "rr": "pati"
+    },
+    "미스터|noun": {
+      "rr": "miseuteo"
+    },
+    "살인|noun": {
+      "rr": "sarin"
+    },
+    "마을|noun": {
+      "rr": "ma-eul"
+    },
+    "심장|noun": {
+      "rr": "simjang"
+    },
+    "와우|noun": {
+      "rr": "wau"
+    },
+    "고양이|noun": {
+      "rr": "goyang-i"
+    },
+    "동생|noun": {
+      "rr": "dongsaeng"
+    },
+    "마침내|adverb": {
+      "rr": "machimnae"
+    },
+    "적도|noun": {
+      "rr": "jeokdo"
+    },
+    "다리|noun": {
+      "rr": "dari"
+    },
+    "따로|adverb": {
+      "rr": "ttaro"
+    },
+    "아무튼|adverb": {
+      "rr": "amuteun"
+    },
+    "매일|noun": {
+      "rr": "maeil"
+    },
+    "마크|noun": {
+      "rr": "makeu"
+    },
+    "강한|adjective": {
+      "rr": "ganghan"
+    },
+    "게임|noun": {
+      "rr": "geim"
+    },
+    "수정|noun": {
+      "rr": "sujeong"
+    },
+    "마치|adverb": {
+      "rr": "machi"
+    },
+    "삼촌|noun": {
+      "rr": "samchon"
+    },
+    "치다|verb": {
+      "rr": "chida"
+    },
+    "아무래도|adverb": {
+      "rr": "amuraedo"
+    },
+    "질문|noun": {
+      "rr": "jilmun"
+    },
+    "똑같이|adverb": {
+      "rr": "ttokgachi"
+    },
+    "즉시|adverb": {
+      "rr": "jeuksi"
+    },
+    "시작|noun": {
+      "rr": "sijak"
+    },
+    "나머지|noun": {
+      "rr": "nameoji"
+    },
+    "보통|noun": {
+      "rr": "botong"
+    },
+    "되게|adverb": {
+      "rr": "doege"
+    },
+    "요원|noun": {
+      "rr": "yowon"
+    },
+    "일부러|adverb": {
+      "rr": "ilbureo"
+    },
+    "혹은|adverb": {
+      "rr": "hogeun"
+    },
+    "똑바로|adverb": {
+      "rr": "ttokbaro"
+    },
+    "회사|noun": {
+      "rr": "hoesa"
+    },
+    "선물|noun": {
+      "rr": "seonmul"
+    },
+    "어리다|verb": {
+      "rr": "eorida"
+    },
+    "원치|noun": {
+      "rr": "wonchi"
+    },
+    "맨날|adverb": {
+      "rr": "maennal"
+    },
+    "어제|noun": {
+      "rr": "eoje"
+    },
+    "검사|noun": {
+      "rr": "geomsa"
+    },
+    "멀리|adverb": {
+      "rr": "meolli"
+    },
+    "멀리|noun": {
+      "rr": "meolli"
+    },
+    "해라|verb": {
+      "rr": "haera"
+    },
+    "오후|noun": {
+      "rr": "ohu"
+    },
+    "바람|noun": {
+      "rr": "baram"
+    },
+    "전하|noun": {
+      "rr": "jeonha"
+    },
+    "최소한|adverb": {
+      "rr": "choesohan"
+    },
+    "발사|noun": {
+      "rr": "balsa"
+    },
+    "점심|noun": {
+      "rr": "jeomsim"
+    },
+    "최고|noun": {
+      "rr": "choego"
+    },
+    "아래|noun": {
+      "rr": "arae"
+    },
+    "자리|noun": {
+      "rr": "jari"
+    },
+    "감히|adverb": {
+      "rr": "gamhi"
+    },
+    "명의|noun": {
+      "rr": "myeong-ui"
+    },
+    "저의|noun": {
+      "rr": "jeoui"
+    },
+    "자막|noun": {
+      "rr": "jamak"
+    },
+    "갈래|noun": {
+      "rr": "gallae"
+    },
+    "냄새|noun": {
+      "rr": "naemsae"
+    },
+    "아내|noun": {
+      "rr": "anae"
+    },
+    "무기|noun": {
+      "rr": "mugi"
+    },
+    "지역|noun": {
+      "rr": "jiyeok"
+    },
+    "어리다|adjective": {
+      "rr": "eorida"
+    },
+    "어젯밤|noun": {
+      "rr": "eojetbam"
+    },
+    "이러다|verb": {
+      "rr": "ireoda"
+    },
+    "폐하|noun": {
+      "rr": "pyeha"
+    },
+    "인생|noun": {
+      "rr": "insaeng"
+    },
+    "최근|noun": {
+      "rr": "choegeun"
+    },
+    "경우|noun": {
+      "rr": "gyeong-u"
+    },
+    "안해|noun": {
+      "rr": "anhae"
+    },
+    "왼쪽|noun": {
+      "rr": "oenjjok"
+    },
+    "어찌|adverb": {
+      "rr": "eojji"
+    },
+    "장난|noun": {
+      "rr": "jangnan"
+    },
+    "전쟁|noun": {
+      "rr": "jeonjaeng"
+    },
+    "담배|noun": {
+      "rr": "dambae"
+    },
+    "카라|noun": {
+      "rr": "kara"
+    },
+    "쿠키|noun": {
+      "rr": "kuki"
+    },
+    "매번|adverb": {
+      "rr": "maebeon"
+    },
+    "보스|noun": {
+      "rr": "boseu"
+    },
+    "오른쪽|noun": {
+      "rr": "oreunjjok"
+    },
+    "가방|noun": {
+      "rr": "gabang"
+    },
+    "개가|noun": {
+      "rr": "gaega"
+    },
+    "열쇠|noun": {
+      "rr": "yeolsoe"
+    },
+    "깊다|adjective": {
+      "rr": "gipda"
+    },
+    "금지|noun": {
+      "rr": "geumji"
+    },
+    "또는|adverb": {
+      "rr": "ttoneun"
+    },
+    "물건|noun": {
+      "rr": "mulgeon"
+    },
+    "누나|noun": {
+      "rr": "nuna"
+    },
+    "처음|adverb": {
+      "rr": "cheo-eum"
+    },
+    "고작|adverb": {
+      "rr": "gojak"
+    },
+    "이동|noun": {
+      "rr": "idong"
+    },
+    "번역|noun": {
+      "rr": "beonyeok"
+    },
+    "약속|noun": {
+      "rr": "yaksok"
+    },
+    "음식|noun": {
+      "rr": "eumsik"
+    },
+    "사고|noun": {
+      "rr": "sago"
+    },
+    "개인|noun": {
+      "rr": "gaein"
+    },
+    "무척|adverb": {
+      "rr": "mucheok"
+    },
+    "선생|noun": {
+      "rr": "seonsaeng"
+    },
+    "놀라운|adjective": {
+      "rr": "nollaun"
+    },
+    "연락|noun": {
+      "rr": "yeollak"
+    },
+    "화장실|noun": {
+      "rr": "hwajangsil"
+    },
+    "형님|noun": {
+      "rr": "hyeongnim"
+    },
+    "하긴|adverb": {
+      "rr": "hagin"
+    },
+    "보안|noun": {
+      "rr": "boan"
+    },
+    "대부분|noun": {
+      "rr": "daebubun"
+    },
+    "별것|noun": {
+      "rr": "byeolgeot"
+    },
+    "대학|noun": {
+      "rr": "daehak"
+    },
+    "드릴|noun": {
+      "rr": "deuril"
+    },
+    "예전|noun": {
+      "rr": "yejeon"
+    },
+    "좀더|adverb": {
+      "rr": "jomdeo"
+    },
+    "섹스|noun": {
+      "rr": "sekseu"
+    },
+    "우어|noun": {
+      "rr": "ueo"
+    },
+    "맥주|noun": {
+      "rr": "maekju"
+    },
+    "빨간|adjective": {
+      "rr": "ppalgan"
+    },
+    "엄만|noun": {
+      "rr": "eomman"
+    },
+    "나무|noun": {
+      "rr": "namu"
+    },
+    "여행|noun": {
+      "rr": "yeohaeng"
+    },
+    "자유|noun": {
+      "rr": "jayu"
+    },
+    "아이가|adjective": {
+      "rr": "aiga"
+    },
+    "미리|adverb": {
+      "rr": "miri"
+    },
+    "괜히|adverb": {
+      "rr": "gwaenhi"
+    },
+    "서서|noun": {
+      "rr": "seoseo"
+    },
+    "신발|noun": {
+      "rr": "sinbal"
+    },
+    "아가|noun": {
+      "rr": "aga"
+    },
+    "아빤|noun": {
+      "rr": "appan"
+    },
+    "달리|adverb": {
+      "rr": "dalli"
+    },
+    "깜짝|noun": {
+      "rr": "kkamjjak"
+    },
+    "침대|noun": {
+      "rr": "chimdae"
+    },
+    "거래|noun": {
+      "rr": "georae"
+    },
+    "결혼식|noun": {
+      "rr": "gyeolhonsik"
+    },
+    "기꺼이|adverb": {
+      "rr": "gikkeoi"
+    },
+    "미스|noun": {
+      "rr": "miseu"
+    },
+    "제시|noun": {
+      "rr": "jesi"
+    },
+    "상당히|adverb": {
+      "rr": "sangdanghi"
+    },
+    "이후|noun": {
+      "rr": "ihu"
+    },
+    "농담|noun": {
+      "rr": "nongdam"
+    },
+    "비다|verb": {
+      "rr": "bida"
+    },
+    "살짝|adverb": {
+      "rr": "saljjak"
+    },
+    "상처|noun": {
+      "rr": "sangcheo"
+    },
+    "건물|noun": {
+      "rr": "geonmul"
+    },
+    "자동차|noun": {
+      "rr": "jadongcha"
+    },
+    "안다|verb": {
+      "rr": "anda"
+    },
+    "최대한|adverb": {
+      "rr": "choedaehan"
+    },
+    "최대한|noun": {
+      "rr": "choedaehan"
+    },
+    "달러|noun": {
+      "rr": "dalleo"
+    },
+    "대통령|noun": {
+      "rr": "daetongnyeong"
+    },
+    "가슴|noun": {
+      "rr": "gaseum"
+    },
+    "꼬마|noun": {
+      "rr": "kkoma"
+    },
+    "완료|noun": {
+      "rr": "wallyo"
+    },
+    "일주일|noun": {
+      "rr": "ilju-il"
+    },
+    "대한|verb": {
+      "rr": "daehan"
+    },
+    "보다|adverb": {
+      "rr": "boda"
+    },
+    "나이|noun": {
+      "rr": "nai"
+    },
+    "호텔|noun": {
+      "rr": "hotel"
+    },
+    "더욱|adverb": {
+      "rr": "deouk"
+    },
+    "지내|noun": {
+      "rr": "jinae"
+    },
+    "별일|noun": {
+      "rr": "byeoril"
+    },
+    "신부님|noun": {
+      "rr": "sinbunim"
+    },
+    "찾다|verb": {
+      "rr": "chatda"
+    },
+    "가득|adverb": {
+      "rr": "gadeuk"
+    },
+    "이대로|adverb": {
+      "rr": "idaero"
+    },
+    "도움|noun": {
+      "rr": "doum"
+    },
+    "쓰레기|noun": {
+      "rr": "sseuregi"
+    },
+    "아예|adverb": {
+      "rr": "aye"
+    },
+    "굳이|adverb": {
+      "rr": "guji"
+    },
+    "각자|noun": {
+      "rr": "gakja"
+    },
+    "삶다|verb": {
+      "rr": "samda"
+    },
+    "메시지|noun": {
+      "rr": "mesiji"
+    },
+    "무릎|noun": {
+      "rr": "mureup"
+    },
+    "싶다|adjective": {
+      "rr": "sipda"
+    },
+    "쓰다|adjective": {
+      "rr": "sseuda"
+    },
+    "서다|verb": {
+      "rr": "seoda"
+    },
+    "가짜|noun": {
+      "rr": "gajja"
+    },
+    "따라서|adverb": {
+      "rr": "ttaraseo"
+    },
+    "정보|noun": {
+      "rr": "jeongbo"
+    },
+    "와인|noun": {
+      "rr": "wain"
+    },
+    "왠지|adverb": {
+      "rr": "waenji"
+    },
+    "이유|noun": {
+      "rr": "iyu"
+    },
+    "지구|noun": {
+      "rr": "jigu"
+    },
+    "목소리|noun": {
+      "rr": "moksori"
+    },
+    "비디오|noun": {
+      "rr": "bidio"
+    },
+    "오히려|adverb": {
+      "rr": "ohiryeo"
+    },
+    "고등학교|noun": {
+      "rr": "godeunghakgyo"
+    },
+    "그나저나|adverb": {
+      "rr": "geunajeona"
+    },
+    "말하기|noun": {
+      "rr": "malhagi"
+    },
+    "소식|noun": {
+      "rr": "sosik"
+    },
+    "적다|adjective": {
+      "rr": "jeokda"
+    },
+    "적다|verb": {
+      "rr": "jeokda"
+    },
+    "이틀|noun": {
+      "rr": "iteul"
+    },
+    "한참|noun": {
+      "rr": "hancham"
+    },
+    "모자|noun": {
+      "rr": "moja"
+    },
+    "손님|noun": {
+      "rr": "sonnim"
+    },
+    "지퍼|noun": {
+      "rr": "jipeo"
+    },
+    "관련|noun": {
+      "rr": "gwallyeon"
+    },
+    "너무나|adverb": {
+      "rr": "neomuna"
+    },
+    "부모님|noun": {
+      "rr": "bumonim"
+    },
+    "작전|noun": {
+      "rr": "jakjeon"
+    },
+    "대신|verb": {
+      "rr": "daesin"
+    },
+    "가까이|adverb": {
+      "rr": "gakkai"
+    },
+    "아까|noun": {
+      "rr": "akka"
+    },
+    "컴퓨터|noun": {
+      "rr": "keompyuteo"
+    },
+    "도시|noun": {
+      "rr": "dosi"
+    },
+    "변호사|noun": {
+      "rr": "byeonhosa"
+    },
+    "여성|noun": {
+      "rr": "yeoseong"
+    },
+    "자세히|adverb": {
+      "rr": "jasehi"
+    },
+    "돼지|noun": {
+      "rr": "dwaeji"
+    },
+    "동네|noun": {
+      "rr": "dongne"
+    },
+    "전체|noun": {
+      "rr": "jeonche"
+    },
+    "해리|noun": {
+      "rr": "haeri"
+    },
+    "그림|noun": {
+      "rr": "geurim"
+    },
+    "우주|noun": {
+      "rr": "uju"
+    },
+    "중에서|adverb": {
+      "rr": "jung-eseo"
+    },
+    "카드|noun": {
+      "rr": "kadeu"
+    },
+    "공주님|noun": {
+      "rr": "gongjunim"
+    },
+    "달다|adjective": {
+      "rr": "dalda"
+    },
+    "계획|noun": {
+      "rr": "gyehoek"
+    },
+    "혈액|noun": {
+      "rr": "hyeoraek"
+    },
+    "먹다|verb": {
+      "rr": "meokda"
+    },
+    "재미|noun": {
+      "rr": "jaemi"
+    },
+    "접근|noun": {
+      "rr": "jeopgeun"
+    },
+    "식사|noun": {
+      "rr": "siksa"
+    },
+    "코너|noun": {
+      "rr": "koneo"
+    },
+    "현재|adverb": {
+      "rr": "hyeonjae"
+    },
+    "결과|noun": {
+      "rr": "gyeolgwa"
+    },
+    "대화|noun": {
+      "rr": "daehwa"
+    },
+    "대장|noun": {
+      "rr": "daejang"
+    },
+    "방법|noun": {
+      "rr": "bangbeop"
+    },
+    "아줌마|noun": {
+      "rr": "ajumma"
+    },
+    "높이|noun": {
+      "rr": "nopi"
+    },
+    "당시|noun": {
+      "rr": "dangsi"
+    },
+    "새벽|noun": {
+      "rr": "saebyeok"
+    },
+    "범죄|noun": {
+      "rr": "beomjoe"
+    },
+    "외과|noun": {
+      "rr": "oegwa"
+    },
+    "엉덩이|noun": {
+      "rr": "eongdeong-i"
+    },
+    "만일|noun": {
+      "rr": "manil"
+    },
+    "부탁|noun": {
+      "rr": "butak"
+    },
+    "약간|noun": {
+      "rr": "yakgan"
+    },
+    "공격|noun": {
+      "rr": "gonggyeok"
+    },
+    "손가락|noun": {
+      "rr": "son-garak"
+    },
+    "와봐|noun": {
+      "rr": "wabwa"
+    },
+    "우선|adverb": {
+      "rr": "useon"
+    },
+    "우선|noun": {
+      "rr": "useon"
+    },
+    "기다|verb": {
+      "rr": "gida"
+    },
+    "도로|noun": {
+      "rr": "doro"
+    },
+    "목이|noun": {
+      "rr": "mogi"
+    },
+    "상황|noun": {
+      "rr": "sanghwang"
+    },
+    "은행|noun": {
+      "rr": "eunhaeng"
+    },
+    "치료|noun": {
+      "rr": "chiryo"
+    },
+    "단순히|adverb": {
+      "rr": "dansunhi"
+    },
+    "개자식|noun": {
+      "rr": "gaejasik"
+    },
+    "검은|adjective": {
+      "rr": "geomeun"
+    },
+    "검은|noun": {
+      "rr": "geomeun"
+    },
+    "나리|noun": {
+      "rr": "nari"
+    },
+    "다만|adverb": {
+      "rr": "daman"
+    },
+    "대기|noun": {
+      "rr": "daegi"
+    },
+    "트럭|noun": {
+      "rr": "teureok"
+    },
+    "케이트|noun": {
+      "rr": "keiteu"
+    },
+    "게이|noun": {
+      "rr": "gei"
+    },
+    "꼼짝|noun": {
+      "rr": "kkomjjak"
+    },
+    "전투|noun": {
+      "rr": "jeontu"
+    },
+    "키스|noun": {
+      "rr": "kiseu"
+    },
+    "폭탄|noun": {
+      "rr": "poktan"
+    },
+    "형제|noun": {
+      "rr": "hyeongje"
+    },
+    "가지|verb": {
+      "rr": "gaji"
+    },
+    "먹지|noun": {
+      "rr": "meokji"
+    },
+    "사라|noun": {
+      "rr": "sara"
+    },
+    "성하|noun": {
+      "rr": "seongha"
+    },
+    "숙녀|noun": {
+      "rr": "sungnyeo"
+    },
+    "수업|noun": {
+      "rr": "sueop"
+    },
+    "틀림없이|adverb": {
+      "rr": "teullimeopsi"
+    },
+    "조심|noun": {
+      "rr": "josim"
+    },
+    "특별히|adverb": {
+      "rr": "teukbyeolhi"
+    },
+    "매년|adverb": {
+      "rr": "maenyeon"
+    },
+    "주의|noun": {
+      "rr": "juui"
+    },
+    "감정|noun": {
+      "rr": "gamjeong"
+    },
+    "안전|noun": {
+      "rr": "anjeon"
+    },
+    "양이|noun": {
+      "rr": "yang-i"
+    },
+    "이렇다|adjective": {
+      "rr": "ireota"
+    },
+    "과연|adverb": {
+      "rr": "gwayeon"
+    },
+    "붉은|adjective": {
+      "rr": "bulgeun"
+    },
+    "전기|noun": {
+      "rr": "jeon-gi"
+    },
+    "신사|noun": {
+      "rr": "sinsa"
+    },
+    "가요|noun": {
+      "rr": "gayo"
+    },
+    "백인|noun": {
+      "rr": "baegin"
+    },
+    "시험|noun": {
+      "rr": "siheom"
+    },
+    "정부|noun": {
+      "rr": "jeongbu"
+    },
+    "도저히|adverb": {
+      "rr": "dojeohi"
+    },
+    "조만간|adverb": {
+      "rr": "joman-gan"
+    },
+    "택시|noun": {
+      "rr": "taeksi"
+    },
+    "쓸다|verb": {
+      "rr": "sseulda"
+    },
+    "보통|adverb": {
+      "rr": "botong"
+    },
+    "무지|adverb": {
+      "rr": "muji"
+    },
+    "무지|noun": {
+      "rr": "muji"
+    },
+    "이사|noun": {
+      "rr": "isa"
+    },
+    "어쩌다|verb": {
+      "rr": "eojjeoda"
+    },
+    "감독|noun": {
+      "rr": "gamdok"
+    },
+    "대충|adverb": {
+      "rr": "daechung"
+    },
+    "여름|noun": {
+      "rr": "yeoreum"
+    },
+    "임신|noun": {
+      "rr": "imsin"
+    },
+    "잔뜩|adverb": {
+      "rr": "jantteuk"
+    },
+    "감옥|noun": {
+      "rr": "gamok"
+    },
+    "굴지|noun": {
+      "rr": "gulji"
+    },
+    "시체|noun": {
+      "rr": "siche"
+    },
+    "오전|noun": {
+      "rr": "ojeon"
+    },
+    "임무|noun": {
+      "rr": "immu"
+    },
+    "사망|noun": {
+      "rr": "samang"
+    },
+    "창문|noun": {
+      "rr": "changmun"
+    },
+    "엔진|noun": {
+      "rr": "enjin"
+    },
+    "오줌|noun": {
+      "rr": "ojum"
+    },
+    "울다|verb": {
+      "rr": "ulda"
+    },
+    "바다|noun": {
+      "rr": "bada"
+    },
+    "각하|noun": {
+      "rr": "gakha"
+    },
+    "길이|adverb": {
+      "rr": "giri"
+    },
+    "길이|noun": {
+      "rr": "giri"
+    },
+    "스트레스|noun": {
+      "rr": "seuteureseu"
+    },
+    "차고|noun": {
+      "rr": "chago"
+    },
+    "촬영|noun": {
+      "rr": "chwaryeong"
+    },
+    "고통|noun": {
+      "rr": "gotong"
+    },
+    "연방|noun": {
+      "rr": "yeonbang"
+    },
+    "서류|noun": {
+      "rr": "seoryu"
+    },
+    "연구|noun": {
+      "rr": "yeon-gu"
+    },
+    "버스|noun": {
+      "rr": "beoseu"
+    },
+    "시스템|noun": {
+      "rr": "siseutem"
+    },
+    "아이스크림|noun": {
+      "rr": "aiseukeurim"
+    },
+    "핸드폰|noun": {
+      "rr": "haendeupon"
+    },
+    "우연히|adverb": {
+      "rr": "uyeonhi"
+    },
+    "케이크|noun": {
+      "rr": "keikeu"
+    },
+    "편히|adverb": {
+      "rr": "pyeonhi"
+    },
+    "종일|adverb": {
+      "rr": "jong-il"
+    },
+    "종일|noun": {
+      "rr": "jong-il"
+    },
+    "감시|noun": {
+      "rr": "gamsi"
+    },
+    "위험|noun": {
+      "rr": "wiheom"
+    },
+    "인턴|noun": {
+      "rr": "inteon"
+    },
+    "파트너|noun": {
+      "rr": "pateuneo"
+    },
+    "홀로|adverb": {
+      "rr": "hollo"
+    },
+    "긴급|noun": {
+      "rr": "gin-geup"
+    },
+    "싱크|noun": {
+      "rr": "singkeu"
+    },
+    "아름답다|adjective": {
+      "rr": "areumdapda"
+    },
+    "비록|adverb": {
+      "rr": "birok"
+    },
+    "동물|noun": {
+      "rr": "dongmul"
+    },
+    "언제든지|adverb": {
+      "rr": "eonjedeunji"
+    },
+    "출발|noun": {
+      "rr": "chulbal"
+    },
+    "남자친구|noun": {
+      "rr": "namjachin-gu"
+    },
+    "드레스|noun": {
+      "rr": "deureseu"
+    },
+    "사이|noun": {
+      "rr": "sai"
+    },
+    "운전|noun": {
+      "rr": "unjeon"
+    },
+    "최대|noun": {
+      "rr": "choedae"
+    },
+    "피하다|verb": {
+      "rr": "pihada"
+    },
+    "긴장|noun": {
+      "rr": "ginjang"
+    },
+    "마저|adverb": {
+      "rr": "majeo"
+    },
+    "하얀|adjective": {
+      "rr": "hayan"
+    },
+    "한대|noun": {
+      "rr": "handae"
+    },
+    "공연|noun": {
+      "rr": "gong-yeon"
+    },
+    "나라|noun": {
+      "rr": "nara"
+    },
+    "자신|noun": {
+      "rr": "jasin"
+    },
+    "진정|noun": {
+      "rr": "jinjeong"
+    },
+    "테스트|noun": {
+      "rr": "teseuteu"
+    },
+    "토요일|noun": {
+      "rr": "toyoil"
+    },
+    "근처|noun": {
+      "rr": "geuncheo"
+    },
+    "바싹|noun": {
+      "rr": "bassak"
+    },
+    "해군|noun": {
+      "rr": "haegun"
+    },
+    "흑인|noun": {
+      "rr": "heugin"
+    },
+    "괴물|noun": {
+      "rr": "goemul"
+    },
+    "메이|noun": {
+      "rr": "mei"
+    },
+    "밤사이|noun": {
+      "rr": "bamsai"
+    },
+    "밤새|noun": {
+      "rr": "bamsae"
+    },
+    "번호|noun": {
+      "rr": "beonho"
+    },
+    "그놈|noun": {
+      "rr": "geunom"
+    },
+    "그렇다|adjective": {
+      "rr": "geureota"
+    },
+    "여자친구|noun": {
+      "rr": "yeojachin-gu"
+    },
+    "작업|noun": {
+      "rr": "jageop"
+    },
+    "주요|noun": {
+      "rr": "juyo"
+    },
+    "발견|noun": {
+      "rr": "balgyeon"
+    },
+    "의료|noun": {
+      "rr": "uiryo"
+    },
+    "한동안|adverb": {
+      "rr": "handong-an"
+    },
+    "경고|noun": {
+      "rr": "gyeonggo"
+    },
+    "느낌|noun": {
+      "rr": "neukkim"
+    },
+    "대단히|adverb": {
+      "rr": "daedanhi"
+    },
+    "양반|noun": {
+      "rr": "yangban"
+    },
+    "탐정|noun": {
+      "rr": "tamjeong"
+    },
+    "기사|noun": {
+      "rr": "gisa"
+    },
+    "노력|noun": {
+      "rr": "noryeok"
+    },
+    "멋지다|adjective": {
+      "rr": "meotjida"
+    },
+    "바지|noun": {
+      "rr": "baji"
+    },
+    "보아하니|adverb": {
+      "rr": "boahani"
+    },
+    "위치|noun": {
+      "rr": "wichi"
+    },
+    "정신과|noun": {
+      "rr": "jeongsin-gwa"
+    },
+    "경기|noun": {
+      "rr": "gyeonggi"
+    },
+    "마무리|noun": {
+      "rr": "mamuri"
+    },
+    "북쪽|noun": {
+      "rr": "bukjjok"
+    },
+    "제작|noun": {
+      "rr": "jejak"
+    },
+    "주변|noun": {
+      "rr": "jubyeon"
+    },
+    "특별|noun": {
+      "rr": "teukbyeol"
+    },
+    "파리|noun": {
+      "rr": "pari"
+    },
+    "프로그램|noun": {
+      "rr": "peurogeuraem"
+    },
+    "간호사|noun": {
+      "rr": "ganhosa"
+    },
+    "아파트|noun": {
+      "rr": "apateu"
+    },
+    "악마|noun": {
+      "rr": "angma"
+    },
+    "코드|noun": {
+      "rr": "kodeu"
+    },
+    "헛소리|noun": {
+      "rr": "heotsori"
+    },
+    "산소|noun": {
+      "rr": "sanso"
+    },
+    "신호|noun": {
+      "rr": "sinho"
+    },
+    "실제|noun": {
+      "rr": "silje"
+    },
+    "무사히|adverb": {
+      "rr": "musahi"
+    },
+    "조금씩|adverb": {
+      "rr": "jogeumssik"
+    },
+    "강아지|noun": {
+      "rr": "gang-aji"
+    },
+    "요새|adverb": {
+      "rr": "yosae"
+    },
+    "대위|noun": {
+      "rr": "daewi"
+    },
+    "초콜릿|noun": {
+      "rr": "chokollit"
+    },
+    "테러|noun": {
+      "rr": "tereo"
+    },
+    "훈련|noun": {
+      "rr": "hullyeon"
+    },
+    "마실|noun": {
+      "rr": "masil"
+    },
+    "사업|noun": {
+      "rr": "sa-eop"
+    },
+    "신고|noun": {
+      "rr": "sin-go"
+    },
+    "아주머니|noun": {
+      "rr": "ajumeoni"
+    },
+    "잡지|noun": {
+      "rr": "japji"
+    },
+    "클럽|noun": {
+      "rr": "keulleop"
+    },
+    "거리|noun": {
+      "rr": "geori"
+    },
+    "듯이|noun": {
+      "rr": "deusi"
+    },
+    "사과|noun": {
+      "rr": "sagwa"
+    },
+    "아버님|noun": {
+      "rr": "abeonim"
+    },
+    "있음|noun": {
+      "rr": "isseum"
+    },
+    "함부로|adverb": {
+      "rr": "hamburo"
+    },
+    "사고|verb": {
+      "rr": "sago"
+    },
+    "그러자|adverb": {
+      "rr": "geureoja"
+    },
+    "나치|noun": {
+      "rr": "nachi"
+    },
+    "비행|noun": {
+      "rr": "bihaeng"
+    },
+    "나지|noun": {
+      "rr": "naji"
+    },
+    "사무실|noun": {
+      "rr": "samusil"
+    },
+    "자살|noun": {
+      "rr": "jasal"
+    },
+    "죽음|noun": {
+      "rr": "jugeum"
+    },
+    "필요하다|adjective": {
+      "rr": "piryohada"
+    },
+    "가운데|noun": {
+      "rr": "gaunde"
+    },
+    "살해|noun": {
+      "rr": "salhae"
+    },
+    "설명|noun": {
+      "rr": "seolmyeong"
+    },
+    "스타|noun": {
+      "rr": "seuta"
+    },
+    "싫다|adjective": {
+      "rr": "silta"
+    },
+    "이식|noun": {
+      "rr": "isik"
+    },
+    "장군|noun": {
+      "rr": "janggun"
+    },
+    "조사|noun": {
+      "rr": "josa"
+    },
+    "가끔씩|adverb": {
+      "rr": "gakkeumssik"
+    },
+    "의미|noun": {
+      "rr": "uimi"
+    },
+    "인터넷|noun": {
+      "rr": "inteonet"
+    },
+    "인형|noun": {
+      "rr": "inhyeong"
+    },
+    "장기|noun": {
+      "rr": "janggi"
+    },
+    "피트|noun": {
+      "rr": "piteu"
+    },
+    "불법|noun": {
+      "rr": "bulbeop"
+    },
+    "장소|noun": {
+      "rr": "jangso"
+    },
+    "해결|noun": {
+      "rr": "haegyeol"
+    },
+    "실험|noun": {
+      "rr": "silheom"
+    },
+    "유전자|noun": {
+      "rr": "yujeonja"
+    },
+    "추적|noun": {
+      "rr": "chujeok"
+    },
+    "따위|noun": {
+      "rr": "ttawi"
+    },
+    "어둠|noun": {
+      "rr": "eodum"
+    },
+    "전원|noun": {
+      "rr": "jeonwon"
+    },
+    "고기|noun": {
+      "rr": "gogi"
+    },
+    "뉴스|noun": {
+      "rr": "nyuseu"
+    },
+    "바라지|noun": {
+      "rr": "baraji"
+    },
+    "밴드|noun": {
+      "rr": "baendeu"
+    },
+    "빼다|verb": {
+      "rr": "ppaeda"
+    },
+    "사격|noun": {
+      "rr": "sagyeok"
+    },
+    "인터뷰|noun": {
+      "rr": "inteobyu"
+    },
+    "자주|adverb": {
+      "rr": "jaju"
+    },
+    "가스|noun": {
+      "rr": "gaseu"
+    },
+    "때때로|adverb": {
+      "rr": "ttaettaero"
+    },
+    "멍청이|noun": {
+      "rr": "meongcheong-i"
+    },
+    "반지|noun": {
+      "rr": "banji"
+    },
+    "선수|noun": {
+      "rr": "seonsu"
+    },
+    "휴대폰|noun": {
+      "rr": "hyudaepon"
+    },
+    "끝내|adverb": {
+      "rr": "kkeunnae"
+    },
+    "큰일|noun": {
+      "rr": "keunil"
+    },
+    "피자|noun": {
+      "rr": "pija"
+    },
+    "행동|noun": {
+      "rr": "haengdong"
+    },
+    "휴가|noun": {
+      "rr": "hyuga"
+    },
+    "사촌|noun": {
+      "rr": "sachon"
+    },
+    "셔츠|noun": {
+      "rr": "syeocheu"
+    },
+    "여태|adverb": {
+      "rr": "yeotae"
+    },
+    "이메일|noun": {
+      "rr": "imeil"
+    },
+    "인사|noun": {
+      "rr": "insa"
+    },
+    "통신|noun": {
+      "rr": "tongsin"
+    },
+    "미리|noun": {
+      "rr": "miri"
+    },
+    "규칙|noun": {
+      "rr": "gyuchik"
+    },
+    "근무|noun": {
+      "rr": "geunmu"
+    },
+    "담당|noun": {
+      "rr": "damdang"
+    },
+    "미사일|noun": {
+      "rr": "misail"
+    },
+    "아유|noun": {
+      "rr": "ayu"
+    },
+    "영상|noun": {
+      "rr": "yeongsang"
+    },
+    "이전|noun": {
+      "rr": "ijeon"
+    },
+    "포기|noun": {
+      "rr": "pogi"
+    },
+    "형사|noun": {
+      "rr": "hyeongsa"
+    },
+    "벽돌|noun": {
+      "rr": "byeokdol"
+    },
+    "명령|noun": {
+      "rr": "myeongnyeong"
+    },
+    "방송|noun": {
+      "rr": "bangsong"
+    },
+    "온통|noun": {
+      "rr": "ontong"
+    },
+    "표정|noun": {
+      "rr": "pyojeong"
+    },
+    "걷다|verb": {
+      "rr": "geotda"
+    },
+    "유령|noun": {
+      "rr": "yuryeong"
+    },
+    "작고|noun": {
+      "rr": "jakgo"
+    },
+    "한마디|noun": {
+      "rr": "hanmadi"
+    },
+    "눈치|noun": {
+      "rr": "nunchi"
+    },
+    "분위기|noun": {
+      "rr": "bunwigi"
+    },
+    "실례|noun": {
+      "rr": "sillye"
+    },
+    "얼음|noun": {
+      "rr": "eoreum"
+    },
+    "유리|noun": {
+      "rr": "yuri"
+    },
+    "이혼|noun": {
+      "rr": "ihon"
+    },
+    "부동산|noun": {
+      "rr": "budongsan"
+    },
+    "적의|noun": {
+      "rr": "jeogui"
+    },
+    "죄다|verb": {
+      "rr": "joeda"
+    },
+    "연기|noun": {
+      "rr": "yeon-gi"
+    },
+    "영웅|noun": {
+      "rr": "yeong-ung"
+    },
+    "올해|noun": {
+      "rr": "olhae"
+    },
+    "캠프|noun": {
+      "rr": "kaempeu"
+    },
+    "보트|noun": {
+      "rr": "boteu"
+    },
+    "시계|noun": {
+      "rr": "sigye"
+    },
+    "실수|noun": {
+      "rr": "silsu"
+    },
+    "애도|noun": {
+      "rr": "aedo"
+    },
+    "웃음|noun": {
+      "rr": "useum"
+    },
+    "위성|noun": {
+      "rr": "wiseong"
+    },
+    "최소|noun": {
+      "rr": "choeso"
+    },
+    "마다|verb": {
+      "rr": "mada"
+    },
+    "소녀|noun": {
+      "rr": "sonyeo"
+    },
+    "내부|noun": {
+      "rr": "naebu"
+    },
+    "방향|noun": {
+      "rr": "banghyang"
+    },
+    "약물|noun": {
+      "rr": "yangmul"
+    },
+    "여기다|verb": {
+      "rr": "yeogida"
+    },
+    "증거|noun": {
+      "rr": "jeunggeo"
+    },
+    "통화|noun": {
+      "rr": "tonghwa"
+    },
+    "감사|noun": {
+      "rr": "gamsa"
+    },
+    "공원|noun": {
+      "rr": "gong-won"
+    },
+    "교회|noun": {
+      "rr": "gyohoe"
+    },
+    "국가|noun": {
+      "rr": "gukga"
+    },
+    "늑대|noun": {
+      "rr": "neukdae"
+    },
+    "동료|noun": {
+      "rr": "dongnyo"
+    },
+    "로비|noun": {
+      "rr": "robi"
+    },
+    "밀어|noun": {
+      "rr": "mireo"
+    },
+    "신부|noun": {
+      "rr": "sinbu"
+    },
+    "요리|noun": {
+      "rr": "yori"
+    },
+    "집안|noun": {
+      "rr": "jiban"
+    },
+    "총알|noun": {
+      "rr": "chong-al"
+    },
+    "두다|verb": {
+      "rr": "duda"
+    },
+    "사탕|noun": {
+      "rr": "satang"
+    },
+    "슬슬|noun": {
+      "rr": "seulseul"
+    },
+    "영어|noun": {
+      "rr": "yeong-eo"
+    },
+    "인도|noun": {
+      "rr": "indo"
+    },
+    "자전거|noun": {
+      "rr": "jajeon-geo"
+    },
+    "저리|noun": {
+      "rr": "jeori"
+    },
+    "과학|noun": {
+      "rr": "gwahak"
+    },
+    "관계|noun": {
+      "rr": "gwan-gye"
+    },
+    "목숨|noun": {
+      "rr": "moksum"
+    },
+    "비상|noun": {
+      "rr": "bisang"
+    },
+    "양은|noun": {
+      "rr": "yang-eun"
+    },
+    "양쪽|noun": {
+      "rr": "yangjjok"
+    },
+    "일과|noun": {
+      "rr": "ilgwa"
+    },
+    "종이|noun": {
+      "rr": "jong-i"
+    },
+    "거울|noun": {
+      "rr": "geoul"
+    },
+    "결정|noun": {
+      "rr": "gyeoljeong"
+    },
+    "대령|noun": {
+      "rr": "daeryeong"
+    },
+    "사인|noun": {
+      "rr": "sain"
+    },
+    "여왕|noun": {
+      "rr": "yeowang"
+    },
+    "회의|noun": {
+      "rr": "hoe-ui"
+    },
+    "대답|noun": {
+      "rr": "daedap"
+    },
+    "모습|noun": {
+      "rr": "moseup"
+    },
+    "소설|noun": {
+      "rr": "soseol"
+    },
+    "외계인|noun": {
+      "rr": "oegyein"
+    },
+    "처리|noun": {
+      "rr": "cheori"
+    },
+    "테이블|noun": {
+      "rr": "teibeul"
+    },
+    "로봇|noun": {
+      "rr": "robot"
+    },
+    "보호|noun": {
+      "rr": "boho"
+    },
+    "빛나다|verb": {
+      "rr": "binnada"
+    },
+    "속도|noun": {
+      "rr": "sokdo"
+    },
+    "원하다|verb": {
+      "rr": "wonhada"
+    },
+    "그런지|noun": {
+      "rr": "geureonji"
+    },
+    "미국인|noun": {
+      "rr": "migugin"
+    },
+    "쌍둥이|noun": {
+      "rr": "ssangdung-i"
+    },
+    "올리고|noun": {
+      "rr": "olligo"
+    },
+    "와라|verb": {
+      "rr": "wara"
+    },
+    "외상|noun": {
+      "rr": "oesang"
+    },
+    "진행|noun": {
+      "rr": "jinhaeng"
+    },
+    "추가|noun": {
+      "rr": "chuga"
+    },
+    "파일|noun": {
+      "rr": "pail"
+    },
+    "군대|noun": {
+      "rr": "gundae"
+    },
+    "만나기|noun": {
+      "rr": "mannagi"
+    },
+    "이모|noun": {
+      "rr": "imo"
+    },
+    "직장|noun": {
+      "rr": "jikjang"
+    },
+    "파란|adjective": {
+      "rr": "paran"
+    },
+    "않다|verb": {
+      "rr": "anta"
+    },
+    "기술|noun": {
+      "rr": "gisul"
+    },
+    "여기저기|adverb": {
+      "rr": "yeogijeogi"
+    },
+    "원숭이|noun": {
+      "rr": "wonsung-i"
+    },
+    "기록|noun": {
+      "rr": "girok"
+    },
+    "도착|noun": {
+      "rr": "dochak"
+    },
+    "베이비|noun": {
+      "rr": "beibi"
+    },
+    "응급|noun": {
+      "rr": "eunggeup"
+    },
+    "작동|noun": {
+      "rr": "jakdong"
+    },
+    "주소|noun": {
+      "rr": "juso"
+    },
+    "하룻밤|noun": {
+      "rr": "harutbam"
+    },
+    "괜찮다|adjective": {
+      "rr": "gwaenchanta"
+    },
+    "그다지|adverb": {
+      "rr": "geudaji"
+    },
+    "금요일|noun": {
+      "rr": "geumyoil"
+    },
+    "도망|noun": {
+      "rr": "domang"
+    },
+    "마법|noun": {
+      "rr": "mabeop"
+    },
+    "상자|noun": {
+      "rr": "sangja"
+    },
+    "상태|noun": {
+      "rr": "sangtae"
+    },
+    "용서|noun": {
+      "rr": "yongseo"
+    },
+    "일반|noun": {
+      "rr": "ilban"
+    },
+    "팔고|noun": {
+      "rr": "palgo"
+    },
+    "어째|adverb": {
+      "rr": "eojjae"
+    },
+    "고장|noun": {
+      "rr": "gojang"
+    },
+    "학생|noun": {
+      "rr": "haksaeng"
+    },
+    "가을|noun": {
+      "rr": "ga-eul"
+    },
+    "치킨|noun": {
+      "rr": "chikin"
+    },
+    "피로|noun": {
+      "rr": "piro"
+    },
+    "십대|noun": {
+      "rr": "sipdae"
+    },
+    "음성|noun": {
+      "rr": "eumseong"
+    },
+    "구조|noun": {
+      "rr": "gujo"
+    },
+    "비니|noun": {
+      "rr": "bini"
+    },
+    "샌드위치|noun": {
+      "rr": "saendeuwichi"
+    },
+    "앞서|adverb": {
+      "rr": "apseo"
+    },
+    "연결|noun": {
+      "rr": "yeon-gyeol"
+    },
+    "운동|noun": {
+      "rr": "undong"
+    },
+    "워낙|adverb": {
+      "rr": "wonak"
+    },
+    "과거|noun": {
+      "rr": "gwageo"
+    },
+    "대략|adverb": {
+      "rr": "daeryak"
+    },
+    "발생|noun": {
+      "rr": "balsaeng"
+    },
+    "부인과|noun": {
+      "rr": "bu-in-gwa"
+    },
+    "스튜|noun": {
+      "rr": "seutyu"
+    },
+    "지원|noun": {
+      "rr": "jiwon"
+    },
+    "포르노그래피|noun": {
+      "rr": "poreunogeuraepi"
+    },
+    "아니|adverb": {
+      "rr": "ani"
+    },
+    "놀다|verb": {
+      "rr": "nolda"
+    },
+    "도시|adverb": {
+      "rr": "dosi"
+    },
+    "끊임없이|adverb": {
+      "rr": "kkeunimeopsi"
+    },
+    "도리|noun": {
+      "rr": "dori"
+    },
+    "사용|noun": {
+      "rr": "sayong"
+    },
+    "실컷|adverb": {
+      "rr": "silkeot"
+    },
+    "어머님|noun": {
+      "rr": "eomeonim"
+    },
+    "토끼|noun": {
+      "rr": "tokki"
+    },
+    "계단|noun": {
+      "rr": "gyedan"
+    },
+    "군인|noun": {
+      "rr": "gunin"
+    },
+    "멋대로|adverb": {
+      "rr": "meotdaero"
+    },
+    "신문|noun": {
+      "rr": "sinmun"
+    },
+    "통제|noun": {
+      "rr": "tongje"
+    },
+    "피해자|noun": {
+      "rr": "pihaeja"
+    },
+    "현장|noun": {
+      "rr": "hyeonjang"
+    },
+    "깊이|adverb": {
+      "rr": "gipi"
+    },
+    "깊이|noun": {
+      "rr": "gipi"
+    },
+    "경비|noun": {
+      "rr": "gyeongbi"
+    },
+    "공기|noun": {
+      "rr": "gonggi"
+    },
+    "기계|noun": {
+      "rr": "gigye"
+    },
+    "살살|noun": {
+      "rr": "salsal"
+    },
+    "수백|noun": {
+      "rr": "subaek"
+    },
+    "전문|noun": {
+      "rr": "jeonmun"
+    },
+    "주말|noun": {
+      "rr": "jumal"
+    },
+    "공식|noun": {
+      "rr": "gongsik"
+    },
+    "공주|noun": {
+      "rr": "gongju"
+    },
+    "나이트|noun": {
+      "rr": "naiteu"
+    },
+    "동쪽|noun": {
+      "rr": "dongjjok"
+    },
+    "모조리|adverb": {
+      "rr": "mojori"
+    },
+    "무대|noun": {
+      "rr": "mudae"
+    },
+    "식당|noun": {
+      "rr": "sikdang"
+    },
+    "애비|noun": {
+      "rr": "aebi"
+    },
+    "연습|noun": {
+      "rr": "yeonseup"
+    },
+    "전화기|noun": {
+      "rr": "jeonhwagi"
+    },
+    "주목|noun": {
+      "rr": "jumok"
+    },
+    "기도|noun": {
+      "rr": "gido"
+    },
+    "병신|noun": {
+      "rr": "byeongsin"
+    },
+    "소년|noun": {
+      "rr": "sonyeon"
+    },
+    "소용|noun": {
+      "rr": "soyong"
+    },
+    "아우|noun": {
+      "rr": "au"
+    },
+    "안전가옥|noun": {
+      "rr": "anjeon-gaok"
+    },
+    "행성|noun": {
+      "rr": "haengseong"
+    },
+    "뜨다|verb": {
+      "rr": "tteuda"
+    },
+    "곧장|adverb": {
+      "rr": "gotjang"
+    },
+    "남성|noun": {
+      "rr": "namseong"
+    },
+    "능력|noun": {
+      "rr": "neungnyeok"
+    },
+    "데이터|noun": {
+      "rr": "deiteo"
+    },
+    "등에|noun": {
+      "rr": "deung-e"
+    },
+    "저번|noun": {
+      "rr": "jeobeon"
+    },
+    "적당히|adverb": {
+      "rr": "jeokdanghi"
+    },
+    "폭발|noun": {
+      "rr": "pokbal"
+    },
+    "녹색|noun": {
+      "rr": "noksaek"
+    },
+    "주인|noun": {
+      "rr": "ju-in"
+    },
+    "중지|noun": {
+      "rr": "jungji"
+    },
+    "째다|verb": {
+      "rr": "jjaeda"
+    },
+    "기차|noun": {
+      "rr": "gicha"
+    },
+    "모래|noun": {
+      "rr": "morae"
+    },
+    "서쪽|noun": {
+      "rr": "seojjok"
+    },
+    "장치|noun": {
+      "rr": "jangchi"
+    },
+    "중앙|noun": {
+      "rr": "jung-ang"
+    },
+    "집중|noun": {
+      "rr": "jipjung"
+    },
+    "차량|noun": {
+      "rr": "charyang"
+    },
+    "최종|noun": {
+      "rr": "choejong"
+    },
+    "할로윈|noun": {
+      "rr": "hallowin"
+    },
+    "허락|noun": {
+      "rr": "heorak"
+    },
+    "다이아몬드|noun": {
+      "rr": "daiamondeu"
+    },
+    "안부|noun": {
+      "rr": "anbu"
+    },
+    "억지로|adverb": {
+      "rr": "eokjiro"
+    },
+    "이놈|noun": {
+      "rr": "inom"
+    },
+    "중위|noun": {
+      "rr": "jung-wi"
+    },
+    "직원|noun": {
+      "rr": "jigwon"
+    },
+    "화재|noun": {
+      "rr": "hwajae"
+    },
+    "공부|noun": {
+      "rr": "gongbu"
+    },
+    "국제|noun": {
+      "rr": "gukje"
+    },
+    "그나마|adverb": {
+      "rr": "geunama"
+    },
+    "기타|noun": {
+      "rr": "gita"
+    },
+    "애니메이션|noun": {
+      "rr": "aenimeisyeon"
+    },
+    "여동생|noun": {
+      "rr": "yeodongsaeng"
+    },
+    "하필|adverb": {
+      "rr": "hapil"
+    },
+    "설다|adjective": {
+      "rr": "seolda"
+    },
+    "고급|noun": {
+      "rr": "gogeup"
+    },
+    "보고서|noun": {
+      "rr": "bogoseo"
+    },
+    "선배|noun": {
+      "rr": "seonbae"
+    },
+    "성공|noun": {
+      "rr": "seonggong"
+    },
+    "앨범|noun": {
+      "rr": "aelbeom"
+    },
+    "종양|noun": {
+      "rr": "jong-yang"
+    },
+    "평화|noun": {
+      "rr": "pyeonghwa"
+    },
+    "관리|noun": {
+      "rr": "gwalli"
+    },
+    "사냥|noun": {
+      "rr": "sanyang"
+    },
+    "우유|noun": {
+      "rr": "uyu"
+    },
+    "장비|noun": {
+      "rr": "jangbi"
+    },
+    "주문|noun": {
+      "rr": "jumun"
+    },
+    "계약|noun": {
+      "rr": "gyeyak"
+    },
+    "고대|noun": {
+      "rr": "godae"
+    },
+    "그분|noun": {
+      "rr": "geubun"
+    },
+    "기회|noun": {
+      "rr": "gihoe"
+    },
+    "바깥|noun": {
+      "rr": "bakkat"
+    },
+    "본부|noun": {
+      "rr": "bonbu"
+    },
+    "사서|noun": {
+      "rr": "saseo"
+    },
+    "수영장|noun": {
+      "rr": "suyeongjang"
+    },
+    "엘리베이터|noun": {
+      "rr": "ellibeiteo"
+    },
+    "초대|noun": {
+      "rr": "chodae"
+    },
+    "간단히|adverb": {
+      "rr": "gandanhi"
+    },
+    "반갑다|adjective": {
+      "rr": "ban-gapda"
+    },
+    "부분|noun": {
+      "rr": "bubun"
+    },
+    "부산|noun": {
+      "rr": "busan"
+    },
+    "조직|noun": {
+      "rr": "jojik"
+    },
+    "지하|noun": {
+      "rr": "jiha"
+    },
+    "짜증|noun": {
+      "rr": "jjajeung"
+    },
+    "참고|noun": {
+      "rr": "chamgo"
+    },
+    "고객|noun": {
+      "rr": "gogaek"
+    },
+    "보안관|noun": {
+      "rr": "boan-gwan"
+    },
+    "수사|noun": {
+      "rr": "susa"
+    },
+    "피부|noun": {
+      "rr": "pibu"
+    },
+    "헬기|noun": {
+      "rr": "helgi"
+    },
+    "가나|noun": {
+      "rr": "gana"
+    },
+    "내면|noun": {
+      "rr": "naemyeon"
+    },
+    "사자|noun": {
+      "rr": "saja"
+    },
+    "신분증|noun": {
+      "rr": "sinbunjeung"
+    },
+    "오토바이|noun": {
+      "rr": "otobai"
+    },
+    "옷장|noun": {
+      "rr": "otjang"
+    },
+    "위스키|noun": {
+      "rr": "wiseuki"
+    },
+    "작년|noun": {
+      "rr": "jangnyeon"
+    },
+    "지난번|noun": {
+      "rr": "jinanbeon"
+    },
+    "코트|noun": {
+      "rr": "koteu"
+    },
+    "간신히|adverb": {
+      "rr": "gansinhi"
+    },
+    "마디|noun": {
+      "rr": "madi"
+    },
+    "복부|noun": {
+      "rr": "bokbu"
+    },
+    "싸움|noun": {
+      "rr": "ssaum"
+    },
+    "안경|noun": {
+      "rr": "an-gyeong"
+    },
+    "오렌지|noun": {
+      "rr": "orenji"
+    },
+    "장난감|noun": {
+      "rr": "jangnan-gam"
+    },
+    "천사|noun": {
+      "rr": "cheonsa"
+    },
+    "캐시|noun": {
+      "rr": "kaesi"
+    },
+    "커서|noun": {
+      "rr": "keoseo"
+    },
+    "파다|verb": {
+      "rr": "pada"
+    },
+    "팔다|verb": {
+      "rr": "palda"
+    },
+    "곧바로|adverb": {
+      "rr": "gotbaro"
+    },
+    "구역|noun": {
+      "rr": "guyeok"
+    },
+    "뜻대로|adverb": {
+      "rr": "tteutdaero"
+    },
+    "생활|noun": {
+      "rr": "saenghwal"
+    },
+    "지구의|noun": {
+      "rr": "jiguui"
+    },
+    "그지|noun": {
+      "rr": "geuji"
+    },
+    "깨끗이|adverb": {
+      "rr": "kkaekkeusi"
+    },
+    "다음날|noun": {
+      "rr": "da-eumnal"
+    },
+    "또다시|noun": {
+      "rr": "ttodasi"
+    },
+    "메스|noun": {
+      "rr": "meseu"
+    },
+    "불어|noun": {
+      "rr": "bureo"
+    },
+    "열차|noun": {
+      "rr": "yeolcha"
+    },
+    "작별|noun": {
+      "rr": "jakbyeol"
+    },
+    "저절로|adverb": {
+      "rr": "jeojeollo"
+    },
+    "존재|noun": {
+      "rr": "jonjae"
+    },
+    "하늘|noun": {
+      "rr": "haneul"
+    },
+    "않다|adjective": {
+      "rr": "anta"
+    },
+    "몹시|adverb": {
+      "rr": "mopsi"
+    },
+    "외부|noun": {
+      "rr": "oebu"
+    },
+    "인기|noun": {
+      "rr": "in-gi"
+    },
+    "좀비|noun": {
+      "rr": "jombi"
+    },
+    "파이|noun": {
+      "rr": "pai"
+    },
+    "화이트|noun": {
+      "rr": "hwaiteu"
+    },
+    "각각|adverb": {
+      "rr": "gakgak"
+    },
+    "갈색|noun": {
+      "rr": "galsaek"
+    },
+    "건너|noun": {
+      "rr": "geonneo"
+    },
+    "겁나|adverb": {
+      "rr": "geomna"
+    },
+    "자라|noun": {
+      "rr": "jara"
+    },
+    "자의|noun": {
+      "rr": "jaui"
+    },
+    "정상|noun": {
+      "rr": "jeongsang"
+    },
+    "짜리|noun": {
+      "rr": "jjari"
+    },
+    "하하|noun": {
+      "rr": "haha"
+    },
+    "혹시나|adverb": {
+      "rr": "hoksina"
+    },
+    "효과|noun": {
+      "rr": "hyogwa"
+    },
+    "인제|adverb": {
+      "rr": "inje"
+    },
+    "노란|adjective": {
+      "rr": "noran"
+    },
+    "사람인|noun": {
+      "rr": "saramin"
+    },
+    "어쩐지|adverb": {
+      "rr": "eojjeonji"
+    },
+    "예상|noun": {
+      "rr": "yesang"
+    },
+    "중간|noun": {
+      "rr": "junggan"
+    },
+    "창녀|noun": {
+      "rr": "changnyeo"
+    },
+    "초기|noun": {
+      "rr": "chogi"
+    },
+    "겁쟁이|noun": {
+      "rr": "geopjaeng-i"
+    },
+    "구나|noun": {
+      "rr": "guna"
+    },
+    "기본|noun": {
+      "rr": "gibon"
+    },
+    "내야|noun": {
+      "rr": "naeya"
+    },
+    "세금|noun": {
+      "rr": "segeum"
+    },
+    "시동|noun": {
+      "rr": "sidong"
+    },
+    "실행|noun": {
+      "rr": "silhaeng"
+    },
+    "에너지|noun": {
+      "rr": "eneoji"
+    },
+    "참으로|adverb": {
+      "rr": "chameuro"
+    },
+    "출신|noun": {
+      "rr": "chulsin"
+    },
+    "테이프|noun": {
+      "rr": "teipeu"
+    },
+    "하지마|verb": {
+      "rr": "hajima"
+    },
+    "푸다|verb": {
+      "rr": "puda"
+    },
+    "그중|noun": {
+      "rr": "geujung"
+    },
+    "꼬맹이|noun": {
+      "rr": "kkomaeng-i"
+    },
+    "맞고|noun": {
+      "rr": "matgo"
+    },
+    "맞고|verb": {
+      "rr": "matgo"
+    },
+    "몽땅|adverb": {
+      "rr": "mongttang"
+    },
+    "사회|noun": {
+      "rr": "sahoe"
+    },
+    "수록|noun": {
+      "rr": "surok"
+    },
+    "제거|noun": {
+      "rr": "jegeo"
+    },
+    "초음파|noun": {
+      "rr": "cho-eumpa"
+    },
+    "축구|noun": {
+      "rr": "chukgu"
+    },
+    "교육|noun": {
+      "rr": "gyoyuk"
+    },
+    "눈물|noun": {
+      "rr": "nunmul"
+    },
+    "마스크|noun": {
+      "rr": "maseukeu"
+    },
+    "미래|noun": {
+      "rr": "mirae"
+    },
+    "서비스|noun": {
+      "rr": "seobiseu"
+    },
+    "소령|noun": {
+      "rr": "soryeong"
+    },
+    "연쇄|noun": {
+      "rr": "yeonswae"
+    },
+    "우리집|noun": {
+      "rr": "urijip"
+    },
+    "의자|noun": {
+      "rr": "uija"
+    },
+    "일부|noun": {
+      "rr": "ilbu"
+    },
+    "종종|adverb": {
+      "rr": "jongjong"
+    },
+    "종종|noun": {
+      "rr": "jongjong"
+    },
+    "충돌|noun": {
+      "rr": "chungdol"
+    },
+    "핑크|noun": {
+      "rr": "pingkeu"
+    },
+    "화학|noun": {
+      "rr": "hwahak"
+    },
+    "이래|noun": {
+      "rr": "irae"
+    },
+    "광고|noun": {
+      "rr": "gwanggo"
+    },
+    "대형|noun": {
+      "rr": "daehyeong"
+    },
+    "머리카락|noun": {
+      "rr": "meorikarak"
+    },
+    "어깨|noun": {
+      "rr": "eokkae"
+    },
+    "오로지|adverb": {
+      "rr": "oroji"
+    },
+    "임시|noun": {
+      "rr": "imsi"
+    },
+    "거꾸로|adverb": {
+      "rr": "geokkuro"
+    },
+    "맹세코|adverb": {
+      "rr": "maengseko"
+    },
+    "사기|noun": {
+      "rr": "sagi"
+    },
+    "숫자|noun": {
+      "rr": "sutja"
+    },
+    "스페인어|noun": {
+      "rr": "seupeineo"
+    },
+    "승리|noun": {
+      "rr": "seungni"
+    },
+    "신장|noun": {
+      "rr": "sinjang"
+    },
+    "애인|noun": {
+      "rr": "aein"
+    },
+    "작품|noun": {
+      "rr": "jakpum"
+    },
+    "지옥|noun": {
+      "rr": "jiok"
+    },
+    "짧게|adverb": {
+      "rr": "jjalge"
+    },
+    "차트|noun": {
+      "rr": "chateu"
+    },
+    "특정|noun": {
+      "rr": "teukjeong"
+    },
+    "한때|noun": {
+      "rr": "hanttae"
+    },
+    "한숨|noun": {
+      "rr": "hansum"
+    },
+    "주로|adverb": {
+      "rr": "juro"
+    },
+    "주로|noun": {
+      "rr": "juro"
+    },
+    "골프|noun": {
+      "rr": "golpeu"
+    },
+    "그림자|noun": {
+      "rr": "geurimja"
+    },
+    "상담|noun": {
+      "rr": "sangdam"
+    },
+    "이빨|noun": {
+      "rr": "ippal"
+    },
+    "인공|noun": {
+      "rr": "in-gong"
+    },
+    "일인|noun": {
+      "rr": "irin"
+    },
+    "조카|noun": {
+      "rr": "joka"
+    },
+    "주머니|noun": {
+      "rr": "jumeoni"
+    },
+    "경보|noun": {
+      "rr": "gyeongbo"
+    },
+    "마이|adverb": {
+      "rr": "mai"
+    },
+    "마이|noun": {
+      "rr": "mai"
+    },
+    "복도|noun": {
+      "rr": "bokdo"
+    },
+    "부모|noun": {
+      "rr": "bumo"
+    },
+    "스포츠|noun": {
+      "rr": "seupocheu"
+    },
+    "시도|noun": {
+      "rr": "sido"
+    },
+    "역사|noun": {
+      "rr": "yeoksa"
+    },
+    "요정|noun": {
+      "rr": "yojeong"
+    },
+    "자지|noun": {
+      "rr": "jaji"
+    },
+    "재판|noun": {
+      "rr": "jaepan"
+    },
+    "조명|noun": {
+      "rr": "jomyeong"
+    },
+    "청소|noun": {
+      "rr": "cheongso"
+    },
+    "축하|noun": {
+      "rr": "chukha"
+    },
+    "비록|noun": {
+      "rr": "birok"
+    },
+    "개새끼|noun": {
+      "rr": "gaesaekki"
+    },
+    "고향|noun": {
+      "rr": "gohyang"
+    },
+    "남쪽|noun": {
+      "rr": "namjjok"
+    },
+    "단어|noun": {
+      "rr": "daneo"
+    },
+    "드라마|noun": {
+      "rr": "deurama"
+    },
+    "미아|noun": {
+      "rr": "mia"
+    },
+    "블록|noun": {
+      "rr": "beullok"
+    },
+    "서울|noun": {
+      "rr": "seoul"
+    },
+    "소아과|noun": {
+      "rr": "soagwa"
+    },
+    "스파이|noun": {
+      "rr": "seupai"
+    },
+    "특수|noun": {
+      "rr": "teuksu"
+    },
+    "패티|noun": {
+      "rr": "paeti"
+    },
+    "페니|noun": {
+      "rr": "peni"
+    },
+    "호출|noun": {
+      "rr": "hochul"
+    },
+    "고개|noun": {
+      "rr": "gogae"
+    },
+    "귀신|noun": {
+      "rr": "gwisin"
+    },
+    "기대|noun": {
+      "rr": "gidae"
+    },
+    "날씨|noun": {
+      "rr": "nalssi"
+    },
+    "다가|noun": {
+      "rr": "daga"
+    },
+    "도둑|noun": {
+      "rr": "doduk"
+    },
+    "배우|noun": {
+      "rr": "bae-u"
+    },
+    "버튼|noun": {
+      "rr": "beoteun"
+    },
+    "수학|noun": {
+      "rr": "suhak"
+    },
+    "지갑|noun": {
+      "rr": "jigap"
+    },
+    "차도|noun": {
+      "rr": "chado"
+    },
+    "태양|noun": {
+      "rr": "taeyang"
+    },
+    "개리|noun": {
+      "rr": "gaeri"
+    },
+    "구급차|noun": {
+      "rr": "gugeupcha"
+    },
+    "그룹|noun": {
+      "rr": "geurup"
+    },
+    "나선|noun": {
+      "rr": "naseon"
+    },
+    "동의|noun": {
+      "rr": "dong-ui"
+    },
+    "모으다|verb": {
+      "rr": "mo-euda"
+    },
+    "보험|noun": {
+      "rr": "boheom"
+    },
+    "부부|noun": {
+      "rr": "bubu"
+    },
+    "승인|noun": {
+      "rr": "seung-in"
+    },
+    "시절|noun": {
+      "rr": "sijeol"
+    },
+    "암호|noun": {
+      "rr": "amho"
+    },
+    "요가|noun": {
+      "rr": "yoga"
+    },
+    "유지|noun": {
+      "rr": "yuji"
+    },
+    "재수|noun": {
+      "rr": "jaesu"
+    },
+    "체포|noun": {
+      "rr": "chepo"
+    },
+    "거짓말쟁이|noun": {
+      "rr": "geojinmaljaeng-i"
+    },
+    "공장|noun": {
+      "rr": "gongjang"
+    },
+    "공포|noun": {
+      "rr": "gongpo"
+    },
+    "반대|noun": {
+      "rr": "bandae"
+    },
+    "벨트|noun": {
+      "rr": "belteu"
+    },
+    "부대|noun": {
+      "rr": "budae"
+    },
+    "사모님|noun": {
+      "rr": "samonim"
+    },
+    "샤워|noun": {
+      "rr": "syawo"
+    },
+    "샴페인|noun": {
+      "rr": "syampein"
+    },
+    "설탕|noun": {
+      "rr": "seoltang"
+    },
+    "시골|noun": {
+      "rr": "sigol"
+    },
+    "예비|noun": {
+      "rr": "yebi"
+    },
+    "이의|noun": {
+      "rr": "iui"
+    },
+    "정리|noun": {
+      "rr": "jeongni"
+    },
+    "조각|noun": {
+      "rr": "jogak"
+    },
+    "지붕|noun": {
+      "rr": "jibung"
+    },
+    "탈출|noun": {
+      "rr": "talchul"
+    },
+    "호수|noun": {
+      "rr": "hosu"
+    },
+    "싸다|adjective": {
+      "rr": "ssada"
+    },
+    "구멍|noun": {
+      "rr": "gumeong"
+    },
+    "놀이|noun": {
+      "rr": "nori"
+    },
+    "두개골|noun": {
+      "rr": "dugaegol"
+    },
+    "마침|adverb": {
+      "rr": "machim"
+    },
+    "마침|noun": {
+      "rr": "machim"
+    },
+    "무단|noun": {
+      "rr": "mudan"
+    },
+    "수석|noun": {
+      "rr": "suseok"
+    },
+    "슬프다|adjective": {
+      "rr": "seulpeuda"
+    },
+    "연료|noun": {
+      "rr": "yeollyo"
+    },
+    "이사회|noun": {
+      "rr": "isahoe"
+    },
+    "이용|noun": {
+      "rr": "iyong"
+    },
+    "인류|noun": {
+      "rr": "illyu"
+    },
+    "자연|noun": {
+      "rr": "jayeon"
+    },
+    "장벽|noun": {
+      "rr": "jangbyeok"
+    },
+    "접속|noun": {
+      "rr": "jeopsok"
+    },
+    "화려하다|adjective": {
+      "rr": "hwaryeohada"
+    },
+    "교도소|noun": {
+      "rr": "gyodoso"
+    },
+    "기자|noun": {
+      "rr": "gija"
+    },
+    "무료|noun": {
+      "rr": "muryo"
+    },
+    "실패|noun": {
+      "rr": "silpae"
+    },
+    "쓸모|noun": {
+      "rr": "sseulmo"
+    },
+    "염소|noun": {
+      "rr": "yeomso"
+    },
+    "오역|noun": {
+      "rr": "oyeok"
+    },
+    "외계|noun": {
+      "rr": "oegye"
+    },
+    "지지|noun": {
+      "rr": "jiji"
+    },
+    "통과|noun": {
+      "rr": "tonggwa"
+    },
+    "슈퍼마켓|noun": {
+      "rr": "syupeomaket"
+    },
+    "풀다|verb": {
+      "rr": "pulda"
+    },
+    "어쩌다|adverb": {
+      "rr": "eojjeoda"
+    },
+    "독수리|noun": {
+      "rr": "doksuri"
+    },
+    "드라이브|noun": {
+      "rr": "deuraibeu"
+    },
+    "로켓|noun": {
+      "rr": "roket"
+    },
+    "리더|noun": {
+      "rr": "rideo"
+    },
+    "소문|noun": {
+      "rr": "somun"
+    },
+    "수색|noun": {
+      "rr": "susaek"
+    },
+    "수영|noun": {
+      "rr": "suyeong"
+    },
+    "알코올|noun": {
+      "rr": "alkool"
+    },
+    "용의자|noun": {
+      "rr": "yong-uija"
+    },
+    "이쁜이|noun": {
+      "rr": "ippeuni"
+    },
+    "진실|noun": {
+      "rr": "jinsil"
+    },
+    "철저히|adverb": {
+      "rr": "cheoljeohi"
+    },
+    "프로젝트|noun": {
+      "rr": "peurojekteu"
+    },
+    "혈관|noun": {
+      "rr": "hyeolgwan"
+    },
+    "실제|adverb": {
+      "rr": "silje"
+    },
+    "강도|noun": {
+      "rr": "gangdo"
+    },
+    "법도|noun": {
+      "rr": "beopdo"
+    },
+    "복수|noun": {
+      "rr": "boksu"
+    },
+    "상상|noun": {
+      "rr": "sangsang"
+    },
+    "수십|noun": {
+      "rr": "susip"
+    },
+    "의학|noun": {
+      "rr": "uihak"
+    },
+    "자격|noun": {
+      "rr": "jagyeok"
+    },
+    "요새|noun": {
+      "rr": "yosae"
+    },
+    "내지|adverb": {
+      "rr": "naeji"
+    },
+    "감염|noun": {
+      "rr": "gamyeom"
+    },
+    "기지|noun": {
+      "rr": "giji"
+    },
+    "납치|noun": {
+      "rr": "napchi"
+    },
+    "범인|noun": {
+      "rr": "beomin"
+    },
+    "생애|noun": {
+      "rr": "saeng-ae"
+    },
+    "온라인|noun": {
+      "rr": "onnain",
+      "rrSpelling": "온+라인"
+    },
+    "의상|noun": {
+      "rr": "uisang"
+    },
+    "인정|noun": {
+      "rr": "injeong"
+    },
+    "전자|noun": {
+      "rr": "jeonja"
+    },
+    "지랄|noun": {
+      "rr": "jiral"
+    },
+    "참말로|adverb": {
+      "rr": "chammallo"
+    },
+    "클램프|noun": {
+      "rr": "keullaempeu"
+    },
+    "심하다|adjective": {
+      "rr": "simhada"
+    },
+    "가세|noun": {
+      "rr": "gase"
+    },
+    "가치|noun": {
+      "rr": "gachi"
+    },
+    "갈수록|adverb": {
+      "rr": "galsurok"
+    },
+    "감기|noun": {
+      "rr": "gamgi"
+    },
+    "고래|noun": {
+      "rr": "gorae"
+    },
+    "기밀|noun": {
+      "rr": "gimil"
+    },
+    "나름|noun": {
+      "rr": "nareum"
+    },
+    "마누라|noun": {
+      "rr": "manura"
+    },
+    "바늘|noun": {
+      "rr": "baneul"
+    },
+    "법적|noun": {
+      "rr": "beopjeok"
+    },
+    "사내|noun": {
+      "rr": "sanae"
+    },
+    "정신적|noun": {
+      "rr": "jeongsinjeok"
+    },
+    "책상|noun": {
+      "rr": "chaeksang"
+    },
+    "폭풍|noun": {
+      "rr": "pokpung"
+    },
+    "풋볼|noun": {
+      "rr": "putbol"
+    },
+    "개소리|noun": {
+      "rr": "gaesori"
+    },
+    "금발|noun": {
+      "rr": "geumbal"
+    },
+    "덩치|noun": {
+      "rr": "deongchi"
+    },
+    "방사선|noun": {
+      "rr": "bangsaseon"
+    },
+    "분석|noun": {
+      "rr": "bunseok"
+    },
+    "생명|noun": {
+      "rr": "saengmyeong"
+    },
+    "센터|noun": {
+      "rr": "senteo"
+    },
+    "술집|noun": {
+      "rr": "suljip"
+    },
+    "신랑|noun": {
+      "rr": "sillang"
+    },
+    "실력|noun": {
+      "rr": "sillyeok"
+    },
+    "월요일|noun": {
+      "rr": "woryoil"
+    },
+    "전화번호|noun": {
+      "rr": "jeonhwabeonho"
+    },
+    "주기|noun": {
+      "rr": "jugi"
+    },
+    "코카인|noun": {
+      "rr": "kokain"
+    },
+    "티켓|noun": {
+      "rr": "tiket"
+    },
+    "포스터|noun": {
+      "rr": "poseuteo"
+    },
+    "회복|noun": {
+      "rr": "hoebok"
+    },
+    "가죽|noun": {
+      "rr": "gajuk"
+    },
+    "공항|noun": {
+      "rr": "gonghang"
+    },
+    "교통|noun": {
+      "rr": "gyotong"
+    },
+    "구름|noun": {
+      "rr": "gureum"
+    },
+    "극장|noun": {
+      "rr": "geukjang"
+    },
+    "기저귀|noun": {
+      "rr": "gijeogwi"
+    },
+    "깁스|noun": {
+      "rr": "gipseu"
+    },
+    "백작|noun": {
+      "rr": "baekjak"
+    },
+    "살인자|noun": {
+      "rr": "sarinja"
+    },
+    "샅샅이|adverb": {
+      "rr": "satsachi"
+    },
+    "수고|noun": {
+      "rr": "sugo"
+    },
+    "시티|noun": {
+      "rr": "siti"
+    },
+    "싸게|adverb": {
+      "rr": "ssage"
+    },
+    "엄니|noun": {
+      "rr": "eomni"
+    },
+    "염려|noun": {
+      "rr": "yeomnyeo"
+    },
+    "오빤|noun": {
+      "rr": "oppan"
+    },
+    "잔소리|noun": {
+      "rr": "jansori"
+    },
+    "저놈|noun": {
+      "rr": "jeonom"
+    },
+    "젊은이|noun": {
+      "rr": "jeolmeuni"
+    },
+    "착륙|noun": {
+      "rr": "changnyuk"
+    },
+    "충격|noun": {
+      "rr": "chunggyeok"
+    },
+    "매주|adverb": {
+      "rr": "maeju"
+    },
+    "골치|noun": {
+      "rr": "golchi"
+    },
+    "공동|noun": {
+      "rr": "gongdong"
+    },
+    "목사님|noun": {
+      "rr": "moksanim"
+    },
+    "무조건|adverb": {
+      "rr": "mujogeon"
+    },
+    "무조건|noun": {
+      "rr": "mujogeon"
+    },
+    "상사|noun": {
+      "rr": "sangsa"
+    },
+    "신체|noun": {
+      "rr": "sinche"
+    },
+    "연설|noun": {
+      "rr": "yeonseol"
+    },
+    "죄책감|noun": {
+      "rr": "joechaekgam"
+    },
+    "출혈|noun": {
+      "rr": "chulhyeol"
+    },
+    "페이지|noun": {
+      "rr": "peiji"
+    },
+    "화면|noun": {
+      "rr": "hwamyeon"
+    },
+    "흉부|noun": {
+      "rr": "hyungbu"
+    },
+    "가동|noun": {
+      "rr": "gadong"
+    },
+    "교수|noun": {
+      "rr": "gyosu"
+    },
+    "낚시|noun": {
+      "rr": "naksi"
+    },
+    "대학교|noun": {
+      "rr": "daehakgyo"
+    },
+    "마술|noun": {
+      "rr": "masul"
+    },
+    "마음껏|adverb": {
+      "rr": "ma-eumkkeot"
+    },
+    "배터리|noun": {
+      "rr": "baeteori"
+    },
+    "비명|noun": {
+      "rr": "bimyeong"
+    },
+    "사형|noun": {
+      "rr": "sahyeong"
+    },
+    "생존|noun": {
+      "rr": "saengjon"
+    },
+    "스키|noun": {
+      "rr": "seuki"
+    },
+    "스톤|noun": {
+      "rr": "seuton"
+    },
+    "왼발|noun": {
+      "rr": "oenbal"
+    },
+    "자동|noun": {
+      "rr": "jadong"
+    },
+    "작가|noun": {
+      "rr": "jakga"
+    },
+    "주사|noun": {
+      "rr": "jusa"
+    },
+    "천재|noun": {
+      "rr": "cheonjae"
+    },
+    "켜다|verb": {
+      "rr": "kyeoda"
+    },
+    "한쪽|noun": {
+      "rr": "hanjjok"
+    },
+    "허가|noun": {
+      "rr": "heoga"
+    },
+    "희다|adjective": {
+      "rr": "huida"
+    },
+    "희망|noun": {
+      "rr": "huimang"
+    },
+    "가능성|noun": {
+      "rr": "ganeungseong"
+    },
+    "경관|noun": {
+      "rr": "gyeonggwan"
+    },
+    "구두|noun": {
+      "rr": "gudu"
+    },
+    "대사|noun": {
+      "rr": "daesa"
+    },
+    "두려움|noun": {
+      "rr": "duryeoum"
+    },
+    "드래곤|noun": {
+      "rr": "deuraegon"
+    },
+    "박스|noun": {
+      "rr": "bakseu"
+    },
+    "비숍|noun": {
+      "rr": "bisyop"
+    },
+    "챔피언|noun": {
+      "rr": "chaempieon"
+    },
+    "크림|noun": {
+      "rr": "keurim"
+    },
+    "한판|noun": {
+      "rr": "hanpan"
+    },
+    "강철|noun": {
+      "rr": "gangcheol"
+    },
+    "거인|noun": {
+      "rr": "geoin"
+    },
+    "녹음|noun": {
+      "rr": "nogeum"
+    },
+    "드론|noun": {
+      "rr": "deuron"
+    },
+    "미라|noun": {
+      "rr": "mira"
+    },
+    "박수|noun": {
+      "rr": "baksu"
+    },
+    "범죄자|noun": {
+      "rr": "beomjoeja"
+    },
+    "분노|noun": {
+      "rr": "bunno"
+    },
+    "신세|noun": {
+      "rr": "sinse"
+    },
+    "압력|noun": {
+      "rr": "amnyeok"
+    },
+    "요괴|noun": {
+      "rr": "yogoe"
+    },
+    "응급실|noun": {
+      "rr": "eunggeupsil"
+    },
+    "일어|noun": {
+      "rr": "ireo"
+    },
+    "지면|noun": {
+      "rr": "jimyeon"
+    },
+    "충전|noun": {
+      "rr": "chungjeon"
+    },
+    "카우보이|noun": {
+      "rr": "kauboi"
+    },
+    "타워|noun": {
+      "rr": "tawo"
+    },
+    "피아노|noun": {
+      "rr": "piano"
+    },
+    "싸다|verb": {
+      "rr": "ssada"
+    },
+    "개시|noun": {
+      "rr": "gaesi"
+    },
+    "공짜|noun": {
+      "rr": "gongjja"
+    },
+    "금속|noun": {
+      "rr": "geumsok"
+    },
+    "마님|noun": {
+      "rr": "manim"
+    },
+    "마르다|verb": {
+      "rr": "mareuda"
+    },
+    "마사지|noun": {
+      "rr": "masaji"
+    },
+    "방해|noun": {
+      "rr": "banghae"
+    },
+    "산타|noun": {
+      "rr": "santa"
+    },
+    "수염|noun": {
+      "rr": "suyeom"
+    },
+    "야구|noun": {
+      "rr": "yagu"
+    },
+    "어른|noun": {
+      "rr": "eoreun"
+    },
+    "업무|noun": {
+      "rr": "eommu"
+    },
+    "영혼|noun": {
+      "rr": "yeonghon"
+    },
+    "의견|noun": {
+      "rr": "uigyeon"
+    },
+    "일요일|noun": {
+      "rr": "iryoil"
+    },
+    "줄곧|adverb": {
+      "rr": "julgot"
+    },
+    "채널|noun": {
+      "rr": "chaeneol"
+    },
+    "계산|noun": {
+      "rr": "gyesan"
+    },
+    "권리|noun": {
+      "rr": "gwolli"
+    },
+    "그만큼|adverb": {
+      "rr": "geumankeum"
+    },
+    "그만큼|noun": {
+      "rr": "geumankeum"
+    },
+    "날개|noun": {
+      "rr": "nalgae"
+    },
+    "담요|noun": {
+      "rr": "damnyo",
+      "rrSpelling": "담+요"
+    },
+    "보조|noun": {
+      "rr": "bojo"
+    },
+    "부엌|noun": {
+      "rr": "bueok"
+    },
+    "빌딩|noun": {
+      "rr": "bilding"
+    },
+    "수건|noun": {
+      "rr": "sugeon"
+    },
+    "언덕|noun": {
+      "rr": "eondeok"
+    },
+    "위장|noun": {
+      "rr": "wijang"
+    },
+    "잡기|noun": {
+      "rr": "japgi"
+    },
+    "젖다|verb": {
+      "rr": "jeotda"
+    },
+    "창고|noun": {
+      "rr": "changgo"
+    },
+    "환영|noun": {
+      "rr": "hwanyeong"
+    },
+    "황금|noun": {
+      "rr": "hwanggeum"
+    },
+    "후회|noun": {
+      "rr": "huhoe"
+    },
+    "가정|noun": {
+      "rr": "gajeong"
+    },
+    "고문|noun": {
+      "rr": "gomun"
+    },
+    "광대|noun": {
+      "rr": "gwangdae"
+    },
+    "국경|noun": {
+      "rr": "gukgyeong"
+    },
+    "기운|noun": {
+      "rr": "giun"
+    },
+    "넥타이|noun": {
+      "rr": "nektai"
+    },
+    "댄스|adverb": {
+      "rr": "daenseu"
+    },
+    "댄스|noun": {
+      "rr": "daenseu"
+    },
+    "동전|noun": {
+      "rr": "dongjeon"
+    },
+    "보라|noun": {
+      "rr": "bora"
+    },
+    "사지|noun": {
+      "rr": "saji"
+    },
+    "새해|noun": {
+      "rr": "saehae"
+    },
+    "오너라|verb": {
+      "rr": "oneora"
+    },
+    "오디션|noun": {
+      "rr": "odisyeon"
+    },
+    "용기|noun": {
+      "rr": "yonggi"
+    },
+    "자매|noun": {
+      "rr": "jamae"
+    },
+    "종교|noun": {
+      "rr": "jonggyo"
+    },
+    "지방|noun": {
+      "rr": "jibang"
+    },
+    "트레이|noun": {
+      "rr": "teurei"
+    },
+    "겨울|noun": {
+      "rr": "gyeoul"
+    },
+    "금고|noun": {
+      "rr": "geumgo"
+    },
+    "낭비|noun": {
+      "rr": "nangbi"
+    },
+    "낮잠|noun": {
+      "rr": "natjam"
+    },
+    "달걀|noun": {
+      "rr": "dalgyal"
+    },
+    "마녀|noun": {
+      "rr": "manyeo"
+    },
+    "무리|noun": {
+      "rr": "muri"
+    },
+    "바위|noun": {
+      "rr": "bawi"
+    },
+    "바이러스|noun": {
+      "rr": "baireoseu"
+    },
+    "변태|noun": {
+      "rr": "byeontae"
+    },
+    "산사|noun": {
+      "rr": "sansa"
+    },
+    "선택|noun": {
+      "rr": "seontaek"
+    },
+    "숙청|noun": {
+      "rr": "sukcheong"
+    },
+    "시민|noun": {
+      "rr": "simin"
+    },
+    "악당|noun": {
+      "rr": "akdang"
+    },
+    "암흑|noun": {
+      "rr": "amheuk"
+    },
+    "액션|noun": {
+      "rr": "aeksyeon"
+    },
+    "영업|noun": {
+      "rr": "yeong-eop"
+    },
+    "옆집|noun": {
+      "rr": "yeopjip"
+    },
+    "예약|noun": {
+      "rr": "yeyak"
+    },
+    "졸업|noun": {
+      "rr": "joreop"
+    },
+    "터널|noun": {
+      "rr": "teoneol"
+    },
+    "한꺼번에|adverb": {
+      "rr": "hankkeobeone"
+    },
+    "남부|noun": {
+      "rr": "nambu"
+    },
+    "농장|noun": {
+      "rr": "nongjang"
+    },
+    "대지|noun": {
+      "rr": "daeji"
+    },
+    "대회|noun": {
+      "rr": "daehoe"
+    },
+    "데이|noun": {
+      "rr": "dei"
+    },
+    "상대|noun": {
+      "rr": "sangdae"
+    },
+    "성인|noun": {
+      "rr": "seong-in"
+    },
+    "승객|noun": {
+      "rr": "seunggaek"
+    },
+    "영영|adverb": {
+      "rr": "yeong-yeong"
+    },
+    "예의|noun": {
+      "rr": "ye-ui"
+    },
+    "외국|noun": {
+      "rr": "oeguk"
+    },
+    "일년|noun": {
+      "rr": "illyeon"
+    },
+    "장면|noun": {
+      "rr": "jangmyeon"
+    },
+    "정작|adverb": {
+      "rr": "jeongjak"
+    },
+    "주가|noun": {
+      "rr": "juga"
+    },
+    "직업|noun": {
+      "rr": "jigeop"
+    },
+    "칠면조|noun": {
+      "rr": "chilmyeonjo"
+    },
+    "칵테일|noun": {
+      "rr": "kakteil"
+    },
+    "화상|noun": {
+      "rr": "hwasang"
+    },
+    "가는|adjective": {
+      "rr": "ganeun"
+    },
+    "가는|noun": {
+      "rr": "ganeun"
+    },
+    "거시기|noun": {
+      "rr": "geosigi"
+    },
+    "가위|noun": {
+      "rr": "gawi"
+    },
+    "계집애|noun": {
+      "rr": "gyejibae"
+    },
+    "목요일|noun": {
+      "rr": "mogyoil"
+    },
+    "법원|noun": {
+      "rr": "beobwon"
+    },
+    "변신|noun": {
+      "rr": "byeonsin"
+    },
+    "보석|noun": {
+      "rr": "boseok"
+    },
+    "사장|noun": {
+      "rr": "sajang"
+    },
+    "이상하다|adjective": {
+      "rr": "isanghada"
+    },
+    "정치적|noun": {
+      "rr": "jeongchijeok"
+    },
+    "진통제|noun": {
+      "rr": "jintongje"
+    },
+    "현금|noun": {
+      "rr": "hyeon-geum"
+    },
+    "현실|noun": {
+      "rr": "hyeonsil"
+    },
+    "감자|verb": {
+      "rr": "gamja"
+    },
+    "가수|noun": {
+      "rr": "gasu"
+    },
+    "거짓|noun": {
+      "rr": "geojit"
+    },
+    "계란|noun": {
+      "rr": "gyeran"
+    },
+    "구경|noun": {
+      "rr": "gugyeong"
+    },
+    "등등|adverb": {
+      "rr": "deungdeung"
+    },
+    "라이터돌|noun": {
+      "rr": "raiteodol"
+    },
+    "미소|noun": {
+      "rr": "miso"
+    },
+    "바둑돌|noun": {
+      "rr": "badukdol"
+    },
+    "브랜드|noun": {
+      "rr": "beuraendeu"
+    },
+    "사흘|noun": {
+      "rr": "saheul"
+    },
+    "산책|noun": {
+      "rr": "sanchaek"
+    },
+    "소송|noun": {
+      "rr": "sosong"
+    },
+    "스타일|noun": {
+      "rr": "seutail"
+    },
+    "실험실|noun": {
+      "rr": "silheomsil"
+    },
+    "알리고|noun": {
+      "rr": "alligo"
+    },
+    "에바|noun": {
+      "rr": "eba"
+    },
+    "여권|noun": {
+      "rr": "yeogwon"
+    },
+    "오리|noun": {
+      "rr": "ori"
+    },
+    "유명|noun": {
+      "rr": "yumyeong"
+    },
+    "책임|noun": {
+      "rr": "chaegim"
+    },
+    "파괴|noun": {
+      "rr": "pagoe"
+    },
+    "하여간|adverb": {
+      "rr": "hayeogan"
+    },
+    "사는|noun": {
+      "rr": "saneun"
+    },
+    "거대|noun": {
+      "rr": "geodae"
+    },
+    "공간|noun": {
+      "rr": "gonggan"
+    },
+    "그년|noun": {
+      "rr": "geunyeon"
+    },
+    "너머로|adverb": {
+      "rr": "neomeoro"
+    },
+    "대동맥|noun": {
+      "rr": "daedongmaek"
+    },
+    "동영상|noun": {
+      "rr": "dong-yeongsang"
+    },
+    "레스토랑|noun": {
+      "rr": "reseutorang"
+    },
+    "모양|noun": {
+      "rr": "moyang"
+    },
+    "바나나|noun": {
+      "rr": "banana"
+    },
+    "부상|noun": {
+      "rr": "busang"
+    },
+    "서명|noun": {
+      "rr": "seomyeong"
+    },
+    "선장|noun": {
+      "rr": "seonjang"
+    },
+    "소스|noun": {
+      "rr": "soseu"
+    },
+    "속옷|noun": {
+      "rr": "sogot"
+    },
+    "야간|noun": {
+      "rr": "yagan"
+    },
+    "연주|noun": {
+      "rr": "yeonju"
+    },
+    "옥수수|noun": {
+      "rr": "oksusu"
+    },
+    "이륙|noun": {
+      "rr": "iryuk"
+    },
+    "주스|noun": {
+      "rr": "juseu"
+    },
+    "지상|noun": {
+      "rr": "jisang"
+    },
+    "척추|noun": {
+      "rr": "cheokchu"
+    },
+    "최신|noun": {
+      "rr": "choesin"
+    },
+    "출입|noun": {
+      "rr": "churip"
+    },
+    "타이어|noun": {
+      "rr": "taieo"
+    },
+    "튜브|noun": {
+      "rr": "tyubeu"
+    },
+    "해제|noun": {
+      "rr": "haeje"
+    },
+    "호흡|noun": {
+      "rr": "hoheup"
+    },
+    "건강|noun": {
+      "rr": "geon-gang"
+    },
+    "과자|noun": {
+      "rr": "gwaja"
+    },
+    "광산|noun": {
+      "rr": "gwangsan"
+    },
+    "군사|noun": {
+      "rr": "gunsa"
+    },
+    "볼일|noun": {
+      "rr": "bollil",
+      "rrSpelling": "볼+일"
+    },
+    "분만|noun": {
+      "rr": "bunman"
+    },
+    "상의|noun": {
+      "rr": "sang-ui"
+    },
+    "숙제|noun": {
+      "rr": "sukje"
+    },
+    "스테이크|noun": {
+      "rr": "seuteikeu"
+    },
+    "신음|noun": {
+      "rr": "sineum"
+    },
+    "암살|noun": {
+      "rr": "amsal"
+    },
+    "양말|noun": {
+      "rr": "yangmal"
+    },
+    "오래전|noun": {
+      "rr": "oraejeon"
+    },
+    "유죄|noun": {
+      "rr": "yujoe"
+    },
+    "일명|noun": {
+      "rr": "ilmyeong"
+    },
+    "전력|noun": {
+      "rr": "jeollyeok"
+    },
+    "전직|noun": {
+      "rr": "jeonjik"
+    },
+    "해고|noun": {
+      "rr": "haego"
+    },
+    "그이|noun": {
+      "rr": "geu-i"
+    },
+    "돌연변이|noun": {
+      "rr": "doryeonbyeoni"
+    },
+    "마법사|noun": {
+      "rr": "mabeopsa"
+    },
+    "메인|noun": {
+      "rr": "mein"
+    },
+    "모니터|noun": {
+      "rr": "moniteo"
+    },
+    "모델|noun": {
+      "rr": "model"
+    },
+    "목표|noun": {
+      "rr": "mokpyo"
+    },
+    "빙고|noun": {
+      "rr": "binggo"
+    },
+    "손상|noun": {
+      "rr": "sonsang"
+    },
+    "수면|noun": {
+      "rr": "sumyeon"
+    },
+    "아이디어|noun": {
+      "rr": "aidieo"
+    },
+    "우주선|noun": {
+      "rr": "ujuseon"
+    },
+    "유대인|noun": {
+      "rr": "yudaein"
+    },
+    "지하철|noun": {
+      "rr": "jihacheol"
+    },
+    "체스|noun": {
+      "rr": "cheseu"
+    },
+    "초록색|noun": {
+      "rr": "choroksaek"
+    },
+    "태아|noun": {
+      "rr": "taea"
+    },
+    "협상|noun": {
+      "rr": "hyeopsang"
+    },
+    "벌레|noun": {
+      "rr": "beolle"
+    },
+    "고스트|noun": {
+      "rr": "goseuteu"
+    },
+    "도서관|noun": {
+      "rr": "doseogwan"
+    },
+    "리허설|noun": {
+      "rr": "riheoseol"
+    },
+    "방사능|noun": {
+      "rr": "bangsaneung"
+    },
+    "사면|noun": {
+      "rr": "samyeon"
+    },
+    "산산조각|noun": {
+      "rr": "sansanjogak"
+    },
+    "시합|noun": {
+      "rr": "sihap"
+    },
+    "악한|noun": {
+      "rr": "akhan"
+    },
+    "애완동물|noun": {
+      "rr": "aewandongmul"
+    },
+    "역사가|noun": {
+      "rr": "yeoksaga"
+    },
+    "요청|noun": {
+      "rr": "yocheong"
+    },
+    "장례식|noun": {
+      "rr": "jangnyesik"
+    },
+    "전날|noun": {
+      "rr": "jeonnal"
+    },
+    "전송|noun": {
+      "rr": "jeonsong"
+    },
+    "주인공|noun": {
+      "rr": "ju-in-gong"
+    },
+    "파운드|noun": {
+      "rr": "paundeu"
+    },
+    "표현|noun": {
+      "rr": "pyohyeon"
+    },
+    "필름|noun": {
+      "rr": "pilleum"
+    },
+    "하여튼|adverb": {
+      "rr": "hayeoteun"
+    },
+    "호랑이|noun": {
+      "rr": "horang-i"
+    },
+    "벽력|noun": {
+      "rr": "byeongnyeok"
+    },
+    "검색|noun": {
+      "rr": "geomsaek"
+    },
+    "그리스|noun": {
+      "rr": "geuriseu"
+    },
+    "근육|noun": {
+      "rr": "geunyuk"
+    },
+    "대가|noun": {
+      "rr": "daega"
+    },
+    "데다|verb": {
+      "rr": "deda"
+    },
+    "도넛|noun": {
+      "rr": "doneot"
+    },
+    "레이저|noun": {
+      "rr": "reijeo"
+    },
+    "믿음|noun": {
+      "rr": "mideum"
+    },
+    "발포|noun": {
+      "rr": "balpo"
+    },
+    "밧줄|noun": {
+      "rr": "batjul"
+    },
+    "방식|noun": {
+      "rr": "bangsik"
+    },
+    "성에|noun": {
+      "rr": "seong-e"
+    },
+    "수없이|adverb": {
+      "rr": "sueopsi"
+    },
+    "악몽|noun": {
+      "rr": "angmong"
+    },
+    "어린이|noun": {
+      "rr": "eorini"
+    },
+    "연극|noun": {
+      "rr": "yeon-geuk"
+    },
+    "연애|noun": {
+      "rr": "yeonae"
+    },
+    "이웃|noun": {
+      "rr": "iut"
+    },
+    "이중|noun": {
+      "rr": "ijung"
+    },
+    "저주|noun": {
+      "rr": "jeoju"
+    },
+    "정치|noun": {
+      "rr": "jeongchi"
+    },
+    "코끼리|noun": {
+      "rr": "kokkiri"
+    },
+    "타깃|noun": {
+      "rr": "tagit"
+    },
+    "토르|noun": {
+      "rr": "toreu"
+    },
+    "판매|noun": {
+      "rr": "panmae"
+    },
+    "팬티|noun": {
+      "rr": "paenti"
+    },
+    "하도|adverb": {
+      "rr": "hado"
+    },
+    "하키|noun": {
+      "rr": "haki"
+    },
+    "해킹|noun": {
+      "rr": "haeking"
+    },
+    "후드|noun": {
+      "rr": "hudeu"
+    },
+    "하면|noun": {
+      "rr": "hamyeon"
+    },
+    "과일|noun": {
+      "rr": "gwail"
+    },
+    "그러므로|adverb": {
+      "rr": "geureomeuro"
+    },
+    "기상|noun": {
+      "rr": "gisang"
+    },
+    "대량|noun": {
+      "rr": "daeryang"
+    },
+    "무선|noun": {
+      "rr": "museon"
+    },
+    "바비큐|noun": {
+      "rr": "babikyu"
+    },
+    "반응|noun": {
+      "rr": "baneung"
+    },
+    "성은|noun": {
+      "rr": "seong-eun"
+    },
+    "심리|noun": {
+      "rr": "simni"
+    },
+    "안면|noun": {
+      "rr": "anmyeon"
+    },
+    "약도|noun": {
+      "rr": "yakdo"
+    },
+    "언어|noun": {
+      "rr": "eoneo"
+    },
+    "열다|verb": {
+      "rr": "yeolda"
+    },
+    "왕자|noun": {
+      "rr": "wangja"
+    },
+    "자랑스럽다|adjective": {
+      "rr": "jarangseureopda"
+    },
+    "점프|noun": {
+      "rr": "jeompeu"
+    },
+    "조종사|noun": {
+      "rr": "jojongsa"
+    },
+    "종료|noun": {
+      "rr": "jongnyo"
+    },
+    "천국|noun": {
+      "rr": "cheon-guk"
+    },
+    "통증|noun": {
+      "rr": "tongjeung"
+    },
+    "플라스틱|noun": {
+      "rr": "peullaseutik"
+    },
+    "행복|noun": {
+      "rr": "haengbok"
+    },
+    "휴식|noun": {
+      "rr": "hyusik"
+    },
+    "고다|verb": {
+      "rr": "goda"
+    },
+    "감당|noun": {
+      "rr": "gamdang"
+    },
+    "고집|noun": {
+      "rr": "gojip"
+    },
+    "길거리|noun": {
+      "rr": "gilgeori"
+    },
+    "라면|noun": {
+      "rr": "ramyeon"
+    },
+    "부시|noun": {
+      "rr": "busi"
+    },
+    "부하|noun": {
+      "rr": "buha"
+    },
+    "불과|adverb": {
+      "rr": "bulgwa"
+    },
+    "선거|noun": {
+      "rr": "seon-geo"
+    },
+    "성질|noun": {
+      "rr": "seongjil"
+    },
+    "세월|noun": {
+      "rr": "sewol"
+    },
+    "소개|noun": {
+      "rr": "sogae"
+    },
+    "소위|noun": {
+      "rr": "sowi"
+    },
+    "소파|noun": {
+      "rr": "sopa"
+    },
+    "솔로|noun": {
+      "rr": "sollo"
+    },
+    "수로|noun": {
+      "rr": "suro"
+    },
+    "의식|noun": {
+      "rr": "uisik"
+    },
+    "장미|noun": {
+      "rr": "jangmi"
+    },
+    "장인어른|noun": {
+      "rr": "jang-ineoreun"
+    },
+    "체크|noun": {
+      "rr": "chekeu"
+    },
+    "코치|noun": {
+      "rr": "kochi"
+    },
+    "크리켓|noun": {
+      "rr": "keuriket"
+    },
+    "투어|noun": {
+      "rr": "tueo"
+    },
+    "각본|noun": {
+      "rr": "gakbon"
+    },
+    "경험|noun": {
+      "rr": "gyeongheom"
+    },
+    "기쁘다|adjective": {
+      "rr": "gippeuda"
+    },
+    "독립|noun": {
+      "rr": "dongnip"
+    },
+    "먼지|noun": {
+      "rr": "meonji"
+    },
+    "문신|noun": {
+      "rr": "munsin"
+    },
+    "미친놈|noun": {
+      "rr": "michinnom"
+    },
+    "박쥐|noun": {
+      "rr": "bakjwi"
+    },
+    "버섯|noun": {
+      "rr": "beoseot"
+    },
+    "부자|noun": {
+      "rr": "buja"
+    },
+    "사령관|noun": {
+      "rr": "saryeonggwan"
+    },
+    "샐러드|noun": {
+      "rr": "saelleodeu"
+    },
+    "서부|noun": {
+      "rr": "seobu"
+    },
+    "소금|noun": {
+      "rr": "sogeum"
+    },
+    "어린아이|noun": {
+      "rr": "eorinai"
+    },
+    "음료수|noun": {
+      "rr": "eumnyosu"
+    },
+    "일어나라|verb": {
+      "rr": "ireonara"
+    },
+    "자료|noun": {
+      "rr": "jaryo"
+    },
+    "파란색|noun": {
+      "rr": "paransaek"
+    },
+    "페인트|noun": {
+      "rr": "peinteu"
+    },
+    "표범|noun": {
+      "rr": "pyobeom"
+    },
+    "향수|noun": {
+      "rr": "hyangsu"
+    },
+    "현대|noun": {
+      "rr": "hyeondae"
+    },
+    "시장|noun": {
+      "rr": "sijang"
+    },
+    "가능|noun": {
+      "rr": "ganeung"
+    },
+    "가석방|noun": {
+      "rr": "gaseokbang"
+    },
+    "동굴|noun": {
+      "rr": "donggul"
+    },
+    "마마|noun": {
+      "rr": "mama"
+    },
+    "모임|noun": {
+      "rr": "moim"
+    },
+    "몬스터|noun": {
+      "rr": "monseuteo"
+    },
+    "미미|noun": {
+      "rr": "mimi"
+    },
+    "사기꾼|noun": {
+      "rr": "sagikkun"
+    },
+    "산부인과|noun": {
+      "rr": "sanbu-in-gwa"
+    },
+    "수상|noun": {
+      "rr": "susang"
+    },
+    "전사|noun": {
+      "rr": "jeonsa"
+    },
+    "표시|noun": {
+      "rr": "pyosi"
+    },
+    "피워|noun": {
+      "rr": "piwo"
+    },
+    "항공|noun": {
+      "rr": "hanggong"
+    },
+    "흔히|adverb": {
+      "rr": "heunhi"
+    },
+    "결과|adverb": {
+      "rr": "gyeolgwa"
+    },
+    "리치|noun": {
+      "rr": "richi"
+    },
+    "제법|adverb": {
+      "rr": "jebeop"
+    },
+    "강의|noun": {
+      "rr": "gang-ui"
+    },
+    "거북이|noun": {
+      "rr": "geobugi"
+    },
+    "고위|noun": {
+      "rr": "gowi"
+    },
+    "귀염둥이|noun": {
+      "rr": "gwiyeomdung-i"
+    },
+    "남자아이|noun": {
+      "rr": "namjaai"
+    },
+    "노비|noun": {
+      "rr": "nobi"
+    },
+    "다운|noun": {
+      "rr": "daun"
+    },
+    "미처|adverb": {
+      "rr": "micheo"
+    },
+    "미터|noun": {
+      "rr": "miteo"
+    },
+    "배신자|noun": {
+      "rr": "baesinja"
+    },
+    "본드|noun": {
+      "rr": "bondeu"
+    },
+    "소름|noun": {
+      "rr": "soreum"
+    },
+    "시야|noun": {
+      "rr": "siya"
+    },
+    "아리아|noun": {
+      "rr": "aria"
+    },
+    "언제까지나|adverb": {
+      "rr": "eonjekkajina"
+    },
+    "영장|noun": {
+      "rr": "yeongjang"
+    },
+    "운명|noun": {
+      "rr": "unmyeong"
+    },
+    "일자리|noun": {
+      "rr": "iljari"
+    },
+    "자세|noun": {
+      "rr": "jase"
+    },
+    "재킷|noun": {
+      "rr": "jaekit"
+    },
+    "주제가|noun": {
+      "rr": "jujega"
+    },
+    "주차|noun": {
+      "rr": "jucha"
+    },
+    "중학교|noun": {
+      "rr": "junghakgyo"
+    },
+    "짐승|noun": {
+      "rr": "jimseung"
+    },
+    "철수|noun": {
+      "rr": "cheolsu"
+    },
+    "크레인|noun": {
+      "rr": "keurein"
+    },
+    "테러리스트|noun": {
+      "rr": "tereoriseuteu"
+    },
+    "파이프|noun": {
+      "rr": "paipeu"
+    },
+    "해설자|noun": {
+      "rr": "haeseolja"
+    },
+    "힘껏|adverb": {
+      "rr": "himkkeot"
+    },
+    "사실상|adverb": {
+      "rr": "sasilsang"
+    },
+    "경계|noun": {
+      "rr": "gyeonggye"
+    },
+    "골드|noun": {
+      "rr": "goldeu"
+    },
+    "그토록|adverb": {
+      "rr": "geutorok"
+    },
+    "냉장고|noun": {
+      "rr": "naengjanggo"
+    },
+    "당근|noun": {
+      "rr": "danggeun"
+    },
+    "동부|noun": {
+      "rr": "dongbu"
+    },
+    "목욕|noun": {
+      "rr": "mogyok"
+    },
+    "무덤|noun": {
+      "rr": "mudeom"
+    },
+    "문도|noun": {
+      "rr": "mundo"
+    },
+    "문서|noun": {
+      "rr": "munseo"
+    },
+    "미팅|noun": {
+      "rr": "miting"
+    },
+    "법정|noun": {
+      "rr": "beopjeong"
+    },
+    "보물|noun": {
+      "rr": "bomul"
+    },
+    "서서히|adverb": {
+      "rr": "seoseohi"
+    },
+    "소변|noun": {
+      "rr": "sobyeon"
+    },
+    "아드님|noun": {
+      "rr": "adeunim"
+    },
+    "안내|noun": {
+      "rr": "annae"
+    },
+    "어르신|noun": {
+      "rr": "eoreusin"
+    },
+    "예쁜이|noun": {
+      "rr": "yeppeuni"
+    },
+    "오니|noun": {
+      "rr": "oni"
+    },
+    "와이프|noun": {
+      "rr": "waipeu"
+    },
+    "인가|noun": {
+      "rr": "in-ga"
+    },
+    "일일이|adverb": {
+      "rr": "illiri",
+      "rrSpelling": "일+일이"
+    },
+    "전국|noun": {
+      "rr": "jeon-guk"
+    },
+    "제국|noun": {
+      "rr": "jeguk"
+    },
+    "취소|noun": {
+      "rr": "chwiso"
+    },
+    "평균|noun": {
+      "rr": "pyeonggyun"
+    },
+    "하드|noun": {
+      "rr": "hadeu"
+    },
+    "혈압|noun": {
+      "rr": "hyeorap"
+    },
+    "환경|noun": {
+      "rr": "hwan-gyeong"
+    },
+    "회색|noun": {
+      "rr": "hoesaek"
+    },
+    "후퇴|noun": {
+      "rr": "hutoe"
+    },
+    "기르다|verb": {
+      "rr": "gireuda"
+    },
+    "감지|noun": {
+      "rr": "gamji"
+    },
+    "개인적|noun": {
+      "rr": "gaeinjeok"
+    },
+    "계좌|noun": {
+      "rr": "gyejwa"
+    },
+    "대사관|noun": {
+      "rr": "daesagwan"
+    },
+    "도무지|adverb": {
+      "rr": "domuji"
+    },
+    "레몬|noun": {
+      "rr": "remon"
+    },
+    "명예|noun": {
+      "rr": "myeong-ye"
+    },
+    "미사|noun": {
+      "rr": "misa"
+    },
+    "반경|noun": {
+      "rr": "ban-gyeong"
+    },
+    "발목|noun": {
+      "rr": "balmok"
+    },
+    "병사|noun": {
+      "rr": "byeongsa"
+    },
+    "불은|noun": {
+      "rr": "bureun"
+    },
+    "서프라이즈|noun": {
+      "rr": "seopeuraijeu"
+    },
+    "성의|noun": {
+      "rr": "seong-ui"
+    },
+    "수리|noun": {
+      "rr": "suri"
+    },
+    "일정|noun": {
+      "rr": "iljeong"
+    },
+    "장거리|noun": {
+      "rr": "janggeori"
+    },
+    "장애|noun": {
+      "rr": "jang-ae"
+    },
+    "재능|noun": {
+      "rr": "jaeneung"
+    },
+    "전진|noun": {
+      "rr": "jeonjin"
+    },
+    "제멋대로|adverb": {
+      "rr": "jemeotdaero"
+    },
+    "진흙|noun": {
+      "rr": "jinheuk"
+    },
+    "첫날|noun": {
+      "rr": "cheonnal"
+    },
+    "침실|noun": {
+      "rr": "chimsil"
+    },
+    "케이블|noun": {
+      "rr": "keibeul"
+    },
+    "탱크|noun": {
+      "rr": "taengkeu"
+    },
+    "평소|noun": {
+      "rr": "pyeongso"
+    },
+    "해변|noun": {
+      "rr": "haebyeon"
+    },
+    "화요일|noun": {
+      "rr": "hwayoil"
+    },
+    "활동|noun": {
+      "rr": "hwaldong"
+    },
+    "활짝|adverb": {
+      "rr": "hwaljjak"
+    },
+    "고도|noun": {
+      "rr": "godo"
+    },
+    "그릴|noun": {
+      "rr": "geuril"
+    },
+    "노예|noun": {
+      "rr": "noye"
+    },
+    "다이어트|noun": {
+      "rr": "daieoteu"
+    },
+    "매니저|noun": {
+      "rr": "maenijeo"
+    },
+    "물고기|noun": {
+      "rr": "mulgogi"
+    },
+    "발작|noun": {
+      "rr": "baljak"
+    },
+    "방문|noun": {
+      "rr": "bangmun"
+    },
+    "보드카|noun": {
+      "rr": "bodeuka"
+    },
+    "불만|noun": {
+      "rr": "bulman"
+    },
+    "세포|noun": {
+      "rr": "sepo"
+    },
+    "소시지|noun": {
+      "rr": "sosiji"
+    },
+    "수요일|noun": {
+      "rr": "suyoil"
+    },
+    "안개|noun": {
+      "rr": "an-gae"
+    },
+    "예술|noun": {
+      "rr": "yesul"
+    },
+    "유태인|noun": {
+      "rr": "yutaein"
+    },
+    "조언|noun": {
+      "rr": "jo-eon"
+    },
+    "좌현|noun": {
+      "rr": "jwahyeon"
+    },
+    "주식|noun": {
+      "rr": "jusik"
+    },
+    "진심|noun": {
+      "rr": "jinsim"
+    },
+    "통째로|adverb": {
+      "rr": "tongjjaero"
+    },
+    "포트|noun": {
+      "rr": "poteu"
+    },
+    "희생자|noun": {
+      "rr": "huisaengja"
+    },
+    "흰색|noun": {
+      "rr": "huinsaek"
+    },
+    "가라|noun": {
+      "rr": "gara"
+    },
+    "검정|noun": {
+      "rr": "geomjeong"
+    },
+    "게다|noun": {
+      "rr": "geda"
+    },
+    "고정|noun": {
+      "rr": "gojeong"
+    },
+    "공중|noun": {
+      "rr": "gongjung"
+    },
+    "내년|noun": {
+      "rr": "naenyeon"
+    },
+    "도난|noun": {
+      "rr": "donan"
+    },
+    "드림|verb": {
+      "rr": "deurim"
+    },
+    "뚱보|noun": {
+      "rr": "ttungbo"
+    },
+    "레즈비언|noun": {
+      "rr": "rejeubieon"
+    },
+    "맛있다|adjective": {
+      "rr": "masitda"
+    },
+    "박살|noun": {
+      "rr": "baksal"
+    },
+    "반면|noun": {
+      "rr": "banmyeon"
+    },
+    "발표|noun": {
+      "rr": "balpyo"
+    },
+    "방어|noun": {
+      "rr": "bang-eo"
+    },
+    "번개|noun": {
+      "rr": "beon-gae"
+    },
+    "북부|noun": {
+      "rr": "bukbu"
+    },
+    "비타민|noun": {
+      "rr": "bitamin"
+    },
+    "세트|noun": {
+      "rr": "seteu"
+    },
+    "스웨터|noun": {
+      "rr": "seuweteo"
+    },
+    "아악|noun": {
+      "rr": "aak"
+    },
+    "오라|noun": {
+      "rr": "ora"
+    },
+    "일등|noun": {
+      "rr": "ildeung"
+    },
+    "자존심|noun": {
+      "rr": "jajonsim"
+    },
+    "제공|noun": {
+      "rr": "jegong"
+    },
+    "제한|noun": {
+      "rr": "jehan"
+    },
+    "주간|noun": {
+      "rr": "jugan"
+    },
+    "중독|noun": {
+      "rr": "jungdok"
+    },
+    "지난주|noun": {
+      "rr": "jinanju"
+    },
+    "진단|noun": {
+      "rr": "jindan"
+    },
+    "최초|noun": {
+      "rr": "choecho"
+    },
+    "출산|noun": {
+      "rr": "chulsan"
+    },
+    "판사|noun": {
+      "rr": "pansa"
+    },
+    "홍보|noun": {
+      "rr": "hongbo"
+    },
+    "휠체어|noun": {
+      "rr": "hwilcheeo"
+    },
+    "피해|noun": {
+      "rr": "pihae"
+    },
+    "경찰서|noun": {
+      "rr": "gyeongchalseo"
+    },
+    "고생|noun": {
+      "rr": "gosaeng"
+    },
+    "대단하다|adjective": {
+      "rr": "daedanhada"
+    },
+    "또라이|noun": {
+      "rr": "ttorai"
+    },
+    "보라색|noun": {
+      "rr": "borasaek"
+    },
+    "복어|noun": {
+      "rr": "bogeo"
+    },
+    "부족|noun": {
+      "rr": "bujok"
+    },
+    "브레이크|noun": {
+      "rr": "beureikeu"
+    },
+    "시멘트|noun": {
+      "rr": "simenteu"
+    },
+    "여친|noun": {
+      "rr": "yeochin"
+    },
+    "연구실|noun": {
+      "rr": "yeon-gusil"
+    },
+    "월급|noun": {
+      "rr": "wolgeup"
+    },
+    "임상|noun": {
+      "rr": "imsang"
+    },
+    "잠자코|adverb": {
+      "rr": "jamjako"
+    },
+    "정원|noun": {
+      "rr": "jeong-won"
+    },
+    "제로|noun": {
+      "rr": "jero"
+    },
+    "제안|noun": {
+      "rr": "jean"
+    },
+    "조의|noun": {
+      "rr": "joui"
+    },
+    "충고|noun": {
+      "rr": "chunggo"
+    },
+    "카지노|noun": {
+      "rr": "kajino"
+    },
+    "트롤|noun": {
+      "rr": "teurol"
+    },
+    "편안히|adverb": {
+      "rr": "pyeonanhi"
+    },
+    "피고|noun": {
+      "rr": "pigo"
+    },
+    "헤로인|noun": {
+      "rr": "heroin"
+    },
+    "협조|noun": {
+      "rr": "hyeopjo"
+    },
+    "홍콩|noun": {
+      "rr": "hongkong"
+    },
+    "가구|noun": {
+      "rr": "gagu"
+    },
+    "경비원|noun": {
+      "rr": "gyeongbiwon"
+    },
+    "경이|noun": {
+      "rr": "gyeong-i"
+    },
+    "고모|noun": {
+      "rr": "gomo"
+    },
+    "고민|noun": {
+      "rr": "gomin"
+    },
+    "대원|noun": {
+      "rr": "daewon"
+    },
+    "돌격|noun": {
+      "rr": "dolgyeok"
+    },
+    "때로|adverb": {
+      "rr": "ttaero"
+    },
+    "라이터|noun": {
+      "rr": "raiteo"
+    },
+    "마찬가지|noun": {
+      "rr": "machan-gaji"
+    },
+    "목걸이|noun": {
+      "rr": "mokgeori"
+    },
+    "무려|adverb": {
+      "rr": "muryeo"
+    },
+    "부담|noun": {
+      "rr": "budam"
+    },
+    "불가능|noun": {
+      "rr": "bulganeung"
+    },
+    "빨리빨리|adverb": {
+      "rr": "ppallippalli"
+    },
+    "상어|noun": {
+      "rr": "sang-eo"
+    },
+    "수치|noun": {
+      "rr": "suchi"
+    },
+    "시가|noun": {
+      "rr": "siga"
+    },
+    "시방|adverb": {
+      "rr": "sibang"
+    },
+    "아동|noun": {
+      "rr": "adong"
+    },
+    "온대|noun": {
+      "rr": "ondae"
+    },
+    "의회|noun": {
+      "rr": "uihoe"
+    },
+    "입양|noun": {
+      "rr": "ibyang"
+    },
+    "입자|noun": {
+      "rr": "ipja"
+    },
+    "장갑|noun": {
+      "rr": "janggap"
+    },
+    "전염병|noun": {
+      "rr": "jeonyeombyeong"
+    },
+    "집단|noun": {
+      "rr": "jipdan"
+    },
+    "침입|noun": {
+      "rr": "chimip"
+    },
+    "함장|noun": {
+      "rr": "hamjang"
+    },
+    "해안|noun": {
+      "rr": "haean"
+    },
+    "무장|noun": {
+      "rr": "mujang"
+    },
+    "차례|noun": {
+      "rr": "charye"
+    },
+    "슈퍼|noun": {
+      "rr": "syupeo"
+    },
+    "괴짜|noun": {
+      "rr": "goejja"
+    },
+    "꼬리|noun": {
+      "rr": "kkori"
+    },
+    "난리|noun": {
+      "rr": "nalli"
+    },
+    "네트워크|noun": {
+      "rr": "neteuwokeu"
+    },
+    "단계|noun": {
+      "rr": "dan-gye"
+    },
+    "도전|noun": {
+      "rr": "dojeon"
+    },
+    "디지털|noun": {
+      "rr": "dijiteol"
+    },
+    "민간|noun": {
+      "rr": "min-gan"
+    },
+    "민간인|noun": {
+      "rr": "min-ganin"
+    },
+    "뱀파이어|noun": {
+      "rr": "baempaieo"
+    },
+    "병력|noun": {
+      "rr": "byeongnyeok"
+    },
+    "병장|noun": {
+      "rr": "byeongjang"
+    },
+    "사슴|noun": {
+      "rr": "saseum"
+    },
+    "수갑|noun": {
+      "rr": "sugap"
+    },
+    "수류탄|noun": {
+      "rr": "suryutan"
+    },
+    "시내|noun": {
+      "rr": "sinae"
+    },
+    "시설|noun": {
+      "rr": "siseol"
+    },
+    "심호흡|noun": {
+      "rr": "simhoheup"
+    },
+    "싱글|noun": {
+      "rr": "singgeul"
+    },
+    "아마추어|noun": {
+      "rr": "amachueo"
+    },
+    "연속|noun": {
+      "rr": "yeonsok"
+    },
+    "이만큼|adverb": {
+      "rr": "imankeum"
+    },
+    "전환|noun": {
+      "rr": "jeonhwan"
+    },
+    "종류|noun": {
+      "rr": "jongnyu"
+    },
+    "중력|noun": {
+      "rr": "jungnyeok"
+    },
+    "지문|noun": {
+      "rr": "jimun"
+    },
+    "폭력|noun": {
+      "rr": "pongnyeok"
+    },
+    "함정|noun": {
+      "rr": "hamjeong"
+    },
+    "항생제|noun": {
+      "rr": "hangsaengje"
+    },
+    "행사|noun": {
+      "rr": "haengsa"
+    },
+    "후의|noun": {
+      "rr": "huui"
+    },
+    "이다|verb": {
+      "rr": "ida"
+    },
+    "밀다|verb": {
+      "rr": "milda"
+    },
+    "매달|adverb": {
+      "rr": "maedal"
+    },
+    "강간|noun": {
+      "rr": "ganggan"
+    },
+    "건의|noun": {
+      "rr": "geonui"
+    },
+    "공작|noun": {
+      "rr": "gongjak"
+    },
+    "대표|noun": {
+      "rr": "daepyo"
+    },
+    "더불어|adverb": {
+      "rr": "deobureo"
+    },
+    "머저리|noun": {
+      "rr": "meojeori"
+    },
+    "바퀴|noun": {
+      "rr": "bakwi"
+    },
+    "박물관|noun": {
+      "rr": "bangmulgwan"
+    },
+    "분홍색|noun": {
+      "rr": "bunhongsaek"
+    },
+    "빨간색|noun": {
+      "rr": "ppalgansaek"
+    },
+    "소속|noun": {
+      "rr": "sosok"
+    },
+    "쇼핑|noun": {
+      "rr": "syoping"
+    },
+    "스케줄|noun": {
+      "rr": "seukejul"
+    },
+    "시리즈|noun": {
+      "rr": "sirijeu"
+    },
+    "아부지|noun": {
+      "rr": "abuji"
+    },
+    "역할|noun": {
+      "rr": "yeokhal"
+    },
+    "예산|noun": {
+      "rr": "yesan"
+    },
+    "왕국|noun": {
+      "rr": "wangguk"
+    },
+    "외출|noun": {
+      "rr": "oechul"
+    },
+    "의용|noun": {
+      "rr": "uiyong"
+    },
+    "이리저리|adverb": {
+      "rr": "irijeori"
+    },
+    "입술|noun": {
+      "rr": "ipsul"
+    },
+    "자궁|noun": {
+      "rr": "jagung"
+    },
+    "정맥|noun": {
+      "rr": "jeongmaek"
+    },
+    "주둥이|noun": {
+      "rr": "judung-i"
+    },
+    "체육|noun": {
+      "rr": "cheyuk"
+    },
+    "축제|noun": {
+      "rr": "chukje"
+    },
+    "커플|noun": {
+      "rr": "keopeul"
+    },
+    "푸딩|noun": {
+      "rr": "puding"
+    },
+    "한편|adverb": {
+      "rr": "hanpyeon"
+    },
+    "핵심|noun": {
+      "rr": "haeksim"
+    },
+    "허리|noun": {
+      "rr": "heori"
+    },
+    "흥미|noun": {
+      "rr": "heungmi"
+    },
+    "먹어요|verb": {
+      "rr": "meogeoyo"
+    },
+    "공개|noun": {
+      "rr": "gonggae"
+    },
+    "궁전|noun": {
+      "rr": "gungjeon"
+    },
+    "깜둥이|noun": {
+      "rr": "kkamdung-i"
+    },
+    "남친|noun": {
+      "rr": "namchin"
+    },
+    "동작|noun": {
+      "rr": "dongjak"
+    },
+    "라인|noun": {
+      "rr": "rain"
+    },
+    "방송국|noun": {
+      "rr": "bangsongguk"
+    },
+    "베이컨|noun": {
+      "rr": "beikeon"
+    },
+    "사설|noun": {
+      "rr": "saseol"
+    },
+    "사전|noun": {
+      "rr": "sajeon"
+    },
+    "속임수|noun": {
+      "rr": "sogimsu"
+    },
+    "신생아|noun": {
+      "rr": "sinsaeng-a"
+    },
+    "오리지널|noun": {
+      "rr": "orijineol"
+    },
+    "원작|noun": {
+      "rr": "wonjak"
+    },
+    "이에|adverb": {
+      "rr": "ie"
+    },
+    "증명|noun": {
+      "rr": "jeungmyeong"
+    },
+    "진입|noun": {
+      "rr": "jinip"
+    },
+    "질투|noun": {
+      "rr": "jiltu"
+    },
+    "투자|noun": {
+      "rr": "tuja"
+    },
+    "투표|noun": {
+      "rr": "tupyo"
+    },
+    "하버드|noun": {
+      "rr": "habeodeu"
+    },
+    "야하다|adjective": {
+      "rr": "yahada"
+    },
+    "그릇|noun": {
+      "rr": "geureut"
+    },
+    "격리|noun": {
+      "rr": "gyeongni"
+    },
+    "골절|noun": {
+      "rr": "goljeol"
+    },
+    "교황|noun": {
+      "rr": "gyohwang"
+    },
+    "늙은이|noun": {
+      "rr": "neulgeuni"
+    },
+    "대규모|noun": {
+      "rr": "daegyumo"
+    },
+    "따님|noun": {
+      "rr": "ttanim"
+    },
+    "땅콩|noun": {
+      "rr": "ttangkong"
+    },
+    "메일|noun": {
+      "rr": "meil"
+    },
+    "목격자|noun": {
+      "rr": "mokgyeokja"
+    },
+    "무지개|noun": {
+      "rr": "mujigae"
+    },
+    "배달|noun": {
+      "rr": "baedal"
+    },
+    "배지|noun": {
+      "rr": "baeji"
+    },
+    "생물|noun": {
+      "rr": "saengmul"
+    },
+    "서방님|noun": {
+      "rr": "seobangnim"
+    },
+    "손목|noun": {
+      "rr": "sonmok"
+    },
+    "안전벨트|noun": {
+      "rr": "anjeonbelteu"
+    },
+    "오염|noun": {
+      "rr": "oyeom"
+    },
+    "자국|noun": {
+      "rr": "jaguk"
+    },
+    "자정|noun": {
+      "rr": "jajeong"
+    },
+    "자켓|noun": {
+      "rr": "jaket"
+    },
+    "장인|noun": {
+      "rr": "jang-in"
+    },
+    "전문가|noun": {
+      "rr": "jeonmun-ga"
+    },
+    "전설|noun": {
+      "rr": "jeonseol"
+    },
+    "조절|noun": {
+      "rr": "jojeol"
+    },
+    "주방|noun": {
+      "rr": "jubang"
+    },
+    "중령|noun": {
+      "rr": "jungnyeong"
+    },
+    "지진|noun": {
+      "rr": "jijin"
+    },
+    "초등학교|noun": {
+      "rr": "chodeunghakgyo"
+    },
+    "취급|noun": {
+      "rr": "chwigeup"
+    },
+    "치마|noun": {
+      "rr": "chima"
+    },
+    "패스|noun": {
+      "rr": "paeseu"
+    },
+    "해외|noun": {
+      "rr": "hae-oe"
+    },
+    "가문|noun": {
+      "rr": "gamun"
+    },
+    "거부|noun": {
+      "rr": "geobu"
+    },
+    "겁나게|adverb": {
+      "rr": "geomnage"
+    },
+    "그러더니|adverb": {
+      "rr": "geureodeoni"
+    },
+    "그야말로|adverb": {
+      "rr": "geuyamallo"
+    },
+    "난쟁이|noun": {
+      "rr": "nanjaeng-i"
+    },
+    "날짜|noun": {
+      "rr": "naljja"
+    },
+    "내용|noun": {
+      "rr": "naeyong"
+    },
+    "더욱더|adverb": {
+      "rr": "deoukdeo"
+    },
+    "룸메이트|noun": {
+      "rr": "rummeiteu"
+    },
+    "메기|noun": {
+      "rr": "megi"
+    },
+    "면도|noun": {
+      "rr": "myeondo"
+    },
+    "면접|noun": {
+      "rr": "myeonjeop"
+    },
+    "바이올린|noun": {
+      "rr": "baiollin"
+    },
+    "발자국|noun": {
+      "rr": "baljaguk"
+    },
+    "방패|noun": {
+      "rr": "bangpae"
+    },
+    "베이스|noun": {
+      "rr": "beiseu"
+    },
+    "변화|noun": {
+      "rr": "byeonhwa"
+    },
+    "붕대|noun": {
+      "rr": "bungdae"
+    },
+    "사냥꾼|noun": {
+      "rr": "sanyangkkun"
+    },
+    "샘플|noun": {
+      "rr": "saempeul"
+    },
+    "설령|adverb": {
+      "rr": "seollyeong"
+    },
+    "수영복|noun": {
+      "rr": "suyeongbok"
+    },
+    "수표|noun": {
+      "rr": "supyo"
+    },
+    "신입|noun": {
+      "rr": "sinnip",
+      "rrSpelling": "신+입"
+    },
+    "아씨|noun": {
+      "rr": "assi"
+    },
+    "알람|noun": {
+      "rr": "allam"
+    },
+    "압박|noun": {
+      "rr": "apbak"
+    },
+    "양복|noun": {
+      "rr": "yangbok"
+    },
+    "어느정도|adverb": {
+      "rr": "eoneujeongdo"
+    },
+    "연인|noun": {
+      "rr": "yeonin"
+    },
+    "오늘날|noun": {
+      "rr": "oneullal"
+    },
+    "자아|noun": {
+      "rr": "jaa"
+    },
+    "점수|noun": {
+      "rr": "jeomsu"
+    },
+    "젤리|noun": {
+      "rr": "jelli"
+    },
+    "죄수|noun": {
+      "rr": "joesu"
+    },
+    "진료|noun": {
+      "rr": "jillyo"
+    },
+    "진정|adverb": {
+      "rr": "jinjeong"
+    },
+    "콘서트|noun": {
+      "rr": "konseoteu"
+    },
+    "트렁크|noun": {
+      "rr": "teureongkeu"
+    },
+    "해당|noun": {
+      "rr": "haedang"
+    },
+    "후보|noun": {
+      "rr": "hubo"
+    },
+    "이어|adverb": {
+      "rr": "ieo"
+    },
+    "가운|noun": {
+      "rr": "gaun"
+    },
+    "감방|noun": {
+      "rr": "gambang"
+    },
+    "경로|noun": {
+      "rr": "gyeongno"
+    },
+    "공군|noun": {
+      "rr": "gonggun"
+    },
+    "국장|noun": {
+      "rr": "gukjang"
+    },
+    "권한|noun": {
+      "rr": "gwonhan"
+    },
+    "기껏|adverb": {
+      "rr": "gikkeot"
+    },
+    "노릇|noun": {
+      "rr": "noreut"
+    },
+    "노사|noun": {
+      "rr": "nosa"
+    },
+    "리스트|noun": {
+      "rr": "riseuteu"
+    },
+    "명단|noun": {
+      "rr": "myeongdan"
+    },
+    "미확인|noun": {
+      "rr": "mihwagin"
+    },
+    "방울|noun": {
+      "rr": "bang-ul"
+    },
+    "배심원|noun": {
+      "rr": "baesimwon"
+    },
+    "법률|noun": {
+      "rr": "beomnyul"
+    },
+    "보일러|noun": {
+      "rr": "boilleo"
+    },
+    "사생활|noun": {
+      "rr": "sasaenghwal"
+    },
+    "새미|noun": {
+      "rr": "saemi"
+    },
+    "수지|noun": {
+      "rr": "suji"
+    },
+    "스튜디오|noun": {
+      "rr": "seutyudio"
+    },
+    "시트|noun": {
+      "rr": "siteu"
+    },
+    "야수|noun": {
+      "rr": "yasu"
+    },
+    "양자|noun": {
+      "rr": "yangja"
+    },
+    "연구소|noun": {
+      "rr": "yeon-guso"
+    },
+    "위기|noun": {
+      "rr": "wigi"
+    },
+    "음반|noun": {
+      "rr": "eumban"
+    },
+    "의원|noun": {
+      "rr": "uiwon"
+    },
+    "이스트|noun": {
+      "rr": "iseuteu"
+    },
+    "인상|noun": {
+      "rr": "insang"
+    },
+    "전달|noun": {
+      "rr": "jeondal"
+    },
+    "절반|noun": {
+      "rr": "jeolban"
+    },
+    "절차|noun": {
+      "rr": "jeolcha"
+    },
+    "정돈|noun": {
+      "rr": "jeongdon"
+    },
+    "좌회전|noun": {
+      "rr": "jwahoejeon"
+    },
+    "주먹|noun": {
+      "rr": "jumeok"
+    },
+    "총각|noun": {
+      "rr": "chonggak"
+    },
+    "출근|noun": {
+      "rr": "chulgeun"
+    },
+    "커튼|noun": {
+      "rr": "keoteun"
+    },
+    "회전|noun": {
+      "rr": "hoejeon"
+    },
+    "흉내|noun": {
+      "rr": "hyungnae"
+    },
+    "가격|noun": {
+      "rr": "gagyeok"
+    },
+    "간수|noun": {
+      "rr": "gansu"
+    },
+    "경사|noun": {
+      "rr": "gyeongsa"
+    },
+    "과장|noun": {
+      "rr": "gwajang"
+    },
+    "기관|noun": {
+      "rr": "gigwan"
+    },
+    "까마귀|noun": {
+      "rr": "kkamagwi"
+    },
+    "나비|noun": {
+      "rr": "nabi"
+    },
+    "다람쥐|noun": {
+      "rr": "daramjwi"
+    },
+    "대상|noun": {
+      "rr": "daesang"
+    },
+    "대출|noun": {
+      "rr": "daechul"
+    },
+    "도끼|noun": {
+      "rr": "dokki"
+    },
+    "두부|noun": {
+      "rr": "dubu"
+    },
+    "막대기|noun": {
+      "rr": "makdaegi"
+    },
+    "면역|noun": {
+      "rr": "myeonyeok"
+    },
+    "버터|noun": {
+      "rr": "beoteo"
+    },
+    "분리|noun": {
+      "rr": "bulli"
+    },
+    "불알|noun": {
+      "rr": "bural"
+    },
+    "사무라이|noun": {
+      "rr": "samurai"
+    },
+    "세기|noun": {
+      "rr": "segi"
+    },
+    "섹시|noun": {
+      "rr": "seksi"
+    },
+    "스카프|noun": {
+      "rr": "seukapeu"
+    },
+    "슬픔|noun": {
+      "rr": "seulpeum"
+    },
+    "시각|noun": {
+      "rr": "sigak"
+    },
+    "시리얼|noun": {
+      "rr": "sirieol"
+    },
+    "시신|noun": {
+      "rr": "sisin"
+    },
+    "실내|noun": {
+      "rr": "sillae"
+    },
+    "업데이트|noun": {
+      "rr": "eopdeiteu"
+    },
+    "오해|noun": {
+      "rr": "ohae"
+    },
+    "울면|noun": {
+      "rr": "ulmyeon"
+    },
+    "위쪽|noun": {
+      "rr": "wijjok"
+    },
+    "음주|noun": {
+      "rr": "eumju"
+    },
+    "의심|noun": {
+      "rr": "uisim"
+    },
+    "이년|noun": {
+      "rr": "inyeon"
+    },
+    "이랑|noun": {
+      "rr": "irang"
+    },
+    "인질|noun": {
+      "rr": "injil"
+    },
+    "장관|noun": {
+      "rr": "janggwan"
+    },
+    "재산|noun": {
+      "rr": "jaesan"
+    },
+    "적응|noun": {
+      "rr": "jeogeung"
+    },
+    "전용|noun": {
+      "rr": "jeonyong"
+    },
+    "접시|noun": {
+      "rr": "jeopsi"
+    },
+    "정식|noun": {
+      "rr": "jeongsik"
+    },
+    "종족|noun": {
+      "rr": "jongjok"
+    },
+    "코브라|noun": {
+      "rr": "kobeura"
+    },
+    "터무니|noun": {
+      "rr": "teomuni"
+    },
+    "폭파|noun": {
+      "rr": "pokpa"
+    },
+    "풍선|noun": {
+      "rr": "pungseon"
+    },
+    "현상|noun": {
+      "rr": "hyeonsang"
+    },
+    "바닥|noun": {
+      "rr": "badak"
+    },
+    "알바|noun": {
+      "rr": "alba"
+    },
+    "고추|noun": {
+      "rr": "gochu"
+    },
+    "권투|noun": {
+      "rr": "gwontu"
+    },
+    "깨다|verb": {
+      "rr": "kkaeda"
+    },
+    "노인|noun": {
+      "rr": "noin"
+    },
+    "동맥|noun": {
+      "rr": "dongmaek"
+    },
+    "등록|noun": {
+      "rr": "deungnok"
+    },
+    "디저트|noun": {
+      "rr": "dijeoteu"
+    },
+    "딸기|noun": {
+      "rr": "ttalgi"
+    },
+    "레벨|noun": {
+      "rr": "rebel"
+    },
+    "마비|noun": {
+      "rr": "mabi"
+    },
+    "매력|noun": {
+      "rr": "maeryeok"
+    },
+    "무진장|noun": {
+      "rr": "mujinjang"
+    },
+    "발전기|noun": {
+      "rr": "baljeon-gi"
+    },
+    "불빛|noun": {
+      "rr": "bulbit"
+    },
+    "사막|noun": {
+      "rr": "samak"
+    },
+    "생일선물|noun": {
+      "rr": "saeng-ilseonmul"
+    },
+    "소형|noun": {
+      "rr": "sohyeong"
+    },
+    "수감자|noun": {
+      "rr": "sugamja"
+    },
+    "수년|noun": {
+      "rr": "sunyeon"
+    },
+    "스위치|noun": {
+      "rr": "seuwichi"
+    },
+    "시뮬레이션|noun": {
+      "rr": "simyulleisyeon"
+    },
+    "심장마비|noun": {
+      "rr": "simjangmabi"
+    },
+    "아웃|noun": {
+      "rr": "aut"
+    },
+    "우승|noun": {
+      "rr": "useung"
+    },
+    "우울증|noun": {
+      "rr": "uuljeung"
+    },
+    "원격|noun": {
+      "rr": "won-gyeok"
+    },
+    "위원회|noun": {
+      "rr": "wiwonhoe"
+    },
+    "위협|noun": {
+      "rr": "wihyeop"
+    },
+    "이분|noun": {
+      "rr": "ibun"
+    },
+    "자금|noun": {
+      "rr": "jageum"
+    },
+    "자선|noun": {
+      "rr": "jaseon"
+    },
+    "장사|noun": {
+      "rr": "jangsa"
+    },
+    "정의|noun": {
+      "rr": "jeong-ui"
+    },
+    "조종|noun": {
+      "rr": "jojong"
+    },
+    "즉각|adverb": {
+      "rr": "jeukgak"
+    },
+    "차근차근|adverb": {
+      "rr": "chageunchageun"
+    },
+    "차단|noun": {
+      "rr": "chadan"
+    },
+    "카페|noun": {
+      "rr": "kape"
+    },
+    "특허|noun": {
+      "rr": "teukheo"
+    },
+    "팝콘|noun": {
+      "rr": "papkon"
+    },
+    "폐쇄|noun": {
+      "rr": "pyeswae"
+    },
+    "하사|noun": {
+      "rr": "hasa"
+    },
+    "할렐루야|noun": {
+      "rr": "hallelluya"
+    },
+    "해적|noun": {
+      "rr": "haejeok"
+    },
+    "헤어|noun": {
+      "rr": "heeo"
+    },
+    "혁명|noun": {
+      "rr": "hyeongmyeong"
+    },
+    "현지|noun": {
+      "rr": "hyeonji"
+    },
+    "화장|noun": {
+      "rr": "hwajang"
+    },
+    "확보|noun": {
+      "rr": "hwakbo"
+    },
+    "내지|noun": {
+      "rr": "naeji"
+    },
+    "간식|noun": {
+      "rr": "gansik"
+    },
+    "갈기갈기|adverb": {
+      "rr": "galgigalgi"
+    },
+    "개발|noun": {
+      "rr": "gaebal"
+    },
+    "거절|noun": {
+      "rr": "geojeol"
+    },
+    "국내|noun": {
+      "rr": "gungnae"
+    },
+    "규정|noun": {
+      "rr": "gyujeong"
+    },
+    "금융|noun": {
+      "rr": "geumnyung",
+      "rrSpelling": "금+융"
+    },
+    "기념|noun": {
+      "rr": "ginyeom"
+    },
+    "날마다|adverb": {
+      "rr": "nalmada"
+    },
+    "동화|noun": {
+      "rr": "donghwa"
+    },
+    "레코드|noun": {
+      "rr": "rekodeu"
+    },
+    "모드|noun": {
+      "rr": "modeu"
+    },
+    "목록|noun": {
+      "rr": "mongnok"
+    },
+    "물질|noun": {
+      "rr": "muljil"
+    },
+    "미술|noun": {
+      "rr": "misul"
+    },
+    "발가락|noun": {
+      "rr": "balgarak"
+    },
+    "변경|noun": {
+      "rr": "byeon-gyeong"
+    },
+    "블랙홀|noun": {
+      "rr": "beullaekhol"
+    },
+    "빨래|noun": {
+      "rr": "ppallae"
+    },
+    "수준|noun": {
+      "rr": "sujun"
+    },
+    "수프|noun": {
+      "rr": "supeu"
+    },
+    "식물|noun": {
+      "rr": "singmul"
+    },
+    "엉터리|noun": {
+      "rr": "eongteori"
+    },
+    "에피네프린|noun": {
+      "rr": "epinepeurin"
+    },
+    "예측|noun": {
+      "rr": "yecheuk"
+    },
+    "오두막|noun": {
+      "rr": "odumak"
+    },
+    "욕실|noun": {
+      "rr": "yoksil"
+    },
+    "운영|noun": {
+      "rr": "unyeong"
+    },
+    "유도|noun": {
+      "rr": "yudo"
+    },
+    "인구|noun": {
+      "rr": "in-gu"
+    },
+    "자신감|noun": {
+      "rr": "jasin-gam"
+    },
+    "절도|noun": {
+      "rr": "jeoldo"
+    },
+    "정장|noun": {
+      "rr": "jeongjang"
+    },
+    "지도자|noun": {
+      "rr": "jidoja"
+    },
+    "지시|noun": {
+      "rr": "jisi"
+    },
+    "지점|noun": {
+      "rr": "jijeom"
+    },
+    "책임자|noun": {
+      "rr": "chaegimja"
+    },
+    "출장|noun": {
+      "rr": "chuljang"
+    },
+    "퍼즐|noun": {
+      "rr": "peojeul"
+    },
+    "항복|noun": {
+      "rr": "hangbok"
+    },
+    "햄버거|noun": {
+      "rr": "haembeogeo"
+    },
+    "헬리콥터|noun": {
+      "rr": "hellikopteo"
+    },
+    "헬멧|noun": {
+      "rr": "helmet"
+    },
+    "화살|noun": {
+      "rr": "hwasal"
+    },
+    "강제|noun": {
+      "rr": "gangje"
+    },
+    "계집|noun": {
+      "rr": "gyejip"
+    },
+    "과정|noun": {
+      "rr": "gwajeong"
+    },
+    "교사|noun": {
+      "rr": "gyosa"
+    },
+    "기간|noun": {
+      "rr": "gigan"
+    },
+    "까다|verb": {
+      "rr": "kkada"
+    },
+    "깡패|noun": {
+      "rr": "kkangpae"
+    },
+    "노크|noun": {
+      "rr": "nokeu"
+    },
+    "눈빛|noun": {
+      "rr": "nunbit"
+    },
+    "대머리|noun": {
+      "rr": "daemeori"
+    },
+    "도중|noun": {
+      "rr": "dojung"
+    },
+    "마음속|noun": {
+      "rr": "ma-eumsok"
+    },
+    "배급|noun": {
+      "rr": "baegeup"
+    },
+    "변기|noun": {
+      "rr": "byeon-gi"
+    },
+    "비난|noun": {
+      "rr": "binan"
+    },
+    "비어|noun": {
+      "rr": "bieo"
+    },
+    "설치|noun": {
+      "rr": "seolchi"
+    },
+    "소장|noun": {
+      "rr": "sojang"
+    },
+    "손자|noun": {
+      "rr": "sonja"
+    },
+    "스케이트|noun": {
+      "rr": "seukeiteu"
+    },
+    "승무원|noun": {
+      "rr": "seungmuwon"
+    },
+    "식량|noun": {
+      "rr": "singnyang"
+    },
+    "실시|noun": {
+      "rr": "silsi"
+    },
+    "심문|noun": {
+      "rr": "simmun"
+    },
+    "안전하다|adjective": {
+      "rr": "anjeonhada"
+    },
+    "연금|noun": {
+      "rr": "yeon-geum"
+    },
+    "왕비|noun": {
+      "rr": "wangbi"
+    },
+    "왕실|noun": {
+      "rr": "wangsil"
+    },
+    "위층|noun": {
+      "rr": "wicheung"
+    },
+    "은색|noun": {
+      "rr": "eunsaek"
+    },
+    "이미지|noun": {
+      "rr": "imiji"
+    },
+    "인물|noun": {
+      "rr": "inmul"
+    },
+    "인식|noun": {
+      "rr": "insik"
+    },
+    "일종|noun": {
+      "rr": "iljong"
+    },
+    "전세계|noun": {
+      "rr": "jeonsegye"
+    },
+    "제작자|noun": {
+      "rr": "jejakja"
+    },
+    "크기|noun": {
+      "rr": "keugi"
+    },
+    "테니스|noun": {
+      "rr": "teniseu"
+    },
+    "텐트|noun": {
+      "rr": "tenteu"
+    },
+    "트리|noun": {
+      "rr": "teuri"
+    },
+    "판다|noun": {
+      "rr": "panda"
+    },
+    "판단|noun": {
+      "rr": "pandan"
+    },
+    "폴이|noun": {
+      "rr": "pori"
+    },
+    "하나|noun": {
+      "rr": "hana"
+    },
+    "핫도그|noun": {
+      "rr": "hatdogeu"
+    },
+    "호박|noun": {
+      "rr": "hobak"
+    },
+    "확신|noun": {
+      "rr": "hwaksin"
+    },
+    "전통|noun": {
+      "rr": "jeontong"
+    },
+    "다소|noun": {
+      "rr": "daso"
+    },
+    "대개|adverb": {
+      "rr": "daegae"
+    },
+    "매주|noun": {
+      "rr": "maeju"
+    },
+    "시장|adverb": {
+      "rr": "sijang"
+    },
+    "걸음|noun": {
+      "rr": "georeum"
+    },
+    "경의|noun": {
+      "rr": "gyeong-ui"
+    },
+    "권총|noun": {
+      "rr": "gwonchong"
+    },
+    "기념일|noun": {
+      "rr": "ginyeomil"
+    },
+    "기독교|noun": {
+      "rr": "gidokgyo"
+    },
+    "기업|noun": {
+      "rr": "gieop"
+    },
+    "기적|noun": {
+      "rr": "gijeok"
+    },
+    "노숙자|noun": {
+      "rr": "nosukja"
+    },
+    "농구|noun": {
+      "rr": "nonggu"
+    },
+    "누난|noun": {
+      "rr": "nunan"
+    },
+    "링크|noun": {
+      "rr": "ringkeu"
+    },
+    "반역자|noun": {
+      "rr": "banyeokja"
+    },
+    "부서|noun": {
+      "rr": "buseo"
+    },
+    "블로그|noun": {
+      "rr": "beullogeu"
+    },
+    "비서|noun": {
+      "rr": "biseo"
+    },
+    "사정|noun": {
+      "rr": "sajeong"
+    },
+    "서커스|noun": {
+      "rr": "seokeoseu"
+    },
+    "수행|noun": {
+      "rr": "suhaeng"
+    },
+    "순찰|noun": {
+      "rr": "sunchal"
+    },
+    "쓰리|noun": {
+      "rr": "sseuri"
+    },
+    "언론|noun": {
+      "rr": "eollon"
+    },
+    "에미|noun": {
+      "rr": "emi"
+    },
+    "우회전|noun": {
+      "rr": "uhoejeon"
+    },
+    "울타리|noun": {
+      "rr": "ultari"
+    },
+    "이불|noun": {
+      "rr": "ibul"
+    },
+    "인종|noun": {
+      "rr": "injong"
+    },
+    "작작|adverb": {
+      "rr": "jakjak"
+    },
+    "장식|noun": {
+      "rr": "jangsik"
+    },
+    "재빨리|adverb": {
+      "rr": "jaeppalli"
+    },
+    "전방|noun": {
+      "rr": "jeonbang"
+    },
+    "정보원|noun": {
+      "rr": "jeongbowon"
+    },
+    "제때|noun": {
+      "rr": "jettae"
+    },
+    "조수|noun": {
+      "rr": "josu"
+    },
+    "증상|noun": {
+      "rr": "jeungsang"
+    },
+    "처녀|noun": {
+      "rr": "cheonyeo"
+    },
+    "체리|noun": {
+      "rr": "cheri"
+    },
+    "추락|noun": {
+      "rr": "churak"
+    },
+    "출구|noun": {
+      "rr": "chulgu"
+    },
+    "칭찬|noun": {
+      "rr": "chingchan"
+    },
+    "타이밍|noun": {
+      "rr": "taiming"
+    },
+    "타입|noun": {
+      "rr": "taip"
+    },
+    "탄약|noun": {
+      "rr": "tanyak"
+    },
+    "토마토|noun": {
+      "rr": "tomato"
+    },
+    "판막|noun": {
+      "rr": "panmak"
+    },
+    "폭행|noun": {
+      "rr": "pokhaeng"
+    },
+    "하이파이브|noun": {
+      "rr": "haipaibeu"
+    },
+    "합의|noun": {
+      "rr": "habui"
+    },
+    "해병|noun": {
+      "rr": "haebyeong"
+    },
+    "복숭아|noun": {
+      "rr": "boksung-a"
+    },
+    "개뿔|noun": {
+      "rr": "gaeppul"
+    },
+    "게으르다|adjective": {
+      "rr": "geeureuda"
+    },
+    "경비대|noun": {
+      "rr": "gyeongbidae"
+    },
+    "교장|noun": {
+      "rr": "gyojang"
+    },
+    "기능|noun": {
+      "rr": "gineung"
+    },
+    "달리기|noun": {
+      "rr": "dalligi"
+    },
+    "대체로|adverb": {
+      "rr": "daechero"
+    },
+    "만성|noun": {
+      "rr": "manseong"
+    },
+    "뮤지컬|noun": {
+      "rr": "myujikeol"
+    },
+    "백화점|noun": {
+      "rr": "baekhwajeom"
+    },
+    "번호판|noun": {
+      "rr": "beonhopan"
+    },
+    "범행|noun": {
+      "rr": "beomhaeng"
+    },
+    "변형|noun": {
+      "rr": "byeonhyeong"
+    },
+    "복장|noun": {
+      "rr": "bokjang"
+    },
+    "비용|noun": {
+      "rr": "biyong"
+    },
+    "사도|noun": {
+      "rr": "sado"
+    },
+    "사이렌|noun": {
+      "rr": "sairen"
+    },
+    "손톱|noun": {
+      "rr": "sontop"
+    },
+    "수입|noun": {
+      "rr": "su-ip"
+    },
+    "시대|noun": {
+      "rr": "sidae"
+    },
+    "신도|noun": {
+      "rr": "sindo"
+    },
+    "신용|noun": {
+      "rr": "sinyong"
+    },
+    "신청|noun": {
+      "rr": "sincheong"
+    },
+    "올리브|noun": {
+      "rr": "ollibeu"
+    },
+    "우현|noun": {
+      "rr": "uhyeon"
+    },
+    "이반|noun": {
+      "rr": "iban"
+    },
+    "임대|noun": {
+      "rr": "imdae"
+    },
+    "잔디|noun": {
+      "rr": "jandi"
+    },
+    "재생|noun": {
+      "rr": "jaesaeng"
+    },
+    "전문의|noun": {
+      "rr": "jeonmunui"
+    },
+    "증인|noun": {
+      "rr": "jeung-in"
+    },
+    "지팡이|noun": {
+      "rr": "jipang-i"
+    },
+    "차이|noun": {
+      "rr": "chai"
+    },
+    "추진|noun": {
+      "rr": "chujin"
+    },
+    "콜라|noun": {
+      "rr": "kolla"
+    },
+    "표적|noun": {
+      "rr": "pyojeok"
+    },
+    "하트|noun": {
+      "rr": "hateu"
+    },
+    "호르몬|noun": {
+      "rr": "horeumon"
+    },
+    "뜨다|adjective": {
+      "rr": "tteuda"
+    },
+    "막상|adverb": {
+      "rr": "maksang"
+    },
+    "심해|noun": {
+      "rr": "simhae"
+    },
+    "계약서|noun": {
+      "rr": "gyeyakseo"
+    },
+    "고대|adverb": {
+      "rr": "godae"
+    },
+    "공급|noun": {
+      "rr": "gonggeup"
+    },
+    "구식|noun": {
+      "rr": "gusik"
+    },
+    "그다음|adverb": {
+      "rr": "geuda-eum"
+    },
+    "금세|noun": {
+      "rr": "geumse"
+    },
+    "기다리다|verb": {
+      "rr": "gidarida"
+    },
+    "대포|noun": {
+      "rr": "daepo"
+    },
+    "덩어리|noun": {
+      "rr": "deong-eori"
+    },
+    "독감|noun": {
+      "rr": "dokgam"
+    },
+    "동지|noun": {
+      "rr": "dongji"
+    },
+    "뒤쪽|noun": {
+      "rr": "dwijjok"
+    },
+    "따다|verb": {
+      "rr": "ttada"
+    },
+    "무전|noun": {
+      "rr": "mujeon"
+    },
+    "미디어|noun": {
+      "rr": "midieo"
+    },
+    "밤낮|noun": {
+      "rr": "bamnat"
+    },
+    "별명|noun": {
+      "rr": "byeolmyeong"
+    },
+    "부정|noun": {
+      "rr": "bujeong"
+    },
+    "비로소|adverb": {
+      "rr": "biroso"
+    },
+    "사이비|noun": {
+      "rr": "saibi"
+    },
+    "사제|noun": {
+      "rr": "saje"
+    },
+    "서랍|noun": {
+      "rr": "seorap"
+    },
+    "세면|noun": {
+      "rr": "semyeon"
+    },
+    "수수께끼|noun": {
+      "rr": "susukkekki"
+    },
+    "수작|noun": {
+      "rr": "sujak"
+    },
+    "스트라이크|noun": {
+      "rr": "seuteuraikeu"
+    },
+    "스피드|noun": {
+      "rr": "seupideu"
+    },
+    "습격|noun": {
+      "rr": "seupgyeok"
+    },
+    "싸우다|verb": {
+      "rr": "ssauda"
+    },
+    "악어|noun": {
+      "rr": "ageo"
+    },
+    "액체|noun": {
+      "rr": "aekche"
+    },
+    "어렵다|adjective": {
+      "rr": "eoryeopda"
+    },
+    "외교|noun": {
+      "rr": "oegyo"
+    },
+    "은퇴|noun": {
+      "rr": "euntoe"
+    },
+    "인근|noun": {
+      "rr": "in-geun"
+    },
+    "자랑|noun": {
+      "rr": "jarang"
+    },
+    "재즈|noun": {
+      "rr": "jaejeu"
+    },
+    "전술|noun": {
+      "rr": "jeonsul"
+    },
+    "절단|noun": {
+      "rr": "jeoldan"
+    },
+    "제어|noun": {
+      "rr": "jeeo"
+    },
+    "진정제|noun": {
+      "rr": "jinjeongje"
+    },
+    "질병|noun": {
+      "rr": "jilbyeong"
+    },
+    "추기경|noun": {
+      "rr": "chugigyeong"
+    },
+    "치과|noun": {
+      "rr": "chigwa"
+    },
+    "콜린|noun": {
+      "rr": "kollin"
+    },
+    "토스트|noun": {
+      "rr": "toseuteu"
+    },
+    "퍼스트|noun": {
+      "rr": "peoseuteu"
+    },
+    "하마|adverb": {
+      "rr": "hama"
+    },
+    "해병대|noun": {
+      "rr": "haebyeongdae"
+    },
+    "휴지|noun": {
+      "rr": "hyuji"
+    },
+    "계신데|noun": {
+      "rr": "gyesinde"
+    },
+    "국민|noun": {
+      "rr": "gungmin"
+    },
+    "그곳|noun": {
+      "rr": "geugot"
+    },
+    "깃발|noun": {
+      "rr": "gitbal"
+    },
+    "나뭇잎|noun": {
+      "rr": "namunnip",
+      "rrSpelling": "나뭇+잎"
+    },
+    "날로|adverb": {
+      "rr": "nallo"
+    },
+    "뇌물|noun": {
+      "rr": "noemul"
+    },
+    "대전|noun": {
+      "rr": "daejeon"
+    },
+    "도박|noun": {
+      "rr": "dobak"
+    },
+    "디자인|noun": {
+      "rr": "dijain"
+    },
+    "딱지|noun": {
+      "rr": "ttakji"
+    },
+    "맹세|noun": {
+      "rr": "maengse"
+    },
+    "멋있다|adjective": {
+      "rr": "meositda"
+    },
+    "목적|noun": {
+      "rr": "mokjeok"
+    },
+    "부두|noun": {
+      "rr": "budu"
+    },
+    "사이즈|noun": {
+      "rr": "saijeu"
+    },
+    "색깔|noun": {
+      "rr": "saekkkal"
+    },
+    "서클|noun": {
+      "rr": "seokeul"
+    },
+    "성냥|noun": {
+      "rr": "seongnyang"
+    },
+    "성장|noun": {
+      "rr": "seongjang"
+    },
+    "소원|noun": {
+      "rr": "sowon"
+    },
+    "슬쩍|adverb": {
+      "rr": "seuljjeok"
+    },
+    "알레르기|noun": {
+      "rr": "allereugi"
+    },
+    "양파|noun": {
+      "rr": "yangpa"
+    },
+    "여유|noun": {
+      "rr": "yeoyu"
+    },
+    "연필|noun": {
+      "rr": "yeonpil"
+    },
+    "오류|noun": {
+      "rr": "oryu"
+    },
+    "오픈|noun": {
+      "rr": "opeun"
+    },
+    "온종일|adverb": {
+      "rr": "onjong-il"
+    },
+    "온종일|noun": {
+      "rr": "onjong-il"
+    },
+    "와플|noun": {
+      "rr": "wapeul"
+    },
+    "요구|noun": {
+      "rr": "yogu"
+    },
+    "움직임|noun": {
+      "rr": "umjigim"
+    },
+    "음료|noun": {
+      "rr": "eumnyo"
+    },
+    "자서|noun": {
+      "rr": "jaseo"
+    },
+    "조건|noun": {
+      "rr": "jogeon"
+    },
+    "좌표|noun": {
+      "rr": "jwapyo"
+    },
+    "지하실|noun": {
+      "rr": "jihasil"
+    },
+    "직후|noun": {
+      "rr": "jikhu"
+    },
+    "집합|noun": {
+      "rr": "jiphap"
+    },
+    "처벌|noun": {
+      "rr": "cheobeol"
+    },
+    "추다|verb": {
+      "rr": "chuda"
+    },
+    "추수|noun": {
+      "rr": "chusu"
+    },
+    "파스타|noun": {
+      "rr": "paseuta"
+    },
+    "팬케이크|noun": {
+      "rr": "paenkeikeu"
+    },
+    "펑크|noun": {
+      "rr": "peongkeu"
+    },
+    "편집|noun": {
+      "rr": "pyeonjip"
+    },
+    "플레이|noun": {
+      "rr": "peullei"
+    },
+    "협박|noun": {
+      "rr": "hyeopbak"
+    },
+    "화물|noun": {
+      "rr": "hwamul"
+    },
+    "휴대전화|noun": {
+      "rr": "hyudaejeonhwa"
+    },
+    "배다|verb": {
+      "rr": "baeda"
+    },
+    "인지|noun": {
+      "rr": "inji"
+    },
+    "가령|adverb": {
+      "rr": "garyeong"
+    },
+    "개방|noun": {
+      "rr": "gaebang"
+    },
+    "거미|noun": {
+      "rr": "geomi"
+    },
+    "계곡|noun": {
+      "rr": "gyegok"
+    },
+    "고객님|noun": {
+      "rr": "gogaengnim"
+    },
+    "골동품|noun": {
+      "rr": "goldongpum"
+    },
+    "과부|noun": {
+      "rr": "gwabu"
+    },
+    "국립|noun": {
+      "rr": "gungnip"
+    },
+    "귀환|noun": {
+      "rr": "gwihwan"
+    },
+    "남동생|noun": {
+      "rr": "namdongsaeng"
+    },
+    "다중|noun": {
+      "rr": "dajung"
+    },
+    "단순|noun": {
+      "rr": "dansun"
+    },
+    "돌고래|noun": {
+      "rr": "dolgorae"
+    },
+    "동물원|noun": {
+      "rr": "dongmurwon"
+    },
+    "동성|noun": {
+      "rr": "dongseong"
+    },
+    "두껍다|adjective": {
+      "rr": "dukkeopda"
+    },
+    "들러리|noun": {
+      "rr": "deulleori"
+    },
+    "디제이|noun": {
+      "rr": "dijei"
+    },
+    "로맨스|noun": {
+      "rr": "romaenseu"
+    },
+    "루비|noun": {
+      "rr": "rubi"
+    },
+    "마리화나|noun": {
+      "rr": "marihwana"
+    },
+    "모텔|noun": {
+      "rr": "motel"
+    },
+    "무역|noun": {
+      "rr": "muyeok"
+    },
+    "바닐라|noun": {
+      "rr": "banilla"
+    },
+    "백신|noun": {
+      "rr": "baeksin"
+    },
+    "범위|noun": {
+      "rr": "beomwi"
+    },
+    "보상|noun": {
+      "rr": "bosang"
+    },
+    "분자|noun": {
+      "rr": "bunja"
+    },
+    "불가|noun": {
+      "rr": "bulga"
+    },
+    "불평|noun": {
+      "rr": "bulpyeong"
+    },
+    "브랜디|noun": {
+      "rr": "beuraendi"
+    },
+    "빨갱이|noun": {
+      "rr": "ppalgaeng-i"
+    },
+    "사다리|noun": {
+      "rr": "sadari"
+    },
+    "서고|noun": {
+      "rr": "seogo"
+    },
+    "스카우트|noun": {
+      "rr": "seukauteu"
+    },
+    "시기|noun": {
+      "rr": "sigi"
+    },
+    "시집|noun": {
+      "rr": "sijip"
+    },
+    "실로|adverb": {
+      "rr": "sillo"
+    },
+    "아람|noun": {
+      "rr": "aram"
+    },
+    "아래쪽|noun": {
+      "rr": "araejjok"
+    },
+    "약혼|noun": {
+      "rr": "yakhon"
+    },
+    "오페라|noun": {
+      "rr": "opera"
+    },
+    "유니폼|noun": {
+      "rr": "yunipom"
+    },
+    "유산|noun": {
+      "rr": "yusan"
+    },
+    "육군|noun": {
+      "rr": "yukgun"
+    },
+    "이론|noun": {
+      "rr": "iron"
+    },
+    "적색|noun": {
+      "rr": "jeoksaek"
+    },
+    "주름|noun": {
+      "rr": "jureum"
+    },
+    "주민|noun": {
+      "rr": "jumin"
+    },
+    "중독자|noun": {
+      "rr": "jungdokja"
+    },
+    "지휘관|noun": {
+      "rr": "jihwigwan"
+    },
+    "질서|noun": {
+      "rr": "jilseo"
+    },
+    "차지|noun": {
+      "rr": "chaji"
+    },
+    "참여|noun": {
+      "rr": "chamyeo"
+    },
+    "책임감|noun": {
+      "rr": "chaegimgam"
+    },
+    "천둥|noun": {
+      "rr": "cheondung"
+    },
+    "최우선|noun": {
+      "rr": "choe-useon"
+    },
+    "타자|noun": {
+      "rr": "taja"
+    },
+    "포인트|noun": {
+      "rr": "pointeu"
+    },
+    "항해|noun": {
+      "rr": "hanghae"
+    },
+    "해산|noun": {
+      "rr": "haesan"
+    },
+    "혼인|noun": {
+      "rr": "honin"
+    },
+    "회계|noun": {
+      "rr": "hoegye"
+    },
+    "흔적|noun": {
+      "rr": "heunjeok"
+    },
+    "힙합|noun": {
+      "rr": "hiphap"
+    },
+    "감자|noun": {
+      "rr": "gamja"
+    },
+    "가다가|adverb": {
+      "rr": "gadaga"
+    },
+    "개그|noun": {
+      "rr": "gaegeu"
+    },
+    "개요|noun": {
+      "rr": "gaeyo"
+    },
+    "건설|noun": {
+      "rr": "geonseol"
+    },
+    "경찰관|noun": {
+      "rr": "gyeongchalgwan"
+    },
+    "공화국|noun": {
+      "rr": "gonghwaguk"
+    },
+    "과다|noun": {
+      "rr": "gwada"
+    },
+    "과학자|noun": {
+      "rr": "gwahakja"
+    },
+    "굉장하다|adjective": {
+      "rr": "goengjanghada"
+    },
+    "교대|noun": {
+      "rr": "gyodae"
+    },
+    "교환|noun": {
+      "rr": "gyohwan"
+    },
+    "권력|noun": {
+      "rr": "gwollyeok"
+    },
+    "꾸준히|adverb": {
+      "rr": "kkujunhi"
+    },
+    "나란히|adverb": {
+      "rr": "naranhi"
+    },
+    "내다|verb": {
+      "rr": "naeda"
+    },
+    "대가리|noun": {
+      "rr": "daegari"
+    },
+    "로그|noun": {
+      "rr": "rogeu"
+    },
+    "마주|adverb": {
+      "rr": "maju"
+    },
+    "매트리스|noun": {
+      "rr": "maeteuriseu"
+    },
+    "먹이|noun": {
+      "rr": "meogi"
+    },
+    "반대편|noun": {
+      "rr": "bandaepyeon"
+    },
+    "벌이|noun": {
+      "rr": "beori"
+    },
+    "베개|noun": {
+      "rr": "begae"
+    },
+    "봉투|noun": {
+      "rr": "bongtu"
+    },
+    "부츠|noun": {
+      "rr": "bucheu"
+    },
+    "빙빙|noun": {
+      "rr": "bingbing"
+    },
+    "삭제|noun": {
+      "rr": "sakje"
+    },
+    "상관없다|adjective": {
+      "rr": "sanggwaneopda"
+    },
+    "설정|noun": {
+      "rr": "seoljeong"
+    },
+    "성격|noun": {
+      "rr": "seonggyeok"
+    },
+    "센서|noun": {
+      "rr": "senseo"
+    },
+    "쇼크|noun": {
+      "rr": "syokeu"
+    },
+    "수용소|noun": {
+      "rr": "suyongso"
+    },
+    "식도|noun": {
+      "rr": "sikdo"
+    },
+    "신혼|noun": {
+      "rr": "sinhon"
+    },
+    "앰뷸런스|noun": {
+      "rr": "aembyulleonseu"
+    },
+    "에이즈|noun": {
+      "rr": "eijeu"
+    },
+    "영향력|noun": {
+      "rr": "yeonghyangnyeok"
+    },
+    "위조|noun": {
+      "rr": "wijo"
+    },
+    "위험하다|adjective": {
+      "rr": "wiheomhada"
+    },
+    "입력|noun": {
+      "rr": "imnyeok"
+    },
+    "접촉|noun": {
+      "rr": "jeopchok"
+    },
+    "좌석|noun": {
+      "rr": "jwaseok"
+    },
+    "주위|noun": {
+      "rr": "juwi"
+    },
+    "주차장|noun": {
+      "rr": "juchajang"
+    },
+    "증오|noun": {
+      "rr": "jeung-o"
+    },
+    "청소년|noun": {
+      "rr": "cheongsonyeon"
+    },
+    "초자연적|noun": {
+      "rr": "chojayeonjeok"
+    },
+    "총통|noun": {
+      "rr": "chongtong"
+    },
+    "캐릭터|noun": {
+      "rr": "kaerikteo"
+    },
+    "터키|noun": {
+      "rr": "teoki"
+    },
+    "티셔츠|noun": {
+      "rr": "tisyeocheu"
+    },
+    "패션|noun": {
+      "rr": "paesyeon"
+    },
+    "학기|noun": {
+      "rr": "hakgi"
+    },
+    "호스트|noun": {
+      "rr": "hoseuteu"
+    },
+    "휴대용|noun": {
+      "rr": "hyudaeyong"
+    },
+    "흥분|noun": {
+      "rr": "heungbun"
+    },
+    "시발|noun": {
+      "rr": "sibal"
+    },
+    "감독관|noun": {
+      "rr": "gamdokgwan"
+    },
+    "갤러리|noun": {
+      "rr": "gaelleori"
+    },
+    "거즈|noun": {
+      "rr": "geojeu"
+    },
+    "걷기|noun": {
+      "rr": "geotgi"
+    },
+    "경제|noun": {
+      "rr": "gyeongje"
+    },
+    "공룡|noun": {
+      "rr": "gongnyong"
+    },
+    "교통사고|noun": {
+      "rr": "gyotongsago"
+    },
+    "국왕|noun": {
+      "rr": "gugwang"
+    },
+    "귀족|noun": {
+      "rr": "gwijok"
+    },
+    "노란색|noun": {
+      "rr": "noransaek"
+    },
+    "노자|noun": {
+      "rr": "noja"
+    },
+    "눈썹|noun": {
+      "rr": "nunsseop"
+    },
+    "더구나|adverb": {
+      "rr": "deoguna"
+    },
+    "도청|noun": {
+      "rr": "docheong"
+    },
+    "뒤통수|noun": {
+      "rr": "dwitongsu"
+    },
+    "때문|noun": {
+      "rr": "ttaemun"
+    },
+    "마차|noun": {
+      "rr": "macha"
+    },
+    "모니터링|noun": {
+      "rr": "moniteoring"
+    },
+    "모험|noun": {
+      "rr": "moheom"
+    },
+    "무도회|noun": {
+      "rr": "mudohoe"
+    },
+    "반년|noun": {
+      "rr": "bannyeon"
+    },
+    "방귀|noun": {
+      "rr": "banggwi"
+    },
+    "버릇|noun": {
+      "rr": "beoreut"
+    },
+    "비즈니스|noun": {
+      "rr": "bijeuniseu"
+    },
+    "빨강|noun": {
+      "rr": "ppalgang"
+    },
+    "뿌리|noun": {
+      "rr": "ppuri"
+    },
+    "소방관|noun": {
+      "rr": "sobanggwan"
+    },
+    "시즌|noun": {
+      "rr": "sijeun"
+    },
+    "쓰레기통|noun": {
+      "rr": "sseuregitong"
+    },
+    "쓸데|noun": {
+      "rr": "sseulde"
+    },
+    "아가리|noun": {
+      "rr": "agari"
+    },
+    "아이스|noun": {
+      "rr": "aiseu"
+    },
+    "안와|noun": {
+      "rr": "anwa"
+    },
+    "야외|noun": {
+      "rr": "yaoe"
+    },
+    "약혼자|noun": {
+      "rr": "yakhonja"
+    },
+    "여하튼|adverb": {
+      "rr": "yeohateun"
+    },
+    "열정|noun": {
+      "rr": "yeoljeong"
+    },
+    "영하|noun": {
+      "rr": "yeongha"
+    },
+    "욕조|noun": {
+      "rr": "yokjo"
+    },
+    "일일|adverb": {
+      "rr": "iril"
+    },
+    "재고|noun": {
+      "rr": "jaego"
+    },
+    "재미있다|adjective": {
+      "rr": "jaemiitda"
+    },
+    "전차|noun": {
+      "rr": "jeoncha"
+    },
+    "접어|noun": {
+      "rr": "jeobeo"
+    },
+    "정신병|noun": {
+      "rr": "jeongsinbyeong"
+    },
+    "제품|noun": {
+      "rr": "jepum"
+    },
+    "주택|noun": {
+      "rr": "jutaek"
+    },
+    "증후군|noun": {
+      "rr": "jeunghugun"
+    },
+    "차차|adverb": {
+      "rr": "chacha"
+    },
+    "캠핑|noun": {
+      "rr": "kaemping"
+    },
+    "컨트롤|noun": {
+      "rr": "keonteurol"
+    },
+    "콘돔|noun": {
+      "rr": "kondom"
+    },
+    "클래식|noun": {
+      "rr": "keullaesik"
+    },
+    "탐사|noun": {
+      "rr": "tamsa"
+    },
+    "탑승|noun": {
+      "rr": "tapseung"
+    },
+    "표준|noun": {
+      "rr": "pyojun"
+    },
+    "학부모|noun": {
+      "rr": "hakbumo"
+    },
+    "혐의|noun": {
+      "rr": "hyeomui"
+    },
+    "들이|adverb": {
+      "rr": "deuri"
+    },
+    "들이|noun": {
+      "rr": "deuri"
+    },
+    "기름|noun": {
+      "rr": "gireum"
+    },
+    "헤더|noun": {
+      "rr": "hedeo"
+    },
+    "각종|noun": {
+      "rr": "gakjong"
+    },
+    "갈고|noun": {
+      "rr": "galgo"
+    },
+    "갑판|noun": {
+      "rr": "gappan"
+    },
+    "검은색|noun": {
+      "rr": "geomeunsaek"
+    },
+    "경력|noun": {
+      "rr": "gyeongnyeok"
+    },
+    "경쟁|noun": {
+      "rr": "gyeongjaeng"
+    },
+    "계산서|noun": {
+      "rr": "gyesanseo"
+    },
+    "교신|noun": {
+      "rr": "gyosin"
+    },
+    "구출|noun": {
+      "rr": "guchul"
+    },
+    "금색|noun": {
+      "rr": "geumsaek"
+    },
+    "끝없이|adverb": {
+      "rr": "kkeudeopsi",
+      "rrSpelling": "끝+없이"
+    },
+    "노트북|noun": {
+      "rr": "noteubuk"
+    },
+    "누님|noun": {
+      "rr": "nunim"
+    },
+    "다르다|adjective": {
+      "rr": "dareuda"
+    },
+    "단백질|noun": {
+      "rr": "danbaekjil"
+    },
+    "대처|noun": {
+      "rr": "daecheo"
+    },
+    "동성애|noun": {
+      "rr": "dongseong-ae"
+    },
+    "목사|noun": {
+      "rr": "moksa"
+    },
+    "묘지|noun": {
+      "rr": "myoji"
+    },
+    "배짱|noun": {
+      "rr": "baejjang"
+    },
+    "벽장|noun": {
+      "rr": "byeokjang"
+    },
+    "보도|noun": {
+      "rr": "bodo"
+    },
+    "보장|noun": {
+      "rr": "bojang"
+    },
+    "보호자|noun": {
+      "rr": "bohoja"
+    },
+    "불꽃|noun": {
+      "rr": "bulkkot"
+    },
+    "비둘기|noun": {
+      "rr": "bidulgi"
+    },
+    "사이트|noun": {
+      "rr": "saiteu"
+    },
+    "서방|noun": {
+      "rr": "seobang"
+    },
+    "속속들이|adverb": {
+      "rr": "soksokdeuri"
+    },
+    "수녀|noun": {
+      "rr": "sunyeo"
+    },
+    "수다|noun": {
+      "rr": "suda"
+    },
+    "수의|noun": {
+      "rr": "suui"
+    },
+    "수집|noun": {
+      "rr": "sujip"
+    },
+    "스텝|noun": {
+      "rr": "seutep"
+    },
+    "스토커|noun": {
+      "rr": "seutokeo"
+    },
+    "신임|noun": {
+      "rr": "sinim"
+    },
+    "아래층|noun": {
+      "rr": "araecheung"
+    },
+    "아프다|adjective": {
+      "rr": "apeuda"
+    },
+    "얇다|adjective": {
+      "rr": "yalda"
+    },
+    "양육권|noun": {
+      "rr": "yang-yukgwon"
+    },
+    "영감|noun": {
+      "rr": "yeonggam"
+    },
+    "영수증|noun": {
+      "rr": "yeongsujeung"
+    },
+    "와이파이|noun": {
+      "rr": "waipai"
+    },
+    "완성|noun": {
+      "rr": "wanseong"
+    },
+    "원자력|noun": {
+      "rr": "wonjaryeok"
+    },
+    "육체적|noun": {
+      "rr": "yukchejeok"
+    },
+    "인원|noun": {
+      "rr": "inwon"
+    },
+    "일류|noun": {
+      "rr": "illyu"
+    },
+    "일생|noun": {
+      "rr": "ilsaeng"
+    },
+    "졸업생|noun": {
+      "rr": "joreopsaeng"
+    },
+    "줄거리|noun": {
+      "rr": "julgeori"
+    },
+    "중사|noun": {
+      "rr": "jungsa"
+    },
+    "중요|noun": {
+      "rr": "jung-yo"
+    },
+    "체육관|noun": {
+      "rr": "cheyukgwan"
+    },
+    "초대장|noun": {
+      "rr": "chodaejang"
+    },
+    "치아|noun": {
+      "rr": "chia"
+    },
+    "캔디|noun": {
+      "rr": "kaendi"
+    },
+    "크립톤|noun": {
+      "rr": "keuripton"
+    },
+    "파도|noun": {
+      "rr": "pado"
+    },
+    "파이브|noun": {
+      "rr": "paibeu"
+    },
+    "하구|noun": {
+      "rr": "hagu"
+    },
+    "하도|noun": {
+      "rr": "hado"
+    },
+    "혼란|noun": {
+      "rr": "hollan"
+    },
+    "흉터|noun": {
+      "rr": "hyungteo"
+    },
+    "프로덕션|noun": {
+      "rr": "peurodeoksyeon"
+    },
+    "펴다|verb": {
+      "rr": "pyeoda"
+    },
+    "건축|noun": {
+      "rr": "geonchuk"
+    },
+    "고아|noun": {
+      "rr": "goa"
+    },
+    "공산주의자|noun": {
+      "rr": "gongsanjuuija"
+    },
+    "과학적|noun": {
+      "rr": "gwahakjeok"
+    },
+    "기린|noun": {
+      "rr": "girin"
+    },
+    "기쁨|noun": {
+      "rr": "gippeum"
+    },
+    "널리|adverb": {
+      "rr": "neolli"
+    },
+    "노출|noun": {
+      "rr": "nochul"
+    },
+    "논문|noun": {
+      "rr": "nonmun"
+    },
+    "도장|noun": {
+      "rr": "dojang"
+    },
+    "동이|noun": {
+      "rr": "dong-i"
+    },
+    "립스틱|noun": {
+      "rr": "ripseutik"
+    },
+    "반도|noun": {
+      "rr": "bando"
+    },
+    "발음|noun": {
+      "rr": "bareum"
+    },
+    "배경|noun": {
+      "rr": "baegyeong"
+    },
+    "배신|noun": {
+      "rr": "baesin"
+    },
+    "버거|noun": {
+      "rr": "beogeo"
+    },
+    "변명|noun": {
+      "rr": "byeonmyeong"
+    },
+    "보모|noun": {
+      "rr": "bomo"
+    },
+    "볼트|noun": {
+      "rr": "bolteu"
+    },
+    "부패|noun": {
+      "rr": "bupae"
+    },
+    "사랑스럽다|adjective": {
+      "rr": "sarangseureopda"
+    },
+    "사후|noun": {
+      "rr": "sahu"
+    },
+    "상원|noun": {
+      "rr": "sang-won"
+    },
+    "석유|noun": {
+      "rr": "seogyu"
+    },
+    "성벽|noun": {
+      "rr": "seongbyeok"
+    },
+    "신뢰|noun": {
+      "rr": "silloe"
+    },
+    "신혼여행|noun": {
+      "rr": "sinhonnyeohaeng",
+      "rrSpelling": "신혼+여행"
+    },
+    "실시간|noun": {
+      "rr": "silsigan"
+    },
+    "아폴로|noun": {
+      "rr": "apollo"
+    },
+    "어느새|adverb": {
+      "rr": "eoneusae"
+    },
+    "여럿|noun": {
+      "rr": "yeoreot"
+    },
+    "여인|noun": {
+      "rr": "yeoin"
+    },
+    "연장|noun": {
+      "rr": "yeonjang"
+    },
+    "영양|noun": {
+      "rr": "yeong-yang"
+    },
+    "위반|noun": {
+      "rr": "wiban"
+    },
+    "유치원|noun": {
+      "rr": "yuchiwon"
+    },
+    "일치|noun": {
+      "rr": "ilchi"
+    },
+    "입구|noun": {
+      "rr": "ipgu"
+    },
+    "재정|noun": {
+      "rr": "jaejeong"
+    },
+    "조개|noun": {
+      "rr": "jogae"
+    },
+    "존경|noun": {
+      "rr": "jon-gyeong"
+    },
+    "지휘|noun": {
+      "rr": "jihwi"
+    },
+    "처치|noun": {
+      "rr": "cheochi"
+    },
+    "철도|noun": {
+      "rr": "cheoldo"
+    },
+    "첩보|noun": {
+      "rr": "cheopbo"
+    },
+    "초록|noun": {
+      "rr": "chorok"
+    },
+    "추억|noun": {
+      "rr": "chueok"
+    },
+    "취재|noun": {
+      "rr": "chwijae"
+    },
+    "카트|noun": {
+      "rr": "kateu"
+    },
+    "탁자|noun": {
+      "rr": "takja"
+    },
+    "평가|noun": {
+      "rr": "pyeongga"
+    },
+    "항구|noun": {
+      "rr": "hanggu"
+    },
+    "형편|noun": {
+      "rr": "hyeongpyeon"
+    },
+    "황제|noun": {
+      "rr": "hwangje"
+    },
+    "훗날|noun": {
+      "rr": "hunnal"
+    },
+    "설사|adverb": {
+      "rr": "seolsa"
+    },
+    "삶은|noun": {
+      "rr": "salmeun"
+    },
+    "갈고리|noun": {
+      "rr": "galgori"
+    },
+    "감동|noun": {
+      "rr": "gamdong"
+    },
+    "개구리|noun": {
+      "rr": "gaeguri"
+    },
+    "고려|noun": {
+      "rr": "goryeo"
+    },
+    "관리인|noun": {
+      "rr": "gwalliin"
+    },
+    "국토|noun": {
+      "rr": "gukto"
+    },
+    "기수|noun": {
+      "rr": "gisu"
+    },
+    "낫다|adjective": {
+      "rr": "natda"
+    },
+    "낫다|verb": {
+      "rr": "natda"
+    },
+    "녹화|noun": {
+      "rr": "nokhwa"
+    },
+    "대피|noun": {
+      "rr": "daepi"
+    },
+    "도둑질|noun": {
+      "rr": "dodukjil"
+    },
+    "독점|noun": {
+      "rr": "dokjeom"
+    },
+    "동기|noun": {
+      "rr": "donggi"
+    },
+    "라임|noun": {
+      "rr": "raim"
+    },
+    "라틴|noun": {
+      "rr": "ratin"
+    },
+    "마취|noun": {
+      "rr": "machwi"
+    },
+    "마케팅|noun": {
+      "rr": "maketing"
+    },
+    "메모리|noun": {
+      "rr": "memori"
+    },
+    "명절|noun": {
+      "rr": "myeongjeol"
+    },
+    "모르핀|noun": {
+      "rr": "moreupin"
+    },
+    "물리|noun": {
+      "rr": "mulli"
+    },
+    "내가|pronoun": {
+      "rr": "naega"
+    },
+    "그래|interjection": {
+      "rr": "geurae"
+    },
+    "거기|pronoun": {
+      "rr": "geogi"
+    },
+    "우리|pronoun": {
+      "rr": "uri"
+    },
+    "저는|pronoun": {
+      "rr": "jeoneun"
+    },
+    "무슨|determiner": {
+      "rr": "museun"
+    },
+    "아니야|interjection": {
+      "rr": "aniya"
+    },
+    "그럼|interjection": {
+      "rr": "geureom"
+    },
+    "여기|pronoun": {
+      "rr": "yeogi"
+    },
+    "그게|pronoun": {
+      "rr": "geuge"
+    },
+    "아니|interjection": {
+      "rr": "ani"
+    },
+    "네가|pronoun": {
+      "rr": "nega"
+    },
+    "다른|determiner": {
+      "rr": "dareun"
+    },
+    "아이|interjection": {
+      "rr": "ai"
+    },
+    "그런|determiner": {
+      "rr": "geureon"
+    },
+    "그것|pronoun": {
+      "rr": "geugeot"
+    },
+    "모든|determiner": {
+      "rr": "modeun"
+    },
+    "당신|pronoun": {
+      "rr": "dangsin"
+    },
+    "아니요|interjection": {
+      "rr": "aniyo"
+    },
+    "나는|pronoun": {
+      "rr": "naneun"
+    },
+    "이게|pronoun": {
+      "rr": "ige"
+    },
+    "누구|pronoun": {
+      "rr": "nugu"
+    },
+    "어떤|determiner": {
+      "rr": "eotteon"
+    },
+    "이런|interjection": {
+      "rr": "ireon"
+    },
+    "같은|determiner": {
+      "rr": "gateun"
+    },
+    "일이|determiner": {
+      "rr": "iri"
+    },
+    "안녕|interjection": {
+      "rr": "annyeong"
+    },
+    "하나|determiner": {
+      "rr": "hana"
+    },
+    "그거|pronoun": {
+      "rr": "geugeo"
+    },
+    "아무도|pronoun": {
+      "rr": "amudo"
+    },
+    "그러니까|interjection": {
+      "rr": "geureonikka"
+    },
+    "고마워|interjection": {
+      "rr": "gomawo"
+    },
+    "젠장|interjection": {
+      "rr": "jenjang"
+    },
+    "세상에|interjection": {
+      "rr": "sesang-e"
+    },
+    "이런|determiner": {
+      "rr": "ireon"
+    },
+    "저기|interjection": {
+      "rr": "jeogi"
+    },
+    "감사합니다|interjection": {
+      "rr": "gamsahamnida"
+    },
+    "어디|interjection": {
+      "rr": "eodi"
+    },
+    "이거|interjection": {
+      "rr": "igeo"
+    },
+    "이거|pronoun": {
+      "rr": "igeo"
+    },
+    "너희|pronoun": {
+      "rr": "neohui"
+    },
+    "자네|pronoun": {
+      "rr": "jane"
+    },
+    "어디|pronoun": {
+      "rr": "eodi"
+    },
+    "맙소사|interjection": {
+      "rr": "mapsosa"
+    },
+    "잠깐만|interjection": {
+      "rr": "jamkkanman"
+    },
+    "너는|pronoun": {
+      "rr": "neoneun"
+    },
+    "작은|determiner": {
+      "rr": "jageun"
+    },
+    "언제|pronoun": {
+      "rr": "eonje"
+    },
+    "여보세요|interjection": {
+      "rr": "yeoboseyo"
+    },
+    "서로|pronoun": {
+      "rr": "seoro"
+    },
+    "미안|interjection": {
+      "rr": "mian"
+    },
+    "아무|determiner": {
+      "rr": "amu"
+    },
+    "아무|pronoun": {
+      "rr": "amu"
+    },
+    "글쎄|interjection": {
+      "rr": "geulsse"
+    },
+    "어쩌면|interjection": {
+      "rr": "eojjeomyeon"
+    },
+    "어느|determiner": {
+      "rr": "eoneu"
+    },
+    "이봐요|interjection": {
+      "rr": "ibwayo"
+    },
+    "누군가|pronoun": {
+      "rr": "nugun-ga"
+    },
+    "저희|pronoun": {
+      "rr": "jeohui"
+    },
+    "이상한|determiner": {
+      "rr": "isanghan"
+    },
+    "스스로|pronoun": {
+      "rr": "seuseuro"
+    },
+    "미친|interjection": {
+      "rr": "michin"
+    },
+    "저기|pronoun": {
+      "rr": "jeogi"
+    },
+    "이것|pronoun": {
+      "rr": "igeot"
+    },
+    "저거|pronoun": {
+      "rr": "jeogeo"
+    },
+    "저게|pronoun": {
+      "rr": "jeoge"
+    },
+    "씨발|interjection": {
+      "rr": "ssibal"
+    },
+    "어이|interjection": {
+      "rr": "eoi"
+    },
+    "글쎄요|interjection": {
+      "rr": "geulsseyo"
+    },
+    "아이고|interjection": {
+      "rr": "aigo"
+    },
+    "설마|interjection": {
+      "rr": "seolma"
+    },
+    "여러|determiner": {
+      "rr": "yeoreo"
+    },
+    "너희들|pronoun": {
+      "rr": "neohuideul"
+    },
+    "당신들|pronoun": {
+      "rr": "dangsindeul"
+    },
+    "그들|pronoun": {
+      "rr": "geudeul"
+    },
+    "빌어먹을|determiner": {
+      "rr": "bireomeogeul"
+    },
+    "빌어먹을|interjection": {
+      "rr": "bireomeogeul"
+    },
+    "오케이|interjection": {
+      "rr": "okei"
+    },
+    "그녀|pronoun": {
+      "rr": "geunyeo"
+    },
+    "어머|interjection": {
+      "rr": "eomeo"
+    },
+    "다섯|determiner": {
+      "rr": "daseot"
+    },
+    "안녕히|interjection": {
+      "rr": "annyeonghi"
+    },
+    "맞다|interjection": {
+      "rr": "matda"
+    },
+    "가만|interjection": {
+      "rr": "gaman"
+    },
+    "저런|determiner": {
+      "rr": "jeoreon"
+    },
+    "저런|interjection": {
+      "rr": "jeoreon"
+    },
+    "아무런|determiner": {
+      "rr": "amureon"
+    },
+    "한데|conjunction": {
+      "rr": "hande"
+    },
+    "건배|interjection": {
+      "rr": "geonbae"
+    },
+    "제기랄|interjection": {
+      "rr": "jegiral"
+    },
+    "미안하다|interjection": {
+      "rr": "mianhada"
+    },
+    "아이구|interjection": {
+      "rr": "aigu"
+    },
+    "오랜|determiner": {
+      "rr": "oraen"
+    },
+    "우어|interjection": {
+      "rr": "ueo"
+    },
+    "만세|interjection": {
+      "rr": "manse"
+    },
+    "몇몇|determiner": {
+      "rr": "myeonmyeot"
+    },
+    "그쪽|pronoun": {
+      "rr": "geujjok"
+    },
+    "이야|interjection": {
+      "rr": "iya"
+    },
+    "에이|interjection": {
+      "rr": "ei"
+    },
+    "이곳|pronoun": {
+      "rr": "igot"
+    },
+    "아멘|interjection": {
+      "rr": "amen"
+    },
+    "여섯|determiner": {
+      "rr": "yeoseot"
+    },
+    "어머나|interjection": {
+      "rr": "eomeona"
+    },
+    "이쪽|pronoun": {
+      "rr": "ijjok"
+    },
+    "일곱|determiner": {
+      "rr": "ilgop"
+    },
+    "무언가|pronoun": {
+      "rr": "mueon-ga"
+    },
+    "치즈|interjection": {
+      "rr": "chijeu"
+    },
+    "아야|interjection": {
+      "rr": "aya"
+    },
+    "온갖|determiner": {
+      "rr": "on-gat"
+    },
+    "저것|pronoun": {
+      "rr": "jeogeot"
+    },
+    "아서|interjection": {
+      "rr": "aseo"
+    },
+    "천만에요|interjection": {
+      "rr": "cheonmaneyo"
+    },
+    "어딘가|pronoun": {
+      "rr": "eodin-ga"
+    },
+    "정지|interjection": {
+      "rr": "jeongji"
+    },
+    "걔네|pronoun": {
+      "rr": "gyaene"
+    },
+    "무엇이든|pronoun": {
+      "rr": "mueosideun"
+    },
+    "자네들|pronoun": {
+      "rr": "janedeul"
+    },
+    "저쪽|pronoun": {
+      "rr": "jeojjok"
+    },
+    "첫째|determiner": {
+      "rr": "cheotjjae"
+    },
+    "수천|determiner": {
+      "rr": "sucheon"
+    },
+    "옆으로|preposition": {
+      "rr": "yeopeuro"
+    },
+    "우리들|pronoun": {
+      "rr": "urideul"
+    },
+    "다행히|interjection": {
+      "rr": "dahaenghi"
+    },
+    "아하|interjection": {
+      "rr": "aha"
+    },
+    "니들|pronoun": {
+      "rr": "nideul"
+    },
+    "싸구려|interjection": {
+      "rr": "ssaguryeo"
+    },
+    "둘째|determiner": {
+      "rr": "duljjae"
+    },
+    "무엇|pronoun": {
+      "rr": "mueot"
+    },
+    "파이팅|interjection": {
+      "rr": "paiting"
+    },
+    "여덟|determiner": {
+      "rr": "yeodeol"
+    },
+    "백만|determiner": {
+      "rr": "baengman"
+    },
+    "아휴|interjection": {
+      "rr": "ahyu"
+    },
+    "어이구|interjection": {
+      "rr": "eoigu"
+    },
+    "후유|interjection": {
+      "rr": "huyu"
+    },
+    "그대|pronoun": {
+      "rr": "geudae"
+    },
+    "대박|interjection": {
+      "rr": "daebak"
+    },
+    "수백만|determiner": {
+      "rr": "subaengman"
+    },
+    "본인|pronoun": {
+      "rr": "bonin"
+    },
+    "성적|determiner": {
+      "rr": "seongjeok"
+    },
+    "이랴|interjection": {
+      "rr": "irya"
+    },
+    "한두|determiner": {
+      "rr": "handu"
+    },
+    "아홉|determiner": {
+      "rr": "ahop"
+    },
+    "그까짓|determiner": {
+      "rr": "geukkajit"
+    },
+    "아아|interjection": {
+      "rr": "aa"
+    },
+    "동무|pronoun": {
+      "rr": "dongmu"
+    },
+    "아따|interjection": {
+      "rr": "atta"
+    },
+    "바른|determiner": {
+      "rr": "bareun"
+    },
+    "무어|interjection": {
+      "rr": "mueo"
+    },
+    "무어|pronoun": {
+      "rr": "mueo"
+    },
+    "기어|interjection": {
+      "rr": "gieo"
+    },
+    "어라|interjection": {
+      "rr": "eora"
+    },
+    "오른|determiner": {
+      "rr": "oreun"
+    },
+    "느그|pronoun": {
+      "rr": "neugeu"
+    },
+    "두어|determiner": {
+      "rr": "dueo"
+    },
+    "사회적|determiner": {
+      "rr": "sahoejeok"
+    },
+    "좆까|interjection": {
+      "rr": "jotkka"
+    },
+    "하난|determiner": {
+      "rr": "hanan"
+    },
+    "앗싸|interjection": {
+      "rr": "atssa"
+    },
+    "셋째|determiner": {
+      "rr": "setjjae"
+    },
+    "에잇|interjection": {
+      "rr": "eit"
+    },
+    "스무|determiner": {
+      "rr": "seumu"
+    },
+    "나이스|interjection": {
+      "rr": "naiseu"
+    },
+    "아싸|interjection": {
+      "rr": "assa"
+    },
+    "천만|determiner": {
+      "rr": "cheonman"
+    },
+    "충성|interjection": {
+      "rr": "chungseong"
+    },
+    "야호|interjection": {
+      "rr": "yaho"
+    },
+    "차렷|interjection": {
+      "rr": "charyeot"
+    },
+    "옳다|interjection": {
+      "rr": "olta"
+    },
+    "니미|interjection": {
+      "rr": "nimi"
+    },
+    "서른|determiner": {
+      "rr": "seoreun"
+    },
+    "야생|pronoun": {
+      "rr": "yasaeng"
+    },
+    "야옹|interjection": {
+      "rr": "yaong"
+    },
+    "임자|pronoun": {
+      "rr": "imja"
+    },
+    "오호|interjection": {
+      "rr": "oho"
+    },
+    "십만|determiner": {
+      "rr": "simman"
+    },
+    "영차|interjection": {
+      "rr": "yeongcha"
+    },
+    "그네|pronoun": {
+      "rr": "geune"
+    },
+    "땡큐|interjection": {
+      "rr": "ttaengkyu"
+    },
+    "스물|determiner": {
+      "rr": "seumul"
+    },
+    "이런저런|determiner": {
+      "rr": "ireonjeoreon"
+    },
+    "아놔|interjection": {
+      "rr": "anwa"
+    },
+    "우라질|interjection": {
+      "rr": "urajil"
+    },
+    "까꿍|interjection": {
+      "rr": "kkakkung"
+    },
+    "아자|interjection": {
+      "rr": "aja"
+    },
+    "지적|determiner": {
+      "rr": "jijeok"
+    },
+    "이기|pronoun": {
+      "rr": "igi"
+    },
+    "동무들|pronoun": {
+      "rr": "dongmudeul"
+    },
+    "두세|determiner": {
+      "rr": "duse"
+    },
+    "서너|determiner": {
+      "rr": "seoneo"
+    },
+    "그자|pronoun": {
+      "rr": "geuja"
+    },
+    "삼십|determiner": {
+      "rr": "samsip"
+    },
+    "비교적|determiner": {
+      "rr": "bigyojeok"
+    },
+    "가지가지|determiner": {
+      "rr": "gajigaji"
+    },
+    "까짓|determiner": {
+      "rr": "kkajit"
+    },
+    "얼씨구|interjection": {
+      "rr": "eolssigu"
+    },
+    "옳아|interjection": {
+      "rr": "ora"
+    },
+    "종교적|determiner": {
+      "rr": "jonggyojeok"
+    },
+    "어따|interjection": {
+      "rr": "eotta"
+    },
+    "저자|pronoun": {
+      "rr": "jeoja"
+    },
+    "경례|interjection": {
+      "rr": "gyeongnye"
+    },
+    "감사합니다|adjective": {
+      "rr": "gamsahamnida"
+    },
+    "감사합니다|verb": {
+      "rr": "gamsahamnida"
+    },
+    "개|noun": {
+      "rr": "gae"
+    },
+    "개|other": {
+      "rr": "gae"
+    },
+    "개|verb": {
+      "rr": "gae"
+    },
+    "네|determiner": {
+      "rr": "ne"
+    },
+    "네|interjection": {
+      "rr": "ne"
+    },
+    "네|pronoun": {
+      "rr": "ne"
+    },
+    "말|noun": {
+      "rr": "mal"
+    },
+    "물|noun": {
+      "rr": "mul"
+    },
+    "밤|noun": {
+      "rr": "bam"
+    },
+    "밥|noun": {
+      "rr": "bap"
+    },
+    "빵|determiner": {
+      "rr": "ppang"
+    },
+    "빵|interjection": {
+      "rr": "ppang"
+    },
+    "빵|noun": {
+      "rr": "ppang"
+    },
+    "새|determiner": {
+      "rr": "sae"
+    },
+    "새|noun": {
+      "rr": "sae"
+    },
+    "새|verb": {
+      "rr": "sae"
+    },
+    "새우|noun": {
+      "rr": "sae-u"
+    },
+    "생선|noun": {
+      "rr": "saengseon"
+    },
+    "소|noun": {
+      "rr": "so"
+    },
+    "안녕|noun": {
+      "rr": "annyeong"
+    },
+    "억새|noun": {
+      "rr": "eoksae"
+    },
+    "저|determiner": {
+      "rr": "jeo"
+    },
+    "저|interjection": {
+      "rr": "jeo"
+    },
+    "저|noun": {
+      "rr": "jeo"
+    },
+    "저|pronoun": {
+      "rr": "jeo"
+    },
+    "차|noun": {
+      "rr": "cha"
+    },
+    "치즈|noun": {
+      "rr": "chijeu"
+    }
+  },
+  "unresolved": {
+    "솔직히|adverb": "the rule output \"soljiki\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"soljikhi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "정확히|adverb": "the rule output \"jeonghwaki\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"jeonghwakhi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "특히|adverb": "the rule output \"teuki\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"teukhi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "비슷하다|adjective": "the rule output \"biseutada\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"biseuthada\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "부탁하다|verb": "the rule output \"butakada\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"butakhada\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "딱히|adverb": "the rule output \"ttaki\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"ttakhi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "라디오|noun": "no independent romanization (kaikki) to confirm the rule output \"radio\"",
+    "깨끗하다|adjective": "the rule output \"kkaekkeutada\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"kkaekkeuthada\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "약한|adjective": "the rule output \"yakan\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"yakhan\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "마일|noun": "no independent romanization (kaikki) to confirm the rule output \"mail\"",
+    "급히|adverb": "the rule output \"geupi\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"geuphi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "업로드|noun": "the rule output \"eomnodeu\" disagrees with Wiktionary's \"eopnodeu\"",
+    "명백히|adverb": "the rule output \"myeongbaeki\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"myeongbaekhi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "지극히|adverb": "the rule output \"jigeuki\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"jigeukhi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "착하다|adjective": "the rule output \"chakada\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"chakhada\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "극히|adverb": "the rule output \"geuki\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"geukhi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "급격히|adverb": "the rule output \"geupgyeoki\" aspirates ㄱ/ㄷ/ㅂ+ㅎ; Wiktionary's \"geupgyeokhi\" keeps ㅎ as after a noun root (the official exception names nouns only — the root boundary is not in the spelling)",
+    "안녕하세요|expression": "no independent romanization (kaikki) to confirm the rule output \"annyeonghaseyo\""
+  }
+}

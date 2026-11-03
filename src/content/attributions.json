@@ -195,6 +195,18 @@
       ]
     },
     {
+      "id": "jmdict-furigana",
+      "name": "JmdictFurigana — furigana for JMdict entries (Doublevil)",
+      "kind": "dictionary data (kana reading and furigana segments per JMdict text/reading pair)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/Doublevil/JmdictFurigana",
+      "attribution": "Furigana from JmdictFurigana by Doublevil, built from the JMdict dictionary files of the Electronic Dictionary Research and Development Group and distributed under the same licence as JMdict, CC BY-SA 4.0 (https://www.edrdg.org/edrdg/licence.html).",
+      "covers": [
+        "content/ja/lexicon/readings-manifest.json",
+        "content/ja/lexicon/derived/lexeme-readings.json"
+      ]
+    },
+    {
       "id": "cedict",
       "name": "CC-CEDICT (MDBG) — Chinese–English dictionary",
       "kind": "dictionary (pinyin, senses)",
@@ -327,6 +339,34 @@
         "content/en/interaction/",
         "content/en/assessment/",
         "content/en/exam/"
+      ]
+    },
+    {
+      "id": "unihan",
+      "name": "Unihan Database — Unicode Character Database 17.0.0",
+      "kind": "character data (kVietnamese, kMandarin, kJapanese/On/Kun, kHangul readings; variant links) used at build time to check the Hán-Việt tables",
+      "license": "Unicode-3.0",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+      "attribution": "Character readings and variant data from the Unihan Database, part of the Unicode Character Database (Unicode 17.0.0). Copyright © 1991-2026 Unicode, Inc. Used under the Unicode License v3 (https://www.unicode.org/license.txt); the full copyright and permission notice is in content/hanviet/UNICODE-LICENSE.txt.",
+      "covers": [
+        "content/hanviet/unihan-readings.json",
+        "content/hanviet/UNICODE-LICENSE.txt"
+      ]
+    },
+    {
+      "id": "original-hanviet-readings",
+      "name": "Learning French with Tracy — authored Hán-Việt readings (ja, zh, ko)",
+      "kind": "authored word → Sino-Vietnamese reading tables and their D-10 review sheet",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Hán-Việt (Sino-Vietnamese) readings of Japanese, Chinese and Korean words authored by the Learning French with Tracy project, checked against the Unihan Database.",
+      "covers": [
+        "content/hanviet/ja.json",
+        "content/hanviet/ko.json",
+        "content/hanviet/zh.json",
+        "content/hanviet/source-manifest.json",
+        "content/hanviet/REVIEW.md",
+        "src/content/hanviet/"
       ]
     },
     {

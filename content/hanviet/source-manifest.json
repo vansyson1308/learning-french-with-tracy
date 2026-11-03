@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "generator": "scripts/hanviet-unihan.ts",
+  "source": {
+    "id": "unihan",
+    "name": "Unihan Database, Unicode 17.0.0 (Unicode Character Database)",
+    "license": "Unicode-3.0",
+    "unicodeVersion": "17.0.0",
+    "url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "retrievedAt": "2026-11-03",
+    "sha256": "f7a48b2b545acfaa77b2d607ae28747404ce02baefee16396c5d2d7a8ef34b5e",
+    "bytes": 8518517,
+    "files": [
+      "Unihan_Readings.txt",
+      "Unihan_Variants.txt",
+      "Unihan_OtherMappings.txt"
+    ]
+  },
+  "charSet": "Every Han character of the ja and zh candidate-pool lemmas (content/<lang>/lexicon/derived/candidate-pool.json) and of the Hán-Việt tables (content/hanviet/{ja,ko,zh}.json; ko by its hanja), plus their one-hop kTraditionalVariant / kSimplifiedVariant / kSemanticVariant / kZVariant variants and kJinmeiyoKanji kyūjitai ↔ shinjitai links."
+}

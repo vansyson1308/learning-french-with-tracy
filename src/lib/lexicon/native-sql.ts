@@ -10,6 +10,7 @@
  */
 
 import { foldSearchable, rankMatches, searchTokens, type FoldedSearchable } from "../learning/lexicon-search";
+import { cjkSearchPatterns, rankCjk } from "./cjk-search";
 import type { LexemeDetail, LexemeExample, LexemeSummary } from "./types";
 
 export const SQL = {
@@ -43,6 +44,16 @@ export const SQL = {
   // returns refs in authored order, so the SQL tier must too.
   sourceRefs: `SELECT source_id, match_key FROM lexeme_sources WHERE lexeme_id = ? ORDER BY ord`,
   anyFrequency: `SELECT COUNT(*) AS n FROM lexemes WHERE freq_band IS NOT NULL`,
+  /** P4b stage 5: the database's search contract (`cjk` for the trigram + reading-keys databases; absent = Latin). */
+  searchMode: `SELECT value FROM metadata WHERE key = 'searchMode'`,
+  /**
+   * P4b stage 5: CJK candidates — substring LIKE over the trigram FTS
+   * columns (surface / gloss as typed, reading keys folded), three bound
+   * patterns, wildcards in the input escaped. Ranked by cjk-search.ts.
+   */
+  cjkSearchRows: `SELECT l.id, l.ord, l.surface, l.lookup_form, l.lemma, l.pos, l.gender, l.gloss, l.topic, l.freq_band, f.reading AS reading_keys
+    FROM lexeme_fts f JOIN lexemes l ON l.id = f.id
+    WHERE f.surface LIKE ? ESCAPE '\\' OR f.gloss LIKE ? ESCAPE '\\' OR f.reading LIKE ? ESCAPE '\\'`,
 } as const;
 
 /** FTS5 match string from sanitized tokens: `tok1* tok2* …`. */
@@ -171,6 +182,35 @@ export async function runNativeSearch(exec: SqlExecutor, query: string): Promise
     (candidate) => foldedRow(exec, candidate.row)
   );
   return ranked.map((r) => rowToSummary(r.row));
+}
+
+/** P4b stage 5: CJK search over a `searchMode = cjk` database (kana, toneless pinyin, jamo prefix, hanzi/kanji/hangul substring, gloss). */
+export async function runNativeCjkSearch(exec: SqlExecutor, query: string): Promise<LexemeSummary[]> {
+  const patterns = cjkSearchPatterns(query);
+  if (patterns === null) return [];
+  const rows = await exec.all<LexemeRow & { reading_keys: string | null }>(SQL.cjkSearchRows, [patterns.text, patterns.text, patterns.reading]);
+  const ranked = rankCjk(
+    rows.map((row) => ({ surface: row.surface, gloss: row.gloss, readingKeys: row.reading_keys ?? "", ord: row.ord, row })),
+    query
+  );
+  return ranked.map((r) => rowToSummary(r.row));
+}
+
+const SEARCH_MODES = new WeakMap<SqlExecutor, Promise<"cjk" | "latin">>();
+
+/** The database's search contract, read once per executor. */
+function searchModeOf(exec: SqlExecutor): Promise<"cjk" | "latin"> {
+  let mode = SEARCH_MODES.get(exec);
+  if (mode === undefined) {
+    mode = exec.first<{ value: string }>(SQL.searchMode, []).then((row) => (row?.value === "cjk" ? "cjk" : "latin"));
+    SEARCH_MODES.set(exec, mode);
+  }
+  return mode;
+}
+
+/** The repository's search: the CJK contract for a CJK database, the Latin pipeline otherwise (unchanged). */
+export async function runNativeLexiconSearch(exec: SqlExecutor, query: string): Promise<LexemeSummary[]> {
+  return (await searchModeOf(exec)) === "cjk" ? runNativeCjkSearch(exec, query) : runNativeSearch(exec, query);
 }
 
 export async function runNativeList(

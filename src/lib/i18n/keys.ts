@@ -308,6 +308,16 @@ export type MessageKey =
   | "practice.wordsEmpty"
   | "practice.writingBody"
   | "practice.writingPractice"
+  | "primer.blocks"
+  | "primer.consonants"
+  | "primer.entrySubtitle"
+  | "primer.entryTitle"
+  | "primer.listen"
+  | "primer.minimalPairs"
+  | "primer.reviewNote"
+  | "primer.strokeOrder"
+  | "primer.strokes"
+  | "primer.vowels"
   | "privacy.title"
   | "profile.appearance"
   | "profile.appearanceHint"
@@ -536,4 +546,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 534;
+export const MESSAGE_KEY_COUNT = 544;

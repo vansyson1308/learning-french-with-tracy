@@ -35,6 +35,8 @@ import { existsSync } from "fs";
 
 import type { RichLexicon, SourceManifest, SourceRegistry } from "../../content/schema";
 import { foldLigatures } from "../../src/lib/languages/base";
+import { cjkReadingKeys } from "../../src/lib/lexicon/cjk-search";
+import { displayReading } from "./cjk-readings/validate";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { localizeLexeme } from "./native-text";
 import { manifestView } from "./lexicon-etl/manifest";
@@ -81,6 +83,20 @@ export function lexiconNativeView(lexicon: RichLexicon, nativeCode: string): Ric
   };
 }
 
+/**
+ * P4b stage 5: a CJK database (non-Latin script) carries the `reading`
+ * search column and `searchMode = cjk` metadata. Its revision feeds the
+ * content hash of CJK lexicons ONLY, so the change ships those databases
+ * under new asset names while every Latin-script database (fr …) keeps
+ * its name and bytes. History: 1 = reading keys (kana / toneless pinyin /
+ * jamo keystrokes + RR).
+ */
+export const CJK_SEARCH_REVISION = 1;
+
+export function isCjkLexicon(language: string): boolean {
+  return buildPlugin(language).script !== "latin";
+}
+
 export function lexiconContentHash(
   lexicon: RichLexicon,
   manifest: SourceManifest | null,
@@ -91,6 +107,7 @@ export function lexiconContentHash(
   const input = canonicalJson({
     dbSchemaVersion: DB_SCHEMA_VERSION,
     dbBuildRevision: DB_BUILD_REVISION,
+    ...(isCjkLexicon(lexicon.language) ? { cjkSearchRevision: CJK_SEARCH_REVISION } : {}),
     lexicon: lexiconNativeView(lexicon, nativeCode),
     sourceSha256: manifestView(manifest)?.primarySha256 ?? null,
     sources: referenced,
@@ -150,6 +167,10 @@ export type LexiconIndexEntry = {
   topic?: string;
   band?: string;
   pronunciation?: { value: string; notation: string };
+  /** P4b stage 4: the lexeme's reading for display (ja kana + furigana, zh pinyin, ko rr). */
+  reading?: { kana?: string; furigana?: { base: string; ruby?: string }[]; pinyin?: string; rr?: string };
+  /** P4b stage 4 (zh): the traditional spelling beside the simplified surface (src/lib/languages binds it as a variant). */
+  traditional?: string;
   /** First example keyed by language code: `{ [targetCode]: …, [nativeCode]: … }`. */
   example?: Record<string, string>;
   confusables?: string[];
@@ -191,6 +212,11 @@ export function buildRuntimeIndex(
       if (lex.pronunciation !== undefined) {
         entry.pronunciation = { value: lex.pronunciation.value, notation: lex.pronunciation.notation };
       }
+      if (lex.reading !== undefined) {
+        const shown = displayReading(lex.reading);
+        if (shown !== undefined) entry.reading = shown;
+        if (lex.reading.traditional !== undefined) entry.traditional = lex.reading.traditional;
+      }
       if (lex.examples.length > 0) {
         entry.example = { [targetCode]: lex.examples[0].target, [nativeCode]: lex.examples[0].native };
       }
@@ -217,6 +243,8 @@ export function buildWebFallback(
   return {
     contentHash,
     schemaVersion: DB_SCHEMA_VERSION,
+    // P4b stage 5: CJK search contract (src/lib/lexicon/cjk-search.ts) for the web tier too.
+    ...(isCjkLexicon(lexicon.language) ? { searchMode: "cjk" as const } : {}),
     datasetLicense: datasetLicense(lexicon, registry),
     sources: referencedSources(lexicon, registry),
     entries: lexicon.lexemes.map((source) => {
@@ -242,6 +270,8 @@ export function buildWebFallback(
         ...(lex.pronunciation !== undefined
           ? { pronunciation: { value: lex.pronunciation.value, notation: lex.pronunciation.notation } }
           : {}),
+        ...(lex.reading !== undefined && displayReading(lex.reading) !== undefined ? { reading: displayReading(lex.reading) } : {}),
+        ...(lex.reading?.traditional !== undefined ? { traditional: lex.reading.traditional } : {}),
         examples: lex.examples.map((ex) => ({ [targetCode]: ex.target, [nativeCode]: ex.native, source: ex.source })),
         ...(lex.relations?.confusables !== undefined ? { confusables: [...lex.relations.confusables] } : {}),
         sourceRefs: lex.sourceRefs.map((r) => ({ source: r.source, ...(r.key !== undefined ? { key: r.key } : {}) })),
@@ -254,7 +284,7 @@ export function buildWebFallback(
 // SQLite build (bun:sqlite writer → standard SQLite file for expo-sqlite)
 // ---------------------------------------------------------------------------
 
-function ddl(ftsTokenizer: string): string {
+function ddl(ftsTokenizer: string, cjk: boolean): string {
   return `
 CREATE TABLE metadata (
   key TEXT PRIMARY KEY NOT NULL,
@@ -309,7 +339,7 @@ CREATE VIRTUAL TABLE lexeme_fts USING fts5(
   id UNINDEXED,
   surface,
   lemma,
-  gloss,
+  gloss,${cjk ? "\n  reading," : ""}
   tokenize = '${ftsTokenizer}'
 );
 `;
@@ -347,7 +377,9 @@ export function buildSqliteDb(
     db.exec("PRAGMA journal_mode = DELETE;");
     db.exec(`PRAGMA user_version = ${DB_SCHEMA_VERSION};`);
     db.exec("PRAGMA foreign_keys = ON;");
-    db.exec(ddl(plugin.ftsTokenizer));
+    // P4b stage 5: CJK databases add the `reading` search column (src/lib/lexicon/cjk-search.ts).
+    const cjk = plugin.script !== "latin";
+    db.exec(ddl(plugin.ftsTokenizer, cjk));
 
     const meta = prepare("INSERT INTO metadata (key, value) VALUES (?, ?)");
     const metadata: Record<string, string> = {
@@ -357,6 +389,7 @@ export function buildSqliteDb(
       language: lexicon.language,
       datasetLicense: datasetLicense(lexicon, registry),
       generator: "scripts/compile-content.ts",
+      ...(cjk ? { searchMode: "cjk" } : {}),
     };
     for (const key of Object.keys(metadata).sort()) meta.run(key, metadata[key]);
 
@@ -381,7 +414,11 @@ export function buildSqliteDb(
     const insLexSource = prepare(
       "INSERT INTO lexeme_sources (lexeme_id, source_id, match_key, ord) VALUES (?, ?, ?, ?)"
     );
-    const insFts = prepare("INSERT INTO lexeme_fts (id, surface, lemma, gloss) VALUES (?, ?, ?, ?)");
+    const insFts = prepare(
+      cjk
+        ? "INSERT INTO lexeme_fts (id, surface, lemma, gloss, reading) VALUES (?, ?, ?, ?, ?)"
+        : "INSERT INTO lexeme_fts (id, surface, lemma, gloss) VALUES (?, ?, ?, ?)"
+    );
 
     const localized = lexicon.lexemes.map((lex) => localizeLexeme(lex, nativeCode));
     // One transaction for every row: in autocommit mode each INSERT is its
@@ -410,7 +447,9 @@ export function buildSqliteDb(
       );
       // Ligature-folded index text: unicode61 folds true diacritics at
       // match time, but œ/æ need explicit folding (see lexicon-search.ts).
-      insFts.run(lex.id, ftsFold(plugin, lex.surface), ftsFold(plugin, lex.lemma), ftsFold(plugin, lex.gloss));
+      const ftsRow = [lex.id, ftsFold(plugin, lex.surface), ftsFold(plugin, lex.lemma), ftsFold(plugin, lex.gloss)];
+      if (cjk) insFts.run(...ftsRow, cjkReadingKeys({ surface: lex.surface, reading: lex.reading }));
+      else insFts.run(...ftsRow);
     });
     for (const lex of localized) {
       lex.examples.forEach((ex, ordinal) => insExample.run(lex.id, ordinal, ex.target, ex.native, ex.source));

@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "language": "ja",
+  "id": "ja.primer.script",
+  "title": {
+    "vi": "Làm quen với chữ kana",
+    "en": "Getting started with kana"
+  },
+  "intro": {
+    "vi": "Tiếng Nhật dùng ba loại chữ cùng lúc: hiragana (cho từ thuần Nhật và đuôi ngữ pháp), katakana (cho từ mượn tiếng nước ngoài) và kanji (chữ Hán). Mỗi chữ kana ghi trọn một âm tiết chứ không phải một chữ cái, nên học thuộc bảng kana là đọc được mọi từ.",
+    "en": "Japanese mixes three scripts: hiragana (native words and grammatical endings), katakana (loanwords) and kanji (Chinese characters). Each kana stands for a whole syllable, not a single letter, so once you know the kana tables you can read any word aloud."
+  },
+  "sections": [
+    {
+      "kind": "kanaTable",
+      "id": "hiragana-a-k",
+      "title": {
+        "vi": "Hiragana: năm nguyên âm và hàng K",
+        "en": "Hiragana: the five vowels and the K row"
+      },
+      "explanation": {
+        "vi": "Năm nguyên âm a, i, u, e, o là nền của cả bảng. Đọc ngắn, gọn: あ là «a», い là «i», う gần «ư» (môi không tròn), え là «ê», お là «ô». Hàng K ghép phụ âm k với từng nguyên âm: か ka, き ki, く ku, け ke, こ ko — đọc gần như «ca, ki, cư, kê, cô».",
+        "en": "The five vowels a, i, u, e, o are the base of the whole table. Keep them short; say う with unrounded lips. The K row joins k to each vowel: か ka, き ki, く ku, け ke, こ ko."
+      },
+      "script": "hiragana",
+      "columns": [
+        "a",
+        "i",
+        "u",
+        "e",
+        "o"
+      ],
+      "rows": [
+        {
+          "consonant": "",
+          "cells": [
+            {
+              "kana": "あ",
+              "romaji": "a",
+              "audio": {
+                "say": "あ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "い",
+              "romaji": "i",
+              "audio": {
+                "say": "い",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "う",
+              "romaji": "u",
+              "audio": {
+                "say": "う",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "え",
+              "romaji": "e",
+              "audio": {
+                "say": "え",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "お",
+              "romaji": "o",
+              "audio": {
+                "say": "お",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "k",
+          "cells": [
+            {
+              "kana": "か",
+              "romaji": "ka",
+              "audio": {
+                "say": "か",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "き",
+              "romaji": "ki",
+              "audio": {
+                "say": "き",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "く",
+              "romaji": "ku",
+              "audio": {
+                "say": "く",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "け",
+              "romaji": "ke",
+              "audio": {
+                "say": "け",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "こ",
+              "romaji": "ko",
+              "audio": {
+                "say": "こ",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "vi": "Thêm dấu ゛ (dakuten) thì k thành g: か ka → が ga, き ki → ぎ gi.",
+          "en": "Adding the mark ゛ (dakuten) voices k into g: か ka → が ga, き ki → ぎ gi."
+        },
+        {
+          "vi": "Trong tiếng Nhật, độ dài nguyên âm làm đổi nghĩa: おばさん (cô, dì) khác おばあさん (bà).",
+          "en": "Vowel length changes meaning: おばさん (aunt) is not おばあさん (grandmother)."
+        }
+      ]
+    },
+    {
+      "kind": "kanaTable",
+      "id": "katakana-a-k",
+      "title": {
+        "vi": "Katakana: cùng những âm ấy, nét thẳng hơn",
+        "en": "Katakana: the same sounds, straighter strokes"
+      },
+      "explanation": {
+        "vi": "Katakana ghi đúng những âm của hiragana nhưng bằng nét thẳng, góc cạnh. Từ mượn như コーヒー (cà phê) hay ケーキ (bánh ngọt) viết bằng katakana; dấu gạch ー kéo dài nguyên âm đứng trước nó.",
+        "en": "Katakana writes the same sounds as hiragana with straight, angular strokes. Loanwords such as コーヒー (coffee) or ケーキ (cake) are written in katakana; the bar ー lengthens the vowel before it."
+      },
+      "script": "katakana",
+      "columns": [
+        "a",
+        "i",
+        "u",
+        "e",
+        "o"
+      ],
+      "rows": [
+        {
+          "consonant": "",
+          "cells": [
+            {
+              "kana": "ア",
+              "romaji": "a",
+              "audio": {
+                "say": "ア",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "イ",
+              "romaji": "i",
+              "audio": {
+                "say": "イ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ウ",
+              "romaji": "u",
+              "audio": {
+                "say": "ウ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "エ",
+              "romaji": "e",
+              "audio": {
+                "say": "エ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "オ",
+              "romaji": "o",
+              "audio": {
+                "say": "オ",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "consonant": "k",
+          "cells": [
+            {
+              "kana": "カ",
+              "romaji": "ka",
+              "audio": {
+                "say": "カ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "キ",
+              "romaji": "ki",
+              "audio": {
+                "say": "キ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ク",
+              "romaji": "ku",
+              "audio": {
+                "say": "ク",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "ケ",
+              "romaji": "ke",
+              "audio": {
+                "say": "ケ",
+                "status": "pending"
+              }
+            },
+            {
+              "kana": "コ",
+              "romaji": "ko",
+              "audio": {
+                "say": "コ",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

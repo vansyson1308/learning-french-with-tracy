@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "language": "zh",
+  "generator": "scripts/cjk-readings.ts",
+  "notation": "pinyin",
+  "sources": [
+    {
+      "id": "cedict",
+      "name": "CC-CEDICT (MDBG export, 2026-11-03)",
+      "license": "CC-BY-SA-4.0",
+      "licenceStatement": "https://cc-cedict.org/wiki/ (read 2026-11-03): \"CC-CEDICT is licensed under a Creative Commons Attribution-Share Alike 4.0 License.\" Official download: https://www.mdbg.net/chinese/dictionary?page=cc-cedict.",
+      "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+      "retrievedAt": "2026-11-03",
+      "sha256": "e203bbf4a28c2ab54762e9b1fb813e53aa9112939704e71a5117f3b3555a46cb",
+      "bytes": 3983033
+    }
+  ],
+  "method": "tone-marked pinyin (one syllable per hanzi, numbered CC-CEDICT syllables converted to marks, neutral tone unmarked) and the traditional spelling per candidate-pool lemma (simplified) from CC-CEDICT; proper-name entries (capitalised pinyin) and entries that are not one syllable per hanzi are skipped. Confirmed when kaikki's pinyin (derived/readings.json) picks exactly one CC-CEDICT reading (tone-exact, else toneless — CC-CEDICT's tones are kept), or, without kaikki pinyin, when CC-CEDICT has exactly one reading. A reading whose entries spell the traditional form two ways is listed in `traditionalAmbiguous`. Everything else is listed in `unresolved` with its reason. The MDBG export changes daily: this pin is a 2026-11-03 retrieval, newer than the pool's 2026-10-14 pin in source-manifest.json."
+}

@@ -11,6 +11,38 @@
  * call them for the session's course without knowing which language it is.
  */
 
+/**
+ * P4b: a course's own words, handed to a plugin that segments or reads
+ * text by dictionary (ja/zh/ko). Built by src/lib/languages/index.ts from
+ * the course's compiled lexicon index; the plugin stays a pure function of
+ * what it is given.
+ */
+export type CourseLexicon = {
+  entries: readonly {
+    /** The course spelling (zh: simplified). */
+    surface: string;
+    /** Stored reading, labelled with its notation ("kana", "pinyin" — syllables space-separated). */
+    reading?: { value: string; notation: string };
+    /** Other spellings of the same word that fold to `surface` (zh: traditional). */
+    variants?: readonly string[];
+  }[];
+};
+
+/**
+ * P4b: reading-speed band of a language, counted in its own units —
+ * characters for ja/zh, hangul syllable blocks for ko — never letters.
+ * Not the build side's speaking-rate plausibility band for audio QA
+ * (scripts/lib/languages/generic.ts), which stays per script and wider.
+ */
+export type CharsPerSecBand = {
+  unit: "character" | "syllable";
+  /** Adult native speakers, mean ± 1 SD, units per second. */
+  native: { min: number; max: number };
+  /** Where the numbers come from; `estimate: true` when no published norm backs them. */
+  source: string;
+  estimate: boolean;
+};
+
 export type LanguageRules = {
   /** ISO 639-1 code ("fr", "vi", …). */
   code: string;
@@ -48,6 +80,15 @@ export type LanguageRules = {
    * a unary fold would turn every "flat" into "apartment". Absent for most languages.
    */
   alignAnswerToKey?(answer: string, key: string): string;
+  /**
+   * P4b: the reading notation alignAnswerToKey accepts for a key written in
+   * the target script (ja: kana for kanji, zh: pinyin for hanzi). An answer
+   * that matches ONLY through it is practice, never production evidence,
+   * unless the course profile sets `readingInputIsProduction`
+   * (src/lib/grading.ts readingOnlyAnswer). Absent = every alignment this
+   * plugin makes is a same-script match (English varieties).
+   */
+  readingInput?: "kana" | "pinyin";
   /** The same for one key's run inside free writing, where the answer's words have no fixed meaning: stricter about which words it rewrites. */
   alignWrittenToKey?(answer: string, key: string): string;
   /** Strict comparison form: case/space folded, every letter and mark kept. */
@@ -62,6 +103,22 @@ export type LanguageRules = {
   tokenize(folded: string): string[];
   /** Search folding (ligatures + lowercase + diacritics), mirrored by the SQLite FTS tokenizer. */
   fold(text: string): string;
+  /**
+   * P4b: the same plugin bound to a course's words (dictionary tokenizer,
+   * stored readings, variant spellings). Absent for plugins that need none.
+   */
+  withLexicon?(lexicon: CourseLexicon): LanguageRules;
+  /**
+   * P4b: the READING of an already-normalized spoken form (tokens joined by
+   * single spaces, as normalizeSpoken returns): each token replaced by its
+   * stored reading, kana folded (ja: 学生 → がくせい). The speech grader
+   * also accepts a transcript whose reading equals an authored variant's —
+   * the recognizer may write a word in kana or in kanji. Absent = no
+   * reading layer (every other language).
+   */
+  spokenReading?(normalized: string): string;
+  /** P4b: reading-speed band (CJK: characters, not letters). Absent = not stated. */
+  charsPerSecBand?: CharsPerSecBand;
   /**
    * P3e: the target language's own names for the post-answer grammar note —
    * person labels per paradigm cell (es: "vosotros"), the present tense's

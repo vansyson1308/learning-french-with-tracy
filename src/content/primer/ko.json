@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "language": "ko",
+  "id": "ko.primer.script",
+  "title": {
+    "vi": "Bảng chữ Hangul",
+    "en": "Hangul"
+  },
+  "intro": {
+    "vi": "Hangul là chữ ghi âm: mỗi chữ cái (jamo) là một phụ âm hoặc một nguyên âm, và các jamo xếp lại thành một khối vuông ứng với một âm tiết. Thuộc 14 phụ âm và 10 nguyên âm cơ bản là bạn đã đánh vần được phần lớn chữ Hàn.",
+    "en": "Hangul is an alphabet: each letter (jamo) is a consonant or a vowel, and the letters stack into a square block for each syllable. Learn the 14 basic consonants and 10 basic vowels and you can sound out most Korean words."
+  },
+  "sections": [
+    {
+      "kind": "hangulBlocks",
+      "id": "jamo-and-blocks",
+      "title": {
+        "vi": "Phụ âm, nguyên âm và cách ghép khối",
+        "en": "Consonants, vowels and how blocks are built"
+      },
+      "explanation": {
+        "vi": "Mỗi khối luôn bắt đầu bằng một phụ âm. Âm tiết mở đầu bằng nguyên âm thì dùng ㅇ (không đọc) làm phụ âm đầu: 아 đọc là «a». Phụ âm cuối khối gọi là batchim và luôn nằm ở dưới cùng.",
+        "en": "Every block starts with a consonant. A syllable that begins with a vowel takes the silent ㅇ as its first letter: 아 is read “a”. A final consonant, called batchim, always sits at the bottom."
+      },
+      "consonants": [
+        {
+          "jamo": "ㄱ",
+          "initial": "g",
+          "final": "k",
+          "name": "기역"
+        },
+        {
+          "jamo": "ㄴ",
+          "initial": "n",
+          "final": "n",
+          "name": "니은"
+        },
+        {
+          "jamo": "ㄷ",
+          "initial": "d",
+          "final": "t",
+          "name": "디귿"
+        },
+        {
+          "jamo": "ㄹ",
+          "initial": "r",
+          "final": "l",
+          "name": "리을"
+        },
+        {
+          "jamo": "ㅁ",
+          "initial": "m",
+          "final": "m",
+          "name": "미음"
+        },
+        {
+          "jamo": "ㅂ",
+          "initial": "b",
+          "final": "p",
+          "name": "비읍"
+        },
+        {
+          "jamo": "ㅅ",
+          "initial": "s",
+          "final": "t",
+          "name": "시옷"
+        },
+        {
+          "jamo": "ㅇ",
+          "initial": "",
+          "final": "ng",
+          "name": "이응"
+        },
+        {
+          "jamo": "ㅈ",
+          "initial": "j",
+          "final": "t",
+          "name": "지읒"
+        },
+        {
+          "jamo": "ㅊ",
+          "initial": "ch",
+          "final": "t",
+          "name": "치읓"
+        },
+        {
+          "jamo": "ㅋ",
+          "initial": "k",
+          "final": "k",
+          "name": "키읔"
+        },
+        {
+          "jamo": "ㅌ",
+          "initial": "t",
+          "final": "t",
+          "name": "티읕"
+        },
+        {
+          "jamo": "ㅍ",
+          "initial": "p",
+          "final": "p",
+          "name": "피읖"
+        },
+        {
+          "jamo": "ㅎ",
+          "initial": "h",
+          "name": "히읗"
+        }
+      ],
+      "vowels": [
+        {
+          "jamo": "ㅏ",
+          "rr": "a"
+        },
+        {
+          "jamo": "ㅑ",
+          "rr": "ya"
+        },
+        {
+          "jamo": "ㅓ",
+          "rr": "eo"
+        },
+        {
+          "jamo": "ㅕ",
+          "rr": "yeo"
+        },
+        {
+          "jamo": "ㅗ",
+          "rr": "o"
+        },
+        {
+          "jamo": "ㅛ",
+          "rr": "yo"
+        },
+        {
+          "jamo": "ㅜ",
+          "rr": "u"
+        },
+        {
+          "jamo": "ㅠ",
+          "rr": "yu"
+        },
+        {
+          "jamo": "ㅡ",
+          "rr": "eu"
+        },
+        {
+          "jamo": "ㅣ",
+          "rr": "i"
+        }
+      ],
+      "blocks": [
+        {
+          "block": "가",
+          "parts": [
+            "ㄱ",
+            "ㅏ"
+          ],
+          "rr": "ga",
+          "layout": {
+            "vi": "Nguyên âm dọc (ㅏ ㅑ ㅓ ㅕ ㅣ) đứng bên phải phụ âm.",
+            "en": "A vertical vowel (ㅏ ㅑ ㅓ ㅕ ㅣ) stands to the right of the consonant."
+          },
+          "audio": {
+            "say": "가",
+            "status": "pending"
+          }
+        },
+        {
+          "block": "구",
+          "parts": [
+            "ㄱ",
+            "ㅜ"
+          ],
+          "rr": "gu",
+          "layout": {
+            "vi": "Nguyên âm ngang (ㅗ ㅛ ㅜ ㅠ ㅡ) nằm dưới phụ âm.",
+            "en": "A horizontal vowel (ㅗ ㅛ ㅜ ㅠ ㅡ) sits under the consonant."
+          },
+          "audio": {
+            "say": "구",
+            "status": "pending"
+          }
+        },
+        {
+          "block": "한",
+          "parts": [
+            "ㅎ",
+            "ㅏ",
+            "ㄴ"
+          ],
+          "rr": "han",
+          "layout": {
+            "vi": "Phụ âm cuối (batchim) nằm dưới cùng: ㅎ + ㅏ + ㄴ = 한, chữ đầu của 한국 (Hàn Quốc).",
+            "en": "The final consonant (batchim) goes underneath: ㅎ + ㅏ + ㄴ = 한, the first syllable of 한국 (Korea)."
+          },
+          "audio": {
+            "say": "한",
+            "status": "pending"
+          }
+        }
+      ],
+      "notes": [
+        {
+          "vi": "ㅓ (eo) đọc gần «ơ», ㅡ (eu) gần «ư», ㅗ (o) như «ô», ㅜ (u) như «u». Đừng đọc eo thành «e-o»: đó chỉ là cách viết Latinh của một nguyên âm.",
+          "en": "ㅓ (eo) is close to an open “uh”, ㅡ (eu) is said with spread lips; eo and eu are single vowels, not two letters."
+        },
+        {
+          "vi": "ㄱ ㄷ ㅂ ㅈ ở đầu từ nghe gần «c, t, p, ch» nhẹ; giữa hai nguyên âm thì kêu thành g, d, b, j. Vì vậy 가 viết là ga nhưng nghe gần «ca».",
+          "en": "ㄱ ㄷ ㅂ ㅈ at the start of a word sound close to a soft k, t, p, ch; between vowels they are voiced (g, d, b, j)."
+        }
+      ]
+    }
+  ]
+}

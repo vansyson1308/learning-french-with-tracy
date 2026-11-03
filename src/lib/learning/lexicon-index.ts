@@ -9,6 +9,7 @@
 
 import { artifactsFor, memoByCourse } from "../content-registry";
 import { languageRulesForCourse } from "../languages";
+import type { WordReading } from "../types";
 
 export type LexemeMeta = {
   id: string;
@@ -21,6 +22,10 @@ export type LexemeMeta = {
   topic?: string;
   band?: string;
   pronunciation?: { value: string; notation: string };
+  /** P4b: the word's reading for display (ja kana + furigana, zh pinyin, ko Revised Romanization). */
+  reading?: WordReading;
+  /** P4b (zh): the traditional spelling beside the simplified surface. */
+  traditional?: string;
   /** First example keyed by language code (`{ [targetCode]: …, [nativeCode]: … }`). */
   example?: Record<string, string>;
   confusables?: string[];

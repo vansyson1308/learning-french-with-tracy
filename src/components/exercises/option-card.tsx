@@ -2,8 +2,10 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { RubyText } from "@/components/reading/ruby-text";
 import { useT } from "@/lib/i18n";
 import { haptics } from "@/lib/haptics";
+import { readingLine, type ScriptReading } from "@/lib/learning/script-reading";
 import { optionTestId } from "@/lib/option-test-id";
 import { radius, useThemeColors, type ThemeColors } from "@/lib/theme";
 
@@ -36,6 +38,8 @@ type OptionCardProps = {
   text: string;
   /** P4a reading aid (romanization) shown under the text. */
   reading?: string;
+  /** P4b script reading (furigana / pinyin / RR, Hán-Việt); replaces the plain text and romanization when present. */
+  script?: ScriptReading;
   emoji?: string;
   state: OptionState;
   onPress: () => void;
@@ -46,6 +50,7 @@ type OptionCardProps = {
 export function OptionCard({
   text,
   reading,
+  script,
   emoji,
   state,
   onPress,
@@ -63,7 +68,7 @@ export function OptionCard({
       }}
       disabled={disabled}
       accessibilityRole="button"
-      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${reading ? ` (${reading})` : ""}${cue.label ? t(cue.label) : ""}`}
+      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${script ? ` (${readingLine(script)})` : reading ? ` (${reading})` : ""}${cue.label ? t(cue.label) : ""}`}
       testID="option-card"
       accessibilityState={{ disabled: !!disabled, selected: state === "selected" }}
       style={({ pressed }) => [
@@ -79,8 +84,12 @@ export function OptionCard({
       {emoji ? <Text style={styles.emoji}>{emoji}</Text> : null}
       {/* Per-option id for device flows (the card keeps the shared "option-card"). */}
       <View style={styles.textWrap} testID={optionTestId(text)} collapsable={false}>
-        <Text style={[styles.text, { color: c.text }]}>{text}</Text>
-        {reading ? (
+        {script ? (
+          <RubyText text={text} reading={script} textStyle={[styles.text, { color: c.text }]} readingColor={c.text} center />
+        ) : (
+          <Text style={[styles.text, { color: c.text }]}>{text}</Text>
+        )}
+        {reading && !script ? (
           <Text style={[styles.reading, { color: c.text }]} testID="option-reading">
             {reading}
           </Text>
