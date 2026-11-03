@@ -212,7 +212,7 @@
         "content/zh/lexicon/",
         "content/en/lexicon/"
       ],
-      "notes": "P3a: `zipf` column of the candidate pools only (authoring evidence); never the `frequency` field of a lexeme. P4d: the zh ranks in content/zh/lexicon/derived/hsk-course.json are read from the pinned wordfreq-3.1.1 wheel's large_zh list (sha256 4b1c6ecf…) as selection evidence; zh lexemes carry no `frequency` field."
+      "notes": "P3a: `zipf` column of the candidate pools only (authoring evidence); never the `frequency` field of a lexeme. P4d: the zh ranks in content/zh/lexicon/derived/hsk-course.json are read from the pinned wordfreq-3.1.1 wheel's large_zh list (sha256 4b1c6ecf…) as selection evidence; zh lexemes carry no `frequency` field. P4d session 2 (2026-11-04, coordinator): wordfreq is the zh frequency source of the zh-vi course, as build-time selection evidence only (which HSK 2 words A1 takes, the order of the bare lexeme id among homographs); nothing of it ships. Licence re-read on the README of https://github.com/rspeer/wordfreq the same day: the code is redistributable under the Apache licence (LICENSE.txt), the data files under CC BY-SA 4.0, with credit to the Google Books Ngram Viewer, the SUBTLEX authors and OpenSubtitles. content/zh/lexicon/source-manifest.json keeps frequencywords as its `frequencySourceId` (the P3a pool's measurement, which no zh lexeme uses)."
     },
     {
       "id": "tatoeba",

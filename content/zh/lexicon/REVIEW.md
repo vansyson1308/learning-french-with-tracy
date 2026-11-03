@@ -16,7 +16,7 @@ A human still has to check:
 - Readings (CC-CEDICT, citation tones): confirmed by the HSK list 749, by the HSK list without tones 13, the only CC-CEDICT reading 101, chosen in the row among CC-CEDICT readings 31, a chain of entries 9. Traditional spelling differs from the simplified surface on 443 lexemes.
 - wordfreq 3.1.1 (zh, large list): 889 of 903 lexemes are in the list; 348 in the top 1,000, 605 in the top 3,000, 810 in the top 10,000. Selection evidence only: `frequency` is not set on zh lexemes (see the plan, §8).
 - Examples: 903, all original (`original-lexicon-etl`, key `add`), with Vietnamese and English translations; no Tatoeba sentence is used.
-- Hán-Việt: 159 course words added to `content/hanviet/zh.json` (195 entries in all, 24 flagged as false friends); 189 lexemes have a reading there.
+- Hán-Việt: 163 course words added to `content/hanviet/zh.json` (199 entries in all, 24 flagged as false friends); 193 lexemes have a reading there.
 - Characters: 520 distinct characters in A1 surfaces (299 of the 300 HSK level-1 characters, 175 level-2, 46 beyond). Course target: 474 characters (`content/zh/_drafts/review/hanzi.json`).
 - Proper nouns (never a daily new word): 9.
 - zh-en (basic pack, never edited): every word is a lexeme with the pack's English gloss.

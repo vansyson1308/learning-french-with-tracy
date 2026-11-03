@@ -215,7 +215,7 @@ could not confirm the characters the note names — those lines need the reviewe
 | 한국 | 韓國 | Hàn Quốc | note (韓) | 韓: Unihan 17.0.0 has no kVietnamese for 韓; Hàn is its standard Hán-Việt reading. |
 | 회사 | 會社 | hội xã | Unihan |  |
 
-## zh — Tiếng Trung / Chinese (195)
+## zh — Tiếng Trung / Chinese (199)
 
 | word | Hán-Việt | check | note |
 |---|---|---|---|
@@ -236,6 +236,7 @@ could not confirm the characters the note names — those lines need the reviewe
 | 交通 | giao thông | Unihan |  |
 | 产品 | sản phẩm | Unihan |  |
 | 介绍 | giới thiệu | Unihan |  |
+| 仓库 | thương khố | note (仓 库) | 仓: Unihan 17.0.0 has no kVietnamese for 仓 or 倉; thương is its standard Hán-Việt reading. 库: Unihan 17.0.0 kVietnamese does not list khố (it lists the everyday kho); khố is its standard Hán-Việt reading. |
 | 休息 | hưu tức | Unihan |  |
 | 作业 | tác nghiệp | Unihan | False friend: 作业 is homework (bài tập); Vietnamese tác nghiệp means to carry out an operation at work. |
 | 健康 | kiện khang | Unihan | Vietnamese says khang kiện or khoẻ mạnh: the same two characters in the other order. |
@@ -311,6 +312,7 @@ could not confirm the characters the note names — those lines need the reviewe
 | 工人 | công nhân | Unihan |  |
 | 工作 | công tác | Unihan | Partly a false friend: 工作 is a job, to work (công việc, làm việc); Vietnamese công tác is an assignment or a business trip. |
 | 工具 | công cụ | Unihan |  |
+| 工厂 | công xưởng | Unihan |  |
 | 希望 | hy vọng | note (希) | 希: Unihan 17.0.0 kVietnamese does not list hy (it lists Nôm or other readings); hy is its standard Hán-Việt reading. |
 | 平安 | bình an | Unihan |  |
 | 开会 | khai hội | Unihan |  |
@@ -385,6 +387,7 @@ could not confirm the characters the note names — those lines need the reviewe
 | 练习 | luyện tập | Unihan |  |
 | 组长 | tổ trưởng | note (长) | 长: Unihan 17.0.0 kVietnamese does not list trưởng (it lists Nôm or other readings); trưởng is its standard Hán-Việt reading. |
 | 经济 | kinh tế | note (济) | 济: Unihan 17.0.0 has no kVietnamese for 济 or 濟; tế is the standard Hán-Việt reading. |
+| 经验 | kinh nghiệm | Unihan |  |
 | 结婚 | kết hôn | note (婚) | 婚: Unihan 17.0.0 has no kVietnamese for 婚; hôn is its standard Hán-Việt reading. |
 | 老人 | lão nhân | Unihan |  |
 | 老师 | lão sư | Unihan |  |
@@ -402,6 +405,7 @@ could not confirm the characters the note names — those lines need the reviewe
 | 身份证 | thân phận chứng | note (份) | 份: Unihan 17.0.0 kVietnamese does not list phận (it lists Nôm or other readings); phận is its standard Hán-Việt reading. |
 | 身体 | thân thể | Unihan | Partly a false friend: 身体 is also one's health (你身体好吗 = bạn có khoẻ không); Vietnamese thân thể is only the body. |
 | 车站 | xa trạm | Unihan |  |
+| 辞职 | từ chức | Unihan | Partly a false friend: 辞职 is leaving any job (nghỉ việc); Vietnamese từ chức means resigning from an office or post. |
 | 迟到 | trì đáo | Unihan |  |
 | 通知 | thông tri | Unihan |  |
 | 重要 | trọng yếu | Unihan |  |
