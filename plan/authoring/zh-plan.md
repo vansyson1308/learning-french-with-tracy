@@ -6,7 +6,7 @@ Prompt: `plan/prompts/P4d-zh-vi-hsk.md`, following `P3d-author-course-vi.md` wit
 `bash content/zh/_drafts/_generators/zh-pipeline.sh` (byte-deterministic, offline: two runs give identical files), then
 later `bun scripts/author.ts promote --target zh --native vi --allow-missing-audio`.
 
-## 1. Status after session 1 (2026-11-04)
+## 1. Status after sessions 1–2 (2026-11-04)
 
 | Layer | State | Where |
 |---|---|---|
@@ -18,10 +18,16 @@ later `bun scripts/author.ts promote --target zh --native vi --allow-missing-aud
 | Course skeleton | 6 sections, 27 units, 108 lesson stubs, 174 unit words, guidebooks in Vietnamese | staged `content/courses/zh-vi.json` |
 | Syllabus | A1 718 by unit, A2-1 185 | staged `content/zh/lexicon/syllabus*.json`, `topic-units.json` |
 | zh-en (basic pack) | never edited; all 58 words are lexemes with the pack's English glosses (no legacy surface, nothing unmapped); standalone profile staged | — |
+| Lessons (session 2) | 108 lessons, 811 exercises (select 400, fillBlank 144, wordBank 96, typeAnswer 92, match 79), 24 measure-word and 11 aspect fill-ins, concept steps in 41 lessons; Section 1 tap-only; self-check 0 findings | `_generators/zh-lessons-s1…s6.py`, `zh_lesson_lib.py`, `zh_text.py`, `zh-check-answers.py`, `_drafts/REVIEW-NOTES.md`; staged `content/courses/zh-vi.json` |
+| Concept cards (session 2) | 28 cards (vi + en), all shown in lesson flows; no paradigm table | `_generators/zh-concepts.py` → staged `content/zh/pedagogy/concepts.json` |
+| Hán-Việt + Unihan (session 2) | Unihan re-derived from the pinned zip (+12 characters); 工厂, 仓库, 经验, 辞职 added (199 entries) | `content/hanviet/unihan-readings.json`, `zh.json`, `REVIEW.md` |
 
 `course-draft.ts validate --target zh`: 192 errors, all of three kinds a session-1 course has (ja-vi had the same):
 108 stub lessons with one exercise and 81 stub payload repeats (lessons, session 2), and the missing checkpoints,
 placement and attainment-of-checkpoints (assessment session).
+
+After session 2: 735 errors of two kinds only — 732 `audioTarget has no audio` (the audio session; the promote runs
+with `--allow-missing-audio`) and the 3 missing assessment files (session 5). The lesson and concept errors are gone.
 
 ## 2. Course shape (BLUEPRINT §1)
 
@@ -82,10 +88,15 @@ Add: initials and finals with the Vietnamese traps (zh/ch/sh/r against z/c/s; j/
 ending), the sandhi of 不 (bú before tone 4) and 一 (yí/yì), stored citation tones against what the audio says, and a
 checkpoint of 20 items (10 sound → pinyin choice, 10 minimal pairs: 买/卖, 是/十, 四/十, 汤-type pairs from the course
 words), pass mark 16, reusing ja's `primerPassed` (v9, keyed by course id: no new migration). Pinyin stays under the
-characters (RubyText) in every section until a later decision fades it in HSK 2 units (open, §12); pinyin is never
-accepted as production evidence (P4b guard).
+characters (RubyText) in every section; v1 has no automatic fade in HSK 2 units (decision 11) — the learner turns it off
+with the existing per-course `readingAid` switch. Pinyin is never accepted as production evidence (P4b guard).
 
-## 5. Concept cards instead of paradigms (session 2)
+## 5. Concept cards instead of paradigms (session 2) — done
+
+Done: 28 cards (`zh-concepts.py`): pinyin-tones, tone-sandhi, initials-traps, hanzi-radicals, hanviet-false-friends,
+simplified-traditional, greetings, family, shi-sentences, bu-mei, questions-ma, question-words, measure-words, liang-er,
+numbers-money, zhe-na-measure, you-zai, location-words, de-modifier, time-place-order, aspect-le, aspect-guo,
+aspect-zai-zhe, modals, hen-adjective, comparison-bi, polite-work, linking. Planned:
 
 About 25 cards (vi + en): pinyin and tones (the comparison above); tone sandhi; retroflex and ü; characters and
 radicals; Hán-Việt and false friends; 是 sentences; 不 against 没; 吗, A不A, 呢; question words in place; measure
@@ -102,9 +113,12 @@ recognises it and it helps the meaning (学生 học sinh, 银行 ngân hàng, �
 as a substitute for pinyin, never for names, and not where no Vietnamese speaker would know it (告诉 cáo tố, 知道 tri
 đạo, 觉得 giác đắc). False friends carry a note the D-10 reviewer reads first: 小心, 方便, 意思, 东西, 地方, 颜色, 名字,
 家人, 丈夫, 妻子, 中间, 照顾, 快乐, 容易, 认真, 水平, 提高, 出口, 入口, 机器, 生气, 作业, 所以, 认识 (+ partly: 小姐,
-爱人, 商场, 生活, 习惯, 身体, 新闻, 非常, 可能, 商量, 虽然, 工作). 32 entries name a character Unihan 17.0.0 cannot
-confirm (e.g. 女, 电, 静, 春) and say why. Four words wait for a character missing from
-`content/hanviet/unihan-readings.json` (仓 库, 厂 工厂, 验 经验, 辞 辞职): re-derive it from the pinned Unihan.zip.
+爱人, 商场, 生活, 习惯, 身体, 新闻, 非常, 可能, 商量, 虽然, 工作, 辞职). 33 entries name a character Unihan 17.0.0
+cannot confirm (e.g. 女, 电, 静, 春, 仓) and say why. Session 2 (decision 12): `unihan-readings.json` re-derived from the
+pinned Unihan.zip (sha256 f7a48b2b…, the hash checked before parsing) with `scripts/hanviet-unihan.ts derive` — 2,975
+characters, +12 (仓 倉 厂 廠 辞 辤 辭 验 and the one-hop variants of session-1 table words), nothing removed; the four
+words that waited are in the table: 工厂 công xưởng, 经验 kinh nghiệm and 辞职 từ chức confirmed by Unihan, 仓库 thương khố
+with a note (仓 and 倉 have no kVietnamese; 庫 lists the everyday kho).
 
 ## 7. Voices and audio (audio session)
 
@@ -121,10 +135,12 @@ confirm (e.g. 女, 电, 静, 春) and say why. Four words wait for a character m
   pypinyin-dict's `large_pinyin` phrase table merges zdic.net scrapes whose licence is not stated; Kokoro v1.0 (lang
   `z`) does not load it (misaki's legacy path: jieba + pypinyin's own dictionaries), only the version-1.1 frontend does.
   The legacy path also applies no tone sandhi and guesses readings of 了/得/还 by its own dictionary.
-- **Front-end decision (proposed):** as for ja, feed Kokoro phonemes built from the course's own stored CC-CEDICT pinyin
-  (one reading per lexeme, chosen and checked here), with the sandhi of 3-3, 不 and 一 applied by a small tested rule and
-  misaki's `pinyin_to_ipa` table (MIT lineage); `phonemeFrontends.zh.version` + `inputsSha256` gate re-renders. Then no
-  clip depends on jieba's segmentation or the zdic data. Open question for the coordinator.
+- **Front-end (decided by the coordinator, 2026-11-04; decision 10):** as for ja's course-readings front-end, feed
+  Kokoro phonemes built from the course's own stored CC-CEDICT pinyin (one reading per lexeme, chosen and checked here),
+  with the tone sandhi of 3-3 (→ 2-3), 不 (bù → bú before tone 4) and 一 (yī → yí before tone 4, yì before the others;
+  yī when counting) applied **for audio only** by a small tested rule, and misaki's `pinyin_to_ipa` table (MIT
+  lineage); `phonemeFrontends.zh.version` + `inputsSha256` gate re-renders. No clip depends on jieba's segmentation or
+  the zdic data. Implemented in the audio session, not before; stored pinyin stays citation tones (decision 2).
 - **Size:** ja is 8.9 MB for 2,036 files at Opus 16 kbps; zh will have about the same number of clips (≈ 900 lexemes,
   ≈ 270 reception clips, stories) → ≈ 9 MB, under the 12 MB cap. All languages today: 51.3 MB of 88 MB.
 - Primer audio: the device voice until the clips exist.
@@ -144,8 +160,10 @@ Not used: Tatoeba sentences (examples are original); FrequencyWords as `frequenc
 mis-segments Chinese (的士 is its rank 1, 學生 rank 2,742), so zh lexemes carry no `frequency` field and the syllabus
 orders lexemes within a unit without a frequency rank. The wordfreq export the pool pinned (wordfreq-zh.csv) cannot be rebuilt
 byte for byte from the wheel without jieba (its Zipf values go through jieba); the ranks here are read from the
-wheel's list directly. Open: register wordfreq as the zh `frequencySourceId` (lexicon-source workflow) so lexemes can
-carry a measured frequency.
+wheel's list directly. Session 2 (decision 13): the registry's `wordfreq` entry records it as the zh frequency source
+of zh-vi — build-time selection evidence only, nothing ships; licence re-read on its README (code Apache licence, data
+CC BY-SA 4.0 with credit to Google Books Ngram, SUBTLEX and OpenSubtitles). Lexemes still carry no `frequency`, and the
+pool manifest's `frequencySourceId` stays frequencywords (no zh lexeme uses it).
 
 ## 9. Script
 
@@ -194,11 +212,33 @@ uses 您 and 请 with bosses.
 9. **Hán-Việt review sheet regenerated in this session** (`content/hanviet/REVIEW.md`), so the bot's later compile finds
    it current (P4c lesson: the bot does not commit review sheets).
 
+### Session 2 (2026-11-04; decisions 10–13 by the coordinator)
+
+10. **Audio front-end** from the stored CC-CEDICT pinyin with tone sandhi for audio only (§7); built in the audio session.
+11. **No automatic pinyin fade** in HSK 2 units for v1: the learner uses the existing `readingAid` toggle (§4).
+12. **Unihan re-derived now** (§6): +12 characters; 工厂, 仓库, 经验, 辞职 get their Hán-Việt; the review sheet is regenerated.
+13. **wordfreq registered** as the zh frequency source, build-time selection evidence only (§8).
+14. **Lessons are written per section** into `_drafts/lessons/parts/<s>.jsonl`; `zh-check-answers.py` joins them into
+    `lessons/OUTPUT.jsonl` and is the self-check (`REVIEW-NOTES.md`). Exercise text holds no pinyin: the app lays the
+    stored readings under the hanzi, so every hanzi of an exercise lies inside a lexicon surface (the longest-match cut
+    of `annotateText`), homographs appear only in their stored reading (只 zhī, 得 de, 还 hái, 长 cháng), and 中 / 地 only
+    in compounds. Names of people use characters the lexicon reads (阮海, 阮南, 小王, 王经理, 李组长); proper nouns are
+    never a daily word.
+15. **Section 1 is tap-only** (ja decision 22 applied from the start): word banks and choices, no typeAnswer, dictation or
+    fill-in without options; `zh-check-answers.py` stops on one. Typing (pinyin keyboard, hanzi keys) starts in Section 2.
+16. **Measure-word and aspect fill-ins** replace conjugationCloze and articleSelect (24 and 11 items); the self-check
+    reads each measure-word key against `zh_text.NOUN_MEASURES`, so no offered option is a second measure word the noun
+    takes. `author.ts lint` reports them as "missing: conjugationCloze, articleSelect" by design, like Section 1's
+    "missing: typeAnswer" and the Section 3–6 layer types the later sessions add.
+17. **Typed keys** list numbers in digits and hanzi (2个 ⇄ 两个, 15块 ⇄ 十五块), the time word before and after the
+    subject, 这儿/这里, 那儿/那里, 哪儿/哪里, 一点儿/一点, 有点儿/有点, 星期天/星期日, and the subject the Vietnamese
+    states (`zh_text.widen`); the app folds traditional characters, punctuation and spaces itself.
+
 ## 13. Next sessions
 
-1. **Lessons + concept cards** (session 2): 108 lessons, ≈ 25 cards, an answer-key self-check like
-   `ja-check-answers.py`; no typed Chinese in Section 1 (word banks and one-word choices); measure-word and aspect
-   fill-ins in place of conjugationCloze/articleSelect.
+1. ~~**Lessons + concept cards**~~ done in session 2: 108 lessons, 811 exercises, 28 cards, self-check 0 findings
+   (decisions 14–17). Left for the layer sessions: the Section 3–6 types that point at reception, speech, writing and
+   scenario records (a `zh_lesson_refs.py` and the LC/RC/D/SP/WR/IX helpers of `ja_lesson_lib.py`).
 2. **Primer** (session 3): the tone/pinyin primer of §4 with its checkpoint and the review sheet regenerated.
 3. **Reception, speech, writing, scenarios** (session 4): readings, ≈ 220 clips, 50 speech items (`zh-CN`), 35 writing
    tasks, 21 scenarios (§10).
@@ -208,5 +248,5 @@ uses 您 and 请 with bosses.
 6. **D-10 review, audio** (canary with the extra voices, the front-end of §7, generate, CER audit), promote, compile,
    V8 re-key, claim gate, KNOWN_LIMITATIONS, STATUS.
 
-Open questions for the coordinator: the zh audio front-end (§7); fading pinyin in HSK 2 units; whether the four
-Hán-Việt words of §6 justify re-deriving Unihan now; registering wordfreq as the zh frequency source.
+The four open questions of session 1 (audio front-end, pinyin fade, Unihan re-derive, wordfreq) were decided by the
+coordinator on 2026-11-04 (decisions 10–13).
