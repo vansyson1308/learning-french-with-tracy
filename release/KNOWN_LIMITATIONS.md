@@ -159,6 +159,15 @@ itself.
   recording and the raw-share scoring are the course's choices (JLPT uses scaled scores), and
   the listening options are printed with Vietnamese questions where the real paper has
   Japanese and, in parts 3–4, only heard options (`content/ja/exam/FORMAT-SOURCES.md`).
+- **`zh-vi` (Mandarin Chinese for Vietnamese speakers, P4d) is being authored and will ship
+  unreviewed**, on the same terms as `ja-vi`: `allowUnreviewed: true` and `betaUntilReviewed`
+  in the staged `zh-vi.profile.json`. All Chinese and Vietnamese in it is AI-written and no
+  native speaker of either language has read it (`plan/authoring/zh-plan.md`). Pinyin and the
+  traditional spelling come from CC-CEDICT in citation tones; tone sandhi (3-3, 不, 一) is taught,
+  not stored. Hán-Việt readings are shown only where they help and were checked against Unihan,
+  not by a Vietnamese teacher of Chinese. Level results are estimates aligned to CEFR, not
+  certificates, and HSK bands are not CEFR levels. Audio, the `zh-CN` recogniser, the pinyin
+  keyboard and the ruby layout have not been tried on a phone.
 - **`it-vi` (Italian for Vietnamese speakers, P3d(it)) ships unreviewed**, on the
   same terms as `de-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/it-vi.profile.json`. The owner signs
