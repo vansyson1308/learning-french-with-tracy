@@ -43,7 +43,8 @@ Branch `phase-4/cjk-plugins`. Prompt: `plan/prompts/P4b-cjk-language-plugins.md`
 - CI and the device shards run on the PR.
 
 ## Open
-- **Blocks P4c:** the evidence guard does not yet cover the writing rubric. Guided writing and simple forms still accept reading-notation answers through `rubric.ts`, so a kana answer could count as written production. No ja or zh course exists yet. Fix this before the first ja writing task ships.
+- **Writing rubric, closed (b3108384):** the reading-only check now lives in one helper, `src/lib/languages/reading-input.ts`, shared by typed answers and the writing rubric. A simple-form slot matched only through kana or pinyin is still accepted, but it earns no production credit, and the task records no first-attempt result. `readingInputIsProduction` opts out. There are 17 tests; 9 of them failed on the old engine.
+- **Still open, conservative:** in guided writing, ja and zh free writing is not aligned through readings. An answer typed entirely in kana or pinyin therefore fails its rubric and is recorded as wrong, not as practice. Counting it as "understood, practice only" needs a change to free-writing alignment; decide this in P4c.
 - **Paradigm tables:** ja and ko tables cannot validate yet, because the kaikki morphology data tags only the dictionary form (and the ja polite non-past). The derivation step must tag the other cells first.
 - **Pitch accent:** not derived; it needs a re-scan of the kaikki dump.
 - **Reading speeds:** the ja and zh bands are IReST figures cited from memory and flagged in code for a re-check; the ko band is an estimate.
