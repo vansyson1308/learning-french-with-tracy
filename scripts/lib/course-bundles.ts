@@ -42,10 +42,14 @@ export function parseAudioManifest(text: string): { key: string; file: string }[
 /** One course's slice; `file` paths are rebased from src/content/ to src/content/audio/. */
 export function renderAudioSlice(courseId: string, entries: { key: string; file: string }[]): string {
   const mine = entries.filter((e) => e.key.startsWith(`${courseId}:`)).sort((a, b) => a.key.localeCompare(b.key));
+  // Opus clips (encoding.codecByLanguage: ja): eslint-config-expo allows require() of Metro's asset
+  // extensions only, and .opus is not one; an MP3 slice keeps its bytes (an unused directive warns).
+  const directive = mine.some((e) => e.file.endsWith(".opus")) ? ["/* eslint-disable @typescript-eslint/no-require-imports -- generated: Metro static asset requires */"] : [];
   const lines = [
     HEADER,
     `// Bundled pack/lexicon audio of ${courseId}: its slice of src/content/audio-manifest.ts`,
     "// (provenance: release/AUDIO_PROVENANCE_FINAL.md). Keys are `<courseId>:<text>`.",
+    ...directive,
     "export const AUDIO: Record<string, number> = {",
     ...mine.map((e) => `  ${JSON.stringify(e.key)}: require(${JSON.stringify(path.posix.join("..", e.file))}),`),
     "};",

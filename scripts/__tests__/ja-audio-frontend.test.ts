@@ -352,9 +352,11 @@ describe("re-render gate: the front-end version is part of every ja Kokoro key",
     const listening = loadListening("ja")!;
     const clip = listening.clips[0]!;
     const segments = resolveClipSegments(listening, clip);
-    expect(receptionClipRecipe("ja", clip.id, segments.map((s) => s.voiceId))).toBe(tag);
-    expect(listeningClipKey("ja", listening, clip)).toBe(receptionAssetKey("ja", segments, receptionPipelineVersion("ja"), tag));
-    expect(listeningClipKey("ja", listening, clip)).not.toBe(receptionAssetKey("ja", segments, receptionPipelineVersion("ja"), phonemeFrontendTag(bumped)));
+    // ja listening clips are Opus (encoding.codecByLanguage.ja; scripts/__tests__/ja-audio-opus.test.ts): the codec follows the front-end.
+    expect(receptionClipRecipe("ja", clip.id, segments.map((s) => s.voiceId))).toBe(`${tag}|opus-16k-lim3`);
+    expect(receptionClipRecipe("ja", clip.id, segments.map((s) => s.voiceId), null, "mp3")).toBe(tag);
+    expect(listeningClipKey("ja", listening, clip)).toBe(receptionAssetKey("ja", segments, receptionPipelineVersion("ja"), `${tag}|opus-16k-lim3`));
+    expect(listeningClipKey("ja", listening, clip)).not.toBe(receptionAssetKey("ja", segments, receptionPipelineVersion("ja"), `${phonemeFrontendTag(bumped)}|opus-16k-lim3`));
     for (const lang of ["fr", "de", "es", "en", "it", "pt", "zh", "ko"]) {
       expect(phonemeFrontendSpec(lang)).toBeNull();
       expect(frontendRecipeForEngine(lang, "kokoro")).toBeNull();

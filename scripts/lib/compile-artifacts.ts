@@ -41,6 +41,7 @@ import {
 } from "./assessment";
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
 import { courseLangOf, demotePendingAudio, pendingAudioLangs } from "./audio-pending";
+import { layerCodec } from "./audio-recipe";
 import { examTrackPaths } from "./exam-bank";
 import { compileDailyWordsArtifact, deriveSyllabus, loadLaterSyllabus, loadSyllabus, loadTopicUnits, validateLaterSyllabus, validateSyllabusData, validateTopicUnits } from "./syllabus";
 import { validateEnglishFields } from "./english-fields";
@@ -169,8 +170,9 @@ function richNativeCodes(lang: string, packs: LoadedPack[]): string[] {
   return [...new Set([roles.primary, ...roles.mirrors].filter((p) => p !== undefined).map((p) => p.nativeCode))].sort();
 }
 
-function receptionAssetKind(lang: string, packs: LoadedPack[]): ReceptionAssetKind {
-  return packsForTarget(lang, packs).some((p) => p.pack.audio?.policy === "test-only") ? "wav" : "mp3";
+/** Listening-clip file type: the test language's WAV tones, else the language's reception codec (ja: opus). */
+export function receptionAssetKind(lang: string, packs: LoadedPack[]): ReceptionAssetKind {
+  return packsForTarget(lang, packs).some((p) => p.pack.audio?.policy === "test-only") ? "wav" : layerCodec(lang, "reception");
 }
 
 function schemaFailure(label: string, e: unknown): string {

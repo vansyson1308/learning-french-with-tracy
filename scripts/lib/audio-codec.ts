@@ -10,9 +10,13 @@
  *    so an Opus asset never takes over an MP3 asset's key, and the file is
  *    `<key>.opus`.
  *
- * Only the story layer may switch for now: it is the one CI proves
+ * Layer-wide, only the story layer may switch: it is the one CI proves
  * (story-sentence fixture), and the one that pays for more stories under the
- * 88 MB cap. Pack, lexicon and listening clips stay MP3.
+ * 88 MB cap. A LANGUAGE may opt its other layers in by name,
+ * `encoding.codecByLanguage.<lang>` (a reviewed change to
+ * release/ASSET_DELIVERY.md): Japanese since run 41655941175 measured
+ * 16.9 MB with MP3 pack, lexicon and listening clips against the 12 MB cap.
+ * Every other language's pack, lexicon and listening clips stay MP3.
  */
 
 export const AUDIO_CODECS = ["mp3", "opus"] as const;
@@ -30,15 +34,31 @@ export const OPUS_SAMPLE_RATE_HZ = 24000;
 
 export type CodecSettings = {
   codecByLayer?: Partial<Record<CodecLayer, AudioCodec>>;
+  /** Per-language overrides of codecByLayer (any layer; release/ASSET_DELIVERY.md records each one). */
+  codecByLanguage?: Record<string, Partial<Record<CodecLayer, AudioCodec>>>;
   opusKbps?: number;
   /** Languages whose bundled audio is frozen as MP3 whatever the layer setting (French: CLAUDE.md §4). */
   mp3OnlyLanguages?: string[];
 };
 
-/** The layer's codec for a language; anything unset, and every mp3-only language, is mp3. */
+/**
+ * The layer's codec for a language: an mp3-only language is mp3; else the
+ * language's own override; else the layer setting; anything unset is mp3.
+ */
 export function codecFor(enc: CodecSettings | undefined, layer: CodecLayer, lang?: string): AudioCodec {
   if (lang !== undefined && (enc?.mp3OnlyLanguages ?? []).includes(lang)) return "mp3";
-  return enc?.codecByLayer?.[layer] ?? "mp3";
+  const own = lang === undefined ? undefined : enc?.codecByLanguage?.[lang]?.[layer];
+  return own ?? enc?.codecByLayer?.[layer] ?? "mp3";
+}
+
+function layerCodecProblems(at: string, byLayer: Record<string, unknown>, layerWide: boolean): string[] {
+  const problems: string[] = [];
+  for (const [layer, codec] of Object.entries(byLayer)) {
+    if (!(CODEC_LAYERS as readonly string[]).includes(layer)) problems.push(`${at}: unknown layer "${layer}" (${CODEC_LAYERS.join(", ")})`);
+    else if (!(AUDIO_CODECS as readonly string[]).includes(codec as string)) problems.push(`${at}.${layer}: "${codec}" is not mp3 or opus`);
+    else if (layerWide && codec === "opus" && !OPUS_LAYERS.includes(layer as CodecLayer)) problems.push(`${at}.${layer}: opus is prepared for ${OPUS_LAYERS.join(", ")} only (release/ASSET_DELIVERY.md)`);
+  }
+  return problems;
 }
 
 export function opusKbpsOf(enc: CodecSettings | undefined): number {
@@ -47,11 +67,11 @@ export function opusKbpsOf(enc: CodecSettings | undefined): number {
 
 /** Problems of the setting (pure; tested). */
 export function codecProblems(enc: CodecSettings | undefined): string[] {
-  const problems: string[] = [];
-  for (const [layer, codec] of Object.entries(enc?.codecByLayer ?? {})) {
-    if (!(CODEC_LAYERS as readonly string[]).includes(layer)) problems.push(`codecByLayer: unknown layer "${layer}" (${CODEC_LAYERS.join(", ")})`);
-    else if (!(AUDIO_CODECS as readonly string[]).includes(codec as string)) problems.push(`codecByLayer.${layer}: "${codec}" is not mp3 or opus`);
-    else if (codec === "opus" && !OPUS_LAYERS.includes(layer as CodecLayer)) problems.push(`codecByLayer.${layer}: opus is prepared for ${OPUS_LAYERS.join(", ")} only (release/ASSET_DELIVERY.md)`);
+  const problems = layerCodecProblems("codecByLayer", enc?.codecByLayer ?? {}, true);
+  for (const [lang, byLayer] of Object.entries(enc?.codecByLanguage ?? {})) {
+    if (!/^[a-z]{2,3}$/.test(lang)) problems.push(`codecByLanguage: "${lang}" is not a language code`);
+    else if ((enc?.mp3OnlyLanguages ?? []).includes(lang)) problems.push(`codecByLanguage.${lang}: ${lang} is mp3-only (mp3OnlyLanguages)`);
+    else problems.push(...layerCodecProblems(`codecByLanguage.${lang}`, byLayer ?? {}, false));
   }
   if (!(enc?.mp3OnlyLanguages ?? []).includes("fr")) problems.push(`mp3OnlyLanguages must keep "fr": French audio stays byte-identical (CLAUDE.md §4)`);
   const kbps = enc?.opusKbps;

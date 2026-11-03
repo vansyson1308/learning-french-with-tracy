@@ -20,11 +20,15 @@
  *    so a reading fix reaches the audio only when the version is bumped
  *    (scripts/lib/tts/ja-frontend-inputs.ts guards that). Every other language
  *    has no front-end: no tag, keys unchanged.
+ *  - Codec: an Opus clip carries "opus-<k>k-lim3" (scripts/lib/audio-codec.ts):
+ *    story sentences of every language but French, and every layer of a
+ *    language that opts in (encoding.codecByLanguage: ja). An MP3 clip has no
+ *    codec tag: its key is unchanged.
  */
 
 import { existsSync } from "fs";
 
-import { codecRecipe, type AudioCodec, type CodecSettings } from "./audio-codec";
+import { codecFor, codecRecipe, type AudioCodec, type CodecLayer, type CodecSettings } from "./audio-codec";
 import { isShortTranscript } from "./piper-audio";
 import { readJson, safeResolve } from "./pipeline";
 import type { PhonemeFrontendSpec } from "./tts/types";
@@ -117,16 +121,40 @@ const joinRecipe = (parts: (string | null)[]) => {
   return present.length === 0 ? null : present.join("|");
 };
 
-/** Recipe tag of a pack/lexicon clip (null: the default recipe, key unchanged). */
-export function packClipRecipe(input: { language: string; engine: string; text: string; pipelineVersion: number; synthesis: SynthesisOverride | null }): string | null {
-  const shortWord = input.engine === "piper" && input.pipelineVersion >= SHORT_WORD_RECIPE_FROM_VERSION && isShortTranscript(input.text) ? SHORT_WORD_RECIPE : null;
-  return joinRecipe([frontendRecipeForEngine(input.language, input.engine), shortWord, input.synthesis === null ? null : synthesisTag(input.synthesis)]);
+/** content/audio/engines.json `encoding` (the codec settings of scripts/lib/audio-codec.ts). */
+export function encodingSettings(): CodecSettings | undefined {
+  return (readJson(ENGINES_REL) as { encoding?: CodecSettings }).encoding;
 }
 
-/** Recipe tag of a listening clip: a phoneme front-end and a declared re-synthesis change it. */
-export function receptionClipRecipe(lang: string, clipId: string, voiceIds: readonly string[], declared: Resynthesis | null = loadResynthesis(lang)): string | null {
+/** The committed codec of a language's layer (codecByLanguage, else codecByLayer; French mp3). */
+export function layerCodec(lang: string, layer: CodecLayer): AudioCodec {
+  return codecFor(encodingSettings(), layer, lang);
+}
+
+/**
+ * Recipe tag of a pack/lexicon clip (null: the default recipe, key unchanged).
+ * `codec` (default mp3): an opus clip carries its codec last, as a story sentence does.
+ */
+export function packClipRecipe(input: { language: string; engine: string; text: string; pipelineVersion: number; synthesis: SynthesisOverride | null; codec?: AudioCodec; encoding?: CodecSettings }): string | null {
+  const shortWord = input.engine === "piper" && input.pipelineVersion >= SHORT_WORD_RECIPE_FROM_VERSION && isShortTranscript(input.text) ? SHORT_WORD_RECIPE : null;
+  return joinRecipe([frontendRecipeForEngine(input.language, input.engine), shortWord, input.synthesis === null ? null : synthesisTag(input.synthesis), codecRecipe(input.codec ?? "mp3", input.encoding)]);
+}
+
+/**
+ * Recipe tag of a listening clip: a phoneme front-end, a declared re-synthesis
+ * and the codec change it (an mp3 clip keeps its key). The codec defaults to
+ * the committed one, so the validator and the compiler derive the plan's key.
+ */
+export function receptionClipRecipe(
+  lang: string,
+  clipId: string,
+  voiceIds: readonly string[],
+  declared: Resynthesis | null = loadResynthesis(lang),
+  codec: AudioCodec = layerCodec(lang, "reception"),
+  enc: CodecSettings | undefined = encodingSettings()
+): string | null {
   const s = resynthesisFor(lang, clipId, declared);
-  return joinRecipe([frontendRecipeForVoices(lang, voiceIds), s === null ? null : synthesisTag(s)]);
+  return joinRecipe([frontendRecipeForVoices(lang, voiceIds), s === null ? null : synthesisTag(s), codecRecipe(codec, enc)]);
 }
 
 /** Recipe tag of a story sentence: a phoneme front-end and the codec (an mp3 sentence of a language without front-end keeps its key). */
