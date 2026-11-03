@@ -126,6 +126,34 @@ itself.
     (`OWNER-FINAL-CHECKLIST.md` B);
   - writing is graded by a rubric of required content, not for style or grammar, and
     speaking by what the recognizer hears, which has not been tried on a phone.
+- **`ja-vi` (Japanese for Vietnamese speakers, P4c) is in authoring and will ship
+  unreviewed**, on the same terms as `en-vi`: `allowUnreviewed: true` and
+  `betaUntilReviewed` in its profile (staged; promoted with the course). All Japanese and
+  Vietnamese in the course is AI-written. No native speaker of either language has read it,
+  and the AI-simulated review (D-10) has not run yet. What has run: the validators, the
+  reading checks of every generator (kanji only inside a lexicon surface or an inflection
+  key, so furigana come from the lexicon) and the answer-key self-check
+  (`content/ja/_drafts/REVIEW-NOTES.md`, 0 findings). What is not verified:
+  - **audio**: no ja clip has been generated or heard on a phone; the course lists 268
+    clips that wait for the Kokoro voices (`jf_alpha`, `jm_kumo`, whose canary CER is high),
+    and the primer uses the device voice until then;
+  - **speech**: the `ja-JP` recogniser's behaviour is untried. Its kana for a stored word or
+    an inflected verb (はたらいています for 働いています) matches through the stored readings;
+    whether a phone writes kanji, kana or a mix, and how it handles long vowels, っ and
+    particles, is unknown;
+  - **kana input**: kana typed for a kanji key counts as practice, not production; IME
+    behaviour (half-width kana, a romaji keyboard) has not been tried on a device;
+  - **readings**: furigana come from JmdictFurigana and the inflection keys; a form two verbs
+    share (降ります) shows none, and no pitch accent is taught;
+  - **Hán-Việt** readings are shown only where they help; they were checked against
+    Unihan, not by a Vietnamese teacher of Japanese.
+  Level results are estimates aligned to CEFR, not certificates, and JLPT N5 is not a CEFR
+  level. The JLPT N5 practice track (`content/ja/exam/jlpt-n5.json`, staged) is `partial`:
+  times, question types, options and pass marks follow the official jlpt.jp pages, but the
+  number of items per question type, the split of the 120 points, the single play of each
+  recording and the raw-share scoring are the course's choices (JLPT uses scaled scores), and
+  the listening options are printed with Vietnamese questions where the real paper has
+  Japanese and, in parts 3–4, only heard options (`content/ja/exam/FORMAT-SOURCES.md`).
 - **`it-vi` (Italian for Vietnamese speakers, P3d(it)) ships unreviewed**, on the
   same terms as `de-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/it-vi.profile.json`. The owner signs

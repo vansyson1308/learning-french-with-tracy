@@ -15,6 +15,10 @@ later session). It joins lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then f
     spelling; a speech target among its own variants, no Latin letter (Hán-Việt, romaji) in an answer; every guided slot
     realized in the model answer, every form value a variant of its slot; every learner answer of the scenarios polite,
     Japanese only, with the right particles.
+ 6. (session 5) the assessment banks: every item of the checkpoints, the placement and the JLPT N5 track goes through rules
+    1-5 like a lesson exercise. A select whose prompt has a gap （　） is read as a fill-in (the key fills the gap; particle
+    pairs are checked); a reading-comprehension key that fills a numbered gap of its text (文章の文法) is not looked for
+    in the text; a payload repeated across lessons and banks is a finding.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I ja-check-answers.py <repo root>
 """
@@ -46,6 +50,15 @@ for p in PARTS:
     path = f"{D}/lessons/parts/{p}.jsonl"
     if os.path.exists(path):
         records += [json.loads(x) for x in open(path, encoding="utf-8") if x.strip()]
+# Session 5: the assessment banks (checkpoints, placement, the exam track), as exercises with the id of their item.
+BANKS = {"checkpoints": [], "placement": [], "exam": []}
+for cp in _jsonl("checkpoints").values():
+    BANKS["checkpoints"] += [i["exercise"] for i in cp["items"]]
+for stage in _jsonl("placement").values():
+    BANKS["placement"] += [i["exercise"] for cl in stage["clusters"] for i in cl["items"]]
+for track in _jsonl("exam").values():
+    BANKS["exam"] += [i["exercise"] for i in track["items"]]
+GAP = "（　）"
 findings = []
 
 
@@ -75,6 +88,8 @@ LIKE_PRED = re.compile(r"を(?:好き|嫌い|上手|下手|欲しい|わかり)"
 
 def key_texts(e):
     t = e["type"]
+    if t == "select" and GAP in e["prompt"]:
+        return [e["prompt"].replace(GAP, e["options"][e["correct"]]["text"])]
     if t == "select":
         return [e["prompt"]] if e["mode"] == "targetToNative" else [e["options"][e["correct"]]["text"]]
     if t == "fillBlank":
@@ -117,7 +132,10 @@ def layer_rules(eid, e):
         key = texts[e["correct"]]
         if t == "readingComprehension" and JA.search(key):
             body = "".join(b["text"] for b in READINGS[e["readingId"]]["blocks"])
-            if key not in body:
+            gap = re.search(r"（(\d)）", e["question"])
+            if gap and f"（{gap.group(1)}）" in body:
+                pass  # 文章の文法: the key fills a numbered gap of the text
+            elif key not in body:
                 flag(eid, "comprehension-key", f"{key!r} is not in the text of {e['readingId']}")
     if t == "dictation":
         if re.search(r"[0-9０-９]", e["answer"]):
@@ -215,8 +233,9 @@ def ambiguity(eid, e, vi):
         return
     key = opts[c]
     others = [o for i, o in enumerate(opts) if i != c]
-    if e["type"] == "fillBlank" and key in PARTICLES:
-        sentence = e["sentence"]
+    gap_select = e["type"] == "select" and GAP in e["prompt"]
+    if (e["type"] == "fillBlank" or gap_select) and key in PARTICLES:
+        sentence = e["prompt"].replace(GAP, "___") if gap_select else e["sentence"]
         pair = lambda a, b: key in (a, b) and (b if key == a else a) in others
         if pair("は", "が") and not re.search(r"(?:誰|何|どこ|どれ)___", sentence):
             flag(eid, "wa-ga", f"{sentence!r}: は and が both offered")
@@ -283,6 +302,28 @@ for r in records:
         if e["type"] == "fillBlank" and e["options"][e["correct"]] in PARTICLES:
             particle_items[e["options"][e["correct"]]] += 1
 
+bank_counts = {}
+for bank, exercises in BANKS.items():
+    bank_counts[bank] = len(exercises)
+    for e in exercises:
+        eid = e["id"]
+        payload = json.dumps({k: v for k, v in e.items() if k != "id"}, ensure_ascii=False, sort_keys=True)
+        if payload in seen:
+            flag(eid, "duplicate", f"repeats {seen[payload]}")
+        seen[payload] = eid
+        vi = e.get("translation") or e.get("prompt") or ""
+        texts = key_texts(e)
+        # A Japanese prompt of a choice (an exam sentence, a kanji-reading item) is read like a key.
+        if e["type"] == "select" and e["mode"] == "nativeToTarget" and JA.search(e["prompt"]) and GAP not in e["prompt"] and "★" not in e["prompt"]:
+            texts = texts + [e["prompt"].replace("【", "").replace("】", "")]
+        for text in texts:
+            particle_rules(eid, text)
+            for p in INDEX.problems(text):
+                flag(eid, "reading", p)
+        ambiguity(eid, e, vi)
+        register(eid, e)
+        layer_rules(eid, e)
+
 scenario_rules()
 os.makedirs(f"{D}/lessons", exist_ok=True)
 with open(f"{D}/lessons/OUTPUT.jsonl", "w", encoding="utf-8", newline="\n") as f:
@@ -295,6 +336,7 @@ summary = {
     "particleFillIns": dict(sorted(particle_items.items(), key=lambda kv: -kv[1])),
     "lessonsWithConceptSteps": lessons_with_flow,
     "conceptSteps": concept_steps,
+    "assessmentItems": bank_counts,
     "findings": findings,
     "decided": [{"id": k[0], "rule": k[1], "reason": v} for k, v in sorted(DECIDED.items())],
 }
@@ -305,6 +347,6 @@ with open(f"{D}/review/selfcheck.json", "w", encoding="utf-8", newline="\n") as 
 for x in findings:
     print(f"{x['id']} [{x['rule']}] {x['message']}", file=sys.stderr)
 print(f"self-check: {summary['lessons']} lessons, {summary['exercises']} exercises, {sum(particle_items.values())} particle fill-ins, "
-      f"{lessons_with_flow} lessons with concept steps, {len(findings)} finding(s), {len(DECIDED)} decided")
+      f"{lessons_with_flow} lessons with concept steps, assessment items {bank_counts}, {len(findings)} finding(s), {len(DECIDED)} decided")
 if findings:
     sys.exit(1)

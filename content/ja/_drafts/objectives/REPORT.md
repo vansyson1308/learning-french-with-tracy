@@ -1,6 +1,6 @@
 # objectives — ingest report (ja-vi)
 
-Records: 37 · schema-valid: 37 · failed: 0 · validator errors after merge: 1
+Records: 37 · schema-valid: 37 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -44,7 +44,7 @@ Records: 37 · schema-valid: 37 · failed: 0 · validator errors after merge: 1
 
 ## Validator errors (fix these records and ingest again)
 
-- attainment: schema validation failed — ENOENT: no such file or directory, open 'C:\src\lft-ja\content\ja\assessment\checkpoints.json'
+- none
 
 ## Written
 

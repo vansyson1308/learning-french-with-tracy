@@ -1,6 +1,6 @@
 # listening — ingest report (ja-vi)
 
-Records: 220 · schema-valid: 220 · failed: 0 · validator errors after merge: 220
+Records: 268 · schema-valid: 268 · failed: 0 · validator errors after merge: 268
 
 ## Records
 
@@ -224,6 +224,54 @@ Records: 220 · schema-valid: 220 · failed: 0 · validator errors after merge: 
 - ✅ line 218 `ja.clip.ix_a1cap_lunch_1`
 - ✅ line 219 `ja.clip.ix_a1cap_lunch_1_s`
 - ✅ line 220 `ja.clip.ix_a1cap_lunch_end`
+- ✅ line 221 `ja.clip.jlpt_n5_a_c1_01`
+- ✅ line 222 `ja.clip.jlpt_n5_a_c1_02`
+- ✅ line 223 `ja.clip.jlpt_n5_a_c1_03`
+- ✅ line 224 `ja.clip.jlpt_n5_a_c1_04`
+- ✅ line 225 `ja.clip.jlpt_n5_a_c1_05`
+- ✅ line 226 `ja.clip.jlpt_n5_a_c1_06`
+- ✅ line 227 `ja.clip.jlpt_n5_a_c1_07`
+- ✅ line 228 `ja.clip.jlpt_n5_a_c2_01`
+- ✅ line 229 `ja.clip.jlpt_n5_a_c2_02`
+- ✅ line 230 `ja.clip.jlpt_n5_a_c2_03`
+- ✅ line 231 `ja.clip.jlpt_n5_a_c2_04`
+- ✅ line 232 `ja.clip.jlpt_n5_a_c2_05`
+- ✅ line 233 `ja.clip.jlpt_n5_a_c2_06`
+- ✅ line 234 `ja.clip.jlpt_n5_a_c3_01`
+- ✅ line 235 `ja.clip.jlpt_n5_a_c3_02`
+- ✅ line 236 `ja.clip.jlpt_n5_a_c3_03`
+- ✅ line 237 `ja.clip.jlpt_n5_a_c3_04`
+- ✅ line 238 `ja.clip.jlpt_n5_a_c3_05`
+- ✅ line 239 `ja.clip.jlpt_n5_a_c4_01`
+- ✅ line 240 `ja.clip.jlpt_n5_a_c4_02`
+- ✅ line 241 `ja.clip.jlpt_n5_a_c4_03`
+- ✅ line 242 `ja.clip.jlpt_n5_a_c4_04`
+- ✅ line 243 `ja.clip.jlpt_n5_a_c4_05`
+- ✅ line 244 `ja.clip.jlpt_n5_a_c4_06`
+- ✅ line 245 `ja.clip.jlpt_n5_b_c1_01`
+- ✅ line 246 `ja.clip.jlpt_n5_b_c1_02`
+- ✅ line 247 `ja.clip.jlpt_n5_b_c1_03`
+- ✅ line 248 `ja.clip.jlpt_n5_b_c1_04`
+- ✅ line 249 `ja.clip.jlpt_n5_b_c1_05`
+- ✅ line 250 `ja.clip.jlpt_n5_b_c1_06`
+- ✅ line 251 `ja.clip.jlpt_n5_b_c1_07`
+- ✅ line 252 `ja.clip.jlpt_n5_b_c2_01`
+- ✅ line 253 `ja.clip.jlpt_n5_b_c2_02`
+- ✅ line 254 `ja.clip.jlpt_n5_b_c2_03`
+- ✅ line 255 `ja.clip.jlpt_n5_b_c2_04`
+- ✅ line 256 `ja.clip.jlpt_n5_b_c2_05`
+- ✅ line 257 `ja.clip.jlpt_n5_b_c2_06`
+- ✅ line 258 `ja.clip.jlpt_n5_b_c3_01`
+- ✅ line 259 `ja.clip.jlpt_n5_b_c3_02`
+- ✅ line 260 `ja.clip.jlpt_n5_b_c3_03`
+- ✅ line 261 `ja.clip.jlpt_n5_b_c3_04`
+- ✅ line 262 `ja.clip.jlpt_n5_b_c3_05`
+- ✅ line 263 `ja.clip.jlpt_n5_b_c4_01`
+- ✅ line 264 `ja.clip.jlpt_n5_b_c4_02`
+- ✅ line 265 `ja.clip.jlpt_n5_b_c4_03`
+- ✅ line 266 `ja.clip.jlpt_n5_b_c4_04`
+- ✅ line 267 `ja.clip.jlpt_n5_b_c4_05`
+- ✅ line 268 `ja.clip.jlpt_n5_b_c4_06`
 
 ## Validator errors (fix these records and ingest again)
 
@@ -447,6 +495,54 @@ Records: 220 · schema-valid: 220 · failed: 0 · validator errors after merge: 
 - reception: ja.clip.ix_a1cap_lunch_1: generated asset d7621285fc2740e66127.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ja.clip.ix_a1cap_lunch_1_s: generated asset d2594cc58d6eddd0aaf4.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ja.clip.ix_a1cap_lunch_end: generated asset 2fc45783f952a00c9019.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_01: generated asset a0e9dae5a8ad95e7a337.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_02: generated asset d4de1eb6cc23fe144bac.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_03: generated asset af4a557e2564e0b26098.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_04: generated asset 36853234f1cbb6602dd4.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_05: generated asset 86dea7f48c924c60bd8d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_06: generated asset dca225105f601904074e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_07: generated asset 946bdb8770bdbfd6d1d0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_01: generated asset 0b30128e2ae9aacdecc0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_02: generated asset bdaf1a2cd1b5c477cd6a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_03: generated asset 5a0f739606dfe0e38919.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_04: generated asset cbb48564a7d382e47f69.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_05: generated asset 2b6a0e4b7f01d87db594.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_06: generated asset 4eee171182d10be63886.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_01: generated asset c5c08dae2fbacf0ee9cc.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_02: generated asset e13f8d17a83ca735f83b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_03: generated asset d0914462b21406361cba.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_04: generated asset c48c045a0785920f4b49.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_05: generated asset 77fffc9e4cb5dc00a24d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_01: generated asset f1690de2115c13e4a596.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_02: generated asset c79a1358b61fe0588b85.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_03: generated asset 153b9c8434ef2748d477.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_04: generated asset 0e96cc3b9e9f8499cd47.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_05: generated asset 6c187b526729cca6bfd7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_06: generated asset 39d96480994a3f171241.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_01: generated asset 9dbefef5a02ed080c6bb.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_02: generated asset 1014ac7b7bff91b44ab2.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_03: generated asset b8cdc1229cb837b8ca23.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_04: generated asset c6e69f86f98a1e196089.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_05: generated asset 1e52b2cc56d9a6344ee6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_06: generated asset f6f2bb6ee917e916322c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_07: generated asset 60758e88a325b7c20b69.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_01: generated asset 91ee89dc411c79e844c5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_02: generated asset b97fa4e5c41a71820310.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_03: generated asset 4d9de18730f7964964d9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_04: generated asset a6156e2182efdd91e7c3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_05: generated asset 28bc138fe6d01283a9bc.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_06: generated asset d6ac8b5f06b00756c6e3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_01: generated asset e49c6b42ea1a52b9d069.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_02: generated asset 4fc4571b696f044fecd3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_03: generated asset f9baef206b18c845611c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_04: generated asset 211283743719976aa4ff.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_05: generated asset 46202071d6da680ca7ab.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_01: generated asset fee419f81192b19c8cdb.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_02: generated asset db5b48983d182dc5e54a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_03: generated asset 9c46dc918cf2630b8f9f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_04: generated asset b8be4e232f51a35497df.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_05: generated asset 30ddcc9c88d7c18ef7fb.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_06: generated asset c95fabb092d2567728fc.mp3 missing — run the reception-audio generate workflow (P7 §26)
 
 ## Written
 

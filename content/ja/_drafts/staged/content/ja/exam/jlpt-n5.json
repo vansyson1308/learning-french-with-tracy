@@ -1,0 +1,4564 @@
+{
+  "version": 1,
+  "language": "ja",
+  "exerciseNativeCode": "vi",
+  "id": "ja.exam.jlpt_n5",
+  "trackVersion": 1,
+  "name": "JLPT N5",
+  "level": "N5",
+  "formatFidelity": "partial",
+  "title": {
+    "vi": "Luyện đề JLPT N5 (theo định dạng công khai)"
+  },
+  "description": {
+    "vi": "Luyện theo định dạng công khai của Kỳ thi Năng lực Nhật ngữ (JLPT) cấp N5, do Quỹ Giao lưu Quốc tế Nhật Bản và Hiệp hội Hỗ trợ Giáo dục Quốc tế Nhật Bản tổ chức: ba phần thi với thời gian 20, 40 và 30 phút, các dạng câu hỏi của từng phần, bốn lựa chọn cho phần lớn câu hỏi, và hai điểm thành phần cùng điểm sàn đã công bố. Trang chính thức không công bố số câu của từng dạng, nên số câu ở đây do khoá học chọn. Mọi câu hỏi đều do khoá học tự soạn, không lấy từ đề thi hay đề mẫu. JLPT tính điểm quy đổi theo một mô hình thống kê; ứng dụng chỉ tính tỉ lệ câu đúng, nên điểm ở đây là ước tính gần đúng. Phần Nghe được điều chỉnh: câu hỏi hiện bằng tiếng Việt, các lựa chọn được in ra, và mỗi đoạn chỉ nghe một lần. Phần Đọc có thể hiện cách đọc trên chữ Hán nếu bạn bật nó; câu hỏi về cách đọc và cách viết chữ Hán thì luôn ẩn. JLPT N5 không phải một bậc của khung CEFR, và đây không phải kỳ thi chính thức."
+  },
+  "formatSource": {
+    "publisher": "The Japan Foundation; Japan Educational Exchanges and Services",
+    "references": [
+      {
+        "url": "https://www.jlpt.jp/guideline/testsections.html",
+        "title": "試験科目と試験時間・問題の構成 (sections, times, 大問 marked for N5)",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "url": "https://www.jlpt.jp/sp/e/guideline/testsections.html",
+        "title": "Test Sections and Test Times (English page, same content)",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "url": "https://www.jlpt.jp/guideline/pdf/n5_revised.pdf",
+        "title": "N5 大問のねらい (the aim of each 大問 and the text lengths)",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "url": "https://www.jlpt.jp/guideline/results.html",
+        "title": "得点区分・合格点と基準点 (scoring sections, ranges, pass marks)",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "url": "https://www.jlpt.jp/faq/index.html",
+        "title": "よくある質問 (options per item, scaled scores)",
+        "retrieved": "2026-11-03"
+      },
+      {
+        "url": "https://www.jlpt.jp/samples/pdf/N5-kaitou.pdf",
+        "title": "N5 解答用紙 from the 2009 sample set (answer sheet: four or three options per もんだい; format only)",
+        "retrieved": "2026-11-03"
+      }
+    ],
+    "checkedAgainstOfficialGuide": true,
+    "checkedBy": "coding agent (owner-delegated)",
+    "checkedAt": "2026-11-03",
+    "note": {
+      "vi": "Thời gian, các dạng câu hỏi, số lựa chọn, điểm thành phần và điểm sàn được đối chiếu với các trang chính thức của JLPT ngày 2026-11-03. Những điều trang chính thức không nêu do khoá học chọn: số câu của từng dạng, cách chia 120 điểm giữa hai phần thi đầu, và số lần nghe (ở đây một lần). JLPT tính điểm quy đổi, không cộng điểm từng câu; ứng dụng dùng tỉ lệ câu đúng, nên kết quả chỉ gần đúng."
+    }
+  },
+  "sections": [
+    {
+      "id": "moji_goi",
+      "skill": "structures",
+      "title": {
+        "vi": "言語知識（文字・語彙）— Chữ và từ vựng"
+      },
+      "minutes": 20,
+      "maxPoints": 60,
+      "tasks": [
+        {
+          "id": "m1",
+          "title": {
+            "vi": "Dạng 1 — Cách đọc chữ Hán (漢字読み)"
+          },
+          "instruction": {
+            "vi": "Chọn cách đọc đúng của từ trong 【 】."
+          },
+          "format": "mcq4",
+          "itemsPerForm": 7
+        },
+        {
+          "id": "m2",
+          "title": {
+            "vi": "Dạng 2 — Cách viết (表記)"
+          },
+          "instruction": {
+            "vi": "Từ trong 【 】 viết bằng chữ Hán hoặc katakana thế nào? Chọn cách viết đúng."
+          },
+          "format": "mcq4",
+          "itemsPerForm": 5
+        },
+        {
+          "id": "m3",
+          "title": {
+            "vi": "Dạng 3 — Từ hợp ngữ cảnh (文脈規定)"
+          },
+          "instruction": {
+            "vi": "Chọn từ thích hợp cho chỗ （　）."
+          },
+          "format": "mcq4",
+          "itemsPerForm": 6
+        },
+        {
+          "id": "m4",
+          "title": {
+            "vi": "Dạng 4 — Câu cùng nghĩa (言い換え類義)"
+          },
+          "instruction": {
+            "vi": "Chọn câu có nghĩa gần nhất với câu đã cho; phần trong 【 】 được nói theo cách khác."
+          },
+          "format": "mcq4",
+          "itemsPerForm": 3
+        }
+      ]
+    },
+    {
+      "id": "bunpou_dokkai",
+      "skill": "structures",
+      "title": {
+        "vi": "言語知識（文法）・読解 — Ngữ pháp và Đọc hiểu"
+      },
+      "minutes": 40,
+      "maxPoints": 60,
+      "tasks": [
+        {
+          "id": "g1",
+          "title": {
+            "vi": "Dạng 1 — Chọn dạng ngữ pháp (文法形式の判断)"
+          },
+          "instruction": {
+            "vi": "Chọn từ hoặc dạng đúng cho chỗ （　）."
+          },
+          "format": "mcq4",
+          "itemsPerForm": 9
+        },
+        {
+          "id": "g2",
+          "title": {
+            "vi": "Dạng 2 — Sắp xếp câu (文の組み立て)"
+          },
+          "instruction": {
+            "vi": "Sắp xếp bốn phần thành câu đúng, rồi chọn phần đứng ở vị trí ★."
+          },
+          "format": "mcq4",
+          "itemsPerForm": 4
+        },
+        {
+          "id": "g3",
+          "title": {
+            "vi": "Dạng 3 — Ngữ pháp trong đoạn văn (文章の文法)"
+          },
+          "instruction": {
+            "vi": "Đọc đoạn văn và chọn từ thích hợp cho mỗi chỗ trống."
+          },
+          "format": "mcq4",
+          "skill": "reading",
+          "itemsPerForm": 4
+        },
+        {
+          "id": "d4",
+          "title": {
+            "vi": "Dạng 4 — Đọc đoạn ngắn (内容理解・短文)"
+          },
+          "instruction": {
+            "vi": "Đọc mỗi đoạn ngắn (khoảng 80 chữ) và trả lời câu hỏi."
+          },
+          "format": "mcq4",
+          "skill": "reading",
+          "itemsPerForm": 2
+        },
+        {
+          "id": "d5",
+          "title": {
+            "vi": "Dạng 5 — Đọc đoạn vừa (内容理解・中文)"
+          },
+          "instruction": {
+            "vi": "Đọc đoạn văn (khoảng 250 chữ) và trả lời hai câu hỏi."
+          },
+          "format": "mcq4",
+          "skill": "reading",
+          "itemsPerForm": 2
+        },
+        {
+          "id": "d6",
+          "title": {
+            "vi": "Dạng 6 — Tìm thông tin (情報検索)"
+          },
+          "instruction": {
+            "vi": "Đọc thông báo và tìm thông tin cần thiết để trả lời."
+          },
+          "format": "mcq4",
+          "skill": "reading",
+          "itemsPerForm": 1
+        }
+      ]
+    },
+    {
+      "id": "choukai",
+      "skill": "listening",
+      "title": {
+        "vi": "聴解 — Nghe hiểu"
+      },
+      "minutes": 30,
+      "maxPoints": 60,
+      "playsPerRecording": 1,
+      "tasks": [
+        {
+          "id": "c1",
+          "title": {
+            "vi": "Dạng 1 — Hiểu yêu cầu (課題理解)"
+          },
+          "instruction": {
+            "vi": "Nghe hội thoại và chọn việc người đó phải làm. Ở đây câu hỏi hiện bằng tiếng Việt và các lựa chọn bằng tiếng Việt; trong đề thật, câu hỏi được đọc bằng tiếng Nhật và lựa chọn in bằng tiếng Nhật hoặc bằng tranh."
+          },
+          "format": "mcq4",
+          "itemsPerForm": 7
+        },
+        {
+          "id": "c2",
+          "title": {
+            "vi": "Dạng 2 — Hiểu ý chính (ポイント理解)"
+          },
+          "instruction": {
+            "vi": "Nghe hội thoại và chọn thông tin được hỏi. Ở đây câu hỏi hiện bằng tiếng Việt và các lựa chọn bằng tiếng Việt; trong đề thật, câu hỏi được đọc bằng tiếng Nhật và lựa chọn in bằng tiếng Nhật hoặc bằng tranh."
+          },
+          "format": "mcq4",
+          "itemsPerForm": 6
+        },
+        {
+          "id": "c3",
+          "title": {
+            "vi": "Dạng 3 — Chọn câu nói (発話表現)"
+          },
+          "instruction": {
+            "vi": "Nghe tình huống và chọn câu nên nói. Trong đề thật có tranh minh hoạ. Ở đây câu hỏi hiện bằng tiếng Việt và các câu trả lời được in ra; trong đề thật, các câu trả lời chỉ được nghe, không in ra."
+          },
+          "format": "mcq3",
+          "itemsPerForm": 5
+        },
+        {
+          "id": "c4",
+          "title": {
+            "vi": "Dạng 4 — Đáp lời ngay (即時応答)"
+          },
+          "instruction": {
+            "vi": "Nghe một câu nói và chọn câu đáp lại đúng. Ở đây câu hỏi hiện bằng tiếng Việt và các câu trả lời được in ra; trong đề thật, các câu trả lời chỉ được nghe, không in ra."
+          },
+          "format": "mcq3",
+          "itemsPerForm": 6
+        }
+      ]
+    }
+  ],
+  "passRule": {
+    "groups": [
+      {
+        "id": "gengo_dokkai",
+        "title": {
+          "vi": "Điểm thành phần Kiến thức ngôn ngữ và Đọc hiểu (hai phần thi đầu): tối thiểu 38/120"
+        },
+        "sections": [
+          "moji_goi",
+          "bunpou_dokkai"
+        ],
+        "min": 38
+      },
+      {
+        "id": "choukai_score",
+        "title": {
+          "vi": "Điểm thành phần Nghe hiểu: tối thiểu 19/60"
+        },
+        "sections": [
+          "choukai"
+        ],
+        "min": 19
+      }
+    ],
+    "total": {
+      "title": {
+        "vi": "Tổng điểm: tối thiểu 80/180"
+      },
+      "min": 80
+    },
+    "everySectionTaken": true
+  },
+  "scoring": {
+    "perItem": "share_of_section_points",
+    "negativeMarking": false
+  },
+  "readiness": {
+    "bands": [
+      {
+        "id": "ready_estimate",
+        "minGroupShare": 0.6,
+        "label": {
+          "vi": "Mức sẵn sàng ước tính: tốt"
+        },
+        "message": {
+          "vi": "Ở lần làm thử này, cả hai điểm thành phần và tổng điểm đều cao hơn điểm sàn của định dạng một khoảng an toàn. Đây là mức sẵn sàng ước tính từ bài luyện của khoá học, không phải điểm JLPT."
+        }
+      },
+      {
+        "id": "getting_close",
+        "minGroupShare": 0.45,
+        "label": {
+          "vi": "Mức sẵn sàng ước tính: gần đạt"
+        },
+        "message": {
+          "vi": "Các điểm thành phần và tổng điểm đã chạm điểm sàn của định dạng nhưng chưa có khoảng an toàn. Hãy luyện thêm các phần yếu bên dưới."
+        }
+      },
+      {
+        "id": "not_yet",
+        "minGroupShare": 0,
+        "label": {
+          "vi": "Mức sẵn sàng ước tính: cần luyện thêm"
+        },
+        "message": {
+          "vi": "Có ít nhất một phần chưa vượt rõ điểm sàn. Hãy luyện các phần yếu bên dưới, rồi thử đề còn lại."
+        }
+      }
+    ],
+    "incomplete": {
+      "vi": "Chưa đủ dữ liệu để ước tính: định dạng này yêu cầu làm cả ba phần thi. Các phần đã làm vẫn được tính điểm."
+    },
+    "disclaimer": {
+      "vi": "Mức sẵn sàng ước tính dựa trên bài luyện của khoá học: không phải kỳ thi chính thức, không do Quỹ Giao lưu Quốc tế Nhật Bản hay Hiệp hội Hỗ trợ Giáo dục Quốc tế Nhật Bản cấp, và không dự đoán kết quả thi thật. JLPT tính điểm quy đổi; ở đây điểm là tỉ lệ câu đúng, nên chỉ gần đúng. JLPT N5 không phải một bậc của khung CEFR."
+    }
+  },
+  "items": [
+    {
+      "id": "ja.exi.jlpt_n5.a_m1_01",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m1_01",
+        "mode": "nativeToTarget",
+        "prompt": "【毎朝】　7じに　おきます。",
+        "options": [
+          {
+            "text": "まいあさ"
+          },
+          {
+            "text": "まいにち"
+          },
+          {
+            "text": "まいばん"
+          },
+          {
+            "text": "まえあさ"
+          }
+        ],
+        "correct": 0,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:maiasa"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m1_02",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m1_02",
+        "mode": "nativeToTarget",
+        "prompt": "わたしの　【先生】は　にほんじんです。",
+        "options": [
+          {
+            "text": "せんせ"
+          },
+          {
+            "text": "せんせい"
+          },
+          {
+            "text": "せいせい"
+          },
+          {
+            "text": "さんせい"
+          }
+        ],
+        "correct": 1,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:sensei"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m1_03",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m1_03",
+        "mode": "nativeToTarget",
+        "prompt": "【電車】で　かいしゃへ　いきます。",
+        "options": [
+          {
+            "text": "でんしや"
+          },
+          {
+            "text": "てんしゃ"
+          },
+          {
+            "text": "でんしゃ"
+          },
+          {
+            "text": "でんしょ"
+          }
+        ],
+        "correct": 2,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:densha"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m1_04",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m1_04",
+        "mode": "nativeToTarget",
+        "prompt": "【午後】　3じに　あいましょう。",
+        "options": [
+          {
+            "text": "ごうご"
+          },
+          {
+            "text": "ごごう"
+          },
+          {
+            "text": "ここ"
+          },
+          {
+            "text": "ごご"
+          }
+        ],
+        "correct": 3,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:gogo"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m1_05",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m1_05",
+        "mode": "nativeToTarget",
+        "prompt": "この　みせは　【安い】です。",
+        "options": [
+          {
+            "text": "やすい"
+          },
+          {
+            "text": "たかい"
+          },
+          {
+            "text": "あさい"
+          },
+          {
+            "text": "やさい"
+          }
+        ],
+        "correct": 0,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:yasui"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m1_06",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m1_06",
+        "mode": "nativeToTarget",
+        "prompt": "つぎの　かどを　【右】に　まがって　ください。",
+        "options": [
+          {
+            "text": "ひだり"
+          },
+          {
+            "text": "みぎ"
+          },
+          {
+            "text": "みき"
+          },
+          {
+            "text": "うえ"
+          }
+        ],
+        "correct": 1,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:migi"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m1_07",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m1_07",
+        "mode": "nativeToTarget",
+        "prompt": "【来週】　くにへ　かえります。",
+        "options": [
+          {
+            "text": "らいしゅ"
+          },
+          {
+            "text": "こんしゅう"
+          },
+          {
+            "text": "らいしゅう"
+          },
+          {
+            "text": "らいしょう"
+          }
+        ],
+        "correct": 2,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:raishuu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m2_01",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m2_01",
+        "mode": "nativeToTarget",
+        "prompt": "【がっこう】で　べんきょうします。",
+        "options": [
+          {
+            "text": "字校"
+          },
+          {
+            "text": "学交"
+          },
+          {
+            "text": "学枚"
+          },
+          {
+            "text": "学校"
+          }
+        ],
+        "correct": 3,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:gakkou"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m2_02",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m2_02",
+        "mode": "nativeToTarget",
+        "prompt": "ともだちに　【でんわ】を　かけます。",
+        "options": [
+          {
+            "text": "電話"
+          },
+          {
+            "text": "雷話"
+          },
+          {
+            "text": "電語"
+          },
+          {
+            "text": "電活"
+          }
+        ],
+        "correct": 0,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:denwa"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m2_03",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m2_03",
+        "mode": "nativeToTarget",
+        "prompt": "まどから　【やま】が　みえます。",
+        "options": [
+          {
+            "text": "出"
+          },
+          {
+            "text": "山"
+          },
+          {
+            "text": "川"
+          },
+          {
+            "text": "止"
+          }
+        ],
+        "correct": 1,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:yama"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m2_04",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m2_04",
+        "mode": "nativeToTarget",
+        "prompt": "よる、【テレビ】を　みます。",
+        "options": [
+          {
+            "text": "テレピ"
+          },
+          {
+            "text": "テルビ"
+          },
+          {
+            "text": "テレビ"
+          },
+          {
+            "text": "テレヒ"
+          }
+        ],
+        "correct": 2,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kana"
+      ],
+      "lexemeRefs": [
+        "ja:w:terebi"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m2_05",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m2_05",
+        "mode": "nativeToTarget",
+        "prompt": "まいあさ　【みず】を　のみます。",
+        "options": [
+          {
+            "text": "氷"
+          },
+          {
+            "text": "木"
+          },
+          {
+            "text": "永"
+          },
+          {
+            "text": "水"
+          }
+        ],
+        "correct": 3,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:mizu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m3_01",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m3_01",
+        "mode": "nativeToTarget",
+        "prompt": "さむいですから、まどを　（　）　ください。",
+        "options": [
+          {
+            "text": "しめて"
+          },
+          {
+            "text": "あけて"
+          },
+          {
+            "text": "つけて"
+          },
+          {
+            "text": "あらって"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:shimeru"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m3_02",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m3_02",
+        "mode": "nativeToTarget",
+        "prompt": "きのう　デパートで　くつを　（　）。ちょっと　たかかったです。",
+        "options": [
+          {
+            "text": "よみました"
+          },
+          {
+            "text": "かいました"
+          },
+          {
+            "text": "ききました"
+          },
+          {
+            "text": "のみました"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:kau"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m3_03",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m3_03",
+        "mode": "nativeToTarget",
+        "prompt": "あたまが　（　）ですから、くすりを　のみます。",
+        "options": [
+          {
+            "text": "たかい"
+          },
+          {
+            "text": "ながい"
+          },
+          {
+            "text": "いたい"
+          },
+          {
+            "text": "おもしろい"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:itai"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m3_04",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m3_04",
+        "mode": "nativeToTarget",
+        "prompt": "この　へやは　（　）ですね。ひとが　たくさん　はいれます。",
+        "options": [
+          {
+            "text": "せまい"
+          },
+          {
+            "text": "くらい"
+          },
+          {
+            "text": "ふるい"
+          },
+          {
+            "text": "ひろい"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:hiroi"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m3_05",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m3_05",
+        "mode": "nativeToTarget",
+        "prompt": "らいしゅう、ともだちに　（　）を　かきます。",
+        "options": [
+          {
+            "text": "てがみ"
+          },
+          {
+            "text": "しゃしん"
+          },
+          {
+            "text": "えいが"
+          },
+          {
+            "text": "おかし"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:tegami"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m3_06",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m3_06",
+        "mode": "nativeToTarget",
+        "prompt": "ここは　（　）ですから、しずかに　して　ください。",
+        "options": [
+          {
+            "text": "スーパー"
+          },
+          {
+            "text": "としょかん"
+          },
+          {
+            "text": "えき"
+          },
+          {
+            "text": "コンビニ"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:toshokan"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m4_01",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m4",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m4_01",
+        "mode": "nativeToTarget",
+        "prompt": "この　みせは　【やすい】です。",
+        "options": [
+          {
+            "text": "この　みせは　たかいです。"
+          },
+          {
+            "text": "この　みせは　ひろいです。"
+          },
+          {
+            "text": "この　みせは　たかくないです。"
+          },
+          {
+            "text": "この　みせは　あたらしいです。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m4_02",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m4",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m4_02",
+        "mode": "nativeToTarget",
+        "prompt": "きのうは　【やすみ】でした。",
+        "options": [
+          {
+            "text": "きのうは　しごとでした。"
+          },
+          {
+            "text": "きのうは　びょうきでした。"
+          },
+          {
+            "text": "きのうは　いそがしかったです。"
+          },
+          {
+            "text": "きのうは　しごとが　ありませんでした。"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_m4_03",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m4",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_m4_03",
+        "mode": "nativeToTarget",
+        "prompt": "【りょうしん】は　げんきです。",
+        "options": [
+          {
+            "text": "ちちと　ははは　げんきです。"
+          },
+          {
+            "text": "あにと　あねは　げんきです。"
+          },
+          {
+            "text": "おとうとと　いもうとは　げんきです。"
+          },
+          {
+            "text": "ともだちは　げんきです。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m1_01",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m1_01",
+        "mode": "nativeToTarget",
+        "prompt": "【毎晩】　しゅくだいを　します。",
+        "options": [
+          {
+            "text": "まいあさ"
+          },
+          {
+            "text": "まいばん"
+          },
+          {
+            "text": "まいぱん"
+          },
+          {
+            "text": "まいにち"
+          }
+        ],
+        "correct": 1,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:maiban"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m1_02",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m1_02",
+        "mode": "nativeToTarget",
+        "prompt": "【学校】は　えきの　ちかくです。",
+        "options": [
+          {
+            "text": "がこう"
+          },
+          {
+            "text": "がっこ"
+          },
+          {
+            "text": "がっこう"
+          },
+          {
+            "text": "かっこう"
+          }
+        ],
+        "correct": 2,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:gakkou"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m1_03",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m1_03",
+        "mode": "nativeToTarget",
+        "prompt": "きょうは　【天気】が　いいですね。",
+        "options": [
+          {
+            "text": "でんき"
+          },
+          {
+            "text": "てんぎ"
+          },
+          {
+            "text": "てんけ"
+          },
+          {
+            "text": "てんき"
+          }
+        ],
+        "correct": 3,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:tenki"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m1_04",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m1_04",
+        "mode": "nativeToTarget",
+        "prompt": "【午前】　9じに　きて　ください。",
+        "options": [
+          {
+            "text": "ごぜん"
+          },
+          {
+            "text": "ごご"
+          },
+          {
+            "text": "ごせん"
+          },
+          {
+            "text": "ごぜい"
+          }
+        ],
+        "correct": 0,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:gozen"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m1_05",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m1_05",
+        "mode": "nativeToTarget",
+        "prompt": "この　かばんは　【高い】です。",
+        "options": [
+          {
+            "text": "やすい"
+          },
+          {
+            "text": "たかい"
+          },
+          {
+            "text": "ながい"
+          },
+          {
+            "text": "たけい"
+          }
+        ],
+        "correct": 1,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:takai"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m1_06",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m1_06",
+        "mode": "nativeToTarget",
+        "prompt": "【左】の　ドアから　はいって　ください。",
+        "options": [
+          {
+            "text": "みぎ"
+          },
+          {
+            "text": "ひたり"
+          },
+          {
+            "text": "ひだり"
+          },
+          {
+            "text": "した"
+          }
+        ],
+        "correct": 2,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:hidari"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m1_07",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m1_07",
+        "mode": "nativeToTarget",
+        "prompt": "【先月】　にほんへ　きました。",
+        "options": [
+          {
+            "text": "らいげつ"
+          },
+          {
+            "text": "せんがつ"
+          },
+          {
+            "text": "さきげつ"
+          },
+          {
+            "text": "せんげつ"
+          }
+        ],
+        "correct": 3,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:sengetsu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m2_01",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m2_01",
+        "mode": "nativeToTarget",
+        "prompt": "わからない　ときは　【せんせい】に　ききます。",
+        "options": [
+          {
+            "text": "先生"
+          },
+          {
+            "text": "先正"
+          },
+          {
+            "text": "失生"
+          },
+          {
+            "text": "洗生"
+          }
+        ],
+        "correct": 0,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:sensei"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m2_02",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m2_02",
+        "mode": "nativeToTarget",
+        "prompt": "【くるま】で　いきます。",
+        "options": [
+          {
+            "text": "東"
+          },
+          {
+            "text": "車"
+          },
+          {
+            "text": "軍"
+          },
+          {
+            "text": "里"
+          }
+        ],
+        "correct": 1,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:kuruma"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m2_03",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m2_03",
+        "mode": "nativeToTarget",
+        "prompt": "あそこに　【おとこ】の　ひとが　います。",
+        "options": [
+          {
+            "text": "思"
+          },
+          {
+            "text": "田"
+          },
+          {
+            "text": "男"
+          },
+          {
+            "text": "早"
+          }
+        ],
+        "correct": 2,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:otoko"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m2_04",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m2_04",
+        "mode": "nativeToTarget",
+        "prompt": "あさ、【コーヒー】を　のみます。",
+        "options": [
+          {
+            "text": "ローヒー"
+          },
+          {
+            "text": "コーヒ"
+          },
+          {
+            "text": "コオヒー"
+          },
+          {
+            "text": "コーヒー"
+          }
+        ],
+        "correct": 3,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kana"
+      ],
+      "lexemeRefs": [
+        "ja:w:koohii"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m2_05",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m2_05",
+        "mode": "nativeToTarget",
+        "prompt": "【あめ】が　ふって　います。",
+        "options": [
+          {
+            "text": "雨"
+          },
+          {
+            "text": "両"
+          },
+          {
+            "text": "雪"
+          },
+          {
+            "text": "南"
+          }
+        ],
+        "correct": 0,
+        "scriptAid": "hidden"
+      },
+      "objectiveTargets": [
+        "ja.obj.script.kanji_hanviet"
+      ],
+      "lexemeRefs": [
+        "ja:w:ame"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m3_01",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m3_01",
+        "mode": "nativeToTarget",
+        "prompt": "くらいですから、でんきを　（　）　ください。",
+        "options": [
+          {
+            "text": "けして"
+          },
+          {
+            "text": "つけて"
+          },
+          {
+            "text": "しめて"
+          },
+          {
+            "text": "ぬいで"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:tsukeru"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m3_02",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m3_02",
+        "mode": "nativeToTarget",
+        "prompt": "わたしは　まいばん　おふろに　（　）。",
+        "options": [
+          {
+            "text": "のります"
+          },
+          {
+            "text": "すわります"
+          },
+          {
+            "text": "はいります"
+          },
+          {
+            "text": "あびます"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:hairu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m3_03",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m3_03",
+        "mode": "nativeToTarget",
+        "prompt": "この　ケーキは　とても　（　）です。もう　一つ　たべたいです。",
+        "options": [
+          {
+            "text": "まずい"
+          },
+          {
+            "text": "いたい"
+          },
+          {
+            "text": "くらい"
+          },
+          {
+            "text": "おいしい"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:oishii"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m3_04",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m3_04",
+        "mode": "nativeToTarget",
+        "prompt": "いま　（　）ですか。…くじはんです。",
+        "options": [
+          {
+            "text": "なんじ"
+          },
+          {
+            "text": "いくら"
+          },
+          {
+            "text": "どこ"
+          },
+          {
+            "text": "だれ"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:nanji"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m3_05",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m3_05",
+        "mode": "nativeToTarget",
+        "prompt": "びょうきですから、（　）へ　いきます。",
+        "options": [
+          {
+            "text": "ぎんこう"
+          },
+          {
+            "text": "びょういん"
+          },
+          {
+            "text": "ゆうびんきょく"
+          },
+          {
+            "text": "こうえん"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:byouin"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m3_06",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m3",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m3_06",
+        "mode": "nativeToTarget",
+        "prompt": "つぎの　かどを　みぎに　（　）　ください。",
+        "options": [
+          {
+            "text": "おりて"
+          },
+          {
+            "text": "ねて"
+          },
+          {
+            "text": "まがって"
+          },
+          {
+            "text": "あらって"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:magaru"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m4_01",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m4",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m4_01",
+        "mode": "nativeToTarget",
+        "prompt": "この　へやは　【くらい】です。",
+        "options": [
+          {
+            "text": "この　へやは　せまくないです。"
+          },
+          {
+            "text": "この　へやは　しずかです。"
+          },
+          {
+            "text": "この　へやは　あついです。"
+          },
+          {
+            "text": "この　へやは　あかるくないです。"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m4_02",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m4",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m4_02",
+        "mode": "nativeToTarget",
+        "prompt": "【おととい】　テストが　ありました。",
+        "options": [
+          {
+            "text": "ふつかまえに　テストが　ありました。"
+          },
+          {
+            "text": "きのう　テストが　ありました。"
+          },
+          {
+            "text": "みっかまえに　テストが　ありました。"
+          },
+          {
+            "text": "せんしゅう　テストが　ありました。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "lexemeRefs": [
+        "ja:w:tesuto"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_m4_03",
+      "itemVersion": 1,
+      "sectionId": "moji_goi",
+      "taskId": "m4",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_m4_03",
+        "mode": "nativeToTarget",
+        "prompt": "わたしは　りょうりが　【へた】です。",
+        "options": [
+          {
+            "text": "わたしは　りょうりが　すきです。"
+          },
+          {
+            "text": "わたしは　りょうりが　じょうずじゃ　ありません。"
+          },
+          {
+            "text": "わたしは　りょうりが　じょうずです。"
+          },
+          {
+            "text": "わたしは　りょうりが　きらいじゃ　ありません。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_01",
+        "mode": "nativeToTarget",
+        "prompt": "わたしは　まいあさ　パン（　）たべます。",
+        "options": [
+          {
+            "text": "に"
+          },
+          {
+            "text": "で"
+          },
+          {
+            "text": "を"
+          },
+          {
+            "text": "が"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_02",
+        "mode": "nativeToTarget",
+        "prompt": "にちようびは　こうえん（　）ともだちと　あそびました。",
+        "options": [
+          {
+            "text": "を"
+          },
+          {
+            "text": "が"
+          },
+          {
+            "text": "へ"
+          },
+          {
+            "text": "で"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_03",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_03",
+        "mode": "nativeToTarget",
+        "prompt": "ベトナム（　）きました。いまは　おおさかに　すんで　います。",
+        "options": [
+          {
+            "text": "から"
+          },
+          {
+            "text": "を"
+          },
+          {
+            "text": "で"
+          },
+          {
+            "text": "の"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_04",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_04",
+        "mode": "nativeToTarget",
+        "prompt": "これは　わたし（　）かばんです。",
+        "options": [
+          {
+            "text": "が"
+          },
+          {
+            "text": "の"
+          },
+          {
+            "text": "を"
+          },
+          {
+            "text": "に"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_05",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_05",
+        "mode": "nativeToTarget",
+        "prompt": "きのうは　あめ（　）。",
+        "options": [
+          {
+            "text": "です"
+          },
+          {
+            "text": "じゃありません"
+          },
+          {
+            "text": "でした"
+          },
+          {
+            "text": "ます"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_06",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_06",
+        "mode": "nativeToTarget",
+        "prompt": "にほんごの　べんきょうは　（　）ですか。",
+        "options": [
+          {
+            "text": "どの"
+          },
+          {
+            "text": "だれ"
+          },
+          {
+            "text": "いくつ"
+          },
+          {
+            "text": "どう"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.questions.question_words"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_07",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_07",
+        "mode": "nativeToTarget",
+        "prompt": "しゅくだいを　して（　）、テレビを　みます。",
+        "options": [
+          {
+            "text": "から"
+          },
+          {
+            "text": "まで"
+          },
+          {
+            "text": "より"
+          },
+          {
+            "text": "ね"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.verbs.te_form"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_08",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_08",
+        "mode": "nativeToTarget",
+        "prompt": "ここは　きんえんです。たばこを　（　）ください。",
+        "options": [
+          {
+            "text": "すって"
+          },
+          {
+            "text": "すわないで"
+          },
+          {
+            "text": "すわなくて"
+          },
+          {
+            "text": "すいます"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.verbs.te_form"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g1_09",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g1_09",
+        "mode": "nativeToTarget",
+        "prompt": "あたまが　いたいです（　）、がっこうを　やすみます。",
+        "options": [
+          {
+            "text": "が"
+          },
+          {
+            "text": "まで"
+          },
+          {
+            "text": "から"
+          },
+          {
+            "text": "の"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g2_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g2_01",
+        "mode": "nativeToTarget",
+        "prompt": "この　＿＿　＿＿　★　＿＿　です。",
+        "options": [
+          {
+            "text": "かさ"
+          },
+          {
+            "text": "は"
+          },
+          {
+            "text": "の"
+          },
+          {
+            "text": "だれ"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g2_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g2_02",
+        "mode": "nativeToTarget",
+        "prompt": "あした　＿＿　＿＿　★　＿＿　か。",
+        "options": [
+          {
+            "text": "いき"
+          },
+          {
+            "text": "どこ"
+          },
+          {
+            "text": "へ"
+          },
+          {
+            "text": "ます"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g2_03",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g2_03",
+        "mode": "nativeToTarget",
+        "prompt": "これは　＿＿　＿＿　★　＿＿。",
+        "options": [
+          {
+            "text": "わたしの"
+          },
+          {
+            "text": "かぎ"
+          },
+          {
+            "text": "へやの"
+          },
+          {
+            "text": "です"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g2_04",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-a_g2_04",
+        "mode": "nativeToTarget",
+        "prompt": "つくえの　＿＿　＿＿　★　＿＿　あります。",
+        "options": [
+          {
+            "text": "うえ"
+          },
+          {
+            "text": "に"
+          },
+          {
+            "text": "ペンと"
+          },
+          {
+            "text": "ノートが"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_01",
+        "mode": "nativeToTarget",
+        "prompt": "まいにち　7時に　いえ（　）でます。",
+        "options": [
+          {
+            "text": "で"
+          },
+          {
+            "text": "が"
+          },
+          {
+            "text": "へ"
+          },
+          {
+            "text": "を"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_02",
+        "mode": "nativeToTarget",
+        "prompt": "えき（　）バスに　のります。",
+        "options": [
+          {
+            "text": "で"
+          },
+          {
+            "text": "が"
+          },
+          {
+            "text": "を"
+          },
+          {
+            "text": "と"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_03",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_03",
+        "mode": "nativeToTarget",
+        "prompt": "くつは　2かい（　）あります。",
+        "options": [
+          {
+            "text": "で"
+          },
+          {
+            "text": "に"
+          },
+          {
+            "text": "を"
+          },
+          {
+            "text": "へ"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_04",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_04",
+        "mode": "nativeToTarget",
+        "prompt": "おちゃ（　）コーヒーを　ください。",
+        "options": [
+          {
+            "text": "を"
+          },
+          {
+            "text": "で"
+          },
+          {
+            "text": "と"
+          },
+          {
+            "text": "が"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_05",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_05",
+        "mode": "nativeToTarget",
+        "prompt": "この　へやは　あまり　（　）。",
+        "options": [
+          {
+            "text": "ひろいです"
+          },
+          {
+            "text": "ひろかったです"
+          },
+          {
+            "text": "ひろいでした"
+          },
+          {
+            "text": "ひろくないです"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.adjectives.i_na"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_06",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_06",
+        "mode": "nativeToTarget",
+        "prompt": "「だれが　きましたか。」「たなかさん（　）きました。」",
+        "options": [
+          {
+            "text": "が"
+          },
+          {
+            "text": "を"
+          },
+          {
+            "text": "に"
+          },
+          {
+            "text": "で"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_07",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_07",
+        "mode": "nativeToTarget",
+        "prompt": "きのうは　どこ（　）いきませんでした。",
+        "options": [
+          {
+            "text": "が"
+          },
+          {
+            "text": "も"
+          },
+          {
+            "text": "を"
+          },
+          {
+            "text": "で"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_08",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_08",
+        "mode": "nativeToTarget",
+        "prompt": "ここに　なまえを　（　）ください。",
+        "options": [
+          {
+            "text": "かき"
+          },
+          {
+            "text": "かく"
+          },
+          {
+            "text": "かいて"
+          },
+          {
+            "text": "かいた"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.verbs.te_form"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g1_09",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g1",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g1_09",
+        "mode": "nativeToTarget",
+        "prompt": "あの　ひとは　（　）ひとですか。",
+        "options": [
+          {
+            "text": "どう"
+          },
+          {
+            "text": "どれ"
+          },
+          {
+            "text": "いつ"
+          },
+          {
+            "text": "どんな"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.questions.question_words"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g2_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g2_01",
+        "mode": "nativeToTarget",
+        "prompt": "その　＿＿　＿＿　★　＿＿　か。",
+        "options": [
+          {
+            "text": "いくら"
+          },
+          {
+            "text": "ほん"
+          },
+          {
+            "text": "は"
+          },
+          {
+            "text": "です"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g2_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g2_02",
+        "mode": "nativeToTarget",
+        "prompt": "まいばん　＿＿　＿＿　★　＿＿。",
+        "options": [
+          {
+            "text": "11時"
+          },
+          {
+            "text": "ね"
+          },
+          {
+            "text": "に"
+          },
+          {
+            "text": "ます"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g2_03",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g2_03",
+        "mode": "nativeToTarget",
+        "prompt": "ねこは　＿＿　＿＿　★　＿＿　います。",
+        "options": [
+          {
+            "text": "おおきい"
+          },
+          {
+            "text": "き"
+          },
+          {
+            "text": "の"
+          },
+          {
+            "text": "したに"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g2_04",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g2",
+      "exercise": {
+        "type": "select",
+        "id": "ja-exx-jlpt_n5-b_g2_04",
+        "mode": "nativeToTarget",
+        "prompt": "あれは　＿＿　＿＿　★　＿＿　か。",
+        "options": [
+          {
+            "text": "なん"
+          },
+          {
+            "text": "の"
+          },
+          {
+            "text": "です"
+          },
+          {
+            "text": "ほん"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.sentences.noun_desu"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g3_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_g3_01",
+        "readingId": "ja.read.jlpt_n5_a_g3",
+        "question": "Chọn từ thích hợp cho chỗ trống （1）.",
+        "options": [
+          {
+            "text": "ちかい"
+          },
+          {
+            "text": "とおい"
+          },
+          {
+            "text": "たかい"
+          },
+          {
+            "text": "ひろい"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g3_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_g3_02",
+        "readingId": "ja.read.jlpt_n5_a_g3",
+        "question": "Chọn từ thích hợp cho chỗ trống （2）.",
+        "options": [
+          {
+            "text": "から"
+          },
+          {
+            "text": "まで"
+          },
+          {
+            "text": "に"
+          },
+          {
+            "text": "で"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g3_03",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_g3_03",
+        "readingId": "ja.read.jlpt_n5_a_g3",
+        "question": "Chọn từ thích hợp cho chỗ trống （3）.",
+        "options": [
+          {
+            "text": "しました"
+          },
+          {
+            "text": "しません"
+          },
+          {
+            "text": "します"
+          },
+          {
+            "text": "しましょう"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_g3_04",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_g3_04",
+        "readingId": "ja.read.jlpt_n5_a_g3",
+        "question": "Chọn từ thích hợp cho chỗ trống （4）.",
+        "options": [
+          {
+            "text": "それから"
+          },
+          {
+            "text": "だから"
+          },
+          {
+            "text": "じゃあ"
+          },
+          {
+            "text": "でも"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g3_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_g3_01",
+        "readingId": "ja.read.jlpt_n5_b_g3",
+        "question": "Chọn từ thích hợp cho chỗ trống （1）.",
+        "options": [
+          {
+            "text": "せまい"
+          },
+          {
+            "text": "あかるい"
+          },
+          {
+            "text": "ひろい"
+          },
+          {
+            "text": "あたらしい"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g3_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_g3_02",
+        "readingId": "ja.read.jlpt_n5_b_g3",
+        "question": "Chọn từ thích hợp cho chỗ trống （2）.",
+        "options": [
+          {
+            "text": "いません"
+          },
+          {
+            "text": "ありません"
+          },
+          {
+            "text": "しません"
+          },
+          {
+            "text": "ではありません"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g3_03",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_g3_03",
+        "readingId": "ja.read.jlpt_n5_b_g3",
+        "question": "Chọn từ thích hợp cho chỗ trống （3）.",
+        "options": [
+          {
+            "text": "きのう"
+          },
+          {
+            "text": "先週"
+          },
+          {
+            "text": "毎朝"
+          },
+          {
+            "text": "去年"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_g3_04",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "g3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_g3_04",
+        "readingId": "ja.read.jlpt_n5_b_g3",
+        "question": "Chọn từ thích hợp cho chỗ trống （4）.",
+        "options": [
+          {
+            "text": "でも"
+          },
+          {
+            "text": "しかし"
+          },
+          {
+            "text": "それから"
+          },
+          {
+            "text": "だから"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.particles.core"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_d4_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_d4_01",
+        "readingId": "ja.read.jlpt_n5_a_d4_1",
+        "question": "Chị Kimura nhờ anh Nguyễn làm gì trước cuộc họp?",
+        "options": [
+          {
+            "text": "Photo giấy tờ này 5 bản"
+          },
+          {
+            "text": "Photo giấy tờ này 10 bản"
+          },
+          {
+            "text": "Đến phòng họp lúc 10 giờ"
+          },
+          {
+            "text": "Gọi điện cho chị Kimura"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.short_messages"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_d4_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_d4_02",
+        "readingId": "ja.read.jlpt_n5_a_d4_2",
+        "question": "Rác cháy được bỏ vào những ngày nào?",
+        "options": [
+          {
+            "text": "Thứ Tư"
+          },
+          {
+            "text": "Thứ Hai và thứ Năm"
+          },
+          {
+            "text": "Thứ Hai và thứ Tư"
+          },
+          {
+            "text": "Mỗi tối"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.notices_info"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_d5_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d5",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_d5_01",
+        "readingId": "ja.read.jlpt_n5_a_d5",
+        "question": "Anh Nam ăn trưa ở đâu?",
+        "options": [
+          {
+            "text": "Ở ký túc xá"
+          },
+          {
+            "text": "Ở quán ramen gần ga"
+          },
+          {
+            "text": "Ở nhà ăn của nhà máy"
+          },
+          {
+            "text": "Ở lớp tiếng Nhật"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_d5_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d5",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_d5_02",
+        "readingId": "ja.read.jlpt_n5_a_d5",
+        "question": "Vì sao tối nào anh Nam cũng học?",
+        "options": [
+          {
+            "text": "Vì thứ Bảy có lớp tiếng Nhật"
+          },
+          {
+            "text": "Vì công việc ở nhà máy vất vả"
+          },
+          {
+            "text": "Vì đàn anh nhờ anh ấy học"
+          },
+          {
+            "text": "Vì tháng sau có kỳ thi tiếng Nhật"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_d6_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d6",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-a_d6_01",
+        "readingId": "ja.read.jlpt_n5_a_d6",
+        "question": "Anh Minh mới bắt đầu học tiếng Nhật. Anh ấy làm ở nhà máy từ 8 giờ sáng đến 5 giờ chiều, từ thứ Hai đến thứ Sáu. Anh ấy nên học lớp nào?",
+        "options": [
+          {
+            "text": "Lớp thứ Tư"
+          },
+          {
+            "text": "Lớp thứ Hai"
+          },
+          {
+            "text": "Lớp thứ Sáu"
+          },
+          {
+            "text": "Lớp thứ Bảy"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.notices_info"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_d4_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_d4_01",
+        "readingId": "ja.read.jlpt_n5_b_d4_1",
+        "question": "Buổi tập bóng đá được chuyển sang khi nào?",
+        "options": [
+          {
+            "text": "3 giờ hôm nay"
+          },
+          {
+            "text": "3 giờ thứ Bảy"
+          },
+          {
+            "text": "3 giờ Chủ nhật"
+          },
+          {
+            "text": "Không còn buổi tập nào"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.short_messages"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_d4_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_d4_02",
+        "readingId": "ja.read.jlpt_n5_b_d4_2",
+        "question": "Thứ Bảy, bạn có thể đến quầy lễ tân lúc mấy giờ?",
+        "options": [
+          {
+            "text": "4 giờ chiều"
+          },
+          {
+            "text": "1 giờ chiều"
+          },
+          {
+            "text": "10 giờ sáng"
+          },
+          {
+            "text": "7 giờ tối"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.notices_info"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_d5_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d5",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_d5_01",
+        "readingId": "ja.read.jlpt_n5_b_d5",
+        "question": "Chị Lan đi làm bằng gì?",
+        "options": [
+          {
+            "text": "Tàu điện"
+          },
+          {
+            "text": "Xe buýt"
+          },
+          {
+            "text": "Đi bộ"
+          },
+          {
+            "text": "Xe đạp"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_d5_02",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d5",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_d5_02",
+        "readingId": "ja.read.jlpt_n5_b_d5",
+        "question": "Chủ nhật tuần sau chị Lan làm gì?",
+        "options": [
+          {
+            "text": "Giặt giũ và dọn dẹp ở nhà"
+          },
+          {
+            "text": "Đi làm ở bệnh viện"
+          },
+          {
+            "text": "Đi Osaka với bạn"
+          },
+          {
+            "text": "Đi ăn sushi"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_d6_01",
+      "itemVersion": 1,
+      "sectionId": "bunpou_dokkai",
+      "taskId": "d6",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "ja-exx-jlpt_n5-b_d6_01",
+        "readingId": "ja.read.jlpt_n5_b_d6",
+        "question": "Chị Lan học ở trường tiếng Nhật từ thứ Hai đến thứ Sáu, từ 9 giờ sáng đến 3 giờ chiều. Chị ấy muốn làm thêm vào buổi tối các ngày trong tuần, không làm đêm. Chị ấy nên làm ở đâu?",
+        "options": [
+          {
+            "text": "Cửa hàng tiện lợi"
+          },
+          {
+            "text": "Siêu thị"
+          },
+          {
+            "text": "Nhà hàng"
+          },
+          {
+            "text": "Hiệu sách"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.reading.notices_info"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c1_01",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c1_01",
+        "clipId": "ja.clip.jlpt_n5_a_c1_01",
+        "question": "Ngày mai anh Nam phải đến nhà máy lúc mấy giờ?",
+        "options": [
+          {
+            "text": "8 giờ"
+          },
+          {
+            "text": "8 giờ rưỡi"
+          },
+          {
+            "text": "7 giờ rưỡi"
+          },
+          {
+            "text": "7 giờ"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c1_02",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c1_02",
+        "clipId": "ja.clip.jlpt_n5_a_c1_02",
+        "question": "Người đàn ông mua gì?",
+        "options": [
+          {
+            "text": "3 con tem và phong bì"
+          },
+          {
+            "text": "2 con tem và 3 tấm bưu thiếp"
+          },
+          {
+            "text": "Chỉ 3 con tem"
+          },
+          {
+            "text": "3 con tem và 2 tấm bưu thiếp"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c1_03",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c1_03",
+        "clipId": "ja.clip.jlpt_n5_a_c1_03",
+        "question": "Người nghe phải mang gì?",
+        "options": [
+          {
+            "text": "Cơm hộp và ô"
+          },
+          {
+            "text": "Cơm hộp và đồ uống"
+          },
+          {
+            "text": "Chỉ đồ uống"
+          },
+          {
+            "text": "Đồ uống và ô"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c1_04",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c1_04",
+        "clipId": "ja.clip.jlpt_n5_a_c1_04",
+        "question": "Người đàn ông phải rẽ ở đâu?",
+        "options": [
+          {
+            "text": "Rẽ phải ở đèn tín hiệu thứ hai"
+          },
+          {
+            "text": "Rẽ trái ở đèn tín hiệu thứ hai"
+          },
+          {
+            "text": "Rẽ trái ở đèn tín hiệu thứ nhất"
+          },
+          {
+            "text": "Đi thẳng, không rẽ"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c1_05",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c1_05",
+        "clipId": "ja.clip.jlpt_n5_a_c1_05",
+        "question": "Anh Nguyễn phải mang gì vào kho?",
+        "options": [
+          {
+            "text": "Tất cả các thùng"
+          },
+          {
+            "text": "Chỉ những thùng nhỏ"
+          },
+          {
+            "text": "Chỉ những thùng to"
+          },
+          {
+            "text": "Không mang thùng nào"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c1_06",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c1_06",
+        "clipId": "ja.clip.jlpt_n5_a_c1_06",
+        "question": "Người đàn ông phải mang gì đến buổi phỏng vấn?",
+        "options": [
+          {
+            "text": "Thẻ cư trú và sơ yếu lý lịch"
+          },
+          {
+            "text": "Ảnh và sơ yếu lý lịch"
+          },
+          {
+            "text": "Chỉ sơ yếu lý lịch"
+          },
+          {
+            "text": "Thẻ cư trú và ảnh"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c1_07",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c1_07",
+        "clipId": "ja.clip.jlpt_n5_a_c1_07",
+        "question": "Phải uống thuốc này khi nào?",
+        "options": [
+          {
+            "text": "Sau bữa sáng và bữa tối"
+          },
+          {
+            "text": "Sau cả ba bữa"
+          },
+          {
+            "text": "Trước bữa sáng và bữa tối"
+          },
+          {
+            "text": "Chỉ buổi trưa"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c2_01",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c2_01",
+        "clipId": "ja.clip.jlpt_n5_a_c2_01",
+        "question": "Vì sao hôm qua người phụ nữ nghỉ?",
+        "options": [
+          {
+            "text": "Vì đi thăm mẹ ở bệnh viện"
+          },
+          {
+            "text": "Vì bị sốt"
+          },
+          {
+            "text": "Vì tàu điện bị trễ"
+          },
+          {
+            "text": "Vì có việc ở toà thị chính"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c2_02",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c2_02",
+        "clipId": "ja.clip.jlpt_n5_a_c2_02",
+        "question": "Chủ nhật người đàn ông làm gì?",
+        "options": [
+          {
+            "text": "Xem phim với bạn"
+          },
+          {
+            "text": "Đi làm"
+          },
+          {
+            "text": "Đọc sách ở nhà"
+          },
+          {
+            "text": "Đi mua sắm"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c2_03",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c2_03",
+        "clipId": "ja.clip.jlpt_n5_a_c2_03",
+        "question": "Người phụ nữ trả bao nhiêu tiền?",
+        "options": [
+          {
+            "text": "2000 yên"
+          },
+          {
+            "text": "3500 yên"
+          },
+          {
+            "text": "500 yên"
+          },
+          {
+            "text": "1500 yên"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c2_04",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c2_04",
+        "clipId": "ja.clip.jlpt_n5_a_c2_04",
+        "question": "Anh trai của chị Lan làm gì?",
+        "options": [
+          {
+            "text": "Làm ở ngân hàng"
+          },
+          {
+            "text": "Làm y tá"
+          },
+          {
+            "text": "Làm ở bệnh viện"
+          },
+          {
+            "text": "Làm ở nhà máy"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c2_05",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c2_05",
+        "clipId": "ja.clip.jlpt_n5_a_c2_05",
+        "question": "Chiều mai thời tiết thế nào?",
+        "options": [
+          {
+            "text": "Trời mưa"
+          },
+          {
+            "text": "Trời nắng"
+          },
+          {
+            "text": "Trời có tuyết"
+          },
+          {
+            "text": "Trời nhiều mây"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c2_06",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c2_06",
+        "clipId": "ja.clip.jlpt_n5_a_c2_06",
+        "question": "Lớp tiếng Nhật vào những ngày nào?",
+        "options": [
+          {
+            "text": "Thứ Hai và thứ Sáu"
+          },
+          {
+            "text": "Thứ Ba và thứ Năm"
+          },
+          {
+            "text": "Thứ Ba và thứ Sáu"
+          },
+          {
+            "text": "Thứ Tư và thứ Sáu"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c3_01",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c3_01",
+        "clipId": "ja.clip.jlpt_n5_a_c3_01",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "ありがとうございます。"
+          },
+          {
+            "text": "いただきます。"
+          },
+          {
+            "text": "ごちそうさまでした。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c3_02",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c3_02",
+        "clipId": "ja.clip.jlpt_n5_a_c3_02",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "こんばんは。"
+          },
+          {
+            "text": "おはようございます。"
+          },
+          {
+            "text": "おやすみなさい。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c3_03",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c3_03",
+        "clipId": "ja.clip.jlpt_n5_a_c3_03",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "ごちそうさまでした。"
+          },
+          {
+            "text": "いってきます。"
+          },
+          {
+            "text": "いただきます。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c3_04",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c3_04",
+        "clipId": "ja.clip.jlpt_n5_a_c3_04",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "お先に失礼します。"
+          },
+          {
+            "text": "いただきます。"
+          },
+          {
+            "text": "いらっしゃいませ。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c3_05",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c3_05",
+        "clipId": "ja.clip.jlpt_n5_a_c3_05",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "駅へ行きましょう。"
+          },
+          {
+            "text": "すみません、駅はどこですか。"
+          },
+          {
+            "text": "駅で待ってください。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c4_01",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c4_01",
+        "clipId": "ja.clip.jlpt_n5_a_c4_01",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "ベトナムです。"
+          },
+          {
+            "text": "25歳です。"
+          },
+          {
+            "text": "グエンです。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c4_02",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c4_02",
+        "clipId": "ja.clip.jlpt_n5_a_c4_02",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "お茶をお願いします。"
+          },
+          {
+            "text": "はい、そうです。"
+          },
+          {
+            "text": "いいえ、ちがいます。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c4_03",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c4_03",
+        "clipId": "ja.clip.jlpt_n5_a_c4_03",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "電車で来ました。"
+          },
+          {
+            "text": "去年来ました。"
+          },
+          {
+            "text": "友達と来ました。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c4_04",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c4_04",
+        "clipId": "ja.clip.jlpt_n5_a_c4_04",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "どういたしまして。"
+          },
+          {
+            "text": "おやすみなさい。"
+          },
+          {
+            "text": "ありがとうございます。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c4_05",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c4_05",
+        "clipId": "ja.clip.jlpt_n5_a_c4_05",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "ベトナムです。"
+          },
+          {
+            "text": "大阪です。"
+          },
+          {
+            "text": "あちらです。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.a_c4_06",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-a_c4_06",
+        "clipId": "ja.clip.jlpt_n5_a_c4_06",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "いただきます。"
+          },
+          {
+            "text": "いいですね。"
+          },
+          {
+            "text": "ごちそうさまでした。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c1_01",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c1_01",
+        "clipId": "ja.clip.jlpt_n5_b_c1_01",
+        "question": "Cuộc họp ngày mai bắt đầu lúc mấy giờ?",
+        "options": [
+          {
+            "text": "2 giờ"
+          },
+          {
+            "text": "2 giờ rưỡi"
+          },
+          {
+            "text": "3 giờ"
+          },
+          {
+            "text": "1 giờ"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c1_02",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c1_02",
+        "clipId": "ja.clip.jlpt_n5_b_c1_02",
+        "question": "Người đàn ông mua gì?",
+        "options": [
+          {
+            "text": "3 quả táo và 5 quả quýt"
+          },
+          {
+            "text": "Chỉ 5 quả táo"
+          },
+          {
+            "text": "5 quả táo và 5 quả quýt"
+          },
+          {
+            "text": "5 quả táo và 3 quả quýt"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c1_03",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c1_03",
+        "clipId": "ja.clip.jlpt_n5_b_c1_03",
+        "question": "Người nghe phải mang gì?",
+        "options": [
+          {
+            "text": "Ô và găng tay"
+          },
+          {
+            "text": "Ô và mũ bảo hộ"
+          },
+          {
+            "text": "Mũ bảo hộ và găng tay"
+          },
+          {
+            "text": "Chỉ ô"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c1_04",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c1_04",
+        "clipId": "ja.clip.jlpt_n5_b_c1_04",
+        "question": "Ngân hàng ở đâu?",
+        "options": [
+          {
+            "text": "Rẽ trái ở góc thứ nhất, cạnh bưu điện"
+          },
+          {
+            "text": "Rẽ phải ở góc thứ nhất, cạnh bưu điện"
+          },
+          {
+            "text": "Rẽ phải ở góc thứ hai, cạnh bưu điện"
+          },
+          {
+            "text": "Rẽ phải ở góc thứ nhất, trước bưu điện"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c1_05",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c1_05",
+        "clipId": "ja.clip.jlpt_n5_b_c1_05",
+        "question": "Chị Linh phải làm gì?",
+        "options": [
+          {
+            "text": "Xếp mười cái bàn trong lớp"
+          },
+          {
+            "text": "Mang bàn ra khỏi lớp"
+          },
+          {
+            "text": "Xếp mười cái ghế trong lớp"
+          },
+          {
+            "text": "Xếp năm cái ghế trong lớp"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c1_06",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c1_06",
+        "clipId": "ja.clip.jlpt_n5_b_c1_06",
+        "question": "Phải mang gì đến toà thị chính?",
+        "options": [
+          {
+            "text": "Thẻ cư trú và ảnh"
+          },
+          {
+            "text": "Thẻ bảo hiểm và ảnh"
+          },
+          {
+            "text": "Chỉ ảnh"
+          },
+          {
+            "text": "Thẻ cư trú và thẻ bảo hiểm"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c1_07",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c1_07",
+        "clipId": "ja.clip.jlpt_n5_b_c1_07",
+        "question": "Phải uống thuốc này thế nào?",
+        "options": [
+          {
+            "text": "Một lần, trước khi đi ngủ"
+          },
+          {
+            "text": "Hai lần, sáng và tối"
+          },
+          {
+            "text": "Một lần, sau bữa sáng"
+          },
+          {
+            "text": "Ba lần, sau bữa ăn"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c2_01",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c2_01",
+        "clipId": "ja.clip.jlpt_n5_b_c2_01",
+        "question": "Vì sao người phụ nữ đến muộn?",
+        "options": [
+          {
+            "text": "Vì ngủ dậy muộn"
+          },
+          {
+            "text": "Vì tàu điện bị trễ"
+          },
+          {
+            "text": "Vì xe buýt không đến"
+          },
+          {
+            "text": "Vì bị ốm"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c2_02",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c2_02",
+        "clipId": "ja.clip.jlpt_n5_b_c2_02",
+        "question": "Tối qua, việc đầu tiên người đàn ông làm là gì?",
+        "options": [
+          {
+            "text": "Đi ngủ lúc 10 giờ"
+          },
+          {
+            "text": "Gọi điện cho bạn"
+          },
+          {
+            "text": "Viết thư cho bạn"
+          },
+          {
+            "text": "Đọc sách"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c2_03",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c2_03",
+        "clipId": "ja.clip.jlpt_n5_b_c2_03",
+        "question": "Người phụ nữ trả bao nhiêu tiền?",
+        "options": [
+          {
+            "text": "3000 yên"
+          },
+          {
+            "text": "5500 yên"
+          },
+          {
+            "text": "500 yên"
+          },
+          {
+            "text": "2500 yên"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c2_04",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c2_04",
+        "clipId": "ja.clip.jlpt_n5_b_c2_04",
+        "question": "Em trai của anh Nam làm gì?",
+        "options": [
+          {
+            "text": "Nhân viên công ty"
+          },
+          {
+            "text": "Sinh viên"
+          },
+          {
+            "text": "Giáo viên"
+          },
+          {
+            "text": "Bác sĩ"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c2_05",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c2_05",
+        "clipId": "ja.clip.jlpt_n5_b_c2_05",
+        "question": "Thời tiết ngày mai thế nào?",
+        "options": [
+          {
+            "text": "Lạnh và gió mạnh"
+          },
+          {
+            "text": "Ấm nhưng gió mạnh"
+          },
+          {
+            "text": "Ấm và không có gió"
+          },
+          {
+            "text": "Lạnh nhưng không có gió"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c2_06",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c2_06",
+        "clipId": "ja.clip.jlpt_n5_b_c2_06",
+        "question": "Thứ Bảy thư viện mở đến mấy giờ?",
+        "options": [
+          {
+            "text": "8 giờ"
+          },
+          {
+            "text": "6 giờ"
+          },
+          {
+            "text": "5 giờ"
+          },
+          {
+            "text": "Thứ Bảy thư viện nghỉ"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c3_01",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c3_01",
+        "clipId": "ja.clip.jlpt_n5_b_c3_01",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "おやすみなさい。"
+          },
+          {
+            "text": "おはようございます。"
+          },
+          {
+            "text": "いってきます。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c3_02",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c3_02",
+        "clipId": "ja.clip.jlpt_n5_b_c3_02",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "いただきます。"
+          },
+          {
+            "text": "ごちそうさまでした。"
+          },
+          {
+            "text": "どういたしまして。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c3_03",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c3_03",
+        "clipId": "ja.clip.jlpt_n5_b_c3_03",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "ただいま。"
+          },
+          {
+            "text": "おかえりなさい。"
+          },
+          {
+            "text": "いってきます。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c3_04",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c3_04",
+        "clipId": "ja.clip.jlpt_n5_b_c3_04",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "いらっしゃいませ。"
+          },
+          {
+            "text": "いってらっしゃい。"
+          },
+          {
+            "text": "おじゃまします。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c3_05",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c3_05",
+        "clipId": "ja.clip.jlpt_n5_b_c3_05",
+        "question": "Trong tình huống bạn vừa nghe, bạn nói gì?",
+        "options": [
+          {
+            "text": "どういたしまして。"
+          },
+          {
+            "text": "もう一度お願いします。"
+          },
+          {
+            "text": "いただきます。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.greetings.basic"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c4_01",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c4_01",
+        "clipId": "ja.clip.jlpt_n5_b_c4_01",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "300円です。"
+          },
+          {
+            "text": "3時です。"
+          },
+          {
+            "text": "30歳です。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c4_02",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c4_02",
+        "clipId": "ja.clip.jlpt_n5_b_c4_02",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "3時半です。"
+          },
+          {
+            "text": "三月です。"
+          },
+          {
+            "text": "3時間です。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c4_03",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c4_03",
+        "clipId": "ja.clip.jlpt_n5_b_c4_03",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "毎日です。"
+          },
+          {
+            "text": "駅の近くです。"
+          },
+          {
+            "text": "自転車です。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c4_04",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c4_04",
+        "clipId": "ja.clip.jlpt_n5_b_c4_04",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "はい、そうです。"
+          },
+          {
+            "text": "いいえ、結構です。"
+          },
+          {
+            "text": "はい、元気です。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c4_05",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c4_05",
+        "clipId": "ja.clip.jlpt_n5_b_c4_05",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "わたしのです。"
+          },
+          {
+            "text": "あそこです。"
+          },
+          {
+            "text": "1000円です。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "ja.exi.jlpt_n5.b_c4_06",
+      "itemVersion": 1,
+      "sectionId": "choukai",
+      "taskId": "c4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "ja-exx-jlpt_n5-b_c4_06",
+        "clipId": "ja.clip.jlpt_n5_b_c4_06",
+        "question": "Chọn câu đáp lại đúng nhất.",
+        "options": [
+          {
+            "text": "いいえ、行きません。"
+          },
+          {
+            "text": "はい、京都へ行きました。"
+          },
+          {
+            "text": "はい、行きましょう。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "ja.obj.listening.short_dialogues"
+      ]
+    }
+  ],
+  "forms": [
+    {
+      "formId": "a",
+      "itemIds": [
+        "ja.exi.jlpt_n5.a_m1_01",
+        "ja.exi.jlpt_n5.a_m1_02",
+        "ja.exi.jlpt_n5.a_m1_03",
+        "ja.exi.jlpt_n5.a_m1_04",
+        "ja.exi.jlpt_n5.a_m1_05",
+        "ja.exi.jlpt_n5.a_m1_06",
+        "ja.exi.jlpt_n5.a_m1_07",
+        "ja.exi.jlpt_n5.a_m2_01",
+        "ja.exi.jlpt_n5.a_m2_02",
+        "ja.exi.jlpt_n5.a_m2_03",
+        "ja.exi.jlpt_n5.a_m2_04",
+        "ja.exi.jlpt_n5.a_m2_05",
+        "ja.exi.jlpt_n5.a_m3_01",
+        "ja.exi.jlpt_n5.a_m3_02",
+        "ja.exi.jlpt_n5.a_m3_03",
+        "ja.exi.jlpt_n5.a_m3_04",
+        "ja.exi.jlpt_n5.a_m3_05",
+        "ja.exi.jlpt_n5.a_m3_06",
+        "ja.exi.jlpt_n5.a_m4_01",
+        "ja.exi.jlpt_n5.a_m4_02",
+        "ja.exi.jlpt_n5.a_m4_03",
+        "ja.exi.jlpt_n5.a_g1_01",
+        "ja.exi.jlpt_n5.a_g1_02",
+        "ja.exi.jlpt_n5.a_g1_03",
+        "ja.exi.jlpt_n5.a_g1_04",
+        "ja.exi.jlpt_n5.a_g1_05",
+        "ja.exi.jlpt_n5.a_g1_06",
+        "ja.exi.jlpt_n5.a_g1_07",
+        "ja.exi.jlpt_n5.a_g1_08",
+        "ja.exi.jlpt_n5.a_g1_09",
+        "ja.exi.jlpt_n5.a_g2_01",
+        "ja.exi.jlpt_n5.a_g2_02",
+        "ja.exi.jlpt_n5.a_g2_03",
+        "ja.exi.jlpt_n5.a_g2_04",
+        "ja.exi.jlpt_n5.a_g3_01",
+        "ja.exi.jlpt_n5.a_g3_02",
+        "ja.exi.jlpt_n5.a_g3_03",
+        "ja.exi.jlpt_n5.a_g3_04",
+        "ja.exi.jlpt_n5.a_d4_01",
+        "ja.exi.jlpt_n5.a_d4_02",
+        "ja.exi.jlpt_n5.a_d5_01",
+        "ja.exi.jlpt_n5.a_d5_02",
+        "ja.exi.jlpt_n5.a_d6_01",
+        "ja.exi.jlpt_n5.a_c1_01",
+        "ja.exi.jlpt_n5.a_c1_02",
+        "ja.exi.jlpt_n5.a_c1_03",
+        "ja.exi.jlpt_n5.a_c1_04",
+        "ja.exi.jlpt_n5.a_c1_05",
+        "ja.exi.jlpt_n5.a_c1_06",
+        "ja.exi.jlpt_n5.a_c1_07",
+        "ja.exi.jlpt_n5.a_c2_01",
+        "ja.exi.jlpt_n5.a_c2_02",
+        "ja.exi.jlpt_n5.a_c2_03",
+        "ja.exi.jlpt_n5.a_c2_04",
+        "ja.exi.jlpt_n5.a_c2_05",
+        "ja.exi.jlpt_n5.a_c2_06",
+        "ja.exi.jlpt_n5.a_c3_01",
+        "ja.exi.jlpt_n5.a_c3_02",
+        "ja.exi.jlpt_n5.a_c3_03",
+        "ja.exi.jlpt_n5.a_c3_04",
+        "ja.exi.jlpt_n5.a_c3_05",
+        "ja.exi.jlpt_n5.a_c4_01",
+        "ja.exi.jlpt_n5.a_c4_02",
+        "ja.exi.jlpt_n5.a_c4_03",
+        "ja.exi.jlpt_n5.a_c4_04",
+        "ja.exi.jlpt_n5.a_c4_05",
+        "ja.exi.jlpt_n5.a_c4_06"
+      ]
+    },
+    {
+      "formId": "b",
+      "itemIds": [
+        "ja.exi.jlpt_n5.b_m1_01",
+        "ja.exi.jlpt_n5.b_m1_02",
+        "ja.exi.jlpt_n5.b_m1_03",
+        "ja.exi.jlpt_n5.b_m1_04",
+        "ja.exi.jlpt_n5.b_m1_05",
+        "ja.exi.jlpt_n5.b_m1_06",
+        "ja.exi.jlpt_n5.b_m1_07",
+        "ja.exi.jlpt_n5.b_m2_01",
+        "ja.exi.jlpt_n5.b_m2_02",
+        "ja.exi.jlpt_n5.b_m2_03",
+        "ja.exi.jlpt_n5.b_m2_04",
+        "ja.exi.jlpt_n5.b_m2_05",
+        "ja.exi.jlpt_n5.b_m3_01",
+        "ja.exi.jlpt_n5.b_m3_02",
+        "ja.exi.jlpt_n5.b_m3_03",
+        "ja.exi.jlpt_n5.b_m3_04",
+        "ja.exi.jlpt_n5.b_m3_05",
+        "ja.exi.jlpt_n5.b_m3_06",
+        "ja.exi.jlpt_n5.b_m4_01",
+        "ja.exi.jlpt_n5.b_m4_02",
+        "ja.exi.jlpt_n5.b_m4_03",
+        "ja.exi.jlpt_n5.b_g1_01",
+        "ja.exi.jlpt_n5.b_g1_02",
+        "ja.exi.jlpt_n5.b_g1_03",
+        "ja.exi.jlpt_n5.b_g1_04",
+        "ja.exi.jlpt_n5.b_g1_05",
+        "ja.exi.jlpt_n5.b_g1_06",
+        "ja.exi.jlpt_n5.b_g1_07",
+        "ja.exi.jlpt_n5.b_g1_08",
+        "ja.exi.jlpt_n5.b_g1_09",
+        "ja.exi.jlpt_n5.b_g2_01",
+        "ja.exi.jlpt_n5.b_g2_02",
+        "ja.exi.jlpt_n5.b_g2_03",
+        "ja.exi.jlpt_n5.b_g2_04",
+        "ja.exi.jlpt_n5.b_g3_01",
+        "ja.exi.jlpt_n5.b_g3_02",
+        "ja.exi.jlpt_n5.b_g3_03",
+        "ja.exi.jlpt_n5.b_g3_04",
+        "ja.exi.jlpt_n5.b_d4_01",
+        "ja.exi.jlpt_n5.b_d4_02",
+        "ja.exi.jlpt_n5.b_d5_01",
+        "ja.exi.jlpt_n5.b_d5_02",
+        "ja.exi.jlpt_n5.b_d6_01",
+        "ja.exi.jlpt_n5.b_c1_01",
+        "ja.exi.jlpt_n5.b_c1_02",
+        "ja.exi.jlpt_n5.b_c1_03",
+        "ja.exi.jlpt_n5.b_c1_04",
+        "ja.exi.jlpt_n5.b_c1_05",
+        "ja.exi.jlpt_n5.b_c1_06",
+        "ja.exi.jlpt_n5.b_c1_07",
+        "ja.exi.jlpt_n5.b_c2_01",
+        "ja.exi.jlpt_n5.b_c2_02",
+        "ja.exi.jlpt_n5.b_c2_03",
+        "ja.exi.jlpt_n5.b_c2_04",
+        "ja.exi.jlpt_n5.b_c2_05",
+        "ja.exi.jlpt_n5.b_c2_06",
+        "ja.exi.jlpt_n5.b_c3_01",
+        "ja.exi.jlpt_n5.b_c3_02",
+        "ja.exi.jlpt_n5.b_c3_03",
+        "ja.exi.jlpt_n5.b_c3_04",
+        "ja.exi.jlpt_n5.b_c3_05",
+        "ja.exi.jlpt_n5.b_c4_01",
+        "ja.exi.jlpt_n5.b_c4_02",
+        "ja.exi.jlpt_n5.b_c4_03",
+        "ja.exi.jlpt_n5.b_c4_04",
+        "ja.exi.jlpt_n5.b_c4_05",
+        "ja.exi.jlpt_n5.b_c4_06"
+      ]
+    }
+  ]
+}

@@ -23,6 +23,8 @@ generator, run `bash content/ja/_drafts/_generators/ja-pipeline.sh` (byte-determ
 | Session 3 | kana primer (full tables + 20-item checkpoint, pass 16), persist v9 `primerPassed`, profile `romajiUntilPrimer` (ja-vi), romaji line; free writing in kana/pinyin = practice; morphology re-derived (supplement pin, nine cells tagged); 22 conjugationCloze on 25 tables; 8 proper nouns (kind R) → 952 lexemes | `_generators/ja-primer.py`, `ja_paradigms.py`, `src/lib/languages/ja-romaji.ts`, `scripts/lib/lexicon-etl/ja-morphology.ts` |
 | Session 4 | readings 28 (19 teaching, 9 reserved); clips 220 (64 reception of which 21 reserved, 30 speech models, 126 partner turns; one voice: A jf_alpha 116, B jm_kumo 91, two-voice dialogues 13); speech 50 (20 reserved, ja-JP); writing 35 (15 guided, 4 open, 16 reserved); scenarios 21 (11 teaching, 10 reserved); Sections 3–6 +163 exercises (LC 44, RC 42, dictation 5, speakProduction 33, speakRepetition 9, guidedWriting 17, simpleForm 2, interactionScenario 11) → 1,020; self-check extended, 0 findings; proper nouns `proper: true`, never a daily new word | `_generators/ja-reception-s3.py`, `ja-speech-s4.py`, `ja-writing-s5.py`, `ja-scenarios-s6.py`, `ja_layers.py`, `ja_lesson_refs.py`; staged `content/ja/{reception,speech,writing,interaction}/` |
 
+| Session 5 | checkpoints 7 (112 items; capstone 2 forms of 10), placement 4 stages (21 items), 2 more reserved speech items (22); JLPT N5 track `jlpt-n5.json` (staged): 3 sections 20/40/30 min, 14 question types, 2 forms × 67 items, 48 exam clips, 10 exam readings, pass rule 38/120 + 19/60 + total 80/180, `formatFidelity: partial`, checked against jlpt.jp; exam engine: `mcq4`, a task's own skill, item `lexemeRefs`, `select.scriptAid`; signs 立入禁止 安全第一 禁煙 足元注意 消火器 as lexemes (957); spoken kana of inflected verbs matches; KNOWN_LIMITATIONS entry | `_generators/ja-assessment.py`, `ja-exam.py`; `content/ja/exam/FORMAT-SOURCES.md`; staged `content/ja/{assessment,exam}/` |
+
 ## 2. Course shape (BLUEPRINT §1)
 
 Before Section 1: the kana primer (`/primer`, `content/ja/primer/script-primer.json`). Today it holds the vowels and the K row;
@@ -176,6 +178,20 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
     targets; 山田 dropped for 木村 (no reading chain). Re-run `ja-subset.py` (pinned OpenJLPT + JmdictFurigana) after
     adding kanji words.
 
+### Session 5 (2026-11-03)
+
+14. **JLPT N5 format**: only what jlpt.jp states is reproduced (times, 大問, options, scoring sections, pass marks);
+    item counts per 大問 (not published since 2020), the 60/60 split of the 120 points, one play per recording and the
+    raw-share scoring are the course's choices and the track says so (`formatFidelity: partial`,
+    `checkedAgainstOfficialGuide: true` for the figures that were read). Listening questions are Vietnamese and options
+    printed.
+15. **Exam engine for language knowledge** (reused by HSK/TOPIK): `mcq4`; a task's `skill` (reading / structures)
+    inside one timed section; item `lexemeRefs` for weak areas when no stimulus names the word; `select.scriptAid:
+    "hidden"` for kanji-reading and spelling items.
+16. **Signs as lexemes**: 立入禁止, 安全第一, 禁煙, 足元注意, 消火器 (A2-1, work), read through the pinned JmdictFurigana.
+17. **Spoken kana for inflected forms**: whole variants compare by an utterance reading that includes the
+    ja-inflection keys; concept slots stay word-level (no fuzzy substring match).
+
 ## 11. Next sessions
 
 1. ~~**Lessons**~~ done in session 2 (one session): 108 lessons, 835 exercises, 25 cards. Left for the layer sessions:
@@ -185,7 +201,8 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
    `ja_lesson_refs.py`.
 3. ~~**Primer + romaji gate**~~ done in session 3, with the free-writing decision, the morphology and the names.
 4. ~~**Scenarios**~~ done in session 4: 21 (10 reserved), interactionScenario in units s–v (§5).
-5. **Assessment + JLPT N5 track** (1–2): 7 checkpoints, placement, the exam file with ≥ 2 mock forms, format sources.
+5. ~~**Assessment + JLPT N5 track**~~ done in session 5 (one session): 7 checkpoints, placement, the exam file with 2
+   mock forms, format sources (decisions 14–17 below).
 6. **Stories** (1–2): 40–50 graded stories A1-0…A2-1, context coverage of the A1 syllabus.
 7. **D-10 review** (AI pass, then the owner), **audio** (canary + generate, CER audit), promote, compile, V8 re-key, claim gate,
    KNOWN_LIMITATIONS entry, STATUS.

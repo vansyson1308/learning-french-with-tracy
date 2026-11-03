@@ -50,6 +50,14 @@ whose time slot the validator's tokenizer splits (7時に → 七 / 時に: the 
 on a negative sentence, 1 sign question with two defensible keys (出口 beside 非常口: the question now asks for 入口), and concept forms
 that are a stem of a set phrase (お願い inside お願いします, 大丈夫 inside 大丈夫です: the phrase is listed too).
 
+Session 5 (2026-11-03): the assessment banks. The self-check now also reads (rule 6 of its docstring) every item of the
+7 checkpoints (112), the placement (21) and the JLPT N5 track (134): 267 items, 0 findings, 0 decided. Found and fixed
+while writing: 2 checkpoint clozes that repeated a lesson payload (the rule now spans lessons and banks), 6 exam texts
+outside their length band (lengthened), 3 kanji without furigana (練習 and 日 written in kana, 昼休み → 休憩), and a
+spelling distractor that was the key's own word (テレビー). Decisions of the coordinator done: 立入禁止, 安全第一, 禁煙,
+足元注意 and 消火器 are lexemes (A2-1, read through the pinned JmdictFurigana) and the factory signs and rules show them
+(ug-l0 +3 reading questions, ug-l1 +1); a kana transcript of an inflected verb matches the spoken variant (item 5 below).
+
 ## Open for the D-10 reviewer
 
 1. **Typed answers are narrow by nature.** Alternatives cover わたしは dropped, 私 for わたし, に/へ with motion,
@@ -76,8 +84,10 @@ that are a stem of a set phrase (お願い inside お願いします, 大丈夫 
    - Dictation (5): the key is the clip in the standard script, its one alternative the same text in kana (strict
      grading: a mix of the two fails); no clip with a number is dictated (7時 / しちじ / 七時).
    - Speech: variants list わたしは / 私は and the bare sentence; the recogniser's kana is matched through the readings
-     for stored words, but **not** for inflected verbs (働いています written in kana by the recogniser reads per
-     character: the spoken tokenizer keeps the stored words, P4b). Recognisers usually write kanji; to check on a device.
+     for stored words and, since session 5, for inflected verbs and い-adjectives too (はたらいています = 働いています:
+     whole variants are compared by the utterance reading, which uses the ja-inflection keys). Concept slots still
+     match word by word, so a concept written as an inflected kanji form is not found in an all-kana transcript.
+     Recognisers usually write kanji; to check on a device.
    - Writing: model answers in the target script; a kana answer aligns as practice. A time slot lists the bare number
      because the validator's tokenizer splits 7時に as 七 / 時に (the app's lexicon tokenizer does not).
    - Scenarios: a required concept is a run of tokens of the course tokenizer, so a set phrase is listed beside its stem.
@@ -96,3 +106,17 @@ that are a stem of a set phrase (お願い inside お願いします, 大丈夫 
 9. **Romaji** (session 3): the ja-vi profile sets `romajiUntilPrimer`; a Hepburn line under Japanese text shows until
    the learner passes the primer checkpoint (16/20). Read the kana primer (`content/ja/primer/REVIEW.md`) and its 20
    checkpoint items in `_generators/ja-primer.py`.
+10. **Checkpoints and placement** (session 5, `_generators/ja-assessment.py`): every scored stimulus is a reserved record
+    (cp*, a1cap_*, pl_*); choices have four options; Section 2 drills particles, ます forms (conjugationCloze), あります /
+    います, adjectives, question words and kana typing; Section 3 adds two te-form clozes and the sign 立入禁止. The
+    capstone has two forms of 10 (one objective per domain, two items each), as en.
+11. **JLPT N5 track** (session 5, `_generators/ja-exam.py`, `content/ja/exam/FORMAT-SOURCES.md`). Read these first:
+    - 文の組み立て (g2, 8 items): the key is the chunk at ★ in the one order the author wrote. Particles are separate
+      chunks so that few orders are grammatical; two items accept an odd but grammatical order ("へやの わたしの かぎ",
+      "つくえの ペンと ノートが うえに"): check that no second natural order puts another chunk at ★.
+    - 言い換え類義 (m4, 6 items): the key is close in meaning, not identical (やすい ≈ たかくない, おととい ≈ ふつかまえ).
+    - 表記 (m2): the wrong spellings are not words on purpose (字校, 学交); the app hides the readings on m1 and m2.
+    - 文脈規定 and 文法 (m3, g1): every option was chosen so that only one fits; pairs the self-check reads (は/が, に/へ,
+      と/や, ね/よ, は/も) are never offered together. Context words (たかかったです, ちょっと) decide m3 a2 and b3.
+    - Listening: the questions are Vietnamese and the options printed — an adaptation the track states. Recordings play
+      once in the exam; the dialogues have no narrator line (the cast has two voices).

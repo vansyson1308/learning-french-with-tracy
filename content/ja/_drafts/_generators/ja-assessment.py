@@ -227,7 +227,7 @@ s2 = items("s2", [
  ("part_time", (fill("毎朝7時___起きます。", "に", ["で", "を", "が"], "Mỗi sáng tôi dậy lúc 7 giờ."), PC)),
  ("part_bus", (fill("バス___会社へ行きます。", "で", ["を", "が", "の"], "Tôi đi làm bằng xe buýt."), PC)),
  ("part_place", (fill("スーパー___パンを買いました。", "で", ["を", "が", "の"], "Tôi đã mua bánh mì ở siêu thị."), PC)),
- ("masu_saw", (conj("昨日、映画を___。", "Hôm qua tôi đã xem phim.", "見る", "polite:past:aff"), MV)),
+ ("masu_saw", (conj("先週、友達と映画を___。", "Tuần trước tôi đã xem phim với bạn.", "見る", "polite:past:aff"), MV)),
  ("masu_not_go", (conj("明日は会社へ___。", "Ngày mai tôi không đi làm.", "行く", "polite:nonpast:neg"), MV)),
  ("masu_sleep", (conj("毎晩11時に___。", "Tối nào tôi cũng đi ngủ lúc 11 giờ.", "寝る", "polite:nonpast:aff"), MV)),
  ("exist_child", (fill("公園に子供が___。", "います", ["あります", "です", "します"], "Ở công viên có trẻ con."), EX)),
@@ -275,7 +275,7 @@ s3 = items("s3", [
  ("text_linh_work", (rc("cp3_text_linh", "Chị Linh làm việc ở đâu?", "Ở một bệnh viện ở Kyoto", ["Ở một nhà máy ở Kyoto", "Ở một bệnh viện ở Osaka", "Ở một trường học ở Kyoto"]), RT)),
  ("text_tuan_bike", (rc("cp3_text_week", "Anh Tuấn đi làm bằng gì?", "Xe đạp", ["Xe buýt", "Tàu điện", "Đi bộ"]), RT)),
  ("text_tuan_sunday", (rc("cp3_text_week", "Chủ nhật anh Tuấn làm gì?", "Đọc sách ở nhà", ["Đi mua sắm ở siêu thị", "Đi làm", "Đi xe đạp"]), RT)),
- ("te_write", (conj("ここに名前を___ください。", "Hãy viết tên vào đây.", "書く", "te"), TE)),
+ ("te_write", (conj("この紙に住所を___ください。", "Hãy viết địa chỉ vào tờ giấy này.", "書く", "te"), TE)),
  ("te_wait", (conj("駅の前で___ください。", "Hãy đợi ở trước nhà ga.", "待つ", "te"), TE)),
 ])
 
