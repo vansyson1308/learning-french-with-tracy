@@ -298,7 +298,10 @@ def lexemes_of(rows, ids):
         lex = {"id": ids[lemma], "surface": lemma}
         if lemma in LEGACY:
             lex["legacySurfaces"] = LEGACY[lemma]
-        lex.update({"lemma": lemma, "lookupForm": lemma, "partOfSpeech": pos, "glosses": {"en": r["en"], "vi": r["vi"]},
+        lex.update({"lemma": lemma, "lookupForm": lemma, "partOfSpeech": pos})
+        if r["kind"] == "R":
+            lex["proper"] = True  # P4c session 4: taught in lessons, never a daily new word in TODAY
+        lex.update({"glosses": {"en": r["en"], "vi": r["vi"]},
                     "pronunciation": {"value": r["kana"], "notation": "kana", "source": source}, "reading": reading})
         if ev and ev.get("frequency"):
             f = ev["frequency"]

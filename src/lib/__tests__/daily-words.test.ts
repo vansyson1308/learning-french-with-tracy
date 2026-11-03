@@ -83,6 +83,24 @@ describe("daily word candidates", () => {
   });
 });
 
+describe("proper nouns (P4c): taught in lessons, never a daily new word", () => {
+  const unit = ES.sections[0].units[0].id;
+  const meta = (id: string, surface: string, proper?: true) => ({ id, surface, lookupForm: surface, lemma: surface, gloss: surface, pos: "noun", ...(proper ? { proper } : {}) });
+  const lookup = (id: string) => ({ "xx:w:tokyo": meta(id, "東京", true), "xx:w:mizu": meta(id, "水"), "xx:w:tanaka": meta(id, "田中", true) })[id];
+  const entries = [{ id: "xx:w:tokyo", unitId: unit }, { id: "xx:w:mizu", unitId: unit }, { id: "xx:w:tanaka", unitId: unit }];
+
+  test("a lexeme flagged proper is skipped; the next common word is offered", () => {
+    const got = dailyWordCandidates({ courseId: "es-vi", pack: ES, completedLessons: {}, cards: {}, entries, lookup });
+    expect(got.map((c) => c.itemId)).toEqual(["xx:w:mizu"]);
+  });
+
+  test("without the flag nothing changes (fr, en, es carry none)", () => {
+    const plain = (id: string) => meta(id, id);
+    const got = dailyWordCandidates({ courseId: "es-vi", pack: ES, completedLessons: {}, cards: {}, entries, lookup: plain });
+    expect(got.map((c) => c.itemId)).toEqual(entries.map((e) => e.id));
+  });
+});
+
 describe("TODAY with the daily stream", () => {
   const base = { courseId: "es-vi", pack: ES, completedLessons: {}, cards: {}, preset: "regular" as const, seed: 7, now: NOW };
 

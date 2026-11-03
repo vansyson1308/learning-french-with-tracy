@@ -230,6 +230,9 @@ export function validateLexiconData(input: {
     if (lex.partOfSpeech !== "noun" && lex.gender !== undefined) {
       err(`${where}: gender is meaningful on nouns only`);
     }
+    if (lex.proper === true && lex.partOfSpeech !== "noun") {
+      err(`${where}: proper nouns are nouns (partOfSpeech is ${lex.partOfSpeech})`);
+    }
 
     // lookupForm is the surface minus its leading article — stored, verified.
     const { article, rest } = plugin.splitSurfaceArticle(lex.surface);

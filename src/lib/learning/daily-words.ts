@@ -107,6 +107,7 @@ export function dailyWordCandidates(args: {
     if (args.cards?.[`${e.id}|recognize`]) continue;
     const meta = lookup(e.id);
     if (!meta || !meta.gloss) continue;
+    if (meta.proper === true) continue; // P4c: names and places are taught in lessons, never as a daily new word
     out.push({ itemId: e.id, word: dailyWordFromMeta(meta) });
   }
   return out;

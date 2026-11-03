@@ -1053,6 +1053,11 @@ export const richLexemeSchema = (lang: string) =>
      */
     lookupForm: z.string().min(1),
     partOfSpeech: z.enum(POS_VALUES),
+    /**
+     * P4c: a proper noun (a person's or a place's name: ja 田中, 東京). Nouns only (validated). The lessons teach it
+     * like any lexeme; TODAY never offers it as a daily new word (src/lib/learning/daily-words.ts).
+     */
+    proper: z.literal(true).optional(),
     /** Nouns only (validated); other parts of speech must omit it. */
     gender: z.enum(GENDER_VALUES).optional(),
     /** Native-language gloss per native code; byte-identical to the course word's `native`. */
