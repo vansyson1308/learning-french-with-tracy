@@ -25,6 +25,8 @@ export type CourseLexicon = {
     reading?: { value: string; notation: string };
     /** Other spellings of the same word that fold to `surface` (zh: traditional). */
     variants?: readonly string[];
+    /** Part of speech from the lexicon index (ja: verbs and い-adjectives get inflection keys). */
+    pos?: string;
   }[];
 };
 

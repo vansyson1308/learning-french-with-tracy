@@ -36,6 +36,7 @@ import {
   tokenizeCjk,
   type CjkDictionary,
 } from "./cjk";
+import { furiganaFromKana, japaneseInflections } from "./ja-inflection";
 import type { CourseLexicon, LanguageRules } from "./types";
 
 const KANJI_DIGITS = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
@@ -178,10 +179,23 @@ function bind(lexicon: CourseLexicon): Bound {
     spokenReadings.set(foldSpokenJapanese(surface), katakanaToHiragana(foldSpokenJapanese(reading)));
     lenientReadings.set(normalizeLenientJapanese(surface).replace(/ /g, ""), normalizeLenientJapanese(reading).replace(/ /g, ""));
   }
+  // P4c: the stems of inflected verbs and い-adjectives (食べま → たべま) join the lenient readings only, so kana typed
+  // for 食べます aligns (practice); tokenizing and spoken grading keep the stored words.
+  const inflected = japaneseInflections(
+    lexicon.entries.flatMap((e) => {
+      const kana = e.reading?.notation === "kana" ? e.reading.value : undefined;
+      const furigana = kana ? furiganaFromKana(e.surface, kana) : null;
+      return kana && furigana ? [{ surface: e.surface, kana, pos: e.pos, furigana }] : [];
+    })
+  );
+  for (const form of inflected) {
+    const key = normalizeLenientJapanese(form.surface).replace(/ /g, "");
+    if (!lenientReadings.has(key)) lenientReadings.set(key, normalizeLenientJapanese(form.kana).replace(/ /g, ""));
+  }
   const kanaForms = [...readings.values()].flatMap((r) => [r, katakanaToHiragana(r)]);
   return {
     spoken: buildDictionary([...words, ...kanaForms], foldSpokenJapanese),
-    lenient: buildDictionary([...words, ...kanaForms], normalizeLenientJapanese),
+    lenient: buildDictionary([...words, ...inflected.map((f) => f.surface), ...kanaForms], normalizeLenientJapanese),
     spokenReadings,
     lenientReadings,
   };

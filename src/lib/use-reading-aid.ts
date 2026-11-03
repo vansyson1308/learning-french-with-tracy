@@ -3,6 +3,8 @@ import { useMemo } from "react";
 import { getPack } from "./content";
 import { artifactsFor } from "./content-registry";
 import { courseProfile } from "./course-profile";
+import { languageRules } from "./languages";
+import { japaneseInflectionSources } from "./languages/ja-inflection";
 import { readingAidOn, readingFor, readingMap } from "./learning/reading-aid";
 import {
   buildScriptReadingIndex,
@@ -32,23 +34,29 @@ export function useReadingAid(courseId?: string): (text: string) => string | und
   return useMemo(() => (on && map.size > 0 ? (text: string) => readingFor(map, text) : none), [on, map]);
 }
 
-type IndexEntryLike = { surface?: unknown; reading?: WordReading };
+type IndexEntryLike = { surface?: unknown; reading?: WordReading; pos?: unknown };
 
 /**
  * P4b stage 5: every stored reading of a course — its pack words first,
  * then its lexicon index — for a course whose script is not Latin. A
  * Latin-script course gets the empty index, so its renderers never change.
+ * P4c: a kana-reading language (ja) appends the inflection keys of its
+ * verbs and い-adjectives, so 食べます shows furigana over 食.
  */
 export function scriptReadingIndexFor(courseId: string, pack: Pack): ScriptReadingIndex {
-  if (courseProfile(courseId).script === "latin") return EMPTY_SCRIPT_INDEX;
+  const profile = courseProfile(courseId);
+  if (profile.script === "latin") return EMPTY_SCRIPT_INDEX;
   const sources: ReadingSource[] = [];
   for (const section of pack.sections)
     for (const unit of section.units) for (const w of unit.words) if (w.reading) sources.push({ surface: w.target, reading: w.reading });
   const index = artifactsFor(courseId).lexiconIndex as { entries?: IndexEntryLike[] } | undefined;
   for (const e of index?.entries ?? []) {
-    if (typeof e.surface === "string" && e.reading && typeof e.reading === "object") sources.push({ surface: e.surface, reading: e.reading });
+    if (typeof e.surface === "string" && e.reading && typeof e.reading === "object") {
+      sources.push({ surface: e.surface, reading: e.reading, ...(typeof e.pos === "string" ? { pos: e.pos } : {}) });
+    }
   }
-  return buildScriptReadingIndex(sources);
+  const inflected = languageRules(profile.targetCode).readingInput === "kana" ? japaneseInflectionSources(sources) : [];
+  return buildScriptReadingIndex([...sources, ...inflected]);
 }
 
 /**

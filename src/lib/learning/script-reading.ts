@@ -30,8 +30,8 @@ export type ScriptReading = {
   hanViet?: string;
 };
 
-/** A word whose reading is stored (a pack word or a lexicon index entry). */
-export type ReadingSource = { surface: string; reading: WordReading };
+/** A word whose reading is stored (a pack word or a lexicon index entry); `pos` lets ja add its inflection keys. */
+export type ReadingSource = { surface: string; reading: WordReading; pos?: string };
 
 export type ScriptReadingIndex = {
   readonly bySurface: ReadonlyMap<string, WordReading>;
