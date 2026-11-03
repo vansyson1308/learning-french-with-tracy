@@ -23,6 +23,7 @@ import {
   ALLOWED_LICENSES,
   CatalogSchema,
   LANGUAGE_CODE_PATTERN,
+  LegacyUnmappedSchema,
   PackSchema,
   SourceRegistrySchema,
   idLanguage,
@@ -666,11 +667,17 @@ export function validateContent(): ValidationResult {
       if (a !== b) err(`${rel} drifted from ${generatedRel} — run bun run content:compile`);
     }
     const legacy = loadLegacyMaps([{ courseId, pack } as LoadedPack])[code] ?? {};
+    let unmapped = new Map<string, string>();
+    try {
+      unmapped = loadLegacyUnmapped(code);
+    } catch (e) {
+      err(`${legacyUnmappedRel(code)}: ${(e as Error).message.split("\n")[0]}`);
+    }
     for (const section of pack.sections)
       for (const unit of section.units)
         for (const word of unit.words)
-          if (map[word.target] === undefined && legacy[word.target] === undefined) {
-            err(`${courseId}: word "${word.target}" missing from ${rel} (and from the lexicon's legacySurfaces)`);
+          if (map[word.target] === undefined && legacy[word.target] === undefined && unmapped.get(word.target) !== courseId) {
+            err(`${courseId}: word "${word.target}" missing from ${rel} (and from the lexicon's legacySurfaces and ${legacyUnmappedRel(code)})`);
           }
   }
 
@@ -949,6 +956,22 @@ export function loadLegacyMaps(packs: LoadedPack[] = loadPacks()): Record<string
     if (Object.keys(map).length > 0) maps[code] = map;
   }
   return maps;
+}
+
+export function legacyUnmappedRel(code: string): string {
+  return `content/${code}/lexicon/legacy-unmapped.json`;
+}
+
+/**
+ * P4c: basic-pack surfaces that map to no lexeme (content/<lang>/lexicon/legacy-unmapped.json):
+ * surface → the course that teaches it. Empty without the file; a schema failure throws.
+ */
+export function loadLegacyUnmapped(code: string): Map<string, string> {
+  const rel = legacyUnmappedRel(code);
+  if (!existsSync(safeResolve(rel))) return new Map();
+  const doc = LegacyUnmappedSchema.parse(readJson(rel));
+  if (doc.language !== code) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${code}"`);
+  return new Map(doc.surfaces.map((s) => [s.surface, s.courseId]));
 }
 
 /**

@@ -956,6 +956,23 @@ export const LexemeReadingsFileSchema = z.strictObject({
 });
 export type LexemeReadingsFile = z.infer<typeof LexemeReadingsFileSchema>;
 
+/**
+ * P4c: content/<lang>/lexicon/legacy-unmapped.json — words of an inherited
+ * basic pack (never edited, its surfaces are learner-data keys) that map to
+ * no lexeme, directly or through `legacySurfaces` (QC 2026-10-28: "or listed
+ * in an explicit unmapped file with a reason"). Their progress keeps a
+ * reversible `<lang>:legacy:` id; a listed surface that does map is stale.
+ */
+export const LegacyUnmappedSchema = z.strictObject({
+  version: z.literal(1),
+  language: languageCode,
+  note: z.string().min(1),
+  surfaces: z
+    .array(z.strictObject({ courseId: z.string().min(1), surface: z.string().min(1), reason: z.string().min(20) }))
+    .min(1),
+});
+export type LegacyUnmapped = z.infer<typeof LegacyUnmappedSchema>;
+
 /** One example sentence: target text + its translation per native code. */
 export const LexemeExampleSchema = z.strictObject({
   target: z.string().min(1),
