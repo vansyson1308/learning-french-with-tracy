@@ -1353,3 +1353,7 @@ migrations.golden.test.ts alone — the compile manifest was not re-blessed (the
 - compile: new      lexicon-db:ja-en:ja-en-lexicon-v3-c8772f8b3442a06f.db
 - compile: new      lexicon-db:ja:ja-lexicon-v3-479f6878499612e0.db
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+
+## 2026-11-03 — P4c: the Hán-Việt and ja primer D-10 review sheets regenerated after the review fixes
+
+- no golden changed (manifest and snapshots identical)
