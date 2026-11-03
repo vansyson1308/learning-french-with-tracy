@@ -2,6 +2,16 @@
 
 > **Lần thức gần nhất:** 2026-11-03 01:00 UTC. **Lần thức kế tiếp:** khoảng 50 phút sau, hoặc khi agent giai đoạn 4 của P4b báo xong. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
 >
+> **Ghi chú (2026-11-03, tối):**
+> - **PR #62 (P4b) đã merge (a17e021):** 22/22 check xanh; `main` xanh (CI, Device acceptance, Pages).
+> - **P4c ja-vi (`phase-4/ja-vi`), phiên 1 xong:**
+>   - Bộ từ: 944 từ (A1 718, A2-1 226), từ nào cũng có nghĩa tiếng Việt, kana và furigana. Phủ 629/662 từ JLPT N5 của OpenJLPT; 33 từ còn lại có ghi lý do.
+>   - Chữ: 100 kanji mục tiêu. Hán-Việt thêm 115 từ.
+>   - Khung khoá: 37 mục tiêu, 108 bài (chưa có bài tập), pipeline cho ra kết quả giống hệt nhau mỗi lần chạy. Kế hoạch ở `plan/authoring/ja-plan.md`.
+>   - Giọng B `kokoro-jm_kumo` có tỉ lệ lỗi canary 0,50, vẫn trong ngưỡng 0,6 của quy tắc chọn giọng. Kokoro không có giọng nam tiếng Nhật nào khác, MeloTTS đã bị loại (D-11), nên giữ theo quy tắc hiện hành.
+>   - Tên hạng mục JF Standard sẽ đối chiếu với trang chính thức ở phiên duyệt.
+>   - Phiên tiếp: bài học và thẻ khái niệm.
+>
 > **Ghi chú (2026-11-03, QC-2026-11-03 / D-15):**
 > - **Đã merge:** #59 en-vi (7aaefcc), #60 voice sampler (4a8d1e8), #61 D-15 (ad4c349). Cả ba PR đều qua đủ 22/22 check.
 > - **Voice sampler:** artifact `voice-samplers` đã có trên main (run 41525390857), gồm fr 82 giây, de 88 giây, pt 72 giây, en 94 giây. Dòng tuỳ chọn ở đầu checklist.
