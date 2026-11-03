@@ -11,6 +11,7 @@ import { buildPlugin } from "../lib/languages";
 import { loadRichLexicon } from "../lib/lexicon";
 import { courseRolesFor, loadIdMaps, loadPacks, safeResolve } from "../lib/pipeline";
 import {
+  analyzeStory,
   bandOneOrder,
   buildLexemeIndex,
   MICRO_STORY_UNITS,
@@ -71,6 +72,60 @@ describe("tokenizer", () => {
     expect(words("de", "Um 8.30 Uhr kostet es 90 Euro.")).toEqual(["Um", "Uhr", "kostet", "es", "Euro"]);
     expect(words("es", "Cuesta 48.000 euros, 1.000 más.")).toEqual(["Cuesta", "euros", "más"]);
     expect(segmentSentence("de", "Um 8.30 Uhr.").map((p) => p.text).join("")).toBe("Um 8.30 Uhr.");
+  });
+});
+
+describe("unspaced scripts: the P4b dictionary path (P4c ja)", () => {
+  const lexicon = loadRichLexicon("ja");
+  const index = buildLexemeIndex("ja", lexicon, loadVerbForms("ja"));
+  const story = (text: string, tokenMap: Record<string, string> = {}): StorySource => ({
+    id: "ja.story.test",
+    band: "A1-1",
+    title: "テスト",
+    blurb: { vi: "x" },
+    sentences: [{ speaker: "N", text, translation: { vi: "x" } }],
+    newLexemes: ["ja:w:pan", "ja:w:maiasa", "ja:w:ji"],
+    tokenMap,
+    questions: [],
+    sourceRef: "original-project",
+  });
+  const analyze = (text: string, tokenMap: Record<string, string> = {}) =>
+    analyzeStory("ja", story(text, tokenMap), { index, functionWords: new Set(["は", "を", "に", "が"]), bands: new Map() });
+
+  test("a lexeme form is one key, never split by Intl.Segmenter", () => {
+    expect(index.single.get("おはようございます")).toBe("ja:w:ohayougozaimasu");
+    expect(index.single.get("食べます")).toBe("ja:w:taberu"); // a morphology row
+    expect(index.multi).toEqual([]);
+  });
+
+  test("a sentence splits by maximal match over the lexicon, the function words and the token map", () => {
+    const text = "ナムさんは毎朝7時にパンを食べます。";
+    const a = analyze(text, { ナム: "name" });
+    expect(a.sentences[0].map((p) => p.text).join("")).toBe(text);
+    expect(a.lexemes).toEqual(["ja:w:san", "ja:w:maiasa", "ja:w:ji", "ja:w:pan", "ja:w:taberu"]);
+    // ナム さん は 毎朝 時 に パン を 食べます: the digit and the full stop are not words.
+    expect(a.tokens).toBe(9);
+    expect(a.unresolved).toEqual([]);
+  });
+
+  test("an inflected form outside the morphology resolves only through an explicit token-map entry", () => {
+    expect(analyze("パンを食べましょう。").unresolved.length).toBeGreaterThan(0);
+    const mapped = analyze("パンを食べましょう。", { 食べましょう: "ja:w:taberu" });
+    expect(mapped.unresolved).toEqual([]);
+    expect(mapped.lexemes).toEqual(["ja:w:pan", "ja:w:taberu"]);
+    expect(mapped.tokens).toBe(3);
+  });
+
+  test("the longest match gives way to a shorter one when it would strand the next character (は + いくら, not はい + く…)", () => {
+    const a = analyze("パンはいくらですか。");
+    expect(a.unresolved).toEqual([]);
+    expect(a.sentences[0].map((p) => p.text)).toEqual(["パン", "は", "いくら", "です", "か", "。"]);
+    // はい stays one word where nothing is stranded.
+    expect(analyze("はい、パンです。").lexemes).toEqual(["ja:w:hai", "ja:w:pan", "ja:w:desu"]);
+  });
+
+  test("Latin targets keep the Intl.Segmenter path", () => {
+    expect(words("fr", "Il mange du pain.")).toEqual(["Il", "mange", "du", "pain"]);
   });
 });
 

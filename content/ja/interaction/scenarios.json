@@ -1,0 +1,3760 @@
+{
+  "version": 1,
+  "language": "ja",
+  "scenarios": [
+    {
+      "id": "ja.scenario.konbini_bento",
+      "title": {
+        "vi": "Ở cửa hàng tiện lợi"
+      },
+      "goal": {
+        "vi": "Nhờ nhân viên hâm nóng cơm hộp, rồi nói bạn không cần túi."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。ありがとうございました。",
+          "clipId": "ja.clip.ix_konbini_bento_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "いらっしゃいませ。お弁当はあたためますか。",
+          "clipId": "ja.clip.ix_konbini_bento_0",
+          "rephraseText": "お弁当、あたためますか。",
+          "rephraseClipId": "ja.clip.ix_konbini_bento_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nhờ nhân viên hâm nóng."
+          },
+          "expected": [
+            {
+              "intent": "heat",
+              "acceptedVariants": [
+                "はい、お願いします",
+                "お願いします",
+                "はい",
+                "はい、あたためてください",
+                "あたためてください"
+              ],
+              "requiredConcepts": [
+                [
+                  "お願いします",
+                  "はい",
+                  "あたためて"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "お弁当、あたためますか。",
+          "clipId": "ja.clip.ix_konbini_bento_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nhờ nhân viên hâm nóng."
+          },
+          "expected": [
+            {
+              "intent": "heat",
+              "acceptedVariants": [
+                "はい、お願いします",
+                "お願いします",
+                "はい",
+                "はい、あたためてください",
+                "あたためてください"
+              ],
+              "requiredConcepts": [
+                [
+                  "お願いします",
+                  "はい",
+                  "あたためて"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "袋はいりますか。",
+          "clipId": "ja.clip.ix_konbini_bento_1",
+          "rephraseText": "袋、いりますか。",
+          "rephraseClipId": "ja.clip.ix_konbini_bento_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn không cần túi."
+          },
+          "expected": [
+            {
+              "intent": "no_bag",
+              "acceptedVariants": [
+                "いいえ、結構です",
+                "結構です",
+                "いいえ、大丈夫です",
+                "大丈夫です",
+                "いいえ、いりません",
+                "袋はいりません",
+                "いいえ"
+              ],
+              "requiredConcepts": [
+                [
+                  "結構",
+                  "大丈夫",
+                  "大丈夫です",
+                  "いりません"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "袋、いりますか。",
+          "clipId": "ja.clip.ix_konbini_bento_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn không cần túi."
+          },
+          "expected": [
+            {
+              "intent": "no_bag",
+              "acceptedVariants": [
+                "いいえ、結構です",
+                "結構です",
+                "いいえ、大丈夫です",
+                "大丈夫です",
+                "いいえ、いりません",
+                "袋はいりません",
+                "いいえ"
+              ],
+              "requiredConcepts": [
+                [
+                  "結構",
+                  "大丈夫",
+                  "大丈夫です",
+                  "いりません"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "全部で650円です。ありがとうございます。",
+          "clipId": "ja.clip.ix_konbini_bento_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.restaurant_order",
+      "title": {
+        "vi": "Gọi món ở quán ăn"
+      },
+      "goal": {
+        "vi": "Nói bạn đi một mình, rồi gọi một bát ramen và một cốc nước."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません、もう一度お願いします。",
+          "clipId": "ja.clip.ix_restaurant_order_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "いらっしゃいませ。なんめいさまですか。",
+          "clipId": "ja.clip.ix_restaurant_order_0",
+          "rephraseText": "何人ですか。",
+          "rephraseClipId": "ja.clip.ix_restaurant_order_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đi một mình."
+          },
+          "expected": [
+            {
+              "intent": "one_person",
+              "acceptedVariants": [
+                "一人です",
+                "一人",
+                "一人でお願いします"
+              ],
+              "requiredConcepts": [
+                [
+                  "一人"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "何人ですか。",
+          "clipId": "ja.clip.ix_restaurant_order_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đi một mình."
+          },
+          "expected": [
+            {
+              "intent": "one_person",
+              "acceptedVariants": [
+                "一人です",
+                "一人",
+                "一人でお願いします"
+              ],
+              "requiredConcepts": [
+                [
+                  "一人"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "こちらへどうぞ。何にしますか。",
+          "clipId": "ja.clip.ix_restaurant_order_1",
+          "rephraseText": "何を食べますか。",
+          "rephraseClipId": "ja.clip.ix_restaurant_order_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy gọi một bát ramen và một cốc nước."
+          },
+          "expected": [
+            {
+              "intent": "order",
+              "acceptedVariants": [
+                "ラーメンと水をお願いします",
+                "ラーメンと水、お願いします",
+                "ラーメンと水をください",
+                "ラーメンとお水をお願いします",
+                "ラーメンとお水、お願いします",
+                "ラーメンとお水をください",
+                "ラーメンを一つと水をお願いします",
+                "ラーメンを一つと水、お願いします"
+              ],
+              "requiredConcepts": [
+                [
+                  "ラーメン"
+                ],
+                [
+                  "水"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "何を食べますか。",
+          "clipId": "ja.clip.ix_restaurant_order_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy gọi một bát ramen và một cốc nước."
+          },
+          "expected": [
+            {
+              "intent": "order",
+              "acceptedVariants": [
+                "ラーメンと水をお願いします",
+                "ラーメンと水、お願いします",
+                "ラーメンと水をください",
+                "ラーメンとお水をお願いします",
+                "ラーメンとお水、お願いします",
+                "ラーメンとお水をください",
+                "ラーメンを一つと水をお願いします",
+                "ラーメンを一つと水、お願いします"
+              ],
+              "requiredConcepts": [
+                [
+                  "ラーメン"
+                ],
+                [
+                  "水"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "はい、ラーメンと水ですね。",
+          "clipId": "ja.clip.ix_restaurant_order_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.ask_station",
+      "title": {
+        "vi": "Hỏi đường đến ga"
+      },
+      "goal": {
+        "vi": "Hỏi một người lạ ga ở đâu, rồi cảm ơn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません、わかりません。",
+          "clipId": "ja.clip.ix_ask_station_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "はい、なんでしょうか。",
+          "clipId": "ja.clip.ix_ask_station_0",
+          "rephraseText": "どうしましたか。",
+          "rephraseClipId": "ja.clip.ix_ask_station_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi ga ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "駅はどこですか",
+                "すみません、駅はどこですか",
+                "駅はどこにありますか",
+                "すみません、駅はどこにありますか"
+              ],
+              "requiredConcepts": [
+                [
+                  "駅"
+                ],
+                [
+                  "どこ"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "どうしましたか。",
+          "clipId": "ja.clip.ix_ask_station_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi ga ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "駅はどこですか",
+                "すみません、駅はどこですか",
+                "駅はどこにありますか",
+                "すみません、駅はどこにありますか"
+              ],
+              "requiredConcepts": [
+                [
+                  "駅"
+                ],
+                [
+                  "どこ"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "まっすぐ行って、二つ目の角を右に曲がってください。",
+          "clipId": "ja.clip.ix_ask_station_1",
+          "rephraseText": "まっすぐ行って、右です。",
+          "rephraseClipId": "ja.clip.ix_ask_station_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "ありがとうございます",
+                "どうもありがとうございます",
+                "ありがとうございました",
+                "わかりました。ありがとうございます",
+                "分かりました。ありがとうございます"
+              ],
+              "requiredConcepts": [
+                [
+                  "ありがとう",
+                  "ありがとうございます",
+                  "どうも"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "まっすぐ行って、右です。",
+          "clipId": "ja.clip.ix_ask_station_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "ありがとうございます",
+                "どうもありがとうございます",
+                "ありがとうございました",
+                "わかりました。ありがとうございます",
+                "分かりました。ありがとうございます"
+              ],
+              "requiredConcepts": [
+                [
+                  "ありがとう",
+                  "ありがとうございます",
+                  "どうも"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "どういたしまして。気をつけて。",
+          "clipId": "ja.clip.ix_ask_station_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.train_platform",
+      "title": {
+        "vi": "Ở sân ga"
+      },
+      "goal": {
+        "vi": "Hỏi nhân viên nhà ga tàu này có đi Nagoya không, rồi nhắc lại số sân ga."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません、もう一度言ってください。",
+          "clipId": "ja.clip.ix_train_platform_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "どうしましたか。",
+          "clipId": "ja.clip.ix_train_platform_0",
+          "rephraseText": "何か困っていますか。",
+          "rephraseClipId": "ja.clip.ix_train_platform_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi tàu này có đi Nagoya không."
+          },
+          "expected": [
+            {
+              "intent": "ask_train",
+              "acceptedVariants": [
+                "この電車は名古屋へ行きますか",
+                "この電車は名古屋に行きますか",
+                "名古屋へ行きますか",
+                "名古屋に行きますか"
+              ],
+              "requiredConcepts": [
+                [
+                  "名古屋"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "何か困っていますか。",
+          "clipId": "ja.clip.ix_train_platform_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi tàu này có đi Nagoya không."
+          },
+          "expected": [
+            {
+              "intent": "ask_train",
+              "acceptedVariants": [
+                "この電車は名古屋へ行きますか",
+                "この電車は名古屋に行きますか",
+                "名古屋へ行きますか",
+                "名古屋に行きますか"
+              ],
+              "requiredConcepts": [
+                [
+                  "名古屋"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "いいえ。名古屋は3番のホームです。",
+          "clipId": "ja.clip.ix_train_platform_1",
+          "rephraseText": "3番です。",
+          "rephraseClipId": "ja.clip.ix_train_platform_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nhắc lại số sân ga để chắc chắn."
+          },
+          "expected": [
+            {
+              "intent": "repeat",
+              "acceptedVariants": [
+                "3番ですね",
+                "3番のホームですね",
+                "3番ですか"
+              ],
+              "requiredConcepts": [
+                [
+                  "3番"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "3番です。",
+          "clipId": "ja.clip.ix_train_platform_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nhắc lại số sân ga để chắc chắn."
+          },
+          "expected": [
+            {
+              "intent": "repeat",
+              "acceptedVariants": [
+                "3番ですね",
+                "3番のホームですね",
+                "3番ですか"
+              ],
+              "requiredConcepts": [
+                [
+                  "3番"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "はい、そうです。",
+          "clipId": "ja.clip.ix_train_platform_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.clinic_reception",
+      "title": {
+        "vi": "Ở quầy lễ tân phòng khám"
+      },
+      "goal": {
+        "vi": "Nói đây là lần đầu bạn đến, rồi đưa thẻ bảo hiểm."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません、もう一度お願いします。",
+          "clipId": "ja.clip.ix_clinic_reception_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "こんにちは。初めてですか。",
+          "clipId": "ja.clip.ix_clinic_reception_0",
+          "rephraseText": "この病院は初めてですか。",
+          "rephraseClipId": "ja.clip.ix_clinic_reception_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời: đúng, đây là lần đầu bạn đến."
+          },
+          "expected": [
+            {
+              "intent": "first",
+              "acceptedVariants": [
+                "はい、初めてです",
+                "初めてです",
+                "はい"
+              ],
+              "requiredConcepts": [
+                [
+                  "初めて",
+                  "はい"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "この病院は初めてですか。",
+          "clipId": "ja.clip.ix_clinic_reception_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời: đúng, đây là lần đầu bạn đến."
+          },
+          "expected": [
+            {
+              "intent": "first",
+              "acceptedVariants": [
+                "はい、初めてです",
+                "初めてです",
+                "はい"
+              ],
+              "requiredConcepts": [
+                [
+                  "初めて",
+                  "はい"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "保険証はありますか。",
+          "clipId": "ja.clip.ix_clinic_reception_1",
+          "rephraseText": "保険証を見せてください。",
+          "rephraseClipId": "ja.clip.ix_clinic_reception_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy đưa thẻ bảo hiểm và nói một câu lịch sự."
+          },
+          "expected": [
+            {
+              "intent": "hand_over",
+              "acceptedVariants": [
+                "はい、これです",
+                "はい、どうぞ",
+                "これです",
+                "どうぞ",
+                "はい、あります"
+              ],
+              "requiredConcepts": [
+                [
+                  "どうぞ",
+                  "これ",
+                  "あります"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "保険証を見せてください。",
+          "clipId": "ja.clip.ix_clinic_reception_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy đưa thẻ bảo hiểm và nói một câu lịch sự."
+          },
+          "expected": [
+            {
+              "intent": "hand_over",
+              "acceptedVariants": [
+                "はい、これです",
+                "はい、どうぞ",
+                "これです",
+                "どうぞ",
+                "はい、あります"
+              ],
+              "requiredConcepts": [
+                [
+                  "どうぞ",
+                  "これ",
+                  "あります"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "ありがとうございます。少し待ってください。",
+          "clipId": "ja.clip.ix_clinic_reception_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.clinic_doctor",
+      "title": {
+        "vi": "Đi khám bệnh"
+      },
+      "goal": {
+        "vi": "Nói với bác sĩ bạn đau đầu và bị sốt từ hôm qua."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。看護師と話してください。",
+          "clipId": "ja.clip.ix_clinic_doctor_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "どうしましたか。",
+          "clipId": "ja.clip.ix_clinic_doctor_0",
+          "rephraseText": "どこが痛いですか。",
+          "rephraseClipId": "ja.clip.ix_clinic_doctor_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đau đầu và bị sốt."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "頭が痛いです。熱もあります",
+                "頭が痛いです",
+                "熱があります",
+                "頭が痛くて、熱があります",
+                "頭が痛いです。熱があります"
+              ],
+              "requiredConcepts": [
+                [
+                  "頭",
+                  "熱"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "どこが痛いですか。",
+          "clipId": "ja.clip.ix_clinic_doctor_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đau đầu và bị sốt."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "頭が痛いです。熱もあります",
+                "頭が痛いです",
+                "熱があります",
+                "頭が痛くて、熱があります",
+                "頭が痛いです。熱があります"
+              ],
+              "requiredConcepts": [
+                [
+                  "頭",
+                  "熱"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "いつからですか。",
+          "clipId": "ja.clip.ix_clinic_doctor_1",
+          "rephraseText": "昨日からですか、今日からですか。",
+          "rephraseClipId": "ja.clip.ix_clinic_doctor_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói từ hôm qua."
+          },
+          "expected": [
+            {
+              "intent": "since",
+              "acceptedVariants": [
+                "昨日からです",
+                "昨日から",
+                "昨日です"
+              ],
+              "requiredConcepts": [
+                [
+                  "昨日"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "昨日からですか、今日からですか。",
+          "clipId": "ja.clip.ix_clinic_doctor_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói từ hôm qua."
+          },
+          "expected": [
+            {
+              "intent": "since",
+              "acceptedVariants": [
+                "昨日からです",
+                "昨日から",
+                "昨日です"
+              ],
+              "requiredConcepts": [
+                [
+                  "昨日"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "この薬を一日3回飲んでください。お大事に。",
+          "clipId": "ja.clip.ix_clinic_doctor_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.call_sick",
+      "title": {
+        "vi": "Gọi điện xin nghỉ ốm"
+      },
+      "goal": {
+        "vi": "Gọi cho chị Tanaka ở chỗ làm, nói bạn bị sốt và hôm nay xin nghỉ."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません、もう一度お願いします。",
+          "clipId": "ja.clip.ix_call_sick_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "はい、田中です。",
+          "clipId": "ja.clip.ix_call_sick_0",
+          "rephraseText": "もしもし、田中です。",
+          "rephraseClipId": "ja.clip.ix_call_sick_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy chào và nói bạn là Nguyễn."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "お疲れさまです。グエンです",
+                "お疲れ様です。グエンです",
+                "グエンです",
+                "もしもし、グエンです",
+                "おはようございます。グエンです"
+              ],
+              "requiredConcepts": [
+                [
+                  "グエン"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "もしもし、田中です。",
+          "clipId": "ja.clip.ix_call_sick_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy chào và nói bạn là Nguyễn."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "お疲れさまです。グエンです",
+                "お疲れ様です。グエンです",
+                "グエンです",
+                "もしもし、グエンです",
+                "おはようございます。グエンです"
+              ],
+              "requiredConcepts": [
+                [
+                  "グエン"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "グエンさん、どうしましたか。",
+          "clipId": "ja.clip.ix_call_sick_1",
+          "rephraseText": "何かありましたか。",
+          "rephraseClipId": "ja.clip.ix_call_sick_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn bị sốt và hôm nay xin nghỉ."
+          },
+          "expected": [
+            {
+              "intent": "sick",
+              "acceptedVariants": [
+                "熱があります。今日は休みます",
+                "熱があります。今日は休んでもいいですか",
+                "今日は休みます",
+                "熱があります",
+                "風邪をひきました。今日は休みます"
+              ],
+              "requiredConcepts": [
+                [
+                  "熱",
+                  "風邪",
+                  "休みます",
+                  "休んで"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "何かありましたか。",
+          "clipId": "ja.clip.ix_call_sick_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn bị sốt và hôm nay xin nghỉ."
+          },
+          "expected": [
+            {
+              "intent": "sick",
+              "acceptedVariants": [
+                "熱があります。今日は休みます",
+                "熱があります。今日は休んでもいいですか",
+                "今日は休みます",
+                "熱があります",
+                "風邪をひきました。今日は休みます"
+              ],
+              "requiredConcepts": [
+                [
+                  "熱",
+                  "風邪",
+                  "休みます",
+                  "休んで"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "わかりました。お大事に。",
+          "clipId": "ja.clip.ix_call_sick_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.call_late",
+      "title": {
+        "vi": "Gọi điện báo đến muộn"
+      },
+      "goal": {
+        "vi": "Báo cho anh Kimura tàu điện bị trễ, và bạn sẽ đến muộn khoảng 20 phút."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。また電話してください。",
+          "clipId": "ja.clip.ix_call_late_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "もしもし、木村です。",
+          "clipId": "ja.clip.ix_call_late_0",
+          "rephraseText": "はい、木村です。",
+          "rephraseClipId": "ja.clip.ix_call_late_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói tàu điện bị trễ."
+          },
+          "expected": [
+            {
+              "intent": "train_late",
+              "acceptedVariants": [
+                "電車が遅れています",
+                "すみません、電車が遅れています",
+                "電車が遅れました",
+                "すみません、電車が遅れました"
+              ],
+              "requiredConcepts": [
+                [
+                  "電車"
+                ],
+                [
+                  "遅れ"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "はい、木村です。",
+          "clipId": "ja.clip.ix_call_late_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói tàu điện bị trễ."
+          },
+          "expected": [
+            {
+              "intent": "train_late",
+              "acceptedVariants": [
+                "電車が遅れています",
+                "すみません、電車が遅れています",
+                "電車が遅れました",
+                "すみません、電車が遅れました"
+              ],
+              "requiredConcepts": [
+                [
+                  "電車"
+                ],
+                [
+                  "遅れ"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "そうですか。どのぐらい遅れますか。",
+          "clipId": "ja.clip.ix_call_late_1",
+          "rephraseText": "何時に来ますか。",
+          "rephraseClipId": "ja.clip.ix_call_late_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn đến muộn khoảng 20 phút."
+          },
+          "expected": [
+            {
+              "intent": "minutes",
+              "acceptedVariants": [
+                "20分ぐらい遅れます",
+                "20分ぐらいです",
+                "20分遅れます",
+                "20分ぐらい遅れると思います"
+              ],
+              "requiredConcepts": [
+                [
+                  "20分"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "何時に来ますか。",
+          "clipId": "ja.clip.ix_call_late_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn đến muộn khoảng 20 phút."
+          },
+          "expected": [
+            {
+              "intent": "minutes",
+              "acceptedVariants": [
+                "20分ぐらい遅れます",
+                "20分ぐらいです",
+                "20分遅れます",
+                "20分ぐらい遅れると思います"
+              ],
+              "requiredConcepts": [
+                [
+                  "20分"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "わかりました。気をつけて来てください。",
+          "clipId": "ja.clip.ix_call_late_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.city_office",
+      "title": {
+        "vi": "Ở toà thị chính"
+      },
+      "goal": {
+        "vi": "Nói với nhân viên toà thị chính bạn mới chuyển nhà, rồi đưa thẻ cư trú."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません、もう一度お願いします。",
+          "clipId": "ja.clip.ix_city_office_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "こんにちは。今日はどうしましたか。",
+          "clipId": "ja.clip.ix_city_office_0",
+          "rephraseText": "今日はどんなごようですか。",
+          "rephraseClipId": "ja.clip.ix_city_office_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn mới chuyển nhà."
+          },
+          "expected": [
+            {
+              "intent": "moved",
+              "acceptedVariants": [
+                "引っ越しました",
+                "先週引っ越しました",
+                "新しいアパートに引っ越しました",
+                "大阪に引っ越しました"
+              ],
+              "requiredConcepts": [
+                [
+                  "引っ越し"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "今日はどんなごようですか。",
+          "clipId": "ja.clip.ix_city_office_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn mới chuyển nhà."
+          },
+          "expected": [
+            {
+              "intent": "moved",
+              "acceptedVariants": [
+                "引っ越しました",
+                "先週引っ越しました",
+                "新しいアパートに引っ越しました",
+                "大阪に引っ越しました"
+              ],
+              "requiredConcepts": [
+                [
+                  "引っ越し"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "在留カードを見せてください。",
+          "clipId": "ja.clip.ix_city_office_1",
+          "rephraseText": "在留カードはありますか。",
+          "rephraseClipId": "ja.clip.ix_city_office_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy đưa thẻ cư trú và nói một câu lịch sự."
+          },
+          "expected": [
+            {
+              "intent": "hand_over",
+              "acceptedVariants": [
+                "はい、これです",
+                "はい、どうぞ",
+                "これです",
+                "どうぞ",
+                "はい、あります"
+              ],
+              "requiredConcepts": [
+                [
+                  "どうぞ",
+                  "これ",
+                  "あります"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "在留カードはありますか。",
+          "clipId": "ja.clip.ix_city_office_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy đưa thẻ cư trú và nói một câu lịch sự."
+          },
+          "expected": [
+            {
+              "intent": "hand_over",
+              "acceptedVariants": [
+                "はい、これです",
+                "はい、どうぞ",
+                "これです",
+                "どうぞ",
+                "はい、あります"
+              ],
+              "requiredConcepts": [
+                [
+                  "どうぞ",
+                  "これ",
+                  "あります"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "ありがとうございます。この書類に新しい住所を書いてください。",
+          "clipId": "ja.clip.ix_city_office_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.interview_basics",
+      "title": {
+        "vi": "Buổi phỏng vấn đầu tiên"
+      },
+      "goal": {
+        "vi": "Trả lời người phỏng vấn: bạn đã làm việc ở đâu, và vì sao bạn muốn đến Nhật."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。また連絡します。",
+          "clipId": "ja.clip.ix_interview_basics_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "ナムさんは前、どこで働きましたか。",
+          "clipId": "ja.clip.ix_interview_basics_0",
+          "rephraseText": "前の仕事はなんですか。",
+          "rephraseClipId": "ja.clip.ix_interview_basics_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đã làm ở một nhà máy tại Việt Nam."
+          },
+          "expected": [
+            {
+              "intent": "experience",
+              "acceptedVariants": [
+                "ベトナムの工場で働きました",
+                "ベトナムの工場です",
+                "工場で働きました",
+                "ベトナムで工場の仕事をしました"
+              ],
+              "requiredConcepts": [
+                [
+                  "工場"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "前の仕事はなんですか。",
+          "clipId": "ja.clip.ix_interview_basics_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đã làm ở một nhà máy tại Việt Nam."
+          },
+          "expected": [
+            {
+              "intent": "experience",
+              "acceptedVariants": [
+                "ベトナムの工場で働きました",
+                "ベトナムの工場です",
+                "工場で働きました",
+                "ベトナムで工場の仕事をしました"
+              ],
+              "requiredConcepts": [
+                [
+                  "工場"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "どうして日本で働きたいですか。",
+          "clipId": "ja.clip.ix_interview_basics_1",
+          "rephraseText": "日本で働きたい理由はなんですか。",
+          "rephraseClipId": "ja.clip.ix_interview_basics_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn học tiếng Nhật."
+          },
+          "expected": [
+            {
+              "intent": "reason",
+              "acceptedVariants": [
+                "日本語を勉強したいです",
+                "日本語の勉強をしたいです",
+                "日本語を習いたいです",
+                "日本語を勉強したいからです"
+              ],
+              "requiredConcepts": [
+                [
+                  "日本語"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "日本で働きたい理由はなんですか。",
+          "clipId": "ja.clip.ix_interview_basics_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn học tiếng Nhật."
+          },
+          "expected": [
+            {
+              "intent": "reason",
+              "acceptedVariants": [
+                "日本語を勉強したいです",
+                "日本語の勉強をしたいです",
+                "日本語を習いたいです",
+                "日本語を勉強したいからです"
+              ],
+              "requiredConcepts": [
+                [
+                  "日本語"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "そうですか。頑張ってください。",
+          "clipId": "ja.clip.ix_interview_basics_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.factory_safety",
+      "title": {
+        "vi": "Chỉ dẫn an toàn ở nhà máy"
+      },
+      "goal": {
+        "vi": "Nghe chỉ dẫn an toàn, nói bạn đã hiểu, rồi hỏi cách dừng máy."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わからないときは、先輩に聞いてください。",
+          "clipId": "ja.clip.ix_factory_safety_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "仕事の前に、ヘルメットをかぶって、手袋をしてください。",
+          "clipId": "ja.clip.ix_factory_safety_0",
+          "rephraseText": "ヘルメットと手袋ですよ。",
+          "rephraseClipId": "ja.clip.ix_factory_safety_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đã hiểu."
+          },
+          "expected": [
+            {
+              "intent": "understood",
+              "acceptedVariants": [
+                "わかりました",
+                "分かりました",
+                "はい、わかりました",
+                "はい、分かりました",
+                "はい",
+                "はい、わかりました。かぶります",
+                "はい、分かりました。かぶります"
+              ],
+              "requiredConcepts": [
+                [
+                  "わかりました",
+                  "はい"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "ヘルメットと手袋ですよ。",
+          "clipId": "ja.clip.ix_factory_safety_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đã hiểu."
+          },
+          "expected": [
+            {
+              "intent": "understood",
+              "acceptedVariants": [
+                "わかりました",
+                "分かりました",
+                "はい、わかりました",
+                "はい、分かりました",
+                "はい",
+                "はい、わかりました。かぶります",
+                "はい、分かりました。かぶります"
+              ],
+              "requiredConcepts": [
+                [
+                  "わかりました",
+                  "はい"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "機械は緑のボタンで動きます。",
+          "clipId": "ja.clip.ix_factory_safety_1",
+          "rephraseText": "緑のボタンで動きます。止めるボタンもありますよ。",
+          "rephraseClipId": "ja.clip.ix_factory_safety_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy hỏi làm sao để dừng máy."
+          },
+          "expected": [
+            {
+              "intent": "ask_stop",
+              "acceptedVariants": [
+                "どうやって止めますか",
+                "止めるボタンはどれですか",
+                "どのボタンで止めますか",
+                "機械はどうやって止めますか",
+                "どうやって止まりますか"
+              ],
+              "requiredConcepts": [
+                [
+                  "止め",
+                  "止ま"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "緑のボタンで動きます。止めるボタンもありますよ。",
+          "clipId": "ja.clip.ix_factory_safety_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy hỏi làm sao để dừng máy."
+          },
+          "expected": [
+            {
+              "intent": "ask_stop",
+              "acceptedVariants": [
+                "どうやって止めますか",
+                "止めるボタンはどれですか",
+                "どのボタンで止めますか",
+                "機械はどうやって止めますか",
+                "どうやって止まりますか"
+              ],
+              "requiredConcepts": [
+                [
+                  "止め",
+                  "止ま"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "赤いボタンです。気をつけてください。",
+          "clipId": "ja.clip.ix_factory_safety_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.cp6_new_colleague",
+      "title": {
+        "vi": "Đồng nghiệp mới"
+      },
+      "goal": {
+        "vi": "Làm quen với một đồng nghiệp ở nhà máy."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。また後で。",
+          "clipId": "ja.clip.ix_cp6_new_colleague_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "はじめまして。木村です。新しい人ですか。",
+          "clipId": "ja.clip.ix_cp6_new_colleague_0",
+          "rephraseText": "新しい社員ですか。",
+          "rephraseClipId": "ja.clip.ix_cp6_new_colleague_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Hoa."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "はい、ホアです",
+                "はい、ホアです。よろしくおねがいします",
+                "はい、ホアです。よろしくお願いします",
+                "ホアです",
+                "はじめまして、ホアです"
+              ],
+              "requiredConcepts": [
+                [
+                  "ホア"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "新しい社員ですか。",
+          "clipId": "ja.clip.ix_cp6_new_colleague_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Hoa."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "はい、ホアです",
+                "はい、ホアです。よろしくおねがいします",
+                "はい、ホアです。よろしくお願いします",
+                "ホアです",
+                "はじめまして、ホアです"
+              ],
+              "requiredConcepts": [
+                [
+                  "ホア"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "ホアさんの国はどこですか。",
+          "clipId": "ja.clip.ix_cp6_new_colleague_1",
+          "rephraseText": "どこから来ましたか。",
+          "rephraseClipId": "ja.clip.ix_cp6_new_colleague_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn đến từ Việt Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_origin",
+              "acceptedVariants": [
+                "ベトナムです",
+                "ベトナムから来ました",
+                "ベトナム人です"
+              ],
+              "requiredConcepts": [
+                [
+                  "ベトナム"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "どこから来ましたか。",
+          "clipId": "ja.clip.ix_cp6_new_colleague_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn đến từ Việt Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_origin",
+              "acceptedVariants": [
+                "ベトナムです",
+                "ベトナムから来ました",
+                "ベトナム人です"
+              ],
+              "requiredConcepts": [
+                [
+                  "ベトナム"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "そうですか。よろしくおねがいします。",
+          "clipId": "ja.clip.ix_cp6_new_colleague_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.cp6_interview",
+      "title": {
+        "vi": "Phỏng vấn xin việc"
+      },
+      "goal": {
+        "vi": "Trả lời hai câu hỏi trong buổi phỏng vấn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "ありがとうございました。",
+          "clipId": "ja.clip.ix_cp6_interview_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "おはようございます。お名前は。",
+          "clipId": "ja.clip.ix_cp6_interview_0",
+          "rephraseText": "名前を教えてください。",
+          "rephraseClipId": "ja.clip.ix_cp6_interview_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy chào và nói tên bạn: Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "おはようございます。ナムです",
+                "ナムです",
+                "ナムと申します",
+                "おはようございます。ナムと申します"
+              ],
+              "requiredConcepts": [
+                [
+                  "ナム"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "名前を教えてください。",
+          "clipId": "ja.clip.ix_cp6_interview_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy chào và nói tên bạn: Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "おはようございます。ナムです",
+                "ナムです",
+                "ナムと申します",
+                "おはようございます。ナムと申します"
+              ],
+              "requiredConcepts": [
+                [
+                  "ナム"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "日本語ができますか。",
+          "clipId": "ja.clip.ix_cp6_interview_1",
+          "rephraseText": "日本語は大丈夫ですか。",
+          "rephraseClipId": "ja.clip.ix_cp6_interview_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn biết một chút."
+          },
+          "expected": [
+            {
+              "intent": "little",
+              "acceptedVariants": [
+                "少しできます",
+                "はい、少しできます",
+                "少しです",
+                "はい、少し",
+                "ちょっとできます"
+              ],
+              "requiredConcepts": [
+                [
+                  "少し",
+                  "ちょっと"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "日本語は大丈夫ですか。",
+          "clipId": "ja.clip.ix_cp6_interview_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn biết một chút."
+          },
+          "expected": [
+            {
+              "intent": "little",
+              "acceptedVariants": [
+                "少しできます",
+                "はい、少しできます",
+                "少しです",
+                "はい、少し",
+                "ちょっとできます"
+              ],
+              "requiredConcepts": [
+                [
+                  "少し",
+                  "ちょっと"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "わかりました。来週、電話します。",
+          "clipId": "ja.clip.ix_cp6_interview_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.cp6_konbini_pay",
+      "title": {
+        "vi": "Trả tiền ở cửa hàng tiện lợi"
+      },
+      "goal": {
+        "vi": "Hỏi trả bằng thẻ được không, rồi nói bạn cần hoá đơn."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません、もう一度お願いします。",
+          "clipId": "ja.clip.ix_cp6_konbini_pay_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "全部で820円です。",
+          "clipId": "ja.clip.ix_cp6_konbini_pay_0",
+          "rephraseText": "820円です。",
+          "rephraseClipId": "ja.clip.ix_cp6_konbini_pay_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi trả bằng thẻ được không."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "カードでいいですか",
+                "カードで払えますか",
+                "カードでお願いします",
+                "カードでもいいですか"
+              ],
+              "requiredConcepts": [
+                [
+                  "カード"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "820円です。",
+          "clipId": "ja.clip.ix_cp6_konbini_pay_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi trả bằng thẻ được không."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "カードでいいですか",
+                "カードで払えますか",
+                "カードでお願いします",
+                "カードでもいいですか"
+              ],
+              "requiredConcepts": [
+                [
+                  "カード"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "はい、大丈夫です。レシートはいりますか。",
+          "clipId": "ja.clip.ix_cp6_konbini_pay_1",
+          "rephraseText": "レシート、いりますか。",
+          "rephraseClipId": "ja.clip.ix_cp6_konbini_pay_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn cần hoá đơn."
+          },
+          "expected": [
+            {
+              "intent": "receipt",
+              "acceptedVariants": [
+                "はい、お願いします",
+                "お願いします",
+                "はい、ください",
+                "はい、いります",
+                "はい"
+              ],
+              "requiredConcepts": [
+                [
+                  "お願いします",
+                  "ください",
+                  "いります"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "レシート、いりますか。",
+          "clipId": "ja.clip.ix_cp6_konbini_pay_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn cần hoá đơn."
+          },
+          "expected": [
+            {
+              "intent": "receipt",
+              "acceptedVariants": [
+                "はい、お願いします",
+                "お願いします",
+                "はい、ください",
+                "はい、いります",
+                "はい"
+              ],
+              "requiredConcepts": [
+                [
+                  "お願いします",
+                  "ください",
+                  "いります"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "ありがとうございました。",
+          "clipId": "ja.clip.ix_cp6_konbini_pay_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.cp6_way_bank",
+      "title": {
+        "vi": "Tìm ngân hàng"
+      },
+      "goal": {
+        "vi": "Hỏi một người lạ ngân hàng ở đâu, rồi cảm ơn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません、わかりません。",
+          "clipId": "ja.clip.ix_cp6_way_bank_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "どうしましたか。",
+          "clipId": "ja.clip.ix_cp6_way_bank_0",
+          "rephraseText": "何か困っていますか。",
+          "rephraseClipId": "ja.clip.ix_cp6_way_bank_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi ngân hàng ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "銀行はどこですか",
+                "すみません、銀行はどこですか",
+                "銀行はどこにありますか",
+                "すみません、銀行はどこにありますか"
+              ],
+              "requiredConcepts": [
+                [
+                  "銀行"
+                ],
+                [
+                  "どこ"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "何か困っていますか。",
+          "clipId": "ja.clip.ix_cp6_way_bank_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi ngân hàng ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "銀行はどこですか",
+                "すみません、銀行はどこですか",
+                "銀行はどこにありますか",
+                "すみません、銀行はどこにありますか"
+              ],
+              "requiredConcepts": [
+                [
+                  "銀行"
+                ],
+                [
+                  "どこ"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "銀行は駅の前です。近いですよ。",
+          "clipId": "ja.clip.ix_cp6_way_bank_1",
+          "rephraseText": "駅の前です。",
+          "rephraseClipId": "ja.clip.ix_cp6_way_bank_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "ありがとうございます",
+                "どうもありがとうございます",
+                "ありがとうございました",
+                "わかりました。ありがとうございます",
+                "分かりました。ありがとうございます"
+              ],
+              "requiredConcepts": [
+                [
+                  "ありがとう",
+                  "ありがとうございます",
+                  "どうも"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "駅の前です。",
+          "clipId": "ja.clip.ix_cp6_way_bank_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "ありがとうございます",
+                "どうもありがとうございます",
+                "ありがとうございました",
+                "わかりました。ありがとうございます",
+                "分かりました。ありがとうございます"
+              ],
+              "requiredConcepts": [
+                [
+                  "ありがとう",
+                  "ありがとうございます",
+                  "どうも"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "どういたしまして。",
+          "clipId": "ja.clip.ix_cp6_way_bank_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.cp6_clinic_cough",
+      "title": {
+        "vi": "Ở phòng khám"
+      },
+      "goal": {
+        "vi": "Nói với y tá bạn bị ho, và bạn không sốt."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。少し待ってください。",
+          "clipId": "ja.clip.ix_cp6_clinic_cough_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "どうしましたか。",
+          "clipId": "ja.clip.ix_cp6_clinic_cough_0",
+          "rephraseText": "どこか悪いですか。",
+          "rephraseClipId": "ja.clip.ix_cp6_clinic_cough_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn bị ho."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "せきが出ます",
+                "せきがあります",
+                "せきです",
+                "せきが出ています",
+                "咳が出ます",
+                "咳があります",
+                "咳です",
+                "咳が出ています"
+              ],
+              "requiredConcepts": [
+                [
+                  "せき",
+                  "咳"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "どこか悪いですか。",
+          "clipId": "ja.clip.ix_cp6_clinic_cough_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn bị ho."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "せきが出ます",
+                "せきがあります",
+                "せきです",
+                "せきが出ています",
+                "咳が出ます",
+                "咳があります",
+                "咳です",
+                "咳が出ています"
+              ],
+              "requiredConcepts": [
+                [
+                  "せき",
+                  "咳"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "熱はありますか。",
+          "clipId": "ja.clip.ix_cp6_clinic_cough_1",
+          "rephraseText": "熱、ありますか。",
+          "rephraseClipId": "ja.clip.ix_cp6_clinic_cough_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn không sốt."
+          },
+          "expected": [
+            {
+              "intent": "no_fever",
+              "acceptedVariants": [
+                "いいえ、ありません",
+                "ありません",
+                "熱はありません",
+                "いいえ"
+              ],
+              "requiredConcepts": [
+                [
+                  "ありません",
+                  "いいえ"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "熱、ありますか。",
+          "clipId": "ja.clip.ix_cp6_clinic_cough_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn không sốt."
+          },
+          "expected": [
+            {
+              "intent": "no_fever",
+              "acceptedVariants": [
+                "いいえ、ありません",
+                "ありません",
+                "熱はありません",
+                "いいえ"
+              ],
+              "requiredConcepts": [
+                [
+                  "ありません",
+                  "いいえ"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "わかりました。水をたくさん飲んで、休んでください。",
+          "clipId": "ja.clip.ix_cp6_clinic_cough_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.cp6_call_office",
+      "title": {
+        "vi": "Gọi điện đến công ty"
+      },
+      "goal": {
+        "vi": "Xin nói chuyện với anh Tanaka; anh ấy không có ở đó, nên bạn sẽ gọi lại."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "すみません。失礼します。",
+          "clipId": "ja.clip.ix_cp6_call_office_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "はい、さくら工場です。",
+          "clipId": "ja.clip.ix_cp6_call_office_0",
+          "rephraseText": "さくら工場です。",
+          "rephraseClipId": "ja.clip.ix_cp6_call_office_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy xin nói chuyện với anh Tanaka."
+          },
+          "expected": [
+            {
+              "intent": "ask_person",
+              "acceptedVariants": [
+                "田中さんはいらっしゃいますか",
+                "田中さん、お願いします",
+                "田中さんをお願いします",
+                "田中さんと話したいです"
+              ],
+              "requiredConcepts": [
+                [
+                  "田中"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "さくら工場です。",
+          "clipId": "ja.clip.ix_cp6_call_office_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy xin nói chuyện với anh Tanaka."
+          },
+          "expected": [
+            {
+              "intent": "ask_person",
+              "acceptedVariants": [
+                "田中さんはいらっしゃいますか",
+                "田中さん、お願いします",
+                "田中さんをお願いします",
+                "田中さんと話したいです"
+              ],
+              "requiredConcepts": [
+                [
+                  "田中"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "すみません。田中は今、いません。後でまたお電話ください。",
+          "clipId": "ja.clip.ix_cp6_call_office_1",
+          "rephraseText": "田中は今、いません。",
+          "rephraseClipId": "ja.clip.ix_cp6_call_office_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy đồng ý gọi lại sau."
+          },
+          "expected": [
+            {
+              "intent": "agree",
+              "acceptedVariants": [
+                "わかりました。また電話します",
+                "分かりました。また電話します",
+                "わかりました",
+                "分かりました",
+                "また後で電話します",
+                "はい、また電話します"
+              ],
+              "requiredConcepts": [
+                [
+                  "わかりました",
+                  "電話します",
+                  "はい"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "田中は今、いません。",
+          "clipId": "ja.clip.ix_cp6_call_office_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy đồng ý gọi lại sau."
+          },
+          "expected": [
+            {
+              "intent": "agree",
+              "acceptedVariants": [
+                "わかりました。また電話します",
+                "分かりました。また電話します",
+                "わかりました",
+                "分かりました",
+                "また後で電話します",
+                "はい、また電話します"
+              ],
+              "requiredConcepts": [
+                [
+                  "わかりました",
+                  "電話します",
+                  "はい"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "ありがとうございます。失礼します。",
+          "clipId": "ja.clip.ix_cp6_call_office_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.a1cap_first_day",
+      "title": {
+        "vi": "Ngày đầu ở nhà máy"
+      },
+      "goal": {
+        "vi": "Trả lời đàn chị trong ngày đầu đi làm."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。先輩に聞いてください。",
+          "clipId": "ja.clip.ix_a1cap_first_day_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "おはようございます。新しい人ですか。",
+          "clipId": "ja.clip.ix_a1cap_first_day_0",
+          "rephraseText": "今日から働く人ですか。",
+          "rephraseClipId": "ja.clip.ix_a1cap_first_day_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng."
+          },
+          "expected": [
+            {
+              "intent": "confirm",
+              "acceptedVariants": [
+                "はい、そうです",
+                "はい",
+                "そうです",
+                "はい、今日からです"
+              ],
+              "requiredConcepts": [
+                [
+                  "はい",
+                  "そう"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "今日から働く人ですか。",
+          "clipId": "ja.clip.ix_a1cap_first_day_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng."
+          },
+          "expected": [
+            {
+              "intent": "confirm",
+              "acceptedVariants": [
+                "はい、そうです",
+                "はい",
+                "そうです",
+                "はい、今日からです"
+              ],
+              "requiredConcepts": [
+                [
+                  "はい",
+                  "そう"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "ヘルメットはありますか。",
+          "clipId": "ja.clip.ix_a1cap_first_day_1",
+          "rephraseText": "ヘルメット、ありますか。",
+          "rephraseClipId": "ja.clip.ix_a1cap_first_day_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn không có."
+          },
+          "expected": [
+            {
+              "intent": "no_helmet",
+              "acceptedVariants": [
+                "いいえ、ありません",
+                "ありません",
+                "すみません、ありません",
+                "いいえ"
+              ],
+              "requiredConcepts": [
+                [
+                  "ありません",
+                  "いいえ"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "ヘルメット、ありますか。",
+          "clipId": "ja.clip.ix_a1cap_first_day_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn không có."
+          },
+          "expected": [
+            {
+              "intent": "no_helmet",
+              "acceptedVariants": [
+                "いいえ、ありません",
+                "ありません",
+                "すみません、ありません",
+                "いいえ"
+              ],
+              "requiredConcepts": [
+                [
+                  "ありません",
+                  "いいえ"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "じゃあ、このヘルメットをかぶってください。",
+          "clipId": "ja.clip.ix_a1cap_first_day_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.a1cap_neighbor",
+      "title": {
+        "vi": "Làm quen với hàng xóm"
+      },
+      "goal": {
+        "vi": "Trả lời một người hàng xóm mới: tên và nơi làm việc của bạn."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "では、失礼します。",
+          "clipId": "ja.clip.ix_a1cap_neighbor_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "こんにちは。隣の部屋の人ですか。",
+          "clipId": "ja.clip.ix_a1cap_neighbor_0",
+          "rephraseText": "隣の部屋の方ですか。",
+          "rephraseClipId": "ja.clip.ix_a1cap_neighbor_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Mai."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "はい、マイです",
+                "はい、マイです。よろしくおねがいします",
+                "はい、マイです。よろしくお願いします",
+                "マイです",
+                "はじめまして、マイです"
+              ],
+              "requiredConcepts": [
+                [
+                  "マイ"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "隣の部屋の方ですか。",
+          "clipId": "ja.clip.ix_a1cap_neighbor_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Mai."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "はい、マイです",
+                "はい、マイです。よろしくおねがいします",
+                "はい、マイです。よろしくお願いします",
+                "マイです",
+                "はじめまして、マイです"
+              ],
+              "requiredConcepts": [
+                [
+                  "マイ"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "マイさんの仕事はなんですか。",
+          "clipId": "ja.clip.ix_a1cap_neighbor_1",
+          "rephraseText": "どこで働いていますか。",
+          "rephraseClipId": "ja.clip.ix_a1cap_neighbor_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn làm việc ở nhà máy."
+          },
+          "expected": [
+            {
+              "intent": "give_work",
+              "acceptedVariants": [
+                "工場で働いています",
+                "工場です",
+                "工場で働きます"
+              ],
+              "requiredConcepts": [
+                [
+                  "工場"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "どこで働いていますか。",
+          "clipId": "ja.clip.ix_a1cap_neighbor_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn làm việc ở nhà máy."
+          },
+          "expected": [
+            {
+              "intent": "give_work",
+              "acceptedVariants": [
+                "工場で働いています",
+                "工場です",
+                "工場で働きます"
+              ],
+              "requiredConcepts": [
+                [
+                  "工場"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "そうですか。よろしくおねがいします。",
+          "clipId": "ja.clip.ix_a1cap_neighbor_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.a1cap_friend_plan",
+      "title": {
+        "vi": "Hẹn một người bạn"
+      },
+      "goal": {
+        "vi": "Nhận lời hẹn vào Chủ nhật, rồi nói giờ gặp."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。また来週。",
+          "clipId": "ja.clip.ix_a1cap_friend_plan_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "日曜日は暇ですか。",
+          "clipId": "ja.clip.ix_a1cap_friend_plan_0",
+          "rephraseText": "日曜日、時間がありますか。",
+          "rephraseClipId": "ja.clip.ix_a1cap_friend_plan_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn rảnh."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "はい、暇です",
+                "暇です",
+                "はい、大丈夫です",
+                "大丈夫です",
+                "はい、あります"
+              ],
+              "requiredConcepts": [
+                [
+                  "暇",
+                  "大丈夫",
+                  "大丈夫です",
+                  "はい"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "日曜日、時間がありますか。",
+          "clipId": "ja.clip.ix_a1cap_friend_plan_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn rảnh."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "はい、暇です",
+                "暇です",
+                "はい、大丈夫です",
+                "大丈夫です",
+                "はい、あります"
+              ],
+              "requiredConcepts": [
+                [
+                  "暇",
+                  "大丈夫",
+                  "大丈夫です",
+                  "はい"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "何時に会いましょうか。",
+          "clipId": "ja.clip.ix_a1cap_friend_plan_1",
+          "rephraseText": "何時がいいですか。",
+          "rephraseClipId": "ja.clip.ix_a1cap_friend_plan_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói gặp lúc 3 giờ."
+          },
+          "expected": [
+            {
+              "intent": "time",
+              "acceptedVariants": [
+                "3時に会いましょう",
+                "3時はどうですか",
+                "3時です",
+                "3時がいいです"
+              ],
+              "requiredConcepts": [
+                [
+                  "3時"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "何時がいいですか。",
+          "clipId": "ja.clip.ix_a1cap_friend_plan_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói gặp lúc 3 giờ."
+          },
+          "expected": [
+            {
+              "intent": "time",
+              "acceptedVariants": [
+                "3時に会いましょう",
+                "3時はどうですか",
+                "3時です",
+                "3時がいいです"
+              ],
+              "requiredConcepts": [
+                [
+                  "3時"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "じゃあ、日曜日の3時に会いましょう。",
+          "clipId": "ja.clip.ix_a1cap_friend_plan_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.scenario.a1cap_lunch",
+      "title": {
+        "vi": "Ăn trưa với đồng nghiệp"
+      },
+      "goal": {
+        "vi": "Nhận lời ăn trưa với một đồng nghiệp, rồi nói bạn muốn ăn gì."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "わかりました。また明日。",
+          "clipId": "ja.clip.ix_a1cap_lunch_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "12時ですね。一緒に昼ご飯を食べませんか。",
+          "clipId": "ja.clip.ix_a1cap_lunch_0",
+          "rephraseText": "昼ご飯、食べませんか。",
+          "rephraseClipId": "ja.clip.ix_a1cap_lunch_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nhận lời."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "はい、食べましょう",
+                "いいですね",
+                "はい、いいですね",
+                "はい、お願いします",
+                "いいですね。食べましょう"
+              ],
+              "requiredConcepts": [
+                [
+                  "はい",
+                  "いい",
+                  "食べましょう"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "昼ご飯、食べませんか。",
+          "clipId": "ja.clip.ix_a1cap_lunch_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nhận lời."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "はい、食べましょう",
+                "いいですね",
+                "はい、いいですね",
+                "はい、お願いします",
+                "いいですね。食べましょう"
+              ],
+              "requiredConcepts": [
+                [
+                  "はい",
+                  "いい",
+                  "食べましょう"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "何を食べたいですか。",
+          "clipId": "ja.clip.ix_a1cap_lunch_1",
+          "rephraseText": "何がいいですか。",
+          "rephraseClipId": "ja.clip.ix_a1cap_lunch_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn ăn mì ramen."
+          },
+          "expected": [
+            {
+              "intent": "food",
+              "acceptedVariants": [
+                "ラーメンが食べたいです",
+                "ラーメンがいいです",
+                "ラーメンを食べたいです",
+                "ラーメンです"
+              ],
+              "requiredConcepts": [
+                [
+                  "ラーメン"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "何がいいですか。",
+          "clipId": "ja.clip.ix_a1cap_lunch_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn ăn mì ramen."
+          },
+          "expected": [
+            {
+              "intent": "food",
+              "acceptedVariants": [
+                "ラーメンが食べたいです",
+                "ラーメンがいいです",
+                "ラーメンを食べたいです",
+                "ラーメンです"
+              ],
+              "requiredConcepts": [
+                [
+                  "ラーメン"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "いいですね。行きましょう。",
+          "clipId": "ja.clip.ix_a1cap_lunch_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    }
+  ]
+}

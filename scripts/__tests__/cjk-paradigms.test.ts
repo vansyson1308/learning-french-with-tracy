@@ -156,4 +156,24 @@ describe("paradigm validation with the declared cells", () => {
     expect(result.errors.some((e) => e.includes("polite:nonpast:aff"))).toBe(false);
     expect(result.errors.some((e) => e.includes('cell te = "食べて" is not evidenced'))).toBe(true);
   });
+
+  test("P4c: the committed ja morphology tags the nine cells, so real tables validate (and a wrong cell still fails)", () => {
+    const plugin = buildPlugin("ja");
+    const evidence = plugin.paradigm!.loadEvidence()!;
+    const check = (lemma: string, group: "ichidan" | "godan" | "irregular", cells = japaneseParadigmCells(lemma, group)!) =>
+      validateParadigmsData({
+        paradigms: { version: 1, language: "ja", tables: [{ lemma, gloss: { vi: "x", en: "x" }, group, cells, evidence: { source: "kaikki-en" } }] } as never,
+        plugin,
+        evidence,
+        registryIds: new Set(["kaikki-en"]),
+      }).errors;
+    expect(check("食べる", "ichidan")).toEqual([]);
+    expect(check("書く", "godan")).toEqual([]);
+    expect(check("行く", "godan")).toEqual([]);
+    expect(check("来る", "irregular")).toEqual([]); // four cells composed from stated rows, and marked so
+    expect(check("勉強する", "irregular")).toEqual([]);
+    expect(check("食べる", "ichidan", { ...japaneseParadigmCells("食べる", "ichidan")!, te: "食べって" }).join()).toContain("is not evidenced");
+    const nine = evidence.filter((v) => new Set(v.rows.map((r) => r.infoVer.split(",")[0])).size >= 10).length; // inf + 9 cells
+    expect(nine).toBeGreaterThanOrEqual(140);
+  });
 });

@@ -38,18 +38,21 @@ import { listeningSchema, storiesSchema } from "../content/schema";
 import { writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "./lib/audio";
 import { buildPlugin } from "./lib/languages";
 import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScript, sha256File, technicalQa, type TechnicalQa } from "./lib/piper-audio";
-import { courseRolesFor, loadPacks } from "./lib/pipeline";
+import { courseRolesFor, loadPacks, readJson } from "./lib/pipeline";
 import { engineLineageVerdict, piperLineageVerdict, registryIdFor, type LineageLink } from "./lib/voice-lineage";
 import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
 import { writeAudioSizeReport } from "./lib/audio-size";
 import { lexiconAudioStrings } from "./lib/lexicon-audio";
 import { receptionAssetKey } from "./lib/reception";
-import { assetFileName, codecProblems, codecRecipe, isAudioFile, type AudioCodec } from "./lib/audio-codec";
+import { assetFileName, codecFor, codecProblems, isAudioFile, type AudioCodec } from "./lib/audio-codec";
 import { bundledStoryIds, storyAudioPolicy, storyClipId, storyCodec, storyPipelineVersion, storySentenceSegments } from "./lib/stories";
-import { packClipRecipe, receptionClipRecipe, resynthesisFor, resynthesisProblems, type Resynthesis, type SynthesisOverride } from "./lib/audio-recipe";
+import { packClipRecipe, phonemeFrontendProblems, phonemeFrontendSpec, receptionClipRecipe, resynthesisFor, resynthesisProblems, storyClipRecipe, type Resynthesis, type SynthesisOverride } from "./lib/audio-recipe";
 import { asrModelId, mergeAsrResults, splitPlanByCache, type AsrResult } from "./lib/asr-cache";
 import { blessedBySha, committedBlessedSha256, ownerListeningLines, splitReview, techQaDoc, type ReviewRow } from "./lib/audio-qa";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
+import { jaFrontendInputsSha256, staleFrontendMessage } from "./lib/tts/ja-frontend-inputs";
+import { loadJaSpeechIndex } from "./lib/tts/ja-kana";
+import { attachKokoroPhonemes } from "./lib/tts/kokoro";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
 
 const ROOT = path.resolve(import.meta.dir, "..");
@@ -102,12 +105,13 @@ export type PlanClip = {
   courseId: string | null;
   language: string;
   text: string;
-  segments: { voiceId: string; speaker: number | string | null; text: string }[];
+  /** P4c: `phonemes` is set by the plan for a Kokoro front-end language (ja: scripts/lib/tts/ja-kana.ts); not in the key. */
+  segments: { voiceId: string; speaker: number | string | null; text: string; phonemes?: string }[];
   assetKey: string;
   pipelineVersion: number;
   /** A declared re-synthesis of this clip (part of its asset key). */
   synthesis?: SynthesisOverride | null;
-  /** Set only when not mp3 (encoding.codecByLayer, scripts/lib/audio-codec.ts): the file is `<assetKey>.opus`. */
+  /** Set only when not mp3 (encoding.codecByLayer / codecByLanguage, scripts/lib/audio-codec.ts): the file is `<assetKey>.opus`. */
   codec?: AudioCodec;
 };
 type PlanDoc = { language: string; mode: string; layers: Layer[]; normalization: unknown; charsPerSecBand: [number, number]; clips: PlanClip[] };
@@ -368,6 +372,13 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
   const resynthesis = loadReceptionManifest()?.resynthesis ?? null;
   problems.push(...resynthesisProblems(resynthesis));
   problems.push(...codecProblems(engines.encoding).map((p) => `content/audio/engines.json encoding.${p}`));
+  // P4c: the front-end version is in the key of every Kokoro clip of the language; its recorded inputs must be the current ones.
+  const frontend = phonemeFrontendSpec(LANG);
+  problems.push(...phonemeFrontendProblems(LANG, frontend));
+  if (frontend !== null && LANG === "ja") {
+    const actual = jaFrontendInputsSha256((rel) => readFileSync(path.join(ROOT, rel), "utf8"));
+    if (actual !== frontend.inputsSha256) problems.push(staleFrontendMessage(LANG, frontend.inputsSha256, actual));
+  } else if (frontend !== null) problems.push(`content/audio/engines.json kokoro.phonemeFrontends.${LANG}: "${frontend.id}" is the Japanese front-end only`);
   // ---- pack + lexicon layers (course-keyed, content/audio/pack-audio-manifest.json) ----
   if (wantsPack) {
     const m = loadPackManifest();
@@ -379,8 +390,10 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
       const clipId = `${courseId}:${text}${suffix}`;
       // QC 2026-10-29b §3.3–3.4: the short-word recipe and a declared re-synthesis enter the key of the clips they change only.
       const synthesis = resynthesisFor(LANG, clipId, resynthesis);
-      const recipe = packClipRecipe({ engine: voice.engine, text, pipelineVersion: version, synthesis });
-      clips.push({ clipId, layer, courseId, language: LANG, text, segments: [{ voiceId, speaker, text }], assetKey: packAssetKey(courseId, voiceId, typeof speaker === "number" ? speaker : null, text, version, recipe), pipelineVersion: version, ...(synthesis ? { synthesis } : {}) });
+      // The layer's codec (encoding.codecByLanguage: ja is opus) is part of the key: an opus clip never takes an mp3 key.
+      const codec = codecFor(engines.encoding, layer, LANG);
+      const recipe = packClipRecipe({ language: LANG, engine: voice.engine, text, pipelineVersion: version, synthesis, codec, encoding: engines.encoding });
+      clips.push({ clipId, layer, courseId, language: LANG, text, segments: [{ voiceId, speaker, text }], assetKey: packAssetKey(courseId, voiceId, typeof speaker === "number" ? speaker : null, text, version, recipe), pipelineVersion: version, ...(synthesis ? { synthesis } : {}), ...(codec !== "mp3" ? { codec } : {}) });
     };
     const mine = languageCourses(m, courses);
     if (mode === "canary" && LAYER !== "lexicon") {
@@ -395,9 +408,11 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
       for (const voiceId of eligible) {
         const voice = voiceById(all, voiceId);
         const speaker = voice.speaker ?? null;
+        // The canary hears the shipped codec too.
+        const codec = codecFor(engines.encoding, "pack", LANG);
         for (const item of canary) {
-          const recipe = packClipRecipe({ engine: voice.engine, text: item.text, pipelineVersion: version, synthesis: null });
-          clips.push({ clipId: `${item.id}@${voiceId}`, layer: "pack", courseId: null, language: LANG, text: item.text, segments: [{ voiceId, speaker, text: item.text }], assetKey: packAssetKey(LANG, voiceId, typeof speaker === "number" ? speaker : null, item.text, version, recipe), pipelineVersion: version });
+          const recipe = packClipRecipe({ language: LANG, engine: voice.engine, text: item.text, pipelineVersion: version, synthesis: null, codec, encoding: engines.encoding });
+          clips.push({ clipId: `${item.id}@${voiceId}`, layer: "pack", courseId: null, language: LANG, text: item.text, segments: [{ voiceId, speaker, text: item.text }], assetKey: packAssetKey(LANG, voiceId, typeof speaker === "number" ? speaker : null, item.text, version, recipe), pipelineVersion: version, ...(codec !== "mp3" ? { codec } : {}) });
         }
         for (const [id] of mine) for (const text of canarySample(courseAudioStrings(m, id))) pushPack("pack", id, voiceId, text, `@${voiceId}`);
       }
@@ -438,9 +453,12 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
         const resolved = segments.map((s) => ({ voiceId: s.voiceId, speaker: s.speaker, text: s.text }));
         // Lockstep with scripts/lib/reception.ts listeningClipKey: a declared re-synthesis changes a listening clip's key (never a story sentence's).
         const synthesis = story ? null : resynthesisFor(LANG, clipId, resynthesis);
-        // Lockstep with scripts/lib/stories.ts storySentenceAssetKey: an opus story sentence carries its codec in the key.
-        const codec = story ? storyCodec(LANG) : "mp3";
-        const recipe = story ? codecRecipe(codec, engines.encoding) : receptionClipRecipe(LANG, clipId, resynthesis);
+        // Lockstep with scripts/lib/stories.ts storySentenceAssetKey: an opus story sentence carries its codec in the key,
+        // and so does an opus listening clip (encoding.codecByLanguage: ja), as listeningClipKey derives it.
+        // P4c: both carry the phoneme front-end of a front-end language (ja), as the validator derives them.
+        const codec = story ? storyCodec(LANG) : codecFor(engines.encoding, "reception", LANG);
+        const voiceIds = segments.map((s) => s.voiceId);
+        const recipe = story ? storyClipRecipe(LANG, voiceIds, codec, engines.encoding) : receptionClipRecipe(LANG, clipId, voiceIds, resynthesis, codec, engines.encoding);
         clips.push({ clipId, layer: "reception", courseId: null, language: LANG, text: segments.map((s) => s.text).join(" "), segments, assetKey: receptionAssetKey(LANG, resolved, version, recipe), pipelineVersion: version, ...(synthesis ? { synthesis } : {}), ...(codec !== "mp3" ? { codec } : {}) });
       };
       if (mode === "canary" && existsSync(CANARY_PATH)) {
@@ -481,8 +499,11 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
     // Layer-filtered runs plan only part of the list; a stale id (its text was edited) is reported, never fatal.
     if (absent.length > 0) console.log(`  not in this plan (other layer, or text changed): ${absent.join(" | ")}`);
   }
+  // P4c: a Kokoro front-end language (ja) gets its phonemes here, from the course's stored readings — never a guess.
+  const fronted = attachKokoroPhonemes(clips, new Map(allVoices().map((v) => [v.id, v])), engines, () => loadJaSpeechIndex(readJson, (rel) => existsSync(path.join(ROOT, rel))));
+  problems.push(...fronted.problems);
   const plugin = buildPlugin(LANG);
-  const doc: PlanDoc = { language: LANG, mode, layers: [...new Set(layers)], normalization: plugin.normalizeForAsr, charsPerSecBand: [plugin.charsPerSecBand.min, plugin.charsPerSecBand.max], clips };
+  const doc: PlanDoc = { language: LANG, mode, layers: [...new Set(layers)], normalization: plugin.normalizeForAsr, charsPerSecBand: [plugin.charsPerSecBand.min, plugin.charsPerSecBand.max], clips: fronted.clips };
   if (DRY_RUN) {
     for (const p of problems) console.error(`ERROR: ${p}`);
     if (problems.length > 0) fail(`dry run found ${problems.length} problem(s) for ${LANG}`);
@@ -601,9 +622,10 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
   const resynthesized = (loadReceptionManifest()?.resynthesis?.clips ?? []).filter((id) => doc.clips.some((c) => c.clipId === id && c.synthesis));
   const { ownerListening, resynthesisCandidates } = splitReview(review, resynthesized);
   const keyOf = new Map(rows.map((r) => [r.clipId, r]));
+  const codecOf = new Map(doc.clips.map((c) => [c.clipId, c.codec]));
   const assetPathOf = (clipId: string) => {
     const r = keyOf.get(clipId);
-    return r ? `assets/audio/${LANG}${r.layer === "reception" ? "-reception" : ""}/${r.assetKey}.mp3` : undefined;
+    return r ? `assets/audio/${LANG}${r.layer === "reception" ? "-reception" : ""}/${assetFileName(r.assetKey, codecOf.get(clipId))}` : undefined;
   };
   writeFileSync(
     reportPath,
@@ -905,11 +927,13 @@ function apply(planPath: string, outdir: string, sfxDir?: string) {
     const seen = new Set<string>();
     const entries: ManifestEntry[] = existingManifestEntries().filter((e) => !languageCourseIds.has(e.key.split(":")[0]));
     for (const clip of packClips) {
+      // `<key>.mp3`, or `<key>.opus` for a language whose pack/lexicon layers are opus (encoding.codecByLanguage).
+      const file = assetFileName(clip.assetKey, clip.codec);
       if (!seen.has(clip.assetKey)) {
-        copyFileSync(path.join(outdir, `${clip.assetKey}.mp3`), path.join(dir, `${clip.assetKey}.mp3`));
+        copyFileSync(path.join(outdir, file), path.join(dir, file));
         seen.add(clip.assetKey);
       }
-      entries.push({ key: `${clip.courseId}:${clip.text}`, file: `../../assets/audio/${LANG}/${clip.assetKey}.mp3`, layer: clip.layer === "lexicon" ? "lexicon" : "pack" });
+      entries.push({ key: `${clip.courseId}:${clip.text}`, file: `../../assets/audio/${LANG}/${file}`, layer: clip.layer === "lexicon" ? "lexicon" : "pack" });
     }
     // P3f: pack and lexicon clips share `<course>:<text>` keys — one entry per key.
     const merged = mergeManifestEntries(entries);

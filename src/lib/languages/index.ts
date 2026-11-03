@@ -40,6 +40,8 @@ type IndexEntryLike = {
   pronunciation?: { value?: unknown; notation?: unknown };
   /** zh (P4b stage 4): the traditional spelling CC-CEDICT records beside the simplified surface. */
   traditional?: unknown;
+  /** P4c: the part of speech (ja inflection keys). */
+  pos?: unknown;
 };
 
 /** A course's words as a CourseLexicon, or null when the course has no lexicon index (yet). */
@@ -51,7 +53,8 @@ export function courseLexiconFor(courseId: string): CourseLexicon | null {
     const p = e.pronunciation;
     const reading = p && typeof p.value === "string" && typeof p.notation === "string" ? { value: p.value, notation: p.notation } : undefined;
     const variants = typeof e.traditional === "string" && e.traditional !== e.surface ? [e.traditional] : undefined;
-    entries.push({ surface: e.surface, ...(reading ? { reading } : {}), ...(variants ? { variants } : {}) });
+    const pos = typeof e.pos === "string" ? e.pos : undefined;
+    entries.push({ surface: e.surface, ...(reading ? { reading } : {}), ...(variants ? { variants } : {}), ...(pos ? { pos } : {}) });
   }
   return entries.length > 0 ? { entries } : null;
 }

@@ -18,6 +18,8 @@ export type LexemeMeta = {
   lemma: string;
   gloss: string;
   pos: string;
+  /** P4c: a proper noun (ja 東京): taught in lessons, never offered as a daily new word. */
+  proper?: true;
   gender?: string;
   topic?: string;
   band?: string;

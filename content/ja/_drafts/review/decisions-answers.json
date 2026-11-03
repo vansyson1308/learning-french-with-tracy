@@ -1,0 +1,734 @@
+[
+ {
+  "id": "ja-vi:u2-l0-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Bố tôi là giáo viên.' — わたしの父は先生です is correct and the most literal rendering of 'bố tôi'; rejected.",
+  "fix": "Add alternatives: わたしの父は先生です | 私の父は先生です",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:u2-l1-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi có một em trai.' — わたしは弟が一人います (subject written) and the digit form 1人 (the course itself writes digits before counters) are correct and rejected.",
+  "fix": "Add alternatives: わたしは弟が一人います | 私は弟が一人います | 弟が1人います | 弟は1人います",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named. 弟が1人います / 弟は1人います come from the numeral rule."
+ },
+ {
+  "id": "ja-vi:u2-l2-e7",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Vợ tôi ...' — わたしの妻はベトナム人です is correct; rejected.",
+  "fix": "Add alternatives: わたしの妻はベトナム人です | 私の妻はベトナム人です",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:u2-l3-e7",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Bố mẹ tôi ...' — わたしの両親はベトナムにいます is correct; rejected.",
+  "fix": "Add alternatives: わたしの両親はベトナムにいます | 私の両親はベトナムにいます | わたしの両親がベトナムにいます",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:u3-l0-e7",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi uống nước.' — わたしは水を飲みます (the sentence the placement item ja.pli.s1.drink_water itself uses) is rejected.",
+  "fix": "Add alternatives: わたしは水を飲みます | 私は水を飲みます",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:u3-l1-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi ăn thịt.' — わたしは肉を食べます rejected.",
+  "fix": "Add alternatives: わたしは肉を食べます | 私は肉を食べます",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:u3-l2-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Cho tôi nước.' — the course teaches コーヒー、お願いします (u0-l1-e4) without を; 水、お願いします and the polite お水 forms are natural and rejected (お水 has a different reading, so it does not align).",
+  "fix": "Add alternatives: 水、お願いします | お水をお願いします | お水、お願いします | お水をください",
+  "decision": "fixed: 水、お願いします, お水をお願いします, お水、お願いします and お水をください are listed (with their kana: Section 1 counts kana as production)."
+ },
+ {
+  "id": "ja-vi:u3-l3-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi uống cà phê.' — わたしはコーヒーを飲みます rejected.",
+  "fix": "Add alternatives: わたしはコーヒーを飲みます | 私はコーヒーを飲みます",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:u4-l2-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'ba cái' — 3つ is the standard horizontal spelling (the lenient form does not fold digits); rejected.",
+  "fix": "Add alternative: 3つ",
+  "decision": "fixed in the generator library: Y() lists every number before a counter in digits and in kanji (ja_text.numeral_spellings: 3つ ⇄ 三つ, 1人 ⇄ 一人, 11時 ⇄ 十一時, 1万円 ⇄ 一万円 / 10000円); rule 8 checks it. 8 typed answers, 2 more than named."
+ },
+ {
+  "id": "ja-vi:u4-l3-e7",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi mua sắm ở siêu thị.' — わたしはスーパーで買い物をします rejected.",
+  "fix": "Add alternatives: わたしはスーパーで買い物をします | 私はスーパーで買い物をします | わたしはスーパーで買い物します",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:ub-l0-e7",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi đã xem ti vi.' — わたしはテレビを見ました rejected.",
+  "fix": "Add alternatives: わたしはテレビを見ました | 私はテレビを見ました",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:ub-l1-e8",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi mua bánh mì.' — わたしはパンを買います rejected.",
+  "fix": "Add alternatives: わたしはパンを買います | 私はパンを買います",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:ub-l2-e8",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi đi đến nhà ga.' — わたしは駅へ行きます / に行きます rejected.",
+  "fix": "Add alternatives: わたしは駅へ行きます | わたしは駅に行きます | 私は駅へ行きます | 私は駅に行きます",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:ub-l0-e10",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "conjugationCloze is graded strictly, so the kana spelling must be listed; REVIEW-NOTES says the key's kana spelling is accepted and siblings (ub-l0-e9, ub-l1-e10…) list it, but this one does not: いきません is rejected.",
+  "fix": "Add alternative: いきません",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja-vi:ub-l0-e11",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "Strict cloze without kana alternative (inconsistent with siblings): みました rejected.",
+  "fix": "Add alternative: みました",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja-vi:ub-l0-e12",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "Strict cloze without kana alternative: みませんでした rejected.",
+  "fix": "Add alternative: みませんでした",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja-vi:ub-l1-e14",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "Strict cloze without kana alternative: かいませんでした rejected.",
+  "fix": "Add alternative: かいませんでした",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja-vi:ub-l2-e12",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "Strict cloze without kana alternative: かえりませんでした rejected.",
+  "fix": "Add alternative: かえりませんでした",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja-vi:ub-l3-e11",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "Strict cloze without kana alternative: はなしました rejected.",
+  "fix": "Add alternative: はなしました",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja-vi:ub-l3-e12",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "Strict cloze without kana alternative: たべませんでした rejected.",
+  "fix": "Add alternative: たべませんでした",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja.cpi.s2.masu_saw",
+  "file": "content/ja/_drafts/staged/content/ja/assessment/checkpoints.json",
+  "severity": "P0",
+  "problem": "Checkpoint cloze (exercise ja-cpx-s2-masu_saw) without kana alternative while its sibling masu_sleep lists ねます: みました rejected.",
+  "fix": "Add alternative: みました (fix the generator rule in _generators/ja-assessment.py / ja_paradigms.py so every cloze gets the kana spelling)",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja.cpi.s2.masu_not_go",
+  "file": "content/ja/_drafts/staged/content/ja/assessment/checkpoints.json",
+  "severity": "P0",
+  "problem": "Checkpoint cloze (ja-cpx-s2-masu_not_go) without kana alternative: いきません rejected.",
+  "fix": "Add alternative: いきません",
+  "decision": "fixed in the generator library: every conjugationCloze lists its kana spelling (ja_paradigms.cloze_kana: the kana row of the cell, else the answer read through the inflection keys), in the lessons and the checkpoints alike; rule 8 flags a cloze without it. 9 clozes gained it (7 lessons, 2 checkpoint items), all of them named by the reviewer."
+ },
+ {
+  "id": "ja-vi:uc-l2-e7",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Phòng này nhỏ.' — for a room Japanese says 狭い far more naturally than 小さい; 狭い is a course lexeme and the checkpoint rubric ja.write.cp5_room accepts it, but this key rejects この部屋は狭いです.",
+  "fix": "Add alternatives: この部屋は狭いです | この部屋はせまいです",
+  "decision": "fixed: この部屋は狭いです is listed. The kana せまい aligns through the stored reading as practice, like every kana answer, so it is not listed."
+ },
+ {
+  "id": "ja-vi:uc-l3-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Hôm qua trời nóng.' — 昨日、暑かったです (time word without は, very common) is rejected; punctuation is stripped, so 昨日暑かったです must be listed.",
+  "fix": "Add alternative: 昨日暑かったです",
+  "decision": "fixed in the generator library: Y() lists a leading time word with and without は (ja_text.topic_spellings: 昨日は… ⇄ 昨日、…; the grader strips the comma); rule 8 checks it. 6 typed answers, 4 more than named."
+ },
+ {
+  "id": "ja-vi:ud-l1-e7",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Sinh nhật tôi vào tháng chín.' — わたしの誕生日は九月です and the digit month 9月 are correct and rejected.",
+  "fix": "Add alternatives: わたしの誕生日は九月です | 私の誕生日は九月です | 誕生日は9月です | わたしの誕生日は9月です",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named. 9月 comes from the numeral rule."
+ },
+ {
+  "id": "ja-vi:uh-l1-e12",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Chuyến tàu tiếp theo lúc mấy giờ?' — asking the departure time, 次の電車は何時に出ますか (出ます is taught in uh-l0), is equally correct; rejected.",
+  "fix": "Add alternative: 次の電車は何時に出ますか",
+  "decision": "fixed: 次の電車は何時に出ますか is listed."
+ },
+ {
+  "id": "ja-vi:uh-l3-e10",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi đi đến ga ...' — わたしは地下鉄で駅へ行きます rejected.",
+  "fix": "Add alternatives: わたしは地下鉄で駅へ行きます | わたしは地下鉄で駅に行きます | 私は地下鉄で駅へ行きます | 私は地下鉄で駅に行きます",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:ug-l2-e12",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi hiểu rồi.' — 分かりました is the standard dictionary spelling and the default IME conversion; the lexicon has only わかる, so the kanji 分 is 'brought' and the answer is rejected. はい、わかりました is also natural.",
+  "fix": "Add alternatives: 分かりました | はい、わかりました | はい、分かりました",
+  "decision": "fixed in the generator library: typed answers, speech variants, scenario answers and writing slots list the kanji the phone keyboard offers for the course's kana (ja_text.IME_SPELLINGS: 分かり, 行ってきます / 行って来ます, 彼女, お疲れ様, 気を付け, お願い) and the prenominal 大きな / 小さな (ja_text.natural_spellings); rule 8 checks all four. 29 records gained a spelling, 8 more than named. はい、わかりました is listed too (はい、分かりました follows)."
+ },
+ {
+  "id": "ja-vi:uk-l3-e9",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi không hiểu.' — 分かりません (standard spelling, default IME output) is rejected.",
+  "fix": "Add alternative: 分かりません",
+  "decision": "fixed in the generator library: typed answers, speech variants, scenario answers and writing slots list the kanji the phone keyboard offers for the course's kana (ja_text.IME_SPELLINGS: 分かり, 行ってきます / 行って来ます, 彼女, お疲れ様, 気を付け, お願い) and the prenominal 大きな / 小さな (ja_text.natural_spellings); rule 8 checks all four. 29 records gained a spelling, 8 more than named."
+ },
+ {
+  "id": "ja-vi:uk-l2-e10",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi đi đây!' — 行ってきます is the usual spelling and the IME default; the key is kana-only and 行 is a brought kanji, so it is rejected.",
+  "fix": "Add alternatives: 行ってきます | 行って来ます",
+  "decision": "fixed in the generator library: typed answers, speech variants, scenario answers and writing slots list the kanji the phone keyboard offers for the course's kana (ja_text.IME_SPELLINGS: 分かり, 行ってきます / 行って来ます, 彼女, お疲れ様, 気を付け, お願い) and the prenominal 大きな / 小さな (ja_text.natural_spellings); rule 8 checks all four. 29 records gained a spelling, 8 more than named."
+ },
+ {
+  "id": "ja-vi:un-l2-e8",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Chị ấy trẻ.' — 彼女は若いです (IME default for かのじょ) is rejected because 彼女 is not a lexicon surface.",
+  "fix": "Add alternative: 彼女は若いです",
+  "decision": "fixed in the generator library: typed answers, speech variants, scenario answers and writing slots list the kanji the phone keyboard offers for the course's kana (ja_text.IME_SPELLINGS: 分かり, 行ってきます / 行って来ます, 彼女, お疲れ様, 気を付け, お願い) and the prenominal 大きな / 小さな (ja_text.natural_spellings); rule 8 checks all four. 29 records gained a spelling, 8 more than named."
+ },
+ {
+  "id": "ja-vi:uj-l0-e10",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Ký túc xá ở gần ga.' — 寮は駅に近いです is the most standard form of 'near X'; only 駅の近く and 駅から近い are listed.",
+  "fix": "Add alternative: 寮は駅に近いです",
+  "decision": "fixed: 寮は駅に近いです is listed."
+ },
+ {
+  "id": "ja-vi:uj-l2-e11",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi giặt quần áo.' — 洗濯します / 洗濯をします (the usual way to say 'do the laundry') and the forms with わたしは are rejected.",
+  "fix": "Add alternatives: 洗濯します | 洗濯をします | わたしは服を洗います | わたしは洗濯します",
+  "decision": "fixed: 洗濯します, 洗濯をします and わたしは洗濯します are listed; わたしは服を洗います comes from the subject rule."
+ },
+ {
+  "id": "ja-vi:uo-l2-e5",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi làm việc ở công ty.' — わたしは会社で働いています rejected.",
+  "fix": "Add alternatives: わたしは会社で働いています | 私は会社で働いています | わたしは会社で働きます",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:uo-l3-e5",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi đến từ Việt Nam.' — the identical item ul-l0-e9 accepts わたしはベトナムから来ました; here it is rejected.",
+  "fix": "Add alternatives: わたしはベトナムから来ました | 私はベトナムから来ました",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:uo-l3-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Sở thích của tôi là bóng đá.' — わたしの趣味はサッカーです is the literal and correct rendering; rejected.",
+  "fix": "Add alternatives: わたしの趣味はサッカーです | 私の趣味はサッカーです",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:up-l0-e5",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi đi ngủ lúc 11 giờ.' — no alternative at all: わたしは11時に寝ます and the kanji numeral 十一時に寝ます are rejected.",
+  "fix": "Add alternatives: わたしは11時に寝ます | 私は11時に寝ます | 十一時に寝ます",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named. 十一時に寝ます comes from the numeral rule."
+ },
+ {
+  "id": "ja-vi:up-l3-e4",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Hôm qua tôi đã học tiếng Nhật.' — 昨日は日本語を勉強しました and the forms with わたしは are rejected (the listed alternative 昨日日本語を勉強しました is already equal to the key once punctuation is stripped).",
+  "fix": "Add alternatives: 昨日は日本語を勉強しました | わたしは昨日日本語を勉強しました | 私は昨日日本語を勉強しました",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named. 昨日は日本語を勉強しました comes from the time-word rule. The alternative equal to the key after punctuation stripping stays: it is harmless."
+ },
+ {
+  "id": "ja-vi:ut-l2-e5",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi lên tàu điện.' — no alternative: わたしは電車に乗ります rejected.",
+  "fix": "Add alternatives: わたしは電車に乗ります | 私は電車に乗ります",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:uu-l1-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi đau đầu.' — no alternative: わたしは頭が痛いです (grammatical, a likely learner answer) rejected.",
+  "fix": "Add alternatives: わたしは頭が痛いです | 私は頭が痛いです",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:uu-l2-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi uống thuốc sau bữa ăn.' — ご飯の後に is as standard as ご飯の後で; rejected.",
+  "fix": "Add alternatives: ご飯の後に薬を飲みます | 薬はご飯の後に飲みます | わたしはご飯の後で薬を飲みます",
+  "decision": "fixed: ご飯の後に薬を飲みます and 薬はご飯の後に飲みます are listed; the forms with わたしは come from the subject rule."
+ },
+ {
+  "id": "ja-vi:uv-l2-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi đã xem phim.' — no alternative: わたしは映画を見ました rejected.",
+  "fix": "Add alternatives: わたしは映画を見ました | 私は映画を見ました",
+  "decision": "fixed in the generator library: Y() adds the subject or owner the Vietnamese prompt states (ja_text.subject_spellings: 'Tôi …' → わたしは + key, '<noun> (của) tôi …' → わたしの + key; 私 by the existing rule); ja-check-answers.py rule 8 flags a typed answer that leaves it out. The rule reached 29 typed answers, 3 more than the reviewers named."
+ },
+ {
+  "id": "ja-vi:us-l1-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tôi không cần túi.' — 袋は結構です / 袋は大丈夫です are what people actually say at the konbini (the course teaches both in ui-l1-e11 and the konbini scenario); rejected here.",
+  "fix": "Add alternatives: 袋は結構です | 袋は大丈夫です | 結構です | 大丈夫です | いいえ、袋はいりません",
+  "decision": "fixed: 袋は結構です, 袋は大丈夫です, 結構です, 大丈夫です and いいえ、袋はいりません are listed."
+ },
+ {
+  "id": "ja-vi:uq-l1-e5",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "'Tàu điện bị trễ. Tôi sẽ đến muộn.' — Vietnamese tense is unmarked; 電車が遅れました is equally correct (the call_late scenario accepts it) and rejected.",
+  "fix": "Add alternatives: 電車が遅れました。遅刻します | 電車が遅れました。遅れます",
+  "decision": "fixed: 電車が遅れました。遅刻します and 電車が遅れました。遅れます are listed."
+ },
+ {
+  "id": "ja-vi:ul-l0-e3",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "Distractor also correct: at the start of a job interview a Japanese candidate typically says (失礼します、) …です。よろしくお願いします — the distractor よろしくおねがいします is a defensible 'first thing you say'.",
+  "fix": "Replace the distractor よろしくおねがいします with おやすみなさい。 (or reword the prompt to 'Bạn gặp người phỏng vấn lần đầu. Bạn chào thế nào?')",
+  "decision": "fixed: the distractor よろしくおねがいします is now おやすみなさい。"
+ },
+ {
+  "id": "ja-vi:us-l3-e2",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P0",
+  "problem": "Distractor also correct: お弁当とお茶をいただきます is a natural, polite way to order or buy ('I'll have / take …', cf. これをいただきます).",
+  "fix": "Replace the distractor with お弁当とお茶をあげます。",
+  "decision": "fixed: the distractor is now お弁当とお茶をあげます。"
+ },
+ {
+  "id": "ja.speak.k_sorry",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P0",
+  "problem": "Whole-utterance grading, no requiredConcepts. The most natural apology for arriving late, すみません、遅れました, and the past forms ending in でした are rejected (also in lesson ja-vi:uk-l2-e2).",
+  "fix": "Add acceptedVariants: すみません、遅れました | 遅れてすみませんでした | 遅くなってすみませんでした | 遅れて申し訳ありません",
+  "decision": "fixed: すみません、遅れました, 遅れてすみませんでした, 遅くなってすみませんでした and 遅れて申し訳ありません are variants."
+ },
+ {
+  "id": "ja.speak.k_excuse",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P0",
+  "problem": "あの、すみません (short あの, which recognisers usually write) has a different reading from あのう and is rejected (also ja-vi:uk-l2-e3).",
+  "fix": "Add acceptedVariants: あの、すみません | あの、すみません、ちょっといいですか",
+  "decision": "fixed: あの、すみません and あの、すみません、ちょっといいですか are variants."
+ },
+ {
+  "id": "ja.speak.l_name",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P0",
+  "problem": "わたしの名前はナムです / 名前はナムです (taught in u1-l3) are rejected; so is the common はじめまして、ナムと申します (also lessons ul-l0-e1, ul-l3-e0).",
+  "fix": "Add acceptedVariants: わたしの名前はナムです | 名前はナムです | 私の名前はナムです | はじめまして、ナムと申します | ナムです。よろしくおねがいします",
+  "decision": "fixed: all five suggested variants are listed."
+ },
+ {
+  "id": "ja.speak.n_box",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P0",
+  "problem": "大きな箱です is as natural as 大きい箱です (more so in speech) and is rejected; 大きな is not a lexeme, so no reading match either (also ja-vi:un-l0-e1, un-l3-e0).",
+  "fix": "Add acceptedVariants: 大きな箱です | 箱が大きいです",
+  "decision": "fixed: 大きな箱です comes from the prenominal rule (natural_spellings, every speech variant); 箱が大きいです is listed."
+ },
+ {
+  "id": "ja.speak.n_cat",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P0",
+  "problem": "小さな猫です rejected (also ja-vi:un-l1-e1).",
+  "fix": "Add acceptedVariants: 小さな猫です | 猫が小さいです",
+  "decision": "fixed: 小さな猫です comes from the prenominal rule; 猫が小さいです is listed."
+ },
+ {
+  "id": "ja.speak.cp4_desc_dog",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P0",
+  "problem": "Checkpoint item ja.cpi.s4.desc_dog: 大きな犬です rejected.",
+  "fix": "Add acceptedVariants: 大きな犬です",
+  "decision": "fixed: 大きな犬です comes from the prenominal rule."
+ },
+ {
+  "id": "ja.speak.pl_big_car",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P0",
+  "problem": "Placement item ja.pli.s4.car: 大きな車です rejected.",
+  "fix": "Add acceptedVariants: 大きな車です",
+  "decision": "fixed: 大きな車です comes from the prenominal rule."
+ },
+ {
+  "id": "ja.scenario.konbini_bento",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json",
+  "severity": "P0",
+  "problem": "Node l1 (and l1b): to 袋はいりますか the bare reply いいえ is natural and is matched by no variant and no concept (いいえ is not in requiredConcepts).",
+  "fix": "Add いいえ to acceptedVariants of l1 and l1b (or to the concept slot)",
+  "decision": "fixed: いいえ is a variant of the no_bag answer (l1 and l1b share it)."
+ },
+ {
+  "id": "ja.scenario.cp6_konbini_pay",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json",
+  "severity": "P0",
+  "problem": "Node l1 (reserved, checkpoint 6): to レシートはいりますか a plain はい is the natural 'yes, I need it' and is rejected (concepts are お願いします / ください / いります only); the konbini_bento scenario accepts はい in the same role.",
+  "fix": "Add はい to acceptedVariants of l1 and l1b",
+  "decision": "fixed: はい is a variant of the receipt answer (l1 and l1b)."
+ },
+ {
+  "id": "ja.scenario.cp6_clinic_cough",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json",
+  "severity": "P0",
+  "problem": "Node l0: ja-JP recognisers normally write 咳が出ます in kanji; 咳 is not a lexicon surface (only せき), so neither the variants nor the concept slot せき match a correct spoken answer.",
+  "fix": "Add acceptedVariants 咳が出ます | 咳があります | 咳です | 咳が出ています and add 咳 to the concept slot (or add 咳 to the lexicon with reading せき)",
+  "decision": "fixed: 咳が出ます, 咳があります, 咳です and 咳が出ています are variants and 咳 is in the concept slot beside せき. 咳 does not become a lexeme: that needs the pinned JmdictFurigana slice (ja-subset.py, offline)."
+ },
+ {
+  "id": "ja.write.q_sick",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P0",
+  "problem": "Exercise ja-vi:uq-l0-e0. Greeting slot rejects お疲れ様です (様 in kanji, the usual IME output; the speech items accept it). Rest slot rejects 休みたいです, which the sibling task cp5_mail_shift accepts and is the most likely A1 way to ask for leave.",
+  "fix": "greeting variants + お疲れ様です; rest variants + 休みたい | 休ませてもらえますか",
+  "decision": "fixed: お疲れ様です comes from the IME rule; the rest slot (REST, shared by q_sick, cp5_note_sick and a1cap_mail_absent) lists 休みたい and 休ませてもらえますか."
+ },
+ {
+  "id": "ja.write.cp5_note_sick",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P0",
+  "problem": "Checkpoint ja.cpi.s5.note_sick: same as q_sick — お疲れ様です and 休みたいです rejected.",
+  "fix": "greeting variants + お疲れ様です; rest variants + 休みたい",
+  "decision": "fixed: as q_sick (shared GREET and REST)."
+ },
+ {
+  "id": "ja.write.a1cap_mail_absent",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P0",
+  "problem": "Capstone ja.cpi.cap.write_absent: お疲れ様です and 休みたいです rejected.",
+  "fix": "greeting variants + お疲れ様です; rest variants + 休みたい",
+  "decision": "fixed: as q_sick (shared GREET and REST)."
+ },
+ {
+  "id": "ja.write.q_late",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P0",
+  "problem": "Exercise ja-vi:uq-l1-e0: greeting slot rejects お疲れ様です.",
+  "fix": "greeting variants + お疲れ様です (sorry variants: also 申し訳ございません)",
+  "decision": "fixed: お疲れ様です comes from the IME rule; the sorry slot lists 申し訳ございません."
+ },
+ {
+  "id": "ja.write.cp5_mail_shift",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P0",
+  "problem": "Checkpoint ja.cpi.s5.mail_shift: greeting slot rejects お疲れ様です.",
+  "fix": "greeting variants + お疲れ様です",
+  "decision": "fixed: お疲れ様です comes from the IME rule."
+ },
+ {
+  "id": "ja.write.q_reply",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P0",
+  "problem": "Exercise ja-vi:uq-l2-e0: the ok slot lists only わかりました; 分かりました (standard spelling) is rejected.",
+  "fix": "ok variants + 分かりました | 承知しました",
+  "decision": "fixed: 分かりました comes from the IME rule; 承知しました is listed."
+ },
+ {
+  "id": "ja.write.q_open",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P1",
+  "problem": "Exercise ja-vi:uq-l3-e0 (free message): お疲れ様です in kanji does not satisfy the slot; most free messages also contain ませんか/ましょう, so few learners are hit.",
+  "fix": "message variants + お疲れ様です",
+  "decision": "fixed: お疲れ様です comes from the IME rule."
+ },
+ {
+  "id": "ja-vi:ue-l0-e7",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P1",
+  "problem": "The item asks for katakana ('Gõ bằng katakana'), but the lenient fold turns katakana into hiragana, so ぱん passes: the item does not test what it claims. Same for the ids in alsoAffects.",
+  "alsoAffects": [
+   "ja-vi:ue-l3-e5",
+   "ja-vi:ue-l3-e6",
+   "ja-vi:uo-l0-e4",
+   "ja-vi:uo-l0-e5",
+   "ja-vi:ur-l1-e0",
+   "ja-vi:ur-l1-e1",
+   "ja-vi:ur-l1-e2",
+   "ja.cpi.s2.type_vietnam (checkpoints.json)"
+  ],
+  "fix": "Grade script-production items without the katakana→hiragana fold (a per-exercise strict-script flag, or make them strict-graded like dictation with a width-only fold), or drop 'bằng katakana' from the prompt.",
+  "decision": "left for the owner: the katakana fold is the grader's (src/lib/languages/ja.ts normalizeLenient folds katakana to hiragana for every typed answer), so no content change can make these items test katakana. Two ways: (a) an engine flag on typeAnswer graded with the width fold only, with schema and validator support; (b) prompts that no longer say 'bằng katakana'. Nothing is changed until the owner chooses.",
+  "forOwner": true
+ },
+ {
+  "id": "ja-vi:uh-l1-e4",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P1",
+  "problem": "Dictation accepts only the all-kanji script or the all-kana script; a correct mixed spelling (ドアがしまります。ご注意ください。, 駅はちかいです) fails. REVIEW-NOTES states this is by design, but it rejects correct Japanese orthography.",
+  "alsoAffects": [
+   "ja-vi:uh-l2-e3",
+   "ja-vi:uj-l3-e6",
+   "ja.cpi.s3.dict_work",
+   "ja.cpi.s3.dict_station",
+   "ja.cpi.s3.dict_door"
+  ],
+  "fix": "Align dictation per word through the stored readings (kana for any word = accepted), or dictate only kana-written clips in scored checkpoints.",
+  "decision": "fixed differently: no grader change. A dictation now lists every spelling with each kanji word in kanji or in kana (Index.mixes in ja_text.py, used by ja_lesson_lib.D and ja-assessment.dict_), so ドアがしまります。ご注意ください。 passes and strict grading stays; the self-check requires exactly those alternatives. 5 dictations gained them (uh-l1-e4, uh-l2-e3, uj-l3-e6, dict_work, dict_station); dict_door has one kanji word and already had both spellings."
+ },
+ {
+  "id": "ja-vi:ug-l3-e10",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P1",
+  "problem": "'Hãy cẩn thận.' — 気を付けてください (付 in kanji, a common IME conversion) is rejected.",
+  "fix": "Add alternatives: 気を付けてください | 気を付けて",
+  "decision": "fixed in the generator library: typed answers, speech variants, scenario answers and writing slots list the kanji the phone keyboard offers for the course's kana (ja_text.IME_SPELLINGS: 分かり, 行ってきます / 行って来ます, 彼女, お疲れ様, 気を付け, お願い) and the prenominal 大きな / 小さな (ja_text.natural_spellings); rule 8 checks all four. 29 records gained a spelling, 8 more than named."
+ },
+ {
+  "id": "ja-vi:uk-l0-e8",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P1",
+  "problem": "'Bạn vào ca. Hãy chào mọi người.' gives no time of day; arriving mid-day many workplaces greet with お疲れさまです, which is rejected.",
+  "fix": "Add 'Buổi sáng,' to the prompt, or add alternative: お疲れさまです | お疲れ様です",
+  "decision": "fixed: the prompt says 'Bạn vào ca buổi sáng.', and お疲れさまです (お疲れ様です follows) and 皆さん、おはようございます are listed."
+ },
+ {
+  "id": "ja-vi:uk-l1-e9",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P1",
+  "problem": "お先に失礼いたします (humble form widely used at work) is rejected here and in the speech item ja.speak.k_osaki (ja-vi:uk-l2-e1, uk-l3-e2).",
+  "fix": "Add alternative / acceptedVariant: お先に失礼いたします",
+  "decision": "fixed: お先に失礼いたします is listed in uk-l1-e9 and is a variant of ja.speak.k_osaki (so uk-l2-e1 and uk-l3-e2 too)."
+ },
+ {
+  "id": "ja-vi:uq-l2-e5",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P1",
+  "problem": "Prompt 'Mai tôi đi làm được.' leads a learner to 明日は行けます / 明日は仕事に行けます; the key 明日は大丈夫です ('tomorrow is fine') is idiomatic but not what the Vietnamese asks, and the literal answers are rejected.",
+  "fix": "Reword the prompt to 'Ngày mai thì tôi ổn (đi làm được).' and add alternatives: 明日は行けます | 明日は仕事に行けます | 明日は会社に行けます",
+  "decision": "fixed: the prompt is 'Ngày mai thì tôi ổn (đi làm được).' (the unit q guidebook says the same) and 明日は行けます, 明日は仕事に行けます, 明日は会社に行けます are listed."
+ },
+ {
+  "id": "ja-vi:uu-l3-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P1",
+  "problem": "'Tôi bị sốt.' — 熱が出ています / 熱が出ました are correct and rejected (the writing rubric q_sick accepts 熱が出).",
+  "fix": "Add alternatives: 熱が出ています | 熱が出ました",
+  "decision": "fixed: 熱が出ています and 熱が出ました are listed."
+ },
+ {
+  "id": "ja.read.uj_family",
+  "file": "content/ja/_drafts/staged/content/ja/reception/reading.json",
+  "severity": "P1",
+  "problem": "Stimulus of ja-vi:uj-l1-e0/e1: the narrator writes about Linh's family with the humble 父と母 and then お父さん/お母さん — 父/母 belong to the speaker's own family, which contradicts u2-l0-e4.",
+  "fix": "リンさんの家族はお父さんとお母さんと弟さんです。お父さんは医者です。…",
+  "decision": "fixed: the reading says お父さんとお母さんと弟さん … 弟さんは学生です; rule 8 now flags a reading that gives a character's family the humble kin words."
+ },
+ {
+  "id": "ja.exi.jlpt_n5.a_g2_04",
+  "file": "content/ja/_drafts/staged/content/ja/exam/jlpt-n5.json",
+  "severity": "P1",
+  "problem": "★ item: besides つくえの うえ に ペンと ノートが あります (★ = ペンと), the order つくえの ペンと ノートが うえ に あります is grammatical and puts うえ at ★. REVIEW-NOTES flagged it; the second order is odd but defensible, so the item is not one-answer.",
+  "fix": "Change the frame so only one order works, e.g. ペンは ＿＿ ＿＿ ★ ＿＿ あります。 with chunks つくえ / の / うえ / に (★ = うえ).",
+  "decision": "fixed differently: the frame is つくえの　うえに　＿＿　＿＿　★　＿＿。 with the chunks ペン / と / ノートが / あります (★ = ノートが), which has one order. The suggested ペンは … frame also parses as うえの つくえに."
+ },
+ {
+  "id": "ja.story.micro_hajimemashite",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json",
+  "severity": "P1",
+  "problem": "Question 2 'Suzuki là người nước nào?' (key Người Nhật): the text says only 日本の学生です, which means 'a student in Japan' as well as 'a Japanese student'; the option 'Câu chuyện không nói' is defensible.",
+  "fix": "Change the sentence to わたしは日本人です。学生です。 (日本人 is a unit-2 word), or drop the third option.",
+  "decision": "fixed differently: 日本人 is an A1-1 word, beyond the micro-story band A1-0, and the story check rejects it. The text stays and the option 'Câu chuyện không nói' is now 'Người Hàn Quốc': with 日本の学生 and the name すずき, Japanese is the one fitting answer."
+ },
+ {
+  "id": "ja.story.micro_family_photo",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json",
+  "severity": "P1",
+  "problem": "Inference question 'Chị gái của Lan có mấy người con?' rests on 子供は二人です, which does not say whose children (after a photo with Lan's younger brother it can read 'there are two children').",
+  "fix": "Write 姉は子供が二人います。 (or 姉の子供は二人です。)",
+  "decision": "fixed: the sentence is 姉の子供は二人です。 (language finding micro_family_photo#8)."
+ },
+ {
+  "id": "ja.story.japanese_class",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json",
+  "severity": "P1",
+  "problem": "Inference key 'Vì Mai đã học cùng Tuấn ở thư viện' names Tuấn, but the story never names Mai's study partner (speaker B is anonymous).",
+  "fix": "Key option: 'Vì Mai đã cùng một bạn ôn bài ở thư viện', or name the partner in the text (トゥアンさん、一緒に勉強しましょう / speaker line).",
+  "decision": "fixed: the key is 'Vì Mai đã cùng một bạn học ở thư viện' (language finding japanese_class.q2)."
+ },
+ {
+  "id": "ja.story.brothers_wedding",
+  "file": "content/ja/_drafts/staged/content/ja/stories/stories.json",
+  "severity": "P1",
+  "problem": "Sentence 来月、お兄さんが結婚しました。 combines 来月 (next month, from now) with a past verb; unnatural.",
+  "fix": "次の月、お兄さんは結婚しました。",
+  "decision": "fixed differently: 次の月 has no lexeme (月 alone is none) and その後 is beyond the A1-1 band, so the sentence is そして、お兄さんは結婚しました。 'Rồi anh trai Hoa cưới vợ.' The story check now flags a time word counted from now with a past verb."
+ },
+ {
+  "id": "ja.write.o_family",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P1",
+  "problem": "Exercise ja-vi:uo-l2-e0: 'thích nấu ăn' is rendered only as 料理が好き; 料理をするのが好き / 料理を作るのが好き and the sisters slot written 妹は二人 or 二人の妹 are rejected.",
+  "fix": "like variants + 料理をするのが好き | 料理するのが好き | 料理を作るのが好き; sisters variants + 妹は二人 | 二人の妹",
+  "decision": "fixed: the like slot lists 料理をするのが好き, 料理するのが好き, 料理を作るのが好き; the sisters slot 妹は二人 and 二人の妹."
+ },
+ {
+  "id": "ja.write.r_note",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P1",
+  "problem": "Exercise ja-vi:ur-l3-e0: 'máy không chạy' → 機械が止まっています / 動いていません are correct and rejected.",
+  "fix": "broken variants + 止まって | 動いていません",
+  "decision": "fixed: the broken slot lists 止まって and 動いていません."
+ },
+ {
+  "id": "ja.write.o_age",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P1",
+  "uncertain": "Read from source, not run: alignWrittenToKey returns early when the key's reading is not all kana, and 23歳 reads 23さい (digits), so 23さい may never align.",
+  "problem": "Exercise ja-vi:uo-l0-e1 (also ja.write.o_all → uo-l3-e0 and ja.write.cp5_profile_hoa): an age written わたしは23さいです (kana practice, accepted by the sibling typeAnswer uo-l1-e6) probably fails the age slot.",
+  "fix": "Add the kana variant to every age slot (23さい, 28さい, 24さい) or let the aligner skip digit runs.",
+  "decision": "fixed as suggested: the age slots of o_age, o_all and cp5_profile_hoa list 23さい / 28さい / 24さい. Read from source like the reviewer (not run): alignWrittenToKey leaves the answer unchanged when the key's reading has digits, so the kana age had no path; the writing fold reads the digits as kanji numerals on both sides, so the new variant matches."
+ },
+ {
+  "id": "ja.speak.l_from",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P1",
+  "problem": "'Hãy nói bạn đến từ đâu.' — ベトナムです (the standard answer to お国は) is rejected here (also ja-vi:ul-l0-e2, ul-l3-e1), while the scenario cp6_new_colleague accepts it.",
+  "fix": "Add acceptedVariants: ベトナムです | ベトナムのハノイから来ました",
+  "decision": "fixed: ベトナムです and ベトナムのハノイから来ました are variants."
+ },
+ {
+  "id": "ja-vi:u2-l3-e2",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P2",
+  "problem": "Vietnamese option text 'mẹ (người khác' lacks the closing bracket; same for 'bố (người khác' in u2-l3-e8 and ue-l2-e3 (generator cuts the gloss).",
+  "alsoAffects": [
+   "ja-vi:u2-l3-e8",
+   "ja-vi:ue-l2-e3"
+  ],
+  "fix": "'mẹ (người khác)' / 'bố (người khác)'",
+  "decision": "fixed in the generator library: g() closes a bracket that the ; of the gloss cut open (mẹ (người khác)); rule 8 flags a Vietnamese option with an open bracket. 4 select exercises changed."
+ },
+ {
+  "id": "ja-vi:ui-l0-e10",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P2",
+  "problem": "Prompt 'Không, tôi không cần túi.' starts with 'Không,' but the tiles have no いいえ, so the key cannot render it.",
+  "fix": "Add an いいえ tile and alternative いいえ·袋·は·いりません, or drop 'Không,' from the prompt.",
+  "decision": "fixed: the tiles have いいえ, the key is いいえ|袋|は|いりません and 袋|は|いりません is an alternative."
+ },
+ {
+  "id": "ja-vi:uo-l1-e6",
+  "file": "content/ja/_drafts/staged/content/courses/ja-vi.json",
+  "severity": "P2",
+  "problem": "Kanji numerals are listed on ul-l1-e8 (二十五歳) but not here (二十二歳) nor on um-l1-e8 (二百円).",
+  "alsoAffects": [
+   "ja-vi:um-l1-e8"
+  ],
+  "fix": "Add 二十二歳です | わたしは二十二歳です; on um-l1-e8 add 二百円です | 二百円",
+  "decision": "fixed in the generator library: Y() lists every number before a counter in digits and in kanji (ja_text.numeral_spellings: 3つ ⇄ 三つ, 1人 ⇄ 一人, 11時 ⇄ 十一時, 1万円 ⇄ 一万円 / 10000円); rule 8 checks it. 8 typed answers, 2 more than named. 二十二歳です and 二百円です come from it."
+ },
+ {
+  "id": "ja.exi.jlpt_n5.a_m3_04",
+  "file": "content/ja/_drafts/staged/content/ja/exam/jlpt-n5.json",
+  "severity": "P2",
+  "problem": "Context sentence uses the potential はいれます (N4 grammar) in an N5 item; the key is still unique.",
+  "fix": "ひとが たくさん はいります。 or へやに つくえが たくさん あります。",
+  "decision": "fixed differently: the context is つくえと いすが たくさん あります, and the distractors くらい / ふるい, which that context does not rule out, are now みじかい / わかい."
+ },
+ {
+  "id": "ja.scenario.factory_safety",
+  "file": "content/ja/_drafts/staged/content/ja/interaction/scenarios.json",
+  "severity": "P2",
+  "problem": "Re-prompt r1 says 緑のボタンです (the start button) before the learner retries 'how do I stop it'; the final t_ok then says 赤いボタンです. Confusing for the learner.",
+  "fix": "r1: 機械はどうやって止めますか。わかりますか。 or 止めるボタンは何色ですか。",
+  "decision": "fixed differently: the re-prompt is 緑のボタンで動きます。止めるボタンもありますよ。 — a hint, without asking the question for the learner. Its clip text changed (audio is still to be generated for ja)."
+ },
+ {
+  "id": "ja.speak.cp4_student",
+  "file": "content/ja/_drafts/staged/content/ja/speech/items.json",
+  "severity": "P2",
+  "problem": "大学生です is a correct, likely answer for 'sinh viên'; rejected. pl_name_minh also lacks ミンと申します, which its siblings accept.",
+  "alsoAffects": [
+   "ja.speak.pl_name_minh"
+  ],
+  "fix": "cp4_student + 大学生です | わたしは大学生です; pl_name_minh + ミンと申します",
+  "decision": "fixed: 大学生です and わたしは大学生です are variants of cp4_student; ミンと申します of pl_name_minh."
+ },
+ {
+  "id": "ja.write.r_form_office",
+  "file": "content/ja/_drafts/staged/content/ja/writing/tasks.json",
+  "severity": "P2",
+  "uncertain": "Depends on how the writing tokenizer treats ・ and hyphens; not run.",
+  "problem": "Form slots list only グエン・ナム and 080-1234-5678; a name typed グエン ナム / グエンナム or a phone number without hyphens may fail (same for r_form_clinic and the three cp5_form_* tasks).",
+  "alsoAffects": [
+   "ja.write.r_form_clinic",
+   "ja.write.cp5_form_office",
+   "ja.write.cp5_form_clinic",
+   "ja.write.cp5_form_work"
+  ],
+  "fix": "Add name variants without the dot and phone variants without hyphens (08012345678).",
+  "decision": "kept: read src/lib/writing/rubric.ts and src/lib/languages/ja.ts: normalizeWritten → foldSpokenJapanese drops ・, -, ~ and the space between Japanese characters, so グエンナム, グエン ナム and 08012345678 already match the listed variants. Listing them would be a duplicate after normalization. Read from source, not run."
+ }
+]

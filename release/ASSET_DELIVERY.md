@@ -67,7 +67,8 @@ Declared per language in `content/<lang>/reception/audio-source-manifest.json`:
 | es (24 kbps stories) | 20 | first 12 (8 A1-1 + 4 A1-2) | 280 | ≈ 2.1 MB | ≈ 9.4 MB after the next es run (10.82 MB today) |
 | de (24 kbps stories) | 43 | first 12 (3 A1-2 + 9 A2-1) | 271 | ≈ 2.5 MB (projected) | ≈ 8.1 MB after the next de run (5.63 MB today) |
 | it (Opus 16 kbps stories) | 46 | first 18 (2 A1-1 + 16 A1-2) | 359 | included in the reception total of 4.51 MB (measured) | 10.3 MB (measured) |
-| pt, ja, zh, ko, en | — | first ≤ 18 each | — | ≈ 2–2.5 MB each (projected) | ≈ 9.5 MB each (projected) |
+| ja (Opus 16 kbps, every layer) | 45 | first 18 | 455 | 2.77 MB (measured, run 41655941175) | ≈ 9.15 MB (projected; see "Japanese: Opus on every layer") |
+| pt, zh, ko, en | — | first ≤ 18 each | — | ≈ 2–2.5 MB each (projected) | ≈ 9.5 MB each (projected) |
 
 - Measured is from the committed assets; projected is 220 B per character,
   measured on the committed es story sentences at 24 kbps.
@@ -190,6 +191,72 @@ Flip only after one CI run shows all three of these green: device-acceptance
 
 The es and de audio runs render the `.opus` files. Their sizes and
 `audio:check` results are in that PR.
+
+## Japanese: Opus on every layer (decided 2026-11-03)
+**Decided: Japanese pack, lexicon and listening clips ship as Opus 16 kbps
+mono, like the story sentences. Every other language keeps MP3 for those
+layers, byte-identical; French stays MP3 everywhere.**
+
+Why: audio run 41655941175 (ja, generate, all layers) passed technical QA
+(2 036 assets, 0 failures) but failed the size gate at 16.9 MB against the
+12 MB per-language cap:
+
+| Layer (run 41655941175) | Files | MP3 / story Opus (measured) | Opus 16 kbps (projected) |
+|---|---|---|---|
+| ja-vi pack | 499 | 5.15 MB | 2.39 MB |
+| lexicon (keyed by ja-vi) | 726 | 4.33 MB | 1.80 MB |
+| listening clips | 258 | 3.90 MB | 1.86 MB |
+| ja-en pack | 98 | 0.74 MB | 0.33 MB |
+| story sentences (already Opus 16 kbps) | 455 | 2.77 MB | 2.77 MB |
+| **Total** | **2 036** | **16.89 MB** | **9.15 MB** (cap 12 MB; 2.85 MB left) |
+
+How the projection was made (2026-11-03, ffmpeg 7.1, libopus): every MP3 of
+the run's artifact (`audio-ja-generate-all`) was re-encoded with the
+pipeline's Opus settings, `loudnorm=I=-18:TP=-1.5:LRA=11`, then the
+`alimiter=limit=0.708` peak limiter, then `-ar 24000 -ac 1 -map_metadata -1
+-codec:a libopus -b:a 16k -application voip`. A key shared by a lexicon and
+a pack clip counts once, as lexicon. The real run encodes from the 22.05 kHz
+WAV, not from the MP3, so the sizes will differ slightly; the next ja run's
+`audio:check` is the measured number. A transcode measures size only, not
+quality: the run's tech-qa and ASR audit judge the Opus files.
+
+The switch is one setting, `content/audio/engines.json`
+`encoding.codecByLanguage`:
+
+```json
+"codecByLanguage": { "ja": { "pack": "opus", "lexicon": "opus", "reception": "opus" } }
+```
+
+- `codecFor` (scripts/lib/audio-codec.ts): an mp3-only language is mp3; else
+  the language's override; else `codecByLayer`. `codecProblems` refuses an
+  override for an mp3-only language (French), an unknown layer or codec, and
+  a malformed language code. `codecByLayer` itself stays story-only.
+- The codec is part of the key: every ja pack, lexicon and listening clip
+  gains the recipe `opus-16k-lim3` after the front-end tag
+  (`phonemes=course-readings-v1|opus-16k-lim3`), as story sentences do. The
+  plan (`scripts/audio.ts`), the listening validator and the compiler
+  (`listeningClipKey`, scripts/lib/reception.ts) derive the same key.
+- Files are `<key>.opus`. `apply` copies them into `assets/audio/ja/` and
+  writes `.opus` requires into `src/content/audio-manifest.ts` (lint-ignored).
+  The per-course slices (`src/content/audio/<course>.ts`) and
+  `src/content/reception/ja-clip-assets.ts` carry the same
+  `eslint-disable @typescript-eslint/no-require-imports` header as the story
+  maps, only when they hold an `.opus` require; MP3 maps are unchanged.
+- The players do not look at the format: `speakTarget` (lessons, lexicon) and
+  the listening player hand a Metro module id to expo-audio
+  (integration-tests/opus-pack-audio.test.tsx pins both with an `.opus`
+  require). Metro's `assetExts` entry for `.opus` applies to every require, on
+  native and in the web export, exactly as for the story maps; no layer has
+  its own asset handling. A web export with ja audio has not been run yet. Device decoding is the same
+  decoder the story sentences already use; the device-acceptance `lessons`
+  shard's "audio events ja-vi" row is the first device proof for pack clips.
+- iOS is still not checked (as for stories).
+
+**What the next ja audio run must know:** every ja pack, lexicon and
+listening key changes (1 591 clips; the 460 story sentence keys do not). A
+`reuse_run` of 41655941175 reuses only the story sentences; everything else
+re-renders. Re-blessing the ja baseline and `content/reports/audio-size.json`
+follows from that run's `apply`.
 
 ## Fallbacks without bundled audio
 - **Stories outside band 1:** the device voice, labelled "Giọng đọc của máy".

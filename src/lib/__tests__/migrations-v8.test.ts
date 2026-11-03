@@ -12,6 +12,7 @@
  * and a backup round-trips.
  */
 import { afterEach, describe, expect, test } from "bun:test";
+import { existsSync } from "fs";
 
 import { ID_REGISTRIES } from "../../content/ids";
 import { idRegistryForLanguage, itemIdFor } from "../learning/ids";
@@ -38,12 +39,16 @@ const totals = (stats: Record<string, { correct: number; wrong: number }>) =>
   Object.values(stats).reduce((t, s) => ({ correct: t.correct + s.correct, wrong: t.wrong + s.wrong }), { correct: 0, wrong: 0 });
 
 describe("v7 → v8: legacy re-key of registry courses", () => {
-  test("PERSIST_VERSION is 8 (v8: legacy re-key)", () => {
-    expect(PERSIST_VERSION).toBe(8);
+  test("PERSIST_VERSION is 9 (v8: legacy re-key; v9: primerPassed, migrations-v9.test.ts)", () => {
+    expect(PERSIST_VERSION).toBe(9);
   });
 
   test("every id registry the app ships was re-keyed by a numbered step (a new registry needs its own migration)", () => {
-    expect([...REKEYED_TARGETS].sort()).toEqual(Object.keys(ID_REGISTRIES).sort());
+    // A target may join the list one compile early: its registry's sources exist (content/<code>/lexemes.json) and
+    // the first compile after the promote writes src/content/ids/<code>.json (P4c: ja, written by the audio bot commit).
+    const pending = REKEYED_TARGETS.filter((code) => !(code in ID_REGISTRIES));
+    for (const code of pending) expect(existsSync(`content/${code}/lexemes.json`), code).toBe(true);
+    expect([...REKEYED_TARGETS].filter((code) => !pending.includes(code)).sort()).toEqual(Object.keys(ID_REGISTRIES).sort());
   });
 
   test("RC3 es-en progress: every key becomes the id the runtime writes; counts are preserved", () => {
@@ -67,7 +72,7 @@ describe("v7 → v8: legacy re-key of registry courses", () => {
 
   test("fr-en (re-keyed at v2, srsLegacy kept) and courses without a registry are byte-identical", () => {
     const via7 = migrateProgress(rc3(), 3, NOW, 7);
-    const via8 = migrateProgress(rc3(), 3, NOW);
+    const via8 = migrateProgress(rc3(), 3, NOW, 8);
     expect(JSON.stringify(via8.courses["fr-en"])).toBe(JSON.stringify(via7.courses["fr-en"]));
     for (const courseId of Object.keys(via7.courses)) {
       const code = courseId.slice(0, courseId.indexOf("-"));

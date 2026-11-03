@@ -25,6 +25,8 @@ export type CourseLexicon = {
     reading?: { value: string; notation: string };
     /** Other spellings of the same word that fold to `surface` (zh: traditional). */
     variants?: readonly string[];
+    /** Part of speech from the lexicon index (ja: verbs and い-adjectives get inflection keys). */
+    pos?: string;
   }[];
 };
 
@@ -74,6 +76,12 @@ export type LanguageRules = {
    */
   normalizeLenientAlternate?(text: string): string;
   /**
+   * D-10 owner decision (2026-11-03): the lenient form of an item that asks for one script (typeAnswer.script) —
+   * width, case and punctuation folded, but never one script into another (ja "katakana": ぱん stays ぱん, so it is
+   * not パン). Absent for languages with no such item; the validator then refuses the flag.
+   */
+  normalizeLenientInScript?(text: string, script: "katakana"): string;
+  /**
    * A typed answer rewritten toward one key, both already in the lenient form: where the key
    * has a word of this language's variety and the answer has the other variety's word for it
    * ("an apartment" / "a flat"). Pair-aware because the pair holds only for that key's meaning;
@@ -89,8 +97,18 @@ export type LanguageRules = {
    * plugin makes is a same-script match (English varieties).
    */
   readingInput?: "kana" | "pinyin";
-  /** The same for one key's run inside free writing, where the answer's words have no fixed meaning: stricter about which words it rewrites. */
+  /**
+   * The same for one key's run inside free writing, where the answer's words have no fixed meaning: stricter about which
+   * words it rewrites. P4c: ja / zh rewrite only a run of tokens written entirely in the reading notation whose
+   * reading is the key's stored one (a match through `readingInput`, so practice under the P4b guard).
+   */
   alignWrittenToKey?(answer: string, key: string): string;
+  /**
+   * P4c: whether one token of normalized free writing spells a course word in the reading notation (ja: the kana of
+   * 毎日 or of 食べます; zh: the pinyin of 学生). Such a token counts as target-language vocabulary for the writing
+   * rubric's "recognizably the target language" floor. Absent = no reading notation (every Latin-script plugin).
+   */
+  knownReading?(token: string): boolean;
   /** Strict comparison form: case/space folded, every letter and mark kept. */
   normalizeStrict(text: string): string;
   /**
@@ -117,6 +135,14 @@ export type LanguageRules = {
    * reading layer (every other language).
    */
   spokenReading?(normalized: string): string;
+  /**
+   * P4c: the reading of a WHOLE normalized utterance, spaces dropped, with the
+   * inflected forms of stored verbs and adjectives read too (ja: 働いています →
+   * はたらいています, through ja-inflection.ts). The grader compares whole
+   * variants with it; concept slots keep spokenReading's word-level tokens.
+   * Absent = the grader compacts spokenReading (zh, ko).
+   */
+  utteranceReading?(normalized: string): string;
   /** P4b: reading-speed band (CJK: characters, not letters). Absent = not stated. */
   charsPerSecBand?: CharsPerSecBand;
   /**

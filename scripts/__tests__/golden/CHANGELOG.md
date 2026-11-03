@@ -1275,3 +1275,85 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/primer/zh.json
 - compile: new      lexicon-db:xc:xc-lexicon-v3-c01fdeb190986778.db
 - compile: missing  lexicon-db:xc:xc-lexicon-v3-7d3e6ca9534c6cc0.db
+
+## 2026-11-03 — P4c persist v9 (primerPassed): the migration runtime goldens only
+
+Persisted-shape change next to its numbered migration (src/lib/persistence/migrations.ts v8 → v9): every persona's
+migrated state gains `"primerPassed": {}`, the envelope's persistVersion and the golden's toVersion become 9. Nothing
+else in the five files moved; no French learner value changed. Written with GOLDEN_UPDATE=1 on
+migrations.golden.test.ts alone — the compile manifest was not re-blessed (the ja drift waits for the ja-vi promote).
+
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-11-03 — audio.yml ja generate (all) run 41705404069
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/hanviet/REVIEW.md
+- compile: changed  content/ja/primer/REVIEW.md
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/artifacts/index.ts
+- compile: changed  src/content/artifacts/ja-en.ts
+- compile: changed  src/content/attributions.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/catalog.json
+- compile: changed  src/content/course-bundles.ts
+- compile: changed  src/content/course-loaders.ts
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/courses/ja-en.ts
+- compile: changed  src/content/flags.ts
+- compile: changed  src/content/hanviet/ja.json
+- compile: changed  src/content/ids/index.ts
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/packs/index.ts
+- compile: changed  src/content/packs/ja-en.json
+- compile: changed  src/content/primer/ja.json
+- compile: new      content/reports/ja/audio-census.json
+- compile: new      content/reports/ja/audio-quality.json
+- compile: new      content/reports/ja/cefr-alignment.json
+- compile: new      content/reports/ja/cefr-claim-gate.json
+- compile: new      content/reports/ja/checkpoint-coverage.json
+- compile: new      content/reports/ja/context-coverage.json
+- compile: new      content/reports/ja/course-objective-coverage.json
+- compile: new      content/reports/ja/lexicon-quality.json
+- compile: new      content/reports/ja/lexicon-source-audit.json
+- compile: new      content/reports/ja/placement-coverage.json
+- compile: new      content/reports/ja/reception-audio-census.json
+- compile: new      content/reports/ja/stories-coverage.json
+- compile: new      src/content/artifacts/ja-vi.ts
+- compile: new      src/content/assessment/ja-attainment.json
+- compile: new      src/content/assessment/ja-checkpoints.json
+- compile: new      src/content/assessment/ja-claim.json
+- compile: new      src/content/assessment/ja-objectives.json
+- compile: new      src/content/assessment/ja-placement.json
+- compile: new      src/content/audio/ja-en.ts
+- compile: new      src/content/audio/ja-vi.ts
+- compile: new      src/content/concepts/ja-concepts.json
+- compile: new      src/content/courses/ja-vi.ts
+- compile: new      src/content/exam/ja-exam-tracks.json
+- compile: new      src/content/ids/ja.json
+- compile: new      src/content/interaction/ja-scenarios.json
+- compile: new      src/content/lexicon/ja-daily.json
+- compile: new      src/content/lexicon/ja-en-index.json
+- compile: new      src/content/lexicon/ja-en-web-fallback.json
+- compile: new      src/content/lexicon/ja-index.json
+- compile: new      src/content/lexicon/ja-web-fallback.json
+- compile: new      src/content/packs/ja-vi.json
+- compile: new      src/content/reception/ja-clip-assets.ts
+- compile: new      src/content/reception/ja-listening.json
+- compile: new      src/content/reception/ja-reading.json
+- compile: new      src/content/speech/ja-speech-items.json
+- compile: new      src/content/stories/ja-stories.json
+- compile: new      src/content/stories/ja-story-assets.ts
+- compile: new      src/content/writing/ja-writing.json
+- compile: new      lexicon-db:ja-en:ja-en-lexicon-v3-c8772f8b3442a06f.db
+- compile: new      lexicon-db:ja:ja-lexicon-v3-479f6878499612e0.db
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+
+## 2026-11-03 — P4c: the Hán-Việt and ja primer D-10 review sheets regenerated after the review fixes
+
+- no golden changed (manifest and snapshots identical)

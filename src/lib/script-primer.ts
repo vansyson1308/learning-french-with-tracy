@@ -38,3 +38,15 @@ export function coursePrimer(courseId: string): ScriptPrimer | null {
 export function primerText(text: PrimerText, nativeCode: string): string {
   return nativeCode === "vi" ? text.vi : text.en;
 }
+
+export type PrimerCheckpoint = NonNullable<ScriptPrimer["checkpoint"]>;
+export type PrimerCheckpointItem = PrimerCheckpoint["items"][number];
+
+/**
+ * P4c: score a checkpoint attempt (one chosen option index per item, null = unanswered). Passing is reaching the
+ * pass mark; the caller records only a pass (store.markPrimerPassed) — no XP, no lesson, no scheduler evidence.
+ */
+export function scorePrimerCheckpoint(checkpoint: PrimerCheckpoint, answers: readonly (number | null)[]): { correct: number; total: number; passed: boolean } {
+  const correct = checkpoint.items.filter((item, i) => answers[i] === item.correct).length;
+  return { correct, total: checkpoint.items.length, passed: correct >= checkpoint.passMark };
+}

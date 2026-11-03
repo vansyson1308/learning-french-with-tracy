@@ -1,0 +1,2318 @@
+{
+  "version": 1,
+  "language": "ja",
+  "tasks": [
+    {
+      "id": "ja.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Nam. Hãy viết một câu tiếng Nhật nói tên của bạn."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Nam (viết bằng katakana)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên của bạn"
+            },
+            "variants": [
+              "ナム"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "です"
+        ]
+      },
+      "modelAnswers": [
+        "わたしはナムです。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn 23 tuổi. Hãy viết một câu tiếng Nhật nói tuổi của bạn."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tuổi"
+          },
+          "value": "23"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi của bạn"
+            },
+            "variants": [
+              "23歳",
+              "23さい"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "です"
+        ]
+      },
+      "modelAnswers": [
+        "わたしは23歳です。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.o_home",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu: bạn đến từ nước nào và bây giờ bạn sống ở thành phố nào."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Nước"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Thành phố"
+          },
+          "value": "Osaka"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "from",
+            "description": {
+              "vi": "bạn đến từ đâu"
+            },
+            "variants": [
+              "ベトナムから",
+              "ベトナム人"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố bạn sống"
+            },
+            "variants": [
+              "大阪"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "ベトナムから来ました。今、大阪に住んでいます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:betonamu",
+        "ja:w:kuru",
+        "ja:w:ima",
+        "ja:w:oosaka",
+        "ja:w:sumu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.o_family",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu: bạn có hai em gái, và bạn thích nấu ăn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "sisters",
+            "description": {
+              "vi": "hai em gái"
+            },
+            "variants": [
+              "妹が二人",
+              "妹は二人",
+              "二人の妹"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "like",
+            "description": {
+              "vi": "bạn thích nấu ăn"
+            },
+            "variants": [
+              "料理が好き",
+              "料理が大好き",
+              "料理をするのが好き",
+              "料理するのが好き",
+              "料理を作るのが好き"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "妹が二人います。料理が好きです。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:imouto",
+        "ja:w:futari",
+        "ja:w:ryouri",
+        "ja:w:suki"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.o_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố bạn sống."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Lan"
+        },
+        {
+          "label": {
+            "vi": "Tuổi"
+          },
+          "value": "28"
+        },
+        {
+          "label": {
+            "vi": "Thành phố"
+          },
+          "value": "Nagoya"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "ラン"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi"
+            },
+            "variants": [
+              "28歳",
+              "28さい"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố"
+            },
+            "variants": [
+              "名古屋"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "ランです。28歳です。名古屋に住んでいます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:nagoya",
+        "ja:w:sumu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.p_who",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu: anh Nam uống cà phê vào buổi sáng."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Người"
+          },
+          "value": "Nam"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "drink",
+            "description": {
+              "vi": "uống cà phê"
+            },
+            "variants": [
+              "コーヒーを飲み"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "morning",
+            "description": {
+              "vi": "vào buổi sáng"
+            },
+            "variants": [
+              "朝",
+              "毎朝"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 15,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "ナムさんは朝、コーヒーを飲みます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:asa",
+        "ja:w:koohii",
+        "ja:w:nomu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.p_neg",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu phủ định: bạn không uống rượu."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "neg",
+            "description": {
+              "vi": "bạn không uống rượu"
+            },
+            "variants": [
+              "お酒を飲みません",
+              "お酒は飲みません"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "お酒を飲みません。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:osake",
+        "ja:w:nomu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.p_ask",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu hỏi lịch sự: Bạn sống ở đâu?"
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ask",
+            "description": {
+              "vi": "câu hỏi về nơi sống"
+            },
+            "variants": [
+              "どこに住んで"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "どこに住んでいますか。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.p_link",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu: bạn ăn sáng, sau đó bạn đi làm. Dùng một từ nối."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "breakfast",
+            "description": {
+              "vi": "bạn ăn sáng"
+            },
+            "variants": [
+              "朝ご飯を食べ"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "link",
+            "description": {
+              "vi": "từ nối"
+            },
+            "variants": [
+              "それから",
+              "そして"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "work",
+            "description": {
+              "vi": "bạn đi làm"
+            },
+            "variants": [
+              "会社へ行き",
+              "会社に行き",
+              "仕事に行き",
+              "工場へ行き",
+              "工場に行き"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 25,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "朝ご飯を食べます。それから、会社へ行きます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:asagohan",
+        "ja:w:taberu",
+        "ja:w:kaisha",
+        "ja:w:iku"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.q_sick",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho cấp trên: chào, báo bạn bị sốt, và hôm nay bạn xin nghỉ."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "お疲れさまです",
+              "お疲れ様です",
+              "おはようございます",
+              "こんにちは"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "fever",
+            "description": {
+              "vi": "bạn bị sốt"
+            },
+            "variants": [
+              "熱があり",
+              "熱が出"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "rest",
+            "description": {
+              "vi": "xin nghỉ"
+            },
+            "variants": [
+              "休みます",
+              "休んでもいいですか",
+              "休ませてください",
+              "休みたい",
+              "休ませてもらえますか"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "お疲れさまです。グエンです。熱があります。今日は休みます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu",
+        "ja:w:netsu",
+        "ja:w:kyou",
+        "ja:w:yasumu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.q_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho anh Tanaka: chào, báo tàu điện bị trễ, rồi xin lỗi."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "anh Tanaka"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "お疲れさまです",
+              "お疲れ様です",
+              "おはようございます",
+              "こんにちは"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "train",
+            "description": {
+              "vi": "tàu điện bị trễ"
+            },
+            "variants": [
+              "電車が遅れ"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "sorry",
+            "description": {
+              "vi": "lời xin lỗi"
+            },
+            "variants": [
+              "すみません",
+              "申し訳ありません",
+              "申し訳ございません"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "田中さん、お疲れさまです。電車が遅れています。すみません。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanaka",
+        "ja:w:otsukaresamadesu",
+        "ja:w:densha",
+        "ja:w:okureru",
+        "ja:w:sumimasen"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.q_reply",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Cấp trên nhắn: mai làm từ 7 giờ. Hãy trả lời: bạn đã hiểu, và cảm ơn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ok",
+            "description": {
+              "vi": "bạn đã hiểu"
+            },
+            "variants": [
+              "わかりました",
+              "分かりました",
+              "承知しました"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "thanks",
+            "description": {
+              "vi": "lời cảm ơn"
+            },
+            "variants": [
+              "ありがとうございます",
+              "ありがとうございました"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "わかりました。ありがとうございます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:arigatougozaimasu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.r_form_office",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu ở toà thị chính với các thông tin trên thẻ. Tên viết bằng katakana."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Nguyễn Nam"
+        },
+        {
+          "label": {
+            "vi": "Địa chỉ"
+          },
+          "value": "Osaka"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "080-1234-5678"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "名前",
+          "slotId": "name"
+        },
+        {
+          "id": "address",
+          "label": "住所",
+          "slotId": "address"
+        },
+        {
+          "id": "phone",
+          "label": "電話番号",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên (katakana)"
+            },
+            "variants": [
+              "グエン・ナム"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "address",
+            "description": {
+              "vi": "địa chỉ"
+            },
+            "variants": [
+              "大阪"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "080-1234-5678"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "グエン・ナム | 大阪 | 080-1234-5678"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.r_form_clinic",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu của phòng khám với các thông tin trên thẻ. Tên viết bằng katakana."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Lan"
+        },
+        {
+          "label": {
+            "vi": "Sinh nhật"
+          },
+          "value": "ngày 20 tháng 9"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "090-8765-4321"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "名前",
+          "slotId": "name"
+        },
+        {
+          "id": "birthday",
+          "label": "誕生日",
+          "slotId": "birthday"
+        },
+        {
+          "id": "phone",
+          "label": "電話番号",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên (katakana)"
+            },
+            "variants": [
+              "ラン"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "birthday",
+            "description": {
+              "vi": "ngày sinh"
+            },
+            "variants": [
+              "九月二十日"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "090-8765-4321"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "ラン | 九月二十日 | 090-8765-4321"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.r_note",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết lời nhắn cho đàn anh: máy không chạy, xin anh gọi cấp trên."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "machine",
+            "description": {
+              "vi": "cái máy"
+            },
+            "variants": [
+              "機械"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "broken",
+            "description": {
+              "vi": "máy không chạy"
+            },
+            "variants": [
+              "動きません",
+              "止まりました",
+              "壊れ",
+              "止まって",
+              "動いていません"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "call",
+            "description": {
+              "vi": "gọi cấp trên"
+            },
+            "variants": [
+              "上司を呼んで",
+              "上司に電話して"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "先輩、機械が動きません。上司を呼んでください。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:senpai",
+        "ja:w:kikai",
+        "ja:w:ugoku",
+        "ja:w:joushi",
+        "ja:w:yobu",
+        "ja:w:kudasai"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.o_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about",
+            "description": {
+              "vi": "một câu về bạn"
+            },
+            "variants": [
+              "です",
+              "ます",
+              "ました"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "わたしはホアです。ハノイから来ました。音楽が好きです。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kuru",
+        "ja:w:ongaku",
+        "ja:w:suki"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.p_open",
+      "taskFamily": "simple_description",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết vài câu về một ngày của bạn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "day",
+            "description": {
+              "vi": "một câu về ngày của bạn"
+            },
+            "variants": [
+              "起きます",
+              "食べます",
+              "働きます",
+              "寝ます",
+              "毎日",
+              "毎朝",
+              "毎晩"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "毎朝6時に起きます。夜は寮で晩ご飯を食べます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:maiasa",
+        "ja:w:okiru",
+        "ja:w:yoru",
+        "ja:w:ryou",
+        "ja:w:bangohan",
+        "ja:w:taberu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.q_open",
+      "taskFamily": "short_message",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết một tin nhắn ngắn cho một người bạn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "message",
+            "description": {
+              "vi": "lời chào hoặc lời mời"
+            },
+            "variants": [
+              "こんにちは",
+              "お疲れさまです",
+              "お疲れ様です",
+              "ありがとう",
+              "ませんか",
+              "ましょう"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "リンさん、こんにちは。土曜日に一緒に映画を見ませんか。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:konnichiha",
+        "ja:w:doyoubi",
+        "ja:w:isshoni",
+        "ja:w:eiga",
+        "ja:w:miru"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.r_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết vài câu về công việc của bạn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "work",
+            "description": {
+              "vi": "một câu về công việc"
+            },
+            "variants": [
+              "仕事",
+              "工場",
+              "会社",
+              "上司",
+              "先輩",
+              "働いて"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "工場で働いています。仕事は8時からです。先輩はとても親切です。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:koujou",
+        "ja:w:hataraku",
+        "ja:w:shigoto",
+        "ja:w:senpai",
+        "ja:w:totemo",
+        "ja:w:shinsetsu"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_profile_hoa",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Hoa. Hãy tự giới thiệu: tên, tuổi và thành phố, bằng câu hoàn chỉnh."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Hoa"
+        },
+        {
+          "label": {
+            "vi": "Tuổi"
+          },
+          "value": "24"
+        },
+        {
+          "label": {
+            "vi": "Thành phố"
+          },
+          "value": "Kyoto"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "ホア"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi"
+            },
+            "variants": [
+              "24歳",
+              "24さい"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố"
+            },
+            "variants": [
+              "京都"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "ホアです。24歳です。京都に住んでいます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyouto",
+        "ja:w:sumu"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_profile_tuan",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Tuấn. Hãy viết về bạn: tên, nước của bạn và nơi bạn làm việc."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Tuấn (viết トゥアン)"
+        },
+        {
+          "label": {
+            "vi": "Nước"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Nơi làm việc"
+          },
+          "value": "nhà máy"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "トゥアン"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "from",
+            "description": {
+              "vi": "nước của bạn"
+            },
+            "variants": [
+              "ベトナムから",
+              "ベトナム人"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "work",
+            "description": {
+              "vi": "nơi làm việc"
+            },
+            "variants": [
+              "工場"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "トゥアンです。ベトナムから来ました。工場で働いています。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:betonamu",
+        "ja:w:kuru",
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_like_music",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu nói rằng bạn thích âm nhạc."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "like",
+            "description": {
+              "vi": "bạn thích âm nhạc"
+            },
+            "variants": [
+              "音楽が好き",
+              "音楽が大好き"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "音楽が好きです。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:ongaku",
+        "ja:w:suki"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_sister",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu về chị gái bạn: chị ấy tên là Linh, và chị ấy là y tá."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Linh"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên của chị ấy"
+            },
+            "variants": [
+              "リン"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "job",
+            "description": {
+              "vi": "nghề của chị ấy"
+            },
+            "variants": [
+              "看護師"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "姉はリンです。看護師です。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:ane",
+        "ja:w:kangoshi"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_room",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu tả căn phòng: phòng nhỏ, và trong phòng có một cái giường."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "small",
+            "description": {
+              "vi": "phòng nhỏ"
+            },
+            "variants": [
+              "部屋は小さい",
+              "小さい部屋",
+              "小さな部屋",
+              "部屋は狭い",
+              "狭い部屋"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "bed",
+            "description": {
+              "vi": "có một cái giường"
+            },
+            "variants": [
+              "ベッドがあり",
+              "ベッドが一つあり",
+              "ベッドはあり",
+              "ベッドは一つあり"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "部屋は小さいです。ベッドがあります。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:heya",
+        "ja:w:chiisai",
+        "ja:w:beddo"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_note_movie",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Lan: rủ bạn ấy đi xem phim lúc 7 giờ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Lan"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "7 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "movie",
+            "description": {
+              "vi": "bộ phim"
+            },
+            "variants": [
+              "映画"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ hẹn"
+            },
+            "variants": [
+              "7時",
+              "7"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "invite",
+            "description": {
+              "vi": "lời rủ"
+            },
+            "variants": [
+              "ませんか",
+              "ましょう"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "ランさん、7時に映画を見ませんか。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:eiga",
+        "ja:w:miru"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_note_sick",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho cấp trên: chào, báo bạn bị cảm, và hôm nay bạn xin nghỉ."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "お疲れさまです",
+              "お疲れ様です",
+              "おはようございます",
+              "こんにちは"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "cold",
+            "description": {
+              "vi": "bạn bị cảm"
+            },
+            "variants": [
+              "風邪"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "rest",
+            "description": {
+              "vi": "xin nghỉ"
+            },
+            "variants": [
+              "休みます",
+              "休んでもいいですか",
+              "休ませてください",
+              "休みたい",
+              "休ませてもらえますか"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "お疲れさまです。風邪をひきました。今日は休みます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu",
+        "ja:w:kaze",
+        "ja:w:kyou",
+        "ja:w:yasumu"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_note_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho cấp trên: xin lỗi, bạn sẽ đến muộn khoảng 15 phút."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Đến muộn"
+          },
+          "value": "15 phút"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "sorry",
+            "description": {
+              "vi": "lời xin lỗi"
+            },
+            "variants": [
+              "すみません",
+              "申し訳ありません",
+              "申し訳ございません"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "minutes",
+            "description": {
+              "vi": "đến muộn bao lâu"
+            },
+            "variants": [
+              "15分"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "late",
+            "description": {
+              "vi": "bạn sẽ đến muộn"
+            },
+            "variants": [
+              "遅れます",
+              "遅刻します"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "すみません。15分ぐらい遅れます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:okureru"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_mail_shift",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho cấp trên: chào, rồi hỏi thứ Bảy bạn có thể nghỉ không."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Ngày"
+          },
+          "value": "thứ Bảy"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "お疲れさまです",
+              "お疲れ様です",
+              "おはようございます",
+              "こんにちは"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày nghỉ"
+            },
+            "variants": [
+              "土曜日"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "rest",
+            "description": {
+              "vi": "xin nghỉ"
+            },
+            "variants": [
+              "休んでもいいですか",
+              "休みたいです",
+              "休ませてください"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "お疲れさまです。土曜日に休んでもいいですか。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu",
+        "ja:w:doyoubi",
+        "ja:w:yasumu",
+        "ja:w:ii"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_form_office",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu ở toà thị chính với các thông tin trên thẻ. Tên viết bằng katakana."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Phạm Linh (viết ファム・リン)"
+        },
+        {
+          "label": {
+            "vi": "Địa chỉ"
+          },
+          "value": "Kyoto"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "080-2222-3333"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "名前",
+          "slotId": "name"
+        },
+        {
+          "id": "address",
+          "label": "住所",
+          "slotId": "address"
+        },
+        {
+          "id": "phone",
+          "label": "電話番号",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên (katakana)"
+            },
+            "variants": [
+              "ファム・リン"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "address",
+            "description": {
+              "vi": "địa chỉ"
+            },
+            "variants": [
+              "京都"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "080-2222-3333"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "ファム・リン | 京都 | 080-2222-3333"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_form_clinic",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu của phòng khám với các thông tin trên thẻ. Tên viết bằng katakana."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Hùng (viết フン)"
+        },
+        {
+          "label": {
+            "vi": "Sinh nhật"
+          },
+          "value": "ngày 5 tháng 4"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "090-1111-2222"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "名前",
+          "slotId": "name"
+        },
+        {
+          "id": "birthday",
+          "label": "誕生日",
+          "slotId": "birthday"
+        },
+        {
+          "id": "phone",
+          "label": "電話番号",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên (katakana)"
+            },
+            "variants": [
+              "フン"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "birthday",
+            "description": {
+              "vi": "ngày sinh"
+            },
+            "variants": [
+              "四月五日"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "090-1111-2222"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "フン | 四月五日 | 090-1111-2222"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.cp5_form_work",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu nhân viên mới với các thông tin trên thẻ. Tên viết bằng katakana."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Lê Mai (viết レ・マイ)"
+        },
+        {
+          "label": {
+            "vi": "Nước"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "080-3333-4444"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "名前",
+          "slotId": "name"
+        },
+        {
+          "id": "country",
+          "label": "国",
+          "slotId": "country"
+        },
+        {
+          "id": "phone",
+          "label": "電話番号",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên (katakana)"
+            },
+            "variants": [
+              "レ・マイ"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "country",
+            "description": {
+              "vi": "nước"
+            },
+            "variants": [
+              "ベトナム"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "080-3333-4444"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "レ・マイ | ベトナム | 080-3333-4444"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.a1cap_note_station",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Hoa: hẹn gặp ở nhà ga lúc 5 giờ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Hoa"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "5 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "place",
+            "description": {
+              "vi": "nhà ga"
+            },
+            "variants": [
+              "駅"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ hẹn"
+            },
+            "variants": [
+              "5時",
+              "5"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "meet",
+            "description": {
+              "vi": "lời hẹn gặp"
+            },
+            "variants": [
+              "会いましょう",
+              "会いませんか"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "ホアさん、5時に駅で会いましょう。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:eki",
+        "ja:w:au"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.a1cap_note_bus",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Nam: báo xe buýt của bạn đến lúc 6 giờ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Nam"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "6 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "bus",
+            "description": {
+              "vi": "xe buýt"
+            },
+            "variants": [
+              "バス"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ xe đến"
+            },
+            "variants": [
+              "6時",
+              "6"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 25,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "ナムさん、バスは6時に着きます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:basu",
+        "ja:w:tsuku"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.a1cap_note_home",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Lan: bạn đang ở siêu thị, và 5 giờ bạn về nhà."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Lan"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "5 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "place",
+            "description": {
+              "vi": "siêu thị"
+            },
+            "variants": [
+              "スーパー"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ về nhà"
+            },
+            "variants": [
+              "5時",
+              "5"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "home",
+            "description": {
+              "vi": "bạn về nhà"
+            },
+            "variants": [
+              "帰ります"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "ランさん、今スーパーにいます。5時にうちへ帰ります。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:ima",
+        "ja:w:suupaa",
+        "ja:w:uchi",
+        "ja:w:kaeru"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ja.write.a1cap_mail_absent",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho cấp trên: chào, báo thứ Năm bạn đi bệnh viện, nên bạn xin nghỉ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Ngày"
+          },
+          "value": "thứ Năm"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "お疲れさまです",
+              "お疲れ様です",
+              "おはようございます",
+              "こんにちは"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày nghỉ"
+            },
+            "variants": [
+              "木曜日"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "hospital",
+            "description": {
+              "vi": "bệnh viện"
+            },
+            "variants": [
+              "病院"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "rest",
+            "description": {
+              "vi": "xin nghỉ"
+            },
+            "variants": [
+              "休みます",
+              "休んでもいいですか",
+              "休ませてください",
+              "休みたい",
+              "休ませてもらえますか"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "お疲れさまです。木曜日に病院へ行きます。木曜日は休みます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu",
+        "ja:w:mokuyoubi",
+        "ja:w:byouin",
+        "ja:w:iku",
+        "ja:w:yasumu"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    }
+  ]
+}

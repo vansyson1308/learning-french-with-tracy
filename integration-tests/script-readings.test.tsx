@@ -171,6 +171,33 @@ describe("ja: furigana above kanji", () => {
   });
 });
 
+describe("P4c session 5: an item that asks for a reading hides it (select.scriptAid)", () => {
+  const COURSE = "ja-xchide";
+  beforeAll(() => {
+    __registerCourseProfileForTests({ ...courseProfile("ja-en"), id: COURSE, nativeCode: "vi", romajiUntilPrimer: true });
+    registerCourseBundle({ id: COURSE, pack: { ...(xcPack as unknown as Pack), id: COURSE }, artifacts: { lexiconIndex: xcIndex }, audio: {} });
+  });
+  afterAll(() => __registerCourseProfileForTests(null, COURSE));
+  test("scriptAid hidden: no furigana, no Hán-Việt and no romaji on the prompt or the options", () => {
+    useProgress.setState({ activeCourseId: COURSE, readingAid: {}, primerPassed: {} });
+    const kanjiReading: Exercise = { ...selectPrompt("学生"), mode: "nativeToTarget", options: [{ text: "がくせい" }, { text: "せんせい" }], scriptAid: "hidden" };
+    renderStep(COURSE, kanjiReading, "Tiếng Nhật");
+    expect(screen.queryAllByTestId("ruby-text")).toHaveLength(0);
+    expect(screen.queryAllByTestId("reading-romaji")).toHaveLength(0);
+    expect(screen.queryAllByTestId("reading-hanviet")).toHaveLength(0);
+    expect(screen.getByText("学生")).toBeOnTheScreen();
+    const spelling: Exercise = { ...selectOptions(["食べる", "学生"]), scriptAid: "hidden" };
+    renderStep(COURSE, spelling, "Tiếng Nhật");
+    expect(readings()).toEqual([]);
+  });
+
+  test("without it the same item keeps its readings", () => {
+    useProgress.setState({ activeCourseId: COURSE, readingAid: {}, primerPassed: {} });
+    renderStep(COURSE, { ...selectPrompt("学生"), mode: "nativeToTarget", options: [{ text: "がくせい" }, { text: "せんせい" }] }, "Tiếng Nhật");
+    expect(readings()).toEqual(["がく", "せい"]);
+  });
+});
+
 describe("zh: pinyin under each hanzi", () => {
   test("a sentence shows one syllable under each hanzi of a known word", () => {
     onCourse("zh-xc");
@@ -194,6 +221,62 @@ describe("ko: Revised Romanization under hangul", () => {
     const view = renderStep("ko-xc", match(["신라", "학여울"]), "Korean");
     expect(view.toJSON()).toMatchSnapshot();
     expect(readings().sort()).toEqual(["hangnyeoul", "silla"]);
+  });
+});
+
+describe("P4c: romaji until the kana primer checkpoint is passed", () => {
+  const COURSE = "ja-xcromaji";
+  beforeAll(() => {
+    __registerCourseProfileForTests({ ...courseProfile("ja-en"), id: COURSE, nativeCode: "vi", romajiUntilPrimer: true });
+    registerCourseBundle({ id: COURSE, pack: { ...(xcPack as unknown as Pack), id: COURSE }, artifacts: { lexiconIndex: xcIndex }, audio: {} });
+  });
+  afterAll(() => __registerCourseProfileForTests(null, COURSE));
+
+  const at = (primerPassed: Record<string, true>, readingAid: Record<string, boolean> = {}) =>
+    useProgress.setState({ activeCourseId: COURSE, readingAid, primerPassed });
+  const romaji = () => screen.queryAllByTestId("reading-romaji").map((n) => String(n.props.children));
+
+  test("before the checkpoint: a romaji line under the prompt, read from the stored kana", () => {
+    at({});
+    const view = renderStep(COURSE, selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(view.toJSON()).toMatchSnapshot();
+    expect(romaji()).toEqual(["gakusei desu."]);
+    expect(readings()).toEqual(["がく", "せい"]);
+  });
+
+  test("after the checkpoint: no romaji, furigana as before", () => {
+    at({ [COURSE]: true });
+    const view = renderStep(COURSE, selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(view.toJSON()).toMatchSnapshot();
+    expect(romaji()).toEqual([]);
+    expect(readings()).toEqual(["がく", "せい"]);
+  });
+
+  test("the reading-aid switch still controls the furigana; the romaji line follows the primer only", () => {
+    at({}, { [COURSE]: false });
+    renderStep(COURSE, selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(readings()).toEqual([]);
+    expect(romaji()).toEqual(["gakusei desu."]);
+    at({ [COURSE]: true }, { [COURSE]: false });
+    renderStep(COURSE, selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(screen.queryAllByTestId("ruby-text")).toHaveLength(0);
+    expect(romaji()).toEqual([]);
+  });
+
+  test("never on a production answer: word-bank tiles and fill-blank options carry no romaji", () => {
+    at({});
+    const bank: Exercise = { type: "wordBank", id: "xc-t:bank", direction: "nativeToTarget", prompt: "Tôi là sinh viên.", tokens: ["学生", "です"], answer: ["学生", "です"] };
+    renderStep(COURSE, bank, "Tiếng Nhật");
+    expect(romaji()).toEqual([]);
+    const fill: Exercise = { type: "fillBlank", id: "xc-t:fill", sentence: "パンを___。", translation: "Tôi ăn bánh mì.", options: ["食べる", "学生"], correct: 0 };
+    renderStep(COURSE, fill, "Tiếng Nhật");
+    expect(romaji()).toHaveLength(1); // the sentence only; the options (食べる, 学生) have none
+  });
+
+  test("other courses never show it", () => {
+    onCourse("ja-xcvi");
+    renderStep("ja-xcvi", selectPrompt("学生です。"), "Tiếng Nhật");
+    expect(romaji()).toEqual([]);
   });
 });
 

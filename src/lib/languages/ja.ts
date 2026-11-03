@@ -13,8 +13,19 @@
  *  - alignAnswerToKey: an answer typed in kana for a key written in kanji
  *    counts when the stored readings agree and the answer brings no kanji
  *    of its own (はし for 橋 yes; 箸 for 橋 no) — practice only.
+ *  - alignWrittenToKey (P4c, free writing): a run of whole tokens written
+ *    in kana alone whose reading is the key's (がくせい for 学生, たべます for
+ *    食べます) stands for the key — practice only; a kanji the learner typed
+ *    is never rewritten. knownReading: kana spelling a course word.
+ *  - normalizeLenientInScript (D-10 owner decision): an item that asks for
+ *    katakana (typeAnswer.script) folds width, case and punctuation but
+ *    keeps the script — ぱん is not パン there.
  *  - normalizeStrict (dictation, cloze): width and case only; kana type,
  *    small kana, ー and kanji-vs-kana all count. Romaji never matches.
+ *  - utteranceReading (P4c, spoken grading): a whole utterance read through
+ *    the stored words AND the inflection keys (はたらいています for
+ *    働いています), so a recogniser that writes a verb in kana matches the
+ *    variant; concept slots keep the word-level spokenReading.
  *  - numbers: digits 0–100 → kanji numerals (3 → 三, 21 → 二十一) for
  *    spoken grading, spelt before segmentation so they split like
  *    authored numerals.
@@ -31,11 +42,13 @@ import {
   maximalMatch,
   nfkcLower,
   positionalNumber,
+  replaceReadingRuns,
   spellDigitRuns,
   spellDigitToken,
   tokenizeCjk,
   type CjkDictionary,
 } from "./cjk";
+import { furiganaFromKana, japaneseInflections } from "./ja-inflection";
 import type { CourseLexicon, LanguageRules } from "./types";
 
 const KANJI_DIGITS = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
@@ -70,6 +83,8 @@ const VOWEL_ROWS: readonly [string, string][] = [
 const VOWEL_OF = new Map<string, string>(VOWEL_ROWS.flatMap(([v, row]) => [...row].map((c) => [c, v] as const)));
 
 const KANA = "ぁ-ゖゝゞァ-ヺー-ヾ";
+/** A token of lenient (folded) text written in kana alone. */
+const KANA_RUN = /^[ぁ-ゖゝゞー]+$/;
 const HYPHEN_AFTER_KANA = new RegExp(`([${KANA}])[-~‐-―−〜]`, "g");
 
 function foldVu(text: string): string {
@@ -141,6 +156,17 @@ export function normalizeLenientJapanese(text: string): string {
   return collapseSpaces(stripPunctuation(foldJapaneseKana(text)).replace(/[-~〜]/g, ""));
 }
 
+/**
+ * D-10 owner decision (2026-11-03): an item that asks for katakana (typeAnswer.script) keeps the script — width, case,
+ * punctuation and a hyphen typed for ー are folded, but katakana is never folded to hiragana, small kana stay small and
+ * ー stays ー (コオヒイ is not コーヒー). Spaces drop, as in the alternate lenient form.
+ */
+export function normalizeLenientKatakana(text: string): string {
+  return stripPunctuation(repeatReplace(nfkcLower(text), HYPHEN_AFTER_KANA, "$1ー"))
+    .replace(/[-~〜]/g, "")
+    .replace(/\s+/g, "");
+}
+
 /** Strict form: width and case only. */
 export function normalizeStrictJapanese(text: string): string {
   return foldSpokenJapanese(text);
@@ -168,6 +194,10 @@ type Bound = {
   spokenReadings: Map<string, string>;
   /** lenient(surface) → lenient(reading). */
   lenientReadings: Map<string, string>;
+  /** P4c: whole-utterance readings — the stored words plus the inflection keys, longest match first. */
+  utterance: CjkDictionary;
+  /** foldSpoken(inflection key) → hiragana reading (食べま → たべま); stored words keep spokenReadings. */
+  inflectedReadings: Map<string, string>;
 };
 
 function bind(lexicon: CourseLexicon): Bound {
@@ -178,12 +208,34 @@ function bind(lexicon: CourseLexicon): Bound {
     spokenReadings.set(foldSpokenJapanese(surface), katakanaToHiragana(foldSpokenJapanese(reading)));
     lenientReadings.set(normalizeLenientJapanese(surface).replace(/ /g, ""), normalizeLenientJapanese(reading).replace(/ /g, ""));
   }
+  // P4c: the stems of inflected verbs and い-adjectives (食べま → たべま) join the lenient readings only, so kana typed
+  // for 食べます aligns (practice); tokenizing and spoken grading keep the stored words.
+  const inflected = japaneseInflections(
+    lexicon.entries.flatMap((e) => {
+      const kana = e.reading?.notation === "kana" ? e.reading.value : undefined;
+      const furigana = kana ? furiganaFromKana(e.surface, kana) : null;
+      return kana && furigana ? [{ surface: e.surface, kana, pos: e.pos, furigana }] : [];
+    })
+  );
+  for (const form of inflected) {
+    const key = normalizeLenientJapanese(form.surface).replace(/ /g, "");
+    if (!lenientReadings.has(key)) lenientReadings.set(key, normalizeLenientJapanese(form.kana).replace(/ /g, ""));
+  }
+  // P4c session 5: the same keys read a whole spoken utterance, so a recogniser that writes 働いています in kana
+  // (はたらいています) matches the variant. The tokenizer, and so concept slots, keep the stored words only.
+  const inflectedReadings = new Map<string, string>();
+  for (const form of inflected) {
+    const key = foldSpokenJapanese(form.surface);
+    if (!spokenReadings.has(key)) inflectedReadings.set(key, katakanaToHiragana(foldSpokenJapanese(form.kana)));
+  }
   const kanaForms = [...readings.values()].flatMap((r) => [r, katakanaToHiragana(r)]);
   return {
     spoken: buildDictionary([...words, ...kanaForms], foldSpokenJapanese),
-    lenient: buildDictionary([...words, ...kanaForms], normalizeLenientJapanese),
+    lenient: buildDictionary([...words, ...inflected.map((f) => f.surface), ...kanaForms], normalizeLenientJapanese),
     spokenReadings,
     lenientReadings,
+    utterance: buildDictionary([...words, ...inflected.map((f) => f.surface), ...kanaForms], foldSpokenJapanese),
+    inflectedReadings,
   };
 }
 
@@ -196,6 +248,7 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
   };
   const lenientTokens = (lenient: string) => maximalMatch(lenient, bound?.lenient ?? EMPTY_DICTIONARY, true);
   const readingOf = (lenient: string) => lenientTokens(lenient).map((t) => bound?.lenientReadings.get(t) ?? t).join("");
+  const knownReadings = new Set(bound ? bound.lenientReadings.values() : []);
 
   return {
     code: "ja",
@@ -207,6 +260,7 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
     spellDigits: spellJapaneseDigits,
     normalizeLenient: normalizeLenientJapanese,
     normalizeLenientAlternate: (text) => normalizeLenientJapanese(text).replace(/ /g, ""),
+    normalizeLenientInScript: (text) => normalizeLenientKatakana(text),
     alignAnswerToKey: (answer, key) => {
       if (!bound || bound.lenientReadings.size === 0) return answer;
       const a = answer.replace(/ /g, "");
@@ -216,6 +270,16 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
       const bringsKanji = lenientTokens(a).some((t) => HAN.test(t) && !keyTokens.has(t));
       return bringsKanji ? answer : key;
     },
+    alignWrittenToKey: (answer, key) => {
+      if (!bound || bound.lenientReadings.size === 0 || !HAN.test(key)) return answer;
+      const target = readingOf(key.replace(/ /g, ""));
+      if (!KANA_RUN.test(target)) return answer; // a kanji of the key has no stored reading
+      return replaceReadingRuns(answer, key, (t) => KANA_RUN.test(t), (run) => {
+        const spelled = run.join("");
+        return spelled === target ? "match" : target.startsWith(spelled) ? "shorter" : "past";
+      });
+    },
+    knownReading: (token) => KANA_RUN.test(token) && knownReadings.has(token),
     readingInput: "kana",
     normalizeStrict: normalizeStrictJapanese,
     foldSpoken: foldSpokenJapanese,
@@ -227,6 +291,13 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
         .filter((t) => t.length > 0)
         .map((t) => katakanaToHiragana(bound?.spokenReadings.get(t) ?? t))
         .join(" "),
+    utteranceReading: (normalized) => {
+      const joined = normalized.replace(/ /g, "");
+      if (!bound) return katakanaToHiragana(joined);
+      return maximalMatch(joined, bound.utterance)
+        .map((t) => katakanaToHiragana(bound.spokenReadings.get(t) ?? bound.inflectedReadings.get(t) ?? t))
+        .join("");
+    },
     charsPerSecBand: JA_READING_SPEED,
     withLexicon: (next) => createJapaneseRules(next),
   };

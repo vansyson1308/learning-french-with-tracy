@@ -9,54 +9,168 @@ Review every line: is the Sino-Vietnamese reading right, and does it help? `Unih
 character's kVietnamese readings (own or variant) and the kana/hangul is its on'yomi/kHangul; `note` = the validator
 could not confirm the characters the note names — those lines need the reviewer's eye most.
 
-## ja — Tiếng Nhật / Japanese (45)
+## ja — Tiếng Nhật / Japanese (159)
 
 | word | kana | Hán-Việt | check | note |
 |---|---|---|---|---|
+| 丁寧 | ていねい | đinh ninh | note (寧) | False friend: 丁寧 means polite or careful; Vietnamese đinh ninh means to be firmly convinced. |
+| 丈夫 | じょうぶ | trượng phu | Unihan | False friend: 丈夫 means sturdy or healthy; Vietnamese trượng phu means a man of character. |
+| 上司 | じょうし | thượng ty | Unihan |  |
 | 世界 | せかい | thế giới | Unihan |  |
+| 両親 | りょうしん | lưỡng thân | Unihan |  |
 | 中国 | ちゅうごく | Trung Quốc | Unihan |  |
+| 予定 | よてい | dự định | note (予) | 予: shinjitai of 豫 (dự); Unihan 17.0.0 kVietnamese does not list dự for 予 itself. dự định is the standard Hán-Việt reading. |
+| 予約 | よやく | dự ước | note (予) | 予: shinjitai of 豫 (dự); Unihan 17.0.0 kVietnamese does not list dự for 予 itself. dự ước is the standard Hán-Việt reading. |
+| 事故 | じこ | sự cố | Unihan | False friend: 事故 is an accident (tai nạn); Vietnamese sự cố is closer to an incident or a breakdown. |
+| 交番 | こうばん | giao phiên | Unihan |  |
+| 今週 | こんしゅう | kim chu | Unihan |  |
+| 休憩 | きゅうけい | hưu khế | note (憩) | 憩: Unihan 17.0.0 kVietnamese does not list khế; khế (to rest) is its standard Hán-Việt reading. |
 | 会社 | かいしゃ | hội xã | Unihan |  |
+| 会社員 | かいしゃいん | hội xã viên | Unihan |  |
+| 会話 | かいわ | hội thoại | Unihan |  |
+| 会議 | かいぎ | hội nghị | Unihan |  |
+| 住所 | じゅうしょ | trú sở | note (所) | 所: Unihan 17.0.0 kVietnamese does not list sở; sở (place) is its standard Hán-Việt reading. |
+| 体温 | たいおん | thể ôn | note (温) | 温: shinjitai of 溫 (ôn); Unihan 17.0.0 kVietnamese does not list ôn for 温. ôn (warm) is its standard Hán-Việt reading. |
+| 作文 | さくぶん | tác văn | Unihan |  |
+| 作業 | さぎょう | tác nghiệp | Unihan |  |
+| 作業服 | さぎょうふく | tác nghiệp phục | Unihan |  |
 | 便利 | べんり | tiện lợi | Unihan |  |
+| 保険 | ほけん | bảo hiểm | Unihan | 険: Unihan links no variant to the shinjitai 険 (kyūjitai 險, hiểm); hiểm is its Hán-Việt reading. |
+| 保険証 | ほけんしょう | bảo hiểm chứng | Unihan | 険: Unihan links no variant to the shinjitai 険 (kyūjitai 險, hiểm); hiểm is its Hán-Việt reading. 証: shinjitai of 證 (chứng). |
+| 元気 | げんき | nguyên khí | Unihan |  |
+| 兄弟 | きょうだい | huynh đệ | Unihan |  |
+| 先月 | せんげつ | tiên nguyệt | Unihan |  |
 | 先生 | せんせい | tiên sinh | Unihan |  |
+| 先輩 | せんぱい | tiên bối | Unihan |  |
+| 先週 | せんしゅう | tiên chu | Unihan |  |
+| 公園 | こうえん | công viên | Unihan |  |
 | 写真 | しゃしん | tả chân | Unihan |  |
+| 出発 | しゅっぱつ | xuất phát | note (発) | 発: shinjitai of 發 (phát); Unihan links no variant to 発. |
 | 勉強 | べんきょう | miễn cưỡng | note (強) | 強: Unihan 17.0.0 kVietnamese lists only càng; cưỡng (to force) is the reading in 勉強. False friend: 勉強 means 'to study', not 'reluctantly'. |
 | 動物 | どうぶつ | động vật | Unihan |  |
+| 医者 | いしゃ | y giả | note (者) | 者: Unihan 17.0.0 kVietnamese does not list giả; giả (a person who) is its standard Hán-Việt reading. |
+| 午前 | ごぜん | ngọ tiền | Unihan |  |
+| 午後 | ごご | ngọ hậu | Unihan |  |
+| 危険 | きけん | nguy hiểm | Unihan | 険: Unihan links no variant to the shinjitai 険 (kyūjitai 險, hiểm); hiểm is its Hán-Việt reading. |
+| 去年 | きょねん | khứ niên | note (年) | 年: Unihan 17.0.0 kVietnamese does not list niên (it lists the Nôm reading năm); niên is the Hán-Việt reading. |
+| 口座 | こうざ | khẩu toạ | note (座) | 座: Unihan 17.0.0 kVietnamese does not list toạ; toạ (seat) is its standard Hán-Việt reading. |
+| 台風 | たいふう | đài phong | note (台) | 台: shinjitai of 颱 in this word (đài). |
+| 同僚 | どうりょう | đồng liêu | Unihan |  |
 | 問題 | もんだい | vấn đề | note (問 題) | 問, 題: Unihan 17.0.0 has no kVietnamese for either; vấn đề is the standard Hán-Việt reading. |
+| 喫茶店 | きっさてん | khiết trà điếm | note (喫) | 喫: Unihan 17.0.0 kVietnamese does not list khiết; khiết (to consume) is its standard Hán-Việt reading. |
 | 図書館 | としょかん | đồ thư quán | note (図) | 図: Unihan links no variant to 図 (the shinjitai of 圖, kVietnamese đồ); đồ is its Hán-Việt reading. |
 | 国家 | こっか | quốc gia | Unihan |  |
+| 地下鉄 | ちかてつ | địa hạ thiết | Unihan | 鉄: Unihan links no variant to the shinjitai 鉄 (kyūjitai 鐵, thiết); thiết is its Hán-Việt reading. |
+| 地図 | ちず | địa đồ | note (図) | 図: Unihan links no variant to 図 (the shinjitai of 圖, kVietnamese đồ); đồ is its Hán-Việt reading. |
+| 地震 | じしん | địa chấn | note (震) | 震: Unihan 17.0.0 kVietnamese does not list chấn; chấn (to shake) is its standard Hán-Việt reading. |
 | 外国 | がいこく | ngoại quốc | Unihan |  |
-| 大丈夫 | だいじょうぶ | đại trượng phu | Unihan |  |
+| 外国人 | がいこくじん | ngoại quốc nhân | Unihan |  |
+| 夜勤 | やきん | dạ cần | Unihan |  |
+| 大丈夫 | だいじょうぶ | đại trượng phu | Unihan | False friend: 大丈夫 means 'all right, no problem'; Vietnamese đại trượng phu means a man of great character. |
+| 大事 | だいじ | đại sự | Unihan | False friend: 大事 means important; Vietnamese đại sự means a great affair. |
+| 大使館 | たいしかん | đại sứ quán | Unihan |  |
 | 大学 | だいがく | đại học | Unihan |  |
 | 天気 | てんき | thiên khí | Unihan |  |
+| 天気予報 | てんきよほう | thiên khí dự báo | note (予) | 予: shinjitai of 豫 (dự); Unihan 17.0.0 kVietnamese does not list dự for 予 itself. 報 is báo. |
+| 失敗 | しっぱい | thất bại | Unihan |  |
+| 季節 | きせつ | quý tiết | Unihan |  |
 | 学校 | がっこう | học hiệu | Unihan |  |
-| 学生 | がくせい | học sinh | Unihan |  |
+| 学生 | がくせい | học sinh | Unihan | Partly a false friend: 学生 usually means a university student (sinh viên); a school pupil is 生徒 (Vietnamese học sinh). |
+| 安全 | あんぜん | an toàn | Unihan |  |
 | 安心 | あんしん | an tâm | Unihan |  |
-| 家族 | かぞく | gia tộc | Unihan |  |
-| 意味 | いみ | ý vị | Unihan |  |
+| 家族 | かぞく | gia tộc | Unihan | False friend: 家族 is a family (gia đình); Vietnamese gia tộc is a clan. |
+| 宿題 | しゅくだい | túc đề | note (題) | 題: Unihan 17.0.0 has no kVietnamese for 題; đề is its standard Hán-Việt reading. |
+| 工場 | こうじょう | công trường | Unihan | False friend: 工場 is a factory; Vietnamese công trường means a building site. |
+| 市役所 | しやくしょ | thị dịch sở | note (所) | 所: Unihan 17.0.0 kVietnamese does not list sở; sở (place) is its standard Hán-Việt reading. |
+| 店員 | てんいん | điếm viên | Unihan |  |
+| 必要 | ひつよう | tất yếu | Unihan | False friend: 必要 means necessary (cần thiết); Vietnamese tất yếu means inevitable. |
+| 意味 | いみ | ý vị | Unihan | False friend: 意味 means meaning (ý nghĩa); Vietnamese ý vị means flavour or charm. |
+| 技能実習生 | ぎのうじっしゅうせい | kỹ năng thực tập sinh | Unihan | 実: Unihan links no variant to the shinjitai 実 (kyūjitai 實, thực); thực is its Hán-Việt reading. 習: on'yomi しゅう. |
+| 担当 | たんとう | đảm đương | Unihan | 担: shinjitai of 擔 (đảm). 当: shinjitai of 當 (đương). |
+| 掃除 | そうじ | tảo trừ | Unihan |  |
+| 授業 | じゅぎょう | thụ nghiệp | Unihan |  |
+| 救急車 | きゅうきゅうしゃ | cứu cấp xa | Unihan |  |
 | 教室 | きょうしつ | giáo thất | Unihan |  |
+| 散歩 | さんぽ | tản bộ | Unihan |  |
 | 文化 | ぶんか | văn hoá | Unihan |  |
+| 文法 | ぶんぽう | văn pháp | Unihan |  |
+| 料理 | りょうり | liệu lý | Unihan | Means cooking or a dish; Vietnamese liệu lý (to manage) is a false friend. |
 | 新聞 | しんぶん | tân văn | note (聞) | 聞: Unihan 17.0.0 has no kVietnamese for 聞; văn (to hear) is its Hán-Việt reading. 新聞 means 'newspaper'. |
 | 旅行 | りょこう | lữ hành | note (行) | 行: Unihan 17.0.0 kVietnamese lists only hàng; hành (to go, travel) is the reading in 旅行. |
 | 日本 | にほん | Nhật Bản | note (日) | 日: the kana にほん shortens the on'yomi ニチ to に; Nhật Bản is the standard Hán-Việt name. |
+| 日本人 | にほんじん | Nhật Bản nhân | note (日) | 日: the kana にほん shortens the on'yomi ニチ to に; Nhật Bản is the standard Hán-Việt name. |
+| 日本語 | にほんご | Nhật Bản ngữ | note (日) | 日: the kana にほん shortens the on'yomi ニチ to に; Nhật Bản is the standard Hán-Việt name. |
 | 映画 | えいが | ánh hoạ | Unihan |  |
+| 映画館 | えいがかん | ánh hoạ quán | Unihan |  |
 | 時間 | じかん | thời gian | note (時) | 時: Unihan 17.0.0 kVietnamese lists only thì; thời is the reading in 時間 (thời gian). |
+| 書類 | しょるい | thư loại | Unihan |  |
 | 有名 | ゆうめい | hữu danh | Unihan |  |
+| 材料 | ざいりょう | tài liệu | note (材) | False friend: 材料 means materials (ingredients); Vietnamese tài liệu means documents. |
+| 来年 | らいねん | lai niên | note (年) | 年: Unihan 17.0.0 kVietnamese does not list niên (it lists the Nôm reading năm); niên is the Hán-Việt reading. |
+| 来月 | らいげつ | lai nguyệt | Unihan |  |
+| 来週 | らいしゅう | lai chu | Unihan |  |
+| 毎日 | まいにち | mỗi nhật | Unihan |  |
+| 毎週 | まいしゅう | mỗi chu | Unihan |  |
+| 気分 | きぶん | khí phân | Unihan |  |
+| 気温 | きおん | khí ôn | note (温) | 温: shinjitai of 溫 (ôn); Unihan 17.0.0 kVietnamese does not list ôn for 温. ôn (warm) is its standard Hán-Việt reading. |
 | 注意 | ちゅうい | chú ý | Unihan |  |
+| 注文 | ちゅうもん | chú văn | Unihan | Means an order (in a shop or restaurant). |
+| 準備 | じゅんび | chuẩn bị | Unihan |  |
+| 漢字 | かんじ | Hán tự | Unihan |  |
+| 火事 | かじ | hoả sự | Unihan |  |
+| 無理 | むり | vô lý | Unihan | False friend: 無理 means impossible or too much; Vietnamese vô lý means absurd. |
+| 牛乳 | ぎゅうにゅう | ngưu nhũ | note (乳) | 乳: Unihan 17.0.0 kVietnamese does not list nhũ; nhũ (milk) is its standard Hán-Việt reading. |
+| 牛肉 | ぎゅうにく | ngưu nhục | note (肉) | 肉: Unihan 17.0.0 kVietnamese does not list nhục; nhục (meat) is its standard Hán-Việt reading. |
+| 理由 | りゆう | lý do | Unihan |  |
 | 生活 | せいかつ | sinh hoạt | Unihan |  |
 | 留学生 | りゅうがくせい | lưu học sinh | Unihan |  |
+| 病気 | びょうき | bệnh khí | Unihan | Means illness: 病 (bệnh) is the part a learner recognises. |
 | 病院 | びょういん | bệnh viện | Unihan |  |
+| 発音 | はつおん | phát âm | note (発) | 発: shinjitai of 發 (phát); Unihan links no variant to 発. |
+| 相談 | そうだん | tương đàm | Unihan |  |
+| 看護師 | かんごし | khán hộ sư | Unihan |  |
+| 確認 | かくにん | xác nhận | Unihan |  |
 | 社会 | しゃかい | xã hội | Unihan |  |
+| 社員 | しゃいん | xã viên | Unihan | False friend: 社員 is a company employee; Vietnamese xã viên is a member of a cooperative. |
+| 社長 | しゃちょう | xã trưởng | note (長) | 長: Unihan 17.0.0 kVietnamese does not list trưởng; trưởng (head, chief) is its Hán-Việt reading in this sense. False friend: 社長 is a company president (giám đốc); Vietnamese xã trưởng is a commune head. |
+| 禁止 | きんし | cấm chỉ | Unihan |  |
+| 税金 | ぜいきん | thuế kim | Unihan |  |
 | 簡単 | かんたん | giản đơn | Unihan |  |
+| 約束 | やくそく | ước thúc | note (束) | 束: Unihan 17.0.0 kVietnamese does not list thúc; thúc (to bind) is its standard Hán-Việt reading. False friend: 約束 is a promise or an appointment; Vietnamese ước thúc means to restrain. |
+| 紅茶 | こうちゃ | hồng trà | Unihan |  |
 | 経済 | けいざい | kinh tế | note (経 済) | 経, 済: Unihan links neither shinjitai to 經 (kinh) or 濟, and 濟 has no kVietnamese; kinh tế is the standard Hán-Việt reading. |
+| 経験 | けいけん | kinh nghiệm | note (経) | 経: Unihan links no variant to the shinjitai 経 (kyūjitai 經, kinh); kinh is its Hán-Việt reading. 験: shinjitai of 驗 (nghiệm). |
+| 結婚 | けっこん | kết hôn | note (婚) | 婚: Unihan 17.0.0 kVietnamese does not list hôn; hôn (marriage, as in kết hôn) is its standard Hán-Việt reading. |
+| 給料 | きゅうりょう | cấp liệu | Unihan | Means wages: 給 (cấp, to supply) and 料 (liệu, fee). |
 | 練習 | れんしゅう | luyện tập | Unihan |  |
+| 自動車 | じどうしゃ | tự động xa | Unihan |  |
+| 自転車 | じてんしゃ | tự chuyển xa | Unihan | 転: Unihan links no variant to the shinjitai 転 (kyūjitai 轉, chuyển); chuyển is its Hán-Việt reading. |
+| 英語 | えいご | Anh ngữ | Unihan |  |
+| 薬局 | やっきょく | dược cục | Unihan |  |
+| 製品 | せいひん | chế phẩm | Unihan |  |
+| 規則 | きそく | quy tắc | Unihan |  |
+| 親切 | しんせつ | thân thiết | Unihan | False friend: 親切 means kind; Vietnamese thân thiết means close or intimate. |
 | 言語 | げんご | ngôn ngữ | Unihan |  |
+| 試験 | しけん | thí nghiệm | Unihan | False friend: 試験 is an exam; Vietnamese thí nghiệm means an experiment. 験: Unihan links no variant to the shinjitai 験 (kyūjitai 驗, nghiệm); nghiệm is its Hán-Việt reading. |
 | 説明 | せつめい | thuyết minh | Unihan |  |
+| 警官 | けいかん | cảnh quan | note (警) | False friend: 警官 is a police officer; Vietnamese cảnh quan means landscape. |
+| 資格 | しかく | tư cách | note (資) | False friend: 資格 is a qualification; Vietnamese tư cách means status or conduct. |
 | 質問 | しつもん | chất vấn | note (問) | 問: Unihan 17.0.0 has no kVietnamese for 問; vấn is its Hán-Việt reading. False friend: 質問 is a plain 'question'. |
+| 近所 | きんじょ | cận sở | note (所) | 所: Unihan 17.0.0 kVietnamese does not list sở; sở (place) is its standard Hán-Việt reading. |
+| 連絡 | れんらく | liên lạc | note (絡) | 絡: Unihan 17.0.0 kVietnamese does not list lạc; lạc (to connect) is its standard Hán-Việt reading. |
+| 週末 | しゅうまつ | chu mạt | Unihan |  |
 | 運動 | うんどう | vận động | Unihan |  |
+| 運転 | うんてん | vận chuyển | Unihan | False friend: 運転 means driving or operating a machine; Vietnamese vận chuyển means transporting. 転: shinjitai of 轉 (chuyển). |
+| 道具 | どうぐ | đạo cụ | Unihan | False friend: 道具 is a tool; Vietnamese đạo cụ means a stage prop. |
+| 部品 | ぶひん | bộ phẩm | Unihan |  |
+| 部長 | ぶちょう | bộ trưởng | note (長) | False friend: 部長 is a department manager, not a government minister. |
+| 野菜 | やさい | dã thái | note (菜) | 菜: Unihan 17.0.0 kVietnamese does not list thái; thái (vegetable) is its standard Hán-Việt reading. |
 | 銀行 | ぎんこう | ngân hàng | Unihan |  |
 | 電話 | でんわ | điện thoại | note (電) | 電: Unihan 17.0.0 has no kVietnamese for 電; điện is its standard Hán-Việt reading. |
 | 電車 | でんしゃ | điện xa | note (電) | 電: Unihan 17.0.0 has no kVietnamese for 電; điện is its standard Hán-Việt reading (xa = vehicle). |
+| 面接 | めんせつ | diện tiếp | note (面) | 面: Unihan 17.0.0 kVietnamese does not list diện; diện (face) is its standard Hán-Việt reading. |
 | 音楽 | おんがく | âm nhạc | note (楽) | 楽: kVietnamese of 樂 (the kyūjitai of 楽) lists only lạc; nhạc (music) is the reading in 音楽. |
+| 飛行機 | ひこうき | phi hành cơ | note (行) | 行: Unihan 17.0.0 kVietnamese lists only hàng; hành (to go) is the reading here. 機: kVietnamese may list only cơ in another sense; cơ (machine) is its reading here. |
 | 食堂 | しょくどう | thực đường | note (食) | 食: Unihan 17.0.0 has no kVietnamese for 食; thực is its standard Hán-Việt reading. |
 
 ## ko — Tiếng Hàn / Korean (37)

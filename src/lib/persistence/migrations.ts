@@ -30,6 +30,11 @@
  *       P3d(it)) are part of the same step: v8 never ran on a learner's device
  *       before their registries shipped, so its data input was extended instead
  *       of adding a step (coordinator QC 2026-10-28).
+ *   v9  P4c: `primerPassed` arrives — the courses whose script primer
+ *       checkpoint the learner passed (courseId → true). Every existing
+ *       learner starts with an empty map (the checkpoint did not exist), so
+ *       a course whose profile sets `romajiUntilPrimer` shows its romaji line
+ *       until the learner passes. Nothing else moves.
  *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
  *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
@@ -53,6 +58,7 @@ import { idRegistryForLanguage } from "../learning/ids";
 import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
 import { normalizeDailyNewWords } from "../learning/daily-words-setting";
+import { normalizePrimerPassed, type PrimerPassedRecord } from "../learning/primer-progress";
 import { normalizeReadingAid, type ReadingAidSettings } from "../learning/reading-aid";
 import { estimateFsrsCardFromSm2 } from "../learning/sm2-migration";
 import type { SrsEntry } from "../srs";
@@ -61,7 +67,7 @@ import {
   type PersistedAssessmentState,
 } from "../assessment/types";
 
-export const PERSIST_VERSION = 8;
+export const PERSIST_VERSION = 9;
 
 /**
  * The course the single v3 `assessment` container belonged to. A MIGRATION
@@ -135,6 +141,8 @@ export type PersistedProgress = {
   dailyNewWords?: number;
   /** Per-course reading-aid switch, absent key = on (v7, P4a). */
   readingAid?: ReadingAidSettings;
+  /** Courses whose script primer checkpoint the learner passed (v9, P4c). */
+  primerPassed?: PrimerPassedRecord;
 } & Record<string, unknown>;
 
 /** Route ids that practice sessions historically wrote into completedLessons. */
@@ -442,9 +450,11 @@ function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
  * new registry can never silently strand surface-keyed progress again.
  * v8 has not reached a device yet (RC3, the last device build, predates it), so
  * the registries added before it ships join this list: it, then en (en-vi,
- * P4f; no English-target course ever shipped, so nothing is re-keyed today).
+ * P4f; no English-target course ever shipped, so nothing is re-keyed today),
+ * then ja (ja-vi, P4c: RC3-era ja-en progress is surface-keyed — みず reaches
+ * ja:w:mizu through legacySurfaces, さかな keeps a reversible ja:legacy: id).
  */
-export const V8_REKEYED_TARGETS: readonly string[] = ["de", "en", "es", "fr", "it"];
+export const V8_REKEYED_TARGETS: readonly string[] = ["de", "en", "es", "fr", "it", "ja"];
 
 /** Every target whose surface-keyed progress a numbered step re-keyed. */
 export const REKEYED_TARGETS: readonly string[] = [...V8_REKEYED_TARGETS];
@@ -508,6 +518,15 @@ function migrateV7toV8(persisted: PersistedProgress): PersistedProgress {
   return rekeyRegistryCourses(persisted, V8_REKEYED_TARGETS);
 }
 
+/**
+ * v8 → v9 (P4c): add `primerPassed` (courseId → true). A record already
+ * present (re-import of a v9 backup routed through the chain) keeps its valid
+ * entries. Idempotent; nothing else changes.
+ */
+function migrateV8toV9(persisted: PersistedProgress): PersistedProgress {
+  return { ...persisted, primerPassed: normalizePrimerPassed(persisted.primerPassed) };
+}
+
 /** Run every step from `fromVersion` up to `toVersion` (default: latest). */
 export function migrateProgress(
   persisted: unknown,
@@ -547,6 +566,10 @@ export function migrateProgress(
   if (fromVersion < 8 && toVersion >= 8) {
     checkFailureSeam(8);
     state = migrateV7toV8(state as PersistedProgress);
+  }
+  if (fromVersion < 9 && toVersion >= 9) {
+    checkFailureSeam(9);
+    state = migrateV8toV9(state as PersistedProgress);
   }
   return state as PersistedProgress;
 }

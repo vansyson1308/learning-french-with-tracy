@@ -41,7 +41,8 @@ export type ScriptClip = {
   assetKey: string;
   /** The pipeline version the clip's key was derived with (≥ 2 → loudness-normalised). */
   pipelineVersion: number;
-  segments: { voiceId: string; speaker: number | string | null; text: string }[];
+  /** `phonemes`: built at plan time for a Kokoro front-end language (P4c: ja); never part of the asset key. */
+  segments: { voiceId: string; speaker: number | string | null; text: string; phonemes?: string }[];
   /** QC 2026-10-29b §3.4: a declared re-synthesis (same voice, other Piper noise scale); part of the asset key. */
   synthesis?: { noiseScale: number; noiseW: number } | null;
   /** Unset = mp3 (encoding.codecByLayer, scripts/lib/audio-codec.ts). */
@@ -124,7 +125,7 @@ export function buildSynthScript(input: {
       if (!voice) throw new Error(`synth: unknown voice ${seg.voiceId}`);
       if (clip.synthesis && voice.engine !== "piper") throw new Error(`synth: ${clip.assetKey} declares a re-synthesis, but ${seg.voiceId} is a ${voice.engine} voice (Piper only)`);
       const list = jobsByEngine.get(voice.engine) ?? [];
-      list.push({ voiceId: seg.voiceId, speaker: seg.speaker, text: seg.text, wavPath: `${wavDir}/${clip.assetKey}.seg${i}.wav`, ...(clip.synthesis ? { noiseScale: clip.synthesis.noiseScale, noiseW: clip.synthesis.noiseW } : {}) });
+      list.push({ voiceId: seg.voiceId, speaker: seg.speaker, text: seg.text, ...(seg.phonemes !== undefined ? { phonemes: seg.phonemes } : {}), wavPath: `${wavDir}/${clip.assetKey}.seg${i}.wav`, ...(clip.synthesis ? { noiseScale: clip.synthesis.noiseScale, noiseW: clip.synthesis.noiseW } : {}) });
       jobsByEngine.set(voice.engine, list);
     });
   }

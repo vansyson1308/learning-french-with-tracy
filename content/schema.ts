@@ -218,6 +218,12 @@ export function exerciseSchemas(lang: string) {
       .array(z.strictObject({ text: z.string().min(1), emoji: z.string().optional() }))
       .min(2),
     correct: z.number().int().min(0),
+    /**
+     * P4c: "hidden" withholds the script reading (furigana, pinyin, the romaji
+     * line) from the prompt and the options — an item that asks for the
+     * reading of a kanji word (JLPT 漢字読み) or for its spelling (表記).
+     */
+    scriptAid: z.literal("hidden").optional(),
     gradeTargets,
     objectiveTargets,
   });
@@ -259,6 +265,12 @@ export function exerciseSchemas(lang: string) {
     audioTarget: z.string().min(1).optional(),
     answer: z.string().min(1),
     alternatives: z.array(z.string()),
+    /**
+     * D-10 owner decision (2026-11-03): "katakana" — the item asks for the word in katakana, so the grader compares
+     * it without the katakana → hiragana fold (ぱん is not パン). Only for a plugin with an in-script form (ja) and a
+     * key and alternatives written in katakana (validated).
+     */
+    script: z.literal("katakana").optional(),
     gradeTargets,
     objectiveTargets,
   });
@@ -696,6 +708,13 @@ export const CourseProfileOverrideSchema = z.strictObject({
    * Default: practice only — evidence requires the target script.
    */
   readingInputIsProduction: z.boolean().optional(),
+  /**
+   * P4c: show a Hepburn romaji line under Japanese target text until the
+   * learner passes the kana primer's checkpoint (persisted `primerPassed`).
+   * Only for a target whose script primer has kana tables and a checkpoint
+   * (validated in scripts/lib/pipeline.ts romajiUntilPrimerErrors).
+   */
+  romajiUntilPrimer: z.boolean().optional(),
   enabled: z
     .strictObject({
       fsrs: z.boolean().optional(),
@@ -931,6 +950,30 @@ export const HangulSectionSchema = z.strictObject({
   notes: z.array(PrimerTextSchema).optional(),
 });
 
+const checkpointItemId = z.string().regex(/^c[0-9]{2}$/);
+const checkpointOptions = z.array(z.string().min(1)).min(2).max(4);
+
+/**
+ * P4c: the primer's checkpoint (kana primers only). Two item kinds: read a
+ * kana and pick its rōmaji, or hear a sound and pick the kana (minimal pairs
+ * are sound items with two options). Passing (`passMark` correct) is the only
+ * thing it records: the course's persisted `primerPassed`.
+ */
+export const PrimerCheckpointSchema = z.strictObject({
+  title: PrimerTextSchema,
+  intro: PrimerTextSchema,
+  passMark: z.number().int().min(1),
+  items: z
+    .array(
+      z.discriminatedUnion("kind", [
+        z.strictObject({ kind: z.literal("kanaToRomaji"), id: checkpointItemId, kana: z.string().min(1), options: checkpointOptions, correct: z.number().int().min(0) }),
+        z.strictObject({ kind: z.literal("soundToKana"), id: checkpointItemId, audio: PrimerAudioSchema, options: checkpointOptions, correct: z.number().int().min(0) }),
+      ])
+    )
+    .min(10),
+});
+export type PrimerCheckpoint = z.infer<typeof PrimerCheckpointSchema>;
+
 export const ScriptPrimerSchema = z.strictObject({
   version: z.literal(1),
   language: z.enum(["ja", "zh", "ko"]),
@@ -939,6 +982,7 @@ export const ScriptPrimerSchema = z.strictObject({
   title: PrimerTextSchema,
   intro: PrimerTextSchema,
   sections: z.array(z.discriminatedUnion("kind", [KanaTableSectionSchema, TonesSectionSchema, StrokesSectionSchema, HangulSectionSchema])).min(1),
+  checkpoint: PrimerCheckpointSchema.optional(),
 });
 export type ScriptPrimer = z.infer<typeof ScriptPrimerSchema>;
 
@@ -955,6 +999,23 @@ export const LexemeReadingsFileSchema = z.strictObject({
   traditionalAmbiguous: z.record(z.string(), z.array(z.string().min(1)).min(2)).optional(),
 });
 export type LexemeReadingsFile = z.infer<typeof LexemeReadingsFileSchema>;
+
+/**
+ * P4c: content/<lang>/lexicon/legacy-unmapped.json — words of an inherited
+ * basic pack (never edited, its surfaces are learner-data keys) that map to
+ * no lexeme, directly or through `legacySurfaces` (QC 2026-10-28: "or listed
+ * in an explicit unmapped file with a reason"). Their progress keeps a
+ * reversible `<lang>:legacy:` id; a listed surface that does map is stale.
+ */
+export const LegacyUnmappedSchema = z.strictObject({
+  version: z.literal(1),
+  language: languageCode,
+  note: z.string().min(1),
+  surfaces: z
+    .array(z.strictObject({ courseId: z.string().min(1), surface: z.string().min(1), reason: z.string().min(20) }))
+    .min(1),
+});
+export type LegacyUnmapped = z.infer<typeof LegacyUnmappedSchema>;
 
 /** One example sentence: target text + its translation per native code. */
 export const LexemeExampleSchema = z.strictObject({
@@ -1004,6 +1065,11 @@ export const richLexemeSchema = (lang: string) =>
      */
     lookupForm: z.string().min(1),
     partOfSpeech: z.enum(POS_VALUES),
+    /**
+     * P4c: a proper noun (a person's or a place's name: ja 田中, 東京). Nouns only (validated). The lessons teach it
+     * like any lexeme; TODAY never offers it as a daily new word (src/lib/learning/daily-words.ts).
+     */
+    proper: z.literal(true).optional(),
     /** Nouns only (validated); other parts of speech must omit it. */
     gender: z.enum(GENDER_VALUES).optional(),
     /** Native-language gloss per native code; byte-identical to the course word's `native`. */
@@ -2117,8 +2183,10 @@ export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking", "stru
  *                    (exam-engine-v2: CILS structures)
  *  - formCompletion  the right form of a given word (article, verb ending,
  *                    agreement) typed into a gap
+ *  - mcq4            one question, exactly 4 options (P4c: the JLPT; "選択枝の
+ *                    数はほとんど4つ", jlpt.jp FAQ)
  */
-export const EXAM_TASK_FORMATS = ["mcq3", "mcq2", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation", "cloze", "formCompletion"] as const;
+export const EXAM_TASK_FORMATS = ["mcq3", "mcq2", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation", "cloze", "formCompletion", "mcq4"] as const;
 export const EXAM_POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
 
 const wordBand = z.strictObject({ min: z.number().int().min(1), max: z.number().int().min(1) });
@@ -2128,6 +2196,12 @@ export const examTaskSchema = z.strictObject({
   title: nativeText(),
   instruction: nativeText(),
   format: z.enum(EXAM_TASK_FORMATS),
+  /**
+   * P4c: the task's own skill when one timed section holds tasks of two
+   * (JLPT 言語知識（文法）・読解: grammar and reading in 40 minutes). Only in a
+   * reading or structures section; absent = the section's skill.
+   */
+  skill: z.enum(["reading", "structures"]).optional(),
   /** Items one parallel form administers for this task. */
   itemsPerForm: z.number().int().min(1),
   /** Pool formats: the shared pool's size (M > itemsPerForm). */
@@ -2226,6 +2300,11 @@ export const examItemSchema = (lang: string) =>
     objectiveTargets: z.array(objectiveId(lang)).min(1),
     /** A track above its course's level (QC 2026-11-01 §2.5): words of this item the course has not taught, with their gloss; the player offers them to tap. */
     glossary: z.array(z.strictObject({ surface: z.string().min(1), gloss: nativeText() })).min(1).optional(),
+    /**
+     * P4c: the words a language-knowledge item tests (a kanji reading, a word in context) when no stimulus names them;
+     * merged with the stimulus's lexemes for weak-area practice. Every id is a lexeme of the target.
+     */
+    lexemeRefs: z.array(lexemeId(lang)).min(1).optional(),
   });
 
 /**

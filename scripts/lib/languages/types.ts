@@ -37,6 +37,11 @@ export type BuildLanguage = {
    * one per lexeme by its pronunciation). Absent = no reading required.
    */
   readings?: readonly ("kana" | "pinyin" | "rr")[];
+  /**
+   * D-10 owner decision (2026-11-03): the scripts a typed item may ask for (typeAnswer.script), each with the runtime
+   * plugin's in-script comparison (normalizeLenientInScript; cross-checked by test). Absent = the flag is refused.
+   */
+  typedScripts?: readonly "katakana"[];
 };
 
 export type ArticleGender = "masculine" | "feminine" | "neuter";

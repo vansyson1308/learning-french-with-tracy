@@ -13,6 +13,7 @@ import { defaultCourseId } from "./course-profile";
 import { addDays, dayString, localWeek } from "./dates";
 import { serializeCardKey } from "./learning/card-key";
 import { DAILY_NEW_WORDS_DEFAULT, normalizeDailyNewWords } from "./learning/daily-words-setting";
+import type { PrimerPassedRecord } from "./learning/primer-progress";
 import type { ReadingAidSettings } from "./learning/reading-aid";
 import { applyEvidence } from "./learning/engine";
 import type { ReviewEvidence } from "./learning/evidence";
@@ -107,6 +108,8 @@ type ProgressState = {
   dailyNewWords: number;
   /** P4a (v7): per-course "show reading aid" switch; absent key = on. */
   readingAid: ReadingAidSettings;
+  /** P4c (v9): courses whose script primer checkpoint the learner passed; absent key = not passed. */
+  primerPassed: PrimerPassedRecord;
   courses: Record<string, CourseProgress>;
   /** Per-day activity across courses, for the streak calendar and quests. */
   activeDays: Record<string, DayActivity>;
@@ -180,6 +183,12 @@ type ProgressState = {
   setDailyNewWords: (n: number) => void;
   /** P4a: turn the reading aid (romanization) on or off for one course. */
   setReadingAid: (courseId: string, on: boolean) => void;
+  /**
+   * P4c: record that the learner passed the script primer checkpoint of a
+   * course. Nothing else moves — no XP, no streak, no lesson, no scheduler
+   * evidence; only a pass is ever stored.
+   */
+  markPrimerPassed: (courseId: string) => void;
   finishOnboarding: (courseId: string, goal: number) => void;
   /** Commit the pending learner-store buffer (one transaction); safe when empty. */
   flushLearner: () => Promise<void>;
@@ -293,6 +302,7 @@ export const useProgress = create<ProgressState>()(
       uiLanguage: "system",
       dailyNewWords: DAILY_NEW_WORDS_DEFAULT,
       readingAid: {},
+      primerPassed: {},
       courses: {},
       activeDays: {},
       reviewLog: [],
@@ -543,6 +553,7 @@ export const useProgress = create<ProgressState>()(
       setUiLanguage: (language) => set({ uiLanguage: language }),
       setDailyNewWords: (n) => set({ dailyNewWords: normalizeDailyNewWords(n) }),
       setReadingAid: (courseId, on) => set((s) => ({ readingAid: { ...s.readingAid, [courseId]: on } })),
+      markPrimerPassed: (courseId) => set((s) => ({ primerPassed: { ...s.primerPassed, [courseId]: true } })),
 
       finishOnboarding: (courseId, goal) => {
         set({ activeCourseId: courseId, dailyGoal: goal, onboardingDone: true });

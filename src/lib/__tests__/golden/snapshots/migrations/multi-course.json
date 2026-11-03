@@ -43,10 +43,11 @@
         "uiLanguage",
         "assessmentByTarget",
         "dailyNewWords",
-        "readingAid"
+        "readingAid",
+        "primerPassed"
       ]
     },
-    "persistVersion": 8
+    "persistVersion": 9
   },
   "fromVersion": 0,
   "invariants": [],
@@ -151,7 +152,7 @@
         },
         "mistakes": [],
         "srs": {
-          "男の人": {
+          "ja:w:otokonohito": {
             "dueAt": 1768200000000,
             "ease": 2.55,
             "interval": 3,
@@ -159,7 +160,7 @@
           }
         },
         "wordStats": {
-          "男の人": {
+          "ja:w:otokonohito": {
             "correct": 2,
             "lastSeen": 1767940000000,
             "wrong": 0
@@ -174,6 +175,7 @@
     "dailyXpDay": "2026-01-08",
     "lastActiveDay": "2026-01-08",
     "onboardingDone": true,
+    "primerPassed": {},
     "readingAid": {},
     "reviewLog": [],
     "streak": 12,
@@ -288,7 +290,7 @@
           },
           "mistakes": [],
           "srs": {
-            "男の人": {
+            "ja:w:otokonohito": {
               "dueAt": 1768200000000,
               "ease": 2.55,
               "interval": 3,
@@ -296,7 +298,7 @@
             }
           },
           "wordStats": {
-            "男の人": {
+            "ja:w:otokonohito": {
               "correct": 2,
               "lastSeen": 1767940000000,
               "wrong": 0
@@ -311,11 +313,12 @@
       "dailyXpDay": "2026-01-08",
       "lastActiveDay": "2026-01-08",
       "onboardingDone": true,
+      "primerPassed": {},
       "readingAid": {},
       "streak": 12,
       "themePreference": "system",
       "uiLanguage": "system"
     }
   },
-  "toVersion": 8
+  "toVersion": 9
 }

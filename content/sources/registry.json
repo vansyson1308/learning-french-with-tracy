@@ -285,7 +285,9 @@
       "retrievedAt": "2026-11-03",
       "covers": [
         "content/ja/lexicon/readings-manifest.json",
-        "content/ja/lexicon/derived/lexeme-readings.json"
+        "content/ja/lexicon/derived/lexeme-readings.json",
+        "content/ja/lexicon/derived/jlpt-course.json",
+        "content/ja/lexicon/lexemes.json"
       ],
       "notes": "P4b stage 4: kana + furigana per Japanese lemma (scripts/cjk-readings.ts). Release 2.3.1+2026-10-25, JmdictFurigana.json pinned by sha256 57c2afa7d153d42df97811d4a44865d10fb9104f6a7bacbbe32a0bf0c38e5abc (34,760,497 bytes) in content/ja/lexicon/readings-manifest.json; the file is never committed, only the derived readings of the pool's lemmas. The README states the data is distributed under the same licence as JMdict (CC BY-SA 4.0); the repository's code is MIT and is not used."
     },
@@ -354,7 +356,8 @@
         "content/ja/lexicon/",
         "content/ko/lexicon/",
         "content/zh/lexicon/",
-        "content/en/lexicon/"
+        "content/en/lexicon/",
+        "content/audio/ja-spoken-readings.json"
       ],
       "notes": "P3a: scripts/lexicon-author.ts writes content/<lang>/lexemes.json (frozen ids) and content/<lang>/lexicon/lexemes.json from the committed derived evidence; REVIEW.md per language records what a human still has to check (TODO:vi, auto-confusables, untranslated examples)."
     },
@@ -443,6 +446,27 @@
       "notes": "P4f: clean-room authored; Vietnamese learner-facing text pending native review. In content/en/lexicon/lexemes.json a pronunciation with this source is a transcription written by the project because the Kaikki value in the candidate pool is missing or not General American; it was not checked against a dictionary. The hand-chosen lexicon itself is recorded under original-lexicon-etl. Ships under the repository's MIT grant like the other course packs."
     },
     {
+      "id": "original-japanese-course",
+      "name": "Learning French with Tracy — authored ja-vi course (Japanese for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Japanese course content for Vietnamese speakers by the Learning French with Tracy project.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/courses/ja-vi.json",
+        "content/ja/pedagogy/",
+        "content/ja/reception/reading.json",
+        "content/ja/reception/listening.json",
+        "content/ja/speech/",
+        "content/ja/writing/",
+        "content/ja/interaction/",
+        "content/ja/assessment/",
+        "content/ja/exam/"
+      ],
+      "notes": "P4c: clean-room authored; Vietnamese learner-facing text pending the D-10 review. The hand-chosen lexicon is recorded under original-lexicon-etl, its readings under jmdict-furigana. JLPT levels (OpenJLPT) are a build-time anchor only. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
       "id": "unihan",
       "name": "Unihan Database — Unicode Character Database 17.0.0",
       "kind": "character data (kVietnamese, kMandarin, kJapanese/On/Kun, kHangul readings; variant links) used at build time to check the Hán-Việt tables",
@@ -487,6 +511,20 @@
         "content/audio/engines.json"
       ],
       "notes": "P3b audio pipeline v2. Each Kokoro voice actually selected for a course gets its own registry entry (kokoro-voice-<name>) at selection time, covering that language's assets.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "misaki-ja-kana-table",
+      "name": "misaki 0.9.4 Japanese kana table (hexgrad), adapted from cutlet (Paul O'Leary McCann)",
+      "kind": "code adapted at pipeline time (kana → Kokoro phoneme table and rules of the Japanese audio front-end; never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://github.com/hexgrad/misaki/blob/main/misaki/cutlet.py",
+      "attribution": "The Japanese audio front-end's kana → phoneme table and rules are adapted from misaki 0.9.4 misaki/cutlet.py (Copyright hexgrad, Apache-2.0), which is itself adapted from cutlet (https://github.com/polm/cutlet, Copyright Paul O'Leary McCann, MIT). Both licence notices are kept in scripts/lib/tts/ja-phonemes.ts.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "scripts/lib/tts/ja-phonemes.ts"
+      ],
+      "notes": "P4c (plan/reports/P4c-ja-audio-frontend.md): misaki[ja] is no longer installed — its G2P needs a MeCab dictionary (UniDic / NAIST-jdic, BSD). Only the dictionary-free kana table and rules were ported, read from the misaki 0.9.4 sdist (PyPI); the readings come from the course lexicon (JmdictFurigana, CC BY-SA 4.0) and content/audio/ja-spoken-readings.json (original). Upstream chain: cutlet MIT → misaki Apache-2.0 → this port, both allowlisted.",
       "buildTimeOnly": true
     },
     {

@@ -1,0 +1,353 @@
+{
+  "generator": "scripts/lib/context-coverage.ts",
+  "rule": "a syllabus lexeme has context when a lesson exercise grades it, a reading or listening clip references it, or a graded story uses it — counted only from sources whose band is at or below the lexeme's CEFR level (lesson: its unit's band; reading/clip: the earliest unit using it, else the level's last band; story: its band)",
+  "level": "A1",
+  "syllabus": 726,
+  "withContext": 620,
+  "share": 0.854,
+  "bySource": {
+    "lessons": 365,
+    "readings": 207,
+    "listening": 275,
+    "stories": 478
+  },
+  "aboveLevelOnly": 13,
+  "units": [
+    {
+      "unitId": "ja-vi:unit-1",
+      "total": 24,
+      "withContext": 22,
+      "missing": [
+        "ja:w:ee",
+        "ja:w:gomennasai"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-2",
+      "total": 26,
+      "withContext": 24,
+      "missing": [
+        "ja:w:onna",
+        "ja:w:otoko"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-3",
+      "total": 22,
+      "withContext": 21,
+      "missing": [
+        "ja:w:oneesan"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-4",
+      "total": 39,
+      "withContext": 38,
+      "missing": [
+        "ja:w:ame-candy"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-5",
+      "total": 38,
+      "withContext": 33,
+      "missing": [
+        "ja:w:zero",
+        "ja:w:nanatsu",
+        "ja:w:kokonotsu",
+        "ja:w:yattsu",
+        "ja:w:muttsu"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-a",
+      "total": 49,
+      "withContext": 32,
+      "missing": [
+        "ja:w:ka",
+        "ja:w:ga",
+        "ja:w:kanojo",
+        "ja:w:kare",
+        "ja:w:konna",
+        "ja:w:de",
+        "ja:w:to",
+        "ja:w:nado",
+        "ja:w:ni-at",
+        "ja:w:ne",
+        "ja:w:no",
+        "ja:w:ha-topic",
+        "ja:w:he",
+        "ja:w:mo",
+        "ja:w:ya",
+        "ja:w:yo",
+        "ja:w:wo"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-b",
+      "total": 53,
+      "withContext": 49,
+      "missing": [
+        "ja:w:choudo",
+        "ja:w:narabu",
+        "ja:w:hajimaru",
+        "ja:w:hajimeru"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:narabu"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-c",
+      "total": 115,
+      "withContext": 103,
+      "missing": [
+        "ja:w:asoko",
+        "ja:w:zenzen",
+        "ja:w:gaikoku",
+        "ja:w:sekken",
+        "ja:w:sochira",
+        "ja:w:soba",
+        "ja:w:posuto",
+        "ja:w:kita",
+        "ja:w:minami",
+        "ja:w:fujisan",
+        "ja:w:tokoro",
+        "ja:w:nishi"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:zenzen",
+        "ja:w:tokoro",
+        "ja:w:nishi"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-d",
+      "total": 79,
+      "withContext": 63,
+      "missing": [
+        "ja:w:kotoshi",
+        "ja:w:sengetsu",
+        "ja:w:nanoka",
+        "ja:w:mikka",
+        "ja:w:kokonoka",
+        "ja:w:futsuka",
+        "ja:w:nigatsu",
+        "ja:w:itsuka",
+        "ja:w:konshuu",
+        "ja:w:youka",
+        "ja:w:muika",
+        "ja:w:rokugatsu",
+        "ja:w:juugatsu",
+        "ja:w:yokka",
+        "ja:w:toshi",
+        "ja:w:shuu"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:sengetsu",
+        "ja:w:shuu"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-e",
+      "total": 33,
+      "withContext": 23,
+      "missing": [
+        "ja:w:mondai",
+        "ja:w:eigo",
+        "ja:w:shitsumon",
+        "ja:w:nooto",
+        "ja:w:betonamugo",
+        "ja:w:pen",
+        "ja:w:boorupen",
+        "ja:w:kotaeru",
+        "ja:w:narau",
+        "ja:w:jisho"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:eigo",
+        "ja:w:shitsumon"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-f",
+      "total": 23,
+      "withContext": 20,
+      "missing": [
+        "ja:w:furu",
+        "ja:w:doubutsu",
+        "ja:w:kumori"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:doubutsu"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-g",
+      "total": 47,
+      "withContext": 37,
+      "missing": [
+        "ja:w:rouka",
+        "ja:w:kopiisuru",
+        "ja:w:suguni",
+        "ja:w:kiru-cut",
+        "ja:w:hiku",
+        "ja:w:tetsudau",
+        "ja:w:kiwotsukeru",
+        "ja:w:watasu",
+        "ja:w:otosu",
+        "ja:w:karui"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:kiwotsukeru"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-h",
+      "total": 13,
+      "withContext": 13,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-i",
+      "total": 4,
+      "withContext": 4,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-j",
+      "total": 24,
+      "withContext": 18,
+      "missing": [
+        "ja:w:nekutai",
+        "ja:w:haku",
+        "ja:w:soujisuru",
+        "ja:w:sentakusuru",
+        "ja:w:migaku",
+        "ja:w:shimeru"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-k",
+      "total": 15,
+      "withContext": 13,
+      "missing": [
+        "ja:w:saa",
+        "ja:w:anou"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-l",
+      "total": 26,
+      "withContext": 24,
+      "missing": [
+        "ja:w:tsumaranai",
+        "ja:w:hoshii"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:hoshii"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-m",
+      "total": 18,
+      "withContext": 16,
+      "missing": [
+        "ja:w:supootsu",
+        "ja:w:dekakeru"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-n",
+      "total": 4,
+      "withContext": 4,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-o",
+      "total": 3,
+      "withContext": 3,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-p",
+      "total": 5,
+      "withContext": 5,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-q",
+      "total": 4,
+      "withContext": 4,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-r",
+      "total": 4,
+      "withContext": 4,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-s",
+      "total": 9,
+      "withContext": 6,
+      "missing": [
+        "ja:w:ageru",
+        "ja:w:kureru",
+        "ja:w:umareru"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:kureru"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-t",
+      "total": 9,
+      "withContext": 8,
+      "missing": [
+        "ja:w:uru"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "ja-vi:unit-u",
+      "total": 31,
+      "withContext": 24,
+      "missing": [
+        "ja:w:byouki",
+        "ja:w:koe",
+        "ja:w:kyuukyuusha",
+        "ja:w:wataru",
+        "ja:w:mimi",
+        "ja:w:tooi",
+        "ja:w:hana"
+      ],
+      "aboveLevelOnly": [
+        "ja:w:hana"
+      ]
+    },
+    {
+      "unitId": "ja-vi:unit-v",
+      "total": 9,
+      "withContext": 9,
+      "missing": [],
+      "aboveLevelOnly": []
+    }
+  ]
+}

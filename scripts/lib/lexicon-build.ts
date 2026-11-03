@@ -163,6 +163,8 @@ export type LexiconIndexEntry = {
   lemma: string;
   gloss: string;
   pos: string;
+  /** P4c: a proper noun (ja 東京): taught in lessons, never a daily new word. Absent on every other entry. */
+  proper?: true;
   gender?: string;
   topic?: string;
   band?: string;
@@ -206,6 +208,7 @@ export function buildRuntimeIndex(
         gloss: lex.gloss,
         pos: lex.partOfSpeech,
       };
+      if (source.proper === true) entry.proper = true;
       if (lex.gender !== undefined) entry.gender = lex.gender;
       if (lex.topic !== undefined) entry.topic = lex.topic;
       if (lex.frequency !== undefined) entry.band = lex.frequency.band;

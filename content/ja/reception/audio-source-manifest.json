@@ -1,0 +1,104 @@
+{
+  "version": 2,
+  "pipelineVersion": 3,
+  "storyPipelineVersion": 4,
+  "storyAudio": {
+    "bundled": "band-1",
+    "stories": [
+      "ja.story.supermarket",
+      "ja.story.new_room",
+      "ja.story.lost_wallet",
+      "ja.story.ramen",
+      "ja.story.letter_home",
+      "ja.story.post_office",
+      "ja.story.hotel_tokyo",
+      "ja.story.dinner_for_colleagues",
+      "ja.story.neighbours_tea",
+      "ja.story.dorm_rules",
+      "ja.story.watch_for_father",
+      "ja.story.umbrella",
+      "ja.story.brothers_wedding",
+      "ja.story.power_cut",
+      "ja.story.factory_morning",
+      "ja.story.train_stops",
+      "ja.story.clinic",
+      "ja.story.city_office"
+    ],
+    "reason": "QC 2026-10-29b §2.3 + Opus (CI-proven 2026-10-30, PR #51): band-1 story audio only, as in es, it and en: the first 18 stories of the reading order after the A1-0 micro-stories bundle sentence audio as Opus 16 kbps; the micro-stories and every other story are read with the device voice, labelled \"Giọng đọc của máy\" (release/ASSET_DELIVERY.md)."
+  },
+  "note": "Pinned TTS sources for the Japanese reception audio (P4c): the two Kokoro-82M voices of the ja cast (content/audio/voice-casts.json), with the same pins as the pack manifest; verified fail-closed on every run. Their phonemes come from the course's stored readings (engines.json kokoro.phonemeFrontends.ja), not from misaki's G2P. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
+  "engines": "content/audio/engines.json",
+  "voices": [
+    {
+      "id": "kokoro-jf_alpha",
+      "engine": "kokoro",
+      "language": "ja",
+      "note": "Kokoro-82M Japanese female (Apache-2.0), grade C+",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/jf_alpha.pt",
+          "sha256": "1bf4c9dc69e45ee46183b071f4db766349aac5592acbcfeaf051018048a5d787",
+          "bytes": 523425
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker A — female voice for announcements, monologues and dialogue turns",
+      "multiSpeaker": false
+    },
+    {
+      "id": "kokoro-jm_kumo",
+      "engine": "kokoro",
+      "language": "ja",
+      "note": "Kokoro-82M Japanese male (Apache-2.0), grade C-",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/jm_kumo.pt",
+          "sha256": "98340afd68b1cee84fe0cd95528cfa6d4b39e416aa75a9df64049d52c8b55896",
+          "bytes": 523425
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker B — male voice for the second speaker of dialogues",
+      "multiSpeaker": false
+    }
+  ],
+  "excludedVoices": []
+}

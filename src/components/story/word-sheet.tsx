@@ -9,8 +9,10 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, Text, View } from "react-native";
 
+import { RubyText } from "@/components/reading/ruby-text";
 import { useT } from "@/lib/i18n";
 import type { LexemeMeta } from "@/lib/learning/lexicon-index";
+import type { ScriptReading } from "@/lib/learning/script-reading";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 export function WordSheet(props: {
@@ -19,6 +21,8 @@ export function WordSheet(props: {
   picked: boolean;
   onTogglePick: () => void;
   onClose: () => void;
+  /** CJK: the lessons' reading of this single word (furigana, romaji, Hán-Việt for a vi-native course). */
+  reading?: ScriptReading;
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
@@ -27,7 +31,11 @@ export function WordSheet(props: {
   return (
     <View style={styles.sheet} testID="story-word-sheet">
       <View style={styles.header}>
-        <Text style={styles.surface}>{meta.surface}</Text>
+        {props.reading ? (
+          <RubyText text={meta.surface} reading={props.reading} textStyle={styles.surface} />
+        ) : (
+          <Text style={styles.surface}>{meta.surface}</Text>
+        )}
         {props.isNew ? <Text style={styles.badge}>{t("stories.newWord")}</Text> : null}
         <Pressable onPress={props.onClose} hitSlop={10} accessibilityRole="button" accessibilityLabel={t("common.close")} style={styles.close}>
           <Ionicons name="close" size={22} color={colors.textMuted} />

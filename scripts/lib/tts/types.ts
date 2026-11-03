@@ -32,11 +32,33 @@ export type Voice = {
   gateReason: string | null;
 };
 
+/**
+ * A plan-time phoneme front-end (P4c). `version` is part of the asset key of every Kokoro clip of the language
+ * (scripts/lib/audio-recipe.ts), because keys hash the text, not the phonemes; `inputsSha256` records the inputs that
+ * version was built from (scripts/lib/tts/ja-frontend-inputs.ts) — when they change, bump the version.
+ */
+export type PhonemeFrontendSpec = { id: "course-readings"; version: number; inputsSha256: string };
+
 export type EnginesDoc = {
   version: number;
   engines: {
     piper: { package: string; pinnedVersion: string; voicesRepository: string; voicesRevision: string; install: string[]; sampleRateHz: number };
-    kokoro: { package: string; pinnedVersion: string; g2pPackage: string; g2pPinnedVersion: string; modelRepository: string; modelRevision: string; modelFile: string; configFile: string; install: string[]; langCodes: Record<string, string>; sampleRateHz: number; lineage?: LineageLink[] };
+    kokoro: {
+      package: string;
+      pinnedVersion: string;
+      g2pPackage: string;
+      g2pPinnedVersion: string;
+      modelRepository: string;
+      modelRevision: string;
+      modelFile: string;
+      configFile: string;
+      install: string[];
+      langCodes: Record<string, string>;
+      /** P4c: languages whose phonemes the plan builds (scripts/lib/tts/kokoro.ts); Kokoro's own G2P reads every other one. */
+      phonemeFrontends?: Record<string, PhonemeFrontendSpec>;
+      sampleRateHz: number;
+      lineage?: LineageLink[];
+    };
     melotts: { gitRepository: string; pinnedCommit: string; models: Record<string, { repository: string; revision: string | null; language: string; defaultSpeaker: string }>; install: string[]; sampleRateHz: number; lineage?: LineageLink[] };
     parler: { package: string; pinnedCommit: string; modelRepository: string; modelRevision: string; descriptionRepository: string; descriptionRevision: string; install: string[]; sampleRateHz: number; lineage?: LineageLink[] };
   };
@@ -58,6 +80,8 @@ export type SynthJob = {
   voiceId: string;
   speaker: number | string | null;
   text: string;
+  /** P4c: the segment's phonemes built at plan time (Kokoro front-end languages only, e.g. ja). */
+  phonemes?: string;
   wavPath: string;
   /** QC 2026-10-29b §3.4: a declared re-synthesis (Piper only; other engines refuse it). */
   noiseScale?: number;

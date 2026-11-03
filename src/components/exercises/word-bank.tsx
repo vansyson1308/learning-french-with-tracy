@@ -75,7 +75,7 @@ export function WordBank({ exercise, answer, onAnswer, status, scriptOf = () => 
           return used ? (
             <View key={index} style={[styles.chip, styles.chipGhost]}>
               {script ? (
-                <RubyText text={token} reading={script} textStyle={[styles.chipText, { color: "transparent" }]} readingColor="transparent" />
+                <RubyText text={token} reading={script} textStyle={[styles.chipText, { color: "transparent" }]} readingColor="transparent" showRomaji={false} />
               ) : (
                 <Text style={[styles.chipText, { color: "transparent" }]}>{token}</Text>
               )}
@@ -102,7 +102,8 @@ function Chip({ label, script, onPress, testID }: { label: string; script?: Scri
       testID={testID}
       style={({ pressed }) => [styles.chip, { borderBottomWidth: pressed ? 2 : 4 }]}
     >
-      {script ? <RubyText text={label} reading={script} textStyle={styles.chipText} /> : <Text style={styles.chipText}>{label}</Text>}
+      {/* P4c: tiles are the learner's production answer — never a romaji line on them. */}
+      {script ? <RubyText text={label} reading={script} textStyle={styles.chipText} showRomaji={false} /> : <Text style={styles.chipText}>{label}</Text>}
     </Pressable>
   );
 }

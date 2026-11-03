@@ -1,0 +1,175 @@
+# ja-vi — review notes (P4c sessions 2–6: lessons, concept cards, reception, speech, writing, scenarios, assessment, stories)
+
+Self-check of the answer keys, run by the session that wrote them. It is not the D-10 review: that is a later session
+(AI pass, then the owner), and it reads these notes first.
+
+## What the self-check is
+
+`_generators/ja-check-answers.py` runs in `ja-pipeline.sh` after the six lesson generators and stops the pipeline on a
+finding (a standing finding needs a reason in its `DECIDED` table, which is empty). The generators themselves
+(`ja_lesson_lib.py` + `ja_text.py`) stop earlier on every reading problem. Output: `review/selfcheck.json`.
+
+| Check | Where | Rule |
+|---|---|---|
+| Kanji without furigana | generators | every kanji is inside a lexicon surface or an inflection key (`ja_text.Index`, the same keys as `src/lib/languages/ja-inflection.ts`) |
+| Misread single kanji | generators | a one-kanji word beside another kanji or a digit (三人 → さん+ひと, 2025年 → とし); 何 before です/で/の/と (read なん, stored なに) |
+| Romaji | generators | no Latin letter in a Japanese string |
+| Register | generators + self-check | a keyed sentence ends in です/ます style; plain forms only in exercises marked plain (one: uk-l1, "which sentence is plain speech") |
+| Japanese in Vietnamese | generators | no kana/kanji in a Vietnamese prompt, translation or option |
+| Two defensible answers | self-check | particle pairs offered together (は/が, に/へ with a verb of motion, と/や, ね/よ without "nhỉ"/"đấy", は/も against "cũng", を key with は); options sharing a Vietnamese gloss; a distractor equal to the key without わたしは or in plain form; a word-bank tile that swaps に/へ, と/や, ね/よ |
+| Wrong particles in a key | self-check | を/で before あります/います; を before 好き/嫌い/上手/下手/欲しい/わかります; を乗ります; に after 今日/明日/毎日…; を行きます/来ます/帰ります |
+| Duplicates | both | no repeated payload across the 108 lessons |
+
+## Findings fixed this session (counts)
+
+| Rule | Found | Fixed how |
+|---|---|---|
+| Kanji without furigana / misread kanji | 34 messages in 17 items (concepts 6, s1 1, s2 1, s6 2, s3–s6 forks 7) | numbers in digits (7時, 2枚, 1万円), non-lexicon words in kana (かさ, おおさか, なんめいさま, あたためて, もえるごみ), Japanese names in hiragana (やまださん), 何 → なん |
+| 降ります (ふります or おります) | 2 items | the key is dropped by design; text uses 降りて / 降って or rewords |
+| Duplicate payloads or near-duplicate prompts | 7 | reworded (uj-l1, uh-l0, uh-l2, us-l0 ×2, ut-l2, uq-l2 ×2) |
+| Two defensible answers | 13 | distractor replaced: ここのたばこ, カードを, 一緒に見ました(か), 遅れる beside 遅刻する, が in 週末は友達___, 明日___大丈夫 (が), に tile beside うちへ, で tile in 角を右に曲がって; word-order alternatives added to 3 word banks (ナムさん、おはようございます, 月曜日に会社へ, 一日2回コーヒーを); digit forms added to 1 typed answer |
+| Register | 0 real (1 false positive: the kana spelling がっこう) | marked as a word, not a sentence |
+| Wrong particles | 0 real (2 false positives on 住んでいます-type て forms) | rule excludes ん/い before で |
+| Self-check false positives | 9 | rules narrowed: particle glosses compared without their brackets; は/が, は/も not read on tiles |
+
+End state: 108 lessons, 835 exercises, 0 findings, 0 decided.
+
+Session 3 (2026-11-03): 857 exercises (+22 conjugationCloze), still 0 findings, 0 decided. One rule widened in
+`ja_text.READS_APART`: 阪駅 (大阪駅 reads おおさか + えき).
+
+Session 4 (2026-11-03): the layers and their exercises. 1,020 exercises (+163: listeningComprehension 44,
+readingComprehension 42, dictation 5, speakProduction 33, speakRepetition 9, guidedWriting 17, simpleForm 2,
+interactionScenario 11), still 0 findings, 0 decided. Every exercise type of the blueprint is used except articleSelect
+(no Japanese counterpart, §2 of ja-plan.md). The self-check now also reads (rule 5 of its docstring): dictation keys and
+their one alternative (the kana spelling, no digits), every spoken answer a speech exercise accepts (register, particles,
+no Latin letter: no Hán-Việt, no romaji), writing model answers (every guided slot realized, every form value a variant),
+Japanese comprehension keys (present in the text) and every learner answer of the 21 scenarios. The layer generators
+check every displayed Japanese string with the same reading rules (`ja_layers.py`). Fixed while writing, before the
+first full run: 6 reading problems (5分前 → 少し早く; 変わりましたか and 一週間, not lexemes, reworded), 5 writing rubrics
+whose time slot the validator's tokenizer splits (7時に → 七 / 時に: the bare number is listed too), 1 sentence-verb rule
+on a negative sentence, 1 sign question with two defensible keys (出口 beside 非常口: the question now asks for 入口), and concept forms
+that are a stem of a set phrase (お願い inside お願いします, 大丈夫 inside 大丈夫です: the phrase is listed too).
+
+Session 5 (2026-11-03): the assessment banks. The self-check now also reads (rule 6 of its docstring) every item of the
+7 checkpoints (112), the placement (21) and the JLPT N5 track (134): 267 items, 0 findings, 0 decided. Found and fixed
+while writing: 2 checkpoint clozes that repeated a lesson payload (the rule now spans lessons and banks), 6 exam texts
+outside their length band (lengthened), 3 kanji without furigana (練習 and 日 written in kana, 昼休み → 休憩), and a
+spelling distractor that was the key's own word (テレビー). Decisions of the coordinator done: 立入禁止, 安全第一, 禁煙,
+足元注意 and 消火器 are lexemes (A2-1, read through the pinned JmdictFurigana) and the factory signs and rules show them
+(ug-l0 +3 reading questions, ug-l1 +1); a kana transcript of an inflected verb matches the spoken variant (item 5 below).
+
+Session 6 (2026-11-03): the graded stories, with their own self-check (`_generators/ja-check-stories.py`, rule 7 of
+the ja-vi self-check; the stories are graded by the staged syllabus, so they run after it at the end of the pipeline).
+45 stories (A1-0 7, A1-1 14, A1-2 14, A2-1 10), 1,084 sentences, 135 questions, 0 findings, 0 decided; output
+`review/stories-selfcheck.json`. A story's sentences are authored with a space between words (`ja_stories_lib.py`):
+the builder removes the spaces and checks that the story engine cuts every sentence exactly there and resolves each
+word to the lexeme meant; its port of the engine agrees with `scripts/lib/stories.ts` on every token, unknown count and
+lexeme of the 45 stories (checked once against the TypeScript analysis). Found and fixed while writing: 9 sentences the
+engine cut elsewhere (わたしたち: わたした is a kana row of 渡す; はいくら before the lookahead existed; 運転 は しないで:
+はし + ない, a kana row of ある; コンビニ で も: でも; いのうえ after は: はい), 6 set phrases written as two words
+(大丈夫です, いいですよ, そうですね are lexemes), 5 kanji next to kanji (毎月国, 来週家; 名古屋駅 is read apart now,
+`READS_APART` in ja_text.py), 4 titles with a non-lexeme word (結婚, 相談, 残業, 日), stories below 150 tokens (lengthened).
+
+## Open for the D-10 reviewer
+
+1. **Typed answers are narrow by nature.** Alternatives cover わたしは dropped, 私 for わたし, に/へ with motion,
+   ください/お願いします, digit/kanji numerals where listed. Other correct orders (time word moved, は vs が in a
+   subordinate spot) are not generated: read every `typeAnswer` (87 since 2026-11-04, Sections 2–6) with that in mind.
+2. **Kana as production** is listed only in unit o (`kana=True`). Everywhere else kana typed for a kanji key aligns
+   through the readings and counts as practice (P4b evidence guard; session 2 extends the readings to inflected forms,
+   see below). **Section 1 has no typing at all** (coordinator decision 2026-11-04, ja-plan.md decision 22): its 23
+   typed answers became 16 word banks whose tiles join to the old key (same audio text) and 7 choices for one-word
+   answers; self-check rule 10 (`section1-typing`) keeps it so. Read the new distractor tiles (u0-l0-e7 … u4-l3-e7)
+   for a second correct sentence; option and tile order moved in 66 other Section 1 items (the generator's rotation),
+   nothing else.
+3. **Furigana come from the lexicon at run time**, not from the exercise text. Inflected verbs and い-adjectives read
+   through the new inflection keys (`src/lib/languages/ja-inflection.ts`). A form two verbs share (降ります) gets none;
+   any other kanji in a lesson is a lexicon surface. Numbers are written in digits where a kanji numeral + counter
+   would get a wrong reading (三百, 四時, 三人).
+4. **conjugationCloze (session 3): 22 items** — ub-l0…ub-l3 15 (polite non-past / past, affirmative / negative),
+   te form in ug-l1 3, uq-l3 2, uv-l1 2 — on 25 paradigm tables (`_generators/ja_paradigms.py`, emitted with the
+   cards). Every cell is a row of the kaikki morphology (re-derived this session: the nine cells are tagged); the
+   group rules check the same tables. Read with that in mind:
+   - 7 tables use a cell the Wiktionary page states nowhere, composed from a stated row of the same page and marked
+     `composed` in morphology.json: 来る, 寝る, 勉強する, 読む, 入る, 見せる, 持つ (the polite negative / past cells).
+   - The key's kana spelling is accepted (alternatives): the drill is the ending, and a cloze is practice by design.
+   - 飲む, 休む, 出す, 取る, 続ける have no conjugation table in the retrieval, so no cloze drills them.
+5. **Sections 3–6 and their layers (session 4).** Read with the layers' generators open:
+   - Signs: the course has no lexeme 立入禁止, 安全第一 or 禁煙, so the factory signs read 入口, 出口, 非常口, 危険, 注意 and
+     the rules are sentences (たばこは禁止です). Adding those words needs `ja-subset.py` with the pinned JmdictFurigana file.
+   - Dictation (5): the key is the clip in the standard script, its one alternative the same text in kana (strict
+     grading: a mix of the two fails); no clip with a number is dictated (7時 / しちじ / 七時).
+   - Speech: variants list わたしは / 私は and the bare sentence; the recogniser's kana is matched through the readings
+     for stored words and, since session 5, for inflected verbs and い-adjectives too (はたらいています = 働いています:
+     whole variants are compared by the utterance reading, which uses the ja-inflection keys). Concept slots still
+     match word by word, so a concept written as an inflected kanji form is not found in an all-kana transcript.
+     Recognisers usually write kanji; to check on a device.
+   - Writing: model answers in the target script; a kana answer aligns as practice. A time slot lists the bare number
+     because the validator's tokenizer splits 7時に as 七 / 時に (the app's lexicon tokenizer does not).
+   - Scenarios: a required concept is a run of tokens of the course tokenizer, so a set phrase is listed beside its stem.
+6. **Names** (session 3): Japanese names and places are lexemes now (row kind R in core-7.txt): 田中, 木村, 東京,
+   大阪, 京都, 名古屋, 北海道, 富士山 — kanji with furigana from JmdictFurigana, Vietnamese gloss, no Hán-Việt, never a
+   kanji target. 山田 has no JmdictFurigana chain (やまだ: rendaku), so its two uses became 木村. The lessons write
+   them in kanji (田中さん, 大阪, 名古屋); Vietnamese names stay in katakana (ナム, ラン, グエン). Latin spellings of
+   Japanese names appear only in Vietnamese text ("anh Tanaka", "ga Osaka"), never in a Japanese string. Decided in
+   session 4 (coordinator): they carry `proper: true` and TODAY never offers one as a daily new word; the lessons keep
+   them.
+7. **Hán-Việt** appears in the card "Kanji và âm Hán-Việt" and in ue-l1 only; the false friends 工場 and 勉強 are
+   taught there.
+8. **Free writing in kana** (decided in session 3, P4b open item): a guided-writing answer typed entirely in kana is
+   aligned to its slots through the stored readings and accepted as practice, never production evidence — the same
+   rule as typed answers and simple forms.
+9. **Romaji** (session 3): the ja-vi profile sets `romajiUntilPrimer`; a Hepburn line under Japanese text shows until
+   the learner passes the primer checkpoint (16/20). Read the kana primer (`content/ja/primer/REVIEW.md`) and its 20
+   checkpoint items in `_generators/ja-primer.py`.
+10. **Checkpoints and placement** (session 5, `_generators/ja-assessment.py`): every scored stimulus is a reserved record
+    (cp*, a1cap_*, pl_*); choices have four options; Section 2 drills particles, ます forms (conjugationCloze), あります /
+    います, adjectives, question words and kana typing; Section 3 adds two te-form clozes and the sign 立入禁止. The
+    capstone has two forms of 10 (one objective per domain, two items each), as en.
+11. **JLPT N5 track** (session 5, `_generators/ja-exam.py`, `content/ja/exam/FORMAT-SOURCES.md`). Read these first:
+    - 文の組み立て (g2, 8 items): the key is the chunk at ★ in the one order the author wrote. Particles are separate
+      chunks so that few orders are grammatical; two items accept an odd but grammatical order ("へやの わたしの かぎ",
+      "つくえの ペンと ノートが うえに"): check that no second natural order puts another chunk at ★.
+    - 言い換え類義 (m4, 6 items): the key is close in meaning, not identical (やすい ≈ たかくない, おととい ≈ ふつかまえ).
+    - 表記 (m2): the wrong spellings are not words on purpose (字校, 学交); the app hides the readings on m1 and m2.
+    - 文脈規定 and 文法 (m3, g1): every option was chosen so that only one fits; pairs the self-check reads (は/が, に/へ,
+      と/や, ね/よ, は/も) are never offered together. Context words (たかかったです, ちょっと) decide m3 a2 and b3.
+    - Listening: the questions are Vietnamese and the options printed — an adaptation the track states. Recordings play
+      once in the exam; the dialogues have no narrator line (the cast has two voices).
+12. **Graded stories** (session 6, `_generators/ja-stories-00…06.py`, `ja_stories_lib.py`). Read these first:
+    - Segmentation: ja has no spaces, so `scripts/lib/stories.ts` cuts a ja story by maximal match over every key the
+      resolver knows (lexicon forms, morphology rows, function words, token-map keys) with one step of lookahead
+      (パン は いくら, not パン はい く ら) — never Intl.Segmenter. fr/en/es/de/it keep their path.
+    - Function words: the particles, です/でした/でしょう/じゃありません/ではありません, な, たち, ごろ, だけ (26). The
+      particles are A1-1 lexemes too; as function words they are known at every band and have no tap gloss.
+    - Inflected forms the morphology does not list (飲みます, 行きましょう, 食べたい, 高かった, 広くない) are in each
+      story's own `tokenMap`, explicitly; so are names (Vietnamese names in katakana, すずき/やまだ/こばやし, ハノイ…).
+      In the micro-stories 木村 is mapped as a name (the lexeme is A1-1); なん is mapped to 何 where 何 is read なん.
+      わかりません is mapped to わかる in two A1-1 stories (the expression lexeme is A1-2).
+    - Register: every sentence ends polite; plain forms appear only inside A2-1 sentences (寝る前に, 食べた後で,
+      止まった機械, 話すのが好き); before A2-1 no plain verb form at all.
+    - Micro-stories (A1-0) use only the words of units 1–3, so they have no verb: noun sentences with です and 3–5 new
+      words. Check that they still read as small scenes, not drills.
+    - Voices: A (female, jf_alpha) narrates and speaks for women, B (male, jm_kumo) for men; two people of the same sex
+      share a voice. Band-1 audio: the first 18 stories after the micro-stories (`_drafts/stories/story-audio.json`,
+      the `storyAudio` block the audio session copies into `content/ja/reception/audio-source-manifest.json`).
+    - The story reader shows the lessons' furigana and romaji line since commit 6a72e3bc (feat(stories): reader shows the
+      lessons' CJK reading display); kanji in the stories are only lexicon surfaces and inflection keys, so the readings
+      exist. Since the D-10 review the romaji line is word-spaced by the story's own pieces (パンを → "pan o").
+
+## D-10 review (2026-11-03)
+
+Two fresh reviewers read the course (`review/findings-answers.json`, 87 findings; `review/findings-language.json`, 107);
+every decision is in `review/decisions-answers.json` and `review/decisions-language.json`, the summary in
+`content/ja/REVIEW-AI.md`. What changed in the generators, beyond the single fixes:
+- typed answers (`Y()`): the subject or owner the Vietnamese prompt states, the time word with and without は, numbers in
+  digits and kanji, the IME's kanji spellings (`ja_text.subject_spellings`, `topic_spellings`, `numeral_spellings`,
+  `natural_spellings`); speech, scenario and writing answers get the IME spellings and 大きな / 小さな too;
+- every conjugation cloze lists its kana spelling (`ja_paradigms.cloze_kana`); a dictation lists every kanji/kana mix of
+  its words (`Index.mixes`), so a correct mixed spelling passes;
+- lexicon examples follow the lessons' reading rule (digits before a counter where the ruby stays right, なん before です);
+- stories: ？ ！ full width; the story check flags a future time word with a past verb and a narrator's humble kin word.
+`ja-check-answers.py` rule 8 and `ja-check-stories.py` rule 8 check every one of these, so a generator edit cannot bring
+them back. Item 1 of "Open for the D-10 reviewer" is answered by the first point; item 5's dictation note by the second.
+    - Questions: Vietnamese, three per story, one an inference; options are written so that only one fits — read the
+      inference questions against the text.

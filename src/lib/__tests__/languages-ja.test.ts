@@ -174,6 +174,36 @@ describe("ja speech grader: no spaces, kana vs kanji by stored reading", () => {
   test("okurigana verb by reading (のみます = 飲みます)", () => expect(grade("みずをのみます", ["水を飲みます"])).toBe(true));
 });
 
+describe("ja speech grader: inflected verbs written in kana by the recogniser (P4c session 5)", () => {
+  // The course stores the dictionary form (働く); its variants use the inflected forms. A kana transcript must match
+  // through the ja-inflection readings, as a typed answer does (alignAnswerToKey).
+  const verbs: CourseLexicon = {
+    entries: [
+      kana("工場", "こうじょう"),
+      { ...kana("働く", "はたらく"), pos: "verb" },
+      { ...kana("食べる", "たべる"), pos: "verb" },
+      { ...kana("電話する", "でんわする"), pos: "verb" },
+      kana("電話", "でんわ"),
+      { ...kana("大きい", "おおきい"), pos: "adjective" },
+      { surface: "です" },
+    ],
+  };
+  const jaV = ja.withLexicon!(verbs);
+  const g = (heard: string, variants: string[], concepts?: string[][]) => grade(heard, variants, concepts, jaV);
+  test("こうじょうではたらいています passes 工場で働いています", () => expect(g("こうじょうではたらいています", ["工場で働いています"])).toBe(true));
+  test("the kanji transcript still passes", () => expect(g("工場で働いています。", ["工場で働いています"])).toBe(true));
+  test("a kanji transcript passes a kana variant", () => expect(g("工場で働いています", ["こうじょうではたらいています"])).toBe(true));
+  test("a mixed transcript (工場ではたらいています) passes", () => expect(g("工場ではたらいています", ["工場で働いています"])).toBe(true));
+  test("polite and te forms: たべました, でんわします, おおきくないです", () => {
+    expect(g("たべました", ["食べました"])).toBe(true);
+    expect(g("でんわします", ["電話します"])).toBe(true);
+    expect(g("おおきくないです", ["大きくないです"])).toBe(true);
+  });
+  test("another form of the verb still fails (はたらきます for 働いています)", () => expect(g("こうじょうではたらきます", ["工場で働いています"])).toBe(false));
+  test("concept slots keep their word-level tokens (電話します in a kana transcript)", () => expect(g("でんわします", [], [["電話します"]])).toBe(true));
+  test("without the lexicon nothing changes", () => expect(grade("こうじょうではたらいています", ["工場で働いています"], undefined, ja)).toBe(false));
+});
+
 describe("ja search fold, locales, reading speed, registry", () => {
   test("search fold: katakana = hiragana, width folded", () => {
     expect(ja.fold("カード")).toBe(ja.fold("かーど"));
@@ -200,8 +230,10 @@ describe("ja search fold, locales, reading speed, registry", () => {
 
 describe("ja course binding (languageRulesForCourse reads the course's lexicon index)", () => {
   afterEach(() => {
-    __registerCourseArtifactsForTests("ja-zz", null);
-    __registerCourseProfileForTests(null, "ja-zz");
+    for (const id of ["ja-zz", "ja-yy"]) {
+      __registerCourseArtifactsForTests(id, null);
+      __registerCourseProfileForTests(null, id);
+    }
   });
   test("a course with a lexicon index tokenizes and reads by its words", () => {
     __registerCourseProfileForTests({ ...courseProfile("ja-en"), id: "ja-zz", nativeCode: "zz" });
@@ -212,5 +244,10 @@ describe("ja course binding (languageRulesForCourse reads the course's lexicon i
     expect(rules.tokenize("学生です")).toEqual(["学生", "です"]);
     expect(rules.spokenReading!("学生 です")).toBe("がくせい です");
   });
-  test("a course without a lexicon index keeps the plain plugin", () => expect(languageRulesForCourse("ja-en")).toBe(ja));
+  // A test-only course: since the first ja-vi compile ja-en ships its lexicon index (a standalone course, like es-en).
+  test("a course without a lexicon index keeps the plain plugin", () => {
+    __registerCourseProfileForTests({ ...courseProfile("ja-en"), id: "ja-yy", nativeCode: "yy" });
+    __registerCourseArtifactsForTests("ja-yy", {});
+    expect(languageRulesForCourse("ja-yy")).toBe(ja);
+  });
 });

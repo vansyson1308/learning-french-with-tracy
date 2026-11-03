@@ -1,0 +1,549 @@
+# listening — ingest report (ja-vi)
+
+Records: 268 · schema-valid: 268 · failed: 0 · validator errors after merge: 268
+
+## Records
+
+- ✅ line 1 `ja.clip.uf_arigatou`
+- ✅ line 2 `ja.clip.uf_sumimasen`
+- ✅ line 3 `ja.clip.uf_daijoubu`
+- ✅ line 4 `ja.clip.uf_kikai`
+- ✅ line 5 `ja.clip.uf_herumetto`
+- ✅ line 6 `ja.clip.uf_tebukuro`
+- ✅ line 7 `ja.clip.uf_kaidan`
+- ✅ line 8 `ja.clip.uf_mado`
+- ✅ line 9 `ja.clip.uf_nanji`
+- ✅ line 10 `ja.clip.uf_wakarimasen`
+- ✅ line 11 `ja.clip.uf_mouichido`
+- ✅ line 12 `ja.clip.uf_yukkuri`
+- ✅ line 13 `ja.clip.uf_imi`
+- ✅ line 14 `ja.clip.uf_nihongo`
+- ✅ line 15 `ja.clip.uh_train_tokyo`
+- ✅ line 16 `ja.clip.uh_train_late`
+- ✅ line 17 `ja.clip.uh_platform`
+- ✅ line 18 `ja.clip.uh_next_station`
+- ✅ line 19 `ja.clip.uh_doors`
+- ✅ line 20 `ja.clip.uh_shop_close`
+- ✅ line 21 `ja.clip.uh_shop_floor`
+- ✅ line 22 `ja.clip.uh_press`
+- ✅ line 23 `ja.clip.uh_stop`
+- ✅ line 24 `ja.clip.uh_gloves`
+- ✅ line 25 `ja.clip.uh_coffee_price`
+- ✅ line 26 `ja.clip.uh_bento_price`
+- ✅ line 27 `ja.clip.uh_meeting_time`
+- ✅ line 28 `ja.clip.uh_shift_end`
+- ✅ line 29 `ja.clip.uh_break`
+- ✅ line 30 `ja.clip.ui_meet`
+- ✅ line 31 `ja.clip.ui_genki`
+- ✅ line 32 `ja.clip.ui_order`
+- ✅ line 33 `ja.clip.ui_pay`
+- ✅ line 34 `ja.clip.ui_time`
+- ✅ line 35 `ja.clip.ui_box`
+- ✅ line 36 `ja.clip.ui_late`
+- ✅ line 37 `ja.clip.ui_phone`
+- ✅ line 38 `ja.clip.ui_thanks`
+- ✅ line 39 `ja.clip.uj_nam_osaka`
+- ✅ line 40 `ja.clip.uj_lin_father`
+- ✅ line 41 `ja.clip.uj_lan_park`
+- ✅ line 42 `ja.clip.uj_station`
+- ✅ line 43 `ja.clip.uj_dorm`
+- ✅ line 44 `ja.clip.cp3_train_kyoto`
+- ✅ line 45 `ja.clip.cp3_plane`
+- ✅ line 46 `ja.clip.cp3_supermarket`
+- ✅ line 47 `ja.clip.cp3_page`
+- ✅ line 48 `ja.clip.cp3_shirt_price`
+- ✅ line 49 `ja.clip.cp3_class`
+- ✅ line 50 `ja.clip.cp3_party`
+- ✅ line 51 `ja.clip.cp3_dlg_tea`
+- ✅ line 52 `ja.clip.cp3_dlg_live`
+- ✅ line 53 `ja.clip.cp3_dlg_movie`
+- ✅ line 54 `ja.clip.cp3_dlg_doctor`
+- ✅ line 55 `ja.clip.cp3_dict_work`
+- ✅ line 56 `ja.clip.cp3_dict_station`
+- ✅ line 57 `ja.clip.cp3_dict_door`
+- ✅ line 58 `ja.clip.a1cap_bank`
+- ✅ line 59 `ja.clip.a1cap_bus`
+- ✅ line 60 `ja.clip.a1cap_pharmacy`
+- ✅ line 61 `ja.clip.a1cap_bag`
+- ✅ line 62 `ja.clip.pl_mizu`
+- ✅ line 63 `ja.clip.pl_shop`
+- ✅ line 64 `ja.clip.pl_pay`
+- ✅ line 65 `ja.clip.uk_model_rep_ohayou`
+- ✅ line 66 `ja.clip.uk_model_greet_morning`
+- ✅ line 67 `ja.clip.uk_model_rep_otsukare`
+- ✅ line 68 `ja.clip.uk_model_otsukare`
+- ✅ line 69 `ja.clip.uk_model_thanks`
+- ✅ line 70 `ja.clip.uk_model_rep_osaki`
+- ✅ line 71 `ja.clip.uk_model_osaki`
+- ✅ line 72 `ja.clip.uk_model_sorry`
+- ✅ line 73 `ja.clip.uk_model_excuse`
+- ✅ line 74 `ja.clip.ul_model_rep_hajimemashite`
+- ✅ line 75 `ja.clip.ul_model_name`
+- ✅ line 76 `ja.clip.ul_model_from`
+- ✅ line 77 `ja.clip.ul_model_age`
+- ✅ line 78 `ja.clip.ul_model_work`
+- ✅ line 79 `ja.clip.ul_model_like`
+- ✅ line 80 `ja.clip.ul_model_rep_yoroshiku`
+- ✅ line 81 `ja.clip.um_model_rep_price`
+- ✅ line 82 `ja.clip.um_model_price`
+- ✅ line 83 `ja.clip.um_model_time`
+- ✅ line 84 `ja.clip.um_model_rep_half`
+- ✅ line 85 `ja.clip.um_model_day`
+- ✅ line 86 `ja.clip.um_model_birthday`
+- ✅ line 87 `ja.clip.um_model_tickets`
+- ✅ line 88 `ja.clip.un_model_rep_ookii`
+- ✅ line 89 `ja.clip.un_model_box`
+- ✅ line 90 `ja.clip.un_model_car`
+- ✅ line 91 `ja.clip.un_model_cat`
+- ✅ line 92 `ja.clip.un_model_rep_shiroi`
+- ✅ line 93 `ja.clip.un_model_room`
+- ✅ line 94 `ja.clip.un_model_person`
+- ✅ line 95 `ja.clip.ix_konbini_bento_miss`
+- ✅ line 96 `ja.clip.ix_konbini_bento_0`
+- ✅ line 97 `ja.clip.ix_konbini_bento_0_s`
+- ✅ line 98 `ja.clip.ix_konbini_bento_1`
+- ✅ line 99 `ja.clip.ix_konbini_bento_1_s`
+- ✅ line 100 `ja.clip.ix_konbini_bento_end`
+- ✅ line 101 `ja.clip.ix_restaurant_order_miss`
+- ✅ line 102 `ja.clip.ix_restaurant_order_0`
+- ✅ line 103 `ja.clip.ix_restaurant_order_0_s`
+- ✅ line 104 `ja.clip.ix_restaurant_order_1`
+- ✅ line 105 `ja.clip.ix_restaurant_order_1_s`
+- ✅ line 106 `ja.clip.ix_restaurant_order_end`
+- ✅ line 107 `ja.clip.ix_ask_station_miss`
+- ✅ line 108 `ja.clip.ix_ask_station_0`
+- ✅ line 109 `ja.clip.ix_ask_station_0_s`
+- ✅ line 110 `ja.clip.ix_ask_station_1`
+- ✅ line 111 `ja.clip.ix_ask_station_1_s`
+- ✅ line 112 `ja.clip.ix_ask_station_end`
+- ✅ line 113 `ja.clip.ix_train_platform_miss`
+- ✅ line 114 `ja.clip.ix_train_platform_0`
+- ✅ line 115 `ja.clip.ix_train_platform_0_s`
+- ✅ line 116 `ja.clip.ix_train_platform_1`
+- ✅ line 117 `ja.clip.ix_train_platform_1_s`
+- ✅ line 118 `ja.clip.ix_train_platform_end`
+- ✅ line 119 `ja.clip.ix_clinic_reception_miss`
+- ✅ line 120 `ja.clip.ix_clinic_reception_0`
+- ✅ line 121 `ja.clip.ix_clinic_reception_0_s`
+- ✅ line 122 `ja.clip.ix_clinic_reception_1`
+- ✅ line 123 `ja.clip.ix_clinic_reception_1_s`
+- ✅ line 124 `ja.clip.ix_clinic_reception_end`
+- ✅ line 125 `ja.clip.ix_clinic_doctor_miss`
+- ✅ line 126 `ja.clip.ix_clinic_doctor_0`
+- ✅ line 127 `ja.clip.ix_clinic_doctor_0_s`
+- ✅ line 128 `ja.clip.ix_clinic_doctor_1`
+- ✅ line 129 `ja.clip.ix_clinic_doctor_1_s`
+- ✅ line 130 `ja.clip.ix_clinic_doctor_end`
+- ✅ line 131 `ja.clip.ix_call_sick_miss`
+- ✅ line 132 `ja.clip.ix_call_sick_0`
+- ✅ line 133 `ja.clip.ix_call_sick_0_s`
+- ✅ line 134 `ja.clip.ix_call_sick_1`
+- ✅ line 135 `ja.clip.ix_call_sick_1_s`
+- ✅ line 136 `ja.clip.ix_call_sick_end`
+- ✅ line 137 `ja.clip.ix_call_late_miss`
+- ✅ line 138 `ja.clip.ix_call_late_0`
+- ✅ line 139 `ja.clip.ix_call_late_0_s`
+- ✅ line 140 `ja.clip.ix_call_late_1`
+- ✅ line 141 `ja.clip.ix_call_late_1_s`
+- ✅ line 142 `ja.clip.ix_call_late_end`
+- ✅ line 143 `ja.clip.ix_city_office_miss`
+- ✅ line 144 `ja.clip.ix_city_office_0`
+- ✅ line 145 `ja.clip.ix_city_office_0_s`
+- ✅ line 146 `ja.clip.ix_city_office_1`
+- ✅ line 147 `ja.clip.ix_city_office_1_s`
+- ✅ line 148 `ja.clip.ix_city_office_end`
+- ✅ line 149 `ja.clip.ix_interview_basics_miss`
+- ✅ line 150 `ja.clip.ix_interview_basics_0`
+- ✅ line 151 `ja.clip.ix_interview_basics_0_s`
+- ✅ line 152 `ja.clip.ix_interview_basics_1`
+- ✅ line 153 `ja.clip.ix_interview_basics_1_s`
+- ✅ line 154 `ja.clip.ix_interview_basics_end`
+- ✅ line 155 `ja.clip.ix_factory_safety_miss`
+- ✅ line 156 `ja.clip.ix_factory_safety_0`
+- ✅ line 157 `ja.clip.ix_factory_safety_0_s`
+- ✅ line 158 `ja.clip.ix_factory_safety_1`
+- ✅ line 159 `ja.clip.ix_factory_safety_1_s`
+- ✅ line 160 `ja.clip.ix_factory_safety_end`
+- ✅ line 161 `ja.clip.ix_cp6_new_colleague_miss`
+- ✅ line 162 `ja.clip.ix_cp6_new_colleague_0`
+- ✅ line 163 `ja.clip.ix_cp6_new_colleague_0_s`
+- ✅ line 164 `ja.clip.ix_cp6_new_colleague_1`
+- ✅ line 165 `ja.clip.ix_cp6_new_colleague_1_s`
+- ✅ line 166 `ja.clip.ix_cp6_new_colleague_end`
+- ✅ line 167 `ja.clip.ix_cp6_interview_miss`
+- ✅ line 168 `ja.clip.ix_cp6_interview_0`
+- ✅ line 169 `ja.clip.ix_cp6_interview_0_s`
+- ✅ line 170 `ja.clip.ix_cp6_interview_1`
+- ✅ line 171 `ja.clip.ix_cp6_interview_1_s`
+- ✅ line 172 `ja.clip.ix_cp6_interview_end`
+- ✅ line 173 `ja.clip.ix_cp6_konbini_pay_miss`
+- ✅ line 174 `ja.clip.ix_cp6_konbini_pay_0`
+- ✅ line 175 `ja.clip.ix_cp6_konbini_pay_0_s`
+- ✅ line 176 `ja.clip.ix_cp6_konbini_pay_1`
+- ✅ line 177 `ja.clip.ix_cp6_konbini_pay_1_s`
+- ✅ line 178 `ja.clip.ix_cp6_konbini_pay_end`
+- ✅ line 179 `ja.clip.ix_cp6_way_bank_miss`
+- ✅ line 180 `ja.clip.ix_cp6_way_bank_0`
+- ✅ line 181 `ja.clip.ix_cp6_way_bank_0_s`
+- ✅ line 182 `ja.clip.ix_cp6_way_bank_1`
+- ✅ line 183 `ja.clip.ix_cp6_way_bank_1_s`
+- ✅ line 184 `ja.clip.ix_cp6_way_bank_end`
+- ✅ line 185 `ja.clip.ix_cp6_clinic_cough_miss`
+- ✅ line 186 `ja.clip.ix_cp6_clinic_cough_0`
+- ✅ line 187 `ja.clip.ix_cp6_clinic_cough_0_s`
+- ✅ line 188 `ja.clip.ix_cp6_clinic_cough_1`
+- ✅ line 189 `ja.clip.ix_cp6_clinic_cough_1_s`
+- ✅ line 190 `ja.clip.ix_cp6_clinic_cough_end`
+- ✅ line 191 `ja.clip.ix_cp6_call_office_miss`
+- ✅ line 192 `ja.clip.ix_cp6_call_office_0`
+- ✅ line 193 `ja.clip.ix_cp6_call_office_0_s`
+- ✅ line 194 `ja.clip.ix_cp6_call_office_1`
+- ✅ line 195 `ja.clip.ix_cp6_call_office_1_s`
+- ✅ line 196 `ja.clip.ix_cp6_call_office_end`
+- ✅ line 197 `ja.clip.ix_a1cap_first_day_miss`
+- ✅ line 198 `ja.clip.ix_a1cap_first_day_0`
+- ✅ line 199 `ja.clip.ix_a1cap_first_day_0_s`
+- ✅ line 200 `ja.clip.ix_a1cap_first_day_1`
+- ✅ line 201 `ja.clip.ix_a1cap_first_day_1_s`
+- ✅ line 202 `ja.clip.ix_a1cap_first_day_end`
+- ✅ line 203 `ja.clip.ix_a1cap_neighbor_miss`
+- ✅ line 204 `ja.clip.ix_a1cap_neighbor_0`
+- ✅ line 205 `ja.clip.ix_a1cap_neighbor_0_s`
+- ✅ line 206 `ja.clip.ix_a1cap_neighbor_1`
+- ✅ line 207 `ja.clip.ix_a1cap_neighbor_1_s`
+- ✅ line 208 `ja.clip.ix_a1cap_neighbor_end`
+- ✅ line 209 `ja.clip.ix_a1cap_friend_plan_miss`
+- ✅ line 210 `ja.clip.ix_a1cap_friend_plan_0`
+- ✅ line 211 `ja.clip.ix_a1cap_friend_plan_0_s`
+- ✅ line 212 `ja.clip.ix_a1cap_friend_plan_1`
+- ✅ line 213 `ja.clip.ix_a1cap_friend_plan_1_s`
+- ✅ line 214 `ja.clip.ix_a1cap_friend_plan_end`
+- ✅ line 215 `ja.clip.ix_a1cap_lunch_miss`
+- ✅ line 216 `ja.clip.ix_a1cap_lunch_0`
+- ✅ line 217 `ja.clip.ix_a1cap_lunch_0_s`
+- ✅ line 218 `ja.clip.ix_a1cap_lunch_1`
+- ✅ line 219 `ja.clip.ix_a1cap_lunch_1_s`
+- ✅ line 220 `ja.clip.ix_a1cap_lunch_end`
+- ✅ line 221 `ja.clip.jlpt_n5_a_c1_01`
+- ✅ line 222 `ja.clip.jlpt_n5_a_c1_02`
+- ✅ line 223 `ja.clip.jlpt_n5_a_c1_03`
+- ✅ line 224 `ja.clip.jlpt_n5_a_c1_04`
+- ✅ line 225 `ja.clip.jlpt_n5_a_c1_05`
+- ✅ line 226 `ja.clip.jlpt_n5_a_c1_06`
+- ✅ line 227 `ja.clip.jlpt_n5_a_c1_07`
+- ✅ line 228 `ja.clip.jlpt_n5_a_c2_01`
+- ✅ line 229 `ja.clip.jlpt_n5_a_c2_02`
+- ✅ line 230 `ja.clip.jlpt_n5_a_c2_03`
+- ✅ line 231 `ja.clip.jlpt_n5_a_c2_04`
+- ✅ line 232 `ja.clip.jlpt_n5_a_c2_05`
+- ✅ line 233 `ja.clip.jlpt_n5_a_c2_06`
+- ✅ line 234 `ja.clip.jlpt_n5_a_c3_01`
+- ✅ line 235 `ja.clip.jlpt_n5_a_c3_02`
+- ✅ line 236 `ja.clip.jlpt_n5_a_c3_03`
+- ✅ line 237 `ja.clip.jlpt_n5_a_c3_04`
+- ✅ line 238 `ja.clip.jlpt_n5_a_c3_05`
+- ✅ line 239 `ja.clip.jlpt_n5_a_c4_01`
+- ✅ line 240 `ja.clip.jlpt_n5_a_c4_02`
+- ✅ line 241 `ja.clip.jlpt_n5_a_c4_03`
+- ✅ line 242 `ja.clip.jlpt_n5_a_c4_04`
+- ✅ line 243 `ja.clip.jlpt_n5_a_c4_05`
+- ✅ line 244 `ja.clip.jlpt_n5_a_c4_06`
+- ✅ line 245 `ja.clip.jlpt_n5_b_c1_01`
+- ✅ line 246 `ja.clip.jlpt_n5_b_c1_02`
+- ✅ line 247 `ja.clip.jlpt_n5_b_c1_03`
+- ✅ line 248 `ja.clip.jlpt_n5_b_c1_04`
+- ✅ line 249 `ja.clip.jlpt_n5_b_c1_05`
+- ✅ line 250 `ja.clip.jlpt_n5_b_c1_06`
+- ✅ line 251 `ja.clip.jlpt_n5_b_c1_07`
+- ✅ line 252 `ja.clip.jlpt_n5_b_c2_01`
+- ✅ line 253 `ja.clip.jlpt_n5_b_c2_02`
+- ✅ line 254 `ja.clip.jlpt_n5_b_c2_03`
+- ✅ line 255 `ja.clip.jlpt_n5_b_c2_04`
+- ✅ line 256 `ja.clip.jlpt_n5_b_c2_05`
+- ✅ line 257 `ja.clip.jlpt_n5_b_c2_06`
+- ✅ line 258 `ja.clip.jlpt_n5_b_c3_01`
+- ✅ line 259 `ja.clip.jlpt_n5_b_c3_02`
+- ✅ line 260 `ja.clip.jlpt_n5_b_c3_03`
+- ✅ line 261 `ja.clip.jlpt_n5_b_c3_04`
+- ✅ line 262 `ja.clip.jlpt_n5_b_c3_05`
+- ✅ line 263 `ja.clip.jlpt_n5_b_c4_01`
+- ✅ line 264 `ja.clip.jlpt_n5_b_c4_02`
+- ✅ line 265 `ja.clip.jlpt_n5_b_c4_03`
+- ✅ line 266 `ja.clip.jlpt_n5_b_c4_04`
+- ✅ line 267 `ja.clip.jlpt_n5_b_c4_05`
+- ✅ line 268 `ja.clip.jlpt_n5_b_c4_06`
+
+## Validator errors (fix these records and ingest again)
+
+- reception: ja.clip.uf_arigatou: generated asset 65245cffb815fc9ee484.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_sumimasen: generated asset 7cf664c10a2bdbd10d66.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_daijoubu: generated asset d1f233896a85412443fc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_kikai: generated asset 3c75e9ee2d569bb5947f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_herumetto: generated asset 4e0b013ece7393288680.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_tebukuro: generated asset 58485f940d64769d6d60.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_kaidan: generated asset ecbf36861ef385b5574c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_mado: generated asset 5769216a2f6df67ba467.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_nanji: generated asset cbaf53a389a8a36c6e8a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_wakarimasen: generated asset c36fd81aad37ee088efb.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_mouichido: generated asset b6a1c8f290a1fb8afef5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_yukkuri: generated asset 9a95ce765ff2c91385a0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_imi: generated asset fc32c9686b3daaca0dc5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uf_nihongo: generated asset 332314cf584610af79c0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_train_tokyo: generated asset cc35b5ecec6405891ca9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_train_late: generated asset 607003df3f6cfa89eb44.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_platform: generated asset 783705f9d3ee3d2eef29.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_next_station: generated asset 4179feddd371abbb4141.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_doors: generated asset 902dd7ecfaacc8a55b24.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_shop_close: generated asset 897f159bc4a8614411e4.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_shop_floor: generated asset 2e970cfebfc3f3985d0d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_press: generated asset 92517cf4af02fa24b1ac.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_stop: generated asset 6a6e7c53f458186332cf.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_gloves: generated asset dffd331044492d4ff37d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_coffee_price: generated asset 3e8d9cdcb138ddd35f80.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_bento_price: generated asset d19a636b0830dd5ac9ca.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_meeting_time: generated asset 36cda3028bcc293aae55.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_shift_end: generated asset 6689838c78da5eb5aac9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uh_break: generated asset 15ae03663fa88f93445f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_meet: generated asset 375af94fa76554fb0be2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_genki: generated asset d316203b344cdaa2ab26.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_order: generated asset 328730c37ad87f3e7fcc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_pay: generated asset daf57cec5468e889ebc0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_time: generated asset 46949014b7aff3a5c3ce.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_box: generated asset d6efa3a188c3d82537b3.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_late: generated asset 20636f167207fe557ab9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_phone: generated asset 8b0e50078cd13571cf4f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ui_thanks: generated asset 491adcfc160100a9f295.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uj_nam_osaka: generated asset c528f7a95603e4670303.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uj_lin_father: generated asset 4d21228d25046f11f79b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uj_lan_park: generated asset a3cb33f1a2a508674c6e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uj_station: generated asset e325c65c16d594f7deb2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uj_dorm: generated asset 9c20d779cd7638646e6c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_train_kyoto: generated asset b66e6d4f1c4acbee4c84.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_plane: generated asset 6180f0da412d6bae8927.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_supermarket: generated asset 9a9354dc538505b4808b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_page: generated asset a9409098650b0320f83a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_shirt_price: generated asset 1f3338ab621771b3ea23.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_class: generated asset d160aacce3d8347f5f6b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_party: generated asset 94517993319a1c5b5d9a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_dlg_tea: generated asset dd1a3b2b8b2a3598a729.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_dlg_live: generated asset fb88029b5e5c45b2c484.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_dlg_movie: generated asset eb6f7a5407ddf63ed3ee.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_dlg_doctor: generated asset 63d1ba216d20967ebe60.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_dict_work: generated asset 6456857d949b9bc91ad7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_dict_station: generated asset ebe2319616ff5b808258.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.cp3_dict_door: generated asset 128181d79f940f75910e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.a1cap_bank: generated asset 35e8762d0777d0f2384c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.a1cap_bus: generated asset 3128e53762592d897859.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.a1cap_pharmacy: generated asset b85b85507ae458dcb8c6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.a1cap_bag: generated asset 87a59f3bdbbf587c927f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.pl_mizu: generated asset 542b5e39cfb86879013d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.pl_shop: generated asset 79287756db075713e3fe.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.pl_pay: generated asset 22c9bbd1eda332906097.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_rep_ohayou: generated asset 020c041b023e65e5509e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_greet_morning: generated asset 020c041b023e65e5509e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_rep_otsukare: generated asset dff1d821da81e45bc0bf.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_otsukare: generated asset a658d01128b45282cd2a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_thanks: generated asset 65245cffb815fc9ee484.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_rep_osaki: generated asset a4c6a0b9361ad0636510.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_osaki: generated asset e88d671ac201ef1f06c8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_sorry: generated asset 87d46d4e3ae44c4b3647.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.uk_model_excuse: generated asset 7cf664c10a2bdbd10d66.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ul_model_rep_hajimemashite: generated asset 121945fcf765af44f025.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ul_model_name: generated asset fe59f56c32ff1d1985c9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ul_model_from: generated asset 7c7d98777f6ef1999f81.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ul_model_age: generated asset 98f877d25425aec81a1e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ul_model_work: generated asset c291779722032e862b87.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ul_model_like: generated asset d1bc97906513ecfa1d46.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ul_model_rep_yoroshiku: generated asset 7b686ed9b16e8cb1079f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.um_model_rep_price: generated asset 93079a185c0b358674bf.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.um_model_price: generated asset 7a68186bbb4fcbdd3f5d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.um_model_time: generated asset 22a90450760feb751833.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.um_model_rep_half: generated asset 41490e2361825a1391f0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.um_model_day: generated asset 6669750d310115aae52a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.um_model_birthday: generated asset 4b61222f76b40e0cf4a5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.um_model_tickets: generated asset 86ae39bf93cfffb3b46a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.un_model_rep_ookii: generated asset 3d27440f404bed88c679.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.un_model_box: generated asset 02b062b770d206ecaff3.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.un_model_car: generated asset 4a3ec55b805907f0cf85.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.un_model_cat: generated asset a82333054b546a486b83.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.un_model_rep_shiroi: generated asset fa61702aae4da9b44507.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.un_model_room: generated asset abca5f8208f1122c59ed.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.un_model_person: generated asset 1d946707baa538e18c90.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_konbini_bento_miss: generated asset fc7d970c16bef9c21ec4.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_konbini_bento_0: generated asset c283d75ca8077ecf9b32.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_konbini_bento_0_s: generated asset 2657140ce0abd63a57fc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_konbini_bento_1: generated asset d56a342868c0632fce35.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_konbini_bento_1_s: generated asset e38d5b83be4be31e429d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_konbini_bento_end: generated asset 4aab7cef57e007ab32a6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_restaurant_order_miss: generated asset 0937d216b9c9f05ee05c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_restaurant_order_0: generated asset 1f092adaba8441e2defb.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_restaurant_order_0_s: generated asset cc8d77e20ef740fa2c9f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_restaurant_order_1: generated asset 26ef1a46465704fc1721.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_restaurant_order_1_s: generated asset 41501da04a1ec7c594b0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_restaurant_order_end: generated asset e425107bb9a0ad117c5e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_ask_station_miss: generated asset cc5156e1f7d21584d19d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_ask_station_0: generated asset 9c600523c67f35336f87.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_ask_station_0_s: generated asset 80ca9ba68b38310faf8e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_ask_station_1: generated asset f92f48f92730fbf40e9c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_ask_station_1_s: generated asset 927211acc0c8cce60e97.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_ask_station_end: generated asset 9d369438b88791b38c1b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_train_platform_miss: generated asset 0f70172b38a40cd9b466.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_train_platform_0: generated asset 83c6e2c8becf00d5020f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_train_platform_0_s: generated asset 2932631fc2fb0641783e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_train_platform_1: generated asset b9a066aee2b817f0cd3b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_train_platform_1_s: generated asset 16e2be34c1407636c10a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_train_platform_end: generated asset ecbc9387e083731bb957.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_reception_miss: generated asset f1199565253e837944c8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_reception_0: generated asset 2d479a8a97e0c68e213c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_reception_0_s: generated asset 007e449426ea1523544e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_reception_1: generated asset a670a1c5252019b0a603.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_reception_1_s: generated asset 556dea2072880369483a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_reception_end: generated asset 5867979e493a5da01421.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_doctor_miss: generated asset fda3aa249166892e526b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_doctor_0: generated asset 83c6e2c8becf00d5020f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_doctor_0_s: generated asset 394b7586a74198a77dd6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_doctor_1: generated asset be2396270bf8d6a77b5e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_doctor_1_s: generated asset 1497ce50b0db548526c8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_clinic_doctor_end: generated asset 77acaf1a094610d75508.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_sick_miss: generated asset f1199565253e837944c8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_sick_0: generated asset 97430ae07f05e5a4354f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_sick_0_s: generated asset 77848b258f2365729fb1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_sick_1: generated asset 4ff11383103187b48eec.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_sick_1_s: generated asset 20f69f40d31496eed40a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_sick_end: generated asset 2721e391525c2dafac36.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_late_miss: generated asset c4f985d1ab3523e803a0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_late_0: generated asset d605d67d0782bcfb97e0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_late_0_s: generated asset 4e215d0fd65041f41a48.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_late_1: generated asset c992d6433149b58bb2ae.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_late_1_s: generated asset bb0b615c7ffbc6e76e9e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_call_late_end: generated asset c1a9bf22d611292e8faa.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_city_office_miss: generated asset f1199565253e837944c8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_city_office_0: generated asset f46939198099995cde52.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_city_office_0_s: generated asset 1f26691af80888f12c43.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_city_office_1: generated asset 74f7a7f1df03355cefa2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_city_office_1_s: generated asset 45031e455ff8623e2ae8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_city_office_end: generated asset 08abfb12bf70f2b5604d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_interview_basics_miss: generated asset 8907ff1b64f3c57744c4.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_interview_basics_0: generated asset 6ca4c4dcded21d46d014.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_interview_basics_0_s: generated asset 4f864756bd68f5268ce0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_interview_basics_1: generated asset 06b27ee1f915e3912043.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_interview_basics_1_s: generated asset e14615d531bb70e505df.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_interview_basics_end: generated asset ba75ca637d2570ad8924.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_factory_safety_miss: generated asset b99e90825fbf151cf84b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_factory_safety_0: generated asset 5e9ad20c08cd106e3ce9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_factory_safety_0_s: generated asset 9ace17374fa17730730b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_factory_safety_1: generated asset d678f54963b9f8d8a975.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_factory_safety_1_s: generated asset 87bf6e0ff4228a2a3c85.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_factory_safety_end: generated asset 284f0cd8fc58c1dd6911.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_new_colleague_miss: generated asset 79c80111e4b5dcb988ed.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_new_colleague_0: generated asset 3d399f4aee9236e5abf5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_new_colleague_0_s: generated asset 7fd44f34b9a15dea899a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_new_colleague_1: generated asset 5ee309cee24443842343.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_new_colleague_1_s: generated asset f47d62171e074a8c7cbd.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_new_colleague_end: generated asset 679e98c0253ef2078b07.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_interview_miss: generated asset 48b2e98b08066f4b206a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_interview_0: generated asset 0f6157a2a2df48ca0ce0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_interview_0_s: generated asset 1e5d274796331e4c6dcc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_interview_1: generated asset b97066a90f0acd3f893c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_interview_1_s: generated asset a3f993bdb81132ed6b53.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_interview_end: generated asset 2a083ae06df56f1183a7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_konbini_pay_miss: generated asset f1199565253e837944c8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_konbini_pay_0: generated asset d912e3e17cb27b7966e7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_konbini_pay_0_s: generated asset a5c515088cbe325f68a7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_konbini_pay_1: generated asset 038fca6753d63c59e345.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_konbini_pay_1_s: generated asset 10ce64c06f3fcb909550.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_konbini_pay_end: generated asset b08e55c82e22fcd25b43.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_way_bank_miss: generated asset ea2d97b5a1a5f6d02009.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_way_bank_0: generated asset 83c6e2c8becf00d5020f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_way_bank_0_s: generated asset 2932631fc2fb0641783e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_way_bank_1: generated asset 3681b6551a2f556e66f9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_way_bank_1_s: generated asset 9617596209217b9f286b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_way_bank_end: generated asset 97b04a7fb37e04ba11bb.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_clinic_cough_miss: generated asset df1b6f94ce5d113f7f2f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_clinic_cough_0: generated asset 80ca9ba68b38310faf8e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_clinic_cough_0_s: generated asset d7c337b5ba19a6048d5c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_clinic_cough_1: generated asset 62b5b571ad6300d061be.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_clinic_cough_1_s: generated asset d1907d37a7fb501f31e7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_clinic_cough_end: generated asset bf7e1eee41e92b1b77b0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_call_office_miss: generated asset dd867ee0bb08c49b6562.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_call_office_0: generated asset 79a646221cfa3e304c9a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_call_office_0_s: generated asset fdd6230ff7787c1b9999.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_call_office_1: generated asset 0b719306b8b5b922845b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_call_office_1_s: generated asset eb35e8d957792186b64d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_cp6_call_office_end: generated asset bb3104ed553a59738154.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_first_day_miss: generated asset 36703af5d0ca8647d1fd.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_first_day_0: generated asset ed0133e839b7542471a9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_first_day_0_s: generated asset ab6815f7bc80faf86474.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_first_day_1: generated asset 85352175553167a10ead.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_first_day_1_s: generated asset 8a3a0416a3f1895822ba.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_first_day_end: generated asset eaa9485a61f7bd5b6cc7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_neighbor_miss: generated asset dd30ed25f67c474da3fe.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_neighbor_0: generated asset f29a9662fada62a94267.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_neighbor_0_s: generated asset 22ecf4815390ce185b71.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_neighbor_1: generated asset 8a09135485d30a0da094.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_neighbor_1_s: generated asset 1175b378dc03f2934e28.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_neighbor_end: generated asset af59cc60048b962a3030.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_friend_plan_miss: generated asset 07db253670c4a5a27304.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_friend_plan_0: generated asset 9607a641ec47a1390109.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_friend_plan_0_s: generated asset 0df7730eb4b0bcb1ea60.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_friend_plan_1: generated asset 951279a0c6389a588125.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_friend_plan_1_s: generated asset 4148b61964bbe3ff2a58.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_friend_plan_end: generated asset 95fd491b23d7c08a8e61.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_lunch_miss: generated asset 691b9497e351d9ce6b97.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_lunch_0: generated asset ee4f9fc4690913d2d112.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_lunch_0_s: generated asset c87f5ba5a38f17c36ad4.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_lunch_1: generated asset d894f77cae548a522a12.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_lunch_1_s: generated asset c2517ccd91dcb0749c78.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_lunch_end: generated asset ff98be9b721cb3882292.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_01: generated asset 96a0f578b0178d784620.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_02: generated asset 75bd8a62099d7cb16ca3.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_03: generated asset 5ea90b61a94d5460fb19.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_04: generated asset 8cfd7bfe69d41771e6bf.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_05: generated asset 49dbb7a7199cbf481ccd.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_06: generated asset 19916f24d57eb057eb99.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c1_07: generated asset f5173d19d02da620d9e9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_01: generated asset 8c9484e5619594832ce0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_02: generated asset f36fa4403ca9f847bb9e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_03: generated asset bdbec1352f433633b8ec.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_04: generated asset df67b116ec9d7b42f3ba.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_05: generated asset 00e0a08a530224d79be9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c2_06: generated asset 11751bd9de7ef16c2787.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_01: generated asset a434e89a2acfee39b6d1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_02: generated asset d34433be6cffc28fd7b6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_03: generated asset dec49c1684c41ef5f43c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_04: generated asset 13a3f908c303f5b63011.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c3_05: generated asset 8a02a0c9caf8560d4011.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_01: generated asset 2523334789ca79006e0c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_02: generated asset faa0293cc62fd73371e6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_03: generated asset 9ffa84a1facce900ccda.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_04: generated asset 37e881213b3b0a8271f5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_05: generated asset e74908ef6abf6092aba8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_a_c4_06: generated asset 650e894798a15697f6d9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_01: generated asset e0a0b14265f4b512fbe3.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_02: generated asset 9767fad3d9dcdca7973f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_03: generated asset 97b98fed157d53560b07.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_04: generated asset 6a0c3d901f8a019c33de.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_05: generated asset da654dbe8fbc930df9c1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_06: generated asset ada5ee3f00c6a2b28320.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c1_07: generated asset 3e8d759a9e2d47be9079.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_01: generated asset d99b3dd5e37c728dff1b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_02: generated asset 96629516a16f0982b706.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_03: generated asset 91354872a0a8d32396c1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_04: generated asset 871641fc91b5431db857.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_05: generated asset 6965cad60523aef84cf9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c2_06: generated asset 885add52c46fa24e6736.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_01: generated asset d506f6324c5e261258f7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_02: generated asset 09cb6a6b28a89c1540e7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_03: generated asset 3cfad61bec4246f7cf15.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_04: generated asset 55f90f9424ec57e105aa.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c3_05: generated asset 18e81991fde2d0831d55.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_01: generated asset a773c799a200b0786104.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_02: generated asset 43a04ef241ea4744c5f0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_03: generated asset 7a69bcd0cde2f4f633a0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_04: generated asset 26c6cc1fcc922da10264.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_05: generated asset 3a968452733f9165bdba.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.jlpt_n5_b_c4_06: generated asset 2afc579ea91582c16e80.opus missing — run the reception-audio generate workflow (P7 §26)
+
+## Written
+
+- content/ja/reception/listening.json

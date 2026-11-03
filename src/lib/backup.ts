@@ -57,6 +57,7 @@ function snapshotFromStore(): PersistedProgress {
     uiLanguage: s.uiLanguage,
     dailyNewWords: s.dailyNewWords,
     readingAid: s.readingAid,
+    primerPassed: s.primerPassed,
     courses: stripLearnerData({ courses: s.courses } as PersistedProgress).courses,
     activeDays: s.activeDays,
     assessmentByTarget: s.assessmentByTarget,

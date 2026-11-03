@@ -15,6 +15,7 @@ import { useT } from "@/lib/i18n";
 import { Flag } from "@/components/flag";
 import { useCourseContent } from "@/lib/content";
 import { courseProfile, hasCapability } from "@/lib/course-profile";
+import { primerPassedFor } from "@/lib/learning/primer-progress";
 import { coursePrimer } from "@/lib/script-primer";
 import {
   activeToday,
@@ -69,7 +70,15 @@ export default function LearnScreen() {
     !assessment.placement &&
     Object.keys(courseProgress.completedLessons).length === 0;
 
-  const hasPrimer = coursePrimer(activeCourseId) !== null;
+  const primer = coursePrimer(activeCourseId);
+  const hasPrimer = primer !== null;
+  // P4c: a primer with a checkpoint is recommended first (never required: Section 1 stays open).
+  const primerSubtitle =
+    primer?.checkpoint === undefined
+      ? t("primer.entrySubtitle")
+      : primerPassedFor(progress.primerPassed, activeCourseId)
+        ? t("primer.entryPassed")
+        : t("primer.entryRecommended");
 
   // Units cycle through the palette across the whole course.
   const unitColor = new Map<string, (typeof unitPalette)[number]>();
@@ -162,7 +171,9 @@ export default function LearnScreen() {
                 <Ionicons name="language" size={24} color={colors.skyDark} />
                 <View style={{ flex: 1, gap: 2 }}>
                   <Text style={styles.placementTitle}>{t("primer.entryTitle")}</Text>
-                  <Text style={styles.placementSubtitle}>{t("primer.entrySubtitle")}</Text>
+                  <Text style={styles.placementSubtitle} testID="script-primer-status">
+                    {primerSubtitle}
+                  </Text>
                 </View>
                 <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
               </Pressable>

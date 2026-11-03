@@ -201,10 +201,12 @@ function fixtureInput(overrides: {
   runtimeMap?: Record<string, string>;
   registryIds?: Set<string>;
   packGloss?: Map<string, string>;
+  unmappedSurfaces?: Set<string>;
 } = {}) {
   const lexicon = overrides.lexicon ?? fixtureLexicon();
   const map = derivedSurfaceMap(lexicon);
   return {
+    unmappedSurfaces: overrides.unmappedSurfaces,
     plugin: FR,
     lexicon,
     manifest: overrides.manifest ?? fixtureManifest(),
@@ -241,6 +243,18 @@ describe("validateLexiconData mutation tests — every rule fires", () => {
     const frozen = derivedSurfaceMap(fixtureLexicon()); // original map
     const errors = validateLexiconData(fixtureInput({ lexicon, frozenMap: frozen, runtimeMap: frozen }));
     expect(errors.errors.join("\n")).toContain("stable ids are frozen");
+  });
+
+  test("P4c legacy-unmapped: a pack word with no lexeme fails unless the file lists it, and a listed word that maps is stale", () => {
+    const packGloss = new Map([
+      ["le chat", "the cat"],
+      ["manger", "to eat"],
+      ["au revoir", "goodbye"],
+      ["le minou", "the kitty"],
+    ]);
+    expect(errorsFor({ packGloss }).join("\n")).toContain(`pack word "le minou" missing from rich lexicon`);
+    expect(errorsFor({ packGloss, unmappedSurfaces: new Set(["le minou"]) })).toEqual([]);
+    expect(errorsFor({ unmappedSurfaces: new Set(["le chat"]) }).join("\n")).toContain(`legacy-unmapped surface "le chat" maps to`);
   });
 
   test("frozen map drifting from the runtime map is an error", () => {

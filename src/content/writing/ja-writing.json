@@ -1,0 +1,2179 @@
+{
+  "generator": "scripts/lib/writing.ts",
+  "version": 1,
+  "order": [
+    "ja.write.o_name",
+    "ja.write.o_age",
+    "ja.write.o_home",
+    "ja.write.o_family",
+    "ja.write.o_all",
+    "ja.write.p_who",
+    "ja.write.p_neg",
+    "ja.write.p_ask",
+    "ja.write.p_link",
+    "ja.write.q_sick",
+    "ja.write.q_late",
+    "ja.write.q_reply",
+    "ja.write.r_form_office",
+    "ja.write.r_form_clinic",
+    "ja.write.r_note",
+    "ja.write.o_open",
+    "ja.write.p_open",
+    "ja.write.q_open",
+    "ja.write.r_open"
+  ],
+  "byId": {
+    "ja.write.o_name": {
+      "id": "ja.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn là Nam. Hãy viết một câu tiếng Nhật nói tên của bạn.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Nam (viết bằng katakana)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên của bạn",
+            "variants": [
+              "ナム"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "です"
+        ]
+      },
+      "modelAnswers": [
+        "わたしはナムです。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "ja.write.o_age": {
+      "id": "ja.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn 23 tuổi. Hãy viết một câu tiếng Nhật nói tuổi của bạn.",
+      "cueFacts": [
+        {
+          "label": "Tuổi",
+          "value": "23"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": "tuổi của bạn",
+            "variants": [
+              "23歳",
+              "23さい"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "です"
+        ]
+      },
+      "modelAnswers": [
+        "わたしは23歳です。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "ja.write.o_home": {
+      "id": "ja.write.o_home",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu: bạn đến từ nước nào và bây giờ bạn sống ở thành phố nào.",
+      "cueFacts": [
+        {
+          "label": "Nước",
+          "value": "Việt Nam"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Osaka"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "from",
+            "description": "bạn đến từ đâu",
+            "variants": [
+              "ベトナムから",
+              "ベトナム人"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố bạn sống",
+            "variants": [
+              "大阪"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "ベトナムから来ました。今、大阪に住んでいます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:betonamu",
+        "ja:w:kuru",
+        "ja:w:ima",
+        "ja:w:oosaka",
+        "ja:w:sumu"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.o_family": {
+      "id": "ja.write.o_family",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu: bạn có hai em gái, và bạn thích nấu ăn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "sisters",
+            "description": "hai em gái",
+            "variants": [
+              "妹が二人",
+              "妹は二人",
+              "二人の妹"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "like",
+            "description": "bạn thích nấu ăn",
+            "variants": [
+              "料理が好き",
+              "料理が大好き",
+              "料理をするのが好き",
+              "料理するのが好き",
+              "料理を作るのが好き"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "妹が二人います。料理が好きです。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:imouto",
+        "ja:w:futari",
+        "ja:w:ryouri",
+        "ja:w:suki"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.o_all": {
+      "id": "ja.write.o_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố bạn sống.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Lan"
+        },
+        {
+          "label": "Tuổi",
+          "value": "28"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Nagoya"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên",
+            "variants": [
+              "ラン"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": "tuổi",
+            "variants": [
+              "28歳",
+              "28さい"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố",
+            "variants": [
+              "名古屋"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "ランです。28歳です。名古屋に住んでいます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:nagoya",
+        "ja:w:sumu"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.p_who": {
+      "id": "ja.write.p_who",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu: anh Nam uống cà phê vào buổi sáng.",
+      "cueFacts": [
+        {
+          "label": "Người",
+          "value": "Nam"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "drink",
+            "description": "uống cà phê",
+            "variants": [
+              "コーヒーを飲み"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "morning",
+            "description": "vào buổi sáng",
+            "variants": [
+              "朝",
+              "毎朝"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 15,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "ナムさんは朝、コーヒーを飲みます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:asa",
+        "ja:w:koohii",
+        "ja:w:nomu"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.p_neg": {
+      "id": "ja.write.p_neg",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu phủ định: bạn không uống rượu.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "neg",
+            "description": "bạn không uống rượu",
+            "variants": [
+              "お酒を飲みません",
+              "お酒は飲みません"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "お酒を飲みません。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:osake",
+        "ja:w:nomu"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.p_ask": {
+      "id": "ja.write.p_ask",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu hỏi lịch sự: Bạn sống ở đâu?",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ask",
+            "description": "câu hỏi về nơi sống",
+            "variants": [
+              "どこに住んで"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "どこに住んでいますか。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumu"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.p_link": {
+      "id": "ja.write.p_link",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu: bạn ăn sáng, sau đó bạn đi làm. Dùng một từ nối.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "breakfast",
+            "description": "bạn ăn sáng",
+            "variants": [
+              "朝ご飯を食べ"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "link",
+            "description": "từ nối",
+            "variants": [
+              "それから",
+              "そして"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "work",
+            "description": "bạn đi làm",
+            "variants": [
+              "会社へ行き",
+              "会社に行き",
+              "仕事に行き",
+              "工場へ行き",
+              "工場に行き"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 25,
+        "requireSentenceVerbs": [
+          "です",
+          "ます",
+          "ました"
+        ]
+      },
+      "modelAnswers": [
+        "朝ご飯を食べます。それから、会社へ行きます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:asagohan",
+        "ja:w:taberu",
+        "ja:w:kaisha",
+        "ja:w:iku"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.q_sick": {
+      "id": "ja.write.q_sick",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho cấp trên: chào, báo bạn bị sốt, và hôm nay bạn xin nghỉ.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "お疲れさまです",
+              "お疲れ様です",
+              "おはようございます",
+              "こんにちは"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "fever",
+            "description": "bạn bị sốt",
+            "variants": [
+              "熱があり",
+              "熱が出"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "rest",
+            "description": "xin nghỉ",
+            "variants": [
+              "休みます",
+              "休んでもいいですか",
+              "休ませてください",
+              "休みたい",
+              "休ませてもらえますか"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "お疲れさまです。グエンです。熱があります。今日は休みます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu",
+        "ja:w:netsu",
+        "ja:w:kyou",
+        "ja:w:yasumu"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.q_late": {
+      "id": "ja.write.q_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho anh Tanaka: chào, báo tàu điện bị trễ, rồi xin lỗi.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "anh Tanaka"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "お疲れさまです",
+              "お疲れ様です",
+              "おはようございます",
+              "こんにちは"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "train",
+            "description": "tàu điện bị trễ",
+            "variants": [
+              "電車が遅れ"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "sorry",
+            "description": "lời xin lỗi",
+            "variants": [
+              "すみません",
+              "申し訳ありません",
+              "申し訳ございません"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "田中さん、お疲れさまです。電車が遅れています。すみません。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanaka",
+        "ja:w:otsukaresamadesu",
+        "ja:w:densha",
+        "ja:w:okureru",
+        "ja:w:sumimasen"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.q_reply": {
+      "id": "ja.write.q_reply",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Cấp trên nhắn: mai làm từ 7 giờ. Hãy trả lời: bạn đã hiểu, và cảm ơn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ok",
+            "description": "bạn đã hiểu",
+            "variants": [
+              "わかりました",
+              "分かりました",
+              "承知しました"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "thanks",
+            "description": "lời cảm ơn",
+            "variants": [
+              "ありがとうございます",
+              "ありがとうございました"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "わかりました。ありがとうございます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:arigatougozaimasu"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.r_form_office": {
+      "id": "ja.write.r_form_office",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền phiếu ở toà thị chính với các thông tin trên thẻ. Tên viết bằng katakana.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Nguyễn Nam"
+        },
+        {
+          "label": "Địa chỉ",
+          "value": "Osaka"
+        },
+        {
+          "label": "Điện thoại",
+          "value": "080-1234-5678"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "名前",
+          "slotId": "name"
+        },
+        {
+          "id": "address",
+          "label": "住所",
+          "slotId": "address"
+        },
+        {
+          "id": "phone",
+          "label": "電話番号",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên (katakana)",
+            "variants": [
+              "グエン・ナム"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "address",
+            "description": "địa chỉ",
+            "variants": [
+              "大阪"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": "số điện thoại",
+            "variants": [
+              "080-1234-5678"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "グエン・ナム | 大阪 | 080-1234-5678"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "ja.write.r_form_clinic": {
+      "id": "ja.write.r_form_clinic",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền phiếu của phòng khám với các thông tin trên thẻ. Tên viết bằng katakana.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Lan"
+        },
+        {
+          "label": "Sinh nhật",
+          "value": "ngày 20 tháng 9"
+        },
+        {
+          "label": "Điện thoại",
+          "value": "090-8765-4321"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "名前",
+          "slotId": "name"
+        },
+        {
+          "id": "birthday",
+          "label": "誕生日",
+          "slotId": "birthday"
+        },
+        {
+          "id": "phone",
+          "label": "電話番号",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên (katakana)",
+            "variants": [
+              "ラン"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "birthday",
+            "description": "ngày sinh",
+            "variants": [
+              "九月二十日"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": "số điện thoại",
+            "variants": [
+              "090-8765-4321"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "ラン | 九月二十日 | 090-8765-4321"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "ja.write.r_note": {
+      "id": "ja.write.r_note",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy viết lời nhắn cho đàn anh: máy không chạy, xin anh gọi cấp trên.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "machine",
+            "description": "cái máy",
+            "variants": [
+              "機械"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "broken",
+            "description": "máy không chạy",
+            "variants": [
+              "動きません",
+              "止まりました",
+              "壊れ",
+              "止まって",
+              "動いていません"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "call",
+            "description": "gọi cấp trên",
+            "variants": [
+              "上司を呼んで",
+              "上司に電話して"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "先輩、機械が動きません。上司を呼んでください。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:senpai",
+        "ja:w:kikai",
+        "ja:w:ugoku",
+        "ja:w:joushi",
+        "ja:w:yobu",
+        "ja:w:kudasai"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.o_open": {
+      "id": "ja.write.o_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about",
+            "description": "một câu về bạn",
+            "variants": [
+              "です",
+              "ます",
+              "ました"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "わたしはホアです。ハノイから来ました。音楽が好きです。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kuru",
+        "ja:w:ongaku",
+        "ja:w:suki"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.p_open": {
+      "id": "ja.write.p_open",
+      "taskFamily": "simple_description",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về một ngày của bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "day",
+            "description": "một câu về ngày của bạn",
+            "variants": [
+              "起きます",
+              "食べます",
+              "働きます",
+              "寝ます",
+              "毎日",
+              "毎朝",
+              "毎晩"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "毎朝6時に起きます。夜は寮で晩ご飯を食べます。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:maiasa",
+        "ja:w:okiru",
+        "ja:w:yoru",
+        "ja:w:ryou",
+        "ja:w:bangohan",
+        "ja:w:taberu"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.q_open": {
+      "id": "ja.write.q_open",
+      "taskFamily": "short_message",
+      "mode": "open",
+      "instruction": "Hãy viết một tin nhắn ngắn cho một người bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "message",
+            "description": "lời chào hoặc lời mời",
+            "variants": [
+              "こんにちは",
+              "お疲れさまです",
+              "お疲れ様です",
+              "ありがとう",
+              "ませんか",
+              "ましょう"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "リンさん、こんにちは。土曜日に一緒に映画を見ませんか。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ja:w:konnichiha",
+        "ja:w:doyoubi",
+        "ja:w:isshoni",
+        "ja:w:eiga",
+        "ja:w:miru"
+      ],
+      "scoredEligibility": false
+    },
+    "ja.write.r_open": {
+      "id": "ja.write.r_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về công việc của bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "work",
+            "description": "một câu về công việc",
+            "variants": [
+              "仕事",
+              "工場",
+              "会社",
+              "上司",
+              "先輩",
+              "働いて"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "工場で働いています。仕事は8時からです。先輩はとても親切です。"
+      ],
+      "objectiveRefs": [
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ja:w:koujou",
+        "ja:w:hataraku",
+        "ja:w:shigoto",
+        "ja:w:senpai",
+        "ja:w:totemo",
+        "ja:w:shinsetsu"
+      ],
+      "scoredEligibility": false
+    }
+  },
+  "knownVocabulary": [
+    "1000",
+    "300",
+    "40000",
+    "500",
+    "あ",
+    "あいさつ",
+    "あげる",
+    "あさつて",
+    "あそこ",
+    "あちら",
+    "あと",
+    "あなた",
+    "あの",
+    "あぱあと",
+    "あびる",
+    "あまり",
+    "あめ",
+    "あり",
+    "ありがとう",
+    "ありま",
+    "ある",
+    "あれ",
+    "い",
+    "いい",
+    "いいえ",
+    "いかが",
+    "いくつ",
+    "いくら",
+    "いす",
+    "いただきます",
+    "いちばん",
+    "いつ",
+    "いつてき",
+    "いつも",
+    "いま",
+    "いらつしやい",
+    "いる",
+    "いろいろ",
+    "う",
+    "うち",
+    "うるさい",
+    "うれしい",
+    "え",
+    "ええ",
+    "えれべえたあ",
+    "お",
+    "おい",
+    "おいしい",
+    "おかえりなさい",
+    "おじいさん",
+    "おじさん",
+    "おととい",
+    "おととし",
+    "おなか",
+    "おねがい",
+    "おはよう",
+    "おばあさん",
+    "おばさん",
+    "おめでとう",
+    "おもしろい",
+    "おやすみなさい",
+    "お先に",
+    "お客",
+    "お巡りさん",
+    "お母さん",
+    "お父さん",
+    "お疲れさま",
+    "お茶",
+    "お菓子",
+    "お金",
+    "お願い",
+    "か",
+    "かあど",
+    "かかり",
+    "かかる",
+    "かぎ",
+    "かけ",
+    "かける",
+    "かさ",
+    "かたかな",
+    "かつぷ",
+    "かばん",
+    "かぶる",
+    "かめら",
+    "から",
+    "からおけ",
+    "かれえ",
+    "かれんだあ",
+    "かわいい",
+    "が",
+    "がい",
+    "がり",
+    "き",
+    "きた",
+    "きつと",
+    "きなか",
+    "きれい",
+    "きろ",
+    "ぎ",
+    "ぎたあ",
+    "く",
+    "くだ",
+    "くつ",
+    "くらす",
+    "くれる",
+    "くん",
+    "ぐえん",
+    "ぐらい",
+    "ぐらむ",
+    "け",
+    "けえき",
+    "けた",
+    "げ",
+    "こ",
+    "こおと",
+    "こおひい",
+    "ここ",
+    "こちら",
+    "こつぷ",
+    "こと",
+    "この",
+    "こぴい",
+    "これ",
+    "こんな",
+    "こんにちは",
+    "こんばんは",
+    "こんびに",
+    "ご",
+    "ごちそうさま",
+    "ごみ",
+    "ごめんなさい",
+    "ご飯",
+    "さ",
+    "さあ",
+    "さい",
+    "さつかあ",
+    "さなか",
+    "さびしい",
+    "さま",
+    "さようなら",
+    "さん",
+    "ざ",
+    "し",
+    "しか",
+    "しかし",
+    "した",
+    "しない",
+    "しふと",
+    "しま",
+    "しやつ",
+    "しやわあ",
+    "しよう",
+    "しようゆ",
+    "じ",
+    "じや",
+    "じやあ",
+    "じゆうす",
+    "すうぱあ",
+    "すか",
+    "すかあと",
+    "すぐ",
+    "すし",
+    "すぷうん",
+    "すぽおつ",
+    "すま",
+    "すみません",
+    "すりつぱ",
+    "する",
+    "ずつ",
+    "ずつと",
+    "ずぼん",
+    "せ",
+    "せえたあ",
+    "せき",
+    "せつけん",
+    "せん",
+    "ぜ",
+    "そう",
+    "そうですね",
+    "そこ",
+    "そして",
+    "そちら",
+    "その",
+    "そば",
+    "それ",
+    "それから",
+    "た",
+    "たい",
+    "たいてい",
+    "たくさん",
+    "たくしい",
+    "ただいま",
+    "たばこ",
+    "たぶん",
+    "だ",
+    "だから",
+    "だめ",
+    "だんだん",
+    "ちいず",
+    "ちや",
+    "ちやん",
+    "ちようど",
+    "ちよつと",
+    "つ",
+    "ついたち",
+    "つけ",
+    "つける",
+    "つつ",
+    "つて",
+    "つまらない",
+    "て",
+    "てい",
+    "てえぶる",
+    "てすと",
+    "てれび",
+    "で",
+    "でき",
+    "できる",
+    "です",
+    "ですから",
+    "では",
+    "でぱあと",
+    "でも",
+    "と",
+    "といれ",
+    "とき",
+    "とても",
+    "とり",
+    "どあ",
+    "どう",
+    "どういたしまして",
+    "どうして",
+    "どうぞ",
+    "どうも",
+    "どこ",
+    "どちら",
+    "どなた",
+    "どの",
+    "どれ",
+    "どんな",
+    "な",
+    "ない",
+    "ないふ",
+    "なか",
+    "なかなか",
+    "なく",
+    "なくす",
+    "なぜ",
+    "なつ",
+    "など",
+    "なり",
+    "なる",
+    "なん",
+    "なんで",
+    "に",
+    "にぎやか",
+    "にし",
+    "にゆうす",
+    "ね",
+    "ねくたい",
+    "の",
+    "のおと",
+    "は",
+    "はい",
+    "はがき",
+    "はさみ",
+    "はじめまして",
+    "はだれ",
+    "はな",
+    "はのい",
+    "はんかち",
+    "ばす",
+    "ばたあ",
+    "ばなな",
+    "ぱあていい",
+    "ぱそこん",
+    "ぱん",
+    "ぱんだ",
+    "ひ",
+    "ひき",
+    "ひとつ",
+    "ひとり",
+    "び",
+    "びいる",
+    "ふおおく",
+    "ふき",
+    "ふたつ",
+    "ふたり",
+    "ぶつ",
+    "ぶり",
+    "ぷうる",
+    "ぷれぜんと",
+    "へ",
+    "へるめつと",
+    "べ",
+    "べた",
+    "べつど",
+    "べとなむ",
+    "ぺえじ",
+    "ぺつと",
+    "ぺん",
+    "ほ",
+    "ほか",
+    "ほかに",
+    "ほてる",
+    "ほとんど",
+    "ぼおるぺん",
+    "ぼく",
+    "ぼたん",
+    "ぽいんと",
+    "ぽけつと",
+    "ぽすと",
+    "ま",
+    "ます",
+    "まずい",
+    "また",
+    "まだ",
+    "まつすぐ",
+    "まで",
+    "まり",
+    "み",
+    "みかん",
+    "みたい",
+    "みん",
+    "みんな",
+    "む",
+    "め",
+    "めい",
+    "めえとる",
+    "めえる",
+    "めにゆう",
+    "も",
+    "もう",
+    "もうすぐ",
+    "もう一度",
+    "もちろん",
+    "もつと",
+    "もらう",
+    "や",
+    "やさしい",
+    "やる",
+    "ゆうべ",
+    "ゆつくり",
+    "よ",
+    "よく",
+    "より",
+    "よろしい",
+    "よろしく",
+    "ら",
+    "らあめん",
+    "らい",
+    "らいおん",
+    "らいん",
+    "らじお",
+    "らん",
+    "り",
+    "りつぱ",
+    "りん",
+    "りんご",
+    "れ",
+    "れしいと",
+    "れじ",
+    "れすとらん",
+    "ろ",
+    "わ",
+    "わか",
+    "わかる",
+    "わたくし",
+    "わたし",
+    "わり",
+    "わん",
+    "を",
+    "ん",
+    "んで",
+    "一",
+    "一万",
+    "一日",
+    "一月",
+    "一枚",
+    "一番",
+    "一緒",
+    "丁寧",
+    "七",
+    "七日",
+    "七月",
+    "七百",
+    "万",
+    "丈夫",
+    "三",
+    "三個",
+    "三日",
+    "三月",
+    "三歳",
+    "三番",
+    "上",
+    "上司",
+    "上手",
+    "上着",
+    "下",
+    "下手",
+    "両親",
+    "並",
+    "並ぶ",
+    "並べて",
+    "並べる",
+    "中",
+    "中国",
+    "丸い",
+    "主人",
+    "乗り",
+    "乗り換え",
+    "乗り換える",
+    "乗る",
+    "九",
+    "九日",
+    "九時",
+    "九月",
+    "九百",
+    "予報",
+    "予定",
+    "予約",
+    "事故",
+    "二",
+    "二十",
+    "二十歳",
+    "二日",
+    "二月",
+    "二杯",
+    "二枚",
+    "二番",
+    "二階",
+    "五",
+    "五分",
+    "五日",
+    "五時",
+    "五月",
+    "交差点",
+    "交番",
+    "京都",
+    "人",
+    "今",
+    "今年",
+    "今日",
+    "今晩",
+    "今月",
+    "今朝",
+    "今週",
+    "仕事",
+    "休",
+    "休み",
+    "休む",
+    "休憩",
+    "会",
+    "会う",
+    "会社",
+    "会話",
+    "会議",
+    "伝",
+    "伝え",
+    "伝える",
+    "低い",
+    "住",
+    "住む",
+    "住所",
+    "体",
+    "体温",
+    "何",
+    "何人",
+    "何時",
+    "作り",
+    "作る",
+    "作文",
+    "作業",
+    "使",
+    "使い",
+    "使う",
+    "便利",
+    "保険",
+    "信号",
+    "倉庫",
+    "個",
+    "借り",
+    "借りる",
+    "値段",
+    "働",
+    "働き",
+    "働く",
+    "元気",
+    "兄",
+    "兄さん",
+    "兄弟",
+    "先",
+    "先に",
+    "先月",
+    "先生",
+    "先輩",
+    "先週",
+    "兎",
+    "入",
+    "入り",
+    "入る",
+    "入れ",
+    "入れる",
+    "入口",
+    "全然",
+    "全部",
+    "八",
+    "八十",
+    "八日",
+    "八月",
+    "八百屋",
+    "公園",
+    "六",
+    "六日",
+    "六月",
+    "円",
+    "写真",
+    "冬",
+    "冷たい",
+    "冷蔵庫",
+    "出",
+    "出かける",
+    "出し",
+    "出す",
+    "出る",
+    "出口",
+    "出発",
+    "分",
+    "切り",
+    "切る",
+    "切手",
+    "切符",
+    "初め",
+    "初めて",
+    "前",
+    "勉強",
+    "動",
+    "動く",
+    "動物",
+    "動物園",
+    "勢い",
+    "勤め",
+    "勤める",
+    "北",
+    "北海道",
+    "医者",
+    "十",
+    "十一",
+    "十一月",
+    "十二",
+    "十二月",
+    "十五",
+    "十八",
+    "十日",
+    "十時",
+    "十月",
+    "千",
+    "千円",
+    "午前",
+    "午後",
+    "半",
+    "半分",
+    "南",
+    "博物館",
+    "危ない",
+    "危険",
+    "卵",
+    "去年",
+    "友達",
+    "取",
+    "取り",
+    "取る",
+    "受付",
+    "口",
+    "口座",
+    "古い",
+    "台",
+    "台所",
+    "台風",
+    "右",
+    "合",
+    "同じ",
+    "同僚",
+    "名前",
+    "名古屋",
+    "向こう",
+    "吸",
+    "吸う",
+    "吹",
+    "吹く",
+    "味",
+    "呼",
+    "呼ぶ",
+    "咲",
+    "咲き",
+    "咲く",
+    "問題",
+    "喫茶店",
+    "四",
+    "四日",
+    "四月",
+    "四百",
+    "回",
+    "困",
+    "困る",
+    "図書館",
+    "国",
+    "土曜日",
+    "在留",
+    "地下鉄",
+    "地図",
+    "地震",
+    "塩",
+    "壊",
+    "壊れる",
+    "声",
+    "売",
+    "売る",
+    "夏",
+    "夏休み",
+    "夕方",
+    "外",
+    "外国",
+    "多い",
+    "夜",
+    "夜勤",
+    "大",
+    "大きい",
+    "大きく",
+    "大丈夫",
+    "大事",
+    "大人",
+    "大使館",
+    "大切",
+    "大勢",
+    "大変",
+    "大好き",
+    "大学",
+    "大阪",
+    "天気",
+    "太い",
+    "夫",
+    "失敗",
+    "失礼",
+    "奥さん",
+    "女",
+    "女の子",
+    "好き",
+    "妹",
+    "妻",
+    "姉",
+    "姉さん",
+    "始まり",
+    "始まる",
+    "始め",
+    "始める",
+    "娘",
+    "嫌",
+    "嫌い",
+    "子供",
+    "季節",
+    "学校",
+    "学生",
+    "安い",
+    "安全",
+    "実習",
+    "家",
+    "家庭",
+    "家族",
+    "家賃",
+    "宿題",
+    "富士山",
+    "寒",
+    "寒い",
+    "寝",
+    "寝る",
+    "寮",
+    "封筒",
+    "小さい",
+    "少し",
+    "少ない",
+    "履歴",
+    "山",
+    "川",
+    "工場",
+    "左",
+    "差し",
+    "差す",
+    "市役所",
+    "師",
+    "帰",
+    "帰り",
+    "帰る",
+    "帽子",
+    "年",
+    "広い",
+    "店",
+    "店員",
+    "座",
+    "座り",
+    "座る",
+    "庭",
+    "廊下",
+    "建物",
+    "弁当",
+    "引",
+    "引く",
+    "引つ越し",
+    "引つ越す",
+    "弟",
+    "弱い",
+    "強い",
+    "弾",
+    "弾く",
+    "待",
+    "待ち",
+    "待つ",
+    "待つた",
+    "後",
+    "後で",
+    "後ろ",
+    "心配",
+    "必ず",
+    "必要",
+    "忘れ",
+    "忘れる",
+    "忘れ物",
+    "忙",
+    "忙しい",
+    "怒り",
+    "怒る",
+    "怖い",
+    "思い",
+    "思う",
+    "急",
+    "急ぐ",
+    "恥ずかしい",
+    "息子",
+    "悪い",
+    "悲しい",
+    "意味",
+    "慣",
+    "慣れる",
+    "戻り",
+    "戻る",
+    "所",
+    "手",
+    "手伝い",
+    "手伝う",
+    "手洗い",
+    "手紙",
+    "手袋",
+    "払い",
+    "払う",
+    "技能",
+    "押",
+    "押して",
+    "押す",
+    "担当",
+    "持",
+    "持ち",
+    "持つ",
+    "捨",
+    "捨てる",
+    "掃除",
+    "授業",
+    "携帯",
+    "撮",
+    "撮る",
+    "救急車",
+    "教え",
+    "教える",
+    "教室",
+    "散歩",
+    "文法",
+    "文章",
+    "料理",
+    "新しい",
+    "新聞",
+    "方",
+    "旅行",
+    "日",
+    "日曜日",
+    "日本",
+    "日本人",
+    "日本語",
+    "早い",
+    "明",
+    "明るい",
+    "明日",
+    "易しい",
+    "映画",
+    "映画館",
+    "春",
+    "昨日",
+    "昼",
+    "時",
+    "時々",
+    "時に",
+    "時半",
+    "時計",
+    "時間",
+    "晩",
+    "晴れ",
+    "晴れる",
+    "暇",
+    "暑",
+    "暑い",
+    "暖かい",
+    "暗い",
+    "曇",
+    "曇る",
+    "曜日",
+    "曲",
+    "曲がる",
+    "書",
+    "書き",
+    "書く",
+    "書類",
+    "月曜日",
+    "有名",
+    "服",
+    "朝",
+    "木",
+    "木曜日",
+    "木村",
+    "本",
+    "本当に",
+    "本棚",
+    "机",
+    "材料",
+    "村",
+    "来",
+    "来る",
+    "来年",
+    "来月",
+    "来週",
+    "杯",
+    "東",
+    "東京",
+    "枚",
+    "果物",
+    "案内",
+    "楽しい",
+    "横",
+    "橋",
+    "機械",
+    "次",
+    "欲しい",
+    "歌",
+    "歌う",
+    "止まり",
+    "止まる",
+    "止め",
+    "止める",
+    "正しい",
+    "歩き",
+    "歩く",
+    "歯",
+    "歳",
+    "死",
+    "死ぬ",
+    "残業",
+    "母",
+    "毎年",
+    "毎日",
+    "毎晩",
+    "毎月",
+    "毎朝",
+    "毎週",
+    "気",
+    "気分",
+    "気温",
+    "水",
+    "水曜日",
+    "汚い",
+    "池",
+    "決め",
+    "決める",
+    "泣",
+    "泣く",
+    "注意",
+    "注文",
+    "泳ぎ",
+    "泳ぐ",
+    "洋服",
+    "洗",
+    "洗い",
+    "洗う",
+    "洗濯",
+    "海",
+    "消",
+    "消える",
+    "消し",
+    "消す",
+    "消火器",
+    "涼しい",
+    "渡",
+    "渡し",
+    "渡す",
+    "渡り",
+    "渡る",
+    "準備",
+    "漢字",
+    "火事",
+    "火曜日",
+    "無理",
+    "熱",
+    "熱い",
+    "父",
+    "片付け",
+    "片付ける",
+    "牛",
+    "牛乳",
+    "牛肉",
+    "物",
+    "特に",
+    "犬",
+    "狭い",
+    "猫",
+    "猿",
+    "玄関",
+    "理由",
+    "甘い",
+    "生",
+    "生まれ",
+    "生まれる",
+    "生徒",
+    "生活",
+    "用事",
+    "田中",
+    "男",
+    "男の子",
+    "町",
+    "留学生",
+    "番",
+    "番号",
+    "疲れ",
+    "疲れる",
+    "病気",
+    "病院",
+    "痛い",
+    "発音",
+    "登り",
+    "登る",
+    "白",
+    "白い",
+    "百",
+    "皆さん",
+    "皿",
+    "目",
+    "直し",
+    "直す",
+    "相談",
+    "看護",
+    "眠い",
+    "眼鏡",
+    "着",
+    "着く",
+    "着る",
+    "知",
+    "知る",
+    "短い",
+    "砂糖",
+    "確認",
+    "磨き",
+    "磨く",
+    "社員",
+    "社長",
+    "禁止",
+    "禁煙",
+    "秋",
+    "税金",
+    "空",
+    "空港",
+    "窓",
+    "窓口",
+    "立",
+    "立つ",
+    "立入禁止",
+    "笑",
+    "笑う",
+    "第一",
+    "答え",
+    "答える",
+    "箱",
+    "簡単",
+    "米",
+    "約束",
+    "紅茶",
+    "紙",
+    "細い",
+    "終",
+    "終わる",
+    "経験",
+    "結婚",
+    "結構",
+    "給料",
+    "絵",
+    "続",
+    "続ける",
+    "緑",
+    "練習",
+    "置",
+    "置く",
+    "習い",
+    "習う",
+    "考え",
+    "考える",
+    "耳",
+    "聞",
+    "聞く",
+    "肉",
+    "背",
+    "脱",
+    "脱ぐ",
+    "自分",
+    "自動車",
+    "自転車",
+    "色",
+    "花",
+    "若い",
+    "英語",
+    "茶色",
+    "荷物",
+    "落",
+    "落とす",
+    "薄い",
+    "薬",
+    "薬局",
+    "行",
+    "行き",
+    "行く",
+    "袋",
+    "製品",
+    "西",
+    "要",
+    "要る",
+    "見",
+    "見せる",
+    "見る",
+    "規則",
+    "覚え",
+    "覚える",
+    "親切",
+    "角",
+    "触",
+    "触る",
+    "言",
+    "言う",
+    "言葉",
+    "証",
+    "試験",
+    "話",
+    "話す",
+    "誕生",
+    "語",
+    "説明",
+    "読",
+    "読み",
+    "読む",
+    "誰",
+    "調べ",
+    "調べる",
+    "謝",
+    "謝る",
+    "警官",
+    "豚",
+    "豚肉",
+    "象",
+    "財布",
+    "買",
+    "買い",
+    "買い物",
+    "買う",
+    "貸し",
+    "貸す",
+    "資格",
+    "質問",
+    "赤",
+    "赤い",
+    "赤ちやん",
+    "走",
+    "走る",
+    "起",
+    "起きる",
+    "趣味",
+    "足",
+    "足もと",
+    "足りる",
+    "足元",
+    "車",
+    "軽い",
+    "辛い",
+    "辞書",
+    "近い",
+    "近く",
+    "近所",
+    "返し",
+    "返す",
+    "送り",
+    "送る",
+    "速い",
+    "連絡",
+    "週",
+    "週末",
+    "遅",
+    "遅い",
+    "遅れ",
+    "遅れる",
+    "遅刻",
+    "遊",
+    "遊ぶ",
+    "運",
+    "運び",
+    "運ぶ",
+    "運転",
+    "道",
+    "道具",
+    "違い",
+    "違う",
+    "遠い",
+    "選",
+    "選ぶ",
+    "部品",
+    "部屋",
+    "部長",
+    "郵便局",
+    "酒",
+    "重い",
+    "野菜",
+    "金曜日",
+    "鉛筆",
+    "銀行",
+    "長い",
+    "門",
+    "閉",
+    "閉まる",
+    "閉める",
+    "開",
+    "開き",
+    "開く",
+    "開ける",
+    "間",
+    "間に合う",
+    "降",
+    "降り",
+    "降りる",
+    "降る",
+    "階",
+    "階段",
+    "隣",
+    "集め",
+    "集める",
+    "雑誌",
+    "難",
+    "難しい",
+    "雨",
+    "雪",
+    "電気",
+    "電話",
+    "電車",
+    "青",
+    "青い",
+    "静か",
+    "非常口",
+    "面接",
+    "靴",
+    "靴下",
+    "音楽",
+    "頑張り",
+    "頑張る",
+    "頭",
+    "頼み",
+    "頼む",
+    "顔",
+    "風",
+    "風呂",
+    "風邪",
+    "飛",
+    "飛ぶ",
+    "飛行機",
+    "食",
+    "食べる",
+    "食べ物",
+    "食堂",
+    "飲",
+    "飲み物",
+    "飲む",
+    "馬",
+    "駅",
+    "高い",
+    "魚",
+    "鳥",
+    "鶏肉",
+    "黄色",
+    "黄色い",
+    "黒",
+    "黒い",
+    "鼻"
+  ]
+}

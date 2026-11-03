@@ -104,6 +104,12 @@ export type CourseProfile = {
    * script. Set from content/courses/<id>.profile.json.
    */
   readingInputIsProduction?: true;
+  /**
+   * P4c: show a Hepburn romaji line (read from the stored kana) under the
+   * course's Japanese text until the learner passes the kana primer's
+   * checkpoint (persisted `primerPassed`, v9). Absent = never.
+   */
+  romajiUntilPrimer?: true;
   /** D-10: reviewed by an AI-simulated native reviewer (owner-accepted) — course info and Licences show an honest note. */
   reviewNote?: "ai-simulated";
   /**

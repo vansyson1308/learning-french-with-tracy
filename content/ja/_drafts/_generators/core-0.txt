@@ -1,0 +1,85 @@
+# ja-vi A1 — greetings, polite formulas, pronouns, demonstratives, question words, copula.
+# kind|surface|kana|vi|en|topic|example|example vi|example en   (see ja-lex.py for the kinds)
+E|おはようございます|おはようございます|chào buổi sáng|Good morning|greetings|おはようございます、田中さん。|Chào buổi sáng, anh Tanaka.|Good morning, Mr. Tanaka.
+E|こんにちは|こんにちは|xin chào|Hello / Good afternoon|greetings|こんにちは、グエンです。|Xin chào, tôi là Nguyễn.|Hello, I am Nguyen.
+E|こんばんは|こんばんは|chào buổi tối|Good evening|greetings|こんばんは。寒いですね。|Chào buổi tối. Trời lạnh nhỉ.|Good evening. It is cold, isn't it?
+E|おやすみなさい|おやすみなさい|chúc ngủ ngon|Good night|greetings|おやすみなさい。また明日。|Chúc ngủ ngon. Hẹn mai gặp lại.|Good night. See you tomorrow.
+E|さようなら|さようなら|tạm biệt|Goodbye|greetings|先生、さようなら。|Thưa cô, em chào cô ạ.|Goodbye, teacher.
+E|はじめまして|はじめまして|rất vui được gặp (lần đầu)|Nice to meet you|greetings|はじめまして、ランです。|Rất vui được gặp, tôi là Lan.|Nice to meet you, I am Lan.
+E|よろしくおねがいします|よろしくおねがいします|rất mong được giúp đỡ|I look forward to working with you|greetings|グエンです。よろしくおねがいします。|Tôi là Nguyễn. Rất mong được giúp đỡ.|I am Nguyen. I look forward to working with you.
+E|ありがとう|ありがとう|cảm ơn|Thank you|greetings|ありがとう、ミンさん。|Cảm ơn Minh nhé.|Thanks, Minh.
+E|ありがとうございます|ありがとうございます|cảm ơn (lịch sự)|Thank you (polite)|greetings|どうもありがとうございます。|Cảm ơn anh rất nhiều.|Thank you very much.
+E|どういたしまして|どういたしまして|không có gì|You're welcome|greetings|「ありがとう。」「どういたしまして。」|"Cảm ơn." "Không có gì."|"Thank you." "You're welcome."
+E|すみません|すみません|xin lỗi; làm phiền|Excuse me / Sorry|greetings|すみません、駅はどこですか。|Xin lỗi, nhà ga ở đâu ạ?|Excuse me, where is the station?
+E|ごめんなさい|ごめんなさい|xin lỗi (thân mật)|I'm sorry|greetings|遅くなって、ごめんなさい。|Xin lỗi vì mình đến muộn.|Sorry I'm late.
+E|お願いします|おねがいします|làm ơn; nhờ anh/chị|Please|greetings|コーヒーをお願いします。|Cho tôi cà phê.|A coffee, please.
+E|いただきます|いただきます|câu nói trước khi ăn (≈ mời cả nhà ăn cơm)|Let's eat (said before a meal)|greetings|では、いただきます。|Vậy, mời mọi người, tôi ăn đây.|Well then, let's eat.
+E|ごちそうさまでした|ごちそうさまでした|cảm ơn vì bữa ăn (sau khi ăn)|Thank you for the meal|greetings|おいしかったです。ごちそうさまでした。|Ngon lắm ạ. Cảm ơn vì bữa ăn.|It was delicious. Thank you for the meal.
+E|いってきます|いってきます|tôi đi đây (khi rời nhà)|I'm off (said when leaving)|greetings|仕事にいってきます。|Tôi đi làm đây.|I'm off to work.
+E|いってらっしゃい|いってらっしゃい|đi nhé (đáp lại người ra khỏi nhà)|See you (said to someone leaving)|greetings|いってらっしゃい。気をつけて。|Đi nhé. Cẩn thận nhé.|See you. Take care.
+E|ただいま|ただいま|tôi về rồi đây|I'm home|greetings|ただいま。今、帰りました。|Tôi về rồi đây. Tôi vừa về.|I'm home. I just got back.
+E|おかえりなさい|おかえりなさい|về rồi à (chào người về nhà)|Welcome home|greetings|おかえりなさい。寒かったですか。|Về rồi à. Trời lạnh không?|Welcome home. Was it cold?
+E|失礼します|しつれいします|xin phép (khi vào/ra phòng)|Excuse me (entering or leaving)|greetings|失礼します。グエンです。|Xin phép ạ. Tôi là Nguyễn.|Excuse me. I am Nguyen.
+E|お疲れさまです|おつかれさまです|anh/chị vất vả rồi (chào đồng nghiệp)|Thanks for your hard work|work|田中さん、お疲れさまです。|Anh Tanaka, anh vất vả rồi.|Thanks for your hard work, Mr. Tanaka.
+E|お先に失礼します|おさきにしつれいします|tôi xin phép về trước|Excuse me for leaving first|work|今日はお先に失礼します。|Hôm nay tôi xin phép về trước.|I'll leave before you today, excuse me.
+E|おめでとうございます|おめでとうございます|chúc mừng|Congratulations|greetings|お誕生日おめでとうございます。|Chúc mừng sinh nhật.|Happy birthday.
+E|お元気ですか|おげんきですか|anh/chị có khoẻ không?|How are you?|greetings|木村さん、お元気ですか。|Chị Kimura có khoẻ không?|How are you, Ms. Kimura?
+E|気をつけて|きをつけて|cẩn thận nhé|Take care|greetings|雨ですから、気をつけて。|Trời mưa, nên cẩn thận nhé.|It is raining, so take care.
+E|もう一度|もういちど|một lần nữa|once more|everyday|もう一度お願いします。|Xin nói lại một lần nữa.|Once more, please.
+E|ゆっくり話してください|ゆっくりはなしてください|xin nói chậm|Please speak slowly|everyday|すみません、ゆっくり話してください。|Xin lỗi, xin nói chậm thôi ạ.|Excuse me, please speak slowly.
+E|わかりました|わかりました|tôi hiểu rồi; vâng ạ|I understand / Understood|work|はい、わかりました。|Vâng, tôi hiểu rồi.|Yes, understood.
+E|わかりません|わかりません|tôi không hiểu|I don't understand|everyday|すみません、わかりません。|Xin lỗi, tôi không hiểu.|Sorry, I don't understand.
+E|大丈夫です|だいじょうぶです|không sao; ổn|It's all right|everyday|はい、大丈夫です。|Vâng, không sao ạ.|Yes, I'm fine.
+E|ちょっと待ってください|ちょっとまってください|xin đợi một chút|Please wait a moment|everyday|すみません、ちょっと待ってください。|Xin lỗi, xin đợi một chút.|Excuse me, please wait a moment.
+J|はい|はい|vâng; có|Yes|greetings|はい、学生です。|Vâng, tôi là sinh viên.|Yes, I am a student.
+J|いいえ|いいえ|không|No|greetings|いいえ、先生じゃありません。|Không, tôi không phải giáo viên.|No, I am not a teacher.
+J|ええ|ええ|ừ; vâng (thân mật)|yes (casual)|greetings|ええ、そうです。|Ừ, đúng vậy.|Yes, that's right.
+J|あのう|あのう|à, ừm (mở lời)|um, excuse me|everyday|あのう、すみません。|À, xin lỗi anh.|Um, excuse me.
+J|さあ|さあ|nào; ừm (không rõ)|well; come on|everyday|さあ、行きましょう。|Nào, đi thôi.|Come on, let's go.
+J|そうですか|そうですか|vậy à|Is that so? / I see|everyday|「来週、休みです。」「そうですか。」|"Tuần sau tôi nghỉ." "Vậy à."|"I'm off next week." "I see."
+X|です|です|là (lịch sự)|to be (polite)|everyday|わたしは学生です。|Tôi là sinh viên.|I am a student.
+X|さん|さん|anh, chị, ông, bà (sau tên)|Mr. / Ms. (after a name)|people|田中さんは先生です。|Anh Tanaka là giáo viên.|Mr. Tanaka is a teacher.
+P|わたし|わたし|tôi|I / me|people|わたしはベトナム人です。|Tôi là người Việt Nam.|I am Vietnamese.
+P|あなた|あなた|bạn, anh, chị|you|people|あなたのかばんですか。|Đây là túi của bạn à?|Is this your bag?
+P|かれ|かれ|anh ấy|he|people|かれはわたしの友達です。|Anh ấy là bạn tôi.|He is my friend.
+P|かのじょ|かのじょ|cô ấy|she|people|かのじょは看護師です。|Cô ấy là y tá.|She is a nurse.
+P|みんな|みんな|mọi người|everyone|people|みんなで昼ご飯を食べます。|Mọi người cùng ăn trưa.|We all eat lunch together.
+P|皆さん|みなさん|các bạn; quý vị|everyone (polite)|people|皆さん、おはようございます。|Chào buổi sáng mọi người.|Good morning, everyone.
+P|自分|じぶん|bản thân, tự mình|oneself|people|自分で作りました。|Tôi tự làm.|I made it myself.
+P|これ|これ|cái này|this (one)|everyday|これはなんですか。|Cái này là gì?|What is this?
+P|それ|それ|cái đó|that (one, near you)|everyday|それはわたしの本です。|Cái đó là sách của tôi.|That is my book.
+P|あれ|あれ|cái kia|that (one, over there)|everyday|あれは駅ですか。|Kia là nhà ga phải không?|Is that the station?
+P|どれ|どれ|cái nào|which (one)|everyday|どれがいいですか。|Cái nào thì được?|Which one is good?
+T|この|この|… này|this (+ noun)|everyday|この本はおもしろいです。|Cuốn sách này hay.|This book is interesting.
+T|その|その|… đó|that (+ noun)|everyday|そのかさはだれのですか。|Cái ô đó của ai?|Whose umbrella is that?
+T|あの|あの|… kia|that over there (+ noun)|everyday|あの人は田中さんです。|Người kia là anh Tanaka.|That person is Mr. Tanaka.
+T|どの|どの|… nào|which (+ noun)|everyday|どの電車に乗りますか。|Bạn đi tàu nào?|Which train do you take?
+P|ここ|ここ|ở đây, chỗ này|here|places|ここはわたしの会社です。|Đây là công ty của tôi.|This is my company.
+P|そこ|そこ|ở đó|there (near you)|places|そこにかばんがあります。|Ở đó có cái túi.|There is a bag there.
+P|あそこ|あそこ|đằng kia|over there|places|トイレはあそこです。|Nhà vệ sinh ở đằng kia.|The toilet is over there.
+P|どこ|どこ|ở đâu|where|places|駅はどこですか。|Nhà ga ở đâu?|Where is the station?
+P|こちら|こちら|phía này; vị này|this way; this person|places|こちらは木村さんです。|Đây là chị Kimura.|This is Ms. Kimura.
+P|そちら|そちら|phía đó|that way|places|そちらは出口です。|Phía đó là lối ra.|That way is the exit.
+P|あちら|あちら|phía kia|that way over there|places|エレベーターはあちらです。|Thang máy ở phía kia.|The elevator is over there.
+P|どちら|どちら|phía nào; cái nào (trong hai)|which way; which of the two|places|お国はどちらですか。|Anh đến từ nước nào?|Which country are you from?
+P|何|なに|cái gì|what|everyday|何を食べますか。|Bạn ăn gì?|What will you eat?
+P|誰|だれ|ai|who|people|あの人は誰ですか。|Người kia là ai?|Who is that person?
+D|いつ|いつ|khi nào|when|time|休みはいつですか。|Khi nào bạn nghỉ?|When is your day off?
+D|どう|どう|thế nào|how|everyday|日本の生活はどうですか。|Cuộc sống ở Nhật thế nào?|How is life in Japan?
+D|いかが|いかが|thế nào (lịch sự)|how (polite)|everyday|お茶はいかがですか。|Anh dùng trà nhé?|Would you like some tea?
+D|どうして|どうして|tại sao|why|everyday|どうして休みましたか。|Tại sao bạn nghỉ?|Why were you absent?
+D|いくら|いくら|bao nhiêu tiền|how much|shopping|このパンはいくらですか。|Cái bánh mì này bao nhiêu tiền?|How much is this bread?
+D|いくつ|いくつ|bao nhiêu cái; mấy tuổi|how many; how old|numbers|りんごはいくつありますか。|Có mấy quả táo?|How many apples are there?
+D|どのぐらい|どのぐらい|khoảng bao lâu, bao nhiêu|about how much, how long|time|駅までどのぐらいですか。|Đến ga mất khoảng bao lâu?|How long does it take to the station?
+P|何人|なんにん|mấy người|how many people|numbers|家族は何人ですか。|Gia đình bạn có mấy người?|How many people are in your family?
+P|何時|なんじ|mấy giờ|what time|time|今、何時ですか。|Bây giờ là mấy giờ?|What time is it now?
+P|何曜日|なんようび|thứ mấy|what day of the week|time|今日は何曜日ですか。|Hôm nay là thứ mấy?|What day is it today?
+P|何歳|なんさい|mấy tuổi|how old|people|弟さんは何歳ですか。|Em trai bạn mấy tuổi?|How old is your younger brother?
+D|そう|そう|như vậy, đúng vậy|so; like that|everyday|はい、そうです。|Vâng, đúng vậy.|Yes, that's right.
+E|そうですね|そうですね|đúng nhỉ; để tôi xem|That's right / Let me see|everyday|そうですね。明日は休みです。|Để xem. Mai tôi nghỉ.|Let me see. I'm off tomorrow.
+E|どうぞ|どうぞ|xin mời|please (go ahead)|everyday|どうぞ、座ってください。|Xin mời ngồi.|Please have a seat.
+E|どうも|どうも|cảm ơn; chào (ngắn gọn)|thanks; hi|greetings|どうも、ありがとう。|Cảm ơn nhiều nhé.|Thanks a lot.
+E|ください|ください|xin cho tôi|please give me|shopping|水をください。|Cho tôi xin nước.|Water, please.
+E|いらっしゃいませ|いらっしゃいませ|xin mời vào (lời chào của cửa hàng)|Welcome (in a shop)|shopping|いらっしゃいませ。なんめいさまですか。|Xin mời vào. Quý khách đi mấy người ạ?|Welcome. How many people?
+E|お大事に|おだいじに|chúc mau khoẻ|Get well soon|body|お大事に。ゆっくり休んでください。|Chúc mau khoẻ. Hãy nghỉ ngơi cho tốt.|Get well soon. Rest well.
+E|いいですよ|いいですよ|được thôi|Sure; that's fine|everyday|「入ってもいいですか。」「いいですよ。」|"Tôi vào được không?" "Được thôi."|"May I come in?" "Sure."

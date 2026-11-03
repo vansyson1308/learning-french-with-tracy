@@ -23,6 +23,7 @@ import {
   ALLOWED_LICENSES,
   CatalogSchema,
   LANGUAGE_CODE_PATTERN,
+  LegacyUnmappedSchema,
   PackSchema,
   SourceRegistrySchema,
   idLanguage,
@@ -30,6 +31,7 @@ import {
   type PackSource,
   type SourceRegistry,
   CourseProfileOverrideSchema,
+  ScriptPrimerSchema,
 } from "../../content/schema";
 
 import { displayReading, type DisplayReading, type StoredReading } from "./cjk-readings/validate";
@@ -37,7 +39,7 @@ import { scopeErrors } from "./licence-scope";
 import { lineageErrors, selectedVoiceErrors, type ManifestVoice } from "./voice-lineage";
 import { resolveCourseRoles, type CourseRef, type CourseRole, type CourseRoles } from "./course-roles";
 import { lessonShapeErrors, templateDefectErrors } from "./lesson-shape";
-import { buildPlugin, type BuildLanguagePlugin } from "./languages";
+import { buildLanguage, buildPlugin, type BuildLanguagePlugin } from "./languages";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
 
@@ -225,6 +227,23 @@ export function reviewGateErrors(courseId: string, data: ReviewFields | null, do
   return docs.knownLimitations.includes(courseId) ? [] : [`${courseId}: allowUnreviewed requires an entry naming the course in release/KNOWN_LIMITATIONS.md`];
 }
 
+/**
+ * P4c: `romajiUntilPrimer` needs something to pass — a script primer of the course's target language with kana
+ * tables (romaji is a Hepburn reading of kana) and a checkpoint.
+ */
+export function romajiUntilPrimerErrors(
+  courseId: string,
+  data: { romajiUntilPrimer?: boolean } | null,
+  primer: { sections: { kind: string }[]; checkpoint?: unknown } | null
+): string[] {
+  if (data?.romajiUntilPrimer !== true) return [];
+  if (primer === null) return [`${courseId}: romajiUntilPrimer needs a script primer of the course's target language`];
+  const errors: string[] = [];
+  if (!primer.sections.some((s) => s.kind === "kanaTable")) errors.push(`${courseId}: romajiUntilPrimer needs a primer with kana tables (romaji is read from kana)`);
+  if (primer.checkpoint === undefined) errors.push(`${courseId}: romajiUntilPrimer needs a primer checkpoint the learner can pass`);
+  return errors;
+}
+
 /** D-10: the course carries an owner-accepted AI-simulated review (the app shows an honest note). */
 export function courseReviewIsAi(courseId: string): boolean {
   const rel = `content/courses/${courseId}.profile.json`;
@@ -245,7 +264,7 @@ export function courseIsBeta(courseId: string): boolean {
 /** A boolean flag of a course's profile (content/courses/<id>.profile.json), undefined when absent. */
 export function courseProfileFlag(
   courseId: string,
-  flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack" | "readingInputIsProduction"
+  flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack" | "readingInputIsProduction" | "romajiUntilPrimer"
 ): boolean | undefined {
   const rel = `content/courses/${courseId}.profile.json`;
   if (!existsSync(safeResolve(rel))) return undefined;
@@ -432,6 +451,17 @@ export function validateExercise(
             `${e.id}: digit→word select for ${n} must key "${expected}" (engine spelling), got "${e.options[e.correct]?.text}"`
           );
         }
+      }
+    }
+  }
+  // D-10 owner decision (2026-11-03): typeAnswer.script, for a language whose plugin compares inside that script, on
+  // a key and alternatives written in it (katakana: カタカナ, ー, ・, width variants; no hiragana, no kanji).
+  if (e.type === "typeAnswer" && e.script !== undefined) {
+    if (!(buildLanguage(targetCode).typedScripts ?? []).includes(e.script)) {
+      push(`${e.id}: script "${e.script}" — the ${targetCode} plugin has no in-script comparison for it`);
+    } else {
+      for (const key of [e.answer, ...e.alternatives]) {
+        if (!/^[゠-ヿｦ-ﾟ　-。！？!?\s]+$/u.test(key)) push(`${e.id}: script "${e.script}" key "${key}" is not written in katakana`);
       }
     }
   }
@@ -627,6 +657,17 @@ export function validateContent(): ValidationResult {
     else for (const e of reviewGateErrors(courseId, data, { knownLimitations, ownerChecklist })) err(e);
   }
 
+  // P4c: a course that shows romaji until its primer is passed needs a kana primer with a checkpoint.
+  for (const { courseId, pack } of packs) {
+    const rel = `content/courses/${courseId}.profile.json`;
+    if (!existsSync(safeResolve(rel))) continue;
+    const profile = CourseProfileOverrideSchema.safeParse(readJson(rel));
+    if (!profile.success || profile.data.romajiUntilPrimer !== true) continue;
+    const primerRel = `content/${pack.targetCode}/primer/script-primer.json`;
+    const primer = existsSync(safeResolve(primerRel)) ? ScriptPrimerSchema.safeParse(readJson(primerRel)) : null;
+    for (const e of romajiUntilPrimerErrors(courseId, profile.data, primer?.success ? primer.data : null)) err(e);
+  }
+
   // Every language folder needs at least one course — except an
   // evidence-only folder (P3a: lexicon ETL pools without authored lexemes,
   // English until its course exists) — and a target's courses must agree
@@ -666,11 +707,17 @@ export function validateContent(): ValidationResult {
       if (a !== b) err(`${rel} drifted from ${generatedRel} — run bun run content:compile`);
     }
     const legacy = loadLegacyMaps([{ courseId, pack } as LoadedPack])[code] ?? {};
+    let unmapped = new Map<string, string>();
+    try {
+      unmapped = loadLegacyUnmapped(code);
+    } catch (e) {
+      err(`${legacyUnmappedRel(code)}: ${(e as Error).message.split("\n")[0]}`);
+    }
     for (const section of pack.sections)
       for (const unit of section.units)
         for (const word of unit.words)
-          if (map[word.target] === undefined && legacy[word.target] === undefined) {
-            err(`${courseId}: word "${word.target}" missing from ${rel} (and from the lexicon's legacySurfaces)`);
+          if (map[word.target] === undefined && legacy[word.target] === undefined && unmapped.get(word.target) !== courseId) {
+            err(`${courseId}: word "${word.target}" missing from ${rel} (and from the lexicon's legacySurfaces and ${legacyUnmappedRel(code)})`);
           }
   }
 
@@ -949,6 +996,22 @@ export function loadLegacyMaps(packs: LoadedPack[] = loadPacks()): Record<string
     if (Object.keys(map).length > 0) maps[code] = map;
   }
   return maps;
+}
+
+export function legacyUnmappedRel(code: string): string {
+  return `content/${code}/lexicon/legacy-unmapped.json`;
+}
+
+/**
+ * P4c: basic-pack surfaces that map to no lexeme (content/<lang>/lexicon/legacy-unmapped.json):
+ * surface → the course that teaches it. Empty without the file; a schema failure throws.
+ */
+export function loadLegacyUnmapped(code: string): Map<string, string> {
+  const rel = legacyUnmappedRel(code);
+  if (!existsSync(safeResolve(rel))) return new Map();
+  const doc = LegacyUnmappedSchema.parse(readJson(rel));
+  if (doc.language !== code) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${code}"`);
+  return new Map(doc.surfaces.map((s) => [s.surface, s.courseId]));
 }
 
 /**

@@ -6,10 +6,6 @@
   "nativeLanguage": "English",
   "nativeCode": "en",
   "flag": "🇯🇵",
-  "audio": {
-    "policy": "device-tts",
-    "reason": "No license-clean Japanese synthesis voice is available to the audio pipeline (rhasspy/piper-voices v1.0.0 ships none) and the upstream recordings have no traceable license, so this course speaks through the device's own Japanese text-to-speech voice."
-  },
   "sections": [
     {
       "id": "ja-en:section-1",
@@ -25,73 +21,195 @@
               "target": "男の人",
               "native": "the man",
               "emoji": "👨",
-              "romanization": "otoko no hito"
+              "romanization": "otoko no hito",
+              "reading": {
+                "kana": "おとこのひと",
+                "furigana": [
+                  {
+                    "base": "男",
+                    "ruby": "おとこ"
+                  },
+                  {
+                    "base": "の"
+                  },
+                  {
+                    "base": "人",
+                    "ruby": "ひと"
+                  }
+                ]
+              }
             },
             {
               "target": "女の人",
               "native": "the woman",
               "emoji": "👩",
-              "romanization": "onna no hito"
+              "romanization": "onna no hito",
+              "reading": {
+                "kana": "おんなのひと",
+                "furigana": [
+                  {
+                    "base": "女",
+                    "ruby": "おんな"
+                  },
+                  {
+                    "base": "の"
+                  },
+                  {
+                    "base": "人",
+                    "ruby": "ひと"
+                  }
+                ]
+              }
             },
             {
               "target": "男の子",
               "native": "the boy",
               "emoji": "👦",
-              "romanization": "otoko no ko"
+              "romanization": "otoko no ko",
+              "reading": {
+                "kana": "おとこのこ",
+                "furigana": [
+                  {
+                    "base": "男",
+                    "ruby": "おとこ"
+                  },
+                  {
+                    "base": "の"
+                  },
+                  {
+                    "base": "子",
+                    "ruby": "こ"
+                  }
+                ]
+              }
             },
             {
               "target": "女の子",
               "native": "the girl",
               "emoji": "👧",
-              "romanization": "onna no ko"
+              "romanization": "onna no ko",
+              "reading": {
+                "kana": "おんなのこ",
+                "furigana": [
+                  {
+                    "base": "女",
+                    "ruby": "おんな"
+                  },
+                  {
+                    "base": "の"
+                  },
+                  {
+                    "base": "子",
+                    "ruby": "こ"
+                  }
+                ]
+              }
             },
             {
               "target": "りんご",
               "native": "the apple",
               "emoji": "🍎",
-              "romanization": "ringo"
+              "romanization": "ringo",
+              "reading": {
+                "kana": "りんご"
+              }
             },
             {
               "target": "パン",
               "native": "the bread",
               "emoji": "🍞",
-              "romanization": "pan"
+              "romanization": "pan",
+              "reading": {
+                "kana": "パン"
+              }
             },
             {
               "target": "みず",
               "native": "the water",
               "emoji": "💧",
-              "romanization": "mizu"
+              "romanization": "mizu",
+              "reading": {
+                "kana": "みず",
+                "furigana": [
+                  {
+                    "base": "水",
+                    "ruby": "みず"
+                  }
+                ]
+              }
             },
             {
               "target": "ぎゅうにゅう",
               "native": "the milk",
               "emoji": "🥛",
-              "romanization": "gyuunyuu"
+              "romanization": "gyuunyuu",
+              "reading": {
+                "kana": "ぎゅうにゅう",
+                "furigana": [
+                  {
+                    "base": "牛",
+                    "ruby": "ぎゅう"
+                  },
+                  {
+                    "base": "乳",
+                    "ruby": "にゅう"
+                  }
+                ]
+              }
             },
             {
               "target": "たべます",
               "native": "to eat",
               "emoji": "🍽️",
-              "romanization": "tabemasu"
+              "romanization": "tabemasu",
+              "reading": {
+                "kana": "たべる",
+                "furigana": [
+                  {
+                    "base": "食",
+                    "ruby": "た"
+                  },
+                  {
+                    "base": "べる"
+                  }
+                ]
+              }
             },
             {
               "target": "のみます",
               "native": "to drink",
               "emoji": "🥤",
-              "romanization": "nomimasu"
+              "romanization": "nomimasu",
+              "reading": {
+                "kana": "のむ",
+                "furigana": [
+                  {
+                    "base": "飲",
+                    "ruby": "の"
+                  },
+                  {
+                    "base": "む"
+                  }
+                ]
+              }
             },
             {
               "target": "です",
               "native": "to be (polite)",
               "emoji": "✅",
-              "romanization": "desu"
+              "romanization": "desu",
+              "reading": {
+                "kana": "です"
+              }
             },
             {
               "target": "わたし",
               "native": "I / me",
               "emoji": "🙋",
-              "romanization": "watashi"
+              "romanization": "watashi",
+              "reading": {
+                "kana": "わたし"
+              }
             }
           ],
           "lessons": [
@@ -123,7 +241,10 @@
                       "emoji": "🥤"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:otokonohito"
+                  ]
                 },
                 {
                   "type": "select",
@@ -149,7 +270,10 @@
                       "emoji": "👨"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:onnanohito"
+                  ]
                 },
                 {
                   "type": "select",
@@ -175,7 +299,10 @@
                       "emoji": "🥤"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:otokonoko"
+                  ]
                 },
                 {
                   "type": "select",
@@ -201,7 +328,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:otokonohito"
+                  ]
                 },
                 {
                   "type": "select",
@@ -227,7 +357,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:onnanohito"
+                  ]
                 },
                 {
                   "type": "select",
@@ -249,7 +382,10 @@
                       "text": "りんご"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:otokonohito"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -335,6 +471,13 @@
                       "target": "女の子",
                       "native": "the girl"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:otokonohito",
+                    "ja:w:onnanohito",
+                    "ja:w:otokonoko",
+                    "ja:w:pan",
+                    "ja:w:onnanoko"
                   ]
                 },
                 {
@@ -379,7 +522,10 @@
                       "emoji": "🍽️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:onnanoko"
+                  ]
                 },
                 {
                   "type": "select",
@@ -405,7 +551,10 @@
                       "emoji": "👧"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:ringo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -431,7 +580,10 @@
                       "emoji": "🥛"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:pan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -457,7 +609,10 @@
                       "emoji": "🥤"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:onnanoko"
+                  ]
                 },
                 {
                   "type": "select",
@@ -483,7 +638,10 @@
                       "emoji": "🍽️"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:ringo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -505,7 +663,10 @@
                       "text": "わたし"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:ringo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -593,6 +754,13 @@
                       "target": "わたし",
                       "native": "I / me"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:onnanoko",
+                    "ja:w:ringo",
+                    "ja:w:pan",
+                    "ja:w:otokonohito",
+                    "ja:w:watashi"
                   ]
                 },
                 {
@@ -638,7 +806,10 @@
                       "emoji": "✅"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:mizu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -664,7 +835,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:gyuunyuu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -690,7 +864,10 @@
                       "emoji": "🍽️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:taberu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -716,7 +893,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:mizu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -742,7 +922,10 @@
                       "emoji": "👦"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:gyuunyuu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -764,7 +947,10 @@
                       "text": "女の子"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:taberu"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -850,6 +1036,13 @@
                       "target": "です",
                       "native": "to be (polite)"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:mizu",
+                    "ja:w:gyuunyuu",
+                    "ja:w:taberu",
+                    "ja:w:ringo",
+                    "ja:w:desu"
                   ]
                 },
                 {
@@ -895,7 +1088,10 @@
                       "emoji": "✅"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:nomu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -921,7 +1117,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:desu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -947,7 +1146,10 @@
                       "emoji": "🙋"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:watashi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -973,7 +1175,10 @@
                       "emoji": "🥤"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:nomu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -999,7 +1204,10 @@
                       "emoji": "✅"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:desu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1021,7 +1229,10 @@
                       "text": "たべます"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:nomu"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1101,6 +1312,13 @@
                       "target": "ぎゅうにゅう",
                       "native": "the milk"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:nomu",
+                    "ja:w:desu",
+                    "ja:w:watashi",
+                    "ja:w:pan",
+                    "ja:w:gyuunyuu"
                   ]
                 },
                 {
@@ -1129,73 +1347,121 @@
               "target": "こんにちは",
               "native": "Hello / Good afternoon",
               "emoji": "👋",
-              "romanization": "konnichiwa"
+              "romanization": "konnichiwa",
+              "reading": {
+                "kana": "こんにちは"
+              }
             },
             {
               "target": "おはようございます",
               "native": "Good morning",
               "emoji": "🌅",
-              "romanization": "ohayou gozaimasu"
+              "romanization": "ohayou gozaimasu",
+              "reading": {
+                "kana": "おはようございます"
+              }
             },
             {
               "target": "こんばんは",
               "native": "Good evening",
               "emoji": "🌙",
-              "romanization": "konbanwa"
+              "romanization": "konbanwa",
+              "reading": {
+                "kana": "こんばんは"
+              }
             },
             {
               "target": "おやすみなさい",
               "native": "Good night",
               "emoji": "😴",
-              "romanization": "oyasuminasai"
+              "romanization": "oyasuminasai",
+              "reading": {
+                "kana": "おやすみなさい"
+              }
             },
             {
               "target": "さようなら",
               "native": "Goodbye",
               "emoji": "👋",
-              "romanization": "sayounara"
+              "romanization": "sayounara",
+              "reading": {
+                "kana": "さようなら"
+              }
             },
             {
               "target": "はじめまして",
               "native": "Nice to meet you",
               "emoji": "🤝",
-              "romanization": "hajimemashite"
+              "romanization": "hajimemashite",
+              "reading": {
+                "kana": "はじめまして"
+              }
             },
             {
               "target": "ありがとう",
               "native": "Thank you",
               "emoji": "🙏",
-              "romanization": "arigatou"
+              "romanization": "arigatou",
+              "reading": {
+                "kana": "ありがとう"
+              }
             },
             {
               "target": "ありがとうございます",
               "native": "Thank you (polite)",
               "emoji": "🙇",
-              "romanization": "arigatou gozaimasu"
+              "romanization": "arigatou gozaimasu",
+              "reading": {
+                "kana": "ありがとうございます"
+              }
             },
             {
               "target": "すみません",
               "native": "Excuse me / Sorry",
               "emoji": "😅",
-              "romanization": "sumimasen"
+              "romanization": "sumimasen",
+              "reading": {
+                "kana": "すみません"
+              }
             },
             {
               "target": "お願いします",
               "native": "Please",
               "emoji": "🙏",
-              "romanization": "onegaishimasu"
+              "romanization": "onegaishimasu",
+              "reading": {
+                "kana": "おねがいします",
+                "furigana": [
+                  {
+                    "base": "お"
+                  },
+                  {
+                    "base": "願",
+                    "ruby": "ねが"
+                  },
+                  {
+                    "base": "いします"
+                  }
+                ]
+              }
             },
             {
               "target": "はい",
               "native": "Yes",
               "emoji": "✅",
-              "romanization": "hai"
+              "romanization": "hai",
+              "reading": {
+                "kana": "はい"
+              }
             },
             {
               "target": "いいえ",
               "native": "No",
               "emoji": "❌",
-              "romanization": "iie"
+              "romanization": "iie",
+              "reading": {
+                "kana": "いいえ"
+              }
             }
           ],
           "lessons": [
@@ -1223,7 +1489,10 @@
                       "text": "Goodbye"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:konnichiha"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1249,7 +1518,10 @@
                       "emoji": "🤝"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:ohayougozaimasu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1275,7 +1547,10 @@
                       "emoji": "🌙"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:konbanha"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1297,7 +1572,10 @@
                       "text": "おはようございます"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:konnichiha"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1323,7 +1601,10 @@
                       "emoji": "🌅"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:ohayougozaimasu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1345,7 +1626,10 @@
                       "text": "ありがとうございます"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:konnichiha"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1433,6 +1717,13 @@
                       "target": "はい",
                       "native": "Yes"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:konnichiha",
+                    "ja:w:ohayougozaimasu",
+                    "ja:w:konbanha",
+                    "ja:w:arigatou",
+                    "ja:w:hai"
                   ]
                 },
                 {
@@ -1477,7 +1768,10 @@
                       "emoji": "😴"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:oyasuminasai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1503,7 +1797,10 @@
                       "emoji": "🌅"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:sayounara"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1529,7 +1826,10 @@
                       "emoji": "🌅"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:hajimemashite"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1555,7 +1855,10 @@
                       "emoji": "😴"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:oyasuminasai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1577,7 +1880,10 @@
                       "text": "ありがとうございます"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:sayounara"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1599,7 +1905,10 @@
                       "text": "さようなら"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:sayounara"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1683,6 +1992,13 @@
                       "target": "ありがとうございます",
                       "native": "Thank you (polite)"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:oyasuminasai",
+                    "ja:w:sayounara",
+                    "ja:w:hajimemashite",
+                    "ja:w:iie",
+                    "ja:w:arigatougozaimasu"
                   ]
                 },
                 {
@@ -1728,7 +2044,10 @@
                       "emoji": "🌙"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:arigatou"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1754,7 +2073,10 @@
                       "emoji": "😴"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:arigatougozaimasu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1780,7 +2102,10 @@
                       "emoji": "🌙"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:sumimasen"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1802,7 +2127,10 @@
                       "text": "さようなら"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:arigatou"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1828,7 +2156,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:arigatougozaimasu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1850,7 +2181,10 @@
                       "text": "こんばんは"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:sumimasen"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1938,6 +2272,13 @@
                       "target": "おはようございます",
                       "native": "Good morning"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:arigatou",
+                    "ja:w:arigatougozaimasu",
+                    "ja:w:sumimasen",
+                    "ja:w:konnichiha",
+                    "ja:w:ohayougozaimasu"
                   ]
                 },
                 {
@@ -1983,7 +2324,10 @@
                       "emoji": "🌙"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:onegaishimasu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2005,7 +2349,10 @@
                       "text": "Yes"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:hai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2031,7 +2378,10 @@
                       "emoji": "🌅"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:iie"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2057,7 +2407,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:onegaishimasu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2083,7 +2436,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:hai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2105,7 +2461,10 @@
                       "text": "いいえ"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:onegaishimasu"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2185,6 +2544,13 @@
                       "target": "はじめまして",
                       "native": "Nice to meet you"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:onegaishimasu",
+                    "ja:w:hai",
+                    "ja:w:iie",
+                    "ja:w:arigatougozaimasu",
+                    "ja:w:hajimemashite"
                   ]
                 },
                 {
@@ -2213,43 +2579,94 @@
               "target": "コーヒー",
               "native": "the coffee",
               "emoji": "☕",
-              "romanization": "kōhī"
+              "romanization": "kōhī",
+              "reading": {
+                "kana": "コーヒー"
+              }
             },
             {
               "target": "おちゃ",
               "native": "the tea",
               "emoji": "🍵",
-              "romanization": "ocha"
+              "romanization": "ocha",
+              "reading": {
+                "kana": "おちゃ",
+                "furigana": [
+                  {
+                    "base": "お"
+                  },
+                  {
+                    "base": "茶",
+                    "ruby": "ちゃ"
+                  }
+                ]
+              }
             },
             {
               "target": "ジュース",
               "native": "the juice",
               "emoji": "🧃",
-              "romanization": "jūsu"
+              "romanization": "jūsu",
+              "reading": {
+                "kana": "ジュース"
+              }
             },
             {
               "target": "ごはん",
               "native": "the rice",
               "emoji": "🍚",
-              "romanization": "gohan"
+              "romanization": "gohan",
+              "reading": {
+                "kana": "ごはん",
+                "furigana": [
+                  {
+                    "base": "ご"
+                  },
+                  {
+                    "base": "飯",
+                    "ruby": "はん"
+                  }
+                ]
+              }
             },
             {
               "target": "たまご",
               "native": "the egg",
               "emoji": "🥚",
-              "romanization": "tamago"
+              "romanization": "tamago",
+              "reading": {
+                "kana": "たまご",
+                "furigana": [
+                  {
+                    "base": "卵",
+                    "ruby": "たまご"
+                  }
+                ]
+              }
             },
             {
               "target": "チーズ",
               "native": "the cheese",
               "emoji": "🧀",
-              "romanization": "chīzu"
+              "romanization": "chīzu",
+              "reading": {
+                "kana": "チーズ"
+              }
             },
             {
               "target": "くだもの",
               "native": "the fruit",
               "emoji": "🍎",
-              "romanization": "kudamono"
+              "romanization": "kudamono",
+              "reading": {
+                "kana": "くだもの",
+                "furigana": [
+                  {
+                    "base": "果物",
+                    "ruby": "くだもの"
+                  }
+                ]
+              }
             },
             {
               "target": "さかな",
@@ -2261,13 +2678,25 @@
               "target": "にく",
               "native": "the meat",
               "emoji": "🥩",
-              "romanization": "niku"
+              "romanization": "niku",
+              "reading": {
+                "kana": "にく",
+                "furigana": [
+                  {
+                    "base": "肉",
+                    "ruby": "にく"
+                  }
+                ]
+              }
             },
             {
               "target": "ケーキ",
               "native": "the cake",
               "emoji": "🍰",
-              "romanization": "kēki"
+              "romanization": "kēki",
+              "reading": {
+                "kana": "ケーキ"
+              }
             }
           ],
           "lessons": [
@@ -2299,7 +2728,10 @@
                       "emoji": "🐟"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:koohii"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2325,7 +2757,10 @@
                       "emoji": "🍵"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:ocha"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2351,7 +2786,10 @@
                       "emoji": "🍚"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:juusu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2377,7 +2815,10 @@
                       "emoji": "🧃"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:koohii"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2403,7 +2844,10 @@
                       "emoji": "🥩"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:ocha"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2425,7 +2869,10 @@
                       "text": "たまご"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:koohii"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2509,6 +2956,12 @@
                       "target": "くだもの",
                       "native": "the fruit"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:koohii",
+                    "ja:w:ocha",
+                    "ja:w:juusu",
+                    "ja:w:kudamono"
                   ]
                 },
                 {
@@ -2553,7 +3006,10 @@
                       "emoji": "🐟"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:mizu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2579,7 +3035,10 @@
                       "emoji": "🧀"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:gohan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2605,7 +3064,10 @@
                       "emoji": "🍞"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:pan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2631,7 +3093,10 @@
                       "emoji": "🥩"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:mizu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2657,7 +3122,10 @@
                       "emoji": "🍰"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:gohan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2679,7 +3147,10 @@
                       "text": "ごはん"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:gohan"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2757,6 +3228,12 @@
                       "target": "にく",
                       "native": "the meat"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:mizu",
+                    "ja:w:gohan",
+                    "ja:w:pan",
+                    "ja:w:niku"
                   ]
                 },
                 {
@@ -2801,7 +3278,10 @@
                       "emoji": "🥚"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:tamago"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2827,7 +3307,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:chiizu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2853,7 +3336,10 @@
                       "emoji": "🧀"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:kudamono"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2879,7 +3365,10 @@
                       "emoji": "🥩"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:tamago"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2905,7 +3394,10 @@
                       "emoji": "🥩"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:chiizu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2927,7 +3419,10 @@
                       "text": "チーズ"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:kudamono"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3007,6 +3502,13 @@
                       "target": "パン",
                       "native": "the bread"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:tamago",
+                    "ja:w:chiizu",
+                    "ja:w:kudamono",
+                    "ja:w:gohan",
+                    "ja:w:pan"
                   ]
                 },
                 {
@@ -3077,7 +3579,10 @@
                       "emoji": "🍰"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:niku"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3103,7 +3608,10 @@
                       "emoji": "🍰"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:keeki"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3155,7 +3663,10 @@
                       "emoji": "🥩"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:niku"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3259,6 +3770,12 @@
                       "target": "チーズ",
                       "native": "the cheese"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:niku",
+                    "ja:w:keeki",
+                    "ja:w:gohan",
+                    "ja:w:chiizu"
                   ]
                 },
                 {
@@ -3288,73 +3805,169 @@
               "target": "犬",
               "native": "dog",
               "emoji": "🐕",
-              "romanization": "inu"
+              "romanization": "inu",
+              "reading": {
+                "kana": "いぬ",
+                "furigana": [
+                  {
+                    "base": "犬",
+                    "ruby": "いぬ"
+                  }
+                ]
+              }
             },
             {
               "target": "猫",
               "native": "cat",
               "emoji": "🐈",
-              "romanization": "neko"
+              "romanization": "neko",
+              "reading": {
+                "kana": "ねこ",
+                "furigana": [
+                  {
+                    "base": "猫",
+                    "ruby": "ねこ"
+                  }
+                ]
+              }
             },
             {
               "target": "馬",
               "native": "horse",
               "emoji": "🐴",
-              "romanization": "uma"
+              "romanization": "uma",
+              "reading": {
+                "kana": "うま",
+                "furigana": [
+                  {
+                    "base": "馬",
+                    "ruby": "うま"
+                  }
+                ]
+              }
             },
             {
               "target": "鳥",
               "native": "bird",
               "emoji": "🐦",
-              "romanization": "tori"
+              "romanization": "tori",
+              "reading": {
+                "kana": "とり",
+                "furigana": [
+                  {
+                    "base": "鳥",
+                    "ruby": "とり"
+                  }
+                ]
+              }
             },
             {
               "target": "魚",
               "native": "fish",
               "emoji": "🐟",
-              "romanization": "sakana"
+              "romanization": "sakana",
+              "reading": {
+                "kana": "さかな",
+                "furigana": [
+                  {
+                    "base": "魚",
+                    "ruby": "さかな"
+                  }
+                ]
+              }
             },
             {
               "target": "牛",
               "native": "cow",
               "emoji": "🐄",
-              "romanization": "ushi"
+              "romanization": "ushi",
+              "reading": {
+                "kana": "うし",
+                "furigana": [
+                  {
+                    "base": "牛",
+                    "ruby": "うし"
+                  }
+                ]
+              }
             },
             {
               "target": "豚",
               "native": "pig",
               "emoji": "🐖",
-              "romanization": "buta"
+              "romanization": "buta",
+              "reading": {
+                "kana": "ぶた",
+                "furigana": [
+                  {
+                    "base": "豚",
+                    "ruby": "ぶた"
+                  }
+                ]
+              }
             },
             {
               "target": "兎",
               "native": "rabbit",
               "emoji": "🐇",
-              "romanization": "usagi"
+              "romanization": "usagi",
+              "reading": {
+                "kana": "うさぎ",
+                "furigana": [
+                  {
+                    "base": "兎",
+                    "ruby": "うさぎ"
+                  }
+                ]
+              }
             },
             {
               "target": "象",
               "native": "elephant",
               "emoji": "🐘",
-              "romanization": "zou"
+              "romanization": "zou",
+              "reading": {
+                "kana": "ぞう",
+                "furigana": [
+                  {
+                    "base": "象",
+                    "ruby": "ぞう"
+                  }
+                ]
+              }
             },
             {
               "target": "猿",
               "native": "monkey",
               "emoji": "🐒",
-              "romanization": "saru"
+              "romanization": "saru",
+              "reading": {
+                "kana": "さる",
+                "furigana": [
+                  {
+                    "base": "猿",
+                    "ruby": "さる"
+                  }
+                ]
+              }
             },
             {
               "target": "ライオン",
               "native": "lion",
               "emoji": "🦁",
-              "romanization": "raion"
+              "romanization": "raion",
+              "reading": {
+                "kana": "ライオン"
+              }
             },
             {
               "target": "パンダ",
               "native": "panda",
               "emoji": "🐼",
-              "romanization": "panda"
+              "romanization": "panda",
+              "reading": {
+                "kana": "パンダ"
+              }
             }
           ],
           "lessons": [
@@ -3386,7 +3999,10 @@
                       "emoji": "🐒"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:inu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3412,7 +4028,10 @@
                       "emoji": "🦁"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:neko"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3438,7 +4057,10 @@
                       "emoji": "🐴"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:uma"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3464,7 +4086,10 @@
                       "emoji": "🐕"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:inu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3490,7 +4115,10 @@
                       "emoji": "🐈"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:neko"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3512,7 +4140,10 @@
                       "text": "パンダ"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:inu"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3596,6 +4227,13 @@
                       "target": "パンダ",
                       "native": "panda"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:inu",
+                    "ja:w:neko",
+                    "ja:w:uma",
+                    "ja:w:ushi",
+                    "ja:w:panda"
                   ]
                 },
                 {
@@ -3640,7 +4278,10 @@
                       "emoji": "🐦"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:tori"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3666,7 +4307,10 @@
                       "emoji": "🐈"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:sakana"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3692,7 +4336,10 @@
                       "emoji": "🐇"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:ushi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3718,7 +4365,10 @@
                       "emoji": "🐟"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:tori"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3744,7 +4394,10 @@
                       "emoji": "🐟"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:sakana"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3766,7 +4419,10 @@
                       "text": "パンダ"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:sakana"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3850,6 +4506,13 @@
                       "target": "猿",
                       "native": "monkey"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:tori",
+                    "ja:w:sakana",
+                    "ja:w:ushi",
+                    "ja:w:panda",
+                    "ja:w:saru"
                   ]
                 },
                 {
@@ -3894,7 +4557,10 @@
                       "emoji": "🐼"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:buta"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3920,7 +4586,10 @@
                       "emoji": "🐒"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:usagi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3946,7 +4615,10 @@
                       "emoji": "🐄"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:zou"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3972,7 +4644,10 @@
                       "emoji": "🐖"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:buta"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3998,7 +4673,10 @@
                       "emoji": "🐖"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:usagi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4020,7 +4698,10 @@
                       "text": "象"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:zou"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4112,6 +4793,13 @@
                       "target": "鳥",
                       "native": "bird"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:buta",
+                    "ja:w:usagi",
+                    "ja:w:zou",
+                    "ja:w:inu",
+                    "ja:w:tori"
                   ]
                 },
                 {
@@ -4156,7 +4844,10 @@
                       "emoji": "🐈"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:saru"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4182,7 +4873,10 @@
                       "emoji": "🐦"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:raion"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4208,7 +4902,10 @@
                       "emoji": "🐼"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:panda"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4234,7 +4931,10 @@
                       "emoji": "🐒"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:saru"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4260,7 +4960,10 @@
                       "emoji": "🐖"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:raion"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4282,7 +4985,10 @@
                       "text": "象"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:saru"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4364,6 +5070,13 @@
                       "target": "犬",
                       "native": "dog"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:saru",
+                    "ja:w:raion",
+                    "ja:w:panda",
+                    "ja:w:buta",
+                    "ja:w:inu"
                   ]
                 },
                 {
@@ -4392,73 +5105,191 @@
               "target": "駅",
               "native": "the train station",
               "emoji": "🚉",
-              "romanization": "eki"
+              "romanization": "eki",
+              "reading": {
+                "kana": "えき",
+                "furigana": [
+                  {
+                    "base": "駅",
+                    "ruby": "えき"
+                  }
+                ]
+              }
             },
             {
               "target": "空港",
               "native": "the airport",
               "emoji": "✈️",
-              "romanization": "kuukou"
+              "romanization": "kuukou",
+              "reading": {
+                "kana": "くうこう",
+                "furigana": [
+                  {
+                    "base": "空",
+                    "ruby": "くう"
+                  },
+                  {
+                    "base": "港",
+                    "ruby": "こう"
+                  }
+                ]
+              }
             },
             {
               "target": "ホテル",
               "native": "the hotel",
               "emoji": "🏨",
-              "romanization": "hoteru"
+              "romanization": "hoteru",
+              "reading": {
+                "kana": "ホテル"
+              }
             },
             {
               "target": "町",
               "native": "the city",
               "emoji": "🏙️",
-              "romanization": "machi"
+              "romanization": "machi",
+              "reading": {
+                "kana": "まち",
+                "furigana": [
+                  {
+                    "base": "町",
+                    "ruby": "まち"
+                  }
+                ]
+              }
             },
             {
               "target": "道",
               "native": "the street",
               "emoji": "🛣️",
-              "romanization": "michi"
+              "romanization": "michi",
+              "reading": {
+                "kana": "みち",
+                "furigana": [
+                  {
+                    "base": "道",
+                    "ruby": "みち"
+                  }
+                ]
+              }
             },
             {
               "target": "博物館",
               "native": "the museum",
               "emoji": "🏛️",
-              "romanization": "hakubutsukan"
+              "romanization": "hakubutsukan",
+              "reading": {
+                "kana": "はくぶつかん",
+                "furigana": [
+                  {
+                    "base": "博",
+                    "ruby": "はく"
+                  },
+                  {
+                    "base": "物",
+                    "ruby": "ぶつ"
+                  },
+                  {
+                    "base": "館",
+                    "ruby": "かん"
+                  }
+                ]
+              }
             },
             {
               "target": "地図",
               "native": "the map",
               "emoji": "🗺️",
-              "romanization": "chizu"
+              "romanization": "chizu",
+              "reading": {
+                "kana": "ちず",
+                "furigana": [
+                  {
+                    "base": "地",
+                    "ruby": "ち"
+                  },
+                  {
+                    "base": "図",
+                    "ruby": "ず"
+                  }
+                ]
+              }
             },
             {
               "target": "切符",
               "native": "the ticket",
               "emoji": "🎫",
-              "romanization": "kippu"
+              "romanization": "kippu",
+              "reading": {
+                "kana": "きっぷ",
+                "furigana": [
+                  {
+                    "base": "切",
+                    "ruby": "きっ"
+                  },
+                  {
+                    "base": "符",
+                    "ruby": "ぷ"
+                  }
+                ]
+              }
             },
             {
               "target": "電車",
               "native": "the train",
               "emoji": "🚆",
-              "romanization": "densha"
+              "romanization": "densha",
+              "reading": {
+                "kana": "でんしゃ",
+                "furigana": [
+                  {
+                    "base": "電",
+                    "ruby": "でん"
+                  },
+                  {
+                    "base": "車",
+                    "ruby": "しゃ"
+                  }
+                ]
+              }
             },
             {
               "target": "バス",
               "native": "the bus",
               "emoji": "🚌",
-              "romanization": "basu"
+              "romanization": "basu",
+              "reading": {
+                "kana": "バス"
+              }
             },
             {
               "target": "タクシー",
               "native": "the taxi",
               "emoji": "🚕",
-              "romanization": "takushii"
+              "romanization": "takushii",
+              "reading": {
+                "kana": "タクシー"
+              }
             },
             {
               "target": "荷物",
               "native": "the luggage",
               "emoji": "🧳",
-              "romanization": "nimotsu"
+              "romanization": "nimotsu",
+              "reading": {
+                "kana": "にもつ",
+                "furigana": [
+                  {
+                    "base": "荷",
+                    "ruby": "に"
+                  },
+                  {
+                    "base": "物",
+                    "ruby": "もつ"
+                  }
+                ]
+              }
             }
           ],
           "lessons": [
@@ -4490,7 +5321,10 @@
                       "emoji": "🏛️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:eki"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4516,7 +5350,10 @@
                       "emoji": "🛣️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:kuukou"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4542,7 +5379,10 @@
                       "emoji": "🏛️"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:hoteru"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4568,7 +5408,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:eki"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4594,7 +5437,10 @@
                       "emoji": "🚆"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:kuukou"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4616,7 +5462,10 @@
                       "text": "地図"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:eki"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4706,6 +5555,13 @@
                       "target": "町",
                       "native": "the city"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:eki",
+                    "ja:w:kuukou",
+                    "ja:w:hoteru",
+                    "ja:w:michi",
+                    "ja:w:machi"
                   ]
                 },
                 {
@@ -4751,7 +5607,10 @@
                       "emoji": "🚌"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:machi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4777,7 +5636,10 @@
                       "emoji": "🚌"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:michi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4803,7 +5665,10 @@
                       "emoji": "🚉"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:hakubutsukan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4829,7 +5694,10 @@
                       "emoji": "🎫"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:machi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4855,7 +5723,10 @@
                       "emoji": "🧳"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:michi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4877,7 +5748,10 @@
                       "text": "空港"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:michi"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4967,6 +5841,13 @@
                       "target": "荷物",
                       "native": "the luggage"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:machi",
+                    "ja:w:michi",
+                    "ja:w:hakubutsukan",
+                    "ja:w:kippu",
+                    "ja:w:nimotsu"
                   ]
                 },
                 {
@@ -5011,7 +5892,10 @@
                       "emoji": "🧳"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:chizu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5037,7 +5921,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:kippu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5063,7 +5950,10 @@
                       "emoji": "🎫"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:densha"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5089,7 +5979,10 @@
                       "emoji": "🚕"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:chizu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5115,7 +6008,10 @@
                       "emoji": "🎫"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "ja:w:kippu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5137,7 +6033,10 @@
                       "text": "道"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:densha"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -5227,6 +6126,13 @@
                       "target": "道",
                       "native": "the street"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:chizu",
+                    "ja:w:kippu",
+                    "ja:w:densha",
+                    "ja:w:machi",
+                    "ja:w:michi"
                   ]
                 },
                 {
@@ -5270,7 +6176,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "ja:w:basu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5296,7 +6205,10 @@
                       "emoji": "🗺️"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:takushii"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5322,7 +6234,10 @@
                       "emoji": "🚉"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "ja:w:nimotsu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5348,7 +6263,10 @@
                       "emoji": "🗺️"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:basu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5374,7 +6292,10 @@
                       "emoji": "🚆"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:takushii"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5396,7 +6317,10 @@
                       "text": "電車"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "ja:w:basu"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -5484,6 +6408,13 @@
                       "target": "電車",
                       "native": "the train"
                     }
+                  ],
+                  "gradeTargets": [
+                    "ja:w:basu",
+                    "ja:w:takushii",
+                    "ja:w:nimotsu",
+                    "ja:w:chizu",
+                    "ja:w:densha"
                   ]
                 },
                 {

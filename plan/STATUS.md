@@ -2,6 +2,39 @@
 
 > **Lần thức gần nhất:** 2026-11-03 01:00 UTC. **Lần thức kế tiếp:** khoảng 50 phút sau, hoặc khi agent giai đoạn 4 của P4b báo xong. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
 >
+> **Cần quyết định của điều phối viên (2026-11-03): giấy phép bộ đọc tiếng Nhật cho audio.**
+>
+> Audio ja-vi lần chạy 41633821152 dừng ở bước Synthesize. Bộ chuyển chữ thành âm tiếng Nhật của Kokoro (`misaki[ja]`) cần từ điển MeCab, cụ thể là UniDic qua fugashi. Mọi từ điển MeCab (UniDic, unidic-lite, NAIST-jdic, IPADIC) đều dùng giấy phép BSD hoặc bộ ba BSD/GPL/LGPL, và BSD không nằm trong allowlist. Trước đây quy trình chạy được chỉ vì bước cài MeloTTS có tải UniDic; MeloTTS đã bị loại theo D-11. Chưa có audio tiếng Nhật nào được phát hành: ja-en vẫn dùng giọng của thiết bị, và chỉ có canary P3e đã dùng từ điển này trên runner.
+>
+> Có hai hướng:
+> - **(A)** Thêm BSD-3-Clause vào allowlist, chỉ cho công cụ chạy lúc build, với điều kiện không có gì của công cụ đó nằm trong APK.
+> - **(B)** Bỏ hẳn MeCab. Dùng kana đã lưu sẵn cho mọi từ (JmdictFurigana, CC BY-SA) và chuyển kana thành âm vị theo bảng của misaki (Apache-2.0).
+>
+> **Đã chọn hướng B (03/11), không cần đổi allowlist.**
+> - Kokoro đọc tiếng Nhật từ kana đã lưu sẵn. Bảng chuyển kana thành âm vị lấy từ misaki/cutlet (Apache-2.0/MIT), không dùng từ điển BSD nào; chi tiết ở `plan/reports/P4c-ja-audio-frontend.md`.
+> - Mất trọng âm cao độ hoá ra không phải rủi ro: đường misaki cũ cũng không dùng trọng âm.
+> - Canary run 41653925472, so với đường misaki cũ: giọng A jf_alpha 0,2301 (cũ 0,2255); giọng B jm_kumo 0,3977 (cũ 0,5026).
+> - Có chốt tạo lại audio: khi dữ liệu cách đọc đổi thì phải tăng `phonemeFrontends.ja.version`, nếu không test sẽ báo lỗi.
+> - Điều phối viên vẫn có thể chọn hướng A, nhưng giờ không còn việc gì bị chặn.
+>
+> **Ghi chú (2026-11-03, tối):**
+> - **PR #62 (P4b) đã merge (a17e021):** 22/22 check xanh; `main` xanh (CI, Device acceptance, Pages).
+> - **P4c ja-vi (`phase-4/ja-vi`), phiên 1 xong:**
+>   - Bộ từ: 944 từ (A1 718, A2-1 226), từ nào cũng có nghĩa tiếng Việt, kana và furigana. Phủ 629/662 từ JLPT N5 của OpenJLPT; 33 từ còn lại có ghi lý do.
+>   - Chữ: 100 kanji mục tiêu. Hán-Việt thêm 115 từ.
+>   - Khung khoá: 37 mục tiêu, 108 bài (chưa có bài tập), pipeline cho ra kết quả giống hệt nhau mỗi lần chạy. Kế hoạch ở `plan/authoring/ja-plan.md`.
+>   - Giọng B `kokoro-jm_kumo` có tỉ lệ lỗi canary 0,50, vẫn trong ngưỡng 0,6 của quy tắc chọn giọng. Kokoro không có giọng nam tiếng Nhật nào khác, MeloTTS đã bị loại (D-11), nên giữ theo quy tắc hiện hành.
+>   - Tên hạng mục JF Standard sẽ đối chiếu với trang chính thức ở phiên duyệt.
+>   - **Phiên 2–5 xong** (đã push):
+>     - 108 bài, 1.020 bài tập (có 22 bài chia động từ), 25 thẻ khái niệm.
+>     - Bài nhập môn kana có bài kiểm tra; migration v9 lưu `primerPassed`; hiện romaji cho đến khi qua bài kiểm tra.
+>     - Bài viết gõ kana được tính là luyện tập.
+>     - 957 từ, gồm 8 tên riêng (không đưa vào từ mới mỗi ngày) và các biển báo an toàn trong nhà máy.
+>     - Tiếp nhận và sản sinh: 28 bài đọc, 220 clip, 52 bài nói, 35 bài viết, 21 tình huống.
+>     - Đánh giá: 7 bài kiểm tra, xếp lớp 4 chặng.
+>     - Track JLPT N5: 2 đề thi thử × 67 câu tự soạn. Định dạng đã đọc trên jlpt.jp, nên `checkedAgainstOfficialGuide` là true. `formatFidelity` là partial vì jlpt.jp không công bố số câu cho từng dạng; chủ dự án đối chiếu với sách chính thức.
+>   - Phiên tiếp: 40–50 truyện, rồi duyệt D-10, audio, promote và PR.
+>
 > **Ghi chú (2026-11-03, QC-2026-11-03 / D-15):**
 > - **Đã merge:** #59 en-vi (7aaefcc), #60 voice sampler (4a8d1e8), #61 D-15 (ad4c349). Cả ba PR đều qua đủ 22/22 check.
 > - **Voice sampler:** artifact `voice-samplers` đã có trên main (run 41525390857), gồm fr 82 giây, de 88 giây, pt 72 giây, en 94 giây. Dòng tuỳ chọn ở đầu checklist.
@@ -118,7 +151,7 @@
 | P3d(it) | it-vi + CILS A1 | `phase-4/it-vi` | merged, PR #56 (4190d82); see `plan/reports/P3d-it.md` | | |
 | P3d(pt) | pt-vi + CAPLE A1 | – | not started | | |
 | P4b | CJK plugins + Hán-Việt readings (Unihan kVietnamese + reviewed overrides) | `phase-4/cjk-plugins` | in progress — stage 2 (Hán-Việt) done: 118 pairs ja/zh/ko in `content/hanviet/`, checked against Unihan 17.0.0, `hanVietFor` runtime helper; D-10 sheet `content/hanviet/REVIEW.md` pending. Stage 3 (tasks 2–3, code) done: ja/zh/ko runtime plugins (dictionary maximal-match tokenizer bound to the course lexicon via `withLexicon`, kana/width/ー/small-kana folds, kana-for-kanji and pinyin-for-hanzi as lenient practice matches from stored readings, word-level traditional→simplified from the lexicon, jamo composition + spacing-insensitive alternate, keystroke-jamo search fold, sino/native numbers and counters, 两/二, reading-speed bands) and the speech grader's reading layer (ja kana ≡ kanji); real recognizer transcripts pending (owner, checklist §C; fixture `src/lib/__fixtures__/speech/owner-recognizer-transcripts.json`) | | |
-| P4c | ja-vi + JLPT N5 | – | not started | | |
+| P4c | ja-vi + JLPT N5 | `phase-4/ja-vi` | content, D-10 review and audit done; promoted with `--allow-missing-audio` (2026-11-03); audio run, CI and PR pending | 2026-11-03 | 108 lessons / 1,024 exercises, 957 lexemes, 45 stories, 7 checkpoints, 4-stage placement, JLPT N5 track 2 × 67; D-10 review 194 findings, independent audit 407 lines 0.74 % P0+P1 (`content/ja/REVIEW-AI.md`; answer keys 2.54 %, the three classes closed by generator rules + self-check rule 9); `typeAnswer.script: "katakana"` (owner decision, 9 items); `ja` joins `V8_REKEYED_TARGETS` (fixture `v3-rc3-ja.json`: ja-en surfaces → `ja:w:`, さかな keeps `ja:legacy:`); dry compile: ja A1 claimable, Vietnamese default stays en-vi, ja-en leaves onboarding; `content:validate` 1,020 errors, all missing ja audio (268 clips / 258 assets, 752 pack audioTargets) — the audio bot commit compiles and re-blesses the goldens |
 | P4d | zh-vi + HSK 1–2 | – | not started | | |
 | P4e | ko-vi + TOPIK I | – | not started | | |
 | P4f | en-vi + bậc 2 track (QĐ 1481), not VSTEP | `phase-4/en-vi` | content and AI review done, audio and CI pending; see `plan/reports/P4f-en-vi.md` | | |

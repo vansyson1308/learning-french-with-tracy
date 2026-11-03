@@ -33,7 +33,18 @@ import { lexemeReadingErrors } from "./cjk-readings/lexeme";
 import { displayReading } from "./cjk-readings/validate";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { isV2, manifestView } from "./lexicon-etl/manifest";
-import { idsArtifactRoot, isTestOnlyTarget, loadRegistry, packsForTarget, readJson, safeResolve, type LoadedPack, type ValidationResult } from "./pipeline";
+import {
+  idsArtifactRoot,
+  isTestOnlyTarget,
+  legacyUnmappedRel,
+  loadLegacyUnmapped,
+  loadRegistry,
+  packsForTarget,
+  readJson,
+  safeResolve,
+  type LoadedPack,
+  type ValidationResult,
+} from "./pipeline";
 
 /** The committed generated registry for a language, or the frozen map itself before the first compile. */
 function committedRegistryMap(code: string, frozen: Record<string, string>, testOnly: boolean): Record<string, string> {
@@ -129,8 +140,11 @@ export function validateLexiconData(input: {
    * that drifts from the documented derivation fails the gate.
    */
   bandThresholds?: FrequencyBandThresholds;
+  /** P4c: basic-pack surfaces listed in legacy-unmapped.json (no lexeme by design). */
+  unmappedSurfaces?: ReadonlySet<string>;
 }): ValidationResult {
   const { plugin, lexicon, manifest, frozenMap, runtimeMap, registryIds, packGlosses, bandThresholds } = input;
+  const unmappedSurfaces = input.unmappedSurfaces ?? new Set<string>();
   const errors: string[] = [];
   const err = (m: string) => errors.push(`lexicon: ${m}`);
   const lang = plugin.code;
@@ -175,13 +189,18 @@ export function validateLexiconData(input: {
   const legacyAll = lexicon.lexemes.flatMap((l) => l.legacySurfaces ?? []);
   if (new Set(legacyAll).size !== legacyAll.length) err("a legacy surface is listed on two lexemes");
   for (const s of legacyAll) if (derived[s] !== undefined) err(`legacy surface "${s}" is also the surface of ${derived[s]}`);
+  // An unmapped basic-pack surface that does map is stale: the file must say only what is true.
+  for (const s of unmappedSurfaces) {
+    const id = derived[s] ?? legacy[s];
+    if (id !== undefined) err(`legacy-unmapped surface "${s}" maps to ${id} — remove it from legacy-unmapped.json`);
+  }
 
   // Cross-check against every course pack of the language: gloss identity
   // per native language and full coverage (a pack word may reach its lexeme
   // through a legacy surface).
   for (const { nativeCode, gloss } of packGlosses) {
     for (const [target] of gloss) {
-      if (derived[target] === undefined && legacy[target] === undefined) err(`pack word "${target}" missing from rich lexicon`);
+      if (derived[target] === undefined && legacy[target] === undefined && !unmappedSurfaces.has(target)) err(`pack word "${target}" missing from rich lexicon`);
     }
     for (const lex of lexicon.lexemes) {
       for (const surface of [lex.surface, ...(lex.legacySurfaces ?? [])]) {
@@ -210,6 +229,9 @@ export function validateLexiconData(input: {
     }
     if (lex.partOfSpeech !== "noun" && lex.gender !== undefined) {
       err(`${where}: gender is meaningful on nouns only`);
+    }
+    if (lex.proper === true && lex.partOfSpeech !== "noun") {
+      err(`${where}: proper nouns are nouns (partOfSpeech is ${lex.partOfSpeech})`);
     }
 
     // lookupForm is the surface minus its leading article — stored, verified.
@@ -367,6 +389,12 @@ export function validateLexicon(lang: string, packs: LoadedPack[]): ValidationRe
     }
   }
 
+  let unmapped: Map<string, string>;
+  try {
+    unmapped = loadLegacyUnmapped(lang);
+  } catch (e) {
+    return { errors: [`lexicon: ${legacyUnmappedRel(lang)} failed schema validation — ${(e as Error).message.split("\n")[0]}`], warnings: [] };
+  }
   const result = validateLexiconData({
     plugin: buildPlugin(lang),
     lexicon,
@@ -376,7 +404,14 @@ export function validateLexicon(lang: string, packs: LoadedPack[]): ValidationRe
     registryIds: new Set(loadRegistry().sources.map((s) => s.id)),
     packGlosses: packGlossesOf(mine),
     bandThresholds,
+    unmappedSurfaces: new Set(unmapped.keys()),
   });
+  // A listed surface must be a word of the course the file names (basic packs are never edited, so a stale line is a typo).
+  for (const [surface, courseId] of unmapped) {
+    const pack = mine.find((p) => p.courseId === courseId)?.pack;
+    const taught = pack?.sections.some((s) => s.units.some((u) => u.words.some((w) => w.target === surface))) ?? false;
+    if (!taught) result.errors.push(`lexicon: ${legacyUnmappedRel(lang)} lists "${surface}" for ${courseId}, which does not teach it`);
+  }
 
   // P4b stage 4: a course word's reading is compiled from its lexeme; an authored one must agree.
   const shownBySurface = new Map<string, string>();

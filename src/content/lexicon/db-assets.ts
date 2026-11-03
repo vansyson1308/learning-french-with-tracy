@@ -16,4 +16,6 @@ export const LEXICON_DB_ASSETS: Record<string, { name: string; contentHash: stri
   "fr-vi": { name: "fr-vi-lexicon-v3-677e62c810756413.db", contentHash: "677e62c810756413", asset: require("../../../assets/lexicon/fr-vi-lexicon-v3-677e62c810756413.db") },
   "it": { name: "it-lexicon-v3-039b57df3447c90f.db", contentHash: "039b57df3447c90f", asset: require("../../../assets/lexicon/it-lexicon-v3-039b57df3447c90f.db") },
   "it-en": { name: "it-en-lexicon-v3-a0f634dbabe0cb2c.db", contentHash: "a0f634dbabe0cb2c", asset: require("../../../assets/lexicon/it-en-lexicon-v3-a0f634dbabe0cb2c.db") },
+  "ja": { name: "ja-lexicon-v3-479f6878499612e0.db", contentHash: "479f6878499612e0", asset: require("../../../assets/lexicon/ja-lexicon-v3-479f6878499612e0.db") },
+  "ja-en": { name: "ja-en-lexicon-v3-c8772f8b3442a06f.db", contentHash: "c8772f8b3442a06f", asset: require("../../../assets/lexicon/ja-en-lexicon-v3-c8772f8b3442a06f.db") },
 };

@@ -1,0 +1,995 @@
+{
+  "version": 1,
+  "language": "ja",
+  "order": [
+    "ja:concept:kana",
+    "ja:concept:kanji-hanviet",
+    "ja:concept:katakana-loanwords",
+    "ja:concept:length-pitch",
+    "ja:concept:greetings",
+    "ja:concept:noun-desu",
+    "ja:concept:sov-subject",
+    "ja:concept:wa-ga",
+    "ja:concept:particle-o",
+    "ja:concept:particles-ni-de-he",
+    "ja:concept:particles-no-to-mo",
+    "ja:concept:questions",
+    "ja:concept:kosoado",
+    "ja:concept:masu-form",
+    "ja:concept:verb-groups",
+    "ja:concept:invitations",
+    "ja:concept:aru-iru",
+    "ja:concept:adjectives",
+    "ja:concept:numbers",
+    "ja:concept:counters",
+    "ja:concept:time-dates",
+    "ja:concept:te-form",
+    "ja:concept:tai-suki",
+    "ja:concept:politeness",
+    "ja:concept:family-terms"
+  ],
+  "byId": {
+    "ja:concept:kana": {
+      "id": "ja:concept:kana",
+      "title": "Hiragana và katakana",
+      "shortRule": "Mỗi chữ kana là một âm tiết; hiragana cho từ Nhật và đuôi ngữ pháp, katakana cho từ mượn.",
+      "explanation": "Tiếng Việt ghi âm bằng chữ cái; tiếng Nhật ghi bằng âm tiết: か là \"ka\", き là \"ki\". Hiragana viết từ thuần Nhật và phần đuôi ngữ pháp (ます, です, trợ từ). Katakana viết từ mượn và tên nước ngoài: コーヒー, グエン. Dấu ゛ làm âm đục: か → が. Chữ nhỏ ゃ, ゅ, ょ ghép với chữ trước: き + ゃ = きゃ. っ nhỏ là một nhịp ngắt, ー kéo dài nguyên âm trong katakana.",
+      "examples": [
+        {
+          "ja": "わたし",
+          "vi": "tôi",
+          "note": "toàn hiragana"
+        },
+        {
+          "ja": "コーヒー",
+          "vi": "cà phê",
+          "note": "từ mượn: katakana, ー kéo dài âm"
+        },
+        {
+          "ja": "きって",
+          "vi": "con tem",
+          "note": "っ nhỏ: ngắt một nhịp"
+        },
+        {
+          "ja": "ベトナム",
+          "vi": "Việt Nam"
+        }
+      ],
+      "exceptions": [
+        "は và へ khi là trợ từ đọc là わ và え: わたしは, 会社へ.",
+        "を chỉ dùng làm trợ từ và đọc như お."
+      ],
+      "memoryHint": "Hiragana mềm, tròn; katakana thẳng, góc cạnh.",
+      "objectives": [
+        "ja.obj.script.kana",
+        "ja.obj.writing.kana_input"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:kanji-hanviet": {
+      "id": "ja:concept:kanji-hanviet",
+      "title": "Kanji và âm Hán-Việt",
+      "shortRule": "Nhiều từ kanji đọc gần âm Hán-Việt: nhớ âm Hán-Việt giúp đoán nghĩa, nhưng hãy cẩn thận với \"bạn giả\".",
+      "explanation": "Kanji là chữ Hán. Tiếng Việt có hàng nghìn từ Hán-Việt, nên nhiều từ Nhật nghe quen: 電話 (でんわ, điện thoại), 会社 (かいしゃ, hội xã — công ty), 安全 (あんぜん, an toàn). Âm Nhật không giống hẳn, chỉ gần. Từ thuần Nhật viết bằng kanji thì không đọc theo âm này: 山 là やま, 水 là みず. Có \"bạn giả\": 工場 là nhà máy chứ không phải công trường, 勉強 là học chứ không phải miễn cưỡng.",
+      "examples": [
+        {
+          "ja": "電話",
+          "vi": "điện thoại",
+          "note": "điện thoại — rất gần"
+        },
+        {
+          "ja": "安全",
+          "vi": "an toàn",
+          "note": "an toàn — gần"
+        },
+        {
+          "ja": "工場",
+          "vi": "nhà máy",
+          "note": "\"công trường\" là bạn giả"
+        },
+        {
+          "ja": "勉強",
+          "vi": "việc học",
+          "note": "không phải \"miễn cưỡng\""
+        },
+        {
+          "ja": "山",
+          "vi": "núi",
+          "note": "từ thuần Nhật: やま, không theo âm Hán-Việt"
+        }
+      ],
+      "exceptions": [
+        "Âm Hán-Việt chỉ giúp với từ đọc theo âm Hán (on). Từ một chữ thường đọc theo âm Nhật (kun) và không giống tiếng Việt."
+      ],
+      "memoryHint": "Đoán nghĩa bằng âm Hán-Việt, rồi kiểm tra lại.",
+      "objectives": [
+        "ja.obj.script.kanji_hanviet",
+        "ja.obj.strategy.hanviet_loanwords"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:katakana-loanwords": {
+      "id": "ja:concept:katakana-loanwords",
+      "title": "Từ mượn katakana",
+      "shortRule": "Từ mượn, thường từ tiếng Anh, viết bằng katakana và đọc theo âm Nhật: mỗi phụ âm đi kèm một nguyên âm.",
+      "explanation": "Tiếng Việt mượn \"cà phê\" từ tiếng Pháp; tiếng Nhật mượn コーヒー từ tiếng Anh. Âm tiếng Nhật hầu như không có phụ âm cuối, nên phụ âm được thêm nguyên âm: bus → バス. Riêng パン (bánh mì) đến từ tiếng Bồ Đào Nha (pão), không phải từ tiếng Anh. Đọc to từ katakana rồi nghĩ đến tiếng Anh: テレビ là TV, パソコン là máy tính cá nhân. Tên người Việt cũng viết bằng katakana: グエン, ナム.",
+      "examples": [
+        {
+          "ja": "バス",
+          "vi": "xe buýt"
+        },
+        {
+          "ja": "テレビ",
+          "vi": "ti vi",
+          "note": "rút gọn từ television"
+        },
+        {
+          "ja": "パソコン",
+          "vi": "máy tính",
+          "note": "personal computer rút gọn"
+        },
+        {
+          "ja": "コンビニ",
+          "vi": "cửa hàng tiện lợi"
+        }
+      ],
+      "exceptions": [
+        "Một số từ katakana không đến từ tiếng Anh: パン (bánh mì) từ tiếng Bồ Đào Nha, アルバイト từ tiếng Đức."
+      ],
+      "memoryHint": "Đọc to, nghe ra tiếng Anh.",
+      "objectives": [
+        "ja.obj.strategy.hanviet_loanwords",
+        "ja.obj.script.kana"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:length-pitch": {
+      "id": "ja:concept:length-pitch",
+      "title": "Trường âm, âm ngắt và cao độ",
+      "shortRule": "Độ dài âm đổi nghĩa: おばさん khác おばあさん, きて khác きって. Cao độ lên xuống, không phải thanh điệu.",
+      "explanation": "Mỗi âm tiết kana dài bằng một nhịp. Nguyên âm dài chiếm hai nhịp: おばあさん (bà) có năm nhịp, おばさん (cô) có bốn. っ nhỏ là một nhịp im lặng: きって (tem). ん cũng là một nhịp riêng. Tiếng Việt có sáu thanh trên mỗi âm tiết; tiếng Nhật chỉ có cao và thấp giữa các nhịp, nên đừng gắn dấu thanh tiếng Việt vào từ Nhật.",
+      "examples": [
+        {
+          "ja": "おばさん",
+          "vi": "cô, dì",
+          "note": "bốn nhịp"
+        },
+        {
+          "ja": "おばあさん",
+          "vi": "bà",
+          "note": "năm nhịp: あ kéo dài"
+        },
+        {
+          "ja": "切手",
+          "vi": "con tem",
+          "note": "きって: có っ"
+        },
+        {
+          "ja": "ビール",
+          "vi": "bia",
+          "note": "ー kéo dài: ビ-ー-ル"
+        }
+      ],
+      "exceptions": [
+        "Trong hiragana, nguyên âm dài viết thêm một chữ: おう, えい thường đọc là ô dài, ê dài: がっこう, せんせい."
+      ],
+      "memoryHint": "Đếm nhịp bằng ngón tay khi đọc.",
+      "objectives": [
+        "ja.obj.pronunciation.length_pitch"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:greetings": {
+      "id": "ja:concept:greetings",
+      "title": "Chào theo giờ và tình huống",
+      "shortRule": "Lời chào đổi theo buổi và theo chỗ: おはようございます buổi sáng, こんにちは ban ngày, お疲れさまです ở chỗ làm.",
+      "explanation": "Tiếng Việt chào kèm lời gọi: chào anh, chào chị. Tiếng Nhật không cần đại từ, nhưng chọn câu theo giờ và tình huống. Ở nhiều chỗ làm theo ca, おはようございます dùng khi bắt đầu ca, kể cả ca chiều. お疲れさまです là câu chào đồng nghiệp trong ngày. すみません vừa là xin lỗi, vừa là \"xin phép\" khi gọi ai đó. ありがとうございます lịch sự hơn ありがとう.",
+      "examples": [
+        {
+          "ja": "おはようございます。",
+          "vi": "Chào buổi sáng."
+        },
+        {
+          "ja": "お疲れさまです。",
+          "vi": "Anh chị vất vả rồi.",
+          "note": "chào đồng nghiệp"
+        },
+        {
+          "ja": "すみません、トイレはどこですか。",
+          "vi": "Xin lỗi, nhà vệ sinh ở đâu?"
+        },
+        {
+          "ja": "ありがとうございます。",
+          "vi": "Cảm ơn."
+        }
+      ],
+      "exceptions": [
+        "Với cấp trên và khách, dùng dạng dài: ありがとうございます, không nói ありがとう."
+      ],
+      "memoryHint": "Không chắc thì chọn câu dài hơn: dài là lịch sự.",
+      "objectives": [
+        "ja.obj.greetings.basic",
+        "ja.obj.politeness.levels"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:noun-desu": {
+      "id": "ja:concept:noun-desu",
+      "title": "Câu danh từ: AはBです",
+      "shortRule": "A là B: AはBです. Phủ định: じゃありません. Quá khứ: でした. Thêm か là thành câu hỏi.",
+      "explanation": "Tiếng Việt đặt \"là\" giữa câu; tiếng Nhật đặt です ở cuối: わたしは学生です. です làm câu lịch sự. Phủ định đổi です thành じゃありません (viết trang trọng là ではありません). Quá khứ là でした. Câu hỏi chỉ cần thêm か vào cuối, không đổi trật tự từ. Tiếng Nhật không cần thêm \"một\" trước danh từ: 会社員です là \"tôi là nhân viên công ty\".",
+      "examples": [
+        {
+          "ja": "わたしは学生です。",
+          "vi": "Tôi là sinh viên."
+        },
+        {
+          "ja": "わたしは先生じゃありません。",
+          "vi": "Tôi không phải là giáo viên."
+        },
+        {
+          "ja": "昨日は休みでした。",
+          "vi": "Hôm qua là ngày nghỉ."
+        },
+        {
+          "ja": "ナムさんは会社員ですか。",
+          "vi": "Anh Nam là nhân viên công ty à?"
+        }
+      ],
+      "exceptions": [
+        "Không thêm さん sau tên mình: わたしはナムです, không nói ナムさんです."
+      ],
+      "memoryHint": "です ở cuối, giống dấu chấm của câu lịch sự.",
+      "objectives": [
+        "ja.obj.sentences.noun_desu"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:sov-subject": {
+      "id": "ja:concept:sov-subject",
+      "title": "Động từ ở cuối câu, chủ ngữ hay được bỏ",
+      "shortRule": "Trật tự thường là: ai は — khi nào — ở đâu で — cái gì を — động từ. Khi đã rõ ai làm, bỏ chủ ngữ.",
+      "explanation": "Tiếng Việt nói \"Tôi ăn bánh mì\": chủ ngữ, động từ, tân ngữ. Tiếng Nhật đặt động từ ở cuối: パンを食べます. Trợ từ cho biết vai trò của từ, nên phần trước động từ có thể đổi chỗ. Khi người nghe đã biết ai làm, tiếng Nhật bỏ chủ ngữ: 六時に起きます. Tiếng Việt cũng nói được \"Sáu giờ dậy\", nên điều này không lạ.",
+      "examples": [
+        {
+          "ja": "パンを食べます。",
+          "vi": "(Tôi) ăn bánh mì.",
+          "note": "động từ ở cuối"
+        },
+        {
+          "ja": "毎日、会社で働きます。",
+          "vi": "Ngày nào tôi cũng làm việc ở công ty."
+        },
+        {
+          "ja": "明日、病院へ行きます。",
+          "vi": "Mai tôi đi bệnh viện.",
+          "note": "không có わたしは"
+        }
+      ],
+      "exceptions": [
+        "Khi giới thiệu bản thân hay nhấn sự đối lập, vẫn nói わたしは: わたしはベトナム人です."
+      ],
+      "memoryHint": "Nghe đến cuối câu mới biết làm gì.",
+      "objectives": [
+        "ja.obj.particles.core",
+        "ja.obj.writing.phrases_sentences"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:wa-ga": {
+      "id": "ja:concept:wa-ga",
+      "title": "は và が",
+      "shortRule": "は nêu chủ đề đang nói tới; が chỉ chủ ngữ trong các mẫu cố định: あります, います, 好き, 誰が.",
+      "explanation": "Tiếng Việt không có trợ từ, chỉ dựa vào trật tự từ. は (đọc là わ) giới thiệu cái mình đang nói tới: わたしは学生です. が dùng trong những mẫu bạn học thuộc: 部屋にテレビがあります, 日本の料理が好きです, 頭が痛いです. Khi hỏi \"ai\", \"cái gì\" làm chủ ngữ thì dùng が: 誰が来ましたか. Ở mức sơ cấp, hãy học mẫu câu cùng trợ từ của nó.",
+      "examples": [
+        {
+          "ja": "わたしはナムです。",
+          "vi": "Tôi là Nam.",
+          "note": "は: chủ đề"
+        },
+        {
+          "ja": "部屋にテレビがあります。",
+          "vi": "Trong phòng có ti vi.",
+          "note": "あります đi với が"
+        },
+        {
+          "ja": "日本の料理が好きです。",
+          "vi": "Tôi thích món ăn Nhật.",
+          "note": "好き đi với が"
+        },
+        {
+          "ja": "誰が来ましたか。",
+          "vi": "Ai đã đến?",
+          "note": "từ để hỏi làm chủ ngữ: が"
+        }
+      ],
+      "exceptions": [
+        "Trong câu phủ định và câu nhấn sự đối lập, が thường đổi thành は: テレビはありません."
+      ],
+      "memoryHint": "は = \"còn về…\"; が = mẫu câu cố định.",
+      "objectives": [
+        "ja.obj.particles.core"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:particle-o": {
+      "id": "ja:concept:particle-o",
+      "title": "を: đánh dấu tân ngữ",
+      "shortRule": "を đứng sau thứ bị tác động: パンを食べます. Đọc như お.",
+      "explanation": "Tiếng Việt biết tân ngữ nhờ vị trí sau động từ: ăn bánh mì. Tiếng Nhật đánh dấu tân ngữ bằng を và đặt động từ sau nó: パンを食べます, 水を飲みます, 日本語を勉強します. を viết bằng chữ riêng nhưng đọc như お. Một số động từ chỉ việc đi qua một nơi cũng dùng を: 道を渡ります.",
+      "examples": [
+        {
+          "ja": "水を飲みます。",
+          "vi": "Tôi uống nước."
+        },
+        {
+          "ja": "日本語を勉強します。",
+          "vi": "Tôi học tiếng Nhật."
+        },
+        {
+          "ja": "ボタンを押してください。",
+          "vi": "Hãy ấn nút."
+        },
+        {
+          "ja": "道を渡ります。",
+          "vi": "Tôi băng qua đường.",
+          "note": "đi qua một nơi: を"
+        }
+      ],
+      "exceptions": [
+        "Thích, hiểu, có dùng が chứ không dùng を: 日本語がわかります, 音楽が好きです."
+      ],
+      "memoryHint": "を = cái bị ăn, bị uống, bị làm.",
+      "objectives": [
+        "ja.obj.particles.core",
+        "ja.obj.verbs.masu_forms"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:particles-ni-de-he": {
+      "id": "ja:concept:particles-ni-de-he",
+      "title": "に, で, へ: giờ, nơi chốn, hướng",
+      "shortRule": "に: giờ cụ thể, nơi có ai/cái gì, nơi đến. で: nơi diễn ra hành động, phương tiện. へ: hướng đi.",
+      "explanation": "Tiếng Việt dùng \"ở\" cho cả \"ở nhà máy có nhiều máy\" và \"làm việc ở nhà máy\". Tiếng Nhật tách ra: 工場に機械があります (に: nơi có), 工場で働きます (で: nơi làm). に cũng chỉ giờ: 七時に起きます; và nơi đến: 日本に来ました. へ (đọc là え) chỉ hướng đi: 会社へ行きます; với 行く, 来る, 帰る, に và へ đều được. で còn chỉ phương tiện: バスで行きます. Từ chỉ thời gian tương đối như 今日, 明日, 毎日 không đi với に.",
+      "examples": [
+        {
+          "ja": "7時に起きます。",
+          "vi": "Tôi dậy lúc bảy giờ.",
+          "note": "giờ cụ thể: に"
+        },
+        {
+          "ja": "工場で働きます。",
+          "vi": "Tôi làm việc ở nhà máy.",
+          "note": "nơi hành động: で"
+        },
+        {
+          "ja": "会社へ行きます。",
+          "vi": "Tôi đi đến công ty.",
+          "note": "hướng: へ"
+        },
+        {
+          "ja": "バスで駅へ行きます。",
+          "vi": "Tôi đi xe buýt đến ga.",
+          "note": "phương tiện: で"
+        },
+        {
+          "ja": "毎日、日本語を勉強します。",
+          "vi": "Ngày nào tôi cũng học tiếng Nhật.",
+          "note": "毎日 không có に"
+        }
+      ],
+      "exceptions": [
+        "乗ります đi với に: 電車に乗ります. Xuống thì dùng を: 電車を降ります."
+      ],
+      "memoryHint": "に: điểm (giờ, chỗ đứng, đích). で: sân khấu của hành động.",
+      "objectives": [
+        "ja.obj.particles.core",
+        "ja.obj.verbs.masu_forms"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:particles-no-to-mo": {
+      "id": "ja:concept:particles-no-to-mo",
+      "title": "の, と, も, や, から, まで",
+      "shortRule": "の nối hai danh từ (của); と và や là \"và\"; も là \"cũng\" và thay cho は, が, を; から/まで là từ/đến.",
+      "explanation": "Tiếng Việt nói \"tên của tôi\"; tiếng Nhật đặt người sở hữu trước: わたしの名前. と nối đủ các thứ được kể: パンと牛乳; や chỉ kể vài thứ trong số nhiều thứ: パンや果物. と còn là \"cùng với\": 友達と行きます. も là \"cũng\" và đứng ở chỗ của は: わたしもベトナム人です. から là \"từ\", まで là \"đến\": 九時から五時まで.",
+      "examples": [
+        {
+          "ja": "わたしの名前はナムです。",
+          "vi": "Tên tôi là Nam.",
+          "note": "người sở hữu đứng trước の"
+        },
+        {
+          "ja": "パンと牛乳を買います。",
+          "vi": "Tôi mua bánh mì và sữa."
+        },
+        {
+          "ja": "友達と映画を見ます。",
+          "vi": "Tôi xem phim với bạn.",
+          "note": "と: cùng với"
+        },
+        {
+          "ja": "わたしもベトナム人です。",
+          "vi": "Tôi cũng là người Việt Nam.",
+          "note": "も thay cho は"
+        },
+        {
+          "ja": "9時から5時まで働きます。",
+          "vi": "Tôi làm từ chín giờ đến năm giờ."
+        }
+      ],
+      "exceptions": [
+        "も không đứng cạnh は hay を: nói わたしも, không nói わたしはも."
+      ],
+      "memoryHint": "の = \"của\" nhưng đảo ngược: わたしの = của tôi.",
+      "objectives": [
+        "ja.obj.particles.core"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:questions": {
+      "id": "ja:concept:questions",
+      "title": "Câu hỏi với か và từ để hỏi",
+      "shortRule": "Thêm か vào cuối câu là thành câu hỏi. Từ để hỏi đứng đúng chỗ của câu trả lời.",
+      "explanation": "Tiếng Việt thêm \"không\", \"à\" ở cuối câu; tiếng Nhật thêm か: 学生ですか. Trật tự từ không đổi. Từ để hỏi đứng ở chỗ câu trả lời sẽ đứng: トイレはどこですか — トイレはあそこです. Hay gặp: 何 (cái gì), どこ (ở đâu), いつ (khi nào), 誰 (ai), いくら (bao nhiêu tiền), いくつ (mấy cái), 何時 (mấy giờ). Câu hỏi viết bằng chữ Nhật thường kết thúc bằng 。, không cần dấu ?.",
+      "examples": [
+        {
+          "ja": "これはなんですか。",
+          "vi": "Đây là cái gì?",
+          "note": "何 trước です đọc là なん"
+        },
+        {
+          "ja": "駅はどこですか。",
+          "vi": "Ga ở đâu?"
+        },
+        {
+          "ja": "誕生日はいつですか。",
+          "vi": "Sinh nhật bạn là khi nào?"
+        },
+        {
+          "ja": "このかばんはいくらですか。",
+          "vi": "Cái túi này bao nhiêu tiền?"
+        }
+      ],
+      "exceptions": [
+        "Trả lời câu hỏi có/không bằng はい hoặc いいえ, rồi lặp lại động từ hoặc です: はい、学生です."
+      ],
+      "memoryHint": "か ở cuối = dấu hỏi nói thành tiếng.",
+      "objectives": [
+        "ja.obj.questions.question_words"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:kosoado": {
+      "id": "ja:concept:kosoado",
+      "title": "これ, それ, あれ, どれ",
+      "shortRule": "こ: gần người nói; そ: gần người nghe; あ: xa cả hai; ど: hỏi. これ đứng một mình, この đứng trước danh từ.",
+      "explanation": "Tiếng Việt có \"này, đó, kia\"; tiếng Nhật có bốn bộ theo cùng một khuôn. これ, それ, あれ, どれ là cái này, cái đó, cái kia, cái nào. この, その, あの, どの đi trước danh từ: この本. ここ, そこ, あそこ, どこ là chỗ này, chỗ đó, đằng kia, ở đâu. こちら, そちら, あちら, どちら là cách nói lịch sự về phía hay người.",
+      "examples": [
+        {
+          "ja": "これはわたしのかばんです。",
+          "vi": "Đây là cái túi của tôi."
+        },
+        {
+          "ja": "そのかさはいくらですか。",
+          "vi": "Cái ô đó bao nhiêu tiền?",
+          "note": "その đứng trước danh từ"
+        },
+        {
+          "ja": "トイレはあそこです。",
+          "vi": "Nhà vệ sinh ở đằng kia."
+        },
+        {
+          "ja": "こちらは木村さんです。",
+          "vi": "Đây là chị Kimura.",
+          "note": "giới thiệu người: こちら"
+        }
+      ],
+      "exceptions": [
+        "この luôn đi kèm danh từ: この本. これ đứng một mình: これは本です. Không nói \"これ本\"."
+      ],
+      "memoryHint": "こ-そ-あ-ど: này, đó, kia, nào.",
+      "objectives": [
+        "ja.obj.questions.question_words",
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:masu-form": {
+      "id": "ja:concept:masu-form",
+      "title": "Động từ thể ます",
+      "shortRule": "ます: làm (bây giờ hoặc sẽ); ません: không làm; ました: đã làm; ませんでした: đã không làm.",
+      "explanation": "Tiếng Việt thêm \"đã\", \"không\", \"sẽ\" trước động từ; tiếng Nhật đổi đuôi động từ. 行きます là \"đi\" và cả \"sẽ đi\": ngữ cảnh cho biết. 行きません là không đi, 行きました là đã đi, 行きませんでした là đã không đi. Đây là cách nói lịch sự, dùng với người mới gặp, ở chỗ làm và với khách. Từ điển ghi dạng gốc (行く); khi nói lịch sự, bạn dùng dạng ます.",
+      "examples": [
+        {
+          "ja": "明日、会社へ行きます。",
+          "vi": "Mai tôi đi làm.",
+          "note": "ます cũng là tương lai"
+        },
+        {
+          "ja": "お酒を飲みません。",
+          "vi": "Tôi không uống rượu."
+        },
+        {
+          "ja": "昨日、映画を見ました。",
+          "vi": "Hôm qua tôi đã xem phim."
+        },
+        {
+          "ja": "今朝、ご飯を食べませんでした。",
+          "vi": "Sáng nay tôi không ăn cơm."
+        }
+      ],
+      "exceptions": [
+        "ありません là phủ định của あります; ありませんでした là quá khứ của nó."
+      ],
+      "memoryHint": "ます–ません–ました–ませんでした: bốn đuôi cho mọi động từ.",
+      "objectives": [
+        "ja.obj.verbs.masu_forms"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:verb-groups": {
+      "id": "ja:concept:verb-groups",
+      "title": "Ba nhóm động từ",
+      "shortRule": "Nhóm 1 đổi âm cuối sang hàng い (行く → 行きます); nhóm 2 bỏ る (食べる → 食べます); nhóm 3: する, 来る.",
+      "explanation": "Mọi động từ ở dạng gốc kết thúc bằng âm hàng う. Nhóm 1: đổi âm cuối sang hàng い rồi thêm ます: 飲む → 飲みます, 買う → 買います, 帰る → 帰ります. Nhóm 2 thường kết thúc bằng -える hoặc -いる: bỏ る rồi thêm ます: 食べる → 食べます, 起きる → 起きます. Nhóm 3 chỉ có hai động từ: する → します, 来る → 来ます (きます). Danh từ + する cũng thuộc nhóm 3: 勉強します. Một số động từ trông như nhóm 2 nhưng thuộc nhóm 1: 帰る, 入る, 走る, 切る.",
+      "examples": [
+        {
+          "ja": "飲みます",
+          "vi": "uống",
+          "note": "nhóm 1: む → み"
+        },
+        {
+          "ja": "帰ります",
+          "vi": "về",
+          "note": "nhóm 1 dù kết thúc bằng える"
+        },
+        {
+          "ja": "食べます",
+          "vi": "ăn",
+          "note": "nhóm 2: bỏ る"
+        },
+        {
+          "ja": "来ます",
+          "vi": "đến",
+          "note": "nhóm 3: đọc là きます"
+        },
+        {
+          "ja": "勉強します",
+          "vi": "học",
+          "note": "danh từ + します"
+        }
+      ],
+      "exceptions": [
+        "Khi học động từ mới, hãy học cả dạng ます: từ điển ghi 帰る, nhưng nói 帰ります."
+      ],
+      "memoryHint": "Học thuộc nhóm 3, nhớ vài ngoại lệ nhóm 1, còn lại theo quy tắc.",
+      "objectives": [
+        "ja.obj.verbs.masu_forms"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:invitations": {
+      "id": "ja:concept:invitations",
+      "title": "Rủ rê: ましょう và ませんか",
+      "shortRule": "〜ませんか: mời lịch sự (bạn có… không?); 〜ましょう: cùng làm nhé.",
+      "explanation": "Tiếng Việt rủ bằng \"đi… không?\" hay \"cùng… nhé\". Tiếng Nhật dùng đuôi động từ: 一緒に昼ご飯を食べませんか (cùng ăn trưa không?) là lời mời nhẹ nhàng, để người kia dễ từ chối. 食べましょう (ăn thôi) là khi cả hai đã đồng ý, hoặc khi gợi ý cùng làm. Trả lời lời mời: いいですね (hay đấy) hoặc ちょっと… (hơi… — từ chối khéo).",
+      "examples": [
+        {
+          "ja": "一緒に昼ご飯を食べませんか。",
+          "vi": "Cùng ăn trưa không?"
+        },
+        {
+          "ja": "ええ、食べましょう。",
+          "vi": "Ừ, ăn thôi."
+        },
+        {
+          "ja": "明日はちょっと…。",
+          "vi": "Mai thì hơi…",
+          "note": "từ chối khéo"
+        }
+      ],
+      "exceptions": [
+        "〜ませんか là phủ định về hình thức nhưng không phải phủ định: đó là lời mời."
+      ],
+      "memoryHint": "ませんか = mời; ましょう = cùng làm.",
+      "objectives": [
+        "ja.obj.verbs.masu_forms",
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:aru-iru": {
+      "id": "ja:concept:aru-iru",
+      "title": "あります và います",
+      "shortRule": "Đồ vật, cây cối: あります. Người, con vật: います. Mẫu: nơi に + vật/người が + あります/います.",
+      "explanation": "Tiếng Việt chỉ có một chữ \"có\". Tiếng Nhật chọn theo thứ được nói đến: 机の上に本があります (vật), 部屋に田中さんがいます (người), 公園に犬がいます (con vật). Nơi chốn đi với に, thứ tồn tại đi với が. Hỏi \"ở đâu\": 本はどこにありますか. あります còn là \"có, sở hữu\": 時間がありません (tôi không có thời gian).",
+      "examples": [
+        {
+          "ja": "机の上にかばんがあります。",
+          "vi": "Trên bàn có cái túi."
+        },
+        {
+          "ja": "部屋にナムさんがいます。",
+          "vi": "Trong phòng có anh Nam."
+        },
+        {
+          "ja": "公園に犬がいます。",
+          "vi": "Ở công viên có con chó.",
+          "note": "con vật: います"
+        },
+        {
+          "ja": "今日は時間がありません。",
+          "vi": "Hôm nay tôi không có thời gian."
+        }
+      ],
+      "exceptions": [
+        "Cây, hoa là vật: あります. Xe cộ, máy móc thường dùng あります."
+      ],
+      "memoryHint": "Biết cử động theo ý mình: います. Còn lại: あります.",
+      "objectives": [
+        "ja.obj.existence.aru_iru",
+        "ja.obj.particles.core"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:adjectives": {
+      "id": "ja:concept:adjectives",
+      "title": "Tính từ い và な",
+      "shortRule": "い: 大きいです, 大きくないです, 大きかったです. な: 静かです, 静かじゃありません, 静かな部屋.",
+      "explanation": "Tiếng Việt đặt tính từ sau danh từ: phòng mới. Tiếng Nhật đặt trước: 新しい部屋. Tính từ い tự chia: phủ định bỏ い thêm くない (大きくないです), quá khứ thêm かった (大きかったです). Tính từ な giống danh từ: 静かです, 静かじゃありません, 静かでした; trước danh từ thêm な: 静かな部屋. Nối hai tính từ: 大きくて新しい, 静かできれい.",
+      "examples": [
+        {
+          "ja": "新しい会社です。",
+          "vi": "Đó là công ty mới.",
+          "note": "tính từ đứng trước"
+        },
+        {
+          "ja": "この部屋は大きくないです。",
+          "vi": "Phòng này không to."
+        },
+        {
+          "ja": "昨日は寒かったです。",
+          "vi": "Hôm qua trời lạnh."
+        },
+        {
+          "ja": "静かな部屋です。",
+          "vi": "Đó là căn phòng yên tĩnh.",
+          "note": "な trước danh từ"
+        }
+      ],
+      "exceptions": [
+        "いい chia thành よくないです, よかったです.",
+        "きれい và 嫌い kết thúc bằng い nhưng là tính từ な: きれいな部屋."
+      ],
+      "memoryHint": "い tự chia; な mượn です.",
+      "objectives": [
+        "ja.obj.adjectives.i_na"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:numbers": {
+      "id": "ja:concept:numbers",
+      "title": "Số đếm và tiền yên",
+      "shortRule": "Đếm theo vạn: 万 là 10.000, nên 20.000 là 二万. Giá viết số Ả Rập + 円: 350円.",
+      "explanation": "Một đến mười: いち, に, さん, よん, ご, ろく, なな, はち, きゅう, じゅう. Số 4 và 7 có hai cách đọc; khi nói số điện thoại hay giá, dùng よん và なな cho rõ. Tiếng Việt đếm theo nghìn; tiếng Nhật đếm theo vạn: 一万 (10.000), 十万 (100.000). Vài số đổi âm: 三百 さんびゃく, 六百 ろっぴゃく, 八百 はっぴゃく, 三千 さんぜん. Giá tiền thường viết bằng số Ả Rập: 1500円.",
+      "examples": [
+        {
+          "ja": "いくらですか。",
+          "vi": "Bao nhiêu tiền?"
+        },
+        {
+          "ja": "350円です。",
+          "vi": "Ba trăm năm mươi yên."
+        },
+        {
+          "ja": "1万円",
+          "vi": "mười nghìn yên",
+          "note": "1万: một vạn"
+        },
+        {
+          "ja": "電話番号は090-1234-5678です。",
+          "vi": "Số điện thoại là 090-1234-5678.",
+          "note": "đọc từng chữ số"
+        }
+      ],
+      "exceptions": [
+        "Số 0 trong số điện thoại đọc là ゼロ hoặc れい."
+      ],
+      "memoryHint": "Bốn số không là một 万.",
+      "objectives": [
+        "ja.obj.numbers.counters"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:counters": {
+      "id": "ja:concept:counters",
+      "title": "Lượng từ: つ, 人, 枚, 個, 回",
+      "shortRule": "Số đi kèm lượng từ hợp với thứ được đếm, rồi đặt trước động từ: りんごを三つ買います.",
+      "explanation": "Tiếng Việt cũng có loại từ: cái, con, tờ. Tiếng Nhật đặt số và lượng từ sau tân ngữ, trước động từ: 切手を二枚ください. つ đếm đồ vật nói chung (một đến mười: 一つ, 二つ… 十 là とお). 人 đếm người: 一人 (ひとり), 二人 (ふたり), từ ba trở đi là số + にん. 枚 cho vật mỏng như vé, giấy, áo; 個 cho vật nhỏ, tròn; 回 cho số lần; 階 cho tầng. Hỏi số lượng: いくつ, 何人.",
+      "examples": [
+        {
+          "ja": "りんごを三つください。",
+          "vi": "Cho tôi ba quả táo."
+        },
+        {
+          "ja": "切手を2枚ください。",
+          "vi": "Cho tôi hai con tem.",
+          "note": "tem mỏng: 枚"
+        },
+        {
+          "ja": "ご家族は何人ですか。",
+          "vi": "Gia đình bạn có mấy người?"
+        },
+        {
+          "ja": "一人です。",
+          "vi": "Một người.",
+          "note": "ひとり, không phải いちにん"
+        }
+      ],
+      "exceptions": [
+        "Một người, hai người đọc riêng: ひとり, ふたり. Bốn người là よにん."
+      ],
+      "memoryHint": "Không biết lượng từ nào thì dùng つ cho đồ vật.",
+      "objectives": [
+        "ja.obj.numbers.counters"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:time-dates": {
+      "id": "ja:concept:time-dates",
+      "title": "Giờ, thứ và ngày tháng",
+      "shortRule": "Giờ: số + 時, phút: số + 分, rưỡi: 半. Năm, tháng, ngày viết theo thứ tự năm → tháng → ngày.",
+      "explanation": "Tiếng Việt nói \"bảy giờ rưỡi\"; tiếng Nhật nói 七時半. Ba giờ đọc khác: 四時 よじ, 七時 しちじ, 九時 くじ. Thứ trong tuần gắn với một chữ: 月曜日 thứ hai, 火曜日 thứ ba… 日曜日 chủ nhật. Ngày mùng 1 đến 10, ngày 14, 20 và 24 có cách đọc riêng: ついたち, 二日 ふつか, 三日 みっか… 十四日 じゅうよっか, 二十日 はつか, 二十四日 にじゅうよっか. Tiếng Việt viết ngày trước; tiếng Nhật viết năm trước: 2002年5月14日.",
+      "examples": [
+        {
+          "ja": "今、何時ですか。",
+          "vi": "Bây giờ là mấy giờ?"
+        },
+        {
+          "ja": "7時半に起きます。",
+          "vi": "Tôi dậy lúc bảy giờ rưỡi."
+        },
+        {
+          "ja": "月曜日から金曜日まで働きます。",
+          "vi": "Tôi làm từ thứ hai đến thứ sáu."
+        },
+        {
+          "ja": "誕生日は五月です。",
+          "vi": "Sinh nhật tôi vào tháng năm."
+        }
+      ],
+      "exceptions": [
+        "Giờ cụ thể đi với に (7時に), nhưng 今日, 明日, 毎日 thì không."
+      ],
+      "memoryHint": "Từ lớn đến nhỏ: năm, tháng, ngày, giờ.",
+      "objectives": [
+        "ja.obj.vocab.time_calendar",
+        "ja.obj.numbers.counters"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:te-form": {
+      "id": "ja:concept:te-form",
+      "title": "Thể て: hãy, đừng, đang",
+      "shortRule": "〜てください: hãy làm; 〜ないでください: đừng làm; 〜ています: đang làm.",
+      "explanation": "Nội quy và chỉ dẫn ở nhà máy hay dùng thể て. Nhóm 2 bỏ る thêm て: 食べて, 見て. Nhóm 1 đổi âm cuối: 書く → 書いて, 飲む → 飲んで, 待つ → 待って, 話す → 話して; 行く → 行って. Nhóm 3: して, 来て. 〜てください là \"hãy\", 〜ないでください là \"đừng\" (触らないでください). 〜ています như \"đang\" trong tiếng Việt: 雨が降っています. 〜てもいいですか là xin phép: 休んでもいいですか.",
+      "examples": [
+        {
+          "ja": "ヘルメットをかぶってください。",
+          "vi": "Hãy đội mũ bảo hộ."
+        },
+        {
+          "ja": "機械に触らないでください。",
+          "vi": "Đừng chạm vào máy.",
+          "note": "đừng: ないでください"
+        },
+        {
+          "ja": "今、雨が降っています。",
+          "vi": "Bây giờ trời đang mưa."
+        },
+        {
+          "ja": "ここに座ってもいいですか。",
+          "vi": "Tôi ngồi đây được không?"
+        }
+      ],
+      "exceptions": [
+        "〜ています còn chỉ trạng thái kéo dài: 大阪に住んでいます (tôi sống ở Osaka), 結婚しています (đã kết hôn)."
+      ],
+      "memoryHint": "て nối việc này với việc khác: hãy, đừng, đang, được không.",
+      "objectives": [
+        "ja.obj.verbs.te_form"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:tai-suki": {
+      "id": "ja:concept:tai-suki",
+      "title": "Muốn và thích: たい, 好き, 欲しい",
+      "shortRule": "Muốn làm: thân động từ + たいです. Thích: 〜が好きです. Muốn có: 〜が欲しいです.",
+      "explanation": "Tiếng Việt nói \"muốn đi\", \"thích cà phê\". Tiếng Nhật thêm たい vào thân động từ ます: 行きます → 行きたいです, 食べます → 食べたいです. Phủ định: 行きたくないです. Thích, ghét, giỏi, kém đi với が: コーヒーが好きです, 料理が上手です. Muốn có một vật: 車が欲しいです. Trong phỏng vấn, 日本で働きたいです là câu rất hay dùng.",
+      "examples": [
+        {
+          "ja": "日本で働きたいです。",
+          "vi": "Tôi muốn làm việc ở Nhật."
+        },
+        {
+          "ja": "音楽が好きです。",
+          "vi": "Tôi thích âm nhạc.",
+          "note": "好き đi với が"
+        },
+        {
+          "ja": "新しいスマホが欲しいです。",
+          "vi": "Tôi muốn có điện thoại mới."
+        },
+        {
+          "ja": "料理が上手ですね。",
+          "vi": "Bạn nấu ăn giỏi nhỉ."
+        }
+      ],
+      "exceptions": [
+        "Không dùng たい để mời người khác hay hỏi cấp trên: nói 〜ませんか thay cho \"anh muốn… không\"."
+      ],
+      "memoryHint": "たい = muốn làm; 欲しい = muốn có; 好き = thích (đi với が).",
+      "objectives": [
+        "ja.obj.wants.tai_suki"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:politeness": {
+      "id": "ja:concept:politeness",
+      "title": "Lời lịch sự và lời thường",
+      "shortRule": "Bạn nói です/ます với người lạ, ở chỗ làm và với khách. Lời thường (行く, 食べた) là cách bạn bè nói với nhau.",
+      "explanation": "Tiếng Việt thể hiện lịch sự bằng xưng hô (anh, chị, em) và \"ạ\". Tiếng Nhật thể hiện bằng đuôi câu: 行きます là lịch sự, 行く là thân mật. Dạng thường cũng là dạng trong từ điển. Ở bài này bạn chỉ cần nhận ra dạng thường: 行かない (không đi), 行った (đã đi). Nhân viên cửa hàng còn dùng kính ngữ như お持ちですか, ご利用ですか; bạn không cần nói như vậy, です/ます là đủ.",
+      "examples": [
+        {
+          "ja": "明日、行きますか。",
+          "vi": "Mai bạn có đi không?",
+          "note": "lịch sự"
+        },
+        {
+          "ja": "お持ちですか。",
+          "vi": "Quý khách có mang theo không?",
+          "note": "kính ngữ của nhân viên"
+        }
+      ],
+      "exceptions": [
+        "Với cấp trên, đừng chuyển sang lời thường dù họ nói thường với bạn."
+      ],
+      "memoryHint": "Không chắc thì cứ です/ます.",
+      "objectives": [
+        "ja.obj.politeness.levels"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    },
+    "ja:concept:family-terms": {
+      "id": "ja:concept:family-terms",
+      "title": "Gia đình mình và gia đình người",
+      "shortRule": "Nói về gia đình mình dùng từ khiêm tốn (父, 母); nói về gia đình người khác dùng từ kính trọng (お父さん, お母さん).",
+      "explanation": "Tiếng Việt dùng cùng một từ \"bố\" cho bố mình và bố bạn. Tiếng Nhật có hai bộ từ. Khi nói với người ngoài về gia đình mình: 父, 母, 兄, 姉. Khi nói về gia đình người khác: お父さん, お母さん, お兄さん, お姉さん. Em trai 弟 và em gái 妹 thì tách rõ, không gộp như \"em\" của tiếng Việt. Trong nhà, người Nhật cũng gọi bố mẹ mình là お父さん, お母さん.",
+      "examples": [
+        {
+          "ja": "父は会社員です。",
+          "vi": "Bố tôi là nhân viên công ty.",
+          "note": "bố mình: 父"
+        },
+        {
+          "ja": "お父さんはお元気ですか。",
+          "vi": "Bố bạn có khoẻ không?",
+          "note": "bố người khác: お父さん"
+        },
+        {
+          "ja": "弟が一人います。",
+          "vi": "Tôi có một em trai."
+        }
+      ],
+      "exceptions": [
+        "Gọi trực tiếp bố mẹ mình trong nhà: お父さん, お母さん, không gọi là 父, 母."
+      ],
+      "memoryHint": "Có お…さん là nói về nhà người khác.",
+      "objectives": [
+        "ja.obj.vocab.everyday_basics"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-japanese-course"
+        }
+      ]
+    }
+  }
+}

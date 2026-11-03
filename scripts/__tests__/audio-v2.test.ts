@@ -103,9 +103,9 @@ describe("engine abstraction", () => {
   });
 
   test("QC 2026-10-29b §3.3: only the Piper short words rendered with the old recipe get a new key; every other blessed clip keeps its key", () => {
-    const key = (engine: string, text: string, version = 3) => packAssetKey("de-vi", "de_DE-thorsten-high", null, text, version, packClipRecipe({ engine, text, pipelineVersion: version, synthesis: null }));
+    const key = (engine: string, text: string, version = 3) => packAssetKey("de-vi", "de_DE-thorsten-high", null, text, version, packClipRecipe({ language: "de", engine, text, pipelineVersion: version, synthesis: null }));
     const legacy = (text: string, version = 3) => packAssetKey("de-vi", "de_DE-thorsten-high", null, text, version);
-    expect(packClipRecipe({ engine: "piper", text: "du", pipelineVersion: 3, synthesis: null })).toBe(SHORT_WORD_RECIPE);
+    expect(packClipRecipe({ language: "de", engine: "piper", text: "du", pipelineVersion: 3, synthesis: null })).toBe(SHORT_WORD_RECIPE);
     expect(key("piper", "du")).not.toBe(legacy("du")); // re-generated in the next de run
     expect(key("piper", "Sie")).not.toBe(legacy("Sie"));
     expect(key("piper", "Guten Tag")).toBe(legacy("Guten Tag")); // longer clips: byte-identical reuse

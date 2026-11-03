@@ -54,10 +54,11 @@
         "uiLanguage",
         "assessmentByTarget",
         "dailyNewWords",
-        "readingAid"
+        "readingAid",
+        "primerPassed"
       ]
     },
-    "persistVersion": 8
+    "persistVersion": 9
   },
   "fromVersion": 0,
   "invariants": [],
@@ -147,6 +148,7 @@
     "heartsUpdatedAt": 1767000000000,
     "lastActiveDay": "2026-01-10",
     "onboardingDone": true,
+    "primerPassed": {},
     "readingAid": {},
     "reviewLog": [],
     "streak": 5,
@@ -246,11 +248,12 @@
       "heartsUpdatedAt": 1767000000000,
       "lastActiveDay": "2026-01-10",
       "onboardingDone": true,
+      "primerPassed": {},
       "readingAid": {},
       "streak": 5,
       "themePreference": "dark",
       "uiLanguage": "system"
     }
   },
-  "toVersion": 8
+  "toVersion": 9
 }
