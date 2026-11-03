@@ -14,7 +14,10 @@ generator, run `bash content/ja/_drafts/_generators/ja-pipeline.sh` (byte-determ
 | Kanji | 100 taught kanji: all 79 N5 + the 21 N4 kanji the A1 words use most | `content/ja/_drafts/review/kanji.json` |
 | Hán-Việt | 115 course words added to the P4b table (160 entries); each passes the Unihan check or carries a note | `content/hanviet/ja.json`, source `hanviet-ja.txt` |
 | Objectives | 37 (26 essential), claim policy v2, attainment, RESEARCH.md, JF Standard categories | staged `content/ja/assessment/`, `_drafts/objectives/jf-standard.json` |
-| Course skeleton | 6 sections, 27 units, 108 lessons (no exercises yet), 174 unit words, guidebooks in Vietnamese | staged `content/courses/ja-vi.json` = `_drafts/pack.json` |
+| Course skeleton | 6 sections, 27 units, 108 lessons, 174 unit words, guidebooks in Vietnamese | staged `content/courses/ja-vi.json` |
+| Lessons (session 2) | 108 lessons, 835 exercises (select 410, fillBlank 137, typeAnswer 110, wordBank 93, match 83), 60 particle fill-ins, concept steps in 47 lessons; self-check 0 findings | `_generators/ja-lessons-s1…s6.py`, `ja-check-answers.py`, `_drafts/REVIEW-NOTES.md` |
+| Concept cards (session 2) | 25 cards (vi + en), all used in lesson flows; no paradigm table (§10.6) | `_generators/ja-concepts.py` → staged `content/ja/pedagogy/concepts.json` |
+| Furigana of inflected forms (session 2) | verbs and い-adjectives read through inflection keys at run time; kana typed for them aligns as practice | `src/lib/languages/ja-inflection.ts` (+ test), ported in `_generators/ja_text.py` |
 | Syllabus | A1 718 by unit, A2-1 226 | staged `content/ja/lexicon/syllabus*.json`, `topic-units.json` |
 | ja-en (basic pack) | never edited; 57 of 58 words map (9 through `legacySurfaces`), さかな listed in `legacy-unmapped.json`; standalone profile staged | `content/ja/lexicon/legacy-unmapped.json` |
 
@@ -133,15 +136,30 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
 5. Lexeme ids: Hepburn-like romaji of the kana, long marks doubled (コーヒー → `ja:w:koohii`), a clash gets the English
    gloss's first word (`ja:w:hashi-bridge`). Frozen from now on.
 
+### Session 2 (2026-11-03)
+
+6. **No conjugationCloze yet.** A ja paradigm table must be complete and every cell evidenced by morphology rows; the
+   committed `derived/morphology.json` tags only `inf` and `formal`. Verb forms are drilled as fill-ins with the forms as
+   options. Re-open when the derivation tags the other seven cells (needs the kaikki dump).
+7. **Furigana come from the lexicon at run time**, so exercise text holds no readings. Inflected forms read through
+   inflection keys (`src/lib/languages/ja-inflection.ts`); a key two verbs share with different readings (降ります) is
+   dropped. Exercise text therefore writes: kanji only inside lexicon surfaces or their inflected forms, numbers before
+   a counter in digits (7時, 2枚; kanji numeral compounds only when they are lexemes: 一人, 二つ, 五月), non-lexicon words
+   and Japanese names in kana, 何 before です/で/の as なん.
+8. **Kana as production**: Section 1 and unit o list the kana spelling of a kanji key; elsewhere kana is practice.
+9. Lessons are written per section into `_drafts/lessons/parts/<s>.jsonl`; `ja-check-answers.py` joins them into
+   `lessons/OUTPUT.jsonl` and is the self-check of the answer keys (`REVIEW-NOTES.md`).
+
 ## 11. Next sessions
 
-1. **Lessons** (2 sessions): Sections 1–2 then 3–6; all exercise types the blueprint allows for ja; Japanese production from
-   Section 1 (kana typeAnswer, wordBank); `flow` concept steps in ≥ 25 lessons; concept cards (≈ 20, brief §3).
+1. ~~**Lessons**~~ done in session 2 (one session): 108 lessons, 835 exercises, 25 cards. Left for the layer sessions:
+   the Section 3–6 exercise types that point at reception, speech, writing and scenario records.
 2. **Reception + speech + writing** (1–2): ≥ 19 readings with furigana, ≈ 180 clips (cast A/B), 50 speech items
    (22 reserved, ja-JP), 34 writing tasks (16 reserved, kana input; decide P4b's open item: free writing typed all in
-   kana = practice).
+   kana = practice). Then add to the Section 3–6 lessons: listeningComprehension, readingComprehension and dictation
+   (units f–j), speakRepetition/speakProduction (k–n), guidedWriting/simpleForm (o–r), with ids like `en_lesson_refs.py`.
 3. **Primer + romaji gate** (1): §4 above, with the migration.
-4. **Scenarios** (1): §5, 18 with 10 reserved.
+4. **Scenarios** (1): §5, 18 with 10 reserved; interactionScenario exercises in units s–v.
 5. **Assessment + JLPT N5 track** (1–2): 7 checkpoints, placement, the exam file with ≥ 2 mock forms, format sources.
 6. **Stories** (1–2): 40–50 graded stories A1-0…A2-1, context coverage of the A1 syllabus.
 7. **D-10 review** (AI pass, then the owner), **audio** (canary + generate, CER audit), promote, compile, V8 re-key, claim gate,
