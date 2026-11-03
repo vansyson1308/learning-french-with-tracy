@@ -3,6 +3,7 @@ import type { Exercise, GuidedWritingExercise, SimpleFormExercise } from "./type
 import { courseProfile } from "./course-profile";
 import { languageRulesForCourse } from "./languages";
 import { normalizeLenientLatin, normalizeStrictLatin } from "./languages/base";
+import { alignedMatchKind, bestMatchKind } from "./languages/reading-input";
 import type { LanguageRules } from "./languages/types";
 import { gradeSpokenAttempt } from "./speech/grader";
 import { knownVocabulary } from "./writing/content";
@@ -167,8 +168,14 @@ function lenientMatch(rules: LanguageRules, a: string, b: string): "script" | "r
   if (key === attempt) return "script";
   const alternate = rules.normalizeLenientAlternate;
   if (alternate !== undefined && alternate(a) === alternate(b)) return "script";
-  if (rules.alignAnswerToKey?.(attempt, key) === key) return rules.readingInput === undefined ? "script" : "reading";
+  if (rules.alignAnswerToKey?.(attempt, key) === key) return alignedMatchKind(rules);
   return null;
+}
+
+/** Whether the P4b guard applies: the course's plugin declares a reading notation and its profile does not count it as production. */
+function readingInputGuarded(courseId: string): boolean {
+  if (courseId === "") return false;
+  return languageRulesForCourse(courseId).readingInput !== undefined && courseProfile(courseId).readingInputIsProduction !== true;
 }
 
 /**
@@ -179,11 +186,19 @@ function lenientMatch(rules: LanguageRules, a: string, b: string): "script" | "r
  * evidence for the item) and the evidence plan drops to "practice". A
  * course profile with `readingInputIsProduction` opts out. Latin-script
  * plugins declare no reading notation, so this is always false for them.
+ *
+ * Writing (guided writing, simple forms): the rubric's verdict is ONE
+ * result for the whole task, so a task that meets its rubric while any
+ * slot was realized only through the reading notation is reading-only as a
+ * whole (the slot-level scoring view is productionWritingEvaluation).
  */
 export function readingOnlyAnswer(exercise: Exercise, answer: Answer, courseId: string): boolean {
-  if (courseId === "") return false;
+  if (!readingInputGuarded(courseId)) return false;
+  if (exercise.type === "guidedWriting" || exercise.type === "simpleForm") {
+    const evaluation = evaluateWrittenAnswer(exercise, answer, courseId);
+    return evaluation?.verdict === "meets_rubric" && evaluation.readingOnlySlotIds !== undefined;
+  }
   const rules = languageRulesForCourse(courseId);
-  if (rules.readingInput === undefined || courseProfile(courseId).readingInputIsProduction === true) return false;
   let keys: string[];
   let attempt: string;
   if (exercise.type === "typeAnswer" && typeof answer === "string") {
@@ -193,8 +208,26 @@ export function readingOnlyAnswer(exercise: Exercise, answer: Answer, courseId: 
     keys = [exercise.answer, ...(exercise.alternatives ?? [])].map((a) => a.join(" "));
     attempt = answer.map((i) => exercise.tokens[i]).join(" ");
   } else return false;
-  const matches = keys.map((k) => lenientMatch(rules, k, attempt));
-  return matches.includes("reading") && !matches.includes("script");
+  return bestMatchKind(keys.map((k) => lenientMatch(rules, k, attempt))) === "reading";
+}
+
+/**
+ * The SCORING view of a writing evaluation (P4b): slots realized only
+ * through the reading notation earn nothing — per slot, because message
+ * points score per slot. Under the profile opt-out, for Latin-script
+ * courses, and whenever no slot was matched that way, this is the
+ * evaluation itself. The learner-facing verdict and feedback are the plain
+ * evaluateWrittenAnswer result.
+ */
+export function productionWritingEvaluation(
+  exercise: GuidedWritingExercise | SimpleFormExercise,
+  answer: Answer,
+  courseId: string
+): WritingEvaluation | null {
+  const evaluation = evaluateWrittenAnswer(exercise, answer, courseId);
+  const readingOnly = evaluation?.readingOnlySlotIds;
+  if (!evaluation || readingOnly === undefined || !readingInputGuarded(courseId)) return evaluation;
+  return { ...evaluation, matchedSlotIds: evaluation.matchedSlotIds.filter((id) => !readingOnly.includes(id)) };
 }
 
 export function strictEquals(a: string, b: string, courseId?: string): boolean {

@@ -8,7 +8,7 @@
  * controller, keyed off state transitions.
  */
 
-import { checkAnswer, evaluateWrittenAnswer, readingOnlyAnswer, type Answer } from "../grading";
+import { checkAnswer, productionWritingEvaluation, readingOnlyAnswer, type Answer } from "../grading";
 import { messagePoints } from "../writing/message-points";
 import type { Exercise } from "../types";
 
@@ -147,10 +147,13 @@ function advance(state: SessionMachineState, requeueCurrent: boolean): SessionMa
   };
 }
 
-/** Rubric credit of an exam message answer (share of its points), or null when it is no evidence. */
+/**
+ * Rubric credit of an exam message answer (share of its points), or null when it is no evidence.
+ * Scored per slot on the production view (P4b): a slot realized only through the reading notation earns nothing.
+ */
 function writingCredit(step: ExerciseStep, answer: Answer, courseId: string | undefined): number | null {
   if (!step.writingPoints || !courseId || (step.exercise.type !== "guidedWriting" && step.exercise.type !== "simpleForm")) return null;
-  const evaluation = evaluateWrittenAnswer(step.exercise, answer, courseId);
+  const evaluation = productionWritingEvaluation(step.exercise, answer, courseId);
   const points = evaluation ? messagePoints(evaluation, step.writingPoints) : null;
   return points === null ? null : points.points / points.maxPoints;
 }
@@ -189,7 +192,7 @@ export function sessionReducer(
         attempt === 0 && !readingOnly
           ? { ...state.firstResults, [step.stepId]: correct }
           : state.firstResults;
-      const credit = attempt === 0 && step.writingPoints ? writingCredit(step, state.answer, state.courseId) : null;
+      const credit = attempt === 0 && !readingOnly && step.writingPoints ? writingCredit(step, state.answer, state.courseId) : null;
       return {
         ...state,
         ...(credit !== null ? { firstCredits: { ...(state.firstCredits ?? {}), [step.stepId]: credit } } : {}),
