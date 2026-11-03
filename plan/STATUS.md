@@ -7,7 +7,14 @@
 > - **Voice sampler:** artifact `voice-samplers` đã có trên main (run 41525390857), gồm fr 82 giây, de 88 giây, pt 72 giây, en 94 giây. Dòng tuỳ chọn ở đầu checklist.
 > - **D-15:** đã có `plan/10-LADDER-A1-C2.md`, plan/09 cũng theo tài liệu này. Test quy mô 12.000 từ / 300 unit đạt mọi ngân sách sau khi sửa 9 chỗ. Ví dụ: dựng DB từ 16,8 phút còn khoảng 1 giây; dựng TODAY từ 324 ms còn dưới 60 ms. Chi tiết ở §8.
 > - **main đỏ hai lần, cả hai đều chập chờn** (`plan/reports/flakes.md`): lần 41156642768 do dây chuyền lỗi trong shard; lần 41525391190 do sdkmanager tải file zip hỏng. Chạy lại đúng commit thì xanh.
-> - **P4b** (`phase-4/cjk-plugins`): giai đoạn 1 xong (giấy phép có phạm vi), giai đoạn 2 xong (Hán-Việt, 118 cặp), giai đoạn 3 xong (plugin ja/zh/ko, 173 test). Kế tiếp là giai đoạn 4 (cách đọc tạo lúc build) và giai đoạn 5 (hiển thị, nhập môn chữ viết, bảng chia, FTS).
+> - **P4b** (`phase-4/cjk-plugins`): xong cả 5 giai đoạn, báo cáo ở `plan/reports/P4b.md`.
+>   - Giai đoạn 1: giấy phép có phạm vi.
+>   - Giai đoạn 2: Hán-Việt, 118 cặp.
+>   - Giai đoạn 3: plugin ja/zh/ko, 173 test.
+>   - Giai đoạn 4: cách đọc lấy từ JMdict, JmdictFurigana, CC-CEDICT và quy tắc RR; không dùng MeCab vì giấy phép không nằm trong allowlist.
+>   - Giai đoạn 5: hiển thị furigana/pinyin/RR, chặn kana/pinyin làm bằng chứng sản sinh, bài nhập môn chữ viết, bảng chia, FTS trigram.
+>   - Kết quả: 2.557 bun test và 104 jest test đều qua. Chờ PR.
+>   - **Việc chặn P4c:** phần chấm bài viết (`rubric.ts`) chưa có chốt chặn kana/pinyin.
 >
 > **Ghi chú (2026-11-02, tối, QC-2026-11-02):**
 > - **Các lần tự thức bị lỗi (QC §0):** các lần check-in là `ScheduleWakeup` trong phiên desktop, không phải tác vụ hẹn giờ (`list_scheduled_tasks` trả về "No scheduled tasks found"). Phiên dừng sau 09:10 UTC. Hai lần hẹn 16:15 và 17:18 (giờ máy, +07:00) không chạy, và lần chạy gate cục bộ (task b7vegiakz) kết thúc với thông báo "Background shell command didn't finish before the previous session ended". Ứng dụng không cho xem nội dung lỗi của "(2 failed)", nên không chép được thông báo lỗi. Nguyên nhân có thể: máy ngủ hoặc ứng dụng đóng; giữ máy thức chỉ có tác dụng khi phiên còn mở. Từ nay gate dài chạy trên CI rồi đọc kết quả qua API; shell nền cục bộ chỉ dùng cho việc ngắn.
