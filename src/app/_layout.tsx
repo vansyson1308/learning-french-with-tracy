@@ -126,6 +126,7 @@ export default function RootLayout() {
         <Stack.Screen name="licenses" options={{ presentation: "modal" }} />
         <Stack.Screen name="privacy" options={{ presentation: "modal" }} />
         <Stack.Screen name="goals" options={{ presentation: "modal" }} />
+        <Stack.Screen name="primer" options={{ presentation: "modal" }} />
       </Stack>
     </>
   );

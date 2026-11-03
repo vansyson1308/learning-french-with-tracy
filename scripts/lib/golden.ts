@@ -19,6 +19,7 @@ import path from "path";
 
 import { compileAllArtifacts } from "./compile-artifacts";
 import { HANVIET_REVIEW_REL } from "./hanviet";
+import { PRIMER_LANGS, primerReviewRel } from "./script-primer";
 import { buildSqliteDb, dbAssetLanguage, logicalDump } from "./lexicon-build";
 import { loadRegistry, readJson, removeTempDirSync, safeResolve } from "./pipeline";
 
@@ -77,6 +78,8 @@ export function pinnedGeneratedFiles(): string[] {
     "ATTRIBUTIONS.md",
     // P4b stage 2: the generated Hán-Việt D-10 review sheet (scripts/lib/hanviet.ts).
     ...(existsSync(safeResolve(HANVIET_REVIEW_REL)) ? [HANVIET_REVIEW_REL] : []),
+    // P4b stage 5: the generated script-primer D-10 review sheets (scripts/lib/script-primer.ts).
+    ...PRIMER_LANGS.map(primerReviewRel).filter((rel) => existsSync(safeResolve(rel))),
   ].sort();
 }
 

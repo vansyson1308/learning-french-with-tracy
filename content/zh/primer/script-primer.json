@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "language": "zh",
+  "id": "zh.primer.script",
+  "title": {
+    "vi": "Thanh điệu và nét chữ Hán",
+    "en": "Tones and strokes"
+  },
+  "intro": {
+    "vi": "Tiếng Trung phổ thông có bốn thanh và một thanh nhẹ. Giống tiếng Việt, đổi thanh là đổi nghĩa: mā (mẹ) và mǎ (ngựa) là hai từ khác hẳn nhau. Phiên âm pinyin ghi thanh bằng dấu đặt trên nguyên âm.",
+    "en": "Standard Chinese has four tones plus a light, neutral tone. As in Vietnamese, a different tone makes a different word: mā (mother) and mǎ (horse) have nothing in common. Pinyin marks the tone over the vowel."
+  },
+  "sections": [
+    {
+      "kind": "tones",
+      "id": "four-tones",
+      "title": {
+        "vi": "Bốn thanh và thanh nhẹ",
+        "en": "The four tones and the neutral tone"
+      },
+      "explanation": {
+        "vi": "Hãy nghe và nói theo cùng một âm tiết ma với từng thanh. Người Việt có lợi thế vì đã quen phân biệt thanh, nhưng đừng thay bằng thanh tiếng Việt: hãy chú ý độ cao bắt đầu và kết thúc của giọng.",
+        "en": "Listen and repeat the one syllable ma in each tone. Track where your voice starts and where it ends; the numbers (55, 35, 214, 51) give that pitch on a 1–5 scale."
+      },
+      "tones": [
+        {
+          "tone": 1,
+          "mark": "ā",
+          "contour": "55",
+          "description": {
+            "vi": "Thanh 1: cao và đều, giữ nguyên độ cao như khi ngân một nốt nhạc — giống thanh ngang của tiếng Việt nhưng cao hơn.",
+            "en": "Tone 1: high and level, held steady like a sung note."
+          },
+          "example": { "hanzi": "妈", "pinyin": "mā", "gloss": { "vi": "mẹ", "en": "mother" } },
+          "audio": { "say": "妈", "status": "pending" }
+        },
+        {
+          "tone": 2,
+          "mark": "á",
+          "contour": "35",
+          "description": {
+            "vi": "Thanh 2: đi lên từ giữa lên cao, như khi hỏi lại «hả?» — gần với thanh sắc.",
+            "en": "Tone 2: rises from mid to high, like a surprised “huh?”."
+          },
+          "example": { "hanzi": "麻", "pinyin": "má", "gloss": { "vi": "cây gai; tê (tê tay)", "en": "hemp; numb" } },
+          "audio": { "say": "麻", "status": "pending" }
+        },
+        {
+          "tone": 3,
+          "mark": "ǎ",
+          "contour": "214",
+          "description": {
+            "vi": "Thanh 3: hạ thấp xuống rồi lên lại — gần với thanh hỏi. Khi nói nhanh hoặc đứng trước thanh khác, thường chỉ còn phần thấp.",
+            "en": "Tone 3: dips low, then rises. In quick speech or before another tone it usually keeps only the low part."
+          },
+          "example": { "hanzi": "马", "pinyin": "mǎ", "gloss": { "vi": "ngựa", "en": "horse" } },
+          "audio": { "say": "马", "status": "pending" }
+        },
+        {
+          "tone": 4,
+          "mark": "à",
+          "contour": "51",
+          "description": {
+            "vi": "Thanh 4: rơi nhanh từ cao xuống thấp, dứt khoát như khi ra lệnh. Đừng đọc thành thanh huyền: thanh huyền bắt đầu thấp và đi đều, còn thanh 4 bắt đầu rất cao.",
+            "en": "Tone 4: falls sharply from high to low, like a firm command."
+          },
+          "example": { "hanzi": "骂", "pinyin": "mà", "gloss": { "vi": "mắng", "en": "to scold" } },
+          "audio": { "say": "骂", "status": "pending" }
+        },
+        {
+          "tone": 5,
+          "mark": "a",
+          "description": {
+            "vi": "Thanh nhẹ: ngắn, nhẹ và không có dấu; độ cao tùy theo âm tiết đứng trước.",
+            "en": "Neutral tone: short, light and unmarked; its pitch depends on the syllable before it."
+          },
+          "example": { "hanzi": "吗", "pinyin": "ma", "gloss": { "vi": "trợ từ hỏi (… không?)", "en": "question particle" } },
+          "audio": { "say": "吗", "status": "pending" }
+        }
+      ],
+      "minimalPairs": [
+        {
+          "a": { "hanzi": "买", "pinyin": "mǎi", "gloss": { "vi": "mua", "en": "to buy" } },
+          "b": { "hanzi": "卖", "pinyin": "mài", "gloss": { "vi": "bán", "en": "to sell" } },
+          "note": {
+            "vi": "Chỉ khác thanh mà nghĩa ngược hẳn: thanh 3 là mua, thanh 4 là bán.",
+            "en": "Only the tone differs, and the meanings are opposites: tone 3 buys, tone 4 sells."
+          }
+        },
+        {
+          "a": { "hanzi": "汤", "pinyin": "tāng", "gloss": { "vi": "canh", "en": "soup" } },
+          "b": { "hanzi": "糖", "pinyin": "táng", "gloss": { "vi": "đường, kẹo", "en": "sugar, sweets" } }
+        },
+        {
+          "a": { "hanzi": "问", "pinyin": "wèn", "gloss": { "vi": "hỏi", "en": "to ask" } },
+          "b": { "hanzi": "闻", "pinyin": "wén", "gloss": { "vi": "ngửi", "en": "to smell" } }
+        },
+        {
+          "a": { "hanzi": "书", "pinyin": "shū", "gloss": { "vi": "sách", "en": "book" } },
+          "b": { "hanzi": "树", "pinyin": "shù", "gloss": { "vi": "cây", "en": "tree" } }
+        }
+      ],
+      "notes": [
+        {
+          "vi": "Hai thanh 3 đi liền nhau thì thanh 3 đầu đọc thành thanh 2: nǐ hǎo (你好) nghe như ní hǎo, nhưng pinyin vẫn viết dấu thanh 3.",
+          "en": "Two third tones in a row: the first is said as a second tone — nǐ hǎo (你好) sounds like ní hǎo, though pinyin keeps the third-tone mark."
+        }
+      ]
+    },
+    {
+      "kind": "strokes",
+      "id": "basic-strokes",
+      "title": {
+        "vi": "Các nét cơ bản và thứ tự viết",
+        "en": "Basic strokes and stroke order"
+      },
+      "explanation": {
+        "vi": "Mọi chữ Hán đều ghép từ một số ít nét cơ bản. Viết đúng thứ tự nét giúp chữ cân đối, dễ nhớ và dễ tra từ điển bằng cách viết tay.",
+        "en": "Every character is built from a handful of basic strokes. Writing them in the right order keeps characters balanced, easier to remember and easier to look up by handwriting."
+      },
+      "strokes": [
+        { "shape": "㇐", "name": "héng", "description": { "vi": "Nét ngang: viết từ trái sang phải.", "en": "Horizontal: written left to right." } },
+        { "shape": "㇑", "name": "shù", "description": { "vi": "Nét sổ: viết từ trên xuống dưới.", "en": "Vertical: written top to bottom." } },
+        { "shape": "㇒", "name": "piě", "description": { "vi": "Nét phẩy: kéo xiên từ trên phải xuống dưới trái.", "en": "Left-falling: from upper right down to the left." } },
+        { "shape": "㇏", "name": "nà", "description": { "vi": "Nét mác: kéo xiên từ trên trái xuống dưới phải, cuối nét hơi đậm.", "en": "Right-falling: from upper left down to the right, widening at the end." } },
+        { "shape": "㇔", "name": "diǎn", "description": { "vi": "Nét chấm: một nét ngắn chấm xuống.", "en": "Dot: a short downward touch." } },
+        { "shape": "㇕", "name": "héngzhé", "description": { "vi": "Nét gập: đi ngang rồi gập xuống, viết liền một nét.", "en": "Horizontal-turn: across, then down, in one stroke." } }
+      ],
+      "rules": [
+        { "rule": { "vi": "Ngang trước, sổ sau.", "en": "Horizontal before vertical." }, "example": "十" },
+        { "rule": { "vi": "Phẩy trước, mác sau.", "en": "Left-falling before right-falling." }, "example": "人" },
+        { "rule": { "vi": "Trên trước, dưới sau.", "en": "Top before bottom." }, "example": "三" },
+        { "rule": { "vi": "Trái trước, phải sau.", "en": "Left before right." }, "example": "川" },
+        { "rule": { "vi": "Ngoài trước, trong sau; nét đóng khung viết sau cùng («vào nhà rồi mới đóng cửa»).", "en": "Outside before inside; the closing stroke comes last." }, "example": "国" }
+      ]
+    }
+  ]
+}

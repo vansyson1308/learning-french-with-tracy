@@ -46,6 +46,7 @@ import { compileDailyWordsArtifact, deriveSyllabus, loadLaterSyllabus, loadSylla
 import { validateEnglishFields } from "./english-fields";
 import { validateCjkPoolReadings } from "./cjk-readings/pool";
 import { compileHanVietFiles, validateHanViet } from "./hanviet";
+import { compileScriptPrimerFiles, validateScriptPrimers } from "./script-primer";
 import { compileContextCoverageReport, computeContextCoverage, contextGateErrors, contextGatePath, type ContextGate } from "./context-coverage";
 import { varietyErrors } from "./variety";
 import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
@@ -596,6 +597,8 @@ export function validateAllSources(): string[] {
   errors.push(...validateHanViet());
   // P4b stage 4: every ja/zh/ko candidate-pool entry has a confirmed reading or a listed reason.
   errors.push(...validateCjkPoolReadings());
+  // P4b stage 5: script primers (kana / tones / Hangul) against the plugins' own rules.
+  errors.push(...validateScriptPrimers());
   return errors;
 }
 
@@ -971,6 +974,8 @@ export function compileAllArtifacts(): CompiledArtifacts {
   }
   // P4b stage 2: language-level Hán-Việt tables (no course needed) + the D-10 sheet.
   files.push(...compileHanVietFiles());
+  // P4b stage 5: script primers (src/content/primer/<lang>.json) + their D-10 sheets.
+  files.push(...compileScriptPrimerFiles());
 
   return { files, coverage, lexiconDbs };
 }

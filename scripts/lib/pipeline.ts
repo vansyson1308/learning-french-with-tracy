@@ -85,6 +85,11 @@ export const GENERATED_TARGETS = [
   // P4b stage 2: Hán-Việt runtime tables + their D-10 review sheet (scripts/lib/hanviet.ts).
   "src/content/hanviet",
   "content/hanviet/REVIEW.md",
+  // P4b stage 5: script primers + their D-10 review sheets (scripts/lib/script-primer.ts).
+  "src/content/primer",
+  "content/ja/primer/REVIEW.md",
+  "content/ko/primer/REVIEW.md",
+  "content/zh/primer/REVIEW.md",
   "src/content/course-loaders.ts",
   "src/content/course-bundles.ts",
   TEST_ONLY_ROOT,
