@@ -100,7 +100,11 @@ def typ(prompt, ans, *alts):
     check_vi(prompt, prompt)
     for t in (ans, *alts):
         check(prompt, t, plain=True)
-    return {"type": "typeAnswer", "mode": "produceTarget", "prompt": prompt, "answer": ans, "alternatives": list(alts)}
+    e = {"type": "typeAnswer", "mode": "produceTarget", "prompt": prompt, "answer": ans, "alternatives": list(alts)}
+    # D-10 owner decision (2026-11-03): a prompt that asks for katakana is graded inside katakana (ぱん is not パン).
+    if "katakana" in prompt.lower():
+        e["script"] = "katakana"
+    return e
 
 
 def _known(table, key, what):

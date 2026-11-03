@@ -16,7 +16,7 @@ from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ja_layers import DRAFTS, check, check_vi, content_refs, report, write_jsonl  # noqa: E402
-from ja_text import natural_spellings  # noqa: E402
+from ja_text import apology_spellings, bare_form, natural_spellings, quantity_spellings  # noqa: E402
 
 PROFILE, SENT, MSG, FORM = "ja.obj.writing.personal_info", "ja.obj.writing.phrases_sentences", "ja.obj.writing.short_message", "ja.obj.writing.form_filling"
 GREET = ["お疲れさまです", "おはようございます", "こんにちは"]
@@ -112,14 +112,15 @@ RESERVED = {
 }
 
 
-def _widen(variants):
+def _widen(variants, desc, instr):
     """D-10 review: a slot also takes the kanji the IME offers for the course's kana (お疲れ様です, 分かりました) and 大きな /
     小さな. Numbers, the middle dot, hyphens and spaces need nothing: the writing fold reads digits as kanji numerals and drops
-    ・, - and the space between Japanese characters (normalizeWritten → foldSpokenJapanese)."""
+    ・, - and the space between Japanese characters (normalizeWritten → foldSpokenJapanese). D-10 audit: the count the
+    slot states between noun + が and あります (ベッドが一つあり), the を-less request, a past apology for a past act."""
     out = []
     for v in variants:
-        for x in [v] + natural_spellings(v):
-            if x not in out:
+        for x in [v] + natural_spellings(v) + quantity_spellings(desc, v) + apology_spellings(instr, v):
+            if bare_form(x) not in {bare_form(y) for y in out}:
                 out.append(x)
     return out
 
@@ -128,7 +129,7 @@ def task(slug, spec, reserved):
     fam, obj, instr, cue, slots, mn, mx, verbs, model, fields = spec
     tid = f"ja.write.{slug}"
     check_vi(tid, instr)
-    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v), "cueProvided": c} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
+    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v, d, instr), "cueProvided": c} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
     for _, d, v, _c in slots:
         check_vi(tid, d)
     if verbs:
@@ -151,7 +152,7 @@ def open_task(slug, spec):
     tid = f"ja.write.{slug}"
     check(tid, model)
     check_vi(tid, instr)
-    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v), "cueProvided": False} for i, d, v in slots], "minTokens": mn, "maxTokens": mx}
+    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v, d, instr), "cueProvided": False} for i, d, v in slots], "minTokens": mn, "maxTokens": mx}
     return {"id": tid, "taskFamily": fam, "mode": "open", "instruction": {"vi": instr}, "rubric": rubric, "modelAnswers": [model], "objectiveRefs": [obj], "lexemeRefs": content_refs(model), "scoredEligibility": False, "reserved": False, "sourceRef": "original-project"}
 
 

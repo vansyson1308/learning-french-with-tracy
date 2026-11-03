@@ -285,8 +285,19 @@ def numeral_spellings(text):
     return out
 
 
-def natural_spellings(text):
-    """IME kanji spellings and the prenominal 大きな / 小さな of one accepted answer (none when it has neither)."""
+# D-10 audit (2026-11-03): a request drops を before お願いします (コーヒー、お願いします is how unit 0 teaches it); a count
+# stays in front of the verb (切符を1枚お願いします → 切符、1枚お願いします).
+_REQUEST = re.compile(rf"を((?:[0-9]+|[一二三四五六七八九十百千万]+)(?:{'|'.join(COUNTERS)}))?(お願い|おねがい)")
+
+
+def request_spellings(text):
+    """N をお願いします → N、お願いします (the grader strips the comma, so メニューお願いします is the same answer)."""
+    if not _REQUEST.search(text):
+        return []
+    return [_REQUEST.sub(lambda m: "、" + (m.group(1) or "") + m.group(2), text)]
+
+
+def _natural_step(text):
     out = []
     for kana, kanji in IME_SPELLINGS:
         if kana in text:
@@ -294,6 +305,68 @@ def natural_spellings(text):
     for adj, pre in ADNOMINAL:
         if re.search(rf"{adj}[一-鿿ァ-ヺ]", text):
             out.append(re.sub(rf"{adj}(?=[一-鿿ァ-ヺ])", pre, text))
+    return out + request_spellings(text)
+
+
+def natural_spellings(text):
+    """IME kanji spellings, the prenominal 大きな / 小さな and the を-less request of one accepted answer, and every
+    combination of them (メニュー、お願いします from めにゅうをおねがいします), so a list built from them is closed: none when
+    the answer has none of them."""
+    out, todo = [], [text]
+    while todo:
+        for x in _natural_step(todo.pop(0)):
+            if x != text and x not in out:
+                out.append(x)
+                todo.append(x)
+    return out
+
+
+# D-10 audit: an apology for something the learner already did ("Bạn làm rơi cốc … Hãy xin lỗi.") also takes the past
+# すみませんでした / 申し訳ありませんでした. A prompt about an act still to come (sẽ, đang, sắp, muốn) or a "xin lỗi" that opens a
+# question (Xin lỗi, cho tôi hỏi …) is no past act.
+PAST_ACT_APOLOGY = re.compile(r"^Bạn\s(?!.*\b(?:sẽ|đang|sắp|muốn)\b)[^.]*\.\s*Hãy xin lỗi")
+_APOLOGY_END = re.compile(r"(すみません|申し訳ありません|申し訳ございません)([。！]?)$")
+
+
+def bare_form(text):
+    """An answer without punctuation and spaces: the graders compare so, so two answers with one bare form are one."""
+    return re.sub(r"[。、！？!?\s]", "", text)
+
+
+def apology_spellings(vi, text):
+    """The past form of an apology that ends an answer, when the prompt asks to apologise for a past act."""
+    m = _APOLOGY_END.search(text)
+    if not m or not PAST_ACT_APOLOGY.search(vi or ""):
+        return []
+    return [text[:m.start()] + m.group(1) + "でした" + m.group(2)]
+
+
+# D-10 audit: a slot "có một cái giường" whose variant is ベッドがあり also takes the count a learner renders literally
+# (ベッドが一つあります / ベッドが1つあります, and は for が). The writing rubric matches a variant as an unbroken run of tokens,
+# so a count between the noun and the verb breaks it.
+VI_NUMBERS = {"một": 1, "hai": 2, "ba": 3, "bốn": 4, "năm": 5, "sáu": 6, "bảy": 7, "tám": 8, "chín": 9}
+_VI_COUNT = re.compile(rf"\b({'|'.join(VI_NUMBERS)})\s(cái|chiếc|quyển|cuốn|tấm|chai|cốc|ly|người)\b")
+_EXISTENCE = re.compile(r"^(.+?)が(あり|い)(.*)$")
+
+
+def quantity_spellings(vi, variant):
+    """Noun + が + あり/い with the count the slot's Vietnamese states, in kanji and digits, with が or は."""
+    q, e = _VI_COUNT.search(vi or ""), _EXISTENCE.match(variant)
+    if not q or not e:
+        return []
+    noun, verb, rest = e.groups()
+    person = q.group(2) == "người"
+    if person != (verb == "い"):
+        return []  # あります counts things (つ), います counts people (人)
+    n = VI_NUMBERS[q.group(1)]
+    counter = "人" if person else "つ"
+    out = []
+    # The kanji count only: the writing fold reads 1つ and 一つ alike (ひとつ), so a digit variant would be a duplicate.
+    for p in ("が", "は"):
+        for count in ("", kanji_number(n) + counter):
+            x = noun + p + count + verb + rest
+            if x != variant and x not in out:
+                out.append(x)
     return out
 
 
@@ -337,6 +410,15 @@ def widen(answers):
         for x in [a] + numeral_spellings(a) + natural_spellings(a):
             if x not in out:
                 out.append(x)
+    # Closed under both (D-10 audit: 切符、一枚お願いします is the numeral spelling of a request spelling).
+    grown = True
+    while grown:
+        grown = False
+        for a in list(out):
+            for x in numeral_spellings(a) + natural_spellings(a):
+                if x not in out:
+                    out.append(x)
+                    grown = True
     return out
 
 

@@ -8,7 +8,7 @@ S = []
 S.append(story("dinner_for_colleagues", "A1-1", "みんなで晩ご飯",
  "Lan và Nam nấu món Việt mời đồng nghiệp Nhật.",
  ["作る", "おいしい", "楽しい"],
- [("N", "ラン さん と ナム さん は 同じ 会社 の 会社員 です。", "Lan và Nam là nhân viên cùng một công ty."),
+ [("N", "ラン さん と ナム さん は 同じ 会社 の 人 です。", "Lan và Nam làm cùng một công ty."),
   ("N", "二人 は 会社 の 友達 を 晩ご飯 に 呼びます。", "Hai người mời bạn cùng công ty đến ăn tối."),
   ("N", "木村 さん と すずき さん が 来ます。", "Chị Kimura và chị Suzuki sẽ đến."),
   ("A", "ナム さん、 何 を 作ります か。", "Anh Nam, mình nấu món gì?"),

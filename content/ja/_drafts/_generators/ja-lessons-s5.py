@@ -16,7 +16,7 @@ lesson("uo-l0", [
     WR("o_age"),
     T("書く", ["読む", "話す", "聞く"]), N("住所", ["名前", "電話", "国"]),
     Y("Gõ bằng chữ Nhật: tên của bạn (Nam) bằng katakana.", "ナム", kana=True),
-    Y("Gõ bằng chữ Nhật: cà phê", "コーヒー", kana=True),
+    Y("Gõ bằng chữ Nhật: cà phê", "コーヒー", kana=True, script="katakana"),  # a loanword: こーひー is a misspelling
     Y("Gõ bằng chữ Nhật: con tem", "切手", kana=True),
     Y("Gõ bằng chữ Nhật: trường học", "学校", kana=True),
     H("きって", ["きて", "きいて", "きった"]),
@@ -79,7 +79,8 @@ lesson("up-l2", [
     F("仕事は9時___5時までです。", "から", ["まで", "に", "を"], "Công việc từ 9 giờ đến 5 giờ."),
     W("Công việc của tôi bận lắm.", "仕事|は|とても|忙しいです", ["を", "暇"]),
     NX("Tôi làm việc ở nhà máy từ thứ hai đến thứ sáu.", "月曜日から金曜日まで工場で働きます。", ["月曜日まで金曜日から工場で働きます。", "月曜日から金曜日まで工場を働きます。", "月曜日から金曜日まで工場に働きます。"]),
-    Y("Công việc vất vả nhưng vui.", "仕事は大変です。でも、楽しいです", "仕事は大変ですが、楽しいです"),
+    Y("Công việc vất vả nhưng vui.", "仕事は大変です。でも、楽しいです", "仕事は大変ですが、楽しいです", "仕事は大変ですけど、楽しいです",
+      "仕事は大変ですけれど、楽しいです"),
     TX("昼ご飯は食堂で食べます。", "Tôi ăn trưa ở căng tin.", ["Tôi ăn tối ở căng tin.", "Tôi ăn trưa ở nhà.", "Căng tin mở cửa buổi trưa."]),
     M("仕事", "工場", "食堂", "忙しい", "大変"),
 ])

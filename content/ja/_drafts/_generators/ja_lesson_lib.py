@@ -23,7 +23,8 @@ from collections import Counter
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from ja_paradigms import cloze_kana, tables as _paradigm_tables  # noqa: E402
-from ja_text import HAN, KANA, POLITE_END, PLAIN_END, Index, load_lexicon, sentence_ends, subject_spellings, topic_spellings, widen  # noqa: E402
+from ja_text import (HAN, KANA, POLITE_END, PLAIN_END, Index, apology_spellings, load_lexicon, sentence_ends, subject_spellings,  # noqa: E402
+                     topic_spellings, widen)
 
 ROOT = sys.argv[1]
 DRAFTS = f"{ROOT}/content/ja/_drafts"
@@ -156,7 +157,7 @@ def _variants(answer, alts, vi=""):
     for a in alts:
         add(a)
     for base in [answer] + list(alts):
-        for x in subject_spellings(vi, base) + topic_spellings(base):
+        for x in subject_spellings(vi, base) + topic_spellings(base) + apology_spellings(vi, base):
             add(x)
     for base in [answer] + list(out):
         if base.startswith("わたしは") and len(base) > 6:
@@ -168,16 +169,22 @@ def _variants(answer, alts, vi=""):
     return out
 
 
-def Y(vi, ja, *alts, kana=False, plain=False):
-    """Typed Japanese from a Vietnamese prompt. kana=True (Section 1, unit o) also accepts the answer in kana as production."""
+def Y(vi, ja, *alts, kana=False, plain=False, script=None):
+    """Typed Japanese from a Vietnamese prompt. kana=True (Section 1, unit o) also accepts the answer in kana as production.
+    D-10 owner decision (2026-11-03): a prompt that asks for katakana ("Gõ bằng katakana") marks the item script
+    "katakana", so the grader does not fold hiragana into it (ぱん is not パン); script= marks another item so."""
+    if script is None and "katakana" in vi.lower():
+        script = "katakana"
     more = _variants(ja, alts, vi)
-    if kana:
+    if kana and script is None:
         for base in [ja] + [a for a in more if "私" not in a]:
             k = INDEX.kana(base)
             if k != base and not HAN.search(k) and k not in more:
                 more.append(k)
         more += [x for x in widen(more) if x not in more and x != ja]
     e = {"type": "typeAnswer", "mode": "produceTarget", "prompt": vi, "audioTarget": ja, "answer": ja, "alternatives": more}
+    if script:
+        e["script"] = script
     return _mark(e, plain)
 
 

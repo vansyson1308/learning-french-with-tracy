@@ -28,6 +28,13 @@ later session). It joins lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then f
     character's family the humble kin words (リンさんの家族は父と母); every lexicon example passes the reading check
     of the lessons (numbers before a counter in digits where the stored ruby stays right, なん before です) and the
     particle rules (おととい, no に) — the kanji numeral headwords (二, 三 …) show themselves, read by hand.
+ 9. (D-10 audit, 2026-11-03: the three P0 siblings the rule-8 tables missed) every accepted Nをお願いします also lists
+    N、お願いします (natural_spellings, so typed, speech, scenario and writing answers; a count stays: 切符、1枚お願いします);
+    an apology for a past act ("Bạn làm rơi cốc … Hãy xin lỗi.") lists すみませんでした / 申し訳ありませんでした after every
+    すみません / 申し訳ありません it accepts; a writing slot whose Vietnamese states a count (có một cái giường) lists the
+    count between noun + が/は and あります/います (ベッドが一つあり, ベッドが1つあり), as the rubric matches unbroken runs.
+    Owner decision: a typed item whose prompt asks for katakana carries script "katakana" (graded without the
+    katakana → hiragana fold) and accepts katakana keys only.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I ja-check-answers.py <repo root>
 """
@@ -36,8 +43,8 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from ja_text import (PLAIN_END, POLITE_END, Index, load_lexicon, natural_spellings, numeral_spellings, sentence_ends,  # noqa: E402
-                     subject_spellings, topic_spellings)
+from ja_text import (PLAIN_END, POLITE_END, Index, apology_spellings, load_lexicon, natural_spellings, numeral_spellings,  # noqa: E402
+                     quantity_spellings, sentence_ends, subject_spellings, topic_spellings)
 
 ROOT = sys.argv[1]
 D = f"{ROOT}/content/ja/_drafts"
@@ -198,6 +205,16 @@ def review_rules(eid, e):
             want += numeral_spellings(a) + natural_spellings(a)
         for w in missing(acc, want):
             flag(eid, "typed-rendering", f"{w!r} is a correct answer to {e['prompt']!r} and is not accepted")
+        # Owner decision (D-10 audit): an item that asks for katakana is graded inside katakana, on katakana keys only.
+        if "katakana" in e["prompt"].lower() and e.get("script") != "katakana":
+            flag(eid, "katakana-script", f"{e['prompt']!r} asks for katakana: the item needs script \"katakana\" (hiragana is folded in otherwise)")
+        if e.get("script") == "katakana":
+            for a in acc:
+                if not re.fullmatch(r"[ァ-ヺー・]+", _bare(a)):
+                    flag(eid, "katakana-script", f"{a!r}: a katakana item accepts katakana only")
+        # Rule 9 (D-10 audit): an apology for a past act takes すみませんでした.
+        for w in missing(acc, [x for a in acc for x in apology_spellings(e["prompt"], a)]):
+            flag(eid, "past-apology", f"{w!r} answers {e['prompt']!r} (the act is past) and is not accepted")
     if t == "conjugationCloze":
         k = INDEX.kana(e["answer"])
         if k != e["answer"] and not HAN_RE.search(k) and k not in e["alternatives"]:
@@ -205,10 +222,18 @@ def review_rules(eid, e):
     if t in ("speakRepetition", "speakProduction"):
         for w in missing(e["acceptedVariants"], [x for v in e["acceptedVariants"] for x in natural_spellings(v)]):
             flag(eid, "spoken-spelling", f"{w!r} (a recogniser's spelling) is not among the variants")
+        for w in missing(e["acceptedVariants"], [x for v in e["acceptedVariants"] for x in apology_spellings(e.get("instruction"), v)]):
+            flag(eid, "past-apology", f"{w!r} answers {e.get('instruction')!r} (the act is past) and is not among the variants")
     if t in ("guidedWriting", "simpleForm"):
         for slot in e["rubric"]["requiredSlots"]:
+            desc = slot["description"]["vi"] if isinstance(slot["description"], dict) else slot["description"]
             for w in missing(slot["variants"], [x for v in slot["variants"] for x in natural_spellings(v)]):
                 flag(eid, "written-spelling", f"slot {slot['id']}: {w!r} (the IME's spelling) is not a variant")
+            # Rule 9 (D-10 audit): the count the slot states between noun + が and あります; a past apology.
+            for w in missing(slot["variants"], [x for v in slot["variants"] for x in quantity_spellings(desc, v)]):
+                flag(eid, "slot-count", f"slot {slot['id']} ({desc!r}): {w!r} breaks no run the grader can match and is not a variant")
+            for w in missing(slot["variants"], [x for v in slot["variants"] for x in apology_spellings(e.get("instruction"), v)]):
+                flag(eid, "past-apology", f"slot {slot['id']}: {w!r} (an apology for a past act) is not a variant")
     if t == "select":
         for o in e["options"]:
             if not JA.search(o["text"]) and o["text"].count("(") != o["text"].count(")"):
@@ -261,6 +286,8 @@ def scenario_rules():
                             flag(where, "scenario-register", f"{v!r}: the learner speaks です/ます")
                 for w in missing(x["acceptedVariants"], [y for v in x["acceptedVariants"] for y in natural_spellings(v)]):
                     flag(f"{s['id']}/{node['id']}", "spoken-spelling", f"{w!r} (a recogniser's spelling) is not among the variants")
+                for w in missing(x["acceptedVariants"], [y for v in x["acceptedVariants"] for y in apology_spellings(node["prompt"]["vi"], v)]):
+                    flag(f"{s['id']}/{node['id']}", "past-apology", f"{w!r} (an apology for a past act) is not among the variants")
 
 
 def particle_rules(eid, text):

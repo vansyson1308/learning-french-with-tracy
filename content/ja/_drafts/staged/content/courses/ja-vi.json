@@ -7928,7 +7928,9 @@
                   "alternatives": [
                     "切符を一枚ください",
                     "切符を1枚お願いします",
-                    "切符を一枚お願いします"
+                    "切符を一枚お願いします",
+                    "切符、1枚お願いします",
+                    "切符、一枚お願いします"
                   ]
                 },
                 {
@@ -8413,7 +8415,8 @@
                   "prompt": "Gõ bằng katakana: \"bánh mì\".",
                   "audioTarget": "パン",
                   "answer": "パン",
-                  "alternatives": []
+                  "alternatives": [],
+                  "script": "katakana"
                 },
                 {
                   "type": "match",
@@ -8993,7 +8996,8 @@
                   "prompt": "Gõ bằng katakana: \"cà phê\".",
                   "audioTarget": "コーヒー",
                   "answer": "コーヒー",
-                  "alternatives": []
+                  "alternatives": [],
+                  "script": "katakana"
                 },
                 {
                   "type": "typeAnswer",
@@ -9002,7 +9006,8 @@
                   "prompt": "Gõ bằng katakana: \"xe buýt\".",
                   "audioTarget": "バス",
                   "answer": "バス",
-                  "alternatives": []
+                  "alternatives": [],
+                  "script": "katakana"
                 },
                 {
                   "type": "match",
@@ -15087,14 +15092,17 @@
                   "target": "遅れて、すみません。",
                   "acceptedVariants": [
                     "遅れて、すみません",
+                    "遅れて、すみませんでした",
                     "すみません",
+                    "すみませんでした",
                     "遅くなってすみません",
+                    "遅くなってすみませんでした",
                     "遅れてごめんなさい",
                     "申し訳ありません",
+                    "申し訳ありませんでした",
                     "すみません、遅れました",
-                    "遅れてすみませんでした",
-                    "遅くなってすみませんでした",
-                    "遅れて申し訳ありません"
+                    "遅れて申し訳ありません",
+                    "遅れて申し訳ありませんでした"
                   ],
                   "evidenceLexemeRefs": [
                     "ja:w:okureru",
@@ -16981,6 +16989,7 @@
                     "切符を2枚ください",
                     "2枚ください",
                     "切符を2枚お願いします",
+                    "切符、2枚お願いします",
                     "2枚お願いします"
                   ],
                   "evidenceLexemeRefs": [
@@ -18547,7 +18556,8 @@
                   "prompt": "Gõ bằng chữ Nhật: tên của bạn (Nam) bằng katakana.",
                   "audioTarget": "ナム",
                   "answer": "ナム",
-                  "alternatives": []
+                  "alternatives": [],
+                  "script": "katakana"
                 },
                 {
                   "type": "typeAnswer",
@@ -18556,7 +18566,8 @@
                   "prompt": "Gõ bằng chữ Nhật: cà phê",
                   "audioTarget": "コーヒー",
                   "answer": "コーヒー",
-                  "alternatives": []
+                  "alternatives": [],
+                  "script": "katakana"
                 },
                 {
                   "type": "typeAnswer",
@@ -19859,7 +19870,9 @@
                   "audioTarget": "仕事は大変です。でも、楽しいです",
                   "answer": "仕事は大変です。でも、楽しいです",
                   "alternatives": [
-                    "仕事は大変ですが、楽しいです"
+                    "仕事は大変ですが、楽しいです",
+                    "仕事は大変ですけど、楽しいです",
+                    "仕事は大変ですけれど、楽しいです"
                   ]
                 },
                 {
@@ -21240,7 +21253,8 @@
                   "prompt": "Viết tên Nam bằng katakana.",
                   "audioTarget": "ナム",
                   "answer": "ナム",
-                  "alternatives": []
+                  "alternatives": [],
+                  "script": "katakana"
                 },
                 {
                   "type": "typeAnswer",
@@ -21249,7 +21263,8 @@
                   "prompt": "Viết tên Lan bằng katakana.",
                   "audioTarget": "ラン",
                   "answer": "ラン",
-                  "alternatives": []
+                  "alternatives": [],
+                  "script": "katakana"
                 },
                 {
                   "type": "typeAnswer",
@@ -21258,7 +21273,8 @@
                   "prompt": "Viết họ Nguyễn bằng katakana.",
                   "audioTarget": "グエン",
                   "answer": "グエン",
-                  "alternatives": []
+                  "alternatives": [],
+                  "script": "katakana"
                 },
                 {
                   "type": "select",
@@ -22332,8 +22348,10 @@
                     "ビール二つください",
                     "ビールを2つお願いします",
                     "ビールを2つください",
+                    "ビール、二つお願いします",
                     "ビール2つお願いします",
-                    "ビール2つください"
+                    "ビール2つください",
+                    "ビール、2つお願いします"
                   ]
                 },
                 {
@@ -22511,7 +22529,8 @@
                   "answer": "メニューを見せてください",
                   "alternatives": [
                     "メニューをお願いします",
-                    "メニューをください"
+                    "メニューをください",
+                    "メニュー、お願いします"
                   ]
                 },
                 {

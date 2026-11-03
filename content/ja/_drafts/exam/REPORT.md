@@ -212,7 +212,7 @@ Records: 1 · schema-valid: 1 · failed: 0 · validator errors after merge: 268
 - reception: ja.clip.ix_a1cap_first_day_end: generated asset 3cdd43d72117873f3516.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ja.clip.ix_a1cap_neighbor_miss: generated asset 3110a4699b5574016329.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ja.clip.ix_a1cap_neighbor_0: generated asset 66dd938d50b04f01ae45.mp3 missing — run the reception-audio generate workflow (P7 §26)
-- reception: ja.clip.ix_a1cap_neighbor_0_s: generated asset cecca40b606f32c9b442.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ja.clip.ix_a1cap_neighbor_0_s: generated asset 11c0a310cbb45afec5f8.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ja.clip.ix_a1cap_neighbor_1: generated asset 6c3065a99b21e04eaade.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ja.clip.ix_a1cap_neighbor_1_s: generated asset 1f86d08260ca6a94b03a.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ja.clip.ix_a1cap_neighbor_end: generated asset adbbafeb5c14e5c83e65.mp3 missing — run the reception-audio generate workflow (P7 §26)

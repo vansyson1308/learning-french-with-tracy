@@ -16,7 +16,7 @@ from collections import Counter
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ja_lesson_refs import REFS  # noqa: E402
 from ja_layers import DRAFTS, check_vi, clip, read_jsonl, report, write_jsonl  # noqa: E402
-from ja_text import natural_spellings  # noqa: E402
+from ja_text import apology_spellings, bare_form, natural_spellings  # noqa: E402
 
 CONV, PRAC = "ja.obj.interaction.everyday_conversation", "ja.obj.interaction.practical_needs"
 THANKS = ["ありがとうございます", "どうもありがとうございます", "ありがとうございました", "わかりました。ありがとうございます"]
@@ -100,7 +100,7 @@ RESERVED = [
    ("ヘルメットはありますか。", "ヘルメット、ありますか。", "Hãy nói bạn không có.", "no_helmet", ["いいえ、ありません", "ありません", "すみません、ありません", "いいえ"], [["ありません", "いいえ"]])],
   "じゃあ、このヘルメットをかぶってください。", "わかりました。先輩に聞いてください。"),
  ("a1cap_neighbor", "conversation", CONV, "Làm quen với hàng xóm", "Trả lời một người hàng xóm mới: tên và nơi làm việc của bạn.",
-  [("こんにちは。隣の部屋の人ですか。", "新しい人ですか。", "Hãy trả lời là đúng, rồi nói tên bạn: Mai.", "give_name", ["はい、マイです", "はい、マイです。よろしくおねがいします", "マイです", "はじめまして、マイです"], [["マイ"]]),
+  [("こんにちは。隣の部屋の人ですか。", "隣の部屋の方ですか。", "Hãy trả lời là đúng, rồi nói tên bạn: Mai.", "give_name", ["はい、マイです", "はい、マイです。よろしくおねがいします", "マイです", "はじめまして、マイです"], [["マイ"]]),
    ("マイさんの仕事はなんですか。", "どこで働いていますか。", "Hãy nói bạn làm việc ở nhà máy.", "give_work", ["工場で働いています", "工場です", "工場で働きます"], [["工場"]])],
   "そうですか。よろしくおねがいします。", "では、失礼します。"),
  ("a1cap_friend_plan", "conversation", CONV, "Hẹn một người bạn", "Nhận lời hẹn vào Chủ nhật, rồi nói giờ gặp.",
@@ -139,8 +139,8 @@ for rows, reserved in ((TEACHING, False), (RESERVED, True)):
             # D-10 review: the kanji a recogniser writes for the course's kana (分かりました, よろしくお願いします).
             heard = []
             for v in variants:
-                for x in [v] + natural_spellings(v):
-                    if x not in heard:
+                for x in [v] + natural_spellings(v) + apology_spellings(prompt, v):
+                    if bare_form(x) not in {bare_form(y) for y in heard}:
                         heard.append(x)
             exp = [{"intent": intent, "acceptedVariants": heard, "requiredConcepts": concepts, "next": nxt}]
             nodes[f"l{i}"] = {"kind": "learner", "id": f"l{i}", "prompt": {"vi": prompt}, "expected": exp, "noMatchNext": f"r{i}", "scored": True}

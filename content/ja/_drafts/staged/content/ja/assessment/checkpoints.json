@@ -740,7 +740,8 @@
             "mode": "produceTarget",
             "prompt": "Gõ từ \"Việt Nam\" bằng katakana.",
             "answer": "ベトナム",
-            "alternatives": []
+            "alternatives": [],
+            "script": "katakana"
           },
           "objectiveTargets": [
             "ja.obj.writing.kana_input"
@@ -1736,9 +1737,12 @@
             "target": "すみません。",
             "acceptedVariants": [
               "すみません",
+              "すみませんでした",
               "ごめんなさい",
               "本当にすみません",
-              "申し訳ありません"
+              "本当にすみませんでした",
+              "申し訳ありません",
+              "申し訳ありませんでした"
             ],
             "evidenceLexemeRefs": [
               "ja:w:sumimasen"
@@ -2025,6 +2029,7 @@
               "切符を3枚ください",
               "3枚ください",
               "切符を3枚お願いします",
+              "切符、3枚お願いします",
               "3枚お願いします"
             ],
             "evidenceLexemeRefs": [
@@ -2372,7 +2377,10 @@
                   "id": "bed",
                   "description": "có một cái giường",
                   "variants": [
-                    "ベッドがあり"
+                    "ベッドがあり",
+                    "ベッドが一つあり",
+                    "ベッドはあり",
+                    "ベッドは一つあり"
                   ],
                   "cueProvided": false
                 }

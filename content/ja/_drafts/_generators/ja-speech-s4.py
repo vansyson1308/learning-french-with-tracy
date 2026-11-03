@@ -13,7 +13,7 @@ from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ja_layers import DRAFTS, check, check_vi, clip, content_refs, refs, report, write_jsonl  # noqa: E402
-from ja_text import natural_spellings  # noqa: E402
+from ja_text import apology_spellings, bare_form, natural_spellings  # noqa: E402
 
 OBJ = {"k": "ja.obj.speaking.formulaic", "l": "ja.obj.speaking.self_intro", "m": "ja.obj.speaking.give_info", "n": "ja.obj.speaking.describe"}
 FAM = {"k": "formulaic_exchange", "l": "self_introduction", "m": "information_giving", "n": "description"}
@@ -113,10 +113,11 @@ def item(sid, u, elic, instr, target, more, facts, emoji, reserved, model):
     plain = target.rstrip("。！")
     # D-10 review: the kanji a recogniser writes for the course's kana (お疲れ様です) and 大きな / 小さな before a noun.
     # Numbers are not widened: the grader folds digits to kanji numerals itself.
+    # D-10 audit: the を-less request (切符、2枚お願いします) and, for an apology about a past act, すみませんでした.
     variants = []
     for v in [plain] + list(more):
-        for x in [v] + natural_spellings(v):
-            if x not in variants:
+        for x in [v] + natural_spellings(v) + apology_spellings(instr, v):
+            if bare_form(x) not in {bare_form(y) for y in variants}:
                 variants.append(x)
     return {"id": sid, "taskFamily": FAM[u], "elicitationType": elic, "prompt": prompt(instr or REP, facts, emoji), "target": target,
             "acceptedVariants": variants, "objectiveRefs": [OBJ[u]], "lexemeRefs": lex, "evidenceLexemeRefs": evidence,
