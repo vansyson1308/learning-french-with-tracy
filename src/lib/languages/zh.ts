@@ -15,6 +15,10 @@
  *    marks (nǐ hǎo), tone numbers (ni3 hao3) or no tones at all (ni hao);
  *    a tone that IS given must be the stored one (ni2 hao3 fails). Readings
  *    are the stored ones, so 了 reads le in 看了 and liǎo in 了解.
+ *    P4c: in free writing, a run of whole pinyin tokens that spells a
+ *    key's stored syllables stands for the key (alignWrittenToKey; hanzi
+ *    the learner typed are never rewritten), and a pinyin token spelling a
+ *    course word counts as known vocabulary (knownReading).
  *  - normalizeStrict (dictation, cloze): width and case only — hanzi as
  *    typed; no traditional fold, no pinyin.
  *  - search fold: traditional → simplified, pinyin without tones (marks
@@ -32,6 +36,7 @@ import {
   nfkcLower,
   positionalNumber,
   replaceLongest,
+  replaceReadingRuns,
   spellDigitRuns,
   spellDigitToken,
   tokenizeCjk,
@@ -205,6 +210,14 @@ export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
     return out.length > 0 ? out : null;
   };
 
+  /** P4c: toneless letters → the stored readings that spell them (every word of the course). */
+  const readingsByLetters = new Map<string, Syllable[][]>();
+  for (const syllables of bound?.readings.values() ?? []) {
+    const letters = syllables.map((s) => s.base).join("");
+    readingsByLetters.set(letters, [...(readingsByLetters.get(letters) ?? []), syllables]);
+  }
+  const isPinyinToken = (token: string) => !HAN.test(token) && /[a-z]/.test(token) && parseTypedPinyin(token) !== null;
+
   return {
     code: "zh",
     ttsLocale: "zh-CN",
@@ -219,6 +232,23 @@ export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
       if (HAN.test(answer) || !/[a-z]/.test(answer) || !HAN.test(key)) return answer;
       const syllables = keySyllables(key.replace(/ /g, ""));
       return syllables !== null && pinyinMatches(answer, syllables) ? key : answer;
+    },
+    alignWrittenToKey: (answer, key) => {
+      if (!HAN.test(key)) return answer;
+      const syllables = keySyllables(key.replace(/ /g, ""));
+      if (syllables === null) return answer;
+      const letters = syllables.map((s) => s.base).join("");
+      return replaceReadingRuns(answer, key, isPinyinToken, (run) => {
+        const typed = run.join(" ");
+        const spelled = parseTypedPinyin(typed)?.letters ?? "";
+        if (spelled === letters) return pinyinMatches(typed, syllables) ? "match" : "past";
+        return letters.startsWith(spelled) ? "shorter" : "past";
+      });
+    },
+    knownReading: (token) => {
+      if (!isPinyinToken(token)) return false;
+      const letters = parseTypedPinyin(token)?.letters ?? "";
+      return (readingsByLetters.get(letters) ?? []).some((syllables) => pinyinMatches(token, syllables));
     },
     readingInput: "pinyin",
     normalizeStrict: normalizeStrictChinese,

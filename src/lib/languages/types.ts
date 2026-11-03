@@ -91,8 +91,18 @@ export type LanguageRules = {
    * plugin makes is a same-script match (English varieties).
    */
   readingInput?: "kana" | "pinyin";
-  /** The same for one key's run inside free writing, where the answer's words have no fixed meaning: stricter about which words it rewrites. */
+  /**
+   * The same for one key's run inside free writing, where the answer's words have no fixed meaning: stricter about which
+   * words it rewrites. P4c: ja / zh rewrite only a run of tokens written entirely in the reading notation whose
+   * reading is the key's stored one (a match through `readingInput`, so practice under the P4b guard).
+   */
   alignWrittenToKey?(answer: string, key: string): string;
+  /**
+   * P4c: whether one token of normalized free writing spells a course word in the reading notation (ja: the kana of
+   * 毎日 or of 食べます; zh: the pinyin of 学生). Such a token counts as target-language vocabulary for the writing
+   * rubric's "recognizably the target language" floor. Absent = no reading notation (every Latin-script plugin).
+   */
+  knownReading?(token: string): boolean;
   /** Strict comparison form: case/space folded, every letter and mark kept. */
   normalizeStrict(text: string): string;
   /**

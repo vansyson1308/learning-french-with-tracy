@@ -117,6 +117,27 @@ function slotMatch(answerTokens: string[], slot: WritingSlot, rules: LanguageRul
   );
 }
 
+/**
+ * P4c: the answer's tokens with every slot realized only through the reading notation replaced by the variant it
+ * spells (がくせい → 学生), for the known-vocabulary share. No such slot: the answer's own tokens.
+ */
+function readingAlignedTokens(answerTokens: string[], readingSlots: WritingSlot[], rules: LanguageRules): string[] {
+  const align = rules.alignWrittenToKey;
+  if (align === undefined || readingSlots.length === 0) return answerTokens;
+  let tokens = answerTokens;
+  for (const slot of readingSlots) {
+    for (const variant of slot.variants) {
+      const key = normalizeWritten(variant, rules);
+      const aligned = tokensOf(align(tokens.join(" "), key));
+      if (containsRun(aligned, tokensOf(key))) {
+        tokens = aligned;
+        break;
+      }
+    }
+  }
+  return tokens;
+}
+
 /** The optional evaluation field, present only when some slot was realized through the reading notation alone. */
 function readingOnlyField(slotIds: string[]): { readingOnlySlotIds?: string[] } {
   return slotIds.length === 0 ? {} : { readingOnlySlotIds: slotIds };
@@ -199,10 +220,14 @@ export function evaluateGuidedWriting(input: {
       for (const t of tokensOf(normalizeWritten(v, rules))) taskTokens.add(t);
     }
   }
-  const knownCount = answerTokens.filter(
-    (t) => input.knownVocabulary.has(t) || taskTokens.has(t)
+  // P4c: a slot realized only through the reading notation counts with the words it stands for, and a token
+  // spelling a course word in that notation (ja kana, zh pinyin) is the target language too. Latin plugins
+  // have neither, so their share is computed exactly as before.
+  const shareTokens = readingAlignedTokens(answerTokens, matched.filter((s) => kinds.get(s) === "reading"), rules);
+  const knownCount = shareTokens.filter(
+    (t) => input.knownVocabulary.has(t) || taskTokens.has(t) || rules.knownReading?.(t) === true
   ).length;
-  const knownShare = tokenCount === 0 ? 1 : knownCount / tokenCount;
+  const knownShare = tokenCount === 0 ? 1 : knownCount / shareTokens.length;
 
   const base = {
     matchedSlotIds,
@@ -255,9 +280,13 @@ export function evaluateGuidedWriting(input: {
   // 5. A real clause, when the task demands one (authored allowlist only).
   const verbs = rubric.requireSentenceVerbs ?? [];
   if (verbs.length > 0) {
-    const hasVerb = verbs.some((v) =>
-      containsRun(answerTokens, tokensOf(normalizeWritten(v, rules)))
-    );
+    const hasVerb = verbs.some((v) => {
+      const key = normalizeWritten(v, rules);
+      if (containsRun(answerTokens, tokensOf(key))) return true;
+      // P4c: the verb written in the reading notation (shi for 是) is the verb, as for a slot.
+      const align = rules.readingInput === undefined ? undefined : rules.alignWrittenToKey;
+      return align !== undefined && containsRun(tokensOf(align(answerTokens.join(" "), key)), tokensOf(key));
+    });
     if (!hasVerb) {
       feedback.push(msg("rubric.useVerb", { verb: verbs[0] }));
     }

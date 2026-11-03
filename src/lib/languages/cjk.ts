@@ -50,11 +50,14 @@ export function nfkcLower(text: string): string {
   return text.normalize("NFKC").toLowerCase().replace(/\s+/g, " ");
 }
 
-/** Spaces next to a non-ASCII character are not word separators in ja/zh text ("私 は" = "私は"); Latin spacing stays. */
+/**
+ * Spaces next to a non-ASCII character are not word separators in ja/zh text ("私 は" = "私は"); Latin spacing stays —
+ * including Latin letters with marks (P4c: the pinyin "wǒ shì" keeps its two words).
+ */
 export function dropCjkSpaces(text: string): string {
   return text
-    .replace(/([^\x00-\x7F]) +/g, "$1")
-    .replace(/ +([^\x00-\x7F])/g, "$1")
+    .replace(/([^\x00-\x7F\p{Script=Latin}]) +/gu, "$1")
+    .replace(/ +([^\x00-\x7F\p{Script=Latin}])/gu, "$1")
     .trim();
 }
 
@@ -155,7 +158,43 @@ export function replaceLongest(text: string, map: ReadonlyMap<string, string>, m
   return out;
 }
 
-type SegmenterLike = { segment(input: string): Iterable<{ segment: string; isWordLike?: boolean }> };
+/**
+ * P4c, free writing typed in a reading notation (ja kana, zh pinyin). `answer` is normalized free writing (tokens
+ * joined by single spaces). Left to right, each run of whole tokens that are all reading-notation tokens and that
+ * `spells` the key ("match") is replaced by `key`; "shorter" extends the run by one token, "past" gives up at this
+ * start. Tokens in the target script are never part of a run, so a kanji / hanzi the learner typed is never
+ * rewritten. Returns `answer` itself when nothing matched.
+ */
+export function replaceReadingRuns(
+  answer: string,
+  key: string,
+  isReadingToken: (token: string) => boolean,
+  spells: (run: readonly string[]) => "match" | "shorter" | "past"
+): string {
+  const tokens = answer.split(" ").filter((t) => t.length > 0);
+  const out: string[] = [];
+  let changed = false;
+  let i = 0;
+  while (i < tokens.length) {
+    let end = -1;
+    for (let j = i; j < tokens.length && isReadingToken(tokens[j]!); j++) {
+      const verdict = spells(tokens.slice(i, j + 1));
+      if (verdict === "match") end = j + 1;
+      if (verdict !== "shorter") break;
+    }
+    if (end > 0) {
+      out.push(key);
+      changed = true;
+      i = end;
+    } else {
+      out.push(tokens[i]!);
+      i += 1;
+    }
+  }
+  return changed ? out.join(" ") : answer;
+}
+
+type SegmenterLike ={ segment(input: string): Iterable<{ segment: string; isWordLike?: boolean }> };
 
 function segmenterFor(locale: string): SegmenterLike | null {
   const IntlAny = Intl as unknown as { Segmenter?: new (loc: string, opts: { granularity: "word" }) => SegmenterLike };

@@ -13,6 +13,10 @@
  *  - alignAnswerToKey: an answer typed in kana for a key written in kanji
  *    counts when the stored readings agree and the answer brings no kanji
  *    of its own (はし for 橋 yes; 箸 for 橋 no) — practice only.
+ *  - alignWrittenToKey (P4c, free writing): a run of whole tokens written
+ *    in kana alone whose reading is the key's (がくせい for 学生, たべます for
+ *    食べます) stands for the key — practice only; a kanji the learner typed
+ *    is never rewritten. knownReading: kana spelling a course word.
  *  - normalizeStrict (dictation, cloze): width and case only; kana type,
  *    small kana, ー and kanji-vs-kana all count. Romaji never matches.
  *  - numbers: digits 0–100 → kanji numerals (3 → 三, 21 → 二十一) for
@@ -31,6 +35,7 @@ import {
   maximalMatch,
   nfkcLower,
   positionalNumber,
+  replaceReadingRuns,
   spellDigitRuns,
   spellDigitToken,
   tokenizeCjk,
@@ -71,6 +76,8 @@ const VOWEL_ROWS: readonly [string, string][] = [
 const VOWEL_OF = new Map<string, string>(VOWEL_ROWS.flatMap(([v, row]) => [...row].map((c) => [c, v] as const)));
 
 const KANA = "ぁ-ゖゝゞァ-ヺー-ヾ";
+/** A token of lenient (folded) text written in kana alone. */
+const KANA_RUN = /^[ぁ-ゖゝゞー]+$/;
 const HYPHEN_AFTER_KANA = new RegExp(`([${KANA}])[-~‐-―−〜]`, "g");
 
 function foldVu(text: string): string {
@@ -210,6 +217,7 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
   };
   const lenientTokens = (lenient: string) => maximalMatch(lenient, bound?.lenient ?? EMPTY_DICTIONARY, true);
   const readingOf = (lenient: string) => lenientTokens(lenient).map((t) => bound?.lenientReadings.get(t) ?? t).join("");
+  const knownReadings = new Set(bound ? bound.lenientReadings.values() : []);
 
   return {
     code: "ja",
@@ -230,6 +238,16 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
       const bringsKanji = lenientTokens(a).some((t) => HAN.test(t) && !keyTokens.has(t));
       return bringsKanji ? answer : key;
     },
+    alignWrittenToKey: (answer, key) => {
+      if (!bound || bound.lenientReadings.size === 0 || !HAN.test(key)) return answer;
+      const target = readingOf(key.replace(/ /g, ""));
+      if (!KANA_RUN.test(target)) return answer; // a kanji of the key has no stored reading
+      return replaceReadingRuns(answer, key, (t) => KANA_RUN.test(t), (run) => {
+        const spelled = run.join("");
+        return spelled === target ? "match" : target.startsWith(spelled) ? "shorter" : "past";
+      });
+    },
+    knownReading: (token) => KANA_RUN.test(token) && knownReadings.has(token),
     readingInput: "kana",
     normalizeStrict: normalizeStrictJapanese,
     foldSpoken: foldSpokenJapanese,
