@@ -33,6 +33,11 @@ Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, l
 - ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) có bước duyệt AI tích hợp sẵn trong P3d; Claude thêm dòng `ai-review:<khoá>` vào đây khi khoá đó xong.
 - ☐ Nếu anh chấp nhận phát hành v1.0 khi một khoá **vẫn còn nhãn beta** (chưa đánh ☑ dòng chấp nhận), ghi rõ ở đây khoá nào.
 
+## B2. Giọng tiếng Hàn (cần quyết định trước P4e, xem đầu `plan/STATUS.md`, 04/11/2026)
+- ☐ **Chọn hướng cho giọng tiếng Hàn.** Không có mô hình TTS tiếng Hàn nào có nguồn gốc dữ liệu sạch theo D-11. Đề xuất: làm ko-vi với giọng của thiết bị (phần nghe không chấm điểm, claim giới hạn tương ứng), đồng thời tự huấn luyện giọng trên dữ liệu CC BY 4.0 (Zeroth-Korean, Emilia-YODAS-ko).
+- ☐ (Tuỳ chọn) **Huấn luyện giọng tiếng Hàn trên GPU một lần.** Claude chuẩn bị script, dữ liệu và hướng dẫn khi anh chọn hướng này.
+- ☐ (Tuỳ chọn) **Thư gửi dưới tên anh:** hỏi Qwen (Qwen3-TTS), FunAudioLLM (CosyVoice3) và Resemble (Chatterbox) về nguồn và giấy phép của dữ liệu huấn luyện tiếng Hàn.
+
 ## C. Nguồn dữ liệu chỉ tải tay được (tuỳ chọn, không chặn công việc)
 - ☐ Danh sách từ học tiếng Hàn NIKL 한국어 학습용 어휘 목록 (KOGL Type 1) — korean.go.kr từ chối tải tự động; đặt file vào `sources/ko/nikl-learner-list.tsv` hoặc gửi Claude. Không có thì neo từ vựng tiếng Hàn theo tần suất. (P3a)
 - ☐ **Thư cần gửi dưới tên anh (tuỳ chọn):** logus2k (`kokoro_tts_eu_pt`, hỏi tên và giấy phép của corpus, cho giọng pt-PT thứ hai, D-12); caple@letras.ulisboa.pt (đề mẫu và số câu của ACESSO).

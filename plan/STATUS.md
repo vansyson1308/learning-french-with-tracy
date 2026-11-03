@@ -1,8 +1,29 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
-> **Lần thức gần nhất:** 2026-11-03 01:00 UTC. **Lần thức kế tiếp:** khoảng 50 phút sau, hoặc khi agent giai đoạn 4 của P4b báo xong. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
+> **Lần thức gần nhất:** 2026-11-04 04:30 UTC. **Lần thức kế tiếp:** khoảng 1 giờ sau, hoặc khi agent phiên 1 của P4d báo xong. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
 >
-> **Cần quyết định của điều phối viên (2026-11-03): giấy phép bộ đọc tiếng Nhật cho audio.**
+> **PR #63 (P4c ja-vi) đã merge (a545448):** 22/22 check xanh. Báo cáo ở `plan/reports/P4c-ja-vi.md`.
+>
+> **Cần quyết định của điều phối viên và chủ dự án (2026-11-04): giọng tiếng Hàn trước P4e.**
+>
+> Đã khảo sát mọi mô hình TTS tiếng Hàn đang có: XTTS-v2, OpenVoice v2, CosyVoice3, Qwen3-TTS, Chatterbox, Supertonic, Orpheus-ko, VibeVoice, Bark, F5/MaskGCT, Spark, Zonos, StyleTTS2-ko, ESPnet-KSS, MMS. **Không mô hình nào qua được D-11.** Mỗi cái hỏng ở một trong các lý do: không khai dữ liệu huấn luyện, giấy phép NC hoặc OpenRAIL-M, gốc Llama, hoặc không có tiếng Hàn. Lý do hỏng là ở dữ liệu, không ở code.
+>
+> Dữ liệu tiếng Hàn có giấy phép sạch:
+> - Zeroth-Korean: CC BY 4.0, 51,6 giờ, 105 người nói.
+> - Emilia-YODAS phần tiếng Hàn: CC BY 4.0 theo khai báo của người đăng.
+> - FLEURS ko: CC BY 4.0, nhỏ.
+>
+> Các hướng:
+> - **(1)** Tự huấn luyện giọng: code MIT/Apache (VITS/Matcha), huấn luyện từ đầu trên dữ liệu CC BY 4.0, đa người nói, không nhái giọng một người cụ thể. Cần GPU một lần, chủ dự án chạy.
+> - **(2)** Gửi thư hỏi nguồn dữ liệu huấn luyện của Qwen3-TTS, CosyVoice và Chatterbox.
+> - **(3)** Thuê thu âm một giọng nữ và một giọng nam theo hợp đồng CC-BY-4.0, rồi huấn luyện theo hướng (1).
+> - **Chỉ dùng giọng của thiết bị (hiện trạng).** Theo D-5, phần nghe có chấm điểm phải dùng audio đóng gói, nên ko-vi sẽ không có nghe chấm điểm, không có thẻ nghe FSRS, và claim gate không khẳng định gì về nghe hay TOPIK nghe.
+>
+> **Đề xuất:** làm ko-vi với giọng của thiết bị; phần nghe không chấm điểm và claim giới hạn tương ứng, ghi rõ trong KNOWN_LIMITATIONS. Song song, mở hướng (1) như một việc của chủ dự án, và gửi thư theo hướng (2).
+>
+> Trong lúc chờ quyết định: làm P4d zh-vi trước, ko-vi làm sau.
+>
+> **Đã giải quyết (2026-11-03): giấy phép bộ đọc tiếng Nhật cho audio.**
 >
 > Audio ja-vi lần chạy 41633821152 dừng ở bước Synthesize. Bộ chuyển chữ thành âm tiếng Nhật của Kokoro (`misaki[ja]`) cần từ điển MeCab, cụ thể là UniDic qua fugashi. Mọi từ điển MeCab (UniDic, unidic-lite, NAIST-jdic, IPADIC) đều dùng giấy phép BSD hoặc bộ ba BSD/GPL/LGPL, và BSD không nằm trong allowlist. Trước đây quy trình chạy được chỉ vì bước cài MeloTTS có tải UniDic; MeloTTS đã bị loại theo D-11. Chưa có audio tiếng Nhật nào được phát hành: ja-en vẫn dùng giọng của thiết bị, và chỉ có canary P3e đã dùng từ điển này trên runner.
 >
