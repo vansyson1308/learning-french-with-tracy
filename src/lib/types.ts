@@ -27,6 +27,8 @@ export type SelectExercise = {
   audioTarget?: string;
   options: { text: string; emoji?: string }[];
   correct: number;
+  /** P4c: "hidden" = no furigana / romaji line on the prompt or the options (an item that asks for a kanji's reading or spelling). */
+  scriptAid?: "hidden";
   /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
   gradeTargets?: string[];
   /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */

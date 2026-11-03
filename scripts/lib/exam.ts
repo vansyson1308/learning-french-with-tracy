@@ -27,6 +27,7 @@ const TYPES_BY_SKILL: Record<string, readonly string[]> = {
 /** Exercise types each task format may use. */
 const TYPES_BY_FORMAT: Record<string, readonly string[]> = {
   mcq3: ["readingComprehension", "listeningComprehension", "select"],
+  mcq4: ["readingComprehension", "listeningComprehension", "select"],
   mcq2: ["readingComprehension", "listeningComprehension", "select"],
   pictureMcq: ["readingComprehension", "listeningComprehension", "select"],
   matchToPool: ["readingComprehension", "listeningComprehension"],
@@ -66,6 +67,8 @@ export type ExamRefs = {
   speechIds: Set<string>;
   writingIds: Set<string>;
   scenarioIds: Set<string>;
+  /** P4c: the target's lexeme ids, which item lexemeRefs must resolve to (absent = no item may carry lexemeRefs). */
+  lexemeIds?: Set<string>;
 };
 
 function nativeRecords(track: ExamTrack): { where: string; record: Record<string, string> }[] {
@@ -140,6 +143,7 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
       if (t.answerWords && s.skill !== "writing") err(`${s.id}/${t.id}: answerWords only applies to writing tasks`);
       if (t.playsPerRecording !== undefined && s.skill !== "listening") err(`${s.id}/${t.id}: playsPerRecording only applies to listening parts`);
       if (t.speakingMinutes && s.skill !== "speaking") err(`${s.id}/${t.id}: speakingMinutes only applies to speaking tasks`);
+      if (t.skill !== undefined && s.skill !== "reading" && s.skill !== "structures") err(`${s.id}/${t.id}: a task's own skill applies only inside a reading or structures section`);
       for (const band of [t.stimulusWords, t.answerWords]) if (band && band.min > band.max) err(`${s.id}/${t.id}: word band min > max`);
     }
     const partMinutes = s.tasks.reduce((n, t) => n + (t.minutes ?? 0), 0);
@@ -216,13 +220,19 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
       continue;
     }
     const e = item.exercise as { type: string; options?: Options; gradeTargets?: unknown; objectiveTargets?: unknown; modelAnswers?: string[] } & Record<string, unknown>;
-    if (!TYPES_BY_SKILL[section.skill].includes(e.type)) err(`${item.id}: ${e.type} cannot assess ${section.skill}`);
+    // P4c: a task of a combined section (JLPT 言語知識（文法）・読解) assesses its own skill.
+    const skill = task.skill ?? section.skill;
+    if (!TYPES_BY_SKILL[skill].includes(e.type)) err(`${item.id}: ${e.type} cannot assess ${skill}`);
     if (!TYPES_BY_FORMAT[task.format].includes(e.type)) err(`${item.id}: ${e.type} is not a ${task.format} item`);
     const options = Array.isArray(e.options) ? e.options : null;
-    if ((section.skill === "reading" || section.skill === "listening") && options && typeof e.correct === "number") {
+    if ((skill === "reading" || skill === "listening") && options && typeof e.correct === "number") {
       for (const message of glossLeaks(item.glossary ?? [], options[e.correct]?.text ?? "")) err(`${item.id}: ${message}`);
     }
+    for (const lid of item.lexemeRefs ?? []) {
+      if (!refs.lexemeIds?.has(lid)) err(`${item.id}: unknown lexeme ${lid}`);
+    }
     if ((task.format === "mcq3" || task.format === "pictureMcq") && options && options.length !== 3) err(`${item.id}: ${task.format} items offer exactly 3 options (the public format)`);
+    if (task.format === "mcq4" && options && options.length !== 4) err(`${item.id}: mcq4 items offer exactly 4 options (the public format)`);
     if (task.format === "mcq2" && options && options.length !== 2) err(`${item.id}: mcq2 items offer exactly 2 options (the public format)`);
     if (task.format === "pictureMcq" && options && options.some((o) => !o.emoji)) err(`${item.id}: pictureMcq options are pictures — every option needs an emoji`);
     if (EXAM_POOL_FORMATS.includes(task.format) && options && options.length !== task.poolSize) err(`${item.id}: ${task.format} items offer the task's whole pool (${task.poolSize} options), got ${options.length}`);
@@ -312,9 +322,9 @@ export type ExamLexemeSources = {
   writing: Map<string, string[]>;
 };
 
-function itemLexemes(exercise: Record<string, unknown>, sources: ExamLexemeSources): string[] {
+function itemLexemes(exercise: Record<string, unknown>, sources: ExamLexemeSources, own: readonly string[] = []): string[] {
   const pick = (key: string, map: Map<string, string[]>) => (typeof exercise[key] === "string" ? (map.get(exercise[key] as string) ?? []) : []);
-  return [...new Set([...pick("readingId", sources.readings), ...pick("clipId", sources.clips), ...pick("speechItemId", sources.speech), ...pick("writingTaskId", sources.writing)])].sort();
+  return [...new Set([...own, ...pick("readingId", sources.readings), ...pick("clipId", sources.clips), ...pick("speechItemId", sources.speech), ...pick("writingTaskId", sources.writing)])].sort();
 }
 
 /** Compiled runtime artifact: every track of a target, native text resolved for one course. */
@@ -388,7 +398,7 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
         taskId: item.taskId,
         exercise: localized.exercise,
         objectiveTargets: item.objectiveTargets,
-        lexemeRefs: itemLexemes(item.exercise as Record<string, unknown>, sources),
+        lexemeRefs: itemLexemes(item.exercise as Record<string, unknown>, sources, item.lexemeRefs),
         ...(item.glossary ? { glossary: item.glossary.map((g) => ({ surface: g.surface, gloss: text(g.gloss, `${item.id}.glossary.${g.surface}`) })) } : {}),
       };
     }),

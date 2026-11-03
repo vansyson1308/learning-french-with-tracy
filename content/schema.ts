@@ -218,6 +218,12 @@ export function exerciseSchemas(lang: string) {
       .array(z.strictObject({ text: z.string().min(1), emoji: z.string().optional() }))
       .min(2),
     correct: z.number().int().min(0),
+    /**
+     * P4c: "hidden" withholds the script reading (furigana, pinyin, the romaji
+     * line) from the prompt and the options — an item that asks for the
+     * reading of a kanji word (JLPT 漢字読み) or for its spelling (表記).
+     */
+    scriptAid: z.literal("hidden").optional(),
     gradeTargets,
     objectiveTargets,
   });
@@ -2171,8 +2177,10 @@ export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking", "stru
  *                    (exam-engine-v2: CILS structures)
  *  - formCompletion  the right form of a given word (article, verb ending,
  *                    agreement) typed into a gap
+ *  - mcq4            one question, exactly 4 options (P4c: the JLPT; "選択枝の
+ *                    数はほとんど4つ", jlpt.jp FAQ)
  */
-export const EXAM_TASK_FORMATS = ["mcq3", "mcq2", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation", "cloze", "formCompletion"] as const;
+export const EXAM_TASK_FORMATS = ["mcq3", "mcq2", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation", "cloze", "formCompletion", "mcq4"] as const;
 export const EXAM_POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
 
 const wordBand = z.strictObject({ min: z.number().int().min(1), max: z.number().int().min(1) });
@@ -2182,6 +2190,12 @@ export const examTaskSchema = z.strictObject({
   title: nativeText(),
   instruction: nativeText(),
   format: z.enum(EXAM_TASK_FORMATS),
+  /**
+   * P4c: the task's own skill when one timed section holds tasks of two
+   * (JLPT 言語知識（文法）・読解: grammar and reading in 40 minutes). Only in a
+   * reading or structures section; absent = the section's skill.
+   */
+  skill: z.enum(["reading", "structures"]).optional(),
   /** Items one parallel form administers for this task. */
   itemsPerForm: z.number().int().min(1),
   /** Pool formats: the shared pool's size (M > itemsPerForm). */
@@ -2280,6 +2294,11 @@ export const examItemSchema = (lang: string) =>
     objectiveTargets: z.array(objectiveId(lang)).min(1),
     /** A track above its course's level (QC 2026-11-01 §2.5): words of this item the course has not taught, with their gloss; the player offers them to tap. */
     glossary: z.array(z.strictObject({ surface: z.string().min(1), gloss: nativeText() })).min(1).optional(),
+    /**
+     * P4c: the words a language-knowledge item tests (a kanji reading, a word in context) when no stimulus names them;
+     * merged with the stimulus's lexemes for weak-area practice. Every id is a lexeme of the target.
+     */
+    lexemeRefs: z.array(lexemeId(lang)).min(1).optional(),
   });
 
 /**

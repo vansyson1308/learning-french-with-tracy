@@ -171,6 +171,33 @@ describe("ja: furigana above kanji", () => {
   });
 });
 
+describe("P4c session 5: an item that asks for a reading hides it (select.scriptAid)", () => {
+  const COURSE = "ja-xchide";
+  beforeAll(() => {
+    __registerCourseProfileForTests({ ...courseProfile("ja-en"), id: COURSE, nativeCode: "vi", romajiUntilPrimer: true });
+    registerCourseBundle({ id: COURSE, pack: { ...(xcPack as unknown as Pack), id: COURSE }, artifacts: { lexiconIndex: xcIndex }, audio: {} });
+  });
+  afterAll(() => __registerCourseProfileForTests(null, COURSE));
+  test("scriptAid hidden: no furigana, no Hán-Việt and no romaji on the prompt or the options", () => {
+    useProgress.setState({ activeCourseId: COURSE, readingAid: {}, primerPassed: {} });
+    const kanjiReading: Exercise = { ...selectPrompt("学生"), mode: "nativeToTarget", options: [{ text: "がくせい" }, { text: "せんせい" }], scriptAid: "hidden" };
+    renderStep(COURSE, kanjiReading, "Tiếng Nhật");
+    expect(screen.queryAllByTestId("ruby-text")).toHaveLength(0);
+    expect(screen.queryAllByTestId("reading-romaji")).toHaveLength(0);
+    expect(screen.queryAllByTestId("reading-hanviet")).toHaveLength(0);
+    expect(screen.getByText("学生")).toBeOnTheScreen();
+    const spelling: Exercise = { ...selectOptions(["食べる", "学生"]), scriptAid: "hidden" };
+    renderStep(COURSE, spelling, "Tiếng Nhật");
+    expect(readings()).toEqual([]);
+  });
+
+  test("without it the same item keeps its readings", () => {
+    useProgress.setState({ activeCourseId: COURSE, readingAid: {}, primerPassed: {} });
+    renderStep(COURSE, { ...selectPrompt("学生"), mode: "nativeToTarget", options: [{ text: "がくせい" }, { text: "せんせい" }] }, "Tiếng Nhật");
+    expect(readings()).toEqual(["がく", "せい"]);
+  });
+});
+
 describe("zh: pinyin under each hanzi", () => {
   test("a sentence shows one syllable under each hanzi of a known word", () => {
     onCourse("zh-xc");

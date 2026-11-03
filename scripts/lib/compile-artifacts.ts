@@ -489,6 +489,8 @@ function validateTargetExamTracks(
     speechIds: ids(layers.speech?.items),
     writingIds: ids(layers.writing?.tasks),
     scenarioIds: ids(layers.interaction?.scenarios),
+    // P4c: item lexemeRefs resolve against the target's frozen lexeme ids.
+    lexemeIds: existsSync(safeResolve(`content/${lang}/lexemes.json`)) ? new Set(Object.values(readJson(`content/${lang}/lexemes.json`) as Record<string, string>)) : new Set<string>(),
   };
   const errors: string[] = [];
   const seen = new Set<string>();

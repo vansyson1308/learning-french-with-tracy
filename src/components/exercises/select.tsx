@@ -32,7 +32,11 @@ export function Select({
   scriptOf = () => undefined,
 }: SelectProps) {
   const courseId = useProgress((s) => s.activeCourseId);
-  const readingOf = useReadingAid(courseId);
+  const readingAid = useReadingAid(courseId);
+  // P4c: an item that asks for a kanji's reading or spelling (JLPT 漢字読み, 表記) shows no reading layer at all.
+  const hidden = exercise.scriptAid === "hidden";
+  const readingOf = hidden ? () => undefined : readingAid;
+  const scriptFor = hidden ? () => undefined : scriptOf;
   const styles = useStyles();
   const { t } = useT();
   const hasEmoji = exercise.options.some((o) => o.emoji);
@@ -56,7 +60,7 @@ export function Select({
         ? t("ex.pickWord", { language: targetLanguage })
         : t("ex.tapWhatYouHear");
 
-  const promptScript = isListen ? undefined : scriptOf(exercise.prompt);
+  const promptScript = isListen ? undefined : scriptFor(exercise.prompt);
 
   return (
     <View style={styles.container}>
@@ -84,7 +88,7 @@ export function Select({
             key={option.text + index}
             text={option.text}
             reading={readingOf(option.text)}
-            script={scriptOf(option.text)}
+            script={scriptFor(option.text)}
             emoji={option.emoji}
             compact={hasEmoji}
             state={optionState(index)}
