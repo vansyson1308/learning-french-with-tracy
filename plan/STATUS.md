@@ -14,7 +14,7 @@
 >   - Giai đoạn 4: cách đọc lấy từ JMdict, JmdictFurigana, CC-CEDICT và quy tắc RR; không dùng MeCab vì giấy phép không nằm trong allowlist.
 >   - Giai đoạn 5: hiển thị furigana/pinyin/RR, chặn kana/pinyin làm bằng chứng sản sinh, bài nhập môn chữ viết, bảng chia, FTS trigram.
 >   - Kết quả: 2.557 bun test và 104 jest test đều qua. Chờ PR.
->   - **Việc chặn P4c:** phần chấm bài viết (`rubric.ts`) chưa có chốt chặn kana/pinyin.
+>   - Chốt chặn kana/pinyin đã phủ cả phần chấm bài viết (b3108384). Bài viết tự do gõ toàn bằng kana/pinyin hiện bị chấm sai, chưa được coi là luyện tập; quyết định ở P4c.
 >
 > **Ghi chú (2026-11-02, tối, QC-2026-11-02):**
 > - **Các lần tự thức bị lỗi (QC §0):** các lần check-in là `ScheduleWakeup` trong phiên desktop, không phải tác vụ hẹn giờ (`list_scheduled_tasks` trả về "No scheduled tasks found"). Phiên dừng sau 09:10 UTC. Hai lần hẹn 16:15 và 17:18 (giờ máy, +07:00) không chạy, và lần chạy gate cục bộ (task b7vegiakz) kết thúc với thông báo "Background shell command didn't finish before the previous session ended". Ứng dụng không cho xem nội dung lỗi của "(2 failed)", nên không chép được thông báo lỗi. Nguyên nhân có thể: máy ngủ hoặc ứng dụng đóng; giữ máy thức chỉ có tác dụng khi phiên còn mở. Từ nay gate dài chạy trên CI rồi đọc kết quả qua API; shell nền cục bộ chỉ dùng cho việc ngắn.
