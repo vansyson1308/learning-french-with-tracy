@@ -71,7 +71,17 @@ types" rule of later QCs must say so; `author.ts lint` will report them missing 
   original items only, ≥ 2 mock forms per level, weak areas → FSRS, "mức sẵn sàng ước tính", never "sẽ đỗ". HSK
   bands are not CEFR levels and the app never says so.
 
-## 4. Tone and pinyin primer (extend the P4b primer, session 3)
+## 4. Tone and pinyin primer (extend the P4b primer, session 3) — done
+
+Done in session 3 (`_generators/zh-primer.py` → `content/zh/primer/script-primer.json`, compiled copy and review sheet
+regenerated with the compile step's own function): the five tones with the comparisons below (each marked "so sánh gần
+đúng"), a note that ´ ` ˇ do not mean sắc/huyền/hỏi; 10 minimal tone pairs (买/卖, 是/十, 书/树, 汤/糖, 问/闻, 课/渴, 水/睡,
+鸡/几, 包/饱, 烟/盐); 10 sound contrasts (new section kind `soundContrasts`: zh–z 找/早, ch–c 茶/词, sh–s 是/四, r–l 热/乐,
+j–q 鸡/七, d–t 都/偷, b–p 爸/怕, ü–u 绿/路, -n/-ng 班/帮, -in/-ing 心/星) with notes on the missing stop finals and er/儿;
+the sandhi of 3+3, 不 and 一 (new kind `toneSandhi`: written and said pinyin per example, checked by
+`scripts/lib/zh-sandhi.ts`, the rule the audio front-end will reuse) with the 一 = yāo note; the strokes; and a 20-item
+checkpoint (new item kind `soundToPinyin`: 10 tone/sound identifications with four options, 10 pairs with two), pass
+mark 16, on ja's `primerPassed` (v9). Decision 18 below: no pinyin-until-primer switch.
 
 P4b ships four tones on *ma*, four minimal pairs and the strokes. Vietnamese speakers already hear tones, so the
 primer maps each tone to the nearest Vietnamese contour and says where it is NOT the same:
@@ -234,12 +244,23 @@ uses 您 and 请 with bosses.
     subject, 这儿/这里, 那儿/那里, 哪儿/哪里, 一点儿/一点, 有点儿/有点, 星期天/星期日, and the subject the Vietnamese
     states (`zh_text.widen`); the app folds traditional characters, punctuation and spaces itself.
 
+### Session 3 (2026-11-04)
+
+18. **No "pinyin until the primer" switch.** ja's `romajiUntilPrimer` hides a romaji line that duplicates the kana a
+    learner can already read once the kana check is passed. Pinyin has no such duplicate: it is the only reading of a
+    hanzi, and an A1 learner needs it for every new character long after the tone check (HSK 1–2 words are still met for
+    the first time in Section 6). Hiding it at a pass would strand the learner. So the zh checkpoint records
+    `primerPassed` (the v9 record, keyed by course id: no migration, no new profile flag), the primer card then says
+    "passed", and pinyin stays under the characters until the learner turns off the course's `readingAid` switch
+    (decision 11). The checkpoint texts say so ("Cách đọc vẫn hiện dưới chữ…"); the ja texts are chosen only for a kana
+    primer (`isKanaPrimer`), so ja-vi and ja-en read exactly as before.
+
 ## 13. Next sessions
 
 1. ~~**Lessons + concept cards**~~ done in session 2: 108 lessons, 811 exercises, 28 cards, self-check 0 findings
    (decisions 14–17). Left for the layer sessions: the Section 3–6 types that point at reception, speech, writing and
    scenario records (a `zh_lesson_refs.py` and the LC/RC/D/SP/WR/IX helpers of `ja_lesson_lib.py`).
-2. **Primer** (session 3): the tone/pinyin primer of §4 with its checkpoint and the review sheet regenerated.
+2. ~~**Primer** (session 3)~~ done: §4, decision 18.
 3. **Reception, speech, writing, scenarios** (session 4): readings, ≈ 220 clips, 50 speech items (`zh-CN`), 35 writing
    tasks, 21 scenarios (§10).
 4. **Assessment + HSK 1–2 track** (session 5): checkpoints, placement, FORMAT-SOURCES.md from chinesetest.cn, two mock

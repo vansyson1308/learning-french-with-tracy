@@ -10,30 +10,94 @@ Review every Vietnamese line: correct, natural, clear for a beginner? The kana /
 
 | where | vi | en |
 |---|---|---|
-| title | Thanh điệu và nét chữ Hán | Tones and strokes |
-| intro | Tiếng Trung phổ thông có bốn thanh và một thanh nhẹ. Giống tiếng Việt, đổi thanh là đổi nghĩa: mā (mẹ) và mǎ (ngựa) là hai từ khác hẳn nhau. Phiên âm pinyin ghi thanh bằng dấu đặt trên nguyên âm. | Standard Chinese has four tones plus a light, neutral tone. As in Vietnamese, a different tone makes a different word: mā (mother) and mǎ (horse) have nothing in common. Pinyin marks the tone over the vowel. |
+| title | Thanh điệu, pinyin và nét chữ Hán | Tones, pinyin and strokes |
+| intro | Tiếng Trung phổ thông có bốn thanh và một thanh nhẹ. Giống tiếng Việt, đổi thanh là đổi nghĩa: mǎi (买, mua) và mài (卖, bán) là hai từ khác hẳn nhau. Pinyin (bính âm) ghi cách đọc bằng chữ La-tinh, dấu thanh đặt trên nguyên âm; trong bài học, ứng dụng ghi pinyin nhỏ dưới mỗi chữ Hán. Phần này so sánh thanh tiếng Trung với thanh tiếng Việt, chỉ ra những âm người Việt hay nhầm, cách thanh đổi khi nói và các nét chữ cơ bản. Bấm vào một chữ để nghe. | Standard Chinese has four tones plus a light, neutral tone. As in Vietnamese, a different tone makes a different word: mǎi (买, to buy) and mài (卖, to sell) have nothing in common. Pinyin writes the sounds in Latin letters with the tone mark over the vowel; in the lessons the app shows it small under every character. This introduction compares the tones with Vietnamese ones, points out the sounds Vietnamese speakers mix up, shows how tones change in speech and teaches the basic strokes. Tap a character to hear it. |
 | four-tones.title | Bốn thanh và thanh nhẹ | The four tones and the neutral tone |
-| four-tones.explanation | Hãy nghe và nói theo cùng một âm tiết ma với từng thanh. Người Việt có lợi thế vì đã quen phân biệt thanh, nhưng đừng thay bằng thanh tiếng Việt: hãy chú ý độ cao bắt đầu và kết thúc của giọng. | Listen and repeat the one syllable ma in each tone. Track where your voice starts and where it ends; the numbers (55, 35, 214, 51) give that pitch on a 1–5 scale. |
-| four-tones.tone1 | Thanh 1: cao và đều, giữ nguyên độ cao như khi ngân một nốt nhạc — giống thanh ngang của tiếng Việt nhưng cao hơn. | Tone 1: high and level, held steady like a sung note. |
+| four-tones.explanation | Người Việt có lợi thế vì đã quen phân biệt thanh. Nhưng thanh tiếng Trung không trùng với thanh tiếng Việt: mỗi thanh dưới đây chỉ ghi thanh tiếng Việt gần nhất để bạn dễ bắt đầu — đó là so sánh gần đúng, không phải cùng một thanh. Hãy chú ý giọng bắt đầu ở độ cao nào và kết thúc ở đâu; các con số (55, 35, 214, 51) ghi độ cao đó trên thang 1 (thấp) đến 5 (cao). | Vietnamese speakers already hear tones, but Chinese tones are not Vietnamese ones: each tone below names the nearest Vietnamese tone only as a starting point — an approximation, never the same tone. Track where your voice starts and ends; the numbers (55, 35, 214, 51) give that pitch on a scale from 1 (low) to 5 (high). |
+| four-tones.tone1 | Thanh 1 (55): cao và đều từ đầu đến cuối, như khi ngân một nốt nhạc. Gần nhất là thanh ngang (so sánh gần đúng), nhưng cao hơn hẳn: thanh ngang nằm ở giữa giọng, còn thanh 1 ở gần mức cao nhất. Giữ giọng phẳng tới hết, đừng để nó rơi xuống ở cuối. | Tone 1 (55): high and level from start to end, like a sung note. The nearest Vietnamese tone is ngang (an approximation), but tone 1 sits much higher, near the top of the voice. Keep it flat to the end; do not let it fall. |
 | four-tones.tone1.gloss | mẹ | mother |
-| four-tones.tone2 | Thanh 2: đi lên từ giữa lên cao, như khi hỏi lại «hả?» — gần với thanh sắc. | Tone 2: rises from mid to high, like a surprised “huh?”. |
+| four-tones.tone2 | Thanh 2 (35): đi lên từ giữa lên cao, như khi hỏi lại «hả?». Gần với thanh sắc (so sánh gần đúng), nhưng bắt đầu từ giữa giọng chứ không từ cao, lên đều, và không căng, không ngắt gọn ở cuối như thanh sắc giọng Bắc. | Tone 2 (35): rises from mid to high, like a surprised “huh?”. Close to sắc (an approximation), but it starts from the middle of the voice, rises evenly and ends without the tense, clipped close of a Northern sắc. |
 | four-tones.tone2.gloss | cây gai; tê (tê tay) | hemp; numb |
-| four-tones.tone3 | Thanh 3: hạ thấp xuống rồi lên lại — gần với thanh hỏi. Khi nói nhanh hoặc đứng trước thanh khác, thường chỉ còn phần thấp. | Tone 3: dips low, then rises. In quick speech or before another tone it usually keeps only the low part. |
+| four-tones.tone3 | Thanh 3 (214): hạ xuống thấp rồi lên lại. Gần với thanh hỏi (so sánh gần đúng). Đọc một chữ riêng thì nghe đủ phần xuống và phần lên; trong câu nó thường chỉ còn phần thấp (21), không lên lại. Đừng đọc thành thanh ngã: thanh 3 không có chỗ thắt giọng ở giữa. | Tone 3 (214): dips low, then rises. Close to hỏi (an approximation). Said alone it has the whole dip and rise; inside a sentence it usually keeps only the low part (21). It is never glottalised like ngã. |
 | four-tones.tone3.gloss | ngựa | horse |
-| four-tones.tone4 | Thanh 4: rơi nhanh từ cao xuống thấp, dứt khoát như khi ra lệnh. Đừng đọc thành thanh huyền: thanh huyền bắt đầu thấp và đi đều, còn thanh 4 bắt đầu rất cao. | Tone 4: falls sharply from high to low, like a firm command. |
+| four-tones.tone4 | Thanh 4 (51): rơi mạnh từ rất cao xuống thấp, dứt khoát như khi ra lệnh. Tiếng Việt không có thanh nào giống: không phải thanh huyền (huyền thấp và đi ngang, khoảng 21), cũng không phải thanh nặng (nặng ngắn và bị chặn lại). Bắt đầu ở mức cao nhất của giọng rồi cho rơi hết. | Tone 4 (51): falls sharply from the very top to low, like a firm command. No Vietnamese tone matches it: it is not huyền (low and level, about 21) and not nặng (short and cut off). Start at the top of your voice and let it fall all the way. |
 | four-tones.tone4.gloss | mắng | to scold |
-| four-tones.tone5 | Thanh nhẹ: ngắn, nhẹ và không có dấu; độ cao tùy theo âm tiết đứng trước. | Neutral tone: short, light and unmarked; its pitch depends on the syllable before it. |
+| four-tones.tone5 | Thanh nhẹ: ngắn, nhẹ và không có dấu; độ cao tuỳ chữ đứng trước. Gặp ở trợ từ (吗, 了, 的) và chữ thứ hai của nhiều từ (妈妈, 学生 xué sheng). Đọc lướt và nhẹ, không thêm chỗ ngắt như thanh nặng. | Neutral tone: short, light and unmarked; its pitch depends on the syllable before it. Particles (吗, 了, 的) and the second syllable of many words (妈妈, 学生 xué sheng) have it. Say it lightly, with no glottal stop. |
 | four-tones.tone5.gloss | trợ từ hỏi (… không?) | question particle |
 | four-tones.pair1.a | mua | to buy |
 | four-tones.pair1.b | bán | to sell |
 | four-tones.pair1.note | Chỉ khác thanh mà nghĩa ngược hẳn: thanh 3 là mua, thanh 4 là bán. | Only the tone differs, and the meanings are opposites: tone 3 buys, tone 4 sells. |
-| four-tones.pair2.a | canh | soup |
-| four-tones.pair2.b | đường, kẹo | sugar, sweets |
-| four-tones.pair3.a | hỏi | to ask |
-| four-tones.pair3.b | ngửi | to smell |
-| four-tones.pair4.a | sách | book |
-| four-tones.pair4.b | cây | tree |
-| four-tones.note1 | Hai thanh 3 đi liền nhau thì thanh 3 đầu đọc thành thanh 2: nǐ hǎo (你好) nghe như ní hǎo, nhưng pinyin vẫn viết dấu thanh 3. | Two third tones in a row: the first is said as a second tone — nǐ hǎo (你好) sounds like ní hǎo, though pinyin keeps the third-tone mark. |
+| four-tones.pair2.a | là | to be |
+| four-tones.pair2.b | mười | ten |
+| four-tones.pair2.note | shì (thanh 4) là «là», shí (thanh 2) là «mười»: 我是 khác hẳn 十个. | shì (tone 4) is “to be”, shí (tone 2) is “ten”: 我是 is nothing like 十个. |
+| four-tones.pair3.a | sách | book |
+| four-tones.pair3.b | cây | tree |
+| four-tones.pair4.a | canh | soup |
+| four-tones.pair4.b | đường, kẹo | sugar, sweets |
+| four-tones.pair5.a | hỏi | to ask |
+| four-tones.pair5.b | ngửi | to smell |
+| four-tones.pair6.a | bài học, tiết học | lesson, class |
+| four-tones.pair6.b | khát | thirsty |
+| four-tones.pair7.a | nước | water |
+| four-tones.pair7.b | ngủ | to sleep |
+| four-tones.pair8.a | gà | chicken |
+| four-tones.pair8.b | mấy | how many |
+| four-tones.pair9.a | túi, cái bao | bag |
+| four-tones.pair9.b | no (bụng) | full (after eating) |
+| four-tones.pair10.a | thuốc lá; khói | cigarette; smoke |
+| four-tones.pair10.b | muối | salt |
+| four-tones.note1 | Dấu thanh của pinyin trông giống dấu tiếng Việt nhưng không cùng nghĩa: dấu ´ (thanh 2) đi lên như thanh sắc, nhưng dấu ` (thanh 4) là thanh rơi từ cao, không phải thanh huyền; dấu ˇ (thanh 3) là dấu móc, không phải dấu hỏi. | Pinyin tone marks look like Vietnamese ones without meaning the same: ´ (tone 2) rises like sắc, but ` (tone 4) falls from high and is not huyền, and ˇ (tone 3) is not the hỏi hook. |
+| initials-finals.title | Những âm người Việt hay nhầm | Sounds Vietnamese speakers mix up |
+| initials-finals.explanation | Nhiều chữ cái pinyin trông giống chữ quốc ngữ nhưng đọc khác. Mỗi cặp dưới đây chỉ khác nhau ở một âm; hãy nghe và nói theo từng cặp. Những so sánh với âm tiếng Việt đều là gần đúng. | Many pinyin letters look like Vietnamese letters but sound different. Each pair below differs in one sound; listen and repeat pair by pair. Every comparison with a Vietnamese sound is an approximation. |
+| initials-finals.contrast1.a | tìm | to look for |
+| initials-finals.contrast1.b | sớm | early |
+| initials-finals.contrast1.note | zh, ch, sh: cong đầu lưỡi lên chạm phía sau lợi trên (âm uốn lưỡi). z, c, s: đầu lưỡi thẳng, chạm sau răng trên. Chữ z của pinyin đọc gần như «t» và «x» liền nhau (ts), không phải «d» hay «gi» của tiếng Việt. | zh, ch, sh: curl the tongue tip up behind the gum ridge (retroflex). z, c, s: tongue tip flat behind the upper teeth. Pinyin z is a ts sound, not Vietnamese d or gi. |
+| initials-finals.contrast2.a | trà | tea |
+| initials-finals.contrast2.b | từ | word |
+| initials-finals.contrast2.note | c của pinyin là «ts» bật hơi mạnh, không phải «c/k» của tiếng Việt. ch gần «ch» tiếng Việt nhưng cong lưỡi và bật hơi (so sánh gần đúng). Chữ i sau z, c, s, zh, ch, sh, r không đọc là «i»: 词 gần «tsư», 是 gần «sư» uốn lưỡi. | Pinyin c is an aspirated ts, not Vietnamese c/k; ch is like Vietnamese ch with the tongue curled back and a puff of air. After z, c, s, zh, ch, sh and r the letter i is not an i sound. |
+| initials-finals.contrast3.a | là | to be |
+| initials-finals.contrast3.b | bốn | four |
+| initials-finals.contrast3.note | sh gần «s» uốn lưỡi của giọng miền Nam (sông), s gần «x» (xa) — so sánh gần đúng. Khi đọc số, 四 sì (bốn) và 十 shí (mười) rất dễ nhầm: 四十 là bốn mươi, 十四 là mười bốn. | sh is close to the curled Southern Vietnamese s (sông), s to Vietnamese x (xa) — approximately. Numbers trap learners here: 四 sì is four, 十 shí ten; 四十 is forty, 十四 fourteen. |
+| initials-finals.contrast4.a | nóng | hot |
+| initials-finals.contrast4.b | vui | happy |
+| initials-finals.contrast5.a | gà | chicken |
+| initials-finals.contrast5.b | bảy | seven |
+| initials-finals.contrast5.note | q không phải «qu» của tiếng Việt: q đọc như «ch» bật hơi mạnh, j như «ch» không bật hơi. x (西 xī) gần «x» tiếng Việt nhưng mặt lưỡi nâng cao, môi dẹt. | Pinyin q is not Vietnamese qu: it is an aspirated ch-like sound, and j the same without the puff of air. x (西 xī) is close to Vietnamese x with the tongue raised and the lips spread. |
+| initials-finals.contrast6.a | đều | all |
+| initials-finals.contrast6.b | lấy trộm | to steal |
+| initials-finals.contrast6.note | Pinyin chia phụ âm theo bật hơi: b, d, g không bật hơi (d gần «t» tiếng Việt, không phải «đ»); p, t, k bật hơi mạnh (t gần «th», k gần «kh» nhưng không xát). Đặt tờ giấy trước miệng: nói t, p, k thì giấy rung. | Pinyin sorts stops by aspiration: b, d, g have none (d is close to Vietnamese t, not đ); p, t, k have a strong puff (t is close to Vietnamese th). Hold a sheet of paper before your mouth: it moves for p, t and k. |
+| initials-finals.contrast7.a | bố | dad |
+| initials-finals.contrast7.b | sợ | to be afraid |
+| initials-finals.contrast8.a | xanh lá cây | green |
+| initials-finals.contrast8.b | đường | road |
+| initials-finals.contrast8.note | ü: tròn môi như «u» nhưng lưỡi đặt như «i» (gần «uy» đọc liền thành một âm). Sau j, q, x, y, chữ ü viết thành u mà vẫn đọc ü: 去 qù, 鱼 yú. | ü: round the lips for u with the tongue placed for i. After j, q, x and y it is written u but still said ü: 去 qù, 鱼 yú. |
+| initials-finals.contrast9.a | ca, lớp | shift, class |
+| initials-finals.contrast9.b | giúp | to help |
+| initials-finals.contrast9.note | -n: đầu lưỡi chạm lợi trên ở cuối âm; -ng: lưỡi lùi ra sau như «ng» tiếng Việt. Giọng miền Nam hay nhập hai âm cuối này; trong tiếng Trung, an/ang, en/eng, in/ing là những từ khác nhau. | -n ends with the tongue tip on the gum ridge; -ng with the back of the tongue, as Vietnamese ng. Southern Vietnamese often merges the two; in Chinese an/ang, en/eng, in/ing are different words. |
+| initials-finals.contrast10.a | tim, lòng | heart |
+| initials-finals.contrast10.b | sao | star |
+| initials-finals.note1 | Tiếng Trung phổ thông không có âm cuối -c, -t, -p như tiếng Việt: một âm tiết chỉ kết thúc bằng nguyên âm, -n, -ng hoặc -r. 吃 chī không đọc thành «chịt». | Standard Chinese has no final -c, -t or -p: a syllable ends in a vowel, -n, -ng or -r. 吃 chī has no stop at the end. |
+| initials-finals.note2 | er (二 èr «hai»): một âm duy nhất, nói «ơ» rồi cong lưỡi lên. 儿 ở cuối từ ghép vào chữ trước: 哪儿 nǎr (ở đâu), 一点儿 yìdiǎnr (một chút). | er (二 èr “two”) is one sound: an «ơ» said with the tongue curled up. 儿 at the end of a word joins the syllable before it: 哪儿 nǎr, 一点儿 yìdiǎnr. |
+| tone-sandhi.title | Biến điệu: khi thanh đổi theo chữ sau | Tone sandhi: tones that change before others |
+| tone-sandhi.explanation | Khi nói, vài thanh đổi theo chữ đứng sau. Pinyin trong sách và trong ứng dụng vẫn ghi thanh gốc; bạn chỉ đổi khi nói. Ba quy tắc dưới đây cần biết ngay từ đầu; dòng «viết» là pinyin ghi trong bài, dòng «đọc» là cách nói. | In speech a few tones change before the next syllable. Pinyin in books and in the app keeps the citation tone; you change it only when you speak. These three rules are needed from the start: “written” is the pinyin the lessons show, “said” is how it sounds. |
+| tone-sandhi.third-third | Hai thanh 3 đi liền nhau: chữ đầu đọc thành thanh 2. | Two third tones in a row: the first is said as a second tone. |
+| tone-sandhi.third-third.example1 | xin chào | hello |
+| tone-sandhi.third-third.example2 | có thể, được | may, can |
+| tone-sandhi.third-third.example3 | hoa quả | fruit |
+| tone-sandhi.third-third.example4 | rất tốt | very good |
+| tone-sandhi.bu | 不 (bù) đọc thành bú khi đứng trước thanh 4; trước thanh 1, 2, 3 vẫn đọc bù. | 不 (bù) is said bú before a fourth tone; before tones 1, 2 and 3 it stays bù. |
+| tone-sandhi.bu.example1 | không phải | is not |
+| tone-sandhi.bu.example2 | đừng; không cần | don't; do not want |
+| tone-sandhi.bu.example3 | không tốt | not good |
+| tone-sandhi.bu.example4 | không đến | not come |
+| tone-sandhi.yi | 一 (yī) đọc yí trước thanh 4 và yì trước thanh 1, 2, 3. Khi đếm, khi là số thứ tự hay đứng cuối, vẫn đọc yī. | 一 (yī) is said yí before a fourth tone and yì before tones 1, 2 and 3. Counting, as an ordinal or at the end it stays yī. |
+| tone-sandhi.yi.example1 | một cái | one (thing) |
+| tone-sandhi.yi.example2 | giống nhau | the same |
+| tone-sandhi.yi.example3 | một ngày | one day |
+| tone-sandhi.yi.example4 | cùng nhau | together |
+| tone-sandhi.yi.example5 | thứ nhất | first |
+| tone-sandhi.note1 | Ba thanh 3 liền nhau (我很好) thường đọc wó hén hǎo hoặc wǒ hén hǎo, tuỳ cách ngắt; cứ nói chậm, rõ từng từ là được. | Three third tones in a row (我很好) are said wó hén hǎo or wǒ hén hǎo depending on grouping; say it slowly, word by word. |
+| tone-sandhi.note2 | Trong số điện thoại, phòng, xe buýt, 一 thường đọc yāo để khỏi nhầm với 七 qī. | In phone, room and bus numbers 一 is often said yāo, so that it is not heard as 七 qī. |
 | basic-strokes.title | Các nét cơ bản và thứ tự viết | Basic strokes and stroke order |
 | basic-strokes.explanation | Mọi chữ Hán đều ghép từ một số ít nét cơ bản. Viết đúng thứ tự nét giúp chữ cân đối, dễ nhớ và dễ tra từ điển bằng cách viết tay. | Every character is built from a handful of basic strokes. Writing them in the right order keeps characters balanced, easier to remember and easier to look up by handwriting. |
 | basic-strokes.héng | Nét ngang: viết từ trái sang phải. | Horizontal: written left to right. |
@@ -47,3 +111,5 @@ Review every Vietnamese line: correct, natural, clear for a beginner? The kana /
 | basic-strokes.rule3 | Trên trước, dưới sau. | Top before bottom. |
 | basic-strokes.rule4 | Trái trước, phải sau. | Left before right. |
 | basic-strokes.rule5 | Ngoài trước, trong sau; nét đóng khung viết sau cùng («vào nhà rồi mới đóng cửa»). | Outside before inside; the closing stroke comes last. |
+| checkpoint.title | Kiểm tra nhanh: thanh điệu và pinyin | Quick check: tones and pinyin |
+| checkpoint.intro | 20 câu: nghe một chữ rồi chọn cách đọc (pinyin) đúng — đúng thanh và đúng âm. Đúng từ 16 câu là qua. Dù qua hay chưa, pinyin vẫn hiện dưới chữ Hán trong bài học; làm lại bao nhiêu lần cũng được. | 20 questions: listen to a character and pick its pinyin — the right tone and the right sound. 16 correct passes. Pass or not, the pinyin stays under the characters in the lessons; retake it as often as you like. |

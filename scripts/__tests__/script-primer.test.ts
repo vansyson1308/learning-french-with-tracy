@@ -39,7 +39,7 @@ describe("committed primers", () => {
     expect(validateScriptPrimers()).toEqual([]);
     for (const lang of PRIMER_LANGS) expect(validateScriptPrimerData(lang, load(lang))).toEqual([]);
   });
-  test("ja: full hiragana and katakana (46 + 25 dakuten + 33 yōon each) with っ and long vowels, and a 20-item checkpoint; zh 4 tones + neutral and 4 minimal pairs, ko 14 + 10 jamo and 3 blocks", () => {
+  test("ja: full hiragana and katakana (46 + 25 dakuten + 33 yōon each) with っ and long vowels, and a 20-item checkpoint; zh 4 tones + neutral, 10 minimal pairs, 10 sound contrasts, 3 sandhi rules and a 20-item checkpoint; ko 14 + 10 jamo and 3 blocks", () => {
     const ja = load("ja").sections.filter((s) => s.kind === "kanaTable") as Section<"kanaTable">[];
     const cells = (id: string) => ja.find((s) => s.id === id)!.rows.flatMap((r) => r.cells).filter((c) => c !== null).length;
     for (const script of ["hiragana", "katakana"]) {
@@ -53,12 +53,18 @@ describe("committed primers", () => {
     expect(checkpoint.items).toHaveLength(20);
     expect(checkpoint.passMark).toBe(16);
     expect(new Set(checkpoint.items.map((i) => i.kind))).toEqual(new Set(["kanaToRomaji", "soundToKana"]));
-    expect(load("zh").checkpoint).toBeUndefined();
     expect(load("ko").checkpoint).toBeUndefined();
     const tones = section(load("zh"), "tones");
     expect(tones.tones.map((t) => t.tone)).toEqual([1, 2, 3, 4, 5]);
-    expect(tones.minimalPairs).toHaveLength(4);
+    expect(tones.minimalPairs).toHaveLength(10);
+    expect(section(load("zh"), "soundContrasts").contrasts).toHaveLength(10);
+    expect(section(load("zh"), "toneSandhi").rules.map((r) => r.rule)).toEqual(["third-third", "bu", "yi"]);
     expect(section(load("zh"), "strokes").rules.length).toBeGreaterThanOrEqual(4);
+    const zhCheckpoint = load("zh").checkpoint!;
+    expect(zhCheckpoint.items).toHaveLength(20);
+    expect(zhCheckpoint.passMark).toBe(16);
+    expect(new Set(zhCheckpoint.items.map((i) => i.kind))).toEqual(new Set(["soundToPinyin"]));
+    expect(zhCheckpoint.items.filter((i) => i.options.length === 2)).toHaveLength(10);
     const ko = section(load("ko"), "hangulBlocks");
     expect(ko.consonants.map((c) => c.jamo)).toEqual(BASIC_CONSONANTS);
     expect(ko.vowels.map((v) => v.jamo)).toEqual(BASIC_VOWELS);
@@ -76,8 +82,11 @@ describe("committed primers", () => {
     ]);
     const review = renderPrimerReview(load("zh"));
     expect(review).toContain("D-10 review sheet");
-    expect(review).toContain("| four-tones.tone3 | Thanh 3:");
+    expect(review).toContain("| four-tones.tone3 | Thanh 3 (214):");
     expect(review).toContain("mua");
+    expect(review).toContain("| initials-finals.contrast1.note |");
+    expect(review).toContain("| tone-sandhi.bu.example1 | không phải |");
+    expect(review).toContain("| checkpoint.intro | 20 câu:");
   });
 });
 
@@ -151,7 +160,47 @@ describe("checkpoint rules (P4c)", () => {
         }
       }).join()
     ).toContain("always in the same position");
-    expect(errorsAfter("zh", (p) => (p.checkpoint = structuredClone(load("ja").checkpoint))).join()).toContain("only a kana primer has a checkpoint");
+    expect(errorsAfter("zh", (p) => (p.checkpoint = structuredClone(load("ja").checkpoint))).join()).toContain("a kanaToRomaji item belongs to a kana primer");
+    expect(errorsAfter("ja", (p) => (p.checkpoint = structuredClone(load("zh").checkpoint))).join()).toContain("a soundToPinyin item belongs to a tones primer");
+    expect(errorsAfter("ko", (p) => (p.checkpoint = structuredClone(load("zh").checkpoint))).join()).toContain("only a kana or a tones primer has a checkpoint");
+  });
+});
+
+describe("tones checkpoint rules (P4d)", () => {
+  type PinyinItem = Extract<NonNullable<ScriptPrimer["checkpoint"]>["items"][number], { kind: "soundToPinyin" }>;
+  const first = (p: ScriptPrimer) => p.checkpoint!.items[0] as PinyinItem;
+  test("the key is the pinyin the primer teaches for the word heard, tone-exact", () => {
+    expect(validateScriptPrimerData("zh", load("zh"))).toEqual([]);
+    expect(
+      errorsAfter("zh", (p) => {
+        const i = first(p);
+        i.correct = i.options.indexOf("mǎ");
+      }).join()
+    ).toContain("妈 is mā");
+    expect(errorsAfter("zh", (p) => (first(p).audio.say = "猫")).join()).toContain("猫 is not a word the primer teaches");
+  });
+  test("options are pinyin of as many syllables as the key, and no two read the same", () => {
+    expect(errorsAfter("zh", (p) => (first(p).options[(first(p).correct + 1) % 4] = "ma1")).join()).toContain("two options read the same");
+    expect(errorsAfter("zh", (p) => (first(p).options[(first(p).correct + 1) % 4] = "mā mā")).join()).toContain("every option has 1 syllable(s)");
+    expect(errorsAfter("zh", (p) => (first(p).options[(first(p).correct + 1) % 4] = "m-a")).join()).toContain('option "m-a" is not pinyin');
+  });
+});
+
+describe("sound contrast and sandhi rules (P4d)", () => {
+  test("a contrast differs in letters, not only in tone", () => {
+    expect(errorsAfter("zh", (p) => (section(p, "soundContrasts").contrasts[0]!.b = { hanzi: "照", pinyin: "zhào", gloss: { vi: "chiếu", en: "to shine" } })).join()).toContain(
+      "spell the same syllables (a tone pair is a minimal pair)"
+    );
+    expect(errorsAfter("zh", (p) => (section(p, "soundContrasts").contrasts[1]!.a.pinyin = "chá chá")).join()).toContain("1 hanzi for 2 syllables");
+  });
+  test("the spoken pinyin of a sandhi example is the rule's, and each rule shows a change", () => {
+    const sandhi = (p: ScriptPrimer) => section(p, "toneSandhi");
+    expect(errorsAfter("zh", (p) => (sandhi(p).rules[0]!.examples[0]!.spoken = "nǐ hǎo")).join()).toContain("你好 nǐ hǎo is said with tones 2-3");
+    expect(errorsAfter("zh", (p) => (sandhi(p).rules[1]!.examples[2]!.spoken = "bú hǎo")).join()).toContain("不好 bù hǎo is said with tones 4-3");
+    expect(errorsAfter("zh", (p) => (sandhi(p).rules[2]!.examples[0]!.spoken = "yì gè")).join()).toContain("一个 yī gè is said with tones 2-4");
+    expect(errorsAfter("zh", (p) => (sandhi(p).rules[1]!.examples = sandhi(p).rules[1]!.examples.filter((x) => x.written === x.spoken))).join()).toContain("bu: no example shows the rule changing a tone");
+    expect(errorsAfter("zh", (p) => (sandhi(p).rules[2]!.examples[1]!.audio.say = "一")).join()).toContain('audio says "一", not 一样');
+    expect(errorsAfter("zh", (p) => (sandhi(p).rules[1]!.examples[0]!.hanzi = "别是")).join()).toContain("别是 has no 不");
   });
 });
 

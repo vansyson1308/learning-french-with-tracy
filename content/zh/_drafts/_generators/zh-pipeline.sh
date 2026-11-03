@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# zh-vi, sessions 1-2 of P4d (lexicon, objectives, units; concept cards and lessons): regenerate the drafts and ingest
+# zh-vi, sessions 1-3 of P4d (lexicon, objectives, units; concept cards and lessons; the tone primer, reception,
+# speech, writing and scenarios): regenerate the drafts and ingest
 # them through the toolkit. Byte-deterministic: run it twice, the outputs are identical. Offline: zh-subset.py (the
 # one-time slice of the pinned hsk30, CC-CEDICT and wordfreq files) is not part of it; its output
 # content/zh/lexicon/derived/hsk-course.json is.
@@ -22,6 +23,9 @@ ingest() {
 }
 
 python -I "$G/zh-lex.py" .
+# The tone and pinyin primer (session 3) is language-level content like the lexicon: written to content/zh/primer/
+# directly (its compiled copy and review sheet come from scripts/lib/script-primer.ts at compile time).
+python -I "$G/zh-primer.py" .
 # Full replacement, so a record the generators dropped does not linger. The draft pack is rebuilt from the units.
 rm -f "$STAGED/content/zh/assessment/objectives.json" "$STAGED/content/courses/zh-vi.json" content/zh/_drafts/pack.json
 rm -f "$STAGED/content/zh/pedagogy/concepts.json"

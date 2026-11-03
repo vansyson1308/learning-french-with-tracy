@@ -310,10 +310,13 @@ export type MessageKey =
   | "practice.writingPractice"
   | "primer.blocks"
   | "primer.checkpoint.listenPick"
+  | "primer.checkpoint.listenPinyin"
   | "primer.checkpoint.next"
   | "primer.checkpoint.notYet"
   | "primer.checkpoint.passed"
   | "primer.checkpoint.passedBadge"
+  | "primer.checkpoint.passedBadgeGeneric"
+  | "primer.checkpoint.passedReadingStays"
   | "primer.checkpoint.play"
   | "primer.checkpoint.progress"
   | "primer.checkpoint.readKana"
@@ -323,12 +326,16 @@ export type MessageKey =
   | "primer.checkpoint.start"
   | "primer.consonants"
   | "primer.entryPassed"
+  | "primer.entryPassedGeneric"
   | "primer.entryRecommended"
+  | "primer.entryRecommendedGeneric"
   | "primer.entrySubtitle"
   | "primer.entryTitle"
   | "primer.listen"
   | "primer.minimalPairs"
   | "primer.reviewNote"
+  | "primer.sandhi.said"
+  | "primer.sandhi.written"
   | "primer.strokeOrder"
   | "primer.strokes"
   | "primer.vowels"
@@ -560,4 +567,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 558;
+export const MESSAGE_KEY_COUNT = 565;

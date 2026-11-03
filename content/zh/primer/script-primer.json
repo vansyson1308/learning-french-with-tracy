@@ -3,12 +3,12 @@
   "language": "zh",
   "id": "zh.primer.script",
   "title": {
-    "vi": "Thanh điệu và nét chữ Hán",
-    "en": "Tones and strokes"
+    "vi": "Thanh điệu, pinyin và nét chữ Hán",
+    "en": "Tones, pinyin and strokes"
   },
   "intro": {
-    "vi": "Tiếng Trung phổ thông có bốn thanh và một thanh nhẹ. Giống tiếng Việt, đổi thanh là đổi nghĩa: mā (mẹ) và mǎ (ngựa) là hai từ khác hẳn nhau. Phiên âm pinyin ghi thanh bằng dấu đặt trên nguyên âm.",
-    "en": "Standard Chinese has four tones plus a light, neutral tone. As in Vietnamese, a different tone makes a different word: mā (mother) and mǎ (horse) have nothing in common. Pinyin marks the tone over the vowel."
+    "vi": "Tiếng Trung phổ thông có bốn thanh và một thanh nhẹ. Giống tiếng Việt, đổi thanh là đổi nghĩa: mǎi (买, mua) và mài (卖, bán) là hai từ khác hẳn nhau. Pinyin (bính âm) ghi cách đọc bằng chữ La-tinh, dấu thanh đặt trên nguyên âm; trong bài học, ứng dụng ghi pinyin nhỏ dưới mỗi chữ Hán. Phần này so sánh thanh tiếng Trung với thanh tiếng Việt, chỉ ra những âm người Việt hay nhầm, cách thanh đổi khi nói và các nét chữ cơ bản. Bấm vào một chữ để nghe.",
+    "en": "Standard Chinese has four tones plus a light, neutral tone. As in Vietnamese, a different tone makes a different word: mǎi (买, to buy) and mài (卖, to sell) have nothing in common. Pinyin writes the sounds in Latin letters with the tone mark over the vowel; in the lessons the app shows it small under every character. This introduction compares the tones with Vietnamese ones, points out the sounds Vietnamese speakers mix up, shows how tones change in speech and teaches the basic strokes. Tap a character to hear it."
   },
   "sections": [
     {
@@ -19,8 +19,8 @@
         "en": "The four tones and the neutral tone"
       },
       "explanation": {
-        "vi": "Hãy nghe và nói theo cùng một âm tiết ma với từng thanh. Người Việt có lợi thế vì đã quen phân biệt thanh, nhưng đừng thay bằng thanh tiếng Việt: hãy chú ý độ cao bắt đầu và kết thúc của giọng.",
-        "en": "Listen and repeat the one syllable ma in each tone. Track where your voice starts and where it ends; the numbers (55, 35, 214, 51) give that pitch on a 1–5 scale."
+        "vi": "Người Việt có lợi thế vì đã quen phân biệt thanh. Nhưng thanh tiếng Trung không trùng với thanh tiếng Việt: mỗi thanh dưới đây chỉ ghi thanh tiếng Việt gần nhất để bạn dễ bắt đầu — đó là so sánh gần đúng, không phải cùng một thanh. Hãy chú ý giọng bắt đầu ở độ cao nào và kết thúc ở đâu; các con số (55, 35, 214, 51) ghi độ cao đó trên thang 1 (thấp) đến 5 (cao).",
+        "en": "Vietnamese speakers already hear tones, but Chinese tones are not Vietnamese ones: each tone below names the nearest Vietnamese tone only as a starting point — an approximation, never the same tone. Track where your voice starts and ends; the numbers (55, 35, 214, 51) give that pitch on a scale from 1 (low) to 5 (high)."
       },
       "tones": [
         {
@@ -28,82 +28,762 @@
           "mark": "ā",
           "contour": "55",
           "description": {
-            "vi": "Thanh 1: cao và đều, giữ nguyên độ cao như khi ngân một nốt nhạc — giống thanh ngang của tiếng Việt nhưng cao hơn.",
-            "en": "Tone 1: high and level, held steady like a sung note."
+            "vi": "Thanh 1 (55): cao và đều từ đầu đến cuối, như khi ngân một nốt nhạc. Gần nhất là thanh ngang (so sánh gần đúng), nhưng cao hơn hẳn: thanh ngang nằm ở giữa giọng, còn thanh 1 ở gần mức cao nhất. Giữ giọng phẳng tới hết, đừng để nó rơi xuống ở cuối.",
+            "en": "Tone 1 (55): high and level from start to end, like a sung note. The nearest Vietnamese tone is ngang (an approximation), but tone 1 sits much higher, near the top of the voice. Keep it flat to the end; do not let it fall."
           },
-          "example": { "hanzi": "妈", "pinyin": "mā", "gloss": { "vi": "mẹ", "en": "mother" } },
-          "audio": { "say": "妈", "status": "pending" }
+          "example": {
+            "hanzi": "妈",
+            "pinyin": "mā",
+            "gloss": {
+              "vi": "mẹ",
+              "en": "mother"
+            }
+          },
+          "audio": {
+            "say": "妈",
+            "status": "pending"
+          }
         },
         {
           "tone": 2,
           "mark": "á",
           "contour": "35",
           "description": {
-            "vi": "Thanh 2: đi lên từ giữa lên cao, như khi hỏi lại «hả?» — gần với thanh sắc.",
-            "en": "Tone 2: rises from mid to high, like a surprised “huh?”."
+            "vi": "Thanh 2 (35): đi lên từ giữa lên cao, như khi hỏi lại «hả?». Gần với thanh sắc (so sánh gần đúng), nhưng bắt đầu từ giữa giọng chứ không từ cao, lên đều, và không căng, không ngắt gọn ở cuối như thanh sắc giọng Bắc.",
+            "en": "Tone 2 (35): rises from mid to high, like a surprised “huh?”. Close to sắc (an approximation), but it starts from the middle of the voice, rises evenly and ends without the tense, clipped close of a Northern sắc."
           },
-          "example": { "hanzi": "麻", "pinyin": "má", "gloss": { "vi": "cây gai; tê (tê tay)", "en": "hemp; numb" } },
-          "audio": { "say": "麻", "status": "pending" }
+          "example": {
+            "hanzi": "麻",
+            "pinyin": "má",
+            "gloss": {
+              "vi": "cây gai; tê (tê tay)",
+              "en": "hemp; numb"
+            }
+          },
+          "audio": {
+            "say": "麻",
+            "status": "pending"
+          }
         },
         {
           "tone": 3,
           "mark": "ǎ",
           "contour": "214",
           "description": {
-            "vi": "Thanh 3: hạ thấp xuống rồi lên lại — gần với thanh hỏi. Khi nói nhanh hoặc đứng trước thanh khác, thường chỉ còn phần thấp.",
-            "en": "Tone 3: dips low, then rises. In quick speech or before another tone it usually keeps only the low part."
+            "vi": "Thanh 3 (214): hạ xuống thấp rồi lên lại. Gần với thanh hỏi (so sánh gần đúng). Đọc một chữ riêng thì nghe đủ phần xuống và phần lên; trong câu nó thường chỉ còn phần thấp (21), không lên lại. Đừng đọc thành thanh ngã: thanh 3 không có chỗ thắt giọng ở giữa.",
+            "en": "Tone 3 (214): dips low, then rises. Close to hỏi (an approximation). Said alone it has the whole dip and rise; inside a sentence it usually keeps only the low part (21). It is never glottalised like ngã."
           },
-          "example": { "hanzi": "马", "pinyin": "mǎ", "gloss": { "vi": "ngựa", "en": "horse" } },
-          "audio": { "say": "马", "status": "pending" }
+          "example": {
+            "hanzi": "马",
+            "pinyin": "mǎ",
+            "gloss": {
+              "vi": "ngựa",
+              "en": "horse"
+            }
+          },
+          "audio": {
+            "say": "马",
+            "status": "pending"
+          }
         },
         {
           "tone": 4,
           "mark": "à",
           "contour": "51",
           "description": {
-            "vi": "Thanh 4: rơi nhanh từ cao xuống thấp, dứt khoát như khi ra lệnh. Đừng đọc thành thanh huyền: thanh huyền bắt đầu thấp và đi đều, còn thanh 4 bắt đầu rất cao.",
-            "en": "Tone 4: falls sharply from high to low, like a firm command."
+            "vi": "Thanh 4 (51): rơi mạnh từ rất cao xuống thấp, dứt khoát như khi ra lệnh. Tiếng Việt không có thanh nào giống: không phải thanh huyền (huyền thấp và đi ngang, khoảng 21), cũng không phải thanh nặng (nặng ngắn và bị chặn lại). Bắt đầu ở mức cao nhất của giọng rồi cho rơi hết.",
+            "en": "Tone 4 (51): falls sharply from the very top to low, like a firm command. No Vietnamese tone matches it: it is not huyền (low and level, about 21) and not nặng (short and cut off). Start at the top of your voice and let it fall all the way."
           },
-          "example": { "hanzi": "骂", "pinyin": "mà", "gloss": { "vi": "mắng", "en": "to scold" } },
-          "audio": { "say": "骂", "status": "pending" }
+          "example": {
+            "hanzi": "骂",
+            "pinyin": "mà",
+            "gloss": {
+              "vi": "mắng",
+              "en": "to scold"
+            }
+          },
+          "audio": {
+            "say": "骂",
+            "status": "pending"
+          }
         },
         {
           "tone": 5,
           "mark": "a",
           "description": {
-            "vi": "Thanh nhẹ: ngắn, nhẹ và không có dấu; độ cao tùy theo âm tiết đứng trước.",
-            "en": "Neutral tone: short, light and unmarked; its pitch depends on the syllable before it."
+            "vi": "Thanh nhẹ: ngắn, nhẹ và không có dấu; độ cao tuỳ chữ đứng trước. Gặp ở trợ từ (吗, 了, 的) và chữ thứ hai của nhiều từ (妈妈, 学生 xué sheng). Đọc lướt và nhẹ, không thêm chỗ ngắt như thanh nặng.",
+            "en": "Neutral tone: short, light and unmarked; its pitch depends on the syllable before it. Particles (吗, 了, 的) and the second syllable of many words (妈妈, 学生 xué sheng) have it. Say it lightly, with no glottal stop."
           },
-          "example": { "hanzi": "吗", "pinyin": "ma", "gloss": { "vi": "trợ từ hỏi (… không?)", "en": "question particle" } },
-          "audio": { "say": "吗", "status": "pending" }
+          "example": {
+            "hanzi": "吗",
+            "pinyin": "ma",
+            "gloss": {
+              "vi": "trợ từ hỏi (… không?)",
+              "en": "question particle"
+            }
+          },
+          "audio": {
+            "say": "吗",
+            "status": "pending"
+          }
         }
       ],
       "minimalPairs": [
         {
-          "a": { "hanzi": "买", "pinyin": "mǎi", "gloss": { "vi": "mua", "en": "to buy" } },
-          "b": { "hanzi": "卖", "pinyin": "mài", "gloss": { "vi": "bán", "en": "to sell" } },
+          "a": {
+            "hanzi": "买",
+            "pinyin": "mǎi",
+            "gloss": {
+              "vi": "mua",
+              "en": "to buy"
+            }
+          },
+          "b": {
+            "hanzi": "卖",
+            "pinyin": "mài",
+            "gloss": {
+              "vi": "bán",
+              "en": "to sell"
+            }
+          },
           "note": {
             "vi": "Chỉ khác thanh mà nghĩa ngược hẳn: thanh 3 là mua, thanh 4 là bán.",
             "en": "Only the tone differs, and the meanings are opposites: tone 3 buys, tone 4 sells."
           }
         },
         {
-          "a": { "hanzi": "汤", "pinyin": "tāng", "gloss": { "vi": "canh", "en": "soup" } },
-          "b": { "hanzi": "糖", "pinyin": "táng", "gloss": { "vi": "đường, kẹo", "en": "sugar, sweets" } }
+          "a": {
+            "hanzi": "是",
+            "pinyin": "shì",
+            "gloss": {
+              "vi": "là",
+              "en": "to be"
+            }
+          },
+          "b": {
+            "hanzi": "十",
+            "pinyin": "shí",
+            "gloss": {
+              "vi": "mười",
+              "en": "ten"
+            }
+          },
+          "note": {
+            "vi": "shì (thanh 4) là «là», shí (thanh 2) là «mười»: 我是 khác hẳn 十个.",
+            "en": "shì (tone 4) is “to be”, shí (tone 2) is “ten”: 我是 is nothing like 十个."
+          }
         },
         {
-          "a": { "hanzi": "问", "pinyin": "wèn", "gloss": { "vi": "hỏi", "en": "to ask" } },
-          "b": { "hanzi": "闻", "pinyin": "wén", "gloss": { "vi": "ngửi", "en": "to smell" } }
+          "a": {
+            "hanzi": "书",
+            "pinyin": "shū",
+            "gloss": {
+              "vi": "sách",
+              "en": "book"
+            }
+          },
+          "b": {
+            "hanzi": "树",
+            "pinyin": "shù",
+            "gloss": {
+              "vi": "cây",
+              "en": "tree"
+            }
+          }
         },
         {
-          "a": { "hanzi": "书", "pinyin": "shū", "gloss": { "vi": "sách", "en": "book" } },
-          "b": { "hanzi": "树", "pinyin": "shù", "gloss": { "vi": "cây", "en": "tree" } }
+          "a": {
+            "hanzi": "汤",
+            "pinyin": "tāng",
+            "gloss": {
+              "vi": "canh",
+              "en": "soup"
+            }
+          },
+          "b": {
+            "hanzi": "糖",
+            "pinyin": "táng",
+            "gloss": {
+              "vi": "đường, kẹo",
+              "en": "sugar, sweets"
+            }
+          }
+        },
+        {
+          "a": {
+            "hanzi": "问",
+            "pinyin": "wèn",
+            "gloss": {
+              "vi": "hỏi",
+              "en": "to ask"
+            }
+          },
+          "b": {
+            "hanzi": "闻",
+            "pinyin": "wén",
+            "gloss": {
+              "vi": "ngửi",
+              "en": "to smell"
+            }
+          }
+        },
+        {
+          "a": {
+            "hanzi": "课",
+            "pinyin": "kè",
+            "gloss": {
+              "vi": "bài học, tiết học",
+              "en": "lesson, class"
+            }
+          },
+          "b": {
+            "hanzi": "渴",
+            "pinyin": "kě",
+            "gloss": {
+              "vi": "khát",
+              "en": "thirsty"
+            }
+          }
+        },
+        {
+          "a": {
+            "hanzi": "水",
+            "pinyin": "shuǐ",
+            "gloss": {
+              "vi": "nước",
+              "en": "water"
+            }
+          },
+          "b": {
+            "hanzi": "睡",
+            "pinyin": "shuì",
+            "gloss": {
+              "vi": "ngủ",
+              "en": "to sleep"
+            }
+          }
+        },
+        {
+          "a": {
+            "hanzi": "鸡",
+            "pinyin": "jī",
+            "gloss": {
+              "vi": "gà",
+              "en": "chicken"
+            }
+          },
+          "b": {
+            "hanzi": "几",
+            "pinyin": "jǐ",
+            "gloss": {
+              "vi": "mấy",
+              "en": "how many"
+            }
+          }
+        },
+        {
+          "a": {
+            "hanzi": "包",
+            "pinyin": "bāo",
+            "gloss": {
+              "vi": "túi, cái bao",
+              "en": "bag"
+            }
+          },
+          "b": {
+            "hanzi": "饱",
+            "pinyin": "bǎo",
+            "gloss": {
+              "vi": "no (bụng)",
+              "en": "full (after eating)"
+            }
+          }
+        },
+        {
+          "a": {
+            "hanzi": "烟",
+            "pinyin": "yān",
+            "gloss": {
+              "vi": "thuốc lá; khói",
+              "en": "cigarette; smoke"
+            }
+          },
+          "b": {
+            "hanzi": "盐",
+            "pinyin": "yán",
+            "gloss": {
+              "vi": "muối",
+              "en": "salt"
+            }
+          }
         }
       ],
       "notes": [
         {
-          "vi": "Hai thanh 3 đi liền nhau thì thanh 3 đầu đọc thành thanh 2: nǐ hǎo (你好) nghe như ní hǎo, nhưng pinyin vẫn viết dấu thanh 3.",
-          "en": "Two third tones in a row: the first is said as a second tone — nǐ hǎo (你好) sounds like ní hǎo, though pinyin keeps the third-tone mark."
+          "vi": "Dấu thanh của pinyin trông giống dấu tiếng Việt nhưng không cùng nghĩa: dấu ´ (thanh 2) đi lên như thanh sắc, nhưng dấu ` (thanh 4) là thanh rơi từ cao, không phải thanh huyền; dấu ˇ (thanh 3) là dấu móc, không phải dấu hỏi.",
+          "en": "Pinyin tone marks look like Vietnamese ones without meaning the same: ´ (tone 2) rises like sắc, but ` (tone 4) falls from high and is not huyền, and ˇ (tone 3) is not the hỏi hook."
+        }
+      ]
+    },
+    {
+      "kind": "soundContrasts",
+      "id": "initials-finals",
+      "title": {
+        "vi": "Những âm người Việt hay nhầm",
+        "en": "Sounds Vietnamese speakers mix up"
+      },
+      "explanation": {
+        "vi": "Nhiều chữ cái pinyin trông giống chữ quốc ngữ nhưng đọc khác. Mỗi cặp dưới đây chỉ khác nhau ở một âm; hãy nghe và nói theo từng cặp. Những so sánh với âm tiếng Việt đều là gần đúng.",
+        "en": "Many pinyin letters look like Vietnamese letters but sound different. Each pair below differs in one sound; listen and repeat pair by pair. Every comparison with a Vietnamese sound is an approximation."
+      },
+      "contrasts": [
+        {
+          "focus": "zh – z",
+          "a": {
+            "hanzi": "找",
+            "pinyin": "zhǎo",
+            "gloss": {
+              "vi": "tìm",
+              "en": "to look for"
+            }
+          },
+          "b": {
+            "hanzi": "早",
+            "pinyin": "zǎo",
+            "gloss": {
+              "vi": "sớm",
+              "en": "early"
+            }
+          },
+          "note": {
+            "vi": "zh, ch, sh: cong đầu lưỡi lên chạm phía sau lợi trên (âm uốn lưỡi). z, c, s: đầu lưỡi thẳng, chạm sau răng trên. Chữ z của pinyin đọc gần như «t» và «x» liền nhau (ts), không phải «d» hay «gi» của tiếng Việt.",
+            "en": "zh, ch, sh: curl the tongue tip up behind the gum ridge (retroflex). z, c, s: tongue tip flat behind the upper teeth. Pinyin z is a ts sound, not Vietnamese d or gi."
+          }
+        },
+        {
+          "focus": "ch – c",
+          "a": {
+            "hanzi": "茶",
+            "pinyin": "chá",
+            "gloss": {
+              "vi": "trà",
+              "en": "tea"
+            }
+          },
+          "b": {
+            "hanzi": "词",
+            "pinyin": "cí",
+            "gloss": {
+              "vi": "từ",
+              "en": "word"
+            }
+          },
+          "note": {
+            "vi": "c của pinyin là «ts» bật hơi mạnh, không phải «c/k» của tiếng Việt. ch gần «ch» tiếng Việt nhưng cong lưỡi và bật hơi (so sánh gần đúng). Chữ i sau z, c, s, zh, ch, sh, r không đọc là «i»: 词 gần «tsư», 是 gần «sư» uốn lưỡi.",
+            "en": "Pinyin c is an aspirated ts, not Vietnamese c/k; ch is like Vietnamese ch with the tongue curled back and a puff of air. After z, c, s, zh, ch, sh and r the letter i is not an i sound."
+          }
+        },
+        {
+          "focus": "sh – s",
+          "a": {
+            "hanzi": "是",
+            "pinyin": "shì",
+            "gloss": {
+              "vi": "là",
+              "en": "to be"
+            }
+          },
+          "b": {
+            "hanzi": "四",
+            "pinyin": "sì",
+            "gloss": {
+              "vi": "bốn",
+              "en": "four"
+            }
+          },
+          "note": {
+            "vi": "sh gần «s» uốn lưỡi của giọng miền Nam (sông), s gần «x» (xa) — so sánh gần đúng. Khi đọc số, 四 sì (bốn) và 十 shí (mười) rất dễ nhầm: 四十 là bốn mươi, 十四 là mười bốn.",
+            "en": "sh is close to the curled Southern Vietnamese s (sông), s to Vietnamese x (xa) — approximately. Numbers trap learners here: 四 sì is four, 十 shí ten; 四十 is forty, 十四 fourteen."
+          }
+        },
+        {
+          "focus": "r – l",
+          "a": {
+            "hanzi": "热",
+            "pinyin": "rè",
+            "gloss": {
+              "vi": "nóng",
+              "en": "hot"
+            }
+          },
+          "b": {
+            "hanzi": "乐",
+            "pinyin": "lè",
+            "gloss": {
+              "vi": "vui",
+              "en": "happy"
+            }
+          }
+        },
+        {
+          "focus": "j – q",
+          "a": {
+            "hanzi": "鸡",
+            "pinyin": "jī",
+            "gloss": {
+              "vi": "gà",
+              "en": "chicken"
+            }
+          },
+          "b": {
+            "hanzi": "七",
+            "pinyin": "qī",
+            "gloss": {
+              "vi": "bảy",
+              "en": "seven"
+            }
+          },
+          "note": {
+            "vi": "q không phải «qu» của tiếng Việt: q đọc như «ch» bật hơi mạnh, j như «ch» không bật hơi. x (西 xī) gần «x» tiếng Việt nhưng mặt lưỡi nâng cao, môi dẹt.",
+            "en": "Pinyin q is not Vietnamese qu: it is an aspirated ch-like sound, and j the same without the puff of air. x (西 xī) is close to Vietnamese x with the tongue raised and the lips spread."
+          }
+        },
+        {
+          "focus": "d – t",
+          "a": {
+            "hanzi": "都",
+            "pinyin": "dōu",
+            "gloss": {
+              "vi": "đều",
+              "en": "all"
+            }
+          },
+          "b": {
+            "hanzi": "偷",
+            "pinyin": "tōu",
+            "gloss": {
+              "vi": "lấy trộm",
+              "en": "to steal"
+            }
+          },
+          "note": {
+            "vi": "Pinyin chia phụ âm theo bật hơi: b, d, g không bật hơi (d gần «t» tiếng Việt, không phải «đ»); p, t, k bật hơi mạnh (t gần «th», k gần «kh» nhưng không xát). Đặt tờ giấy trước miệng: nói t, p, k thì giấy rung.",
+            "en": "Pinyin sorts stops by aspiration: b, d, g have none (d is close to Vietnamese t, not đ); p, t, k have a strong puff (t is close to Vietnamese th). Hold a sheet of paper before your mouth: it moves for p, t and k."
+          }
+        },
+        {
+          "focus": "b – p",
+          "a": {
+            "hanzi": "爸",
+            "pinyin": "bà",
+            "gloss": {
+              "vi": "bố",
+              "en": "dad"
+            }
+          },
+          "b": {
+            "hanzi": "怕",
+            "pinyin": "pà",
+            "gloss": {
+              "vi": "sợ",
+              "en": "to be afraid"
+            }
+          }
+        },
+        {
+          "focus": "ü – u",
+          "a": {
+            "hanzi": "绿",
+            "pinyin": "lǜ",
+            "gloss": {
+              "vi": "xanh lá cây",
+              "en": "green"
+            }
+          },
+          "b": {
+            "hanzi": "路",
+            "pinyin": "lù",
+            "gloss": {
+              "vi": "đường",
+              "en": "road"
+            }
+          },
+          "note": {
+            "vi": "ü: tròn môi như «u» nhưng lưỡi đặt như «i» (gần «uy» đọc liền thành một âm). Sau j, q, x, y, chữ ü viết thành u mà vẫn đọc ü: 去 qù, 鱼 yú.",
+            "en": "ü: round the lips for u with the tongue placed for i. After j, q, x and y it is written u but still said ü: 去 qù, 鱼 yú."
+          }
+        },
+        {
+          "focus": "-n – -ng",
+          "a": {
+            "hanzi": "班",
+            "pinyin": "bān",
+            "gloss": {
+              "vi": "ca, lớp",
+              "en": "shift, class"
+            }
+          },
+          "b": {
+            "hanzi": "帮",
+            "pinyin": "bāng",
+            "gloss": {
+              "vi": "giúp",
+              "en": "to help"
+            }
+          },
+          "note": {
+            "vi": "-n: đầu lưỡi chạm lợi trên ở cuối âm; -ng: lưỡi lùi ra sau như «ng» tiếng Việt. Giọng miền Nam hay nhập hai âm cuối này; trong tiếng Trung, an/ang, en/eng, in/ing là những từ khác nhau.",
+            "en": "-n ends with the tongue tip on the gum ridge; -ng with the back of the tongue, as Vietnamese ng. Southern Vietnamese often merges the two; in Chinese an/ang, en/eng, in/ing are different words."
+          }
+        },
+        {
+          "focus": "-in – -ing",
+          "a": {
+            "hanzi": "心",
+            "pinyin": "xīn",
+            "gloss": {
+              "vi": "tim, lòng",
+              "en": "heart"
+            }
+          },
+          "b": {
+            "hanzi": "星",
+            "pinyin": "xīng",
+            "gloss": {
+              "vi": "sao",
+              "en": "star"
+            }
+          }
+        }
+      ],
+      "notes": [
+        {
+          "vi": "Tiếng Trung phổ thông không có âm cuối -c, -t, -p như tiếng Việt: một âm tiết chỉ kết thúc bằng nguyên âm, -n, -ng hoặc -r. 吃 chī không đọc thành «chịt».",
+          "en": "Standard Chinese has no final -c, -t or -p: a syllable ends in a vowel, -n, -ng or -r. 吃 chī has no stop at the end."
+        },
+        {
+          "vi": "er (二 èr «hai»): một âm duy nhất, nói «ơ» rồi cong lưỡi lên. 儿 ở cuối từ ghép vào chữ trước: 哪儿 nǎr (ở đâu), 一点儿 yìdiǎnr (một chút).",
+          "en": "er (二 èr “two”) is one sound: an «ơ» said with the tongue curled up. 儿 at the end of a word joins the syllable before it: 哪儿 nǎr, 一点儿 yìdiǎnr."
+        }
+      ]
+    },
+    {
+      "kind": "toneSandhi",
+      "id": "tone-sandhi",
+      "title": {
+        "vi": "Biến điệu: khi thanh đổi theo chữ sau",
+        "en": "Tone sandhi: tones that change before others"
+      },
+      "explanation": {
+        "vi": "Khi nói, vài thanh đổi theo chữ đứng sau. Pinyin trong sách và trong ứng dụng vẫn ghi thanh gốc; bạn chỉ đổi khi nói. Ba quy tắc dưới đây cần biết ngay từ đầu; dòng «viết» là pinyin ghi trong bài, dòng «đọc» là cách nói.",
+        "en": "In speech a few tones change before the next syllable. Pinyin in books and in the app keeps the citation tone; you change it only when you speak. These three rules are needed from the start: “written” is the pinyin the lessons show, “said” is how it sounds."
+      },
+      "rules": [
+        {
+          "rule": "third-third",
+          "text": {
+            "vi": "Hai thanh 3 đi liền nhau: chữ đầu đọc thành thanh 2.",
+            "en": "Two third tones in a row: the first is said as a second tone."
+          },
+          "examples": [
+            {
+              "hanzi": "你好",
+              "written": "nǐ hǎo",
+              "spoken": "ní hǎo",
+              "gloss": {
+                "vi": "xin chào",
+                "en": "hello"
+              },
+              "audio": {
+                "say": "你好",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "可以",
+              "written": "kě yǐ",
+              "spoken": "ké yǐ",
+              "gloss": {
+                "vi": "có thể, được",
+                "en": "may, can"
+              },
+              "audio": {
+                "say": "可以",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "水果",
+              "written": "shuǐ guǒ",
+              "spoken": "shuí guǒ",
+              "gloss": {
+                "vi": "hoa quả",
+                "en": "fruit"
+              },
+              "audio": {
+                "say": "水果",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "很好",
+              "written": "hěn hǎo",
+              "spoken": "hén hǎo",
+              "gloss": {
+                "vi": "rất tốt",
+                "en": "very good"
+              },
+              "audio": {
+                "say": "很好",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "rule": "bu",
+          "text": {
+            "vi": "不 (bù) đọc thành bú khi đứng trước thanh 4; trước thanh 1, 2, 3 vẫn đọc bù.",
+            "en": "不 (bù) is said bú before a fourth tone; before tones 1, 2 and 3 it stays bù."
+          },
+          "examples": [
+            {
+              "hanzi": "不是",
+              "written": "bù shì",
+              "spoken": "bú shì",
+              "gloss": {
+                "vi": "không phải",
+                "en": "is not"
+              },
+              "audio": {
+                "say": "不是",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "不要",
+              "written": "bù yào",
+              "spoken": "bú yào",
+              "gloss": {
+                "vi": "đừng; không cần",
+                "en": "don't; do not want"
+              },
+              "audio": {
+                "say": "不要",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "不好",
+              "written": "bù hǎo",
+              "spoken": "bù hǎo",
+              "gloss": {
+                "vi": "không tốt",
+                "en": "not good"
+              },
+              "audio": {
+                "say": "不好",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "不来",
+              "written": "bù lái",
+              "spoken": "bù lái",
+              "gloss": {
+                "vi": "không đến",
+                "en": "not come"
+              },
+              "audio": {
+                "say": "不来",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "rule": "yi",
+          "text": {
+            "vi": "一 (yī) đọc yí trước thanh 4 và yì trước thanh 1, 2, 3. Khi đếm, khi là số thứ tự hay đứng cuối, vẫn đọc yī.",
+            "en": "一 (yī) is said yí before a fourth tone and yì before tones 1, 2 and 3. Counting, as an ordinal or at the end it stays yī."
+          },
+          "examples": [
+            {
+              "hanzi": "一个",
+              "written": "yī gè",
+              "spoken": "yí gè",
+              "gloss": {
+                "vi": "một cái",
+                "en": "one (thing)"
+              },
+              "audio": {
+                "say": "一个",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "一样",
+              "written": "yī yàng",
+              "spoken": "yí yàng",
+              "gloss": {
+                "vi": "giống nhau",
+                "en": "the same"
+              },
+              "audio": {
+                "say": "一样",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "一天",
+              "written": "yī tiān",
+              "spoken": "yì tiān",
+              "gloss": {
+                "vi": "một ngày",
+                "en": "one day"
+              },
+              "audio": {
+                "say": "一天",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "一起",
+              "written": "yī qǐ",
+              "spoken": "yì qǐ",
+              "gloss": {
+                "vi": "cùng nhau",
+                "en": "together"
+              },
+              "audio": {
+                "say": "一起",
+                "status": "pending"
+              }
+            },
+            {
+              "hanzi": "第一",
+              "written": "dì yī",
+              "spoken": "dì yī",
+              "gloss": {
+                "vi": "thứ nhất",
+                "en": "first"
+              },
+              "audio": {
+                "say": "第一",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "vi": "Ba thanh 3 liền nhau (我很好) thường đọc wó hén hǎo hoặc wǒ hén hǎo, tuỳ cách ngắt; cứ nói chậm, rõ từng từ là được.",
+          "en": "Three third tones in a row (我很好) are said wó hén hǎo or wǒ hén hǎo depending on grouping; say it slowly, word by word."
+        },
+        {
+          "vi": "Trong số điện thoại, phòng, xe buýt, 一 thường đọc yāo để khỏi nhầm với 七 qī.",
+          "en": "In phone, room and bus numbers 一 is often said yāo, so that it is not heard as 七 qī."
         }
       ]
     },
@@ -119,20 +799,385 @@
         "en": "Every character is built from a handful of basic strokes. Writing them in the right order keeps characters balanced, easier to remember and easier to look up by handwriting."
       },
       "strokes": [
-        { "shape": "㇐", "name": "héng", "description": { "vi": "Nét ngang: viết từ trái sang phải.", "en": "Horizontal: written left to right." } },
-        { "shape": "㇑", "name": "shù", "description": { "vi": "Nét sổ: viết từ trên xuống dưới.", "en": "Vertical: written top to bottom." } },
-        { "shape": "㇒", "name": "piě", "description": { "vi": "Nét phẩy: kéo xiên từ trên phải xuống dưới trái.", "en": "Left-falling: from upper right down to the left." } },
-        { "shape": "㇏", "name": "nà", "description": { "vi": "Nét mác: kéo xiên từ trên trái xuống dưới phải, cuối nét hơi đậm.", "en": "Right-falling: from upper left down to the right, widening at the end." } },
-        { "shape": "㇔", "name": "diǎn", "description": { "vi": "Nét chấm: một nét ngắn chấm xuống.", "en": "Dot: a short downward touch." } },
-        { "shape": "㇕", "name": "héngzhé", "description": { "vi": "Nét gập: đi ngang rồi gập xuống, viết liền một nét.", "en": "Horizontal-turn: across, then down, in one stroke." } }
+        {
+          "shape": "㇐",
+          "name": "héng",
+          "description": {
+            "vi": "Nét ngang: viết từ trái sang phải.",
+            "en": "Horizontal: written left to right."
+          }
+        },
+        {
+          "shape": "㇑",
+          "name": "shù",
+          "description": {
+            "vi": "Nét sổ: viết từ trên xuống dưới.",
+            "en": "Vertical: written top to bottom."
+          }
+        },
+        {
+          "shape": "㇒",
+          "name": "piě",
+          "description": {
+            "vi": "Nét phẩy: kéo xiên từ trên phải xuống dưới trái.",
+            "en": "Left-falling: from upper right down to the left."
+          }
+        },
+        {
+          "shape": "㇏",
+          "name": "nà",
+          "description": {
+            "vi": "Nét mác: kéo xiên từ trên trái xuống dưới phải, cuối nét hơi đậm.",
+            "en": "Right-falling: from upper left down to the right, widening at the end."
+          }
+        },
+        {
+          "shape": "㇔",
+          "name": "diǎn",
+          "description": {
+            "vi": "Nét chấm: một nét ngắn chấm xuống.",
+            "en": "Dot: a short downward touch."
+          }
+        },
+        {
+          "shape": "㇕",
+          "name": "héngzhé",
+          "description": {
+            "vi": "Nét gập: đi ngang rồi gập xuống, viết liền một nét.",
+            "en": "Horizontal-turn: across, then down, in one stroke."
+          }
+        }
       ],
       "rules": [
-        { "rule": { "vi": "Ngang trước, sổ sau.", "en": "Horizontal before vertical." }, "example": "十" },
-        { "rule": { "vi": "Phẩy trước, mác sau.", "en": "Left-falling before right-falling." }, "example": "人" },
-        { "rule": { "vi": "Trên trước, dưới sau.", "en": "Top before bottom." }, "example": "三" },
-        { "rule": { "vi": "Trái trước, phải sau.", "en": "Left before right." }, "example": "川" },
-        { "rule": { "vi": "Ngoài trước, trong sau; nét đóng khung viết sau cùng («vào nhà rồi mới đóng cửa»).", "en": "Outside before inside; the closing stroke comes last." }, "example": "国" }
+        {
+          "rule": {
+            "vi": "Ngang trước, sổ sau.",
+            "en": "Horizontal before vertical."
+          },
+          "example": "十"
+        },
+        {
+          "rule": {
+            "vi": "Phẩy trước, mác sau.",
+            "en": "Left-falling before right-falling."
+          },
+          "example": "人"
+        },
+        {
+          "rule": {
+            "vi": "Trên trước, dưới sau.",
+            "en": "Top before bottom."
+          },
+          "example": "三"
+        },
+        {
+          "rule": {
+            "vi": "Trái trước, phải sau.",
+            "en": "Left before right."
+          },
+          "example": "川"
+        },
+        {
+          "rule": {
+            "vi": "Ngoài trước, trong sau; nét đóng khung viết sau cùng («vào nhà rồi mới đóng cửa»).",
+            "en": "Outside before inside; the closing stroke comes last."
+          },
+          "example": "国"
+        }
       ]
     }
-  ]
+  ],
+  "checkpoint": {
+    "title": {
+      "vi": "Kiểm tra nhanh: thanh điệu và pinyin",
+      "en": "Quick check: tones and pinyin"
+    },
+    "intro": {
+      "vi": "20 câu: nghe một chữ rồi chọn cách đọc (pinyin) đúng — đúng thanh và đúng âm. Đúng từ 16 câu là qua. Dù qua hay chưa, pinyin vẫn hiện dưới chữ Hán trong bài học; làm lại bao nhiêu lần cũng được.",
+      "en": "20 questions: listen to a character and pick its pinyin — the right tone and the right sound. 16 correct passes. Pass or not, the pinyin stays under the characters in the lessons; retake it as often as you like."
+    },
+    "passMark": 16,
+    "items": [
+      {
+        "kind": "soundToPinyin",
+        "id": "c01",
+        "audio": {
+          "say": "妈",
+          "status": "pending"
+        },
+        "options": [
+          "má",
+          "mǎ",
+          "mà",
+          "mā"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c02",
+        "audio": {
+          "say": "买",
+          "status": "pending"
+        },
+        "options": [
+          "mái",
+          "mài",
+          "mǎi",
+          "māi"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c03",
+        "audio": {
+          "say": "十",
+          "status": "pending"
+        },
+        "options": [
+          "shì",
+          "shí",
+          "shī",
+          "shǐ"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c04",
+        "audio": {
+          "say": "水",
+          "status": "pending"
+        },
+        "options": [
+          "shuǐ",
+          "shuì",
+          "shuí",
+          "shuī"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c05",
+        "audio": {
+          "say": "课",
+          "status": "pending"
+        },
+        "options": [
+          "kě",
+          "ké",
+          "kē",
+          "kè"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c06",
+        "audio": {
+          "say": "糖",
+          "status": "pending"
+        },
+        "options": [
+          "tāng",
+          "tǎng",
+          "táng",
+          "tàng"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c07",
+        "audio": {
+          "say": "几",
+          "status": "pending"
+        },
+        "options": [
+          "jī",
+          "jǐ",
+          "jí",
+          "jì"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c08",
+        "audio": {
+          "say": "四",
+          "status": "pending"
+        },
+        "options": [
+          "sì",
+          "shì",
+          "sī",
+          "shí"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c09",
+        "audio": {
+          "say": "绿",
+          "status": "pending"
+        },
+        "options": [
+          "lù",
+          "lǚ",
+          "lú",
+          "lǜ"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c10",
+        "audio": {
+          "say": "星",
+          "status": "pending"
+        },
+        "options": [
+          "xīn",
+          "xíng",
+          "xīng",
+          "xìn"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c11",
+        "audio": {
+          "say": "卖",
+          "status": "pending"
+        },
+        "options": [
+          "mǎi",
+          "mài"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c12",
+        "audio": {
+          "say": "是",
+          "status": "pending"
+        },
+        "options": [
+          "shì",
+          "shí"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c13",
+        "audio": {
+          "say": "树",
+          "status": "pending"
+        },
+        "options": [
+          "shū",
+          "shù"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c14",
+        "audio": {
+          "say": "闻",
+          "status": "pending"
+        },
+        "options": [
+          "wén",
+          "wèn"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c15",
+        "audio": {
+          "say": "饱",
+          "status": "pending"
+        },
+        "options": [
+          "bāo",
+          "bǎo"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c16",
+        "audio": {
+          "say": "早",
+          "status": "pending"
+        },
+        "options": [
+          "zǎo",
+          "zhǎo"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c17",
+        "audio": {
+          "say": "词",
+          "status": "pending"
+        },
+        "options": [
+          "chá",
+          "cí"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c18",
+        "audio": {
+          "say": "帮",
+          "status": "pending"
+        },
+        "options": [
+          "bāng",
+          "bān"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c19",
+        "audio": {
+          "say": "七",
+          "status": "pending"
+        },
+        "options": [
+          "jī",
+          "qī"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToPinyin",
+        "id": "c20",
+        "audio": {
+          "say": "怕",
+          "status": "pending"
+        },
+        "options": [
+          "pà",
+          "bà"
+        ],
+        "correct": 0
+      }
+    ]
+  }
 }
