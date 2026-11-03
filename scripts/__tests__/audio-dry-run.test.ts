@@ -38,7 +38,8 @@ describe("the plan writes exactly the reception files the validator wants", () =
     ]);
   };
 
-  for (const lang of ["fr", "de", "es"]) {
+  // ja (P4c): its keys carry the phoneme front-end's version; plan and validator must add it alike.
+  for (const lang of ["fr", "de", "es", "ja"]) {
     test(`${lang}: no orphan and no missing clip after a generate`, () => {
       const dir = mkdtempSync(path.join(tmpdir(), "audio-plan-"));
       try {
@@ -50,7 +51,8 @@ describe("the plan writes exactly the reception files the validator wants", () =
       } finally {
         rmSync(dir, { recursive: true, force: true });
       }
-    });
+      // A subprocess plan (ja also builds the phonemes of every clip) outlasts the 5 s default under CI load.
+    }, 60_000);
   }
 
   test("a voice's speaker changes the key, so a recast regenerates its clips", () => {
@@ -103,6 +105,18 @@ describe("audio.ts plan --dry-run", () => {
 });
 
 describe("audio.ts plan --dry-run — pack + lexicon layers (P3b)", () => {
+  test("the Japanese generate plan covers pack, lexicon and reception: every listening clip and the 18 band-1 stories (P4c)", () => {
+    const listening = loadListening("ja")!;
+    const stories = loadStories("ja")!;
+    const bundled = bundledStoryIds(stories, storyAudioPolicy("ja"));
+    expect(bundled.size).toBe(18);
+    const { code, out } = run(["plan", "--lang", "ja", "--layer", "all", "--mode", "generate", "--dry-run"]);
+    expect(code, out).toBe(0);
+    expect(out).toContain("dry run ok (ja, generate, pack+lexicon+reception)");
+    expect(out).toContain(`story sentences of ja: 18 of ${stories.stories.length} stories bundled (band-1)`);
+    expect(listening.clips.length).toBeGreaterThan(0);
+  }, 60_000);
+
   test("the Spanish generate plan covers the pack strings, every lexicon surface + example and the reception clips (P3e)", () => {
     const { code, out } = run(["plan", "--lang", "es", "--layer", "all", "--mode", "generate", "--dry-run"]);
     expect(code).toBe(0);

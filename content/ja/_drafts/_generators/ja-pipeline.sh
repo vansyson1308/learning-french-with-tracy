@@ -78,3 +78,5 @@ for story_batch in "$G"/ja-stories-[0-9]*.py; do python -I "$story_batch" .; don
 python -I "$G/ja-check-stories.py" .
 python -I "$G/ja-stories-seed.py" .
 ingest stories
+# The reception voice manifest (P4c audio): the cast's pins from the pack manifest plus the seed's band-1 story list.
+python -I "$G/ja-reception-audio.py" .
