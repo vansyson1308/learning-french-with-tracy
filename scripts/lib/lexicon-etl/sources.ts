@@ -86,6 +86,20 @@ const KAIKKI_EN_SUPPLEMENT: SourceSpec = {
     "The same dump, later retrieval, gzip as published (the sha256 is of the .gz). Read only for derived/ipa-general-american.json and the verb rows of derived/morphology.json. Wiktionary content under CC BY-SA 4.0 (and GFDL); used under CC BY-SA 4.0 with attribution to Wiktionary contributors and kaikki.org. The subset is filtered from the stream by content/en/_drafts/_generators/en-kaikki-subset.py; nothing of the dump is committed.",
 };
 
+/**
+ * P4c session 3: the same supplement pattern for Japanese — a later retrieval, pinned apart from `kaikki-en-ja.jsonl`
+ * (whose 2026-10-14 bytes are no longer served: kaikki republishes weekly), read only for the verb and adjective rows of
+ * derived/morphology.json.
+ */
+const KAIKKI_JA_SUPPLEMENT: SourceSpec = {
+  ...kaikkiEn("ja", "Japanese"),
+  role: "pronunciation-morphology",
+  url: "https://kaikki.org/dictionary/Japanese/kaikki.org-dictionary-Japanese.jsonl.gz",
+  artifactFilename: "kaikki-en-ja-supplement.jsonl.gz",
+  notes:
+    "The same dump, later retrieval, gzip as published (the sha256 is of the .gz). Read only for the verb and i-adjective rows of derived/morphology.json (the nine paradigm cells, scripts/lib/lexicon-etl/ja-morphology.ts). Wiktionary content under CC BY-SA 4.0 (and GFDL); used under CC BY-SA 4.0 with attribution to Wiktionary contributors and kaikki.org. The subset is filtered from the stream by content/ja/_drafts/_generators/ja-kaikki-subset.py; nothing of the dump is committed.",
+};
+
 /** kaikki Vietnamese-edition dump per language (page name in Vietnamese). */
 function kaikkiVi(lang: string, viName: string, skipUpload = false): SourceSpec {
   const file = viName.replace(/ /g, "");
@@ -273,7 +287,7 @@ export const LEXICON_SOURCES: Record<string, SourceSpec[]> = {
   it: [kaikkiEn("it", "Italian"), kaikkiVi("it", "Tiếng Ý"), frequencyWords("it", "2018/it/it_50k.txt"), wordfreq("it"), tatoeba("it", "ita", "sentences"), tatoeba("it", "ita", "links-en"), tatoeba("it", "ita", "links-vi"), TATOEBA_EN_SENTENCES, TATOEBA_VI_SENTENCES],
   // Brazilian Portuguese is the course variety (content and voice, see BUILD_LANGUAGES).
   pt: [kaikkiEn("pt", "Portuguese"), kaikkiVi("pt", "Tiếng Bồ Đào Nha"), frequencyWords("pt", "2018/pt_br/pt_br_50k.txt"), wordfreq("pt"), tatoeba("pt", "por", "sentences"), tatoeba("pt", "por", "links-en"), tatoeba("pt", "por", "links-vi"), TATOEBA_EN_SENTENCES, TATOEBA_VI_SENTENCES],
-  ja: [kaikkiEn("ja", "Japanese"), kaikkiVi("ja", "Tiếng Nhật"), frequencyWords("ja", "2018/ja/ja_full.txt"), wordfreq("ja"), OPENJLPT, JMDICT, tatoeba("ja", "jpn", "sentences"), tatoeba("ja", "jpn", "links-en"), tatoeba("ja", "jpn", "links-vi"), TATOEBA_EN_SENTENCES, TATOEBA_VI_SENTENCES],
+  ja: [kaikkiEn("ja", "Japanese"), KAIKKI_JA_SUPPLEMENT, kaikkiVi("ja", "Tiếng Nhật"), frequencyWords("ja", "2018/ja/ja_full.txt"), wordfreq("ja"), OPENJLPT, JMDICT, tatoeba("ja", "jpn", "sentences"), tatoeba("ja", "jpn", "links-en"), tatoeba("ja", "jpn", "links-vi"), TATOEBA_EN_SENTENCES, TATOEBA_VI_SENTENCES],
   // The Vietnamese Wiktionary has no Korean extract on kaikki (checked 2026-10-15); glosses stay TODO:vi until P4e.
   ko: [kaikkiEn("ko", "Korean"), frequencyWords("ko", "2018/ko/ko_50k.txt"), wordfreq("ko"), tatoeba("ko", "kor", "sentences"), tatoeba("ko", "kor", "links-en"), tatoeba("ko", "kor", "links-vi"), TATOEBA_EN_SENTENCES, TATOEBA_VI_SENTENCES],
   zh: [kaikkiEn("zh", "Chinese"), kaikkiVi("zh", "Tiếng Trung Quốc"), frequencyWords("zh", "2018/zh_cn/zh_cn_full.txt"), wordfreq("zh"), HSK30, CEDICT, tatoeba("zh", "cmn", "sentences"), tatoeba("zh", "cmn", "links-en"), tatoeba("zh", "cmn", "links-vi"), TATOEBA_EN_SENTENCES, TATOEBA_VI_SENTENCES],

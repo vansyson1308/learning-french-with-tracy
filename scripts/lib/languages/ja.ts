@@ -6,11 +6,13 @@
  * irregular groups (ja-morph.ts) as group rules.
  *
  * Evidence: a paradigm table is checked against the committed kaikki
- * morphology rows. Today's derivation tags only the dictionary form
- * (`inf`) and the polite non-past (`formal`); the other cells are
- * evidenced by an atom naming the cell itself, which the derivation must
- * emit before a ja table can validate (P4c). Until then the group rules
- * are the authority, and no ja table is authored.
+ * morphology rows. P4c session 3 re-derived the course's verbs and
+ * i-adjectives from a pinned later retrieval of the dump
+ * (lexicon-etl/ja-morphology.ts): every row names its cell, so each cell is
+ * evidenced by an atom naming the cell itself (a cell the page states
+ * nowhere is composed from a stated row and marked `composed`). Verbs
+ * outside the course keep the first retrieval's `inf` / `formal` rows. The
+ * group rules check the same tables independently.
  */
 import { existsSync } from "fs";
 
@@ -34,7 +36,8 @@ export const JA_PARADIGM: ParadigmSpec = {
   evidenceSource: "kaikki-en",
   loadEvidence(): MorphVerb[] | null {
     if (!existsSync(safeResolve(MORPHOLOGY_SOURCE))) return null;
-    return (readJson(MORPHOLOGY_SOURCE) as { verbs: MorphVerb[] }).verbs;
+    const doc = readJson(MORPHOLOGY_SOURCE) as { verbs: MorphVerb[]; adjectives?: MorphVerb[] };
+    return [...doc.verbs, ...(doc.adjectives ?? [])];
   },
   cellEvidencedBy,
   groupRules: japaneseGroupRules,

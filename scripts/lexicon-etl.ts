@@ -32,6 +32,9 @@
  *           <scratch>/en/{subset.jsonl,identity.json}: pin its identity and write
  *           derived/ipa-general-american.json and the verb rows of morphology.json.
  *           The pool stays on its own pin (lib/lexicon-etl/supplement.ts).
+ *           --lang ja (P4c): the subset from content/ja/_drafts/_generators/
+ *           ja-kaikki-subset.py; morphology only — the nine paradigm cells of
+ *           the course's verbs and i-adjectives (lib/lexicon-etl/ja-morphology.ts).
  *
  * Raw dumps live only in the scratch directory (and, for the small ones,
  * as workflow run artifacts); nothing of them is committed.
@@ -44,6 +47,7 @@ import path from "path";
 import { SourceManifestV2Schema, type SourceManifestV2 } from "../content/schema";
 
 import { deriveLanguage } from "./lib/lexicon-etl/derive";
+import { japaneseMorphology, JA_MORPHOLOGY_NOTATION, type JaLexeme } from "./lib/lexicon-etl/ja-morphology";
 import { generalAmericanEntries, refreshedMorphology, SUPPLEMENT_GENERATOR, type MorphologyDoc } from "./lib/lexicon-etl/supplement";
 import { cacheKey, download, headMeta, linkOrCopy, SourceCache } from "./lib/lexicon-etl/fetch";
 import { fileIdentity, readLines } from "./lib/lexicon-etl/jsonl";
@@ -242,6 +246,10 @@ async function supplement(): Promise<void> {
   SourceManifestV2Schema.parse(next);
   writeFileSync(safeResolve(manifestRel), `${JSON.stringify(next, null, 2)}\n`);
   const stamp = { id: spec.id, sha256: identity.gzSha256, url: spec.url, retrievedAt };
+  if (lang === "ja") {
+    await japaneseSupplement(subset, stamp);
+    return;
+  }
   const entries = await generalAmericanEntries(subset, lang);
   writeFileSync(
     path.join(derivedDir, "ipa-general-american.json"),
@@ -259,6 +267,26 @@ async function supplement(): Promise<void> {
   const morphology = await refreshedMorphology(subset, lang, JSON.parse(readFileSync(morphologyPath, "utf8")) as MorphologyDoc, wanted, stamp);
   writeFileSync(morphologyPath, canonicalJson(morphology));
   console.log(`pinned ${spec.artifactFilename} ${identity.gzSha256}; ${Object.keys(entries).length} IPA entries; ${morphology.verbs.length} verbs`);
+}
+
+/**
+ * P4c: Japanese reads the supplement for morphology only — the nine paradigm cells of the course's verbs and
+ * i-adjectives (lexicon-etl/ja-morphology.ts). Verbs outside the course keep the rows of the first retrieval.
+ */
+async function japaneseSupplement(subset: string, stamp: { id: string; sha256: string; url: string; retrievedAt: string }): Promise<void> {
+  const morphologyPath = path.join(derivedDir, "morphology.json");
+  const current = JSON.parse(readFileSync(morphologyPath, "utf8")) as MorphologyDoc;
+  const lexemes = (readJson(`content/${lang}/lexicon/lexemes.json`) as { lexemes: JaLexeme[] }).lexemes;
+  const { verbs, adjectives } = await japaneseMorphology(subset, lexemes);
+  const fresh = new Map(verbs.map((v) => [v.lemma, v]));
+  const listed = new Set(current.verbs.map((v) => v.lemma));
+  const allVerbs = [...current.verbs.map((v) => fresh.get(v.lemma) ?? v), ...verbs.filter((v) => !listed.has(v.lemma))];
+  const atomInventory: Record<string, number> = {};
+  for (const w of [...allVerbs, ...adjectives]) for (const r of w.rows) for (const a of r.infoVer.split(",")) atomInventory[a] = (atomInventory[a] ?? 0) + 1;
+  const next = { ...current, notation: JA_MORPHOLOGY_NOTATION, atomInventory, verbs: allVerbs, adjectives, supplement: stamp, supplementGenerator: "scripts/lib/lexicon-etl/ja-morphology.ts" };
+  writeFileSync(morphologyPath, canonicalJson(next));
+  const composed = [...verbs, ...adjectives].filter((w) => w.rows.some((r) => r.infoVer.endsWith(",composed"))).length;
+  console.log(`pinned ${stamp.url} ${stamp.sha256}; ${verbs.length} course verbs (${composed} with a composed cell), ${adjectives.length} adjectives`);
 }
 
 if (command === "cache-key") console.log(cacheKey(lang, sourcesFor(lang).map((spec) => headMeta(spec.url))));
