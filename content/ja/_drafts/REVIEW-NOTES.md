@@ -1,4 +1,4 @@
-# ja-vi — review notes (P4c session 2: lessons and concept cards)
+# ja-vi — review notes (P4c sessions 2–4: lessons, concept cards, reception, speech, writing, scenarios)
 
 Self-check of the answer keys, run by the session that wrote them. It is not the D-10 review: that is a later session
 (AI pass, then the owner), and it reads these notes first.
@@ -37,6 +37,19 @@ End state: 108 lessons, 835 exercises, 0 findings, 0 decided.
 Session 3 (2026-11-03): 857 exercises (+22 conjugationCloze), still 0 findings, 0 decided. One rule widened in
 `ja_text.READS_APART`: 阪駅 (大阪駅 reads おおさか + えき).
 
+Session 4 (2026-11-03): the layers and their exercises. 1,020 exercises (+163: listeningComprehension 44,
+readingComprehension 42, dictation 5, speakProduction 33, speakRepetition 9, guidedWriting 17, simpleForm 2,
+interactionScenario 11), still 0 findings, 0 decided. Every exercise type of the blueprint is used except articleSelect
+(no Japanese counterpart, §2 of ja-plan.md). The self-check now also reads (rule 5 of its docstring): dictation keys and
+their one alternative (the kana spelling, no digits), every spoken answer a speech exercise accepts (register, particles,
+no Latin letter: no Hán-Việt, no romaji), writing model answers (every guided slot realized, every form value a variant),
+Japanese comprehension keys (present in the text) and every learner answer of the 21 scenarios. The layer generators
+check every displayed Japanese string with the same reading rules (`ja_layers.py`). Fixed while writing, before the
+first full run: 6 reading problems (5分前 → 少し早く; 変わりましたか and 一週間, not lexemes, reworded), 5 writing rubrics
+whose time slot the validator's tokenizer splits (7時に → 七 / 時に: the bare number is listed too), 1 sentence-verb rule
+on a negative sentence, 1 sign question with two defensible keys (出口 beside 非常口: the question now asks for 入口), and concept forms
+that are a stem of a set phrase (お願い inside お願いします, 大丈夫 inside 大丈夫です: the phrase is listed too).
+
 ## Open for the D-10 reviewer
 
 1. **Typed answers are narrow by nature.** Alternatives cover わたしは dropped, 私 for わたし, に/へ with motion,
@@ -57,15 +70,24 @@ Session 3 (2026-11-03): 857 exercises (+22 conjugationCloze), still 0 findings, 
      `composed` in morphology.json: 来る, 寝る, 勉強する, 読む, 入る, 見せる, 持つ (the polite negative / past cells).
    - The key's kana spelling is accepted (alternatives): the drill is the ending, and a cloze is practice by design.
    - 飲む, 休む, 出す, 取る, 続ける have no conjugation table in the retrieval, so no cloze drills them.
-5. **Sections 3–6 wait for their layers.** Listening/reading comprehension, dictation, speech, writing and scenario
-   exercises are added to these lessons when reception, speech, writing and scenarios exist (sessions 3–4); today
-   those lessons use listen-selects (49), reading selects of signs and messages, word banks and typed answers.
+5. **Sections 3–6 and their layers (session 4).** Read with the layers' generators open:
+   - Signs: the course has no lexeme 立入禁止, 安全第一 or 禁煙, so the factory signs read 入口, 出口, 非常口, 危険, 注意 and
+     the rules are sentences (たばこは禁止です). Adding those words needs `ja-subset.py` with the pinned JmdictFurigana file.
+   - Dictation (5): the key is the clip in the standard script, its one alternative the same text in kana (strict
+     grading: a mix of the two fails); no clip with a number is dictated (7時 / しちじ / 七時).
+   - Speech: variants list わたしは / 私は and the bare sentence; the recogniser's kana is matched through the readings
+     for stored words, but **not** for inflected verbs (働いています written in kana by the recogniser reads per
+     character: the spoken tokenizer keeps the stored words, P4b). Recognisers usually write kanji; to check on a device.
+   - Writing: model answers in the target script; a kana answer aligns as practice. A time slot lists the bare number
+     because the validator's tokenizer splits 7時に as 七 / 時に (the app's lexicon tokenizer does not).
+   - Scenarios: a required concept is a run of tokens of the course tokenizer, so a set phrase is listed beside its stem.
 6. **Names** (session 3): Japanese names and places are lexemes now (row kind R in core-7.txt): 田中, 木村, 東京,
    大阪, 京都, 名古屋, 北海道, 富士山 — kanji with furigana from JmdictFurigana, Vietnamese gloss, no Hán-Việt, never a
    kanji target. 山田 has no JmdictFurigana chain (やまだ: rendaku), so its two uses became 木村. The lessons write
    them in kanji (田中さん, 大阪, 名古屋); Vietnamese names stay in katakana (ナム, ラン, グエン). Latin spellings of
-   Japanese names appear only in Vietnamese text ("anh Tanaka", "ga Osaka"), never in a Japanese string. They are
-   syllabus members like every authored lexeme, so TODAY can offer one as a new word (open question for the coordinator).
+   Japanese names appear only in Vietnamese text ("anh Tanaka", "ga Osaka"), never in a Japanese string. Decided in
+   session 4 (coordinator): they carry `proper: true` and TODAY never offers one as a daily new word; the lessons keep
+   them.
 7. **Hán-Việt** appears in the card "Kanji và âm Hán-Việt" and in ue-l1 only; the false friends 工場 and 勉強 are
    taught there.
 8. **Free writing in kana** (decided in session 3, P4b open item): a guided-writing answer typed entirely in kana is

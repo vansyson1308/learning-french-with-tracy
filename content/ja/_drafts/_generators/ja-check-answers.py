@@ -8,7 +8,13 @@ later session). It joins lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then f
     を before 乗ります, に after a relative time word (今日, 毎日…), を before 行きます/来ます/帰ります;
  3. register mixing: a plain sentence end in a polite key (unless the exercise teaches plain forms), polite and plain
     endings in one key;
- 4. kanji outside the lexicon readings (no furigana), misread single kanji, romaji (ja_text.Index).
+ 4. kanji outside the lexicon readings (no furigana), misread single kanji, romaji (ja_text.Index);
+ 5. (session 4) the layer exercises: rules 2-4 over dictation keys and their kana spelling, every spoken answer a speech
+    exercise accepts, writing model answers and Japanese comprehension keys; comprehension questions in Vietnamese,
+    options distinct, a Japanese reading key present in its text; dictation without digits, its one alternative the kana
+    spelling; a speech target among its own variants, no Latin letter (Hán-Việt, romaji) in an answer; every guided slot
+    realized in the model answer, every form value a variant of its slot; every learner answer of the scenarios polite,
+    Japanese only, with the right particles.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I ja-check-answers.py <repo root>
 """
@@ -29,6 +35,12 @@ PARTICLES = {"は", "が", "を", "に", "で", "へ", "と", "も", "の", "か
 # A finding that stands, with its reason. Keys are (exercise id, rule).
 DECIDED = {}
 
+def _jsonl(step):
+    path = f"{D}/{step}/OUTPUT.jsonl"
+    return {r["id"]: r for r in (json.loads(x) for x in open(path, encoding="utf-8") if x.strip())} if os.path.exists(path) else {}
+
+
+READINGS, SCENARIOS = _jsonl("readings"), _jsonl("scenarios")
 records = []
 for p in PARTS:
     path = f"{D}/lessons/parts/{p}.jsonl"
@@ -75,7 +87,86 @@ def key_texts(e):
         return [e["answer"]]
     if t == "conjugationCloze":
         return [e["sentence"].replace("___", e["answer"])]
+    # Session 4: the layers. A dictation key and its kana spelling, every spoken answer the grader accepts, the model
+    # answers of a writing task (a form's values are names, places and numbers: no sentence), Japanese comprehension keys.
+    if t == "dictation":
+        return [e["answer"]] + list(e["alternatives"])
+    if t in ("speakRepetition", "speakProduction"):
+        return [e["target"]]  # the variants are grading strings, never shown: layer_rules reads them
+    if t == "guidedWriting":
+        return list(e["modelAnswers"])
+    if t in ("listeningComprehension", "readingComprehension") and JA.search(e["options"][e["correct"]]["text"]):
+        return [e["options"][e["correct"]]["text"]]
     return []
+
+
+JA = re.compile(r"[ぁ-ゖァ-ヺー㐀-䶿一-鿿]")
+HAN_RE = re.compile(r"[㐀-䶿一-鿿々]")
+VI_LETTER = re.compile(r"[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]", re.I)
+
+
+def layer_rules(eid, e):
+    """Session 4: the rules of the new exercise types (the layer generators check their own records too)."""
+    t = e["type"]
+    if t in ("listeningComprehension", "readingComprehension"):
+        texts = [o["text"] for o in e["options"]]
+        if len(set(texts)) != len(texts):
+            flag(eid, "comprehension-options", f"repeated option in {texts}")
+        if JA.search(e["question"]):
+            flag(eid, "comprehension-question", f"{e['question']!r}: the question is Vietnamese")
+        key = texts[e["correct"]]
+        if t == "readingComprehension" and JA.search(key):
+            body = "".join(b["text"] for b in READINGS[e["readingId"]]["blocks"])
+            if key not in body:
+                flag(eid, "comprehension-key", f"{key!r} is not in the text of {e['readingId']}")
+    if t == "dictation":
+        if re.search(r"[0-9０-９]", e["answer"]):
+            flag(eid, "dictation-digits", f"{e['answer']!r}: a number has two spellings")
+        for a in e["alternatives"]:
+            if HAN_RE.search(a):
+                flag(eid, "dictation-alternative", f"{a!r}: the one alternative is the kana spelling")
+            if INDEX.kana(e["answer"]) != a:
+                flag(eid, "dictation-alternative", f"{a!r} is not the kana spelling of {e['answer']!r}")
+    if t in ("speakRepetition", "speakProduction"):
+        plain = e["target"].rstrip("。！")
+        if plain not in e["acceptedVariants"]:
+            flag(eid, "speech-target", f"{e['target']!r} is not among its own variants")
+        for v in [e["target"]] + e["acceptedVariants"]:
+            if VI_LETTER.search(v) or re.search(r"[A-Za-z]", v):
+                flag(eid, "speech-latin", f"{v!r}: an answer is Japanese only (no Hán-Việt, no romaji)")
+            particle_rules(eid, v)
+            for end in sentence_ends(v):
+                if len(end) > 3 and PLAIN_END.search(end) and not POLITE_END.search(end):
+                    flag(eid, "speech-register", f"{v!r}: a spoken answer is in です/ます style")
+    if t == "guidedWriting":
+        for model in e["modelAnswers"]:
+            for slot in e["rubric"]["requiredSlots"]:
+                if not any(v in model for v in slot["variants"]) and e["writingMode"] == "guided":
+                    flag(eid, "writing-slot", f"model {model!r} realizes no variant of slot {slot['id']}")
+    if t == "simpleForm":
+        for model in e["modelAnswers"]:
+            values = [v.strip() for v in model.split(" | ")]
+            for field, value in zip(e["fields"], values):
+                slot = next(s for s in e["rubric"]["requiredSlots"] if s["id"] == field["slotId"])
+                if value not in slot["variants"]:
+                    flag(eid, "form-value", f"{value!r} is not a variant of slot {slot['id']}")
+
+
+def scenario_rules():
+    """Every learner answer a scenario accepts: polite, Japanese only, the right particles."""
+    for s in SCENARIOS.values():
+        for node in s["nodes"].values():
+            if node["kind"] != "learner":
+                continue
+            for x in node["expected"]:
+                for v in x["acceptedVariants"]:
+                    where = f"{s['id']}/{node['id']}"
+                    particle_rules(where, v)
+                    if VI_LETTER.search(v) or re.search(r"[A-Za-z]", v):
+                        flag(where, "scenario-latin", f"{v!r}: an answer is Japanese only")
+                    for end in sentence_ends(v):
+                        if len(end) > 3 and PLAIN_END.search(end) and not POLITE_END.search(end):
+                            flag(where, "scenario-register", f"{v!r}: the learner speaks です/ます")
 
 
 def particle_rules(eid, text):
@@ -188,9 +279,11 @@ for r in records:
                 flag(eid, "reading", p)
         ambiguity(eid, e, vi)
         register(eid, e)
+        layer_rules(eid, e)
         if e["type"] == "fillBlank" and e["options"][e["correct"]] in PARTICLES:
             particle_items[e["options"][e["correct"]]] += 1
 
+scenario_rules()
 os.makedirs(f"{D}/lessons", exist_ok=True)
 with open(f"{D}/lessons/OUTPUT.jsonl", "w", encoding="utf-8", newline="\n") as f:
     for r in records:

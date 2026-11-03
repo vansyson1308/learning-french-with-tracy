@@ -1,16 +1,19 @@
-"""ja-vi Section 5 lessons: writing everyday Japanese. Writing tasks (guidedWriting, simpleForm) come with the writing layer in a
-later session; until then the lessons build the written sentences with word banks, typed answers and fill-ins: about yourself
-(unit o, where kana typed for a kanji word counts as production), simple linked sentences (p), messages to a superior (q) and
-the fields of a form at the city office (r). Four lessons show a concept card. Writes lessons/parts/s5.jsonl.
+"""ja-vi Section 5 lessons: writing everyday Japanese. The lessons build the written sentences with word banks, typed answers
+and fill-ins, and since the writing session (P4c session 4) write them: guidedWriting and simpleForm mirror the tasks of
+ja-writing-s5.py. About yourself (unit o, where kana typed for a kanji word counts as production in typed answers; in a
+writing task kana is aligned through the readings as practice), simple linked sentences (p), messages to a superior (q)
+and the forms of the city office and the clinic (r). Four lessons show a concept card. Writes lessons/parts/s5.jsonl.
 usage: python -I ja-lessons-s5.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ja_lesson_lib import C, F, H, K, M, MP, N, NX, T, TX, W, Y, finish, lesson
+from ja_lesson_lib import C, F, H, K, M, MP, N, NX, T, TX, W, WR, Y, finish, lesson
 
 # ---------------------------------------------------------------- uo: writing about yourself (kana input)
 lesson("uo-l0", [
     C("kana"),
+    WR("o_name"),
+    WR("o_age"),
     T("書く", ["読む", "話す", "聞く"]), N("住所", ["名前", "電話", "国"]),
     Y("Gõ bằng chữ Nhật: tên của bạn (Nam) bằng katakana.", "ナム", kana=True),
     Y("Gõ bằng chữ Nhật: cà phê", "コーヒー", kana=True),
@@ -19,6 +22,7 @@ lesson("uo-l0", [
     H("きって", ["きて", "きいて", "きった"]),
 ])
 lesson("uo-l1", [
+    WR("o_home"),
     T("自分", ["友達", "家族", "名前"]), N("名前", ["住所", "番号", "仕事"]),
     F("わたし___名前はミンです。", "の", ["を", "に", "で"], "Tên của tôi là Minh."),
     W("Tôi 23 tuổi.", "23歳|です", ["何歳", "か"]),
@@ -27,6 +31,7 @@ lesson("uo-l1", [
     NX("Bạn viết câu đầu tiên của bài giới thiệu.", "わたしはグエンです。", ["わたしをグエンです。", "わたしはグエンさんです。", "グエンはわたしをです。"]),
 ])
 lesson("uo-l2", [
+    WR("o_family"),
     F("ベトナム___来ました。", "から", ["まで", "を", "が"], "Tôi đến từ Việt Nam."),
     TX("ハノイから来ました。", "Tôi đến từ Hà Nội.", ["Tôi sẽ đi Hà Nội.", "Tôi sống ở Hà Nội.", "Tôi làm việc ở Hà Nội."]),
     W("Tôi đến từ Việt Nam.", "ベトナム|から|来ました", ["まで", "行きました"]),
@@ -36,6 +41,8 @@ lesson("uo-l2", [
     M("住所", "自分", "仕事", "工場", "会社"),
 ])
 lesson("uo-l3", [
+    WR("o_all"),
+    WR("o_open"),
     T("趣味", ["仕事", "住所", "名前"]),
     F("趣味___サッカーです。", "は", ["を", "で", "に"], "Sở thích của tôi là bóng đá."),
     W("Sở thích của tôi là âm nhạc.", "趣味|は|音楽|です", ["を", "映画"]),
@@ -48,6 +55,7 @@ lesson("uo-l3", [
 # ---------------------------------------------------------------- up: simple sentences
 lesson("up-l0", [
     C("sov-subject"),
+    WR("p_who"),
     W("Tôi dậy lúc 6 giờ.", "6時|に|起きます", ["で", "寝ます"]),
     W("Sáng nào tôi cũng ăn sáng ở căng tin.", "毎朝|食堂|で|朝ご飯|を|食べます", ["に", "飲みます"], alts=("食堂|で|毎朝|朝ご飯|を|食べます",)),
     F("毎朝、7時___会社へ行きます。", "に", ["で", "を", "が"], "Sáng nào tôi cũng đi làm lúc 7 giờ."),
@@ -56,6 +64,8 @@ lesson("up-l0", [
     TX("毎日、電車で会社へ行きます。", "Ngày nào tôi cũng đi làm bằng tàu điện.", ["Ngày nào tôi cũng đi làm bằng xe buýt.", "Hôm nay tôi đi làm bằng tàu điện.", "Tôi làm việc ở nhà ga mỗi ngày."]),
 ])
 lesson("up-l1", [
+    WR("p_neg"),
+    WR("p_ask"),
     T("そして", ["でも", "それから", "だから"]), N("でも", ["そして", "それから", "じゃあ"]),
     F("日本語は難しいです。___、楽しいです。", "でも", ["そして", "だから", "それから"], "Tiếng Nhật khó. Nhưng vui."),
     F("ご飯を食べます。___、テレビを見ます。", "それから", ["でも", "だから", "じゃあ"], "Tôi ăn cơm. Sau đó tôi xem ti vi."),
@@ -64,6 +74,7 @@ lesson("up-l1", [
     M("そして", "でも", "それから", "だから", "じゃあ"),
 ])
 lesson("up-l2", [
+    WR("p_link"),
     F("工場___働きます。", "で", ["を", "に", "が"], "Tôi làm việc ở nhà máy."),
     F("仕事は9時___5時までです。", "から", ["まで", "に", "を"], "Công việc từ 9 giờ đến 5 giờ."),
     W("Công việc của tôi bận lắm.", "仕事|は|とても|忙しいです", ["を", "暇"]),
@@ -73,6 +84,7 @@ lesson("up-l2", [
     M("仕事", "工場", "食堂", "忙しい", "大変"),
 ])
 lesson("up-l3", [
+    WR("p_open"),
     W("Tôi đã mua bánh mì ở siêu thị. Sau đó tôi về nhà.", "スーパー|で|パン|を|買いました|それから|うち|へ|帰りました", ["でも", "が"]),
     F("週末は友達___映画を見ました。", "と", ["を", "で", "へ"], "Cuối tuần tôi xem phim với bạn."),
     NX("Hôm qua tôi đã không đi làm.", "昨日、会社へ行きませんでした。", ["昨日、会社へ行きません。", "昨日、会社を行きませんでした。", "昨日に、会社へ行きませんでした。"]),
@@ -84,6 +96,7 @@ lesson("up-l3", [
 # ---------------------------------------------------------------- uq: messages to a superior
 lesson("uq-l0", [
     C("politeness"),
+    WR("q_sick"),
     T("上司", ["先輩", "友達", "先生"]), N("休み", ["仕事", "上司", "会議"]),
     F("熱___あります。", "が", ["を", "で", "に"], "Tôi bị sốt."),
     W("Hôm nay tôi xin nghỉ.", "今日|は|休みます", ["を", "働きます"], alts=("今日|休みます",)),
@@ -92,6 +105,7 @@ lesson("uq-l0", [
     M("上司", "休み", "メール", "熱", "風邪"),
 ])
 lesson("uq-l1", [
+    WR("q_late"),
     T("遅刻する", ["休む", "急ぐ", "働く"]),
     F("電車が___います。", "遅れて", ["遅れ", "遅れる", "遅れた"], "Tàu điện đang bị trễ."),
     W("Tàu điện đang bị trễ.", "電車|が|遅れています", ["を", "バス"]),
@@ -101,6 +115,7 @@ lesson("uq-l1", [
     H("遅刻します", ["休みます", "急ぎます", "働きます"]),
 ])
 lesson("uq-l2", [
+    WR("q_reply"),
     F("わかりました。ありがとう___。", "ございます", ["ください", "します", "でした"], "Tôi hiểu rồi. Cảm ơn anh."),
     TX("明日は9時からです。", "Mai làm từ 9 giờ.", ["Mai làm đến 9 giờ.", "Hôm nay làm từ 9 giờ.", "Mai nghỉ lúc 9 giờ."]),
     NX("Cấp trên nhắn: mai bắt đầu từ 8 giờ. Bạn trả lời:", "わかりました。ありがとうございます。", ["わかりません。ありがとうございます。", "いただきます。ありがとうございます。", "わかりました。おめでとうございます。"]),
@@ -111,6 +126,7 @@ lesson("uq-l2", [
 ])
 lesson("uq-l3", [
     C("te-form"),
+    WR("q_open"),
     W("Tôi sẽ đi bệnh viện.", "病院|へ|行きます", ["を", "来ます"]),
     F("風邪です。病院___行きます。", "へ", ["を", "で", "が"], "Tôi bị cảm. Tôi sẽ đi bệnh viện."),
     NX("Bạn kết thúc tin nhắn xin nghỉ.", "すみません。よろしくおねがいします。", ["すみません。いただきます。", "すみません。おやすみなさい。", "すみません。はじめまして。"]),
@@ -124,6 +140,7 @@ lesson("uq-l3", [
 
 # ---------------------------------------------------------------- ur: forms at the city office
 lesson("ur-l0", [
+    WR("r_form_office"),
     T("市役所", ["郵便局", "銀行", "病院"]), N("在留カード", ["保険証", "カード", "ポイントカード"]),
     T("書類", ["紙", "手紙", "新聞"]), T("はんこ", ["ペン", "かぎ", "はし"]),
     F("ここに名前と住所___書いてください。", "を", ["に", "が", "で"], "Hãy viết tên và địa chỉ vào đây."),
@@ -141,6 +158,7 @@ lesson("ur-l1", [
 ])
 lesson("ur-l2", [
     C("time-dates"),
+    WR("r_form_clinic"),
     T("誕生日", ["今日", "週末", "休み"]),
     N("五月", ["四月", "九月", "十月"]), N("十日", ["二日", "九日", "二十日"]),
     F("誕生日は___です。", "五月", ["五日", "五つ", "四月"], "Sinh nhật tôi vào tháng năm."),
@@ -149,6 +167,8 @@ lesson("ur-l2", [
     NX("Sinh nhật bạn là khi nào?", "誕生日はいつですか。", ["誕生日はどこですか。", "誕生日はいくらですか。", "誕生日はだれですか。"]),
 ])
 lesson("ur-l3", [
+    WR("r_note"),
+    WR("r_open"),
     F("電話番号___書いてください。", "も", ["で", "が", "へ"], "Hãy viết cả số điện thoại."),
     W("Địa chỉ của tôi ở Osaka.", "住所|は|大阪|です", ["を", "名前"]),
     NX("Nhân viên muốn bạn đóng dấu. Bạn không có con dấu. Bạn hỏi:", "はんこがありません。サインでもいいですか。", ["はんこがありません。サインをください。", "はんこがあります。サインでもいいですか。", "はんこはいりません。ありがとうございます。"]),

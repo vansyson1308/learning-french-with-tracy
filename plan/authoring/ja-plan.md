@@ -21,6 +21,7 @@ generator, run `bash content/ja/_drafts/_generators/ja-pipeline.sh` (byte-determ
 | Syllabus | A1 718 by unit, A2-1 226 | staged `content/ja/lexicon/syllabus*.json`, `topic-units.json` |
 | ja-en (basic pack) | never edited; 57 of 58 words map (9 through `legacySurfaces`), さかな listed in `legacy-unmapped.json`; standalone profile staged | `content/ja/lexicon/legacy-unmapped.json` |
 | Session 3 | kana primer (full tables + 20-item checkpoint, pass 16), persist v9 `primerPassed`, profile `romajiUntilPrimer` (ja-vi), romaji line; free writing in kana/pinyin = practice; morphology re-derived (supplement pin, nine cells tagged); 22 conjugationCloze on 25 tables; 8 proper nouns (kind R) → 952 lexemes | `_generators/ja-primer.py`, `ja_paradigms.py`, `src/lib/languages/ja-romaji.ts`, `scripts/lib/lexicon-etl/ja-morphology.ts` |
+| Session 4 | readings 28 (19 teaching, 9 reserved); clips 220 (64 reception of which 21 reserved, 30 speech models, 126 partner turns; one voice: A jf_alpha 116, B jm_kumo 91, two-voice dialogues 13); speech 50 (20 reserved, ja-JP); writing 35 (15 guided, 4 open, 16 reserved); scenarios 21 (11 teaching, 10 reserved); Sections 3–6 +163 exercises (LC 44, RC 42, dictation 5, speakProduction 33, speakRepetition 9, guidedWriting 17, simpleForm 2, interactionScenario 11) → 1,020; self-check extended, 0 findings; proper nouns `proper: true`, never a daily new word | `_generators/ja-reception-s3.py`, `ja-speech-s4.py`, `ja-writing-s5.py`, `ja-scenarios-s6.py`, `ja_layers.py`, `ja_lesson_refs.py`; staged `content/ja/{reception,speech,writing,interaction}/` |
 
 ## 2. Course shape (BLUEPRINT §1)
 
@@ -85,6 +86,14 @@ order, station (which platform, change trains), asking the way, post office, cli
 city office (住所 registration, 在留カード), bank account, phone to the employer (ill, late), message to a senior,
 dormitory rules (garbage day), weekend small talk with a 先輩, shift change request, lost wallet at the 交番.
 Partner speech in polite style; the learner uses です/ます throughout.
+
+Done in session 4 (21, not 18: three teaching scenarios were added so that every theme of P4c task 4 is taught, as en has
+11 teaching + 10 reserved): teaching — konbini (heat the bento, no bag), restaurant order, asking the way to the station,
+which platform, clinic reception, the doctor, city office (moved house, 在留カード), 面接 (experience, why Japan), factory
+safety (helmet and gloves, how to stop the machine), phoning in sick, phoning in late; reserved — new colleague, 面接,
+paying at the konbini, the way to the bank, a cough at the clinic, phoning the office (checkpoint 6); first day at the
+factory, a neighbour, a plan with a friend, lunch with a colleague (capstone). Not yet: post office, pharmacy dose, bank
+account, garbage day, shift change, lost wallet at the 交番 — material for the exam track and the stories.
 
 ## 6. Hán-Việt
 
@@ -171,12 +180,11 @@ frequency is FrequencyWords; wordfreq Zipf stays secondary evidence in the pool)
 
 1. ~~**Lessons**~~ done in session 2 (one session): 108 lessons, 835 exercises, 25 cards. Left for the layer sessions:
    the Section 3–6 exercise types that point at reception, speech, writing and scenario records.
-2. **Reception + speech + writing** (1–2): ≥ 19 readings with furigana, ≈ 180 clips (cast A/B), 50 speech items
-   (22 reserved, ja-JP), 34 writing tasks (16 reserved, kana input; decide P4b's open item: free writing typed all in
-   kana = practice). Then add to the Section 3–6 lessons: listeningComprehension, readingComprehension and dictation
-   (units f–j), speakRepetition/speakProduction (k–n), guidedWriting/simpleForm (o–r), with ids like `en_lesson_refs.py`.
+2. ~~**Reception + speech + writing**~~ done in session 4: 28 readings, 220 clips, 50 speech items (20 reserved; the
+   exam step adds its own, as in en), 35 writing tasks (16 reserved); the Section 3–6 exercises point at them through
+   `ja_lesson_refs.py`.
 3. ~~**Primer + romaji gate**~~ done in session 3, with the free-writing decision, the morphology and the names.
-4. **Scenarios** (1): §5, 18 with 10 reserved; interactionScenario exercises in units s–v.
+4. ~~**Scenarios**~~ done in session 4: 21 (10 reserved), interactionScenario in units s–v (§5).
 5. **Assessment + JLPT N5 track** (1–2): 7 checkpoints, placement, the exam file with ≥ 2 mock forms, format sources.
 6. **Stories** (1–2): 40–50 graded stories A1-0…A2-1, context coverage of the A1 syllabus.
 7. **D-10 review** (AI pass, then the owner), **audio** (canary + generate, CER audit), promote, compile, V8 re-key, claim gate,

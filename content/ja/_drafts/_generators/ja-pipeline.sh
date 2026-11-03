@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# ja-vi, sessions 1-2 of P4c (lexicon, objectives, units; concept cards and lessons): regenerate the drafts and ingest
+# ja-vi, sessions 1-4 of P4c (lexicon, objectives, units; concept cards and lessons; primer; reception, speech, writing,
+# scenarios): regenerate the drafts and ingest
 # them through the toolkit. Byte-deterministic: run it twice, the outputs are identical. Offline: ja-subset.py (the
 # one-time slice of the pinned OpenJLPT and JmdictFurigana files) is not part of it; its output
 # content/ja/lexicon/derived/jlpt-course.json is.
@@ -33,6 +34,13 @@ python -I "$G/ja-concepts.py" .
 ingest objectives
 ingest units
 ingest concepts
+# Reception, speech, writing, scenarios (session 4). s3 starts listening/OUTPUT.jsonl; s4 and s6 append their clips (speech
+# models, partner turns); s6 also checks ja_lesson_refs.py. The ingest takes the voice cast from content/audio/voice-casts.json.
+rm -f "$STAGED/content/ja/reception/reading.json" "$STAGED/content/ja/reception/listening.json" "$STAGED/content/ja/speech/items.json" "$STAGED/content/ja/writing/tasks.json" "$STAGED/content/ja/interaction/scenarios.json"
+python -I "$G/ja-reception-s3.py" .
+python -I "$G/ja-speech-s4.py" .
+python -I "$G/ja-writing-s5.py" .
+python -I "$G/ja-scenarios-s6.py" .
 # Lessons: each section's generator writes lessons/parts/<section>.jsonl; the self-check joins them into
 # lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json).
 rm -rf content/ja/_drafts/lessons/parts
@@ -40,6 +48,11 @@ for section in s1 s2 s3 s4 s5 s6; do
   if [ -f "$G/ja-lessons-$section.py" ]; then python -I "$G/ja-lessons-$section.py" .; fi
 done
 python -I "$G/ja-check-answers.py" .
+ingest listening
+ingest readings
+ingest speech
+ingest writing
+ingest scenarios
 ingest lessons
 if ! python -I -c "import json,sys; p=json.load(open('content/ja/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then
   mkdir -p "$STAGED/content/courses"

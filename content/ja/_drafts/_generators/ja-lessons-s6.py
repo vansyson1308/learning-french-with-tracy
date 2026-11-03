@@ -1,12 +1,13 @@
 """ja-vi Section 6 lessons: talking with someone at the convenience store and restaurant (unit s), on the way and at the station
-(t), at the clinic (u) and on the phone to work (v). The interaction scenarios come with their layer in a later session; until
-then each lesson reads or hears the other person's line (TX, H) and chooses or builds the learner's reply (NX, W, F, Y), always
-in です/ます. Four lessons show a concept card. Writes lessons/parts/s6.jsonl.
+(t), at the clinic (u) and on the phone to work (v). Each lesson reads or hears the other person's line (TX, H) and chooses or
+builds the learner's reply (NX, W, F, Y), always in です/ます; since the scenario session (P4c session 4) the second and last
+lesson of each unit holds a spoken conversation (and uu-l2, uv-l2: the city office, the 面接) (interactionScenario, ja-scenarios-s6.py). Four lessons show a concept card.
+Writes lessons/parts/s6.jsonl.
 usage: python -I ja-lessons-s6.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ja_lesson_lib import C, F, H, K, M, MP, N, NX, T, TX, W, Y, finish, lesson
+from ja_lesson_lib import C, F, H, IX, K, M, MP, N, NX, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- us: shop and restaurant
 lesson("us-l0", [
@@ -18,6 +19,7 @@ lesson("us-l0", [
     M("お弁当", "袋", "レジ", "カード", "レシート"),
 ])
 lesson("us-l1", [
+    IX("konbini_bento"),
     H("ポイントカードはありますか。", ["ポイントカードはいりますか。", "袋はいりますか。", "お弁当はありますか。"]),
     NX("Nhân viên hỏi bạn có thẻ tích điểm không. Bạn không có. Bạn nói:", "いいえ、ありません。", ["いいえ、いません。", "はい、ありません。", "いいえ、ありますか。"]),
     F("カード___お願いします。", "で", ["が", "に", "へ"], "Tôi trả bằng thẻ."),
@@ -37,6 +39,7 @@ lesson("us-l2", [
     H("お水をお願いします。", ["お茶をお願いします。", "お水をどうぞ。", "お水はいりません。"]),
 ])
 lesson("us-l3", [
+    IX("restaurant_order"),
     TX("ごちゅうもんは。", "Quý khách gọi món gì ạ?", ["Quý khách thanh toán ạ?", "Quý khách đi mấy người ạ?", "Quý khách có cần túi không ạ?"]),
     NX("Bạn gọi một suất cơm hộp và một chai trà.", "お弁当とお茶をお願いします。", ["お弁当をお茶とお願いします。", "お弁当とお茶がお願いします。", "お弁当とお茶をいただきます。"]),
     NX("Ăn xong, bạn muốn thanh toán. Bạn nói với nhân viên:", "おかいけい、お願いします。", ["おかいけい、ありがとうございます。", "いらっしゃいませ。", "メニュー、ありがとうございます。"]),
@@ -56,6 +59,7 @@ lesson("ut-l0", [
     M("右", "左", "まっすぐ", "道", "角"),
 ])
 lesson("ut-l1", [
+    IX("ask_station"),
     H("右に曲がってください。", ["左に曲がってください。", "まっすぐ行ってください。", "右に曲がりました。"]),
     TX("コンビニの隣です。", "Ở cạnh cửa hàng tiện lợi.", ["Ở trong cửa hàng tiện lợi.", "Ở sau cửa hàng tiện lợi.", "Ở xa cửa hàng tiện lợi."]),
     NX("Bạn hỏi từ đây đến ga có xa không.", "ここから駅まで遠いですか。", ["ここまで駅から遠いですか。", "ここから駅まで近いです。", "ここから駅を遠いですか。"]),
@@ -74,6 +78,7 @@ lesson("ut-l2", [
     Y("Tôi lên tàu điện.", "電車に乗ります"),
 ])
 lesson("ut-l3", [
+    IX("train_platform"),
     NX("Bạn hỏi phải đổi tàu ở đâu.", "どこで乗り換えますか。", ["どこを乗り換えますか。", "どこで乗り換えました。", "いつ乗り換えますか。"]),
     TX("次の駅で乗り換えてください。", "Hãy đổi tàu ở ga tiếp theo.", ["Hãy xuống ở ga này.", "Hãy mua vé ở ga tiếp theo.", "Tàu không dừng ở ga tiếp theo."]),
     T("切符", ["荷物", "地図", "財布"]),
@@ -94,6 +99,7 @@ lesson("uu-l0", [
 ])
 lesson("uu-l1", [
     C("wa-ga"),
+    IX("clinic_reception"),
     T("痛い", ["熱", "悪い", "疲れる"]),
     MP(("頭", "đầu"), ("おなか", "bụng"), ("歯", "răng"), ("足", "chân"), ("目", "mắt")),
     F("頭___痛いです。", "が", ["を", "で", "に"], "Tôi đau đầu."),
@@ -103,6 +109,7 @@ lesson("uu-l1", [
     TX("昨日からです。", "Từ hôm qua.", ["Đến hôm qua.", "Từ hôm nay.", "Từ ngày mai."]),
 ])
 lesson("uu-l2", [
+    IX("city_office"),
     TX("この薬を飲んでください。", "Hãy uống thuốc này.", ["Đừng uống thuốc này.", "Hãy mua thuốc này.", "Thuốc này rất đắt."]),
     H("一日3回、飲んでください。", ["一日2回、飲んでください。", "一日3回、飲みました。", "一日3回、食べてください。"]),
     F("ご飯の後___飲んでください。", "で", ["を", "が", "と"], "Hãy uống sau bữa ăn."),
@@ -112,6 +119,7 @@ lesson("uu-l2", [
     M("薬", "飲む", "一日", "回", "お大事に"),
 ])
 lesson("uu-l3", [
+    IX("clinic_doctor"),
     NX("Bác sĩ hỏi từ khi nào bạn bị sốt. Từ hôm qua.", "昨日からです。", ["昨日までです。", "明日からです。", "昨日からですか。"]),
     TX("お大事に。", "Chúc mau khoẻ.", ["Cẩn thận nhé.", "Chúc ngủ ngon.", "Rất mong được giúp đỡ."]),
     F("救急車を___ください。", "呼んで", ["呼び", "呼ぶ", "呼んだ"], "Hãy gọi xe cấp cứu."),
@@ -133,6 +141,7 @@ lesson("uv-l0", [
 ])
 lesson("uv-l1", [
     C("te-form"),
+    IX("call_sick"),
     NX("Bạn xin phép nghỉ hôm nay.", "今日は休んでもいいですか。", ["今日は休んでください。", "今日は休みましたか。", "今日を休んでもいいですか。"]),
     TX("わかりました。お大事に。", "Tôi hiểu rồi. Chúc mau khoẻ.", ["Tôi không hiểu. Chúc mau khoẻ.", "Tôi hiểu rồi. Cẩn thận nhé.", "Tôi hiểu rồi. Mai gặp lại."]),
     F("明日___大丈夫です。", "は", ["を", "に", "へ"], "Mai thì tôi ổn."),
@@ -143,6 +152,7 @@ lesson("uv-l1", [
     K("在留カードを___ください。", "見せる", "te", "Xin cho tôi xem thẻ cư trú."),
 ])
 lesson("uv-l2", [
+    IX("interview_basics"),
     T("先輩", ["上司", "友達", "社長"]),
     TX("週末は何をしましたか。", "Cuối tuần bạn đã làm gì?", ["Cuối tuần bạn sẽ làm gì?", "Cuối tuần bạn đi đâu?", "Bạn thích làm gì vào cuối tuần?"]),
     NX("Đàn anh hỏi cuối tuần bạn làm gì. Bạn đã xem phim.", "映画を見ました。", ["映画を見ます。", "映画に見ました。", "映画を見ませんでした。"]),
@@ -152,6 +162,8 @@ lesson("uv-l2", [
 ])
 lesson("uv-l3", [
     C("invitations"),
+    IX("factory_safety"),
+    IX("call_late"),
     TX("一緒に昼ご飯を食べませんか。", "Cùng ăn trưa không?", ["Bạn đã ăn trưa chưa?", "Tôi không ăn trưa.", "Bạn ăn trưa ở đâu?"]),
     NX("Đàn anh rủ bạn ăn trưa. Bạn đồng ý.", "いいですね。食べましょう。", ["いいですね。食べません。", "ちょっと…。食べましょう。", "いいですね。食べましたか。"]),
     NX("Đồng nghiệp rủ bạn đi uống bia tối nay. Bạn từ chối khéo.", "すみません、今日はちょっと…。", ["はい、行きましょう。", "いいですね。", "すみません、今日は行きましょう。"]),

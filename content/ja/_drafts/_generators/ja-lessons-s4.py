@@ -1,14 +1,17 @@
-"""ja-vi Section 4 lessons: saying your first Japanese sentences. Until the speech items exist, the lessons choose what to
-say in a situation (NX), build it from tiles and type the set phrases; the speakRepetition / speakProduction exercises
-join them in the speech session. Five lessons show a concept card. Writes lessons/parts/s4.jsonl.
+"""ja-vi Section 4 lessons: saying your first Japanese sentences. The lessons choose what to say in a situation (NX),
+build it from tiles and type the set phrases, and since the speech session (P4c session 4) say it aloud: speakRepetition
+and speakProduction mirror the items of ja-speech-s4.py (recogniser ja-JP); a review lesson re-using an item names one
+more objective. Five lessons show a concept card. Writes lessons/parts/s4.jsonl.
 usage: python -I ja-lessons-s4.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ja_lesson_lib import C, F, H, M, N, NX, T, TX, W, Y, finish, lesson
+from ja_lesson_lib import C, F, H, M, N, NX, SP, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- uk: greetings at work
 lesson("uk-l0", [
+    SP("k_rep_ohayou"),
+    SP("k_greet_morning"),
     NX("Hai giờ chiều, bạn đến nhà máy để vào ca. Bạn chào mọi người thế nào?", "おはようございます。", ["こんばんは。", "おやすみなさい。", "お先に失礼します。"]),
     NX("Đàn anh giải thích việc cần làm. Bạn đã hiểu.", "わかりました。", ["わかりません。", "いただきます。", "どういたしまして。"]),
     H("お疲れさまです。", ["お先に失礼します。", "おはようございます。", "お願いします。"]),
@@ -19,6 +22,9 @@ lesson("uk-l0", [
 ])
 lesson("uk-l1", [
     C("politeness"),
+    SP("k_rep_otsukare"),
+    SP("k_otsukare"),
+    SP("k_thanks"),
     T("お先に失礼します", ["お疲れさまです", "失礼します", "いってきます"]),
     NX("Ca của bạn đã hết, đồng nghiệp vẫn còn làm. Bạn về trước và nói:", "お先に失礼します。", ["おやすみなさい。", "いただきます。", "ただいま。"]),
     NX("Một đồng nghiệp về trước bạn. Bạn đáp lại:", "お疲れさまです。", ["お先に失礼します。", "いってきます。", "おかえりなさい。"]),
@@ -29,6 +35,10 @@ lesson("uk-l1", [
     M("お先に失礼します", "お疲れさまです", "失礼します", "わかりました"),
 ])
 lesson("uk-l2", [
+    SP("k_rep_osaki"),
+    SP("k_osaki"),
+    SP("k_sorry"),
+    SP("k_excuse"),
     T("いってきます", ["いってらっしゃい", "ただいま", "おかえりなさい"]),
     N("ただいま", ["おかえりなさい", "いってきます", "いってらっしゃい"]),
     NX("Bạn cùng phòng sắp đi làm và chào bạn. Bạn đáp lại:", "いってらっしゃい。", ["いってきます。", "ただいま。", "おかえりなさい。"]),
@@ -38,6 +48,9 @@ lesson("uk-l2", [
     Y("Tôi đi đây! (khi ra khỏi nhà)", "いってきます"),
 ])
 lesson("uk-l3", [
+    SP("k_greet_morning", ["greetings.basic"]),
+    SP("k_otsukare", ["greetings.basic"]),
+    SP("k_osaki", ["greetings.basic"]),
     H("ゆっくり話してください。", ["ちょっと待ってください。", "もう一度お願いします。", "わかりません。"]),
     NX("Bạn không nghe rõ. Bạn nhờ người kia nói lại.", "すみません、もう一度お願いします。", ["すみません、わかりました。", "どういたしまして。", "お先に失礼します。"]),
     NX("Người kia nói nhanh quá. Bạn nhờ họ nói chậm hơn.", "ゆっくり話してください。", ["ちょっと待ってください。", "いいですよ。", "そうですね。"]),
@@ -50,6 +63,9 @@ lesson("uk-l3", [
 
 # ---------------------------------------------------------------- ul: introducing yourself at an interview
 lesson("ul-l0", [
+    SP("l_rep_hajimemashite"),
+    SP("l_name"),
+    SP("l_from"),
     NX("Buổi phỏng vấn bắt đầu. Câu đầu tiên bạn nói:", "はじめまして。", ["よろしくおねがいします。", "いただきます。", "お先に失礼します。"]),
     NX("Tôi đến từ Việt Nam.", "ベトナムから来ました。", ["ベトナムへ来ました。", "ベトナムで来ました。", "ベトナムを来ました。"]),
     F("ハノイ___来ました。", "から", ["まで", "を", "で"], "Tôi đến từ Hà Nội."),
@@ -59,6 +75,8 @@ lesson("ul-l0", [
     Y("Tôi đến từ Việt Nam.", "ベトナムから来ました", "わたしはベトナムから来ました"),
 ])
 lesson("ul-l1", [
+    SP("l_age"),
+    SP("l_work"),
     TX("22歳です。", "Tôi hai mươi hai tuổi.", ["Tôi hai mươi tuổi.", "Tôi mười hai tuổi.", "Tôi hai mươi ba tuổi."]),
     H("23歳です。", ["33歳です。", "28歳です。", "20歳です。"]),
     F("ベトナムの工場___働きました。", "で", ["を", "へ", "が"], "Tôi đã làm việc ở một nhà máy tại Việt Nam."),
@@ -69,6 +87,8 @@ lesson("ul-l1", [
 ])
 lesson("ul-l2", [
     C("tai-suki"),
+    SP("l_like"),
+    SP("l_rep_yoroshiku"),
     T("趣味", ["仕事", "旅行", "写真"]),
     F("日本の料理___好きです。", "が", ["を", "で", "へ"], "Tôi thích món ăn Nhật."),
     NX("Sở thích của tôi là bóng đá.", "趣味はサッカーです。", ["趣味をサッカーです。", "サッカーは趣味をです。", "趣味がサッカーをします。"]),
@@ -79,6 +99,9 @@ lesson("ul-l2", [
     M("好き", "嫌い", "上手", "下手", "趣味"),
 ])
 lesson("ul-l3", [
+    SP("l_name", ["sentences.noun_desu"]),
+    SP("l_from", ["sentences.noun_desu"]),
+    SP("l_work", ["particles.core"]),
     NX("Cuối phần tự giới thiệu, bạn nói:", "よろしくおねがいします。", ["はじめまして。", "いただきます。", "おかえりなさい。"]),
     TX("どうして日本に来ましたか。", "Tại sao bạn đến Nhật?", ["Bạn đến Nhật khi nào?", "Bạn đến Nhật bằng gì?", "Bạn đến Nhật với ai?"]),
     TX("日本語はどのぐらい勉強しましたか。", "Bạn đã học tiếng Nhật bao lâu?", ["Bạn học tiếng Nhật ở đâu?", "Bạn có thích tiếng Nhật không?", "Tiếng Nhật có khó không?"]),
@@ -91,6 +114,8 @@ lesson("ul-l3", [
 # ---------------------------------------------------------------- um: numbers aloud
 lesson("um-l0", [
     C("numbers"),
+    SP("m_rep_price"),
+    SP("m_price"),
     T("電話", ["番号", "時間", "電気"]), N("番号", ["電話", "時間", "名前"]),
     F("電話___を教えてください。", "番号", ["時間", "名前", "住所"], "Cho tôi biết số điện thoại."),
     H("090-1234-5678", ["090-1243-5678", "080-1234-5678", "090-1234-5687"]),
@@ -99,6 +124,9 @@ lesson("um-l0", [
     Y("Hãy cho tôi biết số điện thoại.", "電話番号を教えてください", "電話番号、教えてください"),
 ])
 lesson("um-l1", [
+    SP("m_time"),
+    SP("m_rep_half"),
+    SP("m_day"),
     H("1500円です。", ["5100円です。", "1050円です。", "15000円です。"]),
     TX("このシャツは2000円です。", "Cái áo này hai nghìn yên.", ["Cái áo này hai trăm yên.", "Cái áo này hai vạn yên.", "Cái quần này hai nghìn yên."]),
     NX("Bạn hỏi giá cái túi này.", "このかばんはいくらですか。", ["このかばんはいくつですか。", "このかばんは何時ですか。", "かばんはこのいくらですか。"]),
@@ -109,6 +137,8 @@ lesson("um-l1", [
 ])
 lesson("um-l2", [
     C("time-dates"),
+    SP("m_birthday"),
+    SP("m_tickets"),
     F("仕事は8時___5時までです。", "から", ["まで", "に", "で"], "Công việc từ tám giờ đến năm giờ."),
     TX("会議は何時からですか。", "Cuộc họp bắt đầu từ mấy giờ?", ["Cuộc họp kết thúc lúc mấy giờ?", "Cuộc họp ở đâu?", "Cuộc họp có mấy người?"]),
     NX("Bạn hỏi đồng nghiệp: Bây giờ là mấy giờ?", "今、何時ですか。", ["今、何人ですか。", "今、いくらですか。", "今、何曜日ですか。"]),
@@ -119,6 +149,9 @@ lesson("um-l2", [
     TX("誕生日は五月十日です。", "Sinh nhật tôi là ngày mười tháng năm.", ["Sinh nhật tôi là ngày năm tháng mười.", "Sinh nhật tôi vào tháng mười.", "Hôm nay là ngày mười tháng năm."]),
 ])
 lesson("um-l3", [
+    SP("m_price", ["numbers.counters"]),
+    SP("m_time", ["numbers.counters"]),
+    SP("m_day", ["vocab.time_calendar"]),
     H("2時から4時までです。", ["2時から10時までです。", "12時から4時までです。", "2時と4時です。"]),
     TX("映画は7時からです。", "Phim bắt đầu từ bảy giờ.", ["Phim kết thúc lúc bảy giờ.", "Phim dài bảy tiếng.", "Bảy giờ tôi xem phim ở nhà."]),
     NX("Cuối tuần bạn có rảnh không?", "週末は暇ですか。", ["週末は暇でしたか。", "週末を暇ですか。", "週末に暇をしますか。"]),
@@ -131,6 +164,8 @@ lesson("um-l3", [
 # ---------------------------------------------------------------- un: describing people and things
 lesson("un-l0", [
     C("adjectives"),
+    SP("n_rep_ookii"),
+    SP("n_box"),
     T("赤い", ["白い", "黒い", "青い"]), N("白い", ["赤い", "黒い", "長い"]),
     M("赤", "白", "黒", "青", "黄色"),
     F("___かばんです。", "赤い", ["赤", "赤く", "赤いの"], "Đó là cái túi đỏ."),
@@ -140,6 +175,9 @@ lesson("un-l0", [
     W("Tôi thích màu xanh lá.", "緑|が|好きです", ["を", "赤い"]),
 ])
 lesson("un-l1", [
+    SP("n_car"),
+    SP("n_cat"),
+    SP("n_rep_shiroi"),
     T("長い", ["短い", "大きい", "小さい"]), N("小さい", ["大きい", "長い", "低い"]),
     TX("この部屋は広いです。", "Phòng này rộng.", ["Phòng này hẹp.", "Phòng này mới.", "Phòng này sáng."]),
     F("この箱は___です。", "重い", ["軽い", "長い", "新しい"], "Cái thùng này nặng."),
@@ -149,6 +187,8 @@ lesson("un-l1", [
     M("大きい", "小さい", "長い", "短い", "重い"),
 ])
 lesson("un-l2", [
+    SP("n_room"),
+    SP("n_person"),
     TX("ナムさんは背が高いです。", "Anh Nam cao.", ["Anh Nam thấp.", "Anh Nam trẻ.", "Anh Nam bận."]),
     TX("やさしい人です。", "Đó là người tốt bụng.", ["Đó là người nổi tiếng.", "Đó là người trẻ.", "Đó là người bận rộn."]),
     F("リンさんは___人です。", "親切な", ["親切だ", "親切い", "親切く"], "Chị Linh là người tử tế."),
@@ -159,6 +199,9 @@ lesson("un-l2", [
     M("やさしい", "若い", "親切", "きれい", "静か"),
 ])
 lesson("un-l3", [
+    SP("n_box", ["adjectives.i_na"]),
+    SP("n_room", ["adjectives.i_na"]),
+    SP("n_person", ["adjectives.i_na"]),
     H("白いシャツ", ["黒いシャツ", "白い靴", "赤いシャツ"]),
     TX("これは新しい車です。", "Đây là chiếc ô tô mới.", ["Đây là chiếc ô tô cũ.", "Đây là chiếc xe đạp mới.", "Ô tô này to."]),
     NX("Cái áo này màu trắng.", "このシャツは白いです。", ["このシャツは白くです。", "このシャツを白いです。", "この白いはシャツです。"]),

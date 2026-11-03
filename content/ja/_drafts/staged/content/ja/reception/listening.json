@@ -1,0 +1,6044 @@
+{
+  "version": 1,
+  "language": "ja",
+  "voiceCast": {
+    "A": {
+      "voiceId": "kokoro-jf_alpha",
+      "speaker": null
+    },
+    "B": {
+      "voiceId": "kokoro-jm_kumo",
+      "speaker": null
+    }
+  },
+  "clips": [
+    {
+      "id": "ja.clip.uf_arigatou",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_sumimasen",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "すみません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_daijoubu",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "大丈夫です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:daijoubudesu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_kikai",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "機械"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:kikai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_herumetto",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "ヘルメット"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:herumetto"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_tebukuro",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "手袋"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:tebukuro"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_kaidan",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "階段"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:kaidan"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_mado",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "窓"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:mado"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_nanji",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "今、何時ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:ima",
+        "ja:w:nanji",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_wakarimasen",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "わかりません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimasen"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_mouichido",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_yukkuri",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "ゆっくり話してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:yukkurihanashitekudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_imi",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "これはどういう意味ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:kore",
+        "ja:w:dou",
+        "ja:w:imi",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uf_nihongo",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "日本語でお願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_train_tokyo",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "東京行きの電車は8時に出ます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:toukyou",
+        "ja:w:iku",
+        "ja:w:densha",
+        "ja:w:ji",
+        "ja:w:deru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_train_late",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "電車は15分ぐらい遅れています。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:densha",
+        "ja:w:fun",
+        "ja:w:gurai",
+        "ja:w:okureru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_platform",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "3番のホームに電車が来ます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:ban",
+        "ja:w:densha",
+        "ja:w:kuru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_next_station",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "次は大阪です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "ja:w:tsugi",
+        "ja:w:oosaka",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_doors",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ドアが閉まります。ご注意ください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "ja:w:doa",
+        "ja:w:shimaru",
+        "ja:w:chuui",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_shop_close",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "この店は9時に閉まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:mise",
+        "ja:w:ji",
+        "ja:w:shimaru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_shop_floor",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "靴は2階です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kutsu",
+        "ja:w:kai-floor",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_press",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "緑のボタンを押してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:midori",
+        "ja:w:botan",
+        "ja:w:osu",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_stop",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "機械を止めて、上司を呼んでください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:kikai",
+        "ja:w:tomeru",
+        "ja:w:joushi",
+        "ja:w:yobu",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_gloves",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "手袋をして、ヘルメットをかぶってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:tebukuro",
+        "ja:w:herumetto",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_coffee_price",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "コーヒーは150円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:koohii",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_bento_price",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "お弁当は500円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:obentou",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_meeting_time",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "会議は9時半からです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kaigi",
+        "ja:w:ji",
+        "ja:w:han",
+        "ja:w:kara",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_shift_end",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "朝のシフトは2時に終わります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:asa",
+        "ja:w:shifuto",
+        "ja:w:ji",
+        "ja:w:owaru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uh_break",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "休憩は12時から1時までです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyuukei",
+        "ja:w:ji",
+        "ja:w:kara",
+        "ja:w:made",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_meet",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "はじめまして。木村です。"
+        },
+        {
+          "speaker": "A",
+          "text": "はじめまして。リンです。よろしくおねがいします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:hajimemashite",
+        "ja:w:kimura",
+        "ja:w:desu",
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_genki",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "お元気ですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい、元気です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ogenkidesuka",
+        "ja:w:hai",
+        "ja:w:genki",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_order",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "何にしますか。"
+        },
+        {
+          "speaker": "B",
+          "text": "ラーメンを一つお願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:raamen",
+        "ja:w:hitotsu",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_pay",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "全部で680円です。"
+        },
+        {
+          "speaker": "B",
+          "text": "カードでいいですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "はい、どうぞ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:zenbu",
+        "ja:w:en",
+        "ja:w:desu",
+        "ja:w:kaado",
+        "ja:w:ii",
+        "ja:w:hai",
+        "ja:w:douzo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_time",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "すみません、今、何時ですか。"
+        },
+        {
+          "speaker": "A",
+          "text": "3時半です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:ima",
+        "ja:w:nanji",
+        "ja:w:desu",
+        "ja:w:ji",
+        "ja:w:han"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_box",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "この箱を運んでください。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい。どこに置きますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "ドアの横にお願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:hako",
+        "ja:w:hakobu",
+        "ja:w:kudasai",
+        "ja:w:hai",
+        "ja:w:doko",
+        "ja:w:oku",
+        "ja:w:doa",
+        "ja:w:yoko",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_late",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どうして遅れましたか。"
+        },
+        {
+          "speaker": "A",
+          "text": "すみません。電車が遅れました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:doushite",
+        "ja:w:okureru",
+        "ja:w:sumimasen",
+        "ja:w:densha"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_phone",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "もしもし、田中さんはいらっしゃいますか。"
+        },
+        {
+          "speaker": "B",
+          "text": "ちょっと待ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanaka",
+        "ja:w:san",
+        "ja:w:hai",
+        "ja:w:chottomattekudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ui_thanks",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございました。"
+        },
+        {
+          "speaker": "B",
+          "text": "どういたしまして。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatou",
+        "ja:w:douitashimashite"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uj_nam_osaka",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "ナムさんは大阪の工場で働いています。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:oosaka",
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uj_lin_father",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "リンさんのお父さんは医者です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:otousan",
+        "ja:w:isha",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uj_lan_park",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ランさんは日曜日に友達と公園へ行きました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:nichiyoubi",
+        "ja:w:tomodachi",
+        "ja:w:kouen",
+        "ja:w:iku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uj_station",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "女の人が駅で切符を買います。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:onnanohito",
+        "ja:w:eki",
+        "ja:w:kippu",
+        "ja:w:kau"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uj_dorm",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "夜10時から静かにしてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:yoru",
+        "ja:w:ji",
+        "ja:w:kara",
+        "ja:w:shizuka",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_train_kyoto",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "京都行きの電車は6時に出ます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyouto",
+        "ja:w:iku",
+        "ja:w:densha",
+        "ja:w:ji",
+        "ja:w:deru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_plane",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "飛行機は12時に着きます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:hikouki",
+        "ja:w:ji",
+        "ja:w:tsuku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_supermarket",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "スーパーは夜10時に閉まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:suupaa",
+        "ja:w:yoru",
+        "ja:w:ji",
+        "ja:w:shimaru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_page",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "本の12ページを見てください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:hon",
+        "ja:w:peeji",
+        "ja:w:miru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_shirt_price",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "このシャツは3000円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:shatsu",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_class",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "日本語の授業は7時からです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo",
+        "ja:w:jugyou",
+        "ja:w:ji",
+        "ja:w:kara",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_party",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "パーティーは土曜日の夜です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "ja:w:paatii",
+        "ja:w:doyoubi",
+        "ja:w:yoru",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_dlg_tea",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "お茶とコーヒーと、どちらがいいですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "お茶をお願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:ocha",
+        "ja:w:koohii",
+        "ja:w:dochira",
+        "ja:w:ii",
+        "ja:w:desu",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_dlg_live",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どこに住んでいますか。"
+        },
+        {
+          "speaker": "A",
+          "text": "駅の近くに住んでいます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:sumu",
+        "ja:w:eki",
+        "ja:w:chikaku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_dlg_movie",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "今晩、暇ですか。"
+        },
+        {
+          "speaker": "B",
+          "text": "はい。一緒に映画を見ませんか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:konban",
+        "ja:w:hima",
+        "ja:w:desu",
+        "ja:w:hai",
+        "ja:w:isshoni",
+        "ja:w:eiga",
+        "ja:w:miru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_dlg_doctor",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どうしましたか。"
+        },
+        {
+          "speaker": "A",
+          "text": "頭が痛いです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou",
+        "ja:w:atama",
+        "ja:w:itai",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_dict_work",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "毎日、工場で働きます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:mainichi",
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_dict_station",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "駅は近いです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:eki",
+        "ja:w:chikai",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.cp3_dict_door",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ドアが閉まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "ja:w:doa",
+        "ja:w:shimaru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.a1cap_bank",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "銀行は9時に開きます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:ginkou",
+        "ja:w:ji",
+        "ja:w:aku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.a1cap_bus",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "5番のバスは病院の前に止まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:ban",
+        "ja:w:basu",
+        "ja:w:byouin",
+        "ja:w:mae",
+        "ja:w:tomaru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.a1cap_pharmacy",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "薬局は郵便局の隣です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:yakkyoku",
+        "ja:w:yuubinkyoku",
+        "ja:w:tonari",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.a1cap_bag",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "このかばんは2500円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.short_info",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:kaban",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.pl_mizu",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "水"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ja:w:mizu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.pl_shop",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "店は6時に閉まります。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements",
+        "ja.obj.numbers.counters"
+      ],
+      "lexemeRefs": [
+        "ja:w:mise",
+        "ja:w:ji",
+        "ja:w:shimaru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.pl_pay",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "レジで払ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "ja:w:reji",
+        "ja:w:harau",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_rep_ohayou",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "おはようございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_greet_morning",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "おはようございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_rep_otsukare",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "お疲れさまです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_otsukare",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "お疲れさまです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:otsukaresamadesu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_thanks",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_rep_osaki",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "お先に失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:osakinishitsureishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_osaki",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "お先に失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:osakinishitsureishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_sorry",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "遅れて、すみません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:okureru",
+        "ja:w:sumimasen"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.uk_model_excuse",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "すみません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ul_model_rep_hajimemashite",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "はじめまして。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:hajimemashite"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ul_model_name",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ナムです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ul_model_from",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "ベトナムから来ました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:betonamu",
+        "ja:w:kara",
+        "ja:w:kuru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ul_model_age",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "25歳です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:sai",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ul_model_work",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "工場で働いています。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:koujou",
+        "ja:w:hataraku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ul_model_like",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "サッカーが好きです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:sakkaa",
+        "ja:w:suki",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ul_model_rep_yoroshiku",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "よろしくおねがいします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.um_model_rep_price",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "500円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.um_model_price",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "450円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.um_model_time",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "8時です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:ji",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.um_model_rep_half",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "3時半です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:ji",
+        "ja:w:han",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.um_model_day",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "今日は月曜日です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyou",
+        "ja:w:getsuyoubi",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.um_model_birthday",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "誕生日は五月十日です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanjoubi",
+        "ja:w:gogatsu",
+        "ja:w:tooka",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.um_model_tickets",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "切符を2枚ください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "ja:w:kippu",
+        "ja:w:mai",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.un_model_rep_ookii",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "この箱は大きいです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:hako",
+        "ja:w:ookii",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.un_model_box",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "大きい箱です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:ookii",
+        "ja:w:hako",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.un_model_car",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "新しい車です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:atarashii",
+        "ja:w:kuruma",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.un_model_cat",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "小さい猫です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:chiisai",
+        "ja:w:neko",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.un_model_rep_shiroi",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "白いシャツです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:shiroi",
+        "ja:w:shatsu",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.un_model_room",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "この部屋は広いです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:heya",
+        "ja:w:hiroi",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.un_model_person",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "背が高いです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ja:w:se",
+        "ja:w:takai",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_konbini_bento_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "わかりました。ありがとうございました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:arigatou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_konbini_bento_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "いらっしゃいませ。お弁当はあたためますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:irasshaimase",
+        "ja:w:obentou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_konbini_bento_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "お弁当、あたためますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:obentou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_konbini_bento_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "袋はいりますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:fukuro",
+        "ja:w:hai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_konbini_bento_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "袋、いりますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:fukuro"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_konbini_bento_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "全部で650円です。ありがとうございます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:zenbu",
+        "ja:w:en",
+        "ja:w:desu",
+        "ja:w:arigatougozaimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_restaurant_order_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_restaurant_order_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "いらっしゃいませ。なんめいさまですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:irasshaimase",
+        "ja:w:made"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_restaurant_order_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "何人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nannin",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_restaurant_order_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "こちらへどうぞ。何にしますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kochira",
+        "ja:w:douzo",
+        "ja:w:nani"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_restaurant_order_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "何を食べますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:taberu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_restaurant_order_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "はい、ラーメンと水ですね。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:raamen",
+        "ja:w:mizu",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_ask_station_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "すみません、わかりません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:wakarimasen"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_ask_station_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "はい、なんですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_ask_station_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_ask_station_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "まっすぐ行って、二つ目の角を右に曲がってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:massugu",
+        "ja:w:iku",
+        "ja:w:futatsu",
+        "ja:w:me",
+        "ja:w:kado",
+        "ja:w:migi",
+        "ja:w:magaru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_ask_station_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "まっすぐ行って、右です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:massugu",
+        "ja:w:iku",
+        "ja:w:migi",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_ask_station_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "どういたしまして。気をつけて。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:douitashimashite",
+        "ja:w:kiwotsukete"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_train_platform_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "すみません、もう一度言ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:iu",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_train_platform_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_train_platform_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "何か困っていますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:komaru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_train_platform_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "いいえ。名古屋は3番のホームです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:iie",
+        "ja:w:nagoya",
+        "ja:w:ban",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_train_platform_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "3番です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:ban",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_train_platform_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "はい、そうです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:sou",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_reception_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_reception_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "こんにちは。初めてですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:konnichiha",
+        "ja:w:hajimete",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_reception_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "この病院は初めてですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:byouin",
+        "ja:w:hajimete",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_reception_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "保険証はありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hokenshou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_reception_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "保険証を見せてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hokenshou",
+        "ja:w:miseru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_reception_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございます。少し待ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu",
+        "ja:w:sukoshi",
+        "ja:w:matsu",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_doctor_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "わかりました。看護師と話してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:kangoshi",
+        "ja:w:hanasu",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_doctor_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_doctor_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どこが痛いですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:itai",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_doctor_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "いつからですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:itsu",
+        "ja:w:kara",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_doctor_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "昨日からですか、今日からですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kinou",
+        "ja:w:kara",
+        "ja:w:desu",
+        "ja:w:kyou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_clinic_doctor_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "この薬を一日3回飲んでください。お大事に。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kono",
+        "ja:w:kusuri",
+        "ja:w:ichinichi",
+        "ja:w:kai",
+        "ja:w:nomu",
+        "ja:w:kudasai",
+        "ja:w:odaijini"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_sick_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_sick_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "はい、田中です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:tanaka",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_sick_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "もしもし、田中です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanaka",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_sick_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "グエンさん、どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:dou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_sick_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "何かありましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_sick_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "わかりました。お大事に。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:odaijini"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_late_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "わかりました。また電話してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:denwasuru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_late_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "もしもし、木村です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:kimura",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_late_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "はい、木村です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:kimura",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_late_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "そうですか。どのぐらい遅れますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:soudesuka",
+        "ja:w:donogurai",
+        "ja:w:okureru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_late_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "何時に来ますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nanji",
+        "ja:w:kuru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_call_late_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "わかりました。気をつけて来てください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:kiwotsukete",
+        "ja:w:kuru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_city_office_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_city_office_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "こんにちは。今日はどうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:konnichiha",
+        "ja:w:kyou",
+        "ja:w:dou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_city_office_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "何をしに来ましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:kuru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_city_office_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "在留カードを見せてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:zairyuukaado",
+        "ja:w:miseru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_city_office_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "在留カードはありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:zairyuukaado"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_city_office_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございます。この書類に新しい住所を書いてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu",
+        "ja:w:kono",
+        "ja:w:shorui",
+        "ja:w:atarashii",
+        "ja:w:juusho",
+        "ja:w:kaku",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_interview_basics_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "わかりました。また連絡します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:renraku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_interview_basics_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "ナムさんは前、どこで働きましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:mae",
+        "ja:w:doko",
+        "ja:w:hataraku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_interview_basics_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "前の仕事はなんですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:mae",
+        "ja:w:shigoto",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_interview_basics_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どうして日本で働きたいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:doushite",
+        "ja:w:nihon",
+        "ja:w:hataraku",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_interview_basics_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "日本で働きたい理由はなんですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihon",
+        "ja:w:hataraku",
+        "ja:w:riyuu",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_interview_basics_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "そうですか。頑張ってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:soudesuka",
+        "ja:w:ganbaru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_factory_safety_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "わからないときは、先輩に聞いてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kara",
+        "ja:w:senpai",
+        "ja:w:kiku",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_factory_safety_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "仕事の前に、ヘルメットをかぶって、手袋をしてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:shigoto",
+        "ja:w:mae",
+        "ja:w:herumetto",
+        "ja:w:tebukuro",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_factory_safety_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ヘルメットと手袋ですよ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:herumetto",
+        "ja:w:tebukuro",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_factory_safety_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "機械は緑のボタンで動きます。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kikai",
+        "ja:w:midori",
+        "ja:w:botan",
+        "ja:w:ugoku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_factory_safety_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "緑のボタンです。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:midori",
+        "ja:w:botan",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_factory_safety_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "赤いボタンです。気をつけてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:akai",
+        "ja:w:botan",
+        "ja:w:desu",
+        "ja:w:kiwotsukete",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_new_colleague_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "わかりました。また後で。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:ato"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_new_colleague_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "はじめまして。木村です。新しい人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hajimemashite",
+        "ja:w:kimura",
+        "ja:w:desu",
+        "ja:w:atarashii",
+        "ja:w:hito"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_new_colleague_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "新しい社員ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:atarashii",
+        "ja:w:shain",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_new_colleague_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ホアさんの国はどこですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:kuni",
+        "ja:w:doko",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_new_colleague_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "どこから来ましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:kara",
+        "ja:w:kuru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_new_colleague_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "そうですか。よろしくおねがいします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:soudesuka",
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_interview_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "ありがとうございました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_interview_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "おはようございます。お名前は。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu",
+        "ja:w:namae"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_interview_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "名前を教えてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:namae",
+        "ja:w:oshieru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_interview_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "日本語ができますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_interview_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "日本語は大丈夫ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nihongo",
+        "ja:w:daijoubudesu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_interview_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "わかりました。来週、電話します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:raishuu",
+        "ja:w:denwasuru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_konbini_pay_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "すみません、もう一度お願いします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:mouichido",
+        "ja:w:onegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_konbini_pay_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "全部で820円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:zenbu",
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_konbini_pay_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "820円です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:en",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_konbini_pay_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "はい、大丈夫です。レシートはいりますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:daijoubudesu",
+        "ja:w:reshiito"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_konbini_pay_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "レシート、いりますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:reshiito"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_konbini_pay_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ありがとうございました。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_way_bank_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "すみません、わかりません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:wakarimasen"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_way_bank_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_way_bank_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "何か困っていますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:komaru"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_way_bank_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "銀行は駅の前です。近いですよ。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:ginkou",
+        "ja:w:eki",
+        "ja:w:mae",
+        "ja:w:desu",
+        "ja:w:chikai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_way_bank_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "駅の前です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:eki",
+        "ja:w:mae",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_way_bank_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どういたしまして。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:douitashimashite"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_clinic_cough_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "看護師と話してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:kangoshi",
+        "ja:w:hanasu",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_clinic_cough_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "どうしましたか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:dou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_clinic_cough_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "どこか悪いですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:warui",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_clinic_cough_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "熱はありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:netsu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_clinic_cough_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "熱、ありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:netsu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_clinic_cough_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "わかりました。水をたくさん飲んで、休んでください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mizu",
+        "ja:w:takusan",
+        "ja:w:nomu",
+        "ja:w:yasumu",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_call_office_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "すみません。失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:shitsureishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_call_office_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "はい、さくら工場です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hai",
+        "ja:w:koujou",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_call_office_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "さくら工場です。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:koujou",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_call_office_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "すみません。田中は今、いません。後で電話してください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:sumimasen",
+        "ja:w:tanaka",
+        "ja:w:ima",
+        "ja:w:ato",
+        "ja:w:denwasuru",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_call_office_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "田中は今、いません。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:tanaka",
+        "ja:w:ima"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_cp6_call_office_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "ありがとうございます。失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:arigatougozaimasu",
+        "ja:w:shitsureishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_first_day_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "わかりました。先輩に聞いてください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:senpai",
+        "ja:w:kiku",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_first_day_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "おはようございます。新しい人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:ohayougozaimasu",
+        "ja:w:atarashii",
+        "ja:w:hito",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_first_day_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "今日から働く人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:kyou",
+        "ja:w:kara",
+        "ja:w:hataraku",
+        "ja:w:hito",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_first_day_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ヘルメットはありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:herumetto"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_first_day_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "ヘルメット、ありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:herumetto"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_first_day_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "じゃあ、このヘルメットをかぶってください。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:jaa",
+        "ja:w:kono",
+        "ja:w:herumetto",
+        "ja:w:kudasai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_neighbor_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "では、失礼します。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:shitsureishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_neighbor_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "こんにちは。隣の部屋の人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:konnichiha",
+        "ja:w:tonari",
+        "ja:w:heya",
+        "ja:w:hito",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_neighbor_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "新しい人ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:atarashii",
+        "ja:w:hito",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_neighbor_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "マイさんの仕事はなんですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:san",
+        "ja:w:shigoto",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_neighbor_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "どこで働いていますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:doko",
+        "ja:w:hataraku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_neighbor_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "そうですか。よろしくおねがいします。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:soudesuka",
+        "ja:w:yoroshikuonegaishimasu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_friend_plan_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "わかりました。また来週。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:raishuu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_friend_plan_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "日曜日は暇ですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nichiyoubi",
+        "ja:w:hima",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_friend_plan_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "日曜日、時間がありますか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nichiyoubi",
+        "ja:w:jikan"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_friend_plan_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "何時に会いましょうか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nanji",
+        "ja:w:au"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_friend_plan_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "何時がいいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nanji",
+        "ja:w:ii",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_friend_plan_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "じゃあ、日曜日の3時に会いましょう。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:jaa",
+        "ja:w:nichiyoubi",
+        "ja:w:ji",
+        "ja:w:au"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_lunch_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "わかりました。また明日。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:wakarimashita",
+        "ja:w:mata",
+        "ja:w:ashita"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_lunch_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "12時ですね。一緒に昼ご飯を食べませんか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:ji",
+        "ja:w:desu",
+        "ja:w:isshoni",
+        "ja:w:hirugohan",
+        "ja:w:taberu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_lunch_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "昼ご飯、食べませんか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:hirugohan",
+        "ja:w:taberu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_lunch_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "何を食べたいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:taberu",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_lunch_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "何がいいですか。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:nani",
+        "ja:w:ii",
+        "ja:w:desu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "ja.clip.ix_a1cap_lunch_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "いいですね。行きましょう。"
+        }
+      ],
+      "objectiveRefs": [
+        "ja.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "ja:w:ii",
+        "ja:w:desu",
+        "ja:w:iku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    }
+  ]
+}

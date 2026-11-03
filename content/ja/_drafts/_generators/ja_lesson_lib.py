@@ -14,6 +14,8 @@ Answer keys:
  - Particle fill-ins (F with a particle key) never offer two particles that both fit: the self-check
    (ja-check-answers.py) reads the pairs は/が, に/へ, と/や, ね/よ, は/も against the Vietnamese translation.
 Plain forms (dictionary, ない, た) appear only in exercises marked plain=True (recognition, Section 2 unit b and later).
+Sections 3-6 (session 4): LC, RC, D, SP, WR, IX point at the records of the layer generators, which run first; finish()
+also stops when a lesson's layer ids differ from ja_lesson_refs.py, or an id is unknown or reserved for assessment.
 """
 import json, os, re, sys
 from collections import Counter
@@ -38,6 +40,12 @@ def _jsonl(path):
 
 EMOJI = {w["target"]: w["emoji"] for u in _jsonl(f"{DRAFTS}/units/OUTPUT.jsonl") for w in u["words"]}
 CONCEPTS = {c["id"] for c in _jsonl(f"{DRAFTS}/concepts/OUTPUT.jsonl") if "id" in c}
+# P4c session 4: the layers the Section 3-6 exercises point at (written by ja-reception-s3 … ja-scenarios-s6, which run first).
+CLIPS = {c["id"]: c for c in _jsonl(f"{DRAFTS}/listening/OUTPUT.jsonl")}
+READINGS = {r["id"]: r for r in _jsonl(f"{DRAFTS}/readings/OUTPUT.jsonl")}
+SPEECH = {r["id"]: r for r in _jsonl(f"{DRAFTS}/speech/OUTPUT.jsonl")}
+WRITING = {r["id"]: r for r in _jsonl(f"{DRAFTS}/writing/OUTPUT.jsonl")}
+SCENARIOS = {r["id"]: r for r in _jsonl(f"{DRAFTS}/scenarios/OUTPUT.jsonl")}
 
 Q_LISTEN = "Nghe rồi chọn từ bạn nghe thấy."
 Q_LISTEN_S = "Nghe rồi chọn câu bạn nghe thấy."
@@ -213,6 +221,114 @@ def C(concept):
     return {"concept": f"ja:concept:{concept}"}
 
 
+# ---------------------------------------------------------------- Sections 3-6: the layers (P4c session 4, after en_lesson_lib.py)
+def _need(table, xid, what):
+    if xid not in table:
+        PROBLEMS.append(f"unknown {what} {xid}")
+        return None
+    if table[xid].get("reserved") is True:
+        PROBLEMS.append(f"{what} {xid} is reserved for assessment")
+    return table[xid]
+
+
+def LC(clip, q, ans, wrong, objs=None):
+    """listeningComprehension: a Vietnamese question; Vietnamese options, or Japanese ones (a sign, a word heard)."""
+    _need(CLIPS, f"ja.clip.{clip}", "clip")
+    o, p = place(ans, wrong)
+    e = {"type": "listeningComprehension", "clipId": f"ja.clip.{clip}", "question": q, "options": [{"text": t} for t in o], "correct": p}
+    if objs:
+        e["objectiveTargets"] = objs
+    return e
+
+
+def RC(reading, q, ans, wrong):
+    _need(READINGS, f"ja.read.{reading}", "reading")
+    o, p = place(ans, wrong)
+    return {"type": "readingComprehension", "readingId": f"ja.read.{reading}", "question": q, "options": [{"text": t} for t in o], "correct": p}
+
+
+def D(clip):
+    """dictation of a clip: the key is its transcript in the standard script; the same text typed all in kana (through the
+    stored readings) is the one alternative. Dictation is strict (kanji vs kana counts), so a digit-free clip is chosen."""
+    c = _need(CLIPS, f"ja.clip.{clip}", "clip")
+    text = "".join(s["text"] for s in c["segments"]) if c else "?"
+    if DIGIT_RE.search(text):
+        PROBLEMS.append(f"dictation {clip}: digits have two spellings in kana")
+    kana = INDEX.kana(text)
+    if HAN.search(kana):
+        PROBLEMS.append(f"dictation {clip}: no kana spelling for {text!r}")
+    alts = [kana] if kana != text else []
+    return {"type": "dictation", "clipId": f"ja.clip.{clip}", "answer": text, "alternatives": alts, "objectiveTargets": ["ja.obj.listening.familiar_words"]}
+
+
+def SP(slug, more=()):
+    """A speech exercise mirroring its item. A review lesson re-using an item names one more objective, so the two are not one payload."""
+    sid = f"ja.speak.{slug}"
+    it = _need(SPEECH, sid, "speech item")
+    if it is None:
+        return {"type": "speakRepetition", "speechItemId": sid}
+    objs = it["objectiveRefs"] + [f"ja.obj.{m}" for m in more]
+    if it["elicitationType"] == "repetition":
+        return {"type": "speakRepetition", "speechItemId": sid, "modelClipId": it["modelAudioRef"], "target": it["target"], "acceptedVariants": it["acceptedVariants"], "objectiveTargets": objs}
+    pr = it["prompt"]
+    e = {"type": "speakProduction", "speechItemId": sid, "instruction": pr["instruction"]["vi"], "target": it["target"], "acceptedVariants": it["acceptedVariants"], "evidenceLexemeRefs": it["evidenceLexemeRefs"],
+         "revealTargetAfterAttempts": it["assistancePolicy"]["revealTargetAfterAttempts"], "allowContextualBias": it["assistancePolicy"]["allowContextualBias"], "modelClipId": it["modelAudioRef"], "allowedAttempts": it["allowedAttempts"], "objectiveTargets": objs}
+    if "cueEmoji" in pr:
+        e["cueEmoji"] = pr["cueEmoji"]
+    if "cueFacts" in pr:
+        e["cueFacts"] = [{"label": f["label"]["vi"], "value": f["value"]} for f in pr["cueFacts"]]
+    return e
+
+
+def WR(slug):
+    """A writing exercise mirroring its task."""
+    tid = f"ja.write.{slug}"
+    t = _need(WRITING, tid, "writing task")
+    if t is None:
+        return {"type": "guidedWriting", "writingTaskId": tid}
+    rub = {**t["rubric"], "requiredSlots": [{**s, "description": s["description"]["vi"]} for s in t["rubric"]["requiredSlots"]]}
+    fields = t.get("formFields")
+    e = {"type": "simpleForm" if fields else "guidedWriting", "writingTaskId": tid}
+    if not fields:
+        e["writingMode"] = t["mode"]
+    e["instruction"] = t["instruction"]["vi"]
+    if t.get("cueFacts"):
+        e["cueFacts"] = [{"label": f["label"]["vi"], "value": f["value"]} for f in t["cueFacts"]]
+    if fields:
+        e["fields"] = fields
+    e.update({"rubric": rub, "modelAnswers": t["modelAnswers"], "objectiveTargets": t["objectiveRefs"]})
+    return e
+
+
+def IX(slug):
+    sid = f"ja.scenario.{slug}"
+    s = _need(SCENARIOS, sid, "scenario")
+    return {"type": "interactionScenario", "scenarioId": sid, "objectiveTargets": s["objectiveRefs"] if s else []}
+
+
+DIGIT_RE = re.compile(r"[0-9０-９]")
+LAYER_FIELDS = (("clipId", "clips"), ("readingId", "readings"), ("speechItemId", "speech"), ("writingTaskId", "writing"), ("scenarioId", "scenarios"))
+
+
+def _layer_refs():
+    """Every lesson of this generator uses exactly the layer ids ja_lesson_refs.py maps to it (en-lessons-s3.py)."""
+    from ja_lesson_refs import REFS
+    for rec in RECORDS:
+        got = {kind: set() for _, kind in LAYER_FIELDS}
+        for e in rec["exercises"]:
+            for field, kind in LAYER_FIELDS:
+                if field in e:
+                    got[kind].add(e[field])
+        want = REFS.get(rec["lessonId"], {})
+        for kind, xs in want.items():
+            for x in xs:
+                if x not in got[kind]:
+                    PROBLEMS.append(f"{rec['lessonId']}: mapped {kind} id {x} is not used")
+        for kind, xs in got.items():
+            for x in sorted(xs - set(want.get(kind, []))):
+                PROBLEMS.append(f"{rec['lessonId']}: {x} is not mapped to this lesson")
+
+
 def _mark(e, plain):
     if plain:
         e["_plain"] = True
@@ -237,6 +353,14 @@ def keyed(e):
         return [e["answer"]]  # the alternatives are never shown
     if t == "conjugationCloze":
         return [e["sentence"].replace("___", e["answer"])]
+    if t == "dictation":
+        return [e["answer"]]
+    if t in ("speakRepetition", "speakProduction"):
+        return [e["target"]]
+    if t == "guidedWriting":
+        return list(e["modelAnswers"])
+    if t == "simpleForm":
+        return [v.strip() for m in e["modelAnswers"] for v in m.split(" | ")]
     return []
 
 
@@ -252,6 +376,8 @@ def shown(e):
         out += e["tokens"]
     if t == "fillBlank":
         out += [e["sentence"].replace("___", o) for o in e["options"]]
+    if t in ("listeningComprehension", "readingComprehension"):
+        out += [o["text"] for o in e["options"] if JA.search(o["text"])]
     return out
 
 
@@ -277,6 +403,15 @@ def _check(eid, e):
         PROBLEMS.append(f"{eid}: Vietnamese prompt {prompt!r} holds Japanese")
     if e["type"] == "select" and e["mode"] == "targetToNative" and any(JA.search(o["text"]) for o in e["options"]):
         PROBLEMS.append(f"{eid}: a Vietnamese option holds Japanese")
+    # Comprehension: a Vietnamese question; options all Vietnamese, or all Japanese (the sign or word itself).
+    if e["type"] in ("listeningComprehension", "readingComprehension"):
+        if JA.search(e["question"]):
+            PROBLEMS.append(f"{eid}: Vietnamese question {e['question']!r} holds Japanese")
+        ja_opts = [bool(JA.search(o["text"])) for o in e["options"]]
+        if any(ja_opts) and not all(ja_opts):
+            PROBLEMS.append(f"{eid}: options mix Japanese and Vietnamese")
+    if e["type"] in ("speakProduction", "guidedWriting", "simpleForm") and JA.search(e["instruction"]):
+        PROBLEMS.append(f"{eid}: Vietnamese instruction holds Japanese")
     return plain
 
 
@@ -305,6 +440,7 @@ def lesson(lid, steps):
 
 def finish(part):
     """Write this generator's lessons to lessons/parts/<part>.jsonl and stop on any problem."""
+    _layer_refs()
     seen = {}
     for r in RECORDS:
         for e in r["exercises"]:
