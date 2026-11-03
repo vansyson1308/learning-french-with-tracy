@@ -1259,3 +1259,19 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/test-only/lexicon/xc-web-fallback.json
 - compile: new      src/content/test-only/packs/xc-en.json
 - compile: new      lexicon-db:xc:xc-lexicon-v3-7d3e6ca9534c6cc0.db
+
+## 2026-11-03 — P4b renderers and primers
+
+- compile: changed  content/reports/xc/lexicon-quality.json
+- compile: changed  src/content/test-only/course-profiles.json
+- compile: changed  src/content/test-only/lexicon/db-assets.ts
+- compile: changed  src/content/test-only/lexicon/xc-index.json
+- compile: changed  src/content/test-only/lexicon/xc-web-fallback.json
+- compile: new      content/ja/primer/REVIEW.md
+- compile: new      content/ko/primer/REVIEW.md
+- compile: new      content/zh/primer/REVIEW.md
+- compile: new      src/content/primer/ja.json
+- compile: new      src/content/primer/ko.json
+- compile: new      src/content/primer/zh.json
+- compile: new      lexicon-db:xc:xc-lexicon-v3-c01fdeb190986778.db
+- compile: missing  lexicon-db:xc:xc-lexicon-v3-7d3e6ca9534c6cc0.db

@@ -546,4 +546,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 534;
+export const MESSAGE_KEY_COUNT = 544;
