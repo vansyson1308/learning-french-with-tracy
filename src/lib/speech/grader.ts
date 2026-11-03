@@ -97,6 +97,13 @@ function compact(reading: string): string {
   return reading.replace(/ /g, "");
 }
 
+/** The reading a whole variant or transcript is compared by: the plugin's utterance reading (ja: inflected forms too), else the compacted spoken reading. */
+function wholeReading(normalized: string, rules: LanguageRules): string | null {
+  if (rules.utteranceReading) return rules.utteranceReading(normalized);
+  const reading = readingOf(normalized, rules);
+  return reading === null ? null : compact(reading);
+}
+
 function conceptsSatisfied(
   transcriptTokens: string[],
   transcriptReading: string[] | null,
@@ -127,15 +134,14 @@ export function gradeSpokenAttempt(
   const transcripts = [finals.finalTranscript, ...finals.alternatives];
   const normalizedVariants = spec.acceptedVariants.map((v) => {
     const normalized = normalizeSpoken(v, rules);
-    const reading = readingOf(normalized, rules);
-    return { authored: v, normalized, reading: reading === null ? null : compact(reading) };
+    return { authored: v, normalized, reading: wholeReading(normalized, rules) };
   });
 
   for (let index = 0; index < transcripts.length; index++) {
     const normalized = normalizeSpoken(transcripts[index], rules);
     if (normalized.length === 0) continue;
     const heardReading = readingOf(normalized, rules);
-    const heardCompact = heardReading === null ? null : compact(heardReading);
+    const heardCompact = wholeReading(normalized, rules);
     // P4b: or the same READING (ja: the recognizer wrote in kana what the author wrote in kanji).
     const variant = normalizedVariants.find(
       (v) =>

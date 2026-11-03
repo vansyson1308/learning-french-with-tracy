@@ -19,6 +19,10 @@
  *    is never rewritten. knownReading: kana spelling a course word.
  *  - normalizeStrict (dictation, cloze): width and case only; kana type,
  *    small kana, ー and kanji-vs-kana all count. Romaji never matches.
+ *  - utteranceReading (P4c, spoken grading): a whole utterance read through
+ *    the stored words AND the inflection keys (はたらいています for
+ *    働いています), so a recogniser that writes a verb in kana matches the
+ *    variant; concept slots keep the word-level spokenReading.
  *  - numbers: digits 0–100 → kanji numerals (3 → 三, 21 → 二十一) for
  *    spoken grading, spelt before segmentation so they split like
  *    authored numerals.
@@ -176,6 +180,10 @@ type Bound = {
   spokenReadings: Map<string, string>;
   /** lenient(surface) → lenient(reading). */
   lenientReadings: Map<string, string>;
+  /** P4c: whole-utterance readings — the stored words plus the inflection keys, longest match first. */
+  utterance: CjkDictionary;
+  /** foldSpoken(inflection key) → hiragana reading (食べま → たべま); stored words keep spokenReadings. */
+  inflectedReadings: Map<string, string>;
 };
 
 function bind(lexicon: CourseLexicon): Bound {
@@ -199,12 +207,21 @@ function bind(lexicon: CourseLexicon): Bound {
     const key = normalizeLenientJapanese(form.surface).replace(/ /g, "");
     if (!lenientReadings.has(key)) lenientReadings.set(key, normalizeLenientJapanese(form.kana).replace(/ /g, ""));
   }
+  // P4c session 5: the same keys read a whole spoken utterance, so a recogniser that writes 働いています in kana
+  // (はたらいています) matches the variant. The tokenizer, and so concept slots, keep the stored words only.
+  const inflectedReadings = new Map<string, string>();
+  for (const form of inflected) {
+    const key = foldSpokenJapanese(form.surface);
+    if (!spokenReadings.has(key)) inflectedReadings.set(key, katakanaToHiragana(foldSpokenJapanese(form.kana)));
+  }
   const kanaForms = [...readings.values()].flatMap((r) => [r, katakanaToHiragana(r)]);
   return {
     spoken: buildDictionary([...words, ...kanaForms], foldSpokenJapanese),
     lenient: buildDictionary([...words, ...inflected.map((f) => f.surface), ...kanaForms], normalizeLenientJapanese),
     spokenReadings,
     lenientReadings,
+    utterance: buildDictionary([...words, ...inflected.map((f) => f.surface), ...kanaForms], foldSpokenJapanese),
+    inflectedReadings,
   };
 }
 
@@ -259,6 +276,13 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
         .filter((t) => t.length > 0)
         .map((t) => katakanaToHiragana(bound?.spokenReadings.get(t) ?? t))
         .join(" "),
+    utteranceReading: (normalized) => {
+      const joined = normalized.replace(/ /g, "");
+      if (!bound) return katakanaToHiragana(joined);
+      return maximalMatch(joined, bound.utterance)
+        .map((t) => katakanaToHiragana(bound.spokenReadings.get(t) ?? bound.inflectedReadings.get(t) ?? t))
+        .join("");
+    },
     charsPerSecBand: JA_READING_SPEED,
     withLexicon: (next) => createJapaneseRules(next),
   };

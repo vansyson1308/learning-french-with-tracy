@@ -129,6 +129,14 @@ export type LanguageRules = {
    * reading layer (every other language).
    */
   spokenReading?(normalized: string): string;
+  /**
+   * P4c: the reading of a WHOLE normalized utterance, spaces dropped, with the
+   * inflected forms of stored verbs and adjectives read too (ja: 働いています →
+   * はたらいています, through ja-inflection.ts). The grader compares whole
+   * variants with it; concept slots keep spokenReading's word-level tokens.
+   * Absent = the grader compacts spokenReading (zh, ko).
+   */
+  utteranceReading?(normalized: string): string;
   /** P4b: reading-speed band (CJK: characters, not letters). Absent = not stated. */
   charsPerSecBand?: CharsPerSecBand;
   /**
