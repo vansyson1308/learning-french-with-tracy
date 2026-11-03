@@ -10,7 +10,15 @@
 >   - Khung khoá: 37 mục tiêu, 108 bài (chưa có bài tập), pipeline cho ra kết quả giống hệt nhau mỗi lần chạy. Kế hoạch ở `plan/authoring/ja-plan.md`.
 >   - Giọng B `kokoro-jm_kumo` có tỉ lệ lỗi canary 0,50, vẫn trong ngưỡng 0,6 của quy tắc chọn giọng. Kokoro không có giọng nam tiếng Nhật nào khác, MeloTTS đã bị loại (D-11), nên giữ theo quy tắc hiện hành.
 >   - Tên hạng mục JF Standard sẽ đối chiếu với trang chính thức ở phiên duyệt.
->   - Phiên tiếp: bài học và thẻ khái niệm.
+>   - **Phiên 2–5 xong** (đã push):
+>     - 108 bài, 1.020 bài tập (có 22 bài chia động từ), 25 thẻ khái niệm.
+>     - Bài nhập môn kana có bài kiểm tra; migration v9 lưu `primerPassed`; hiện romaji cho đến khi qua bài kiểm tra.
+>     - Bài viết gõ kana được tính là luyện tập.
+>     - 957 từ, gồm 8 tên riêng (không đưa vào từ mới mỗi ngày) và các biển báo an toàn trong nhà máy.
+>     - Tiếp nhận và sản sinh: 28 bài đọc, 220 clip, 52 bài nói, 35 bài viết, 21 tình huống.
+>     - Đánh giá: 7 bài kiểm tra, xếp lớp 4 chặng.
+>     - Track JLPT N5: 2 đề thi thử × 67 câu tự soạn. Định dạng đã đọc trên jlpt.jp, nên `checkedAgainstOfficialGuide` là true. `formatFidelity` là partial vì jlpt.jp không công bố số câu cho từng dạng; chủ dự án đối chiếu với sách chính thức.
+>   - Phiên tiếp: 40–50 truyện, rồi duyệt D-10, audio, promote và PR.
 >
 > **Ghi chú (2026-11-03, QC-2026-11-03 / D-15):**
 > - **Đã merge:** #59 en-vi (7aaefcc), #60 voice sampler (4a8d1e8), #61 D-15 (ad4c349). Cả ba PR đều qua đủ 22/22 check.
