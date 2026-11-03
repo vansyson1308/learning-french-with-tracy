@@ -14,12 +14,20 @@
  *  - Re-synthesis: a voice manifest may declare clips to re-render with the
  *    same voice and another Piper noise scale (`resynthesis` in
  *    content/<lang>/reception/audio-source-manifest.json).
+ *  - Phoneme front-end (P4c): a language whose Kokoro phonemes the plan builds
+ *    (engines.json `kokoro.phonemeFrontends`, ja) tags every Kokoro clip with
+ *    the front-end's id and version. The key hashes the text, not the phonemes,
+ *    so a reading fix reaches the audio only when the version is bumped
+ *    (scripts/lib/tts/ja-frontend-inputs.ts guards that). Every other language
+ *    has no front-end: no tag, keys unchanged.
  */
 
 import { existsSync } from "fs";
 
+import { codecRecipe, type AudioCodec, type CodecSettings } from "./audio-codec";
 import { isShortTranscript } from "./piper-audio";
 import { readJson, safeResolve } from "./pipeline";
+import type { PhonemeFrontendSpec } from "./tts/types";
 
 /** Normal speed + edge padding; bump the number when the short-word recipe changes again. */
 export const SHORT_WORD_RECIPE = "short-words-2";
@@ -60,16 +68,68 @@ export function resynthesisProblems(r: Resynthesis | null): string[] {
 
 const synthesisTag = (s: SynthesisOverride) => `piper-noise=${s.noiseScale},${s.noiseW}`;
 
-/** Recipe tag of a pack/lexicon clip (null: the default recipe, key unchanged). */
-export function packClipRecipe(input: { engine: string; text: string; pipelineVersion: number; synthesis: SynthesisOverride | null }): string | null {
-  const parts: string[] = [];
-  if (input.engine === "piper" && input.pipelineVersion >= SHORT_WORD_RECIPE_FROM_VERSION && isShortTranscript(input.text)) parts.push(SHORT_WORD_RECIPE);
-  if (input.synthesis !== null) parts.push(synthesisTag(input.synthesis));
-  return parts.length === 0 ? null : parts.join("|");
+const ENGINES_REL = "content/audio/engines.json";
+const PACK_MANIFEST_REL = "content/audio/pack-audio-manifest.json";
+
+/** The Kokoro phoneme front-end of a language (engines.json `kokoro.phonemeFrontends`), or null. */
+export function phonemeFrontendSpec(lang: string): PhonemeFrontendSpec | null {
+  const doc = readJson(ENGINES_REL) as { engines?: { kokoro?: { phonemeFrontends?: Record<string, PhonemeFrontendSpec> } } };
+  return doc.engines?.kokoro?.phonemeFrontends?.[lang] ?? null;
 }
 
-/** Recipe tag of a reception clip: only a declared re-synthesis changes it. */
-export function receptionClipRecipe(lang: string, clipId: string, declared: Resynthesis | null = loadResynthesis(lang)): string | null {
+/** Problems of a declared front-end (pure; tested): a positive integer version and a sha256. */
+export function phonemeFrontendProblems(lang: string, spec: PhonemeFrontendSpec | null): string[] {
+  if (spec === null) return [];
+  const at = `content/audio/engines.json kokoro.phonemeFrontends.${lang}`;
+  const problems: string[] = [];
+  if (spec.id !== "course-readings") problems.push(`${at}.id must be "course-readings"`);
+  if (!Number.isInteger(spec.version) || spec.version < 1) problems.push(`${at}.version must be a positive integer`);
+  if (typeof spec.inputsSha256 !== "string" || !/^[0-9a-f]{64}$/.test(spec.inputsSha256)) problems.push(`${at}.inputsSha256 must be a sha256 (64 hex digits)`);
+  return problems;
+}
+
+/** The tag a front-end puts into the key: id and version (never the hash, which only guards the version). */
+export const phonemeFrontendTag = (spec: PhonemeFrontendSpec) => `phonemes=${spec.id}-v${spec.version}`;
+
+/** Front-end tag of a clip spoken by a voice of `engine` (Kokoro voices only), or null. */
+export function frontendRecipeForEngine(lang: string, engine: string, spec: PhonemeFrontendSpec | null = phonemeFrontendSpec(lang)): string | null {
+  return spec !== null && engine === "kokoro" ? phonemeFrontendTag(spec) : null;
+}
+
+/** Engine of each voice the language's manifests declare (its reception manifest first, then the pack manifest). */
+function voiceEngines(lang: string, voiceIds: readonly string[]): (string | undefined)[] {
+  const found = new Map<string, string>();
+  for (const rel of [voiceManifestRel(lang), PACK_MANIFEST_REL]) {
+    if (voiceIds.every((id) => found.has(id)) || !existsSync(safeResolve(rel))) continue;
+    for (const v of (readJson(rel) as { voices?: { id: string; engine: string }[] }).voices ?? []) if (!found.has(v.id)) found.set(v.id, v.engine);
+  }
+  return voiceIds.map((id) => found.get(id));
+}
+
+/** Front-end tag of a reception clip or story sentence: present when one of its voices is a Kokoro voice of a front-end language. */
+export function frontendRecipeForVoices(lang: string, voiceIds: readonly string[], spec: PhonemeFrontendSpec | null = phonemeFrontendSpec(lang)): string | null {
+  if (spec === null) return null;
+  return voiceEngines(lang, voiceIds).some((e) => e === "kokoro") ? phonemeFrontendTag(spec) : null;
+}
+
+const joinRecipe = (parts: (string | null)[]) => {
+  const present = parts.filter((p): p is string => p !== null);
+  return present.length === 0 ? null : present.join("|");
+};
+
+/** Recipe tag of a pack/lexicon clip (null: the default recipe, key unchanged). */
+export function packClipRecipe(input: { language: string; engine: string; text: string; pipelineVersion: number; synthesis: SynthesisOverride | null }): string | null {
+  const shortWord = input.engine === "piper" && input.pipelineVersion >= SHORT_WORD_RECIPE_FROM_VERSION && isShortTranscript(input.text) ? SHORT_WORD_RECIPE : null;
+  return joinRecipe([frontendRecipeForEngine(input.language, input.engine), shortWord, input.synthesis === null ? null : synthesisTag(input.synthesis)]);
+}
+
+/** Recipe tag of a listening clip: a phoneme front-end and a declared re-synthesis change it. */
+export function receptionClipRecipe(lang: string, clipId: string, voiceIds: readonly string[], declared: Resynthesis | null = loadResynthesis(lang)): string | null {
   const s = resynthesisFor(lang, clipId, declared);
-  return s === null ? null : synthesisTag(s);
+  return joinRecipe([frontendRecipeForVoices(lang, voiceIds), s === null ? null : synthesisTag(s)]);
+}
+
+/** Recipe tag of a story sentence: a phoneme front-end and the codec (an mp3 sentence of a language without front-end keeps its key). */
+export function storyClipRecipe(lang: string, voiceIds: readonly string[], codec: AudioCodec, enc: CodecSettings | undefined): string | null {
+  return joinRecipe([frontendRecipeForVoices(lang, voiceIds), codecRecipe(codec, enc)]);
 }

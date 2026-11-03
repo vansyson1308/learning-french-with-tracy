@@ -32,6 +32,13 @@ export type Voice = {
   gateReason: string | null;
 };
 
+/**
+ * A plan-time phoneme front-end (P4c). `version` is part of the asset key of every Kokoro clip of the language
+ * (scripts/lib/audio-recipe.ts), because keys hash the text, not the phonemes; `inputsSha256` records the inputs that
+ * version was built from (scripts/lib/tts/ja-frontend-inputs.ts) — when they change, bump the version.
+ */
+export type PhonemeFrontendSpec = { id: "course-readings"; version: number; inputsSha256: string };
+
 export type EnginesDoc = {
   version: number;
   engines: {
@@ -48,7 +55,7 @@ export type EnginesDoc = {
       install: string[];
       langCodes: Record<string, string>;
       /** P4c: languages whose phonemes the plan builds (scripts/lib/tts/kokoro.ts); Kokoro's own G2P reads every other one. */
-      phonemeFrontends?: Record<string, "course-readings">;
+      phonemeFrontends?: Record<string, PhonemeFrontendSpec>;
       sampleRateHz: number;
       lineage?: LineageLink[];
     };

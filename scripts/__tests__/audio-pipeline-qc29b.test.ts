@@ -217,7 +217,7 @@ describe("re-synthesis of flagged clips with Piper (§3.4)", () => {
 
   test("declared pack clips get a new key; the synthesis script passes the noise scale to Piper only", () => {
     const synthesis = declared.piper;
-    const recipe = packClipRecipe({ engine: "piper", text: "Die Milch ist kalt.", pipelineVersion: 3, synthesis });
+    const recipe = packClipRecipe({ language: "de", engine: "piper", text: "Die Milch ist kalt.", pipelineVersion: 3, synthesis });
     expect(recipe).toContain("piper-noise=");
     expect(packAssetKey("de-en", "de_DE-thorsten-high", null, "Die Milch ist kalt.", 3, recipe)).not.toBe(packAssetKey("de-en", "de_DE-thorsten-high", null, "Die Milch ist kalt.", 3));
     const engines = loadEngines();

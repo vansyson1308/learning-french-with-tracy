@@ -55,7 +55,7 @@ clip text ──(plan, TS)──► spoken kana ──► Kokoro phonemes ──
   These should move into the lexicon in a later content task.
 - `scripts/lib/tts/ja-phonemes.ts` — the cutlet table (generated from the 0.9.4 source text, not
   retyped), `_get_single_mapping`, token spacing and clean-up, with both licence notices.
-- Per-language switch: `engines.json` `kokoro.phonemeFrontends: { "ja": "course-readings" }`.
+- Per-language switch: `engines.json` `kokoro.phonemeFrontends: { "ja": { "id": "course-readings", … } }` (see §3, re-render gate).
   `audio.ts plan` attaches `phonemes` to every Kokoro segment of a front-end language
   (`attachKokoroPhonemes`); `kokoro.ts` writes `{phonemes,text,out}` jobs and `--input phonemes` for
   those voices only, and refuses a ja segment without phonemes (no silent fallback). Every other
@@ -80,8 +80,16 @@ the number pass and the 6 supplement readings). Longest phoneme string: 114.
    read as number + stored reading; 日 dates come from stored words (二十四日 is in the lexicon).
 5. Nothing is lost on pitch accent (cutlet never emits it). ASR (SenseVoice) in CI is the check.
 
-Asset keys are unchanged (text, voice, version, recipe); no ja audio is blessed yet. A later reading
-fix will not re-key a clip by itself — re-render the language when readings change.
+**Re-render gate (follow-up).** Keys hash the text, not the phonemes, so engines.json declares
+`kokoro.phonemeFrontends.ja = { id: "course-readings", version: 1, inputsSha256 }` and the tag
+`phonemes=course-readings-v1` enters the key of every ja Kokoro clip (pack, lexicon, canary, listening, story;
+`scripts/lib/audio-recipe.ts`, shared by plan and validator). `inputsSha256` hashes the reading fields of
+`content/ja/lexicon/lexemes.json` (what the index reads; glosses excluded), `content/audio/ja-spoken-readings.json`
+and the LF source of ja-kana.ts, ja-phonemes.ts, ja-numbers.ts, ja-inflection.ts, script-reading.ts
+(`scripts/lib/tts/ja-frontend-inputs.ts`). A test and `audio.ts plan` fail when it is stale: bump the version,
+record the new hash, and the next generate re-renders ja. Other languages have no front-end: keys unchanged.
+The ja reception layer has its voice manifest (`content/ja/reception/audio-source-manifest.json`, generator
+`ja-reception-audio.py`), so the plan covers the 268 listening clips and the 18 band-1 stories.
 
 ## 4. Licence chain
 

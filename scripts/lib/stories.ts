@@ -34,7 +34,8 @@ import {
   type StorySource,
   type Syllabus,
 } from "../../content/schema";
-import { assetFileName, codecFor, codecRecipe, type AudioCodec, type CodecSettings } from "./audio-codec";
+import { assetFileName, codecFor, type AudioCodec, type CodecSettings } from "./audio-codec";
+import { storyClipRecipe } from "./audio-recipe";
 import { buildPlugin } from "./languages";
 import type { ScriptKind } from "./languages/types";
 import { pickNative } from "./native-text";
@@ -553,9 +554,10 @@ function storyEncoding(): CodecSettings | undefined {
   return (readJson("content/audio/engines.json") as { encoding?: CodecSettings }).encoding;
 }
 
-/** An mp3 story sentence keeps its key; an opus one carries the codec in its key. */
+/** An mp3 story sentence keeps its key; an opus one carries the codec in its key, a front-end language's (ja) its front-end. */
 export function storySentenceAssetKey(lang: string, stories: Stories, sentence: StorySource["sentences"][number], codec: AudioCodec = storyCodec(lang)): string {
-  return receptionAssetKey(lang, storySentenceSegments(stories, sentence), storyPipelineVersion(lang), codecRecipe(codec, storyEncoding()));
+  const segments = storySentenceSegments(stories, sentence);
+  return receptionAssetKey(lang, segments, storyPipelineVersion(lang), storyClipRecipe(lang, segments.map((s) => s.voiceId), codec, storyEncoding()));
 }
 
 /** `<key>.mp3` or `<key>.opus`, by the story codec. */

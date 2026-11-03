@@ -35,7 +35,7 @@ export type PhonemeFrontend = "course-readings";
 
 /** The plan-time phoneme front-end of a language's Kokoro voices, or null (Kokoro's own G2P reads the text). */
 export function kokoroFrontend(engines: Pick<EnginesDoc, "engines">, language: string): PhonemeFrontend | null {
-  return engines.engines.kokoro.phonemeFrontends?.[language] ?? null;
+  return engines.engines.kokoro.phonemeFrontends?.[language]?.id ?? null;
 }
 
 type PhonemeSegment = { voiceId: string; text: string; phonemes?: string };

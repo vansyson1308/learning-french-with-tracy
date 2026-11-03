@@ -98,10 +98,12 @@ export function receptionAssetKey(
 /**
  * The key of a listening clip as the plan, the validator and the compiler
  * all derive it: the default recipe unless the language's voice manifest
- * declares a re-synthesis of this clip (QC 2026-10-29b §3.4).
+ * declares a re-synthesis of this clip (QC 2026-10-29b §3.4) or its voices
+ * read phonemes from a front-end (P4c: ja).
  */
 export function listeningClipKey(lang: string, listening: Listening, clip: ListeningClip): string {
-  return receptionAssetKey(lang, resolveClipSegments(listening, clip), receptionPipelineVersion(lang), receptionClipRecipe(lang, clip.id));
+  const segments = resolveClipSegments(listening, clip);
+  return receptionAssetKey(lang, segments, receptionPipelineVersion(lang), receptionClipRecipe(lang, clip.id, segments.map((s) => s.voiceId)));
 }
 
 export function resolveClipSegments(

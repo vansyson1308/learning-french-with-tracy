@@ -7,7 +7,11 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync } from "fs";
 import path from "path";
 
+import { frontendRecipeForEngine, frontendRecipeForVoices, packClipRecipe, phonemeFrontendProblems, phonemeFrontendSpec, phonemeFrontendTag, receptionClipRecipe, storyClipRecipe } from "../lib/audio-recipe";
+import { packAssetKey } from "../lib/piper-audio";
+import { listeningClipKey, loadListening, receptionAssetKey, receptionPipelineVersion, resolveClipSegments } from "../lib/reception";
 import { buildSynthScript, loadEngines, type Voice } from "../lib/tts";
+import { JA_FRONTEND_INPUTS, jaFrontendInputsSha256, staleFrontendMessage } from "../lib/tts/ja-frontend-inputs";
 import { buildJaSpeechIndex, jaClipPhonemes, loadJaSpeechIndex, spokenReadingsProblems, spokenTokens, type JaLexemeLike, type SpokenReadingsDoc } from "../lib/tts/ja-kana";
 import { countedKana, kanjiNumberValue, numberKana, phoneKana } from "../lib/tts/ja-numbers";
 import { kanaToPhonemes, pronunciationKana, tokensToPhonemes } from "../lib/tts/ja-phonemes";
@@ -298,5 +302,65 @@ describe("plan → synth-script wiring (ja only)", () => {
 
   test("a ja segment without phonemes fails the synth script (never falls back to misaki)", () => {
     expect(() => kokoroEngine.synthScript([{ voiceId: ja.id, speaker: null, text: "私", wavPath: "/w.wav" }], new Map([[ja.id, ja]]), "/dl", "/wav", engines)).toThrow("re-run plan");
+  });
+});
+
+describe("re-render gate: the front-end version is part of every ja Kokoro key", () => {
+  const readText = (rel: string) => readFileSync(path.join(ROOT, rel), "utf8");
+  const spec = phonemeFrontendSpec("ja")!;
+  const engines = loadEngines();
+
+  test("engines.json declares ja's front-end with a version and the hash of its inputs", () => {
+    expect(spec.id).toBe("course-readings");
+    expect(phonemeFrontendProblems("ja", spec)).toEqual([]);
+    expect(phonemeFrontendProblems("ja", { id: "course-readings", version: 0, inputsSha256: "x" })).toHaveLength(2);
+    for (const rel of JA_FRONTEND_INPUTS) expect(existsSync(path.join(ROOT, rel)), rel).toBe(true);
+  });
+
+  test("the recorded inputsSha256 is the hash of the current readings, supplement and front-end sources", () => {
+    const actual = jaFrontendInputsSha256(readText);
+    // On failure: a reading, the supplement or a front-end table/rule changed, so blessed ja clips would keep the old pronunciation.
+    if (actual !== spec.inputsSha256) throw new Error(staleFrontendMessage("ja", spec.inputsSha256, actual));
+    expect(actual).toBe(spec.inputsSha256);
+  });
+
+  test("the hash moves with a reading and with a front-end source, not with a gloss", () => {
+    const base = jaFrontendInputsSha256(readText);
+    const lexicon = JSON.parse(readText("content/ja/lexicon/lexemes.json")) as { lexemes: { reading?: { kana?: string }; glosses?: Record<string, string> }[] };
+    const withLexicon = (doc: unknown) => (rel: string) => (rel === "content/ja/lexicon/lexemes.json" ? JSON.stringify(doc) : readText(rel));
+    const target = lexicon.lexemes.findIndex((l) => l.reading?.kana);
+    const reread = { lexemes: lexicon.lexemes.map((l, i) => (i === target ? { ...l, reading: { ...l.reading, kana: `${l.reading!.kana}ー` } } : l)) };
+    const reglossed = { lexemes: lexicon.lexemes.map((l, i) => (i === target ? { ...l, glosses: { ...l.glosses, vi: "khác" } } : l)) };
+    expect(jaFrontendInputsSha256(withLexicon(reread))).not.toBe(base);
+    expect(jaFrontendInputsSha256(withLexicon(reglossed))).toBe(base);
+    expect(jaFrontendInputsSha256((rel) => (rel === "scripts/lib/tts/ja-phonemes.ts" ? `${readText(rel)}\n// x` : readText(rel)))).not.toBe(base);
+    // Line endings are not an input (a Windows checkout hashes the same).
+    expect(jaFrontendInputsSha256((rel) => readText(rel).replace(/\n/g, "\r\n"))).toBe(base);
+  });
+
+  test("ja keys carry the version: a bump re-keys pack, listening and story clips; other languages have no tag", () => {
+    const tag = phonemeFrontendTag(spec);
+    expect(tag).toBe(`phonemes=course-readings-v${spec.version}`);
+    const bumped = { ...spec, version: spec.version + 1 };
+    expect(frontendRecipeForEngine("ja", "kokoro")).toBe(tag);
+    expect(frontendRecipeForEngine("ja", "kokoro", bumped)).not.toBe(tag);
+    expect(frontendRecipeForEngine("ja", "melotts")).toBeNull();
+    expect(packClipRecipe({ language: "ja", engine: "kokoro", text: "水", pipelineVersion: 3, synthesis: null })).toBe(tag);
+    expect(packAssetKey("ja-vi", "kokoro-jf_alpha", null, "水", 3, tag)).not.toBe(packAssetKey("ja-vi", "kokoro-jf_alpha", null, "水", 3));
+    expect(frontendRecipeForVoices("ja", ["kokoro-jf_alpha", "kokoro-jm_kumo"])).toBe(tag);
+    expect(storyClipRecipe("ja", ["kokoro-jf_alpha"], "opus", engines.encoding)).toBe(`${tag}|opus-16k-lim3`);
+    const listening = loadListening("ja")!;
+    const clip = listening.clips[0]!;
+    const segments = resolveClipSegments(listening, clip);
+    expect(receptionClipRecipe("ja", clip.id, segments.map((s) => s.voiceId))).toBe(tag);
+    expect(listeningClipKey("ja", listening, clip)).toBe(receptionAssetKey("ja", segments, receptionPipelineVersion("ja"), tag));
+    expect(listeningClipKey("ja", listening, clip)).not.toBe(receptionAssetKey("ja", segments, receptionPipelineVersion("ja"), phonemeFrontendTag(bumped)));
+    for (const lang of ["fr", "de", "es", "en", "it", "pt", "zh", "ko"]) {
+      expect(phonemeFrontendSpec(lang)).toBeNull();
+      expect(frontendRecipeForEngine(lang, "kokoro")).toBeNull();
+      expect(packClipRecipe({ language: lang, engine: "kokoro", text: "x y z w", pipelineVersion: 3, synthesis: null })).toBeNull();
+      expect(receptionClipRecipe(lang, `${lang}.clip.none`, ["kokoro-ef_dora"], null)).toBeNull();
+      expect(storyClipRecipe(lang, ["kokoro-ef_dora"], "mp3", engines.encoding)).toBeNull();
+    }
   });
 });
