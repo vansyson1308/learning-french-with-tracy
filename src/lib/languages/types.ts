@@ -76,6 +76,12 @@ export type LanguageRules = {
    */
   normalizeLenientAlternate?(text: string): string;
   /**
+   * D-10 owner decision (2026-11-03): the lenient form of an item that asks for one script (typeAnswer.script) —
+   * width, case and punctuation folded, but never one script into another (ja "katakana": ぱん stays ぱん, so it is
+   * not パン). Absent for languages with no such item; the validator then refuses the flag.
+   */
+  normalizeLenientInScript?(text: string, script: "katakana"): string;
+  /**
    * A typed answer rewritten toward one key, both already in the lenient form: where the key
    * has a word of this language's variety and the answer has the other variety's word for it
    * ("an apartment" / "a flat"). Pair-aware because the pair holds only for that key's meaning;

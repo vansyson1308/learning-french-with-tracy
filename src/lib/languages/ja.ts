@@ -17,6 +17,9 @@
  *    in kana alone whose reading is the key's (がくせい for 学生, たべます for
  *    食べます) stands for the key — practice only; a kanji the learner typed
  *    is never rewritten. knownReading: kana spelling a course word.
+ *  - normalizeLenientInScript (D-10 owner decision): an item that asks for
+ *    katakana (typeAnswer.script) folds width, case and punctuation but
+ *    keeps the script — ぱん is not パン there.
  *  - normalizeStrict (dictation, cloze): width and case only; kana type,
  *    small kana, ー and kanji-vs-kana all count. Romaji never matches.
  *  - utteranceReading (P4c, spoken grading): a whole utterance read through
@@ -153,6 +156,17 @@ export function normalizeLenientJapanese(text: string): string {
   return collapseSpaces(stripPunctuation(foldJapaneseKana(text)).replace(/[-~〜]/g, ""));
 }
 
+/**
+ * D-10 owner decision (2026-11-03): an item that asks for katakana (typeAnswer.script) keeps the script — width, case,
+ * punctuation and a hyphen typed for ー are folded, but katakana is never folded to hiragana, small kana stay small and
+ * ー stays ー (コオヒイ is not コーヒー). Spaces drop, as in the alternate lenient form.
+ */
+export function normalizeLenientKatakana(text: string): string {
+  return stripPunctuation(repeatReplace(nfkcLower(text), HYPHEN_AFTER_KANA, "$1ー"))
+    .replace(/[-~〜]/g, "")
+    .replace(/\s+/g, "");
+}
+
 /** Strict form: width and case only. */
 export function normalizeStrictJapanese(text: string): string {
   return foldSpokenJapanese(text);
@@ -246,6 +260,7 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
     spellDigits: spellJapaneseDigits,
     normalizeLenient: normalizeLenientJapanese,
     normalizeLenientAlternate: (text) => normalizeLenientJapanese(text).replace(/ /g, ""),
+    normalizeLenientInScript: (text) => normalizeLenientKatakana(text),
     alignAnswerToKey: (answer, key) => {
       if (!bound || bound.lenientReadings.size === 0) return answer;
       const a = answer.replace(/ /g, "");

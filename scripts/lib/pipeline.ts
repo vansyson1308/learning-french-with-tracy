@@ -39,7 +39,7 @@ import { scopeErrors } from "./licence-scope";
 import { lineageErrors, selectedVoiceErrors, type ManifestVoice } from "./voice-lineage";
 import { resolveCourseRoles, type CourseRef, type CourseRole, type CourseRoles } from "./course-roles";
 import { lessonShapeErrors, templateDefectErrors } from "./lesson-shape";
-import { buildPlugin, type BuildLanguagePlugin } from "./languages";
+import { buildLanguage, buildPlugin, type BuildLanguagePlugin } from "./languages";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
 
@@ -451,6 +451,17 @@ export function validateExercise(
             `${e.id}: digit→word select for ${n} must key "${expected}" (engine spelling), got "${e.options[e.correct]?.text}"`
           );
         }
+      }
+    }
+  }
+  // D-10 owner decision (2026-11-03): typeAnswer.script, for a language whose plugin compares inside that script, on
+  // a key and alternatives written in it (katakana: カタカナ, ー, ・, width variants; no hiragana, no kanji).
+  if (e.type === "typeAnswer" && e.script !== undefined) {
+    if (!(buildLanguage(targetCode).typedScripts ?? []).includes(e.script)) {
+      push(`${e.id}: script "${e.script}" — the ${targetCode} plugin has no in-script comparison for it`);
+    } else {
+      for (const key of [e.answer, ...e.alternatives]) {
+        if (!/^[゠-ヿｦ-ﾟ　-。！？!?\s]+$/u.test(key)) push(`${e.id}: script "${e.script}" key "${key}" is not written in katakana`);
       }
     }
   }

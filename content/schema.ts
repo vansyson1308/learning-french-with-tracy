@@ -265,6 +265,12 @@ export function exerciseSchemas(lang: string) {
     audioTarget: z.string().min(1).optional(),
     answer: z.string().min(1),
     alternatives: z.array(z.string()),
+    /**
+     * D-10 owner decision (2026-11-03): "katakana" — the item asks for the word in katakana, so the grader compares
+     * it without the katakana → hiragana fold (ぱん is not パン). Only for a plugin with an in-script form (ja) and a
+     * key and alternatives written in katakana (validated).
+     */
+    script: z.literal("katakana").optional(),
     gradeTargets,
     objectiveTargets,
   });

@@ -69,11 +69,19 @@ export type TypeAnswerExercise = {
   audioTarget?: string;
   answer: string;
   alternatives: string[];
+  /**
+   * D-10 owner decision (2026-11-03): the item asks for one script ("Gõ bằng katakana"), so the grader compares it
+   * without the fold between the language's scripts (ja: katakana → hiragana) — ぱん is not パン here.
+   */
+  script?: TypedScript;
   /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
   gradeTargets?: string[];
   /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */
   objectiveTargets?: string[];
 };
+
+/** The scripts a typed item may ask for (typeAnswer.script). */
+export type TypedScript = "katakana";
 
 export type FillBlankExercise = {
   type: "fillBlank";

@@ -255,7 +255,16 @@ export function checkAnswer(exercise: Exercise, answer: Answer, courseId: string
     }
     case "typeAnswer": {
       if (typeof answer !== "string") return false;
-      return [exercise.answer, ...exercise.alternatives].some((a) => lenientEquals(rules, a, answer));
+      const keys = [exercise.answer, ...exercise.alternatives];
+      // D-10 owner decision: an item that asks for one script compares inside it (ja: ぱん is not パン). The validator
+      // allows the flag only where the plugin has the form.
+      const script = exercise.script;
+      const inScript = rules.normalizeLenientInScript;
+      if (script !== undefined && inScript !== undefined) {
+        const attempt = inScript(answer, script);
+        return keys.some((a) => inScript(a, script) === attempt);
+      }
+      return keys.some((a) => lenientEquals(rules, a, answer));
     }
     case "conjugationCloze":
     case "dictation": {
