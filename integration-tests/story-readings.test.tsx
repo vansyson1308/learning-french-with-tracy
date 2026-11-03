@@ -159,6 +159,8 @@ describe("ja story: the lessons' reading display", () => {
     expect(readings()).toEqual(["がく", "せい", "た", "た", "がく", "せい"]);
     expect(romajiLines()).toHaveLength(3);
     expect(romajiLines()[0]).toBe("gakusei desu.");
+    // Word-spaced: the particle is never joined to the word before it (it read "pan'o" from the joined text).
+    expect(romajiLines()[1]).toBe("pan o tabemasu.");
     expect(screen.getAllByTestId("story-word-xc:w:gakusei")[0].props.accessibilityLabel).toBe("学生 (がくせい)");
   });
 
