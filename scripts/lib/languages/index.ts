@@ -13,10 +13,13 @@ import { es } from "./es";
 import { fr } from "./fr";
 import { genericPlugin } from "./generic";
 import { it } from "./it";
+import { ja } from "./ja";
+import { ko } from "./ko";
 import type { BuildLanguage, BuildLanguagePlugin } from "./types";
 import { xx } from "./xx";
+import { zh } from "./zh";
 
-export type { ArticleGender, ArticleRules, BuildLanguage, BuildLanguagePlugin, MorphRow, MorphVerb, ParadigmSpec } from "./types";
+export type { ArticleGender, ArticleRules, BuildLanguage, BuildLanguagePlugin, GrammarConcept, MorphRow, MorphVerb, ParadigmSpec } from "./types";
 
 export const BUILD_LANGUAGES: Record<string, BuildLanguage> = {
   fr: { code: "fr", recognitionLocale: "fr-FR", ttsLocale: "fr-FR", script: "latin", flagAsset: "fr", numberDrill: fr.numberDrill },
@@ -42,7 +45,8 @@ export function buildLanguage(code: string): BuildLanguage {
   return { code, recognitionLocale: code, ttsLocale: code, script: "latin", flagAsset: code };
 }
 
-const PLUGINS: Record<string, BuildLanguagePlugin> = { fr, en, es, de, it, xx };
+// P4b stage 5: ja / ko declare verb paradigms, zh its grammar concepts (otherwise the generic CJK plugin).
+const PLUGINS: Record<string, BuildLanguagePlugin> = { fr, en, es, de, it, ja, ko, zh, xx };
 const GENERIC = new Map<string, BuildLanguagePlugin>();
 
 /** The build plugin for a target language (generic defaults for every language without its own). */

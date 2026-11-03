@@ -96,6 +96,14 @@ export type ParadigmSpec = {
   attributes?: Record<string, readonly string[]>;
 };
 
+/** P4b: a plugin-declared grammar concept (see BuildLanguagePlugin.grammarConcepts). */
+export type GrammarConcept = {
+  id: string;
+  kind: "measure-word" | "aspect-particle";
+  /** The words the concept is about (zh 个 本 张 …; 了). */
+  forms: readonly string[];
+};
+
 /**
  * ASR-normalisation spec (consumed by scripts/reception-asr-audit.py via
  * the generation plan, so the Python audit never re-implements language
@@ -128,6 +136,13 @@ export type BuildLanguagePlugin = BuildLanguage & {
   charsPerSecBand: { min: number; max: number };
   tokenize(text: string): string[];
   paradigm?: ParadigmSpec;
+  /**
+   * P4b: grammar concepts a language WITHOUT a verb paradigm teaches instead
+   * (zh: measure words, aspect particles) — pedagogy concept ids
+   * (`<lang>:concept:<slug>`) the course's concepts.json is expected to
+   * author, each with the forms it is about.
+   */
+  grammarConcepts?: readonly GrammarConcept[];
   /** FTS5 tokenizer clause for the lexicon database, chosen by script. */
   ftsTokenizer: string;
   /** High-frequency function words the writing plausibility floor accepts (not lexicon headwords). */

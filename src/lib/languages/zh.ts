@@ -51,12 +51,12 @@ export function spellChineseDigits(token: string): string {
 }
 
 /** Measure words (simplified and traditional) after which the number two is 两. */
-const MEASURE_WORDS = [
+export const CHINESE_MEASURE_WORDS: readonly string[] = [
   "个", "個", "本", "只", "隻", "张", "張", "杯", "次", "天", "年", "位", "块", "塊", "件", "条", "條", "辆", "輛", "双", "雙",
   "瓶", "碗", "口", "岁", "歲", "点", "點", "斤", "公斤", "分钟", "分鐘", "小时", "小時", "种", "種", "家", "节", "節", "台", "臺",
   "支", "把", "份", "门", "門", "头", "頭", "封", "间", "間", "层", "層", "座", "遍", "周", "星期",
 ];
-const TWO_BEFORE_MEASURE = new RegExp(`(^|[^0-9])2(?=(?:${MEASURE_WORDS.join("|")}))`, "g");
+const TWO_BEFORE_MEASURE = new RegExp(`(^|[^0-9])2(?=(?:${CHINESE_MEASURE_WORDS.join("|")}))`, "g");
 
 /** 2个 → 两个 (also after a non-digit: 买2本 → 买两本); 12个 and a bare 2 are left to the digit speller. */
 export function chineseTwoBeforeMeasure(text: string): string {
