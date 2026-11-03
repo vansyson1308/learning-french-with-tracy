@@ -172,7 +172,8 @@ describe("compiler: round-trip and determinism", () => {
       // P4b stage 4: the synthetic CJK variant xc-en has an id registry too (one select, one match).
       // P4c: Japanese has an id registry from its lexicon on, so ja-en's unambiguous selects and matches carry targets, and ja-vi's
       // (262: Section 1 has no kana typing, and 7 of its former typed answers are now one-word selects).
-      const expected: Record<string, number> = { "xx-en": 2, "xc-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140, "de-vi": 196, "it-en": 140, "it-vi": 195, "en-vi": 190, "ja-en": 137, "ja-vi": 262 };
+      // P4d: Chinese has an id registry from its lexicon on, so zh-en's unambiguous selects and matches carry targets.
+      const expected: Record<string, number> = { "xx-en": 2, "xc-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140, "de-vi": 196, "it-en": 140, "it-vi": 195, "en-vi": 190, "ja-en": 137, "ja-vi": 262, "zh-en": 140 };
       expect({ courseId, targets: row.withGradeTargets }).toEqual({ courseId, targets: expected[courseId] ?? 0 });
     }
   });

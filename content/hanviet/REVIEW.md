@@ -215,43 +215,202 @@ could not confirm the characters the note names — those lines need the reviewe
 | 한국 | 韓國 | Hàn Quốc | note (韓) | 韓: Unihan 17.0.0 has no kVietnamese for 韓; Hàn is its standard Hán-Việt reading. |
 | 회사 | 會社 | hội xã | Unihan |  |
 
-## zh — Tiếng Trung / Chinese (36)
+## zh — Tiếng Trung / Chinese (195)
 
 | word | Hán-Việt | check | note |
 |---|---|---|---|
+| 一定 | nhất định | Unihan |  |
+| 一路平安 | nhất lộ bình an | Unihan |  |
+| 丈夫 | trượng phu | Unihan | False friend: 丈夫 is a husband (chồng); Vietnamese trượng phu means a man of noble character. |
 | 世界 | thế giới | Unihan |  |
+| 东西 | đông tây | Unihan | False friend: 东西 (dōng xi) means a thing, stuff (đồ); only 东西 with full tones is east and west. |
 | 中国 | Trung Quốc | Unihan |  |
+| 中国人 | Trung Quốc nhân | Unihan |  |
+| 中学 | trung học | Unihan |  |
+| 中文 | Trung văn | Unihan |  |
+| 中间 | trung gian | Unihan | False friend: 中间 is the middle, in between (ở giữa); Vietnamese trung gian means an intermediary. |
+| 主管 | chủ quản | note (主) | 主: Unihan 17.0.0 kVietnamese does not list chủ (it lists Nôm or other readings); chủ is its standard Hán-Việt reading. |
+| 主要 | chủ yếu | note (主) | 主: Unihan 17.0.0 kVietnamese does not list chủ (it lists Nôm or other readings); chủ is its standard Hán-Việt reading. |
+| 习惯 | tập quán | note (惯) | Partly a false friend: 习惯 is a personal habit (thói quen); Vietnamese tập quán is a custom of a community. |
+| 事情 | sự tình | Unihan |  |
+| 交通 | giao thông | Unihan |  |
+| 产品 | sản phẩm | Unihan |  |
 | 介绍 | giới thiệu | Unihan |  |
 | 休息 | hưu tức | Unihan |  |
+| 作业 | tác nghiệp | Unihan | False friend: 作业 is homework (bài tập); Vietnamese tác nghiệp means to carry out an operation at work. |
+| 健康 | kiện khang | Unihan | Vietnamese says khang kiện or khoẻ mạnh: the same two characters in the other order. |
+| 先生 | tiên sinh | Unihan |  |
+| 入口 | nhập khẩu | Unihan | False friend: 入口 on a sign is the entrance (lối vào); Vietnamese nhập khẩu means import. |
+| 全部 | toàn bộ | Unihan |  |
 | 公司 | công ty | Unihan |  |
+| 公园 | công viên | Unihan |  |
+| 关心 | quan tâm | Unihan |  |
 | 关系 | quan hệ | Unihan |  |
-| 医生 | y sinh | Unihan |  |
+| 冬天 | đông thiên | Unihan |  |
+| 准备 | chuẩn bị | Unihan |  |
+| 出发 | xuất phát | Unihan |  |
+| 出口 | xuất khẩu | Unihan | False friend: 出口 on a sign is the exit (lối ra); Vietnamese xuất khẩu means export. |
+| 办法 | biện pháp | note (办) | 办: Unihan 17.0.0 has no kVietnamese for 办 or 辦; biện is its standard Hán-Việt reading. |
+| 动物 | động vật | Unihan |  |
+| 动物园 | động vật viên | Unihan |  |
+| 努力 | nỗ lực | note (努) | 努: Unihan 17.0.0 has no kVietnamese for 努; nỗ is its standard Hán-Việt reading. |
+| 医生 | y sinh | Unihan | 医生 is a doctor (bác sĩ); Vietnamese y sinh is an old word for a physician or a medical student. |
+| 医院 | y viện | Unihan |  |
+| 危险 | nguy hiểm | Unihan |  |
 | 历史 | lịch sử | Unihan |  |
+| 原因 | nguyên nhân | Unihan |  |
+| 参加 | tham gia | Unihan |  |
 | 发展 | phát triển | Unihan |  |
+| 发现 | phát hiện | Unihan |  |
+| 可能 | khả năng | Unihan | Partly a false friend: 可能 is also "maybe" (có lẽ); Vietnamese khả năng is ability or possibility. |
+| 合同 | hợp đồng | Unihan |  |
+| 同事 | đồng sự | Unihan |  |
+| 同学 | đồng học | Unihan |  |
+| 名字 | danh tự | Unihan | False friend: 名字 is a person's name (tên); Vietnamese danh từ / danh tự is a grammar word, a noun. |
+| 商场 | thương trường | Unihan | Partly a false friend: 商场 is a shopping mall; Vietnamese thương trường is the market in the figurative sense (the business world). |
 | 商店 | thương điếm | Unihan |  |
+| 商量 | thương lượng | note (量) | Partly a false friend: 商量 is to talk something over (bàn bạc); Vietnamese thương lượng is to negotiate. |
+| 喜欢 | hỉ hoan | Unihan |  |
+| 回答 | hồi đáp | Unihan |  |
 | 国家 | quốc gia | Unihan |  |
 | 图书馆 | đồ thư quán | Unihan |  |
+| 地图 | địa đồ | Unihan |  |
+| 地址 | địa chỉ | note (址) | 址: Unihan 17.0.0 kVietnamese does not list chỉ (it lists Nôm or other readings); chỉ is its standard Hán-Việt reading. |
+| 地方 | địa phương | Unihan | False friend: 地方 (dì fang) is a place, a spot (chỗ, nơi); Vietnamese địa phương means a locality or region. |
+| 地点 | địa điểm | Unihan |  |
+| 城市 | thành thị | Unihan |  |
+| 声音 | thanh âm | Unihan |  |
+| 夏天 | hạ thiên | note (夏) | 夏: Unihan 17.0.0 has no kVietnamese for 夏; hạ is its standard Hán-Việt reading. |
+| 外国 | ngoại quốc | Unihan |  |
+| 外国人 | ngoại quốc nhân | Unihan |  |
+| 外语 | ngoại ngữ | Unihan |  |
 | 大学 | đại học | Unihan |  |
+| 大学生 | đại học sinh | Unihan |  |
 | 天气 | thiên khí | Unihan |  |
+| 太阳 | thái dương | Unihan |  |
+| 女人 | nữ nhân | note (女) | 女: Unihan 17.0.0 kVietnamese does not list nữ (it lists Nôm or other readings); nữ is its standard Hán-Việt reading. |
+| 女儿 | nữ nhi | note (女 儿) | 女: Unihan 17.0.0 kVietnamese does not list nữ (it lists Nôm or other readings); nữ is its standard Hán-Việt reading. 儿: Unihan 17.0.0 has no kVietnamese for 儿 or 兒; nhi is its standard Hán-Việt reading. |
+| 妻子 | thê tử | note (子) | False friend: 妻子 (qī zi) is one's wife (vợ); Vietnamese thê tử means wife and children. |
+| 姓名 | tính danh | Unihan |  |
 | 学习 | học tập | Unihan |  |
 | 学校 | học hiệu | Unihan |  |
 | 学生 | học sinh | Unihan |  |
+| 安全 | an toàn | Unihan |  |
+| 安全帽 | an toàn mạo | note (帽) | 帽: Unihan 17.0.0 kVietnamese does not list mạo (it lists Nôm or other readings); mạo is its standard Hán-Việt reading. |
+| 安静 | an tĩnh | note (静) | 静: Unihan 17.0.0 has no kVietnamese for 静 or 靜; tĩnh is its standard Hán-Việt reading. |
+| 完成 | hoàn thành | Unihan |  |
+| 家人 | gia nhân | Unihan | False friend: 家人 are one's family members; Vietnamese gia nhân means household servants. |
 | 家庭 | gia đình | Unihan |  |
-| 工作 | công tác | Unihan |  |
+| 容易 | dung dị | note (易) | False friend: 容易 means easy (dễ); Vietnamese dung dị means simple, unpretentious. |
+| 宿舍 | túc xá | Unihan |  |
+| 密码 | mật mã | note (码) | 码: Unihan 17.0.0 has no kVietnamese for 码 or 碼; mã is its standard Hán-Việt reading. |
+| 对面 | đối diện | note (面) | 面: Unihan 17.0.0 has no kVietnamese for 面; diện is its standard Hán-Việt reading. |
+| 小姐 | tiểu thư | Unihan | Partly a false friend: 小姐 is the polite "Miss" for any young woman; Vietnamese tiểu thư suggests a young lady of a well-off family. |
+| 小学 | tiểu học | Unihan |  |
+| 小心 | tiểu tâm | Unihan | False friend: 小心 means careful, look out (cẩn thận); Vietnamese has no tiểu tâm in this sense. |
+| 工人 | công nhân | Unihan |  |
+| 工作 | công tác | Unihan | Partly a false friend: 工作 is a job, to work (công việc, làm việc); Vietnamese công tác is an assignment or a business trip. |
+| 工具 | công cụ | Unihan |  |
+| 希望 | hy vọng | note (希) | 希: Unihan 17.0.0 kVietnamese does not list hy (it lists Nôm or other readings); hy is its standard Hán-Việt reading. |
+| 平安 | bình an | Unihan |  |
+| 开会 | khai hội | Unihan |  |
+| 开始 | khai thuỷ | Unihan |  |
+| 快乐 | khoái lạc | Unihan | False friend: 快乐 is happy, joyful (vui vẻ); Vietnamese khoái lạc means (sensual) pleasure. |
+| 意思 | ý tứ | note (思) | False friend: 意思 is meaning (ý nghĩa); Vietnamese ý tứ means tact, discretion. |
+| 意见 | ý kiến | Unihan |  |
+| 感冒 | cảm mạo | Unihan |  |
+| 感觉 | cảm giác | Unihan |  |
+| 感谢 | cảm tạ | Unihan |  |
+| 愿意 | nguyện ý | Unihan |  |
+| 成绩 | thành tích | Unihan |  |
+| 或者 | hoặc giả | note (者) | 者: Unihan 17.0.0 has no kVietnamese for 者; giả is its standard Hán-Việt reading. |
+| 所以 | sở dĩ | note (所 以) | False friend: 所以 means so, therefore (cho nên); Vietnamese sở dĩ means "the reason why". |
+| 护士 | hộ sĩ | Unihan |  |
+| 护照 | hộ chiếu | Unihan |  |
+| 报名 | báo danh | Unihan |  |
+| 提高 | đề cao | Unihan | False friend: 提高 means to raise, improve (nâng cao); Vietnamese đề cao means to praise or uphold. |
+| 放心 | phóng tâm | Unihan |  |
+| 故事 | cố sự | Unihan |  |
 | 文化 | văn hoá | Unihan |  |
+| 新年 | tân niên | note (年) | 年: Unihan 17.0.0 kVietnamese does not list niên (it lists Nôm or other readings); niên is its standard Hán-Việt reading. |
+| 新闻 | tân văn | note (闻) | Partly a false friend: 新闻 is the news (tin tức); Vietnamese tân văn is an old word for a newspaper. |
+| 方便 | phương tiện | Unihan | False friend: 方便 means convenient (thuận tiện); Vietnamese phương tiện means a means or a vehicle. |
+| 方向 | phương hướng | Unihan |  |
+| 方法 | phương pháp | Unihan |  |
+| 旅游 | lữ du | note (游) | 游: Unihan 17.0.0 has no kVietnamese for 游 or 遊; du is its standard Hán-Việt reading. |
+| 日期 | nhật kỳ | Unihan |  |
 | 时间 | thời gian | note (时) | 时: kVietnamese of 時 (traditional of 时) lists only thì; thời is the reading in 时间 (thời gian). |
+| 春天 | xuân thiên | note (春) | 春: Unihan 17.0.0 has no kVietnamese for 春; xuân is its standard Hán-Việt reading. |
+| 春节 | Xuân tiết | note (春) | 春: Unihan 17.0.0 has no kVietnamese for 春; xuân is its standard Hán-Việt reading. |
+| 普通话 | phổ thông thoại | Unihan |  |
+| 有名 | hữu danh | Unihan |  |
+| 有用 | hữu dụng | Unihan |  |
 | 朋友 | bằng hữu | Unihan |  |
+| 服务 | phục vụ | Unihan |  |
+| 服务员 | phục vụ viên | Unihan |  |
+| 机会 | cơ hội | Unihan |  |
+| 机器 | cơ khí | Unihan | False friend: 机器 is a machine (máy móc); Vietnamese cơ khí means mechanics, engineering. |
+| 条件 | điều kiện | Unihan |  |
+| 检查 | kiểm tra | note (检) | 检: Unihan 17.0.0 kVietnamese does not list kiểm (it lists Nôm or other readings); kiểm is its standard Hán-Việt reading. |
 | 欢迎 | hoan nghênh | Unihan |  |
+| 水平 | thuỷ bình | Unihan | False friend: 水平 is a level of skill (trình độ); Vietnamese thuỷ bình is a spirit level. |
+| 汉字 | Hán tự | Unihan |  |
 | 汉语 | Hán ngữ | Unihan |  |
+| 汽车 | khí xa | note (汽) | 汽: Unihan 17.0.0 has no kVietnamese for 汽; khí is its standard Hán-Việt reading. |
+| 注意 | chú ý | Unihan |  |
+| 流利 | lưu lợi | Unihan |  |
+| 满意 | mãn ý | Unihan |  |
+| 火车站 | hoả xa trạm | Unihan |  |
+| 灭火器 | diệt hoả khí | Unihan |  |
+| 热情 | nhiệt tình | Unihan |  |
+| 照顾 | chiếu cố | Unihan | False friend: 照顾 means to look after (chăm sóc); Vietnamese chiếu cố means to show favour. |
+| 爱人 | ái nhân | note (爱) | Partly a false friend: in Mainland Chinese 爱人 is one's husband or wife; Vietnamese ái nhân is a lover. |
+| 特别 | đặc biệt | note (别) | 别: Unihan 17.0.0 kVietnamese does not list biệt (it lists Nôm or other readings); biệt is its standard Hán-Việt reading. |
+| 现在 | hiện tại | Unihan |  |
 | 生日 | sinh nhật | Unihan |  |
+| 生气 | sinh khí | Unihan | False friend: 生气 means to get angry (tức giận); Vietnamese sinh khí means vitality. |
+| 生活 | sinh hoạt | Unihan | Partly a false friend: 生活 is life, living (cuộc sống); Vietnamese sinh hoạt is daily activity. |
+| 生病 | sinh bệnh | Unihan |  |
 | 电影 | điện ảnh | note (电) | 电: Unihan 17.0.0 has no kVietnamese for 电 or 電; điện is the standard Hán-Việt reading. |
+| 电影院 | điện ảnh viện | note (电) | 电: Unihan 17.0.0 has no kVietnamese for 电 or 電; điện is its standard Hán-Việt reading. |
 | 电脑 | điện não | note (电) | 电: Unihan 17.0.0 has no kVietnamese for 电 or 電; điện is the standard Hán-Việt reading. |
 | 电话 | điện thoại | note (电) | 电: Unihan 17.0.0 has no kVietnamese for 电 or 電; điện is the standard Hán-Việt reading. |
+| 男人 | nam nhân | Unihan |  |
+| 留学生 | lưu học sinh | Unihan |  |
+| 病人 | bệnh nhân | Unihan |  |
+| 知识 | tri thức | note (识) | 识: Unihan 17.0.0 has no kVietnamese for 识 or 識; thức is its standard Hán-Việt reading. |
+| 礼物 | lễ vật | Unihan |  |
+| 禁止 | cấm chỉ | Unihan |  |
+| 秋天 | thu thiên | Unihan |  |
+| 练习 | luyện tập | Unihan |  |
+| 组长 | tổ trưởng | note (长) | 长: Unihan 17.0.0 kVietnamese does not list trưởng (it lists Nôm or other readings); trưởng is its standard Hán-Việt reading. |
 | 经济 | kinh tế | note (济) | 济: Unihan 17.0.0 has no kVietnamese for 济 or 濟; tế is the standard Hán-Việt reading. |
+| 结婚 | kết hôn | note (婚) | 婚: Unihan 17.0.0 has no kVietnamese for 婚; hôn is its standard Hán-Việt reading. |
+| 老人 | lão nhân | Unihan |  |
 | 老师 | lão sư | Unihan |  |
-| 认识 | nhận thức | note (识) | 识: Unihan 17.0.0 has no kVietnamese for 识 or 識; thức is the standard Hán-Việt reading. |
+| 考试 | khảo thí | Unihan |  |
+| 自行车 | tự hành xa | note (行) | 行: Unihan 17.0.0 kVietnamese does not list hành (it lists Nôm or other readings); hành is its standard Hán-Việt reading. |
+| 虽然 | tuy nhiên | Unihan | Partly a false friend: 虽然 means although (tuy, mặc dù); Vietnamese tuy nhiên means however. |
+| 要求 | yêu cầu | note (要) | 要: Unihan 17.0.0 kVietnamese does not list yêu (it lists Nôm or other readings); yêu is its standard Hán-Việt reading. |
+| 认真 | nhận chân | Unihan | False friend: 认真 means conscientious, serious (nghiêm túc, chăm chỉ); Vietnamese nhận chân means to see the truth. |
+| 认识 | nhận thức | note (识) | False friend: 认识 means to know a person, to be acquainted (quen biết); Vietnamese nhận thức means awareness or cognition. 识: Unihan 17.0.0 has no kVietnamese for 识 or 識; thức is the standard Hán-Việt reading. |
+| 讨论 | thảo luận | Unihan |  |
+| 质量 | chất lượng | note (量) | 量: Unihan 17.0.0 has no kVietnamese for 量; lượng is its standard Hán-Việt reading. |
 | 越南 | Việt Nam | Unihan |  |
+| 越南人 | Việt Nam nhân | Unihan |  |
+| 越南语 | Việt Nam ngữ | Unihan |  |
+| 身份证 | thân phận chứng | note (份) | 份: Unihan 17.0.0 kVietnamese does not list phận (it lists Nôm or other readings); phận is its standard Hán-Việt reading. |
+| 身体 | thân thể | Unihan | Partly a false friend: 身体 is also one's health (你身体好吗 = bạn có khoẻ không); Vietnamese thân thể is only the body. |
+| 车站 | xa trạm | Unihan |  |
+| 迟到 | trì đáo | Unihan |  |
+| 通知 | thông tri | Unihan |  |
+| 重要 | trọng yếu | Unihan |  |
 | 银行 | ngân hàng | Unihan |  |
 | 问题 | vấn đề | note (问 题) | 问, 题: Unihan 17.0.0 has no kVietnamese for either (nor for 問, 題); vấn đề is the standard Hán-Việt reading. |
+| 需要 | nhu yếu | note (需) | 需: Unihan 17.0.0 has no kVietnamese for 需; nhu is its standard Hán-Việt reading. |
+| 非常 | phi thường | Unihan | Partly a false friend: 非常 is just "very" (rất); Vietnamese phi thường means extraordinary. |
 | 音乐 | âm nhạc | note (乐) | 乐: kVietnamese of 樂 (traditional of 乐) lists only lạc; nhạc (music) is the reading in 音乐. |
+| 颜色 | nhan sắc | Unihan | False friend: 颜色 is a colour (màu sắc); Vietnamese nhan sắc means a woman's beauty. |
 | 飞机 | phi cơ | Unihan |  |
+| 食堂 | thực đường | note (食) | 食: Unihan 17.0.0 has no kVietnamese for 食; thực is its standard Hán-Việt reading. |
+| 高兴 | cao hứng | note (兴) | 兴: Unihan 17.0.0 kVietnamese does not list hứng (it lists Nôm or other readings); hứng is its standard Hán-Việt reading. |
