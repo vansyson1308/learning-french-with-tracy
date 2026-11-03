@@ -20,7 +20,13 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags:
  6. Section 1 typing (coordinator decision for ja-vi 2026-11-04, applied to zh-vi from the start): a Section 1 lesson
     (by its unit's sectionId in units/OUTPUT.jsonl) holds no exercise that asks for typed Chinese or pinyin —
     typeAnswer, dictation, a fill-in without options, guidedWriting, simpleForm;
- 7. a payload repeated across lessons.
+ 7. a payload repeated across lessons;
+ 8. (session 3) the layer exercises and records: comprehension options distinct, all Chinese or all Vietnamese, a
+    Vietnamese question, a Chinese key found in its reading or clip (and no Chinese distractor heard there too); a
+    dictation without digits, keyed to its clip's transcript, listing its numeral and natural spellings; a spoken
+    target among its own variants, every spoken, written or scenario answer hanzi only (no pinyin, no Hán-Việt) and
+    widened by the natural pairs; every guided slot realized in the model answer, every form value a variant of its
+    slot; rules 2, 3 and 5 over every reading, clip, speech answer, writing model and scenario line.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I zh-check-answers.py <repo root>
 """
@@ -77,26 +83,42 @@ def key_texts(e):
         return [e["answer"]] + list(e["alternatives"])
     if t == "match":
         return [p["target"] for p in e["pairs"]]
+    # Session 3: the layers. A dictation key and its other spellings, a spoken target (its variants are grading strings,
+    # layer_rules reads them), the model answers of a writing task (a form's hanzi values), a Chinese comprehension key.
+    if t == "dictation":
+        return [e["answer"]] + list(e["alternatives"])
+    if t in ("speakRepetition", "speakProduction"):
+        return [e["target"]]
+    if t == "guidedWriting":
+        return list(e["modelAnswers"])
+    if t == "simpleForm":
+        return [v.strip() for m in e["modelAnswers"] for v in m.split(" | ") if HAN.search(v)]
+    if t in ("listeningComprehension", "readingComprehension") and HAN.search(e["options"][e["correct"]]["text"]):
+        return [e["options"][e["correct"]]["text"]]
     return []
 
 
 def shown_texts(e):
     t = e["type"]
-    out = [x for x in key_texts(e) if t != "typeAnswer"] + ([e["answer"]] if t == "typeAnswer" else [])
+    hidden = t in ("typeAnswer", "dictation")  # the alternatives of a typed key are never shown
+    out = [x for x in key_texts(e) if not hidden] + ([e["answer"]] if hidden else [])
     if t == "select" and e["mode"] != "targetToNative":
         out += [o["text"] for o in e["options"]]
     if t == "fillBlank":
         out += [e["sentence"].replace("___", o) for o in e["options"]]
     if t == "wordBank" and e["direction"] == "nativeToTarget":
         out += e["tokens"]
+    if t in ("listeningComprehension", "readingComprehension"):
+        out += [o["text"] for o in e["options"] if HAN.search(o["text"])]
     return out
 
 
 # ---------------------------------------------------------------- rule 2 and 3: grammar of a key
 NUMERALS = set("一二三四五六七八九十百千万两几零") | {"这", "那", "哪", "每"}
 POS = {x["surface"]: x["partOfSpeech"] for x in LEXL}
-# A noun right after a number or 这/那 that is right: units (天, 年 …), floors (三楼), 家 as a measure (一家公司), 哪国人.
-NOUN_AFTER_NUMBER_OK = set(COUNTER_NOUNS) | {"楼", "家", "国", "口"}
+# A noun right after a number or 这/那 that is right: units (天, 年 …), floors (三楼), 家 as a measure (一家公司), 哪国人,
+# a bus route (五路公交车).
+NOUN_AFTER_NUMBER_OK = set(COUNTER_NOUNS) | {"楼", "家", "国", "口", "路"}
 _DIGIT_RUN = re.compile(r"[0-9]")
 
 
@@ -126,7 +148,8 @@ def grammar_rules(eid, text):
             flag(eid, "le-habit", f"{text!r}: 了 with a habit (每天, 常常, 经常)")
         if "不有" in clause:
             flag(eid, "bu-you", f"{text!r}: the negative of 有 is 没有")
-        if clause.endswith("吗") and re.search(r"什么|谁|哪|几|多少|怎么|为什么", clause):
+        # 什么 after 有 / 要 before a final 吗 is the indefinite "anything" (有什么事吗？ 还要什么吗？), which is right.
+        if clause.endswith("吗") and re.search(r"什么|谁|哪|几|多少|怎么|为什么", re.sub(r"(?:有|要)什么", "", clause)):
             flag(eid, "ma-question-word", f"{text!r}: a question word takes no 吗")
         if clause.endswith("吗") and re.search(r"(.)不\1", clause):
             flag(eid, "ma-a-not-a", f"{text!r}: an A不A question takes no 吗")
@@ -256,6 +279,130 @@ def typed_rules(eid, e):
         flag(eid, "typed-duplicate", f"{acc}: two accepted answers are one after punctuation")
 
 
+# ---------------------------------------------------------------- rule 8 (session 3): the layer exercises and records
+def _jsonl(step):
+    path = f"{D}/{step}/OUTPUT.jsonl"
+    return {r["id"]: r for r in (json.loads(x) for x in open(path, encoding="utf-8") if x.strip())} if os.path.exists(path) else {}
+
+
+READINGS, CLIPS, SPEECH, WRITING, SCENARIOS = _jsonl("readings"), _jsonl("listening"), _jsonl("speech"), _jsonl("writing"), _jsonl("scenarios")
+LATIN = re.compile(r"[A-Za-zÀ-ɏḀ-ỿ]")
+VI_LETTER = re.compile(r"[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]", re.I)
+
+
+def layer_rules(eid, e):
+    """The rules of the Section 3-6 exercise types (the layer generators check their own records too)."""
+    t = e["type"]
+    if t in ("listeningComprehension", "readingComprehension"):
+        texts = [o["text"] for o in e["options"]]
+        if len(set(texts)) != len(texts):
+            flag(eid, "comprehension-options", f"repeated option in {texts}")
+        if HAN.search(e["question"]):
+            flag(eid, "comprehension-question", f"{e['question']!r}: the question is Vietnamese")
+        zh = [bool(HAN.search(x)) for x in texts]
+        if any(zh) and not all(zh):
+            flag(eid, "comprehension-options", f"{texts}: options are all Chinese or all Vietnamese")
+        key = texts[e["correct"]]
+        if t == "readingComprehension" and HAN.search(key):
+            body = "".join(b["text"] for b in READINGS[e["readingId"]]["blocks"])
+            if key not in body:
+                flag(eid, "comprehension-key", f"{key!r} is not in the text of {e['readingId']}")
+        if t == "listeningComprehension" and HAN.search(key):
+            heard = "".join(s["text"] for s in CLIPS[e["clipId"]]["segments"])
+            if key not in heard:
+                flag(eid, "comprehension-key", f"{key!r} is not in the clip {e['clipId']}")
+            for x in texts:
+                if x != key and x in heard:
+                    flag(eid, "comprehension-key", f"the distractor {x!r} is heard in {e['clipId']} too")
+    if t == "dictation":
+        if re.search(r"[0-9０-９]", e["answer"]):
+            flag(eid, "dictation-digits", f"{e['answer']!r}: a number has two spellings")
+        heard = "".join(s["text"] for s in CLIPS[e["clipId"]]["segments"])
+        if e["answer"] != heard:
+            flag(eid, "dictation-key", f"{e['answer']!r} is not the transcript of {e['clipId']}")
+        want = numeral_spellings(e["answer"]) + natural_spellings(e["answer"])
+        for w in missing([e["answer"]] + list(e["alternatives"]), want):
+            flag(eid, "typed-rendering", f"{w!r} is a correct spelling of the dictation and is not accepted")
+    if t in ("speakRepetition", "speakProduction"):
+        plain = bare(e["target"])
+        if plain not in {bare(v) for v in e["acceptedVariants"]}:
+            flag(eid, "speech-target", f"{e['target']!r} is not among its own variants")
+        for v in [e["target"]] + e["acceptedVariants"]:
+            if LATIN.search(v):
+                flag(eid, "speech-latin", f"{v!r}: a spoken answer is hanzi only (no pinyin, no Hán-Việt)")
+        for w in missing(e["acceptedVariants"], [x for v in e["acceptedVariants"] for x in natural_spellings(v)]):
+            flag(eid, "spoken-spelling", f"{w!r} (a recogniser's spelling) is not among the variants")
+    if t == "guidedWriting":
+        for model in e["modelAnswers"]:
+            if e["writingMode"] != "guided":
+                continue
+            for slot in e["rubric"]["requiredSlots"]:
+                if not any(v in model for v in slot["variants"]):
+                    flag(eid, "writing-slot", f"model {model!r} realizes no variant of slot {slot['id']}")
+    if t in ("guidedWriting", "simpleForm"):
+        for slot in e["rubric"]["requiredSlots"]:
+            for v in slot["variants"]:
+                if LATIN.search(v):
+                    flag(eid, "writing-latin", f"slot {slot['id']}: {v!r} — a variant is hanzi (pinyin is practice)")
+            for w in missing(slot["variants"], [x for v in slot["variants"] for x in natural_spellings(v)]):
+                flag(eid, "written-spelling", f"slot {slot['id']}: {w!r} is a correct spelling and not a variant")
+    if t == "simpleForm":
+        for model in e["modelAnswers"]:
+            values = [v.strip() for v in model.split(" | ")]
+            for field, value in zip(e["fields"], values):
+                slot = next(s for s in e["rubric"]["requiredSlots"] if s["id"] == field["slotId"])
+                if value not in slot["variants"]:
+                    flag(eid, "form-value", f"{value!r} is not a variant of slot {slot['id']}")
+
+
+def scenario_rules():
+    """Every partner line is read like a lesson string; every learner answer is hanzi only and lists the natural pairs."""
+    for s in SCENARIOS.values():
+        for node in s["nodes"].values():
+            where = f"{s['id']}/{node['id']}"
+            for text in [node.get("text"), node.get("rephraseText")]:
+                if text:
+                    for p in INDEX.problems(text):
+                        flag(where, "reading", p)
+                    grammar_rules(where, text)
+            if node["kind"] != "learner":
+                continue
+            for x in node["expected"]:
+                for v in x["acceptedVariants"]:
+                    if LATIN.search(v) or VI_LETTER.search(v):
+                        flag(where, "scenario-latin", f"{v!r}: an answer is hanzi only")
+                    grammar_rules(where, v)
+                for w in missing(x["acceptedVariants"], [y for v in x["acceptedVariants"] for y in natural_spellings(v)]):
+                    flag(where, "spoken-spelling", f"{w!r} (a recogniser's spelling) is not among the variants")
+
+
+def reception_rules():
+    """The readings and clips are shown (with pinyin) or heard: the reading and grammar rules apply to every line."""
+    for rid, r in READINGS.items():
+        for b in r["blocks"]:
+            for text in [b["text"]] + ([b["speaker"]] if "speaker" in b else []):
+                for p in INDEX.problems(text):
+                    flag(rid, "reading", p)
+            grammar_rules(rid, b["text"])
+    for cid, c in CLIPS.items():
+        for s in c["segments"]:
+            for p in INDEX.problems(s["text"]):
+                flag(cid, "reading", p)
+            grammar_rules(cid, s["text"])
+    for sid, it in SPEECH.items():
+        for v in [it["target"]] + it["acceptedVariants"]:
+            if LATIN.search(v):
+                flag(sid, "speech-latin", f"{v!r}: a spoken answer is hanzi only")
+            grammar_rules(sid, v)
+    for tid, task in WRITING.items():
+        for model in task["modelAnswers"]:
+            for value in model.split(" | "):
+                if HAN.search(value):
+                    for p in INDEX.problems(value):
+                        flag(tid, "reading", p)
+                    grammar_rules(tid, value)
+
+
 # ---------------------------------------------------------------- run
 seen = {}
 stats = Counter()
@@ -293,6 +440,7 @@ for r in records:
                 aspect_items[k] += 1
         tile_rules(eid, e)
         option_rules(eid, e)
+        layer_rules(eid, e)
         if e["type"] == "typeAnswer":
             typed_rules(eid, e)
         if r["lessonId"] in SECTION1_LESSONS and (e["type"] in TYPED_TYPES or (e["type"] == "fillBlank" and not e.get("options"))):
@@ -305,6 +453,9 @@ for c in sorted(concepts - concepts_used):
 for x in LEXL:
     for ex in x.get("examples", []):
         grammar_rules(x["id"], ex["target"])
+# Session 3: the layer records themselves (reserved ones included: checkpoints and placement show them later).
+reception_rules()
+scenario_rules()
 
 os.makedirs(f"{D}/lessons", exist_ok=True)
 with open(f"{D}/lessons/OUTPUT.jsonl", "w", encoding="utf-8", newline="\n") as f:

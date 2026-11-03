@@ -1,12 +1,13 @@
 """zh-vi Section 3 lessons: understanding everyday Chinese — weather and numbers by ear (unit f), signs and rules at the
 factory and the warehouse (g), the station and the airport (h), the shop (i), life in the dormitory (j). Session 2
-writes the word, sentence and listening-choice items (H, TX, F, Y, W); the reception session adds the listening and
-reading comprehension and the dictations that point at its clips and readings. Two lessons show a concept card.
-Writes lessons/parts/s3.jsonl. usage: python -I zh-lessons-s3.py <repo root>"""
+wrote the word, sentence and listening-choice items (H, TX, F, Y, W); session 3 adds the listening and reading
+comprehension (LC, RC) and the dictations (D) that point at the reception records of zh-reception-s3.py, as
+zh_lesson_refs.py maps them. Two lessons show a concept card. Writes lessons/parts/s3.jsonl.
+usage: python -I zh-lessons-s3.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from zh_lesson_lib import C, F, H, M, N, NX, T, TX, W, Y, finish, lesson
+from zh_lesson_lib import C, D, F, H, LC, M, N, NX, RC, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- uf: weather, numbers, animals by ear
 lesson("uf-l0", [
@@ -15,6 +16,9 @@ lesson("uf-l0", [
     H("今天很冷。", ["今天很热。", "明天很冷。", "今天不冷。"]),
     F("今天很___。", "冷", ["雨", "风", "雪"], "Hôm nay lạnh."),
     Y("Hôm nay nóng.", "今天很热", "今天热", "今天非常热"),
+    LC("uf_tianqi", "Bạn nghe thấy từ nào?", "天气", ["雨", "明天", "晴"]),
+    LC("uf_hen_leng", "Hôm nay trời thế nào?", "Lạnh", ["Nóng", "Mưa", "Có gió"]),
+    LC("uf_hen_re", "Người nói nói gì về hôm nay?", "Hôm nay nóng", ["Hôm nay lạnh", "Mai nóng", "Hôm nay mưa"]),
 ])
 lesson("uf-l1", [
     T("下雨", ["下雪", "晴", "风"]), N("风", ["雨", "雪", "天气"]),
@@ -23,6 +27,11 @@ lesson("uf-l1", [
     F("外边___雨了。", "下", ["上", "有", "是"], "Bên ngoài mưa rồi."),
     W("Gió to quá.", "风|太|大|了", ["雨", "小"]),
     M("下雨", "下雪", "风", "雨", "雪"),
+    LC("uf_xiayu", "Chuyện gì đang xảy ra?", "Trời mưa rồi", ["Trời có tuyết", "Trời nắng", "Tan ca rồi"]),
+    D("uf_xiayu"),
+    LC("uf_feng", "Bạn nghe thấy gì?", "Gió to", ["Mưa to", "Trời lạnh", "Nắng gắt"]),
+    RC("uf_weather", "Thứ Tư thời tiết thế nào?", "Mưa, 18 độ", ["Nắng, 25 độ", "Âm u, 22 độ", "Nắng, rất nóng"]),
+    RC("uf_weather", "Ngày nào có gió?", "Thứ Năm", ["Thứ Hai", "Thứ Ba", "Thứ Sáu"]),
 ])
 lesson("uf-l2", [
     T("夏天", ["冬天", "春天", "秋天"]), N("冬天", ["夏天", "春天", "秋天"]),
@@ -31,6 +40,10 @@ lesson("uf-l2", [
     F("北京的冬天很___。", "冷", ["热", "晴", "阴"], "Mùa đông ở Bắc Kinh lạnh."),
     Y("Mùa thu rất đẹp.", "秋天很漂亮", "秋天很好看", "秋天非常漂亮"),
     M("春天", "夏天", "秋天", "冬天", "天气"),
+    LC("uf_chuntian", "Bạn nghe thấy mùa nào?", "春天", ["夏天", "秋天", "冬天"]),
+    LC("uf_siyue", "Bạn nghe thấy tháng nào?", "Tháng Tư", ["Tháng Mười", "Ngày mùng 4", "Tháng Ba"]),
+    LC("uf_zaishuo", "Người nói muốn gì?", "Nói lại một lần nữa", ["Nói chậm một chút", "Nói to hơn", "Viết ra giấy"]),
+    LC("uf_mandian", "Người nói muốn gì?", "Nói chậm một chút", ["Nói lại một lần nữa", "Nói nhanh lên", "Đừng nói nữa"]),
 ])
 lesson("uf-l3", [
     H("九点", ["六点", "十点", "九块"]), H("十五块", ["五十块", "十五个", "五块"]),
@@ -39,6 +52,13 @@ lesson("uf-l3", [
     F("河里有很多___。", "鱼", ["鸟", "马", "花"], "Dưới sông có nhiều cá."),
     W("Trên núi có nhiều cây.", "山上|有|很多|树", ["花", "在"]),
     M("山", "河", "海", "花", "树"),
+    LC("uf_jiudian", "Mấy giờ?", "9 giờ", ["6 giờ", "10 giờ", "9 tệ"]),
+    LC("uf_shiwu", "Bao nhiêu tiền?", "15 tệ", ["50 tệ", "5 tệ", "15 giờ"]),
+    LC("uf_mao", "Bạn nghe thấy con vật nào?", "猫", ["狗", "鸟", "马"]),
+    LC("uf_yu", "Bạn nghe thấy con vật nào?", "鱼", ["牛", "鸟", "狗"]),
+    D("uf_tingbudong"),
+    RC("uf_card", "Anh Nguyễn Hải làm nghề gì?", "Công nhân", ["Bác sĩ", "Tài xế", "Giáo viên"]),
+    RC("uf_card", "Anh ấy sống ở đâu?", "Ký túc xá nhà máy, toà số 3", ["Ký túc xá nhà máy, toà số 2", "Ở Thượng Hải", "Ở Hà Nội"]),
 ])
 
 # ---------------------------------------------------------------- ug: signs and rules at the factory
@@ -49,6 +69,9 @@ lesson("ug-l0", [
     NX("Biển nào báo chỗ nguy hiểm?", "危险", ["出口", "入口", "安全"]),
     F("___！机器很危险。", "小心", ["安全", "休息", "欢迎"], "Cẩn thận! Máy rất nguy hiểm."),
     M("工厂", "小心", "安全", "危险", "禁止"),
+    RC("ug_signs", "Biển nào chỉ lối thoát khi có sự cố?", "紧急出口", ["入口", "危险", "灭火器"]),
+    RC("ug_signs", "Biển nào cấm hút thuốc?", "禁止吸烟", ["禁止进入", "注意安全", "小心机器"]),
+    RC("ug_signs", "Biển nào báo: không được vào?", "禁止进入", ["出口", "禁止吸烟", "安全出口"]),
 ])
 lesson("ug-l1", [
     C("modals"),
@@ -60,6 +83,9 @@ lesson("ug-l1", [
     W("Hãy đội mũ bảo hộ.", "请|戴|安全帽", ["穿", "手套"]),
     Y("Đừng hút thuốc!", "别吸烟", "不要吸烟", "请不要吸烟", "请别吸烟", "禁止吸烟", "不能吸烟"),
     M("戴", "穿", "手套", "安全帽", "机器"),
+    RC("ug_rules", "Vào phân xưởng phải làm gì?", "Đội mũ bảo hộ", ["Tắt điện thoại", "Đi giày mới", "Gọi tổ trưởng"]),
+    RC("ug_rules", "Máy có vấn đề thì làm gì?", "Dừng máy ngay rồi báo tổ trưởng", ["Tự sửa máy", "Tiếp tục làm việc", "Đi về nhà"]),
+    RC("ug_rules", "Bình chữa cháy ở đâu?", "Cạnh cửa ra vào", ["Trong văn phòng", "Ở nhà ăn", "Trong kho"]),
 ])
 lesson("ug-l2", [
     T("加班", ["上班", "下班", "休息"]), N("组长", ["经理", "老板", "工人"]),
@@ -69,6 +95,10 @@ lesson("ug-l2", [
     W("Mai tôi tăng ca.", "我|明天|加班", ["下班", "了"], alts=("明天|我|加班",)),
     Y("Tôi đến muộn mười phút.", "我迟到了十分钟", "我晚到了十分钟"),
     M("上班", "下班", "加班", "迟到", "组长"),
+    RC("ug_msg_leader", "Mai mấy giờ họp?", "7 giờ rưỡi", ["7 giờ", "8 giờ", "3 giờ chiều"]),
+    RC("ug_msg_leader", "Ai gửi tin nhắn?", "Tổ trưởng Lý", ["Giám đốc Vương", "Tiểu Vương", "Nguyễn Hải"]),
+    RC("ug_shift", "Ca đêm bắt đầu lúc mấy giờ?", "11 giờ đêm", ["7 giờ sáng", "3 giờ chiều", "7 giờ tối"]),
+    RC("ug_shift", "Phải chấm công khi nào?", "Trước khi vào ca và trước khi tan ca", ["Chỉ khi vào ca", "Sau khi ăn trưa", "Mỗi tuần một lần"]),
 ])
 lesson("ug-l3", [
     T("箱子", ["杯子", "桌子", "椅子"]), N("搬", ["放", "拿", "推"]),
@@ -78,6 +108,13 @@ lesson("ug-l3", [
     W("Cái thùng này rất nặng.", "这个|箱子|很|重", ["轻", "是"]),
     Y("Cái thùng này nhẹ.", "这个箱子很轻", "这个箱子轻"),
     M("箱子", "仓库", "搬", "放", "重"),
+    RC("ug_warehouse", "Thùng nặng thì làm thế nào?", "Hai người cùng khiêng", ["Một người khiêng", "Để ở cửa", "Gọi giám đốc"]),
+    RC("ug_warehouse", "Hàng đến thì làm gì trước?", "Kiểm tra", ["Cất vào kho", "Đóng gói", "Gửi đi"]),
+    LC("ug_anquanmao", "Bạn phải làm gì?", "Đội mũ bảo hộ", ["Đeo găng tay", "Mặc đồ bảo hộ", "Dừng máy"]),
+    D("ug_anquanmao"),
+    LC("ug_tingji", "Máy có vấn đề. Phải làm gì?", "Dừng máy ngay", ["Bật máy lên", "Gọi điện về nhà", "Đi nghỉ"]),
+    LC("ug_fang", "Để thùng ở đâu?", "Ở đây", ["Ở cửa", "Trong kho", "Trên bàn"]),
+    LC("ug_shoutao", "Bạn phải làm gì?", "Đeo găng tay và mặc đồ bảo hộ", ["Đội mũ bảo hộ", "Đeo khẩu trang", "Đi giày bảo hộ"]),
 ])
 
 # ---------------------------------------------------------------- uh: the station and the airport
@@ -87,6 +124,10 @@ lesson("uh-l0", [
     TX("请注意安全。", "Xin chú ý an toàn.", ["Xin chú ý giờ tàu.", "Xin cẩn thận cửa.", "Xin lên tàu."]),
     F("火车几点___？", "到", ["去", "是", "在"], "Tàu mấy giờ đến?"),
     M("火车站", "地铁", "机场", "飞机", "火车"),
+    LC("uh_beijing", "Tàu đi Bắc Kinh khởi hành lúc mấy giờ?", "8 giờ", ["9 giờ", "8 giờ rưỡi", "10 giờ"]),
+    LC("uh_wanle", "Tàu thế nào?", "Muộn 20 phút", ["Muộn 10 phút", "Đến sớm 20 phút", "Không chạy"]),
+    LC("uh_menkou", "Lên tàu ở cửa số mấy?", "Cửa số 3", ["Cửa số 2", "Cửa số 4", "Cửa số 13"]),
+    LC("uh_xiayizhan", "Ga tiếp theo là ga nào?", "Ga tàu hoả", ["Sân bay", "Ga tàu điện ngầm", "Bến xe buýt"]),
 ])
 lesson("uh-l1", [
     T("票", ["车票", "机票", "门票"]), N("车票", ["机票", "门票", "钱包"]),
@@ -96,6 +137,13 @@ lesson("uh-l1", [
     W("Tôi mua một vé máy bay.", "我|买|一张|机票", ["本", "卖"]),
     Y("hai vé", "两张票"),
     M("票", "车票", "机票", "门票", "张"),
+    LC("uh_zhuyi", "Thông báo nói gì?", "Xin chú ý an toàn", ["Xin chú ý giờ tàu", "Xin lên tàu", "Cấm hút thuốc"]),
+    D("uh_zhuyi"),
+    LC("uh_shangche", "Thông báo nói gì?", "Xuống trước, lên sau", ["Lên trước, xuống sau", "Xin đứng ở cửa", "Xin ngồi xuống"]),
+    D("uh_shangche"),
+    LC("uh_plane", "Máy bay đến lúc mấy giờ?", "3 giờ chiều", ["3 giờ sáng", "4 giờ chiều", "13 giờ"]),
+    RC("uh_timetable", "Tàu đi Thượng Hải chạy lúc mấy giờ?", "10 giờ rưỡi sáng", ["9 giờ sáng", "2 giờ chiều", "10 giờ sáng"]),
+    RC("uh_timetable", "Lên tàu ở đâu?", "Cửa số 2", ["Cửa số 3", "Cửa số 10", "Cửa số 9"]),
 ])
 lesson("uh-l2", [
     C("comparison-bi"),
@@ -105,6 +153,11 @@ lesson("uh-l2", [
     TX("坐地铁比坐公交车快。", "Đi tàu điện ngầm nhanh hơn đi xe buýt.", ["Đi xe buýt nhanh hơn đi tàu điện ngầm.", "Tàu điện ngầm và xe buýt nhanh như nhau.", "Đi tàu điện ngầm rẻ hơn đi xe buýt."]),
     W("Tôi đi máy bay đến Bắc Kinh.", "我|坐|飞机|去|北京", ["开", "火车"]),
     M("公交车", "出租车", "自行车", "汽车", "飞机"),
+    LC("uh_piao", "Vé đi Thượng Hải bao nhiêu tiền?", "300 tệ", ["30 tệ", "3000 tệ", "200 tệ"]),
+    LC("uh_liangzhang", "Người nói muốn mua gì?", "Hai vé đi Bắc Kinh", ["Một vé đi Bắc Kinh", "Hai vé đi Thượng Hải", "Hai vé máy bay"]),
+    LC("uh_zhanzai", "Ga tàu điện ngầm ở đâu?", "Cạnh ga tàu hoả", ["Đối diện ga tàu hoả", "Trong sân bay", "Sau siêu thị"]),
+    RC("uh_subway", "Ga tiếp theo là ga nào?", "Ga tàu hoả", ["Sân bay", "Ga cuối", "Bến xe buýt"]),
+    RC("uh_subway", "Trên tàu cấm làm gì?", "Hút thuốc", ["Ăn uống", "Nói chuyện", "Gọi điện"]),
 ])
 lesson("uh-l3", [
     H("下一站：火车站。", ["下一站：机场。", "这一站：火车站。", "下一站：车站。"]),
@@ -114,6 +167,12 @@ lesson("uh-l3", [
     W("Tàu tám giờ khởi hành.", "火车|八点|出发", ["到", "了"]),
     Y("Ga tàu hoả ở đâu?", "火车站在哪儿"),
     M("出发", "到", "马上", "车站", "地铁站"),
+    LC("uh_huzhao", "Phải cầm sẵn gì?", "Hộ chiếu và vé máy bay", ["Hộ chiếu và thị thực", "Vé tàu", "Thẻ ngân hàng"]),
+    LC("uh_wumen", "Máy bay đi Bắc Kinh ở cửa số mấy?", "Cửa số 5", ["Cửa số 3", "Cửa số 15", "Cửa số 2"]),
+    LC("uh_yixiaoshi", "Máy bay thế nào?", "Muộn một tiếng", ["Muộn nửa tiếng", "Đã cất cánh", "Đến sớm một tiếng"]),
+    RC("uh_airport", "Máy bay bay từ đâu đến đâu?", "Từ Hà Nội đến Bắc Kinh", ["Từ Bắc Kinh đến Hà Nội", "Từ Hà Nội đến Thượng Hải", "Từ Thượng Hải đến Bắc Kinh"]),
+    RC("uh_airport", "Phải mang theo gì?", "Hộ chiếu và thị thực", ["Hộ chiếu và vé tàu", "Thẻ ngân hàng", "Thẻ căn cước"]),
+    RC("uh_airport", "Bay ngày nào?", "Ngày 1 tháng 5", ["Ngày 5 tháng 1", "Ngày 1 tháng 8", "Ngày 8 tháng 5"]),
 ])
 
 # ---------------------------------------------------------------- ui: the shop
@@ -124,6 +183,11 @@ lesson("ui-l0", [
     W("Tôi đi siêu thị mua đồ.", "我|去|超市|买|东西", ["卖", "商场"]),
     Y("Tôi muốn mua cái này.", "我想买这个", "我要买这个"),
     M("商店", "超市", "买", "卖", "要"),
+    LC("ui_yao", "Khách muốn mua gì?", "Hai quả táo", ["Một quả táo", "Hai cân táo", "Hai chai nước"]),
+    LC("ui_yifu", "Người bán hỏi gì?", "Khách muốn màu gì", ["Khách muốn cỡ nào", "Khách muốn mấy cái", "Khách trả bằng gì"]),
+    RC("ui_dialogue", "Chị Hoa mua gì?", "Hai cân táo", ["Hai quả táo", "Một cân táo", "Hai chai nước"]),
+    RC("ui_dialogue", "Tổng cộng bao nhiêu tiền?", "10 tệ", ["2 tệ", "20 tệ", "12 tệ"]),
+    RC("ui_dialogue", "Chị Hoa trả tiền bằng gì?", "Quét mã", ["Tiền mặt", "Thẻ ngân hàng", "Chưa trả"]),
 ])
 lesson("ui-l1", [
     H("二十八块", ["十八块", "二十块", "八十二块"]), H("一共三十块。", ["一共十三块。", "一共四十块。", "一个三十块。"]),
@@ -133,6 +197,10 @@ lesson("ui-l1", [
     W("Tổng cộng bao nhiêu tiền?", "一共|多少|钱", ["几", "个"]),
     Y("Mười lăm tệ.", "十五块", "十五块钱", "十五元"),
     M("一共", "块", "毛", "斤", "钱"),
+    LC("ui_yigong", "Tổng cộng bao nhiêu tiền?", "28 tệ", ["18 tệ", "82 tệ", "20 tệ"]),
+    LC("ui_jin", "Táo bao nhiêu tiền một cân?", "5 tệ", ["15 tệ", "50 tệ", "4 tệ"]),
+    RC("ui_prices", "Một chai sữa bao nhiêu tiền?", "8 tệ", ["2 tệ", "6 tệ", "5 tệ"]),
+    RC("ui_prices", "Cái gì giá 2 tệ một chai?", "Nước", ["Sữa", "Táo", "Bánh mì"]),
 ])
 lesson("ui-l2", [
     T("扫", ["找", "给", "试"]), N("找", ["扫", "给", "买"]),
@@ -142,6 +210,8 @@ lesson("ui-l2", [
     W("Cho tôi thử một chút.", "我|试|一下", ["扫", "给"]),
     Y("Quét mã được không?", "可以扫码吗", "能扫码吗", "我可以扫码吗"),
     M("扫", "找", "给", "试", "扫码"),
+    LC("ui_saoma", "Có quét mã được không?", "Được, khách quét mã của người bán", ["Được, người bán quét mã của khách", "Không được", "Chỉ nhận tiền mặt"]),
+    LC("ui_zhaoqian", "Người bán trả lại bao nhiêu?", "20 tệ", ["100 tệ", "80 tệ", "120 tệ"]),
 ])
 lesson("ui-l3", [
     TX("太贵了，便宜一点儿吧。", "Đắt quá, bớt chút đi.", ["Rẻ quá, tôi lấy hai cái.", "Đắt quá, tôi không mua.", "Cái này rẻ một chút."]),
@@ -152,6 +222,12 @@ lesson("ui-l3", [
     W("Đắt quá!", "太|贵|了", ["很", "便宜"]),
     Y("Rẻ một chút đi.", "便宜一点儿吧", "便宜点儿吧"),
     M("太", "有点儿", "一点儿", "行", "便宜"),
+    LC("ui_gui", "Cuối cùng giá bao nhiêu?", "30 tệ", ["13 tệ", "40 tệ", "300 tệ"]),
+    LC("ui_shi", "Khách muốn làm gì?", "Mặc thử", ["Đổi áo", "Trả tiền", "Mua hai cái"]),
+    LC("ui_xiexie", "Người bán nói gì cuối cùng?", "Không có gì, tạm biệt", ["Cảm ơn, hẹn mai gặp", "Xin lỗi", "Chào buổi sáng"]),
+    RC("ui_hours", "Siêu thị đóng cửa lúc mấy giờ?", "10 giờ tối", ["8 giờ tối", "10 giờ sáng", "8 giờ sáng"]),
+    RC("ui_hours", "Chủ nhật siêu thị có mở cửa không?", "Có", ["Không", "Chỉ buổi sáng", "Chỉ buổi chiều"]),
+    RC("ui_hours", "Có thể trả tiền bằng gì?", "Quét mã hoặc thẻ ngân hàng", ["Chỉ tiền mặt", "Chỉ quét mã", "Chỉ thẻ ngân hàng"]),
 ])
 
 # ---------------------------------------------------------------- uj: the dormitory
@@ -163,6 +239,13 @@ lesson("uj-l0", [
     W("Phòng của tôi ở tầng ba.", "我的|房间|在|三|楼", ["上", "里"]),
     Y("Tôi sống ở ký túc xá.", "我住在宿舍", "我住宿舍"),
     M("宿舍", "房间", "同事", "洗手间", "干净"),
+    LC("uj_hai_work", "Anh Nguyễn Hải làm việc ở đâu?", "Ở một nhà máy Trung Quốc", ["Ở một công ty Việt Nam", "Ở một bệnh viện", "Ở một siêu thị"]),
+    D("uj_hai_work"),
+    RC("uj_hai_day", "Anh Hải dậy lúc mấy giờ?", "6 giờ", ["7 giờ", "5 giờ", "8 giờ"]),
+    RC("uj_hai_day", "Buổi trưa anh ấy ăn ở đâu?", "Ở nhà ăn", ["Ở ký túc xá", "Ở quán ăn", "Ở nhà"]),
+    RC("uj_hai_day", "Buổi tối anh ấy làm gì?", "Nghỉ ở ký túc xá và gọi điện cho mẹ", ["Tăng ca ở nhà máy", "Đi siêu thị", "Học tiếng Trung"]),
+    RC("uj_dorm", "Sau 11 giờ đêm phải làm gì?", "Giữ yên lặng", ["Tắt đèn", "Giặt quần áo", "Chấm công"]),
+    RC("uj_dorm", "Máy giặt ở đâu?", "Tầng một", ["Tầng hai", "Tầng ba", "Trong phòng"]),
 ])
 lesson("uj-l1", [
     T("起床", ["睡觉", "洗澡", "上班"]), N("睡觉", ["起床", "休息", "洗澡"]),
@@ -172,6 +255,10 @@ lesson("uj-l1", [
     W("Tôi dậy lúc sáu giờ.", "我|六点|起床", ["睡觉", "了"], alts=("六点|我|起床",)),
     Y("Hằng ngày tôi tắm.", "我每天洗澡"),
     M("起床", "睡觉", "洗澡", "每天", "然后"),
+    LC("uj_hua_father", "Bố của chị Hoa làm nghề gì?", "Tài xế", ["Bác sĩ", "Công nhân", "Giáo viên"]),
+    RC("uj_family", "Nhà chị Hoa có mấy người?", "Bốn người", ["Ba người", "Năm người", "Hai người"]),
+    RC("uj_family", "Mẹ chị Hoa làm nghề gì?", "Bác sĩ", ["Tài xế", "Y tá", "Công nhân"]),
+    RC("uj_family", "Anh trai chị Hoa làm việc ở đâu?", "Ở Hà Nội", ["Ở Thượng Hải", "Ở Bắc Kinh", "Ở Quảng Châu"]),
 ])
 lesson("uj-l2", [
     T("衣服", ["鞋", "帽子", "包"]), N("洗", ["穿", "戴", "买"]),
@@ -181,6 +268,11 @@ lesson("uj-l2", [
     W("Tôi mặc quần áo mới.", "我|穿|新|衣服", ["戴", "洗"]),
     Y("Máy giặt ở đâu?", "洗衣机在哪儿"),
     M("衣服", "鞋", "帽子", "洗", "穿"),
+    LC("uj_canteen_open", "Nhà ăn mở cửa lúc mấy giờ?", "11 giờ rưỡi trưa", ["11 giờ trưa", "12 giờ rưỡi trưa", "1 giờ chiều"]),
+    RC("uj_workday", "Buổi sáng họ kiểm tra bao nhiêu thùng?", "50 thùng", ["15 thùng", "5 thùng", "500 thùng"]),
+    RC("uj_workday", "Buổi chiều họ làm gì?", "Tăng ca đến 7 giờ", ["Nghỉ ở ký túc xá", "Đi siêu thị", "Ăn ở nhà ăn"]),
+    RC("uj_canteen", "Một bát mì bao nhiêu tiền?", "8 tệ", ["2 tệ", "5 tệ", "7 tệ"]),
+    RC("uj_canteen", "Bữa tối ở nhà ăn từ mấy giờ?", "Từ 5 giờ rưỡi đến 7 giờ", ["Từ 11 giờ rưỡi đến 1 giờ", "Từ 5 giờ đến 7 giờ rưỡi", "Từ 7 giờ đến 9 giờ"]),
 ])
 lesson("uj-l3", [
     T("同事", ["同学", "朋友", "客人"]),
@@ -190,5 +282,12 @@ lesson("uj-l3", [
     W("Đồng nghiệp của tôi là người Trung Quốc.", "我的|同事|是|中国人", ["越南人", "在"]),
     Y("Bạn về nhà mấy giờ?", "你几点回家"),
     M("同事", "回家", "宿舍", "起床", "睡觉"),
+    LC("uj_park", "Thứ Bảy họ đi đâu?", "Công viên", ["Siêu thị", "Nhà máy", "Bệnh viện"]),
+    LC("uj_anjing", "Sau 11 giờ đêm phải làm gì?", "Giữ yên lặng", ["Đi ngủ", "Tắt đèn", "Về ký túc xá"]),
+    D("uj_anjing"),
+    RC("uj_colleague", "Tiểu Vương bao nhiêu tuổi?", "28 tuổi", ["18 tuổi", "24 tuổi", "82 tuổi"]),
+    RC("uj_colleague", "Tiểu Vương thích gì?", "Hát và chơi bóng", ["Nấu ăn và đọc sách", "Xem phim", "Du lịch"]),
+    RC("uj_msg_wang", "Họ hẹn gặp ở đâu?", "Ở cổng ký túc xá", ["Ở công viên", "Ở nhà máy", "Ở ga tàu"]),
+    RC("uj_msg_wang", "Mấy giờ gặp?", "10 giờ sáng", ["10 giờ tối", "6 giờ sáng", "6 giờ tối"]),
 ])
 finish("s3")

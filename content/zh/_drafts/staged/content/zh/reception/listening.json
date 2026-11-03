@@ -1,0 +1,6500 @@
+{
+  "version": 1,
+  "language": "zh",
+  "voiceCast": {
+    "A": {
+      "voiceId": "unselected",
+      "speaker": null
+    },
+    "B": {
+      "voiceId": "unselected",
+      "speaker": null
+    }
+  },
+  "clips": [
+    {
+      "id": "zh.clip.uf_tianqi",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "天气"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:tianqi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_hen_leng",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "今天很冷。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:jintian",
+        "zh:w:hen",
+        "zh:w:leng"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_hen_re",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "今天很热。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:jintian",
+        "zh:w:hen",
+        "zh:w:re"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_xiayu",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "下雨了。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:xiayu",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_feng",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "风很大。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:feng",
+        "zh:w:hen",
+        "zh:w:da"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_chuntian",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "春天"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:chuntian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_siyue",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "四月"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:si",
+        "zh:w:yue"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_zaishuo",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "请再说一遍。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:zai-again",
+        "zh:w:shuo",
+        "zh:w:yi",
+        "zh:w:bian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_mandian",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请说慢一点儿。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:shuo",
+        "zh:w:man",
+        "zh:w:yidianr"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_jiudian",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "九点"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:jiu-3",
+        "zh:w:dian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_shiwu",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "十五块"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:shi-2",
+        "zh:w:wu",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_mao",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "猫"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:mao-1"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_yu",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "鱼"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:yu-2"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uf_tingbudong",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "我听不懂。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:ting",
+        "zh:w:bu",
+        "zh:w:dong-3"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ug_anquanmao",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请戴安全帽。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.familiar_words",
+        "zh.obj.vocab.work_china"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:dai-wear",
+        "zh:w:anquanmao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ug_tingji",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "机器有问题，马上停机器！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.vocab.work_china"
+      ],
+      "lexemeRefs": [
+        "zh:w:jiqi",
+        "zh:w:you",
+        "zh:w:wenti",
+        "zh:w:mashang",
+        "zh:w:ting-2"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ug_fang",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请把箱子放在这儿。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.vocab.work_china"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:ba-3",
+        "zh:w:xiangzi",
+        "zh:w:fang",
+        "zh:w:zai",
+        "zh:w:zher"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ug_shoutao",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "请戴手套，穿工作服。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.vocab.work_china"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:dai-wear",
+        "zh:w:shoutao",
+        "zh:w:chuan",
+        "zh:w:gongzuofu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_beijing",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "去北京的火车八点出发。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:qu",
+        "zh:w:beijing",
+        "zh:w:de",
+        "zh:w:huoche",
+        "zh:w:ba-1",
+        "zh:w:dian",
+        "zh:w:chufa"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_wanle",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "火车晚了二十分钟。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:huoche",
+        "zh:w:wan",
+        "zh:w:le",
+        "zh:w:er",
+        "zh:w:shi-2",
+        "zh:w:fenzhong"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_menkou",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请在三号门上车。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:zai",
+        "zh:w:san",
+        "zh:w:hao-4",
+        "zh:w:men-2",
+        "zh:w:shangche"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_xiayizhan",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "下一站：火车站。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "zh:w:xia",
+        "zh:w:yi",
+        "zh:w:zhan",
+        "zh:w:huochezhan"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_zhuyi",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请注意安全。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:zhuyi",
+        "zh:w:anquan"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_shangche",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "请先下车，后上车。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:xian",
+        "zh:w:xiache",
+        "zh:w:hou",
+        "zh:w:shangche"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_plane",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "飞机下午三点到。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:feiji",
+        "zh:w:xiawu",
+        "zh:w:san",
+        "zh:w:dian",
+        "zh:w:dao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_piao",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "去上海的票三百块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:qu",
+        "zh:w:shanghai",
+        "zh:w:de",
+        "zh:w:piao",
+        "zh:w:san",
+        "zh:w:bai-3",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_liangzhang",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我要两张去北京的票。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:yao",
+        "zh:w:liang",
+        "zh:w:zhang",
+        "zh:w:qu",
+        "zh:w:beijing",
+        "zh:w:de",
+        "zh:w:piao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_zhanzai",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "地铁站在火车站旁边。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:ditiezhan",
+        "zh:w:zai",
+        "zh:w:huochezhan",
+        "zh:w:pangbian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_huzhao",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请拿好护照和机票。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:na-2",
+        "zh:w:hao",
+        "zh:w:huzhao",
+        "zh:w:he",
+        "zh:w:jipiao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_wumen",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "去北京的飞机在五号门。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:qu",
+        "zh:w:beijing",
+        "zh:w:de",
+        "zh:w:feiji",
+        "zh:w:zai",
+        "zh:w:wu",
+        "zh:w:hao-4",
+        "zh:w:men-2"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uh_yixiaoshi",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "飞机晚了一个小时。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:feiji",
+        "zh:w:wan",
+        "zh:w:le",
+        "zh:w:yi",
+        "zh:w:ge",
+        "zh:w:xiaoshi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_yao",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你要什么？"
+        },
+        {
+          "speaker": "B",
+          "text": "我要两个苹果。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:yao",
+        "zh:w:shenme",
+        "zh:w:wo",
+        "zh:w:liang",
+        "zh:w:ge",
+        "zh:w:pingguo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_yifu",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你好，我想买一件衣服。"
+        },
+        {
+          "speaker": "A",
+          "text": "你要什么颜色的？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "zh:w:nihao",
+        "zh:w:wo",
+        "zh:w:xiang",
+        "zh:w:mai",
+        "zh:w:yi",
+        "zh:w:jian-measure",
+        "zh:w:yifu",
+        "zh:w:ni",
+        "zh:w:yao",
+        "zh:w:shenme",
+        "zh:w:yanse",
+        "zh:w:de"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_yigong",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "一共多少钱？"
+        },
+        {
+          "speaker": "B",
+          "text": "一共二十八块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:yigong",
+        "zh:w:duoshaoqian",
+        "zh:w:er",
+        "zh:w:shi-2",
+        "zh:w:ba-1",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_jin",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "苹果多少钱一斤？"
+        },
+        {
+          "speaker": "A",
+          "text": "五块一斤。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:pingguo",
+        "zh:w:duoshaoqian",
+        "zh:w:yi",
+        "zh:w:jin-1",
+        "zh:w:wu",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_saoma",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "可以扫码吗？"
+        },
+        {
+          "speaker": "B",
+          "text": "可以，你扫我吧。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "zh:w:keyi",
+        "zh:w:saoma",
+        "zh:w:ma",
+        "zh:w:ni",
+        "zh:w:sao",
+        "zh:w:wo",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_zhaoqian",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "给你一百块。"
+        },
+        {
+          "speaker": "A",
+          "text": "找你二十块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:gei",
+        "zh:w:ni",
+        "zh:w:yi",
+        "zh:w:bai-3",
+        "zh:w:kuai-kuai",
+        "zh:w:zhao",
+        "zh:w:er",
+        "zh:w:shi-2"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_gui",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "太贵了，便宜一点儿吧。"
+        },
+        {
+          "speaker": "B",
+          "text": "好吧，三十块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:tai",
+        "zh:w:gui",
+        "zh:w:le",
+        "zh:w:pianyi",
+        "zh:w:yidianr",
+        "zh:w:ba",
+        "zh:w:hao",
+        "zh:w:san",
+        "zh:w:shi-2",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_shi",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "我可以试一下吗？"
+        },
+        {
+          "speaker": "A",
+          "text": "可以，这边请。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:keyi",
+        "zh:w:shi-try",
+        "zh:w:yixia",
+        "zh:w:ma",
+        "zh:w:zhebian",
+        "zh:w:qing"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ui_xiexie",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "谢谢！"
+        },
+        {
+          "speaker": "B",
+          "text": "不客气，再见！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "zh:w:xiexie",
+        "zh:w:bukeqi",
+        "zh:w:zaijian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uj_hai_work",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "阮海在一家中国工厂工作。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:ruan",
+        "zh:w:hai-3",
+        "zh:w:zai",
+        "zh:w:yi",
+        "zh:w:jia",
+        "zh:w:zhongguo",
+        "zh:w:gongchang",
+        "zh:w:gongzuo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uj_hua_father",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "阮花的爸爸是司机。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:ruan",
+        "zh:w:hua-1",
+        "zh:w:de",
+        "zh:w:baba",
+        "zh:w:shi",
+        "zh:w:siji"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uj_canteen_open",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "食堂中午十一点半开门。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:shitang",
+        "zh:w:zhongwu",
+        "zh:w:shi-2",
+        "zh:w:yi",
+        "zh:w:dian",
+        "zh:w:ban",
+        "zh:w:kai",
+        "zh:w:men-2"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uj_park",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "星期六我们一起去公园。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:xingqiliu",
+        "zh:w:women",
+        "zh:w:yiqi",
+        "zh:w:qu",
+        "zh:w:gongyuan"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uj_anjing",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "晚上十一点以后请安静。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:wanshang",
+        "zh:w:shi-2",
+        "zh:w:yi",
+        "zh:w:dian",
+        "zh:w:yihou",
+        "zh:w:qing",
+        "zh:w:anjing"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_train_gz",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "去广州的火车六点出发。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:qu",
+        "zh:w:guangzhou",
+        "zh:w:de",
+        "zh:w:huoche",
+        "zh:w:liu",
+        "zh:w:dian",
+        "zh:w:chufa"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_plane",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "飞机十二点到。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:feiji",
+        "zh:w:shi-2",
+        "zh:w:er",
+        "zh:w:dian",
+        "zh:w:dao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_supermarket",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "超市晚上十点关门。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:chaoshi",
+        "zh:w:wanshang",
+        "zh:w:shi-2",
+        "zh:w:dian",
+        "zh:w:guan",
+        "zh:w:men-2"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_page",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "请看课本第十二页。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:kan",
+        "zh:w:keben",
+        "zh:w:di",
+        "zh:w:shi-2",
+        "zh:w:er",
+        "zh:w:ye-4"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_shirt",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "这件衣服三百块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhe",
+        "zh:w:jian-measure",
+        "zh:w:yifu",
+        "zh:w:san",
+        "zh:w:bai-3",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_class",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "汉语课晚上七点开始。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:hanyu",
+        "zh:w:ke",
+        "zh:w:wanshang",
+        "zh:w:qi",
+        "zh:w:dian",
+        "zh:w:kaishi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_birthday",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "小王的生日是星期六。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:xiao",
+        "zh:w:wang-2",
+        "zh:w:de",
+        "zh:w:shengri",
+        "zh:w:shi",
+        "zh:w:xingqiliu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_dlg_tea",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你喝茶还是咖啡？"
+        },
+        {
+          "speaker": "B",
+          "text": "我喝茶。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:he-1",
+        "zh:w:cha-2",
+        "zh:w:haishi",
+        "zh:w:kafei",
+        "zh:w:wo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_dlg_live",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你住在哪儿？"
+        },
+        {
+          "speaker": "A",
+          "text": "我住在火车站旁边。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:zhu",
+        "zh:w:zai",
+        "zh:w:nar",
+        "zh:w:wo",
+        "zh:w:huochezhan",
+        "zh:w:pangbian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_dlg_movie",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "今天晚上你有时间吗？"
+        },
+        {
+          "speaker": "B",
+          "text": "有。我们一起去看电影吧。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "zh:w:jintian",
+        "zh:w:wanshang",
+        "zh:w:ni",
+        "zh:w:you",
+        "zh:w:shijian",
+        "zh:w:ma",
+        "zh:w:women",
+        "zh:w:yiqi",
+        "zh:w:qu",
+        "zh:w:kan",
+        "zh:w:dianying",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_dlg_doctor",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你哪儿不舒服？"
+        },
+        {
+          "speaker": "A",
+          "text": "我头疼。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:nar",
+        "zh:w:bu",
+        "zh:w:shufu",
+        "zh:w:wo",
+        "zh:w:tou",
+        "zh:w:teng"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_dict_work",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我每天在工厂工作。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:meitian",
+        "zh:w:zai",
+        "zh:w:gongchang",
+        "zh:w:gongzuo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_dict_station",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "火车站很近。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:huochezhan",
+        "zh:w:hen",
+        "zh:w:jin-near"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.cp3_dict_safety",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请注意安全。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:zhuyi",
+        "zh:w:anquan"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.a1cap_bank",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "银行上午九点开门。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:yinhang",
+        "zh:w:shangwu",
+        "zh:w:jiu-3",
+        "zh:w:dian",
+        "zh:w:kai",
+        "zh:w:men-2"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.a1cap_bus",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "去医院请坐五路公交车。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_info",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:qu",
+        "zh:w:yiyuan",
+        "zh:w:qingzuo",
+        "zh:w:wu",
+        "zh:w:lu",
+        "zh:w:gongjiaoche"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.a1cap_pharmacy",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "药店在银行旁边。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:yaodian",
+        "zh:w:zai",
+        "zh:w:yinhang",
+        "zh:w:pangbian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.a1cap_bag",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "这个包两百块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.short_info",
+        "zh.obj.numbers.measure_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhege",
+        "zh:w:bao",
+        "zh:w:liang",
+        "zh:w:bai-3",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.pl_shui",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "水"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "zh:w:shui"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.pl_shop",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "商店六点关门。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "zh:w:shangdian",
+        "zh:w:liu",
+        "zh:w:dian",
+        "zh:w:guan",
+        "zh:w:men-2"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.pl_pay",
+      "kind": "instruction",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请在这儿付钱。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:zai",
+        "zh:w:zher",
+        "zh:w:fu",
+        "zh:w:qian-money"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_rep_zaoshang",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "早上好！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:zaoshanghao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_greet_morning",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "大家早上好！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:dajia",
+        "zh:w:zaoshanghao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_rep_xinku",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "辛苦了！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:xinkule"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_xinku",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "辛苦了！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:xinkule"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_thanks",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "谢谢您！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:xiexie",
+        "zh:w:nin"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_rep_xianzou",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "我先走了。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:xian",
+        "zh:w:zou",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_xianzou",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我先走了，明天见！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:xian",
+        "zh:w:zou",
+        "zh:w:le",
+        "zh:w:mingtianjian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_sorry",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "对不起，我迟到了。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:duibuqi",
+        "zh:w:wo",
+        "zh:w:chidao",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.uk_model_excuse",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "请问。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:qingwen"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ul_model_rep_renshi",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "认识您很高兴。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:renshi",
+        "zh:w:nin",
+        "zh:w:hen",
+        "zh:w:gaoxing"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ul_model_name",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我叫阮海。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:jiao",
+        "zh:w:ruan",
+        "zh:w:hai-3"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ul_model_from",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "我是越南人。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:shi",
+        "zh:w:yuenanren"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ul_model_age",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我今年二十五岁。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:jinnian",
+        "zh:w:er",
+        "zh:w:shi-2",
+        "zh:w:wu",
+        "zh:w:sui"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ul_model_work",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我在工厂工作。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:zai",
+        "zh:w:gongchang",
+        "zh:w:gongzuo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ul_model_like",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "我喜欢唱歌。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:xihuan",
+        "zh:w:changge"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ul_model_rep_jieshao",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我来介绍一下。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:lai",
+        "zh:w:jieshao",
+        "zh:w:yixia"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.um_model_rep_price",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "十五块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:shi-2",
+        "zh:w:wu",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.um_model_price",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "十八块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:shi-2",
+        "zh:w:ba-1",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.um_model_time",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "现在八点。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:xianzai",
+        "zh:w:ba-1",
+        "zh:w:dian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.um_model_rep_half",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "三点半。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:san",
+        "zh:w:dian",
+        "zh:w:ban"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.um_model_day",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "今天星期一。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:jintian",
+        "zh:w:xingqiyi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.um_model_birthday",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "我的生日是五月十号。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:de",
+        "zh:w:shengri",
+        "zh:w:shi",
+        "zh:w:wu",
+        "zh:w:yue",
+        "zh:w:shi-2",
+        "zh:w:hao-4"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.um_model_tickets",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我要两张票。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:yao",
+        "zh:w:liang",
+        "zh:w:zhang",
+        "zh:w:piao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.un_model_rep_zhong",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "这个箱子很重。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhege",
+        "zh:w:xiangzi",
+        "zh:w:hen",
+        "zh:w:zhong"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.un_model_box",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "这个箱子很大。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhege",
+        "zh:w:xiangzi",
+        "zh:w:hen",
+        "zh:w:da"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.un_model_car",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "这辆车很新。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhe",
+        "zh:w:liang-4",
+        "zh:w:che",
+        "zh:w:hen",
+        "zh:w:xin"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.un_model_cat",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "这只猫很小。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhe",
+        "zh:w:zhi",
+        "zh:w:mao-1",
+        "zh:w:hen",
+        "zh:w:xiao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.un_model_rep_bai",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我的衣服是白的。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:de",
+        "zh:w:yifu",
+        "zh:w:shi",
+        "zh:w:bai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.un_model_room",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "这个房间很干净。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhege",
+        "zh:w:fangjian",
+        "zh:w:hen",
+        "zh:w:ganjing"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.un_model_person",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "她很高。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:ta-she",
+        "zh:w:hen",
+        "zh:w:gao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_shop_fruit_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "不好意思，我不明白。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:buhaoyisi",
+        "zh:w:wo",
+        "zh:w:bu",
+        "zh:w:mingbai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_shop_fruit_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你好！你要什么？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:nihao",
+        "zh:w:ni",
+        "zh:w:yao",
+        "zh:w:shenme"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_shop_fruit_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你想买什么？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:xiang",
+        "zh:w:mai",
+        "zh:w:shenme"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_shop_fruit_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "两斤十块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:liang",
+        "zh:w:jin-1",
+        "zh:w:shi-2",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_shop_fruit_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "一共十块钱。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:yigong",
+        "zh:w:shi-2",
+        "zh:w:kuai-kuai",
+        "zh:w:qian-money"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_shop_fruit_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "可以，你扫我吧。谢谢！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:keyi",
+        "zh:w:ni",
+        "zh:w:sao",
+        "zh:w:wo",
+        "zh:w:ba",
+        "zh:w:xiexie"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_restaurant_order_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "不好意思，请再说一遍。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:buhaoyisi",
+        "zh:w:qing",
+        "zh:w:zai-again",
+        "zh:w:shuo",
+        "zh:w:yi",
+        "zh:w:bian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_restaurant_order_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "欢迎！您要什么？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:huanying",
+        "zh:w:nin",
+        "zh:w:yao",
+        "zh:w:shenme"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_restaurant_order_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "您想吃什么？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:nin",
+        "zh:w:xiang",
+        "zh:w:chi",
+        "zh:w:shenme"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_restaurant_order_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "在这儿吃还是带走？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:zai",
+        "zh:w:zher",
+        "zh:w:chi",
+        "zh:w:haishi",
+        "zh:w:dai",
+        "zh:w:zou"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_restaurant_order_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "您在这儿吃吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:nin",
+        "zh:w:zai",
+        "zh:w:zher",
+        "zh:w:chi",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_restaurant_order_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好的，请坐。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:qingzuo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_ask_subway_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "对不起，我也不知道。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:duibuqi",
+        "zh:w:wo",
+        "zh:w:ye",
+        "zh:w:bu",
+        "zh:w:zhidao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_ask_subway_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你好，有什么事吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:nihao",
+        "zh:w:you",
+        "zh:w:shenme",
+        "zh:w:shi-matter",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_ask_subway_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你需要帮忙吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:xuyao",
+        "zh:w:bangmang",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_ask_subway_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "一直往前走，到路口往右边走。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:yizhi",
+        "zh:w:wang-3",
+        "zh:w:qian",
+        "zh:w:zou",
+        "zh:w:dao",
+        "zh:w:lukou",
+        "zh:w:youbian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_ask_subway_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "往前走，然后往右边走。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:wang-3",
+        "zh:w:qian",
+        "zh:w:zou",
+        "zh:w:ranhou",
+        "zh:w:youbian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_ask_subway_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "不客气！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:bukeqi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taxi_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "对不起，我听不懂。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:duibuqi",
+        "zh:w:wo",
+        "zh:w:ting",
+        "zh:w:bu",
+        "zh:w:dong-3"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taxi_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "您好，去哪儿？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ninhao",
+        "zh:w:qu",
+        "zh:w:nar"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taxi_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "您要去哪儿？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:nin",
+        "zh:w:yao",
+        "zh:w:qu",
+        "zh:w:nar"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taxi_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "到了。在这儿停吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:dao",
+        "zh:w:le",
+        "zh:w:zai",
+        "zh:w:zher",
+        "zh:w:ting-2",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taxi_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "这儿可以吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:zher",
+        "zh:w:keyi",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taxi_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好的，三十块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:san",
+        "zh:w:shi-2",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_reception_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "不好意思，请再说一遍。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:buhaoyisi",
+        "zh:w:qing",
+        "zh:w:zai-again",
+        "zh:w:shuo",
+        "zh:w:yi",
+        "zh:w:bian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_reception_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "您好！您是第一次来吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ninhao",
+        "zh:w:nin",
+        "zh:w:shi",
+        "zh:w:di",
+        "zh:w:yi",
+        "zh:w:ci",
+        "zh:w:lai",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_reception_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "以前来过吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:yiqian",
+        "zh:w:lai",
+        "zh:w:guo",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_reception_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请给我看一下您的护照。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:gei",
+        "zh:w:wo",
+        "zh:w:kan",
+        "zh:w:yixia",
+        "zh:w:nin",
+        "zh:w:de",
+        "zh:w:huzhao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_reception_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "有护照吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:you",
+        "zh:w:huzhao",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_reception_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "好，请等一下。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:hao",
+        "zh:w:qing",
+        "zh:w:deng",
+        "zh:w:yixia"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_bank_account_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "没关系，我帮您填。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:meiguanxi",
+        "zh:w:wo",
+        "zh:w:bang",
+        "zh:w:nin",
+        "zh:w:tian-fill"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_bank_account_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "您好，您需要什么？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ninhao",
+        "zh:w:nin",
+        "zh:w:xuyao",
+        "zh:w:shenme"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_bank_account_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "您要做什么？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:nin",
+        "zh:w:yao",
+        "zh:w:zuo",
+        "zh:w:shenme"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_bank_account_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好的，请先填这张表。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:qing",
+        "zh:w:xian",
+        "zh:w:tian-fill",
+        "zh:w:zhe",
+        "zh:w:zhang",
+        "zh:w:biao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_bank_account_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "请填一下这张表。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:tian-fill",
+        "zh:w:yixia",
+        "zh:w:zhe",
+        "zh:w:zhang",
+        "zh:w:biao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_bank_account_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好的，请输入密码。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:qing",
+        "zh:w:shuru",
+        "zh:w:mima"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_doctor_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我们去问护士吧。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:women",
+        "zh:w:qu",
+        "zh:w:wen",
+        "zh:w:hushi",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_doctor_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你哪儿不舒服？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:nar",
+        "zh:w:bu",
+        "zh:w:shufu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_doctor_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你怎么了？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:zenme",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_doctor_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "疼了几天了？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:teng",
+        "zh:w:le",
+        "zh:w:ji",
+        "zh:w:tian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_doctor_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "几天了？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ji",
+        "zh:w:tian",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_clinic_doctor_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "这是药，一天吃三次。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhe",
+        "zh:w:shi",
+        "zh:w:yao-medicine",
+        "zh:w:yi",
+        "zh:w:tian",
+        "zh:w:chi",
+        "zh:w:san",
+        "zh:w:ci"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_call_sick_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "我听不清楚，你再说一遍。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:ting",
+        "zh:w:bu",
+        "zh:w:qingchu",
+        "zh:w:ni",
+        "zh:w:zai-again",
+        "zh:w:shuo",
+        "zh:w:yi",
+        "zh:w:bian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_call_sick_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "喂，你好！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:wei-hello",
+        "zh:w:nihao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_call_sick_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "喂，哪位？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:wei-hello",
+        "zh:w:na-3",
+        "zh:w:wei-measure"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_call_sick_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "阮海，什么事？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ruan",
+        "zh:w:hai-3",
+        "zh:w:shenme",
+        "zh:w:shi-matter"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_call_sick_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "有什么事吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:you",
+        "zh:w:shenme",
+        "zh:w:shi-matter",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_call_sick_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好的，好好休息。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:hao",
+        "zh:w:xiuxi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_factory_safety_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "不明白的时候，问组长。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:bu",
+        "zh:w:mingbai",
+        "zh:w:de",
+        "zh:w:shihou",
+        "zh:w:wen",
+        "zh:w:zuzhang"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_factory_safety_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "进车间以前，请戴安全帽和手套。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:jin",
+        "zh:w:chejian",
+        "zh:w:yiqian",
+        "zh:w:qing",
+        "zh:w:dai-wear",
+        "zh:w:anquanmao",
+        "zh:w:he",
+        "zh:w:shoutao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_factory_safety_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "要戴安全帽，戴手套。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:yao",
+        "zh:w:dai-wear",
+        "zh:w:anquanmao",
+        "zh:w:shoutao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_factory_safety_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "这个机器很危险，工作的时候要小心。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhege",
+        "zh:w:jiqi",
+        "zh:w:hen",
+        "zh:w:weixian",
+        "zh:w:gongzuo",
+        "zh:w:de",
+        "zh:w:shihou",
+        "zh:w:yao",
+        "zh:w:xiaoxin"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_factory_safety_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "机器很危险，要小心。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:jiqi",
+        "zh:w:hen",
+        "zh:w:weixian",
+        "zh:w:yao",
+        "zh:w:xiaoxin"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_factory_safety_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "用这个红的，机器就停了。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:yong",
+        "zh:w:zhege",
+        "zh:w:hong",
+        "zh:w:de",
+        "zh:w:jiqi",
+        "zh:w:jiu",
+        "zh:w:ting-2",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_warehouse_boxes_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "没关系，我来看看。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:meiguanxi",
+        "zh:w:wo",
+        "zh:w:lai",
+        "zh:w:kan"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_warehouse_boxes_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "请把这些箱子搬到仓库。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:ba-3",
+        "zh:w:zhexie",
+        "zh:w:xiangzi",
+        "zh:w:ban-move",
+        "zh:w:dao",
+        "zh:w:cangku"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_warehouse_boxes_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "这些箱子，搬到仓库去。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhexie",
+        "zh:w:xiangzi",
+        "zh:w:ban-move",
+        "zh:w:dao",
+        "zh:w:cangku",
+        "zh:w:qu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_warehouse_boxes_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "放在门口旁边。一共有几个箱子？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:fang",
+        "zh:w:zai",
+        "zh:w:menkou",
+        "zh:w:pangbian",
+        "zh:w:yigong",
+        "zh:w:you",
+        "zh:w:ji",
+        "zh:w:ge",
+        "zh:w:xiangzi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_warehouse_boxes_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "有几个箱子？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:you",
+        "zh:w:ji",
+        "zh:w:ge",
+        "zh:w:xiangzi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_warehouse_boxes_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好的，谢谢，辛苦了！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:xiexie",
+        "zh:w:xinkule"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taiwan_first_day_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "不懂可以问我。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:bu",
+        "zh:w:dong-3",
+        "zh:w:keyi",
+        "zh:w:wen",
+        "zh:w:wo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taiwan_first_day_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "早！你是新来的工人吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:zao",
+        "zh:w:ni",
+        "zh:w:shi",
+        "zh:w:xin",
+        "zh:w:lai",
+        "zh:w:de",
+        "zh:w:gongren",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taiwan_first_day_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你是新来的吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:shi",
+        "zh:w:xin",
+        "zh:w:lai",
+        "zh:w:de",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taiwan_first_day_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "好。上班以前要打卡。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:hao",
+        "zh:w:shangban",
+        "zh:w:yiqian",
+        "zh:w:yao",
+        "zh:w:daka"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taiwan_first_day_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "上班要先打卡。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:shangban",
+        "zh:w:yao",
+        "zh:w:xian",
+        "zh:w:daka"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_taiwan_first_day_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "在门口。宿舍在工厂后边，下班以后我带你去。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:zai",
+        "zh:w:menkou",
+        "zh:w:sushe",
+        "zh:w:gongchang",
+        "zh:w:houbian",
+        "zh:w:xiaban",
+        "zh:w:yihou",
+        "zh:w:wo",
+        "zh:w:dai",
+        "zh:w:ni",
+        "zh:w:qu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_new_colleague_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "没关系，以后再说吧。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:meiguanxi",
+        "zh:w:yihou",
+        "zh:w:zai-again",
+        "zh:w:shuo",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_new_colleague_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你好！我叫小王。你是新来的吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:nihao",
+        "zh:w:wo",
+        "zh:w:jiao",
+        "zh:w:xiao",
+        "zh:w:wang-2",
+        "zh:w:ni",
+        "zh:w:shi",
+        "zh:w:xin",
+        "zh:w:lai",
+        "zh:w:de",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_new_colleague_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你是新同事吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:shi",
+        "zh:w:xin",
+        "zh:w:tongshi",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_new_colleague_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你是哪国人？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:shi",
+        "zh:w:na-3",
+        "zh:w:guo-2",
+        "zh:w:ren"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_new_colleague_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你是从哪儿来的？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:shi",
+        "zh:w:cong",
+        "zh:w:nar",
+        "zh:w:lai",
+        "zh:w:de"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_new_colleague_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "认识你很高兴！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:renshi",
+        "zh:w:ni",
+        "zh:w:hen",
+        "zh:w:gaoxing"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_interview_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "谢谢，再见。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:xiexie",
+        "zh:w:zaijian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_interview_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你好，请坐。你叫什么名字？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:nihao",
+        "zh:w:qingzuo",
+        "zh:w:ni",
+        "zh:w:jiao",
+        "zh:w:shenme",
+        "zh:w:mingzi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_interview_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "您的名字是？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:nin",
+        "zh:w:de",
+        "zh:w:mingzi",
+        "zh:w:shi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_interview_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你会说汉语吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:hui",
+        "zh:w:shuo",
+        "zh:w:hanyu",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_interview_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你的汉语怎么样？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:de",
+        "zh:w:hanyu",
+        "zh:w:zenmeyang"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_interview_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好，下个星期给你打电话。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:hao",
+        "zh:w:xia",
+        "zh:w:ge",
+        "zh:w:xingqi",
+        "zh:w:gei",
+        "zh:w:ni",
+        "zh:w:dadianhua"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_supermarket_pay_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "不好意思，请再说一遍。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:buhaoyisi",
+        "zh:w:qing",
+        "zh:w:zai-again",
+        "zh:w:shuo",
+        "zh:w:yi",
+        "zh:w:bian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_supermarket_pay_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "一共八十二块。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:yigong",
+        "zh:w:ba-1",
+        "zh:w:shi-2",
+        "zh:w:er",
+        "zh:w:kuai-kuai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_supermarket_pay_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "八十二块钱。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ba-1",
+        "zh:w:shi-2",
+        "zh:w:er",
+        "zh:w:kuai-kuai",
+        "zh:w:qian-money"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_supermarket_pay_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "可以。还要别的吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:keyi",
+        "zh:w:hai",
+        "zh:w:yao",
+        "zh:w:biede",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_supermarket_pay_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "还要什么吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:hai",
+        "zh:w:yao",
+        "zh:w:shenme",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_supermarket_pay_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "好的，谢谢，欢迎再来！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:xiexie",
+        "zh:w:huanying",
+        "zh:w:zai-again",
+        "zh:w:lai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_way_bank_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "对不起，我不知道。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:duibuqi",
+        "zh:w:wo",
+        "zh:w:bu",
+        "zh:w:zhidao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_way_bank_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你好，有什么事吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:nihao",
+        "zh:w:you",
+        "zh:w:shenme",
+        "zh:w:shi-matter",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_way_bank_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你要去哪儿？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:yao",
+        "zh:w:qu",
+        "zh:w:nar"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_way_bank_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "银行在超市对面，很近。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:yinhang",
+        "zh:w:zai",
+        "zh:w:chaoshi",
+        "zh:w:duimian",
+        "zh:w:hen",
+        "zh:w:jin-near"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_way_bank_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "在超市对面。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:zai",
+        "zh:w:chaoshi",
+        "zh:w:duimian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_way_bank_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "不客气。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:bukeqi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_clinic_cough_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "请等一下，医生马上来。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:qing",
+        "zh:w:deng",
+        "zh:w:yixia",
+        "zh:w:yisheng",
+        "zh:w:mashang",
+        "zh:w:lai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_clinic_cough_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你怎么了？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:zenme",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_clinic_cough_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "哪儿不舒服？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:nar",
+        "zh:w:bu",
+        "zh:w:shufu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_clinic_cough_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "发烧吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:fashao",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_clinic_cough_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "你发烧吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:fashao",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_clinic_cough_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "多喝水，好好休息。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [
+        "zh:w:duo",
+        "zh:w:he-1",
+        "zh:w:shui",
+        "zh:w:hao",
+        "zh:w:xiuxi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_call_office_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "对不起，我听不清楚。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:duibuqi",
+        "zh:w:wo",
+        "zh:w:ting",
+        "zh:w:bu",
+        "zh:w:qingchu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_call_office_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "喂，您好！这里是工厂办公室。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:wei-hello",
+        "zh:w:ninhao",
+        "zh:w:zheli",
+        "zh:w:shi",
+        "zh:w:gongchang",
+        "zh:w:bangongshi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_call_office_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "您好，办公室。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ninhao",
+        "zh:w:bangongshi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_call_office_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "王经理现在不在。您一会儿再打吧。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:wang-2",
+        "zh:w:jingli",
+        "zh:w:xianzai",
+        "zh:w:bu",
+        "zh:w:zai",
+        "zh:w:nin",
+        "zh:w:yihuir",
+        "zh:w:zai-again",
+        "zh:w:da-3",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_call_office_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "他现在不在。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ta",
+        "zh:w:xianzai",
+        "zh:w:bu",
+        "zh:w:zai"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_cp6_call_office_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好的，再见。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:zaijian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_shift_change_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我在微信上告诉你。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:zai",
+        "zh:w:weixin",
+        "zh:w:shang",
+        "zh:w:gaosu",
+        "zh:w:ni"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_shift_change_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "明天你能上夜班吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:mingtian",
+        "zh:w:ni",
+        "zh:w:neng",
+        "zh:w:shang",
+        "zh:w:yeban",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_shift_change_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "明天上夜班，可以吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:mingtian",
+        "zh:w:shang",
+        "zh:w:yeban",
+        "zh:w:keyi",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_shift_change_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "太好了，谢谢！你有什么问题吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:tai",
+        "zh:w:hao",
+        "zh:w:le",
+        "zh:w:xiexie",
+        "zh:w:ni",
+        "zh:w:you",
+        "zh:w:shenme",
+        "zh:w:wenti",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_shift_change_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "有问题吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:you",
+        "zh:w:wenti",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_shift_change_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "晚上十一点开始。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:wanshang",
+        "zh:w:shi-2",
+        "zh:w:yi",
+        "zh:w:dian",
+        "zh:w:kaishi"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_canteen_lunch_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "没关系，我们去看看吧。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:meiguanxi",
+        "zh:w:women",
+        "zh:w:qu",
+        "zh:w:kan",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_canteen_lunch_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "十二点了，一起去食堂吃饭吧？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:shi-2",
+        "zh:w:er",
+        "zh:w:dian",
+        "zh:w:le",
+        "zh:w:yiqi",
+        "zh:w:qu",
+        "zh:w:shitang",
+        "zh:w:chifan",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_canteen_lunch_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "去吃午饭吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:qu",
+        "zh:w:chi",
+        "zh:w:wufan",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_canteen_lunch_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "你想吃什么？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ni",
+        "zh:w:xiang",
+        "zh:w:chi",
+        "zh:w:shenme"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_canteen_lunch_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "吃什么？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:chi",
+        "zh:w:shenme"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_canteen_lunch_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好，我也吃面条。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:hao",
+        "zh:w:wo",
+        "zh:w:ye",
+        "zh:w:chi",
+        "zh:w:miantiao"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_friend_plan_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "好的，以后再说吧。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:haode",
+        "zh:w:yihou",
+        "zh:w:zai-again",
+        "zh:w:shuo",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_friend_plan_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "星期天你有时间吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:xingqitian",
+        "zh:w:ni",
+        "zh:w:you",
+        "zh:w:shijian",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_friend_plan_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "星期天忙不忙？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:xingqitian",
+        "zh:w:mang",
+        "zh:w:bu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_friend_plan_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "我们几点见？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:women",
+        "zh:w:ji",
+        "zh:w:dian",
+        "zh:w:jian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_friend_plan_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "几点见面？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:ji",
+        "zh:w:dian",
+        "zh:w:jianmian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_friend_plan_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "好，星期天下午三点见！"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:hao",
+        "zh:w:xingqitian",
+        "zh:w:xiawu",
+        "zh:w:san",
+        "zh:w:dian",
+        "zh:w:jian"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_weekend_miss",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好，下次再说吧。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:hao",
+        "zh:w:xiaci",
+        "zh:w:zai-again",
+        "zh:w:shuo",
+        "zh:w:ba"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_weekend_0",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "周末你做什么了？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhoumo",
+        "zh:w:ni",
+        "zh:w:zuo",
+        "zh:w:shenme",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_weekend_0_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "周末去哪儿了？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhoumo",
+        "zh:w:qu",
+        "zh:w:nar",
+        "zh:w:le"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_weekend_1",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "公园怎么样？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:gongyuan",
+        "zh:w:zenmeyang"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_weekend_1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "好玩儿吗？"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:haowanr",
+        "zh:w:ma"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "zh.clip.ix_a1cap_weekend_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "下次我也想去。"
+        }
+      ],
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "zh:w:xiaci",
+        "zh:w:wo",
+        "zh:w:ye",
+        "zh:w:xiang",
+        "zh:w:qu"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    }
+  ]
+}

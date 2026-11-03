@@ -1,11 +1,13 @@
 """zh-vi Section 6 lessons: talking with someone — the restaurant and the shop (unit s), the way, the taxi and the
 subway (t), the clinic (u), phoning the workplace (v). Session 2 writes the choice, fill-in, word-bank and typed items
-each conversation needs; the scenario session adds the interactionScenario items. Two lessons show a concept card.
+each conversation needs; session 3 adds the interactionScenario items of zh-scenarios-s6.py (zh_lesson_refs.py: the bank
+account in uu-l2, as ja-vi's city office; the safety briefing, the warehouse and the Taiwan factory day in unit v).
+Two lessons show a concept card.
 Writes lessons/parts/s6.jsonl. usage: python -I zh-lessons-s6.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from zh_lesson_lib import C, F, H, M, N, NX, T, TX, W, Y, finish, lesson
+from zh_lesson_lib import IX, C, F, H, M, N, NX, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- us: restaurant and shop
 lesson("us-l0", [
@@ -23,6 +25,7 @@ lesson("us-l1", [
     NX("Lấy hai cái.", "两个。", ["二个。", "两本。", "两。"]),
     Y("Cho tôi một phần sủi cảo.", "我要一份饺子", "请给我一份饺子", "给我一份饺子"),
     M("碗", "瓶", "份", "杯", "个"),
+    IX("shop_fruit"),
 ])
 lesson("us-l2", [
     T("辣", ["甜", "好吃", "饿"]), N("好吃", ["好玩儿", "好看", "好听"]),
@@ -37,6 +40,7 @@ lesson("us-l3", [
     F("一共多少___？", "钱", ["个", "次", "本"], "Tổng cộng bao nhiêu tiền?"),
     W("Để tôi trả.", "我|来|付", ["买", "给"]),
     Y("Tổng cộng bao nhiêu tiền?", "一共多少钱"),
+    IX("restaurant_order"),
 ])
 
 # ---------------------------------------------------------------- ut: the way, taxi, subway
@@ -54,6 +58,7 @@ lesson("ut-l1", [
     F("工厂___这儿很远。", "离", ["从", "往", "在"], "Nhà máy cách đây rất xa."),
     NX("Ga tàu ở đối diện siêu thị.", "火车站在超市对面。", ["火车站在对面超市。", "火车站对面在超市。", "火车站有超市对面。"]),
     Y("Nhà tôi gần nhà máy.", "我家离工厂很近", "我家离工厂近"),
+    IX("ask_subway"),
 ])
 lesson("ut-l2", [
     T("出租车", ["公交车", "自行车", "火车"]),
@@ -70,6 +75,7 @@ lesson("ut-l3", [
     NX("Bên trái phải không?", "是左边吗？", ["是左边呢？", "左边是不是吗？", "在左边吧吗？"]),
     Y("Cứ đi thẳng.", "一直往前走", "一直走"),
     M("一直", "从", "离", "远", "近"),
+    IX("taxi"),
 ])
 
 # ---------------------------------------------------------------- uu: the clinic
@@ -86,6 +92,7 @@ lesson("uu-l1", [
     F("我的眼睛很___。", "疼", ["饿", "渴", "饱"], "Mắt tôi đau."),
     TX("你哪儿不舒服？", "Bạn khó chịu ở đâu?", ["Bạn ở đâu?", "Bạn khoẻ không?", "Bạn đi khám ở đâu?"]),
     Y("Tôi đau đầu.", "我头疼", "我头很疼"),
+    IX("clinic_reception"),
 ])
 lesson("uu-l2", [
     TX("疼了几天了？", "Đau mấy ngày rồi?", ["Đau ở đâu?", "Đau lắm không?", "Mấy giờ thì đau?"]),
@@ -94,6 +101,7 @@ lesson("uu-l2", [
     H("发烧吗？", ["发烧了。", "不发烧。", "发了吗？"]),
     W("Tôi đi khám bệnh.", "我|去|看病", ["药", "了"]),
     Y("Tôi muốn đi bệnh viện.", "我想去医院", "我要去医院"),
+    IX("bank_account"),
 ])
 lesson("uu-l3", [
     C("measure-words"),
@@ -103,6 +111,7 @@ lesson("uu-l3", [
     NX("Uống thuốc sau khi ăn.", "饭后吃药。", ["饭吃后药。", "吃药饭后。", "药后吃饭。"]),
     W("Tôi đi hiệu thuốc mua thuốc.", "我|去|药店|买|药", ["卖", "医院"]),
     Y("Một ngày uống ba lần.", "一天吃三次", "一天三次"),
+    IX("clinic_doctor"),
 ])
 
 # ---------------------------------------------------------------- uv: phoning the workplace
@@ -120,6 +129,7 @@ lesson("uv-l1", [
     F("我今天不___来上班。", "能", ["是", "有", "在"], "Hôm nay tôi không đến làm được."),
     W("Hôm nay tôi không đi làm được.", "我|今天|不能|上班", ["没", "会"], alts=("今天|我|不能|上班",)),
     Y("Tôi muốn xin nghỉ một ngày.", "我想请假一天", "我要请假一天", "我想请一天假"),
+    IX("call_sick"),
 ])
 lesson("uv-l2", [
     TX("我一会儿再打给你。", "Lát nữa tôi gọi lại cho bạn.", ["Tôi vừa gọi cho bạn.", "Bạn gọi lại cho tôi nhé.", "Tôi không gọi cho bạn nữa."]),
@@ -128,6 +138,7 @@ lesson("uv-l2", [
     NX("Xin nói chậm một chút.", "请说慢一点儿。", ["请慢说一点儿吗。", "请说快一点儿。", "请一点儿说慢。"]),
     Y("Xin nói lại một lần nữa.", "请再说一遍", "请再说一次"),
     W("Lát nữa tôi gọi lại.", "我|一会儿|再|打|给你", ["又", "了"], alts=("一会儿|我|再|打|给你",)),
+    IX("factory_safety"),
 ])
 lesson("uv-l3", [
     T("微信", ["电话", "短信", "照片"]), N("发", ["打", "看", "收"]),
@@ -135,5 +146,6 @@ lesson("uv-l3", [
     F("你有微信___？", "吗", ["的", "是", "在"], "Bạn có WeChat không?"),
     Y("Bạn có WeChat không?", "你有微信吗", "你有没有微信"),
     W("Gửi ảnh cho tôi nhé.", "给|我|发|照片|吧", ["的", "打"]),
+    IX("warehouse_boxes"), IX("taiwan_first_day"),
 ])
 finish("s6")

@@ -9267,6 +9267,69 @@
                     "今天热",
                     "今天非常热"
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l0-e7",
+                  "clipId": "zh.clip.uf_tianqi",
+                  "question": "Bạn nghe thấy từ nào?",
+                  "options": [
+                    {
+                      "text": "雨"
+                    },
+                    {
+                      "text": "明天"
+                    },
+                    {
+                      "text": "天气"
+                    },
+                    {
+                      "text": "晴"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l0-e8",
+                  "clipId": "zh.clip.uf_hen_leng",
+                  "question": "Hôm nay trời thế nào?",
+                  "options": [
+                    {
+                      "text": "Nóng"
+                    },
+                    {
+                      "text": "Mưa"
+                    },
+                    {
+                      "text": "Có gió"
+                    },
+                    {
+                      "text": "Lạnh"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l0-e9",
+                  "clipId": "zh.clip.uf_hen_re",
+                  "question": "Người nói nói gì về hôm nay?",
+                  "options": [
+                    {
+                      "text": "Hôm nay nóng"
+                    },
+                    {
+                      "text": "Hôm nay lạnh"
+                    },
+                    {
+                      "text": "Mai nóng"
+                    },
+                    {
+                      "text": "Hôm nay mưa"
+                    }
+                  ],
+                  "correct": 0
                 }
               ]
             },
@@ -9288,16 +9351,16 @@
                       "text": "có tuyết rơi"
                     },
                     {
-                      "text": "nắng"
+                      "text": "mưa (trời mưa)"
                     },
                     {
-                      "text": "mưa (trời mưa)"
+                      "text": "nắng"
                     },
                     {
                       "text": "gió"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -9313,13 +9376,13 @@
                       "text": "雪"
                     },
                     {
-                      "text": "天气"
+                      "text": "风"
                     },
                     {
-                      "text": "风"
+                      "text": "天气"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -9329,9 +9392,6 @@
                   "audioTarget": "下雨了。",
                   "options": [
                     {
-                      "text": "下雨了。"
-                    },
-                    {
                       "text": "下雪了。"
                     },
                     {
@@ -9339,9 +9399,12 @@
                     },
                     {
                       "text": "下课了。"
+                    },
+                    {
+                      "text": "下雨了。"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -9351,10 +9414,10 @@
                   "audioTarget": "明天下雨。",
                   "options": [
                     {
-                      "text": "Hôm nay trời mưa."
+                      "text": "Mai trời mưa."
                     },
                     {
-                      "text": "Mai trời mưa."
+                      "text": "Hôm nay trời mưa."
                     },
                     {
                       "text": "Mai trời nắng."
@@ -9363,7 +9426,7 @@
                       "text": "Mai có tuyết."
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "fillBlank",
@@ -9373,11 +9436,11 @@
                   "audioTarget": "外边下雨了。",
                   "options": [
                     "上",
-                    "有",
                     "下",
+                    "有",
                     "是"
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "wordBank",
@@ -9425,6 +9488,100 @@
                       "native": "tuyết"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l1-e7",
+                  "clipId": "zh.clip.uf_xiayu",
+                  "question": "Chuyện gì đang xảy ra?",
+                  "options": [
+                    {
+                      "text": "Trời có tuyết"
+                    },
+                    {
+                      "text": "Trời nắng"
+                    },
+                    {
+                      "text": "Trời mưa rồi"
+                    },
+                    {
+                      "text": "Tan ca rồi"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "dictation",
+                  "id": "zh-vi:uf-l1-e8",
+                  "clipId": "zh.clip.uf_xiayu",
+                  "answer": "下雨了。",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "zh.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l1-e9",
+                  "clipId": "zh.clip.uf_feng",
+                  "question": "Bạn nghe thấy gì?",
+                  "options": [
+                    {
+                      "text": "Mưa to"
+                    },
+                    {
+                      "text": "Trời lạnh"
+                    },
+                    {
+                      "text": "Nắng gắt"
+                    },
+                    {
+                      "text": "Gió to"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uf-l1-e10",
+                  "readingId": "zh.read.uf_weather",
+                  "question": "Thứ Tư thời tiết thế nào?",
+                  "options": [
+                    {
+                      "text": "Mưa, 18 độ"
+                    },
+                    {
+                      "text": "Nắng, 25 độ"
+                    },
+                    {
+                      "text": "Âm u, 22 độ"
+                    },
+                    {
+                      "text": "Nắng, rất nóng"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uf-l1-e11",
+                  "readingId": "zh.read.uf_weather",
+                  "question": "Ngày nào có gió?",
+                  "options": [
+                    {
+                      "text": "Thứ Hai"
+                    },
+                    {
+                      "text": "Thứ Năm"
+                    },
+                    {
+                      "text": "Thứ Ba"
+                    },
+                    {
+                      "text": "Thứ Sáu"
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             },
@@ -9450,13 +9607,13 @@
                       "text": "mùa xuân"
                     },
                     {
-                      "text": "mùa thu"
+                      "text": "mùa hè"
                     },
                     {
-                      "text": "mùa hè"
+                      "text": "mùa thu"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -9466,9 +9623,6 @@
                   "audioTarget": "冬天",
                   "options": [
                     {
-                      "text": "冬天"
-                    },
-                    {
                       "text": "夏天"
                     },
                     {
@@ -9476,9 +9630,12 @@
                     },
                     {
                       "text": "秋天"
+                    },
+                    {
+                      "text": "冬天"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -9488,10 +9645,10 @@
                   "audioTarget": "春天",
                   "options": [
                     {
-                      "text": "冬天"
+                      "text": "春天"
                     },
                     {
-                      "text": "春天"
+                      "text": "冬天"
                     },
                     {
                       "text": "秋天"
@@ -9500,7 +9657,7 @@
                       "text": "夏天"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -9513,16 +9670,16 @@
                       "text": "十月"
                     },
                     {
-                      "text": "四号"
+                      "text": "四月"
                     },
                     {
-                      "text": "四月"
+                      "text": "四号"
                     },
                     {
                       "text": "十号"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -9538,13 +9695,13 @@
                       "text": "Mùa hè ở Trung Quốc rất nóng."
                     },
                     {
-                      "text": "Mùa hè ở Việt Nam không nóng."
+                      "text": "Mùa hè ở Việt Nam rất nóng."
                     },
                     {
-                      "text": "Mùa hè ở Việt Nam rất nóng."
+                      "text": "Mùa hè ở Việt Nam không nóng."
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -9553,12 +9710,12 @@
                   "translation": "Mùa đông ở Bắc Kinh lạnh.",
                   "audioTarget": "北京的冬天很冷。",
                   "options": [
-                    "冷",
                     "热",
                     "晴",
-                    "阴"
+                    "阴",
+                    "冷"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "typeAnswer",
@@ -9597,6 +9754,90 @@
                       "native": "thời tiết"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l2-e8",
+                  "clipId": "zh.clip.uf_chuntian",
+                  "question": "Bạn nghe thấy mùa nào?",
+                  "options": [
+                    {
+                      "text": "春天"
+                    },
+                    {
+                      "text": "夏天"
+                    },
+                    {
+                      "text": "秋天"
+                    },
+                    {
+                      "text": "冬天"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l2-e9",
+                  "clipId": "zh.clip.uf_siyue",
+                  "question": "Bạn nghe thấy tháng nào?",
+                  "options": [
+                    {
+                      "text": "Tháng Mười"
+                    },
+                    {
+                      "text": "Tháng Tư"
+                    },
+                    {
+                      "text": "Ngày mùng 4"
+                    },
+                    {
+                      "text": "Tháng Ba"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l2-e10",
+                  "clipId": "zh.clip.uf_zaishuo",
+                  "question": "Người nói muốn gì?",
+                  "options": [
+                    {
+                      "text": "Nói chậm một chút"
+                    },
+                    {
+                      "text": "Nói to hơn"
+                    },
+                    {
+                      "text": "Nói lại một lần nữa"
+                    },
+                    {
+                      "text": "Viết ra giấy"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l2-e11",
+                  "clipId": "zh.clip.uf_mandian",
+                  "question": "Người nói muốn gì?",
+                  "options": [
+                    {
+                      "text": "Nói lại một lần nữa"
+                    },
+                    {
+                      "text": "Nói nhanh lên"
+                    },
+                    {
+                      "text": "Đừng nói nữa"
+                    },
+                    {
+                      "text": "Nói chậm một chút"
+                    }
+                  ],
+                  "correct": 3
                 }
               ]
             },
@@ -9616,10 +9857,10 @@
                   "audioTarget": "九点",
                   "options": [
                     {
-                      "text": "六点"
+                      "text": "九点"
                     },
                     {
-                      "text": "九点"
+                      "text": "六点"
                     },
                     {
                       "text": "十点"
@@ -9628,7 +9869,7 @@
                       "text": "九块"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -9641,16 +9882,16 @@
                       "text": "五十块"
                     },
                     {
-                      "text": "十五个"
+                      "text": "十五块"
                     },
                     {
-                      "text": "十五块"
+                      "text": "十五个"
                     },
                     {
                       "text": "五块"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -9666,13 +9907,13 @@
                       "text": "chim"
                     },
                     {
-                      "text": "cá"
+                      "text": "chó"
                     },
                     {
-                      "text": "chó"
+                      "text": "cá"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -9682,9 +9923,6 @@
                   "audioTarget": "猫",
                   "options": [
                     {
-                      "text": "猫"
-                    },
-                    {
                       "text": "狗"
                     },
                     {
@@ -9692,9 +9930,12 @@
                     },
                     {
                       "text": "牛"
+                    },
+                    {
+                      "text": "猫"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -9704,10 +9945,10 @@
                   "audioTarget": "我家有一只猫。",
                   "options": [
                     {
-                      "text": "Nhà tôi có một con chó."
+                      "text": "Nhà tôi có một con mèo."
                     },
                     {
-                      "text": "Nhà tôi có một con mèo."
+                      "text": "Nhà tôi có một con chó."
                     },
                     {
                       "text": "Nhà tôi có hai con mèo."
@@ -9716,7 +9957,7 @@
                       "text": "Tôi thích mèo."
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "fillBlank",
@@ -9726,11 +9967,11 @@
                   "audioTarget": "河里有很多鱼。",
                   "options": [
                     "鸟",
-                    "马",
                     "鱼",
+                    "马",
                     "花"
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "wordBank",
@@ -9778,6 +10019,142 @@
                       "native": "cây"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l3-e8",
+                  "clipId": "zh.clip.uf_jiudian",
+                  "question": "Mấy giờ?",
+                  "options": [
+                    {
+                      "text": "6 giờ"
+                    },
+                    {
+                      "text": "10 giờ"
+                    },
+                    {
+                      "text": "9 giờ"
+                    },
+                    {
+                      "text": "9 tệ"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l3-e9",
+                  "clipId": "zh.clip.uf_shiwu",
+                  "question": "Bao nhiêu tiền?",
+                  "options": [
+                    {
+                      "text": "50 tệ"
+                    },
+                    {
+                      "text": "5 tệ"
+                    },
+                    {
+                      "text": "15 giờ"
+                    },
+                    {
+                      "text": "15 tệ"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l3-e10",
+                  "clipId": "zh.clip.uf_mao",
+                  "question": "Bạn nghe thấy con vật nào?",
+                  "options": [
+                    {
+                      "text": "猫"
+                    },
+                    {
+                      "text": "狗"
+                    },
+                    {
+                      "text": "鸟"
+                    },
+                    {
+                      "text": "马"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uf-l3-e11",
+                  "clipId": "zh.clip.uf_yu",
+                  "question": "Bạn nghe thấy con vật nào?",
+                  "options": [
+                    {
+                      "text": "牛"
+                    },
+                    {
+                      "text": "鱼"
+                    },
+                    {
+                      "text": "鸟"
+                    },
+                    {
+                      "text": "狗"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "dictation",
+                  "id": "zh-vi:uf-l3-e12",
+                  "clipId": "zh.clip.uf_tingbudong",
+                  "answer": "我听不懂。",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "zh.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uf-l3-e13",
+                  "readingId": "zh.read.uf_card",
+                  "question": "Anh Nguyễn Hải làm nghề gì?",
+                  "options": [
+                    {
+                      "text": "Bác sĩ"
+                    },
+                    {
+                      "text": "Tài xế"
+                    },
+                    {
+                      "text": "Công nhân"
+                    },
+                    {
+                      "text": "Giáo viên"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uf-l3-e14",
+                  "readingId": "zh.read.uf_card",
+                  "question": "Anh ấy sống ở đâu?",
+                  "options": [
+                    {
+                      "text": "Ký túc xá nhà máy, toà số 2"
+                    },
+                    {
+                      "text": "Ở Thượng Hải"
+                    },
+                    {
+                      "text": "Ở Hà Nội"
+                    },
+                    {
+                      "text": "Ký túc xá nhà máy, toà số 3"
+                    }
+                  ],
+                  "correct": 3
                 }
               ]
             }
@@ -9836,6 +10213,9 @@
                   "audioTarget": "小心",
                   "options": [
                     {
+                      "text": "cẩn thận"
+                    },
+                    {
                       "text": "an toàn"
                     },
                     {
@@ -9843,12 +10223,9 @@
                     },
                     {
                       "text": "nguy hiểm"
-                    },
-                    {
-                      "text": "cẩn thận"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -9858,10 +10235,10 @@
                   "audioTarget": "安全",
                   "options": [
                     {
-                      "text": "安全"
+                      "text": "小心"
                     },
                     {
-                      "text": "小心"
+                      "text": "安全"
                     },
                     {
                       "text": "危险"
@@ -9870,7 +10247,7 @@
                       "text": "注意"
                     }
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -9883,16 +10260,16 @@
                       "text": "Được hút thuốc"
                     },
                     {
-                      "text": "Cấm hút thuốc"
+                      "text": "Khu hút thuốc"
                     },
                     {
-                      "text": "Khu hút thuốc"
+                      "text": "Cấm hút thuốc"
                     },
                     {
                       "text": "Hãy hút thuốc ở đây"
                     }
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -9908,13 +10285,13 @@
                       "text": "Lối ra an toàn"
                     },
                     {
-                      "text": "Chú ý an toàn"
+                      "text": "Không an toàn"
                     },
                     {
-                      "text": "Không an toàn"
+                      "text": "Chú ý an toàn"
                     }
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -9924,6 +10301,9 @@
                   "audioTarget": "危险",
                   "options": [
                     {
+                      "text": "危险"
+                    },
+                    {
                       "text": "出口"
                     },
                     {
@@ -9931,12 +10311,9 @@
                     },
                     {
                       "text": "安全"
-                    },
-                    {
-                      "text": "危险"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "fillBlank",
@@ -9945,12 +10322,12 @@
                   "translation": "Cẩn thận! Máy rất nguy hiểm.",
                   "audioTarget": "小心！机器很危险。",
                   "options": [
-                    "小心",
                     "安全",
+                    "小心",
                     "休息",
                     "欢迎"
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "match",
@@ -9977,6 +10354,69 @@
                       "native": "cấm"
                     }
                   ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l0-e7",
+                  "readingId": "zh.read.ug_signs",
+                  "question": "Biển nào chỉ lối thoát khi có sự cố?",
+                  "options": [
+                    {
+                      "text": "入口"
+                    },
+                    {
+                      "text": "危险"
+                    },
+                    {
+                      "text": "紧急出口"
+                    },
+                    {
+                      "text": "灭火器"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l0-e8",
+                  "readingId": "zh.read.ug_signs",
+                  "question": "Biển nào cấm hút thuốc?",
+                  "options": [
+                    {
+                      "text": "禁止进入"
+                    },
+                    {
+                      "text": "注意安全"
+                    },
+                    {
+                      "text": "小心机器"
+                    },
+                    {
+                      "text": "禁止吸烟"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l0-e9",
+                  "readingId": "zh.read.ug_signs",
+                  "question": "Biển nào báo: không được vào?",
+                  "options": [
+                    {
+                      "text": "禁止进入"
+                    },
+                    {
+                      "text": "出口"
+                    },
+                    {
+                      "text": "禁止吸烟"
+                    },
+                    {
+                      "text": "安全出口"
+                    }
+                  ],
+                  "correct": 0
                 }
               ]
             },
@@ -10163,6 +10603,69 @@
                       "native": "máy móc"
                     }
                   ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l1-e9",
+                  "readingId": "zh.read.ug_rules",
+                  "question": "Vào phân xưởng phải làm gì?",
+                  "options": [
+                    {
+                      "text": "Tắt điện thoại"
+                    },
+                    {
+                      "text": "Đi giày mới"
+                    },
+                    {
+                      "text": "Gọi tổ trưởng"
+                    },
+                    {
+                      "text": "Đội mũ bảo hộ"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l1-e10",
+                  "readingId": "zh.read.ug_rules",
+                  "question": "Máy có vấn đề thì làm gì?",
+                  "options": [
+                    {
+                      "text": "Dừng máy ngay rồi báo tổ trưởng"
+                    },
+                    {
+                      "text": "Tự sửa máy"
+                    },
+                    {
+                      "text": "Tiếp tục làm việc"
+                    },
+                    {
+                      "text": "Đi về nhà"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l1-e11",
+                  "readingId": "zh.read.ug_rules",
+                  "question": "Bình chữa cháy ở đâu?",
+                  "options": [
+                    {
+                      "text": "Trong văn phòng"
+                    },
+                    {
+                      "text": "Cạnh cửa ra vào"
+                    },
+                    {
+                      "text": "Ở nhà ăn"
+                    },
+                    {
+                      "text": "Trong kho"
+                    }
+                  ],
+                  "correct": 1
                 }
               ],
               "flow": [
@@ -10195,6 +10698,15 @@
                 },
                 {
                   "exercise": "zh-vi:ug-l1-e8"
+                },
+                {
+                  "exercise": "zh-vi:ug-l1-e9"
+                },
+                {
+                  "exercise": "zh-vi:ug-l1-e10"
+                },
+                {
+                  "exercise": "zh-vi:ug-l1-e11"
                 }
               ]
             },
@@ -10219,13 +10731,13 @@
                       "text": "tan ca"
                     },
                     {
-                      "text": "nghỉ"
+                      "text": "tăng ca"
                     },
                     {
-                      "text": "tăng ca"
+                      "text": "nghỉ"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -10235,9 +10747,6 @@
                   "audioTarget": "组长",
                   "options": [
                     {
-                      "text": "组长"
-                    },
-                    {
                       "text": "经理"
                     },
                     {
@@ -10245,9 +10754,12 @@
                     },
                     {
                       "text": "工人"
+                    },
+                    {
+                      "text": "组长"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -10257,10 +10769,10 @@
                   "audioTarget": "明天早上七点上班，别迟到。",
                   "options": [
                     {
-                      "text": "Mai bảy giờ tối vào làm, đừng đến muộn."
+                      "text": "Mai bảy giờ sáng vào làm, đừng đến muộn."
                     },
                     {
-                      "text": "Mai bảy giờ sáng vào làm, đừng đến muộn."
+                      "text": "Mai bảy giờ tối vào làm, đừng đến muộn."
                     },
                     {
                       "text": "Mai bảy giờ sáng tan ca."
@@ -10269,7 +10781,7 @@
                       "text": "Hôm nay bảy giờ sáng vào làm."
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -10282,16 +10794,16 @@
                       "text": "Tối nay được nghỉ."
                     },
                     {
-                      "text": "Mai phải tăng ca."
+                      "text": "Tối nay phải tăng ca."
                     },
                     {
-                      "text": "Tối nay phải tăng ca."
+                      "text": "Mai phải tăng ca."
                     },
                     {
                       "text": "Tối nay tan ca sớm."
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "fillBlank",
@@ -10302,10 +10814,10 @@
                   "options": [
                     "关",
                     "打",
-                    "看",
-                    "开"
+                    "开",
+                    "看"
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "wordBank",
@@ -10371,6 +10883,90 @@
                       "native": "tổ trưởng"
                     }
                   ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l2-e8",
+                  "readingId": "zh.read.ug_msg_leader",
+                  "question": "Mai mấy giờ họp?",
+                  "options": [
+                    {
+                      "text": "7 giờ"
+                    },
+                    {
+                      "text": "8 giờ"
+                    },
+                    {
+                      "text": "3 giờ chiều"
+                    },
+                    {
+                      "text": "7 giờ rưỡi"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l2-e9",
+                  "readingId": "zh.read.ug_msg_leader",
+                  "question": "Ai gửi tin nhắn?",
+                  "options": [
+                    {
+                      "text": "Tổ trưởng Lý"
+                    },
+                    {
+                      "text": "Giám đốc Vương"
+                    },
+                    {
+                      "text": "Tiểu Vương"
+                    },
+                    {
+                      "text": "Nguyễn Hải"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l2-e10",
+                  "readingId": "zh.read.ug_shift",
+                  "question": "Ca đêm bắt đầu lúc mấy giờ?",
+                  "options": [
+                    {
+                      "text": "7 giờ sáng"
+                    },
+                    {
+                      "text": "11 giờ đêm"
+                    },
+                    {
+                      "text": "3 giờ chiều"
+                    },
+                    {
+                      "text": "7 giờ tối"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l2-e11",
+                  "readingId": "zh.read.ug_shift",
+                  "question": "Phải chấm công khi nào?",
+                  "options": [
+                    {
+                      "text": "Chỉ khi vào ca"
+                    },
+                    {
+                      "text": "Sau khi ăn trưa"
+                    },
+                    {
+                      "text": "Trước khi vào ca và trước khi tan ca"
+                    },
+                    {
+                      "text": "Mỗi tuần một lần"
+                    }
+                  ],
+                  "correct": 2
                 }
               ]
             },
@@ -10390,9 +10986,6 @@
                   "audioTarget": "箱子",
                   "options": [
                     {
-                      "text": "thùng"
-                    },
-                    {
                       "text": "cái cốc"
                     },
                     {
@@ -10400,9 +10993,12 @@
                     },
                     {
                       "text": "cái ghế"
+                    },
+                    {
+                      "text": "thùng"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -10412,10 +11008,10 @@
                   "audioTarget": "搬",
                   "options": [
                     {
-                      "text": "放"
+                      "text": "搬"
                     },
                     {
-                      "text": "搬"
+                      "text": "放"
                     },
                     {
                       "text": "拿"
@@ -10424,7 +11020,7 @@
                       "text": "推"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -10437,16 +11033,16 @@
                       "text": "Cái thùng này nhẹ."
                     },
                     {
-                      "text": "Cái thùng kia nặng."
+                      "text": "Cái thùng này nặng."
                     },
                     {
-                      "text": "Cái thùng này nặng."
+                      "text": "Cái thùng kia nặng."
                     },
                     {
                       "text": "Cái thùng này to."
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "fillBlank",
@@ -10457,10 +11053,10 @@
                   "options": [
                     "戴",
                     "穿",
-                    "吃",
-                    "放"
+                    "放",
+                    "吃"
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -10469,12 +11065,12 @@
                   "translation": "Trong kho có năm mươi cái thùng.",
                   "audioTarget": "仓库里有五十个箱子。",
                   "options": [
-                    "箱子",
                     "工人",
                     "机器",
-                    "手套"
+                    "手套",
+                    "箱子"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "wordBank",
@@ -10533,6 +11129,142 @@
                       "native": "nặng"
                     }
                   ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l3-e8",
+                  "readingId": "zh.read.ug_warehouse",
+                  "question": "Thùng nặng thì làm thế nào?",
+                  "options": [
+                    {
+                      "text": "Hai người cùng khiêng"
+                    },
+                    {
+                      "text": "Một người khiêng"
+                    },
+                    {
+                      "text": "Để ở cửa"
+                    },
+                    {
+                      "text": "Gọi giám đốc"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ug-l3-e9",
+                  "readingId": "zh.read.ug_warehouse",
+                  "question": "Hàng đến thì làm gì trước?",
+                  "options": [
+                    {
+                      "text": "Cất vào kho"
+                    },
+                    {
+                      "text": "Kiểm tra"
+                    },
+                    {
+                      "text": "Đóng gói"
+                    },
+                    {
+                      "text": "Gửi đi"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ug-l3-e10",
+                  "clipId": "zh.clip.ug_anquanmao",
+                  "question": "Bạn phải làm gì?",
+                  "options": [
+                    {
+                      "text": "Đeo găng tay"
+                    },
+                    {
+                      "text": "Mặc đồ bảo hộ"
+                    },
+                    {
+                      "text": "Đội mũ bảo hộ"
+                    },
+                    {
+                      "text": "Dừng máy"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "dictation",
+                  "id": "zh-vi:ug-l3-e11",
+                  "clipId": "zh.clip.ug_anquanmao",
+                  "answer": "请戴安全帽。",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "zh.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ug-l3-e12",
+                  "clipId": "zh.clip.ug_tingji",
+                  "question": "Máy có vấn đề. Phải làm gì?",
+                  "options": [
+                    {
+                      "text": "Bật máy lên"
+                    },
+                    {
+                      "text": "Gọi điện về nhà"
+                    },
+                    {
+                      "text": "Đi nghỉ"
+                    },
+                    {
+                      "text": "Dừng máy ngay"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ug-l3-e13",
+                  "clipId": "zh.clip.ug_fang",
+                  "question": "Để thùng ở đâu?",
+                  "options": [
+                    {
+                      "text": "Ở đây"
+                    },
+                    {
+                      "text": "Ở cửa"
+                    },
+                    {
+                      "text": "Trong kho"
+                    },
+                    {
+                      "text": "Trên bàn"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ug-l3-e14",
+                  "clipId": "zh.clip.ug_shoutao",
+                  "question": "Bạn phải làm gì?",
+                  "options": [
+                    {
+                      "text": "Đội mũ bảo hộ"
+                    },
+                    {
+                      "text": "Đeo găng tay và mặc đồ bảo hộ"
+                    },
+                    {
+                      "text": "Đeo khẩu trang"
+                    },
+                    {
+                      "text": "Đi giày bảo hộ"
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             }
@@ -10595,19 +11327,19 @@
                       "emoji": "🛫"
                     },
                     {
-                      "text": "ga tàu hỏa",
-                      "emoji": "🚉"
-                    },
-                    {
                       "text": "tàu điện ngầm",
                       "emoji": "🚇"
+                    },
+                    {
+                      "text": "ga tàu hỏa",
+                      "emoji": "🚉"
                     },
                     {
                       "text": "bến xe",
                       "emoji": "🚏"
                     }
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -10623,13 +11355,13 @@
                       "text": "飞机"
                     },
                     {
-                      "text": "地铁"
+                      "text": "公交车"
                     },
                     {
-                      "text": "公交车"
+                      "text": "地铁"
                     }
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -10639,6 +11371,9 @@
                   "audioTarget": "机场",
                   "options": [
                     {
+                      "text": "机场"
+                    },
+                    {
                       "text": "火车站"
                     },
                     {
@@ -10646,12 +11381,9 @@
                     },
                     {
                       "text": "机票"
-                    },
-                    {
-                      "text": "机场"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -10661,10 +11393,10 @@
                   "audioTarget": "火车八点到北京。",
                   "options": [
                     {
-                      "text": "Tàu tám giờ đến Bắc Kinh."
+                      "text": "Tàu tám giờ rời Bắc Kinh."
                     },
                     {
-                      "text": "Tàu tám giờ rời Bắc Kinh."
+                      "text": "Tàu tám giờ đến Bắc Kinh."
                     },
                     {
                       "text": "Tàu chín giờ đến Bắc Kinh."
@@ -10673,7 +11405,7 @@
                       "text": "Máy bay tám giờ đến Bắc Kinh."
                     }
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -10686,16 +11418,16 @@
                       "text": "Xin chú ý giờ tàu."
                     },
                     {
-                      "text": "Xin chú ý an toàn."
+                      "text": "Xin cẩn thận cửa."
                     },
                     {
-                      "text": "Xin cẩn thận cửa."
+                      "text": "Xin chú ý an toàn."
                     },
                     {
                       "text": "Xin lên tàu."
                     }
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -10706,10 +11438,10 @@
                   "options": [
                     "去",
                     "是",
-                    "到",
-                    "在"
+                    "在",
+                    "到"
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -10736,6 +11468,90 @@
                       "native": "tàu hỏa"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l0-e7",
+                  "clipId": "zh.clip.uh_beijing",
+                  "question": "Tàu đi Bắc Kinh khởi hành lúc mấy giờ?",
+                  "options": [
+                    {
+                      "text": "8 giờ"
+                    },
+                    {
+                      "text": "9 giờ"
+                    },
+                    {
+                      "text": "8 giờ rưỡi"
+                    },
+                    {
+                      "text": "10 giờ"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l0-e8",
+                  "clipId": "zh.clip.uh_wanle",
+                  "question": "Tàu thế nào?",
+                  "options": [
+                    {
+                      "text": "Muộn 10 phút"
+                    },
+                    {
+                      "text": "Muộn 20 phút"
+                    },
+                    {
+                      "text": "Đến sớm 20 phút"
+                    },
+                    {
+                      "text": "Không chạy"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l0-e9",
+                  "clipId": "zh.clip.uh_menkou",
+                  "question": "Lên tàu ở cửa số mấy?",
+                  "options": [
+                    {
+                      "text": "Cửa số 2"
+                    },
+                    {
+                      "text": "Cửa số 4"
+                    },
+                    {
+                      "text": "Cửa số 3"
+                    },
+                    {
+                      "text": "Cửa số 13"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l0-e10",
+                  "clipId": "zh.clip.uh_xiayizhan",
+                  "question": "Ga tiếp theo là ga nào?",
+                  "options": [
+                    {
+                      "text": "Sân bay"
+                    },
+                    {
+                      "text": "Ga tàu điện ngầm"
+                    },
+                    {
+                      "text": "Bến xe buýt"
+                    },
+                    {
+                      "text": "Ga tàu hoả"
+                    }
+                  ],
+                  "correct": 3
                 }
               ]
             },
@@ -10754,6 +11570,9 @@
                   "audioTarget": "票",
                   "options": [
                     {
+                      "text": "vé"
+                    },
+                    {
                       "text": "vé xe"
                     },
                     {
@@ -10761,12 +11580,9 @@
                     },
                     {
                       "text": "vé vào cửa"
-                    },
-                    {
-                      "text": "vé"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -10776,10 +11592,10 @@
                   "audioTarget": "车票",
                   "options": [
                     {
-                      "text": "车票"
+                      "text": "机票"
                     },
                     {
-                      "text": "机票"
+                      "text": "车票"
                     },
                     {
                       "text": "门票"
@@ -10788,7 +11604,7 @@
                       "text": "钱包"
                     }
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "fillBlank",
@@ -10798,11 +11614,11 @@
                   "audioTarget": "我要一张去上海的票。",
                   "options": [
                     "本",
-                    "张",
                     "个",
+                    "张",
                     "件"
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -10818,13 +11634,13 @@
                       "text": "Vé đi Bắc Kinh ở đâu?"
                     },
                     {
-                      "text": "Một vé đi Bắc Kinh bao nhiêu tiền?"
+                      "text": "Một vé từ Bắc Kinh bao nhiêu tiền?"
                     },
                     {
-                      "text": "Một vé từ Bắc Kinh bao nhiêu tiền?"
+                      "text": "Một vé đi Bắc Kinh bao nhiêu tiền?"
                     }
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -10834,6 +11650,9 @@
                   "audioTarget": "两张车票",
                   "options": [
                     {
+                      "text": "两张车票"
+                    },
+                    {
                       "text": "二张车票"
                     },
                     {
@@ -10841,12 +11660,9 @@
                     },
                     {
                       "text": "两车票张"
-                    },
-                    {
-                      "text": "两张车票"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -10905,6 +11721,131 @@
                       "native": "tờ"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l1-e8",
+                  "clipId": "zh.clip.uh_zhuyi",
+                  "question": "Thông báo nói gì?",
+                  "options": [
+                    {
+                      "text": "Xin chú ý giờ tàu"
+                    },
+                    {
+                      "text": "Xin chú ý an toàn"
+                    },
+                    {
+                      "text": "Xin lên tàu"
+                    },
+                    {
+                      "text": "Cấm hút thuốc"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "dictation",
+                  "id": "zh-vi:uh-l1-e9",
+                  "clipId": "zh.clip.uh_zhuyi",
+                  "answer": "请注意安全。",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "zh.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l1-e10",
+                  "clipId": "zh.clip.uh_shangche",
+                  "question": "Thông báo nói gì?",
+                  "options": [
+                    {
+                      "text": "Lên trước, xuống sau"
+                    },
+                    {
+                      "text": "Xin đứng ở cửa"
+                    },
+                    {
+                      "text": "Xuống trước, lên sau"
+                    },
+                    {
+                      "text": "Xin ngồi xuống"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "dictation",
+                  "id": "zh-vi:uh-l1-e11",
+                  "clipId": "zh.clip.uh_shangche",
+                  "answer": "请先下车，后上车。",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "zh.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l1-e12",
+                  "clipId": "zh.clip.uh_plane",
+                  "question": "Máy bay đến lúc mấy giờ?",
+                  "options": [
+                    {
+                      "text": "3 giờ sáng"
+                    },
+                    {
+                      "text": "4 giờ chiều"
+                    },
+                    {
+                      "text": "13 giờ"
+                    },
+                    {
+                      "text": "3 giờ chiều"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uh-l1-e13",
+                  "readingId": "zh.read.uh_timetable",
+                  "question": "Tàu đi Thượng Hải chạy lúc mấy giờ?",
+                  "options": [
+                    {
+                      "text": "10 giờ rưỡi sáng"
+                    },
+                    {
+                      "text": "9 giờ sáng"
+                    },
+                    {
+                      "text": "2 giờ chiều"
+                    },
+                    {
+                      "text": "10 giờ sáng"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uh-l1-e14",
+                  "readingId": "zh.read.uh_timetable",
+                  "question": "Lên tàu ở đâu?",
+                  "options": [
+                    {
+                      "text": "Cửa số 3"
+                    },
+                    {
+                      "text": "Cửa số 2"
+                    },
+                    {
+                      "text": "Cửa số 10"
+                    },
+                    {
+                      "text": "Cửa số 9"
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             },
@@ -10924,19 +11865,19 @@
                   "audioTarget": "公交车",
                   "options": [
                     {
-                      "text": "xe buýt"
-                    },
-                    {
                       "text": "xe taxi"
                     },
                     {
                       "text": "tàu hỏa"
                     },
                     {
+                      "text": "xe buýt"
+                    },
+                    {
                       "text": "xe đạp"
                     }
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -10949,16 +11890,16 @@
                       "text": "火车"
                     },
                     {
-                      "text": "飞机"
-                    },
-                    {
                       "text": "汽车"
                     },
                     {
                       "text": "地铁"
+                    },
+                    {
+                      "text": "飞机"
                     }
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "fillBlank",
@@ -10967,12 +11908,12 @@
                   "translation": "Tôi đi tàu điện ngầm đi làm.",
                   "audioTarget": "我坐地铁上班。",
                   "options": [
+                    "坐",
                     "开",
                     "走",
-                    "坐",
                     "骑"
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "fillBlank",
@@ -10982,11 +11923,11 @@
                   "audioTarget": "我骑自行车去工厂。",
                   "options": [
                     "坐",
+                    "骑",
                     "开",
-                    "戴",
-                    "骑"
+                    "戴"
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -10996,19 +11937,19 @@
                   "audioTarget": "坐地铁比坐公交车快。",
                   "options": [
                     {
-                      "text": "Đi tàu điện ngầm nhanh hơn đi xe buýt."
-                    },
-                    {
                       "text": "Đi xe buýt nhanh hơn đi tàu điện ngầm."
                     },
                     {
                       "text": "Tàu điện ngầm và xe buýt nhanh như nhau."
                     },
                     {
+                      "text": "Đi tàu điện ngầm nhanh hơn đi xe buýt."
+                    },
+                    {
                       "text": "Đi tàu điện ngầm rẻ hơn đi xe buýt."
                     }
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "wordBank",
@@ -11058,6 +11999,111 @@
                       "native": "máy bay"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l2-e7",
+                  "clipId": "zh.clip.uh_piao",
+                  "question": "Vé đi Thượng Hải bao nhiêu tiền?",
+                  "options": [
+                    {
+                      "text": "30 tệ"
+                    },
+                    {
+                      "text": "3000 tệ"
+                    },
+                    {
+                      "text": "200 tệ"
+                    },
+                    {
+                      "text": "300 tệ"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l2-e8",
+                  "clipId": "zh.clip.uh_liangzhang",
+                  "question": "Người nói muốn mua gì?",
+                  "options": [
+                    {
+                      "text": "Hai vé đi Bắc Kinh"
+                    },
+                    {
+                      "text": "Một vé đi Bắc Kinh"
+                    },
+                    {
+                      "text": "Hai vé đi Thượng Hải"
+                    },
+                    {
+                      "text": "Hai vé máy bay"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l2-e9",
+                  "clipId": "zh.clip.uh_zhanzai",
+                  "question": "Ga tàu điện ngầm ở đâu?",
+                  "options": [
+                    {
+                      "text": "Đối diện ga tàu hoả"
+                    },
+                    {
+                      "text": "Cạnh ga tàu hoả"
+                    },
+                    {
+                      "text": "Trong sân bay"
+                    },
+                    {
+                      "text": "Sau siêu thị"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uh-l2-e10",
+                  "readingId": "zh.read.uh_subway",
+                  "question": "Ga tiếp theo là ga nào?",
+                  "options": [
+                    {
+                      "text": "Sân bay"
+                    },
+                    {
+                      "text": "Ga cuối"
+                    },
+                    {
+                      "text": "Ga tàu hoả"
+                    },
+                    {
+                      "text": "Bến xe buýt"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uh-l2-e11",
+                  "readingId": "zh.read.uh_subway",
+                  "question": "Trên tàu cấm làm gì?",
+                  "options": [
+                    {
+                      "text": "Ăn uống"
+                    },
+                    {
+                      "text": "Nói chuyện"
+                    },
+                    {
+                      "text": "Gọi điện"
+                    },
+                    {
+                      "text": "Hút thuốc"
+                    }
+                  ],
+                  "correct": 3
                 }
               ],
               "flow": [
@@ -11084,6 +12130,21 @@
                 },
                 {
                   "exercise": "zh-vi:uh-l2-e6"
+                },
+                {
+                  "exercise": "zh-vi:uh-l2-e7"
+                },
+                {
+                  "exercise": "zh-vi:uh-l2-e8"
+                },
+                {
+                  "exercise": "zh-vi:uh-l2-e9"
+                },
+                {
+                  "exercise": "zh-vi:uh-l2-e10"
+                },
+                {
+                  "exercise": "zh-vi:uh-l2-e11"
                 }
               ]
             },
@@ -11103,10 +12164,10 @@
                   "audioTarget": "下一站：火车站。",
                   "options": [
                     {
-                      "text": "下一站：机场。"
+                      "text": "下一站：火车站。"
                     },
                     {
-                      "text": "下一站：火车站。"
+                      "text": "下一站：机场。"
                     },
                     {
                       "text": "这一站：火车站。"
@@ -11115,7 +12176,7 @@
                       "text": "下一站：车站。"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -11128,16 +12189,16 @@
                       "text": "火车马上到。"
                     },
                     {
-                      "text": "火车已经出发了。"
+                      "text": "火车马上出发。"
                     },
                     {
-                      "text": "火车马上出发。"
+                      "text": "火车已经出发了。"
                     },
                     {
                       "text": "飞机马上出发。"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -11153,13 +12214,13 @@
                       "text": "Tàu sắp đến."
                     },
                     {
-                      "text": "Tàu không khởi hành."
+                      "text": "Tàu sắp khởi hành."
                     },
                     {
-                      "text": "Tàu sắp khởi hành."
+                      "text": "Tàu không khởi hành."
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -11168,12 +12229,12 @@
                   "translation": "Máy bay ba giờ khởi hành.",
                   "audioTarget": "飞机三点出发。",
                   "options": [
-                    "出",
                     "到",
                     "开",
-                    "上"
+                    "上",
+                    "出"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "wordBank",
@@ -11230,6 +12291,132 @@
                       "native": "ga tàu điện ngầm"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l3-e7",
+                  "clipId": "zh.clip.uh_huzhao",
+                  "question": "Phải cầm sẵn gì?",
+                  "options": [
+                    {
+                      "text": "Hộ chiếu và vé máy bay"
+                    },
+                    {
+                      "text": "Hộ chiếu và thị thực"
+                    },
+                    {
+                      "text": "Vé tàu"
+                    },
+                    {
+                      "text": "Thẻ ngân hàng"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l3-e8",
+                  "clipId": "zh.clip.uh_wumen",
+                  "question": "Máy bay đi Bắc Kinh ở cửa số mấy?",
+                  "options": [
+                    {
+                      "text": "Cửa số 3"
+                    },
+                    {
+                      "text": "Cửa số 5"
+                    },
+                    {
+                      "text": "Cửa số 15"
+                    },
+                    {
+                      "text": "Cửa số 2"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uh-l3-e9",
+                  "clipId": "zh.clip.uh_yixiaoshi",
+                  "question": "Máy bay thế nào?",
+                  "options": [
+                    {
+                      "text": "Muộn nửa tiếng"
+                    },
+                    {
+                      "text": "Đã cất cánh"
+                    },
+                    {
+                      "text": "Muộn một tiếng"
+                    },
+                    {
+                      "text": "Đến sớm một tiếng"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uh-l3-e10",
+                  "readingId": "zh.read.uh_airport",
+                  "question": "Máy bay bay từ đâu đến đâu?",
+                  "options": [
+                    {
+                      "text": "Từ Bắc Kinh đến Hà Nội"
+                    },
+                    {
+                      "text": "Từ Hà Nội đến Thượng Hải"
+                    },
+                    {
+                      "text": "Từ Thượng Hải đến Bắc Kinh"
+                    },
+                    {
+                      "text": "Từ Hà Nội đến Bắc Kinh"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uh-l3-e11",
+                  "readingId": "zh.read.uh_airport",
+                  "question": "Phải mang theo gì?",
+                  "options": [
+                    {
+                      "text": "Hộ chiếu và thị thực"
+                    },
+                    {
+                      "text": "Hộ chiếu và vé tàu"
+                    },
+                    {
+                      "text": "Thẻ ngân hàng"
+                    },
+                    {
+                      "text": "Thẻ căn cước"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uh-l3-e12",
+                  "readingId": "zh.read.uh_airport",
+                  "question": "Bay ngày nào?",
+                  "options": [
+                    {
+                      "text": "Ngày 5 tháng 1"
+                    },
+                    {
+                      "text": "Ngày 1 tháng 5"
+                    },
+                    {
+                      "text": "Ngày 1 tháng 8"
+                    },
+                    {
+                      "text": "Ngày 8 tháng 5"
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             }
@@ -11291,16 +12478,16 @@
                       "text": "siêu thị"
                     },
                     {
-                      "text": "cửa hàng"
+                      "text": "hiệu sách"
                     },
                     {
-                      "text": "hiệu sách"
+                      "text": "cửa hàng"
                     },
                     {
                       "text": "trung tâm thương mại"
                     }
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -11316,13 +12503,13 @@
                       "text": "商场"
                     },
                     {
-                      "text": "超市"
+                      "text": "书店"
                     },
                     {
-                      "text": "书店"
+                      "text": "超市"
                     }
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -11332,6 +12519,9 @@
                   "audioTarget": "买",
                   "options": [
                     {
+                      "text": "买"
+                    },
+                    {
                       "text": "卖"
                     },
                     {
@@ -11339,12 +12529,9 @@
                     },
                     {
                       "text": "来"
-                    },
-                    {
-                      "text": "买"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -11354,10 +12541,10 @@
                   "audioTarget": "你要什么？",
                   "options": [
                     {
-                      "text": "Bạn cần gì?"
+                      "text": "Bạn muốn đi đâu?"
                     },
                     {
-                      "text": "Bạn muốn đi đâu?"
+                      "text": "Bạn cần gì?"
                     },
                     {
                       "text": "Bạn có gì?"
@@ -11366,7 +12553,7 @@
                       "text": "Bạn bán gì?"
                     }
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "fillBlank",
@@ -11376,11 +12563,11 @@
                   "audioTarget": "我要两个苹果。",
                   "options": [
                     "卖",
-                    "要",
                     "是",
+                    "要",
                     "在"
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "wordBank",
@@ -11441,6 +12628,111 @@
                       "native": "muốn"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l0-e8",
+                  "clipId": "zh.clip.ui_yao",
+                  "question": "Khách muốn mua gì?",
+                  "options": [
+                    {
+                      "text": "Một quả táo"
+                    },
+                    {
+                      "text": "Hai cân táo"
+                    },
+                    {
+                      "text": "Hai chai nước"
+                    },
+                    {
+                      "text": "Hai quả táo"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l0-e9",
+                  "clipId": "zh.clip.ui_yifu",
+                  "question": "Người bán hỏi gì?",
+                  "options": [
+                    {
+                      "text": "Khách muốn màu gì"
+                    },
+                    {
+                      "text": "Khách muốn cỡ nào"
+                    },
+                    {
+                      "text": "Khách muốn mấy cái"
+                    },
+                    {
+                      "text": "Khách trả bằng gì"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ui-l0-e10",
+                  "readingId": "zh.read.ui_dialogue",
+                  "question": "Chị Hoa mua gì?",
+                  "options": [
+                    {
+                      "text": "Hai quả táo"
+                    },
+                    {
+                      "text": "Hai cân táo"
+                    },
+                    {
+                      "text": "Một cân táo"
+                    },
+                    {
+                      "text": "Hai chai nước"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ui-l0-e11",
+                  "readingId": "zh.read.ui_dialogue",
+                  "question": "Tổng cộng bao nhiêu tiền?",
+                  "options": [
+                    {
+                      "text": "2 tệ"
+                    },
+                    {
+                      "text": "20 tệ"
+                    },
+                    {
+                      "text": "10 tệ"
+                    },
+                    {
+                      "text": "12 tệ"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ui-l0-e12",
+                  "readingId": "zh.read.ui_dialogue",
+                  "question": "Chị Hoa trả tiền bằng gì?",
+                  "options": [
+                    {
+                      "text": "Tiền mặt"
+                    },
+                    {
+                      "text": "Thẻ ngân hàng"
+                    },
+                    {
+                      "text": "Chưa trả"
+                    },
+                    {
+                      "text": "Quét mã"
+                    }
+                  ],
+                  "correct": 3
                 }
               ]
             },
@@ -11460,19 +12752,19 @@
                   "audioTarget": "二十八块",
                   "options": [
                     {
+                      "text": "二十八块"
+                    },
+                    {
                       "text": "十八块"
                     },
                     {
                       "text": "二十块"
                     },
                     {
-                      "text": "二十八块"
-                    },
-                    {
                       "text": "八十二块"
                     }
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -11485,16 +12777,16 @@
                       "text": "一共十三块。"
                     },
                     {
+                      "text": "一共三十块。"
+                    },
+                    {
                       "text": "一共四十块。"
                     },
                     {
                       "text": "一个三十块。"
-                    },
-                    {
-                      "text": "一共三十块。"
                     }
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -11504,19 +12796,19 @@
                   "audioTarget": "一共二十八块。",
                   "options": [
                     {
-                      "text": "Tổng cộng hai mươi tám tệ."
-                    },
-                    {
                       "text": "Tổng cộng mười tám tệ."
                     },
                     {
                       "text": "Một cái hai mươi tám tệ."
                     },
                     {
+                      "text": "Tổng cộng hai mươi tám tệ."
+                    },
+                    {
                       "text": "Tổng cộng tám mươi hai tệ."
                     }
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -11526,11 +12818,11 @@
                   "audioTarget": "苹果五块钱一斤。",
                   "options": [
                     "本",
-                    "斤",
                     "张",
-                    "双"
+                    "双",
+                    "斤"
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -11540,19 +12832,19 @@
                   "audioTarget": "多少钱一斤？",
                   "options": [
                     {
+                      "text": "多少钱一斤？"
+                    },
+                    {
                       "text": "一斤多钱少？"
                     },
                     {
                       "text": "多少一斤钱？"
                     },
                     {
-                      "text": "多少钱一斤？"
-                    },
-                    {
                       "text": "几钱一斤？"
                     }
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -11613,6 +12905,90 @@
                       "native": "tiền"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l1-e8",
+                  "clipId": "zh.clip.ui_yigong",
+                  "question": "Tổng cộng bao nhiêu tiền?",
+                  "options": [
+                    {
+                      "text": "18 tệ"
+                    },
+                    {
+                      "text": "28 tệ"
+                    },
+                    {
+                      "text": "82 tệ"
+                    },
+                    {
+                      "text": "20 tệ"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l1-e9",
+                  "clipId": "zh.clip.ui_jin",
+                  "question": "Táo bao nhiêu tiền một cân?",
+                  "options": [
+                    {
+                      "text": "15 tệ"
+                    },
+                    {
+                      "text": "50 tệ"
+                    },
+                    {
+                      "text": "5 tệ"
+                    },
+                    {
+                      "text": "4 tệ"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ui-l1-e10",
+                  "readingId": "zh.read.ui_prices",
+                  "question": "Một chai sữa bao nhiêu tiền?",
+                  "options": [
+                    {
+                      "text": "2 tệ"
+                    },
+                    {
+                      "text": "6 tệ"
+                    },
+                    {
+                      "text": "5 tệ"
+                    },
+                    {
+                      "text": "8 tệ"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ui-l1-e11",
+                  "readingId": "zh.read.ui_prices",
+                  "question": "Cái gì giá 2 tệ một chai?",
+                  "options": [
+                    {
+                      "text": "Nước"
+                    },
+                    {
+                      "text": "Sữa"
+                    },
+                    {
+                      "text": "Táo"
+                    },
+                    {
+                      "text": "Bánh mì"
+                    }
+                  ],
+                  "correct": 0
                 }
               ]
             },
@@ -11635,16 +13011,16 @@
                       "text": "tìm"
                     },
                     {
+                      "text": "quét"
+                    },
+                    {
                       "text": "cho"
                     },
                     {
                       "text": "thử"
-                    },
-                    {
-                      "text": "quét"
                     }
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -11654,19 +13030,19 @@
                   "audioTarget": "找",
                   "options": [
                     {
-                      "text": "找"
-                    },
-                    {
                       "text": "扫"
                     },
                     {
                       "text": "给"
                     },
                     {
+                      "text": "找"
+                    },
+                    {
                       "text": "买"
                     }
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -11679,16 +13055,16 @@
                       "text": "Tôi trả tiền mặt nhé?"
                     },
                     {
-                      "text": "Tôi quét mã của bạn hay bạn quét mã của tôi?"
-                    },
-                    {
                       "text": "Bạn có mã QR không?"
                     },
                     {
                       "text": "Bạn quét mã giúp tôi nhé."
+                    },
+                    {
+                      "text": "Tôi quét mã của bạn hay bạn quét mã của tôi?"
                     }
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -11698,19 +13074,19 @@
                   "audioTarget": "可以扫码吗？",
                   "options": [
                     {
+                      "text": "可以扫码吗？"
+                    },
+                    {
                       "text": "扫码可以吧吗？"
                     },
                     {
                       "text": "可以吗扫码？"
                     },
                     {
-                      "text": "可以扫码吗？"
-                    },
-                    {
                       "text": "可以扫码呢？"
                     }
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "fillBlank",
@@ -11720,11 +13096,11 @@
                   "audioTarget": "我给你钱。",
                   "options": [
                     "扫",
+                    "给",
                     "试",
-                    "卖",
-                    "给"
+                    "卖"
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "wordBank",
@@ -11782,6 +13158,48 @@
                       "native": "quét mã"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l2-e8",
+                  "clipId": "zh.clip.ui_saoma",
+                  "question": "Có quét mã được không?",
+                  "options": [
+                    {
+                      "text": "Được, người bán quét mã của khách"
+                    },
+                    {
+                      "text": "Không được"
+                    },
+                    {
+                      "text": "Được, khách quét mã của người bán"
+                    },
+                    {
+                      "text": "Chỉ nhận tiền mặt"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l2-e9",
+                  "clipId": "zh.clip.ui_zhaoqian",
+                  "question": "Người bán trả lại bao nhiêu?",
+                  "options": [
+                    {
+                      "text": "100 tệ"
+                    },
+                    {
+                      "text": "80 tệ"
+                    },
+                    {
+                      "text": "120 tệ"
+                    },
+                    {
+                      "text": "20 tệ"
+                    }
+                  ],
+                  "correct": 3
                 }
               ]
             },
@@ -11951,6 +13369,132 @@
                       "native": "rẻ"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l3-e8",
+                  "clipId": "zh.clip.ui_gui",
+                  "question": "Cuối cùng giá bao nhiêu?",
+                  "options": [
+                    {
+                      "text": "13 tệ"
+                    },
+                    {
+                      "text": "30 tệ"
+                    },
+                    {
+                      "text": "40 tệ"
+                    },
+                    {
+                      "text": "300 tệ"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l3-e9",
+                  "clipId": "zh.clip.ui_shi",
+                  "question": "Khách muốn làm gì?",
+                  "options": [
+                    {
+                      "text": "Đổi áo"
+                    },
+                    {
+                      "text": "Trả tiền"
+                    },
+                    {
+                      "text": "Mặc thử"
+                    },
+                    {
+                      "text": "Mua hai cái"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:ui-l3-e10",
+                  "clipId": "zh.clip.ui_xiexie",
+                  "question": "Người bán nói gì cuối cùng?",
+                  "options": [
+                    {
+                      "text": "Cảm ơn, hẹn mai gặp"
+                    },
+                    {
+                      "text": "Xin lỗi"
+                    },
+                    {
+                      "text": "Chào buổi sáng"
+                    },
+                    {
+                      "text": "Không có gì, tạm biệt"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ui-l3-e11",
+                  "readingId": "zh.read.ui_hours",
+                  "question": "Siêu thị đóng cửa lúc mấy giờ?",
+                  "options": [
+                    {
+                      "text": "10 giờ tối"
+                    },
+                    {
+                      "text": "8 giờ tối"
+                    },
+                    {
+                      "text": "10 giờ sáng"
+                    },
+                    {
+                      "text": "8 giờ sáng"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ui-l3-e12",
+                  "readingId": "zh.read.ui_hours",
+                  "question": "Chủ nhật siêu thị có mở cửa không?",
+                  "options": [
+                    {
+                      "text": "Không"
+                    },
+                    {
+                      "text": "Có"
+                    },
+                    {
+                      "text": "Chỉ buổi sáng"
+                    },
+                    {
+                      "text": "Chỉ buổi chiều"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:ui-l3-e13",
+                  "readingId": "zh.read.ui_hours",
+                  "question": "Có thể trả tiền bằng gì?",
+                  "options": [
+                    {
+                      "text": "Chỉ tiền mặt"
+                    },
+                    {
+                      "text": "Chỉ quét mã"
+                    },
+                    {
+                      "text": "Quét mã hoặc thẻ ngân hàng"
+                    },
+                    {
+                      "text": "Chỉ thẻ ngân hàng"
+                    }
+                  ],
+                  "correct": 2
                 }
               ]
             }
@@ -12012,16 +13556,16 @@
                       "text": "phòng"
                     },
                     {
-                      "text": "ký túc xá"
-                    },
-                    {
                       "text": "nhà"
                     },
                     {
                       "text": "công viên"
+                    },
+                    {
+                      "text": "ký túc xá"
                     }
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -12031,19 +13575,19 @@
                   "audioTarget": "房间",
                   "options": [
                     {
+                      "text": "房间"
+                    },
+                    {
                       "text": "宿舍"
                     },
                     {
                       "text": "房子"
                     },
                     {
-                      "text": "房间"
-                    },
-                    {
                       "text": "洗手间"
                     }
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -12056,16 +13600,16 @@
                       "text": "Tôi làm ở nhà máy."
                     },
                     {
+                      "text": "Tôi sống ở ký túc xá nhà máy."
+                    },
+                    {
                       "text": "Ký túc xá ở cạnh nhà máy."
                     },
                     {
                       "text": "Tôi sống ở nhà."
-                    },
-                    {
-                      "text": "Tôi sống ở ký túc xá nhà máy."
                     }
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -12075,19 +13619,19 @@
                   "audioTarget": "你住几号房间？",
                   "options": [
                     {
-                      "text": "Bạn ở phòng số mấy?"
-                    },
-                    {
                       "text": "Phòng bạn có mấy người?"
                     },
                     {
                       "text": "Bạn ở ký túc xá nào?"
                     },
                     {
+                      "text": "Bạn ở phòng số mấy?"
+                    },
+                    {
                       "text": "Bạn ở tầng mấy?"
                     }
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -12097,11 +13641,11 @@
                   "audioTarget": "我的房间很干净。",
                   "options": [
                     "洗澡",
-                    "干净",
                     "起床",
-                    "睡觉"
+                    "睡觉",
+                    "干净"
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "wordBank",
@@ -12162,6 +13706,142 @@
                       "native": "sạch sẽ"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uj-l0-e8",
+                  "clipId": "zh.clip.uj_hai_work",
+                  "question": "Anh Nguyễn Hải làm việc ở đâu?",
+                  "options": [
+                    {
+                      "text": "Ở một nhà máy Trung Quốc"
+                    },
+                    {
+                      "text": "Ở một công ty Việt Nam"
+                    },
+                    {
+                      "text": "Ở một bệnh viện"
+                    },
+                    {
+                      "text": "Ở một siêu thị"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "dictation",
+                  "id": "zh-vi:uj-l0-e9",
+                  "clipId": "zh.clip.uj_hai_work",
+                  "answer": "阮海在一家中国工厂工作。",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "zh.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l0-e10",
+                  "readingId": "zh.read.uj_hai_day",
+                  "question": "Anh Hải dậy lúc mấy giờ?",
+                  "options": [
+                    {
+                      "text": "7 giờ"
+                    },
+                    {
+                      "text": "6 giờ"
+                    },
+                    {
+                      "text": "5 giờ"
+                    },
+                    {
+                      "text": "8 giờ"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l0-e11",
+                  "readingId": "zh.read.uj_hai_day",
+                  "question": "Buổi trưa anh ấy ăn ở đâu?",
+                  "options": [
+                    {
+                      "text": "Ở ký túc xá"
+                    },
+                    {
+                      "text": "Ở quán ăn"
+                    },
+                    {
+                      "text": "Ở nhà ăn"
+                    },
+                    {
+                      "text": "Ở nhà"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l0-e12",
+                  "readingId": "zh.read.uj_hai_day",
+                  "question": "Buổi tối anh ấy làm gì?",
+                  "options": [
+                    {
+                      "text": "Tăng ca ở nhà máy"
+                    },
+                    {
+                      "text": "Đi siêu thị"
+                    },
+                    {
+                      "text": "Học tiếng Trung"
+                    },
+                    {
+                      "text": "Nghỉ ở ký túc xá và gọi điện cho mẹ"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l0-e13",
+                  "readingId": "zh.read.uj_dorm",
+                  "question": "Sau 11 giờ đêm phải làm gì?",
+                  "options": [
+                    {
+                      "text": "Giữ yên lặng"
+                    },
+                    {
+                      "text": "Tắt đèn"
+                    },
+                    {
+                      "text": "Giặt quần áo"
+                    },
+                    {
+                      "text": "Chấm công"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l0-e14",
+                  "readingId": "zh.read.uj_dorm",
+                  "question": "Máy giặt ở đâu?",
+                  "options": [
+                    {
+                      "text": "Tầng hai"
+                    },
+                    {
+                      "text": "Tầng một"
+                    },
+                    {
+                      "text": "Tầng ba"
+                    },
+                    {
+                      "text": "Trong phòng"
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             },
@@ -12341,6 +14021,90 @@
                       "native": "sau đó"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uj-l1-e8",
+                  "clipId": "zh.clip.uj_hua_father",
+                  "question": "Bố của chị Hoa làm nghề gì?",
+                  "options": [
+                    {
+                      "text": "Bác sĩ"
+                    },
+                    {
+                      "text": "Công nhân"
+                    },
+                    {
+                      "text": "Giáo viên"
+                    },
+                    {
+                      "text": "Tài xế"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l1-e9",
+                  "readingId": "zh.read.uj_family",
+                  "question": "Nhà chị Hoa có mấy người?",
+                  "options": [
+                    {
+                      "text": "Bốn người"
+                    },
+                    {
+                      "text": "Ba người"
+                    },
+                    {
+                      "text": "Năm người"
+                    },
+                    {
+                      "text": "Hai người"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l1-e10",
+                  "readingId": "zh.read.uj_family",
+                  "question": "Mẹ chị Hoa làm nghề gì?",
+                  "options": [
+                    {
+                      "text": "Tài xế"
+                    },
+                    {
+                      "text": "Bác sĩ"
+                    },
+                    {
+                      "text": "Y tá"
+                    },
+                    {
+                      "text": "Công nhân"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l1-e11",
+                  "readingId": "zh.read.uj_family",
+                  "question": "Anh trai chị Hoa làm việc ở đâu?",
+                  "options": [
+                    {
+                      "text": "Ở Thượng Hải"
+                    },
+                    {
+                      "text": "Ở Bắc Kinh"
+                    },
+                    {
+                      "text": "Ở Hà Nội"
+                    },
+                    {
+                      "text": "Ở Quảng Châu"
+                    }
+                  ],
+                  "correct": 2
                 }
               ]
             },
@@ -12503,6 +14267,111 @@
                       "native": "mặc"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uj-l2-e8",
+                  "clipId": "zh.clip.uj_canteen_open",
+                  "question": "Nhà ăn mở cửa lúc mấy giờ?",
+                  "options": [
+                    {
+                      "text": "11 giờ rưỡi trưa"
+                    },
+                    {
+                      "text": "11 giờ trưa"
+                    },
+                    {
+                      "text": "12 giờ rưỡi trưa"
+                    },
+                    {
+                      "text": "1 giờ chiều"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l2-e9",
+                  "readingId": "zh.read.uj_workday",
+                  "question": "Buổi sáng họ kiểm tra bao nhiêu thùng?",
+                  "options": [
+                    {
+                      "text": "15 thùng"
+                    },
+                    {
+                      "text": "50 thùng"
+                    },
+                    {
+                      "text": "5 thùng"
+                    },
+                    {
+                      "text": "500 thùng"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l2-e10",
+                  "readingId": "zh.read.uj_workday",
+                  "question": "Buổi chiều họ làm gì?",
+                  "options": [
+                    {
+                      "text": "Nghỉ ở ký túc xá"
+                    },
+                    {
+                      "text": "Đi siêu thị"
+                    },
+                    {
+                      "text": "Tăng ca đến 7 giờ"
+                    },
+                    {
+                      "text": "Ăn ở nhà ăn"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l2-e11",
+                  "readingId": "zh.read.uj_canteen",
+                  "question": "Một bát mì bao nhiêu tiền?",
+                  "options": [
+                    {
+                      "text": "2 tệ"
+                    },
+                    {
+                      "text": "5 tệ"
+                    },
+                    {
+                      "text": "7 tệ"
+                    },
+                    {
+                      "text": "8 tệ"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l2-e12",
+                  "readingId": "zh.read.uj_canteen",
+                  "question": "Bữa tối ở nhà ăn từ mấy giờ?",
+                  "options": [
+                    {
+                      "text": "Từ 5 giờ rưỡi đến 7 giờ"
+                    },
+                    {
+                      "text": "Từ 11 giờ rưỡi đến 1 giờ"
+                    },
+                    {
+                      "text": "Từ 5 giờ đến 7 giờ rưỡi"
+                    },
+                    {
+                      "text": "Từ 7 giờ đến 9 giờ"
+                    }
+                  ],
+                  "correct": 0
                 }
               ]
             },
@@ -12521,10 +14390,10 @@
                   "audioTarget": "同事",
                   "options": [
                     {
-                      "text": "đồng nghiệp"
+                      "text": "bạn học"
                     },
                     {
-                      "text": "bạn học"
+                      "text": "đồng nghiệp"
                     },
                     {
                       "text": "bạn"
@@ -12533,7 +14402,7 @@
                       "text": "khách"
                     }
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -12546,16 +14415,16 @@
                       "text": "你回来吗？"
                     },
                     {
-                      "text": "你回家吗？"
+                      "text": "你在家吗？"
                     },
                     {
-                      "text": "你在家吗？"
+                      "text": "你回家吗？"
                     },
                     {
                       "text": "你去哪儿？"
                     }
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "fillBlank",
@@ -12566,10 +14435,10 @@
                   "options": [
                     "去",
                     "来",
-                    "回",
-                    "上"
+                    "上",
+                    "回"
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -12579,6 +14448,9 @@
                   "audioTarget": "对，我回家。",
                   "options": [
                     {
+                      "text": "对，我回家。"
+                    },
+                    {
                       "text": "对，我回来家。"
                     },
                     {
@@ -12586,12 +14458,9 @@
                     },
                     {
                       "text": "不，我回家。"
-                    },
-                    {
-                      "text": "对，我回家。"
                     }
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -12648,6 +14517,144 @@
                       "native": "đi ngủ"
                     }
                   ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uj-l3-e7",
+                  "clipId": "zh.clip.uj_park",
+                  "question": "Thứ Bảy họ đi đâu?",
+                  "options": [
+                    {
+                      "text": "Siêu thị"
+                    },
+                    {
+                      "text": "Công viên"
+                    },
+                    {
+                      "text": "Nhà máy"
+                    },
+                    {
+                      "text": "Bệnh viện"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "zh-vi:uj-l3-e8",
+                  "clipId": "zh.clip.uj_anjing",
+                  "question": "Sau 11 giờ đêm phải làm gì?",
+                  "options": [
+                    {
+                      "text": "Đi ngủ"
+                    },
+                    {
+                      "text": "Tắt đèn"
+                    },
+                    {
+                      "text": "Giữ yên lặng"
+                    },
+                    {
+                      "text": "Về ký túc xá"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "dictation",
+                  "id": "zh-vi:uj-l3-e9",
+                  "clipId": "zh.clip.uj_anjing",
+                  "answer": "晚上十一点以后请安静。",
+                  "alternatives": [
+                    "晚上11点以后请安静。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l3-e10",
+                  "readingId": "zh.read.uj_colleague",
+                  "question": "Tiểu Vương bao nhiêu tuổi?",
+                  "options": [
+                    {
+                      "text": "18 tuổi"
+                    },
+                    {
+                      "text": "24 tuổi"
+                    },
+                    {
+                      "text": "82 tuổi"
+                    },
+                    {
+                      "text": "28 tuổi"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l3-e11",
+                  "readingId": "zh.read.uj_colleague",
+                  "question": "Tiểu Vương thích gì?",
+                  "options": [
+                    {
+                      "text": "Hát và chơi bóng"
+                    },
+                    {
+                      "text": "Nấu ăn và đọc sách"
+                    },
+                    {
+                      "text": "Xem phim"
+                    },
+                    {
+                      "text": "Du lịch"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l3-e12",
+                  "readingId": "zh.read.uj_msg_wang",
+                  "question": "Họ hẹn gặp ở đâu?",
+                  "options": [
+                    {
+                      "text": "Ở công viên"
+                    },
+                    {
+                      "text": "Ở cổng ký túc xá"
+                    },
+                    {
+                      "text": "Ở nhà máy"
+                    },
+                    {
+                      "text": "Ở ga tàu"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "zh-vi:uj-l3-e13",
+                  "readingId": "zh.read.uj_msg_wang",
+                  "question": "Mấy giờ gặp?",
+                  "options": [
+                    {
+                      "text": "10 giờ tối"
+                    },
+                    {
+                      "text": "6 giờ sáng"
+                    },
+                    {
+                      "text": "10 giờ sáng"
+                    },
+                    {
+                      "text": "6 giờ tối"
+                    }
+                  ],
+                  "correct": 2
                 }
               ]
             }
@@ -12844,6 +14851,44 @@
                       "native": "tôi hiểu rồi"
                     }
                   ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:uk-l0-e7",
+                  "speechItemId": "zh.speak.k_rep_zaoshang",
+                  "modelClipId": "zh.clip.uk_model_rep_zaoshang",
+                  "target": "早上好！",
+                  "acceptedVariants": [
+                    "早上好"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l0-e8",
+                  "speechItemId": "zh.speak.k_greet_morning",
+                  "instruction": "Buổi sáng, bạn đến nhà máy. Hãy chào mọi người.",
+                  "target": "大家早上好！",
+                  "acceptedVariants": [
+                    "大家早上好",
+                    "早上好",
+                    "大家好",
+                    "你们好",
+                    "大家早",
+                    "早"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:zaoshanghao"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_greet_morning",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
                 }
               ],
               "flow": [
@@ -12870,6 +14915,12 @@
                 },
                 {
                   "exercise": "zh-vi:uk-l0-e6"
+                },
+                {
+                  "exercise": "zh-vi:uk-l0-e7"
+                },
+                {
+                  "exercise": "zh-vi:uk-l0-e8"
                 }
               ]
             },
@@ -12991,6 +15042,68 @@
                     }
                   ],
                   "correct": 0
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:uk-l1-e6",
+                  "speechItemId": "zh.speak.k_rep_xinku",
+                  "modelClipId": "zh.clip.uk_model_rep_xinku",
+                  "target": "辛苦了！",
+                  "acceptedVariants": [
+                    "辛苦了"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l1-e7",
+                  "speechItemId": "zh.speak.k_xinku",
+                  "instruction": "Hết ca, bạn đi ngang một đồng nghiệp còn đang làm. Hãy nói một câu thăm hỏi quen dùng ở chỗ làm.",
+                  "target": "辛苦了！",
+                  "acceptedVariants": [
+                    "辛苦了",
+                    "你辛苦了",
+                    "大家辛苦了",
+                    "您辛苦了"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:xinkule"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_xinku",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l1-e8",
+                  "speechItemId": "zh.speak.k_thanks",
+                  "instruction": "Tổ trưởng giúp bạn khiêng thùng hàng. Hãy cảm ơn anh ấy.",
+                  "target": "谢谢您！",
+                  "acceptedVariants": [
+                    "谢谢您",
+                    "谢谢",
+                    "谢谢你",
+                    "太谢谢了",
+                    "太谢谢你了",
+                    "谢谢组长",
+                    "非常感谢"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:xiexie"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_thanks",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
                 }
               ]
             },
@@ -13148,6 +15261,97 @@
                       "native": "cố lên"
                     }
                   ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:uk-l2-e7",
+                  "speechItemId": "zh.speak.k_rep_xianzou",
+                  "modelClipId": "zh.clip.uk_model_rep_xianzou",
+                  "target": "我先走了。",
+                  "acceptedVariants": [
+                    "我先走了"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l2-e8",
+                  "speechItemId": "zh.speak.k_xianzou",
+                  "instruction": "Ca của bạn đã hết, đồng nghiệp còn làm. Hãy xin phép về trước.",
+                  "target": "我先走了，明天见！",
+                  "acceptedVariants": [
+                    "我先走了，明天见",
+                    "我先走了",
+                    "我先走了，再见",
+                    "我下班了，明天见",
+                    "明天见",
+                    "我先下班了"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:xian",
+                    "zh:w:zou",
+                    "zh:w:mingtianjian"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_xianzou",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l2-e9",
+                  "speechItemId": "zh.speak.k_sorry",
+                  "instruction": "Bạn đến muộn năm phút. Hãy xin lỗi tổ trưởng.",
+                  "target": "对不起，我迟到了。",
+                  "acceptedVariants": [
+                    "对不起，我迟到了",
+                    "对不起",
+                    "不好意思，我迟到了",
+                    "不好意思",
+                    "对不起，我来晚了",
+                    "不好意思，我来晚了",
+                    "对不起，我晚到了"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:duibuqi",
+                    "zh:w:chidao"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_sorry",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l2-e10",
+                  "speechItemId": "zh.speak.k_excuse",
+                  "instruction": "Bạn muốn hỏi đường một người lạ. Hãy mở lời lịch sự.",
+                  "target": "请问。",
+                  "acceptedVariants": [
+                    "请问",
+                    "你好，请问",
+                    "您好，请问",
+                    "不好意思，请问",
+                    "对不起，请问"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:qingwen"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_excuse",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic"
+                  ]
                 }
               ]
             },
@@ -13271,6 +15475,84 @@
                   "alternatives": [
                     "明白了",
                     "我懂了"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l3-e6",
+                  "speechItemId": "zh.speak.k_greet_morning",
+                  "instruction": "Buổi sáng, bạn đến nhà máy. Hãy chào mọi người.",
+                  "target": "大家早上好！",
+                  "acceptedVariants": [
+                    "大家早上好",
+                    "早上好",
+                    "大家好",
+                    "你们好",
+                    "大家早",
+                    "早"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:zaoshanghao"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_greet_morning",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic",
+                    "zh.obj.politeness.register"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l3-e7",
+                  "speechItemId": "zh.speak.k_xinku",
+                  "instruction": "Hết ca, bạn đi ngang một đồng nghiệp còn đang làm. Hãy nói một câu thăm hỏi quen dùng ở chỗ làm.",
+                  "target": "辛苦了！",
+                  "acceptedVariants": [
+                    "辛苦了",
+                    "你辛苦了",
+                    "大家辛苦了",
+                    "您辛苦了"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:xinkule"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_xinku",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic",
+                    "zh.obj.politeness.register"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:uk-l3-e8",
+                  "speechItemId": "zh.speak.k_xianzou",
+                  "instruction": "Ca của bạn đã hết, đồng nghiệp còn làm. Hãy xin phép về trước.",
+                  "target": "我先走了，明天见！",
+                  "acceptedVariants": [
+                    "我先走了，明天见",
+                    "我先走了",
+                    "我先走了，再见",
+                    "我下班了，明天见",
+                    "明天见",
+                    "我先下班了"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:xian",
+                    "zh:w:zou",
+                    "zh:w:mingtianjian"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.uk_model_xianzou",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.formulaic",
+                    "zh.obj.politeness.register"
                   ]
                 }
               ]
@@ -13473,6 +15755,82 @@
                       "native": "năm nay"
                     }
                   ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:ul-l0-e8",
+                  "speechItemId": "zh.speak.l_rep_renshi",
+                  "modelClipId": "zh.clip.ul_model_rep_renshi",
+                  "target": "认识您很高兴。",
+                  "acceptedVariants": [
+                    "认识您很高兴"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:ul-l0-e9",
+                  "speechItemId": "zh.speak.l_name",
+                  "instruction": "Hãy nói tên của bạn.",
+                  "cueFacts": [
+                    {
+                      "label": "Tên",
+                      "value": "Nguyễn Hải"
+                    }
+                  ],
+                  "target": "我叫阮海。",
+                  "acceptedVariants": [
+                    "我叫阮海",
+                    "我是阮海",
+                    "阮海",
+                    "我的名字是阮海",
+                    "您好，我叫阮海",
+                    "你好，我叫阮海",
+                    "我姓阮，叫阮海"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:jiao",
+                    "zh:w:hai-3"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.ul_model_name",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:ul-l0-e10",
+                  "speechItemId": "zh.speak.l_from",
+                  "instruction": "Hãy nói bạn là người nước nào.",
+                  "cueFacts": [
+                    {
+                      "label": "Nước",
+                      "value": "Việt Nam"
+                    }
+                  ],
+                  "target": "我是越南人。",
+                  "acceptedVariants": [
+                    "我是越南人",
+                    "越南人",
+                    "我从越南来",
+                    "我是从越南来的"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:shi",
+                    "zh:w:yuenanren"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.ul_model_from",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro"
+                  ]
                 }
               ]
             },
@@ -13596,6 +15954,66 @@
                     "今年你多大",
                     "今年你多大了",
                     "今年你几岁"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:ul-l1-e6",
+                  "speechItemId": "zh.speak.l_age",
+                  "instruction": "Hãy nói tuổi của bạn.",
+                  "cueFacts": [
+                    {
+                      "label": "Tuổi",
+                      "value": "25"
+                    }
+                  ],
+                  "target": "我今年二十五岁。",
+                  "acceptedVariants": [
+                    "我今年二十五岁",
+                    "今年我二十五岁",
+                    "我二十五岁",
+                    "二十五岁",
+                    "今年二十五岁"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:jinnian"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.ul_model_age",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:ul-l1-e7",
+                  "speechItemId": "zh.speak.l_work",
+                  "instruction": "Hãy nói bạn làm việc ở đâu.",
+                  "cueFacts": [
+                    {
+                      "label": "Nơi làm việc",
+                      "value": "nhà máy"
+                    }
+                  ],
+                  "target": "我在工厂工作。",
+                  "acceptedVariants": [
+                    "我在工厂工作",
+                    "我在工厂上班",
+                    "在工厂工作",
+                    "我在一家工厂工作"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:gongchang",
+                    "zh:w:gongzuo"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.ul_model_work",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro"
                   ]
                 }
               ]
@@ -13733,6 +16151,45 @@
                     "进来",
                     "吗"
                   ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:ul-l2-e7",
+                  "speechItemId": "zh.speak.l_like",
+                  "instruction": "Hãy nói rằng bạn thích hát.",
+                  "cueEmoji": "🎤",
+                  "target": "我喜欢唱歌。",
+                  "acceptedVariants": [
+                    "我喜欢唱歌",
+                    "我很喜欢唱歌",
+                    "我的爱好是唱歌",
+                    "我爱唱歌",
+                    "我非常喜欢唱歌"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:xihuan",
+                    "zh:w:changge"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.ul_model_like",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:ul-l2-e8",
+                  "speechItemId": "zh.speak.l_rep_jieshao",
+                  "modelClipId": "zh.clip.ul_model_rep_jieshao",
+                  "target": "我来介绍一下。",
+                  "acceptedVariants": [
+                    "我来介绍一下"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro"
+                  ]
                 }
               ],
               "flow": [
@@ -13759,6 +16216,12 @@
                 },
                 {
                   "exercise": "zh-vi:ul-l2-e6"
+                },
+                {
+                  "exercise": "zh-vi:ul-l2-e7"
+                },
+                {
+                  "exercise": "zh-vi:ul-l2-e8"
                 }
               ]
             },
@@ -13904,6 +16367,102 @@
                       "target": "想",
                       "native": "muốn"
                     }
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:ul-l3-e7",
+                  "speechItemId": "zh.speak.l_name",
+                  "instruction": "Hãy nói tên của bạn.",
+                  "cueFacts": [
+                    {
+                      "label": "Tên",
+                      "value": "Nguyễn Hải"
+                    }
+                  ],
+                  "target": "我叫阮海。",
+                  "acceptedVariants": [
+                    "我叫阮海",
+                    "我是阮海",
+                    "阮海",
+                    "我的名字是阮海",
+                    "您好，我叫阮海",
+                    "你好，我叫阮海",
+                    "我姓阮，叫阮海"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:jiao",
+                    "zh:w:hai-3"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.ul_model_name",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro",
+                    "zh.obj.greetings.basic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:ul-l3-e8",
+                  "speechItemId": "zh.speak.l_from",
+                  "instruction": "Hãy nói bạn là người nước nào.",
+                  "cueFacts": [
+                    {
+                      "label": "Nước",
+                      "value": "Việt Nam"
+                    }
+                  ],
+                  "target": "我是越南人。",
+                  "acceptedVariants": [
+                    "我是越南人",
+                    "越南人",
+                    "我从越南来",
+                    "我是从越南来的"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:shi",
+                    "zh:w:yuenanren"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.ul_model_from",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro",
+                    "zh.obj.vocab.work_china"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:ul-l3-e9",
+                  "speechItemId": "zh.speak.l_work",
+                  "instruction": "Hãy nói bạn làm việc ở đâu.",
+                  "cueFacts": [
+                    {
+                      "label": "Nơi làm việc",
+                      "value": "nhà máy"
+                    }
+                  ],
+                  "target": "我在工厂工作。",
+                  "acceptedVariants": [
+                    "我在工厂工作",
+                    "我在工厂上班",
+                    "在工厂工作",
+                    "我在一家工厂工作"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:gongchang",
+                    "zh:w:gongzuo"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.ul_model_work",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.self_intro",
+                    "zh.obj.vocab.work_china"
                   ]
                 }
               ]
@@ -14109,6 +16668,38 @@
                       "native": "ảnh"
                     }
                   ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:um-l0-e8",
+                  "speechItemId": "zh.speak.m_tickets",
+                  "instruction": "Ở ga, bạn mua vé. Hãy nói bạn muốn hai vé.",
+                  "cueEmoji": "🎫",
+                  "cueFacts": [
+                    {
+                      "label": "Số vé",
+                      "value": "2"
+                    }
+                  ],
+                  "target": "我要两张票。",
+                  "acceptedVariants": [
+                    "我要两张票",
+                    "两张票",
+                    "请给我两张票",
+                    "给我两张票",
+                    "我买两张票"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:yao",
+                    "zh:w:piao"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.um_model_tickets",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.give_info"
+                  ]
                 }
               ]
             },
@@ -14232,6 +16823,47 @@
                     "25块",
                     "25块钱",
                     "25元"
+                  ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:um-l1-e6",
+                  "speechItemId": "zh.speak.m_rep_price",
+                  "modelClipId": "zh.clip.um_model_rep_price",
+                  "target": "十五块。",
+                  "acceptedVariants": [
+                    "十五块"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.give_info"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:um-l1-e7",
+                  "speechItemId": "zh.speak.m_price",
+                  "instruction": "Một vị khách hỏi giá một bát mì. Hãy trả lời.",
+                  "cueFacts": [
+                    {
+                      "label": "Giá",
+                      "value": "18 tệ"
+                    }
+                  ],
+                  "target": "十八块。",
+                  "acceptedVariants": [
+                    "十八块",
+                    "十八块钱",
+                    "十八元",
+                    "一碗十八块",
+                    "面条十八块"
+                  ],
+                  "evidenceLexemeRefs": [],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.um_model_price",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.give_info"
                   ]
                 }
               ]
@@ -14388,6 +17020,49 @@
                       "native": "tiếng"
                     }
                   ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:um-l2-e7",
+                  "speechItemId": "zh.speak.m_time",
+                  "instruction": "Có người hỏi giờ. Hãy trả lời.",
+                  "cueEmoji": "🕗",
+                  "cueFacts": [
+                    {
+                      "label": "Giờ",
+                      "value": "8 giờ"
+                    }
+                  ],
+                  "target": "现在八点。",
+                  "acceptedVariants": [
+                    "现在八点",
+                    "八点",
+                    "八点了",
+                    "现在是八点"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:xianzai"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.um_model_time",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.give_info"
+                  ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:um-l2-e8",
+                  "speechItemId": "zh.speak.m_rep_half",
+                  "modelClipId": "zh.clip.um_model_rep_half",
+                  "target": "三点半。",
+                  "acceptedVariants": [
+                    "三点半"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.give_info"
+                  ]
                 }
               ]
             },
@@ -14540,6 +17215,68 @@
                       "target": "爱好",
                       "native": "sở thích"
                     }
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:um-l3-e7",
+                  "speechItemId": "zh.speak.m_day",
+                  "instruction": "Hãy nói hôm nay là thứ mấy.",
+                  "cueFacts": [
+                    {
+                      "label": "Hôm nay",
+                      "value": "thứ Hai"
+                    }
+                  ],
+                  "target": "今天星期一。",
+                  "acceptedVariants": [
+                    "今天星期一",
+                    "星期一",
+                    "今天是星期一"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:jintian",
+                    "zh:w:xingqiyi"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.um_model_day",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.give_info"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:um-l3-e8",
+                  "speechItemId": "zh.speak.m_birthday",
+                  "instruction": "Hãy nói sinh nhật của bạn.",
+                  "cueEmoji": "🎂",
+                  "cueFacts": [
+                    {
+                      "label": "Sinh nhật",
+                      "value": "ngày 10 tháng 5"
+                    }
+                  ],
+                  "target": "我的生日是五月十号。",
+                  "acceptedVariants": [
+                    "我的生日是五月十号",
+                    "五月十号",
+                    "我生日是五月十号",
+                    "我的生日五月十号"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:shengri",
+                    "zh:w:shi",
+                    "zh:w:yue",
+                    "zh:w:hao-4"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.um_model_birthday",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.give_info"
                   ]
                 }
               ]
@@ -14741,6 +17478,32 @@
                       "native": "già"
                     }
                   ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:un-l0-e8",
+                  "speechItemId": "zh.speak.n_person",
+                  "instruction": "Nhìn hình: người phụ nữ này cao. Hãy nói câu đó bằng tiếng Trung.",
+                  "cueEmoji": "👩",
+                  "target": "她很高。",
+                  "acceptedVariants": [
+                    "她很高",
+                    "她非常高",
+                    "这个女人很高",
+                    "这个人很高",
+                    "很高"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:hen",
+                    "zh:w:gao"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.un_model_person",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.describe"
+                  ]
                 }
               ],
               "flow": [
@@ -14770,6 +17533,9 @@
                 },
                 {
                   "exercise": "zh-vi:un-l0-e7"
+                },
+                {
+                  "exercise": "zh-vi:un-l0-e8"
                 }
               ]
             },
@@ -14937,6 +17703,74 @@
                       "native": "xanh lá"
                     }
                   ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:un-l1-e8",
+                  "speechItemId": "zh.speak.n_rep_zhong",
+                  "modelClipId": "zh.clip.un_model_rep_zhong",
+                  "target": "这个箱子很重。",
+                  "acceptedVariants": [
+                    "这个箱子很重"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.describe"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:un-l1-e9",
+                  "speechItemId": "zh.speak.n_box",
+                  "instruction": "Nhìn hình: cái thùng to. Hãy nói câu đó bằng tiếng Trung.",
+                  "cueEmoji": "📦",
+                  "target": "这个箱子很大。",
+                  "acceptedVariants": [
+                    "这个箱子很大",
+                    "箱子很大",
+                    "这个箱子非常大",
+                    "这是一个大箱子",
+                    "很大"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:xiangzi",
+                    "zh:w:hen",
+                    "zh:w:da"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.un_model_box",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.describe"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:un-l1-e10",
+                  "speechItemId": "zh.speak.n_car",
+                  "instruction": "Nhìn hình: chiếc xe mới. Hãy nói câu đó bằng tiếng Trung.",
+                  "cueEmoji": "🚗",
+                  "target": "这辆车很新。",
+                  "acceptedVariants": [
+                    "这辆车很新",
+                    "车很新",
+                    "这是一辆新车",
+                    "这辆汽车很新",
+                    "这是新车",
+                    "新车"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:che",
+                    "zh:w:hen",
+                    "zh:w:xin"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.un_model_car",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.describe"
+                  ]
                 }
               ]
             },
@@ -15061,6 +17895,46 @@
                       "native": "chậm"
                     }
                   ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "zh-vi:un-l2-e6",
+                  "speechItemId": "zh.speak.n_rep_bai",
+                  "modelClipId": "zh.clip.un_model_rep_bai",
+                  "target": "我的衣服是白的。",
+                  "acceptedVariants": [
+                    "我的衣服是白的"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.speaking.describe"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:un-l2-e7",
+                  "speechItemId": "zh.speak.n_cat",
+                  "instruction": "Nhìn hình: con mèo nhỏ. Hãy nói câu đó bằng tiếng Trung.",
+                  "cueEmoji": "🐈",
+                  "target": "这只猫很小。",
+                  "acceptedVariants": [
+                    "这只猫很小",
+                    "猫很小",
+                    "这是一只小猫",
+                    "小猫",
+                    "这只猫非常小"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:mao-1",
+                    "zh:w:hen",
+                    "zh:w:xiao"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.un_model_cat",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.describe"
+                  ]
                 }
               ],
               "flow": [
@@ -15084,6 +17958,12 @@
                 },
                 {
                   "exercise": "zh-vi:un-l2-e5"
+                },
+                {
+                  "exercise": "zh-vi:un-l2-e6"
+                },
+                {
+                  "exercise": "zh-vi:un-l2-e7"
                 }
               ]
             },
@@ -15225,6 +18105,59 @@
                   "answer": "她很年轻",
                   "alternatives": [
                     "她非常年轻"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:un-l3-e7",
+                  "speechItemId": "zh.speak.n_room",
+                  "instruction": "Nhìn hình: căn phòng này sạch sẽ. Hãy nói câu đó bằng tiếng Trung.",
+                  "cueEmoji": "🛏️",
+                  "target": "这个房间很干净。",
+                  "acceptedVariants": [
+                    "这个房间很干净",
+                    "房间很干净",
+                    "这个房间非常干净",
+                    "很干净"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:fangjian",
+                    "zh:w:hen",
+                    "zh:w:ganjing"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.un_model_room",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.describe"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "zh-vi:un-l3-e8",
+                  "speechItemId": "zh.speak.n_person",
+                  "instruction": "Nhìn hình: người phụ nữ này cao. Hãy nói câu đó bằng tiếng Trung.",
+                  "cueEmoji": "👩",
+                  "target": "她很高。",
+                  "acceptedVariants": [
+                    "她很高",
+                    "她非常高",
+                    "这个女人很高",
+                    "这个人很高",
+                    "很高"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "zh:w:hen",
+                    "zh:w:gao"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "zh.clip.un_model_person",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "zh.obj.speaking.describe",
+                    "zh.obj.adjectives.hen_tai"
                   ]
                 }
               ]
@@ -15419,6 +18352,76 @@
                       "native": "Trung Quốc"
                     }
                   ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uo-l0-e8",
+                  "writingTaskId": "zh.write.o_name",
+                  "writingMode": "guided",
+                  "instruction": "Bạn là Nguyễn Hải. Hãy viết một câu tiếng Trung nói tên của bạn (gõ pinyin rồi chọn chữ Hán).",
+                  "cueFacts": [
+                    {
+                      "label": "Tên",
+                      "value": "Nguyễn Hải"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "name",
+                        "description": "tên của bạn",
+                        "variants": [
+                          "阮海"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 12,
+                    "requireSentenceVerbs": [
+                      "叫",
+                      "是"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "我叫阮海。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.personal_info"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uo-l0-e9",
+                  "writingTaskId": "zh.write.o_age",
+                  "writingMode": "guided",
+                  "instruction": "Bạn 23 tuổi. Hãy viết một câu tiếng Trung nói tuổi của bạn.",
+                  "cueFacts": [
+                    {
+                      "label": "Tuổi",
+                      "value": "23"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "age",
+                        "description": "tuổi của bạn",
+                        "variants": [
+                          "二十三岁"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 12
+                  },
+                  "modelAnswers": [
+                    "我今年二十三岁。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.personal_info"
+                  ]
                 }
               ]
             },
@@ -15517,6 +18520,56 @@
                     "在",
                     "工厂",
                     "工作"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uo-l1-e6",
+                  "writingTaskId": "zh.write.o_home",
+                  "writingMode": "guided",
+                  "instruction": "Hãy viết hai câu: bạn là người nước nào, và bây giờ bạn sống ở thành phố nào.",
+                  "cueFacts": [
+                    {
+                      "label": "Nước",
+                      "value": "Việt Nam"
+                    },
+                    {
+                      "label": "Thành phố",
+                      "value": "Thượng Hải"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "from",
+                        "description": "bạn là người nước nào",
+                        "variants": [
+                          "越南人",
+                          "越南"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "city",
+                        "description": "thành phố bạn sống",
+                        "variants": [
+                          "上海"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 4,
+                    "maxTokens": 20,
+                    "requireSentenceVerbs": [
+                      "是",
+                      "住"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "我是越南人。我现在住在上海。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.personal_info"
                   ]
                 }
               ]
@@ -15638,6 +18691,45 @@
                     }
                   ],
                   "correct": 0
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uo-l2-e6",
+                  "writingTaskId": "zh.write.o_family",
+                  "writingMode": "guided",
+                  "instruction": "Hãy viết hai câu: bạn có hai em gái, và bạn thích nấu ăn.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "sisters",
+                        "description": "hai em gái",
+                        "variants": [
+                          "两个妹妹"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "like",
+                        "description": "bạn thích nấu ăn",
+                        "variants": [
+                          "喜欢做饭"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 4,
+                    "maxTokens": 20,
+                    "requireSentenceVerbs": [
+                      "有",
+                      "喜欢"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "我有两个妹妹。我喜欢做饭。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.personal_info"
+                  ]
                 }
               ],
               "flow": [
@@ -15661,6 +18753,9 @@
                 },
                 {
                   "exercise": "zh-vi:uo-l2-e5"
+                },
+                {
+                  "exercise": "zh-vi:uo-l2-e6"
                 }
               ]
             },
@@ -15762,6 +18857,99 @@
                     }
                   ],
                   "correct": 2
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uo-l3-e6",
+                  "writingTaskId": "zh.write.o_all",
+                  "writingMode": "guided",
+                  "instruction": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố bạn sống.",
+                  "cueFacts": [
+                    {
+                      "label": "Tên",
+                      "value": "Nguyễn Hồng"
+                    },
+                    {
+                      "label": "Tuổi",
+                      "value": "28"
+                    },
+                    {
+                      "label": "Thành phố",
+                      "value": "Quảng Châu"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "name",
+                        "description": "tên",
+                        "variants": [
+                          "阮红"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "age",
+                        "description": "tuổi",
+                        "variants": [
+                          "二十八岁"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "city",
+                        "description": "thành phố",
+                        "variants": [
+                          "广州"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 6,
+                    "maxTokens": 30,
+                    "requireSentenceVerbs": [
+                      "叫",
+                      "是",
+                      "住"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "我叫阮红。我今年二十八岁。我住在广州。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.personal_info"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uo-l3-e7",
+                  "writingTaskId": "zh.write.o_open",
+                  "writingMode": "open",
+                  "instruction": "Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "about",
+                        "description": "một câu về bạn",
+                        "variants": [
+                          "是",
+                          "叫",
+                          "住",
+                          "喜欢",
+                          "工作"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 40
+                  },
+                  "modelAnswers": [
+                    "我叫阮花。我是越南人。我喜欢音乐。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.personal_info"
+                  ]
                 }
               ]
             }
@@ -15900,6 +19088,48 @@
                     "然后",
                     "休息"
                   ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:up-l0-e6",
+                  "writingTaskId": "zh.write.p_who",
+                  "writingMode": "guided",
+                  "instruction": "Hãy viết một câu: buổi sáng anh Nguyễn Nam uống cà phê.",
+                  "cueFacts": [
+                    {
+                      "label": "Người",
+                      "value": "Nguyễn Nam"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "drink",
+                        "description": "uống cà phê",
+                        "variants": [
+                          "喝咖啡"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "morning",
+                        "description": "buổi sáng",
+                        "variants": [
+                          "早上",
+                          "每天早上"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 15
+                  },
+                  "modelAnswers": [
+                    "阮南早上喝咖啡。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.phrases_sentences"
+                  ]
                 }
               ],
               "flow": [
@@ -15923,6 +19153,9 @@
                 },
                 {
                   "exercise": "zh-vi:up-l0-e5"
+                },
+                {
+                  "exercise": "zh-vi:up-l0-e6"
                 }
               ]
             },
@@ -16039,6 +19272,63 @@
                       "target": "一起",
                       "native": "cùng nhau"
                     }
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:up-l1-e6",
+                  "writingTaskId": "zh.write.p_neg",
+                  "writingMode": "guided",
+                  "instruction": "Hãy viết một câu phủ định: bạn không uống rượu.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "neg",
+                        "description": "bạn không uống rượu",
+                        "variants": [
+                          "不喝酒"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 12
+                  },
+                  "modelAnswers": [
+                    "我不喝酒。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.phrases_sentences"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:up-l1-e7",
+                  "writingTaskId": "zh.write.p_ask",
+                  "writingMode": "guided",
+                  "instruction": "Hãy viết một câu hỏi: Bạn sống ở đâu?",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "ask",
+                        "description": "câu hỏi về nơi sống",
+                        "variants": [
+                          "住在哪儿",
+                          "住在哪里",
+                          "住哪儿",
+                          "住哪里"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 12
+                  },
+                  "modelAnswers": [
+                    "你住在哪儿？"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.phrases_sentences"
                   ]
                 }
               ]
@@ -16183,6 +19473,51 @@
                       "native": "tuy"
                     }
                   ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:up-l2-e7",
+                  "writingTaskId": "zh.write.p_link",
+                  "writingMode": "guided",
+                  "instruction": "Hãy viết hai câu: bạn ăn sáng, sau đó bạn đi làm. Dùng một từ nối.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "breakfast",
+                        "description": "bạn ăn sáng",
+                        "variants": [
+                          "吃早饭"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "link",
+                        "description": "từ nối",
+                        "variants": [
+                          "然后"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "work",
+                        "description": "bạn đi làm",
+                        "variants": [
+                          "上班",
+                          "去工厂",
+                          "去公司"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 5,
+                    "maxTokens": 25
+                  },
+                  "modelAnswers": [
+                    "我先吃早饭，然后去上班。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.phrases_sentences"
+                  ]
                 }
               ]
             },
@@ -16280,6 +19615,38 @@
                     "然后",
                     "回家"
                   ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:up-l3-e5",
+                  "writingTaskId": "zh.write.p_open",
+                  "writingMode": "open",
+                  "instruction": "Hãy viết vài câu về một ngày của bạn.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "day",
+                        "description": "một câu về ngày của bạn",
+                        "variants": [
+                          "起床",
+                          "吃饭",
+                          "上班",
+                          "下班",
+                          "睡觉",
+                          "每天"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 40
+                  },
+                  "modelAnswers": [
+                    "我每天六点起床。晚上我在宿舍吃饭。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.phrases_sentences"
+                  ]
                 }
               ],
               "flow": [
@@ -16300,6 +19667,9 @@
                 },
                 {
                   "exercise": "zh-vi:up-l3-e4"
+                },
+                {
+                  "exercise": "zh-vi:up-l3-e5"
                 }
               ]
             }
@@ -16449,6 +19819,60 @@
                     "请假",
                     "一天"
                   ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uq-l0-e6",
+                  "writingTaskId": "zh.write.q_sick",
+                  "writingMode": "guided",
+                  "instruction": "Hãy nhắn cho tổ trưởng Lý: chào, báo bạn bị sốt, và hôm nay bạn xin nghỉ.",
+                  "cueFacts": [
+                    {
+                      "label": "Gửi",
+                      "value": "tổ trưởng Lý"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "greeting",
+                        "description": "lời chào",
+                        "variants": [
+                          "您好",
+                          "你好",
+                          "组长好",
+                          "经理好"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "fever",
+                        "description": "bạn bị sốt",
+                        "variants": [
+                          "发烧"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "rest",
+                        "description": "xin nghỉ",
+                        "variants": [
+                          "请假",
+                          "不能上班",
+                          "休息"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 5,
+                    "maxTokens": 30
+                  },
+                  "modelAnswers": [
+                    "李组长，您好！我发烧了，今天想请假。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.short_message"
+                  ]
                 }
               ],
               "flow": [
@@ -16472,6 +19896,9 @@
                 },
                 {
                   "exercise": "zh-vi:uq-l0-e5"
+                },
+                {
+                  "exercise": "zh-vi:uq-l0-e6"
                 }
               ]
             },
@@ -16600,6 +20027,45 @@
                       "native": "nhận được"
                     }
                   ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uq-l1-e6",
+                  "writingTaskId": "zh.write.q_reply",
+                  "writingMode": "guided",
+                  "instruction": "Tổ trưởng nhắn: mai làm từ 7 giờ. Hãy trả lời: bạn đã hiểu, và cảm ơn.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "ok",
+                        "description": "bạn đã hiểu",
+                        "variants": [
+                          "好的",
+                          "明白了",
+                          "我明白了",
+                          "知道了",
+                          "收到"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "thanks",
+                        "description": "lời cảm ơn",
+                        "variants": [
+                          "谢谢"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 20
+                  },
+                  "modelAnswers": [
+                    "明白了，谢谢组长！"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.short_message"
+                  ]
                 }
               ]
             },
@@ -16710,6 +20176,60 @@
                       "我",
                       "请假"
                     ]
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uq-l2-e5",
+                  "writingTaskId": "zh.write.q_late",
+                  "writingMode": "guided",
+                  "instruction": "Hãy nhắn cho giám đốc Vương: chào, báo xe buýt đến muộn, rồi xin lỗi.",
+                  "cueFacts": [
+                    {
+                      "label": "Gửi",
+                      "value": "giám đốc Vương"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "greeting",
+                        "description": "lời chào",
+                        "variants": [
+                          "您好",
+                          "你好",
+                          "组长好",
+                          "经理好"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "bus",
+                        "description": "xe buýt đến muộn",
+                        "variants": [
+                          "公交车来晚了",
+                          "公交车晚了"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "sorry",
+                        "description": "lời xin lỗi",
+                        "variants": [
+                          "对不起",
+                          "不好意思"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 5,
+                    "maxTokens": 30
+                  },
+                  "modelAnswers": [
+                    "王经理，您好！公交车来晚了，对不起！"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.short_message"
                   ]
                 }
               ]
@@ -16822,6 +20342,36 @@
                       "吗"
                     ]
                   ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:uq-l3-e5",
+                  "writingTaskId": "zh.write.q_open",
+                  "writingMode": "open",
+                  "instruction": "Hãy viết một tin nhắn ngắn cho một người bạn.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "message",
+                        "description": "lời chào hoặc lời mời",
+                        "variants": [
+                          "你好",
+                          "一起",
+                          "吧",
+                          "谢谢"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 40
+                  },
+                  "modelAnswers": [
+                    "小王，你好！星期六我们一起去看电影吧。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.short_message"
+                  ]
                 }
               ],
               "flow": [
@@ -16842,6 +20392,9 @@
                 },
                 {
                   "exercise": "zh-vi:uq-l3-e4"
+                },
+                {
+                  "exercise": "zh-vi:uq-l3-e5"
                 }
               ]
             }
@@ -17026,6 +20579,79 @@
                       "target": "签字",
                       "native": "ký tên"
                     }
+                  ]
+                },
+                {
+                  "type": "simpleForm",
+                  "id": "zh-vi:ur-l0-e8",
+                  "writingTaskId": "zh.write.r_form_bank",
+                  "instruction": "Hãy điền đơn mở thẻ ngân hàng với các thông tin trên thẻ.",
+                  "cueFacts": [
+                    {
+                      "label": "Họ tên",
+                      "value": "Nguyễn Nam"
+                    },
+                    {
+                      "label": "Nước",
+                      "value": "Việt Nam"
+                    },
+                    {
+                      "label": "Điện thoại",
+                      "value": "138-1234-5678"
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "id": "name",
+                      "label": "姓名",
+                      "slotId": "name"
+                    },
+                    {
+                      "id": "country",
+                      "label": "国家",
+                      "slotId": "country"
+                    },
+                    {
+                      "id": "phone",
+                      "label": "电话",
+                      "slotId": "phone"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "name",
+                        "description": "họ tên",
+                        "variants": [
+                          "阮南"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "country",
+                        "description": "nước",
+                        "variants": [
+                          "越南"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "phone",
+                        "description": "số điện thoại",
+                        "variants": [
+                          "138-1234-5678"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 12
+                  },
+                  "modelAnswers": [
+                    "阮南 | 越南 | 138-1234-5678"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.form_filling"
                   ]
                 }
               ]
@@ -17249,6 +20875,79 @@
                     }
                   ],
                   "correct": 3
+                },
+                {
+                  "type": "simpleForm",
+                  "id": "zh-vi:ur-l2-e5",
+                  "writingTaskId": "zh.write.r_form_dorm",
+                  "instruction": "Hãy điền phiếu đăng ký ký túc xá với các thông tin trên thẻ.",
+                  "cueFacts": [
+                    {
+                      "label": "Họ tên",
+                      "value": "Nguyễn Hải"
+                    },
+                    {
+                      "label": "Địa chỉ",
+                      "value": "Thượng Hải"
+                    },
+                    {
+                      "label": "Điện thoại",
+                      "value": "139-8765-4321"
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "id": "name",
+                      "label": "姓名",
+                      "slotId": "name"
+                    },
+                    {
+                      "id": "address",
+                      "label": "地址",
+                      "slotId": "address"
+                    },
+                    {
+                      "id": "phone",
+                      "label": "电话",
+                      "slotId": "phone"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "name",
+                        "description": "họ tên",
+                        "variants": [
+                          "阮海"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "address",
+                        "description": "địa chỉ",
+                        "variants": [
+                          "上海"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "phone",
+                        "description": "số điện thoại",
+                        "variants": [
+                          "139-8765-4321"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 12
+                  },
+                  "modelAnswers": [
+                    "阮海 | 上海 | 139-8765-4321"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.form_filling"
+                  ]
                 }
               ]
             },
@@ -17348,6 +21047,85 @@
                   "audioTarget": "我的护照在包里",
                   "answer": "我的护照在包里",
                   "alternatives": []
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:ur-l3-e5",
+                  "writingTaskId": "zh.write.r_note",
+                  "writingMode": "guided",
+                  "instruction": "Hãy viết lời nhắn cho đồng nghiệp: máy bị hỏng, xin gọi tổ trưởng đến.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "machine",
+                        "description": "cái máy",
+                        "variants": [
+                          "机器"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "broken",
+                        "description": "máy bị hỏng",
+                        "variants": [
+                          "坏了",
+                          "有问题",
+                          "不动了"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "call",
+                        "description": "gọi tổ trưởng",
+                        "variants": [
+                          "叫组长",
+                          "告诉组长",
+                          "给组长打电话"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 4,
+                    "maxTokens": 25
+                  },
+                  "modelAnswers": [
+                    "机器坏了，请叫组长来。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.phrases_sentences"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "zh-vi:ur-l3-e6",
+                  "writingTaskId": "zh.write.r_open",
+                  "writingMode": "open",
+                  "instruction": "Hãy viết vài câu về công việc của bạn.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "work",
+                        "description": "một câu về công việc",
+                        "variants": [
+                          "工作",
+                          "工厂",
+                          "公司",
+                          "组长",
+                          "同事",
+                          "上班"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 40
+                  },
+                  "modelAnswers": [
+                    "我在工厂工作。我早上七点上班。我的组长很好。"
+                  ],
+                  "objectiveTargets": [
+                    "zh.obj.writing.phrases_sentences"
+                  ]
                 }
               ]
             }
@@ -17658,6 +21436,14 @@
                       "native": "cái"
                     }
                   ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:us-l1-e6",
+                  "scenarioId": "zh.scenario.shop_fruit",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
+                  ]
                 }
               ]
             },
@@ -17896,6 +21682,14 @@
                   "audioTarget": "一共多少钱",
                   "answer": "一共多少钱",
                   "alternatives": []
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:us-l3-e6",
+                  "scenarioId": "zh.scenario.restaurant_order",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
+                  ]
                 }
               ]
             }
@@ -18197,6 +21991,14 @@
                   "alternatives": [
                     "我家离工厂近"
                   ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:ut-l1-e6",
+                  "scenarioId": "zh.scenario.ask_subway",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
+                  ]
                 }
               ]
             },
@@ -18450,6 +22252,14 @@
                       "target": "近",
                       "native": "gần"
                     }
+                  ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:ut-l3-e6",
+                  "scenarioId": "zh.scenario.taxi",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
                   ]
                 }
               ]
@@ -18730,6 +22540,14 @@
                   "alternatives": [
                     "我头很疼"
                   ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:uu-l1-e6",
+                  "scenarioId": "zh.scenario.clinic_reception",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
+                  ]
                 }
               ]
             },
@@ -18848,6 +22666,14 @@
                   "answer": "我想去医院",
                   "alternatives": [
                     "我要去医院"
+                  ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:uu-l2-e6",
+                  "scenarioId": "zh.scenario.bank_account",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
                   ]
                 }
               ]
@@ -18979,6 +22805,14 @@
                     "1天吃3次",
                     "1天3次"
                   ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:uu-l3-e6",
+                  "scenarioId": "zh.scenario.clinic_doctor",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
+                  ]
                 }
               ],
               "flow": [
@@ -19002,6 +22836,9 @@
                 },
                 {
                   "exercise": "zh-vi:uu-l3-e5"
+                },
+                {
+                  "exercise": "zh-vi:uu-l3-e6"
                 }
               ]
             }
@@ -19264,6 +23101,14 @@
                     "我要请假1天",
                     "我想请1天假"
                   ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:uv-l1-e5",
+                  "scenarioId": "zh.scenario.call_sick",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.everyday_conversation"
+                  ]
                 }
               ],
               "flow": [
@@ -19284,6 +23129,9 @@
                 },
                 {
                   "exercise": "zh-vi:uv-l1-e4"
+                },
+                {
+                  "exercise": "zh-vi:uv-l1-e5"
                 }
               ]
             },
@@ -19418,6 +23266,14 @@
                       "给你"
                     ]
                   ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:uv-l2-e6",
+                  "scenarioId": "zh.scenario.factory_safety",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
+                  ]
                 }
               ]
             },
@@ -19541,6 +23397,22 @@
                     "发",
                     "照片",
                     "吧"
+                  ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:uv-l3-e6",
+                  "scenarioId": "zh.scenario.warehouse_boxes",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.practical_needs"
+                  ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "zh-vi:uv-l3-e7",
+                  "scenarioId": "zh.scenario.taiwan_first_day",
+                  "objectiveTargets": [
+                    "zh.obj.interaction.everyday_conversation"
                   ]
                 }
               ]

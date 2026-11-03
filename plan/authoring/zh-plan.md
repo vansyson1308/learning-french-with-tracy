@@ -6,11 +6,11 @@ Prompt: `plan/prompts/P4d-zh-vi-hsk.md`, following `P3d-author-course-vi.md` wit
 `bash content/zh/_drafts/_generators/zh-pipeline.sh` (byte-deterministic, offline: two runs give identical files), then
 later `bun scripts/author.ts promote --target zh --native vi --allow-missing-audio`.
 
-## 1. Status after sessions 1–2 (2026-11-04)
+## 1. Status after sessions 1–3 (2026-11-04)
 
 | Layer | State | Where |
 |---|---|---|
-| Lexicon | 903 lexemes: A1 718, A2-1 185; every one with `glosses.vi`, tone-marked pinyin and the traditional spelling from CC-CEDICT, an original example in vi + en; 9 proper nouns (cities, three family names) | `content/zh/lexicon/lexemes.json`, frozen ids `content/zh/lexemes.json` |
+| Lexicon | 903 lexemes: A1 718, A2-1 185 (906 / 188 after session 3); every one with `glosses.vi`, tone-marked pinyin and the traditional spelling from CC-CEDICT, an original example in vi + en; 9 proper nouns (cities, three family names) | `content/zh/lexicon/lexemes.json`, frozen ids `content/zh/lexemes.json` |
 | HSK 3.0 anchor | level 1: 435 of 506 words taken (the other 71 have a reason, `anchors-left-out.txt`); level 2: 332 of 767 | `content/zh/lexicon/REVIEW.md` |
 | Characters | 520 in A1 surfaces: 299 of the 300 HSK level-1 characters, 175 level-2, 46 beyond; target 474 (levels 1–2) | `content/zh/_drafts/review/hanzi.json` |
 | Hán-Việt | 159 course words added to the P4b table (195 entries, 189 lexemes covered); each passes the Unihan check or carries a note; 24 false friends flagged, more marked "partly" | `content/hanviet/zh.json`, source `hanviet-zh.txt`; sheet `content/hanviet/REVIEW.md` regenerated |
@@ -21,6 +21,9 @@ later `bun scripts/author.ts promote --target zh --native vi --allow-missing-aud
 | Lessons (session 2) | 108 lessons, 811 exercises (select 400, fillBlank 144, wordBank 96, typeAnswer 92, match 79), 24 measure-word and 11 aspect fill-ins, concept steps in 41 lessons; Section 1 tap-only; self-check 0 findings | `_generators/zh-lessons-s1…s6.py`, `zh_lesson_lib.py`, `zh_text.py`, `zh-check-answers.py`, `_drafts/REVIEW-NOTES.md`; staged `content/courses/zh-vi.json` |
 | Concept cards (session 2) | 28 cards (vi + en), all shown in lesson flows; no paradigm table | `_generators/zh-concepts.py` → staged `content/zh/pedagogy/concepts.json` |
 | Hán-Việt + Unihan (session 2) | Unihan re-derived from the pinned zip (+12 characters); 工厂, 仓库, 经验, 辞职 added (199 entries) | `content/hanviet/unihan-readings.json`, `zh.json`, `REVIEW.md` |
+| Primer (session 3) | tones with Vietnamese comparisons, 10 tone pairs, 10 sound contrasts, sandhi of 3+3 / 不 / 一, strokes, 20-item checkpoint (pass 16) | `_generators/zh-primer.py` → `content/zh/primer/script-primer.json` (+ compiled copy, `REVIEW.md`) |
+| Layers (session 3) | 29 readings (20 teaching), 222 clips (66 reception, 30 speech models, 126 partner turns), 52 speech items (22 reserved), 35 writing tasks (16 reserved), 21 scenarios (10 reserved); 3 sign lexemes (紧急, 员工, 进入: 906 lexemes, A2-1 188) | `_generators/zh-reception-s3.py`, `zh-speech-s4.py`, `zh-writing-s5.py`, `zh-scenarios-s6.py`, `zh_layers.py`, `zh_lesson_refs.py`; staged `content/zh/{reception,speech,writing,interaction}/` |
+| Lessons (session 3) | 976 exercises: +165 layer exercises in Sections 3–6 (LC 44, RC 47, dictation 7, speakProduction 28, speakRepetition 9, guidedWriting 17, simpleForm 2, interactionScenario 11); self-check 0 findings | `zh-lessons-s3…s6.py`, `zh-check-answers.py` rule 8 |
 
 `course-draft.ts validate --target zh`: 192 errors, all of three kinds a session-1 course has (ja-vi had the same):
 108 stub lessons with one exercise and 81 stub payload repeats (lessons, session 2), and the missing checkpoints,
@@ -28,6 +31,9 @@ placement and attainment-of-checkpoints (assessment session).
 
 After session 2: 735 errors of two kinds only — 732 `audioTarget has no audio` (the audio session; the promote runs
 with `--allow-missing-audio`) and the 3 missing assessment files (session 5). The lesson and concept errors are gone.
+
+After session 3: 957 errors, the same two kinds — 732 `audioTarget has no audio` + 222 reception clips whose generated
+asset is missing (all audio session), and the 3 missing assessment files.
 
 ## 2. Course shape (BLUEPRINT §1)
 
@@ -182,7 +188,13 @@ or speaks it, word by word through the stored `traditional` (P4b fold: 學生 = 
 recognition only, on Taiwan signs and scenarios (Section 3 unit g/h, scenario "first day at a Taiwan factory"). The
 stored traditional is the HSK list's Taiwan-first variant where CC-CEDICT has several (裡, 著, 隻).
 
-## 10. Scenarios (21, 10 reserved; session 4)
+## 10. Scenarios (21, 10 reserved) — done in session 3
+
+Built (`zh-scenarios-s6.py`): teaching — shop_fruit (us-l1), restaurant_order with 便当 (us-l3), ask_subway (ut-l1),
+taxi (ut-l3), clinic_reception (uu-l1), bank_account (uu-l2), clinic_doctor (uu-l3), call_sick (uv-l1),
+factory_safety (uv-l2), warehouse_boxes and taiwan_first_day (uv-l3); reserved — cp6_new_colleague, cp6_interview,
+cp6_supermarket_pay, cp6_way_bank, cp6_clinic_cough, cp6_call_office, a1cap_shift_change, a1cap_canteen_lunch,
+a1cap_friend_plan, a1cap_weekend. The plan below was the brief:
 
 Teaching: shop (fruit, pay by QR), restaurant order (with the Taiwan 便当 variant), asking the way to the subway,
 taxi, clinic reception, the doctor, opening a bank account (form, password), factory safety briefing (helmet, gloves,
@@ -254,6 +266,21 @@ uses 您 and 请 with bosses.
     "passed", and pinyin stays under the characters until the learner turns off the course's `readingAid` switch
     (decision 11). The checkpoint texts say so ("Cách đọc vẫn hiện dưới chữ…"); the ja texts are chosen only for a kana
     primer (`isKanaPrimer`), so ja-vi and ja-en read exactly as before.
+19. **zh layers are validated with the app's tokenizer.** The validators read speech, writing and interaction answers
+    with the build plugin, i.e. Intl.Segmenter for zh — whose words (我是, 我不, 先吃, 住在, 点到, 公 交 车) the app never
+    makes: it grades with the dictionary path bound to the course lexicon. A model answer could pass the validator and
+    fail in the app, or the reverse. `lexiconBoundPlugin` binds the target's lexicon for a language that opts in
+    (`validatedWithLexicon`, set for zh). ja is not switched: under its dictionary tokens one ja-vi writing model
+    (ja.write.p_ask, どこに住んでいますか) fails its sentence-verb check (いま す, not ます) — a runtime grading gap
+    reported to the coordinator, not fixed here (no ja content changed).
+20. **Three sign lexemes** through the ETL (`core-a2.txt`, CC-CEDICT readings from the pinned subset): 紧急 (紧急出口),
+    员工 (员工食堂), 进入 (禁止进入); band A2-1. 小心, 出口, 入口, 禁止, 吸烟, 危险, 注意, 灭火器 were lexemes already.
+21. **Spoken answers list numbers once.** The speech grader spells digits as hanzi numerals before it compares (25岁 =
+    二十五岁, 2张 = 两张), so a digit variant is a duplicate the validator refuses; typed keys and dictations still list
+    both spellings (the typed comparison does not fold digits).
+22. **No traditional-character texts yet.** The Taiwan scenario and the 便当 shop are in simplified characters; Taiwan
+    signs in traditional (§9, recognition only) need the reading index to cover traditional surfaces, which it does not
+    (the app folds traditional only in answers). Left for the D-10 / stories session.
 
 ## 13. Next sessions
 
@@ -261,10 +288,9 @@ uses 您 and 请 with bosses.
    (decisions 14–17). Left for the layer sessions: the Section 3–6 types that point at reception, speech, writing and
    scenario records (a `zh_lesson_refs.py` and the LC/RC/D/SP/WR/IX helpers of `ja_lesson_lib.py`).
 2. ~~**Primer** (session 3)~~ done: §4, decision 18.
-3. **Reception, speech, writing, scenarios** (session 4): readings, ≈ 220 clips, 50 speech items (`zh-CN`), 35 writing
-   tasks, 21 scenarios (§10).
-4. **Assessment + HSK 1–2 track** (session 5): checkpoints, placement, FORMAT-SOURCES.md from chinesetest.cn, two mock
-   forms per level.
+3. ~~**Reception, speech, writing, scenarios**~~ done in session 3 (§1, decisions 19–22), with the Section 3–6 exercises.
+4. **Assessment + HSK 1–2 track** (next session): checkpoints 1–6 and the capstone on the reserved records (cp3_*, cp4_*,
+   cp5_*, cp6_*, a1cap_*), placement (pl_*), FORMAT-SOURCES.md from chinesetest.cn, ≥ 2 mock forms per level.
 5. **Stories** (session 6): graded stories on the dictionary tokenizer of P4c (`scripts/lib/stories.ts`, script han).
 6. **D-10 review, audio** (canary with the extra voices, the front-end of §7, generate, CER audit), promote, compile,
    V8 re-key, claim gate, KNOWN_LIMITATIONS, STATUS.

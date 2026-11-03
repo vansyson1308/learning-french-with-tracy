@@ -35,13 +35,27 @@ python -I "$G/zh-concepts.py" .
 ingest objectives
 ingest units
 ingest concepts
+# Reception, speech, writing, scenarios (session 3). s3 starts listening/OUTPUT.jsonl; s4 and s6 append their clips
+# (speech models, partner turns); s6 also checks zh_lesson_refs.py. The ingest takes the voice cast from
+# content/audio/voice-casts.json (zh: still pending its canary).
+rm -f "$STAGED/content/zh/reception/reading.json" "$STAGED/content/zh/reception/listening.json" "$STAGED/content/zh/speech/items.json" "$STAGED/content/zh/writing/tasks.json" "$STAGED/content/zh/interaction/scenarios.json"
+python -I "$G/zh-reception-s3.py" .
+python -I "$G/zh-speech-s4.py" .
+python -I "$G/zh-writing-s5.py" .
+python -I "$G/zh-scenarios-s6.py" .
 # Lessons (session 2): each section's generator writes lessons/parts/<section>.jsonl; the self-check joins them into
-# lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json).
+# lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json). Sections 3-6
+# point at the layer records above (zh_lesson_refs.py), so the layers run first.
 rm -rf content/zh/_drafts/lessons/parts
 for section in s1 s2 s3 s4 s5 s6; do
   if [ -f "$G/zh-lessons-$section.py" ]; then python -I "$G/zh-lessons-$section.py" .; fi
 done
 python -I "$G/zh-check-answers.py" .
+ingest listening
+ingest readings
+ingest speech
+ingest writing
+ingest scenarios
 ingest lessons
 if ! python -I -c "import json,sys; p=json.load(open('content/zh/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then
   mkdir -p "$STAGED/content/courses"

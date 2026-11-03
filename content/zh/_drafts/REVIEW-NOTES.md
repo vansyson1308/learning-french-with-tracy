@@ -1,4 +1,4 @@
-# zh-vi — review notes (P4d session 2: lessons and concept cards)
+# zh-vi — review notes (P4d sessions 2-3: lessons, concept cards, the layer exercises)
 
 Self-check of the answer keys, run by the session that wrote them. It is not the D-10 review: that is a later session
 (AI pass, then the owner), and it reads these notes first.
@@ -45,6 +45,30 @@ End state: 108 lessons, 811 exercises (select 400 — targetToNative 199, native
 wordBank 96, typeAnswer 92, match 79), 24 measure-word and 11 aspect fill-ins, 28 concept cards in 41 lesson flows
 (43 steps), 0 findings, 0 decided. Two pipeline runs give identical files.
 
+## Session 3 (2026-11-04): the layers and the Section 3-6 exercises
+
+Rule 8 joins the self-check: comprehension items (options distinct, all Chinese or all Vietnamese, a Vietnamese
+question, a Chinese key found in its reading or clip and no Chinese distractor heard there too), dictations (no digits,
+the clip's own transcript, its numeral and natural spellings listed), spoken answers (target among its variants, hanzi
+only, natural pairs listed), writing (each guided slot realized in the model, each form value a variant, hanzi only),
+and the reading and grammar rules over every reading, clip, speech answer, writing model and scenario line (reserved
+records included). `zh_lesson_lib.finish` also stops when a lesson's layer ids differ from `zh_lesson_refs.py`.
+
+| Rule | Found | Fixed how |
+|---|---|---|
+| 吗 after a question word | 4 strings (有什么事吗？ ×2, 还要什么吗？, 你有什么问题吗？) — false positives | 什么 after 有 / 要 before a final 吗 is the indefinite "anything": the rule skips it |
+| Number before a noun | 1 (五路公交车) — false positive | 路 after a number is a bus route: exempt like 楼 and 家 |
+| Distractor heard | 1 (天 inside the clip 天气) | distractor replaced (雨) |
+| Spoken variants (validator) | 22 items: digit spellings (25岁 beside 二十五岁) duplicate after the grader's fold | numbers are no longer widened for spoken answers (`zh_layers.spoken_variants`) |
+| Model answer vs its rubric (validator) | 4 under Intl.Segmenter's words (我是, 我不, 先吃, 点到), then 2 under the app's tokens: q_reply and cp5_note_movie realized a slot twice | validators read zh with the app's dictionary tokenizer (zh-plan decision 19); the two models rewritten |
+| Form rubric (schema) | 5 forms with minTokens 1 | 2, as ja |
+| English fields | 3 primer `en` texts named the Vietnamese tones in Vietnamese | reworded ("the Vietnamese rising tone") |
+
+End state: 976 exercises (+165: listeningComprehension 44, readingComprehension 47, dictation 7, speakProduction 28,
+speakRepetition 9, guidedWriting 17, simpleForm 2, interactionScenario 11), 0 findings, 0 decided. Layers: 29 readings
+(20 teaching), 222 clips (66 reception, 30 speech models, 126 partner turns), 52 speech items (22 reserved), 35 writing
+tasks (16 reserved), 21 scenarios (10 reserved). Two pipeline runs give identical files (112 files).
+
 ## For the D-10 reviewer
 
 - Read the typed keys first (every `typeAnswer` with its alternatives in `lessons/OUTPUT.jsonl`): the
@@ -53,3 +77,8 @@ wordBank 96, typeAnswer 92, match 79), 24 measure-word and 11 aspect fill-ins, 2
 - Sentence distractors were written to be wrong; the self-check proves only the mechanical cases. Look for a distractor
   a native would accept in context.
 - Hán-Việt appears only where the table has the word; the four words that waited (工厂, 仓库, 经验, 辞职) now carry it.
+- Session 3: read the spoken and scenario answers (`speech/OUTPUT.jsonl`, `scenarios/OUTPUT.jsonl`): the variant lists
+  are hand-written menus (greetings, 是/对/好的 replies, 我叫/我是 for a name) and will miss some natural replies. Check
+  the partner register (a clerk says 您, a colleague 你), the comprehension distractors (written to be wrong, Vietnamese
+  numbers in digits), and the Taiwan-factory and 便当 scenarios, which are in simplified characters and Mainland words
+  except 便当 and 打卡.

@@ -1,12 +1,12 @@
 """zh-vi Section 5 lessons: writing — typing about yourself with a pinyin keyboard (unit o), simple sentences and
 linking words (p), WeChat messages to a manager (q), the bank form (r). The typed items here are hanzi keys; pinyin
-typed for them is accepted as practice only (P4b guard). The writing session adds guidedWriting and simpleForm items
-pointing at its tasks. Five lessons show a concept card. Writes lessons/parts/s5.jsonl.
+typed for them is accepted as practice only (P4b guard). Session 3 adds the guidedWriting and simpleForm items pointing
+at the tasks of zh-writing-s5.py (zh_lesson_refs.py). Five lessons show a concept card. Writes lessons/parts/s5.jsonl.
 usage: python -I zh-lessons-s5.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from zh_lesson_lib import C, F, M, N, NX, T, TX, W, Y, finish, lesson
+from zh_lesson_lib import C, F, M, N, NX, T, TX, W, WR, Y, finish, lesson
 
 # ---------------------------------------------------------------- uo: writing about yourself
 lesson("uo-l0", [
@@ -17,6 +17,7 @@ lesson("uo-l0", [
     Y("Gõ bằng chữ Hán: \"Việt Nam\".", "越南"),
     W("Tôi sống ở Hà Nội.", "我|住|在|河内", ["是", "去"]),
     M("住", "工作", "国家", "越南", "中国"),
+    WR("o_name"), WR("o_age"),
 ])
 lesson("uo-l1", [
     Y("Tôi tên là Nguyễn Hải.", "我叫阮海", "我是阮海"),
@@ -25,6 +26,7 @@ lesson("uo-l1", [
     F("我___在河内。", "住", ["是", "有", "叫"], "Tôi sống ở Hà Nội."),
     TX("我在一家中国公司工作。", "Tôi làm việc ở một công ty Trung Quốc.", ["Tôi làm việc ở Trung Quốc.", "Tôi có một công ty Trung Quốc.", "Tôi làm việc ở một nhà máy Việt Nam."]),
     W("Tôi làm việc ở nhà máy.", "我|在|工厂|工作", ["住", "是"]),
+    WR("o_home"),
 ])
 lesson("uo-l2", [
     C("time-place-order"),
@@ -34,6 +36,7 @@ lesson("uo-l2", [
     F("我明天___家休息。", "在", ["有", "是", "的"], "Mai tôi nghỉ ở nhà."),
     W("Thứ Bảy tôi đi siêu thị.", "我|星期六|去|超市", ["在", "了"], alts=("星期六|我|去|超市",)),
     TX("我住在胡志明市。", "Tôi sống ở Thành phố Hồ Chí Minh.", ["Tôi làm việc ở Thành phố Hồ Chí Minh.", "Tôi đến từ Hà Nội.", "Tôi sống ở Hà Nội."]),
+    WR("o_family"),
 ])
 lesson("uo-l3", [
     Y("Tôi là công nhân.", "我是工人"),
@@ -42,6 +45,7 @@ lesson("uo-l3", [
     F("我___越南来。", "从", ["在", "往", "离"], "Tôi đến từ Việt Nam."),
     W("Bạn tôi sống ở Thượng Hải.", "我|朋友|住|在|上海", ["是", "去"]),
     TX("我们国家很漂亮。", "Đất nước chúng tôi rất đẹp.", ["Thành phố chúng tôi rất đẹp.", "Đất nước chúng tôi rất lớn.", "Nhà chúng tôi rất đẹp."]),
+    WR("o_all"), WR("o_open"),
 ])
 
 # ---------------------------------------------------------------- up: simple sentences and linking words
@@ -52,6 +56,7 @@ lesson("up-l0", [
     F("我想去，___没有时间。", "但是", ["和", "然后", "因为"], "Tôi muốn đi, nhưng không có thời gian."),
     Y("tôi và bạn tôi", "我和我朋友", "我和我的朋友"),
     W("Ăn cơm trước, sau đó nghỉ.", "先|吃饭|然后|休息", ["但是", "和"]),
+    WR("p_who"),
 ])
 lesson("up-l1", [
     NX("Mai tôi tăng ca ở nhà máy.", "我明天在工厂加班。", ["我加班明天在工厂。", "我在工厂加班明天。", "明天加班我在工厂。"]),
@@ -60,6 +65,7 @@ lesson("up-l1", [
     F("我___超市买东西。", "去", ["是", "有", "的"], "Tôi đi siêu thị mua đồ."),
     W("Tôi tăng ca ở nhà máy.", "我|在|工厂|加班", ["有", "了"]),
     M("和", "但是", "然后", "先", "一起"),
+    WR("p_neg"), WR("p_ask"),
 ])
 lesson("up-l2", [
     T("因为", ["所以", "如果", "或者"]), N("所以", ["因为", "但是", "如果"]),
@@ -68,6 +74,7 @@ lesson("up-l2", [
     Y("Nếu mai trời mưa, tôi không đi.", "如果明天下雨，我就不去", "如果明天下雨，我不去", "明天如果下雨，我就不去", "明天如果下雨，我不去"),
     W("Tôi mệt nên muốn nghỉ.", "我|累|所以|想|休息", ["但是", "和"]),
     M("因为", "所以", "如果", "或者", "虽然"),
+    WR("p_link"),
 ])
 lesson("up-l3", [
     C("aspect-le"),
@@ -76,6 +83,7 @@ lesson("up-l3", [
     Y("Hôm qua tôi đã mua một cái áo.", "我昨天买了一件衣服"),
     Y("Tôi đã ăn cơm rồi.", "我已经吃饭了", "我吃饭了", "我已经吃了", "我吃了"),
     W("Hôm qua tôi đi siêu thị, sau đó về nhà.", "我|昨天|去了|超市|然后|回家", ["但是", "在"]),
+    WR("p_open"),
 ])
 
 # ---------------------------------------------------------------- uq: messages to the manager
@@ -86,6 +94,7 @@ lesson("uq-l0", [
     F("明天我可以___吗？", "请假", ["生病", "短信", "下雨"], "Mai tôi xin nghỉ được không?"),
     Y("Hôm nay tôi ốm.", "我今天生病了", "我今天病了"),
     W("Tôi muốn xin nghỉ một ngày.", "我|想|请假|一天", ["生病", "两"]),
+    WR("q_sick"),
 ])
 lesson("uq-l1", [
     NX("Bạn nhắn cho quản lý: Hôm nay tôi sốt, không đi làm được.", "我今天发烧，不能上班。", ["我今天发烧，不会上班。", "我今天发烧，没能上班了。", "我今天上班，不能发烧。"]),
@@ -94,6 +103,7 @@ lesson("uq-l1", [
     Y("Tôi sẽ đến muộn ba mươi phút.", "我晚到三十分钟", "我会晚到三十分钟", "我要晚到三十分钟", "我会迟到三十分钟"),
     W("Vâng, đã nhận.", "好的|收到", ["没有", "你好"]),
     M("请假", "生病", "短信", "发烧", "收到"),
+    WR("q_reply"),
 ])
 lesson("uq-l2", [
     Y("Mai tôi đến lúc chín giờ.", "我明天九点到", "我明天九点来"),
@@ -101,6 +111,7 @@ lesson("uq-l2", [
     F("明天我___上班。", "不能", ["没", "不是", "没有"], "Mai tôi không đi làm được."),
     NX("Thứ Hai tuần sau tôi đi làm lại.", "我下星期一再上班。", ["我下星期一又上班了。", "我上星期一再上班。", "我再下星期一上班。"]),
     W("Tôi xin nghỉ thứ Sáu.", "我|星期五|请假", ["生病", "了"], alts=("星期五|我|请假",)),
+    WR("q_late"),
 ])
 lesson("uq-l3", [
     C("polite-work"),
@@ -109,6 +120,7 @@ lesson("uq-l3", [
     Y("Cảm ơn ạ!", "谢谢您", "谢谢"),
     TX("没问题，好好休息。", "Không vấn đề gì, nghỉ ngơi cho khoẻ.", ["Có vấn đề, mai nói tiếp.", "Không sao, mai đi làm nhé.", "Không vấn đề gì, làm việc chăm chỉ nhé."]),
     W("Mai tôi xin nghỉ được không ạ?", "明天|我|可以|请假|吗", ["会", "呢"], alts=("我|明天|可以|请假|吗",)),
+    WR("q_open"),
 ])
 
 # ---------------------------------------------------------------- ur: the bank form
@@ -120,6 +132,7 @@ lesson("ur-l0", [
     NX("Xin điền tờ đơn này.", "请填这张表。", ["请填这本表。", "请这张表填。", "请填这个张表。"]),
     Y("thẻ ngân hàng", "银行卡"),
     M("护照", "银行卡", "身份证", "表", "签字"),
+    WR("r_form_bank"),
 ])
 lesson("ur-l1", [
     T("姓名", ["名字", "地址", "号码"]), N("地址", ["姓名", "号码", "电话"]),
@@ -134,6 +147,7 @@ lesson("ur-l2", [
     Y("Tôi muốn làm một thẻ ngân hàng.", "我想要一张银行卡", "我要一张银行卡", "我想办一张银行卡"),
     W("Xin nhập mật khẩu.", "请|输入|密码", ["填", "号码"]),
     NX("một tờ đơn", "一张表", ["一本表", "一个表张", "表一张"]),
+    WR("r_form_dorm"),
 ])
 lesson("ur-l3", [
     T("密码", ["号码", "地址", "姓名"]),
@@ -141,5 +155,6 @@ lesson("ur-l3", [
     TX("请在这儿签字。", "Xin ký vào đây.", ["Xin điền vào đây.", "Xin ngồi ở đây.", "Xin đợi ở đây."]),
     F("我的地址是工厂宿舍三号___。", "楼", ["本", "张", "岁"], "Địa chỉ của tôi là toà số 3, ký túc xá nhà máy."),
     Y("Hộ chiếu của tôi ở trong túi.", "我的护照在包里"),
+    WR("r_note"), WR("r_open"),
 ])
 finish("s5")
