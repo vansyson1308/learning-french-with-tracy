@@ -188,7 +188,8 @@ function boundary(a: Syllable, b: Syllable, opts: RrOptions): void {
     return;
   }
 
-  const n = F === "ㄺ" && I === "ㄱ" ? "ㄹ" : NEUTRAL[F]!;
+  // 표준 발음법 11항 다만: ㄺ reads ㄹ before ㄱ only in a verb or adjective stem (읽고 [일꼬]); a noun reads ㄱ (닭고기 [닥꼬기]).
+  const n = F === "ㄺ" && I === "ㄱ" && opts.noun !== true ? "ㄹ" : NEUTRAL[F]!;
   a.f = n;
   if (I === "ㄴ" || I === "ㅁ") {
     if (NASAL_OF[n]) a.f = NASAL_OF[n]!;

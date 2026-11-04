@@ -24,6 +24,13 @@ describe("rr readings of spaced surfaces", () => {
     }
   });
 
+  test("ㄺ before ㄱ: a verb stem reads ㄹ (읽고 [일꼬]), a noun reads ㄱ (닭고기 [닥꼬기], 표준 발음법 11항 다만)", () => {
+    expect(romanizeKorean("읽고")).toBe("ilgo");
+    expect(romanizeKorean("맑게")).toBe("malge");
+    expect(romanizeKorean("닭고기", { noun: true })).toBe("dakgogi");
+    expect(romanizeKorean("닭", { noun: true })).toBe("dak");
+  });
+
   test("one-word surfaces behave as before", () => {
     expect(readingErrors("rr", "사과", "noun", { rr: "sagwa" })).toEqual([]);
     expect(readingErrors("rr", "사과", "noun", { rr: "sakwa" }).join()).toContain("rule output");
