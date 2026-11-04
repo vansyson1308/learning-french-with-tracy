@@ -1,0 +1,2244 @@
+{
+  "generator": "scripts/lib/writing.ts",
+  "version": 1,
+  "order": [
+    "zh.write.o_name",
+    "zh.write.o_age",
+    "zh.write.o_home",
+    "zh.write.o_family",
+    "zh.write.o_all",
+    "zh.write.p_who",
+    "zh.write.p_neg",
+    "zh.write.p_ask",
+    "zh.write.p_link",
+    "zh.write.q_sick",
+    "zh.write.q_late",
+    "zh.write.q_reply",
+    "zh.write.r_form_bank",
+    "zh.write.r_form_dorm",
+    "zh.write.r_note",
+    "zh.write.o_open",
+    "zh.write.p_open",
+    "zh.write.q_open",
+    "zh.write.r_open"
+  ],
+  "byId": {
+    "zh.write.o_name": {
+      "id": "zh.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn là Nguyễn Hải. Hãy viết một câu tiếng Trung nói tên của bạn (gõ pinyin rồi chọn chữ Hán).",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Nguyễn Hải"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên của bạn",
+            "variants": [
+              "阮海"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "叫",
+          "是"
+        ]
+      },
+      "modelAnswers": [
+        "我叫阮海。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:jiao",
+        "zh:w:hai-3"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.o_age": {
+      "id": "zh.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn 23 tuổi. Hãy viết một câu tiếng Trung nói tuổi của bạn.",
+      "cueFacts": [
+        {
+          "label": "Tuổi",
+          "value": "23"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": "tuổi của bạn",
+            "variants": [
+              "二十三岁",
+              "二十三岁了"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "我今年二十三岁。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:jinnian"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.o_home": {
+      "id": "zh.write.o_home",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu: bạn là người nước nào, và bây giờ bạn sống ở thành phố nào.",
+      "cueFacts": [
+        {
+          "label": "Nước",
+          "value": "Việt Nam"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Thượng Hải"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "from",
+            "description": "bạn là người nước nào",
+            "variants": [
+              "越南人",
+              "越南"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố bạn sống",
+            "variants": [
+              "上海"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "是",
+          "住"
+        ]
+      },
+      "modelAnswers": [
+        "我是越南人。我现在住在上海。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:shi",
+        "zh:w:yuenanren",
+        "zh:w:xianzai",
+        "zh:w:zhu"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.o_family": {
+      "id": "zh.write.o_family",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu: bạn có hai em gái, và bạn thích nấu ăn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "sisters",
+            "description": "hai em gái",
+            "variants": [
+              "两个妹妹"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "like",
+            "description": "bạn thích nấu ăn",
+            "variants": [
+              "喜欢做饭",
+              "喜欢做菜",
+              "爱做饭",
+              "爱做菜"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "有",
+          "喜欢"
+        ]
+      },
+      "modelAnswers": [
+        "我有两个妹妹。我喜欢做饭。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:you",
+        "zh:w:meimei",
+        "zh:w:xihuan",
+        "zh:w:zuofan"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.o_all": {
+      "id": "zh.write.o_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố bạn sống.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Nguyễn Hồng"
+        },
+        {
+          "label": "Tuổi",
+          "value": "28"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Quảng Châu"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên",
+            "variants": [
+              "阮红"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": "tuổi",
+            "variants": [
+              "二十八岁",
+              "二十八岁了"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố",
+            "variants": [
+              "广州"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "叫",
+          "是",
+          "住"
+        ]
+      },
+      "modelAnswers": [
+        "我叫阮红。我今年二十八岁。我住在广州。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:jiao",
+        "zh:w:hong",
+        "zh:w:jinnian",
+        "zh:w:zhu"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.p_who": {
+      "id": "zh.write.p_who",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu: buổi sáng anh Nguyễn Nam uống cà phê.",
+      "cueFacts": [
+        {
+          "label": "Người",
+          "value": "Nguyễn Nam"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "drink",
+            "description": "uống cà phê",
+            "variants": [
+              "喝咖啡"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "morning",
+            "description": "buổi sáng",
+            "variants": [
+              "早上",
+              "每天早上",
+              "上午",
+              "每天上午"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 15
+      },
+      "modelAnswers": [
+        "阮南早上喝咖啡。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "zh:w:nan-south",
+        "zh:w:zaoshang",
+        "zh:w:he-1",
+        "zh:w:kafei"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.p_neg": {
+      "id": "zh.write.p_neg",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu phủ định: bạn không uống rượu.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "neg",
+            "description": "bạn không uống rượu",
+            "variants": [
+              "不喝酒"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "我不喝酒。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "zh:w:bu",
+        "zh:w:he-1",
+        "zh:w:jiu-alcohol"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.p_ask": {
+      "id": "zh.write.p_ask",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu hỏi: Bạn sống ở đâu?",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ask",
+            "description": "câu hỏi về nơi sống",
+            "variants": [
+              "住在哪儿",
+              "住在哪里",
+              "在哪儿住",
+              "住哪儿",
+              "住哪里",
+              "住在什么地方",
+              "在什么地方住",
+              "住什么地方",
+              "在哪里住"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "你住在哪儿？"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhu"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.p_link": {
+      "id": "zh.write.p_link",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu: bạn ăn sáng, sau đó bạn đi làm. Dùng một từ nối.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "breakfast",
+            "description": "bạn ăn sáng",
+            "variants": [
+              "吃早饭",
+              "吃早餐"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "link",
+            "description": "từ nối",
+            "variants": [
+              "然后",
+              "以后",
+              "再",
+              "之后"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "work",
+            "description": "bạn đi làm",
+            "variants": [
+              "上班",
+              "去工厂",
+              "去公司",
+              "去工作",
+              "工作"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "我先吃早饭，然后去上班。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "zh:w:xian",
+        "zh:w:chi",
+        "zh:w:zaofan",
+        "zh:w:qu",
+        "zh:w:shangban"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.q_sick": {
+      "id": "zh.write.q_sick",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho tổ trưởng Lý: chào, báo bạn bị sốt, và hôm nay bạn xin nghỉ.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "tổ trưởng Lý"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "您好",
+              "你好",
+              "组长好",
+              "经理好",
+              "早上好",
+              "晚上好",
+              "下午好",
+              "早",
+              "组长早",
+              "经理早",
+              "您早"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "fever",
+            "description": "bạn bị sốt",
+            "variants": [
+              "发烧"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "rest",
+            "description": "xin nghỉ",
+            "variants": [
+              "请假",
+              "不能上班",
+              "休息",
+              "不去上班",
+              "不上班",
+              "不能去上班",
+              "不能来上班",
+              "不来上班"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "李组长，您好！我发烧了，今天想请假。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "zh:w:zuzhang",
+        "zh:w:ninhao",
+        "zh:w:fashao",
+        "zh:w:jintian",
+        "zh:w:xiang",
+        "zh:w:qingjia"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.q_late": {
+      "id": "zh.write.q_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho quản lý Vương: chào, báo xe buýt đến muộn, rồi xin lỗi.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "quản lý Vương"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "您好",
+              "你好",
+              "组长好",
+              "经理好",
+              "早上好",
+              "晚上好",
+              "下午好",
+              "早",
+              "组长早",
+              "经理早",
+              "您早"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "bus",
+            "description": "xe buýt đến muộn",
+            "variants": [
+              "公交车来晚了",
+              "公交车晚了",
+              "公交车晚点了",
+              "公交车迟到了",
+              "公交车来得很晚",
+              "公交车来得特别晚"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "sorry",
+            "description": "lời xin lỗi",
+            "variants": [
+              "对不起",
+              "不好意思"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "王经理，您好！公交车来晚了，对不起！"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "zh:w:jingli",
+        "zh:w:ninhao",
+        "zh:w:gongjiaoche",
+        "zh:w:lai",
+        "zh:w:wan",
+        "zh:w:duibuqi"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.q_reply": {
+      "id": "zh.write.q_reply",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Tổ trưởng nhắn: mai làm từ 7 giờ. Hãy trả lời: bạn đã hiểu, và cảm ơn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ok",
+            "description": "bạn đã hiểu",
+            "variants": [
+              "好的",
+              "明白了",
+              "我明白了",
+              "知道了",
+              "收到",
+              "好",
+              "懂了",
+              "我懂了",
+              "明白",
+              "没问题",
+              "行"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "thanks",
+            "description": "lời cảm ơn",
+            "variants": [
+              "谢谢"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "明白了，谢谢组长！"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "zh:w:mingbai",
+        "zh:w:xiexie",
+        "zh:w:zuzhang"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.r_form_bank": {
+      "id": "zh.write.r_form_bank",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền đơn mở thẻ ngân hàng với các thông tin trên thẻ.",
+      "cueFacts": [
+        {
+          "label": "Họ tên",
+          "value": "Nguyễn Nam"
+        },
+        {
+          "label": "Nước",
+          "value": "Việt Nam"
+        },
+        {
+          "label": "Điện thoại",
+          "value": "138-1234-5678"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "姓名",
+          "slotId": "name"
+        },
+        {
+          "id": "country",
+          "label": "国家",
+          "slotId": "country"
+        },
+        {
+          "id": "phone",
+          "label": "电话",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "họ tên",
+            "variants": [
+              "阮南"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "country",
+            "description": "nước",
+            "variants": [
+              "越南"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": "số điện thoại",
+            "variants": [
+              "138-1234-5678",
+              "13812345678"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "阮南 | 越南 | 138-1234-5678"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "zh.write.r_form_dorm": {
+      "id": "zh.write.r_form_dorm",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền phiếu đăng ký ký túc xá với các thông tin trên thẻ.",
+      "cueFacts": [
+        {
+          "label": "Họ tên",
+          "value": "Nguyễn Hải"
+        },
+        {
+          "label": "Địa chỉ",
+          "value": "Thượng Hải"
+        },
+        {
+          "label": "Điện thoại",
+          "value": "139-8765-4321"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "姓名",
+          "slotId": "name"
+        },
+        {
+          "id": "address",
+          "label": "地址",
+          "slotId": "address"
+        },
+        {
+          "id": "phone",
+          "label": "电话",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "họ tên",
+            "variants": [
+              "阮海"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "address",
+            "description": "địa chỉ",
+            "variants": [
+              "上海"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": "số điện thoại",
+            "variants": [
+              "139-8765-4321",
+              "13987654321"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "阮海 | 上海 | 139-8765-4321"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false
+    },
+    "zh.write.r_note": {
+      "id": "zh.write.r_note",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy viết lời nhắn cho đồng nghiệp: máy bị hỏng, xin gọi tổ trưởng đến.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "machine",
+            "description": "cái máy",
+            "variants": [
+              "机器"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "broken",
+            "description": "máy bị hỏng",
+            "variants": [
+              "坏了",
+              "有问题",
+              "不动了",
+              "出问题",
+              "不能用了"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "call",
+            "description": "gọi tổ trưởng",
+            "variants": [
+              "叫组长",
+              "告诉组长",
+              "给组长打电话",
+              "打电话给组长",
+              "找组长",
+              "请组长来",
+              "让组长来"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "机器坏了，请叫组长来。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "zh:w:jiqi",
+        "zh:w:huai",
+        "zh:w:qing",
+        "zh:w:jiao",
+        "zh:w:zuzhang",
+        "zh:w:lai"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.o_open": {
+      "id": "zh.write.o_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about",
+            "description": "một câu về bạn",
+            "variants": [
+              "是",
+              "叫",
+              "住",
+              "喜欢",
+              "工作",
+              "有",
+              "岁",
+              "岁了",
+              "今年",
+              "在",
+              "家",
+              "会",
+              "想",
+              "爱"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "我叫阮花。我是越南人。我喜欢音乐。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:jiao",
+        "zh:w:hua-1",
+        "zh:w:shi",
+        "zh:w:yuenanren",
+        "zh:w:xihuan",
+        "zh:w:yinyue"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.p_open": {
+      "id": "zh.write.p_open",
+      "taskFamily": "simple_description",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về một ngày của bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "day",
+            "description": "một câu về ngày của bạn",
+            "variants": [
+              "起床",
+              "吃饭",
+              "上班",
+              "下班",
+              "睡觉",
+              "每天",
+              "早上",
+              "晚上",
+              "中午",
+              "上午",
+              "下午",
+              "点",
+              "去",
+              "工作",
+              "吃早饭",
+              "吃午饭",
+              "吃晚饭",
+              "休息",
+              "回家"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "我每天六点起床。晚上我在宿舍吃饭。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "zh:w:meitian",
+        "zh:w:qichuang",
+        "zh:w:wanshang",
+        "zh:w:sushe",
+        "zh:w:chifan"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.q_open": {
+      "id": "zh.write.q_open",
+      "taskFamily": "short_message",
+      "mode": "open",
+      "instruction": "Hãy viết một tin nhắn ngắn cho một người bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "message",
+            "description": "lời chào hoặc lời mời",
+            "variants": [
+              "你好",
+              "一起",
+              "吧",
+              "谢谢",
+              "您好",
+              "早上好",
+              "晚上好",
+              "明天见",
+              "再见",
+              "生日快乐",
+              "新年快乐",
+              "有时间吗",
+              "怎么样",
+              "好吗"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "小王，你好！星期六我们一起去看电影吧。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "zh:w:xiao",
+        "zh:w:nihao",
+        "zh:w:xingqiliu",
+        "zh:w:yiqi",
+        "zh:w:qu",
+        "zh:w:kan",
+        "zh:w:dianying"
+      ],
+      "scoredEligibility": false
+    },
+    "zh.write.r_open": {
+      "id": "zh.write.r_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": "Hãy viết vài câu về công việc của bạn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "work",
+            "description": "một câu về công việc",
+            "variants": [
+              "工作",
+              "工厂",
+              "公司",
+              "组长",
+              "同事",
+              "上班",
+              "工人",
+              "车间",
+              "仓库",
+              "经理",
+              "老板",
+              "司机",
+              "加班",
+              "下班",
+              "机器",
+              "箱子",
+              "打卡"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "我在工厂工作。我早上七点上班。我的组长很好。"
+      ],
+      "objectiveRefs": [
+        "zh.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "zh:w:gongchang",
+        "zh:w:gongzuo",
+        "zh:w:zaoshang",
+        "zh:w:shangban",
+        "zh:w:zuzhang",
+        "zh:w:hen",
+        "zh:w:hao"
+      ],
+      "scoredEligibility": false
+    }
+  },
+  "knownVocabulary": [
+    "一",
+    "一下",
+    "一个",
+    "一些",
+    "一件",
+    "一份",
+    "一共",
+    "一刻",
+    "一千块",
+    "一半",
+    "一双",
+    "一句",
+    "一只",
+    "一周",
+    "一天",
+    "一定",
+    "一家",
+    "一年",
+    "一张",
+    "一斤",
+    "一日",
+    "一杯",
+    "一样",
+    "一点",
+    "一百个",
+    "一直",
+    "一碗",
+    "一站",
+    "一般",
+    "一起",
+    "一起去",
+    "一路平安",
+    "一辆车",
+    "一遍",
+    "七",
+    "七天",
+    "万",
+    "丈夫",
+    "三",
+    "三十五",
+    "三口",
+    "三天",
+    "三层",
+    "三次",
+    "上",
+    "上个",
+    "上午",
+    "上学",
+    "上有",
+    "上次",
+    "上海",
+    "上班",
+    "上网",
+    "上课",
+    "上车",
+    "下",
+    "下个月",
+    "下午",
+    "下次",
+    "下班",
+    "下课",
+    "下车",
+    "下雨",
+    "下雪",
+    "下面",
+    "不",
+    "不冷",
+    "不去",
+    "不在",
+    "不够",
+    "不大",
+    "不好",
+    "不好意思",
+    "不客气",
+    "不对",
+    "不怕",
+    "不用",
+    "不知道",
+    "不能",
+    "不行",
+    "不要",
+    "不见",
+    "不见了",
+    "不过",
+    "不错",
+    "不高",
+    "东",
+    "东西",
+    "两",
+    "两千",
+    "两杯",
+    "两次",
+    "两节课",
+    "个",
+    "个人",
+    "中午",
+    "中国",
+    "中国人",
+    "中学",
+    "中文",
+    "中间",
+    "中餐",
+    "为",
+    "为什么",
+    "主管",
+    "主要",
+    "九",
+    "九岁",
+    "也",
+    "也不",
+    "也在",
+    "也是",
+    "也要",
+    "也许",
+    "习惯",
+    "书",
+    "书包",
+    "书店",
+    "买",
+    "买东西",
+    "了",
+    "了一",
+    "事",
+    "事情",
+    "二",
+    "二十",
+    "二号",
+    "二月",
+    "二楼",
+    "云",
+    "五",
+    "五分",
+    "五分钟",
+    "五千块",
+    "五天",
+    "五年",
+    "五月",
+    "五楼",
+    "五百",
+    "五百块",
+    "些",
+    "交",
+    "交通",
+    "产品",
+    "人",
+    "人们",
+    "人的",
+    "什么",
+    "什么东西",
+    "什么时候",
+    "今天",
+    "今天是",
+    "今年",
+    "介绍",
+    "从",
+    "仓库",
+    "他",
+    "他们",
+    "他在",
+    "他家",
+    "他是",
+    "他的",
+    "付",
+    "付钱",
+    "以为",
+    "以前",
+    "以后",
+    "们",
+    "件",
+    "份",
+    "休息",
+    "休息室",
+    "会",
+    "会说",
+    "传",
+    "但是",
+    "位",
+    "低",
+    "住",
+    "住在",
+    "住院",
+    "作业",
+    "你",
+    "你们",
+    "你会",
+    "你在",
+    "你好",
+    "你是",
+    "你有",
+    "你来",
+    "你的",
+    "你要",
+    "便",
+    "便宜",
+    "信",
+    "信用卡",
+    "借",
+    "假期",
+    "做",
+    "做的",
+    "做饭",
+    "停",
+    "停了",
+    "停车",
+    "健康",
+    "儿",
+    "儿子",
+    "元",
+    "先",
+    "先生",
+    "先要",
+    "先进",
+    "入口",
+    "全部",
+    "八",
+    "八个",
+    "八十",
+    "公",
+    "公司",
+    "公园",
+    "公斤",
+    "公里",
+    "六",
+    "六天",
+    "兰",
+    "关",
+    "关心",
+    "关灯",
+    "关门",
+    "其他",
+    "再",
+    "再来",
+    "再见",
+    "再说",
+    "写",
+    "写生",
+    "写错",
+    "冬天",
+    "冷",
+    "准备",
+    "几",
+    "几点",
+    "几门",
+    "出",
+    "出去",
+    "出发",
+    "出口",
+    "出国",
+    "出来",
+    "出租",
+    "出门",
+    "分",
+    "分钟",
+    "刚",
+    "刚到",
+    "刚才",
+    "别",
+    "别人",
+    "别的",
+    "到",
+    "到了",
+    "到处",
+    "到处都",
+    "到期",
+    "刻",
+    "前",
+    "前边",
+    "办",
+    "办公",
+    "办法",
+    "加个",
+    "加油",
+    "加班",
+    "动",
+    "动物",
+    "努力",
+    "包",
+    "包子",
+    "包装",
+    "包里",
+    "北",
+    "北京",
+    "北方",
+    "北边",
+    "医生",
+    "医院",
+    "十",
+    "十一",
+    "十万块",
+    "十二",
+    "十五岁",
+    "十分",
+    "十分钟",
+    "十块",
+    "十岁",
+    "十度",
+    "千",
+    "午饭",
+    "半",
+    "半天",
+    "卖",
+    "南",
+    "南方",
+    "南边",
+    "博物",
+    "卡",
+    "危险",
+    "原因",
+    "去",
+    "去年",
+    "参加",
+    "参观",
+    "又",
+    "双",
+    "发",
+    "发烧",
+    "发现",
+    "取",
+    "变",
+    "口",
+    "口罩",
+    "句",
+    "句子",
+    "只",
+    "叫",
+    "可以",
+    "可是",
+    "可爱",
+    "可能",
+    "台北",
+    "台湾",
+    "右边",
+    "号",
+    "号码",
+    "司机",
+    "吃",
+    "吃了",
+    "吃奶",
+    "吃肉",
+    "吃饭",
+    "合同",
+    "合适",
+    "同事",
+    "同学",
+    "名",
+    "名字",
+    "后",
+    "后天",
+    "后来",
+    "后边",
+    "吗",
+    "吧",
+    "听",
+    "听不懂",
+    "听写",
+    "听见",
+    "听见了",
+    "听说",
+    "吸烟",
+    "告诉",
+    "员",
+    "员工",
+    "呢",
+    "周",
+    "周末",
+    "味道",
+    "和",
+    "咖啡",
+    "咱们",
+    "咳嗽",
+    "哥哥",
+    "哦",
+    "哪",
+    "哪个",
+    "哪些",
+    "哪儿",
+    "哪里",
+    "哭",
+    "哭了",
+    "唱",
+    "唱歌",
+    "商场",
+    "商店",
+    "商量",
+    "啊",
+    "喂",
+    "喜欢",
+    "喝",
+    "喝水",
+    "喝茶",
+    "喝酒",
+    "嗯",
+    "嘴",
+    "四",
+    "四口",
+    "四天",
+    "回",
+    "回去",
+    "回国",
+    "回家",
+    "回来",
+    "回答",
+    "因为",
+    "园",
+    "国",
+    "国人",
+    "国家",
+    "图书",
+    "在",
+    "在家",
+    "地上",
+    "地图",
+    "地址",
+    "地方",
+    "地点",
+    "地铁",
+    "场",
+    "坏",
+    "坐",
+    "坐下",
+    "坐在",
+    "块",
+    "城市",
+    "填",
+    "墙",
+    "声音",
+    "复习",
+    "夏天",
+    "外",
+    "外国",
+    "外语",
+    "外边",
+    "多",
+    "多久",
+    "多大",
+    "多少",
+    "多少钱",
+    "夜",
+    "夜班",
+    "够",
+    "大",
+    "大学",
+    "大学生",
+    "大家",
+    "天",
+    "天上",
+    "天下",
+    "天气",
+    "太",
+    "太低",
+    "太大",
+    "太好了",
+    "太短",
+    "太重",
+    "太阳",
+    "头",
+    "头发",
+    "头疼",
+    "女",
+    "女人",
+    "女儿",
+    "女孩",
+    "女朋友",
+    "奶",
+    "奶奶",
+    "她",
+    "她们",
+    "她是",
+    "她的",
+    "好",
+    "好久",
+    "好了吗",
+    "好像",
+    "好吃",
+    "好听",
+    "好喝",
+    "好多",
+    "好朋友",
+    "好玩",
+    "好的",
+    "好看",
+    "如果",
+    "妈妈",
+    "妹妹",
+    "妻子",
+    "姐姐",
+    "姓",
+    "姓名",
+    "字",
+    "存",
+    "学",
+    "学习",
+    "学校",
+    "学生",
+    "孩子",
+    "它",
+    "它是",
+    "安全",
+    "安全帽",
+    "安静",
+    "完了",
+    "完成",
+    "客人",
+    "室",
+    "家",
+    "家人",
+    "家庭",
+    "家有",
+    "家里",
+    "容易",
+    "宿舍",
+    "密码",
+    "对",
+    "对不起",
+    "对面",
+    "小",
+    "小姐",
+    "小学",
+    "小孩",
+    "小心",
+    "小时",
+    "小王",
+    "少",
+    "就",
+    "层",
+    "山",
+    "山上",
+    "岁",
+    "工人",
+    "工作",
+    "工具",
+    "工厂",
+    "工资",
+    "左边",
+    "差",
+    "差不多",
+    "已经",
+    "希望",
+    "带",
+    "帮",
+    "帮助",
+    "帮忙",
+    "常常",
+    "帽子",
+    "干",
+    "干什么",
+    "干净",
+    "干杯",
+    "平安",
+    "年",
+    "年来",
+    "年轻",
+    "幸福",
+    "广州",
+    "床",
+    "床上",
+    "床下",
+    "应该",
+    "度",
+    "座位",
+    "开",
+    "开会",
+    "开始",
+    "开心",
+    "开玩笑",
+    "开车",
+    "开门",
+    "弟弟",
+    "张",
+    "张开",
+    "当",
+    "往",
+    "往东",
+    "往前走",
+    "往右",
+    "往左",
+    "很",
+    "很喜欢",
+    "很多",
+    "很大",
+    "很好",
+    "很小",
+    "很少",
+    "很快",
+    "很有",
+    "很甜",
+    "很高",
+    "得",
+    "得很",
+    "微",
+    "心情",
+    "必须",
+    "忘",
+    "忘了",
+    "忘记",
+    "忙",
+    "快",
+    "快乐",
+    "快要",
+    "忽然",
+    "态度",
+    "怎么",
+    "怕",
+    "急",
+    "您",
+    "您好",
+    "想",
+    "想去",
+    "想法",
+    "想看",
+    "意思",
+    "意见",
+    "感冒",
+    "感到",
+    "感觉",
+    "感谢",
+    "愿意",
+    "慢",
+    "慢慢",
+    "懂",
+    "成绩",
+    "我",
+    "我不",
+    "我不会",
+    "我不是",
+    "我也",
+    "我们",
+    "我先",
+    "我去",
+    "我吗",
+    "我在",
+    "我姓",
+    "我家",
+    "我想",
+    "我想去",
+    "我是",
+    "我有",
+    "我来",
+    "我没",
+    "我的",
+    "我知道",
+    "我能",
+    "我要",
+    "我还",
+    "我还没",
+    "或者",
+    "戴",
+    "房子",
+    "房间",
+    "所以",
+    "所有",
+    "手",
+    "手套",
+    "手机",
+    "打",
+    "打卡",
+    "打印",
+    "打工",
+    "打开",
+    "打扫",
+    "打球",
+    "打电话",
+    "打算",
+    "打针",
+    "打错了",
+    "扫",
+    "找",
+    "找到",
+    "找工作",
+    "把",
+    "护士",
+    "护照",
+    "报名",
+    "拉",
+    "拜拜",
+    "拿",
+    "拿好",
+    "挂号",
+    "按",
+    "挺",
+    "挺好",
+    "换",
+    "捷运",
+    "排队",
+    "接",
+    "推",
+    "提高",
+    "搬",
+    "搬家",
+    "摩托",
+    "支",
+    "收",
+    "收到",
+    "改",
+    "放",
+    "放假",
+    "放在",
+    "放学",
+    "放心",
+    "故事",
+    "教",
+    "教室",
+    "文明",
+    "斤",
+    "新",
+    "新年",
+    "新年快乐",
+    "新来",
+    "新的",
+    "新闻",
+    "新鲜",
+    "方便",
+    "方向",
+    "方法",
+    "旁边",
+    "旅游",
+    "日",
+    "日期",
+    "早",
+    "早上",
+    "早班",
+    "早饭",
+    "时候",
+    "时间",
+    "明",
+    "明天",
+    "明年",
+    "明白",
+    "星期",
+    "星期一",
+    "星期三",
+    "星期二",
+    "星期五",
+    "星期六",
+    "星期四",
+    "星期天",
+    "春天",
+    "春节",
+    "昨天",
+    "昨天夜里",
+    "是",
+    "是不是",
+    "晚",
+    "晚上",
+    "晚安",
+    "晚班",
+    "晚饭",
+    "普通",
+    "晴",
+    "晴天",
+    "更",
+    "最",
+    "最后",
+    "最好",
+    "最近",
+    "月",
+    "月亮",
+    "有",
+    "有人",
+    "有名",
+    "有意思",
+    "有用",
+    "朋友",
+    "服",
+    "服务",
+    "本",
+    "机",
+    "机会",
+    "机器",
+    "机场",
+    "机票",
+    "机车",
+    "李",
+    "条",
+    "条件",
+    "来",
+    "杯",
+    "杯子",
+    "果汁",
+    "查",
+    "树",
+    "样",
+    "桌子",
+    "检查",
+    "椅子",
+    "楼",
+    "楼下",
+    "楼梯",
+    "次",
+    "欢迎",
+    "歌",
+    "正在",
+    "正好",
+    "正常",
+    "每",
+    "每个人",
+    "每天",
+    "比",
+    "比如",
+    "毛",
+    "水",
+    "水平",
+    "水果",
+    "汉字",
+    "汉语",
+    "汽车",
+    "没",
+    "没事儿",
+    "没关系",
+    "没去",
+    "没有",
+    "河",
+    "河内",
+    "注意",
+    "洗",
+    "洗手",
+    "洗手间",
+    "洗澡",
+    "洗衣",
+    "流利",
+    "海",
+    "海边",
+    "清楚",
+    "温度",
+    "渴",
+    "渴了",
+    "满意",
+    "漂亮",
+    "火",
+    "火车",
+    "灭火器",
+    "灯",
+    "点",
+    "点了",
+    "点儿",
+    "热",
+    "热情",
+    "然后",
+    "照片",
+    "照顾",
+    "爱",
+    "爱人",
+    "爱好",
+    "爷爷",
+    "爸爸",
+    "牙",
+    "牙疼",
+    "牛",
+    "牛奶",
+    "特别",
+    "狗",
+    "猫",
+    "王",
+    "玩儿",
+    "现在",
+    "班",
+    "球",
+    "瓶",
+    "甜",
+    "生日",
+    "生气",
+    "生活",
+    "生病",
+    "生词",
+    "用",
+    "用完",
+    "电",
+    "电影",
+    "电梯",
+    "电脑",
+    "电视",
+    "电话",
+    "男",
+    "男人",
+    "男孩",
+    "男朋友",
+    "画",
+    "留学生",
+    "留言",
+    "疼",
+    "病",
+    "病人",
+    "白",
+    "白天",
+    "白色",
+    "百",
+    "的",
+    "的话",
+    "相信",
+    "看",
+    "看一下",
+    "看书",
+    "看病",
+    "看见",
+    "真",
+    "真好",
+    "真的",
+    "眼睛",
+    "着",
+    "着火",
+    "睡觉",
+    "知识",
+    "知道",
+    "短",
+    "短信",
+    "码",
+    "碗",
+    "礼物",
+    "祝",
+    "祝你",
+    "祝你们",
+    "票",
+    "禁止",
+    "离",
+    "离开",
+    "离海",
+    "秋天",
+    "种",
+    "租",
+    "穿",
+    "穿衣服",
+    "站",
+    "站在",
+    "笑",
+    "笑了",
+    "笔",
+    "笔记",
+    "第",
+    "第一",
+    "第一次",
+    "第十",
+    "等",
+    "答应",
+    "筷子",
+    "签字",
+    "签证",
+    "算",
+    "箱子",
+    "米饭",
+    "紧急",
+    "累",
+    "红",
+    "红的",
+    "红色",
+    "纸",
+    "练习",
+    "组",
+    "组长",
+    "经常",
+    "经理",
+    "经验",
+    "结婚",
+    "给",
+    "维",
+    "绿",
+    "绿灯",
+    "群",
+    "老",
+    "老乡",
+    "老了",
+    "老人",
+    "老家",
+    "老师",
+    "老板",
+    "考试",
+    "而且",
+    "肉",
+    "肚子",
+    "胡志明市",
+    "能",
+    "脏",
+    "脚",
+    "脸",
+    "腿",
+    "自己",
+    "自行",
+    "舒服",
+    "节",
+    "花",
+    "苹果",
+    "茶",
+    "药",
+    "药店",
+    "菜",
+    "菜单",
+    "蓝",
+    "虽然",
+    "行",
+    "行李",
+    "街",
+    "街道",
+    "衣服",
+    "表",
+    "西",
+    "西边",
+    "要",
+    "要带",
+    "要求",
+    "要穿",
+    "见",
+    "见过",
+    "见面",
+    "觉得",
+    "认为",
+    "认真",
+    "认识",
+    "讨论",
+    "让",
+    "记住",
+    "记得",
+    "讲",
+    "证",
+    "词",
+    "词典",
+    "试",
+    "话",
+    "话说",
+    "语",
+    "说",
+    "说得",
+    "说话",
+    "请",
+    "请假",
+    "请到",
+    "请在",
+    "请客",
+    "请带",
+    "请看",
+    "请进",
+    "请进来",
+    "请问",
+    "读",
+    "课",
+    "课文",
+    "课本",
+    "谁",
+    "谢",
+    "谢谢",
+    "货",
+    "质量",
+    "贵",
+    "贵了",
+    "走",
+    "走了",
+    "走路",
+    "起床",
+    "起来",
+    "超市",
+    "越南",
+    "跑",
+    "跑得",
+    "跟",
+    "路",
+    "路上",
+    "路口",
+    "身份",
+    "身体",
+    "车",
+    "车票",
+    "车站",
+    "车间",
+    "转账",
+    "轻",
+    "辆",
+    "输入",
+    "辛苦",
+    "辞职",
+    "辣",
+    "边",
+    "过",
+    "过年",
+    "近",
+    "还",
+    "还是",
+    "还有",
+    "这",
+    "这个",
+    "这些",
+    "这儿",
+    "这几天",
+    "这样",
+    "这次",
+    "这种",
+    "这边",
+    "这里",
+    "进",
+    "进入",
+    "进去",
+    "进来",
+    "远",
+    "迟到",
+    "退",
+    "送",
+    "送到",
+    "送货",
+    "通知",
+    "遍",
+    "那",
+    "那个",
+    "那些",
+    "那儿",
+    "那是",
+    "那边",
+    "那里",
+    "都",
+    "都可以",
+    "都在",
+    "都很",
+    "都是",
+    "都有",
+    "都要",
+    "酒",
+    "酒店",
+    "酪",
+    "里",
+    "里边",
+    "重",
+    "重新",
+    "重要",
+    "钥匙",
+    "钱",
+    "钱包",
+    "银行",
+    "错",
+    "长",
+    "长大",
+    "门",
+    "门口",
+    "问",
+    "问路",
+    "问题",
+    "阮",
+    "阴",
+    "阴天",
+    "院",
+    "难",
+    "难受",
+    "雨",
+    "雪",
+    "零",
+    "零下",
+    "需要",
+    "非常",
+    "面包",
+    "面条",
+    "面试",
+    "鞋",
+    "音乐",
+    "页",
+    "顾客",
+    "颜色",
+    "风",
+    "飞",
+    "飞机",
+    "食堂",
+    "饭",
+    "饭店",
+    "饭馆",
+    "饱",
+    "饺子",
+    "饿",
+    "馆",
+    "马",
+    "马上",
+    "马路",
+    "骑",
+    "高",
+    "高兴",
+    "鱼",
+    "鸟",
+    "鸡",
+    "鸡蛋",
+    "黄",
+    "黄色",
+    "黑"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "generator": "scripts/compile-content.ts",
+  "level": "A1",
+  "domains": [
+    {
+      "domain": "spoken_reception",
+      "requiredObjectiveIds": [
+        "zh.obj.listening.announcements",
+        "zh.obj.listening.short_dialogues",
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "domain": "written_reception",
+      "requiredObjectiveIds": [
+        "zh.obj.reading.notices_info",
+        "zh.obj.reading.short_messages",
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "domain": "spoken_production",
+      "requiredObjectiveIds": [
+        "zh.obj.speaking.formulaic",
+        "zh.obj.speaking.give_info",
+        "zh.obj.speaking.self_intro"
+      ]
+    },
+    {
+      "domain": "written_production",
+      "requiredObjectiveIds": [
+        "zh.obj.writing.personal_info",
+        "zh.obj.writing.phrases_sentences",
+        "zh.obj.writing.short_message"
+      ]
+    },
+    {
+      "domain": "interaction",
+      "requiredObjectiveIds": [
+        "zh.obj.interaction.everyday_conversation",
+        "zh.obj.interaction.practical_needs"
+      ]
+    }
+  ]
+}

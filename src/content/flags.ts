@@ -15,4 +15,5 @@ export const FLAG_ASSETS: Record<string, number> = {
   "ko-en": require("../../assets/images/flags/kr.svg"),
   "pt-en": require("../../assets/images/flags/br.svg"),
   "zh-en": require("../../assets/images/flags/cn.svg"),
+  "zh-vi": require("../../assets/images/flags/cn.svg"),
 };

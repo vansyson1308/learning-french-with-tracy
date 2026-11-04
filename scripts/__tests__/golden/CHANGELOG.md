@@ -1357,3 +1357,65 @@ migrations.golden.test.ts alone — the compile manifest was not re-blessed (the
 ## 2026-11-03 — P4c: the Hán-Việt and ja primer D-10 review sheets regenerated after the review fixes
 
 - no golden changed (manifest and snapshots identical)
+
+## 2026-11-04 — audio.yml zh generate (all) run 41928304254
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/hanviet/REVIEW.md
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  content/zh/primer/REVIEW.md
+- compile: changed  src/content/artifacts/index.ts
+- compile: changed  src/content/artifacts/zh-en.ts
+- compile: changed  src/content/attributions.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/catalog.json
+- compile: changed  src/content/course-bundles.ts
+- compile: changed  src/content/course-loaders.ts
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/flags.ts
+- compile: changed  src/content/hanviet/zh.json
+- compile: changed  src/content/ids/index.ts
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/packs/index.ts
+- compile: changed  src/content/packs/zh-en.json
+- compile: changed  src/content/primer/zh.json
+- compile: new      content/reports/zh/audio-census.json
+- compile: new      content/reports/zh/audio-quality.json
+- compile: new      content/reports/zh/cefr-alignment.json
+- compile: new      content/reports/zh/cefr-claim-gate.json
+- compile: new      content/reports/zh/checkpoint-coverage.json
+- compile: new      content/reports/zh/context-coverage.json
+- compile: new      content/reports/zh/course-objective-coverage.json
+- compile: new      content/reports/zh/lexicon-quality.json
+- compile: new      content/reports/zh/lexicon-source-audit.json
+- compile: new      content/reports/zh/placement-coverage.json
+- compile: new      content/reports/zh/reception-audio-census.json
+- compile: new      content/reports/zh/stories-coverage.json
+- compile: new      src/content/artifacts/zh-vi.ts
+- compile: new      src/content/assessment/zh-attainment.json
+- compile: new      src/content/assessment/zh-checkpoints.json
+- compile: new      src/content/assessment/zh-claim.json
+- compile: new      src/content/assessment/zh-objectives.json
+- compile: new      src/content/assessment/zh-placement.json
+- compile: new      src/content/audio/zh-vi.ts
+- compile: new      src/content/concepts/zh-concepts.json
+- compile: new      src/content/courses/zh-vi.ts
+- compile: new      src/content/exam/zh-exam-tracks.json
+- compile: new      src/content/ids/zh.json
+- compile: new      src/content/interaction/zh-scenarios.json
+- compile: new      src/content/lexicon/zh-daily.json
+- compile: new      src/content/lexicon/zh-en-index.json
+- compile: new      src/content/lexicon/zh-en-web-fallback.json
+- compile: new      src/content/lexicon/zh-index.json
+- compile: new      src/content/lexicon/zh-web-fallback.json
+- compile: new      src/content/packs/zh-vi.json
+- compile: new      src/content/reception/zh-clip-assets.ts
+- compile: new      src/content/reception/zh-listening.json
+- compile: new      src/content/reception/zh-reading.json
+- compile: new      src/content/speech/zh-speech-items.json
+- compile: new      src/content/stories/zh-stories.json
+- compile: new      src/content/stories/zh-story-assets.ts
+- compile: new      src/content/writing/zh-writing.json
+- compile: new      lexicon-db:zh-en:zh-en-lexicon-v3-ca3f6322a7ed8dfd.db
+- compile: new      lexicon-db:zh:zh-lexicon-v3-246be96fba151e7d.db

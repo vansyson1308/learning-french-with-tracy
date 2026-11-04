@@ -1,0 +1,298 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "levels": [
+    {
+      "level": "PRE_A1",
+      "scales": [
+        {
+          "scaleName": "Conversation (spoken interaction)",
+          "sourceRef": "cefr-cv-2020:conversation",
+          "direct": [],
+          "supports": [
+            "zh.obj.greetings.basic"
+          ]
+        },
+        {
+          "scaleName": "Overall listening comprehension",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension",
+          "direct": [
+            "zh.obj.listening.familiar_words"
+          ],
+          "supports": [
+            "zh.obj.listening.short_info"
+          ]
+        },
+        {
+          "scaleName": "Overall oral production",
+          "sourceRef": "cefr-cv-2020:overall-oral-production",
+          "direct": [],
+          "supports": [
+            "zh.obj.speaking.formulaic"
+          ]
+        },
+        {
+          "scaleName": "Overall reading comprehension",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
+          "direct": [
+            "zh.obj.reading.familiar_words"
+          ],
+          "supports": [
+            "zh.obj.script.pinyin_tones"
+          ]
+        },
+        {
+          "scaleName": "Vocabulary range",
+          "sourceRef": "cefr-cv-2020:vocabulary-range",
+          "direct": [],
+          "supports": [
+            "zh.obj.vocab.everyday_basics"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "A1",
+      "scales": [
+        {
+          "scaleName": "Conversation (spoken interaction)",
+          "sourceRef": "cefr-cv-2020:conversation",
+          "direct": [
+            "zh.obj.interaction.everyday_conversation"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Correspondence",
+          "sourceRef": "cefr-cv-2020:correspondence",
+          "direct": [
+            "zh.obj.writing.short_message"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Grammatical accuracy",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy",
+          "direct": [],
+          "supports": [
+            "zh.obj.adjectives.hen_tai",
+            "zh.obj.aspect.le_guo_zai",
+            "zh.obj.existence.you_zai",
+            "zh.obj.grammar.word_order",
+            "zh.obj.numbers.measure_words",
+            "zh.obj.questions.question_words",
+            "zh.obj.sentences.shi_questions",
+            "zh.obj.writing.phrases_sentences"
+          ]
+        },
+        {
+          "scaleName": "Identifying cues and inferring (reception strategy)",
+          "sourceRef": "cefr-cv-2020:identifying-cues-inferring",
+          "direct": [],
+          "supports": [
+            "zh.obj.strategy.hanviet_false_friends"
+          ]
+        },
+        {
+          "scaleName": "Information exchange",
+          "sourceRef": "cefr-cv-2020:information-exchange",
+          "direct": [
+            "zh.obj.interaction.practical_needs"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Listening to announcements and instructions",
+          "sourceRef": "cefr-cv-2020:announcements-instructions",
+          "direct": [
+            "zh.obj.listening.announcements"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Listening to audio media and recordings",
+          "sourceRef": "cefr-cv-2020:audio-media-recordings",
+          "direct": [
+            "zh.obj.listening.short_info"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Notes, messages and forms",
+          "sourceRef": "cefr-cv-2020:notes-messages-forms",
+          "direct": [
+            "zh.obj.writing.form_filling"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Obtaining goods and services",
+          "sourceRef": "cefr-cv-2020:obtaining-goods-services",
+          "direct": [
+            "zh.obj.interaction.practical_needs"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Orthographic control",
+          "sourceRef": "cefr-cv-2020:orthographic-control",
+          "direct": [],
+          "supports": [
+            "zh.obj.script.hanzi_hanviet",
+            "zh.obj.writing.personal_info",
+            "zh.obj.writing.pinyin_input"
+          ]
+        },
+        {
+          "scaleName": "Overall listening comprehension",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension",
+          "direct": [],
+          "supports": [
+            "zh.obj.listening.familiar_words"
+          ]
+        },
+        {
+          "scaleName": "Overall oral interaction",
+          "sourceRef": "cefr-cv-2020:overall-oral-interaction",
+          "direct": [
+            "zh.obj.interaction.everyday_conversation"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Overall oral production",
+          "sourceRef": "cefr-cv-2020:overall-oral-production",
+          "direct": [
+            "zh.obj.speaking.describe",
+            "zh.obj.speaking.formulaic"
+          ],
+          "supports": [
+            "zh.obj.speaking.give_info",
+            "zh.obj.speaking.self_intro"
+          ]
+        },
+        {
+          "scaleName": "Overall reading comprehension",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
+          "direct": [
+            "zh.obj.reading.short_texts"
+          ],
+          "supports": [
+            "zh.obj.reading.familiar_words"
+          ]
+        },
+        {
+          "scaleName": "Overall written interaction",
+          "sourceRef": "cefr-cv-2020:overall-written-interaction",
+          "direct": [
+            "zh.obj.writing.personal_info",
+            "zh.obj.writing.short_message"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Overall written production",
+          "sourceRef": "cefr-cv-2020:overall-written-production",
+          "direct": [
+            "zh.obj.writing.personal_info",
+            "zh.obj.writing.phrases_sentences"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Phonological control",
+          "sourceRef": "cefr-cv-2020:phonological-control",
+          "direct": [],
+          "supports": [
+            "zh.obj.pronunciation.tones_sounds",
+            "zh.obj.script.pinyin_tones"
+          ]
+        },
+        {
+          "scaleName": "Reading correspondence",
+          "sourceRef": "cefr-cv-2020:reading-correspondence",
+          "direct": [
+            "zh.obj.reading.short_messages"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Reading for orientation",
+          "sourceRef": "cefr-cv-2020:reading-orientation",
+          "direct": [
+            "zh.obj.reading.notices_info"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Sociolinguistic appropriateness",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness",
+          "direct": [],
+          "supports": [
+            "zh.obj.greetings.basic",
+            "zh.obj.politeness.register",
+            "zh.obj.speaking.formulaic"
+          ]
+        },
+        {
+          "scaleName": "Sustained monologue: describing experience",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-describing",
+          "direct": [
+            "zh.obj.speaking.self_intro"
+          ],
+          "supports": [
+            "zh.obj.speaking.describe"
+          ]
+        },
+        {
+          "scaleName": "Sustained monologue: giving information",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-giving-information",
+          "direct": [
+            "zh.obj.speaking.give_info"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Understanding conversation between other speakers",
+          "sourceRef": "cefr-cv-2020:understanding-conversation",
+          "direct": [
+            "zh.obj.listening.short_dialogues"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Vocabulary range",
+          "sourceRef": "cefr-cv-2020:vocabulary-range",
+          "direct": [],
+          "supports": [
+            "zh.obj.numbers.measure_words",
+            "zh.obj.script.hanzi_hanviet",
+            "zh.obj.vocab.everyday_basics",
+            "zh.obj.vocab.time_calendar",
+            "zh.obj.vocab.work_china"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "A2",
+      "scales": [
+        {
+          "scaleName": "Grammatical accuracy",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy",
+          "direct": [],
+          "supports": [
+            "zh.obj.modals.can_want"
+          ]
+        },
+        {
+          "scaleName": "Overall reading comprehension",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
+          "direct": [],
+          "supports": [
+            "zh.obj.reading.short_texts"
+          ]
+        }
+      ]
+    }
+  ]
+}

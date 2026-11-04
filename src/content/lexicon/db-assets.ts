@@ -18,4 +18,6 @@ export const LEXICON_DB_ASSETS: Record<string, { name: string; contentHash: stri
   "it-en": { name: "it-en-lexicon-v3-a0f634dbabe0cb2c.db", contentHash: "a0f634dbabe0cb2c", asset: require("../../../assets/lexicon/it-en-lexicon-v3-a0f634dbabe0cb2c.db") },
   "ja": { name: "ja-lexicon-v3-479f6878499612e0.db", contentHash: "479f6878499612e0", asset: require("../../../assets/lexicon/ja-lexicon-v3-479f6878499612e0.db") },
   "ja-en": { name: "ja-en-lexicon-v3-c8772f8b3442a06f.db", contentHash: "c8772f8b3442a06f", asset: require("../../../assets/lexicon/ja-en-lexicon-v3-c8772f8b3442a06f.db") },
+  "zh": { name: "zh-lexicon-v3-246be96fba151e7d.db", contentHash: "246be96fba151e7d", asset: require("../../../assets/lexicon/zh-lexicon-v3-246be96fba151e7d.db") },
+  "zh-en": { name: "zh-en-lexicon-v3-ca3f6322a7ed8dfd.db", contentHash: "ca3f6322a7ed8dfd", asset: require("../../../assets/lexicon/zh-en-lexicon-v3-ca3f6322a7ed8dfd.db") },
 };

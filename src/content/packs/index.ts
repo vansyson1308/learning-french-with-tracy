@@ -13,6 +13,7 @@ import ja_vi from "./ja-vi.json";
 import ko_en from "./ko-en.json";
 import pt_en from "./pt-en.json";
 import zh_en from "./zh-en.json";
+import zh_vi from "./zh-vi.json";
 import type { Pack } from "../../lib/types";
 
 export const PACKS: Record<string, Pack> = {
@@ -30,4 +31,5 @@ export const PACKS: Record<string, Pack> = {
   "ko-en": ko_en as Pack,
   "pt-en": pt_en as Pack,
   "zh-en": zh_en as Pack,
+  "zh-vi": zh_vi as Pack,
 };
