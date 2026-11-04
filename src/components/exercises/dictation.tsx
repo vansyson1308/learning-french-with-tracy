@@ -7,7 +7,9 @@ import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 import { useT } from "@/lib/i18n";
+import { DeviceVoiceLabel, DeviceVoiceMissing } from "@/components/session/device-voice-missing";
 import { ListeningPlayerView } from "@/components/session/listening-player-view";
+import type { ListeningAudioPlan } from "@/lib/reception/device-voice-listening";
 import type { ListeningPlayerApi } from "@/lib/reception/use-listening-player";
 import type { DictationExercise } from "@/lib/types";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
@@ -20,6 +22,8 @@ export function Dictation({
   player,
   onAnswer,
   onAudioUnavailable,
+  courseId,
+  audioKind = "bundled",
 }: {
   targetLanguage: string;
   exercise: DictationExercise;
@@ -28,15 +32,29 @@ export function Dictation({
   player: ListeningPlayerApi;
   onAnswer: (value: string) => void;
   onAudioUnavailable?: () => void;
+  /** Needed for the device-voice notice (QC 2026-11-05 §2.1). */
+  courseId?: string;
+  /** How the clip is heard; "no-device-voice" = not answerable, only the skip. */
+  audioKind?: ListeningAudioPlan["kind"];
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
   const { t } = useT();
 
+  if (audioKind === "no-device-voice" && courseId !== undefined) {
+    return (
+      <View style={styles.wrap}>
+        <Text style={styles.title}>{t("ex.typeWhatYouHear")}</Text>
+        <DeviceVoiceMissing courseId={courseId} onSkip={onAudioUnavailable} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.wrap}>
       <Text style={styles.title}>{t("ex.typeWhatYouHear")}</Text>
       <ListeningPlayerView api={player} onAudioUnavailable={onAudioUnavailable} />
+      {audioKind === "device-voice" ? <DeviceVoiceLabel /> : null}
       <TextInput
         style={[
           styles.input,

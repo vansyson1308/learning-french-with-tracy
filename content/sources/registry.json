@@ -19,6 +19,20 @@
       "note": "CJK fonts only, and only if a test shows the system font (Android ships Noto CJK) lacks glyphs; the bundled size is measured and recorded."
     }
   ],
+  "pendingApproval": [
+    {
+      "id": "google-cloud-tts",
+      "name": "Google Cloud Text-to-Speech (generated audio)",
+      "kind": "commercial text-to-speech service output (bundled course audio for ko-vi, possibly pt-PT)",
+      "licenceCategory": "commercial-tts-output",
+      "url": "https://cloud.google.com/text-to-speech",
+      "termsUrl": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+      "termsQuote": "use the audio data files you create using Cloud Text-to-Speech to power your applications",
+      "retrievedAt": "2026-11-05",
+      "decision": "QC 2026-11-05 §2.2 — pending owner approval (plan/OWNER-FINAL-CHECKLIST.md B2). Until the owner approves, commercial-tts-output stays off the licence allowlist, so no source, voice or asset can use it.",
+      "notes": "The same page subjects that use to the Google Cloud Platform Terms of Service and applicable law. The Service Specific Terms (https://cloud.google.com/terms/service-terms, read 2026-11-05, last modified 2026-04-02; AI/ML Services section 17) forbid using the output to create or improve a competing model, which this project does not do. Adapter: scripts/lib/tts/google-cloud.ts; engine entry content/audio/engines.json google-cloud-tts (enabled: false); key only from the CI secret GOOGLE_CLOUD_TTS_API_KEY. Cast for ko: ko-KR-Neural2-A (female) / ko-KR-Neural2-C (male), fallback ko-KR-Wavenet-A / ko-KR-Wavenet-C."
+    }
+  ],
   "sources": [
     {
       "id": "upstream-lingo-lessons",

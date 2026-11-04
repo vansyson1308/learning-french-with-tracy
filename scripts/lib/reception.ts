@@ -142,6 +142,12 @@ export function validateReception(input: {
   assetKind?: ReceptionAssetKind;
   /** Asset files other reception sources reference (P5b story sentences): never orphans. */
   otherReferencedFiles?: ReadonlySet<string>;
+  /**
+   * QC 2026-11-05 §2.1: no course of the language bundles audio and one sets
+   * `deviceVoiceScoredListening` — the device voice reads each transcript, so
+   * no clip needs a generated asset (a bundled one still wins at run time).
+   */
+  deviceVoiceListening?: boolean;
 }): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -215,7 +221,7 @@ export function validateReception(input: {
       // Deterministic bundled audio (P7 §26): every clip resolves to its committed file.
       // P3d(it): the first-generation warning let a language pass with no reception audio at all.
       const fileName = clipFileName(input.lang, listening, clip, assetKind);
-      if (!assetFiles.has(fileName)) {
+      if (!assetFiles.has(fileName) && input.deviceVoiceListening !== true) {
         err(
           `${clip.id}: generated asset ${fileName} missing — run the reception-audio generate workflow (P7 §26)`
         );

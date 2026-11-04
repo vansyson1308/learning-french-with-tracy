@@ -140,6 +140,13 @@ export default function LearnScreen() {
             <Text style={styles.betaText}>{t("learn.aiReviewNote")}</Text>
           </View>
         ) : null}
+        {courseProfile(activeCourseId).deviceVoiceScoredListening ? (
+          // QC 2026-11-05 §2.1: the honest label — listening uses the device voice, no recorded audio yet.
+          <View style={styles.betaBanner} testID="device-voice-note" accessibilityRole="text">
+            <Ionicons name="phone-portrait-outline" size={18} color={colors.orange} />
+            <Text style={styles.betaText}>{t("learn.deviceVoiceNote", { language: langName })}</Text>
+          </View>
+        ) : null}
         {showPlacementEntry ? (
           <Pressable
             style={styles.placementCard}

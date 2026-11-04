@@ -244,6 +244,20 @@ export function romajiUntilPrimerErrors(
   return errors;
 }
 
+/**
+ * QC 2026-11-05 §2.1: `deviceVoiceScoredListening` grades a course's listening items through the device voice (the
+ * runtime reads the clip transcript aloud). Only for a course whose pack audio policy is device-tts: a course with
+ * bundled audio keeps the P7 §25-26 rule that scored listening resolves only through its bundled assets.
+ */
+export function deviceVoiceListeningErrors(
+  courseId: string,
+  data: { deviceVoiceScoredListening?: boolean } | null,
+  audio: { policy: string; reason?: string } | undefined
+): string[] {
+  if (data?.deviceVoiceScoredListening !== true) return [];
+  return audio?.policy === "device-tts" ? [] : [`${courseId}: deviceVoiceScoredListening needs the pack audio policy "device-tts" (a bundled-audio course grades listening from its bundled assets only)`];
+}
+
 /** D-10: the course carries an owner-accepted AI-simulated review (the app shows an honest note). */
 export function courseReviewIsAi(courseId: string): boolean {
   const rel = `content/courses/${courseId}.profile.json`;
@@ -264,7 +278,7 @@ export function courseIsBeta(courseId: string): boolean {
 /** A boolean flag of a course's profile (content/courses/<id>.profile.json), undefined when absent. */
 export function courseProfileFlag(
   courseId: string,
-  flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack" | "readingInputIsProduction" | "romajiUntilPrimer"
+  flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack" | "readingInputIsProduction" | "romajiUntilPrimer" | "deviceVoiceScoredListening"
 ): boolean | undefined {
   const rel = `content/courses/${courseId}.profile.json`;
   if (!existsSync(safeResolve(rel))) return undefined;
@@ -668,6 +682,15 @@ export function validateContent(): ValidationResult {
     for (const e of romajiUntilPrimerErrors(courseId, profile.data, primer?.success ? primer.data : null)) err(e);
   }
 
+  // QC 2026-11-05 §2.1: device-voice scored listening only on a course that bundles no audio.
+  for (const { courseId, pack } of packs) {
+    const rel = `content/courses/${courseId}.profile.json`;
+    if (!existsSync(safeResolve(rel))) continue;
+    const profile = CourseProfileOverrideSchema.safeParse(readJson(rel));
+    if (!profile.success) continue;
+    for (const e of deviceVoiceListeningErrors(courseId, profile.data, pack.audio)) err(e);
+  }
+
   // Every language folder needs at least one course — except an
   // evidence-only folder (P3a: lexicon ETL pools without authored lexemes,
   // English until its course exists) — and a target's courses must agree
@@ -818,6 +841,7 @@ export function validateRegistry(): ValidationResult {
       errors.push(`registry: license "${s.license}" is not allowlisted — do not ingest`);
     }
   }
+  errors.push(...pendingApprovalErrors(registry));
   const covered = (rel: string) =>
     registry.sources.some((s) => s.covers.some((c) => rel === c || rel.startsWith(c)));
   for (const file of listCourseSources()) {
@@ -830,6 +854,20 @@ export function validateRegistry(): ValidationResult {
   errors.push(...lineageErrors(registry.sources));
   errors.push(...selectedVoiceErrors(selectedVoices(), registry.sources));
   return { errors, warnings: [] };
+}
+
+/**
+ * QC 2026-11-05 §2.2: a pending-approval candidate is recorded only — its category stays off the allowlist until the
+ * owner approves it (then it moves to `sources` with what it covers), and it is never also a source.
+ */
+export function pendingApprovalErrors(registry: Pick<SourceRegistry, "sources" | "pendingApproval">, allowed: readonly string[] = ALLOWED_LICENSES): string[] {
+  const errors: string[] = [];
+  const sourceIds = new Set(registry.sources.map((s) => s.id));
+  for (const p of registry.pendingApproval ?? []) {
+    if (allowed.includes(p.licenceCategory)) errors.push(`registry: ${p.id}: "${p.licenceCategory}" is on the allowlist now — move it to "sources" with its covers`);
+    if (sourceIds.has(p.id)) errors.push(`registry: ${p.id} is both pending approval and a source`);
+  }
+  return errors;
 }
 
 /** Every voice a manifest marks as selected: pack layer and each language's reception layer. */

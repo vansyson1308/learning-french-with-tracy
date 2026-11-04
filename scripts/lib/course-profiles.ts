@@ -182,6 +182,8 @@ export function deriveProfiles(args: {
       ...(courseProfileFlag(pack.id, "readingInputIsProduction") === true ? { readingInputIsProduction: true as const } : {}),
       // P4c: a romaji line under Japanese text until the learner passes the kana primer checkpoint.
       ...(courseProfileFlag(pack.id, "romajiUntilPrimer") === true ? { romajiUntilPrimer: true as const } : {}),
+      // QC 2026-11-05 §2.1: listening graded through the device voice (device-tts courses only, validated).
+      ...(courseProfileFlag(pack.id, "deviceVoiceScoredListening") === true ? { deviceVoiceScoredListening: true as const } : {}),
     };
   }
   return profiles;

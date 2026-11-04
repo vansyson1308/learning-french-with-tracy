@@ -68,6 +68,7 @@ import { compileConceptsArtifact, loadParadigms, loadPedagogyConcepts, validateP
 import {
   canonicalJson,
   compileAll,
+  courseProfileFlag,
   discoverTargets,
   gradeTargetsFor,
   isTestOnlyTarget,
@@ -248,6 +249,10 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
         packs: mine.map((p) => p.pack),
         assetKind: receptionAssetKind(lang, packs),
         otherReferencedFiles: storyAssetFiles(lang, safeLoadStories(lang)),
+        // QC 2026-11-05 §2.1: no course of the language bundles audio, and one grades its clips through the device voice.
+        deviceVoiceListening:
+          mine.every((p) => p.pack.audio?.policy === "device-tts") &&
+          mine.some((p) => courseProfileFlag(p.pack.id, "deviceVoiceScoredListening") === true),
       }).errors
     );
   } catch (e) {

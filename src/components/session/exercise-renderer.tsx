@@ -25,8 +25,8 @@ import { WordBank } from "@/components/exercises/word-bank";
 import { useReadingAid, useScriptReading } from "@/lib/use-reading-aid";
 import { speakTarget } from "@/lib/audio";
 import type { Answer, Status } from "@/lib/grading";
-import { clipAudioSource, clipFor } from "@/lib/reception/content";
-import { useListeningPlayer } from "@/lib/reception/use-listening-player";
+import { clipFor } from "@/lib/reception/content";
+import { useListeningAudio } from "@/lib/reception/use-listening-audio";
 import type { SpeechExerciseContext } from "@/lib/speech/use-speech-session";
 import type {
   DictationExercise,
@@ -73,7 +73,7 @@ function ListeningComprehensionStep({
   onAnswer: (value: Answer) => void;
 }) {
   const clip = clipFor(courseId, exercise.clipId);
-  const player = useListeningPlayer(clipAudioSource(courseId, exercise.clipId), {
+  const { plan, api: player } = useListeningAudio(courseId, exercise.clipId, {
     maxPlays: reception.scored ? (reception.maxPlays ?? clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
     allowSlow: !reception.scored,
   });
@@ -84,6 +84,7 @@ function ListeningComprehensionStep({
       answer={answer}
       status={status}
       player={player}
+      audioKind={plan.kind}
       showTranscript={reception.revealTranscript && status !== "none"}
       onAnswer={onAnswer}
       onAudioUnavailable={status === "none" ? reception.onAudioSkip : undefined}
@@ -109,12 +110,14 @@ function DictationStep({
   onAnswer: (value: Answer) => void;
 }) {
   const clip = clipFor(courseId, exercise.clipId);
-  const player = useListeningPlayer(clipAudioSource(courseId, exercise.clipId), {
+  const { plan, api: player } = useListeningAudio(courseId, exercise.clipId, {
     maxPlays: reception.scored ? (reception.maxPlays ?? clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
     allowSlow: !reception.scored,
   });
   return (
     <Dictation
+      courseId={courseId}
+      audioKind={plan.kind}
       targetLanguage={targetLanguage}
       exercise={exercise}
       answer={answer}

@@ -9,8 +9,10 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { useT } from "@/lib/i18n";
 import { OptionCard, type OptionState } from "@/components/exercises/option-card";
+import { DeviceVoiceLabel, DeviceVoiceMissing } from "@/components/session/device-voice-missing";
 import { ListeningPlayerView } from "@/components/session/listening-player-view";
 import { clipFor } from "@/lib/reception/content";
+import type { ListeningAudioPlan } from "@/lib/reception/device-voice-listening";
 import type { ListeningPlayerApi } from "@/lib/reception/use-listening-player";
 import type { ListeningComprehensionExercise } from "@/lib/types";
 import { makeThemedStyles } from "@/lib/theme";
@@ -36,6 +38,7 @@ export function ListeningComprehension({
   showTranscript,
   onAnswer,
   onAudioUnavailable,
+  audioKind = "bundled",
 }: {
   courseId: string;
   exercise: ListeningComprehensionExercise;
@@ -46,15 +49,27 @@ export function ListeningComprehension({
   showTranscript: boolean;
   onAnswer: (index: number) => void;
   onAudioUnavailable?: () => void;
+  /** QC 2026-11-05 §2.1: how the clip is heard; "no-device-voice" = not answerable, only the skip. */
+  audioKind?: ListeningAudioPlan["kind"];
 }) {
   const styles = useStyles();
   const { t } = useT();
   const clip = clipFor(courseId, exercise.clipId);
 
+  if (audioKind === "no-device-voice") {
+    return (
+      <View style={styles.wrap}>
+        <Text style={styles.title}>{t("ex.listenThenAnswer")}</Text>
+        <DeviceVoiceMissing courseId={courseId} onSkip={onAudioUnavailable} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.wrap}>
       <Text style={styles.title}>{t("ex.listenThenAnswer")}</Text>
       <ListeningPlayerView api={player} onAudioUnavailable={onAudioUnavailable} />
+      {audioKind === "device-voice" ? <DeviceVoiceLabel /> : null}
       <Text style={styles.question} testID="exercise-question">{exercise.question}</Text>
       <View style={styles.options}>
         {exercise.options.map((option, i) => (

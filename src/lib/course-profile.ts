@@ -110,6 +110,13 @@ export type CourseProfile = {
    * checkpoint (persisted `primerPassed`, v9). Absent = never.
    */
   romajiUntilPrimer?: true;
+  /**
+   * QC 2026-11-05 §2.1: a device-tts course (no bundled audio) whose
+   * listening items are graded through the installed local device voice;
+   * with no voice the item is shown as "no device voice" and skipped. A
+   * bundled clip always wins (src/lib/reception/device-voice-listening.ts).
+   */
+  deviceVoiceScoredListening?: true;
   /** D-10: reviewed by an AI-simulated native reviewer (owner-accepted) — course info and Licences show an honest note. */
   reviewNote?: "ai-simulated";
   /**

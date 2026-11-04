@@ -197,6 +197,7 @@ export type MessageKey =
   | "learn.aiReviewNote"
   | "learn.betaBanner"
   | "learn.coursePickerLabel"
+  | "learn.deviceVoiceNote"
   | "learn.guidebookLabel"
   | "learn.hint.cleared"
   | "learn.hint.completed"
@@ -221,6 +222,11 @@ export type MessageKey =
   | "licenses.software"
   | "licenses.softwareBody"
   | "licenses.title"
+  | "listening.deviceVoice"
+  | "listening.noDeviceVoice"
+  | "listening.noDeviceVoiceHint"
+  | "listening.noDeviceVoiceHintIos"
+  | "listening.skipNoVoice"
   | "onboarding.courseLabel"
   | "onboarding.courseMeta"
   | "onboarding.dailyGoal"
@@ -560,4 +566,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 558;
+export const MESSAGE_KEY_COUNT = 564;

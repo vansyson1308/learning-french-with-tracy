@@ -74,6 +74,30 @@
       "sampleRateHz": 44100,
       "lineage": [{ "model": "MeloTTS", "dataset": "Not declared on the model cards", "licence": "unknown", "url": "https://huggingface.co/myshell-ai/MeloTTS-Chinese" }],
       "note": "MeloTTS (MIT code, MIT model cards on Hugging Face). The only MIT engine with Japanese and Korean. Chinese is the mixed zh+en model."
+    },
+    "google-cloud-tts": {
+      "enabled": false,
+      "license": "commercial-tts-output",
+      "licenceCategory": "commercial-tts-output",
+      "endpoint": "https://texttospeech.googleapis.com/v1/text:synthesize",
+      "keyEnv": "GOOGLE_CLOUD_TTS_API_KEY",
+      "audioEncoding": "LINEAR16",
+      "sampleRateHz": 24000,
+      "termsUrl": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+      "termsQuote": "use the audio data files you create using Cloud Text-to-Speech to power your applications",
+      "termsRetrievedAt": "2026-11-05",
+      "voiceListUrl": "https://docs.cloud.google.com/text-to-speech/docs/list-voices-and-types",
+      "voices": {
+        "ko": {
+          "A": { "name": "ko-KR-Neural2-A", "languageCode": "ko-KR", "ssmlGender": "FEMALE" },
+          "B": { "name": "ko-KR-Neural2-C", "languageCode": "ko-KR", "ssmlGender": "MALE" },
+          "fallback": {
+            "A": { "name": "ko-KR-Wavenet-A", "languageCode": "ko-KR", "ssmlGender": "FEMALE" },
+            "B": { "name": "ko-KR-Wavenet-C", "languageCode": "ko-KR", "ssmlGender": "MALE" }
+          }
+        }
+      },
+      "note": "QC 2026-11-05 §2.2: prepared, OFF. scripts/lib/tts/google-cloud.ts refuses to run while `enabled` is false, while `commercial-tts-output` is not on the licence allowlist (content/sources/registry.json `pendingApproval`; only the owner approves it: OWNER-FINAL-CHECKLIST B2), without the key in the CI secret named by `keyEnv`, or outside GitHub Actions. The key is never written to the repository and travels only in the X-Goog-Api-Key header. Terms as read on 2026-11-05: the generated audio may power applications, subject to the Google Cloud Platform Terms of Service; the Service Specific Terms (AI/ML Services, section 17) forbid using the output to build a competing model, which this project does not do. Voices from the official voice list (2026-11-05): ko-KR Neural2 has A, B (female) and C (male); Wavenet A, B (female), C, D (male). Not registered with the audio pipeline's engine list until approval."
     }
   },
   "asr": {

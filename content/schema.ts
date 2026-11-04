@@ -715,6 +715,15 @@ export const CourseProfileOverrideSchema = z.strictObject({
    * (validated in scripts/lib/pipeline.ts romajiUntilPrimerErrors).
    */
   romajiUntilPrimer: z.boolean().optional(),
+  /**
+   * QC 2026-11-05 §2.1 (ko-vi): grade listening items through the device's
+   * own voice (the transcript is known, so the item is valid) when a local
+   * voice for the course's TTS locale is installed; otherwise the item is
+   * shown as "no device voice" and skipped, never counted wrong. Only valid
+   * with pack audio policy "device-tts" (scripts/lib/pipeline.ts
+   * deviceVoiceListeningErrors); a bundled clip always wins.
+   */
+  deviceVoiceScoredListening: z.boolean().optional(),
   enabled: z
     .strictObject({
       fsrs: z.boolean().optional(),
@@ -1387,10 +1396,37 @@ export const SCOPED_LICENSES: Readonly<Record<string, "data" | "font">> = {
  * a source whose exact redistribution terms are ambiguous cannot be
  * registered, so its data cannot be ingested. That is the gate, by design.
  */
+/**
+ * QC 2026-11-05 §2.2: licence categories recorded but NOT allowlisted — they
+ * await the owner's approval (OWNER-FINAL-CHECKLIST B2). A `sources` entry can
+ * never use one (its licence must be on LICENSE_ALLOWLIST), so nothing under
+ * such a category can ship; the registry lists the candidate under
+ * `pendingApproval` with its terms, covering no path.
+ */
+export const PENDING_LICENCE_CATEGORIES = ["commercial-tts-output"] as const;
+
 export const SourceRegistrySchema = z.strictObject({
   /** Licence decisions beyond the plain allowlist (QC 2026-11-03 §2): one entry per scoped licence. */
   policy: z
     .array(z.strictObject({ licence: z.enum(LICENSE_ALLOWLIST), scope: z.enum(["data", "font"]), decision: z.string().min(1), note: z.string().min(10) }))
+    .optional(),
+  /** Candidates under a pending licence category (QC 2026-11-05 §2.2): recorded, never usable, covering nothing. */
+  pendingApproval: z
+    .array(
+      z.strictObject({
+        id,
+        name: z.string().min(1),
+        kind: z.string().min(1),
+        licenceCategory: z.enum(PENDING_LICENCE_CATEGORIES),
+        url: z.string().min(1),
+        termsUrl: z.string().regex(/^https:\/\//),
+        /** The clause on using the output, under 15 words, as the terms word it. */
+        termsQuote: z.string().min(1).refine((q) => q.split(/\s+/).filter(Boolean).length < 15, "under 15 words"),
+        retrievedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        decision: z.string().min(1),
+        notes: z.string().optional(),
+      })
+    )
     .optional(),
   sources: z
     .array(

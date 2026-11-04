@@ -85,7 +85,9 @@ export function readingErrors(notation: ReadingNotation, surface: string, partOf
     }
   } else {
     if (reading.rr === undefined) return ["no rr reading"];
-    if (![...surface].every(isHangulSyllable)) errors.push(`rr surface "${surface}" is not hangul syllables only`);
+    // P4e: a set phrase is spaced hangul words (안녕히 가세요); its RR is the rule output word by word.
+    const words = surface.split(" ");
+    if (words.some((w) => w.length === 0 || ![...w].every(isHangulSyllable))) errors.push(`rr surface "${surface}" is not hangul syllables only`);
     const spelling = reading.rrSpelling ?? surface;
     if (stripRrBoundaries(spelling) !== surface) errors.push(`rrSpelling "${spelling}" does not spell "${surface}"`);
     const expected = romanizeKorean(spelling, { noun: partOfSpeech === "noun" });
