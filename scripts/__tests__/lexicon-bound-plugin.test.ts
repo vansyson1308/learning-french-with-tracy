@@ -1,5 +1,5 @@
 /**
- * P4d: validators read zh speech, writing and interaction answers with the tokens the app grades with — the runtime
+ * P4d: validators read zh and ja speech, writing and interaction answers with the tokens the app grades with — the runtime
  * plugin bound to the target's words (lexiconBoundPlugin) — never Intl.Segmenter's. Only an opted-in language is bound.
  */
 import { describe, expect, test } from "bun:test";
@@ -22,8 +22,19 @@ describe("lexiconBoundPlugin", () => {
     expect(normalizeWritten("我是學生", bound.rules)).toBe("我 是 学生");
   });
 
-  test("a language that has not opted in (ja), a Latin-script one and an empty lexicon keep the plugin as it is", () => {
-    for (const code of ["ja", "es", "fr"]) {
+  test("ja: the dictionary path — the words, their kana readings and the verb check the app makes", () => {
+    const bound = lexiconBoundPlugin(buildPlugin("ja"), [
+      { surface: "今", pronunciation: { value: "いま", notation: "kana" } },
+      { surface: "住む", partOfSpeech: "verb", pronunciation: { value: "すむ", notation: "kana" } },
+      { surface: "どこ" },
+      { surface: "に" },
+    ]);
+    expect(bound.tokenize("どこに住んでいますか")).toEqual(["どこ", "に", "住", "ん", "で", "いま", "す", "か"]);
+    expect(bound.rules.utteranceReading?.("どこ に 住 ん で いま す か")).toBe("どこにすんでいますか");
+  });
+
+  test("a language that has not opted in (ko), a Latin-script one and an empty lexicon keep the plugin as it is", () => {
+    for (const code of ["ko", "es", "fr"]) {
       const plugin = buildPlugin(code);
       expect(lexiconBoundPlugin(plugin, [{ surface: "x" }])).toBe(plugin);
     }

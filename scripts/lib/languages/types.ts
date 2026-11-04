@@ -45,9 +45,8 @@ export type BuildLanguage = {
   /**
    * P4d: validate speech, writing and interaction answers with the runtime plugin bound to the target's own words (the
    * dictionary tokenizer the app grades with, `lexiconBoundPlugin`) instead of Intl.Segmenter. Set for zh, whose
-   * layers were authored against it. ja is not yet switched: one ja-vi writing model (ja.write.p_ask, どこに住んで
-   * いますか) fails its sentence-verb check under the dictionary tokens (いま す, not ます) — a runtime grading gap the
-   * ja owner decides on. Absent = the unbound plugin (every other language).
+   * layers were authored against it, and for ja (its dictionary tokens read いますか as いま す か; the rubric finds
+   * ます in the whole-utterance reading, src/lib/writing/rubric.ts). Absent = the unbound plugin (every other language).
    */
   validatedWithLexicon?: true;
 };
