@@ -4143,8 +4143,8 @@
       "lookupForm": "小姐",
       "partOfSpeech": "noun",
       "glosses": {
-        "en": "Miss",
-        "vi": "cô (gọi lịch sự)"
+        "en": "Miss (with a surname)",
+        "vi": "cô (đi với họ, như cô Lý)"
       },
       "pronunciation": {
         "value": "xiǎo jie",
@@ -8492,7 +8492,7 @@
           "target": "这个苹果多少钱一斤？",
           "translations": {
             "en": "How much is a jin of these apples?",
-            "vi": "Táo này bao nhiêu tiền một cân?"
+            "vi": "Táo này bao nhiêu tiền nửa ký?"
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -8516,7 +8516,7 @@
       "partOfSpeech": "other",
       "glosses": {
         "en": "kuai (yuan, spoken); piece",
-        "vi": "đồng (tiền, khẩu ngữ); miếng"
+        "vi": "tệ (tiền, khẩu ngữ); miếng"
       },
       "pronunciation": {
         "value": "kuài",
@@ -9930,7 +9930,7 @@
       "partOfSpeech": "other",
       "glosses": {
         "en": "measure word for clothes, matters",
-        "vi": "cái; chiếc (áo, việc)"
+        "vi": "chiếc; cái (áo, việc)"
       },
       "pronunciation": {
         "value": "jiàn",
@@ -10094,7 +10094,7 @@
       "partOfSpeech": "other",
       "glosses": {
         "en": "jin (half a kilo)",
-        "vi": "cân (nửa ki-lô-gam)"
+        "vi": "cân Trung Quốc (nửa ký)"
       },
       "pronunciation": {
         "value": "jīn",
@@ -10111,7 +10111,7 @@
           "target": "我要一斤苹果。",
           "translations": {
             "en": "A jin of apples, please.",
-            "vi": "Cho tôi một cân táo."
+            "vi": "Cho tôi nửa ký táo."
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -10525,7 +10525,7 @@
           "target": "你什么时候下班？",
           "translations": {
             "en": "When do you finish work?",
-            "vi": "Mấy giờ bạn tan ca?"
+            "vi": "Khi nào bạn tan ca?"
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -15785,7 +15785,179 @@
       "topic": "colors",
       "examples": [
         {
-          "target": "我喜欢黄的花。",
+          "target": "那个杯子是黄的。",
+          "translations": {
+            "en": "That cup is yellow.",
+            "vi": "Cái cốc kia màu vàng."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "cedict",
+          "key": "黃|黄"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:xiamian",
+      "surface": "下面",
+      "lemma": "下面",
+      "lookupForm": "下面",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "below; underneath",
+        "vi": "phía dưới; bên dưới"
+      },
+      "pronunciation": {
+        "value": "xià miàn",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "xià miàn",
+        "traditional": "下面"
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "我的包在椅子下面。",
+          "translations": {
+            "en": "My bag is under the chair.",
+            "vi": "Túi của tôi ở dưới ghế."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "下面|noun"
+        },
+        {
+          "source": "cedict",
+          "key": "下面|下面"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:hongse",
+      "surface": "红色",
+      "lemma": "红色",
+      "lookupForm": "红色",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "red (the colour)",
+        "vi": "màu đỏ"
+      },
+      "pronunciation": {
+        "value": "hóng sè",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "hóng sè",
+        "traditional": "紅色"
+      },
+      "topic": "colors",
+      "examples": [
+        {
+          "target": "我喜欢红色。",
+          "translations": {
+            "en": "I like red.",
+            "vi": "Tôi thích màu đỏ."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "cedict",
+          "key": "紅色|红色"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:baise",
+      "surface": "白色",
+      "lemma": "白色",
+      "lookupForm": "白色",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "white (the colour)",
+        "vi": "màu trắng"
+      },
+      "pronunciation": {
+        "value": "bái sè",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "bái sè",
+        "traditional": "白色"
+      },
+      "topic": "colors",
+      "examples": [
+        {
+          "target": "这件衣服是白色的。",
+          "translations": {
+            "en": "This shirt is white.",
+            "vi": "Chiếc áo này màu trắng."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "白色|noun"
+        },
+        {
+          "source": "cedict",
+          "key": "白色|白色"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:huangse",
+      "surface": "黄色",
+      "lemma": "黄色",
+      "lookupForm": "黄色",
+      "partOfSpeech": "noun",
+      "glosses": {
+        "en": "yellow (the colour)",
+        "vi": "màu vàng"
+      },
+      "pronunciation": {
+        "value": "huáng sè",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "huáng sè",
+        "traditional": "黃色"
+      },
+      "topic": "colors",
+      "examples": [
+        {
+          "target": "我喜欢黄色的花。",
           "translations": {
             "en": "I like yellow flowers.",
             "vi": "Tôi thích hoa màu vàng."
@@ -15797,7 +15969,7 @@
       "sourceRefs": [
         {
           "source": "cedict",
-          "key": "黃|黄"
+          "key": "黃色|黄色"
         },
         {
           "source": "original-lexicon-etl"
@@ -18762,7 +18934,7 @@
       "partOfSpeech": "verb",
       "glosses": {
         "en": "to wash",
-        "vi": "rửa; giặt"
+        "vi": "rửa, giặt"
       },
       "pronunciation": {
         "value": "xǐ",
@@ -18789,6 +18961,51 @@
         {
           "source": "cedict",
           "key": "洗|洗"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:banjia",
+      "surface": "搬家",
+      "lemma": "搬家",
+      "lookupForm": "搬家",
+      "partOfSpeech": "verb",
+      "glosses": {
+        "en": "to move house",
+        "vi": "chuyển nhà"
+      },
+      "pronunciation": {
+        "value": "bān jiā",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "bān jiā",
+        "traditional": "搬家"
+      },
+      "topic": "home",
+      "examples": [
+        {
+          "target": "我们下个月搬家。",
+          "translations": {
+            "en": "We are moving house next month.",
+            "vi": "Tháng sau chúng tôi chuyển nhà."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "搬家|verb"
+        },
+        {
+          "source": "cedict",
+          "key": "搬家|搬家"
         },
         {
           "source": "original-lexicon-etl"
@@ -21037,6 +21254,51 @@
       ]
     },
     {
+      "id": "zh:w:xingfu",
+      "surface": "幸福",
+      "lemma": "幸福",
+      "lookupForm": "幸福",
+      "partOfSpeech": "adjective",
+      "glosses": {
+        "en": "happy (in life)",
+        "vi": "hạnh phúc"
+      },
+      "pronunciation": {
+        "value": "xìng fú",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "xìng fú",
+        "traditional": "幸福"
+      },
+      "topic": "feelings",
+      "examples": [
+        {
+          "target": "祝你们幸福！",
+          "translations": {
+            "en": "We wish you every happiness!",
+            "vi": "Chúc hai bạn hạnh phúc!"
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "幸福|adj"
+        },
+        {
+          "source": "cedict",
+          "key": "幸福|幸福"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
       "id": "zh:w:piaoliang",
       "surface": "漂亮",
       "lemma": "漂亮",
@@ -22742,6 +23004,47 @@
         {
           "source": "cedict",
           "key": "把|把"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:ban-4",
+      "surface": "办",
+      "lemma": "办",
+      "lookupForm": "办",
+      "partOfSpeech": "verb",
+      "glosses": {
+        "en": "to apply for; to handle (papers)",
+        "vi": "làm (thẻ, giấy tờ, thủ tục)"
+      },
+      "pronunciation": {
+        "value": "bàn",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "bàn",
+        "traditional": "辦"
+      },
+      "topic": "work",
+      "examples": [
+        {
+          "target": "我想办一张银行卡。",
+          "translations": {
+            "en": "I'd like to open a bank card.",
+            "vi": "Tôi muốn làm một thẻ ngân hàng."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "cedict",
+          "key": "辦|办"
         },
         {
           "source": "original-lexicon-etl"
@@ -24582,8 +24885,8 @@
       "lookupForm": "短信",
       "partOfSpeech": "noun",
       "glosses": {
-        "en": "text message",
-        "vi": "tin nhắn"
+        "en": "text message (SMS)",
+        "vi": "tin nhắn SMS (tin nhắn điện thoại)"
       },
       "pronunciation": {
         "value": "duǎn xìn",
@@ -28004,7 +28307,7 @@
       "partOfSpeech": "adverb",
       "glosses": {
         "en": "all along; straight",
-        "vi": "luôn; mãi; thẳng"
+        "vi": "cứ thẳng; luôn; mãi"
       },
       "pronunciation": {
         "value": "yī zhí",
@@ -29261,7 +29564,7 @@
       "partOfSpeech": "other",
       "glosses": {
         "en": "kilogram",
-        "vi": "ki-lô-gam"
+        "vi": "ki-lô-gam (ký)"
       },
       "pronunciation": {
         "value": "gōng jīn",
@@ -29278,7 +29581,7 @@
           "target": "这个箱子二十公斤。",
           "translations": {
             "en": "This box weighs twenty kilos.",
-            "vi": "Cái thùng này hai mươi cân."
+            "vi": "Cái thùng này nặng hai mươi ký."
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -29384,7 +29687,7 @@
       "partOfSpeech": "other",
       "glosses": {
         "en": "measure word for long things",
-        "vi": "sợi; con; điều (vật dài)"
+        "vi": "con, sợi (vật dài: cá, đường, sông); điều"
       },
       "pronunciation": {
         "value": "tiáo",
@@ -31127,6 +31430,88 @@
       "topic": "work",
       "examples": [
         {
+          "target": "车间里不能用火。",
+          "translations": {
+            "en": "No open flames in the workshop.",
+            "vi": "Trong xưởng không được dùng lửa."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "cedict",
+          "key": "火|火"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:dasao",
+      "surface": "打扫",
+      "lemma": "打扫",
+      "lookupForm": "打扫",
+      "partOfSpeech": "verb",
+      "glosses": {
+        "en": "to clean (a room)",
+        "vi": "quét dọn; dọn dẹp"
+      },
+      "pronunciation": {
+        "value": "dǎ sǎo",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "dǎ sǎo",
+        "traditional": "打掃"
+      },
+      "topic": "home",
+      "examples": [
+        {
+          "target": "星期六我们一起打扫宿舍。",
+          "translations": {
+            "en": "We clean the dorm together on Saturday.",
+            "vi": "Thứ Bảy chúng tôi cùng dọn dẹp ký túc xá."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "cedict",
+          "key": "打掃|打扫"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:zhaohuo",
+      "surface": "着火",
+      "lemma": "着火",
+      "lookupForm": "着火",
+      "partOfSpeech": "verb",
+      "glosses": {
+        "en": "to catch fire",
+        "vi": "cháy; bốc cháy"
+      },
+      "pronunciation": {
+        "value": "zháo huǒ",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "zháo huǒ",
+        "traditional": "着火"
+      },
+      "topic": "work",
+      "examples": [
+        {
           "target": "着火了！快出去！",
           "translations": {
             "en": "Fire! Get out!",
@@ -31139,7 +31524,48 @@
       "sourceRefs": [
         {
           "source": "cedict",
-          "key": "火|火"
+          "key": "着火|着火"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "zh:w:an",
+      "surface": "按",
+      "lemma": "按",
+      "lookupForm": "按",
+      "partOfSpeech": "verb",
+      "glosses": {
+        "en": "to press",
+        "vi": "bấm; ấn"
+      },
+      "pronunciation": {
+        "value": "àn",
+        "notation": "pinyin",
+        "source": "cedict"
+      },
+      "reading": {
+        "pinyin": "àn",
+        "traditional": "按"
+      },
+      "topic": "work",
+      "examples": [
+        {
+          "target": "机器有问题，就按这个。",
+          "translations": {
+            "en": "If the machine has a problem, press this.",
+            "vi": "Máy có vấn đề thì bấm cái này."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "cedict",
+          "key": "按|按"
         },
         {
           "source": "original-lexicon-etl"
@@ -31707,7 +32133,7 @@
       "partOfSpeech": "noun",
       "glosses": {
         "en": "identity card",
-        "vi": "chứng minh thư; căn cước"
+        "vi": "thẻ căn cước; chứng minh thư (cũ)"
       },
       "pronunciation": {
         "value": "shēn fèn zhèng",
@@ -31724,7 +32150,7 @@
           "target": "请带身份证。",
           "translations": {
             "en": "Please bring your ID card.",
-            "vi": "Xin mang theo căn cước."
+            "vi": "Xin mang theo thẻ căn cước."
           },
           "source": "original-lexicon-etl",
           "key": "add"
@@ -37979,7 +38405,7 @@
           "target": "中午我们在食堂吃饭。",
           "translations": {
             "en": "We eat in the canteen at noon.",
-            "vi": "Trưa chúng tôi ăn ở căng tin."
+            "vi": "Trưa chúng tôi ăn ở nhà ăn."
           },
           "source": "original-lexicon-etl",
           "key": "add"

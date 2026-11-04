@@ -34,12 +34,12 @@ S.append(story("first_day_factory", "A1-2", "上班第一天", "Ngày đầu đi
     ("B", "有点儿 累，但是 我 很 高兴。", "Hơi mệt, nhưng em rất vui."),
     ("A", "第 一 天 都 很 累。明天 就 好 了。", "Ngày đầu ai cũng mệt. Mai là đỡ thôi."),
     ("N", "下午 五 点，阮南 下班 了。", "Năm giờ chiều, Nam tan ca."),
-    ("N", "他 给 他 妈妈 发 了 一 条 微信：“我 今天 开始 工作 了！”", "Anh ấy nhắn WeChat cho mẹ: \"Hôm nay con bắt đầu đi làm rồi!\""),
+    ("N", "他 给 他 妈妈 发 了 一 条 短信：“我 今天 开始 工作 了！”", "Anh ấy nhắn tin cho mẹ: \"Hôm nay con bắt đầu đi làm rồi!\""),
 ], [
     Q("Trong xưởng phải đội gì?", ["Mũ bảo hộ", "Mũ len", "Không cần đội gì"]),
     Q("Công việc của Nam là gì?", ["Khuân thùng hàng", "Sửa máy", "Nấu ăn ở nhà ăn"]),
     Q("Trong xưởng, vì sao có lẽ khó nghe người khác nói?", ["Vì máy móc kêu rất to", "Vì mọi người không nói tiếng Trung", "Vì tổ trưởng nói rất nhỏ"], "infer"),
-]))
+], cast=("李组长", "阮南")))
 
 S.append(story("call_in_sick", "A1-2", "我今天生病了", "Hồng bị sốt và gọi điện xin tổ trưởng Vương cho nghỉ một ngày.",
     ["度", "感冒", "舒服"], [
@@ -69,7 +69,7 @@ S.append(story("call_in_sick", "A1-2", "我今天生病了", "Hồng bị sốt 
     Q("Hồng sốt bao nhiêu độ?", ["38 độ", "37 độ", "39 độ"]),
     Q("Ai sẽ làm giúp phần việc của Hồng?", ["Tiểu Vương", "Tổ trưởng Vương", "Bác sĩ"]),
     Q("Vì sao buổi tối Hồng nhắn tin cho tổ trưởng?", ["Vì cô đã hứa báo lại sau khi đi khám", "Vì tổ trưởng gọi mà cô không nghe máy", "Vì cô muốn xin nghỉ thêm một ngày"], "infer"),
-]))
+], cast=("阮红", "王组长")))
 
 S.append(story("train_to_shanghai", "A1-2", "坐火车去上海", "Kỳ nghỉ đầu tháng Năm, Hoa và Sơn đi tàu từ Quảng Châu lên Thượng Hải.",
     ["座位", "行李", "出发"], [
@@ -88,7 +88,7 @@ S.append(story("train_to_shanghai", "A1-2", "坐火车去上海", "Kỳ nghỉ �
     ("B", "放 在 那儿 吧。", "Để ở kia đi em."),
     ("N", "火车 开 了。", "Tàu chạy."),
     ("N", "火车 很 快，外边 的 山 和 河 都 很 漂亮。", "Tàu chạy rất nhanh, núi và sông bên ngoài đều rất đẹp."),
-    ("A", "从 广州 到 上海 要 多少 时间？", "Từ Quảng Châu đến Thượng Hải mất bao lâu hả anh?"),
+    ("A", "从 广州 到 上海 要 多 长 时间？", "Từ Quảng Châu đến Thượng Hải mất bao lâu hả anh?"),
     ("B", "七 个 小时。", "Bảy tiếng."),
     ("A", "七 个 小时！那 我 先 睡觉。今天 我们 起床 太 早 了。", "Bảy tiếng! Vậy em ngủ trước đây. Hôm nay mình dậy sớm quá."),
     ("B", "你 睡觉 吧，我 看 书。", "Em ngủ đi, anh đọc sách."),
@@ -100,7 +100,7 @@ S.append(story("train_to_shanghai", "A1-2", "坐火车去上海", "Kỳ nghỉ �
     Q("Họ đi Thượng Hải bằng phương tiện gì?", ["Tàu hỏa", "Máy bay", "Xe buýt"]),
     Q("Tàu khởi hành lúc mấy giờ?", ["7 giờ", "6 giờ", "2 giờ"]),
     Q("Vì sao Hoa ngủ trên tàu?", ["Vì chuyến đi dài và hôm đó họ dậy rất sớm", "Vì Hoa bị ốm", "Vì Sơn không muốn nói chuyện"], "infer"),
-]))
+], cast=("阮花", "阮山")))
 
 S.append(story("overtime_for_sister", "A1-2", "加班", "Hải tăng ca suốt cả tháng, và cuối tháng anh dùng tiền lương để giúp em gái.",
     ["转账", "短信", "大学"], [
@@ -114,21 +114,21 @@ S.append(story("overtime_for_sister", "A1-2", "加班", "Hải tăng ca suốt c
     ("B", "我 妹妹 明年 上 大学。我 想 帮 她。", "Em gái anh sang năm vào đại học. Anh muốn giúp nó."),
     ("A", "你 真 是 一 个 好 哥哥！", "Anh đúng là một người anh tốt!"),
     ("N", "三十 号，工厂 给 大家 发 工资。", "Ngày ba mươi, nhà máy phát lương cho mọi người."),
-    ("N", "阮海 的 工资 是 七千 块。", "Lương của Hải là bảy nghìn đồng."),
+    ("N", "阮海 的 工资 是 七千 块。", "Lương của Hải là bảy nghìn tệ."),
     ("N", "他 很 高兴。", "Anh ấy rất vui."),
-    ("N", "下班 以后，他 用 手机 给 他 妈妈 转账 五千 块。", "Tan ca, anh ấy dùng điện thoại chuyển khoản cho mẹ năm nghìn đồng."),
+    ("N", "下班 以后，他 用 手机 给 他 妈妈 转账 五千 块。", "Tan ca, anh ấy dùng điện thoại chuyển khoản cho mẹ năm nghìn tệ."),
     ("N", "然后，他 给 他 妹妹 发 了 一 条 短信：“钱 的 事，哥哥 帮 你！”", "Sau đó, anh ấy nhắn tin cho em gái: \"Chuyện tiền nong, anh lo cho em!\""),
     ("N", "他 妹妹 马上 给 他 打电话。", "Em gái anh ấy gọi điện cho anh ngay."),
-    ("A", "哥哥，谢谢 你！你 别 太 累 了！", "Anh ơi, cảm ơn anh! Anh đừng làm mệt quá nhé!"),
+    ("N", "他 妹妹 回 了 一 条 短信：“哥哥，谢谢 你！你 别 太 累 了！”", "Em gái anh ấy nhắn lại: \"Anh ơi, cảm ơn anh! Anh đừng làm mệt quá nhé!\""),
     ("B", "我 不 累。你 就 好 好 学习 吧。", "Anh không mệt. Em cứ chăm chỉ học hành là được."),
     ("N", "阮海 想：“妹妹 上 大学 了，我 也 很 高兴。”", "Hải nghĩ: \"Em gái vào được đại học, mình cũng rất vui.\""),
     ("N", "晚上，阮海 一 个 人 吃 了 一 碗 面条。", "Buổi tối, Hải ăn một bát mì một mình."),
     ("N", "他 觉得 这 碗 面条 特别 好吃。", "Anh ấy thấy bát mì này ngon đặc biệt."),
 ], [
-    Q("Lương tháng này của Hải là bao nhiêu?", ["7.000 đồng", "5.000 đồng", "9.000 đồng"]),
-    Q("Hải chuyển cho mẹ bao nhiêu tiền?", ["5.000 đồng", "7.000 đồng", "2.000 đồng"]),
+    Q("Lương tháng này của Hải là bao nhiêu?", ["7.000 tệ", "5.000 tệ", "9.000 tệ"]),
+    Q("Hải chuyển cho mẹ bao nhiêu tiền?", ["5.000 tệ", "7.000 tệ", "2.000 tệ"]),
     Q("Vì sao Hải chịu tăng ca mỗi ngày dù rất mệt?", ["Để có thêm tiền lo cho em gái học đại học", "Vì tổ trưởng bắt anh ấy", "Vì anh ấy muốn mua điện thoại mới"], "infer"),
-]))
+], cast=("同事", "阮海")))
 
 S.append(story("bank_card", "A1-2", "我的银行卡", "Tuyết đến ngân hàng làm thẻ để nhận lương.",
     ["填", "表", "密码"], [
@@ -153,10 +153,10 @@ S.append(story("bank_card", "A1-2", "我的银行卡", "Tuyết đến ngân hà
     ("A", "哪里，哪里！", "Đâu có, đâu có!"),
     ("N", "阮雪 很 高兴，她 马上 给 她 妈妈 发 了 一 张 照片。", "Tuyết rất vui, cô ấy gửi ngay một tấm ảnh cho mẹ."),
 ], [
-    Q("Tuyết mang giấy tờ gì đến ngân hàng?", ["Hộ chiếu", "Chứng minh thư", "Hợp đồng lao động"]),
+    Q("Tuyết mang giấy tờ gì đến ngân hàng?", ["Hộ chiếu", "Thẻ căn cước", "Hợp đồng lao động"]),
     Q("Ai giúp Tuyết điền tờ đơn?", ["Nhân viên ngân hàng", "Mẹ của Tuyết", "Một người bạn"]),
     Q("Vì sao Tuyết cần một chiếc thẻ ngân hàng ở Trung Quốc?", ["Để nhận lương", "Để mua vé máy bay", "Để gửi ảnh cho mẹ"], "infer"),
-]))
+], cast=("阮雪", "银行职员")))
 
 S.append(story("wechat_to_mother", "A1-2", "给妈妈的微信", "Ba tháng sau khi sang Trung Quốc, Hoa viết một tin nhắn dài cho mẹ.",
     ["有意思", "考试", "春节"], [
@@ -180,6 +180,7 @@ S.append(story("wechat_to_mother", "A1-2", "给妈妈的微信", "Ba tháng sau 
     ("N", "弟弟 的 考试 怎么样？", "Em trai thi cử thế nào rồi?"),
     ("N", "春节 的 时候，我 一定 回家。", "Tết con nhất định sẽ về nhà."),
     ("N", "我 很 想 你们！", "Con nhớ cả nhà lắm!"),
+    ("N", "这 是 我 用 汉语 写 的。妈妈，你 看 不 懂 吧？下次 我 用 越南语 写！", "Tin này con viết bằng tiếng Trung đấy. Mẹ đọc không hiểu đâu nhỉ? Lần sau con viết bằng tiếng Việt!"),
     ("N", "你们 的 女儿：阮花", "Con gái của bố mẹ: Hoa"),
 ], [
     Q("Hoa sang Trung Quốc được bao lâu rồi?", ["Ba tháng", "Một năm", "Ba tuần"]),
@@ -207,7 +208,7 @@ S.append(story("first_snow", "A1-2", "第一次看见雪", "Mùa đông đầu t
     ("N", "阮南 买 了 一 件 黑 衣服、一 个 帽子 和 一 双 手套。", "Nam mua một chiếc áo đen, một cái mũ và một đôi găng tay."),
     ("A", "这 件 衣服 很 好看！", "Cái áo này đẹp lắm!"),
     ("B", "多少钱？", "Bao nhiêu tiền?"),
-    ("A", "三百 块。", "Ba trăm đồng."),
+    ("A", "三百 块。", "Ba trăm tệ."),
     ("B", "有点儿 贵，但是 我 需要。", "Hơi đắt, nhưng mình cần."),
     ("N", "回 宿舍 的 路上，还 在 下雪。", "Trên đường về ký túc xá, tuyết vẫn đang rơi."),
     ("N", "阮南 穿 了 新 衣服，戴 了 帽子 和 手套。", "Nam mặc áo mới, đội mũ và đeo găng tay."),
@@ -217,6 +218,6 @@ S.append(story("first_snow", "A1-2", "第一次看见雪", "Mùa đông đầu t
     Q("Nam là người ở đâu?", ["Thành phố Hồ Chí Minh", "Hà Nội", "Bắc Kinh"]),
     Q("Nam mua những gì?", ["Áo, mũ và găng tay", "Chỉ một chiếc áo", "Giày và mũ"]),
     Q("Vì sao trước đây Nam chưa từng thấy tuyết?", ["Vì quê anh không có mùa đông", "Vì anh ít khi ra ngoài", "Vì anh mới đến Bắc Kinh vào mùa hè"], "infer"),
-]))
+], cast=("小王", "阮南")))
 
 write_batch("03-a1-2", S)

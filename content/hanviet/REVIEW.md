@@ -238,7 +238,7 @@ could not confirm the characters the note names — those lines need the reviewe
 | 介绍 | giới thiệu | Unihan |  |
 | 仓库 | thương khố | note (仓 库) | 仓: Unihan 17.0.0 has no kVietnamese for 仓 or 倉; thương is its standard Hán-Việt reading. 库: Unihan 17.0.0 kVietnamese does not list khố (it lists the everyday kho); khố is its standard Hán-Việt reading. |
 | 休息 | hưu tức | Unihan |  |
-| 作业 | tác nghiệp | Unihan | False friend: 作业 is homework (bài tập); Vietnamese tác nghiệp means to carry out an operation at work. |
+| 作业 | tác nghiệp | Unihan | Partly a false friend: at school 作业 is homework (bài tập); in a factory 作业 is a work operation, as Vietnamese tác nghiệp (作业区 khu tác nghiệp). |
 | 健康 | kiện khang | Unihan | Vietnamese says khang kiện or khoẻ mạnh: the same two characters in the other order. |
 | 先生 | tiên sinh | Unihan |  |
 | 入口 | nhập khẩu | Unihan | False friend: 入口 on a sign is the entrance (lối vào); Vietnamese nhập khẩu means import. |
@@ -250,7 +250,7 @@ could not confirm the characters the note names — those lines need the reviewe
 | 冬天 | đông thiên | Unihan |  |
 | 准备 | chuẩn bị | Unihan |  |
 | 出发 | xuất phát | Unihan |  |
-| 出口 | xuất khẩu | Unihan | False friend: 出口 on a sign is the exit (lối ra); Vietnamese xuất khẩu means export. |
+| 出口 | xuất khẩu | Unihan | Partly a false friend: on a sign 出口 is the exit (lối ra); about goods it is export (xuất khẩu), as in Vietnamese. Import is 进口, not 入口. |
 | 办法 | biện pháp | note (办) | 办: Unihan 17.0.0 has no kVietnamese for 办 or 辦; biện is its standard Hán-Việt reading. |
 | 动物 | động vật | Unihan |  |
 | 动物园 | động vật viên | Unihan |  |
@@ -306,7 +306,7 @@ could not confirm the characters the note names — those lines need the reviewe
 | 宿舍 | túc xá | Unihan |  |
 | 密码 | mật mã | note (码) | 码: Unihan 17.0.0 has no kVietnamese for 码 or 碼; mã is its standard Hán-Việt reading. |
 | 对面 | đối diện | note (面) | 面: Unihan 17.0.0 has no kVietnamese for 面; diện is its standard Hán-Việt reading. |
-| 小姐 | tiểu thư | Unihan | Partly a false friend: 小姐 is the polite "Miss" for any young woman; Vietnamese tiểu thư suggests a young lady of a well-off family. |
+| 小姐 | tiểu thư | Unihan | Partly a false friend: 小姐 is the polite "Miss" with a surname (李小姐); on the Mainland do not call a waitress just 小姐 (say 服务员), the bare word can be misread. Vietnamese tiểu thư suggests a young lady of a well-off family. |
 | 小学 | tiểu học | Unihan |  |
 | 小心 | tiểu tâm | Unihan | False friend: 小心 means careful, look out (cẩn thận); Vietnamese has no tiểu tâm in this sense. |
 | 工人 | công nhân | Unihan |  |

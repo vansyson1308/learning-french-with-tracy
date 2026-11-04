@@ -36,7 +36,7 @@ TONES = [
         "Thanh 1 (55): cao và đều từ đầu đến cuối, như khi ngân một nốt nhạc. Gần nhất là thanh ngang (so sánh gần đúng), nhưng cao hơn hẳn: thanh ngang nằm ở giữa giọng, còn thanh 1 ở gần mức cao nhất. Giữ giọng phẳng tới hết, đừng để nó rơi xuống ở cuối.",
         "Tone 1 (55): high and level from start to end, like a sung note. The nearest Vietnamese tone is the level tone (an approximation), but tone 1 sits much higher, near the top of the voice. Keep it flat to the end; do not let it fall.")),
     (2, "á", "35", w("麻", "má", "cây gai; tê (tê tay)", "hemp; numb"), t(
-        "Thanh 2 (35): đi lên từ giữa lên cao, như khi hỏi lại «hả?». Gần với thanh sắc (so sánh gần đúng), nhưng bắt đầu từ giữa giọng chứ không từ cao, lên đều, và không căng, không ngắt gọn ở cuối như thanh sắc giọng Bắc.",
+        "Thanh 2 (35): đi lên từ giữa lên cao, như giọng hỏi lại ngạc nhiên «Á?» hay «Thế á?». Gần với thanh sắc (so sánh gần đúng), nhưng bắt đầu từ giữa giọng chứ không từ cao, lên đều, và không căng, không ngắt gọn ở cuối như thanh sắc giọng Bắc.",
         "Tone 2 (35): rises from mid to high, like a surprised “huh?”. Close to the Vietnamese high rising tone (an approximation), but it starts from the middle of the voice, rises evenly and ends without that tone's tense, clipped close in Northern speech.")),
     (3, "ǎ", "214", w("马", "mǎ", "ngựa", "horse"), t(
         "Thanh 3 (214): hạ xuống thấp rồi lên lại. Gần với thanh hỏi (so sánh gần đúng). Đọc một chữ riêng thì nghe đủ phần xuống và phần lên; trong câu nó thường chỉ còn phần thấp (21), không lên lại. Đừng đọc thành thanh ngã: thanh 3 không có chỗ thắt giọng ở giữa.",

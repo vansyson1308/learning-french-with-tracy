@@ -19,7 +19,12 @@ own script). It reads _drafts/stories/OUTPUT.jsonl and flags, per story:
     Vietnamese never says "mẹ tôi"; a first-person narrator speaks of 我妈妈;
  6. Vietnamese: every translation, blurb, question and option in Vietnamese with no hanzi; questions end with "?";
  7. questions: three, exactly one an inference, 3-4 distinct options, the answer an option; the answer positions vary;
- 8. the file: unique ids and titles, sentence counts 8-60, no sentence over 220 characters, voices N/A/B.
+ 8. the file: unique ids and titles, sentence counts 8-60, no sentence over 220 characters, voices N/A/B;
+ 9. (D-10 review, 2026-11-05) voices and units: a story with dialogue has a declared cast (stories/casts.json, written by
+    the builder) of one character per voice, A female and B male (zh_text.NAME_VOICE for the course names); no voice
+    calls its own character by name, says it is another named person, or answers its own question; a 块 / 元 amount is
+    "tệ" in the Vietnamese (never "đồng") and a 斤 weight never a bare "cân" (zh_text.vi_unit_problems), in the
+    translations, the questions and their options.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/stories-selfcheck.json and,
 by hand, to REVIEW-NOTES.md. usage: python -I zh-check-stories.py <repo root>
 """
@@ -36,6 +41,7 @@ D = f"{ROOT}/content/zh/_drafts"
 DECIDED = {}
 
 stories = [json.loads(line) for line in open(f"{D}/stories/OUTPUT.jsonl", encoding="utf-8")]
+CASTS = json.load(open(f"{D}/stories/casts.json", encoding="utf-8"))
 findings = []
 
 
@@ -56,7 +62,7 @@ for k, n in titles.items():
 rows = []
 answer_positions = Counter()
 for s in stories:
-    for m in check_story(s):
+    for m in check_story(s, CASTS.get(s["id"])):
         flag(s["id"], m)
     a = analyze(s)
     for q in s["questions"]:

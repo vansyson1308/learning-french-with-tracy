@@ -125,7 +125,7 @@ def dict_(clip):
     text = "".join(s["text"] for s in CLIPS[cid]["segments"]) if cid in CLIPS else "?"
     if re.search(r"[0-9０-９]", text):
         PROBLEMS.append(f"dictation {clip}: a number has two spellings")
-    return {"type": "dictation", "clipId": cid, "answer": text, "alternatives": [x for x in widen([text]) if bare(x) != bare(text)]}
+    return {"type": "dictation", "clipId": cid, "answer": text, "alternatives": [x for x in widen([text], variants=False) if bare(x) != bare(text)]}
 
 
 def speak(slug):
@@ -223,7 +223,7 @@ s2 = items("s2", [
  ("zai_tv", (fill("他___看电视。", "在", ["了", "过", "的"], "Anh ấy đang xem ti vi."), AS)),
  ("qw_name", (fill("你叫___名字？", "什么", ["谁", "哪儿", "几"], "Bạn tên là gì?"), QW)),
  ("qw_toilet", (fill("洗手间在___？", "哪儿", ["什么", "谁", "几"], "Nhà vệ sinh ở đâu?"), QW)),
- ("type_thanks", (typ("Gõ bằng bàn phím pinyin: \"Cảm ơn!\"", "谢谢！"), PI)),
+ ("type_thanks", (typ("Gõ bằng bàn phím pinyin: \"Cảm ơn!\"", "谢谢！", "谢谢你！", "谢谢您！"), PI)),
  ("type_factory", (typ("Gõ bằng bàn phím pinyin: \"nhà máy\"", "工厂"), PI)),
  ("type_vietnamese", (typ("Gõ bằng bàn phím pinyin: \"Tôi là người Việt Nam.\"", "我是越南人。"), PI)),
  ("hv_student", (sel("Từ nào có âm Hán-Việt là \"học sinh\"?", "学生", ["先生", "学校", "医生"], N2T), HV)),

@@ -100,7 +100,7 @@ Tiếng Việt có "em" cho cả em trai lẫn em gái. Tiếng Trung tách rõ:
 - *我家有四口人。* (yǒu, kǒu) — Nhà tôi có bốn người.
 - *你有哥哥吗？* — Bạn có anh trai không?
 
-*口* là lượng từ khi đếm người trong gia đình. Tiếng Việt cũng có loại từ ("bốn người", "hai đứa con"); tiếng Trung bắt buộc phải có lượng từ giữa số và danh từ.
+*口* là lượng từ khi đếm người trong gia đình. Tiếng Việt cũng có loại từ ("hai đứa con", "ba con mèo"); tiếng Trung bắt buộc phải có lượng từ giữa số và danh từ.
 
 ### Không có: 没有, không phải 不有
 Phủ định của *有* luôn là *没有* (méi yǒu): *我没有妹妹。* — Tôi không có em gái. Không bao giờ nói 不有.
@@ -139,16 +139,17 @@ unit(1, "unit-5", "u4", "Số và tiền", "Đếm đến một nghìn, hỏi gi
 ### Hai: 二 hay 两
 - Khi đếm, đọc số: *二* (èr) — *二十*, *二月*
 - Trước lượng từ: *两* (liǎng) — *两个人*, *两杯茶*
+- Trước *百* nói được cả *二百* lẫn *两百*; trước *千*, *万* thường nói *两千*, *两万*.
 
 Nói *二个* là sai: đây là lỗi người mới học hay mắc nhất.
 
 ### Tiền
-- *块* (kuài) — đồng tệ, cách nói hằng ngày; trên bảng giá thường viết *元* (yuán)
+- *块* (kuài) — tệ, cách nói hằng ngày; trên bảng giá thường viết *元* (yuán)
 - *钱* (qián) — tiền: *多少钱？* (duō shao qián) — Bao nhiêu tiền?
 - *这个十五块。* — Cái này mười lăm tệ.
 
 ### Đắt và rẻ
-*太贵了！* (tài guì le) — Đắt quá! *便宜一点儿吧。* (pián yi) — Rẻ một chút đi. Ở chợ, mặc cả nhẹ nhàng là chuyện bình thường; ở siêu thị thì không.
+*太贵了！* (tài guì le) — Đắt quá! *便宜一点儿吧。* (pián yi) — Bớt chút đi. Ở chợ, mặc cả nhẹ nhàng là chuyện bình thường; ở siêu thị thì không.
 
 ### Hỏi số lượng
 *几* (jǐ) hỏi số nhỏ, thường dưới mười: *你有几个孩子？* *多少* hỏi số bất kỳ: *你们公司有多少人？*
@@ -249,7 +250,7 @@ unit(2, "unit-d", "ud", "Thời gian, 了 và 过", "Hỏi giờ, nói ngày, đ
 Ngày tháng đi từ lớn đến nhỏ: *二〇二六年五月一号* — ngày 1 tháng 5 năm 2026, ngược với tiếng Việt.
 
 ### Thời gian đứng trước động từ
-*我明天八点上班。* — Tôi mai tám giờ đi làm. Tiếng Việt có thể nói "tôi đi làm lúc tám giờ"; tiếng Trung đặt giờ trước động từ.
+*我明天八点上班。* — Ngày mai tám giờ tôi đi làm. Tiếng Việt cũng hay nói "tôi đi làm lúc tám giờ", đặt giờ sau động từ; tiếng Trung luôn đặt giờ trước động từ.
 
 ### 了: đã xảy ra, đã thay đổi
 - *我吃饭了。* (le) — Tôi ăn cơm rồi. Gần với "rồi" của tiếng Việt.
@@ -288,7 +289,7 @@ Rất nhiều từ tiếng Trung trùng nghĩa với từ Hán-Việt: *学习* 
 - *走* là đi (bộ), không phải "tẩu" bỏ chạy
 
 ### Biến điệu thanh
-*不* trước thanh 4 đọc thanh 2 (*不是* bú shì). *一* trước thanh 4 đọc thanh 2 (*一个* yí ge), trước thanh khác đọc thanh 4 (*一杯* yì bēi). Pinyin của khoá học ghi thanh gốc.
+*不* trước thanh 4 đọc thanh 2 (*不是* bú shì). *一* trước thanh 4 đọc thanh 2 (*一个* yí ge), trước thanh khác đọc thanh 4 (*一杯* yì bēi). Khi đếm số, đọc số thứ tự hay khi *一* đứng cuối từ (*十一*, *第一*) thì vẫn đọc yī. Pinyin của khoá học ghi thanh gốc.
 
 ### Giản thể và phồn thể
 Khoá học dùng chữ giản thể như Trung Quốc đại lục. Ở Đài Loan dùng phồn thể: *学* = *學*, *车* = *車*. Bạn gõ phồn thể thì ứng dụng vẫn hiểu.
@@ -307,10 +308,10 @@ Bài nghe ở phần này dùng giọng đọc rõ và chậm. Hãy nghe trướ
 - *冷* (lěng) lạnh, *热* (rè) nóng, *风很大* gió to, *晴天* trời nắng
 
 ### Nghe số
-Số hay bị nghe nhầm: *四* (sì) và *十* (shí) khác nhau ở âm uốn lưỡi sh; *一* và *七* (yī, qī) chỉ khác phụ âm đầu. Hãy chú ý phụ âm đầu, không chỉ thanh điệu.
+Số hay bị nghe nhầm: *四* (sì) và *十* (shí) khác nhau cả ở âm uốn lưỡi sh lẫn ở thanh (thanh 4 và thanh 2); *一* và *七* (yī, qī) chỉ khác phụ âm đầu. Hãy chú ý phụ âm đầu, không chỉ thanh điệu.
 
 ### Thanh điệu giúp phân biệt
-*买* (mǎi) mua và *卖* (mài) bán khác nhau chỉ ở thanh. Người Việt nghe thanh tốt: thanh 3 tiếng Trung xuống thấp như thanh hỏi, thanh 4 rơi mạnh từ cao như khi ra lệnh.
+*买* (mǎi) mua và *卖* (mài) bán khác nhau chỉ ở thanh. Người Việt nghe thanh tốt: thanh 3 tiếng Trung xuống thấp, gần giống thanh hỏi; thanh 4 rơi mạnh từ cao, gần giống giọng ra lệnh.
 
 ### Mẹo nghe
 1. Đọc câu hỏi trước khi nghe.
@@ -325,7 +326,7 @@ unit(3, "unit-g", "ug", "Biển báo và nội quy ở nhà máy", "Đọc biể
 - *小心* (xiǎo xīn) — cẩn thận
 - *注意安全* (zhù yì ān quán) — chú ý an toàn
 - *禁止吸烟* — cấm hút thuốc
-- *出口* lối ra, *入口* lối vào — "bạn giả": không phải xuất khẩu, nhập khẩu!
+- *出口* lối ra, *入口* lối vào. Trên biển báo, *出口* là lối ra; nghĩa "xuất khẩu" chỉ gặp khi nói về hàng hoá. "Nhập khẩu" là *进口*, không phải *入口*.
 
 ### Nội quy an toàn
 - *进车间要戴安全帽。* (dài) — Vào xưởng phải đội mũ bảo hộ.
@@ -339,7 +340,7 @@ unit(3, "unit-g", "ug", "Biển báo và nội quy ở nhà máy", "Đọc biể
 *明天早上七点上班，别迟到。* — Mai bảy giờ sáng vào làm, đừng đến muộn. Tin nhắn ngắn, không có lời chào dài: hãy tìm giờ, ngày, việc cần làm.
 
 ### Ở Đài Loan
-Biển báo ở Đài Loan viết chữ phồn thể: *禁止吸煙*, *小心*. Phần lớn chữ trông gần giống giản thể; ứng dụng chỉ yêu cầu bạn nhận ra, không yêu cầu viết.
+Biển báo ở Đài Loan viết chữ phồn thể: *禁止吸菸* (Đài Loan viết *菸* cho thuốc lá), *小心*. Phần lớn chữ trông gần giống giản thể; ứng dụng chỉ yêu cầu bạn nhận ra, không yêu cầu viết.
 """, [("工厂", "🏭"), ("小心", "⚠️"), ("安全", "🦺"), ("机器", "⚙️"), ("戴", "⛑️"), ("吸烟", "🚭")],
      [("Đọc biển báo", O("reading.notices_info")), ("Nội quy an toàn", O("reading.notices_info", "listening.announcements")), ("Tin nhắn của tổ trưởng", O("reading.short_messages")), ("Nghe chỉ dẫn", O("listening.announcements", "vocab.work_china"))])
 
@@ -375,7 +376,7 @@ unit(3, "unit-i", "ui", "Hội thoại ở cửa hàng", "Nghe người bán h�
 ### Người bán thường hỏi
 - *你要什么？* — Bạn cần gì?
 - *要袋子吗？* — Có lấy túi không?
-- *一共二十八块。* (yí gòng) — Tổng cộng hai mươi tám tệ.
+- *一共二十八块。* (yī gòng, đọc yí gòng) — Tổng cộng hai mươi tám tệ.
 
 ### Trả tiền
 Ở Trung Quốc hầu hết mọi người trả bằng điện thoại: *扫码* (sǎo mǎ) — quét mã. *我扫你还是你扫我？* — Tôi quét mã của bạn hay bạn quét mã của tôi? Trả lời ngắn: *我扫你。*
@@ -397,9 +398,9 @@ unit(3, "unit-j", "uj", "Chuyện nhỏ ở ký túc xá", "Đọc và nghe chuy
 - *起床* (qǐ chuáng) — thức dậy; *睡觉* (shuì jiào) — đi ngủ; *洗澡* (xǐ zǎo) — tắm
 
 ### Một đoạn văn ngắn
-*我每天六点起床，七点上班。中午在食堂吃饭。晚上我洗澡，然后给妈妈打电话。* — Hằng ngày tôi dậy lúc sáu giờ, bảy giờ vào làm. Trưa ăn ở căng tin. Tối tôi tắm, rồi gọi điện cho mẹ.
+*我每天六点起床，七点上班。中午在食堂吃饭。晚上我洗澡，然后给妈妈打电话。* — Hằng ngày tôi dậy lúc sáu giờ, bảy giờ vào làm. Trưa ăn ở nhà ăn. Tối tôi tắm, rồi gọi điện cho mẹ.
 
-Thời gian luôn đứng trước động từ; *然后* (rán hòu) nối các việc theo thứ tự.
+Thời điểm (mấy giờ, hôm nào) đứng trước động từ; *然后* (rán hòu) nối các việc theo thứ tự.
 
 ### Đọc chậm, đọc lại
 1. Đọc lướt để tìm ai, ở đâu, khi nào.
@@ -424,7 +425,7 @@ unit(4, "unit-k", "uk", "Chào hỏi ở chỗ làm", "Chào khi vào ca, khi ta
 *上班* (shàng bān) — đi làm, vào ca; *下班* (xià bān) — tan ca. *你几点下班？* — Mấy giờ bạn tan ca?
 
 ### Gọi người khác
-Gọi cấp trên bằng họ + chức vụ: *李组长*, *张经理*. Với đồng nghiệp cùng tuổi: *小王*, *小李* (tiểu + họ), thân mật như "anh/chị Vương" ở Việt Nam. Không gọi cấp trên bằng *你*: dùng *您* hoặc chức vụ.
+Gọi cấp trên bằng họ + chức vụ: *李组长*, *张经理*. Với đồng nghiệp cùng tuổi hoặc trẻ hơn: *小王*, *小李* (tiểu + họ, thân mật, gần như "cậu Vương", "em Lý"); với đồng nghiệp lớn tuổi hơn: *老王*, *老李*. Không gọi cấp trên bằng *你*: dùng *您* hoặc chức vụ.
 
 ### Nói thành tiếng
 Ứng dụng nghe bạn nói bằng bộ nhận dạng giọng nói tiếng Trung (zh-CN) trên điện thoại và chỉ kiểm tra từ nhận ra được — không chấm thanh điệu. Hãy nói chậm, rõ, đủ câu.
@@ -475,7 +476,7 @@ unit(4, "unit-m", "um", "Nói số: điện thoại, giá, giờ", "Đọc số 
 ### Nói thành tiếng
 Bộ nhận dạng có thể viết số bằng chữ số (25) hay bằng chữ (二十五): ứng dụng coi hai cách là một. Nhưng nói sai số là sai.
 """, [("电话", "☎️"), ("号码", "#️⃣"), ("手机", "📲"), ("分", "⏱️")],
-     [("Số điện thoại", O("speaking.give_info")), ("Giá tiền", O("speaking.give_info", "numbers.measure_words")), ("Giờ hẹn", O("speaking.give_info", "vocab.time_calendar")), ("Ngày tháng", O("speaking.give_info"))])
+     [("Số điện thoại", O("speaking.give_info")), ("Giá tiền", O("speaking.give_info", "numbers.measure_words")), ("Giờ hẹn", O("speaking.give_info", "vocab.time_calendar")), ("Sở thích và ngày tháng", O("speaking.give_info"))])
 
 unit(4, "unit-n", "un", "Mô tả người và đồ vật", "Nói to nhỏ, cao thấp, màu sắc bằng câu ngắn với 很.", """
 ## Tính từ với 很
@@ -498,7 +499,7 @@ Tiếng Trung không dùng *是* trước tính từ: *他很高。* (hěn gāo)
 ### So sánh nhanh
 *这个比那个大。* (bǐ) — Cái này to hơn cái kia.
 """, [("大", "🐘"), ("小", "🐭"), ("高", "🦒"), ("颜色", "🎨")],
-     [("Người", O("speaking.describe", "adjectives.hen_tai")), ("Đồ vật", O("speaking.describe")), ("Màu sắc", O("speaking.describe", "grammar.word_order")), ("So sánh", O("speaking.describe", "adjectives.hen_tai"))])
+     [("Người", O("speaking.describe", "adjectives.hen_tai")), ("Đồ vật và màu sắc", O("speaking.describe")), ("So sánh", O("speaking.describe", "grammar.word_order")), ("Tả người", O("speaking.describe", "adjectives.hen_tai"))])
 
 # ---------------------------------------------------------------- Section 5: writing
 unit(5, "unit-o", "uo", "Viết về mình", "Gõ chữ Hán bằng bàn phím pinyin và viết vài câu về bản thân.", """
@@ -546,7 +547,7 @@ unit(5, "unit-p", "up", "Viết câu đơn giản", "Viết ai làm gì, ở đ�
 unit(5, "unit-q", "uq", "Tin nhắn cho quản lý", "Viết tin nhắn xin nghỉ, báo ốm, báo đến muộn trên WeChat.", """
 ## Tin nhắn WeChat cho cấp trên
 
-Ở nơi làm việc người Hoa, *微信* (WeChat) là cách liên lạc chính. Tin nhắn cho cấp trên nên ngắn và lịch sự:
+Ở Trung Quốc đại lục, *微信* (WeChat) là cách liên lạc chính ở chỗ làm (nhắn WeChat: *发微信*; *短信* là tin nhắn SMS); ở Đài Loan người ta thường dùng LINE. Cách viết tin nhắn thì giống nhau. Tin nhắn cho cấp trên nên ngắn và lịch sự:
 
 1. Lời chào: *王经理，您好！*
 2. Việc cần báo: *我今天生病了，想请假一天。* (shēng bìng, qǐng jià)
@@ -554,7 +555,7 @@ unit(5, "unit-q", "uq", "Tin nhắn cho quản lý", "Viết tin nhắn xin ngh�
 
 ### Câu mẫu
 - *我今天发烧，不能上班。* — Hôm nay tôi sốt, không đi làm được.
-- *我晚到二十分钟。* — Tôi đến muộn hai mươi phút.
+- *我会晚到二十分钟。* — Tôi sẽ đến muộn hai mươi phút.
 - *明天我可以请假吗？* — Mai tôi xin nghỉ được không ạ?
 
 ### Trả lời đồng nghiệp
@@ -573,7 +574,7 @@ Khi mở tài khoản hay làm thẻ, bạn phải điền một tờ đơn:
 | Ô trên đơn | Nghĩa | Ví dụ |
 |---|---|---|
 | *姓名* | họ tên | *阮文明* hoặc tên viết chữ cái |
-| *国籍* | quốc tịch | *越南* |
+| *国家* | nước (đơn thật thường ghi *国籍* — quốc tịch) | *越南* |
 | *护照号码* | số hộ chiếu | *C1234567* |
 | *电话* | điện thoại | *138…* |
 | *地址* | địa chỉ | *工厂宿舍三号楼* |
@@ -601,7 +602,7 @@ unit(6, "unit-s", "us", "Nhà hàng và cửa hàng", "Gọi món, hỏi giá, t
 - *不要太辣。* — Đừng cay quá.
 
 ### Thanh toán
-- *一共多少钱？* (yí gòng) — Tổng cộng bao nhiêu?
+- *一共多少钱？* (yī gòng, đọc yí gòng) — Tổng cộng bao nhiêu?
 - *可以扫码吗？* — Quét mã được không?
 - *我来付。* (fù) — Để tôi trả. *今天我请客。* — Hôm nay tôi mời.
 
@@ -612,9 +613,9 @@ Người bán hỏi nhanh: *要几个？* — Lấy mấy cái? Trả lời ch�
 *请再说一遍。* — Xin nói lại một lần nữa. *请说慢一点儿。* — Xin nói chậm một chút. Người nghe kiên nhẫn sẽ nói lại; ứng dụng cũng vậy.
 
 ### Ở Đài Loan
-Cơm hộp mang đi gọi là *便当*; ở cửa hàng tiện lợi người bán hay hỏi *要加热吗？* — Có hâm nóng không?
+Cơm hộp mang đi gọi là *便当*; ở cửa hàng tiện lợi người bán hay hỏi *要加热吗？* — Có hâm nóng không? Ở quán, người bán hỏi *內用還是外帶？* (ăn ở đây hay mang đi), ở đại lục là *在这儿吃还是带走？*
 """, [("服务员", "🧑‍🍳"), ("菜单", "📋"), ("一共", "🧾"), ("付", "💵")],
-     [("Gọi món", O("interaction.practical_needs")), ("Hội thoại: thanh toán", O("interaction.practical_needs", "numbers.measure_words")), ("Ở cửa hàng", O("interaction.practical_needs")), ("Hội thoại: mặc cả", O("interaction.practical_needs", "interaction.everyday_conversation"))])
+     [("Gọi món", O("interaction.practical_needs")), ("Hội thoại: thanh toán", O("interaction.practical_needs", "numbers.measure_words")), ("Ăn ở nhà hàng", O("interaction.practical_needs")), ("Hội thoại: trả tiền, mời khách", O("interaction.practical_needs", "interaction.everyday_conversation"))])
 
 unit(6, "unit-t", "ut", "Hỏi đường, taxi và tàu điện", "Hỏi đường đến ga, nói với tài xế taxi, hiểu chỉ đường ngắn.", """
 ## Hỏi đường
@@ -631,7 +632,7 @@ unit(6, "unit-t", "ut", "Hỏi đường, taxi và tàu điện", "Hỏi đườ
 - *师傅，去火车站。* — Bác tài, đến ga tàu. (*师傅* là cách gọi lịch sự tài xế, thợ.)
 - *到了，就在这儿停。* — Đến rồi, dừng ở đây.
 
-*出租车* (chū zū chē) là taxi; nói hằng ngày là *打车* (gọi xe). Ở Trung Quốc người ta hay gọi xe qua ứng dụng.
+*出租车* (chū zū chē) là taxi; "đi taxi" nói hằng ngày là *打车*. Ở Đài Loan taxi gọi là *計程車*. Ở Trung Quốc người ta hay gọi xe qua ứng dụng.
 
 ### "Bạn giả"
 *走* (zǒu) là đi, đi bộ, rời đi — không phải "tẩu" (bỏ chạy) như trong tiếng Việt.
@@ -669,7 +670,7 @@ Muốn nghỉ có lương, nhiều công ty cần giấy của bác sĩ: *请给
 unit(6, "unit-v", "uv", "Gọi điện cho chỗ làm", "Gọi điện báo ốm, xin nghỉ, và nói chuyện ngắn với tổ trưởng.", """
 ## Nghe và gọi điện
 
-- *喂，您好！* (wéi) — A lô, xin chào! Trên điện thoại *喂* thường đọc thanh 2.
+- *喂，您好！* — A lô, xin chào! Pinyin ghi *喂* là wèi; khi nghe điện thoại người ta thường đọc wéi (thanh 2).
 - *我是二号车间的阮明。* — Tôi là Nguyễn Minh ở phân xưởng số hai.
 
 ### Báo ốm, xin nghỉ
@@ -686,7 +687,7 @@ unit(6, "unit-v", "uv", "Gọi điện cho chỗ làm", "Gọi điện báo ốm
 ### Kết thúc
 *好，谢谢，再见！* Người Hoa hay nói *拜拜* (bái bái) khi cúp máy với đồng nghiệp.
 """, [("喂", "📞"), ("打电话", "🤙"), ("明白", "🆗"), ("再", "🔁")],
-     [("Gọi điện báo ốm", O("interaction.practical_needs")), ("Hội thoại: xin nghỉ", O("interaction.practical_needs", "politeness.register")), ("Trò chuyện với tổ trưởng", O("interaction.everyday_conversation")), ("Hội thoại: phỏng vấn ngắn", O("interaction.everyday_conversation", "speaking.self_intro"))])
+     [("Gọi điện báo ốm", O("interaction.practical_needs")), ("Hội thoại: xin nghỉ", O("interaction.practical_needs", "politeness.register")), ("Trò chuyện với tổ trưởng", O("interaction.everyday_conversation")), ("Hội thoại: WeChat và ngày đầu đi làm", O("interaction.everyday_conversation", "speaking.self_intro"))])
 
 # ---------------------------------------------------------------- emit
 problems = []

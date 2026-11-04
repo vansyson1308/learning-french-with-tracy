@@ -26,7 +26,7 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from zh_text import HAN, Index, bare, load_lexicon, subject_spellings, widen  # noqa: E402
+from zh_text import HAN, Index, bare, load_lexicon, order_variants, subject_spellings, widen  # noqa: E402
 
 ROOT = sys.argv[1]
 DRAFTS = f"{ROOT}/content/zh/_drafts"
@@ -190,11 +190,22 @@ def W(vi, zh, extra, alts=()):
     """Tiles to a Chinese sentence; zh is written with | between the tiles."""
     ans = [x.strip() for x in zh.split("|")]
     e = {"type": "wordBank", "direction": "nativeToTarget", "prompt": vi, "audioTarget": "".join(ans), "tokens": _tiles(ans, extra, zh), "answer": ans}
-    if alts:
-        e["alternatives"] = [[x.strip() for x in a.split("|")] for a in alts]
-        for a in e["alternatives"]:
-            if Counter(a) - Counter(e["tokens"]):
-                PROBLEMS.append(f"{zh}: alternative {a} is not built from the tiles")
+    given = [[x.strip() for x in a.split("|")] for a in alts]
+    for a in given:
+        if Counter(a) - Counter(e["tokens"]):
+            PROBLEMS.append(f"{zh}: alternative {a} is not built from the tiles")
+    # D-10 (2026-11-05): every order of the same tiles that says the same thing is accepted (zh_text.order_variants: the
+    # time word before or after the subject, 给 + person before or after the verb phrase, 住在 + place / 在 + place + 住).
+    out, todo = [], [ans] + given
+    while todo:
+        a = todo.pop(0)
+        if a != ans and a not in out:
+            out.append(a)
+        for v in order_variants(a):
+            if v != ans and v not in out and v not in todo and not (Counter(v) - Counter(e["tokens"])):
+                todo.append(v)
+    if out:
+        e["alternatives"] = out
     return e
 
 
@@ -246,7 +257,7 @@ def D(clip):
     text = "".join(s["text"] for s in c["segments"]) if c else "?"
     if re.search(r"[0-9０-９]", text):
         PROBLEMS.append(f"dictation {clip}: a clip with digits has two spellings")
-    alts = [x for x in widen([text]) if bare(x) != bare(text)]
+    alts = [x for x in widen([text], variants=False) if bare(x) != bare(text)]
     return {"type": "dictation", "clipId": f"zh.clip.{clip}", "answer": text, "alternatives": alts, "objectiveTargets": ["zh.obj.listening.familiar_words"]}
 
 

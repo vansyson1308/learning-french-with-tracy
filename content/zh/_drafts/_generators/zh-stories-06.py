@@ -18,26 +18,26 @@ S.append(story("renting_a_flat", "A2-1", "我们租房子了", "Vợ chồng Sơ
     ("A", "这个 房子 有 两 个 房间，一 个 洗手间。", "Căn nhà này có hai phòng, một nhà vệ sinh."),
     ("A", "这 是 洗衣机，是 新 的。", "Đây là máy giặt, máy mới đấy."),
     ("B", "一 个 月 多少钱？", "Mỗi tháng bao nhiêu tiền ạ?"),
-    ("A", "一 个 月 一千五百 块。", "Một tháng một nghìn năm trăm đồng."),
-    ("A", "有点儿 贵。能 便宜 一点儿 吗？", "Hơi đắt ạ. Có thể bớt một chút không ạ?"),
-    ("A", "如果 你们 租 一 年，一千四百 块。", "Nếu hai em thuê một năm thì một nghìn bốn trăm đồng."),
+    ("A", "一 个 月 一千五百 块。", "Một tháng một nghìn năm trăm tệ."),
+    ("B", "有点儿 贵。能 便宜 一点儿 吗？", "Hơi đắt ạ. Có thể bớt một chút không ạ?"),
+    ("A", "如果 你们 租 一 年，一千四百 块。", "Nếu hai em thuê một năm thì một nghìn bốn trăm tệ."),
     ("B", "房间 有点儿 脏。", "Phòng hơi bẩn ạ."),
-    ("A", "你们 来 以前，我 一定 让 人 洗 干净。", "Trước khi hai em đến, chị nhất định sẽ cho người dọn sạch."),
+    ("A", "你们 来 以前，我 一定 让 人 打扫 干净。", "Trước khi hai em đến, chị nhất định sẽ cho người dọn sạch."),
     ("N", "阮山 和 阮红 商量 了 一下。", "Sơn và Hồng bàn bạc với nhau một lúc."),
-    ("A", "离 工厂 近，有 洗衣机，也 很 安静。我 觉得 不错。", "Gần nhà máy, có máy giặt, lại yên tĩnh. Em thấy được đấy."),
+    ("N", "阮红 说：“离 工厂 近，有 洗衣机，也 很 安静。我 觉得 不错。”", "Hồng nói: \"Gần nhà máy, có máy giặt, lại yên tĩnh. Em thấy được đấy.\""),
     ("B", "好，我们 租 一 年！", "Được, mình thuê một năm!"),
     ("N", "李 小姐 拿 出 了 合同。", "Chị Lý lấy hợp đồng ra."),
     ("A", "请 你们 看 一下 合同，没问题 就 在 这儿 签字。", "Hai em xem hợp đồng một chút, không có vấn đề gì thì ký vào đây."),
     ("N", "阮山 看 得 很 认真，然后 签字 了。", "Sơn đọc rất kỹ, rồi ký tên."),
     ("A", "这 是 你们 的 钥匙。", "Đây là chìa khoá của hai em."),
     ("N", "下 个 星期，他们 搬 到 了 新 家。", "Tuần sau, họ chuyển đến nhà mới."),
-    ("A", "我们 有 自己 的 家 了！", "Mình có nhà riêng rồi!"),
+    ("N", "阮红 说：“我们 有 自己 的 家 了！”", "Hồng nói: \"Mình có nhà riêng rồi!\""),
     ("B", "是 啊。以后 你 做饭，我 洗 碗。", "Ừ. Từ giờ em nấu cơm, anh rửa bát."),
 ], [
     Q("Căn nhà cách nhà máy bao xa?", ["Đi bộ mười phút", "Đi xe buýt mười phút", "Đi bộ ba mươi phút"]),
-    Q("Nếu thuê một năm thì mỗi tháng tiền nhà là bao nhiêu?", ["1.400 đồng", "1.500 đồng", "1.000 đồng"]),
+    Q("Nếu thuê một năm thì mỗi tháng tiền nhà là bao nhiêu?", ["1.400 tệ", "1.500 tệ", "1.000 tệ"]),
     Q("Vì sao chị Lý bớt tiền nhà?", ["Vì hai người thuê cả một năm", "Vì căn nhà bẩn", "Vì nhà không có máy giặt"], "infer"),
-]))
+], cast=("李小姐", "阮山")))
 
 S.append(story("job_interview", "A2-1", "面试", "Hải muốn tìm việc lương cao hơn và đi phỏng vấn ở một nhà máy lớn.",
     ["面试", "流利", "复习"], [
@@ -57,7 +57,7 @@ S.append(story("job_interview", "A2-1", "面试", "Hải muốn tìm việc lư�
     ("B", "会 写 一些。我 每天 晚上 都 复习。", "Tôi biết viết một ít. Tối nào tôi cũng ôn bài."),
     ("A", "很 好。我们 这儿 要 上 夜班，你 可以 吗？", "Tốt lắm. Ở đây phải làm ca đêm, anh làm được không?"),
     ("B", "可以。夜班 的 工资 是 多少？", "Được ạ. Lương ca đêm là bao nhiêu ạ?"),
-    ("A", "一 个 月 六千 块，夜班 还有 三百 块。", "Một tháng sáu nghìn đồng, ca đêm còn thêm ba trăm đồng."),
+    ("A", "一 个 月 六千 块，夜班 还有 三百 块。", "Một tháng sáu nghìn tệ, ca đêm còn thêm ba trăm tệ."),
     ("B", "一 个 星期 休息 几 天？", "Một tuần được nghỉ mấy ngày ạ?"),
     ("A", "休息 一 天。你 还有 问题 吗？", "Nghỉ một ngày. Anh còn câu hỏi nào không?"),
     ("B", "没有 了。谢谢 您！", "Không còn ạ. Cảm ơn chị!"),
@@ -67,38 +67,38 @@ S.append(story("job_interview", "A2-1", "面试", "Hải muốn tìm việc lư�
     ("N", "阮海 非常 开心。", "Hải vô cùng vui mừng."),
 ], [
     Q("Hải đã ở Trung Quốc bao lâu?", ["Ba năm", "Hai năm", "Một năm"]),
-    Q("Làm ca đêm, mỗi tháng được thêm bao nhiêu tiền?", ["300 đồng", "600 đồng", "6.000 đồng"]),
+    Q("Làm ca đêm, mỗi tháng được thêm bao nhiêu tiền?", ["300 tệ", "600 tệ", "6.000 tệ"]),
     Q("Cuộc điện thoại hôm thứ Hai có nghĩa là gì?", ["Hải đã được nhận vào làm", "Hải không được nhận", "Hải phải phỏng vấn lại"], "infer"),
-]))
+], cast=("经理", "阮海")))
 
 S.append(story("fire_drill", "A2-1", "安全课", "Quản lý Vương dạy công nhân cách dùng bình chữa cháy, rồi cả nhà máy diễn tập thoát hiểm.",
     ["离开", "所有", "紧急"], [
     ("N", "今天 下午 三 点，工厂 里 所有 的 员工 都 要 参加 安全 课。", "Ba giờ chiều nay, tất cả nhân viên trong nhà máy đều phải dự buổi học an toàn."),
     ("B", "大家 好！今天 我们 学习 怎么 用 灭火器。", "Chào mọi người! Hôm nay chúng ta học cách dùng bình chữa cháy."),
     ("B", "灭火器 在 每 个 车间 的 门口。", "Bình chữa cháy để ở cửa mỗi xưởng."),
-    ("B", "如果 有 火，先 别 急，然后 马上 告诉 组长。", "Nếu có cháy, trước hết đừng hoảng, rồi báo ngay cho tổ trưởng."),
+    ("B", "如果 着火 了，先 别 急，然后 马上 告诉 组长。", "Nếu có cháy, trước hết đừng hoảng, rồi báo ngay cho tổ trưởng."),
     ("B", "小 火，可以 用 灭火器。", "Lửa nhỏ thì có thể dùng bình chữa cháy."),
     ("N", "王 主管 拿 着 一 个 灭火器。", "Quản lý Vương cầm một bình chữa cháy."),
     ("B", "你们 看，用 灭火器 很 容易。", "Mọi người xem, dùng bình chữa cháy rất dễ."),
     ("B", "但是，大 火 很 危险。大 火 的 时候，大家 一定 要 马上 离开。", "Nhưng đám cháy lớn rất nguy hiểm. Khi cháy lớn, mọi người nhất định phải rời đi ngay."),
     ("A", "王 主管，我们 从 哪儿 出去？", "Anh Vương, chúng em ra bằng lối nào ạ?"),
     ("B", "走 紧急 出口。", "Đi lối thoát hiểm."),
-    ("B", "有 火 的 时候，禁止 坐 电梯，要 走 楼梯。", "Khi có cháy, cấm đi thang máy, phải đi cầu thang bộ."),
+    ("B", "着火 的 时候，禁止 坐 电梯，要 走 楼梯。", "Khi có cháy, cấm đi thang máy, phải đi cầu thang bộ."),
     ("A", "为什么 不 能 坐 电梯？", "Vì sao không được đi thang máy ạ?"),
     ("B", "因为 电梯 可能 会 停，人 在 里边 很 危险。", "Vì thang máy có thể bị dừng, người ở bên trong rất nguy hiểm."),
     ("B", "还有，车间 里 禁止 吸烟！", "Còn nữa, trong xưởng cấm hút thuốc!"),
-    ("N", "四 点，工厂 里 的 声音 很 大：“火！火！”", "Bốn giờ, trong nhà máy vang lên tiếng rất to: \"Cháy! Cháy!\""),
+    ("N", "四 点，工厂 里 的 声音 很 大：“着火 了！着火 了！”", "Bốn giờ, trong nhà máy vang lên tiếng rất to: \"Cháy! Cháy!\""),
     ("N", "这 是 一 次 练习。", "Đây là một buổi diễn tập."),
     ("N", "所有 的 人 都 走 楼梯，从 紧急 出口 出去 了。", "Tất cả mọi người đều đi cầu thang bộ, ra ngoài theo lối thoát hiểm."),
     ("N", "三 分钟 以后，大家 都 在 工厂 外边。", "Ba phút sau, mọi người đều đã ở bên ngoài nhà máy."),
     ("B", "很 好！三 分钟，大家 都 出来 了。", "Tốt lắm! Ba phút, mọi người đều đã ra ngoài."),
-    ("A", "王 主管，如果 真的 有 火，我们 也 能 很 快 出来 吗？", "Anh Vương, nếu cháy thật thì chúng em cũng ra nhanh được như vậy không ạ?"),
+    ("A", "王 主管，如果 真的 着火 了，我们 也 能 很 快 出来 吗？", "Anh Vương, nếu cháy thật thì chúng em cũng ra nhanh được như vậy không ạ?"),
     ("B", "能！所以 我们 要 练习。", "Được! Vì thế chúng ta mới phải tập."),
 ], [
     Q("Bình chữa cháy để ở đâu?", ["Ở cửa mỗi xưởng", "Trong văn phòng", "Cạnh thang máy"]),
     Q("Khi có cháy, vì sao không được đi thang máy?", ["Vì thang máy có thể dừng, người ở trong rất nguy hiểm", "Vì thang máy quá nhỏ", "Vì thang máy chỉ dành cho quản lý"]),
     Q("Vì sao quản lý Vương hài lòng với buổi diễn tập?", ["Vì chỉ trong ba phút mọi người đã ra ngoài hết", "Vì không ai phải tham gia", "Vì mọi người đi thang máy rất nhanh"], "infer"),
-]))
+], cast=("员工", "王主管")))
 
 S.append(story("dinner_for_countrymen", "A2-1", "我请客", "Nam nhắn vào nhóm WeChat của đồng hương: tối thứ Bảy anh mời cả nhóm đi ăn.",
     ["食堂", "请客", "员工"], [
@@ -110,7 +110,7 @@ S.append(story("dinner_for_countrymen", "A2-1", "我请客", "Nam nhắn vào nh
     ("A", "阮南，你 为什么 请客？", "Nam ơi, sao cậu lại mời?"),
     ("B", "我 现在 是 我们 组 的 组长！", "Bây giờ mình là tổ trưởng của tổ rồi!"),
     ("A", "真的 吗？太 好 了！", "Thật à? Tốt quá!"),
-    ("B", "我们 去 哪儿 吃？", "Mình đi ăn ở đâu?"),
+    ("A", "我们 去 哪儿 吃？", "Mình đi ăn ở đâu?"),
     ("B", "去 工厂 对面 的 越南 饭馆。", "Đến quán ăn Việt Nam đối diện nhà máy."),
     ("A", "那儿 的 面条 很 好吃！", "Mì ở đó ngon lắm!"),
     ("N", "星期六 晚上，二十 个 老乡 来 了。", "Tối thứ Bảy, hai mươi người đồng hương đã đến."),
@@ -124,7 +124,7 @@ S.append(story("dinner_for_countrymen", "A2-1", "我请客", "Nam nhắn vào nh
     Q("Nhóm WeChat của các đồng hương có bao nhiêu người?", ["Ba mươi người", "Hai mươi người", "Mười người"]),
     Q("Tối thứ Bảy họ đi ăn ở đâu?", ["Ở quán ăn Việt đối diện nhà máy", "Ở nhà ăn của nhà máy", "Ở ký túc xá"]),
     Q("Cuối cùng ai trả tiền bữa tối?", ["Nam", "Mỗi người tự trả", "Cả nhóm cùng góp"], "infer"),
-]))
+], cast=("老乡", "阮南")))
 
 S.append(story("one_year_later", "A2-1", "一年以后", "Một năm sau ngày sang Trung Quốc, Hoa viết cho mẹ về những gì đã thay đổi.",
     ["水平", "提高", "成绩", "过年"], [

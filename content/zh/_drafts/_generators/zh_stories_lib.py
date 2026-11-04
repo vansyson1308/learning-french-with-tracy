@@ -16,7 +16,11 @@ whole. The family names 王 / 李 before a title (王经理, 李组长) are name
 
 Voices (zh-plan.md §7; content/audio/voice-casts.json is still pending its canary, so the cast is the plan's): A is the
 female voice (kokoro-zf_xiaobei) and narrates (N takes A's voice), B the male voice (kokoro-zm_yunjian): a woman's lines
-are A, a man's lines B.
+are A, a man's lines B. D-10 review (2026-11-05): a story with dialogue declares its cast, story(..., cast=(A, B)) — one
+character per voice for the whole story (a third speaker is narrated: 司机问：“…”); a name of the course people is in its
+own voice (zh_text.NAME_VOICE); no voice calls its own character by name; no voice answers its own question; and the
+Vietnamese of a 块 amount says "tệ", of a 斤 weight never a bare "cân" (zh_text.vi_unit_problems). The casts go to
+stories/casts.json, which zh-check-stories.py reads.
 
 Questions are authored with the right option first; `story` moves it to a position taken from the story id and the
 question number, as the ja stories do. Every check of `check_story` runs here and again in zh-check-stories.py.
@@ -25,7 +29,7 @@ import glob, json, math, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from zh_text import COUNTER_NOUNS, HAN, MEASURE_WORDS, NOUN_MEASURES, Index  # noqa: E402
+from zh_text import COUNTER_NOUNS, HAN, MEASURE_WORDS, NAME_VOICE, NOUN_MEASURES, Index, vi_unit_problems, voice_problems  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
 D = os.path.join(ROOT, "content", "zh", "_drafts")
@@ -339,9 +343,48 @@ def first_person(r):
     return any(s["speaker"] == "N" and "我" in QUOTED.sub("", s["text"]) for s in r["sentences"])
 
 
-def check_story(r):
-    """Messages for one story record (empty: the story passes)."""
+def voice_and_unit_problems(r, cast):
+    """The D-10 rules of 2026-11-05 (module docstring): one character per voice, in its own voice, never calling itself or
+    answering its own question; 块 in tệ and 斤 never as a bare cân in the Vietnamese."""
     msgs = []
+    sents = r["sentences"]
+    for n, s in enumerate(sents, 1):
+        for p in vi_unit_problems(s["text"], s["translation"].get("vi", "")):
+            msgs.append(f"#{n}: {p}")
+    body = "".join(s["text"] for s in sents)
+    for i, q in enumerate(r["questions"]):
+        for t in [q["prompt"]["vi"]] + [o["vi"] for o in q["options"]]:
+            for p in vi_unit_problems(body, t):
+                msgs.append(f"q{i}: {p.split(' in ')[0]}")
+    letters = sorted({s["speaker"] for s in sents} - {"N"})
+    if not letters:
+        return msgs
+    if not cast:
+        msgs.append(f"voices {''.join(letters)} without a declared cast: story(..., cast=(A character, B character))")
+        return msgs
+    for letter, who in zip("AB", cast):
+        if who in NAME_VOICE and NAME_VOICE[who] != letter:
+            msgs.append(f"cast: {who} speaks with voice {NAME_VOICE[who]}, not {letter} (A female, B male)")
+    for n, s in enumerate(sents, 1):
+        if s["speaker"] in ("A", "B"):
+            who = cast["AB".index(s["speaker"])]
+            if re.match(f"^{re.escape(who)}[，！]", s["text"]):
+                msgs.append(f"#{n}: voice {s['speaker']} ({who}) calls its own character: {s['text']!r}")
+            for other in NAME_VOICE:
+                if other != who and re.search(f"我(?:叫|是){other}", s["text"]):
+                    msgs.append(f"#{n}: voice {s['speaker']} ({who}) says it is {other}: {s['text']!r}")
+        if n < len(sents):
+            nxt = sents[n]
+            if s["speaker"] in ("A", "B") and nxt["speaker"] == s["speaker"] and s["text"].endswith("？") and not nxt["text"].endswith("？"):
+                msgs.append(f"#{n}-#{n + 1}: voice {s['speaker']} answers its own question: {s['text']!r} / {nxt['text']!r}")
+    for p in voice_problems([(s["speaker"], s["text"]) for s in sents if s["speaker"] != "N"], replies=False):
+        msgs.append(p)
+    return msgs
+
+
+def check_story(r, cast=None):
+    """Messages for one story record (empty: the story passes)."""
+    msgs = voice_and_unit_problems(r, cast)
     a = analyze(r)
     lo, hi = TOKEN_RANGE.get(r["band"], DEFAULT_RANGE)
     if not lo <= a["tokens"] <= hi:
@@ -446,8 +489,13 @@ def _words_of(raw):
     return out, forced
 
 
-def story(sid, band, title, blurb, new, sentences, questions):
+CASTS = {}
+
+
+def story(sid, band, title, blurb, new, sentences, questions, cast=None):
     full = f"zh.story.{sid}"
+    if cast:
+        CASTS[full] = list(cast)
     tm = {}
     authored = []  # per sentence: the word tokens the author wrote
     for speaker, text, _vi in sentences:
@@ -494,7 +542,7 @@ def story(sid, band, title, blurb, new, sentences, questions):
         got = [t for t, res in pieces if res is not None]
         if got != words:
             problems.append(f"#{n}: engine words {'|'.join(got)} ≠ authored {'|'.join(words)}")
-    problems += check_story(out)
+    problems += check_story(out, cast)
     if problems:
         FAILED.append(f"{full} ({a['tokens']} tokens, {a['unknown']} new):\n  " + "\n  ".join(problems))
     return out
@@ -516,4 +564,14 @@ def write_batch(name, stories):
     with open(os.path.join(base, "OUTPUT.jsonl"), "w", encoding="utf-8", newline="\n") as out:
         for fn in sorted(glob.glob(os.path.join(d, "*.jsonl"))):
             out.write(open(fn, encoding="utf-8").read())
+    # The casts of this batch beside it; casts.json joins every batch's (zh-check-stories.py reads it).
+    with open(os.path.join(d, f"{name}.casts.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump({s["id"]: CASTS[s["id"]] for s in stories if s["id"] in CASTS}, f, ensure_ascii=False, indent=1, sort_keys=True)
+        f.write("\n")
+    joined = {}
+    for fn in sorted(glob.glob(os.path.join(d, "*.casts.json"))):
+        joined.update(json.load(open(fn, encoding="utf-8")))
+    with open(os.path.join(base, "casts.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump(dict(sorted(joined.items())), f, ensure_ascii=False, indent=1)
+        f.write("\n")
     print(name, len(stories), "stories")

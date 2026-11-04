@@ -12,7 +12,7 @@ import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from zh_text import HAN, PUNCT, Index, bare, load_lexicon, natural_spellings, numeral_spellings  # noqa: E402
+from zh_text import HAN, PUNCT, Index, bare, load_lexicon, natural_spellings, numeral_spellings, variant_spellings  # noqa: E402
 
 ROOT = sys.argv[1]
 DRAFTS = f"{ROOT}/content/zh/_drafts"
@@ -89,10 +89,14 @@ def spoken_variants(answers):
     are not widened: the grader spells digits as hanzi numerals before it compares (25岁 = 二十五岁, 2张 = 两张), so a
     digit variant would be a duplicate; it also folds traditional characters, punctuation and spaces (zh.ts)."""
     out = []
-    for a in answers:
-        for x in [a] + natural_spellings(a):
+    todo = list(answers)
+    while todo:
+        a = todo.pop(0)
+        for x in [a] + natural_spellings(a) + variant_spellings(a):
             if bare(x) not in {bare(y) for y in out}:
                 out.append(x)
+                if x != a:
+                    todo.append(x)
     return out
 
 

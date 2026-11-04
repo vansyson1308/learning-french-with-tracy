@@ -809,7 +809,10 @@
             "prompt": "Gõ bằng bàn phím pinyin: \"Cảm ơn!\"",
             "audioTarget": "谢谢！",
             "answer": "谢谢！",
-            "alternatives": []
+            "alternatives": [
+              "谢谢你！",
+              "谢谢您！"
+            ]
           },
           "objectiveTargets": [
             "zh.obj.writing.pinyin_input"
@@ -843,7 +846,10 @@
             "prompt": "Gõ bằng bàn phím pinyin: \"Tôi là người Việt Nam.\"",
             "audioTarget": "我是越南人。",
             "answer": "我是越南人。",
-            "alternatives": []
+            "alternatives": [
+              "我是一个越南人。",
+              "我是1个越南人。"
+            ]
           },
           "objectiveTargets": [
             "zh.obj.writing.pinyin_input"
@@ -1909,6 +1915,7 @@
             "target": "我是越南人。",
             "acceptedVariants": [
               "我是越南人",
+              "我是一个越南人",
               "越南人",
               "我从越南来",
               "我是从越南来的"
@@ -1944,7 +1951,9 @@
             "target": "我是大学生。",
             "acceptedVariants": [
               "我是大学生",
+              "我是一个大学生",
               "我是学生",
+              "我是一个学生",
               "大学生",
               "学生"
             ],
@@ -2017,7 +2026,10 @@
               "五块钱",
               "五元",
               "一瓶五块",
-              "茶五块"
+              "五块一瓶",
+              "五块钱一瓶",
+              "茶五块",
+              "一瓶五块钱"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -2049,7 +2061,8 @@
               "现在十点",
               "十点",
               "十点了",
-              "现在是十点"
+              "现在是十点",
+              "现在十点了"
             ],
             "evidenceLexemeRefs": [
               "zh:w:xianzai"
@@ -2148,7 +2161,10 @@
               "这只狗很大",
               "狗很大",
               "这是一只大狗",
-              "大狗"
+              "大狗",
+              "这条狗很大",
+              "这是一条大狗",
+              "这只狗非常大"
             ],
             "evidenceLexemeRefs": [
               "zh:w:gou",
@@ -2179,7 +2195,10 @@
               "这件衣服是白的",
               "衣服是白的",
               "这是一件白衣服",
-              "白衣服"
+              "白衣服",
+              "这件衣服是白色的",
+              "衣服是白色的",
+              "白色的衣服"
             ],
             "evidenceLexemeRefs": [
               "zh:w:yifu",
@@ -2364,7 +2383,10 @@
                   "id": "like",
                   "description": "bạn thích âm nhạc",
                   "variants": [
-                    "喜欢音乐"
+                    "喜欢音乐",
+                    "喜欢听音乐",
+                    "爱音乐",
+                    "爱听音乐"
                   ],
                   "cueProvided": false
                 }
@@ -2514,7 +2536,11 @@
                   "description": "lời rủ",
                   "variants": [
                     "吧",
-                    "好吗"
+                    "好吗",
+                    "怎么样",
+                    "好不好",
+                    "行吗",
+                    "可以吗"
                   ],
                   "cueProvided": false
                 }
@@ -2623,7 +2649,9 @@
                   "description": "bạn sẽ đến muộn",
                   "variants": [
                     "晚到",
-                    "迟到"
+                    "迟到",
+                    "来晚",
+                    "晚"
                   ],
                   "cueProvided": false
                 }
@@ -2683,7 +2711,13 @@
                     "可以请假吗",
                     "能请假吗",
                     "可以休息吗",
-                    "能休息吗"
+                    "能休息吗",
+                    "请假可以吗",
+                    "能不能请假",
+                    "可不可以请假",
+                    "能不能休息",
+                    "可不可以休息",
+                    "想请假"
                   ],
                   "cueProvided": false
                 }
@@ -2761,7 +2795,8 @@
                   "id": "phone",
                   "description": "số điện thoại",
                   "variants": [
-                    "137-2222-3333"
+                    "137-2222-3333",
+                    "13722223333"
                   ],
                   "cueProvided": true
                 }
@@ -2831,7 +2866,8 @@
                   "id": "birthday",
                   "description": "ngày sinh",
                   "variants": [
-                    "四月五号"
+                    "四月五号",
+                    "四月五日"
                   ],
                   "cueProvided": true
                 },
@@ -2839,7 +2875,8 @@
                   "id": "phone",
                   "description": "số điện thoại",
                   "variants": [
-                    "139-1111-2222"
+                    "139-1111-2222",
+                    "13911112222"
                   ],
                   "cueProvided": true
                 }
@@ -2917,7 +2954,8 @@
                   "id": "phone",
                   "description": "số điện thoại",
                   "variants": [
-                    "136-4444-5555"
+                    "136-4444-5555",
+                    "13644445555"
                   ],
                   "cueProvided": true
                 }
@@ -3299,7 +3337,8 @@
               "现在九点",
               "九点",
               "九点了",
-              "现在是九点"
+              "现在是九点",
+              "现在九点了"
             ],
             "evidenceLexemeRefs": [
               "zh:w:xianzai"
@@ -3334,7 +3373,10 @@
               "二十块钱",
               "二十元",
               "一杯二十块",
-              "咖啡二十块"
+              "二十块一杯",
+              "二十块钱一杯",
+              "咖啡二十块",
+              "一杯二十块钱"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -3401,9 +3443,13 @@
             "target": "我的生日是九月二十号。",
             "acceptedVariants": [
               "我的生日是九月二十号",
+              "我的生日是九月二十日",
               "九月二十号",
+              "九月二十日",
               "我生日是九月二十号",
-              "我的生日九月二十号"
+              "我生日是九月二十日",
+              "我的生日九月二十号",
+              "我的生日九月二十日"
             ],
             "evidenceLexemeRefs": [
               "zh:w:shengri",
@@ -3462,7 +3508,10 @@
                   "id": "meet",
                   "description": "lời hẹn gặp",
                   "variants": [
-                    "见"
+                    "见",
+                    "见面",
+                    "等你",
+                    "等我"
                   ],
                   "cueProvided": false
                 }

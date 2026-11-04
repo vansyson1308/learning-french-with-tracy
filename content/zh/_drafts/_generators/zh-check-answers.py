@@ -32,6 +32,16 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags:
     checkpoint and the first placement stage tap-only, an HSK item's options distinct and of one language, no
     distractor that is the key in another spelling; the exam stimuli are read by rule 8 (they are in readings/ and
     listening/).
+10. (D-10 review, 2026-11-05) the patterns the fresh reviewers found, on every item: a word bank accepts every order of its
+    tiles that says the same thing (zh_text.order_variants: time word and subject, 给 + person before or after the verb
+    phrase, 住在 + place / 在 + place + 住); a typed, spoken, written or scenario answer lists its word variants
+    (zh_text.variant_spellings: 没 ⇄ 没有, the price per unit in both orders 一碗十八块 ⇄ 十八块一碗, adjective + 一点儿 ⇄ 点儿,
+    月…号 ⇄ 月…日, 疼 ⇄ 痛, the 给 and 住 orders, 是 + person ⇄ 是一个 + person, a phone number with and without its
+    hyphens); a clip line that says 我叫 / 我是 + a course name, or answers a line calling that name, is in that name's
+    voice (A female, B male: zh_text.voice_problems); a match has distinct Vietnamese cards (match.tsx resolves a card by its
+    text); a scenario concept group is never a bare negator (不 / 没 / 别 alone pass any negated sentence: 我很不舒服 is no
+    "no fever"); a Vietnamese line beside a 块 / 元 amount says "tệ", not "đồng" (the Vietnamese dong), and one beside 斤
+    never says a bare "cân" (a Vietnamese reader takes it for a kilogram; 一斤 is half of one).
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I zh-check-answers.py <repo root>
 """
@@ -41,7 +51,9 @@ from collections import Counter
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from zh_text import (COUNTER_NOUNS, HAN, MEASURE_WORDS, NOUN_MEASURES, Index, bare, load_lexicon, natural_spellings,  # noqa: E402
-                     numeral_spellings, subject_spellings, topic_spellings)
+                     numeral_spellings, order_variants, subject_spellings, topic_spellings, variant_spellings, vi_unit_problems, voice_problems)
+# Negators that, alone in a scenario concept group, would pass any negated sentence.
+BARE_NEGATORS = {"不", "没", "别", "不是", "不要", "不用"}
 
 ROOT = sys.argv[1]
 D = f"{ROOT}/content/zh/_drafts"
@@ -222,6 +234,12 @@ def tile_rules(eid, e):
         for p, q in ((a, b), (b, a)):
             if p in e["answer"] and q in extra:
                 flag(eid, "tile-swap", f"tiles {e['answer']} + {q!r}: {q} can replace {p}")
+    # rule 10: every order of the same tiles that says the same thing is accepted
+    accepted = [e["answer"]] + e.get("alternatives", [])
+    for a in accepted:
+        for v in order_variants(a):
+            if v not in accepted and not (Counter(v) - Counter(e["tokens"])):
+                flag(eid, "tile-order", f"tiles {v} build a correct answer to {e['prompt']!r} and are not accepted")
     # a measure word tile the noun also takes
     for i, t in enumerate(e["answer"][:-1]):
         if t in MEASURE_WORDS:
@@ -234,7 +252,7 @@ def tile_rules(eid, e):
 
 def equivalents(text):
     out = set()
-    for x in numeral_spellings(text) + natural_spellings(text) + topic_spellings(text):
+    for x in numeral_spellings(text) + natural_spellings(text) + topic_spellings(text) + variant_spellings(text):
         out.add(bare(x))
     return out
 
@@ -274,7 +292,7 @@ def typed_rules(eid, e):
     acc = [e["answer"]] + list(e["alternatives"])
     want = []
     for a in acc:
-        want += numeral_spellings(a) + natural_spellings(a) + subject_spellings(e["prompt"], a)
+        want += numeral_spellings(a) + natural_spellings(a) + subject_spellings(e["prompt"], a) + variant_spellings(a)
     for w in missing(acc, want):
         flag(eid, "typed-rendering", f"{w!r} is a correct answer to {e['prompt']!r} and is not accepted")
     for a in acc:
@@ -353,8 +371,8 @@ def layer_rules(eid, e, exam=False):
         for v in [e["target"]] + e["acceptedVariants"]:
             if LATIN.search(v):
                 flag(eid, "speech-latin", f"{v!r}: a spoken answer is hanzi only (no pinyin, no Hán-Việt)")
-        for w in missing(e["acceptedVariants"], [x for v in e["acceptedVariants"] for x in natural_spellings(v)]):
-            flag(eid, "spoken-spelling", f"{w!r} (a recogniser's spelling) is not among the variants")
+        for w in missing(e["acceptedVariants"], [x for v in e["acceptedVariants"] for x in natural_spellings(v) + variant_spellings(v)]):
+            flag(eid, "spoken-spelling", f"{w!r} (a recogniser's spelling or a word variant) is not among the variants")
     if t == "guidedWriting":
         for model in e["modelAnswers"]:
             if e["writingMode"] != "guided":
@@ -367,7 +385,7 @@ def layer_rules(eid, e, exam=False):
             for v in slot["variants"]:
                 if LATIN.search(v):
                     flag(eid, "writing-latin", f"slot {slot['id']}: {v!r} — a variant is hanzi (pinyin is practice)")
-            for w in missing(slot["variants"], [x for v in slot["variants"] for x in natural_spellings(v)]):
+            for w in missing(slot["variants"], [x for v in slot["variants"] for x in natural_spellings(v) + variant_spellings(v)]):
                 flag(eid, "written-spelling", f"slot {slot['id']}: {w!r} is a correct spelling and not a variant")
     if t == "simpleForm":
         for model in e["modelAnswers"]:
@@ -395,8 +413,13 @@ def scenario_rules():
                     if LATIN.search(v) or VI_LETTER.search(v):
                         flag(where, "scenario-latin", f"{v!r}: an answer is hanzi only")
                     grammar_rules(where, v)
-                for w in missing(x["acceptedVariants"], [y for v in x["acceptedVariants"] for y in natural_spellings(v)]):
-                    flag(where, "spoken-spelling", f"{w!r} (a recogniser's spelling) is not among the variants")
+                for w in missing(x["acceptedVariants"], [y for v in x["acceptedVariants"] for y in natural_spellings(v) + variant_spellings(v)]):
+                    flag(where, "spoken-spelling", f"{w!r} (a recogniser's spelling or a word variant) is not among the variants")
+                for p in vi_unit_problems(" ".join(x["acceptedVariants"]), node["prompt"]["vi"]):
+                    flag(where, "vi-unit", p)
+                for group in x.get("requiredConcepts", []):
+                    if any(bare(c) in BARE_NEGATORS for c in group):
+                        flag(where, "concept-negator", f"concept group {group}: a bare negator passes any negated sentence (我很不舒服); name the negated word (不发烧, 没发烧)")
 
 
 def reception_rules():
@@ -408,6 +431,8 @@ def reception_rules():
                     flag(rid, "reading", p)
             grammar_rules(rid, b["text"])
     for cid, c in CLIPS.items():
+        for p in voice_problems([(s["speaker"], s["text"]) for s in c["segments"]]):
+            flag(cid, "voice", p)
         for s in c["segments"]:
             for p in INDEX.problems(s["text"]):
                 flag(cid, "reading", p)
@@ -435,7 +460,39 @@ def _list(step):
     return [json.loads(x) for x in open(path, encoding="utf-8") if x.strip()] if os.path.exists(path) else []
 
 
+def vi_pairs(e):
+    """(Chinese, Vietnamese) pairs one exercise shows side by side (rule 10: the units of money and weight)."""
+    t = e["type"]
+    if t == "select":
+        if e["mode"] == "targetToNative":
+            return [(e["prompt"], o["text"]) for o in e["options"]]
+        return [(e["options"][e["correct"]]["text"], e["prompt"])]
+    if t == "fillBlank":
+        return [(e["audioTarget"], e["translation"])]
+    if t == "typeAnswer":
+        return [(e["answer"], e["prompt"])]
+    if t == "wordBank":
+        return [("".join(e["answer"]), e["prompt"])] if e["direction"] == "nativeToTarget" else [(e["prompt"], " ".join(e["answer"]))]
+    if t == "match":
+        return [(p["target"], p["native"]) for p in e["pairs"]]
+    if t == "listeningComprehension" and e["clipId"] in CLIPS:
+        heard = "".join(s["text"] for s in CLIPS[e["clipId"]]["segments"])
+        return [(heard, x) for x in [e["question"]] + [o["text"] for o in e["options"]]]
+    if t == "readingComprehension" and e["readingId"] in READINGS:
+        body = "".join(b["text"] for b in READINGS[e["readingId"]]["blocks"])
+        return [(body, x) for x in [e["question"]] + [o["text"] for o in e["options"]]]
+    return []
+
+
 def exercise_rules(eid, e, exam=False, section1=False):
+    for zh, vi in vi_pairs(e):
+        for p in vi_unit_problems(zh, vi):
+            flag(eid, "vi-unit", p)
+    if e["type"] == "match":
+        natives = Counter(p["native"] for p in e["pairs"])
+        for text, k in natives.items():
+            if k > 1:
+                flag(eid, "match-native", f"{k} cards read {text!r}: match.tsx resolves a card by its text, so only one pair can be made")
     payload = json.dumps({k: v for k, v in e.items() if k != "id"}, ensure_ascii=False, sort_keys=True)
     if payload in seen:
         flag(eid, "duplicate", f"repeats {seen[payload]}")
@@ -507,6 +564,10 @@ for c in sorted(concepts - concepts_used):
 for x in LEXL:
     for ex in x.get("examples", []):
         grammar_rules(x["id"], ex["target"])
+        for p in vi_unit_problems(ex["target"], ex.get("translations", {}).get("vi", "")):
+            flag(x["id"], "vi-unit", p)
+    for p in vi_unit_problems(x["surface"], x["glosses"]["vi"]):
+        flag(x["id"], "vi-unit", p)
 # Session 3: the layer records themselves (reserved ones included: checkpoints and placement show them later).
 reception_rules()
 scenario_rules()

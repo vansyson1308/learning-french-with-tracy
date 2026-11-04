@@ -11,7 +11,7 @@ S = []
 
 S.append(story("micro_new_colleague", "A1-0", "你好，我叫阮南", "Nam gặp một chị công nhân người Trung Quốc ở nhà máy.",
     ["工厂", "广州", "河内"], [
-    ("N", "他 是 阮南。", "Đây là Nguyễn Nam."),
+    ("N", "这 是 阮南。", "Đây là Nguyễn Nam."),
     ("N", "阮南 是 越南人，也 是 工人。", "Nam là người Việt Nam, cũng là công nhân."),
     ("N", "她 是 小李，是 中国人。", "Cô ấy là Tiểu Lý, người Trung Quốc."),
     ("N", "他们 在 工厂。", "Hai người đang ở nhà máy."),
@@ -30,7 +30,7 @@ S.append(story("micro_new_colleague", "A1-0", "你好，我叫阮南", "Nam gặ
     Q("Tiểu Lý là người nước nào?", ["Người Trung Quốc", "Người Việt Nam", "Câu chuyện không nói"]),
     Q("Bố mẹ của Nam đang ở đâu?", ["Ở Hà Nội", "Ở Quảng Châu", "Ở nhà máy"]),
     Q("Nam và Tiểu Lý giống nhau ở điểm nào?", ["Cả hai đều là công nhân", "Cả hai đều là sinh viên", "Cả hai đều là người Việt Nam"], "infer"),
-]))
+], cast=("小李", "阮南")))
 
 S.append(story("micro_family_photo", "A1-0", "我家的照片", "Hoa cho Tiểu Vương xem ảnh gia đình mình.",
     ["中国", "照片", "上海"], [
@@ -51,8 +51,8 @@ S.append(story("micro_family_photo", "A1-0", "我家的照片", "Hoa cho Tiểu 
 ], [
     Q("Cậu bé trong ảnh là ai?", ["Em trai của Hoa", "Anh trai của Hoa", "Bố của Hoa"]),
     Q("Anh trai của Tiểu Vương làm nghề gì?", ["Công nhân", "Học sinh", "Câu chuyện không nói"]),
-    Q("Trong gia đình Hoa, ai đang ở Trung Quốc?", ["Chỉ có Hoa", "Hoa và em gái", "Hoa và bố mẹ"], "infer"),
-]))
+    Q("Ai trong gia đình Hoa đang ở nhà, ở Việt Nam?", ["Bố mẹ và em gái", "Chỉ có em gái", "Chỉ có bố mẹ"], "infer"),
+], cast=("阮花", "小王")))
 
 S.append(story("micro_who_is_that", "A1-0", "那是谁？", "Ngày đầu ở nhà máy, Nam hỏi Tiểu Lý về những người xung quanh.",
     ["工厂", "经理", "真的"], [
@@ -77,7 +77,7 @@ S.append(story("micro_who_is_that", "A1-0", "那是谁？", "Ngày đầu ở nh
     Q("Giám đốc Vương là người nước nào?", ["Người Trung Quốc", "Người Việt Nam", "Câu chuyện không nói"]),
     Q("Tiểu Vương là ai?", ["Con gái của giám đốc Vương", "Em gái của Tiểu Lý", "Một công nhân người Việt"]),
     Q("Vì sao Nam hỏi lại xem có thật không?", ["Vì Nam không ngờ có nhiều công nhân người Việt ở đó", "Vì Nam không nghe rõ", "Vì Nam không thích nhà máy"], "infer"),
-]))
+], cast=("小李", "阮南")))
 
 S.append(story("micro_home_far", "A1-0", "你家在哪儿？", "Lúc nghỉ giải lao, chú Lý hỏi Hồng về gia đình ở quê.",
     ["胡志明市", "远", "近"], [
@@ -100,7 +100,7 @@ S.append(story("micro_home_far", "A1-0", "你家在哪儿？", "Lúc nghỉ gi�
     Q("Nhà của Hồng ở đâu?", ["Ở Thành phố Hồ Chí Minh", "Ở gần nhà máy", "Ở Hà Nội"]),
     Q("Em trai của Hồng làm gì?", ["Là học sinh", "Là công nhân", "Câu chuyện không nói"]),
     Q("Ai được gặp gia đình mình thường xuyên hơn?", ["Chú Lý", "Hồng", "Cả hai như nhau"], "infer"),
-]))
+], cast=("阮红", "老李")))
 
 S.append(story("micro_wrong_door", "A1-0", "对不起！", "Buổi tối ở ký túc xá, Nam gõ nhầm cửa phòng.",
     ["宿舍", "门口", "房间"], [
@@ -121,6 +121,6 @@ S.append(story("micro_wrong_door", "A1-0", "对不起！", "Buổi tối ở ký
     Q("Nam đến tìm ai?", ["Anh trai của Nam", "Em gái của Nam", "Bố của Nam"]),
     Q("Căn phòng Nam gõ cửa là của ai?", ["Của chị ấy và em gái chị ấy", "Của anh Hải", "Của Nam"]),
     Q("Vì sao Nam xin lỗi mấy lần?", ["Vì Nam gõ nhầm phòng", "Vì Nam đến muộn", "Vì Nam quên tên chị ấy"], "infer"),
-]))
+], cast=("邻居", "阮南")))
 
 write_batch("00-micro", S)

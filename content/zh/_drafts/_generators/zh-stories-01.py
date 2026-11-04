@@ -10,25 +10,24 @@ from zh_stories_lib import Q, story, write_batch  # noqa: E402
 S = []
 
 S.append(story("forgotten_wallet", "A1-1", "钱包在家里", "Hoa và Sơn đi mua đồ cho bữa tối với bạn bè, nhưng Sơn quên ví.",
-    ["买", "付", "好吃"], [
+    ["买", "付", "好吃", "超市"], [
     ("N", "今天 是 周末。", "Hôm nay là cuối tuần."),
-    ("N", "阮花 和 她 男朋友 阮山 去 商场。", "Hoa và bạn trai cô ấy là Sơn đi trung tâm thương mại."),
+    ("N", "阮花 和 她 男朋友 阮山 去 超市。", "Hoa và bạn trai cô ấy là Sơn đi siêu thị."),
     ("N", "下午，他们 的 朋友 来 家 里 吃 晚饭。", "Chiều nay, bạn bè của họ sẽ đến nhà ăn tối."),
-    ("N", "商场 里 的 东西 很 便宜。", "Đồ trong trung tâm thương mại rất rẻ."),
+    ("N", "超市 里 的 东西 很 便宜。", "Đồ trong siêu thị rất rẻ."),
     ("A", "阮山，你 看，这些 苹果 很 便宜！", "Anh Sơn, anh xem này, mấy quả táo này rẻ quá!"),
-    ("B", "一 斤 多少钱？", "Bao nhiêu tiền một cân?"),
-    ("A", "一 斤 五 块。", "Năm đồng một cân."),
-    ("B", "不 贵。我们 买 三 斤 吧。", "Không đắt. Mình mua ba cân nhé."),
+    ("B", "一 斤 多少钱？", "Bao nhiêu tiền nửa ký?"),
+    ("A", "一 斤 五 块。", "Năm tệ nửa ký."),
+    ("B", "不 贵。我们 买 三 斤 吧。", "Không đắt. Mình mua một ký rưỡi nhé."),
     ("A", "我们 还 需要 鸡蛋 和 肉。", "Mình còn cần trứng và thịt nữa."),
     ("B", "鸡蛋 在 那边，肉 在 前边。", "Trứng ở bên kia, thịt ở phía trước."),
-    ("N", "他们 拿 了 十 个 鸡蛋 和 两 斤 肉。", "Họ lấy mười quả trứng và hai cân thịt."),
+    ("N", "他们 拿 了 十 个 鸡蛋 和 两 斤 肉。", "Họ lấy mười quả trứng và một ký thịt."),
     ("A", "茶 呢？我们 家 里 没有 茶 了。", "Còn trà thì sao? Nhà mình hết trà rồi."),
     ("B", "那 我们 也 买 茶。", "Vậy mình mua cả trà nữa."),
     ("N", "最后，他们 去 排队。", "Cuối cùng, họ đi xếp hàng."),
     ("N", "他们 等 了 十 分钟。", "Họ đợi mười phút."),
-    ("N", "这些 东西 是 120 块 钱。", "Chỗ đồ này hết 120 đồng."),
-    ("B", "啊，我 的 钱包 呢？", "Ôi, ví của anh đâu rồi?"),
-    ("B", "我 的 钱包 在 家 里！", "Ví của anh để ở nhà rồi!"),
+    ("N", "这些 东西 是 120 块 钱。", "Chỗ đồ này hết 120 tệ."),
+    ("B", "啊，我 的 钱包 呢？我 的 钱包 在 家 里！", "Ôi, ví của anh đâu rồi? Ví của anh để ở nhà rồi!"),
     ("A", "没关系，我 有 钱。", "Không sao, em có tiền."),
     ("N", "阮花 付 了 钱。", "Hoa trả tiền."),
     ("B", "不好意思！今天 晚饭 我 来 做。", "Ngại quá! Tối nay để anh nấu."),
@@ -38,29 +37,29 @@ S.append(story("forgotten_wallet", "A1-1", "钱包在家里", "Hoa và Sơn đi 
     ("N", "下午，朋友 们 来 了。", "Buổi chiều, bạn bè đến."),
     ("N", "大家 都 说 阮山 做 的 菜 很 好吃。", "Mọi người đều nói món Sơn nấu rất ngon."),
 ], [
-    Q("Một cân táo giá bao nhiêu?", ["Năm đồng", "Ba đồng", "Mười đồng"]),
-    Q("Ai trả tiền ở trung tâm thương mại?", ["Hoa", "Sơn", "Bạn của họ"]),
+    Q("Nửa ký táo giá bao nhiêu?", ["Năm tệ", "Ba tệ", "Mười tệ"]),
+    Q("Ai trả tiền ở siêu thị?", ["Hoa", "Sơn", "Bạn của họ"]),
     Q("Vì sao Sơn nói tối nay anh sẽ nấu?", ["Vì Hoa đã trả tiền thay anh", "Vì Hoa không biết nấu ăn", "Vì bạn bè muốn ăn món của Sơn"], "infer"),
-]))
+], cast=("阮花", "阮山")))
 
 S.append(story("first_dumplings", "A1-1", "第一次吃饺子", "Giờ nghỉ trưa, Tiểu Lý đưa Hải đi ăn sủi cảo lần đầu.",
-    ["好吃", "服务员", "饿"], [
+    ["好吃", "服务员", "饿", "少", "再"], [
     ("N", "今天 中午，小李 和 阮海 去 饭馆 吃 午饭。", "Trưa nay, Tiểu Lý và Hải đi quán ăn trưa."),
     ("N", "饭馆 就 在 商场 旁边。", "Quán ăn ở ngay cạnh trung tâm thương mại."),
     ("N", "饭馆 里 的 人 都 在 吃 饺子。", "Mọi người trong quán đều đang ăn sủi cảo."),
     ("B", "小李，他们 吃 的 是 什么？", "Tiểu Lý, họ đang ăn món gì vậy?"),
     ("A", "是 饺子。你 在 越南 常常 吃 饺子 吗？", "Là sủi cảo. Ở Việt Nam anh có hay ăn sủi cảo không?"),
-    ("B", "不 常常 吃。这 是 我 第 一 次 在 中国 吃 饺子。", "Không hay ăn lắm. Đây là lần đầu anh ăn sủi cảo ở Trung Quốc."),
+    ("B", "很 少 吃。这 是 我 第 一 次 在 中国 吃 饺子。", "Ít khi ăn lắm. Đây là lần đầu anh ăn sủi cảo ở Trung Quốc."),
     ("A", "那 我们 今天 就 吃 饺子 吧！", "Vậy hôm nay mình ăn sủi cảo luôn nhé!"),
     ("N", "服务员 来 了。", "Nhân viên phục vụ đi tới."),
     ("A", "您好！我们 两 个 人，四十 个 饺子。", "Chào chị! Chúng tôi hai người, cho bốn mươi cái sủi cảo."),
-    ("A", "也 来 两 杯 茶，谢谢。", "Cho thêm hai cốc trà, cảm ơn chị."),
+    ("A", "再 来 两 杯 茶，谢谢。", "Cho thêm hai cốc trà, cảm ơn chị."),
     ("N", "他们 等 了 十 分钟，饺子 来 了。", "Họ đợi mười phút thì sủi cảo được mang ra."),
     ("B", "饺子 怎么 吃？用 筷子 吗？", "Sủi cảo ăn thế nào? Dùng đũa à?"),
     ("A", "是，用 筷子 吃。你 先 吃 一 个。", "Ừ, ăn bằng đũa. Anh ăn thử một cái trước đi."),
     ("N", "阮海 吃 了 一 个 饺子。", "Hải ăn một cái sủi cảo."),
     ("A", "怎么样？", "Thế nào?"),
-    ("B", "太 好吃 了！我 今天 也 太 饿 了。", "Ngon quá! Hôm nay anh cũng đói quá."),
+    ("B", "太 好吃 了！我 今天 太 饿 了。", "Ngon quá! Hôm nay anh đói quá."),
     ("N", "阮海 吃 了 二十 个 饺子，又 喝 了 两 杯 茶。", "Hải ăn hai mươi cái sủi cảo, lại uống hai cốc trà."),
     ("A", "你 还 能 吃 吗？", "Anh còn ăn được nữa không?"),
     ("B", "不 能 了！我 已经 吃 了 二十 个。", "Không nổi nữa! Anh ăn hai mươi cái rồi."),
@@ -71,10 +70,10 @@ S.append(story("first_dumplings", "A1-1", "第一次吃饺子", "Giờ nghỉ tr
     Q("Hải ăn bao nhiêu cái sủi cảo?", ["Hai mươi cái", "Bốn mươi cái", "Mười cái"]),
     Q("Hai người uống gì?", ["Trà", "Cà phê", "Nước hoa quả"]),
     Q("Hôm nay có lẽ ai trả tiền bữa trưa?", ["Tiểu Lý", "Hải", "Mỗi người tự trả"], "infer"),
-]))
+], cast=("小李", "阮海")))
 
 S.append(story("new_room", "A1-1", "我的新房间", "Ngày đầu ở ký túc xá, chú Lý dẫn Tuyết đi xem phòng mới.",
-    ["宿舍", "房间", "大"], [
+    ["宿舍", "房间", "大", "住"], [
     ("N", "阮雪 是 越南人，她 今天 来 中国 了。", "Tuyết là người Việt Nam, hôm nay cô ấy đến Trung Quốc."),
     ("N", "老李 带 她 去 宿舍。", "Chú Lý dẫn cô ấy đến ký túc xá."),
     ("B", "欢迎！这 是 你 的 宿舍 楼。", "Chào mừng cháu! Đây là toà ký túc xá của cháu."),
@@ -89,7 +88,7 @@ S.append(story("new_room", "A1-1", "我的新房间", "Ngày đầu ở ký túc
     ("A", "洗手间 在 哪儿？", "Nhà vệ sinh ở đâu ạ?"),
     ("B", "在 门 后边。你 看，这儿 有 灯。", "Ở sau cửa. Cháu xem, ở đây có đèn."),
     ("N", "老李 打开 了 灯。", "Chú Lý bật đèn lên."),
-    ("A", "这儿 有 几 个 人？", "Ở đây có mấy người ạ?"),
+    ("A", "这个 房间 住 几 个 人？", "Phòng này mấy người ở ạ?"),
     ("B", "四 个 人。她们 都 是 越南人，也 都 是 工人。", "Bốn người. Các cô ấy đều là người Việt Nam, cũng đều là công nhân."),
     ("A", "她们 在 哪儿？", "Các chị ấy đang ở đâu ạ?"),
     ("B", "她们 今天 上午 都 去 商场 了。下午 回来。", "Sáng nay các cô ấy đều đi trung tâm thương mại rồi. Chiều sẽ về."),
@@ -104,10 +103,10 @@ S.append(story("new_room", "A1-1", "我的新房间", "Ngày đầu ở ký túc
     Q("Phòng của Tuyết ở tầng mấy?", ["Tầng ba", "Tầng một", "Tầng bốn"]),
     Q("Ti vi ở đâu?", ["Ở tầng một", "Trong phòng của Tuyết", "Ở sau cửa"]),
     Q("Tuyết ở chung phòng với mấy người?", ["Ba người", "Bốn người", "Hai người"], "infer"),
-]))
+], cast=("阮雪", "老李")))
 
 S.append(story("birthday_cup", "A1-1", "生日快乐！", "Hồng tưởng các bạn đã quên sinh nhật mình.",
-    ["生日", "高兴", "礼物"], [
+    ["生日", "高兴", "礼物", "多"], [
     ("N", "今天 是 阮红 的 生日。", "Hôm nay là sinh nhật của Hồng."),
     ("N", "她 的 家人 都 在 越南。", "Gia đình cô ấy đều ở Việt Nam."),
     ("N", "上午，她 的 朋友 们 都 没 说 什么。", "Buổi sáng, các bạn của cô ấy không ai nói gì."),
@@ -130,7 +129,7 @@ S.append(story("birthday_cup", "A1-1", "生日快乐！", "Hồng tưởng các 
     ("N", "是 一 个 杯子，杯子 上 有 阮红 的 名字。", "Đó là một cái cốc, trên cốc có tên của Hồng."),
     ("A", "谢谢 你们！", "Cảm ơn các cậu!"),
     ("N", "桌子 上 也 有 面条 和 饺子。", "Trên bàn còn có cả mì và sủi cảo."),
-    ("B", "在 中国，大家 生日 都 吃 面条。", "Ở Trung Quốc, sinh nhật ai cũng ăn mì."),
+    ("B", "在 中国，很 多 人 生日 吃 面条。", "Ở Trung Quốc, nhiều người ăn mì vào ngày sinh nhật."),
     ("A", "那 我们 一起 吃 吧！", "Vậy chúng mình cùng ăn đi!"),
     ("B", "生日快乐，阮红！", "Chúc mừng sinh nhật, Hồng!"),
     ("A", "谢谢！这 是 我 在 中国 的 第 一 个 生日。", "Cảm ơn! Đây là sinh nhật đầu tiên của mình ở Trung Quốc."),
@@ -139,7 +138,7 @@ S.append(story("birthday_cup", "A1-1", "生日快乐！", "Hồng tưởng các 
     Q("Các bạn tặng Hồng món quà gì?", ["Một cái cốc có tên cô ấy", "Một chiếc áo", "Một bát mì"]),
     Q("Hồng ăn trưa với ai?", ["Ăn một mình", "Với Tiểu Vương", "Với các bạn"]),
     Q("Vì sao buổi sáng Hồng hơi buồn?", ["Vì cô ấy tưởng các bạn quên sinh nhật mình", "Vì cô ấy bị ốm", "Vì cô ấy không thích ăn mì"], "infer"),
-]))
+], cast=("阮红", "小王")))
 
 S.append(story("rainy_takeaway", "A1-1", "下雨的下午", "Chiều mưa, Tuyết gọi đồ ăn và gặp anh giao hàng ở cửa.",
     ["下雨", "冷", "好吃"], [
@@ -160,7 +159,7 @@ S.append(story("rainy_takeaway", "A1-1", "下雨的下午", "Chiều mưa, Tuy�
     ("B", "太 谢谢 你 了！", "Cảm ơn chị nhiều quá!"),
     ("B", "今天 下午，我 已经 送 了 三十 个 外卖。", "Chiều nay tôi đã giao ba mươi suất rồi."),
     ("A", "三十 个！你 吃饭 了 吗？", "Ba mươi suất! Anh ăn cơm chưa?"),
-    ("B", "还 没有。送 了 外卖，我 就 回去 吃。", "Vẫn chưa. Giao xong đồ ăn tôi mới về ăn."),
+    ("B", "还 没有。送 了 这些 外卖 以后，我 就 回去 吃。", "Vẫn chưa. Giao xong mấy suất này tôi mới về ăn."),
     ("A", "那 你 拿 一 个 饺子 吃 吧。", "Vậy anh lấy một cái sủi cảo mà ăn đi."),
     ("B", "不用，不用！谢谢！", "Thôi, không cần đâu! Cảm ơn chị!"),
     ("N", "他 喝 了 茶，又 去 送 别的 外卖 了。", "Anh ấy uống trà xong lại đi giao những suất khác."),
@@ -169,7 +168,7 @@ S.append(story("rainy_takeaway", "A1-1", "下雨的下午", "Chiều mưa, Tuy�
     Q("Tuyết gọi món gì?", ["Sủi cảo và một cốc nước hoa quả", "Mì và trà", "Bánh bao"]),
     Q("Chiều hôm đó anh giao hàng đã giao bao nhiêu suất?", ["Ba mươi suất", "Ba suất", "Mười suất"]),
     Q("Vì sao Tuyết mang trà cho anh giao hàng?", ["Vì trời mưa, lạnh và anh ấy đứng ngoài trời", "Vì anh ấy muốn mua trà", "Vì anh ấy là bạn của Tuyết"], "infer"),
-]))
+], cast=("阮雪", "外卖员")))
 
 S.append(story("found_wallet", "A1-1", "谁的钱包？", "Hải nhặt được một chiếc ví trong công viên và ngồi đợi người mất.",
     ["找", "高兴", "工作"], [
@@ -185,7 +184,7 @@ S.append(story("found_wallet", "A1-1", "谁的钱包？", "Hải nhặt được
     ("B", "请问，您 在 找 什么？", "Cho hỏi, chị đang tìm gì ạ?"),
     ("A", "我 的 钱包！我 的 钱包 不 见 了。", "Ví của tôi! Ví của tôi mất rồi."),
     ("B", "您 的 钱包 里 有 多少钱？", "Trong ví của chị có bao nhiêu tiền ạ?"),
-    ("A", "里边 有 520 块 钱。", "Bên trong có 520 đồng."),
+    ("A", "里边 有 530 块 钱。", "Bên trong có 530 tệ."),
     ("B", "是 这个 吗？", "Có phải cái này không ạ?"),
     ("A", "是！是 我 的！太 谢谢 你 了！我 找 了 半天！", "Đúng rồi! Là của tôi! Cảm ơn cậu nhiều lắm! Tôi tìm mãi!"),
     ("B", "不客气。", "Không có gì ạ."),
@@ -199,12 +198,12 @@ S.append(story("found_wallet", "A1-1", "谁的钱包？", "Hải nhặt được
     ("N", "阮海 拿 了 苹果，他 很 高兴。", "Hải nhận táo, anh ấy rất vui."),
 ], [
     Q("Hải nhặt được chiếc ví ở đâu?", ["Dưới ghế trong công viên", "Ở cổng công viên", "Trên bàn trong quán ăn"]),
-    Q("Trong ví có bao nhiêu tiền?", ["520 đồng", "500 đồng", "120 đồng"]),
+    Q("Trong ví có bao nhiêu tiền?", ["530 tệ", "500 tệ", "130 tệ"]),
     Q("Vì sao Hải hỏi trong ví có bao nhiêu tiền?", ["Để chắc chắn đó đúng là ví của chị ấy", "Vì anh ấy muốn lấy tiền", "Vì anh ấy muốn biết chị ấy giàu không"], "infer"),
-]))
+], cast=("丢钱包的女人", "阮海")))
 
 S.append(story("tea_in_the_park", "A1-1", "公园里的老王", "Sáng cuối tuần nào Hoa cũng gặp ông Vương uống trà trong công viên.",
-    ["工作", "大", "多", "好吃"], [
+    ["工作", "大", "多", "好吃", "好喝"], [
     ("N", "每 个 周末，阮花 都 去 公园。", "Cuối tuần nào Hoa cũng đi công viên."),
     ("N", "公园 里 有 一 个 老人，他 姓 王。", "Trong công viên có một ông cụ họ Vương."),
     ("N", "大家 都 叫 他 老王。", "Mọi người đều gọi ông là ông Vương."),
@@ -217,20 +216,20 @@ S.append(story("tea_in_the_park", "A1-1", "公园里的老王", "Sáng cuối tu
     ("A", "真的 吗？", "Thật ạ?"),
     ("B", "真的。我 儿子 和 她 去年 结婚 了。", "Thật. Con trai ông cưới cô ấy năm ngoái."),
     ("B", "他们 今年 在 胡志明市。", "Năm nay hai đứa ở Thành phố Hồ Chí Minh."),
-    ("A", "胡志明市 是 我 的 家！", "Thành phố Hồ Chí Minh là quê cháu đấy!"),
+    ("A", "我 家 就 在 胡志明市！", "Nhà cháu ở ngay Thành phố Hồ Chí Minh đấy!"),
     ("B", "是 吗？那儿 怎么样？", "Thế à? Ở đó thế nào?"),
     ("A", "胡志明市 很 大，人 也 很 多。", "Thành phố Hồ Chí Minh rất lớn, người cũng rất đông."),
     ("B", "我 儿子 常常 说，越南 的 菜 很 好吃。", "Con trai ông hay nói đồ ăn Việt Nam rất ngon."),
-    ("A", "是 啊！越南 的 面条 和 咖啡 都 很 好吃。", "Đúng vậy ạ! Các món mì và cà phê Việt Nam đều rất ngon."),
+    ("A", "是 啊！越南 的 面条 很 好吃，咖啡 也 很 好喝。", "Đúng vậy ạ! Mì Việt Nam rất ngon, cà phê cũng rất ngon."),
     ("B", "我 打算 以后 去 胡志明市 看 他们。", "Ông định sau này sang Thành phố Hồ Chí Minh thăm hai đứa."),
     ("A", "您 去 胡志明市，我 让 我 妈妈 请 您 吃饭！", "Ông sang Thành phố Hồ Chí Minh thì cháu sẽ bảo mẹ cháu mời ông ăn cơm!"),
     ("B", "谢谢 你！你 也 常常 来 公园 喝 茶 吧。", "Cảm ơn cháu! Cháu cũng hay ra công viên uống trà nhé."),
     ("N", "以后，阮花 每 个 周末 都 和 老王 喝 茶。", "Từ đó, cuối tuần nào Hoa cũng uống trà với ông Vương."),
-    ("N", "老王 说 中国 的 东西，阮花 说 越南 的 东西。", "Ông Vương kể chuyện Trung Quốc, Hoa kể chuyện Việt Nam."),
+    ("N", "老王 说 中国，阮花 说 越南。", "Ông Vương kể chuyện Trung Quốc, Hoa kể chuyện Việt Nam."),
 ], [
     Q("Con dâu của ông Vương là người nước nào?", ["Người Việt Nam", "Người Trung Quốc", "Câu chuyện không nói"]),
     Q("Con trai ông Vương bây giờ sống ở đâu?", ["Ở Thành phố Hồ Chí Minh", "Ở Hà Nội", "Ở gần công viên"]),
     Q("Vì sao ông Vương thích nói chuyện với Hoa?", ["Vì Hoa là người Việt, giống con dâu ông", "Vì Hoa mời ông ăn cơm", "Vì Hoa làm cùng nhà máy với con trai ông"], "infer"),
-]))
+], cast=("阮花", "老王")))
 
 write_batch("01-a1-1", S)

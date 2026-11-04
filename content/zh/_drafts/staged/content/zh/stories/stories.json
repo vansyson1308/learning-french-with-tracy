@@ -43,7 +43,7 @@
       "sentences": [
         {
           "speaker": "N",
-          "text": "他是阮南。",
+          "text": "这是阮南。",
           "translation": {
             "vi": "Đây là Nguyễn Nam."
           }
@@ -371,17 +371,17 @@
         {
           "kind": "infer",
           "prompt": {
-            "vi": "Trong gia đình Hoa, ai đang ở Trung Quốc?"
+            "vi": "Ai trong gia đình Hoa đang ở nhà, ở Việt Nam?"
           },
           "options": [
             {
-              "vi": "Hoa và em gái"
+              "vi": "Chỉ có em gái"
             },
             {
-              "vi": "Chỉ có Hoa"
+              "vi": "Bố mẹ và em gái"
             },
             {
-              "vi": "Hoa và bố mẹ"
+              "vi": "Chỉ có bố mẹ"
             }
           ],
           "answer": 1
@@ -953,9 +953,9 @@
         },
         {
           "speaker": "N",
-          "text": "阮花和她男朋友阮山去商场。",
+          "text": "阮花和她男朋友阮山去超市。",
           "translation": {
-            "vi": "Hoa và bạn trai cô ấy là Sơn đi trung tâm thương mại."
+            "vi": "Hoa và bạn trai cô ấy là Sơn đi siêu thị."
           }
         },
         {
@@ -967,9 +967,9 @@
         },
         {
           "speaker": "N",
-          "text": "商场里的东西很便宜。",
+          "text": "超市里的东西很便宜。",
           "translation": {
-            "vi": "Đồ trong trung tâm thương mại rất rẻ."
+            "vi": "Đồ trong siêu thị rất rẻ."
           }
         },
         {
@@ -983,21 +983,21 @@
           "speaker": "B",
           "text": "一斤多少钱？",
           "translation": {
-            "vi": "Bao nhiêu tiền một cân?"
+            "vi": "Bao nhiêu tiền nửa ký?"
           }
         },
         {
           "speaker": "A",
           "text": "一斤五块。",
           "translation": {
-            "vi": "Năm đồng một cân."
+            "vi": "Năm tệ nửa ký."
           }
         },
         {
           "speaker": "B",
           "text": "不贵。我们买三斤吧。",
           "translation": {
-            "vi": "Không đắt. Mình mua ba cân nhé."
+            "vi": "Không đắt. Mình mua một ký rưỡi nhé."
           }
         },
         {
@@ -1018,7 +1018,7 @@
           "speaker": "N",
           "text": "他们拿了十个鸡蛋和两斤肉。",
           "translation": {
-            "vi": "Họ lấy mười quả trứng và hai cân thịt."
+            "vi": "Họ lấy mười quả trứng và một ký thịt."
           }
         },
         {
@@ -1053,21 +1053,14 @@
           "speaker": "N",
           "text": "这些东西是120块钱。",
           "translation": {
-            "vi": "Chỗ đồ này hết 120 đồng."
+            "vi": "Chỗ đồ này hết 120 tệ."
           }
         },
         {
           "speaker": "B",
-          "text": "啊，我的钱包呢？",
+          "text": "啊，我的钱包呢？我的钱包在家里！",
           "translation": {
-            "vi": "Ôi, ví của anh đâu rồi?"
-          }
-        },
-        {
-          "speaker": "B",
-          "text": "我的钱包在家里！",
-          "translation": {
-            "vi": "Ví của anh để ở nhà rồi!"
+            "vi": "Ôi, ví của anh đâu rồi? Ví của anh để ở nhà rồi!"
           }
         },
         {
@@ -1130,7 +1123,8 @@
       "newLexemes": [
         "zh:w:mai",
         "zh:w:fu",
-        "zh:w:haochi"
+        "zh:w:haochi",
+        "zh:w:chaoshi"
       ],
       "tokenMap": {
         "阮山": "name",
@@ -1140,17 +1134,17 @@
         {
           "kind": "locate",
           "prompt": {
-            "vi": "Một cân táo giá bao nhiêu?"
+            "vi": "Nửa ký táo giá bao nhiêu?"
           },
           "options": [
             {
-              "vi": "Ba đồng"
+              "vi": "Ba tệ"
             },
             {
-              "vi": "Năm đồng"
+              "vi": "Năm tệ"
             },
             {
-              "vi": "Mười đồng"
+              "vi": "Mười tệ"
             }
           ],
           "answer": 1
@@ -1158,7 +1152,7 @@
         {
           "kind": "locate",
           "prompt": {
-            "vi": "Ai trả tiền ở trung tâm thương mại?"
+            "vi": "Ai trả tiền ở siêu thị?"
           },
           "options": [
             {
@@ -1239,9 +1233,9 @@
         },
         {
           "speaker": "B",
-          "text": "不常常吃。这是我第一次在中国吃饺子。",
+          "text": "很少吃。这是我第一次在中国吃饺子。",
           "translation": {
-            "vi": "Không hay ăn lắm. Đây là lần đầu anh ăn sủi cảo ở Trung Quốc."
+            "vi": "Ít khi ăn lắm. Đây là lần đầu anh ăn sủi cảo ở Trung Quốc."
           }
         },
         {
@@ -1267,7 +1261,7 @@
         },
         {
           "speaker": "A",
-          "text": "也来两杯茶，谢谢。",
+          "text": "再来两杯茶，谢谢。",
           "translation": {
             "vi": "Cho thêm hai cốc trà, cảm ơn chị."
           }
@@ -1309,9 +1303,9 @@
         },
         {
           "speaker": "B",
-          "text": "太好吃了！我今天也太饿了。",
+          "text": "太好吃了！我今天太饿了。",
           "translation": {
-            "vi": "Ngon quá! Hôm nay anh cũng đói quá."
+            "vi": "Ngon quá! Hôm nay anh đói quá."
           }
         },
         {
@@ -1360,7 +1354,9 @@
       "newLexemes": [
         "zh:w:haochi",
         "zh:w:fuwuyuan",
-        "zh:w:e"
+        "zh:w:e",
+        "zh:w:shao",
+        "zh:w:zai-again"
       ],
       "tokenMap": {
         "小李": "name",
@@ -1532,9 +1528,9 @@
         },
         {
           "speaker": "A",
-          "text": "这儿有几个人？",
+          "text": "这个房间住几个人？",
           "translation": {
-            "vi": "Ở đây có mấy người ạ?"
+            "vi": "Phòng này mấy người ở ạ?"
           }
         },
         {
@@ -1611,7 +1607,8 @@
       "newLexemes": [
         "zh:w:sushe",
         "zh:w:fangjian",
-        "zh:w:da"
+        "zh:w:da",
+        "zh:w:zhu"
       ],
       "tokenMap": {
         "老李": "name",
@@ -1839,9 +1836,9 @@
         },
         {
           "speaker": "B",
-          "text": "在中国，大家生日都吃面条。",
+          "text": "在中国，很多人生日吃面条。",
           "translation": {
-            "vi": "Ở Trung Quốc, sinh nhật ai cũng ăn mì."
+            "vi": "Ở Trung Quốc, nhiều người ăn mì vào ngày sinh nhật."
           }
         },
         {
@@ -1876,7 +1873,8 @@
       "newLexemes": [
         "zh:w:shengri",
         "zh:w:gaoxing",
-        "zh:w:liwu"
+        "zh:w:liwu",
+        "zh:w:duo"
       ],
       "tokenMap": {
         "小王": "name",
@@ -2069,9 +2067,9 @@
         },
         {
           "speaker": "B",
-          "text": "还没有。送了外卖，我就回去吃。",
+          "text": "还没有。送了这些外卖以后，我就回去吃。",
           "translation": {
-            "vi": "Vẫn chưa. Giao xong đồ ăn tôi mới về ăn."
+            "vi": "Vẫn chưa. Giao xong mấy suất này tôi mới về ăn."
           }
         },
         {
@@ -2263,9 +2261,9 @@
         },
         {
           "speaker": "A",
-          "text": "里边有520块钱。",
+          "text": "里边有530块钱。",
           "translation": {
-            "vi": "Bên trong có 520 đồng."
+            "vi": "Bên trong có 530 tệ."
           }
         },
         {
@@ -2380,13 +2378,13 @@
           },
           "options": [
             {
-              "vi": "500 đồng"
+              "vi": "500 tệ"
             },
             {
-              "vi": "120 đồng"
+              "vi": "130 tệ"
             },
             {
-              "vi": "520 đồng"
+              "vi": "530 tệ"
             }
           ],
           "answer": 2
@@ -2506,9 +2504,9 @@
         },
         {
           "speaker": "A",
-          "text": "胡志明市是我的家！",
+          "text": "我家就在胡志明市！",
           "translation": {
-            "vi": "Thành phố Hồ Chí Minh là quê cháu đấy!"
+            "vi": "Nhà cháu ở ngay Thành phố Hồ Chí Minh đấy!"
           }
         },
         {
@@ -2534,9 +2532,9 @@
         },
         {
           "speaker": "A",
-          "text": "是啊！越南的面条和咖啡都很好吃。",
+          "text": "是啊！越南的面条很好吃，咖啡也很好喝。",
           "translation": {
-            "vi": "Đúng vậy ạ! Các món mì và cà phê Việt Nam đều rất ngon."
+            "vi": "Đúng vậy ạ! Mì Việt Nam rất ngon, cà phê cũng rất ngon."
           }
         },
         {
@@ -2569,7 +2567,7 @@
         },
         {
           "speaker": "N",
-          "text": "老王说中国的东西，阮花说越南的东西。",
+          "text": "老王说中国，阮花说越南。",
           "translation": {
             "vi": "Ông Vương kể chuyện Trung Quốc, Hoa kể chuyện Việt Nam."
           }
@@ -2579,7 +2577,8 @@
         "zh:w:gongzuo",
         "zh:w:da",
         "zh:w:duo",
-        "zh:w:haochi"
+        "zh:w:haochi",
+        "zh:w:haohe"
       ],
       "tokenMap": {
         "王": "name",
@@ -2758,10 +2757,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "哥哥，新年快乐！你今年回来吗？",
+          "speaker": "N",
+          "text": "他妹妹说：“哥哥，新年快乐！你今年回来吗？”",
           "translation": {
-            "vi": "Anh ơi, chúc mừng năm mới! Năm nay anh có về không?"
+            "vi": "Em gái anh ấy nói: \"Anh ơi, chúc mừng năm mới! Năm nay anh có về không?\""
           }
         },
         {
@@ -2772,10 +2771,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "一定啊！我们都等你！",
+          "speaker": "N",
+          "text": "他妹妹说：“一定啊！我们都等你！”",
           "translation": {
-            "vi": "Nhất định nhé! Cả nhà đều đợi anh!"
+            "vi": "Em gái anh ấy nói: \"Nhất định nhé! Cả nhà đều đợi anh!\""
           }
         },
         {
@@ -2962,9 +2961,9 @@
         },
         {
           "speaker": "B",
-          "text": "这双你用，那双你朋友用。",
+          "text": "这双你用，那双你明天用。",
           "translation": {
-            "vi": "Đôi này cháu dùng, đôi kia để bạn cháu dùng."
+            "vi": "Đôi này cháu dùng, đôi kia để mai cháu dùng."
           }
         },
         {
@@ -2990,9 +2989,9 @@
         },
         {
           "speaker": "N",
-          "text": "下午，阮花去商场买东西。",
+          "text": "下午，阮花去超市买东西。",
           "translation": {
-            "vi": "Buổi chiều, Hoa đi trung tâm thương mại mua đồ."
+            "vi": "Buổi chiều, Hoa đi siêu thị mua đồ."
           }
         },
         {
@@ -3041,7 +3040,9 @@
       "newLexemes": [
         "zh:w:sushe",
         "zh:w:e",
-        "zh:w:mai"
+        "zh:w:mai",
+        "zh:w:chaoshi",
+        "zh:w:mingtian"
       ],
       "tokenMap": {
         "王": "name",
@@ -3052,7 +3053,7 @@
         {
           "kind": "locate",
           "prompt": {
-            "vi": "Hoa mượn ông Vương những gì?"
+            "vi": "Ông Vương đưa cho Hoa những gì?"
           },
           "options": [
             {
@@ -3123,7 +3124,7 @@
         },
         {
           "speaker": "N",
-          "text": "这个周末，小李换房子。",
+          "text": "这个周末，小李搬家。",
           "translation": {
             "vi": "Cuối tuần này, Tiểu Lý chuyển nhà."
           }
@@ -3186,7 +3187,7 @@
         },
         {
           "speaker": "N",
-          "text": "阮海和小李一起拿桌子上楼。",
+          "text": "阮海和小李一起搬桌子上楼。",
           "translation": {
             "vi": "Hải và Tiểu Lý cùng khiêng cái bàn lên lầu."
           }
@@ -3221,7 +3222,7 @@
         },
         {
           "speaker": "N",
-          "text": "然后，他们又拿了椅子、床和电视。",
+          "text": "然后，他们又搬了椅子、床和电视。",
           "translation": {
             "vi": "Sau đó, họ lại khuân ghế, giường và ti vi."
           }
@@ -3286,7 +3287,9 @@
       "newLexemes": [
         "zh:w:xin",
         "zh:w:dianti",
-        "zh:w:lei"
+        "zh:w:lei",
+        "zh:w:ban-move",
+        "zh:w:banjia"
       ],
       "tokenMap": {
         "小李": "name",
@@ -3404,7 +3407,7 @@
           "speaker": "A",
           "text": "我们一个人送五百块吧。",
           "translation": {
-            "vi": "Mỗi người mình mừng năm trăm đồng nhé."
+            "vi": "Mỗi người mình mừng năm trăm tệ nhé."
           }
         },
         {
@@ -3472,7 +3475,7 @@
         },
         {
           "speaker": "B",
-          "text": "阮海，我们来了！祝你们快乐！",
+          "text": "阮海，我们来了！祝你们幸福！",
           "translation": {
             "vi": "Hải ơi, bọn mình đến rồi! Chúc hai bạn hạnh phúc!"
           }
@@ -3516,7 +3519,7 @@
       "newLexemes": [
         "zh:w:gaoxing",
         "zh:w:liwu",
-        "zh:w:kuaile"
+        "zh:w:xingfu"
       ],
       "tokenMap": {
         "阮南": "name",
@@ -3549,13 +3552,13 @@
           },
           "options": [
             {
-              "vi": "Năm trăm đồng"
+              "vi": "Năm trăm tệ"
             },
             {
-              "vi": "Ba trăm đồng"
+              "vi": "Ba trăm tệ"
             },
             {
-              "vi": "Một trăm đồng"
+              "vi": "Một trăm tệ"
             }
           ],
           "answer": 0
@@ -3647,9 +3650,9 @@
         },
         {
           "speaker": "B",
-          "text": "太谢谢您了！",
+          "text": "谢谢妈妈！",
           "translation": {
-            "vi": "Con cảm ơn mẹ nhiều lắm!"
+            "vi": "Con cảm ơn mẹ!"
           }
         },
         {
@@ -3745,7 +3748,7 @@
         },
         {
           "speaker": "N",
-          "text": "他妈妈这次在广州七天。",
+          "text": "他妈妈这次在广州住了七天。",
           "translation": {
             "vi": "Lần này mẹ anh ấy ở Quảng Châu bảy ngày."
           }
@@ -3761,7 +3764,8 @@
       "newLexemes": [
         "zh:w:gongzuo",
         "zh:w:haochi",
-        "zh:w:gaoxing"
+        "zh:w:gaoxing",
+        "zh:w:zhu"
       ],
       "tokenMap": {
         "小李": "name",
@@ -3926,10 +3930,10 @@
           }
         },
         {
-          "speaker": "B",
-          "text": "孩子，你妈妈姓什么？",
+          "speaker": "N",
+          "text": "商场的人问：“孩子，你妈妈姓什么？”",
           "translation": {
-            "vi": "Cháu ơi, mẹ cháu họ gì?"
+            "vi": "Người của trung tâm hỏi: \"Cháu ơi, mẹ cháu họ gì?\""
           }
         },
         {
@@ -3961,10 +3965,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "儿子！",
+          "speaker": "N",
+          "text": "她说：“儿子！”",
           "translation": {
-            "vi": "Con ơi!"
+            "vi": "Chị ấy gọi: \"Con ơi!\""
           }
         },
         {
@@ -4248,9 +4252,9 @@
         },
         {
           "speaker": "N",
-          "text": "他给他妈妈发了一条微信：“我今天开始工作了！”",
+          "text": "他给他妈妈发了一条短信：“我今天开始工作了！”",
           "translation": {
-            "vi": "Anh ấy nhắn WeChat cho mẹ: \"Hôm nay con bắt đầu đi làm rồi!\""
+            "vi": "Anh ấy nhắn tin cho mẹ: \"Hôm nay con bắt đầu đi làm rồi!\""
           }
         }
       ],
@@ -4667,7 +4671,7 @@
         },
         {
           "speaker": "A",
-          "text": "从广州到上海要多少时间？",
+          "text": "从广州到上海要多长时间？",
           "translation": {
             "vi": "Từ Quảng Châu đến Thượng Hải mất bao lâu hả anh?"
           }
@@ -4871,7 +4875,7 @@
           "speaker": "N",
           "text": "阮海的工资是七千块。",
           "translation": {
-            "vi": "Lương của Hải là bảy nghìn đồng."
+            "vi": "Lương của Hải là bảy nghìn tệ."
           }
         },
         {
@@ -4885,7 +4889,7 @@
           "speaker": "N",
           "text": "下班以后，他用手机给他妈妈转账五千块。",
           "translation": {
-            "vi": "Tan ca, anh ấy dùng điện thoại chuyển khoản cho mẹ năm nghìn đồng."
+            "vi": "Tan ca, anh ấy dùng điện thoại chuyển khoản cho mẹ năm nghìn tệ."
           }
         },
         {
@@ -4903,10 +4907,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "哥哥，谢谢你！你别太累了！",
+          "speaker": "N",
+          "text": "他妹妹回了一条短信：“哥哥，谢谢你！你别太累了！”",
           "translation": {
-            "vi": "Anh ơi, cảm ơn anh! Anh đừng làm mệt quá nhé!"
+            "vi": "Em gái anh ấy nhắn lại: \"Anh ơi, cảm ơn anh! Anh đừng làm mệt quá nhé!\""
           }
         },
         {
@@ -4954,13 +4958,13 @@
           },
           "options": [
             {
-              "vi": "5.000 đồng"
+              "vi": "5.000 tệ"
             },
             {
-              "vi": "7.000 đồng"
+              "vi": "7.000 tệ"
             },
             {
-              "vi": "9.000 đồng"
+              "vi": "9.000 tệ"
             }
           ],
           "answer": 1
@@ -4972,13 +4976,13 @@
           },
           "options": [
             {
-              "vi": "7.000 đồng"
+              "vi": "7.000 tệ"
             },
             {
-              "vi": "2.000 đồng"
+              "vi": "2.000 tệ"
             },
             {
-              "vi": "5.000 đồng"
+              "vi": "5.000 tệ"
             }
           ],
           "answer": 2
@@ -5172,7 +5176,7 @@
               "vi": "Hộ chiếu"
             },
             {
-              "vi": "Chứng minh thư"
+              "vi": "Thẻ căn cước"
             },
             {
               "vi": "Hợp đồng lao động"
@@ -5365,6 +5369,13 @@
           "text": "我很想你们！",
           "translation": {
             "vi": "Con nhớ cả nhà lắm!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "这是我用汉语写的。妈妈，你看不懂吧？下次我用越南语写！",
+          "translation": {
+            "vi": "Tin này con viết bằng tiếng Trung đấy. Mẹ đọc không hiểu đâu nhỉ? Lần sau con viết bằng tiếng Việt!"
           }
         },
         {
@@ -5579,7 +5590,7 @@
           "speaker": "A",
           "text": "三百块。",
           "translation": {
-            "vi": "Ba trăm đồng."
+            "vi": "Ba trăm tệ."
           }
         },
         {
@@ -5974,16 +5985,16 @@
         },
         {
           "speaker": "N",
-          "text": "阮山八点二十分到了工厂。",
+          "text": "车上，阮山一直看手机上的时间。",
           "translation": {
-            "vi": "Tám giờ hai mươi, Sơn đến nhà máy."
+            "vi": "Trên xe, Sơn cứ nhìn giờ trên điện thoại."
           }
         },
         {
           "speaker": "N",
-          "text": "车上，阮山一直看手机上的时间。",
+          "text": "阮山八点二十分到了工厂。",
           "translation": {
-            "vi": "Trên xe, Sơn cứ nhìn giờ trên điện thoại."
+            "vi": "Tám giờ hai mươi, Sơn đến nhà máy."
           }
         },
         {
@@ -6009,7 +6020,7 @@
         },
         {
           "speaker": "A",
-          "text": "阮山，你今天怎么晚了？",
+          "text": "阮山，你今天怎么来晚了？",
           "translation": {
             "vi": "Sơn, hôm nay sao em đến muộn thế?"
           }
@@ -6023,7 +6034,7 @@
         },
         {
           "speaker": "A",
-          "text": "我知道。今天很多人都晚了。",
+          "text": "我知道。今天很多人都迟到了。",
           "translation": {
             "vi": "Chị biết. Hôm nay nhiều người cũng đến muộn."
           }
@@ -6169,9 +6180,9 @@
         },
         {
           "speaker": "N",
-          "text": "小王先唱歌，他的歌非常好听。",
+          "text": "小王先唱歌，大家都说很好听。",
           "translation": {
-            "vi": "Tiểu Vương hát trước, anh ấy hát rất hay."
+            "vi": "Tiểu Vương hát trước, mọi người đều khen hay."
           }
         },
         {
@@ -6302,9 +6313,9 @@
         },
         {
           "speaker": "N",
-          "text": "那天晚上，他们一直唱歌到十一点。",
+          "text": "那天晚上，他们一直玩儿到十一点。",
           "translation": {
-            "vi": "Tối hôm đó, họ hát mãi đến mười một giờ."
+            "vi": "Tối hôm đó, họ chơi mãi đến mười một giờ."
           }
         }
       ],
@@ -6436,9 +6447,9 @@
         },
         {
           "speaker": "A",
-          "text": "不累。在飞机上我睡觉了。",
+          "text": "不累。在飞机上我休息了。",
           "translation": {
-            "vi": "Không mệt ạ. Trên máy bay em ngủ rồi."
+            "vi": "Không mệt ạ. Trên máy bay em nghỉ rồi."
           }
         },
         {
@@ -6477,10 +6488,10 @@
           }
         },
         {
-          "speaker": "B",
-          "text": "你们是越南人吧？",
+          "speaker": "N",
+          "text": "司机问：“你们是越南人吧？”",
           "translation": {
-            "vi": "Hai cháu là người Việt Nam phải không?"
+            "vi": "Bác tài hỏi: \"Hai cháu là người Việt Nam phải không?\""
           }
         },
         {
@@ -6491,10 +6502,10 @@
           }
         },
         {
-          "speaker": "B",
-          "text": "欢迎！中国菜你吃过吗？",
+          "speaker": "N",
+          "text": "司机说：“欢迎！中国菜你吃过吗？”",
           "translation": {
-            "vi": "Chào mừng cháu! Cháu đã ăn món Trung Quốc bao giờ chưa?"
+            "vi": "Bác tài nói: \"Chào mừng cháu! Cháu đã ăn món Trung Quốc bao giờ chưa?\""
           }
         },
         {
@@ -6658,10 +6669,10 @@
           }
         },
         {
-          "speaker": "B",
-          "text": "可以，你打吧。",
+          "speaker": "N",
+          "text": "他说：“可以，你打吧。”",
           "translation": {
-            "vi": "Được, chị gọi đi."
+            "vi": "Anh ấy nói: \"Được, chị gọi đi.\""
           }
         },
         {
@@ -6736,7 +6747,7 @@
         },
         {
           "speaker": "N",
-          "text": "阮雪买了一瓶果汁，送了司机。",
+          "text": "阮雪买了一瓶果汁，送给司机。",
           "translation": {
             "vi": "Tuyết mua một chai nước hoa quả biếu bác tài."
           }
@@ -6862,7 +6873,7 @@
           "speaker": "B",
           "text": "这辆是新的，八百块。",
           "translation": {
-            "vi": "Chiếc này là xe mới, tám trăm đồng."
+            "vi": "Chiếc này là xe mới, tám trăm tệ."
           }
         },
         {
@@ -6876,7 +6887,7 @@
           "speaker": "B",
           "text": "那辆黑的不是新的，三百块。",
           "translation": {
-            "vi": "Chiếc màu đen kia không phải xe mới, ba trăm đồng."
+            "vi": "Chiếc màu đen kia không phải xe mới, ba trăm tệ."
           }
         },
         {
@@ -6904,14 +6915,14 @@
           "speaker": "A",
           "text": "车很好，但是三百块有点儿贵。两百五十块，可以吗？",
           "translation": {
-            "vi": "Xe tốt lắm, nhưng ba trăm đồng hơi đắt. Hai trăm năm mươi đồng được không ạ?"
+            "vi": "Xe tốt lắm, nhưng ba trăm tệ hơi đắt. Hai trăm năm mươi tệ được không ạ?"
           }
         },
         {
           "speaker": "B",
           "text": "两百八十块吧。",
           "translation": {
-            "vi": "Hai trăm tám mươi đồng thôi."
+            "vi": "Hai trăm tám mươi tệ thôi."
           }
         },
         {
@@ -6957,10 +6968,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "阮红，你有自行车了！真漂亮！",
+          "speaker": "N",
+          "text": "小李说：“阮红，你有自行车了！真漂亮！”",
           "translation": {
-            "vi": "Hồng, cậu có xe đạp rồi! Đẹp thật đấy!"
+            "vi": "Tiểu Lý nói: \"Hồng, cậu có xe đạp rồi! Đẹp thật đấy!\""
           }
         },
         {
@@ -7006,13 +7017,13 @@
           },
           "options": [
             {
-              "vi": "300 đồng"
+              "vi": "300 tệ"
             },
             {
-              "vi": "260 đồng"
+              "vi": "260 tệ"
             },
             {
-              "vi": "800 đồng"
+              "vi": "800 tệ"
             }
           ],
           "answer": 1
@@ -7131,10 +7142,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "阮山，你看，这个产品有问题。",
+          "speaker": "N",
+          "text": "阮雪说：“阮山，你看，这个产品有问题。”",
           "translation": {
-            "vi": "Sơn ơi, anh xem, sản phẩm này có vấn đề."
+            "vi": "Tuyết nói: \"Sơn ơi, anh xem, sản phẩm này có vấn đề.\""
           }
         },
         {
@@ -7145,10 +7156,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "我们告诉王主管吧。",
+          "speaker": "N",
+          "text": "阮雪说：“我们告诉王主管吧。”",
           "translation": {
-            "vi": "Mình báo quản lý Vương đi."
+            "vi": "Tuyết nói: \"Mình báo quản lý Vương đi.\""
           }
         },
         {
@@ -7558,10 +7569,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "阮花，这是给你的。今天是八月十五，你一定要开心！",
+          "speaker": "N",
+          "text": "小李说：“阮花，这是给你的。今天是八月十五，你一定要开心！”",
           "translation": {
-            "vi": "Hoa ơi, cái này tặng cậu. Hôm nay là rằm tháng Tám, cậu nhất định phải vui lên nhé!"
+            "vi": "Tiểu Lý nói: \"Hoa ơi, cái này tặng cậu. Hôm nay là rằm tháng Tám, cậu nhất định phải vui lên nhé!\""
           }
         },
         {
@@ -7575,14 +7586,14 @@
           "speaker": "N",
           "text": "晚上，宿舍楼上有很多人。",
           "translation": {
-            "vi": "Buổi tối, trên sân thượng ký túc xá có rất nhiều người."
+            "vi": "Buổi tối, trên lầu ký túc xá có rất nhiều người."
           }
         },
         {
           "speaker": "N",
           "text": "我们越南老乡都在楼上看月亮。",
           "translation": {
-            "vi": "Những người đồng hương Việt Nam chúng tôi đều lên đó ngắm trăng."
+            "vi": "Những người đồng hương Việt Nam chúng tôi đều lên lầu ngắm trăng."
           }
         },
         {
@@ -7593,10 +7604,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "你们看！河内的月亮也是这样的吗？",
+          "speaker": "N",
+          "text": "我说：“你们看！河内的月亮也是这样的吗？”",
           "translation": {
-            "vi": "Mọi người nhìn kìa! Trăng ở Hà Nội cũng như thế này à?"
+            "vi": "Tôi nói: \"Mọi người nhìn kìa! Trăng ở Hà Nội cũng như thế này à?\""
           }
         },
         {
@@ -7697,7 +7708,7 @@
               "vi": "Ở công viên"
             },
             {
-              "vi": "Trên sân thượng ký túc xá"
+              "vi": "Trên lầu ký túc xá"
             }
           ],
           "answer": 2
@@ -7840,7 +7851,7 @@
           "speaker": "B",
           "text": "一万块。",
           "translation": {
-            "vi": "Mười nghìn đồng."
+            "vi": "Mười nghìn tệ."
           }
         },
         {
@@ -7879,10 +7890,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "收到了我告诉你。你自己也要吃好！",
+          "speaker": "N",
+          "text": "他妈妈回了一条短信：“收到了我就告诉你。你自己也要吃好！”",
           "translation": {
-            "vi": "Nhận được mẹ báo con. Con cũng phải ăn uống đầy đủ nhé!"
+            "vi": "Mẹ anh ấy nhắn lại: \"Nhận được mẹ sẽ báo con. Con cũng phải ăn uống đầy đủ nhé!\""
           }
         }
       ],
@@ -7920,13 +7931,13 @@
           },
           "options": [
             {
-              "vi": "10.000 đồng"
+              "vi": "10.000 tệ"
             },
             {
-              "vi": "1.000 đồng"
+              "vi": "1.000 tệ"
             },
             {
-              "vi": "5.000 đồng"
+              "vi": "5.000 tệ"
             }
           ],
           "answer": 0
@@ -7989,10 +8000,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "您好，您哪儿不舒服？",
+          "speaker": "N",
+          "text": "护士问：“您好，您哪儿不舒服？”",
           "translation": {
-            "vi": "Chào anh, anh thấy khó chịu ở đâu?"
+            "vi": "Y tá hỏi: \"Chào anh, anh thấy khó chịu ở đâu?\""
           }
         },
         {
@@ -8003,10 +8014,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "发烧吗？",
+          "speaker": "N",
+          "text": "护士问：“发烧吗？”",
           "translation": {
-            "vi": "Có sốt không?"
+            "vi": "Y tá hỏi: \"Có sốt không?\""
           }
         },
         {
@@ -8017,17 +8028,17 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "请您先戴上口罩。",
+          "speaker": "N",
+          "text": "护士说：“请您先戴上口罩。”",
           "translation": {
-            "vi": "Anh đeo khẩu trang vào trước nhé."
+            "vi": "Y tá nói: \"Anh đeo khẩu trang vào trước nhé.\""
           }
         },
         {
-          "speaker": "A",
-          "text": "您去二楼，五号房间看医生。",
+          "speaker": "N",
+          "text": "护士说：“您去二楼，五号房间看医生。”",
           "translation": {
-            "vi": "Anh lên tầng hai, phòng số năm gặp bác sĩ."
+            "vi": "Y tá nói: \"Anh lên tầng hai, phòng số năm gặp bác sĩ.\""
           }
         },
         {
@@ -8212,9 +8223,9 @@
         },
         {
           "speaker": "N",
-          "text": "这儿的人说普通话，但是有的词不一样。",
+          "text": "这儿的人也说中文，但是有的词不一样。",
           "translation": {
-            "vi": "Người ở đây nói tiếng phổ thông, nhưng có một số từ khác."
+            "vi": "Người ở đây cũng nói tiếng Trung, nhưng có một số từ khác."
           }
         },
         {
@@ -8263,21 +8274,21 @@
           "speaker": "B",
           "text": "八十块。",
           "translation": {
-            "vi": "Tám mươi đồng."
+            "vi": "Tám mươi Đài tệ."
           }
         },
         {
           "speaker": "A",
           "text": "八十块？太贵了！",
           "translation": {
-            "vi": "Tám mươi đồng ạ? Đắt quá!"
+            "vi": "Tám mươi Đài tệ ạ? Đắt quá!"
           }
         },
         {
           "speaker": "B",
           "text": "这儿的钱不一样，八十块很便宜！",
           "translation": {
-            "vi": "Tiền ở đây khác, tám mươi đồng là rẻ lắm!"
+            "vi": "Tiền ở đây khác, tám mươi Đài tệ là rẻ lắm!"
           }
         },
         {
@@ -8486,11 +8497,11 @@
           "speaker": "A",
           "text": "一个月一千五百块。",
           "translation": {
-            "vi": "Một tháng một nghìn năm trăm đồng."
+            "vi": "Một tháng một nghìn năm trăm tệ."
           }
         },
         {
-          "speaker": "A",
+          "speaker": "B",
           "text": "有点儿贵。能便宜一点儿吗？",
           "translation": {
             "vi": "Hơi đắt ạ. Có thể bớt một chút không ạ?"
@@ -8500,7 +8511,7 @@
           "speaker": "A",
           "text": "如果你们租一年，一千四百块。",
           "translation": {
-            "vi": "Nếu hai em thuê một năm thì một nghìn bốn trăm đồng."
+            "vi": "Nếu hai em thuê một năm thì một nghìn bốn trăm tệ."
           }
         },
         {
@@ -8512,7 +8523,7 @@
         },
         {
           "speaker": "A",
-          "text": "你们来以前，我一定让人洗干净。",
+          "text": "你们来以前，我一定让人打扫干净。",
           "translation": {
             "vi": "Trước khi hai em đến, chị nhất định sẽ cho người dọn sạch."
           }
@@ -8525,10 +8536,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "离工厂近，有洗衣机，也很安静。我觉得不错。",
+          "speaker": "N",
+          "text": "阮红说：“离工厂近，有洗衣机，也很安静。我觉得不错。”",
           "translation": {
-            "vi": "Gần nhà máy, có máy giặt, lại yên tĩnh. Em thấy được đấy."
+            "vi": "Hồng nói: \"Gần nhà máy, có máy giặt, lại yên tĩnh. Em thấy được đấy.\""
           }
         },
         {
@@ -8574,10 +8585,10 @@
           }
         },
         {
-          "speaker": "A",
-          "text": "我们有自己的家了！",
+          "speaker": "N",
+          "text": "阮红说：“我们有自己的家了！”",
           "translation": {
-            "vi": "Mình có nhà riêng rồi!"
+            "vi": "Hồng nói: \"Mình có nhà riêng rồi!\""
           }
         },
         {
@@ -8624,13 +8635,13 @@
           },
           "options": [
             {
-              "vi": "1.500 đồng"
+              "vi": "1.500 tệ"
             },
             {
-              "vi": "1.400 đồng"
+              "vi": "1.400 tệ"
             },
             {
-              "vi": "1.000 đồng"
+              "vi": "1.000 tệ"
             }
           ],
           "answer": 1
@@ -8780,7 +8791,7 @@
           "speaker": "A",
           "text": "一个月六千块，夜班还有三百块。",
           "translation": {
-            "vi": "Một tháng sáu nghìn đồng, ca đêm còn thêm ba trăm đồng."
+            "vi": "Một tháng sáu nghìn tệ, ca đêm còn thêm ba trăm tệ."
           }
         },
         {
@@ -8867,13 +8878,13 @@
           },
           "options": [
             {
-              "vi": "300 đồng"
+              "vi": "300 tệ"
             },
             {
-              "vi": "600 đồng"
+              "vi": "600 tệ"
             },
             {
-              "vi": "6.000 đồng"
+              "vi": "6.000 tệ"
             }
           ],
           "answer": 0
@@ -8930,7 +8941,7 @@
         },
         {
           "speaker": "B",
-          "text": "如果有火，先别急，然后马上告诉组长。",
+          "text": "如果着火了，先别急，然后马上告诉组长。",
           "translation": {
             "vi": "Nếu có cháy, trước hết đừng hoảng, rồi báo ngay cho tổ trưởng."
           }
@@ -8979,7 +8990,7 @@
         },
         {
           "speaker": "B",
-          "text": "有火的时候，禁止坐电梯，要走楼梯。",
+          "text": "着火的时候，禁止坐电梯，要走楼梯。",
           "translation": {
             "vi": "Khi có cháy, cấm đi thang máy, phải đi cầu thang bộ."
           }
@@ -9007,7 +9018,7 @@
         },
         {
           "speaker": "N",
-          "text": "四点，工厂里的声音很大：“火！火！”",
+          "text": "四点，工厂里的声音很大：“着火了！着火了！”",
           "translation": {
             "vi": "Bốn giờ, trong nhà máy vang lên tiếng rất to: \"Cháy! Cháy!\""
           }
@@ -9042,7 +9053,7 @@
         },
         {
           "speaker": "A",
-          "text": "王主管，如果真的有火，我们也能很快出来吗？",
+          "text": "王主管，如果真的着火了，我们也能很快出来吗？",
           "translation": {
             "vi": "Anh Vương, nếu cháy thật thì chúng em cũng ra nhanh được như vậy không ạ?"
           }
@@ -9186,7 +9197,7 @@
           }
         },
         {
-          "speaker": "B",
+          "speaker": "A",
           "text": "我们去哪儿吃？",
           "translation": {
             "vi": "Mình đi ăn ở đâu?"

@@ -81,6 +81,15 @@ class Index:
     def pinyin(self, text):
         return " ".join(py if py else t for t, py in self.tokens(text) if not PUNCT.fullmatch(t))
 
+    def _zhang(self, text):
+        """长 read zhǎng (长得, 长了, 长高): only a 长 that is a word of its own. Inside a longer lexeme (组长, 厂长, 校长, 家长)
+        it is that word's syllable, so 组长了 is no finding (the false positive of session 5)."""
+        toks = self.tokens(text)
+        for i, (t, _) in enumerate(toks):
+            if t == "长" and i + 1 < len(toks) and toks[i + 1][0][:1] in ("得", "了", "高"):
+                return True
+        return False
+
     def problems(self, text):
         found = []
         for t, py in self.tokens(text):
@@ -94,7 +103,7 @@ class Index:
             found.append(f"得 in {text!r} reads děi; the lexicon stores de")
         if _HUAN.search(text):
             found.append(f"还 in {text!r} reads huán; the lexicon stores hái")
-        if _ZHANG.search(text):
+        if self._zhang(text):
             found.append(f"长 in {text!r} reads zhǎng; the lexicon stores cháng")
         if LATIN.search(text):
             found.append(f"Latin letters in {text!r}")
@@ -186,6 +195,7 @@ def number_of_hanzi(s):
 
 
 COUNTED = tuple(sorted(MEASURE_WORDS + COUNTER_NOUNS + ["点半"], key=len, reverse=True))
+_BIT_BEFORE = ("便宜", "快", "慢", "大", "小", "多", "少", "贵", "早", "晚", "好", "高", "低", "近", "远", "长", "轻", "重")
 
 
 def numeral_spellings(text):
@@ -205,6 +215,8 @@ def numeral_spellings(text):
             continue
         if m.group() == "一" and rest.startswith("点") and not re.match(r"点(?:半|钟|[零一二三四五六七八九十0-9]|$|[。，？！])", rest):
             continue  # 便宜一点吧: "a bit", not one o'clock
+        if m.group() == "一" and rest.startswith("点") and text[:m.start()].endswith(_BIT_BEFORE):
+            continue  # 便宜一点 at the end: "a bit" after an adjective, not one o'clock
         n = number_of_hanzi(m.group())
         if n:
             out.append(text[:m.start()] + str(n) + rest)
@@ -255,6 +267,194 @@ def natural_spellings(text):
     return out
 
 
+# ---------------------------------------------------------------- word variants (D-10 review of zh-vi, 2026-11-05)
+# Other words or word orders a native speaker says for the same answer. Typed answers, spoken answers, writing slots and
+# scenario replies list them (widen, zh_layers.spoken_variants, zh-writing-s5 _widen); a dictation does not, since it
+# transcribes what the clip says. zh-check-answers.py rule 10 flags an answer that leaves one out.
+_PRICE_UNIT = r"(?:块钱|块|元)"
+_NUM = r"[零一二三四五六七八九十百千万两0-9]+"
+_PRICE_MEASURES = "碗杯斤瓶个张本件双份盒包"
+_PRICE_AFTER = re.compile(rf"一([{_PRICE_MEASURES}])({_NUM}){_PRICE_UNIT}")
+_PRICE_BEFORE = re.compile(rf"({_NUM})({_PRICE_UNIT})一([{_PRICE_MEASURES}])")
+_DATE_HAO = re.compile(rf"(月{_NUM})号")
+_MEI_STOP = set("了吗呢啊吧") | set("。，！？；：、")
+TYPED_PAIRS = [("疼", "痛")]
+
+
+def price_spellings(text):
+    """The price per unit in both orders, with and without 钱: 一碗十八块 ⇄ 十八块一碗 ⇄ 十八块钱一碗 (苹果五块钱一斤 is the
+    order the lessons teach; 一斤五块 is as common)."""
+    out = []
+    for m in _PRICE_AFTER.finditer(text):
+        unit = m.group(0)[1 + 1 + len(m.group(2)):]
+        for u in ([unit] + (["块钱"] if unit == "块" else ["块"] if unit == "块钱" else [])):
+            out.append(text[:m.start()] + m.group(2) + u + "一" + m.group(1) + text[m.end():])
+    for m in _PRICE_BEFORE.finditer(text):
+        out.append(text[:m.start()] + "一" + m.group(3) + m.group(1) + m.group(2) + text[m.end():])
+        other = {"块": "块钱", "块钱": "块"}.get(m.group(2))
+        if other:
+            out.append(text[:m.start()] + m.group(1) + other + "一" + m.group(3) + text[m.end():])
+    return out
+
+
+def mei_spellings(text, index):
+    """没 and 没有 before a verb or a noun are one negation (我没去 ⇄ 我没有去, 我没有妹妹 ⇄ 我没妹妹); 没有 that ends a clause
+    (还没有。) keeps its 有, and the idioms are lexemes of their own (没关系, 没问题)."""
+    toks = [t for t, _ in index.tokens(text)]
+    out = []
+    for i, t in enumerate(toks):
+        nxt = toks[i + 1] if i + 1 < len(toks) else ""
+        prev = toks[i - 1] if i > 0 else ""
+        # an A没A question (有没有, 去没去) keeps its shape
+        if t == "没" and nxt and nxt[0] not in _MEI_STOP and not nxt.startswith("有") and prev != nxt:
+            out.append("".join(toks[:i]) + "没有" + "".join(toks[i + 1:]))
+        if t == "没有" and nxt and nxt[0] not in _MEI_STOP and prev != "有":
+            out.append("".join(toks[:i]) + "没" + "".join(toks[i + 1:]))
+    return out
+
+
+def bit_spellings(text, index, pos):
+    """An adjective + 一点儿 / 一点 also drops the 一: 便宜一点儿吧 ⇄ 便宜点儿吧 ⇄ 便宜点吧 (the commonest spoken form)."""
+    toks = [t for t, _ in index.tokens(text)]
+    out = []
+    for i, t in enumerate(toks[:-1]):
+        if pos.get(t) == "adjective" and toks[i + 1] in ("一点儿", "一点"):
+            short = toks[i + 1][1:]
+            for s in (short, "点" if short == "点儿" else "点儿"):
+                out.append("".join(toks[:i + 1]) + s + "".join(toks[i + 2:]))
+    return out
+
+
+PERSON_NOUNS = {"工人", "学生", "大学生", "老师", "医生", "护士", "司机", "经理", "越南人", "中国人"}
+
+
+def one_spellings(text, index):
+    """是 + a person noun also takes 一个 (我是工人 ⇄ 我是一个工人: a learner says both)."""
+    toks = [t for t, _ in index.tokens(text)]
+    return ["".join(toks[:i + 1]) + "一个" + "".join(toks[i + 1:]) for i, t in enumerate(toks[:-1]) if t == "是" and toks[i + 1] in PERSON_NOUNS]
+
+
+GEI_VERBS = ("发", "打", "打电话", "寄", "送", "写", "传")
+_FINAL = ("吧", "了", "吗", "呢", "啊", "。", "！", "？")
+
+
+def order_variants(toks, swap_time=True):
+    """Word orders of one token (or word-bank tile) list that say the same thing:
+     - the time word before or after the subject (我 昨天 去了 ⇄ 昨天 我 去了; strings get it from topic_spellings);
+     - 给 + person before the verb or after its object (给 我 发 照片 吧 ⇄ 发 照片 给 我 吧; 给 妈妈 打电话 ⇄ 打电话 给 妈妈),
+       for the verbs of sending and calling only (给我试一下 has no such order);
+     - 住在 + place or 在 + place + 住 at the end (我 住 在 河内 ⇄ 我 在 河内 住)."""
+    out = []
+    n = len(toks)
+    end = n
+    while end > 0 and toks[end - 1] in _FINAL:
+        end -= 1
+    tail = list(toks[end:])
+    if swap_time and n >= 3:
+        if toks[0] in SUBJECTS and toks[1] in TIMES and toks[2] not in ("的", "是"):
+            k = 1
+            while k < n and toks[k] in TIMES:
+                k += 1
+            out.append(list(toks[1:k]) + [toks[0]] + list(toks[k:]))
+        if toks[0] in TIMES:
+            k = 0
+            while k < n and toks[k] in TIMES:
+                k += 1
+            if k < n - 1 and toks[k] in SUBJECTS:
+                out.append([toks[k]] + list(toks[:k]) + list(toks[k + 1:]))
+    for i in range(end - 2):
+        # 给 P V O… (to the end) → V O… 给 P
+        if toks[i] == "给" and toks[i + 2] in GEI_VERBS and (end - (i + 3) >= 1 or toks[i + 2] == "打电话"):
+            out.append(list(toks[:i]) + list(toks[i + 2:end]) + ["给", toks[i + 1]] + tail)
+    for i in range(end):
+        # V O… 给 P (at the end) → 给 P V O…
+        if toks[i] in GEI_VERBS and end >= i + 3 and toks[end - 2] == "给" and end - 2 > i and (end - 2 - (i + 1) >= 1 or toks[i] == "打电话"):
+            out.append(list(toks[:i]) + ["给", toks[end - 1]] + list(toks[i:end - 2]) + tail)
+            break
+    if end >= 3 and "住" in toks[:end]:
+        j = list(toks[:end]).index("住")
+        if j + 2 <= end - 1 and toks[j + 1] == "在":
+            out.append(list(toks[:j]) + ["在"] + list(toks[j + 2:end]) + ["住"] + tail)
+        if j == end - 1 and "在" in toks[:j]:
+            k = list(toks[:j]).index("在")
+            out.append(list(toks[:k]) + ["住", "在"] + list(toks[k + 1:j]) + tail)
+    for i, t in enumerate(toks[:end]):
+        # 住在 as one tile or token
+        if t == "住在" and i + 1 < end:
+            out.append(list(toks[:i]) + ["在"] + list(toks[i + 1:end]) + ["住"] + tail)
+    return [o for o in out if o != list(toks)]
+
+
+def _clauses(text):
+    return [c for c in re.split(r"[，。！？；]", text) if c]
+
+
+_VINDEX = [None, None]
+
+
+def variant_spellings(text):
+    """The word variants of one answer (one step; widen and the checks close them)."""
+    if _VINDEX[0] is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        lex = load_lexicon(os.path.abspath(os.path.join(here, "..", "..", "..", "..")))
+        _VINDEX[0], _VINDEX[1] = Index(lex), {x["surface"]: x["partOfSpeech"] for x in lex}
+    index, pos = _VINDEX
+    out = price_spellings(text) + mei_spellings(text, index) + bit_spellings(text, index, pos) + one_spellings(text, index)
+    for clause in _clauses(text):
+        toks = [t for t, _ in index.tokens(clause)]
+        out += [text.replace(clause, "".join(v), 1) for v in order_variants(toks, swap_time=False)]
+    out += [_DATE_HAO.sub(r"\1日", text)] if _DATE_HAO.search(text) else []
+    # A phone number typed without its hyphens: the writing fold keeps 13812345678 one token but 138-1234-5678 three.
+    out += [re.sub(r"(?<=\d)-(?=\d)", "", text)] if re.search(r"\d-\d", text) else []
+    for a, b in TYPED_PAIRS:
+        if a in text:
+            out.append(text.replace(a, b))
+    return [x for x in dict.fromkeys(out) if x != text]
+
+
+# ---------------------------------------------------------------- voices (D-10 review, 2026-11-05)
+# The two-voice cast of every clip and story: A female, B male (zh-plan §7; N narrates with A's voice). The Vietnamese
+# names of the course people say which voice speaks as them.
+NAME_VOICE = {"阮花": "A", "阮红": "A", "阮雪": "A", "阮云": "A", "阮河": "A", "阮南": "B", "阮海": "B", "阮山": "B"}
+_VOCATIVE = re.compile("^(" + "|".join(NAME_VOICE) + ")[，！,]")
+
+
+def voice_problems(segments, replies=True):
+    """(speaker, text) segments of one clip or scene: a line saying 我叫 / 我是 + a name is in that name's voice, and (a
+    two-person clip, replies=True) the reply to a line that calls a name (阮花，…) is in the called name's voice. A story
+    has more people than voices: its declared cast is checked instead (zh_stories_lib)."""
+    out = []
+    for i, (sp, text) in enumerate(segments):
+        for name, voice in NAME_VOICE.items():
+            if sp in ("A", "B") and re.search(f"我(?:叫|是){name}", text) and sp != voice:
+                out.append(f"{text!r} is said as {name} by voice {sp}; {name} speaks with voice {voice}")
+        m = _VOCATIVE.match(text)
+        if replies and m and i + 1 < len(segments):
+            nsp = segments[i + 1][0]
+            if nsp in ("A", "B") and nsp != sp and nsp != NAME_VOICE[m.group(1)]:
+                out.append(f"{text!r} calls {m.group(1)}, who answers with voice {nsp}; {m.group(1)} speaks with voice {NAME_VOICE[m.group(1)]}")
+    return out
+
+
+# ---------------------------------------------------------------- units in the Vietnamese (D-10 review, 2026-11-05)
+# 块 / 元 is the yuan: Vietnamese "tệ" (the lessons' word), never "đồng", which a Vietnamese reader takes for the dong
+# (7.000 đồng is a few cents). 斤 is half a kilogram, but a Vietnamese "cân" is a kilogram: a line beside 斤 says
+# "nửa ký", "một ký" … or "cân Trung Quốc", never a bare "cân".
+_VI_NUMBER = r"(?:\d[\d.,]*|một|hai|ba|bốn|tư|năm|lăm|sáu|bảy|tám|chín|mười|mươi|mốt|trăm|nghìn|ngàn|vạn|triệu|rưỡi|bao nhiêu|mấy)"
+_VI_DONG = re.compile(rf"(?<![\w]){_VI_NUMBER}\s+đồng(?![\w])", re.I)
+_VI_CAN = re.compile(r"(?<![\w])cân(?![\w])(?! Trung Quốc)", re.I)
+_ZH_YUAN = re.compile(r"[0-9零一二三四五六七八九十百千万两几少]\s*(?:块|元)|块钱")
+
+
+def vi_unit_problems(zh, vi):
+    out = []
+    if _ZH_YUAN.search(zh) and _VI_DONG.search(vi):
+        out.append(f"{vi!r} says 'đồng' for the yuan of {zh!r}: write 'tệ'")
+    if re.search(r"(?<!公)斤", zh) and _VI_CAN.search(vi):
+        out.append(f"{vi!r} says a bare 'cân' beside 斤 in {zh!r}: 一斤 is half a kilogram (nửa ký; cân Trung Quốc)")
+    return out
+
+
 VI_SUBJECT = re.compile(r"^(?:(?:Hôm nay|Hôm qua|Ngày mai|Mai|Bây giờ|Sáng nay|Tối nay|Cuối tuần|Năm nay|Thứ [A-ZÂƯa-zâư]+|Chủ nhật)\s*,?\s+)?Tôi\s")
 
 
@@ -268,8 +468,9 @@ def subject_spellings(vi, key):
     return []
 
 
-def widen(answers):
-    """Every accepted answer plus its numeral and natural spellings, closed under both, in order, without repeats."""
+def widen(answers, variants=True):
+    """Every accepted answer plus its numeral and natural spellings and (unless variants=False: a dictation transcribes the
+    clip) its word variants, closed under all of them, in order, without repeats."""
     out = []
     for a in answers:
         if a not in out:
@@ -278,7 +479,7 @@ def widen(answers):
     while grown:
         grown = False
         for a in list(out):
-            for x in numeral_spellings(a) + natural_spellings(a):
+            for x in numeral_spellings(a) + natural_spellings(a) + (variant_spellings(a) if variants else []):
                 if x not in out and bare(x) not in {bare(y) for y in out}:
                     out.append(x)
                     grown = True
