@@ -21,8 +21,18 @@ Prompt: `plan/prompts/P4e-ko-vi-topik.md`, following `P3d-author-course-vi.md` w
 | Course skeleton | 6 sections, 27 units, 108 lesson stubs, 278 unit words, guidebooks in Vietnamese; pack audio policy `device-tts` with its reason | staged `content/courses/ko-vi.json`, `ko-vi.profile.json`, `ko-en.profile.json` |
 | Syllabus | A1 783 by unit, A2-1 212 | staged `content/ko/lexicon/syllabus*.json`, `topic-units.json` |
 
-`course-draft validate --target ko`: the remaining categories are the empty lessons (108 × "needs ≥ 5 exercises", 81
-stub-payload repeats) and the missing checkpoints and placement (3). Everything else validates with the staged layer.
+### Session 2 (2026-11-05)
+
+| Layer | State | Where |
+|---|---|---|
+| Concept cards | 31 cards (vi + en): Hangul, the three consonant series, 받침, sound changes; greetings, speech levels, the copula; 은/는, 이/가, 을/를, 에/에서, 도/만/하고/의; 해요 present, irregular stems, 있어요/없어요, adjectives; Sino and native numbers with counters, time and dates, the homographs 개 / 이 / 네 / 일; 안/못, -고 싶어요, requests, rules (-아도 돼요, -(으)면 안 돼요, -아야 해요), past, future, question words, 이/그/저, Hán-Việt and loanwords, connectors, family address | `_generators/ko-concepts.py` → staged `content/ko/pedagogy/concepts.json` |
+| Paradigm tables | 17 verbs (가다 하다 보다 사다 타다 서다 켜다 기다리다 찾다 알다 살다 놀다 팔다 열다 쓰다 모르다 걷다), every cell evidenced by the verb's kaikki rows (decision 11) | `_generators/ko_paradigms.py` → staged `content/ko/pedagogy/paradigms.json` |
+| Lessons | 108 lessons, 824 exercises: select 362 (targetToNative 179, nativeToTarget 159, listen 24), fillBlank 124 (40 particle fill-ins), match 101, wordBank 115, typeAnswer 99, conjugationCloze 23; concept steps in 50 lessons; Section 1 tap-only; Sections 3–6 hold the lesson-internal types (the layer exercises join in sessions 3–4) | `_generators/ko-lessons-s1…s6.py`, `ko_lesson_lib.py`, `ko_text.py` → staged `content/courses/ko-vi.json` |
+| Answer self-check | 0 findings (rules in `ko-check-answers.py`; what it found on the way: `_drafts/REVIEW-NOTES.md`) | `_generators/ko-check-answers.py`, `_drafts/review/selfcheck.json` |
+| Hangul primer | P4b section + 5 sound sections (5 tense consonants, 11 compound vowels, 15 finals with the 7 sounds, 9 double finals, liaison / nasalisation / ㅎ / palatalisation / tensing with pronounced spellings) and a 20-item checkpoint (pass 16) recording `primerPassed` | `_generators/ko-primer.py` → staged `content/ko/primer/script-primer.json`; engine: `content/schema.ts`, `scripts/lib/script-primer.ts`, `src/app/primer.tsx` |
+
+`course-draft validate --target ko`: 3 errors left, all session 5 (no checkpoints.json, placement.json, attainment
+reads the checkpoints). Two pipeline runs are byte-identical.
 
 ## 2. Course shape (BLUEPRINT §1)
 
@@ -61,7 +71,7 @@ block examples). Session 2 extends it (§4).
 
 ## 4. Hangul primer (session 2; P4b primer extended)
 
-Today: 14 basic consonants, 10 vowels, block examples. To add: the tense consonants ㄲ ㄸ ㅃ ㅆ ㅉ and the plain /
+Done in session 2 (staged; decision 9). P4b had 14 basic consonants, 10 vowels, block examples. Added: the tense consonants ㄲ ㄸ ㅃ ㅆ ㅉ and the plain /
 tense / aspirated contrast (가 까 카), the 11 compound vowels (ㅐ ㅔ ㅒ ㅖ ㅘ ㅙ ㅚ ㅝ ㅞ ㅟ ㅢ), 받침 with the 7
 representative sounds and the double finals (ㄳ ㄵ ㄶ ㄺ ㄻ ㄼ ㄾ ㅀ ㅄ), the sound changes the course needs (연음 liaison,
 비음화 nasalisation 합니다 [함니다], ㅎ aspiration 좋다 [조타], 경음화 recognition), and a checkpoint (≈ 20 items: block →
@@ -99,9 +109,10 @@ speaks through the `ko-KR` recogniser.
   dictation are graded when a local ko-KR voice is installed; otherwise skipped with the hint, never wrong, so the
   claim gate counts only items actually heard. One voice reads both parts of a dialogue, B at pitch 0.8. Word-level
   playback (`speakTarget`: match pairs, select feedback) already falls back to the device voice for any course.
-  Open engine item for session 3/4: partner turns in `interaction-scenario.tsx` and speech models in
-  `speak-repetition.tsx` / `speak-production.tsx` resolve clips through `clipAudioSource` only — wire the device voice
-  there for a `deviceVoiceScoredListening` course (unscored playback).
+  Engine item, **scheduled for session 3** (coordinator 2026-11-05): partner turns in `interaction-scenario.tsx` and
+  speech models in `speak-repetition.tsx` / `speak-production.tsx` resolve clips through `clipAudioSource` only — they
+  follow the same rule as listening for a `deviceVoiceScoredListening` course: played (and, for listening, graded)
+  through the local ko-KR voice when one is installed, otherwise the "chưa có giọng đọc trên máy" install hint.
 - **Prepared: Google Cloud Text-to-Speech** (`scripts/lib/tts/google-cloud.ts`, OFF). Terms
   (`https://docs.cloud.google.com/text-to-speech/docs/basics`, read 2026-11-05): the generated files may "power your
   applications". Cast A `ko-KR-Neural2-A` (female), B `ko-KR-Neural2-C` (male); fallback `ko-KR-Wavenet-A` / `-C`.
@@ -123,8 +134,8 @@ speaks through the `ko-KR` recogniser.
 | Google Cloud TTS output | prepared, not used | `commercial-tts-output`, **pending owner approval** | no |
 
 Not used: Tatoeba sentences (examples are original), NIKL list (owner download pending), MeloTTS-KR (D-11),
-Urimalsaem (not needed by session 1; if used later it stays a separate CC BY-SA 2.0 KR data file — that licence is
-not on the allowlist, so it needs an owner decision first).
+Urimalsaem (coordinator 2026-11-05: CC BY-SA 2.0 KR is not on the allowlist, so it is not used; an optional owner line
+in `OWNER-FINAL-CHECKLIST.md` C asks for a licence review).
 
 ## 9. Learner data
 
@@ -147,22 +158,56 @@ not on the allowlist, so it needs an owner decision first).
 4. **One lexeme per surface** (the schema's rule). Korean homographs that matter at A1 keep one sense: 개 dog (ko-en),
    이 "this", 네 "yes", 눈 eye, 안 "not", 일 "one / day of month", 만 ten thousand, 팔 eight, 열 ten, 배 belly, 차 tea,
    말 horse, 새 bird, 밤 night. The other senses are taught in concept cards and exercises without their own card.
-   **Open question for the coordinator**: should the engine allow sense-keyed lexemes (surface + sense id) for ko?
+   **Coordinator, 2026-11-05: no sense-keyed lexemes for v1.0.** The homographs stay handled by the concept card
+   `ko:concept:homographs` (개 dog / counter, 이 this / two, 네 yes / four, 일 one / day / work). Sense-keyed lexemes
+   (surface + sense id) are a post-v1.0 engine item.
 5. **No romanization gate**: RR is a reading aid in `RubyText`; no `romajiUntilPrimer`-style line for ko.
 6. **Lexeme ids**: `ko:w:<rr>` from the RR (hyphens kept), a clash takes the English gloss's first word. Frozen.
 7. **Proper nouns** (민수, 지영, 서울, 부산, 하노이): kind R, never daily words, no Hán-Việt. Countries are ordinary nouns.
 8. **Expressions carry no frequency** (the lexicon validator: a pool count on an authored phrase would be fabricated).
 
+### Session 2 (2026-11-05)
+
+9. **The primer and the source registry are staged too.** The committed P4b primer compiles into the golden-pinned
+   `src/content/primer/ko.json`, and `content/sources/registry.json` feeds the golden-pinned `ATTRIBUTIONS.md`; both
+   are written to the staged layer (`ko-primer.py`, `ko-concepts.py` — the registry copy is the committed registry plus
+   `original-korean-course`, regenerated on every run, so promote must take the registry of `main` at that time).
+   The primer engine is generic: a `hangulSounds` section kind (letters by position, example rows, pronounced
+   spellings checked against the RR rules, tensing against plain → tense initials) and two checkpoint item kinds
+   (`hangulToRr`, `soundToHangul`) with the checkpoint's own pass / entry wording (`messages`), since passing turns
+   nothing off for ko (decision 5). Tests in `scripts/__tests__/script-primer.test.ts`.
+10. **Section 1 is tap-only** (ja decision 22): word banks and choices; Hangul typing starts in Section 2.
+    `ko-check-answers.py` rule 7 stops on a typed exercise in a Section 1 lesson.
+11. **conjugationCloze evidence**: the kaikki derivation tags Korean rows only `inf` / `formal` / `informal`;
+    `tagKoreanCells` (ko-morph.ts, test first in `cjk-paradigms.test.ts`) names the cells from each verb's own rows —
+    present = an `inf` row + 요 that is an informal row, past = that infinitive + ㅆ어요, honorific = the informal row in
+    세요, future = the stated prospective modifier + 거예요 (marked `composed`). A verb whose table lacks a row has no
+    table (먹다: 드세요; 주다: the table states 주었어요, the course teaches 줬어요). The cloze shows no cell label, so
+    every cloze sentence fixes its form (매일 for the present, 어제 for the past, 아마 for the future; a 해요 key
+    for "Hãy …" also accepts 써 주세요 and 쓰십시오).
+12. **Fair renderings are generated, not hand-listed** (`ko_text.variants`, D-10 P0 patterns of ja-vi): the subject
+    the Vietnamese states (저는 … / …), 제 / 우리 / 저희 / nothing before a family word, digits ⇄ Hangul numbers with the
+    right system, 안 V ⇄ V-지 않아요, 못 V ⇄ V-지 못해요, an object particle dropped, 이/가 dropped before 있어요 /
+    없어요 / 아파요, a leading time word with or without 은/는, 이거 ⇄ 이것은, 하고 ⇄ 와/과 ⇄ (이)랑, 에게 ⇄ 한테, the 해요
+    key in 합쇼체, 은/는 ⇄ 이/가 on the subject of an adjective, a counted noun with 을/를. Typed answers list them; a
+    word-bank tile the learner may leave out (저는) becomes an alternative; the self-check uses the same function to
+    find a distractor that is also correct.
+13. **Word check** (`ko_text.Index`): every word of a key is a lexicon surface, a form of a lexicon verb (the
+    conjugator covers ㅂ ㄷ ㅅ 르 ㅎ 으 ㄹ stems and 하다), a noun with its particles or copula in the right allomorph, a
+    name, a number with its counter, or one of a few grammar words (거예요, 싶어요, 않아요, 마세요, 수, 거, 때, the
+    suppletive 드세요 / 계세요 / 주무세요). Distractors are checked for script only (they are wrong on purpose).
+14. **Vietnamese glosses** write "anh chị", never "anh/chị": the synonym-distractor validator splits glosses on "/", so
+    안녕히 가세요 and 안녕히 계세요 shared the meaning "chào anh".
+
 ## 11. Next sessions
 
-1. **Concepts + lessons** (session 2): ≈ 20 concept cards (particles in pairs, 해요 contraction, 안/못, two number
-   systems and the homograph counters 개 / 이 / 네, speech levels, 받침 and sound changes, Hán-Việt and false friends,
-   irregular stems), 108 lessons with the blueprint mix, Section 1 tap-only (self-check rule: no typed Korean in
-   Section 1, checkpoints or placement Section 1 items); the answer-key self-check (`ko-check-answers.py`) and review
-   findings written incrementally (QC §1.4). Hangul primer extension (§4).
+1. ~~**Concepts + lessons**~~ done in session 2: 31 cards, 17 paradigm tables, 108 lessons / 824 exercises, the
+   Hangul primer and its checkpoint, the self-check at 0 findings.
 2. **Reception + speech + writing** (session 3): readings, clips (no assets: device voice), speech items (`ko-KR`),
-   writing tasks; the device voice for speech models.
-3. **Scenarios** (session 4) with the device voice for partner turns (§7 open engine item).
+   writing tasks, wired into the Section 3–5 lessons (a `ko_lesson_refs.py` like ja); the device voice for speech
+   models **and for scenario partner turns** (coordinator 2026-11-05, §7), same rule as listening. Extend
+   `ko-check-answers.py` with the layer rules of ja (rule 5).
+3. **Scenarios** (session 4), partner turns through the device voice wired in session 3.
 4. **Checkpoints, placement, TOPIK I track** (session 5): read topik.go.kr first; 2 mock forms; device-voice listening
    (a skipped item is no evidence in the mock either).
 5. **Stories** (session 6), **D-10 review** (AI pass, then the owner), promote, compile, V8 re-key, claim gate,

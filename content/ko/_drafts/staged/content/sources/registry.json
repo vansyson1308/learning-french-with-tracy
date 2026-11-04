@@ -1,0 +1,1070 @@
+{
+  "policy": [
+    {
+      "licence": "Unicode-3.0",
+      "scope": "data",
+      "decision": "QC 2026-11-03 §2",
+      "note": "Unihan readings (kVietnamese, kMandarin, kJapaneseOn, kJapaneseKun, kHangul): permissive, attribution kept; data files only, never code."
+    },
+    {
+      "licence": "CC-BY-SA-3.0",
+      "scope": "data",
+      "decision": "QC 2026-11-03 §2",
+      "note": "Stroke data such as KanjiVG: handled like our CC BY-SA 4.0 data (share-alike, attribution, data files only, never code). Anything LGPL or Arphic (e.g. Make Me a Hanzi graphics) stays out."
+    },
+    {
+      "licence": "OFL-1.1",
+      "scope": "font",
+      "decision": "QC 2026-11-03 §2",
+      "note": "CJK fonts only, and only if a test shows the system font (Android ships Noto CJK) lacks glyphs; the bundled size is measured and recorded."
+    }
+  ],
+  "pendingApproval": [
+    {
+      "id": "google-cloud-tts",
+      "name": "Google Cloud Text-to-Speech (generated audio)",
+      "kind": "commercial text-to-speech service output (bundled course audio for ko-vi, possibly pt-PT)",
+      "licenceCategory": "commercial-tts-output",
+      "url": "https://cloud.google.com/text-to-speech",
+      "termsUrl": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+      "termsQuote": "use the audio data files you create using Cloud Text-to-Speech to power your applications",
+      "retrievedAt": "2026-11-05",
+      "decision": "QC 2026-11-05 §2.2 — pending owner approval (plan/OWNER-FINAL-CHECKLIST.md B2). Until the owner approves, commercial-tts-output stays off the licence allowlist, so no source, voice or asset can use it.",
+      "notes": "The same page subjects that use to the Google Cloud Platform Terms of Service and applicable law. The Service Specific Terms (https://cloud.google.com/terms/service-terms, read 2026-11-05, last modified 2026-04-02; AI/ML Services section 17) forbid using the output to create or improve a competing model, which this project does not do. Adapter: scripts/lib/tts/google-cloud.ts; engine entry content/audio/engines.json google-cloud-tts (enabled: false); key only from the CI secret GOOGLE_CLOUD_TTS_API_KEY. Cast for ko: ko-KR-Neural2-A (female) / ko-KR-Neural2-C (male), fallback ko-KR-Wavenet-A / ko-KR-Wavenet-C."
+    }
+  ],
+  "sources": [
+    {
+      "id": "upstream-lingo-lessons",
+      "name": "Lingo Lessons (Open Apps Studio)",
+      "kind": "code + course content + pre-generated TTS audio",
+      "license": "MIT",
+      "url": "https://github.com/Open-Apps-Studio/lingo-lessons",
+      "attribution": "Based on Lingo Lessons by Open Apps Studio, used under the MIT License. The original LICENSE (including the 650 Industries, Inc. notice from the create-expo-app template) is preserved in this repository.",
+      "retrievedAt": "2026-08-27",
+      "covers": [
+        "content/courses/",
+        "src/content/",
+        "assets/audio/",
+        "assets/images/"
+      ],
+      "notes": "The base repository this fork continues. Bundled course packs and audio ship under the repository's MIT grant; the original audio generator and its TTS source were never published, so per-asset audio provenance is recorded as presumed rather than proven. A provenance audit of shipped assets remains a recorded obligation before any commercial distribution (approved plan, section I3.5). No new third-party dataset was ingested in Phase 2."
+    },
+    {
+      "id": "original-french-lexicon",
+      "name": "Learning French with Tracy — authored French lexicon",
+      "kind": "authored lexical data (glosses reuse the project's existing course content)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "French lexicon data authored by the Learning French with Tracy project, published under CC BY-SA 4.0 (see LEXICON_LICENSE.md).",
+      "retrievedAt": "2026-08-27",
+      "covers": [
+        "content/fr/lexicon/"
+      ],
+      "notes": "Original project authorship: part of speech, gender, topics, example sentences, and confusable relations for the 126 curriculum lexemes (content/fr/lexicon/lexemes.json, as of 2026-10-14); native glosses reuse the course content already covered by upstream-lingo-lessons. Lexique 4 has been retrieved (pinned by sha256 in content/fr/lexicon/source-manifest.json; see content/fr/lexicon/ACQUISITION.md): 123 of the 126 lexemes carry Lexique-4-derived frequency and IPA fields, each marked by a lexique-4 sourceRef and covered by the separate lexique-4 registry entry; the remaining 3 have project-authored IPA only. Published under CC BY-SA 4.0 per the approved licensing decision so the Lexique-4-derived data (also CC BY-SA 4.0) merges license-coherently. The dataset license never applies to application code, which keeps its existing MIT licensing."
+    },
+    {
+      "id": "lexique-4",
+      "name": "Lexique 4 (New, Pallier, Schalchli, Bourgin & Gimenes)",
+      "kind": "lexical database (frequency, contextual diversity, prevalence, phonology incl. IPA, lemmas, verb morphology)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://lexique.org",
+      "attribution": "Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org).",
+      "retrievedAt": "2026-08-27",
+      "covers": [
+        "content/fr/lexicon/derived/",
+        "content/fr/lexicon/lexemes.json"
+      ],
+      "notes": "Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md)."
+    },
+    {
+      "id": "original-french-pedagogy",
+      "name": "Learning French with Tracy — authored French pedagogy",
+      "kind": "authored teaching content (concept explanations, rules, examples, guidebooks)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "French pedagogy content authored by the Learning French with Tracy project.",
+      "retrievedAt": "2026-08-27",
+      "covers": [
+        "content/fr/pedagogy/"
+      ],
+      "notes": "Clean-room authored teaching content for the Phase 5B pedagogy units (gender & articles, high-yield verbs, cognates & false friends, numbers, connected French). Linguistic FACTS are drawn from the referenced sources recorded in content/fr/pedagogy/RESEARCH.md (institutional references such as Académie française and OQLF usage pages, plus this repository's Lexique-4-derived population statistics); all PROSE is original. Statistical claims in concepts additionally carry a lexique-4 sourceRef. Ships under the repository's MIT grant like the course packs (the CC BY-SA dataset boundary covers the lexicon only)."
+    },
+    {
+      "id": "ts-fsrs",
+      "name": "ts-fsrs (open-spaced-repetition)",
+      "kind": "code (runtime scheduling library)",
+      "license": "MIT",
+      "url": "https://github.com/open-spaced-repetition/ts-fsrs",
+      "attribution": "Spaced-repetition scheduling powered by ts-fsrs, © open-spaced-repetition contributors, MIT License.",
+      "retrievedAt": "2026-08-27",
+      "covers": [
+        "node_modules/ts-fsrs/"
+      ],
+      "notes": "FSRS-6 scheduler. The SM-2 migration math is an independent TypeScript implementation of the published memory_state_from_sm2 formula from fsrs-rs (also MIT)."
+    },
+    {
+      "id": "circle-flags",
+      "name": "circle-flags (HatScripts)",
+      "kind": "artwork: round country flag icons",
+      "license": "MIT",
+      "url": "https://github.com/HatScripts/circle-flags/tree/379588b5da95482d6bbf10bd45644a35b0609ea6",
+      "attribution": "Round country flags from circle-flags by HatScripts, used under the MIT License.",
+      "retrievedAt": "2026-11-02",
+      "covers": [
+        "assets/images/flags/"
+      ],
+      "notes": "All course flags in assets/images/flags/ come from this set (flags/<code>.svg); xx.svg is the test language's. us.svg was retrieved at the pinned commit; the other flags were added in earlier milestones without a recorded commit."
+    },
+    {
+      "id": "synthetic-test-language",
+      "name": "Synthetic test language (xx)",
+      "kind": "test fixtures — a two-word invented language that exercises every validator and the compiler for a non-French target (P1c), and its CJK variant xc (P4b stage 4: five words with kana/furigana, pinyin and Revised Romanization readings); never shipped",
+      "license": "original",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy/tree/main/content/xx",
+      "attribution": "Original project test fixtures; test-only, excluded from the app bundle, catalog, audio baseline and attributions.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/xx/",
+        "content/courses/xx-en.json",
+        "assets/audio/xx-reception/",
+        "content/xc/",
+        "content/courses/xc-en.json"
+      ],
+      "notes": "Marked testOnly: provenance is recorded like any source, but nothing it covers reaches learners.",
+      "testOnly": true
+    },
+    {
+      "id": "acceptance-diagnostics-fixtures",
+      "name": "Acceptance-build audio fixtures (Opus playback check)",
+      "kind": "test fixture derived from a bundled story-sentence clip; acceptance builds only, never in a release build",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Acceptance-only Opus playback fixture copied from a Spanish story sentence synthesized with Kokoro-82M (hexgrad, Apache-2.0).",
+      "retrievedAt": "2026-10-29",
+      "covers": [
+        "assets/diagnostics/"
+      ],
+      "notes": "assets/diagnostics/opus/story-sentence-16k.opus is a copy of es.story.el_perro_de_ana#18 (assets/audio/es-reception/183ea9c4263138dd544a.opus), a Kokoro-82M story sentence. Built only with LFT_ACCEPTANCE_DIAGNOSTICS=1; release builds never carry it.",
+      "testOnly": true
+    },
+    {
+      "id": "kaikki-en",
+      "name": "kaikki.org Wiktextract (English Wiktionary edition)",
+      "kind": "lexical data (per-language JSONL dumps)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://kaikki.org/dictionary/",
+      "attribution": "Lexical data (lemmas, parts of speech, inflected forms, gender, IPA, senses, example sentences) derived from Wiktionary via Wiktextract / kaikki.org (Tatu Ylonen), used under CC BY-SA 4.0 with attribution to the Wiktionary contributors; kaikki.org and Ylonen (LREC 2022) are cited. The lexicon dataset is published under CC BY-SA 4.0 (LEXICON_LICENSE.md).",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a lexicon ETL v2 primary lexical source. Each language's dump is pinned (sha256, bytes, date) in content/<lang>/lexicon/source-manifest.json by the dispatch-only workflow .github/workflows/lexicon-source.yml; raw dumps are never committed. Per-lexeme provenance is the `word|pos` key in sourceRefs; examples carry `word|pos|sense`."
+    },
+    {
+      "id": "kaikki-vi",
+      "name": "kaikki.org Wiktextract (Vietnamese Wiktionary edition)",
+      "kind": "lexical data (Vietnamese glosses and examples)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://kaikki.org/viwiktionary/",
+      "attribution": "Vietnamese glosses and example translations derived from the Vietnamese Wiktionary via Wiktextract / kaikki.org, used under CC BY-SA 4.0 with attribution to the Vietnamese Wiktionary contributors.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a: the primary source of `glosses.vi` / `translations.vi`. Entries that only redirect are skipped; a lexeme without a Vietnamese sense carries the draft marker TODO:vi until the authoring toolkit (P3c) fills it — the marker blocks compile for any -vi course."
+    },
+    {
+      "id": "frequencywords",
+      "name": "FrequencyWords (hermitdave) — OpenSubtitles 2018 word frequencies",
+      "kind": "word frequency lists",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/hermitdave/FrequencyWords",
+      "attribution": "Word frequencies derived from the FrequencyWords lists (OpenSubtitles 2018; content CC BY-SA 4.0, code MIT) by Hermit Dave. Modifications: lemmatisation through the kaikki form index, population ranking and quantile banding (content/<lang>/lexicon/derived/frequency-stats.json).",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a primary frequency measurement (`frequency.source`). Per-million values are relative to the list total, not the corpus (documented in frequency-stats.json)."
+    },
+    {
+      "id": "wordfreq",
+      "name": "wordfreq 3.1.1 (Robyn Speer) — Zipf word frequencies",
+      "kind": "word frequency data (exported Zipf values)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/rspeer/wordfreq",
+      "attribution": "Secondary frequency evidence from wordfreq (Speer, R. (2022). rspeer/wordfreq: v3.0 (v3.0.2). Zenodo. https://doi.org/10.5281/zenodo.7199437), data CC BY-SA 4.0 (incorporating Google Books Ngram and SUBTLEX components with their acknowledgements), code Apache-2.0.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a: `zipf` column of the candidate pools only (authoring evidence); never the `frequency` field of a lexeme."
+    },
+    {
+      "id": "tatoeba",
+      "name": "Tatoeba — sentences and translation links",
+      "kind": "example sentences",
+      "license": "CC-BY-2.0-FR",
+      "url": "https://tatoeba.org/en/downloads",
+      "attribution": "Example sentences from the Tatoeba Project (https://tatoeba.org), CC BY 2.0 FR; each sentence credits its contributor by username in content/<lang>/lexicon/derived/tatoeba-credits.json and carries its sentence ids in the example `key`.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a example fallback when a kaikki sense has no usable example. Audio is never used (per-contributor licences)."
+    },
+    {
+      "id": "openjlpt",
+      "name": "OpenJLPT 0.1.0 — JLPT N5–N1 vocabulary (level labels)",
+      "kind": "exam anchor list",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/evanclan/OpenJLPT",
+      "attribution": "JLPT level anchors from OpenJLPT 0.1.0 (CC BY-SA 4.0; levels from Jonathan Waller's JLPT resources, CC BY; readings/glosses via JMdict, EDRDG, CC BY-SA 4.0; examples via Tatoeba, CC BY 2.0 FR).",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/ja/lexicon/"
+      ],
+      "notes": "P3a Japanese anchor (N5/N4 first). The JLPT publishes no official lists; these groupings are community-standard approximations (OpenJLPT NOTICE.md).",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "hsk30",
+      "name": "ivankra/hsk30 — HSK 3.0 vocabulary levels",
+      "kind": "exam anchor list",
+      "license": "MIT",
+      "url": "https://github.com/ivankra/hsk30",
+      "attribution": "HSK 3.0 level labels via ivankra/hsk30 (MIT) — a transcription of the 2021 standard published by the PRC Ministry of Education; entries are regenerated from CC-CEDICT / kaikki, never copied from the list.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/zh/lexicon/"
+      ],
+      "notes": "P3a Chinese anchor (HSK 1–2 first). The repository's copyright caveat on the Ministry source is recorded in scripts/lib/lexicon-etl/sources.ts.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "jmdict",
+      "name": "JMdict (EDRDG) — Japanese–English dictionary",
+      "kind": "dictionary (readings, senses)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://www.edrdg.org/jmdict/j_jmdict.html",
+      "attribution": "This app uses the JMdict dictionary files. These files are the property of the Electronic Dictionary Research and Development Group, and are used in conformance with the Group's licence (https://www.edrdg.org/edrdg/licence.html), CC BY-SA 4.0.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/ja/lexicon/"
+      ],
+      "notes": "P3a: kana readings and English senses for the Japanese pool (readings.json). The EDRDG requires the acknowledgement on a separate About/Sources screen — the Licences screen lists this entry."
+    },
+    {
+      "id": "jmdict-furigana",
+      "name": "JmdictFurigana — furigana for JMdict entries (Doublevil)",
+      "kind": "dictionary data (kana reading and furigana segments per JMdict text/reading pair)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/Doublevil/JmdictFurigana",
+      "attribution": "Furigana from JmdictFurigana by Doublevil, built from the JMdict dictionary files of the Electronic Dictionary Research and Development Group and distributed under the same licence as JMdict, CC BY-SA 4.0 (https://www.edrdg.org/edrdg/licence.html).",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/ja/lexicon/readings-manifest.json",
+        "content/ja/lexicon/derived/lexeme-readings.json",
+        "content/ja/lexicon/derived/jlpt-course.json",
+        "content/ja/lexicon/lexemes.json"
+      ],
+      "notes": "P4b stage 4: kana + furigana per Japanese lemma (scripts/cjk-readings.ts). Release 2.3.1+2026-10-25, JmdictFurigana.json pinned by sha256 57c2afa7d153d42df97811d4a44865d10fb9104f6a7bacbbe32a0bf0c38e5abc (34,760,497 bytes) in content/ja/lexicon/readings-manifest.json; the file is never committed, only the derived readings of the pool's lemmas. The README states the data is distributed under the same licence as JMdict (CC BY-SA 4.0); the repository's code is MIT and is not used."
+    },
+    {
+      "id": "cedict",
+      "name": "CC-CEDICT (MDBG) — Chinese–English dictionary",
+      "kind": "dictionary (pinyin, senses)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://www.mdbg.net/chinese/dictionary?page=cedict",
+      "attribution": "Pinyin and English senses from CC-CEDICT, a community-maintained free Chinese–English dictionary published by MDBG under CC BY-SA 4.0.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/zh/lexicon/"
+      ],
+      "notes": "P3a: pinyin (tone marks derived from the numbered export) for readings.json. P4b stage 4: tone-marked pinyin per syllable and the traditional spelling per Chinese lemma (content/zh/lexicon/derived/lexeme-readings.json, scripts/cjk-readings.ts) from a 2026-11-03 retrieval pinned by sha256 e203bbf4a28c2ab54762e9b1fb813e53aa9112939704e71a5117f3b3555a46cb (3,983,033 bytes) in content/zh/lexicon/readings-manifest.json; the export is never committed."
+    },
+    {
+      "id": "cefr-j",
+      "name": "CEFR-J Vocabulary Profile 1.5 (Tono Lab, TUFS) via Open Language Profiles",
+      "kind": "CEFR anchor list (build-time selection reference)",
+      "license": "CEFR-J-terms",
+      "url": "https://github.com/openlanguageprofiles/olp-en-cefrj",
+      "attribution": "English CEFR level anchors from The CEFR-J Wordlist Version 1.5, compiled by Yukio Tono, Tokyo University of Foreign Studies (copyright Tono Laboratory, TUFS), via Open Language Profiles; used for research/commercial purposes with citation as the dataset's terms permit.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a English anchor. Build-time only: level labels in content/en/lexicon/derived/anchors.json drive selection; no CEFR-J text ships in the app.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "ngsl",
+      "name": "New General Service List 1.2 — frequency statistics",
+      "kind": "frequency anchor list",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://www.newgeneralservicelist.com/new-general-service-list",
+      "attribution": "English rank anchors from the New General Service List 1.2 (Browne, Culligan & Phillips, 2013), CC BY-SA 4.0.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a English rank anchor (NGSL_12_stats.csv: lemma, SFI rank).",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "original-lexicon-etl",
+      "name": "Lexicon ETL v2 authored selection (this project)",
+      "kind": "original data (selection, topics, confusables, surfaces, review dispositions)",
+      "license": "original",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Selection of the curriculum lexemes, topic assignment, confusable relations, surfaces with articles and gloss editing are original project authorship, published with the rest of the lexicon dataset under CC BY-SA 4.0 (LEXICON_LICENSE.md).",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexemes.json",
+        "content/de/lexemes.json",
+        "content/it/lexemes.json",
+        "content/pt/lexemes.json",
+        "content/ja/lexemes.json",
+        "content/ko/lexemes.json",
+        "content/zh/lexemes.json",
+        "content/en/lexemes.json",
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/",
+        "content/audio/ja-spoken-readings.json"
+      ],
+      "notes": "P3a: scripts/lexicon-author.ts writes content/<lang>/lexemes.json (frozen ids) and content/<lang>/lexicon/lexemes.json from the committed derived evidence; REVIEW.md per language records what a human still has to check (TODO:vi, auto-confusables, untranslated examples)."
+    },
+    {
+      "id": "original-spanish-course",
+      "name": "Learning French with Tracy — authored es-vi course (Spanish for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Spanish course content for Vietnamese speakers authored by the Learning French with Tracy project.",
+      "retrievedAt": "2026-10-22",
+      "covers": [
+        "content/courses/es-vi.json",
+        "content/es/pedagogy/",
+        "content/es/reception/reading.json",
+        "content/es/reception/listening.json",
+        "content/es/speech/",
+        "content/es/writing/",
+        "content/es/interaction/",
+        "content/es/assessment/",
+        "content/es/exam/"
+      ],
+      "notes": "P3d: clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/es-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/es/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public DELE A1 formats only, never official items. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
+      "id": "original-german-course",
+      "name": "Learning French with Tracy — authored de-vi course (German for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "German course content for Vietnamese speakers authored by the Learning French with Tracy project.",
+      "retrievedAt": "2026-10-28",
+      "covers": [
+        "content/courses/de-vi.json",
+        "content/de/pedagogy/",
+        "content/de/reception/reading.json",
+        "content/de/reception/listening.json",
+        "content/de/speech/",
+        "content/de/writing/",
+        "content/de/interaction/",
+        "content/de/assessment/",
+        "content/de/exam/"
+      ],
+      "notes": "P3d(de): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/de-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/de/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public Goethe-Zertifikat A1: Start Deutsch 1 formats only, never official items. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
+      "id": "original-italian-course",
+      "name": "Learning French with Tracy — authored it-vi course (Italian for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Italian course content for Vietnamese speakers authored by the Learning French with Tracy project.",
+      "retrievedAt": "2026-10-30",
+      "covers": [
+        "content/courses/it-vi.json",
+        "content/it/pedagogy/",
+        "content/it/reception/reading.json",
+        "content/it/reception/listening.json",
+        "content/it/speech/",
+        "content/it/writing/",
+        "content/it/interaction/",
+        "content/it/assessment/",
+        "content/it/exam/"
+      ],
+      "notes": "P3d(it): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/it-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/it/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public CILS A1 standard formats only, never official items. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
+      "id": "original-english-course",
+      "name": "Learning French with Tracy — authored en-vi course (English for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items) and General American IPA transcriptions authored for the English lexicon",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "English course content for Vietnamese speakers and project-authored IPA transcriptions by the Learning French with Tracy project.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "content/courses/en-vi.json",
+        "content/en/pedagogy/",
+        "content/en/reception/reading.json",
+        "content/en/reception/listening.json",
+        "content/en/speech/",
+        "content/en/writing/",
+        "content/en/interaction/",
+        "content/en/assessment/",
+        "content/en/exam/"
+      ],
+      "notes": "P4f: clean-room authored; Vietnamese learner-facing text pending native review. In content/en/lexicon/lexemes.json a pronunciation with this source is a transcription written by the project because the Kaikki value in the candidate pool is missing or not General American; it was not checked against a dictionary. The hand-chosen lexicon itself is recorded under original-lexicon-etl. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
+      "id": "original-japanese-course",
+      "name": "Learning French with Tracy — authored ja-vi course (Japanese for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Japanese course content for Vietnamese speakers by the Learning French with Tracy project.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/courses/ja-vi.json",
+        "content/ja/pedagogy/",
+        "content/ja/reception/reading.json",
+        "content/ja/reception/listening.json",
+        "content/ja/speech/",
+        "content/ja/writing/",
+        "content/ja/interaction/",
+        "content/ja/assessment/",
+        "content/ja/exam/"
+      ],
+      "notes": "P4c: clean-room authored; Vietnamese learner-facing text pending the D-10 review. The hand-chosen lexicon is recorded under original-lexicon-etl, its readings under jmdict-furigana. JLPT levels (OpenJLPT) are a build-time anchor only. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
+      "id": "original-korean-course",
+      "name": "Learning French with Tracy — authored ko-vi course (Korean for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Korean course content for Vietnamese speakers by the Learning French with Tracy project.",
+      "retrievedAt": "2026-11-05",
+      "covers": [
+        "content/courses/ko-vi.json",
+        "content/ko/pedagogy/",
+        "content/ko/reception/reading.json",
+        "content/ko/reception/listening.json",
+        "content/ko/speech/",
+        "content/ko/writing/",
+        "content/ko/interaction/",
+        "content/ko/assessment/",
+        "content/ko/exam/"
+      ],
+      "notes": "P4e: clean-room authored; Vietnamese learner-facing text pending the D-10 review. The hand-chosen lexicon is recorded under original-lexicon-etl, its RR readings are the project's own rule output. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
+      "id": "unihan",
+      "name": "Unihan Database — Unicode Character Database 17.0.0",
+      "kind": "character data (kVietnamese, kMandarin, kJapanese/On/Kun, kHangul readings; variant links) used at build time to check the Hán-Việt tables",
+      "license": "Unicode-3.0",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+      "attribution": "Character readings and variant data from the Unihan Database, part of the Unicode Character Database (Unicode 17.0.0). Copyright © 1991-2026 Unicode, Inc. Used under the Unicode License v3 (https://www.unicode.org/license.txt); the full copyright and permission notice is in content/hanviet/UNICODE-LICENSE.txt.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/hanviet/unihan-readings.json",
+        "content/hanviet/UNICODE-LICENSE.txt"
+      ],
+      "notes": "P4b stage 2 (QC 2026-11-03 §2). Pinned zip (sha256 f7a48b2b545acfaa77b2d607ae28747404ce02baefee16396c5d2d7a8ef34b5e, 8,518,517 bytes, content/hanviet/source-manifest.json) is never committed; scripts/hanviet-unihan.ts derives a subset (the characters of the ja/zh candidate pools and of the Hán-Việt tables, plus variants). Build-time only: the validator confirms every syllable of the authored readings against kVietnamese; no Unihan data ships in the app.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "original-hanviet-readings",
+      "name": "Learning French with Tracy — authored Hán-Việt readings (ja, zh, ko)",
+      "kind": "authored word → Sino-Vietnamese reading tables and their D-10 review sheet",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Hán-Việt (Sino-Vietnamese) readings of Japanese, Chinese and Korean words authored by the Learning French with Tracy project, checked against the Unihan Database.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "content/hanviet/ja.json",
+        "content/hanviet/ko.json",
+        "content/hanviet/zh.json",
+        "content/hanviet/source-manifest.json",
+        "content/hanviet/REVIEW.md",
+        "src/content/hanviet/"
+      ],
+      "notes": "P4b stage 2: Sino-Vietnamese words only (ja on'yomi kanji compounds, zh hanzi words, ko Sino-Korean words with hanja); readings pending the D-10 review (content/hanviet/REVIEW.md). Ships under the repository's MIT grant like the course packs."
+    },
+    {
+      "id": "tts-engine-kokoro",
+      "name": "Kokoro-82M (hexgrad) — neural TTS engine and model",
+      "kind": "TTS engine used at pipeline time (never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+      "attribution": "Audio for some courses is synthesized at pipeline time with Kokoro-82M (hexgrad, Apache-2.0; `kokoro` 0.9.4 and `misaki` G2P, Apache-2.0). The model is pinned by repository revision in content/audio/engines.json; weights are used on the runner and never committed.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/audio/engines.json"
+      ],
+      "notes": "P3b audio pipeline v2. Each Kokoro voice actually selected for a course gets its own registry entry (kokoro-voice-<name>) at selection time, covering that language's assets.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "misaki-ja-kana-table",
+      "name": "misaki 0.9.4 Japanese kana table (hexgrad), adapted from cutlet (Paul O'Leary McCann)",
+      "kind": "code adapted at pipeline time (kana → Kokoro phoneme table and rules of the Japanese audio front-end; never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://github.com/hexgrad/misaki/blob/main/misaki/cutlet.py",
+      "attribution": "The Japanese audio front-end's kana → phoneme table and rules are adapted from misaki 0.9.4 misaki/cutlet.py (Copyright hexgrad, Apache-2.0), which is itself adapted from cutlet (https://github.com/polm/cutlet, Copyright Paul O'Leary McCann, MIT). Both licence notices are kept in scripts/lib/tts/ja-phonemes.ts.",
+      "retrievedAt": "2026-11-03",
+      "covers": [
+        "scripts/lib/tts/ja-phonemes.ts"
+      ],
+      "notes": "P4c (plan/reports/P4c-ja-audio-frontend.md): misaki[ja] is no longer installed — its G2P needs a MeCab dictionary (UniDic / NAIST-jdic, BSD). Only the dictionary-free kana table and rules were ported, read from the misaki 0.9.4 sdist (PyPI); the readings come from the course lexicon (JmdictFurigana, CC BY-SA 4.0) and content/audio/ja-spoken-readings.json (original). Upstream chain: cutlet MIT → misaki Apache-2.0 → this port, both allowlisted.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "tts-engine-parler",
+      "name": "Parler-TTS",
+      "kind": "TTS engine used at pipeline time (never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://github.com/huggingface/parler-tts",
+      "attribution": "Parler-TTS (Hugging Face, Apache-2.0), pinned in content/audio/engines.json, renders course audio at pipeline time. It never ships.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "content/audio/engines.json"
+      ]
+    },
+    {
+      "id": "kokoro-voice-im_nicola",
+      "name": "Kokoro-82M voice kokoro-im_nicola",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/im_nicola.pt voice (CC-BY-4.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-14",
+      "covers": [
+        "assets/audio/it/",
+        "content/audio/model-cards/it/kokoro-im_nicola.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1701 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-if_sara",
+      "name": "Kokoro-82M voice kokoro-if_sara",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/if_sara.pt voice (CC-BY-4.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-14",
+      "covers": [
+        "assets/audio/it/",
+        "content/audio/model-cards/it/kokoro-if_sara.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.2104 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-ef_dora",
+      "name": "Kokoro-82M voice kokoro-ef_dora",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/ef_dora.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/es/",
+        "content/audio/model-cards/es/kokoro-ef_dora.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1035 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-em_alex",
+      "name": "Kokoro-82M voice kokoro-em_alex",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/em_alex.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/es/",
+        "content/audio/model-cards/es/kokoro-em_alex.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1302 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-pm_alex",
+      "name": "Kokoro-82M voice kokoro-pm_alex",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for pt-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/pm_alex.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/pt/",
+        "content/audio/model-cards/pt/kokoro-pm_alex.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1431 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-pf_dora",
+      "name": "Kokoro-82M voice kokoro-pf_dora",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for pt-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/pf_dora.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/pt/",
+        "content/audio/model-cards/pt/kokoro-pf_dora.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1863 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-zm_yunjian",
+      "name": "Kokoro-82M voice kokoro-zm_yunjian",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for zh-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/zm_yunjian.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-22",
+      "covers": [
+        "assets/audio/zh/",
+        "content/audio/model-cards/zh/kokoro-zm_yunjian.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1475 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-am_michael",
+      "name": "Kokoro-82M voice kokoro-am_michael",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for en (no course yet) synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/am_michael.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/en/",
+        "content/audio/model-cards/en/kokoro-am_michael.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1238 over 12 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-af_heart",
+      "name": "Kokoro-82M voice kokoro-af_heart",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for en (no course yet) synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/af_heart.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/en/",
+        "content/audio/model-cards/en/kokoro-af_heart.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1331 over 12 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-jf_alpha",
+      "name": "Kokoro-82M voice kokoro-jf_alpha",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for ja-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/jf_alpha.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-22",
+      "covers": [
+        "assets/audio/ja/",
+        "content/audio/model-cards/ja/kokoro-jf_alpha.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.2255 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-jm_kumo",
+      "name": "Kokoro-82M voice kokoro-jm_kumo",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for ja-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/jm_kumo.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-22",
+      "covers": [
+        "assets/audio/ja/",
+        "content/audio/model-cards/ja/kokoro-jm_kumo.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.5026 over 24 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-voice-ff_siwis",
+      "name": "Kokoro-82M voice kokoro-ff_siwis",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for fr-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/ff_siwis.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "assets/audio/fr/",
+        "content/audio/model-cards/fr/kokoro-ff_siwis.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1988 over 26 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Kokoro-82M v1.0",
+          "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+          "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data"
+        }
+      ]
+    },
+    {
+      "id": "parler-voice-de-michelle",
+      "name": "Parler-TTS Mini Multilingual speaker Michelle (de)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3",
+      "attribution": "Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Michelle; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "assets/audio/de/",
+        "content/audio/model-cards/de/parler-de-michelle.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1532 over 36 sampled strings, 1 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "CML-TTS, cleaned",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/cml-tts-filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "Multilingual LibriSpeech, non-English",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/mls-annotated"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "LibriTTS-R",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/parler-tts/libritts_r_filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1 weights",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1",
+          "quote": "This model is permissively licensed under the Apache 2.0 license."
+        },
+        {
+          "model": "Flan-T5 large (text encoder)",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/google/flan-t5-large"
+        },
+        {
+          "model": "DAC 44 kHz (audio codec)",
+          "dataset": "the checkpoint itself",
+          "licence": "MIT",
+          "url": "https://huggingface.co/parler-tts/dac_44khZ_8kbps",
+          "quote": "Weights are released as part of this repo under MIT license."
+        }
+      ]
+    },
+    {
+      "id": "parler-voice-de-nicole",
+      "name": "Parler-TTS Mini Multilingual speaker Nicole (de)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3",
+      "attribution": "Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Nicole; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "assets/audio/de/",
+        "content/audio/model-cards/de/parler-de-nicole.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1937 over 36 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "CML-TTS, cleaned",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/cml-tts-filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "Multilingual LibriSpeech, non-English",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/mls-annotated"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "LibriTTS-R",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/parler-tts/libritts_r_filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1 weights",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1",
+          "quote": "This model is permissively licensed under the Apache 2.0 license."
+        },
+        {
+          "model": "Flan-T5 large (text encoder)",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/google/flan-t5-large"
+        },
+        {
+          "model": "DAC 44 kHz (audio codec)",
+          "dataset": "the checkpoint itself",
+          "licence": "MIT",
+          "url": "https://huggingface.co/parler-tts/dac_44khZ_8kbps",
+          "quote": "Weights are released as part of this repo under MIT license."
+        }
+      ]
+    },
+    {
+      "id": "parler-voice-de-christopher",
+      "name": "Parler-TTS Mini Multilingual speaker Christopher (de)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3",
+      "attribution": "Course audio for de-en, de-vi synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Christopher; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "assets/audio/de/",
+        "content/audio/model-cards/de/parler-de-christopher.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.286 over 36 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "CML-TTS, cleaned",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/cml-tts-filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "Multilingual LibriSpeech, non-English",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/mls-annotated"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "LibriTTS-R",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/parler-tts/libritts_r_filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1 weights",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1",
+          "quote": "This model is permissively licensed under the Apache 2.0 license."
+        },
+        {
+          "model": "Flan-T5 large (text encoder)",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/google/flan-t5-large"
+        },
+        {
+          "model": "DAC 44 kHz (audio codec)",
+          "dataset": "the checkpoint itself",
+          "licence": "MIT",
+          "url": "https://huggingface.co/parler-tts/dac_44khZ_8kbps",
+          "quote": "Weights are released as part of this repo under MIT license."
+        }
+      ]
+    },
+    {
+      "id": "parler-voice-fr-daniel",
+      "name": "Parler-TTS Mini Multilingual speaker Daniel (fr)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1/tree/11b27d57855dec1ce0914ba1f12363bf2ea75ba3",
+      "attribution": "Course audio for fr-en synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker Daniel; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision 11b27d57855dec1ce0914ba1f12363bf2ea75ba3; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-31",
+      "covers": [
+        "assets/audio/fr/",
+        "content/audio/model-cards/fr/parler-fr-daniel.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.3484 over 26 sampled strings, 0 technical failures). Model weights are never committed.",
+      "lineage": [
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "CML-TTS, cleaned",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/cml-tts-filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "Multilingual LibriSpeech, non-English",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/PHBJT/mls-annotated"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1",
+          "dataset": "LibriTTS-R",
+          "licence": "CC-BY-4.0",
+          "url": "https://huggingface.co/datasets/parler-tts/libritts_r_filtered"
+        },
+        {
+          "model": "Parler-TTS Mini Multilingual v1.1 weights",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1",
+          "quote": "This model is permissively licensed under the Apache 2.0 license."
+        },
+        {
+          "model": "Flan-T5 large (text encoder)",
+          "dataset": "the checkpoint itself",
+          "licence": "Apache-2.0",
+          "url": "https://huggingface.co/google/flan-t5-large"
+        },
+        {
+          "model": "DAC 44 kHz (audio codec)",
+          "dataset": "the checkpoint itself",
+          "licence": "MIT",
+          "url": "https://huggingface.co/parler-tts/dac_44khZ_8kbps",
+          "quote": "Weights are released as part of this repo under MIT license."
+        }
+      ]
+    }
+  ]
+}

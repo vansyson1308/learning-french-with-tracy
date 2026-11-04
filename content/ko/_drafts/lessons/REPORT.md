@@ -1,0 +1,123 @@
+# lessons — ingest report (ko-vi)
+
+Records: 108 · schema-valid: 108 · failed: 0 · validator errors after merge: 0
+
+## Records
+
+- ✅ line 1 `ko-vi:u0-l0`
+- ✅ line 2 `ko-vi:u0-l1`
+- ✅ line 3 `ko-vi:u0-l2`
+- ✅ line 4 `ko-vi:u0-l3`
+- ✅ line 5 `ko-vi:u1-l0`
+- ✅ line 6 `ko-vi:u1-l1`
+- ✅ line 7 `ko-vi:u1-l2`
+- ✅ line 8 `ko-vi:u1-l3`
+- ✅ line 9 `ko-vi:u2-l0`
+- ✅ line 10 `ko-vi:u2-l1`
+- ✅ line 11 `ko-vi:u2-l2`
+- ✅ line 12 `ko-vi:u2-l3`
+- ✅ line 13 `ko-vi:u3-l0`
+- ✅ line 14 `ko-vi:u3-l1`
+- ✅ line 15 `ko-vi:u3-l2`
+- ✅ line 16 `ko-vi:u3-l3`
+- ✅ line 17 `ko-vi:u4-l0`
+- ✅ line 18 `ko-vi:u4-l1`
+- ✅ line 19 `ko-vi:u4-l2`
+- ✅ line 20 `ko-vi:u4-l3`
+- ✅ line 21 `ko-vi:ua-l0`
+- ✅ line 22 `ko-vi:ua-l1`
+- ✅ line 23 `ko-vi:ua-l2`
+- ✅ line 24 `ko-vi:ua-l3`
+- ✅ line 25 `ko-vi:ub-l0`
+- ✅ line 26 `ko-vi:ub-l1`
+- ✅ line 27 `ko-vi:ub-l2`
+- ✅ line 28 `ko-vi:ub-l3`
+- ✅ line 29 `ko-vi:uc-l0`
+- ✅ line 30 `ko-vi:uc-l1`
+- ✅ line 31 `ko-vi:uc-l2`
+- ✅ line 32 `ko-vi:uc-l3`
+- ✅ line 33 `ko-vi:ud-l0`
+- ✅ line 34 `ko-vi:ud-l1`
+- ✅ line 35 `ko-vi:ud-l2`
+- ✅ line 36 `ko-vi:ud-l3`
+- ✅ line 37 `ko-vi:ue-l0`
+- ✅ line 38 `ko-vi:ue-l1`
+- ✅ line 39 `ko-vi:ue-l2`
+- ✅ line 40 `ko-vi:ue-l3`
+- ✅ line 41 `ko-vi:uf-l0`
+- ✅ line 42 `ko-vi:uf-l1`
+- ✅ line 43 `ko-vi:uf-l2`
+- ✅ line 44 `ko-vi:uf-l3`
+- ✅ line 45 `ko-vi:ug-l0`
+- ✅ line 46 `ko-vi:ug-l1`
+- ✅ line 47 `ko-vi:ug-l2`
+- ✅ line 48 `ko-vi:ug-l3`
+- ✅ line 49 `ko-vi:uh-l0`
+- ✅ line 50 `ko-vi:uh-l1`
+- ✅ line 51 `ko-vi:uh-l2`
+- ✅ line 52 `ko-vi:uh-l3`
+- ✅ line 53 `ko-vi:ui-l0`
+- ✅ line 54 `ko-vi:ui-l1`
+- ✅ line 55 `ko-vi:ui-l2`
+- ✅ line 56 `ko-vi:ui-l3`
+- ✅ line 57 `ko-vi:uj-l0`
+- ✅ line 58 `ko-vi:uj-l1`
+- ✅ line 59 `ko-vi:uj-l2`
+- ✅ line 60 `ko-vi:uj-l3`
+- ✅ line 61 `ko-vi:uk-l0`
+- ✅ line 62 `ko-vi:uk-l1`
+- ✅ line 63 `ko-vi:uk-l2`
+- ✅ line 64 `ko-vi:uk-l3`
+- ✅ line 65 `ko-vi:ul-l0`
+- ✅ line 66 `ko-vi:ul-l1`
+- ✅ line 67 `ko-vi:ul-l2`
+- ✅ line 68 `ko-vi:ul-l3`
+- ✅ line 69 `ko-vi:um-l0`
+- ✅ line 70 `ko-vi:um-l1`
+- ✅ line 71 `ko-vi:um-l2`
+- ✅ line 72 `ko-vi:um-l3`
+- ✅ line 73 `ko-vi:un-l0`
+- ✅ line 74 `ko-vi:un-l1`
+- ✅ line 75 `ko-vi:un-l2`
+- ✅ line 76 `ko-vi:un-l3`
+- ✅ line 77 `ko-vi:uo-l0`
+- ✅ line 78 `ko-vi:uo-l1`
+- ✅ line 79 `ko-vi:uo-l2`
+- ✅ line 80 `ko-vi:uo-l3`
+- ✅ line 81 `ko-vi:up-l0`
+- ✅ line 82 `ko-vi:up-l1`
+- ✅ line 83 `ko-vi:up-l2`
+- ✅ line 84 `ko-vi:up-l3`
+- ✅ line 85 `ko-vi:uq-l0`
+- ✅ line 86 `ko-vi:uq-l1`
+- ✅ line 87 `ko-vi:uq-l2`
+- ✅ line 88 `ko-vi:uq-l3`
+- ✅ line 89 `ko-vi:ur-l0`
+- ✅ line 90 `ko-vi:ur-l1`
+- ✅ line 91 `ko-vi:ur-l2`
+- ✅ line 92 `ko-vi:ur-l3`
+- ✅ line 93 `ko-vi:us-l0`
+- ✅ line 94 `ko-vi:us-l1`
+- ✅ line 95 `ko-vi:us-l2`
+- ✅ line 96 `ko-vi:us-l3`
+- ✅ line 97 `ko-vi:ut-l0`
+- ✅ line 98 `ko-vi:ut-l1`
+- ✅ line 99 `ko-vi:ut-l2`
+- ✅ line 100 `ko-vi:ut-l3`
+- ✅ line 101 `ko-vi:uu-l0`
+- ✅ line 102 `ko-vi:uu-l1`
+- ✅ line 103 `ko-vi:uu-l2`
+- ✅ line 104 `ko-vi:uu-l3`
+- ✅ line 105 `ko-vi:uv-l0`
+- ✅ line 106 `ko-vi:uv-l1`
+- ✅ line 107 `ko-vi:uv-l2`
+- ✅ line 108 `ko-vi:uv-l3`
+
+## Validator errors (fix these records and ingest again)
+
+- none
+
+## Written
+
+- content/ko/_drafts/pack.json
+- content/courses/ko-vi.json
