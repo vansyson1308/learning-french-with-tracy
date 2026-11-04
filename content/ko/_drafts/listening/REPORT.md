@@ -1,6 +1,6 @@
 # listening — ingest report (ko-vi)
 
-Records: 92 · schema-valid: 92 · failed: 0 · validator errors after merge: 92
+Records: 200 · schema-valid: 200 · failed: 0 · validator errors after merge: 200
 
 ## Records
 
@@ -96,6 +96,114 @@ Records: 92 · schema-valid: 92 · failed: 0 · validator errors after merge: 92
 - ✅ line 90 `ko.clip.un_model_rep_past`
 - ✅ line 91 `ko.clip.un_model_weekend`
 - ✅ line 92 `ko.clip.un_model_tomorrow`
+- ✅ line 93 `ko.clip.ix_store_bag_miss`
+- ✅ line 94 `ko.clip.ix_store_bag_0`
+- ✅ line 95 `ko.clip.ix_store_bag_0_s`
+- ✅ line 96 `ko.clip.ix_store_bag_1`
+- ✅ line 97 `ko.clip.ix_store_bag_1_s`
+- ✅ line 98 `ko.clip.ix_store_bag_end`
+- ✅ line 99 `ko.clip.ix_restaurant_order_miss`
+- ✅ line 100 `ko.clip.ix_restaurant_order_0`
+- ✅ line 101 `ko.clip.ix_restaurant_order_0_s`
+- ✅ line 102 `ko.clip.ix_restaurant_order_1`
+- ✅ line 103 `ko.clip.ix_restaurant_order_1_s`
+- ✅ line 104 `ko.clip.ix_restaurant_order_end`
+- ✅ line 105 `ko.clip.ix_ask_station_miss`
+- ✅ line 106 `ko.clip.ix_ask_station_0`
+- ✅ line 107 `ko.clip.ix_ask_station_0_s`
+- ✅ line 108 `ko.clip.ix_ask_station_1`
+- ✅ line 109 `ko.clip.ix_ask_station_1_s`
+- ✅ line 110 `ko.clip.ix_ask_station_end`
+- ✅ line 111 `ko.clip.ix_subway_transfer_miss`
+- ✅ line 112 `ko.clip.ix_subway_transfer_0`
+- ✅ line 113 `ko.clip.ix_subway_transfer_0_s`
+- ✅ line 114 `ko.clip.ix_subway_transfer_1`
+- ✅ line 115 `ko.clip.ix_subway_transfer_1_s`
+- ✅ line 116 `ko.clip.ix_subway_transfer_end`
+- ✅ line 117 `ko.clip.ix_pharmacy_miss`
+- ✅ line 118 `ko.clip.ix_pharmacy_0`
+- ✅ line 119 `ko.clip.ix_pharmacy_0_s`
+- ✅ line 120 `ko.clip.ix_pharmacy_1`
+- ✅ line 121 `ko.clip.ix_pharmacy_1_s`
+- ✅ line 122 `ko.clip.ix_pharmacy_end`
+- ✅ line 123 `ko.clip.ix_clinic_doctor_miss`
+- ✅ line 124 `ko.clip.ix_clinic_doctor_0`
+- ✅ line 125 `ko.clip.ix_clinic_doctor_0_s`
+- ✅ line 126 `ko.clip.ix_clinic_doctor_1`
+- ✅ line 127 `ko.clip.ix_clinic_doctor_1_s`
+- ✅ line 128 `ko.clip.ix_clinic_doctor_end`
+- ✅ line 129 `ko.clip.ix_call_sick_miss`
+- ✅ line 130 `ko.clip.ix_call_sick_0`
+- ✅ line 131 `ko.clip.ix_call_sick_0_s`
+- ✅ line 132 `ko.clip.ix_call_sick_1`
+- ✅ line 133 `ko.clip.ix_call_sick_1_s`
+- ✅ line 134 `ko.clip.ix_call_sick_end`
+- ✅ line 135 `ko.clip.ix_bank_account_miss`
+- ✅ line 136 `ko.clip.ix_bank_account_0`
+- ✅ line 137 `ko.clip.ix_bank_account_0_s`
+- ✅ line 138 `ko.clip.ix_bank_account_1`
+- ✅ line 139 `ko.clip.ix_bank_account_1_s`
+- ✅ line 140 `ko.clip.ix_bank_account_end`
+- ✅ line 141 `ko.clip.ix_cp6_new_colleague_miss`
+- ✅ line 142 `ko.clip.ix_cp6_new_colleague_0`
+- ✅ line 143 `ko.clip.ix_cp6_new_colleague_0_s`
+- ✅ line 144 `ko.clip.ix_cp6_new_colleague_1`
+- ✅ line 145 `ko.clip.ix_cp6_new_colleague_1_s`
+- ✅ line 146 `ko.clip.ix_cp6_new_colleague_end`
+- ✅ line 147 `ko.clip.ix_cp6_interview_miss`
+- ✅ line 148 `ko.clip.ix_cp6_interview_0`
+- ✅ line 149 `ko.clip.ix_cp6_interview_0_s`
+- ✅ line 150 `ko.clip.ix_cp6_interview_1`
+- ✅ line 151 `ko.clip.ix_cp6_interview_1_s`
+- ✅ line 152 `ko.clip.ix_cp6_interview_end`
+- ✅ line 153 `ko.clip.ix_cp6_store_pay_miss`
+- ✅ line 154 `ko.clip.ix_cp6_store_pay_0`
+- ✅ line 155 `ko.clip.ix_cp6_store_pay_0_s`
+- ✅ line 156 `ko.clip.ix_cp6_store_pay_1`
+- ✅ line 157 `ko.clip.ix_cp6_store_pay_1_s`
+- ✅ line 158 `ko.clip.ix_cp6_store_pay_end`
+- ✅ line 159 `ko.clip.ix_cp6_way_bank_miss`
+- ✅ line 160 `ko.clip.ix_cp6_way_bank_0`
+- ✅ line 161 `ko.clip.ix_cp6_way_bank_0_s`
+- ✅ line 162 `ko.clip.ix_cp6_way_bank_1`
+- ✅ line 163 `ko.clip.ix_cp6_way_bank_1_s`
+- ✅ line 164 `ko.clip.ix_cp6_way_bank_end`
+- ✅ line 165 `ko.clip.ix_cp6_clinic_cough_miss`
+- ✅ line 166 `ko.clip.ix_cp6_clinic_cough_0`
+- ✅ line 167 `ko.clip.ix_cp6_clinic_cough_0_s`
+- ✅ line 168 `ko.clip.ix_cp6_clinic_cough_1`
+- ✅ line 169 `ko.clip.ix_cp6_clinic_cough_1_s`
+- ✅ line 170 `ko.clip.ix_cp6_clinic_cough_end`
+- ✅ line 171 `ko.clip.ix_cp6_call_office_miss`
+- ✅ line 172 `ko.clip.ix_cp6_call_office_0`
+- ✅ line 173 `ko.clip.ix_cp6_call_office_0_s`
+- ✅ line 174 `ko.clip.ix_cp6_call_office_1`
+- ✅ line 175 `ko.clip.ix_cp6_call_office_1_s`
+- ✅ line 176 `ko.clip.ix_cp6_call_office_end`
+- ✅ line 177 `ko.clip.ix_a1cap_first_day_miss`
+- ✅ line 178 `ko.clip.ix_a1cap_first_day_0`
+- ✅ line 179 `ko.clip.ix_a1cap_first_day_0_s`
+- ✅ line 180 `ko.clip.ix_a1cap_first_day_1`
+- ✅ line 181 `ko.clip.ix_a1cap_first_day_1_s`
+- ✅ line 182 `ko.clip.ix_a1cap_first_day_end`
+- ✅ line 183 `ko.clip.ix_a1cap_neighbor_miss`
+- ✅ line 184 `ko.clip.ix_a1cap_neighbor_0`
+- ✅ line 185 `ko.clip.ix_a1cap_neighbor_0_s`
+- ✅ line 186 `ko.clip.ix_a1cap_neighbor_1`
+- ✅ line 187 `ko.clip.ix_a1cap_neighbor_1_s`
+- ✅ line 188 `ko.clip.ix_a1cap_neighbor_end`
+- ✅ line 189 `ko.clip.ix_a1cap_friend_plan_miss`
+- ✅ line 190 `ko.clip.ix_a1cap_friend_plan_0`
+- ✅ line 191 `ko.clip.ix_a1cap_friend_plan_0_s`
+- ✅ line 192 `ko.clip.ix_a1cap_friend_plan_1`
+- ✅ line 193 `ko.clip.ix_a1cap_friend_plan_1_s`
+- ✅ line 194 `ko.clip.ix_a1cap_friend_plan_end`
+- ✅ line 195 `ko.clip.ix_a1cap_lunch_miss`
+- ✅ line 196 `ko.clip.ix_a1cap_lunch_0`
+- ✅ line 197 `ko.clip.ix_a1cap_lunch_0_s`
+- ✅ line 198 `ko.clip.ix_a1cap_lunch_1`
+- ✅ line 199 `ko.clip.ix_a1cap_lunch_1_s`
+- ✅ line 200 `ko.clip.ix_a1cap_lunch_end`
 
 ## Validator errors (fix these records and ingest again)
 
@@ -191,6 +299,114 @@ Records: 92 · schema-valid: 92 · failed: 0 · validator errors after merge: 92
 - reception: ko.clip.un_model_rep_past: generated asset cd5fac989bade688a34c.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.un_model_weekend: generated asset 3079b943efe18cfbbea1.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.un_model_tomorrow: generated asset c47c9120a54255486de7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_store_bag_miss: generated asset b9bc91728956a2b73623.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_store_bag_0: generated asset 6277837c3ac7c3449988.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_store_bag_0_s: generated asset 780b12a83b2352a6bb6c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_store_bag_1: generated asset 67f80b5248719d71606a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_store_bag_1_s: generated asset 580685cd04218f4588cf.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_store_bag_end: generated asset 874f84775f12ec6e9bb4.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_restaurant_order_miss: generated asset b9bc91728956a2b73623.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_restaurant_order_0: generated asset 858349d015b9750096d7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_restaurant_order_0_s: generated asset abdc132dc5e78bc32761.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_restaurant_order_1: generated asset 9d871287d11fc691ebe6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_restaurant_order_1_s: generated asset a1c30c27d1f70a23e589.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_restaurant_order_end: generated asset ccf89fa7ec7c34a479bd.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_ask_station_miss: generated asset 36e351f713f14ffec02c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_ask_station_0: generated asset 6cce926de5ece12224de.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_ask_station_0_s: generated asset 80fb2012a034a161d599.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_ask_station_1: generated asset 1bfc457e911287e96458.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_ask_station_1_s: generated asset 39333aea0f795117b022.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_ask_station_end: generated asset 8741e82ba29238f6aa19.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_subway_transfer_miss: generated asset c9cb33487378d877ffa8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_subway_transfer_0: generated asset 80fb2012a034a161d599.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_subway_transfer_0_s: generated asset b8673236d62e652c5b43.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_subway_transfer_1: generated asset ffa20a6cf8c23aa1e56e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_subway_transfer_1_s: generated asset b54eea163460b9d3ec0a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_subway_transfer_end: generated asset 098dc062a73a9d33e4b3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_pharmacy_miss: generated asset c9cb33487378d877ffa8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_pharmacy_0: generated asset 25ce499e9013621c0e4b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_pharmacy_0_s: generated asset 539fd207285a07d05473.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_pharmacy_1: generated asset 2c452ff212f3f81c6a9d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_pharmacy_1_s: generated asset cf47518742701064412d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_pharmacy_end: generated asset 20ebb8b5d88b19e383ba.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_clinic_doctor_miss: generated asset e97d5bb942326ed624ad.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_clinic_doctor_0: generated asset 4155bcddf5a14f430efa.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_clinic_doctor_0_s: generated asset 9a207ea21e094158d0a6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_clinic_doctor_1: generated asset 9d84dd310263346b84d7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_clinic_doctor_1_s: generated asset d7bf755d3b7f56e62d3e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_clinic_doctor_end: generated asset 090128ae8e1bf7ca0579.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_call_sick_miss: generated asset 388479a93cc269b2f6f3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_call_sick_0: generated asset 131484d3dc9255875423.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_call_sick_0_s: generated asset f81291911773834d68c0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_call_sick_1: generated asset b3edcfcc9a45552fa086.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_call_sick_1_s: generated asset ae0cfcb76111ee2ce4da.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_call_sick_end: generated asset 069e7dbc715bee6515a8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_bank_account_miss: generated asset b9bc91728956a2b73623.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_bank_account_0: generated asset 59253b0169a117eca3ce.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_bank_account_0_s: generated asset b8673236d62e652c5b43.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_bank_account_1: generated asset 99e6a08a64960cdc2063.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_bank_account_1_s: generated asset 5217db24b6faa539f114.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_bank_account_end: generated asset dc58652ffe487faa1518.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_new_colleague_miss: generated asset 82e6d3500760a9c88452.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_new_colleague_0: generated asset 0fd4944d2031d58ff71c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_new_colleague_0_s: generated asset 261b081344578e1758df.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_new_colleague_1: generated asset f5642e4ca47b86e71733.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_new_colleague_1_s: generated asset cbc569e79081698d7989.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_new_colleague_end: generated asset 967ebe95eb75aabb9ea4.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_interview_miss: generated asset 920b6a27f4247b5babb3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_interview_0: generated asset 0580bf12311146e36b46.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_interview_0_s: generated asset 059532da54a3a32ecff7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_interview_1: generated asset 40ee3864d7454b6ed1b5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_interview_1_s: generated asset 38c1ffb9ab61e1e8d46e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_interview_end: generated asset c5857921694229d361ca.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_store_pay_miss: generated asset b9bc91728956a2b73623.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_store_pay_0: generated asset 3ec66d6ee2b3b40e6c41.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_store_pay_0_s: generated asset d53cb66e25396d6190da.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_store_pay_1: generated asset e3aa0778512c0a1ef9cd.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_store_pay_1_s: generated asset e6fcaa48d60690444eb9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_store_pay_end: generated asset 129a7398857ef221a7d6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_way_bank_miss: generated asset 36e351f713f14ffec02c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_way_bank_0: generated asset 6cce926de5ece12224de.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_way_bank_0_s: generated asset 80fb2012a034a161d599.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_way_bank_1: generated asset cc9bb5b0cbdeba4305ec.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_way_bank_1_s: generated asset 5db5dfab3171c7f006c6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_way_bank_end: generated asset 8741e82ba29238f6aa19.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_clinic_cough_miss: generated asset 7761e740c0be9b62e316.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_clinic_cough_0: generated asset 4155bcddf5a14f430efa.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_clinic_cough_0_s: generated asset 9a207ea21e094158d0a6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_clinic_cough_1: generated asset f71b0f0367f3217b05ad.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_clinic_cough_1_s: generated asset 5449f336f4339d17d7f6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_clinic_cough_end: generated asset a729c8f065f62ed728fb.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_call_office_miss: generated asset d61d6676cfcd57347f16.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_call_office_0: generated asset d42ad522be5feba819aa.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_call_office_0_s: generated asset 1b27b29af234e9253c20.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_call_office_1: generated asset 95de7982449b8c9db357.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_call_office_1_s: generated asset 323cef549beed7a8c697.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_call_office_end: generated asset 5df17773a5f3ca966796.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_first_day_miss: generated asset 42578a4be3fa0b9ff8d9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_first_day_0: generated asset 6f4587f34e2cb9ffe60d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_first_day_0_s: generated asset bf48ad8787fda63a28c0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_first_day_1: generated asset 9431319f811ba775294c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_first_day_1_s: generated asset 562a34cf3703496dac3e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_first_day_end: generated asset 20a167a7e4c2cbf07860.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_neighbor_miss: generated asset d61d6676cfcd57347f16.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_neighbor_0: generated asset ff596b9fa92bf4161d8f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_neighbor_0_s: generated asset f4d77b97bd42c073c600.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_neighbor_1: generated asset e895310d8e0b5da8401c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_neighbor_1_s: generated asset e99d7845c0f3fa33cd82.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_neighbor_end: generated asset c7cfbfc13db2853f22a5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_friend_plan_miss: generated asset 6b414cced2cd0763b5b2.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_friend_plan_0: generated asset 2eb2fe42a49a4b22cb4d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_friend_plan_0_s: generated asset 1cfd2e8b5390acd13b80.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_friend_plan_1: generated asset 8eedfa2a50ceb78c46f9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_friend_plan_1_s: generated asset 0590b3d35666c1f8dab1.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_friend_plan_end: generated asset c95cb1ef8dd854427a4b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_lunch_miss: generated asset c7627d86666f14398763.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_lunch_0: generated asset fdd9a6dbfc09bb5d7bca.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_lunch_0_s: generated asset 29ab5048606c1b073b5f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_lunch_1: generated asset b5a6c22d001ef6030e2e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_lunch_1_s: generated asset a1c30c27d1f70a23e589.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_a1cap_lunch_end: generated asset f6cf56abb283def844a3.mp3 missing — run the reception-audio generate workflow (P7 §26)
 
 ## Written
 

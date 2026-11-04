@@ -1,0 +1,3500 @@
+{
+  "version": 1,
+  "language": "ko",
+  "scenarios": [
+    {
+      "id": "ko.scenario.store_bag",
+      "title": {
+        "vi": "Ở cửa hàng tiện lợi"
+      },
+      "goal": {
+        "vi": "Nói bạn cần một cái túi, rồi nói bạn trả bằng thẻ."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "죄송합니다. 다시 말해 주세요.",
+          "clipId": "ko.clip.ix_store_bag_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "어서 오세요. 봉투 필요하세요?",
+          "clipId": "ko.clip.ix_store_bag_0",
+          "rephraseText": "봉투 드릴까요?",
+          "rephraseClipId": "ko.clip.ix_store_bag_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn cần một cái túi."
+          },
+          "expected": [
+            {
+              "intent": "need_bag",
+              "acceptedVariants": [
+                "네, 하나 주세요",
+                "네, 하나 주십시오",
+                "네, 주세요",
+                "네, 주십시오",
+                "네, 봉투 하나 주세요",
+                "네, 봉투 하나 주십시오",
+                "봉투 주세요",
+                "봉투 주십시오",
+                "네, 필요해요",
+                "네, 필요합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "네",
+                  "주세요",
+                  "필요해요"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "봉투 드릴까요?",
+          "clipId": "ko.clip.ix_store_bag_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn cần một cái túi."
+          },
+          "expected": [
+            {
+              "intent": "need_bag",
+              "acceptedVariants": [
+                "네, 하나 주세요",
+                "네, 하나 주십시오",
+                "네, 주세요",
+                "네, 주십시오",
+                "네, 봉투 하나 주세요",
+                "네, 봉투 하나 주십시오",
+                "봉투 주세요",
+                "봉투 주십시오",
+                "네, 필요해요",
+                "네, 필요합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "네",
+                  "주세요",
+                  "필요해요"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "모두 칠천 원이에요.",
+          "clipId": "ko.clip.ix_store_bag_1",
+          "rephraseText": "칠천 원이에요.",
+          "rephraseClipId": "ko.clip.ix_store_bag_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn trả bằng thẻ."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "카드로 할게요",
+                "카드로 계산할게요",
+                "카드로 계산해요",
+                "카드로 계산합니다",
+                "카드요"
+              ],
+              "requiredConcepts": [
+                [
+                  "카드로",
+                  "카드요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "칠천 원이에요.",
+          "clipId": "ko.clip.ix_store_bag_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn trả bằng thẻ."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "카드로 할게요",
+                "카드로 계산할게요",
+                "카드로 계산해요",
+                "카드로 계산합니다",
+                "카드요"
+              ],
+              "requiredConcepts": [
+                [
+                  "카드로",
+                  "카드요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "네, 감사합니다. 안녕히 가세요.",
+          "clipId": "ko.clip.ix_store_bag_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.restaurant_order",
+      "title": {
+        "vi": "Gọi món ở quán ăn"
+      },
+      "goal": {
+        "vi": "Nói bạn đi hai người, rồi gọi hai bát cơm trộn."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "죄송합니다. 다시 말해 주세요.",
+          "clipId": "ko.clip.ix_restaurant_order_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "어서 오세요. 몇 분이세요?",
+          "clipId": "ko.clip.ix_restaurant_order_0",
+          "rephraseText": "몇 명이에요?",
+          "rephraseClipId": "ko.clip.ix_restaurant_order_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đi hai người."
+          },
+          "expected": [
+            {
+              "intent": "two_people",
+              "acceptedVariants": [
+                "두 명이에요",
+                "두 명입니다",
+                "두 명이요",
+                "두 명"
+              ],
+              "requiredConcepts": [
+                [
+                  "두"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "몇 명이에요?",
+          "clipId": "ko.clip.ix_restaurant_order_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đi hai người."
+          },
+          "expected": [
+            {
+              "intent": "two_people",
+              "acceptedVariants": [
+                "두 명이에요",
+                "두 명입니다",
+                "두 명이요",
+                "두 명"
+              ],
+              "requiredConcepts": [
+                [
+                  "두"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "이쪽으로 앉으세요. 뭐 드릴까요?",
+          "clipId": "ko.clip.ix_restaurant_order_1",
+          "rephraseText": "뭐 먹을 거예요?",
+          "rephraseClipId": "ko.clip.ix_restaurant_order_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy gọi hai bát cơm trộn."
+          },
+          "expected": [
+            {
+              "intent": "order",
+              "acceptedVariants": [
+                "비빔밥 두 개 주세요",
+                "비빔밥 두 개 주십시오",
+                "비빔밥을 두 개 주세요",
+                "비빔밥을 두 개 주십시오",
+                "비빔밥 두 그릇 주세요",
+                "비빔밥 두 그릇 주십시오",
+                "비빔밥을 두 그릇 주세요",
+                "비빔밥을 두 그릇 주십시오",
+                "비빔밥 둘 주세요",
+                "비빔밥 둘 주십시오",
+                "비빔밥 두 개요",
+                "비빔밥 주세요",
+                "비빔밥 주십시오"
+              ],
+              "requiredConcepts": [
+                [
+                  "비빔밥"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "뭐 먹을 거예요?",
+          "clipId": "ko.clip.ix_restaurant_order_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy gọi hai bát cơm trộn."
+          },
+          "expected": [
+            {
+              "intent": "order",
+              "acceptedVariants": [
+                "비빔밥 두 개 주세요",
+                "비빔밥 두 개 주십시오",
+                "비빔밥을 두 개 주세요",
+                "비빔밥을 두 개 주십시오",
+                "비빔밥 두 그릇 주세요",
+                "비빔밥 두 그릇 주십시오",
+                "비빔밥을 두 그릇 주세요",
+                "비빔밥을 두 그릇 주십시오",
+                "비빔밥 둘 주세요",
+                "비빔밥 둘 주십시오",
+                "비빔밥 두 개요",
+                "비빔밥 주세요",
+                "비빔밥 주십시오"
+              ],
+              "requiredConcepts": [
+                [
+                  "비빔밥"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "네, 비빔밥 두 개요. 잠깐만요.",
+          "clipId": "ko.clip.ix_restaurant_order_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.ask_station",
+      "title": {
+        "vi": "Hỏi đường đến ga"
+      },
+      "goal": {
+        "vi": "Hỏi một người lạ ga ở đâu, rồi cảm ơn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "죄송합니다. 잘 모르겠어요.",
+          "clipId": "ko.clip.ix_ask_station_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "네, 무슨 일이세요?",
+          "clipId": "ko.clip.ix_ask_station_0",
+          "rephraseText": "네, 말씀하세요.",
+          "rephraseClipId": "ko.clip.ix_ask_station_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi ga ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "역이 어디예요",
+                "역이 어디입니다",
+                "실례합니다. 역이 어디예요",
+                "실례합니다. 역이 어디입니다",
+                "역이 어디에 있어요",
+                "역이 어디에 있습니다",
+                "저기요, 역이 어디예요",
+                "저기요, 역이 어디입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "역이",
+                  "역은"
+                ],
+                [
+                  "어디예요",
+                  "어디에",
+                  "어디"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "네, 말씀하세요.",
+          "clipId": "ko.clip.ix_ask_station_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi ga ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "역이 어디예요",
+                "역이 어디입니다",
+                "실례합니다. 역이 어디예요",
+                "실례합니다. 역이 어디입니다",
+                "역이 어디에 있어요",
+                "역이 어디에 있습니다",
+                "저기요, 역이 어디예요",
+                "저기요, 역이 어디입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "역이",
+                  "역은"
+                ],
+                [
+                  "어디예요",
+                  "어디에",
+                  "어디"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "똑바로 가서 오른쪽으로 가세요.",
+          "clipId": "ko.clip.ix_ask_station_1",
+          "rephraseText": "오른쪽이에요.",
+          "rephraseClipId": "ko.clip.ix_ask_station_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "감사합니다",
+                "고맙습니다",
+                "고마워요",
+                "네, 감사합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "감사합니다",
+                  "고맙습니다",
+                  "고마워요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "오른쪽이에요.",
+          "clipId": "ko.clip.ix_ask_station_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "감사합니다",
+                "고맙습니다",
+                "고마워요",
+                "네, 감사합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "감사합니다",
+                  "고맙습니다",
+                  "고마워요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "네, 안녕히 가세요.",
+          "clipId": "ko.clip.ix_ask_station_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.subway_transfer",
+      "title": {
+        "vi": "Đổi tàu điện ngầm"
+      },
+      "goal": {
+        "vi": "Hỏi nhân viên nhà ga đi Toà thị chính thế nào, rồi nhắc lại tuyến tàu."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "다시 말해 주세요.",
+          "clipId": "ko.clip.ix_subway_transfer_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "네, 말씀하세요.",
+          "clipId": "ko.clip.ix_subway_transfer_0",
+          "rephraseText": "무슨 일이세요?",
+          "rephraseClipId": "ko.clip.ix_subway_transfer_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi đi đến Toà thị chính thế nào."
+          },
+          "expected": [
+            {
+              "intent": "ask_route",
+              "acceptedVariants": [
+                "시청에 어떻게 가요",
+                "시청에 어떻게 갑니다",
+                "시청은 어떻게 가요",
+                "시청은 어떻게 갑니다",
+                "시청에 가고 싶어요",
+                "시청에 가고 싶습니다",
+                "시청에 어떻게 가야 해요",
+                "시청에 어떻게 가야 합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "시청에",
+                  "시청은"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "무슨 일이세요?",
+          "clipId": "ko.clip.ix_subway_transfer_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi đi đến Toà thị chính thế nào."
+          },
+          "expected": [
+            {
+              "intent": "ask_route",
+              "acceptedVariants": [
+                "시청에 어떻게 가요",
+                "시청에 어떻게 갑니다",
+                "시청은 어떻게 가요",
+                "시청은 어떻게 갑니다",
+                "시청에 가고 싶어요",
+                "시청에 가고 싶습니다",
+                "시청에 어떻게 가야 해요",
+                "시청에 어떻게 가야 합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "시청에",
+                  "시청은"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "다음 역에서 2호선으로 갈아타세요.",
+          "clipId": "ko.clip.ix_subway_transfer_1",
+          "rephraseText": "2호선이에요.",
+          "rephraseClipId": "ko.clip.ix_subway_transfer_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nhắc lại tuyến tàu để chắc chắn."
+          },
+          "expected": [
+            {
+              "intent": "repeat",
+              "acceptedVariants": [
+                "이호선이요",
+                "이호선이에요",
+                "이호선입니다",
+                "이호선으로 갈아타요",
+                "이호선으로 갈아탑니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "이호선이요",
+                  "이호선이에요",
+                  "이호선으로"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "2호선이에요.",
+          "clipId": "ko.clip.ix_subway_transfer_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nhắc lại tuyến tàu để chắc chắn."
+          },
+          "expected": [
+            {
+              "intent": "repeat",
+              "acceptedVariants": [
+                "이호선이요",
+                "이호선이에요",
+                "이호선입니다",
+                "이호선으로 갈아타요",
+                "이호선으로 갈아탑니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "이호선이요",
+                  "이호선이에요",
+                  "이호선으로"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "네, 맞아요.",
+          "clipId": "ko.clip.ix_subway_transfer_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.pharmacy",
+      "title": {
+        "vi": "Ở nhà thuốc"
+      },
+      "goal": {
+        "vi": "Nói bạn bị cảm và cần thuốc, rồi hỏi một ngày uống mấy lần."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "다시 말해 주세요.",
+          "clipId": "ko.clip.ix_pharmacy_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "어서 오세요. 어디가 아프세요?",
+          "clipId": "ko.clip.ix_pharmacy_0",
+          "rephraseText": "뭐 필요하세요?",
+          "rephraseClipId": "ko.clip.ix_pharmacy_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn bị cảm và cần thuốc."
+          },
+          "expected": [
+            {
+              "intent": "cold",
+              "acceptedVariants": [
+                "감기에 걸렸어요. 약 주세요",
+                "감기에 걸렸습니다. 약 주십시오",
+                "감기에 걸렸어요",
+                "감기에 걸렸습니다",
+                "감기에 걸렸어요. 약 있어요",
+                "감기에 걸렸습니다. 약 있습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "감기에"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "뭐 필요하세요?",
+          "clipId": "ko.clip.ix_pharmacy_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn bị cảm và cần thuốc."
+          },
+          "expected": [
+            {
+              "intent": "cold",
+              "acceptedVariants": [
+                "감기에 걸렸어요. 약 주세요",
+                "감기에 걸렸습니다. 약 주십시오",
+                "감기에 걸렸어요",
+                "감기에 걸렸습니다",
+                "감기에 걸렸어요. 약 있어요",
+                "감기에 걸렸습니다. 약 있습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "감기에"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "이 약을 드세요.",
+          "clipId": "ko.clip.ix_pharmacy_1",
+          "rephraseText": "이 약이에요.",
+          "rephraseClipId": "ko.clip.ix_pharmacy_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy hỏi một ngày uống mấy lần."
+          },
+          "expected": [
+            {
+              "intent": "how_often",
+              "acceptedVariants": [
+                "하루에 몇 번 먹어요",
+                "하루에 몇 번 먹습니다",
+                "몇 번 먹어요",
+                "몇 번 먹습니다",
+                "하루에 몇 번 드세요",
+                "하루에 몇 번 드십시오",
+                "몇 번 드세요",
+                "몇 번 드십시오"
+              ],
+              "requiredConcepts": [
+                [
+                  "몇"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "이 약이에요.",
+          "clipId": "ko.clip.ix_pharmacy_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy hỏi một ngày uống mấy lần."
+          },
+          "expected": [
+            {
+              "intent": "how_often",
+              "acceptedVariants": [
+                "하루에 몇 번 먹어요",
+                "하루에 몇 번 먹습니다",
+                "몇 번 먹어요",
+                "몇 번 먹습니다",
+                "하루에 몇 번 드세요",
+                "하루에 몇 번 드십시오",
+                "몇 번 드세요",
+                "몇 번 드십시오"
+              ],
+              "requiredConcepts": [
+                [
+                  "몇"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "하루에 세 번, 밥을 먹고 드세요.",
+          "clipId": "ko.clip.ix_pharmacy_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.clinic_doctor",
+      "title": {
+        "vi": "Đi khám bệnh"
+      },
+      "goal": {
+        "vi": "Nói với bác sĩ bạn đau đầu và bị ho, từ hôm qua."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "간호사에게 말하세요.",
+          "clipId": "ko.clip.ix_clinic_doctor_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "어디가 아프세요?",
+          "clipId": "ko.clip.ix_clinic_doctor_0",
+          "rephraseText": "어디가 안 좋아요?",
+          "rephraseClipId": "ko.clip.ix_clinic_doctor_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đau đầu và bị ho."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "머리가 아프고 기침을 해요",
+                "머리가 아프고 기침 해요",
+                "머리가 아프고 기침을 합니다",
+                "머리가 아프고 기침 합니다",
+                "머리가 아파요. 기침도 해요",
+                "머리 아파요. 기침도 해요",
+                "머리가 아픕니다. 기침도 합니다",
+                "머리 아픕니다. 기침도 합니다",
+                "머리가 아파요",
+                "머리 아파요",
+                "머리가 아픕니다",
+                "머리는 아파요",
+                "머리 아픕니다",
+                "머리는 아픕니다",
+                "기침을 해요",
+                "기침 해요",
+                "기침을 합니다",
+                "기침 합니다",
+                "머리가 아프고 기침이 나요",
+                "머리가 아프고 기침이 납니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "머리가",
+                  "머리도",
+                  "기침을",
+                  "기침이",
+                  "기침도"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "어디가 안 좋아요?",
+          "clipId": "ko.clip.ix_clinic_doctor_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đau đầu và bị ho."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "머리가 아프고 기침을 해요",
+                "머리가 아프고 기침 해요",
+                "머리가 아프고 기침을 합니다",
+                "머리가 아프고 기침 합니다",
+                "머리가 아파요. 기침도 해요",
+                "머리 아파요. 기침도 해요",
+                "머리가 아픕니다. 기침도 합니다",
+                "머리 아픕니다. 기침도 합니다",
+                "머리가 아파요",
+                "머리 아파요",
+                "머리가 아픕니다",
+                "머리는 아파요",
+                "머리 아픕니다",
+                "머리는 아픕니다",
+                "기침을 해요",
+                "기침 해요",
+                "기침을 합니다",
+                "기침 합니다",
+                "머리가 아프고 기침이 나요",
+                "머리가 아프고 기침이 납니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "머리가",
+                  "머리도",
+                  "기침을",
+                  "기침이",
+                  "기침도"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "언제부터 아팠어요?",
+          "clipId": "ko.clip.ix_clinic_doctor_1",
+          "rephraseText": "어제부터예요? 오늘부터예요?",
+          "rephraseClipId": "ko.clip.ix_clinic_doctor_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói từ hôm qua."
+          },
+          "expected": [
+            {
+              "intent": "since",
+              "acceptedVariants": [
+                "어제부터요",
+                "어제부터 아팠어요",
+                "어제부터 아팠습니다",
+                "어제부터예요"
+              ],
+              "requiredConcepts": [
+                [
+                  "어제부터요",
+                  "어제부터",
+                  "어제부터예요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "어제부터예요? 오늘부터예요?",
+          "clipId": "ko.clip.ix_clinic_doctor_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói từ hôm qua."
+          },
+          "expected": [
+            {
+              "intent": "since",
+              "acceptedVariants": [
+                "어제부터요",
+                "어제부터 아팠어요",
+                "어제부터 아팠습니다",
+                "어제부터예요"
+              ],
+              "requiredConcepts": [
+                [
+                  "어제부터요",
+                  "어제부터",
+                  "어제부터예요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "이 약을 하루에 세 번 드세요.",
+          "clipId": "ko.clip.ix_clinic_doctor_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.call_sick",
+      "title": {
+        "vi": "Gọi điện xin nghỉ ốm"
+      },
+      "goal": {
+        "vi": "Gọi cho tổ trưởng: nói bạn là Nam, bạn bị ốm và hôm nay xin nghỉ."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "네, 다시 전화하세요.",
+          "clipId": "ko.clip.ix_call_sick_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "여보세요?",
+          "clipId": "ko.clip.ix_call_sick_0",
+          "rephraseText": "네, 여보세요.",
+          "rephraseClipId": "ko.clip.ix_call_sick_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy chào và nói bạn là Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "반장님, 안녕하세요. 남이에요",
+                "반장님, 안녕하십니까? 남입니다",
+                "남이에요",
+                "남입니다",
+                "여보세요, 남이에요",
+                "여보세요, 남입니다",
+                "안녕하세요. 저는 남이에요",
+                "안녕하십니까? 저는 남입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "남이에요",
+                  "남입니다"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "네, 여보세요.",
+          "clipId": "ko.clip.ix_call_sick_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy chào và nói bạn là Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "반장님, 안녕하세요. 남이에요",
+                "반장님, 안녕하십니까? 남입니다",
+                "남이에요",
+                "남입니다",
+                "여보세요, 남이에요",
+                "여보세요, 남입니다",
+                "안녕하세요. 저는 남이에요",
+                "안녕하십니까? 저는 남입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "남이에요",
+                  "남입니다"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "남 씨, 무슨 일이에요?",
+          "clipId": "ko.clip.ix_call_sick_1",
+          "rephraseText": "왜요?",
+          "rephraseClipId": "ko.clip.ix_call_sick_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn bị ốm và hôm nay xin nghỉ."
+          },
+          "expected": [
+            {
+              "intent": "sick",
+              "acceptedVariants": [
+                "몸이 아파요. 오늘 쉬고 싶어요",
+                "몸 아파요. 오늘 쉬고 싶어요",
+                "몸이 아픕니다. 오늘 쉬고 싶습니다",
+                "몸 아픕니다. 오늘 쉬고 싶습니다",
+                "아파요. 오늘 쉬어도 돼요",
+                "아픕니다. 오늘 쉬어도 됩니다",
+                "오늘 못 가요",
+                "오늘 가지 못해요",
+                "오늘은 못 가요",
+                "오늘 못 갑니다",
+                "오늘은 가지 못해요",
+                "오늘 가지 못합니다",
+                "오늘은 못 갑니다",
+                "오늘은 가지 못합니다",
+                "감기에 걸렸어요. 오늘 쉬고 싶어요",
+                "감기에 걸렸습니다. 오늘 쉬고 싶습니다",
+                "몸이 아파서 오늘 못 가요",
+                "몸이 아파서 오늘 가지 못해요",
+                "몸 아파서 오늘 못 가요",
+                "몸이 아파서 오늘 못 갑니다",
+                "몸 아파서 오늘 가지 못해요",
+                "몸이 아파서 오늘 가지 못합니다",
+                "몸 아파서 오늘 못 갑니다",
+                "몸 아파서 오늘 가지 못합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "아파요",
+                  "아파서",
+                  "감기에",
+                  "쉬고",
+                  "쉬어도",
+                  "못"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "왜요?",
+          "clipId": "ko.clip.ix_call_sick_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn bị ốm và hôm nay xin nghỉ."
+          },
+          "expected": [
+            {
+              "intent": "sick",
+              "acceptedVariants": [
+                "몸이 아파요. 오늘 쉬고 싶어요",
+                "몸 아파요. 오늘 쉬고 싶어요",
+                "몸이 아픕니다. 오늘 쉬고 싶습니다",
+                "몸 아픕니다. 오늘 쉬고 싶습니다",
+                "아파요. 오늘 쉬어도 돼요",
+                "아픕니다. 오늘 쉬어도 됩니다",
+                "오늘 못 가요",
+                "오늘 가지 못해요",
+                "오늘은 못 가요",
+                "오늘 못 갑니다",
+                "오늘은 가지 못해요",
+                "오늘 가지 못합니다",
+                "오늘은 못 갑니다",
+                "오늘은 가지 못합니다",
+                "감기에 걸렸어요. 오늘 쉬고 싶어요",
+                "감기에 걸렸습니다. 오늘 쉬고 싶습니다",
+                "몸이 아파서 오늘 못 가요",
+                "몸이 아파서 오늘 가지 못해요",
+                "몸 아파서 오늘 못 가요",
+                "몸이 아파서 오늘 못 갑니다",
+                "몸 아파서 오늘 가지 못해요",
+                "몸이 아파서 오늘 가지 못합니다",
+                "몸 아파서 오늘 못 갑니다",
+                "몸 아파서 오늘 가지 못합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "아파요",
+                  "아파서",
+                  "감기에",
+                  "쉬고",
+                  "쉬어도",
+                  "못"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "네, 쉬세요. 내일 봐요.",
+          "clipId": "ko.clip.ix_call_sick_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.bank_account",
+      "title": {
+        "vi": "Ở ngân hàng"
+      },
+      "goal": {
+        "vi": "Nói bạn muốn mở tài khoản, rồi đưa thẻ đăng ký người nước ngoài."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "죄송합니다. 다시 말해 주세요.",
+          "clipId": "ko.clip.ix_bank_account_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "어서 오세요. 어떻게 오셨어요?",
+          "clipId": "ko.clip.ix_bank_account_0",
+          "rephraseText": "무슨 일이세요?",
+          "rephraseClipId": "ko.clip.ix_bank_account_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn mở tài khoản."
+          },
+          "expected": [
+            {
+              "intent": "open_account",
+              "acceptedVariants": [
+                "통장을 만들고 싶어요",
+                "통장 만들고 싶어요",
+                "통장을 만들고 싶습니다",
+                "통장 만들고 싶습니다",
+                "계좌를 만들고 싶어요",
+                "계좌 만들고 싶어요",
+                "계좌를 만들고 싶습니다",
+                "계좌 만들고 싶습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "통장을",
+                  "통장",
+                  "계좌를",
+                  "계좌"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "무슨 일이세요?",
+          "clipId": "ko.clip.ix_bank_account_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn mở tài khoản."
+          },
+          "expected": [
+            {
+              "intent": "open_account",
+              "acceptedVariants": [
+                "통장을 만들고 싶어요",
+                "통장 만들고 싶어요",
+                "통장을 만들고 싶습니다",
+                "통장 만들고 싶습니다",
+                "계좌를 만들고 싶어요",
+                "계좌 만들고 싶어요",
+                "계좌를 만들고 싶습니다",
+                "계좌 만들고 싶습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "통장을",
+                  "통장",
+                  "계좌를",
+                  "계좌"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "신분증 있으세요?",
+          "clipId": "ko.clip.ix_bank_account_1",
+          "rephraseText": "외국인 등록증 있으세요?",
+          "rephraseClipId": "ko.clip.ix_bank_account_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy đưa thẻ đăng ký người nước ngoài và nói một câu lịch sự."
+          },
+          "expected": [
+            {
+              "intent": "hand_over",
+              "acceptedVariants": [
+                "네, 여기 있어요",
+                "네, 여기 있습니다",
+                "여기 있어요",
+                "여기 있습니다",
+                "네, 있어요",
+                "네, 있습니다",
+                "외국인 등록증 여기 있어요",
+                "외국인 등록증 여기 있습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "있어요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "외국인 등록증 있으세요?",
+          "clipId": "ko.clip.ix_bank_account_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy đưa thẻ đăng ký người nước ngoài và nói một câu lịch sự."
+          },
+          "expected": [
+            {
+              "intent": "hand_over",
+              "acceptedVariants": [
+                "네, 여기 있어요",
+                "네, 여기 있습니다",
+                "여기 있어요",
+                "여기 있습니다",
+                "네, 있어요",
+                "네, 있습니다",
+                "외국인 등록증 여기 있어요",
+                "외국인 등록증 여기 있습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "있어요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "감사합니다. 여기에 이름을 쓰세요.",
+          "clipId": "ko.clip.ix_bank_account_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.cp6_new_colleague",
+      "title": {
+        "vi": "Đồng nghiệp mới"
+      },
+      "goal": {
+        "vi": "Làm quen với một đồng nghiệp ở nhà máy."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "네, 또 봐요.",
+          "clipId": "ko.clip.ix_cp6_new_colleague_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "안녕하세요. 저는 민수예요. 새로 왔어요?",
+          "clipId": "ko.clip.ix_cp6_new_colleague_0",
+          "rephraseText": "오늘 처음 왔어요?",
+          "rephraseClipId": "ko.clip.ix_cp6_new_colleague_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói đúng vậy, rồi nói tên bạn: Hoa."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "네, 호아예요",
+                "네, 호아입니다",
+                "네, 저는 호아예요",
+                "네, 저는 호아입니다",
+                "호아예요",
+                "호아입니다",
+                "네, 처음이에요. 호아예요",
+                "네, 처음입니다. 호아입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "호아예요",
+                  "호아입니다"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "오늘 처음 왔어요?",
+          "clipId": "ko.clip.ix_cp6_new_colleague_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói đúng vậy, rồi nói tên bạn: Hoa."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "네, 호아예요",
+                "네, 호아입니다",
+                "네, 저는 호아예요",
+                "네, 저는 호아입니다",
+                "호아예요",
+                "호아입니다",
+                "네, 처음이에요. 호아예요",
+                "네, 처음입니다. 호아입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "호아예요",
+                  "호아입니다"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "호아 씨는 어느 나라 사람이에요?",
+          "clipId": "ko.clip.ix_cp6_new_colleague_1",
+          "rephraseText": "고향이 어디예요?",
+          "rephraseClipId": "ko.clip.ix_cp6_new_colleague_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn đến từ Việt Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_origin",
+              "acceptedVariants": [
+                "베트남 사람이에요",
+                "베트남 사람입니다",
+                "베트남에서 왔어요",
+                "베트남에서 왔습니다",
+                "베트남이에요",
+                "베트남입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "베트남",
+                  "베트남에서",
+                  "베트남이에요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "고향이 어디예요?",
+          "clipId": "ko.clip.ix_cp6_new_colleague_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn đến từ Việt Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_origin",
+              "acceptedVariants": [
+                "베트남 사람이에요",
+                "베트남 사람입니다",
+                "베트남에서 왔어요",
+                "베트남에서 왔습니다",
+                "베트남이에요",
+                "베트남입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "베트남",
+                  "베트남에서",
+                  "베트남이에요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "만나서 반갑습니다.",
+          "clipId": "ko.clip.ix_cp6_new_colleague_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.cp6_interview",
+      "title": {
+        "vi": "Phỏng vấn xin việc"
+      },
+      "goal": {
+        "vi": "Trả lời hai câu hỏi trong buổi phỏng vấn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "감사합니다.",
+          "clipId": "ko.clip.ix_cp6_interview_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "안녕하세요. 이름이 뭐예요?",
+          "clipId": "ko.clip.ix_cp6_interview_0",
+          "rephraseText": "이름을 말해 주세요.",
+          "rephraseClipId": "ko.clip.ix_cp6_interview_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy chào và nói tên bạn: Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "안녕하세요. 남입니다",
+                "안녕하십니까? 남입니다",
+                "남이에요",
+                "남입니다",
+                "저는 남입니다",
+                "안녕하세요. 저는 남이에요",
+                "안녕하십니까? 저는 남입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "남이에요",
+                  "남입니다"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "이름을 말해 주세요.",
+          "clipId": "ko.clip.ix_cp6_interview_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy chào và nói tên bạn: Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "안녕하세요. 남입니다",
+                "안녕하십니까? 남입니다",
+                "남이에요",
+                "남입니다",
+                "저는 남입니다",
+                "안녕하세요. 저는 남이에요",
+                "안녕하십니까? 저는 남입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "남이에요",
+                  "남입니다"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "한국어를 할 수 있어요?",
+          "clipId": "ko.clip.ix_cp6_interview_1",
+          "rephraseText": "한국어 해요?",
+          "rephraseClipId": "ko.clip.ix_cp6_interview_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn nói được một chút."
+          },
+          "expected": [
+            {
+              "intent": "little",
+              "acceptedVariants": [
+                "조금 해요",
+                "조금 합니다",
+                "네, 조금 할 수 있어요",
+                "네, 조금 할 수 있습니다",
+                "조금 할 수 있어요",
+                "조금 할 수 있습니다",
+                "조금요"
+              ],
+              "requiredConcepts": [
+                [
+                  "조금",
+                  "조금요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "한국어 해요?",
+          "clipId": "ko.clip.ix_cp6_interview_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn nói được một chút."
+          },
+          "expected": [
+            {
+              "intent": "little",
+              "acceptedVariants": [
+                "조금 해요",
+                "조금 합니다",
+                "네, 조금 할 수 있어요",
+                "네, 조금 할 수 있습니다",
+                "조금 할 수 있어요",
+                "조금 할 수 있습니다",
+                "조금요"
+              ],
+              "requiredConcepts": [
+                [
+                  "조금",
+                  "조금요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "알겠습니다. 다음 주에 전화할게요.",
+          "clipId": "ko.clip.ix_cp6_interview_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.cp6_store_pay",
+      "title": {
+        "vi": "Trả tiền ở cửa hàng tiện lợi"
+      },
+      "goal": {
+        "vi": "Hỏi trả bằng thẻ được không, rồi nói bạn cần hoá đơn."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "죄송합니다. 다시 말해 주세요.",
+          "clipId": "ko.clip.ix_cp6_store_pay_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "모두 팔천이백 원이에요.",
+          "clipId": "ko.clip.ix_cp6_store_pay_0",
+          "rephraseText": "팔천이백 원이에요.",
+          "rephraseClipId": "ko.clip.ix_cp6_store_pay_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi trả bằng thẻ được không."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "카드로 계산해도 돼요",
+                "카드로 계산해도 됩니다",
+                "카드 돼요",
+                "카드 됩니다",
+                "카드로 해도 돼요",
+                "카드로 해도 됩니다",
+                "카드로 할게요"
+              ],
+              "requiredConcepts": [
+                [
+                  "카드로",
+                  "카드"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "팔천이백 원이에요.",
+          "clipId": "ko.clip.ix_cp6_store_pay_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi trả bằng thẻ được không."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "카드로 계산해도 돼요",
+                "카드로 계산해도 됩니다",
+                "카드 돼요",
+                "카드 됩니다",
+                "카드로 해도 돼요",
+                "카드로 해도 됩니다",
+                "카드로 할게요"
+              ],
+              "requiredConcepts": [
+                [
+                  "카드로",
+                  "카드"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "네, 돼요. 영수증 드릴까요?",
+          "clipId": "ko.clip.ix_cp6_store_pay_1",
+          "rephraseText": "영수증 필요하세요?",
+          "rephraseClipId": "ko.clip.ix_cp6_store_pay_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn cần hoá đơn."
+          },
+          "expected": [
+            {
+              "intent": "receipt",
+              "acceptedVariants": [
+                "네, 주세요",
+                "네, 주십시오",
+                "네",
+                "네, 영수증 주세요",
+                "네, 영수증 주십시오",
+                "네, 필요해요",
+                "네, 필요합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "네"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "영수증 필요하세요?",
+          "clipId": "ko.clip.ix_cp6_store_pay_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn cần hoá đơn."
+          },
+          "expected": [
+            {
+              "intent": "receipt",
+              "acceptedVariants": [
+                "네, 주세요",
+                "네, 주십시오",
+                "네",
+                "네, 영수증 주세요",
+                "네, 영수증 주십시오",
+                "네, 필요해요",
+                "네, 필요합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "네"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "감사합니다. 안녕히 가세요.",
+          "clipId": "ko.clip.ix_cp6_store_pay_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.cp6_way_bank",
+      "title": {
+        "vi": "Tìm ngân hàng"
+      },
+      "goal": {
+        "vi": "Hỏi một người lạ ngân hàng ở đâu, rồi cảm ơn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "죄송합니다. 잘 모르겠어요.",
+          "clipId": "ko.clip.ix_cp6_way_bank_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "네, 무슨 일이세요?",
+          "clipId": "ko.clip.ix_cp6_way_bank_0",
+          "rephraseText": "네, 말씀하세요.",
+          "rephraseClipId": "ko.clip.ix_cp6_way_bank_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi ngân hàng ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "은행이 어디예요",
+                "은행이 어디입니다",
+                "실례합니다. 은행이 어디예요",
+                "실례합니다. 은행이 어디입니다",
+                "은행이 어디에 있어요",
+                "은행이 어디에 있습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "은행이",
+                  "은행은"
+                ],
+                [
+                  "어디예요",
+                  "어디에",
+                  "어디"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "네, 말씀하세요.",
+          "clipId": "ko.clip.ix_cp6_way_bank_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi ngân hàng ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "은행이 어디예요",
+                "은행이 어디입니다",
+                "실례합니다. 은행이 어디예요",
+                "실례합니다. 은행이 어디입니다",
+                "은행이 어디에 있어요",
+                "은행이 어디에 있습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "은행이",
+                  "은행은"
+                ],
+                [
+                  "어디예요",
+                  "어디에",
+                  "어디"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "은행은 역 앞에 있어요. 가까워요.",
+          "clipId": "ko.clip.ix_cp6_way_bank_1",
+          "rephraseText": "역 앞이에요.",
+          "rephraseClipId": "ko.clip.ix_cp6_way_bank_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "감사합니다",
+                "고맙습니다",
+                "고마워요",
+                "네, 감사합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "감사합니다",
+                  "고맙습니다",
+                  "고마워요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "역 앞이에요.",
+          "clipId": "ko.clip.ix_cp6_way_bank_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "감사합니다",
+                "고맙습니다",
+                "고마워요",
+                "네, 감사합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "감사합니다",
+                  "고맙습니다",
+                  "고마워요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "네, 안녕히 가세요.",
+          "clipId": "ko.clip.ix_cp6_way_bank_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.cp6_clinic_cough",
+      "title": {
+        "vi": "Ở phòng khám"
+      },
+      "goal": {
+        "vi": "Nói với y tá bạn bị ho, và họng bạn không đau."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "네, 잠깐만요.",
+          "clipId": "ko.clip.ix_cp6_clinic_cough_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "어디가 아프세요?",
+          "clipId": "ko.clip.ix_cp6_clinic_cough_0",
+          "rephraseText": "어디가 안 좋아요?",
+          "rephraseClipId": "ko.clip.ix_cp6_clinic_cough_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn bị ho."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "기침을 해요",
+                "기침 해요",
+                "기침을 합니다",
+                "기침 합니다",
+                "기침이 나요",
+                "기침이 납니다",
+                "기침이 많이 나요",
+                "기침이 많이 납니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "기침을",
+                  "기침이"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "어디가 안 좋아요?",
+          "clipId": "ko.clip.ix_cp6_clinic_cough_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn bị ho."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "기침을 해요",
+                "기침 해요",
+                "기침을 합니다",
+                "기침 합니다",
+                "기침이 나요",
+                "기침이 납니다",
+                "기침이 많이 나요",
+                "기침이 많이 납니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "기침을",
+                  "기침이"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "목도 아파요?",
+          "clipId": "ko.clip.ix_cp6_clinic_cough_1",
+          "rephraseText": "목은요?",
+          "rephraseClipId": "ko.clip.ix_cp6_clinic_cough_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói họng bạn không đau."
+          },
+          "expected": [
+            {
+              "intent": "no_pain",
+              "acceptedVariants": [
+                "아니요, 안 아파요",
+                "아니요, 아프지 않아요",
+                "아니요, 안 아픕니다",
+                "아니요, 아프지 않습니다",
+                "안 아파요",
+                "아프지 않아요",
+                "안 아픕니다",
+                "아프지 않습니다",
+                "아니요, 괜찮아요",
+                "아니요, 괜찮습니다",
+                "목은 안 아파요",
+                "목은 아프지 않아요",
+                "목은 안 아픕니다",
+                "목이 안 아파요",
+                "목은 아프지 않습니다",
+                "목이 안 아픕니다",
+                "목이 아프지 않아요",
+                "목이 아프지 않습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "안",
+                  "괜찮아요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "목은요?",
+          "clipId": "ko.clip.ix_cp6_clinic_cough_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói họng bạn không đau."
+          },
+          "expected": [
+            {
+              "intent": "no_pain",
+              "acceptedVariants": [
+                "아니요, 안 아파요",
+                "아니요, 아프지 않아요",
+                "아니요, 안 아픕니다",
+                "아니요, 아프지 않습니다",
+                "안 아파요",
+                "아프지 않아요",
+                "안 아픕니다",
+                "아프지 않습니다",
+                "아니요, 괜찮아요",
+                "아니요, 괜찮습니다",
+                "목은 안 아파요",
+                "목은 아프지 않아요",
+                "목은 안 아픕니다",
+                "목이 안 아파요",
+                "목은 아프지 않습니다",
+                "목이 안 아픕니다",
+                "목이 아프지 않아요",
+                "목이 아프지 않습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "안",
+                  "괜찮아요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "물을 많이 마시고 쉬세요.",
+          "clipId": "ko.clip.ix_cp6_clinic_cough_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.cp6_call_office",
+      "title": {
+        "vi": "Gọi điện đến công ty"
+      },
+      "goal": {
+        "vi": "Xin nói chuyện với anh Min-su; anh ấy không có ở đó, nên bạn sẽ gọi lại."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "네, 안녕히 계세요.",
+          "clipId": "ko.clip.ix_cp6_call_office_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "여보세요? 안산 공장입니다.",
+          "clipId": "ko.clip.ix_cp6_call_office_0",
+          "rephraseText": "공장입니다.",
+          "rephraseClipId": "ko.clip.ix_cp6_call_office_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy xin nói chuyện với anh Min-su."
+          },
+          "expected": [
+            {
+              "intent": "ask_person",
+              "acceptedVariants": [
+                "민수 씨 있어요",
+                "민수 씨 있습니다",
+                "민수 씨 계세요",
+                "민수 씨 좀 바꿔 주세요",
+                "민수 씨 좀 바꿔 주십시오"
+              ],
+              "requiredConcepts": [
+                [
+                  "민수"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "공장입니다.",
+          "clipId": "ko.clip.ix_cp6_call_office_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy xin nói chuyện với anh Min-su."
+          },
+          "expected": [
+            {
+              "intent": "ask_person",
+              "acceptedVariants": [
+                "민수 씨 있어요",
+                "민수 씨 있습니다",
+                "민수 씨 계세요",
+                "민수 씨 좀 바꿔 주세요",
+                "민수 씨 좀 바꿔 주십시오"
+              ],
+              "requiredConcepts": [
+                [
+                  "민수"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "죄송합니다. 민수 씨는 지금 없어요. 나중에 다시 전화해 주세요.",
+          "clipId": "ko.clip.ix_cp6_call_office_1",
+          "rephraseText": "지금 없어요.",
+          "rephraseClipId": "ko.clip.ix_cp6_call_office_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy đồng ý gọi lại sau."
+          },
+          "expected": [
+            {
+              "intent": "agree",
+              "acceptedVariants": [
+                "네, 다시 전화할게요",
+                "알겠습니다",
+                "네, 나중에 전화할게요",
+                "알겠습니다. 다시 전화할게요"
+              ],
+              "requiredConcepts": [
+                [
+                  "전화할게요",
+                  "알겠습니다",
+                  "네"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "지금 없어요.",
+          "clipId": "ko.clip.ix_cp6_call_office_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy đồng ý gọi lại sau."
+          },
+          "expected": [
+            {
+              "intent": "agree",
+              "acceptedVariants": [
+                "네, 다시 전화할게요",
+                "알겠습니다",
+                "네, 나중에 전화할게요",
+                "알겠습니다. 다시 전화할게요"
+              ],
+              "requiredConcepts": [
+                [
+                  "전화할게요",
+                  "알겠습니다",
+                  "네"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "감사합니다. 안녕히 계세요.",
+          "clipId": "ko.clip.ix_cp6_call_office_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.a1cap_first_day",
+      "title": {
+        "vi": "Ngày đầu ở nhà máy"
+      },
+      "goal": {
+        "vi": "Trả lời một đồng nghiệp trong ngày đầu đi làm."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "반장님에게 말하세요.",
+          "clipId": "ko.clip.ix_a1cap_first_day_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "안녕하세요. 오늘 처음 왔어요?",
+          "clipId": "ko.clip.ix_a1cap_first_day_0",
+          "rephraseText": "새로 왔어요?",
+          "rephraseClipId": "ko.clip.ix_a1cap_first_day_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng."
+          },
+          "expected": [
+            {
+              "intent": "confirm",
+              "acceptedVariants": [
+                "네, 처음 왔어요",
+                "네, 처음 왔습니다",
+                "네",
+                "네, 오늘 처음이에요",
+                "네, 오늘 처음입니다",
+                "네, 맞아요",
+                "네, 맞습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "네"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "새로 왔어요?",
+          "clipId": "ko.clip.ix_a1cap_first_day_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng."
+          },
+          "expected": [
+            {
+              "intent": "confirm",
+              "acceptedVariants": [
+                "네, 처음 왔어요",
+                "네, 처음 왔습니다",
+                "네",
+                "네, 오늘 처음이에요",
+                "네, 오늘 처음입니다",
+                "네, 맞아요",
+                "네, 맞습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "네"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "안전모 있어요?",
+          "clipId": "ko.clip.ix_a1cap_first_day_1",
+          "rephraseText": "안전모요.",
+          "rephraseClipId": "ko.clip.ix_a1cap_first_day_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn không có."
+          },
+          "expected": [
+            {
+              "intent": "no_helmet",
+              "acceptedVariants": [
+                "아니요, 없어요",
+                "아니요, 없습니다",
+                "없어요",
+                "없습니다",
+                "죄송합니다. 없어요",
+                "죄송합니다. 없습니다",
+                "아니요"
+              ],
+              "requiredConcepts": [
+                [
+                  "없어요",
+                  "아니요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "안전모요.",
+          "clipId": "ko.clip.ix_a1cap_first_day_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn không có."
+          },
+          "expected": [
+            {
+              "intent": "no_helmet",
+              "acceptedVariants": [
+                "아니요, 없어요",
+                "아니요, 없습니다",
+                "없어요",
+                "없습니다",
+                "죄송합니다. 없어요",
+                "죄송합니다. 없습니다",
+                "아니요"
+              ],
+              "requiredConcepts": [
+                [
+                  "없어요",
+                  "아니요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "그러면 이 안전모를 쓰세요.",
+          "clipId": "ko.clip.ix_a1cap_first_day_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.a1cap_neighbor",
+      "title": {
+        "vi": "Làm quen với hàng xóm"
+      },
+      "goal": {
+        "vi": "Trả lời một người hàng xóm mới: tên và nơi làm việc của bạn."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "네, 안녕히 계세요.",
+          "clipId": "ko.clip.ix_a1cap_neighbor_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "안녕하세요. 옆 방 사람이에요?",
+          "clipId": "ko.clip.ix_a1cap_neighbor_0",
+          "rephraseText": "옆에 살아요?",
+          "rephraseClipId": "ko.clip.ix_a1cap_neighbor_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Mai."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "네, 마이예요",
+                "네, 마이입니다",
+                "네, 저는 마이예요",
+                "네, 저는 마이입니다",
+                "마이예요",
+                "마이입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "마이예요",
+                  "마이입니다"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "옆에 살아요?",
+          "clipId": "ko.clip.ix_a1cap_neighbor_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Mai."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "네, 마이예요",
+                "네, 마이입니다",
+                "네, 저는 마이예요",
+                "네, 저는 마이입니다",
+                "마이예요",
+                "마이입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "마이예요",
+                  "마이입니다"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "마이 씨는 무슨 일을 해요?",
+          "clipId": "ko.clip.ix_a1cap_neighbor_1",
+          "rephraseText": "어디에서 일해요?",
+          "rephraseClipId": "ko.clip.ix_a1cap_neighbor_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn làm việc ở nhà máy."
+          },
+          "expected": [
+            {
+              "intent": "give_work",
+              "acceptedVariants": [
+                "공장에서 일해요",
+                "공장에서 일합니다",
+                "공장이에요",
+                "공장입니다",
+                "저는 공장에서 일해요",
+                "저는 공장에서 일합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "공장에서",
+                  "공장이에요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "어디에서 일해요?",
+          "clipId": "ko.clip.ix_a1cap_neighbor_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn làm việc ở nhà máy."
+          },
+          "expected": [
+            {
+              "intent": "give_work",
+              "acceptedVariants": [
+                "공장에서 일해요",
+                "공장에서 일합니다",
+                "공장이에요",
+                "공장입니다",
+                "저는 공장에서 일해요",
+                "저는 공장에서 일합니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "공장에서",
+                  "공장이에요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "반가워요. 자주 봐요.",
+          "clipId": "ko.clip.ix_a1cap_neighbor_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.a1cap_friend_plan",
+      "title": {
+        "vi": "Hẹn một người bạn"
+      },
+      "goal": {
+        "vi": "Nhận lời hẹn vào Chủ nhật, rồi nói giờ gặp."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "네, 또 전화해요.",
+          "clipId": "ko.clip.ix_a1cap_friend_plan_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "일요일에 시간 있어요?",
+          "clipId": "ko.clip.ix_a1cap_friend_plan_0",
+          "rephraseText": "일요일에 바빠요?",
+          "rephraseClipId": "ko.clip.ix_a1cap_friend_plan_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn rảnh."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "네, 있어요",
+                "네, 있습니다",
+                "네, 시간 있어요",
+                "네, 시간 있습니다",
+                "시간 있어요",
+                "시간 있습니다",
+                "네, 괜찮아요",
+                "네, 괜찮습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "있어요",
+                  "괜찮아요"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "일요일에 바빠요?",
+          "clipId": "ko.clip.ix_a1cap_friend_plan_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn rảnh."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "네, 있어요",
+                "네, 있습니다",
+                "네, 시간 있어요",
+                "네, 시간 있습니다",
+                "시간 있어요",
+                "시간 있습니다",
+                "네, 괜찮아요",
+                "네, 괜찮습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "있어요",
+                  "괜찮아요"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "몇 시에 만날까요?",
+          "clipId": "ko.clip.ix_a1cap_friend_plan_1",
+          "rephraseText": "몇 시가 좋아요?",
+          "rephraseClipId": "ko.clip.ix_a1cap_friend_plan_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói gặp lúc 3 giờ."
+          },
+          "expected": [
+            {
+              "intent": "time",
+              "acceptedVariants": [
+                "세 시에 만나요",
+                "세 시에 만납니다",
+                "세 시 어때요",
+                "세 시 어떻습니다",
+                "세 시요",
+                "세 시가 좋아요",
+                "세 시가 좋습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "세"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "몇 시가 좋아요?",
+          "clipId": "ko.clip.ix_a1cap_friend_plan_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói gặp lúc 3 giờ."
+          },
+          "expected": [
+            {
+              "intent": "time",
+              "acceptedVariants": [
+                "세 시에 만나요",
+                "세 시에 만납니다",
+                "세 시 어때요",
+                "세 시 어떻습니다",
+                "세 시요",
+                "세 시가 좋아요",
+                "세 시가 좋습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "세"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "좋아요. 일요일 세 시에 만나요.",
+          "clipId": "ko.clip.ix_a1cap_friend_plan_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.a1cap_lunch",
+      "title": {
+        "vi": "Ăn trưa với đồng nghiệp"
+      },
+      "goal": {
+        "vi": "Nhận lời ăn trưa với một đồng nghiệp, rồi nói bạn muốn ăn gì."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "네, 내일 같이 먹어요.",
+          "clipId": "ko.clip.ix_a1cap_lunch_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "열두 시예요. 같이 점심 먹을까요?",
+          "clipId": "ko.clip.ix_a1cap_lunch_0",
+          "rephraseText": "같이 먹어요?",
+          "rephraseClipId": "ko.clip.ix_a1cap_lunch_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nhận lời."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "네, 좋아요",
+                "네, 좋습니다",
+                "좋아요",
+                "좋습니다",
+                "네, 같이 먹어요",
+                "네, 같이 먹습니다",
+                "네, 먹어요",
+                "네, 먹습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "좋아요",
+                  "먹어요",
+                  "네"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "같이 먹어요?",
+          "clipId": "ko.clip.ix_a1cap_lunch_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nhận lời."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "네, 좋아요",
+                "네, 좋습니다",
+                "좋아요",
+                "좋습니다",
+                "네, 같이 먹어요",
+                "네, 같이 먹습니다",
+                "네, 먹어요",
+                "네, 먹습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "좋아요",
+                  "먹어요",
+                  "네"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "뭐 먹고 싶어요?",
+          "clipId": "ko.clip.ix_a1cap_lunch_1",
+          "rephraseText": "뭐 먹을 거예요?",
+          "rephraseClipId": "ko.clip.ix_a1cap_lunch_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn ăn mì gói."
+          },
+          "expected": [
+            {
+              "intent": "food",
+              "acceptedVariants": [
+                "라면 먹고 싶어요",
+                "라면 먹고 싶습니다",
+                "라면이 좋아요",
+                "라면이 좋습니다",
+                "라면은 좋아요",
+                "라면은 좋습니다",
+                "라면요",
+                "라면 먹어요",
+                "라면 먹습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "라면",
+                  "라면이",
+                  "라면요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "뭐 먹을 거예요?",
+          "clipId": "ko.clip.ix_a1cap_lunch_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn ăn mì gói."
+          },
+          "expected": [
+            {
+              "intent": "food",
+              "acceptedVariants": [
+                "라면 먹고 싶어요",
+                "라면 먹고 싶습니다",
+                "라면이 좋아요",
+                "라면이 좋습니다",
+                "라면은 좋아요",
+                "라면은 좋습니다",
+                "라면요",
+                "라면 먹어요",
+                "라면 먹습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "라면",
+                  "라면이",
+                  "라면요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "좋아요. 같이 가요.",
+          "clipId": "ko.clip.ix_a1cap_lunch_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    }
+  ]
+}

@@ -45,6 +45,9 @@ rm -f "$STAGED/content/ko/reception/reading.json" "$STAGED/content/ko/reception/
 python -I "$G/ko-reception-s3.py" .
 python -I "$G/ko-speech-s4.py" .
 python -I "$G/ko-writing-s5.py" .
+# Session 4: scenarios (Section 6) append their partner clips; the generator also checks ko_lesson_refs.py.
+rm -f "$STAGED/content/ko/interaction/scenarios.json"
+python -I "$G/ko-scenarios-s6.py" .
 # Lessons (session 2): each section's generator writes lessons/parts/<section>.jsonl; the self-check joins them into
 # lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json).
 rm -rf content/ko/_drafts/lessons/parts
@@ -56,6 +59,7 @@ ingest listening
 ingest readings
 ingest speech
 ingest writing
+ingest scenarios
 ingest lessons
 # The lessons ingest writes the staged course pack once every lesson has exercises; until then the draft pack is it.
 if ! python -I -c "import json,sys; p=json.load(open('content/ko/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then

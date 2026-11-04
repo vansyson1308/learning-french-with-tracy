@@ -228,6 +228,7 @@ CLIPS = {c["id"]: c for c in _jsonl(f"{DRAFTS}/listening/OUTPUT.jsonl")}
 READINGS = {r["id"]: r for r in _jsonl(f"{DRAFTS}/readings/OUTPUT.jsonl")}
 SPEECH = {r["id"]: r for r in _jsonl(f"{DRAFTS}/speech/OUTPUT.jsonl")}
 WRITING = {r["id"]: r for r in _jsonl(f"{DRAFTS}/writing/OUTPUT.jsonl")}
+SCENARIOS = {r["id"]: r for r in _jsonl(f"{DRAFTS}/scenarios/OUTPUT.jsonl")}
 
 
 def _need(table, xid, what):
@@ -304,6 +305,12 @@ def WR(slug):
         e["fields"] = fields
     e.update({"rubric": rub, "modelAnswers": t["modelAnswers"], "objectiveTargets": t["objectiveRefs"]})
     return e
+
+
+def IX(slug):
+    sid = f"ko.scenario.{slug}"
+    s = _need(SCENARIOS, sid, "scenario")
+    return {"type": "interactionScenario", "scenarioId": sid, "objectiveTargets": s["objectiveRefs"] if s else []}
 
 
 LAYER_FIELDS = (("clipId", "clips"), ("readingId", "readings"), ("speechItemId", "speech"), ("writingTaskId", "writing"), ("scenarioId", "scenarios"))

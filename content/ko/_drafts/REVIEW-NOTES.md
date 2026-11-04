@@ -62,6 +62,18 @@ has an asset: listening is graded through the device's ko-KR voice, or skipped w
 the slot does not list (남이라고 해요) is told the slot is missing. The slots list the common forms; the D-10 pass
 should read the slot lists of the 19 teaching tasks.
 
+## Session 4 (2026-11-05): scenarios, writing endings, assessment, TOPIK I, stories
+
+**Scenarios.** 18 (8 teaching in units s–v, 10 reserved for checkpoint 6 and the capstone), 180 nodes, 108 partner
+clips (device voice). Every partner line is word-checked; learner answers are 해요체 grading strings widened by the fair
+renderings, Hangul only; required concepts list the spaced words that carry them (역이 / 역은), since the build-time
+tokenizer cuts at spaces. First run: 0 word problems, 0 scenario validator errors.
+
+**Writing endings (coordinator).** Every noun slot now lists, by kind: a name with 은/는, 이/가, 이에요/예요, 입니다,
+이었어요, (이)라고 해요 / 합니다 and 씨; a place with its place particles and the copula; anything else with the common
+particles and the copula; every 해요 phrase its 합쇼체 rendering. Self-check rule 10 checks it; its first run flagged
+2 slots (남 씨 / 란 씨 without a copula) — the rule now skips 씨, which takes no copula there.
+
 **For the D-10 reviewer (read first).**
 - Section 1 is tap-only: no typed Korean before the primer. Typing starts in Section 2.
 - 해요체 everywhere; 합쇼체 only in set phrases, the interview (unit l, ua-l3) and announcements; 반말 only in two

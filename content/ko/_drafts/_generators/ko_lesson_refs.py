@@ -1,12 +1,13 @@
 """Which reception, speech and writing ids each ko-vi lesson uses (P4e session 3), after ja_lesson_refs.py: the hand-off
 between the layer generators and the Section 3-5 lessons. Reserved ids (checkpoint, capstone, placement) never appear
 here. ko-lessons-s3…s5.py fail if a lesson leaves out an id mapped to it or uses one that is not; ko-check-answers.py
-fails if a teaching reading, clip, speech item or writing task has no lesson. Scenarios (Section 6) join in session 4.
+fails if a teaching reading, clip, speech item or writing task has no lesson; ko-scenarios-s6.py checks the scenarios (Section 6, session 4).
 A speech exercise takes its modelClipId from the item's modelAudioRef (ko.clip.u<k-n>_model_<slug>)."""
 CL = lambda *xs: [f"ko.clip.{x}" for x in xs]
 RD = lambda *xs: [f"ko.read.{x}" for x in xs]
 SP = lambda *xs: [f"ko.speak.{x}" for x in xs]
 WR = lambda *xs: [f"ko.write.{x}" for x in xs]
+SC = lambda *xs: [f"ko.scenario.{x}" for x in xs]
 C = "ko-vi:"
 REFS = {
  C + "uf-l0": {"clips": CL("uf_nalssi", "uf_bi", "uf_usan", "uf_deowoyo", "uf_chuwoyo")},
@@ -60,4 +61,12 @@ REFS = {
  C + "ur-l0": {"writing": WR("r_form_center")},
  C + "ur-l2": {"writing": WR("r_form_clinic")},
  C + "ur-l3": {"writing": WR("r_note", "r_open")},
+ C + "us-l1": {"scenarios": SC("store_bag")},
+ C + "us-l3": {"scenarios": SC("restaurant_order")},
+ C + "ut-l1": {"scenarios": SC("ask_station")},
+ C + "ut-l3": {"scenarios": SC("subway_transfer")},
+ C + "uu-l1": {"scenarios": SC("pharmacy")},
+ C + "uu-l3": {"scenarios": SC("clinic_doctor")},
+ C + "uv-l1": {"scenarios": SC("call_sick")},
+ C + "uv-l3": {"scenarios": SC("bank_account")},
 }

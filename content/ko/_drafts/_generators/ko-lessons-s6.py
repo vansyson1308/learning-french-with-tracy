@@ -5,7 +5,7 @@ Writes lessons/parts/s6.jsonl. usage: python -I ko-lessons-s6.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ko_lesson_lib import C, F, H, K, M, N, NX, T, TX, W, Y, finish, lesson
+from ko_lesson_lib import C, F, H, IX, K, M, N, NX, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- us: the shop and the restaurant
 lesson("us-l0", [
@@ -26,6 +26,8 @@ lesson("us-l1", [
     Y("Món này cay.", "이 음식은 매워요."),
     W("Cho tôi hai cốc bia.", "맥주|두|잔|주세요", ["둘", "병"]),
     M("맵다", "짜다", "달다", "맛없다"),
+    # scenario (session 4)
+    IX("store_bag"),
 ])
 lesson("us-l2", [
     C("want-like"),
@@ -43,6 +45,8 @@ lesson("us-l3", [
     Y("Cho tôi xin chút nước.", "물 좀 주세요.", "물 주세요."),
     W("Cảm ơn, bữa ăn ngon quá.", "잘|먹었습니다", ["잘못", "먹겠습니다"]),
     M("여기요", "어서 오세요", "잘 먹겠습니다", "잘 먹었습니다"),
+    # scenario (session 4)
+    IX("restaurant_order"),
 ])
 
 # ---------------------------------------------------------------- ut: asking the way
@@ -64,6 +68,8 @@ lesson("ut-l1", [
     Y("Ga ở đâu?", "역이 어디예요?", "역이 어디에 있어요?", "역 어디예요?"),
     W("Đi đến đó như thế nào?", "거기에|어떻게|가요", ["어디", "누구"]),
     T("길", ["지도", "거리", "도시"]),
+    # scenario (session 4)
+    IX("ask_station"),
 ])
 lesson("ut-l2", [
     T("가깝다", ["멀다", "크다", "작다"]),
@@ -81,6 +87,8 @@ lesson("ut-l3", [
     Y("Hãy rẽ trái.", "왼쪽으로 가세요.", "왼쪽으로 도세요."),
     W("Đi thẳng rồi rẽ phải.", "똑바로|가서|오른쪽으로|가세요", ["왼쪽으로", "와서"]),
     M("앞", "뒤", "옆", "위", "아래"),
+    # scenario (session 4)
+    IX("subway_transfer"),
 ])
 
 # ---------------------------------------------------------------- uu: the clinic and the pharmacy
@@ -102,6 +110,8 @@ lesson("uu-l1", [
     Y("Cho tôi thuốc.", "약 주세요.", "약 좀 주세요."),
     W("Tôi bị ho.", "기침을|해요", ["기침이", "아파요"]),
     M("약국", "약", "의사", "기침", "보험"),
+    # scenario (session 4)
+    IX("pharmacy"),
 ])
 lesson("uu-l2", [
     TX("어디가 아프세요?", "Anh đau ở đâu?", ["Anh đi đâu đấy?", "Anh có sao không?", "Anh đau từ khi nào?"]),
@@ -119,6 +129,8 @@ lesson("uu-l3", [
     K("약국에서 약을 ___.", "사다", "haeyo:pas", "Tôi đã mua thuốc ở nhà thuốc."),
     W("Hãy uống thuốc này.", "이|약을|드세요", ["약이", "마세요"]),
     M("손", "발", "다리", "허리"),
+    # scenario (session 4)
+    IX("clinic_doctor"),
 ])
 
 # ---------------------------------------------------------------- uv: phoning work and the bank
@@ -139,6 +151,8 @@ lesson("uv-l1", [
     Y("Hôm nay tôi không đến được.", "오늘 못 가요.", "오늘은 못 가요."),
     W("Xin lỗi, tôi đến muộn mười phút.", "죄송합니다|십|분|늦어요", ["열", "일찍"]),
     M("전화하다", "문자", "여보세요", "전화"),
+    # scenario (session 4)
+    IX("call_sick"),
 ])
 lesson("uv-l2", [
     T("비밀번호", ["번호", "전화번호", "주소"]),
@@ -157,5 +171,7 @@ lesson("uv-l3", [
     K("컴퓨터를 ___.", "켜다", "haeyo:pas", "Tôi đã bật máy tính."),
     W("Cho tôi mượn cục sạc.", "충전기|좀|빌려주세요", ["빌려요", "사요"]),
     M("인터넷", "컴퓨터", "핸드폰", "충전기"),
+    # scenario (session 4)
+    IX("bank_account"),
 ])
 finish("s6")

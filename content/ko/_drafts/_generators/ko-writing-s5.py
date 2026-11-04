@@ -117,33 +117,45 @@ RESERVED = {
 }
 
 
-NOUN_TAILS = ["", "은/는", "이/가", "을/를", "에", "에서", "에는", "에서는", "도", "이에요/예요", "입니다", "이었어요/였어요", "씨"]
+# The spaced words a noun slot is written as, by what the slot holds: a name, a place, or anything else (an age, a job,
+# a day). Coordinator 2026-11-05 (session 4): with the endings a learner can write at this point — 해요체 and 합쇼체 of
+# the copula, and for a name (이)라고 해요 / 합니다 (저는 남이라고 해요).
+NAME_TAILS = ["", "은/는", "이/가", "이에요/예요", "입니다", "이었어요/였어요", "이라고/라고 해요", "이라고/라고 합니다", " 씨"]
+PLACE_TAILS = ["", "은/는", "이/가", "에", "에서", "에는", "에서는", "도", "이에요/예요", "입니다"]
+OTHER_TAILS = ["", "은/는", "이/가", "을/를", "에", "에는", "도", "이에요/예요", "입니다", "이었어요/였어요"]
+PLACE_SLOTS = {"city", "address", "place", "work", "hospital", "home"}
 
 
-def _with_particles(noun):
+def _with_particles(noun, slot=""):
     """A noun slot (a name, a place, an age, a day) realized as the spaced word the answer writes: the build-time
     tokenizer cuts ko at spaces, so 남이에요 is one token and the bare 남 is no run of it."""
     last = noun.split(" ")[-1]
     head = noun[: len(noun) - len(last)]
+    tails = NAME_TAILS if slot == "name" else PLACE_TAILS if slot in PLACE_SLOTS else OTHER_TAILS
     out = []
-    for tail in NOUN_TAILS:
+    for tail in tails:
+        rest = ""
+        if " " in tail.strip():
+            tail, rest = tail.split(" ", 1)
+            rest = " " + rest
+        if tail == "" and rest == " 씨":
+            out.append(head + last + " 씨")
+            continue
         if "/" in tail:
             a, b = tail.split("/")
             tail = a if ends_in_consonant(last) else b
-        if tail == "씨" and not (INDEX.nounish(last) and last not in LEX):
-            continue  # 씨 only after a name
-        out.append(head + last + (" 씨" if tail == "씨" else tail))
+        out.append(head + last + tail + rest)
     return out
 
 
-def _widen(variants, instr):
+def _widen(variants, instr, slot=""):
     """A phrase variant also takes its fair spellings (no digits: the writing fold spells them), deduplicated; a noun
     variant takes its particles and copula."""
     out = []
     expanded = []
     for v in variants:
         last = v.split(" ")[-1]
-        expanded += _with_particles(v) if (INDEX.nounish(last) or last in LEX and LEX[last]["partOfSpeech"] == "noun") and not re.search(r"\d", v) else [v]
+        expanded += _with_particles(v, slot) if (INDEX.nounish(last) or last in LEX and LEX[last]["partOfSpeech"] == "noun") and not re.search(r"\d", v) else [v]
     for v in expanded:
         for x in [v] + fair(instr, v, INDEX):
             x = re.sub(r"[.?!]+$", "", x.strip())
@@ -157,7 +169,7 @@ def task(slug, spec, reserved):
     fam, obj, instr, cue, slots, mn, mx, model, fields = spec
     tid = f"ko.write.{slug}"
     check_vi(tid, instr)
-    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v, instr), "cueProvided": c} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
+    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v, instr, i), "cueProvided": c} for i, d, v, c in slots], "minTokens": mn, "maxTokens": mx}
     for _, d, v, _c in slots:
         check_vi(tid, d)
     t = {"id": tid, "taskFamily": fam, "mode": "guided", "instruction": {"vi": instr}}
@@ -178,7 +190,7 @@ def open_task(slug, spec):
     tid = f"ko.write.{slug}"
     check(tid, model)
     check_vi(tid, instr)
-    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": v, "cueProvided": False} for i, d, v in slots], "minTokens": mn, "maxTokens": mx}
+    rubric = {"requiredSlots": [{"id": i, "description": {"vi": d}, "variants": _widen(v, instr, i), "cueProvided": False} for i, d, v in slots], "minTokens": mn, "maxTokens": mx}
     return {"id": tid, "taskFamily": fam, "mode": "open", "instruction": {"vi": instr}, "rubric": rubric, "modelAnswers": [model], "objectiveRefs": [obj], "lexemeRefs": content_refs(model), "scoredEligibility": False, "reserved": False, "sourceRef": "original-project"}
 
 

@@ -32,6 +32,8 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags, built up front from
     Latin, no digits) and listing the fair renderings of ko_text.variants; writing slot variants in Korean, every
     guided slot realized in the model answer, every form value a variant of its slot; every teaching reading, clip,
     speech item and writing task used by a lesson.
+10. (coordinator 2026-11-05, session 4) every writing slot lists its 해요 and 합니다 forms where they apply: a 해요
+    variant its 합쇼체 rendering, a bare noun of a guided slot its copula in both styles (남이에요 / 남입니다).
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by
 hand, to REVIEW-NOTES.md. usage: python -I ko-check-answers.py <repo root>
 """
@@ -40,7 +42,7 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from ko_text import Index, _bare, ends_in_consonant, load_lexicon, same_answer, variants  # noqa: E402
+from ko_text import Index, _bare, _formal_forms, ends_in_consonant, load_lexicon, same_answer, variants  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
@@ -154,6 +156,20 @@ def layer_rules(eid, e):
             for v in slot["variants"]:
                 if LATIN_OR_VI.search(v):
                     flag(eid, "writing-script", f"slot {slot['id']}: {v!r} is not Korean")
+    # Rule 10 (coordinator 2026-11-05, session 4): a slot lists its 해요 and 합니다 forms where they apply — a 해요
+    # variant its 합쇼체 rendering, a bare noun its copula in both styles (남이에요 / 남입니다).
+    if t == "guidedWriting":
+        for slot in e["rubric"]["requiredSlots"]:
+            have = {_bare(v) for v in slot["variants"]}
+            for v in slot["variants"]:
+                for f in _formal_forms("", v, INDEX):
+                    if _bare(f) not in have:
+                        flag(eid, "slot-levels", f"slot {slot['id']}: {v!r} is listed, its 합쇼체 {f!r} is not")
+                last = v.split(" ")[-1]
+                if e["writingMode"] == "guided" and INDEX.nounish(last) and last != "씨":
+                    cop = v + ("이에요" if ends_in_consonant(last) else "예요")
+                    if _bare(cop) not in have or _bare(v + "입니다") not in have:
+                        flag(eid, "slot-levels", f"slot {slot['id']}: the noun {v!r} lacks {cop!r} or {v + '입니다'!r}")
     if t == "guidedWriting" and e["writingMode"] == "guided":
         for model in e["modelAnswers"]:
             for slot in e["rubric"]["requiredSlots"]:
@@ -177,7 +193,8 @@ def coverage_rules():
     models = {s.get("modelAudioRef") for s in SPEECH.values()}
     for kind, table in (("clips", CLIPS), ("readings", READINGS), ("speech", SPEECH), ("writing", WRITING)):
         for rid, r in table.items():
-            if r.get("reserved") is True or re.search(r"\.(cp\d|a1cap|pl)_", rid) or rid in models:
+            # A partner clip (ko.clip.ix_*) is used through its scenario, a model clip through its speech item.
+            if r.get("reserved") is True or re.search(r"[._](cp\d|a1cap|pl)_", rid) or rid in models or ".ix_" in rid:
                 continue
             if rid not in USED[kind]:
                 flag(rid, "layer-unused", f"teaching {kind} record {rid} is used by no lesson")
