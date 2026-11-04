@@ -2,6 +2,12 @@
 
 Each entry: the failing run, the passing re-run on the **same** commit, what failed, and what was changed so the next one costs less. A failure is only recorded here after a re-run on the same commit was green; a second red on the same commit is a bug, not a flake.
 
+## 2026-11-04 — Device acceptance on `main` fca73ec (after PR #65, D-16)
+
+- **Failed:** run [41887905668](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/41887905668) attempt 1, API 30 **backup-upgrade** only. The first failure was "onboarding after pm clear", which ran for about 10 minutes and failed on the retry. The backup import and re-export that come after it then failed on `profile-stat`. The same flows passed on API 34, and the RC3 upgrade flows later in the same API 30 shard passed.
+- **Passed:** attempt 2 of the same run, with the failed job re-run on the same commit; all 6 shards green.
+- **Changed:** nothing. The app restart after a FAIL (flow-runner `restart_app`) did not stop the two backup steps from failing, because they depend on the onboarding that failed. If "onboarding after pm clear" fails again on API 30, look at that flow first.
+
 ## 2026-11-02 — Device acceptance on `main` 4a8d1e8 (after PR #60)
 
 - **Failed:** run [41525391190](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/41525391190) attempt 1: API 34 **core** and API 30 **backup-upgrade**, before any test ran. `sdkmanager` reported "Error reading Zip content from a SeekableByteChannel" while installing a package from Google's repository (the API 34 system image; the emulator package on API 30), then the emulator never started. PR #60 changed only a CI workflow, a script and the owner checklist.
