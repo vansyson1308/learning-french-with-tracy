@@ -1,0 +1,104 @@
+{
+  "version": 2,
+  "pipelineVersion": 3,
+  "storyPipelineVersion": 4,
+  "storyAudio": {
+    "bundled": "band-1",
+    "stories": [
+      "zh.story.forgotten_wallet",
+      "zh.story.first_dumplings",
+      "zh.story.new_room",
+      "zh.story.birthday_cup",
+      "zh.story.rainy_takeaway",
+      "zh.story.found_wallet",
+      "zh.story.tea_in_the_park",
+      "zh.story.spring_festival_call",
+      "zh.story.borrowed_chopsticks",
+      "zh.story.moving_day",
+      "zh.story.wedding_cups",
+      "zh.story.mother_visits",
+      "zh.story.lost_child",
+      "zh.story.first_day_factory",
+      "zh.story.call_in_sick",
+      "zh.story.train_to_shanghai",
+      "zh.story.overtime_for_sister",
+      "zh.story.bank_card"
+    ],
+    "reason": "QC 2026-10-29b §2.3 + Opus (CI-proven 2026-10-30, PR #51), as in es, it, en and ja: the first 18 stories of the reading order after the A1-0 micro-stories bundle sentence audio as Opus 16 kbps (ja measured 2.77 MB for its 18; zh-plan.md §7 keeps zh near 9 MB of the 12 MB cap); the micro-stories and every other story are read with the device voice, labelled \"Giọng đọc của máy\" (release/ASSET_DELIVERY.md)."
+  },
+  "note": "Pinned TTS sources for the Mandarin reception audio (P4d): the two Kokoro-82M zh voices of the story cast (zh-plan.md §7, until the zh canary of content/audio/voice-casts.json selects the cast), with the same pins as the pack manifest; verified fail-closed on every run. Their phonemes will come from the course's stored CC-CEDICT pinyin with tone sandhi for audio only (zh-plan.md §7, decision 10; built in the audio session), not from misaki's G2P. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
+  "engines": "content/audio/engines.json",
+  "voices": [
+    {
+      "id": "kokoro-zf_xiaobei",
+      "engine": "kokoro",
+      "language": "zh",
+      "note": "Kokoro-82M Mandarin female (Apache-2.0), grade D",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/zf_xiaobei.pt",
+          "sha256": "9b76be63dab4f4f96962030acc0126a9aee9728608fbbe115e2b58a2bd504df6",
+          "bytes": 523435
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker A — female voice for announcements, monologues, the story narrator and dialogue turns",
+      "multiSpeaker": false
+    },
+    {
+      "id": "kokoro-zm_yunjian",
+      "engine": "kokoro",
+      "language": "zh",
+      "note": "Kokoro-82M Mandarin male (Apache-2.0), grade D",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/zm_yunjian.pt",
+          "sha256": "76cbf8bad35901d011d9628a2fdceb7b4f1f127e7a3269cb393b3941eb7fc417",
+          "bytes": 523435
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker B — male voice for the second speaker of dialogues",
+      "multiSpeaker": false
+    }
+  ],
+  "excludedVoices": []
+}

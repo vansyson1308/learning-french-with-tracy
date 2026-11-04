@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# zh-vi, sessions 1-4 of P4d (lexicon, objectives, units; concept cards and lessons; the tone primer, reception,
-# speech, writing and scenarios; checkpoints, placement and the HSK 1-2 tracks): regenerate the drafts and ingest
+# zh-vi, sessions 1-5 of P4d (lexicon, objectives, units; concept cards and lessons; the tone primer, reception,
+# speech, writing and scenarios; checkpoints, placement and the HSK 1-2 tracks; graded stories): regenerate the drafts and ingest
 # them through the toolkit. Byte-deterministic: run it twice, the outputs are identical. Offline: zh-subset.py (the
 # one-time slice of the pinned hsk30, CC-CEDICT and wordfreq files) is not part of it; its output
 # content/zh/lexicon/derived/hsk-course.json is.
@@ -72,3 +72,14 @@ if ! python -I -c "import json,sys; p=json.load(open('content/zh/_drafts/pack.js
 fi
 bun scripts/course-draft.ts syllabus --target zh
 python -I "$G/zh-lex.py" . split
+# Session 5: graded stories. They are graded by the staged syllabus (bands), so they come after it; each batch checks
+# that the story engine cuts every sentence where the author did, and zh-check-stories.py stops on a finding. The seed
+# writes the head of the staged stories.json afresh (voice cast, function words) and the band-1 audio list.
+rm -rf content/zh/_drafts/stories/batches
+for story_batch in "$G"/zh-stories-[0-9]*.py; do python -I "$story_batch" .; done
+python -I "$G/zh-check-stories.py" .
+python -I "$G/zh-stories-seed.py" .
+ingest stories
+# The reception voice manifest (staged until the promote): the story cast's pins from the pack manifest plus the seed's
+# band-1 story list.
+python -I "$G/zh-reception-audio.py" .
