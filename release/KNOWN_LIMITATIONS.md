@@ -162,12 +162,34 @@ itself.
 - **`zh-vi` (Mandarin Chinese for Vietnamese speakers, P4d) is being authored and will ship
   unreviewed**, on the same terms as `ja-vi`: `allowUnreviewed: true` and `betaUntilReviewed`
   in the staged `zh-vi.profile.json`. All Chinese and Vietnamese in it is AI-written and no
-  native speaker of either language has read it (`plan/authoring/zh-plan.md`). Pinyin and the
-  traditional spelling come from CC-CEDICT in citation tones; tone sandhi (3-3, 不, 一) is taught,
-  not stored. Hán-Việt readings are shown only where they help and were checked against Unihan,
-  not by a Vietnamese teacher of Chinese. Level results are estimates aligned to CEFR, not
-  certificates, and HSK bands are not CEFR levels. Audio, the `zh-CN` recogniser, the pinyin
-  keyboard and the ruby layout have not been tried on a phone.
+  native speaker of either language has read it (`plan/authoring/zh-plan.md`). The AI-simulated
+  native review (D-10) has **not run yet**; only the validators, the reading checks of every
+  generator (every hanzi inside a lexicon surface, homographs only in their stored reading) and the
+  answer-key self-check (`content/zh/_drafts/REVIEW-NOTES.md`, 0 findings over the lessons,
+  checkpoints, placement and HSK items) have. Pinyin and the traditional spelling come from
+  CC-CEDICT in citation tones; tone sandhi (3-3, 不, 一) is taught, not stored. Hán-Việt readings
+  are shown only where they help and were checked against Unihan, not by a Vietnamese teacher of
+  Chinese. What is not verified or not there yet:
+  - **audio**: no zh clip has been generated or heard; every `audioTarget`, the reception and
+    scenario clips and the 90 HSK clips wait for the audio session (Kokoro zh voices, the
+    sandhi front-end), and the primer uses the device voice until then;
+  - **speech**: the `zh-CN` recogniser is untried on a phone (hanzi or pinyin output, traditional
+    characters, numbers in digits);
+  - **pinyin keyboard**: the Chinese IME (candidate choice, full-width punctuation, traditional
+    candidates) has not been tried on a device; pinyin typed for a hanzi key counts as practice;
+  - **script**: simplified characters only, also in the Taiwan scenario; traditional characters are
+    accepted in answers but no sign or text is shown in traditional yet; pinyin stays under the
+    characters until the learner turns the reading aid off (no automatic fade);
+  - **stories** are not written yet.
+  Level results are estimates aligned to CEFR, not certificates, and HSK levels are not CEFR
+  levels. The HSK 1 and HSK 2 practice tracks (staged `content/zh/exam/hsk-1.json`, `hsk-2.json`)
+  are `partial`: parts, item counts, times and task types follow the official HSK 3.0 sample
+  papers (HSK 3.0 is administered from the 13 December 2026 session), but the documents read
+  publish no HSK 3.0 score scale, pass mark or play count, so 100 points a part, the 60 % reference
+  threshold (the current HSK's rule) and two plays are the course's choices; pictures are emoji,
+  listening questions are shown in Vietnamese, two five-for-five matching groups have a sixth
+  option, and HSK 2 书写 is typed with the pinyin keyboard and shows the incomplete character as ？
+  plus its remaining part (`content/zh/exam/FORMAT-SOURCES.md`).
 - **`it-vi` (Italian for Vietnamese speakers, P3d(it)) ships unreviewed**, on the
   same terms as `de-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/it-vi.profile.json`. The owner signs

@@ -69,6 +69,30 @@ speakRepetition 9, guidedWriting 17, simpleForm 2, interactionScenario 11), 0 fi
 (20 teaching), 222 clips (66 reception, 30 speech models, 126 partner turns), 52 speech items (22 reserved), 35 writing
 tasks (16 reserved), 21 scenarios (10 reserved). Two pipeline runs give identical files (112 files).
 
+## Session 4 (2026-11-04): checkpoints, placement and the HSK 1-2 tracks
+
+Rule 9 joins the self-check: every checkpoint, placement and HSK item goes through rules 1-8 (`exercise_rules`), the
+Section 1 checkpoint and the first placement stage are tap-only, and an HSK item's options are distinct, of one
+language, and never the key in another spelling. An HSK item's Chinese key is a reply or a word the stimulus need not
+contain, so the key-in-stimulus rule of rule 8 stays with the lessons and checkpoints. A 书写 component item
+(`scriptAid: "hidden"`) is not reading-checked: it shows no pinyin and its options are components, not words.
+`zh-exam.py` itself stops on any word above the track's HSK 3.0 level (`hsk-course.json`).
+
+| Rule | Found | Fixed how |
+|---|---|---|
+| Word above the level (generator) | 19 strings: 苹果 and 工厂 are HSK 3.0 level 3; 每天 and 服务员 are not in the list and 每 / 员 are no level 1-2 characters; 近 is level 2 in an HSK 1 item | replaced by level words (面包, 鸡蛋, 银行, 常常, 您好 …) |
+| Hanzi without a reading | 1 (常 alone) + 5 typed keys (朋, 气, 起, 妈, 医 are no lexemes alone, so the shown answer had no pinyin) | 很少去; the typed keys are single-character lexemes (吃, 冷, 给, 不, 飞) |
+| Checkpoint description | 1 (是, 不, 有 … named in a Vietnamese description) | named in Vietnamese ("là", "có", "ở") |
+
+End state: 7 checkpoints (12 / 24 / 27 / 14 / 12 / 6 items and a 20-item capstone in two forms of 10), a 4-stage
+placement of 22 items, HSK 1 (80 items, two forms of 40) and HSK 2 (120 items, two forms of 60), 90 exam clips and 90
+exam readings; 0 findings, 0 decided. Two pipeline runs give identical files (125 files).
+
+For the D-10 reviewer, session 4: read the HSK pools first — each pool of six was written so that exactly one option
+fits each item (R3 words: 去 and 在 never in one pool, 想 / 要 never beside 喜欢); the 书写 component pools were chosen so
+that the shown part takes no other pool component to make a character with the target's reading (唱/倡, 机/叽, 妹/昧
+avoided). The Vietnamese labels of the emoji pictures are short on purpose (a picture names a thing, not a sentence).
+
 ## For the D-10 reviewer
 
 - Read the typed keys first (every `typeAnswer` with its alternatives in `lessons/OUTPUT.jsonl`): the

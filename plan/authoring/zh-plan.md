@@ -24,6 +24,8 @@ later `bun scripts/author.ts promote --target zh --native vi --allow-missing-aud
 | Primer (session 3) | tones with Vietnamese comparisons, 10 tone pairs, 10 sound contrasts, sandhi of 3+3 / 不 / 一, strokes, 20-item checkpoint (pass 16) | `_generators/zh-primer.py` → `content/zh/primer/script-primer.json` (+ compiled copy, `REVIEW.md`) |
 | Layers (session 3) | 29 readings (20 teaching), 222 clips (66 reception, 30 speech models, 126 partner turns), 52 speech items (22 reserved), 35 writing tasks (16 reserved), 21 scenarios (10 reserved); 3 sign lexemes (紧急, 员工, 进入: 906 lexemes, A2-1 188) | `_generators/zh-reception-s3.py`, `zh-speech-s4.py`, `zh-writing-s5.py`, `zh-scenarios-s6.py`, `zh_layers.py`, `zh_lesson_refs.py`; staged `content/zh/{reception,speech,writing,interaction}/` |
 | Lessons (session 3) | 976 exercises: +165 layer exercises in Sections 3–6 (LC 44, RC 47, dictation 7, speakProduction 28, speakRepetition 9, guidedWriting 17, simpleForm 2, interactionScenario 11); self-check 0 findings | `zh-lessons-s3…s6.py`, `zh-check-answers.py` rule 8 |
+| Assessment (session 4) | 7 checkpoints (Sections 1–6: 12/24/27/14/12/6 items; A1 capstone 20 items, forms a/b of 10) on the reserved records; placement in 4 stages (22 items); the attainment policy of session 1 now resolves (0 errors) | `_generators/zh-assessment.py` → staged `content/zh/assessment/{checkpoints,placement}.json` |
+| HSK tracks (session 4) | HSK 1 and HSK 2 on the HSK 3.0 sample format (first HSK 3.0 session 13 Dec 2026): HSK 1 40 items/form (听力 20 in 12 min, 阅读 20 in 20 min), HSK 2 60 items/form (听力 25 / 17 min, 阅读 25 / 25 min, 书写 10 / 10 min); 2 forms each, 90 exam clips, 90 exam readings; `partial`, checked against the official sample papers; score scale, pass mark (reference 60 %) and play count (2) are the course's | `_generators/zh-exam.py`, `content/zh/exam/FORMAT-SOURCES.md`, `scripts/__tests__/zh-exam-track.test.ts`, self-check rule 9 |
 
 `course-draft.ts validate --target zh`: 192 errors, all of three kinds a session-1 course has (ja-vi had the same):
 108 stub lessons with one exercise and 81 stub payload repeats (lessons, session 2), and the missing checkpoints,
@@ -34,6 +36,9 @@ with `--allow-missing-audio`) and the 3 missing assessment files (session 5). Th
 
 After session 3: 957 errors, the same two kinds — 732 `audioTarget has no audio` + 222 reception clips whose generated
 asset is missing (all audio session), and the 3 missing assessment files.
+
+After session 4: 1,044 errors, all audio — 732 `audioTarget has no audio` + 312 clips without a generated asset (222
+layer clips, 90 HSK clips). The assessment files exist and validate; stories are the one layer still absent.
 
 ## 2. Course shape (BLUEPRINT §1)
 
@@ -70,7 +75,7 @@ types" rule of later QCs must say so; `author.ts lint` will report them missing 
   再/又; 和/但是/因为…所以/如果/然后/或者/还是; 把 and the resultative complements (看见, 找到, 听懂) as set
   phrases only; 得 (说得很好) as a pattern. Every point gets a concept card or a lesson `flow` step; the exam track
   draws only on this list.
-- **Exam track (later session):** `content/zh/exam/hsk-1.json` and `hsk-2.json` on the es/de/it/ja exam engine
+- **Exam track (done in session 4, decisions 23–26; HSK 3.0: HSK 1 is 20 + 20 items, HSK 2 is 25 + 25 + 书写 10):** `content/zh/exam/hsk-1.json` and `hsk-2.json` on the es/de/it/ja exam engine
   (mcq4, a task's own skill, item `lexemeRefs`, `select.scriptAid`). Sections 听力 and 阅读, and 书写 at level 2 if the
   HSK 3.0 format published on chinesetest.cn says so: read the official pages and record URL + date in
   `content/zh/exam/FORMAT-SOURCES.md` before authoring (the brief's 20/20 and 35/25 counts are the HSK 2.0 papers);
@@ -289,11 +294,26 @@ uses 您 and 请 with bosses.
    scenario records (a `zh_lesson_refs.py` and the LC/RC/D/SP/WR/IX helpers of `ja_lesson_lib.py`).
 2. ~~**Primer** (session 3)~~ done: §4, decision 18.
 3. ~~**Reception, speech, writing, scenarios**~~ done in session 3 (§1, decisions 19–22), with the Section 3–6 exercises.
-4. **Assessment + HSK 1–2 track** (next session): checkpoints 1–6 and the capstone on the reserved records (cp3_*, cp4_*,
-   cp5_*, cp6_*, a1cap_*), placement (pl_*), FORMAT-SOURCES.md from chinesetest.cn, ≥ 2 mock forms per level.
-5. **Stories** (session 6): graded stories on the dictionary tokenizer of P4c (`scripts/lib/stories.ts`, script han).
-6. **D-10 review, audio** (canary with the extra voices, the front-end of §7, generate, CER audit), promote, compile,
-   V8 re-key, claim gate, KNOWN_LIMITATIONS, STATUS.
+4. ~~**Assessment + HSK 1–2 track**~~ done in session 4 (decisions 23–26).
+5. **Stories** (session 5): 40–50 graded stories on the dictionary tokenizer of P4c (`scripts/lib/stories.ts`, script han).
+6. **D-10 review, audio** (canary with the extra voices, the front-end of §7 with sandhi and the voice cast, generate, CER
+   audit; the HSK clips are among them), promote, compile, V8 re-key, claim gate, STATUS, PR.
+
+### Session 4 (2026-11-04)
+
+23. **HSK 3.0, not the current HSK.** chinesetest.cn announces HSK 3.0 from the 13 December 2026 session; the HSK 2.0
+    sessions end with 7 November. The tracks follow the official HSK 3.0 sample papers (structure, counts, times,
+    layouts); `FORMAT-SOURCES.md` records what was read and the 2.0 figures for comparison.
+24. **Scoring is the course's reference, said as such.** No HSK 3.0 score scale or pass mark was found: 100 points a
+    part and 60 % of the total (the current HSK's published rule) are labelled "ngưỡng tham khảo của khoá học … HSK 3.0
+    chưa công bố điểm đạt"; an owner checklist line asks for a re-check before release.
+25. **Engine fits, stated in the instructions:** emoji pictures; Vietnamese questions; a sixth option in the two
+    five-for-five groups (the pool needs a spare); 书写 as a `structures` section — the component part as a 6-option
+    `select` (`cloze`, readings hidden, the target shown as ？ plus its right-hand part), the character part as a typed
+    single character (`formCompletion`). No engine change.
+26. **Level-true vocabulary.** Every word of an HSK n item is an HSK 3.0 word of level ≤ n (`hsk-course.json`); a
+    compound outside the list passes only if each character is a level character. 苹果 (level 3) and 工厂 (level 3) are
+    therefore not in the HSK items although the course teaches them in A1.
 
 The four open questions of session 1 (audio front-end, pinyin fade, Unihan re-derive, wordfreq) were decided by the
 coordinator on 2026-11-04 (decisions 10–13).
