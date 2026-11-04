@@ -119,7 +119,7 @@ function Checkpoint({ checkpoint, ctx }: { checkpoint: PrimerCheckpoint; ctx: Ct
       {passedBefore && answers === null ? (
         <View style={styles.badge} testID="primer-checkpoint-passed-badge">
           <Ionicons name="checkmark-circle" size={18} color={colors.greenDark} />
-          <Text style={styles.badgeText}>{t("primer.checkpoint.passedBadge")}</Text>
+          <Text style={styles.badgeText}>{checkpoint.messages ? tx(checkpoint.messages.passedBadge) : t("primer.checkpoint.passedBadge")}</Text>
         </View>
       ) : null}
     </>
@@ -145,7 +145,11 @@ function Checkpoint({ checkpoint, ctx }: { checkpoint: PrimerCheckpoint; ctx: Ct
           {t("primer.checkpoint.score", { correct: result.correct, total: result.total })}
         </Text>
         <Text style={styles.paragraph} testID={result.passed ? "primer-checkpoint-passed" : "primer-checkpoint-not-yet"}>
-          {result.passed ? t("primer.checkpoint.passed") : t("primer.checkpoint.notYet", { passMark: checkpoint.passMark })}
+          {result.passed
+            ? checkpoint.messages
+              ? tx(checkpoint.messages.passed)
+              : t("primer.checkpoint.passed")
+            : t("primer.checkpoint.notYet", { passMark: checkpoint.passMark })}
         </Text>
         <Pressable onPress={start} accessibilityRole="button" style={({ pressed }) => [styles.secondaryButton, pressed && styles.pressed]} testID="primer-checkpoint-retry">
           <Text style={styles.secondaryButtonText}>{t("primer.checkpoint.retry")}</Text>
@@ -164,16 +168,16 @@ function Checkpoint({ checkpoint, ctx }: { checkpoint: PrimerCheckpoint; ctx: Ct
     <View style={styles.section} testID="primer-checkpoint">
       {header}
       <Text style={styles.label}>{t("primer.checkpoint.progress", { n: index + 1, total })}</Text>
-      {item.kind === "kanaToRomaji" ? (
+      {item.kind === "kanaToRomaji" || item.kind === "hangulToRr" ? (
         <>
-          <Text style={styles.paragraph}>{t("primer.checkpoint.readKana")}</Text>
+          <Text style={styles.paragraph}>{t(item.kind === "kanaToRomaji" ? "primer.checkpoint.readKana" : "primer.checkpoint.readHangul")}</Text>
           <Text style={[styles.glyph, styles.bigGlyph]} testID="primer-checkpoint-kana">
-            {item.kana}
+            {item.kind === "kanaToRomaji" ? item.kana : item.text}
           </Text>
         </>
       ) : (
         <>
-          <Text style={styles.paragraph}>{t("primer.checkpoint.listenPick")}</Text>
+          <Text style={styles.paragraph}>{t(item.kind === "soundToKana" ? "primer.checkpoint.listenPick" : "primer.checkpoint.listenPickHangul")}</Text>
           <Pressable
             onPress={() => speakTarget(ctx.courseId, item.audio.say)}
             accessibilityRole="button"
@@ -340,6 +344,50 @@ function SectionBody({ section, ctx }: { section: PrimerSection; ctx: Ctx }) {
           ))}
         </View>
       );
+    case "hangulSounds": {
+      // P4e: tense / aspirated consonants, compound vowels, double finals, sound changes.
+      const positions = [
+        ["initial", "primer.consonants"],
+        ["vowel", "primer.vowels"],
+        ["final", "primer.finals"],
+      ] as const;
+      return (
+        <View style={{ gap: 10 }}>
+          {positions.map(([position, heading]) => {
+            const letters = (section.jamo ?? []).filter((j) => j.position === position);
+            if (letters.length === 0) return null;
+            return (
+              <View key={position} style={{ gap: 8 }}>
+                <Text style={styles.subheading}>{t(heading)}</Text>
+                <View style={styles.wrap}>
+                  {letters.map((j) => (
+                    <View key={`${position}-${j.jamo}`} style={styles.tile} testID={`primer-jamo-${j.jamo}`}>
+                      <Text style={styles.glyph}>{j.jamo}</Text>
+                      <Text style={styles.small}>{j.rr}</Text>
+                      {j.name ? <Text style={styles.small}>{j.name}</Text> : null}
+                    </View>
+                  ))}
+                </View>
+              </View>
+            );
+          })}
+          {section.rows.map((row, r) => (
+            <View key={r} style={{ gap: 6 }}>
+              {row.label ? <Text style={styles.label}>{tx(row.label)}</Text> : null}
+              <View style={styles.wrap}>
+                {row.items.map((item) => (
+                  <Sound key={item.text} say={item.audio.say} ctx={ctx} testID={`primer-sound-${item.text}`}>
+                    <Text style={styles.glyph}>{item.text}</Text>
+                    <Text style={styles.small}>{item.said ? `[${item.said}] ${item.rr}` : item.rr}</Text>
+                    {item.gloss ? <Text style={styles.small}>{tx(item.gloss)}</Text> : null}
+                  </Sound>
+                ))}
+              </View>
+            </View>
+          ))}
+        </View>
+      );
+    }
   }
 }
 

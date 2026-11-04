@@ -3,6 +3,7 @@
  * pass every rule; each rule rejects the mistake it exists for.
  */
 import { describe, expect, test } from "bun:test";
+import { existsSync } from "fs";
 
 import { ScriptPrimerSchema, type ScriptPrimer } from "../../content/schema";
 import { readJson, romajiUntilPrimerErrors } from "../lib/pipeline";
@@ -197,6 +198,70 @@ describe("hangul rules", () => {
         s.vowels = s.vowels.filter((v) => v.jamo !== "ㅜ");
       }).join()
     ).toContain("block 구 uses ㅜ, which the section does not teach");
+  });
+});
+
+/**
+ * P4e: the extended Hangul primer (tense consonants, compound vowels, 받침, double finals, sound changes and a
+ * checkpoint). Authored by content/ko/_drafts/_generators/ko-primer.py into the staged layer until ko-vi is promoted;
+ * once promoted, the committed primer is that file.
+ */
+describe("hangul sounds and the Hangul checkpoint (P4e)", () => {
+  const STAGED = "content/ko/_drafts/staged/content/ko/primer/script-primer.json";
+  const extended = (): ScriptPrimer => ScriptPrimerSchema.parse(readJson(existsSync(STAGED) ? STAGED : primerSourceRel("ko")));
+  const changed = (edit: (p: ScriptPrimer) => void) => {
+    const copy = structuredClone(extended());
+    edit(copy);
+    return validateScriptPrimerData("ko", copy).join("\n");
+  };
+  const sounds = (p: ScriptPrimer, id: string) => p.sections.find((s) => s.id === id) as Section<"hangulSounds">;
+  type Item = NonNullable<ScriptPrimer["checkpoint"]>["items"][number];
+  const hangulItem = <K extends "hangulToRr" | "soundToHangul">(p: ScriptPrimer, kind: K) => p.checkpoint!.items.find((i) => i.kind === kind) as Extract<Item, { kind: K }>;
+
+  test("the extended primer passes every rule: 5 sound sections, the 11 compound vowels, the 5 tense consonants, the 9 double finals, 20 items", () => {
+    const p = extended();
+    expect(validateScriptPrimerData("ko", p)).toEqual([]);
+    expect(p.sections.filter((s) => s.kind === "hangulSounds").map((s) => s.id)).toEqual(["tense-aspirated", "compound-vowels", "final-consonants", "double-finals", "sound-changes"]);
+    expect(sounds(p, "compound-vowels").jamo).toHaveLength(11);
+    expect(sounds(p, "tense-aspirated").jamo?.map((j) => j.jamo)).toEqual([..."ㄲㄸㅃㅆㅉ"]);
+    expect(sounds(p, "double-finals").jamo).toHaveLength(9);
+    expect(p.checkpoint?.items).toHaveLength(20);
+    expect(p.checkpoint?.messages?.passed.vi).toContain("RR");
+  });
+  test("a letter's RR in its position comes from the RR rules", () => {
+    expect(changed((p) => (sounds(p, "tense-aspirated").jamo![0]!.rr = "gg"))).toContain('ㄲ as an initial is "kk" in RR, not "gg"');
+    expect(changed((p) => (sounds(p, "compound-vowels").jamo![10]!.rr = "eui"))).toContain('ㅢ as a vowel is "ui" in RR, not "eui"');
+    expect(changed((p) => (sounds(p, "double-finals").jamo![0]!.rr = "ks"))).toContain('ㄳ as a final is "k" in RR, not "ks"');
+    expect(changed((p) => (sounds(p, "double-finals").jamo![0]!.position = "initial"))).toContain("ㄳ cannot be an initial");
+  });
+  test("an example's RR, its audio, and a pronounced spelling that does not read as the word", () => {
+    expect(changed((p) => (sounds(p, "tense-aspirated").rows[0]!.items[1]!.rr = "gga"))).toContain('까 is "kka" in RR, not "gga"');
+    expect(changed((p) => (sounds(p, "tense-aspirated").rows[0]!.items[1]!.audio.say = "가"))).toContain('audio of 까 says "가"');
+    expect(changed((p) => (sounds(p, "sound-changes").rows[1]!.items[0]!.said = "합니다"))).toContain("must be other hangul");
+    expect(changed((p) => (sounds(p, "sound-changes").rows[1]!.items[0]!.said = "함미다"))).toContain('whose RR "hammida" is not the word\'s "hamnida"');
+  });
+  test("tensing is checked as plain → tense initials, since RR does not write it", () => {
+    expect(changed((p) => (sounds(p, "sound-changes").rows[4]!.items[0]!.said = "학교"))).toContain("must be other hangul");
+    expect(changed((p) => (sounds(p, "sound-changes").rows[4]!.items[0]!.said = "학쿄"))).toContain("is not a tensing of plain initials");
+    expect(changed((p) => delete sounds(p, "sound-changes").rows[4]!.items[0]!.tensed)).toContain('whose RR "hakkkyo" is not the word\'s "hakgyo"');
+  });
+  test("checkpoint: the key is the RR reading, options are RR, no two Hangul options sound alike, every jamo is taught", () => {
+    expect(changed((p) => (hangulItem(p, "hangulToRr").options[hangulItem(p, "hangulToRr").correct] = "gga"))).toContain('까 reads "kka", not "gga"');
+    expect(changed((p) => (hangulItem(p, "hangulToRr").options[0] = "까"))).toContain('option "까" is not RR');
+    expect(
+      changed((p) => {
+        const i = hangulItem(p, "soundToHangul");
+        i.options = ["같이", "가치"];
+        i.audio.say = "같이";
+        i.correct = 0;
+      })
+    ).toContain("two options sound the same");
+    expect(changed((p) => (p.sections = p.sections.filter((s) => s.id !== "tense-aspirated")))).toContain("ㄸ is not taught by the primer");
+    expect(changed((p) => (hangulItem(p, "soundToHangul").audio.say = "달"))).toContain('audio says "달"');
+  });
+  test("Hangul items need a Hangul primer, kana items a kana primer", () => {
+    expect(validateScriptPrimerData("zh", { ...structuredClone(load("zh")), checkpoint: structuredClone(extended().checkpoint) }).join()).toContain("only a Hangul primer has Hangul items");
+    expect(validateScriptPrimerData("ko", { ...structuredClone(extended()), checkpoint: structuredClone(load("ja").checkpoint) }).join()).toContain("only a kana primer has a checkpoint");
   });
 });
 

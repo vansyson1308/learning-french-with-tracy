@@ -15,6 +15,11 @@
  *  - hangul: basic jamo only, each consonant's initial / final and each
  *    vowel's RR is what the RR rules (cjk-readings/korean-rr.ts) give, and
  *    a block is exactly the keyboard composition of its parts (ko plugin);
+ *  - hangul sounds (P4e): every added letter's RR in its position, every
+ *    example's RR, a pronounced spelling that reads as the word (tensing,
+ *    which RR does not write, as plain → tense initials); Hangul checkpoint
+ *    items keyed by the RR rules, with options that do not sound alike and
+ *    only jamo the primer teaches;
  *  - every text has non-empty vi and en.
  *
  * Compiled to src/content/primer/<lang>.json (loaded by src/lib/script-primer.ts)
@@ -96,11 +101,123 @@ function texts(primer: ScriptPrimer): { where: string; text: Text }[] {
       s.rules.forEach((r, i) => out.push({ where: `${s.id}.rule${i + 1}`, text: r.rule }));
     }
     if (s.kind === "hangulBlocks") for (const b of s.blocks) out.push({ where: `${s.id}.${b.block}`, text: b.layout });
+    if (s.kind === "hangulSounds") {
+      s.rows.forEach((row, r) => {
+        if (row.label) out.push({ where: `${s.id}.row${r + 1}`, text: row.label });
+        for (const item of row.items) if (item.gloss) out.push({ where: `${s.id}.${item.text}`, text: item.gloss });
+      });
+    }
     if ("notes" in s) (s.notes ?? []).forEach((n, i) => out.push({ where: `${s.id}.note${i + 1}`, text: n }));
   }
-  if (primer.checkpoint) out.push({ where: "checkpoint.title", text: primer.checkpoint.title }, { where: "checkpoint.intro", text: primer.checkpoint.intro });
+  if (primer.checkpoint) {
+    out.push({ where: "checkpoint.title", text: primer.checkpoint.title }, { where: "checkpoint.intro", text: primer.checkpoint.intro });
+    const m = primer.checkpoint.messages;
+    if (m) {
+      out.push(
+        { where: "checkpoint.passed", text: m.passed },
+        { where: "checkpoint.passedBadge", text: m.passedBadge },
+        { where: "checkpoint.entryRecommended", text: m.entryRecommended },
+        { where: "checkpoint.entryPassed", text: m.entryPassed }
+      );
+    }
+  }
   return out;
 }
+
+// --- hangul beyond the basic jamo (P4e) ---------------------------------------
+
+const CHO = [..."ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ"];
+const JUNG = [..."ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ"];
+const JONG = ["", ..."ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ"];
+const TENSE_OF: Readonly<Record<string, string>> = { ㄱ: "ㄲ", ㄷ: "ㄸ", ㅂ: "ㅃ", ㅅ: "ㅆ", ㅈ: "ㅉ" };
+const isHangulText = (text: string) => /^[가-힣]+(?: [가-힣]+)*$/.test(text);
+
+/** The jamo of one syllable block: initial, vowel and final ("" when there is none). */
+export function blockJamo(block: string): { initial: string; vowel: string; final: string } | null {
+  const n = block.charCodeAt(0) - 0xac00;
+  if (block.length !== 1 || n < 0 || n > 11171) return null;
+  return { initial: CHO[Math.floor(n / 588)]!, vowel: JUNG[Math.floor((n % 588) / 28)]!, final: JONG[n % 28]! };
+}
+
+/** Whether `said` is `text` with one or more plain initials made tense (학교 → 학꾜), nothing else changed. */
+function isTensed(text: string, said: string): boolean {
+  if ([...text].length !== [...said].length) return false;
+  let changed = 0;
+  const a = [...text];
+  const b = [...said];
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] === b[i]) continue;
+    const x = blockJamo(a[i]!);
+    const y = blockJamo(b[i]!);
+    if (!x || !y || x.vowel !== y.vowel || x.final !== y.final || TENSE_OF[x.initial] !== y.initial) return false;
+    changed++;
+  }
+  return changed > 0;
+}
+
+function checkHangulSounds(s: Extract<ScriptPrimer["sections"][number], { kind: "hangulSounds" }>, err: (m: string) => void): void {
+  for (const j of s.jamo ?? []) {
+    const expected = j.position === "initial" ? (CHO.includes(j.jamo) ? initialRr(j.jamo) : undefined) : j.position === "vowel" ? (JUNG.includes(j.jamo) ? vowelRr(j.jamo) : undefined) : JONG.indexOf(j.jamo) > 0 ? finalRr(j.jamo) : undefined;
+    if (expected === undefined) err(`${s.id}: ${j.jamo} cannot be a${j.position === "initial" ? "n initial" : j.position === "vowel" ? " vowel" : " final"}`);
+    else if (expected !== j.rr) err(`${s.id}: ${j.jamo} as ${j.position === "vowel" ? "a vowel" : `a${j.position === "initial" ? "n initial" : " final"}`} is "${expected}" in RR, not "${j.rr}"`);
+  }
+  for (const row of s.rows) {
+    for (const item of row.items) {
+      if (!isHangulText(item.text)) {
+        err(`${s.id}: ${item.text} is not hangul`);
+        continue;
+      }
+      const rr = romanizeKorean(item.text);
+      if (rr !== item.rr) err(`${s.id}: ${item.text} is "${rr}" in RR, not "${item.rr}"`);
+      if (item.audio.say !== item.text) err(`${s.id}: audio of ${item.text} says "${item.audio.say}"`);
+      if (item.tensed && item.said === undefined) err(`${s.id}: ${item.text} is marked tensed without a pronounced spelling`);
+      if (item.said !== undefined) {
+        if (!isHangulText(item.said) || item.said === item.text) err(`${s.id}: ${item.text}: the pronounced spelling "${item.said}" must be other hangul`);
+        else if (item.tensed) {
+          if (!isTensed(item.text, item.said)) err(`${s.id}: ${item.text} → ${item.said} is not a tensing of plain initials`);
+        } else if (romanizeKorean(item.said) !== item.rr) {
+          err(`${s.id}: ${item.text} is said "${item.said}", whose RR "${romanizeKorean(item.said)}" is not the word's "${item.rr}"`);
+        }
+      }
+    }
+  }
+}
+
+/** Every jamo a Hangul primer teaches: the basic consonants and vowels, and the letters of its sound sections. */
+function taughtJamo(primer: ScriptPrimer): Set<string> {
+  const out = new Set<string>([""]);
+  for (const s of primer.sections) {
+    if (s.kind === "hangulBlocks") for (const j of [...s.consonants.map((c) => c.jamo), ...s.vowels.map((v) => v.jamo)]) out.add(j);
+    if (s.kind === "hangulSounds") for (const j of s.jamo ?? []) out.add(j.jamo);
+  }
+  return out;
+}
+
+/** Hangul checkpoint items: the key is the RR rules' reading, no two options read alike, every jamo is taught. */
+function checkHangulItem(primer: ScriptPrimer, item: Extract<PrimerCheckpointItem, { kind: "hangulToRr" | "soundToHangul" }>, where: string, err: (m: string) => void): void {
+  const taught = taughtJamo(primer);
+  const untaught = (text: string) =>
+    [...text.replace(/ /g, "")].flatMap((ch) => {
+      const j = blockJamo(ch);
+      return j === null ? [ch] : [j.initial, j.vowel, j.final].filter((x) => !taught.has(x));
+    });
+  if (item.kind === "hangulToRr") {
+    if (!isHangulText(item.text)) err(`${where}: ${item.text} is not hangul`);
+    else if (item.options[item.correct] !== romanizeKorean(item.text)) err(`${where}: ${item.text} reads "${romanizeKorean(item.text)}", not "${item.options[item.correct]}"`);
+    for (const o of item.options) if (!/^[a-z'-]+$/.test(o)) err(`${where}: option "${o}" is not RR`);
+    for (const j of new Set(untaught(item.text))) err(`${where}: ${j} is not taught by the primer`);
+  } else {
+    if (item.audio.say !== item.options[item.correct]) err(`${where}: audio says "${item.audio.say}", the key is "${item.options[item.correct]}"`);
+    const readings = item.options.map((o) => (isHangulText(o) ? romanizeKorean(o) : undefined));
+    item.options.forEach((o, i) => {
+      if (readings[i] === undefined) err(`${where}: option ${o} is not hangul`);
+      for (const j of new Set(untaught(o))) err(`${where}: ${j} is not taught by the primer`);
+    });
+    if (new Set(readings).size !== readings.length) err(`${where}: two options sound the same (${readings.join(", ")})`);
+  }
+}
+
+type PrimerCheckpointItem = NonNullable<ScriptPrimer["checkpoint"]>["items"][number];
 
 function checkKana(s: Extract<ScriptPrimer["sections"][number], { kind: "kanaTable" }>, err: (m: string) => void): void {
   // ー lengthens a vowel in katakana words; every other character is the table's script.
@@ -192,8 +309,14 @@ function taughtKana(primer: ScriptPrimer): Set<string> {
 function checkCheckpoint(primer: ScriptPrimer, err: (m: string) => void): void {
   const cp = primer.checkpoint;
   if (cp === undefined) return;
-  if (!primer.sections.some((s) => s.kind === "kanaTable")) {
+  const kanaItems = cp.items.some((i) => i.kind === "kanaToRomaji" || i.kind === "soundToKana");
+  const hangulItems = cp.items.some((i) => i.kind === "hangulToRr" || i.kind === "soundToHangul");
+  if (kanaItems && !primer.sections.some((s) => s.kind === "kanaTable")) {
     err("checkpoint: only a kana primer has a checkpoint (its items read kana)");
+    return;
+  }
+  if (hangulItems && !primer.sections.some((s) => s.kind === "hangulBlocks")) {
+    err("checkpoint: only a Hangul primer has Hangul items");
     return;
   }
   const ids = cp.items.map((i) => i.id);
@@ -211,7 +334,9 @@ function checkCheckpoint(primer: ScriptPrimer, err: (m: string) => void): void {
     }
     keyPositions.add(item.correct);
     if (new Set(item.options).size !== item.options.length) err(`${where}: options repeat`);
-    if (item.kind === "kanaToRomaji") {
+    if (item.kind === "hangulToRr" || item.kind === "soundToHangul") {
+      checkHangulItem(primer, item, where, err);
+    } else if (item.kind === "kanaToRomaji") {
       const reading = kanaHepburn(item.kana) ?? hepburn(item.kana);
       if (reading === undefined) err(`${where}: ${item.kana} is not kana`);
       else if (item.options[item.correct] !== reading) err(`${where}: ${item.kana} reads "${reading}", not "${item.options[item.correct]}"`);
@@ -245,6 +370,7 @@ export function validateScriptPrimerData(lang: PrimerLang, primer: ScriptPrimer)
     if (s.kind === "kanaTable") checkKana(s, err);
     else if (s.kind === "tones") checkTones(s, err);
     else if (s.kind === "hangulBlocks") checkHangul(s, err);
+    else if (s.kind === "hangulSounds") checkHangulSounds(s, err);
   }
   checkCheckpoint(primer, err);
   // Each language teaches its own script.

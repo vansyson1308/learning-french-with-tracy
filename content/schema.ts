@@ -959,24 +959,70 @@ export const HangulSectionSchema = z.strictObject({
   notes: z.array(PrimerTextSchema).optional(),
 });
 
+/**
+ * P4e: Hangul beyond the basic jamo — the tense and aspirated consonants,
+ * the compound vowels, the double finals and the sound changes. `jamo` lists
+ * the letters the section adds with their RR in one position (a consonant
+ * before a vowel, a vowel, a final); `rows` are example sets (가 까 카, a
+ * word with a sound change). `said` spells a word as it is pronounced
+ * (합니다 → 함니다); its RR is the word's RR, except for tensing
+ * (`tensed`), which RR does not write.
+ */
+export const HangulSoundsSectionSchema = z.strictObject({
+  kind: z.literal("hangulSounds"),
+  id: primerSectionId,
+  title: PrimerTextSchema,
+  explanation: PrimerTextSchema,
+  jamo: z.array(z.strictObject({ jamo: z.string().length(1), position: z.enum(["initial", "vowel", "final"]), rr: z.string().min(1), name: z.string().min(1).optional() })).optional(),
+  rows: z
+    .array(
+      z.strictObject({
+        label: PrimerTextSchema.optional(),
+        items: z
+          .array(
+            z.strictObject({
+              text: z.string().min(1),
+              rr: z.string().min(1),
+              said: z.string().min(1).optional(),
+              tensed: z.literal(true).optional(),
+              gloss: PrimerTextSchema.optional(),
+              audio: PrimerAudioSchema,
+            })
+          )
+          .min(1),
+      })
+    )
+    .min(1),
+  notes: z.array(PrimerTextSchema).optional(),
+});
+
 const checkpointItemId = z.string().regex(/^c[0-9]{2}$/);
 const checkpointOptions = z.array(z.string().min(1)).min(2).max(4);
 
 /**
- * P4c: the primer's checkpoint (kana primers only). Two item kinds: read a
- * kana and pick its rōmaji, or hear a sound and pick the kana (minimal pairs
- * are sound items with two options). Passing (`passMark` correct) is the only
- * thing it records: the course's persisted `primerPassed`.
+ * P4c: the primer's checkpoint (kana primers; P4e: Hangul primers too). Item
+ * kinds: read a kana and pick its rōmaji, or hear a sound and pick the kana
+ * (minimal pairs are sound items with two options); for Hangul, read a block
+ * or word and pick its RR, or hear it and pick the Hangul. Passing
+ * (`passMark` correct) is the only thing it records: the course's persisted
+ * `primerPassed`. `messages` (optional) are the primer's own words for the
+ * pass and the Learn-tab entry, for a primer whose pass turns nothing off
+ * (Hangul: the RR line stays); without them the app's kana wording is used.
  */
 export const PrimerCheckpointSchema = z.strictObject({
   title: PrimerTextSchema,
   intro: PrimerTextSchema,
   passMark: z.number().int().min(1),
+  messages: z
+    .strictObject({ passed: PrimerTextSchema, passedBadge: PrimerTextSchema, entryRecommended: PrimerTextSchema, entryPassed: PrimerTextSchema })
+    .optional(),
   items: z
     .array(
       z.discriminatedUnion("kind", [
         z.strictObject({ kind: z.literal("kanaToRomaji"), id: checkpointItemId, kana: z.string().min(1), options: checkpointOptions, correct: z.number().int().min(0) }),
         z.strictObject({ kind: z.literal("soundToKana"), id: checkpointItemId, audio: PrimerAudioSchema, options: checkpointOptions, correct: z.number().int().min(0) }),
+        z.strictObject({ kind: z.literal("hangulToRr"), id: checkpointItemId, text: z.string().min(1), options: checkpointOptions, correct: z.number().int().min(0) }),
+        z.strictObject({ kind: z.literal("soundToHangul"), id: checkpointItemId, audio: PrimerAudioSchema, options: checkpointOptions, correct: z.number().int().min(0) }),
       ])
     )
     .min(10),
@@ -990,7 +1036,7 @@ export const ScriptPrimerSchema = z.strictObject({
   id: z.string().regex(/^(ja|zh|ko)\.primer\.script$/),
   title: PrimerTextSchema,
   intro: PrimerTextSchema,
-  sections: z.array(z.discriminatedUnion("kind", [KanaTableSectionSchema, TonesSectionSchema, StrokesSectionSchema, HangulSectionSchema])).min(1),
+  sections: z.array(z.discriminatedUnion("kind", [KanaTableSectionSchema, TonesSectionSchema, StrokesSectionSchema, HangulSectionSchema, HangulSoundsSectionSchema])).min(1),
   checkpoint: PrimerCheckpointSchema.optional(),
 });
 export type ScriptPrimer = z.infer<typeof ScriptPrimerSchema>;

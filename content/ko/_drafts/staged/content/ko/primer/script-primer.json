@@ -1,0 +1,1709 @@
+{
+  "version": 1,
+  "language": "ko",
+  "id": "ko.primer.script",
+  "title": {
+    "vi": "Bảng chữ Hangul",
+    "en": "Hangul"
+  },
+  "intro": {
+    "vi": "Hangul là chữ ghi âm: mỗi chữ cái (jamo) là một phụ âm hoặc một nguyên âm, và các jamo xếp lại thành một khối vuông ứng với một âm tiết. Bắt đầu với 14 phụ âm và 10 nguyên âm cơ bản, rồi đến phụ âm căng và bật hơi, nguyên âm ghép, phụ âm cuối và cách đọc liền. Cuối cùng là một bài kiểm tra nhanh. Bấm vào một chữ để nghe.",
+    "en": "Hangul is an alphabet: each letter (jamo) is a consonant or a vowel, and the letters stack into a square block for each syllable. Start with the 14 basic consonants and 10 vowels, then the tense and aspirated consonants, the compound vowels, the final consonants and how words are read together. A quick check comes last. Tap a letter to hear it."
+  },
+  "sections": [
+    {
+      "kind": "hangulBlocks",
+      "id": "jamo-and-blocks",
+      "title": {
+        "vi": "Phụ âm, nguyên âm và cách ghép khối",
+        "en": "Consonants, vowels and how blocks are built"
+      },
+      "explanation": {
+        "vi": "Mỗi khối luôn bắt đầu bằng một phụ âm. Âm tiết mở đầu bằng nguyên âm thì dùng ㅇ (không đọc) làm phụ âm đầu: 아 đọc là «a». Phụ âm cuối khối gọi là batchim và luôn nằm ở dưới cùng.",
+        "en": "Every block starts with a consonant. A syllable that begins with a vowel takes the silent ㅇ as its first letter: 아 is read “a”. A final consonant, called batchim, always sits at the bottom."
+      },
+      "consonants": [
+        {
+          "jamo": "ㄱ",
+          "initial": "g",
+          "final": "k",
+          "name": "기역"
+        },
+        {
+          "jamo": "ㄴ",
+          "initial": "n",
+          "final": "n",
+          "name": "니은"
+        },
+        {
+          "jamo": "ㄷ",
+          "initial": "d",
+          "final": "t",
+          "name": "디귿"
+        },
+        {
+          "jamo": "ㄹ",
+          "initial": "r",
+          "final": "l",
+          "name": "리을"
+        },
+        {
+          "jamo": "ㅁ",
+          "initial": "m",
+          "final": "m",
+          "name": "미음"
+        },
+        {
+          "jamo": "ㅂ",
+          "initial": "b",
+          "final": "p",
+          "name": "비읍"
+        },
+        {
+          "jamo": "ㅅ",
+          "initial": "s",
+          "final": "t",
+          "name": "시옷"
+        },
+        {
+          "jamo": "ㅇ",
+          "initial": "",
+          "final": "ng",
+          "name": "이응"
+        },
+        {
+          "jamo": "ㅈ",
+          "initial": "j",
+          "final": "t",
+          "name": "지읒"
+        },
+        {
+          "jamo": "ㅊ",
+          "initial": "ch",
+          "final": "t",
+          "name": "치읓"
+        },
+        {
+          "jamo": "ㅋ",
+          "initial": "k",
+          "final": "k",
+          "name": "키읔"
+        },
+        {
+          "jamo": "ㅌ",
+          "initial": "t",
+          "final": "t",
+          "name": "티읕"
+        },
+        {
+          "jamo": "ㅍ",
+          "initial": "p",
+          "final": "p",
+          "name": "피읖"
+        },
+        {
+          "jamo": "ㅎ",
+          "initial": "h",
+          "name": "히읗"
+        }
+      ],
+      "vowels": [
+        {
+          "jamo": "ㅏ",
+          "rr": "a"
+        },
+        {
+          "jamo": "ㅑ",
+          "rr": "ya"
+        },
+        {
+          "jamo": "ㅓ",
+          "rr": "eo"
+        },
+        {
+          "jamo": "ㅕ",
+          "rr": "yeo"
+        },
+        {
+          "jamo": "ㅗ",
+          "rr": "o"
+        },
+        {
+          "jamo": "ㅛ",
+          "rr": "yo"
+        },
+        {
+          "jamo": "ㅜ",
+          "rr": "u"
+        },
+        {
+          "jamo": "ㅠ",
+          "rr": "yu"
+        },
+        {
+          "jamo": "ㅡ",
+          "rr": "eu"
+        },
+        {
+          "jamo": "ㅣ",
+          "rr": "i"
+        }
+      ],
+      "blocks": [
+        {
+          "block": "가",
+          "parts": [
+            "ㄱ",
+            "ㅏ"
+          ],
+          "rr": "ga",
+          "layout": {
+            "vi": "Nguyên âm dọc (ㅏ ㅑ ㅓ ㅕ ㅣ) đứng bên phải phụ âm.",
+            "en": "A vertical vowel (ㅏ ㅑ ㅓ ㅕ ㅣ) stands to the right of the consonant."
+          },
+          "audio": {
+            "say": "가",
+            "status": "pending"
+          }
+        },
+        {
+          "block": "구",
+          "parts": [
+            "ㄱ",
+            "ㅜ"
+          ],
+          "rr": "gu",
+          "layout": {
+            "vi": "Nguyên âm ngang (ㅗ ㅛ ㅜ ㅠ ㅡ) nằm dưới phụ âm.",
+            "en": "A horizontal vowel (ㅗ ㅛ ㅜ ㅠ ㅡ) sits under the consonant."
+          },
+          "audio": {
+            "say": "구",
+            "status": "pending"
+          }
+        },
+        {
+          "block": "한",
+          "parts": [
+            "ㅎ",
+            "ㅏ",
+            "ㄴ"
+          ],
+          "rr": "han",
+          "layout": {
+            "vi": "Phụ âm cuối (batchim) nằm dưới cùng: ㅎ + ㅏ + ㄴ = 한, chữ đầu của 한국 (Hàn Quốc).",
+            "en": "The final consonant (batchim) goes underneath: ㅎ + ㅏ + ㄴ = 한, the first syllable of 한국 (Korea)."
+          },
+          "audio": {
+            "say": "한",
+            "status": "pending"
+          }
+        }
+      ],
+      "notes": [
+        {
+          "vi": "ㅓ (eo) đọc gần «ơ», ㅡ (eu) gần «ư», ㅗ (o) như «ô», ㅜ (u) như «u». Đừng đọc eo thành «e-o»: đó chỉ là cách viết Latinh của một nguyên âm.",
+          "en": "ㅓ (eo) is close to an open “uh”, ㅡ (eu) is said with spread lips; eo and eu are single vowels, not two letters."
+        },
+        {
+          "vi": "ㄱ ㄷ ㅂ ㅈ ở đầu từ nghe gần «c, t, p, ch» nhẹ; giữa hai nguyên âm thì kêu thành g, d, b, j. Vì vậy 가 viết là ga nhưng nghe gần «ca».",
+          "en": "ㄱ ㄷ ㅂ ㅈ at the start of a word sound close to a soft k, t, p, ch; between vowels they are voiced (g, d, b, j)."
+        }
+      ]
+    },
+    {
+      "kind": "hangulSounds",
+      "id": "tense-aspirated",
+      "title": {
+        "vi": "Phụ âm căng và bật hơi: 가, 까, 카",
+        "en": "Tense and aspirated consonants: 가, 까, 카"
+      },
+      "explanation": {
+        "vi": "Năm phụ âm ㄱ ㄷ ㅂ ㅅ ㅈ có thêm dạng căng, viết đôi: ㄲ ㄸ ㅃ ㅆ ㅉ. Âm căng đọc siết cổ, không có hơi, gần «c, t, p» rất gọn của tiếng Việt. Bốn phụ âm ㅋ ㅌ ㅍ ㅊ (đã học) là âm bật hơi, có luồng hơi mạnh, gần «kh, th». Ba âm này làm đổi nghĩa: 달 (mặt trăng), 딸 (con gái), 탈 (mặt nạ). So sánh với tiếng Việt chỉ là gần đúng; hãy nghe và nhại lại.",
+        "en": "ㄱ ㄷ ㅂ ㅅ ㅈ each have a tense form, written double: ㄲ ㄸ ㅃ ㅆ ㅉ, said with a tight throat and no breath. ㅋ ㅌ ㅍ ㅊ (already learnt) are aspirated, with a strong puff. The three change the meaning: 달 (moon), 딸 (daughter), 탈 (mask). Vietnamese comparisons are only approximate; listen and repeat."
+      },
+      "jamo": [
+        {
+          "jamo": "ㄲ",
+          "position": "initial",
+          "rr": "kk",
+          "name": "쌍기역"
+        },
+        {
+          "jamo": "ㄸ",
+          "position": "initial",
+          "rr": "tt",
+          "name": "쌍디귿"
+        },
+        {
+          "jamo": "ㅃ",
+          "position": "initial",
+          "rr": "pp",
+          "name": "쌍비읍"
+        },
+        {
+          "jamo": "ㅆ",
+          "position": "initial",
+          "rr": "ss",
+          "name": "쌍시옷"
+        },
+        {
+          "jamo": "ㅉ",
+          "position": "initial",
+          "rr": "jj",
+          "name": "쌍지읒"
+        }
+      ],
+      "rows": [
+        {
+          "label": {
+            "vi": "Thường · căng · bật hơi",
+            "en": "Plain · tense · aspirated"
+          },
+          "items": [
+            {
+              "text": "가",
+              "rr": "ga",
+              "audio": {
+                "say": "가",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "까",
+              "rr": "kka",
+              "audio": {
+                "say": "까",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "카",
+              "rr": "ka",
+              "audio": {
+                "say": "카",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "text": "다",
+              "rr": "da",
+              "audio": {
+                "say": "다",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "따",
+              "rr": "tta",
+              "audio": {
+                "say": "따",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "타",
+              "rr": "ta",
+              "audio": {
+                "say": "타",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "text": "바",
+              "rr": "ba",
+              "audio": {
+                "say": "바",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "빠",
+              "rr": "ppa",
+              "audio": {
+                "say": "빠",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "파",
+              "rr": "pa",
+              "audio": {
+                "say": "파",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "text": "자",
+              "rr": "ja",
+              "audio": {
+                "say": "자",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "짜",
+              "rr": "jja",
+              "audio": {
+                "say": "짜",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "차",
+              "rr": "cha",
+              "audio": {
+                "say": "차",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "ㅅ chỉ có dạng căng ㅆ, không có dạng bật hơi",
+            "en": "ㅅ has a tense ㅆ but no aspirated form"
+          },
+          "items": [
+            {
+              "text": "사",
+              "rr": "sa",
+              "audio": {
+                "say": "사",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "싸",
+              "rr": "ssa",
+              "audio": {
+                "say": "싸",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "Cặp từ chỉ khác một âm",
+            "en": "Words that differ in one sound"
+          },
+          "items": [
+            {
+              "text": "달",
+              "rr": "dal",
+              "gloss": {
+                "vi": "mặt trăng",
+                "en": "moon"
+              },
+              "audio": {
+                "say": "달",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "딸",
+              "rr": "ttal",
+              "gloss": {
+                "vi": "con gái",
+                "en": "daughter"
+              },
+              "audio": {
+                "say": "딸",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "탈",
+              "rr": "tal",
+              "gloss": {
+                "vi": "mặt nạ",
+                "en": "mask"
+              },
+              "audio": {
+                "say": "탈",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "text": "불",
+              "rr": "bul",
+              "gloss": {
+                "vi": "lửa",
+                "en": "fire"
+              },
+              "audio": {
+                "say": "불",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "뿔",
+              "rr": "ppul",
+              "gloss": {
+                "vi": "sừng",
+                "en": "horn"
+              },
+              "audio": {
+                "say": "뿔",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "풀",
+              "rr": "pul",
+              "gloss": {
+                "vi": "cỏ",
+                "en": "grass"
+              },
+              "audio": {
+                "say": "풀",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "text": "방",
+              "rr": "bang",
+              "gloss": {
+                "vi": "phòng",
+                "en": "room"
+              },
+              "audio": {
+                "say": "방",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "빵",
+              "rr": "ppang",
+              "gloss": {
+                "vi": "bánh mì",
+                "en": "bread"
+              },
+              "audio": {
+                "say": "빵",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "vi": "Mẹo: đặt bàn tay trước miệng. Với 카, 타, 파 bạn thấy hơi thổi mạnh; với 까, 따, 빠 gần như không có hơi.",
+          "en": "Hold your hand before your mouth: 카 타 파 push air, 까 따 빠 almost none."
+        },
+        {
+          "vi": "RR viết âm căng bằng hai chữ (kk, tt, pp, ss, jj), nhưng đó là một âm, không phải hai.",
+          "en": "RR writes a tense consonant with two letters, but it is one sound."
+        }
+      ]
+    },
+    {
+      "kind": "hangulSounds",
+      "id": "compound-vowels",
+      "title": {
+        "vi": "Nguyên âm ghép",
+        "en": "Compound vowels"
+      },
+      "explanation": {
+        "vi": "Mười một nguyên âm ghép từ các nét đã học. ㅐ và ㅔ ngày nay đọc gần như nhau, gần «e» của tiếng Việt. Thêm một nét ngắn là có âm «y»: ㅒ «ye», ㅖ «ye». ㅗ hoặc ㅜ đứng trước làm âm «w»: ㅘ «oa», ㅝ «uơ», ㅟ «uy». ㅙ, ㅚ, ㅞ nghe gần giống nhau, gần «uê». ㅢ đọc «ưi» ở đầu từ; sau phụ âm thường đọc «i»; làm trợ từ 의 thường đọc «ê».",
+        "en": "Eleven vowels are built from the strokes you know. ㅐ and ㅔ sound nearly the same today. An extra short stroke adds a y-sound: ㅒ, ㅖ. A leading ㅗ or ㅜ adds a w-sound: ㅘ, ㅝ, ㅟ. ㅙ, ㅚ, ㅞ sound much alike. ㅢ is a quick «eu-i» at the start of a word, usually «i» after a consonant, and «e» as the particle 의."
+      },
+      "jamo": [
+        {
+          "jamo": "ㅐ",
+          "position": "vowel",
+          "rr": "ae"
+        },
+        {
+          "jamo": "ㅔ",
+          "position": "vowel",
+          "rr": "e"
+        },
+        {
+          "jamo": "ㅒ",
+          "position": "vowel",
+          "rr": "yae"
+        },
+        {
+          "jamo": "ㅖ",
+          "position": "vowel",
+          "rr": "ye"
+        },
+        {
+          "jamo": "ㅘ",
+          "position": "vowel",
+          "rr": "wa"
+        },
+        {
+          "jamo": "ㅙ",
+          "position": "vowel",
+          "rr": "wae"
+        },
+        {
+          "jamo": "ㅚ",
+          "position": "vowel",
+          "rr": "oe"
+        },
+        {
+          "jamo": "ㅝ",
+          "position": "vowel",
+          "rr": "wo"
+        },
+        {
+          "jamo": "ㅞ",
+          "position": "vowel",
+          "rr": "we"
+        },
+        {
+          "jamo": "ㅟ",
+          "position": "vowel",
+          "rr": "wi"
+        },
+        {
+          "jamo": "ㅢ",
+          "position": "vowel",
+          "rr": "ui"
+        }
+      ],
+      "rows": [
+        {
+          "items": [
+            {
+              "text": "개",
+              "rr": "gae",
+              "audio": {
+                "say": "개",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "게",
+              "rr": "ge",
+              "audio": {
+                "say": "게",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "얘",
+              "rr": "yae",
+              "audio": {
+                "say": "얘",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "예",
+              "rr": "ye",
+              "audio": {
+                "say": "예",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "text": "와",
+              "rr": "wa",
+              "audio": {
+                "say": "와",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "왜",
+              "rr": "wae",
+              "audio": {
+                "say": "왜",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "외",
+              "rr": "oe",
+              "audio": {
+                "say": "외",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "text": "워",
+              "rr": "wo",
+              "audio": {
+                "say": "워",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "웨",
+              "rr": "we",
+              "audio": {
+                "say": "웨",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "위",
+              "rr": "wi",
+              "audio": {
+                "say": "위",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "의",
+              "rr": "ui",
+              "audio": {
+                "say": "의",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "Trong từ",
+            "en": "In words"
+          },
+          "items": [
+            {
+              "text": "사과",
+              "rr": "sagwa",
+              "gloss": {
+                "vi": "quả táo",
+                "en": "apple"
+              },
+              "audio": {
+                "say": "사과",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "회사",
+              "rr": "hoesa",
+              "gloss": {
+                "vi": "công ty",
+                "en": "company"
+              },
+              "audio": {
+                "say": "회사",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "의자",
+              "rr": "uija",
+              "gloss": {
+                "vi": "cái ghế",
+                "en": "chair"
+              },
+              "audio": {
+                "say": "의자",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "왜",
+              "rr": "wae",
+              "gloss": {
+                "vi": "tại sao",
+                "en": "why"
+              },
+              "audio": {
+                "say": "왜",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "vi": "Khi gõ trên bàn phím, nguyên âm ghép gõ bằng hai phím: ㅗ + ㅏ = ㅘ, ㅜ + ㅓ = ㅝ.",
+          "en": "On a keyboard a compound vowel takes two keys: ㅗ + ㅏ = ㅘ, ㅜ + ㅓ = ㅝ."
+        }
+      ]
+    },
+    {
+      "kind": "hangulSounds",
+      "id": "final-consonants",
+      "title": {
+        "vi": "Phụ âm cuối (받침): bảy âm",
+        "en": "Final consonants (받침): seven sounds"
+      },
+      "explanation": {
+        "vi": "Phụ âm ở đáy khối gọi là 받침. Viết có nhiều chữ, nhưng đọc chỉ có bảy âm cuối, giống các âm cuối của tiếng Việt: «k» (như «học»), «n», «t» (như «hát»), «l», «m», «p» (như «họp»), «ng». Âm cuối không bật ra: miệng khép lại rồi dừng. ㄱ ㅋ ㄲ đọc «k»; ㅅ ㅆ ㅈ ㅊ ㅌ (và ㄷ) đọc «t»; ㅂ ㅍ đọc «p».",
+        "en": "A consonant at the bottom of a block is a 받침. Many letters are written there, but only seven final sounds are said, like the Vietnamese finals: k, n, t, l, m, p, ng. Finals are unreleased. ㄱ ㅋ ㄲ read k; ㅅ ㅆ ㅈ ㅊ ㅌ (and ㄷ) read t; ㅂ ㅍ read p."
+      },
+      "jamo": [
+        {
+          "jamo": "ㄱ",
+          "position": "final",
+          "rr": "k"
+        },
+        {
+          "jamo": "ㄴ",
+          "position": "final",
+          "rr": "n"
+        },
+        {
+          "jamo": "ㄷ",
+          "position": "final",
+          "rr": "t"
+        },
+        {
+          "jamo": "ㄹ",
+          "position": "final",
+          "rr": "l"
+        },
+        {
+          "jamo": "ㅁ",
+          "position": "final",
+          "rr": "m"
+        },
+        {
+          "jamo": "ㅂ",
+          "position": "final",
+          "rr": "p"
+        },
+        {
+          "jamo": "ㅇ",
+          "position": "final",
+          "rr": "ng"
+        },
+        {
+          "jamo": "ㅋ",
+          "position": "final",
+          "rr": "k"
+        },
+        {
+          "jamo": "ㄲ",
+          "position": "final",
+          "rr": "k"
+        },
+        {
+          "jamo": "ㅅ",
+          "position": "final",
+          "rr": "t"
+        },
+        {
+          "jamo": "ㅆ",
+          "position": "final",
+          "rr": "t"
+        },
+        {
+          "jamo": "ㅈ",
+          "position": "final",
+          "rr": "t"
+        },
+        {
+          "jamo": "ㅊ",
+          "position": "final",
+          "rr": "t"
+        },
+        {
+          "jamo": "ㅌ",
+          "position": "final",
+          "rr": "t"
+        },
+        {
+          "jamo": "ㅍ",
+          "position": "final",
+          "rr": "p"
+        }
+      ],
+      "rows": [
+        {
+          "label": {
+            "vi": "Đọc «k»",
+            "en": "Read k"
+          },
+          "items": [
+            {
+              "text": "국",
+              "rr": "guk",
+              "gloss": {
+                "vi": "canh",
+                "en": "soup"
+              },
+              "audio": {
+                "say": "국",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "부엌",
+              "rr": "bueok",
+              "gloss": {
+                "vi": "bếp",
+                "en": "kitchen"
+              },
+              "audio": {
+                "say": "부엌",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "밖",
+              "rr": "bak",
+              "gloss": {
+                "vi": "bên ngoài",
+                "en": "outside"
+              },
+              "audio": {
+                "say": "밖",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "Đọc «t»",
+            "en": "Read t"
+          },
+          "items": [
+            {
+              "text": "옷",
+              "rr": "ot",
+              "gloss": {
+                "vi": "quần áo",
+                "en": "clothes"
+              },
+              "audio": {
+                "say": "옷",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "낮",
+              "rr": "nat",
+              "gloss": {
+                "vi": "ban ngày",
+                "en": "daytime"
+              },
+              "audio": {
+                "say": "낮",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "꽃",
+              "rr": "kkot",
+              "gloss": {
+                "vi": "hoa",
+                "en": "flower"
+              },
+              "audio": {
+                "say": "꽃",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "Đọc «p»",
+            "en": "Read p"
+          },
+          "items": [
+            {
+              "text": "밥",
+              "rr": "bap",
+              "gloss": {
+                "vi": "cơm",
+                "en": "rice"
+              },
+              "audio": {
+                "say": "밥",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "앞",
+              "rr": "ap",
+              "gloss": {
+                "vi": "phía trước",
+                "en": "front"
+              },
+              "audio": {
+                "say": "앞",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "ㄴ ㄹ ㅁ ㅇ giữ âm của chúng",
+            "en": "ㄴ ㄹ ㅁ ㅇ keep their sound"
+          },
+          "items": [
+            {
+              "text": "산",
+              "rr": "san",
+              "gloss": {
+                "vi": "núi",
+                "en": "mountain"
+              },
+              "audio": {
+                "say": "산",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "물",
+              "rr": "mul",
+              "gloss": {
+                "vi": "nước",
+                "en": "water"
+              },
+              "audio": {
+                "say": "물",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "몸",
+              "rr": "mom",
+              "gloss": {
+                "vi": "cơ thể",
+                "en": "body"
+              },
+              "audio": {
+                "say": "몸",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "강",
+              "rr": "gang",
+              "gloss": {
+                "vi": "sông",
+                "en": "river"
+              },
+              "audio": {
+                "say": "강",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "vi": "ㄹ cuối đọc gần «l» cong lưỡi nhẹ, không như «n».",
+          "en": "A final ㄹ is a light l, not an n."
+        }
+      ]
+    },
+    {
+      "kind": "hangulSounds",
+      "id": "double-finals",
+      "title": {
+        "vi": "Hai phụ âm cuối",
+        "en": "Double final consonants"
+      },
+      "explanation": {
+        "vi": "Một số khối có hai phụ âm ở đáy: 값, 닭, 앉다. Đứng một mình hoặc trước phụ âm, thường chỉ đọc một trong hai chữ: 값 «kap», 닭 «tak», 여덟 «yeo-đơl». Trước nguyên âm thì chữ thứ hai nối sang khối sau: 값이 «kap-si». Học cách đọc cùng với từ.",
+        "en": "Some blocks carry two consonants at the bottom: 값, 닭, 앉다. Alone or before a consonant only one is usually read: 값 gap, 닭 dak, 여덟 yeodeol. Before a vowel the second moves on: 값이 gapsi. Learn the reading with the word."
+      },
+      "jamo": [
+        {
+          "jamo": "ㄳ",
+          "position": "final",
+          "rr": "k"
+        },
+        {
+          "jamo": "ㄵ",
+          "position": "final",
+          "rr": "n"
+        },
+        {
+          "jamo": "ㄶ",
+          "position": "final",
+          "rr": "n"
+        },
+        {
+          "jamo": "ㄺ",
+          "position": "final",
+          "rr": "k"
+        },
+        {
+          "jamo": "ㄻ",
+          "position": "final",
+          "rr": "m"
+        },
+        {
+          "jamo": "ㄼ",
+          "position": "final",
+          "rr": "l"
+        },
+        {
+          "jamo": "ㄾ",
+          "position": "final",
+          "rr": "l"
+        },
+        {
+          "jamo": "ㅀ",
+          "position": "final",
+          "rr": "l"
+        },
+        {
+          "jamo": "ㅄ",
+          "position": "final",
+          "rr": "p"
+        }
+      ],
+      "rows": [
+        {
+          "items": [
+            {
+              "text": "값",
+              "rr": "gap",
+              "gloss": {
+                "vi": "giá",
+                "en": "price"
+              },
+              "audio": {
+                "say": "값",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "닭",
+              "rr": "dak",
+              "gloss": {
+                "vi": "con gà",
+                "en": "chicken"
+              },
+              "audio": {
+                "say": "닭",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "여덟",
+              "rr": "yeodeol",
+              "gloss": {
+                "vi": "tám",
+                "en": "eight"
+              },
+              "audio": {
+                "say": "여덟",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "Trong động từ, tính từ",
+            "en": "In verbs and adjectives"
+          },
+          "items": [
+            {
+              "text": "앉다",
+              "rr": "anda",
+              "gloss": {
+                "vi": "ngồi",
+                "en": "to sit"
+              },
+              "audio": {
+                "say": "앉다",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "없다",
+              "rr": "eopda",
+              "gloss": {
+                "vi": "không có",
+                "en": "not to have"
+              },
+              "audio": {
+                "say": "없다",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "읽다",
+              "rr": "ikda",
+              "gloss": {
+                "vi": "đọc",
+                "en": "to read"
+              },
+              "audio": {
+                "say": "읽다",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "많다",
+              "rr": "manta",
+              "gloss": {
+                "vi": "nhiều",
+                "en": "many"
+              },
+              "audio": {
+                "say": "많다",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "hangulSounds",
+      "id": "sound-changes",
+      "title": {
+        "vi": "Đọc liền: nối âm và biến âm",
+        "en": "Reading words together: liaison and sound changes"
+      },
+      "explanation": {
+        "vi": "Tiếng Hàn đọc liền các khối, nên vài âm đổi khi đứng cạnh nhau. Chữ viết không đổi; chỉ cách đọc đổi. Dòng trong ngoặc vuông là cách đọc. Bạn không cần thuộc tên quy tắc: nghe nhiều rồi sẽ quen.",
+        "en": "Korean reads blocks together, so some sounds change side by side. The spelling never changes, only the sound; the brackets show how a word is said. You need not learn the rule names: listening makes them familiar."
+      },
+      "rows": [
+        {
+          "label": {
+            "vi": "Nối âm (연음): phụ âm cuối nối sang nguyên âm sau",
+            "en": "Liaison (연음): a final moves onto the next vowel"
+          },
+          "items": [
+            {
+              "text": "한국어",
+              "rr": "han-gugeo",
+              "said": "한구거",
+              "gloss": {
+                "vi": "tiếng Hàn",
+                "en": "Korean"
+              },
+              "audio": {
+                "say": "한국어",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "음악",
+              "rr": "eumak",
+              "said": "으막",
+              "gloss": {
+                "vi": "âm nhạc",
+                "en": "music"
+              },
+              "audio": {
+                "say": "음악",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "옷이",
+              "rr": "osi",
+              "said": "오시",
+              "gloss": {
+                "vi": "quần áo (chủ ngữ)",
+                "en": "clothes (subject)"
+              },
+              "audio": {
+                "say": "옷이",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "Mũi hoá (비음화): ㅂ ㄱ trước ㄴ ㅁ đọc thành ㅁ ㅇ",
+            "en": "Nasalisation (비음화): ㅂ ㄱ before ㄴ ㅁ become ㅁ ㅇ"
+          },
+          "items": [
+            {
+              "text": "합니다",
+              "rr": "hamnida",
+              "said": "함니다",
+              "gloss": {
+                "vi": "làm (trang trọng)",
+                "en": "do (formal)"
+              },
+              "audio": {
+                "say": "합니다",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "감사합니다",
+              "rr": "gamsahamnida",
+              "said": "감사함니다",
+              "gloss": {
+                "vi": "cảm ơn",
+                "en": "thank you"
+              },
+              "audio": {
+                "say": "감사합니다",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "한국말",
+              "rr": "han-gungmal",
+              "said": "한궁말",
+              "gloss": {
+                "vi": "tiếng Hàn",
+                "en": "Korean"
+              },
+              "audio": {
+                "say": "한국말",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "ㅎ: gặp ㄱ ㄷ ㅂ ㅈ thì bật hơi; trước nguyên âm thì câm",
+            "en": "ㅎ aspirates ㄱ ㄷ ㅂ ㅈ; before a vowel it is silent"
+          },
+          "items": [
+            {
+              "text": "좋다",
+              "rr": "jota",
+              "said": "조타",
+              "gloss": {
+                "vi": "tốt",
+                "en": "good"
+              },
+              "audio": {
+                "say": "좋다",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "축하합니다",
+              "rr": "chukahamnida",
+              "said": "추카함니다",
+              "gloss": {
+                "vi": "chúc mừng",
+                "en": "congratulations"
+              },
+              "audio": {
+                "say": "축하합니다",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "좋아요",
+              "rr": "joayo",
+              "said": "조아요",
+              "gloss": {
+                "vi": "tốt",
+                "en": "good"
+              },
+              "audio": {
+                "say": "좋아요",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "ㅌ trước 이 đọc thành ㅊ",
+            "en": "ㅌ before 이 becomes ㅊ"
+          },
+          "items": [
+            {
+              "text": "같이",
+              "rr": "gachi",
+              "said": "가치",
+              "gloss": {
+                "vi": "cùng nhau",
+                "en": "together"
+              },
+              "audio": {
+                "say": "같이",
+                "status": "pending"
+              }
+            }
+          ]
+        },
+        {
+          "label": {
+            "vi": "Căng hoá (경음화): sau ㄱ ㄷ ㅂ, phụ âm thường đọc căng — RR không ghi",
+            "en": "Tensing (경음화): after ㄱ ㄷ ㅂ a plain consonant turns tense — RR does not show it"
+          },
+          "items": [
+            {
+              "text": "학교",
+              "rr": "hakgyo",
+              "said": "학꾜",
+              "tensed": true,
+              "gloss": {
+                "vi": "trường học",
+                "en": "school"
+              },
+              "audio": {
+                "say": "학교",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "식당",
+              "rr": "sikdang",
+              "said": "식땅",
+              "tensed": true,
+              "gloss": {
+                "vi": "quán ăn",
+                "en": "restaurant"
+              },
+              "audio": {
+                "say": "식당",
+                "status": "pending"
+              }
+            },
+            {
+              "text": "학생",
+              "rr": "haksaeng",
+              "said": "학쌩",
+              "tensed": true,
+              "gloss": {
+                "vi": "học sinh",
+                "en": "student"
+              },
+              "audio": {
+                "say": "학생",
+                "status": "pending"
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "vi": "Dòng RR dưới chữ Hàn trong bài học ghi nối âm và mũi hoá (hamnida), nhưng không ghi căng hoá (hakgyo).",
+          "en": "The RR line in the lessons shows liaison and nasalisation (hamnida) but not tensing (hakgyo)."
+        }
+      ]
+    }
+  ],
+  "checkpoint": {
+    "title": {
+      "vi": "Kiểm tra nhanh chữ Hangul",
+      "en": "Quick Hangul check"
+    },
+    "intro": {
+      "vi": "20 câu: đọc chữ rồi chọn cách đọc La-tinh (RR), nghe rồi chọn chữ. Đúng từ 16 câu là qua. Làm lại bao nhiêu lần cũng được; bài học không bị khoá.",
+      "en": "20 questions: read a block and pick its RR, listen and pick the Hangul. 16 correct passes. Retake it as often as you like; no lesson is locked."
+    },
+    "passMark": 16,
+    "messages": {
+      "passed": {
+        "vi": "Bạn đã qua! Bạn đã đọc được chữ Hangul. Dòng La-tinh (RR) dưới chữ Hàn trong bài học vẫn hiện để giúp bạn khi cần.",
+        "en": "You passed! You can read Hangul. The RR line under Korean text stays in the lessons to help when you need it."
+      },
+      "passedBadge": {
+        "vi": "Đã qua bài kiểm tra Hangul",
+        "en": "Hangul check passed"
+      },
+      "entryRecommended": {
+        "vi": "Nên làm trước bài 1: bảng chữ Hangul và một bài kiểm tra nhanh.",
+        "en": "Best before lesson 1: the Hangul tables and a quick check."
+      },
+      "entryPassed": {
+        "vi": "Đã qua bài kiểm tra Hangul — xem lại bảng chữ lúc nào cũng được.",
+        "en": "Hangul check passed — review the tables any time."
+      }
+    },
+    "items": [
+      {
+        "kind": "hangulToRr",
+        "id": "c01",
+        "text": "까",
+        "options": [
+          "ga",
+          "ka",
+          "tta",
+          "kka"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c02",
+        "text": "탈",
+        "options": [
+          "dal",
+          "ttal",
+          "tal",
+          "pal"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c03",
+        "text": "의사",
+        "options": [
+          "eusa",
+          "uisa",
+          "isa",
+          "wisa"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c04",
+        "text": "회사",
+        "options": [
+          "hoesa",
+          "hwasa",
+          "husa",
+          "hyesa"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c05",
+        "text": "꽃",
+        "options": [
+          "kkoch",
+          "got",
+          "kkon",
+          "kkot"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c06",
+        "text": "값",
+        "options": [
+          "gaps",
+          "gat",
+          "gap",
+          "gam"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c07",
+        "text": "한국어",
+        "options": [
+          "hanguk-eo",
+          "han-gugeo",
+          "hankukeo",
+          "hangeugeo"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c08",
+        "text": "합니다",
+        "options": [
+          "hamnida",
+          "hapnida",
+          "habnida",
+          "hanmida"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c09",
+        "text": "좋다",
+        "options": [
+          "joda",
+          "jotta",
+          "jonda",
+          "jota"
+        ],
+        "correct": 3
+      },
+      {
+        "kind": "hangulToRr",
+        "id": "c10",
+        "text": "왜",
+        "options": [
+          "oe",
+          "we",
+          "wae",
+          "wa"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c11",
+        "audio": {
+          "say": "딸",
+          "status": "pending"
+        },
+        "options": [
+          "달",
+          "탈",
+          "딸"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c12",
+        "audio": {
+          "say": "풀",
+          "status": "pending"
+        },
+        "options": [
+          "풀",
+          "불",
+          "뿔"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c13",
+        "audio": {
+          "say": "빵",
+          "status": "pending"
+        },
+        "options": [
+          "방",
+          "빵",
+          "팡"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c14",
+        "audio": {
+          "say": "짜다",
+          "status": "pending"
+        },
+        "options": [
+          "자다",
+          "차다",
+          "짜다"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c15",
+        "audio": {
+          "say": "사과",
+          "status": "pending"
+        },
+        "options": [
+          "사과",
+          "사가",
+          "사고"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c16",
+        "audio": {
+          "say": "의자",
+          "status": "pending"
+        },
+        "options": [
+          "이자",
+          "의자",
+          "위자"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c17",
+        "audio": {
+          "say": "옷",
+          "status": "pending"
+        },
+        "options": [
+          "오",
+          "온",
+          "옷"
+        ],
+        "correct": 2
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c18",
+        "audio": {
+          "say": "닭",
+          "status": "pending"
+        },
+        "options": [
+          "닭",
+          "담",
+          "달"
+        ],
+        "correct": 0
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c19",
+        "audio": {
+          "say": "같이",
+          "status": "pending"
+        },
+        "options": [
+          "가비",
+          "같이",
+          "가지"
+        ],
+        "correct": 1
+      },
+      {
+        "kind": "soundToHangul",
+        "id": "c20",
+        "audio": {
+          "say": "학교",
+          "status": "pending"
+        },
+        "options": [
+          "하교",
+          "한교",
+          "학교"
+        ],
+        "correct": 2
+      }
+    ]
+  }
+}
