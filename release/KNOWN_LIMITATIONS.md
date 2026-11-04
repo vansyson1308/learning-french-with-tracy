@@ -174,8 +174,9 @@ itself.
   (那儿 "nà r", not "nàr"): the readings align character by character, so joining them needs a
   display rule in the app. Hán-Việt readings are shown only where they help and were checked
   against Unihan, not by a Vietnamese teacher of Chinese. Once zh-vi is compiled it ties en-vi
-  on capabilities and units and "Chinese" sorts first, so a Vietnamese UI preselects zh-vi in
-  onboarding (zh-en, like ja-en, leaves onboarding); RC3-era zh-en progress is re-keyed to the
+  on capabilities and units; the D-15 language priority (content/onboarding-priority.json)
+  breaks the tie, so a Vietnamese UI still preselects en-vi (zh-en, like ja-en, leaves
+  onboarding); RC3-era zh-en progress is re-keyed to the
   zh ids by v8. What is not verified or not there yet:
   - **audio**: no zh clip has been generated or heard; every `audioTarget`, the reception and
     scenario clips, the story lines and the 90 HSK clips wait for the audio run (Kokoro zh

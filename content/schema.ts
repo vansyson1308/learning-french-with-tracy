@@ -644,6 +644,20 @@ export const CatalogSchema = z.strictObject({
 });
 
 /**
+ * content/onboarding-priority.json (P4d): the D-15 language priority
+ * (plan/10-LADDER-A1-C2.md §1). It breaks a tie in the onboarding default
+ * order after core-capability score and unit count; a target it does not
+ * name ranks after every listed one. Lowercase codes, each at most once.
+ */
+export const OnboardingPrioritySchema = z.strictObject({
+  decision: z.string().min(1),
+  targets: z
+    .array(languageCode)
+    .min(1)
+    .refine((codes) => new Set(codes).size === codes.length, { message: "a target code appears more than once" }),
+});
+
+/**
  * content/courses/<id>.profile.json (P1b, optional): explicit capability
  * overrides layered on what the compiler derives from the course's
  * artifacts — e.g. `{ "enabled": { "fsrs": true } }` to move a legacy

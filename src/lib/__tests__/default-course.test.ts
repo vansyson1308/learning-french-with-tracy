@@ -4,7 +4,6 @@
  * course the v0 app actually shipped with (Spanish).
  */
 import { describe, expect, test } from "bun:test";
-import { existsSync, readFileSync } from "fs";
 
 import { catalog, orderedCoursesFor } from "../content";
 import { courseProfile, defaultCourseForUi } from "../course-profile";
@@ -24,16 +23,10 @@ describe("default course", () => {
   test("P3e §7: a Vietnamese UI preselects the first -vi course, an English UI fr-en", () => {
     // P4f: en-vi becomes the Vietnamese suggestion only once English passes the A1 claim gate.
     const enA1 = enClaim.levels.some((l) => l.level === "A1" && l.courseClaimable === true);
-    // P4d: once zh-vi is compiled and A1-claimable, it ties en-vi on capabilities and units and "Chinese" sorts before
-    // "English" (scripts/lib/course-profiles.ts defaultOrder), so the derived rule preselects zh-vi — pinned here so a
-    // change of that rule is deliberate (open coordinator question in plan/STATUS.md P4d).
-    const zhClaimPath = "src/content/assessment/zh-claim.json";
-    const zhA1 =
-      existsSync(zhClaimPath) &&
-      (JSON.parse(readFileSync(zhClaimPath, "utf8")) as { levels: { level: string; courseClaimable: boolean }[] }).levels.some(
-        (l) => l.level === "A1" && l.courseClaimable === true
-      );
-    expect(defaultCourseForUi("vi")).toBe(zhA1 ? "zh-vi" : enA1 ? "en-vi" : "fr-vi");
+    // P4d (coordinator decision 2026-11-05): once zh-vi is compiled and A1-claimable it ties en-vi on capabilities and
+    // units; the tie goes to the D-15 language priority (content/onboarding-priority.json: en before zh), not to
+    // "Chinese" sorting before "English". So the Vietnamese default stays en-vi before and after the zh compile.
+    expect(defaultCourseForUi("vi")).toBe(enA1 ? "en-vi" : "fr-vi");
     expect(defaultCourseForUi("en")).toBe("fr-en");
     for (const lang of ["vi", "en"]) {
       const id = defaultCourseForUi(lang);
