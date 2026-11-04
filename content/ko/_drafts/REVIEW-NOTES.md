@@ -83,5 +83,30 @@ particles and the copula; every 해요 phrase its 합쇼체 rendering. Self-chec
 - The homographs 개 (dog / counter), 이 (this / two), 네 (yes / four), 일 (one / day / work) keep one lexeme each
   (coordinator, 2026-11-05); the card `ko:concept:homographs` teaches the other senses.
 - The Vietnamese comparisons of the primer and the cards are approximations and say so.
-- Sections 3–6 hold only lesson-internal exercises so far; their readings, device-voice clips, speech items, writing
-  tasks and scenarios join in sessions 3–4.
+- Sections 3–6 carry their readings, device-voice clips, speech items, writing tasks and scenarios (sessions 3–4);
+  checkpoints and the capstone use only the reserved records (cp*, a1cap_*, pl_*), never a teaching stimulus.
+
+**TOPIK I format (coordinator).** `content/ko/exam/FORMAT-SOURCES.md` (staged) and `exam/topik-i-format.json` record
+the format from NIIED's regulation 제204호 of 2024-09-12 (niied.go.kr preview), read on 2026-11-05: PBT 듣기 30 items
+/ 40 min and 읽기 40 items / 60 min, 1급 80–139 and 2급 140–200 of 200; IBT 30 / 40 min and 30 / 45 min, 1급 132–207
+and 2급 208–400 of 400. The topik.go.kr guide page renders by script and the fetch returned only its title, so no
+figure comes from it; it is cited as the page a reviewer should compare by hand. `topik-references.json` now says
+`checkedAgainstOfficialSource: true` with the date and the document. Every checkpoint text says "mức sẵn sàng ước
+tính", never a TOPIK level or a certificate.
+
+**Assessment.** 6 section checkpoints and the A1 capstone, each in 2 parallel forms (145 items: 16 / 32 / 33 / 16 / 20
+/ 8 and 20), and a 4-stage placement (foundations, building blocks, reception, production; 21 items, anchors in
+curriculum order). Each form holds ≥ 2 items of every objective its checkpoint samples (items alternate a / b per
+objective); the capstone's forms are explicit, one objective per domain, 2 items each. Essential objectives with no
+checkpoint item got 4: script.hangul and politeness.speech_levels (Section 2, the register a situation asks for) and
+negation.an_mot (Section 5). Reserved records added for the second forms: 3 clips and 1 reading (Section 3), 2
+description speech items, 4 writing tasks, 2 scenarios (weekend talk, pharmacy). Self-check rule 11 runs every
+answer rule over both banks. Findings on the first runs: 1 non-word (모 → 차), 4 items repeating a lesson payload
+(rewritten), 1 distractor that is a fair rendering of the key (마십니다 for 마셔요 in a register item: replaced by
+마십니까 / 마시십시오 / 마셔), Hangul in one Vietnamese description (rewritten). `course-draft validate --target ko`: 0
+errors.
+
+**Open for the reviewer (assessment).** The register items accept only the register asked for, so a select item may
+show 반말 (마셔.) as a wrong option; the dictations are scored by whole text with the no-space spelling as the only
+alternative; pronunciation.batchim_sounds is not sampled by a checkpoint (non-essential; the listening item 딸 / 달 /
+탈 / 땀 is tagged script.hangul).

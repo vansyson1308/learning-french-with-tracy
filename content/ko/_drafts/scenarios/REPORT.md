@@ -1,6 +1,6 @@
 # scenarios — ingest report (ko-vi)
 
-Records: 18 · schema-valid: 18 · failed: 0 · validator errors after merge: 0
+Records: 20 · schema-valid: 20 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -18,10 +18,12 @@ Records: 18 · schema-valid: 18 · failed: 0 · validator errors after merge: 0
 - ✅ line 12 `ko.scenario.cp6_way_bank`
 - ✅ line 13 `ko.scenario.cp6_clinic_cough`
 - ✅ line 14 `ko.scenario.cp6_call_office`
-- ✅ line 15 `ko.scenario.a1cap_first_day`
-- ✅ line 16 `ko.scenario.a1cap_neighbor`
-- ✅ line 17 `ko.scenario.a1cap_friend_plan`
-- ✅ line 18 `ko.scenario.a1cap_lunch`
+- ✅ line 15 `ko.scenario.cp6_weekend`
+- ✅ line 16 `ko.scenario.cp6_pharmacy`
+- ✅ line 17 `ko.scenario.a1cap_first_day`
+- ✅ line 18 `ko.scenario.a1cap_neighbor`
+- ✅ line 19 `ko.scenario.a1cap_friend_plan`
+- ✅ line 20 `ko.scenario.a1cap_lunch`
 
 ## Validator errors (fix these records and ingest again)
 

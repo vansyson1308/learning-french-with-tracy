@@ -2741,6 +2741,382 @@
       "sourceRef": "original-project"
     },
     {
+      "id": "ko.scenario.cp6_weekend",
+      "title": {
+        "vi": "Kể về cuối tuần"
+      },
+      "goal": {
+        "vi": "Kể với một đồng nghiệp cuối tuần bạn đã đi đâu và mua gì."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "ko.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "네, 나중에 또 봐요.",
+          "clipId": "ko.clip.ix_cp6_weekend_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "주말에 뭐 했어요?",
+          "clipId": "ko.clip.ix_cp6_weekend_0",
+          "rephraseText": "주말에 쉬었어요?",
+          "rephraseClipId": "ko.clip.ix_cp6_weekend_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đã đi chợ."
+          },
+          "expected": [
+            {
+              "intent": "where",
+              "acceptedVariants": [
+                "시장에 갔어요",
+                "시장에 갔습니다",
+                "주말에 시장에 갔어요",
+                "주말에는 시장에 갔어요",
+                "주말에 시장에 갔습니다",
+                "주말에는 시장에 갔습니다",
+                "시장에 갔어요. 재미있었어요",
+                "시장에 갔습니다. 재미있었습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "시장에"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "주말에 쉬었어요?",
+          "clipId": "ko.clip.ix_cp6_weekend_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đã đi chợ."
+          },
+          "expected": [
+            {
+              "intent": "where",
+              "acceptedVariants": [
+                "시장에 갔어요",
+                "시장에 갔습니다",
+                "주말에 시장에 갔어요",
+                "주말에는 시장에 갔어요",
+                "주말에 시장에 갔습니다",
+                "주말에는 시장에 갔습니다",
+                "시장에 갔어요. 재미있었어요",
+                "시장에 갔습니다. 재미있었습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "시장에"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "시장에서 뭐 샀어요?",
+          "clipId": "ko.clip.ix_cp6_weekend_1",
+          "rephraseText": "뭐 샀어요?",
+          "rephraseClipId": "ko.clip.ix_cp6_weekend_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn đã mua quần áo."
+          },
+          "expected": [
+            {
+              "intent": "what",
+              "acceptedVariants": [
+                "옷을 샀어요",
+                "옷 샀어요",
+                "옷을 샀습니다",
+                "옷 샀습니다",
+                "옷을 조금 샀어요",
+                "옷을 조금 샀습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "옷을",
+                  "옷"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "뭐 샀어요?",
+          "clipId": "ko.clip.ix_cp6_weekend_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn đã mua quần áo."
+          },
+          "expected": [
+            {
+              "intent": "what",
+              "acceptedVariants": [
+                "옷을 샀어요",
+                "옷 샀어요",
+                "옷을 샀습니다",
+                "옷 샀습니다",
+                "옷을 조금 샀어요",
+                "옷을 조금 샀습니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "옷을",
+                  "옷"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "아, 그래요?",
+          "clipId": "ko.clip.ix_cp6_weekend_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.scenario.cp6_pharmacy",
+      "title": {
+        "vi": "Ở nhà thuốc"
+      },
+      "goal": {
+        "vi": "Nói bạn đau bụng, rồi hỏi thuốc bao nhiêu tiền."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "ko.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "죄송합니다. 다시 말해 주세요.",
+          "clipId": "ko.clip.ix_cp6_pharmacy_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "어서 오세요. 뭐 필요하세요?",
+          "clipId": "ko.clip.ix_cp6_pharmacy_0",
+          "rephraseText": "어디가 아프세요?",
+          "rephraseClipId": "ko.clip.ix_cp6_pharmacy_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đau bụng."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "배가 아파요",
+                "배 아파요",
+                "배가 아픕니다",
+                "배는 아파요",
+                "배 아픕니다",
+                "배는 아픕니다",
+                "배가 많이 아파요",
+                "배가 많이 아픕니다",
+                "배는 많이 아파요",
+                "배는 많이 아픕니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "배가",
+                  "배"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "어디가 아프세요?",
+          "clipId": "ko.clip.ix_cp6_pharmacy_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đau bụng."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "배가 아파요",
+                "배 아파요",
+                "배가 아픕니다",
+                "배는 아파요",
+                "배 아픕니다",
+                "배는 아픕니다",
+                "배가 많이 아파요",
+                "배가 많이 아픕니다",
+                "배는 많이 아파요",
+                "배는 많이 아픕니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "배가",
+                  "배"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "이 약을 하루에 두 번 드세요.",
+          "clipId": "ko.clip.ix_cp6_pharmacy_1",
+          "rephraseText": "하루에 두 번이에요.",
+          "rephraseClipId": "ko.clip.ix_cp6_pharmacy_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy hỏi thuốc này bao nhiêu tiền."
+          },
+          "expected": [
+            {
+              "intent": "price",
+              "acceptedVariants": [
+                "얼마예요",
+                "얼마입니다",
+                "이 약 얼마예요",
+                "이 약 얼마입니다",
+                "약이 얼마예요",
+                "약이 얼마입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "얼마예요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "하루에 두 번이에요.",
+          "clipId": "ko.clip.ix_cp6_pharmacy_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy hỏi thuốc này bao nhiêu tiền."
+          },
+          "expected": [
+            {
+              "intent": "price",
+              "acceptedVariants": [
+                "얼마예요",
+                "얼마입니다",
+                "이 약 얼마예요",
+                "이 약 얼마입니다",
+                "약이 얼마예요",
+                "약이 얼마입니다"
+              ],
+              "requiredConcepts": [
+                [
+                  "얼마예요"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "사천 원이에요.",
+          "clipId": "ko.clip.ix_cp6_pharmacy_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
       "id": "ko.scenario.a1cap_first_day",
       "title": {
         "vi": "Ngày đầu ở nhà máy"

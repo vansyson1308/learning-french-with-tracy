@@ -34,6 +34,8 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags, built up front from
     speech item and writing task used by a lesson.
 10. (coordinator 2026-11-05, session 4) every writing slot lists its 해요 and 합니다 forms where they apply: a 해요
     variant its 합쇼체 rendering, a bare noun of a guided slot its copula in both styles (남이에요 / 남입니다).
+11. (session 4) every checkpoint and placement exercise goes through rules 1-10, and a Section 1 bank item holds no
+    typed Korean.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by
 hand, to REVIEW-NOTES.md. usage: python -I ko-check-answers.py <repo root>
 """
@@ -433,6 +435,33 @@ for r in records:
         if e["type"] == "fillBlank" and e["options"][e["correct"]] in GROUPS:
             particle_items[e["options"][e["correct"]]] += 1
 
+# Rule 11 (session 4): the assessment banks go through rules 1-10 like a lesson exercise; a Section 1 checkpoint or
+# placement item holds no typed Korean.
+BANKS = {"checkpoints": [], "placement": []}
+for cp in _jsonl("checkpoints").values():
+    BANKS["checkpoints"] += [i["exercise"] for i in cp["items"]]
+for stage in _jsonl("placement").values():
+    BANKS["placement"] += [i["exercise"] for cl in stage["clusters"] for i in cl["items"]]
+SECTION1_BANK = re.compile(r"^ko-(?:cpx|plx)-s1-")
+for bank, exercises in BANKS.items():
+    for e in exercises:
+        eid = e["id"]
+        payload = json.dumps({k: v for k, v in e.items() if k != "id"}, ensure_ascii=False, sort_keys=True)
+        if payload in seen:
+            flag(eid, "duplicate", f"repeats {seen[payload]}")
+        seen[payload] = eid
+        for text in key_texts(e):
+            particle_rules(eid, text)
+            for p in INDEX.problems(text):
+                flag(eid, "word" if "is not a lexicon word" in p else "number" if "counts with" in p or "before a counter" in p else "particle", p)
+        ambiguity(eid, e)
+        register(eid, e, False)
+        typed_rules(eid, e)
+        cloze_rules(eid, e)
+        layer_rules(eid, e)
+        if SECTION1_BANK.match(eid):
+            section1_rules(eid, e)
+
 coverage_rules()
 os.makedirs(f"{D}/lessons", exist_ok=True)
 with open(f"{D}/lessons/OUTPUT.jsonl", "w", encoding="utf-8", newline="\n") as f:
@@ -445,6 +474,7 @@ summary = {
     "particleFillIns": dict(sorted(particle_items.items(), key=lambda kv: (-kv[1], kv[0]))),
     "lessonsWithConceptSteps": lessons_with_flow,
     "conceptSteps": concept_steps,
+    "assessmentItems": {k: len(v) for k, v in BANKS.items()},
     "findings": findings,
     "decided": [{"id": k[0], "rule": k[1], "reason": v} for k, v in sorted(DECIDED.items())],
 }

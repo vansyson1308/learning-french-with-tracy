@@ -1594,6 +1594,267 @@
       "sourceRef": "original-project"
     },
     {
+      "id": "ko.write.cp5_profile_mai",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Mai. Hãy tự giới thiệu: tên, tuổi và thành phố bạn sống."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Mai (viết 마이)"
+        },
+        {
+          "label": {
+            "vi": "Tuổi"
+          },
+          "value": "22"
+        },
+        {
+          "label": {
+            "vi": "Thành phố"
+          },
+          "value": "Ansan (viết 안산)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "마이",
+              "마이는",
+              "마이가",
+              "마이예요",
+              "마이입니다",
+              "마이였어요",
+              "마이였습니다",
+              "마이라고 해요",
+              "마이라고 합니다",
+              "마이 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi"
+            },
+            "variants": [
+              "스물두 살",
+              "스물두 살은",
+              "스물두 살이",
+              "스물두 살을",
+              "스물두 살에",
+              "스물두 살에는",
+              "스물두 살도",
+              "스물두 살이에요",
+              "스물두 살입니다",
+              "스물두 살이었어요",
+              "스물두 살이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố"
+            },
+            "variants": [
+              "안산",
+              "안산은",
+              "안산이",
+              "안산에",
+              "안산에서",
+              "안산에는",
+              "안산에서는",
+              "안산도",
+              "안산이에요",
+              "안산입니다"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "저는 마이예요. 스물두 살이에요. 안산에 살아요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:salda"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_profile_hung",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Hùng. Hãy viết về bạn: tên, nước của bạn và nơi bạn làm việc."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Hùng (viết 훙)"
+        },
+        {
+          "label": {
+            "vi": "Nước"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Nơi làm việc"
+          },
+          "value": "cửa hàng tiện lợi"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "훙",
+              "훙은",
+              "훙이",
+              "훙이에요",
+              "훙입니다",
+              "훙이었어요",
+              "훙이었습니다",
+              "훙이라고 해요",
+              "훙이라고 합니다",
+              "훙 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "from",
+            "description": {
+              "vi": "nước của bạn"
+            },
+            "variants": [
+              "베트남에서",
+              "베트남 사람",
+              "베트남 사람은",
+              "베트남 사람이",
+              "베트남 사람을",
+              "베트남 사람에",
+              "베트남 사람에는",
+              "베트남 사람도",
+              "베트남 사람이에요",
+              "베트남 사람입니다",
+              "베트남 사람이었어요",
+              "베트남 사람이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "work",
+            "description": {
+              "vi": "nơi làm việc"
+            },
+            "variants": [
+              "편의점",
+              "편의점은",
+              "편의점이",
+              "편의점에",
+              "편의점에서",
+              "편의점에는",
+              "편의점에서는",
+              "편의점도",
+              "편의점이에요",
+              "편의점입니다"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "저는 훙이에요. 베트남에서 왔어요. 편의점에서 일해요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:beteunam",
+        "ko:w:oda",
+        "ko:w:pyeonuijeom",
+        "ko:w:ilhada"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_neg_meat",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu phủ định: bạn không ăn thịt."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "neg",
+            "description": {
+              "vi": "bạn không ăn thịt"
+            },
+            "variants": [
+              "고기를 안 먹어요",
+              "고기를 먹지 않아요",
+              "고기 안 먹어요",
+              "고기를 안 먹습니다",
+              "고기 먹지 않아요",
+              "고기를 먹지 않습니다",
+              "고기 안 먹습니다",
+              "고기 먹지 않습니다",
+              "고기는 안 먹어요",
+              "고기는 먹지 않아요",
+              "고기는 안 먹습니다",
+              "고기는 먹지 않습니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "저는 고기를 안 먹어요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:gogi",
+        "ko:w:an",
+        "ko:w:meokda"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
       "id": "ko.write.cp5_like_music",
       "taskFamily": "simple_description",
       "mode": "guided",
@@ -2453,6 +2714,115 @@
       },
       "modelAnswers": [
         "레 마이 | 베트남 | 010-3333-4444"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_form_bank",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu mở tài khoản ở ngân hàng với các thông tin trên thẻ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Trần Nam (viết 쩐 남)"
+        },
+        {
+          "label": {
+            "vi": "Địa chỉ"
+          },
+          "value": "Suwon (viết 수원)"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "010-5555-6666"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "이름",
+          "slotId": "name"
+        },
+        {
+          "id": "address",
+          "label": "주소",
+          "slotId": "address"
+        },
+        {
+          "id": "phone",
+          "label": "전화번호",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "쩐 남",
+              "쩐 남은",
+              "쩐 남이",
+              "쩐 남이에요",
+              "쩐 남입니다",
+              "쩐 남이었어요",
+              "쩐 남이었습니다",
+              "쩐 남이라고 해요",
+              "쩐 남이라고 합니다",
+              "쩐 남 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "address",
+            "description": {
+              "vi": "địa chỉ"
+            },
+            "variants": [
+              "수원",
+              "수원은",
+              "수원이",
+              "수원에",
+              "수원에서",
+              "수원에는",
+              "수원에서는",
+              "수원도",
+              "수원이에요",
+              "수원입니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "010-5555-6666"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "쩐 남 | 수원 | 010-5555-6666"
       ],
       "objectiveRefs": [
         "ko.obj.writing.form_filling"

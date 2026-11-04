@@ -1,6 +1,6 @@
 # listening — ingest report (ko-vi)
 
-Records: 200 · schema-valid: 200 · failed: 0 · validator errors after merge: 200
+Records: 215 · schema-valid: 215 · failed: 0 · validator errors after merge: 215
 
 ## Records
 
@@ -56,154 +56,169 @@ Records: 200 · schema-valid: 200 · failed: 0 · validator errors after merge: 
 - ✅ line 50 `ko.clip.cp3_dlg_live`
 - ✅ line 51 `ko.clip.cp3_dlg_movie`
 - ✅ line 52 `ko.clip.cp3_dlg_doctor`
-- ✅ line 53 `ko.clip.cp3_dict_work`
-- ✅ line 54 `ko.clip.cp3_dict_station`
-- ✅ line 55 `ko.clip.cp3_dict_door`
-- ✅ line 56 `ko.clip.a1cap_bank`
-- ✅ line 57 `ko.clip.a1cap_bus`
-- ✅ line 58 `ko.clip.a1cap_pharmacy`
-- ✅ line 59 `ko.clip.a1cap_bag`
-- ✅ line 60 `ko.clip.pl_mul`
-- ✅ line 61 `ko.clip.pl_shop`
-- ✅ line 62 `ko.clip.pl_pay`
-- ✅ line 63 `ko.clip.uk_model_rep_annyeong`
-- ✅ line 64 `ko.clip.uk_model_greet_leader`
-- ✅ line 65 `ko.clip.uk_model_rep_sugo`
-- ✅ line 66 `ko.clip.uk_model_sugo`
-- ✅ line 67 `ko.clip.uk_model_thanks`
-- ✅ line 68 `ko.clip.uk_model_rep_meonjeo`
-- ✅ line 69 `ko.clip.uk_model_leave_first`
-- ✅ line 70 `ko.clip.uk_model_sorry`
-- ✅ line 71 `ko.clip.uk_model_excuse`
-- ✅ line 72 `ko.clip.ul_model_rep_cheoeum`
-- ✅ line 73 `ko.clip.ul_model_name`
-- ✅ line 74 `ko.clip.ul_model_from`
-- ✅ line 75 `ko.clip.ul_model_age`
-- ✅ line 76 `ko.clip.ul_model_work`
-- ✅ line 77 `ko.clip.ul_model_like`
-- ✅ line 78 `ko.clip.ul_model_rep_butak`
-- ✅ line 79 `ko.clip.um_model_rep_price`
-- ✅ line 80 `ko.clip.um_model_price`
-- ✅ line 81 `ko.clip.um_model_time`
-- ✅ line 82 `ko.clip.um_model_rep_half`
-- ✅ line 83 `ko.clip.um_model_day`
-- ✅ line 84 `ko.clip.um_model_birthday`
-- ✅ line 85 `ko.clip.um_model_tickets`
-- ✅ line 86 `ko.clip.un_model_rep_keoyo`
-- ✅ line 87 `ko.clip.un_model_box`
-- ✅ line 88 `ko.clip.un_model_car`
-- ✅ line 89 `ko.clip.un_model_cat`
-- ✅ line 90 `ko.clip.un_model_rep_past`
-- ✅ line 91 `ko.clip.un_model_weekend`
-- ✅ line 92 `ko.clip.un_model_tomorrow`
-- ✅ line 93 `ko.clip.ix_store_bag_miss`
-- ✅ line 94 `ko.clip.ix_store_bag_0`
-- ✅ line 95 `ko.clip.ix_store_bag_0_s`
-- ✅ line 96 `ko.clip.ix_store_bag_1`
-- ✅ line 97 `ko.clip.ix_store_bag_1_s`
-- ✅ line 98 `ko.clip.ix_store_bag_end`
-- ✅ line 99 `ko.clip.ix_restaurant_order_miss`
-- ✅ line 100 `ko.clip.ix_restaurant_order_0`
-- ✅ line 101 `ko.clip.ix_restaurant_order_0_s`
-- ✅ line 102 `ko.clip.ix_restaurant_order_1`
-- ✅ line 103 `ko.clip.ix_restaurant_order_1_s`
-- ✅ line 104 `ko.clip.ix_restaurant_order_end`
-- ✅ line 105 `ko.clip.ix_ask_station_miss`
-- ✅ line 106 `ko.clip.ix_ask_station_0`
-- ✅ line 107 `ko.clip.ix_ask_station_0_s`
-- ✅ line 108 `ko.clip.ix_ask_station_1`
-- ✅ line 109 `ko.clip.ix_ask_station_1_s`
-- ✅ line 110 `ko.clip.ix_ask_station_end`
-- ✅ line 111 `ko.clip.ix_subway_transfer_miss`
-- ✅ line 112 `ko.clip.ix_subway_transfer_0`
-- ✅ line 113 `ko.clip.ix_subway_transfer_0_s`
-- ✅ line 114 `ko.clip.ix_subway_transfer_1`
-- ✅ line 115 `ko.clip.ix_subway_transfer_1_s`
-- ✅ line 116 `ko.clip.ix_subway_transfer_end`
-- ✅ line 117 `ko.clip.ix_pharmacy_miss`
-- ✅ line 118 `ko.clip.ix_pharmacy_0`
-- ✅ line 119 `ko.clip.ix_pharmacy_0_s`
-- ✅ line 120 `ko.clip.ix_pharmacy_1`
-- ✅ line 121 `ko.clip.ix_pharmacy_1_s`
-- ✅ line 122 `ko.clip.ix_pharmacy_end`
-- ✅ line 123 `ko.clip.ix_clinic_doctor_miss`
-- ✅ line 124 `ko.clip.ix_clinic_doctor_0`
-- ✅ line 125 `ko.clip.ix_clinic_doctor_0_s`
-- ✅ line 126 `ko.clip.ix_clinic_doctor_1`
-- ✅ line 127 `ko.clip.ix_clinic_doctor_1_s`
-- ✅ line 128 `ko.clip.ix_clinic_doctor_end`
-- ✅ line 129 `ko.clip.ix_call_sick_miss`
-- ✅ line 130 `ko.clip.ix_call_sick_0`
-- ✅ line 131 `ko.clip.ix_call_sick_0_s`
-- ✅ line 132 `ko.clip.ix_call_sick_1`
-- ✅ line 133 `ko.clip.ix_call_sick_1_s`
-- ✅ line 134 `ko.clip.ix_call_sick_end`
-- ✅ line 135 `ko.clip.ix_bank_account_miss`
-- ✅ line 136 `ko.clip.ix_bank_account_0`
-- ✅ line 137 `ko.clip.ix_bank_account_0_s`
-- ✅ line 138 `ko.clip.ix_bank_account_1`
-- ✅ line 139 `ko.clip.ix_bank_account_1_s`
-- ✅ line 140 `ko.clip.ix_bank_account_end`
-- ✅ line 141 `ko.clip.ix_cp6_new_colleague_miss`
-- ✅ line 142 `ko.clip.ix_cp6_new_colleague_0`
-- ✅ line 143 `ko.clip.ix_cp6_new_colleague_0_s`
-- ✅ line 144 `ko.clip.ix_cp6_new_colleague_1`
-- ✅ line 145 `ko.clip.ix_cp6_new_colleague_1_s`
-- ✅ line 146 `ko.clip.ix_cp6_new_colleague_end`
-- ✅ line 147 `ko.clip.ix_cp6_interview_miss`
-- ✅ line 148 `ko.clip.ix_cp6_interview_0`
-- ✅ line 149 `ko.clip.ix_cp6_interview_0_s`
-- ✅ line 150 `ko.clip.ix_cp6_interview_1`
-- ✅ line 151 `ko.clip.ix_cp6_interview_1_s`
-- ✅ line 152 `ko.clip.ix_cp6_interview_end`
-- ✅ line 153 `ko.clip.ix_cp6_store_pay_miss`
-- ✅ line 154 `ko.clip.ix_cp6_store_pay_0`
-- ✅ line 155 `ko.clip.ix_cp6_store_pay_0_s`
-- ✅ line 156 `ko.clip.ix_cp6_store_pay_1`
-- ✅ line 157 `ko.clip.ix_cp6_store_pay_1_s`
-- ✅ line 158 `ko.clip.ix_cp6_store_pay_end`
-- ✅ line 159 `ko.clip.ix_cp6_way_bank_miss`
-- ✅ line 160 `ko.clip.ix_cp6_way_bank_0`
-- ✅ line 161 `ko.clip.ix_cp6_way_bank_0_s`
-- ✅ line 162 `ko.clip.ix_cp6_way_bank_1`
-- ✅ line 163 `ko.clip.ix_cp6_way_bank_1_s`
-- ✅ line 164 `ko.clip.ix_cp6_way_bank_end`
-- ✅ line 165 `ko.clip.ix_cp6_clinic_cough_miss`
-- ✅ line 166 `ko.clip.ix_cp6_clinic_cough_0`
-- ✅ line 167 `ko.clip.ix_cp6_clinic_cough_0_s`
-- ✅ line 168 `ko.clip.ix_cp6_clinic_cough_1`
-- ✅ line 169 `ko.clip.ix_cp6_clinic_cough_1_s`
-- ✅ line 170 `ko.clip.ix_cp6_clinic_cough_end`
-- ✅ line 171 `ko.clip.ix_cp6_call_office_miss`
-- ✅ line 172 `ko.clip.ix_cp6_call_office_0`
-- ✅ line 173 `ko.clip.ix_cp6_call_office_0_s`
-- ✅ line 174 `ko.clip.ix_cp6_call_office_1`
-- ✅ line 175 `ko.clip.ix_cp6_call_office_1_s`
-- ✅ line 176 `ko.clip.ix_cp6_call_office_end`
-- ✅ line 177 `ko.clip.ix_a1cap_first_day_miss`
-- ✅ line 178 `ko.clip.ix_a1cap_first_day_0`
-- ✅ line 179 `ko.clip.ix_a1cap_first_day_0_s`
-- ✅ line 180 `ko.clip.ix_a1cap_first_day_1`
-- ✅ line 181 `ko.clip.ix_a1cap_first_day_1_s`
-- ✅ line 182 `ko.clip.ix_a1cap_first_day_end`
-- ✅ line 183 `ko.clip.ix_a1cap_neighbor_miss`
-- ✅ line 184 `ko.clip.ix_a1cap_neighbor_0`
-- ✅ line 185 `ko.clip.ix_a1cap_neighbor_0_s`
-- ✅ line 186 `ko.clip.ix_a1cap_neighbor_1`
-- ✅ line 187 `ko.clip.ix_a1cap_neighbor_1_s`
-- ✅ line 188 `ko.clip.ix_a1cap_neighbor_end`
-- ✅ line 189 `ko.clip.ix_a1cap_friend_plan_miss`
-- ✅ line 190 `ko.clip.ix_a1cap_friend_plan_0`
-- ✅ line 191 `ko.clip.ix_a1cap_friend_plan_0_s`
-- ✅ line 192 `ko.clip.ix_a1cap_friend_plan_1`
-- ✅ line 193 `ko.clip.ix_a1cap_friend_plan_1_s`
-- ✅ line 194 `ko.clip.ix_a1cap_friend_plan_end`
-- ✅ line 195 `ko.clip.ix_a1cap_lunch_miss`
-- ✅ line 196 `ko.clip.ix_a1cap_lunch_0`
-- ✅ line 197 `ko.clip.ix_a1cap_lunch_0_s`
-- ✅ line 198 `ko.clip.ix_a1cap_lunch_1`
-- ✅ line 199 `ko.clip.ix_a1cap_lunch_1_s`
-- ✅ line 200 `ko.clip.ix_a1cap_lunch_end`
+- ✅ line 53 `ko.clip.cp3_word_bus`
+- ✅ line 54 `ko.clip.cp3_word_milk`
+- ✅ line 55 `ko.clip.cp3_meeting`
+- ✅ line 56 `ko.clip.cp3_dict_work`
+- ✅ line 57 `ko.clip.cp3_dict_station`
+- ✅ line 58 `ko.clip.cp3_dict_door`
+- ✅ line 59 `ko.clip.a1cap_bank`
+- ✅ line 60 `ko.clip.a1cap_bus`
+- ✅ line 61 `ko.clip.a1cap_pharmacy`
+- ✅ line 62 `ko.clip.a1cap_bag`
+- ✅ line 63 `ko.clip.pl_mul`
+- ✅ line 64 `ko.clip.pl_shop`
+- ✅ line 65 `ko.clip.pl_pay`
+- ✅ line 66 `ko.clip.uk_model_rep_annyeong`
+- ✅ line 67 `ko.clip.uk_model_greet_leader`
+- ✅ line 68 `ko.clip.uk_model_rep_sugo`
+- ✅ line 69 `ko.clip.uk_model_sugo`
+- ✅ line 70 `ko.clip.uk_model_thanks`
+- ✅ line 71 `ko.clip.uk_model_rep_meonjeo`
+- ✅ line 72 `ko.clip.uk_model_leave_first`
+- ✅ line 73 `ko.clip.uk_model_sorry`
+- ✅ line 74 `ko.clip.uk_model_excuse`
+- ✅ line 75 `ko.clip.ul_model_rep_cheoeum`
+- ✅ line 76 `ko.clip.ul_model_name`
+- ✅ line 77 `ko.clip.ul_model_from`
+- ✅ line 78 `ko.clip.ul_model_age`
+- ✅ line 79 `ko.clip.ul_model_work`
+- ✅ line 80 `ko.clip.ul_model_like`
+- ✅ line 81 `ko.clip.ul_model_rep_butak`
+- ✅ line 82 `ko.clip.um_model_rep_price`
+- ✅ line 83 `ko.clip.um_model_price`
+- ✅ line 84 `ko.clip.um_model_time`
+- ✅ line 85 `ko.clip.um_model_rep_half`
+- ✅ line 86 `ko.clip.um_model_day`
+- ✅ line 87 `ko.clip.um_model_birthday`
+- ✅ line 88 `ko.clip.um_model_tickets`
+- ✅ line 89 `ko.clip.un_model_rep_keoyo`
+- ✅ line 90 `ko.clip.un_model_box`
+- ✅ line 91 `ko.clip.un_model_car`
+- ✅ line 92 `ko.clip.un_model_cat`
+- ✅ line 93 `ko.clip.un_model_rep_past`
+- ✅ line 94 `ko.clip.un_model_weekend`
+- ✅ line 95 `ko.clip.un_model_tomorrow`
+- ✅ line 96 `ko.clip.ix_store_bag_miss`
+- ✅ line 97 `ko.clip.ix_store_bag_0`
+- ✅ line 98 `ko.clip.ix_store_bag_0_s`
+- ✅ line 99 `ko.clip.ix_store_bag_1`
+- ✅ line 100 `ko.clip.ix_store_bag_1_s`
+- ✅ line 101 `ko.clip.ix_store_bag_end`
+- ✅ line 102 `ko.clip.ix_restaurant_order_miss`
+- ✅ line 103 `ko.clip.ix_restaurant_order_0`
+- ✅ line 104 `ko.clip.ix_restaurant_order_0_s`
+- ✅ line 105 `ko.clip.ix_restaurant_order_1`
+- ✅ line 106 `ko.clip.ix_restaurant_order_1_s`
+- ✅ line 107 `ko.clip.ix_restaurant_order_end`
+- ✅ line 108 `ko.clip.ix_ask_station_miss`
+- ✅ line 109 `ko.clip.ix_ask_station_0`
+- ✅ line 110 `ko.clip.ix_ask_station_0_s`
+- ✅ line 111 `ko.clip.ix_ask_station_1`
+- ✅ line 112 `ko.clip.ix_ask_station_1_s`
+- ✅ line 113 `ko.clip.ix_ask_station_end`
+- ✅ line 114 `ko.clip.ix_subway_transfer_miss`
+- ✅ line 115 `ko.clip.ix_subway_transfer_0`
+- ✅ line 116 `ko.clip.ix_subway_transfer_0_s`
+- ✅ line 117 `ko.clip.ix_subway_transfer_1`
+- ✅ line 118 `ko.clip.ix_subway_transfer_1_s`
+- ✅ line 119 `ko.clip.ix_subway_transfer_end`
+- ✅ line 120 `ko.clip.ix_pharmacy_miss`
+- ✅ line 121 `ko.clip.ix_pharmacy_0`
+- ✅ line 122 `ko.clip.ix_pharmacy_0_s`
+- ✅ line 123 `ko.clip.ix_pharmacy_1`
+- ✅ line 124 `ko.clip.ix_pharmacy_1_s`
+- ✅ line 125 `ko.clip.ix_pharmacy_end`
+- ✅ line 126 `ko.clip.ix_clinic_doctor_miss`
+- ✅ line 127 `ko.clip.ix_clinic_doctor_0`
+- ✅ line 128 `ko.clip.ix_clinic_doctor_0_s`
+- ✅ line 129 `ko.clip.ix_clinic_doctor_1`
+- ✅ line 130 `ko.clip.ix_clinic_doctor_1_s`
+- ✅ line 131 `ko.clip.ix_clinic_doctor_end`
+- ✅ line 132 `ko.clip.ix_call_sick_miss`
+- ✅ line 133 `ko.clip.ix_call_sick_0`
+- ✅ line 134 `ko.clip.ix_call_sick_0_s`
+- ✅ line 135 `ko.clip.ix_call_sick_1`
+- ✅ line 136 `ko.clip.ix_call_sick_1_s`
+- ✅ line 137 `ko.clip.ix_call_sick_end`
+- ✅ line 138 `ko.clip.ix_bank_account_miss`
+- ✅ line 139 `ko.clip.ix_bank_account_0`
+- ✅ line 140 `ko.clip.ix_bank_account_0_s`
+- ✅ line 141 `ko.clip.ix_bank_account_1`
+- ✅ line 142 `ko.clip.ix_bank_account_1_s`
+- ✅ line 143 `ko.clip.ix_bank_account_end`
+- ✅ line 144 `ko.clip.ix_cp6_new_colleague_miss`
+- ✅ line 145 `ko.clip.ix_cp6_new_colleague_0`
+- ✅ line 146 `ko.clip.ix_cp6_new_colleague_0_s`
+- ✅ line 147 `ko.clip.ix_cp6_new_colleague_1`
+- ✅ line 148 `ko.clip.ix_cp6_new_colleague_1_s`
+- ✅ line 149 `ko.clip.ix_cp6_new_colleague_end`
+- ✅ line 150 `ko.clip.ix_cp6_interview_miss`
+- ✅ line 151 `ko.clip.ix_cp6_interview_0`
+- ✅ line 152 `ko.clip.ix_cp6_interview_0_s`
+- ✅ line 153 `ko.clip.ix_cp6_interview_1`
+- ✅ line 154 `ko.clip.ix_cp6_interview_1_s`
+- ✅ line 155 `ko.clip.ix_cp6_interview_end`
+- ✅ line 156 `ko.clip.ix_cp6_store_pay_miss`
+- ✅ line 157 `ko.clip.ix_cp6_store_pay_0`
+- ✅ line 158 `ko.clip.ix_cp6_store_pay_0_s`
+- ✅ line 159 `ko.clip.ix_cp6_store_pay_1`
+- ✅ line 160 `ko.clip.ix_cp6_store_pay_1_s`
+- ✅ line 161 `ko.clip.ix_cp6_store_pay_end`
+- ✅ line 162 `ko.clip.ix_cp6_way_bank_miss`
+- ✅ line 163 `ko.clip.ix_cp6_way_bank_0`
+- ✅ line 164 `ko.clip.ix_cp6_way_bank_0_s`
+- ✅ line 165 `ko.clip.ix_cp6_way_bank_1`
+- ✅ line 166 `ko.clip.ix_cp6_way_bank_1_s`
+- ✅ line 167 `ko.clip.ix_cp6_way_bank_end`
+- ✅ line 168 `ko.clip.ix_cp6_clinic_cough_miss`
+- ✅ line 169 `ko.clip.ix_cp6_clinic_cough_0`
+- ✅ line 170 `ko.clip.ix_cp6_clinic_cough_0_s`
+- ✅ line 171 `ko.clip.ix_cp6_clinic_cough_1`
+- ✅ line 172 `ko.clip.ix_cp6_clinic_cough_1_s`
+- ✅ line 173 `ko.clip.ix_cp6_clinic_cough_end`
+- ✅ line 174 `ko.clip.ix_cp6_call_office_miss`
+- ✅ line 175 `ko.clip.ix_cp6_call_office_0`
+- ✅ line 176 `ko.clip.ix_cp6_call_office_0_s`
+- ✅ line 177 `ko.clip.ix_cp6_call_office_1`
+- ✅ line 178 `ko.clip.ix_cp6_call_office_1_s`
+- ✅ line 179 `ko.clip.ix_cp6_call_office_end`
+- ✅ line 180 `ko.clip.ix_cp6_weekend_miss`
+- ✅ line 181 `ko.clip.ix_cp6_weekend_0`
+- ✅ line 182 `ko.clip.ix_cp6_weekend_0_s`
+- ✅ line 183 `ko.clip.ix_cp6_weekend_1`
+- ✅ line 184 `ko.clip.ix_cp6_weekend_1_s`
+- ✅ line 185 `ko.clip.ix_cp6_weekend_end`
+- ✅ line 186 `ko.clip.ix_cp6_pharmacy_miss`
+- ✅ line 187 `ko.clip.ix_cp6_pharmacy_0`
+- ✅ line 188 `ko.clip.ix_cp6_pharmacy_0_s`
+- ✅ line 189 `ko.clip.ix_cp6_pharmacy_1`
+- ✅ line 190 `ko.clip.ix_cp6_pharmacy_1_s`
+- ✅ line 191 `ko.clip.ix_cp6_pharmacy_end`
+- ✅ line 192 `ko.clip.ix_a1cap_first_day_miss`
+- ✅ line 193 `ko.clip.ix_a1cap_first_day_0`
+- ✅ line 194 `ko.clip.ix_a1cap_first_day_0_s`
+- ✅ line 195 `ko.clip.ix_a1cap_first_day_1`
+- ✅ line 196 `ko.clip.ix_a1cap_first_day_1_s`
+- ✅ line 197 `ko.clip.ix_a1cap_first_day_end`
+- ✅ line 198 `ko.clip.ix_a1cap_neighbor_miss`
+- ✅ line 199 `ko.clip.ix_a1cap_neighbor_0`
+- ✅ line 200 `ko.clip.ix_a1cap_neighbor_0_s`
+- ✅ line 201 `ko.clip.ix_a1cap_neighbor_1`
+- ✅ line 202 `ko.clip.ix_a1cap_neighbor_1_s`
+- ✅ line 203 `ko.clip.ix_a1cap_neighbor_end`
+- ✅ line 204 `ko.clip.ix_a1cap_friend_plan_miss`
+- ✅ line 205 `ko.clip.ix_a1cap_friend_plan_0`
+- ✅ line 206 `ko.clip.ix_a1cap_friend_plan_0_s`
+- ✅ line 207 `ko.clip.ix_a1cap_friend_plan_1`
+- ✅ line 208 `ko.clip.ix_a1cap_friend_plan_1_s`
+- ✅ line 209 `ko.clip.ix_a1cap_friend_plan_end`
+- ✅ line 210 `ko.clip.ix_a1cap_lunch_miss`
+- ✅ line 211 `ko.clip.ix_a1cap_lunch_0`
+- ✅ line 212 `ko.clip.ix_a1cap_lunch_0_s`
+- ✅ line 213 `ko.clip.ix_a1cap_lunch_1`
+- ✅ line 214 `ko.clip.ix_a1cap_lunch_1_s`
+- ✅ line 215 `ko.clip.ix_a1cap_lunch_end`
 
 ## Validator errors (fix these records and ingest again)
 
@@ -259,6 +274,9 @@ Records: 200 · schema-valid: 200 · failed: 0 · validator errors after merge: 
 - reception: ko.clip.cp3_dlg_live: generated asset 0f82a7249e4e7706e005.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dlg_movie: generated asset 755dafea7bebf95052e5.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dlg_doctor: generated asset 8cd2d64a785de28d2c34.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_word_bus: generated asset 7e719a3d5ca60d5cffc6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_word_milk: generated asset 422f5ab9966eb17f506b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_meeting: generated asset 3fabd14af09abf1f3efa.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dict_work: generated asset 7ab9aca36d597aaac83f.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dict_station: generated asset 7afcb15eb3743cf9c6e0.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dict_door: generated asset 7b0ee731221a9f7981ba.mp3 missing — run the reception-audio generate workflow (P7 §26)
@@ -383,6 +401,18 @@ Records: 200 · schema-valid: 200 · failed: 0 · validator errors after merge: 
 - reception: ko.clip.ix_cp6_call_office_1: generated asset 95de7982449b8c9db357.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_cp6_call_office_1_s: generated asset 323cef549beed7a8c697.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_cp6_call_office_end: generated asset 5df17773a5f3ca966796.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_miss: generated asset 5c985cd66e10f91f2f6c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_0: generated asset 519fd319545449840bf7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_0_s: generated asset 841f476a878179f28f31.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_1: generated asset f886c984ce53b6007b9e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_1_s: generated asset ae440b595d09095854d1.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_end: generated asset 768c4d6ab27b653dc5bc.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_miss: generated asset b9bc91728956a2b73623.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_0: generated asset 806086e28c031357757d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_0_s: generated asset 4155bcddf5a14f430efa.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_1: generated asset 6678e293b2041a716110.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_1_s: generated asset 8d189da85f662a482ea5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_end: generated asset 9e946ba14ff24fe19991.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_a1cap_first_day_miss: generated asset 42578a4be3fa0b9ff8d9.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_a1cap_first_day_0: generated asset 6f4587f34e2cb9ffe60d.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_a1cap_first_day_0_s: generated asset bf48ad8787fda63a28c0.mp3 missing — run the reception-audio generate workflow (P7 §26)

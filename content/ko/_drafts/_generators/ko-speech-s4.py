@@ -74,6 +74,8 @@ RESERVED = [
  ("cp4_day_friday", "m", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "오늘은 금요일이에요.", ["금요일이에요"], [("Hôm nay", "thứ Sáu")], None),
  ("cp4_tickets_three", "m", "information_prompt", "Ở ga, bạn mua vé. Hãy nói bạn muốn ba vé.", "표 세 장 주세요.", ["세 장 주세요", "표 세 장이요"], [("Số vé", "3")], None),
  ("cp4_desc_dog", "n", "picture_prompt", "Nhìn hình: con chó to. " + SAY, "개가 커요.", ["큰 개예요", "커요"], None, "🐕"),
+ ("cp4_desc_room", "n", "picture_prompt", "Nhìn hình: căn phòng nhỏ. " + SAY, "방이 작아요.", ["작은 방이에요", "작아요"], None, "🛏️"),
+ ("cp4_desc_bike", "n", "picture_prompt", "Nhìn hình: chiếc xe đạp rẻ. " + SAY, "자전거가 싸요.", ["싼 자전거예요", "싸요"], None, "🚲"),
  ("cp4_desc_bag", "n", "picture_prompt", "Nhìn hình: cái túi đắt tiền. " + SAY, "가방이 비싸요.", ["비싼 가방이에요", "비싸요"], None, "👜"),
  ("cp4_congrats", "k", "situation_prompt", "Hôm nay là sinh nhật của một đồng nghiệp. Hãy chúc mừng.", "생일 축하합니다.", ["축하합니다"], None, "🎉"),
  ("cp4_work_store", "l", "information_prompt", "Hãy nói bạn làm việc ở đâu.", "편의점에서 일해요.", ["저는 편의점에서 일해요"], [("Nơi làm việc", "cửa hàng tiện lợi")], None),

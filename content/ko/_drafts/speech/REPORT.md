@@ -1,6 +1,6 @@
 # speech — ingest report (ko-vi)
 
-Records: 52 · schema-valid: 52 · failed: 0 · validator errors after merge: 0
+Records: 54 · schema-valid: 54 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -45,17 +45,19 @@ Records: 52 · schema-valid: 52 · failed: 0 · validator errors after merge: 0
 - ✅ line 39 `ko.speak.cp4_day_friday`
 - ✅ line 40 `ko.speak.cp4_tickets_three`
 - ✅ line 41 `ko.speak.cp4_desc_dog`
-- ✅ line 42 `ko.speak.cp4_desc_bag`
-- ✅ line 43 `ko.speak.cp4_congrats`
-- ✅ line 44 `ko.speak.cp4_work_store`
-- ✅ line 45 `ko.speak.a1cap_time_nine`
-- ✅ line 46 `ko.speak.a1cap_price_coffee`
-- ✅ line 47 `ko.speak.a1cap_day_sunday`
-- ✅ line 48 `ko.speak.a1cap_birthday`
-- ✅ line 49 `ko.speak.pl_hello`
-- ✅ line 50 `ko.speak.pl_name_minh`
-- ✅ line 51 `ko.speak.pl_age`
-- ✅ line 52 `ko.speak.pl_big_car`
+- ✅ line 42 `ko.speak.cp4_desc_room`
+- ✅ line 43 `ko.speak.cp4_desc_bike`
+- ✅ line 44 `ko.speak.cp4_desc_bag`
+- ✅ line 45 `ko.speak.cp4_congrats`
+- ✅ line 46 `ko.speak.cp4_work_store`
+- ✅ line 47 `ko.speak.a1cap_time_nine`
+- ✅ line 48 `ko.speak.a1cap_price_coffee`
+- ✅ line 49 `ko.speak.a1cap_day_sunday`
+- ✅ line 50 `ko.speak.a1cap_birthday`
+- ✅ line 51 `ko.speak.pl_hello`
+- ✅ line 52 `ko.speak.pl_name_minh`
+- ✅ line 53 `ko.speak.pl_age`
+- ✅ line 54 `ko.speak.pl_big_car`
 
 ## Validator errors (fix these records and ingest again)
 

@@ -947,6 +947,47 @@
       }
     },
     {
+      "id": "ko.read.cp3_msg_leader",
+      "kind": "message",
+      "title": "문자",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "흐엉 씨, 내일 회의는 오전 열 시예요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "서류를 가져오세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "반장님"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages",
+        "ko.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "ko:w:munja",
+        "ko:w:ssi",
+        "ko:w:naeil",
+        "ko:w:hoe-ui",
+        "ko:w:ojeon",
+        "ko:w:yeol",
+        "ko:w:si",
+        "ko:w:seoryu",
+        "ko:w:gajyeooda",
+        "ko:w:banjangnim"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
       "id": "ko.read.cp3_text_week",
       "kind": "narrative",
       "title": "민수 씨의 한 주",

@@ -29,6 +29,8 @@ python -I "$G/ko-primer.py" .
 # Full replacement, so a record the generators dropped does not linger. The draft pack is rebuilt from the units.
 rm -f "$STAGED/content/ko/assessment/objectives.json" "$STAGED/content/courses/ko-vi.json" content/ko/_drafts/pack.json
 rm -f "$STAGED/content/ko/pedagogy/concepts.json" "$STAGED/content/ko/pedagogy/paradigms.json"
+# Session 4: the TOPIK I format as read from the administrator's regulation (staged content/ko/exam/FORMAT-SOURCES.md).
+python -I "$G/ko-topik-format.py" .
 python -I "$G/ko-objectives.py" .
 python -I "$G/ko-units.py" .
 # Session 2: concept cards and paradigm tables; also writes the staged source registry (original-korean-course).
@@ -48,6 +50,10 @@ python -I "$G/ko-writing-s5.py" .
 # Session 4: scenarios (Section 6) append their partner clips; the generator also checks ko_lesson_refs.py.
 rm -f "$STAGED/content/ko/interaction/scenarios.json"
 python -I "$G/ko-scenarios-s6.py" .
+# Session 4: checkpoints (2 forms each) and placement point at the reserved records above; before the lessons so that
+# the self-check reads their items too.
+rm -f "$STAGED/content/ko/assessment/checkpoints.json" "$STAGED/content/ko/assessment/placement.json"
+python -I "$G/ko-assessment.py" .
 # Lessons (session 2): each section's generator writes lessons/parts/<section>.jsonl; the self-check joins them into
 # lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json).
 rm -rf content/ko/_drafts/lessons/parts
@@ -61,6 +67,8 @@ ingest speech
 ingest writing
 ingest scenarios
 ingest lessons
+ingest checkpoints
+ingest placement
 # The lessons ingest writes the staged course pack once every lesson has exercises; until then the draft pack is it.
 if ! python -I -c "import json,sys; p=json.load(open('content/ko/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then
   mkdir -p "$STAGED/content/courses"

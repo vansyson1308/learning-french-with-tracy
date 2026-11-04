@@ -1,6 +1,6 @@
 # readings — ingest report (ko-vi)
 
-Records: 28 · schema-valid: 28 · failed: 0 · validator errors after merge: 200
+Records: 29 · schema-valid: 29 · failed: 0 · validator errors after merge: 215
 
 ## Records
 
@@ -27,11 +27,12 @@ Records: 28 · schema-valid: 28 · failed: 0 · validator errors after merge: 20
 - ✅ line 21 `ko.read.cp3_notice_shop`
 - ✅ line 22 `ko.read.cp3_notice_staff`
 - ✅ line 23 `ko.read.cp3_text_friend`
-- ✅ line 24 `ko.read.cp3_text_week`
-- ✅ line 25 `ko.read.a1cap_msg_mother`
-- ✅ line 26 `ko.read.a1cap_invite`
-- ✅ line 27 `ko.read.pl_notice_shop`
-- ✅ line 28 `ko.read.pl_message`
+- ✅ line 24 `ko.read.cp3_msg_leader`
+- ✅ line 25 `ko.read.cp3_text_week`
+- ✅ line 26 `ko.read.a1cap_msg_mother`
+- ✅ line 27 `ko.read.a1cap_invite`
+- ✅ line 28 `ko.read.pl_notice_shop`
+- ✅ line 29 `ko.read.pl_message`
 
 ## Validator errors (fix these records and ingest again)
 
@@ -87,6 +88,9 @@ Records: 28 · schema-valid: 28 · failed: 0 · validator errors after merge: 20
 - reception: ko.clip.cp3_dlg_live: generated asset 0f82a7249e4e7706e005.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dlg_movie: generated asset 755dafea7bebf95052e5.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dlg_doctor: generated asset 8cd2d64a785de28d2c34.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_word_bus: generated asset 7e719a3d5ca60d5cffc6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_word_milk: generated asset 422f5ab9966eb17f506b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_meeting: generated asset 3fabd14af09abf1f3efa.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dict_work: generated asset 7ab9aca36d597aaac83f.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dict_station: generated asset 7afcb15eb3743cf9c6e0.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.cp3_dict_door: generated asset 7b0ee731221a9f7981ba.mp3 missing — run the reception-audio generate workflow (P7 §26)
@@ -211,6 +215,18 @@ Records: 28 · schema-valid: 28 · failed: 0 · validator errors after merge: 20
 - reception: ko.clip.ix_cp6_call_office_1: generated asset 95de7982449b8c9db357.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_cp6_call_office_1_s: generated asset 323cef549beed7a8c697.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_cp6_call_office_end: generated asset 5df17773a5f3ca966796.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_miss: generated asset 5c985cd66e10f91f2f6c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_0: generated asset 519fd319545449840bf7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_0_s: generated asset 841f476a878179f28f31.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_1: generated asset f886c984ce53b6007b9e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_1_s: generated asset ae440b595d09095854d1.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_weekend_end: generated asset 768c4d6ab27b653dc5bc.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_miss: generated asset b9bc91728956a2b73623.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_0: generated asset 806086e28c031357757d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_0_s: generated asset 4155bcddf5a14f430efa.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_1: generated asset 6678e293b2041a716110.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_1_s: generated asset 8d189da85f662a482ea5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ix_cp6_pharmacy_end: generated asset 9e946ba14ff24fe19991.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_a1cap_first_day_miss: generated asset 42578a4be3fa0b9ff8d9.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_a1cap_first_day_0: generated asset 6f4587f34e2cb9ffe60d.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_a1cap_first_day_0_s: generated asset bf48ad8787fda63a28c0.mp3 missing — run the reception-audio generate workflow (P7 §26)

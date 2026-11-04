@@ -1685,6 +1685,92 @@
       "sourceRef": "original-project"
     },
     {
+      "id": "ko.speak.cp4_desc_room",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": {
+          "vi": "Nhìn hình: căn phòng nhỏ. Hãy nói câu đó bằng tiếng Hàn."
+        },
+        "cueEmoji": "🛏️"
+      },
+      "target": "방이 작아요.",
+      "acceptedVariants": [
+        "방이 작아요",
+        "방이 작습니다",
+        "방은 작아요",
+        "방은 작습니다",
+        "작은 방이에요",
+        "작은 방입니다",
+        "작아요",
+        "작습니다"
+      ],
+      "objectiveRefs": [
+        "ko.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ko:w:bang",
+        "ko:w:jakda"
+      ],
+      "evidenceLexemeRefs": [
+        "ko:w:bang",
+        "ko:w:jakda"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "ko-KR",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.speak.cp4_desc_bike",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": {
+          "vi": "Nhìn hình: chiếc xe đạp rẻ. Hãy nói câu đó bằng tiếng Hàn."
+        },
+        "cueEmoji": "🚲"
+      },
+      "target": "자전거가 싸요.",
+      "acceptedVariants": [
+        "자전거가 싸요",
+        "자전거가 쌉니다",
+        "자전거는 싸요",
+        "자전거는 쌉니다",
+        "싼 자전거예요",
+        "싼 자전거입니다",
+        "싸요",
+        "쌉니다"
+      ],
+      "objectiveRefs": [
+        "ko.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "ko:w:jajeon-geo",
+        "ko:w:ssada"
+      ],
+      "evidenceLexemeRefs": [
+        "ko:w:jajeon-geo",
+        "ko:w:ssada"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "ko-KR",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
       "id": "ko.speak.cp4_desc_bag",
       "taskFamily": "description",
       "elicitationType": "picture_prompt",

@@ -66,6 +66,7 @@ READINGS = [
  ("cp3_notice_shop", "notice", "가게", para(["매일 오전 열 시부터 밤 열 시까지", "일요일 오전은 쉬어요.", "계산대에서 계산하세요."]), [R_NOTICE, TIME], [], 3),
  ("cp3_notice_staff", "notice", "직원 여러분", para(["오늘 이 층 화장실은 쓸 수 없어요.", "일 층 화장실을 쓰세요.", "사장님"]), [R_MSG, R_NOTICE], [], 2),
  ("cp3_text_friend", "description", "제 친구 투이", para(["투이 씨는 제 친구예요. 스물네 살이에요. 수원의 병원에서 일해요. 역 옆의 아파트에 살아요. 음악을 좋아해요."]), [R_TEXT], [], 5),
+ ("cp3_msg_leader", "message", "문자", para(["흐엉 씨, 내일 회의는 오전 열 시예요.", "서류를 가져오세요.", "반장님"]), [R_MSG, TIME], [], 2),
  ("cp3_text_week", "narrative", "민수 씨의 한 주", para(["민수 씨는 월요일부터 금요일까지 일해요. 매일 자전거로 회사에 가요. 토요일에는 마트에서 장을 봐요. 일요일에는 집에서 책을 읽어요."]), [R_TEXT], [gl("장을 봐요", "đi chợ, mua đồ")], 4),
  # Capstone and placement.
  ("a1cap_msg_mother", "message", "문자", para(["흐엉, 엄마는 여섯 시까지 일해. 냉장고에 저녁이 있어."]), [R_MSG], [], 2),
@@ -155,6 +156,9 @@ CLIPS += [
  C("cp3_dlg_live", "dialogue", [("B", "어디에 살아요?"), ("A", "역 옆에 살아요.")], [DLG], 1),
  C("cp3_dlg_movie", "dialogue", [("A", "오늘 저녁에 시간 있어요?"), ("B", "네. 같이 영화 볼까요?")], [DLG], 2),
  C("cp3_dlg_doctor", "dialogue", [("B", "어디가 아프세요?"), ("A", "머리가 아파요.")], [DLG], 1),
+ C("cp3_word_bus", "word_phrase", B("버스"), [FW]),
+ C("cp3_word_milk", "word_phrase", A("우유"), [FW]),
+ C("cp3_meeting", "factual", A("회의는 세 시 반에 시작해요."), [INFO, NUM], 2),
  C("cp3_dict_work", "message", A("매일 공장에서 일해요."), [FW], 1),
  C("cp3_dict_station", "message", B("역은 가까워요."), [FW], 1),
  C("cp3_dict_door", "announcement", A("안전모를 쓰세요."), [ANN], 1),
