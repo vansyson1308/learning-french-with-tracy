@@ -29,9 +29,9 @@ export const BUILD_LANGUAGES: Record<string, BuildLanguage> = {
   it: { code: "it", recognitionLocale: "it-IT", ttsLocale: "it-IT", script: "latin", flagAsset: "it" },
   // The inherited Portuguese pack is Brazilian Portuguese (content and voice).
   pt: { code: "pt", recognitionLocale: "pt-BR", ttsLocale: "pt-BR", script: "latin", flagAsset: "br" },
-  ja: { code: "ja", recognitionLocale: "ja-JP", ttsLocale: "ja-JP", script: "japanese", flagAsset: "jp", readings: ["kana"], typedScripts: ["katakana"] },
+  ja: { code: "ja", recognitionLocale: "ja-JP", ttsLocale: "ja-JP", script: "japanese", flagAsset: "jp", readings: ["kana"], typedScripts: ["katakana"], validatedWithLexicon: true },
   ko: { code: "ko", recognitionLocale: "ko-KR", ttsLocale: "ko-KR", script: "hangul", flagAsset: "kr", readings: ["rr"] },
-  zh: { code: "zh", recognitionLocale: "zh-CN", ttsLocale: "zh-CN", script: "han", flagAsset: "cn", readings: ["pinyin"] },
+  zh: { code: "zh", recognitionLocale: "zh-CN", ttsLocale: "zh-CN", script: "han", flagAsset: "cn", readings: ["pinyin"], validatedWithLexicon: true },
   vi: { code: "vi", recognitionLocale: "vi-VN", ttsLocale: "vi-VN", script: "latin", flagAsset: "vn" },
   /** Synthetic test language (test-only courses). */
   xx: { code: "xx", recognitionLocale: "xx-XX", ttsLocale: "xx-XX", script: "latin", flagAsset: "xx" },
@@ -48,6 +48,35 @@ export function buildLanguage(code: string): BuildLanguage {
 // P4b stage 5: ja / ko declare verb paradigms, zh its grammar concepts (otherwise the generic CJK plugin).
 const PLUGINS: Record<string, BuildLanguagePlugin> = { fr, en, es, de, it, ja, ko, zh, xx };
 const GENERIC = new Map<string, BuildLanguagePlugin>();
+
+/** The lexeme fields a dictionary plugin binds (the rich lexicon's shape, as the compiled index carries them). */
+export type BindableLexeme = {
+  surface: string;
+  partOfSpeech?: string;
+  pronunciation?: { value: string; notation: string };
+  reading?: { traditional?: string };
+};
+
+/**
+ * P4d: the plugin bound to a target's own words the way the app binds a course (src/lib/languages/index.ts
+ * courseLexiconFor): the dictionary tokenizer of a plugin that segments by dictionary (ja, zh, ko), the stored
+ * readings, the zh traditional spellings, the ja parts of speech. Speech, writing and interaction answers are then
+ * validated with the tokens the app grades with, not Intl.Segmenter's. Only a language that opts in
+ * (`validatedWithLexicon`: zh, ja) is bound; a plugin without `withLexicon` (every Latin-script language), or no
+ * lexicon, returns the plugin itself.
+ */
+export function lexiconBoundPlugin(plugin: BuildLanguagePlugin, lexemes: readonly BindableLexeme[] | null): BuildLanguagePlugin {
+  if (plugin.validatedWithLexicon !== true || !plugin.rules.withLexicon || !lexemes || lexemes.length === 0) return plugin;
+  const rules = plugin.rules.withLexicon({
+    entries: lexemes.map((l) => ({
+      surface: l.surface,
+      ...(l.pronunciation ? { reading: { value: l.pronunciation.value, notation: l.pronunciation.notation } } : {}),
+      ...(l.reading?.traditional !== undefined && l.reading.traditional !== l.surface ? { variants: [l.reading.traditional] } : {}),
+      ...(l.partOfSpeech ? { pos: l.partOfSpeech } : {}),
+    })),
+  });
+  return { ...plugin, rules, tokenize: (text) => rules.tokenize(rules.foldSpoken(text)) };
+}
 
 /** The build plugin for a target language (generic defaults for every language without its own). */
 export function buildPlugin(code: string): BuildLanguagePlugin {

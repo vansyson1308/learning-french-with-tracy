@@ -44,6 +44,6 @@ export const JA_PARADIGM: ParadigmSpec = {
 };
 
 export const ja: BuildLanguagePlugin = genericPlugin(
-  { code: "ja", recognitionLocale: "ja-JP", ttsLocale: "ja-JP", script: "japanese", flagAsset: "jp", readings: ["kana"], typedScripts: ["katakana"] },
+  { code: "ja", recognitionLocale: "ja-JP", ttsLocale: "ja-JP", script: "japanese", flagAsset: "jp", readings: ["kana"], typedScripts: ["katakana"], validatedWithLexicon: true },
   { paradigm: JA_PARADIGM }
 );

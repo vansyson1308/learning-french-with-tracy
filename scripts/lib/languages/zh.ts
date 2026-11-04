@@ -21,6 +21,6 @@ export const ZH_GRAMMAR_CONCEPTS: readonly GrammarConcept[] = [
 ];
 
 export const zh: BuildLanguagePlugin = genericPlugin(
-  { code: "zh", recognitionLocale: "zh-CN", ttsLocale: "zh-CN", script: "han", flagAsset: "cn", readings: ["pinyin"] },
+  { code: "zh", recognitionLocale: "zh-CN", ttsLocale: "zh-CN", script: "han", flagAsset: "cn", readings: ["pinyin"], validatedWithLexicon: true },
   { grammarConcepts: ZH_GRAMMAR_CONCEPTS }
 );

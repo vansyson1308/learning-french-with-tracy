@@ -42,6 +42,13 @@ export type BuildLanguage = {
    * plugin's in-script comparison (normalizeLenientInScript; cross-checked by test). Absent = the flag is refused.
    */
   typedScripts?: readonly "katakana"[];
+  /**
+   * P4d: validate speech, writing and interaction answers with the runtime plugin bound to the target's own words (the
+   * dictionary tokenizer the app grades with, `lexiconBoundPlugin`) instead of Intl.Segmenter. Set for zh, whose
+   * layers were authored against it, and for ja (its dictionary tokens read いますか as いま す か; the rubric finds
+   * ます in the whole-utterance reading, src/lib/writing/rubric.ts). Absent = the unbound plugin (every other language).
+   */
+  validatedWithLexicon?: true;
 };
 
 export type ArticleGender = "masculine" | "feminine" | "neuter";
