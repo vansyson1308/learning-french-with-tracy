@@ -29,7 +29,7 @@ export const BUILD_LANGUAGES: Record<string, BuildLanguage> = {
   it: { code: "it", recognitionLocale: "it-IT", ttsLocale: "it-IT", script: "latin", flagAsset: "it" },
   // The inherited Portuguese pack is Brazilian Portuguese (content and voice).
   pt: { code: "pt", recognitionLocale: "pt-BR", ttsLocale: "pt-BR", script: "latin", flagAsset: "br" },
-  ja: { code: "ja", recognitionLocale: "ja-JP", ttsLocale: "ja-JP", script: "japanese", flagAsset: "jp", readings: ["kana"], typedScripts: ["katakana"] },
+  ja: { code: "ja", recognitionLocale: "ja-JP", ttsLocale: "ja-JP", script: "japanese", flagAsset: "jp", readings: ["kana"], typedScripts: ["katakana"], validatedWithLexicon: true },
   ko: { code: "ko", recognitionLocale: "ko-KR", ttsLocale: "ko-KR", script: "hangul", flagAsset: "kr", readings: ["rr"] },
   zh: { code: "zh", recognitionLocale: "zh-CN", ttsLocale: "zh-CN", script: "han", flagAsset: "cn", readings: ["pinyin"], validatedWithLexicon: true },
   vi: { code: "vi", recognitionLocale: "vi-VN", ttsLocale: "vi-VN", script: "latin", flagAsset: "vn" },
@@ -62,7 +62,7 @@ export type BindableLexeme = {
  * courseLexiconFor): the dictionary tokenizer of a plugin that segments by dictionary (ja, zh, ko), the stored
  * readings, the zh traditional spellings, the ja parts of speech. Speech, writing and interaction answers are then
  * validated with the tokens the app grades with, not Intl.Segmenter's. Only a language that opts in
- * (`validatedWithLexicon`: zh) is bound; a plugin without `withLexicon` (every Latin-script language), or no
+ * (`validatedWithLexicon`: zh, ja) is bound; a plugin without `withLexicon` (every Latin-script language), or no
  * lexicon, returns the plugin itself.
  */
 export function lexiconBoundPlugin(plugin: BuildLanguagePlugin, lexemes: readonly BindableLexeme[] | null): BuildLanguagePlugin {

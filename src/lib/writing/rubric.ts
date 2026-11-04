@@ -280,9 +280,17 @@ export function evaluateGuidedWriting(input: {
   // 5. A real clause, when the task demands one (authored allowlist only).
   const verbs = rubric.requireSentenceVerbs ?? [];
   if (verbs.length > 0) {
+    // P4d: a plugin with a whole-utterance reading (ja) also finds the verb in the reading of the whole answer, as
+    // the speech grader reads a whole variant — its dictionary tokens read いますか as いま (今) す か, so ます is no run.
+    const utterance = rules.utteranceReading;
+    const answerReading = utterance === undefined ? "" : utterance(normalizeSpoken(input.text, rules));
     const hasVerb = verbs.some((v) => {
       const key = normalizeWritten(v, rules);
       if (containsRun(answerTokens, tokensOf(key))) return true;
+      if (utterance !== undefined) {
+        const verbReading = utterance(normalizeSpoken(v, rules));
+        if (verbReading.length > 0 && answerReading.includes(verbReading)) return true;
+      }
       // P4c: the verb written in the reading notation (shi for 是) is the verb, as for a slot.
       const align = rules.readingInput === undefined ? undefined : rules.alignWrittenToKey;
       return align !== undefined && containsRun(tokensOf(align(answerTokens.join(" "), key)), tokensOf(key));
