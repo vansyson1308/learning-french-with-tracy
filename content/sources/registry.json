@@ -559,7 +559,21 @@
       "covers": [
         "content/audio/engines.json"
       ],
-      "notes": "P4d (plan/authoring/zh-plan.md §7): licences read 2026-11-04 from PyPI metadata (licence field and classifiers) and the misaki 0.9.4 sdist (sha256 3960fa3e…). All code is MIT or Apache-2.0 (misaki's zh frontend, tone sandhi and zh_normalization are adapted from PaddleSpeech, Apache-2.0; transcription.py from stefantaubert/pinyin-to-ipa, MIT). Kokoro v1.0 (lang z) takes misaki's legacy path: jieba segmentation + pypinyin's built-in dictionaries, no tone sandhi. Open: pypinyin-dict's large_pinyin phrase table (loaded only by misaki's version-1.1 frontend, not by Kokoro v1.0) merges zdic.net scrapes whose licence is not stated, beside cc_cedict (CC BY-SA 4.0); the course plans a front-end from its own stored CC-CEDICT pinyin, as for ja, so no clip depends on it.",
+      "notes": "P4d (plan/authoring/zh-plan.md §7): licences read 2026-11-04 from PyPI metadata (licence field and classifiers) and the misaki 0.9.4 sdist (sha256 3960fa3e…). All code is MIT or Apache-2.0 (misaki's zh frontend, tone sandhi and zh_normalization are adapted from PaddleSpeech, Apache-2.0; transcription.py from stefantaubert/pinyin-to-ipa, MIT). Kokoro v1.0 (lang z) takes misaki's legacy path: jieba segmentation + pypinyin's built-in dictionaries, no tone sandhi. Open: pypinyin-dict's large_pinyin phrase table (loaded only by misaki's version-1.1 frontend, not by Kokoro v1.0) merges zdic.net scrapes whose licence is not stated, beside cc_cedict (CC BY-SA 4.0); the course plans a front-end from its own stored CC-CEDICT pinyin, as for ja, so no clip depends on it. P4d audio session (plan/reports/P4d-zh-audio-frontend.md): that front-end is built (misaki-zh-pinyin-ipa) and the extra is no longer installed (engines.json kokoro.install: misaki==0.9.4 without [zh]); this row stays as the licence record of what was read.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "misaki-zh-pinyin-ipa",
+      "name": "misaki 0.9.4 Mandarin pinyin → IPA table and tone arrows (hexgrad), adapted from pinyin-to-ipa (Stefan Taubert)",
+      "kind": "code adapted at pipeline time (pinyin → Kokoro phoneme table and rules of the Mandarin audio front-end; never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://github.com/hexgrad/misaki/blob/main/misaki/transcription.py",
+      "attribution": "The Mandarin audio front-end's pinyin → phoneme table, tone arrows and clean-up are adapted from misaki 0.9.4 misaki/transcription.py and misaki/zh.py (Copyright hexgrad, Apache-2.0); transcription.py is itself adapted from pinyin-to-ipa (https://github.com/stefantaubert/pinyin-to-ipa, Copyright Stefan Taubert, MIT). Both licence notices are kept in scripts/lib/tts/zh-phonemes.ts.",
+      "retrievedAt": "2026-11-04",
+      "covers": [
+        "scripts/lib/tts/zh-phonemes.ts"
+      ],
+      "notes": "P4d (plan/reports/P4d-zh-audio-frontend.md): read from the misaki 0.9.4 sdist (PyPI, sha256 3960fa3e…) and checked against the Kokoro-82M config.json vocabulary at the pinned revision (sha256 5abb01e2…). Only the dictionary-free table and rules were ported: the pinyin is the course lexicon's (CC-CEDICT, CC BY-SA 4.0) with the tone sandhi for audio (scripts/lib/zh-sandhi.ts, original); jieba, pypinyin and their dictionaries are not installed. Upstream chain: pinyin-to-ipa MIT → misaki Apache-2.0 → this port, both allowlisted.",
       "buildTimeOnly": true
     },
     {
