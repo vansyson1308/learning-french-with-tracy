@@ -33,6 +33,13 @@ then removed.
 | 주다: the kaikki table states 주었어요, the course teaches 줬어요 | paradigm validator | 1 | no table for 주다 |
 | Vietnamese words in English concept text (học, hát, họp; đã, rồi) | english-fields validator | 2 | English rewritten |
 
+**Coordinator decision (2026-11-05, after session 2): 합쇼체 renderings of a 해요 key are accepted.** They are correct,
+only more formal (가요 → 갑니다, 학생이에요 → 학생입니다, 갈 거예요 → 갈 겁니다, 가고 싶어요 → 가고 싶습니다, 아니에요 →
+아닙니다, 조심하세요 → 조심하십시오, 안녕하세요 → 안녕하십니까). `ko_text._formal_forms` generates them for every typed
+key unless the prompt asks for the familiar style; `scripts/__tests__/ko-vi-formal-answers.test.ts` checks eight known
+keys through the ko rules' lenient form and that every 해요 key lists a 합쇼체 rendering. Writing it found 5 keys the
+first rule missed (아니에요, -고 싶어요 ×3, 안녕하세요); the rule now covers the auxiliaries.
+
 **For the D-10 reviewer (read first).**
 - Section 1 is tap-only: no typed Korean before the primer. Typing starts in Section 2.
 - 해요체 everywhere; 합쇼체 only in set phrases, the interview (unit l, ua-l3) and announcements; 반말 only in two

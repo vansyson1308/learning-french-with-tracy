@@ -246,7 +246,8 @@ SUPPLETIVE = {"드세요": "haeyo", "드셨어요": "haeyo", "계세요": "haeyo
 GRAMMAR = {
     "거예요": "haeyo", "거예요?": "haeyo", "겁니다": "formal", "겁니까": "formal", "거": "noun", "것": "noun", "수": "noun", "때": "noun",
     "싶어요": "haeyo", "싶었어요": "haeyo", "싶습니다": "formal", "싶어서": "connective", "싶지만": "connective",
-    "않아요": "haeyo", "않았어요": "haeyo", "않습니다": "formal", "않으세요": "haeyo",
+    "않아요": "haeyo", "않았어요": "haeyo", "않습니다": "formal", "않습니까": "formal", "않으세요": "haeyo", "싶습니까": "formal", "못합니까": "formal",
+    "안녕하십니까": "formal",
     "마세요": "haeyo", "마십시오": "formal", "못해요": "haeyo", "못했어요": "haeyo", "못합니다": "formal",
     "있어요": "haeyo", "있었어요": "haeyo",
 }
@@ -755,8 +756,14 @@ def _formal_forms(vi, ko, index):
         q = punct.startswith("?")
         new = None
         info = index.forms.get(last)
-        if last == "거예요":
-            new = "겁니까" if q else "겁니다"  # 갈 거예요 → 갈 겁니다 (거 = 것)
+        AUX = {"거예요": "겁니", "싶어요": "싶습니", "않아요": "않습니", "못해요": "못합니", "아니에요": "아닙니"}
+        if last == "안녕하세요":
+            new = "안녕하십니까"  # the formal greeting is always a question form
+            punct = "?" if punct else punct
+        elif last in AUX:
+            new = AUX[last] + ("까" if q else "다")  # 갈 거예요 → 갈 겁니다 (거 = 것); 가고 싶어요 → 가고 싶습니다
+        elif last == "마세요" and not q:
+            new = "마십시오"
         elif info and info[0] in index.lex and info[1] == "haeyo":
             lemma = info[0]
             if last == aeo(lemma) + "요" and lemma != "아니다":
@@ -765,8 +772,6 @@ def _formal_forms(vi, ko, index):
                 new = _past(lemma) + ("습니까" if q else "습니다")
             elif last == _eu(lemma, "세요") and not q:
                 new = _eu(lemma, "십시오")
-        elif last == "아니에요":
-            new = "아닙니까" if q else "아닙니다"
         else:
             for cop, formal in (("이었어요", "이었습니"), ("였어요", "였습니"), ("이에요", "입니"), ("예요", "입니")):
                 if last.endswith(cop) and index.nounish(last[: -len(cop)]):
