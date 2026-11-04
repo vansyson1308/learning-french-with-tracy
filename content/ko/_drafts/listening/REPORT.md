@@ -1,0 +1,197 @@
+# listening — ingest report (ko-vi)
+
+Records: 92 · schema-valid: 92 · failed: 0 · validator errors after merge: 92
+
+## Records
+
+- ✅ line 1 `ko.clip.uf_nalssi`
+- ✅ line 2 `ko.clip.uf_bi`
+- ✅ line 3 `ko.clip.uf_usan`
+- ✅ line 4 `ko.clip.uf_baram`
+- ✅ line 5 `ko.clip.uf_bom`
+- ✅ line 6 `ko.clip.uf_gyeoul`
+- ✅ line 7 `ko.clip.uf_deowoyo`
+- ✅ line 8 `ko.clip.uf_chuwoyo`
+- ✅ line 9 `ko.clip.uf_bi_wayo`
+- ✅ line 10 `ko.clip.uf_malgayo`
+- ✅ line 11 `ko.clip.uf_usan_isseoyo`
+- ✅ line 12 `ko.clip.uf_moreugesseoyo`
+- ✅ line 13 `ko.clip.uf_dasi`
+- ✅ line 14 `ko.clip.uf_cheoncheonhi`
+- ✅ line 15 `ko.clip.uf_rain_tomorrow`
+- ✅ line 16 `ko.clip.uf_cold_wind`
+- ✅ line 17 `ko.clip.ug_stop`
+- ✅ line 18 `ko.clip.ug_helmet`
+- ✅ line 19 `ko.clip.ug_gloves`
+- ✅ line 20 `ko.clip.ug_exit`
+- ✅ line 21 `ko.clip.ug_lunch`
+- ✅ line 22 `ko.clip.ug_off`
+- ✅ line 23 `ko.clip.uh_this_station`
+- ✅ line 24 `ko.clip.uh_next_station`
+- ✅ line 25 `ko.clip.uh_transfer`
+- ✅ line 26 `ko.clip.uh_exit3`
+- ✅ line 27 `ko.clip.uh_bus_soon`
+- ✅ line 28 `ko.clip.uh_bus_cityhall`
+- ✅ line 29 `ko.clip.uh_next_stop`
+- ✅ line 30 `ko.clip.uh_ten_minutes`
+- ✅ line 31 `ko.clip.ui_bag`
+- ✅ line 32 `ko.clip.ui_price`
+- ✅ line 33 `ko.clip.ui_card`
+- ✅ line 34 `ko.clip.ui_bento`
+- ✅ line 35 `ko.clip.ui_ramen`
+- ✅ line 36 `ko.clip.ui_welcome`
+- ✅ line 37 `ko.clip.uj_nam_ansan`
+- ✅ line 38 `ko.clip.uj_seoul`
+- ✅ line 39 `ko.clip.uj_third_floor`
+- ✅ line 40 `ko.clip.uj_trash`
+- ✅ line 41 `ko.clip.uj_quiet`
+- ✅ line 42 `ko.clip.cp3_train`
+- ✅ line 43 `ko.clip.cp3_bus_late`
+- ✅ line 44 `ko.clip.cp3_mart`
+- ✅ line 45 `ko.clip.cp3_floor`
+- ✅ line 46 `ko.clip.cp3_price`
+- ✅ line 47 `ko.clip.cp3_class`
+- ✅ line 48 `ko.clip.cp3_party`
+- ✅ line 49 `ko.clip.cp3_dlg_drink`
+- ✅ line 50 `ko.clip.cp3_dlg_live`
+- ✅ line 51 `ko.clip.cp3_dlg_movie`
+- ✅ line 52 `ko.clip.cp3_dlg_doctor`
+- ✅ line 53 `ko.clip.cp3_dict_work`
+- ✅ line 54 `ko.clip.cp3_dict_station`
+- ✅ line 55 `ko.clip.cp3_dict_door`
+- ✅ line 56 `ko.clip.a1cap_bank`
+- ✅ line 57 `ko.clip.a1cap_bus`
+- ✅ line 58 `ko.clip.a1cap_pharmacy`
+- ✅ line 59 `ko.clip.a1cap_bag`
+- ✅ line 60 `ko.clip.pl_mul`
+- ✅ line 61 `ko.clip.pl_shop`
+- ✅ line 62 `ko.clip.pl_pay`
+- ✅ line 63 `ko.clip.uk_model_rep_annyeong`
+- ✅ line 64 `ko.clip.uk_model_greet_leader`
+- ✅ line 65 `ko.clip.uk_model_rep_sugo`
+- ✅ line 66 `ko.clip.uk_model_sugo`
+- ✅ line 67 `ko.clip.uk_model_thanks`
+- ✅ line 68 `ko.clip.uk_model_rep_meonjeo`
+- ✅ line 69 `ko.clip.uk_model_leave_first`
+- ✅ line 70 `ko.clip.uk_model_sorry`
+- ✅ line 71 `ko.clip.uk_model_excuse`
+- ✅ line 72 `ko.clip.ul_model_rep_cheoeum`
+- ✅ line 73 `ko.clip.ul_model_name`
+- ✅ line 74 `ko.clip.ul_model_from`
+- ✅ line 75 `ko.clip.ul_model_age`
+- ✅ line 76 `ko.clip.ul_model_work`
+- ✅ line 77 `ko.clip.ul_model_like`
+- ✅ line 78 `ko.clip.ul_model_rep_butak`
+- ✅ line 79 `ko.clip.um_model_rep_price`
+- ✅ line 80 `ko.clip.um_model_price`
+- ✅ line 81 `ko.clip.um_model_time`
+- ✅ line 82 `ko.clip.um_model_rep_half`
+- ✅ line 83 `ko.clip.um_model_day`
+- ✅ line 84 `ko.clip.um_model_birthday`
+- ✅ line 85 `ko.clip.um_model_tickets`
+- ✅ line 86 `ko.clip.un_model_rep_keoyo`
+- ✅ line 87 `ko.clip.un_model_box`
+- ✅ line 88 `ko.clip.un_model_car`
+- ✅ line 89 `ko.clip.un_model_cat`
+- ✅ line 90 `ko.clip.un_model_rep_past`
+- ✅ line 91 `ko.clip.un_model_weekend`
+- ✅ line 92 `ko.clip.un_model_tomorrow`
+
+## Validator errors (fix these records and ingest again)
+
+- reception: ko.clip.uf_nalssi: generated asset aa2cfd3481fc7dec8875.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_bi: generated asset 9607e3abafbd8c75120a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_usan: generated asset faf2bbc1ea05e3c275fe.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_baram: generated asset 8d6a5c0ebce0995b073b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_bom: generated asset 4e8f839cd10a700323f7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_gyeoul: generated asset f72c53da6002139f8a37.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_deowoyo: generated asset fad9c0e8f087e5d45011.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_chuwoyo: generated asset 40eeebc9dd7dcb2c5d91.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_bi_wayo: generated asset a6d74a4203e491263e3a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_malgayo: generated asset 5b2be37867fb2364718f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_usan_isseoyo: generated asset a15dd934226938bdeb28.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_moreugesseoyo: generated asset 6d784177138e27a59275.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_dasi: generated asset c9cb33487378d877ffa8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_cheoncheonhi: generated asset 4df62651952e0ef02e17.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_rain_tomorrow: generated asset 6a85d75e240708512b80.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uf_cold_wind: generated asset 0abcf774eedc5f56bfc0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ug_stop: generated asset 071b062a0ddcca67b291.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ug_helmet: generated asset 7b0ee731221a9f7981ba.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ug_gloves: generated asset 513e971f6d5afaac1ea3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ug_exit: generated asset 67f38238894d8f455ec8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ug_lunch: generated asset 979ed38428c952185038.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ug_off: generated asset bfd4375df796600ed4a5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uh_this_station: generated asset d06b7e1630f5212d1fc6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uh_next_station: generated asset 05e6af7bfc97158d18e8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uh_transfer: generated asset ae1ecb6dea3bdada0045.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uh_exit3: generated asset d1d06a58559c82293a6f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uh_bus_soon: generated asset 79e7b4aaf90d5e2c3234.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uh_bus_cityhall: generated asset 67dcaa44e2386991d33b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uh_next_stop: generated asset 2c3ac9e6ea30b1464bc8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uh_ten_minutes: generated asset bbbac724bda3c80db6a3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ui_bag: generated asset 81a2801c8e483443690f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ui_price: generated asset b85c10910c1008163237.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ui_card: generated asset a96d9800e69dda427a0a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ui_bento: generated asset 0fcc60e1d91e4b647ebc.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ui_ramen: generated asset ae5d71731582d640569a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ui_welcome: generated asset 06694788d2c4616b480a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uj_nam_ansan: generated asset a1b8c862ba3e520f2272.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uj_seoul: generated asset 14e02cb66735f4783aa9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uj_third_floor: generated asset fa2e7455f1a49989704f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uj_trash: generated asset bb170659a6a6a33ec166.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uj_quiet: generated asset cafe1dc4ce5c1f9c7fb9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_train: generated asset 14ecf34beb99d1a8b42e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_bus_late: generated asset 3bb8dfb77dc1a8ab125d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_mart: generated asset bb6295ec2f0ee3008546.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_floor: generated asset b1a7bcb21d25166b4f2a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_price: generated asset 22856bd133a780aae0ac.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_class: generated asset a3f1531e467e2233636a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_party: generated asset 2dee08ce35d91fd15b6e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_dlg_drink: generated asset a14027b269d3403a1e1a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_dlg_live: generated asset 0f82a7249e4e7706e005.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_dlg_movie: generated asset 755dafea7bebf95052e5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_dlg_doctor: generated asset 8cd2d64a785de28d2c34.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_dict_work: generated asset 7ab9aca36d597aaac83f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_dict_station: generated asset 7afcb15eb3743cf9c6e0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.cp3_dict_door: generated asset 7b0ee731221a9f7981ba.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.a1cap_bank: generated asset c0ac738a327f8291174e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.a1cap_bus: generated asset 6541ec5c7b7707274162.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.a1cap_pharmacy: generated asset 1a2b46c33528b4e67256.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.a1cap_bag: generated asset 7af4b36cf7346d021090.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.pl_mul: generated asset 7c4c680729bd602c0153.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.pl_shop: generated asset eb423b95b78bda194b41.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.pl_pay: generated asset da133c9f0b0bbba53bca.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_rep_annyeong: generated asset c2fc803180bc6d59fa2c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_greet_leader: generated asset fceb669ebd5daa341939.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_rep_sugo: generated asset 5768d9b6c0f859b180b8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_sugo: generated asset 5768d9b6c0f859b180b8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_thanks: generated asset 920b6a27f4247b5babb3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_rep_meonjeo: generated asset 475b570c711ec328231b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_leave_first: generated asset 475b570c711ec328231b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_sorry: generated asset f3048f4c6fecae2c6d21.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.uk_model_excuse: generated asset 2a3d75c0a3e1bcdf7675.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ul_model_rep_cheoeum: generated asset 9132af0faf6394cf8075.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ul_model_name: generated asset 7775e68567106dd23668.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ul_model_from: generated asset 51b667cfe682ee20e561.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ul_model_age: generated asset ce2b09e7011de13e4771.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ul_model_work: generated asset ce48f17e26d95edcf422.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ul_model_like: generated asset 9134a4d163352492fa67.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.ul_model_rep_butak: generated asset 013b28f81cf76e7ffb05.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.um_model_rep_price: generated asset e2dbf2a11d376675c8ff.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.um_model_price: generated asset 084f96cd7368e18c2959.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.um_model_time: generated asset 17aeba840a5740aa783c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.um_model_rep_half: generated asset 445b61f94ae59f1399f2.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.um_model_day: generated asset 399351ab6931dee907a7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.um_model_birthday: generated asset 77cddfb028bf55bcd331.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.um_model_tickets: generated asset c44647836a73851bac02.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.un_model_rep_keoyo: generated asset ce93aa4bbc443ab94070.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.un_model_box: generated asset 99558e8dd9cc2a60c59b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.un_model_car: generated asset 622e27f387bbb7624d3a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.un_model_cat: generated asset 9624f2065cd86143bd88.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.un_model_rep_past: generated asset cd5fac989bade688a34c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.un_model_weekend: generated asset 3079b943efe18cfbbea1.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.un_model_tomorrow: generated asset c47c9120a54255486de7.mp3 missing — run the reception-audio generate workflow (P7 §26)
+
+## Written
+
+- content/ko/reception/listening.json

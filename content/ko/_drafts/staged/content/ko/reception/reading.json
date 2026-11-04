@@ -1,0 +1,1138 @@
+{
+  "version": 1,
+  "language": "ko",
+  "readings": [
+    {
+      "id": "ko.read.uf_forecast",
+      "kind": "notice",
+      "title": "이번 주 날씨",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "월요일은 맑아요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "화요일에는 비가 와요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "수요일은 흐려요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "목요일부터 추워요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "ko:w:ibeon-ju",
+        "ko:w:nalssi",
+        "ko:w:woryoil",
+        "ko:w:makda",
+        "ko:w:hwayoil",
+        "ko:w:bi",
+        "ko:w:oda",
+        "ko:w:suyoil",
+        "ko:w:heurida",
+        "ko:w:mogyoil",
+        "ko:w:chupda"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uf_seasons",
+      "kind": "description",
+      "title": "한국의 날씨",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "한국에는 봄, 여름, 가을, 겨울이 있어요. 여름은 덥고 비가 많이 와요. 겨울은 아주 추워요. 저는 가을을 제일 좋아해요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "ko:w:han-guk",
+        "ko:w:nalssi",
+        "ko:w:bom",
+        "ko:w:yeoreum",
+        "ko:w:ga-eul",
+        "ko:w:gyeoul",
+        "ko:w:itda",
+        "ko:w:deopda",
+        "ko:w:bi",
+        "ko:w:mani",
+        "ko:w:oda",
+        "ko:w:aju",
+        "ko:w:chupda",
+        "ko:w:jeo",
+        "ko:w:jeil",
+        "ko:w:joahada"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uf_card",
+      "kind": "notice",
+      "title": "저는요",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "이름: 응우옌 남"
+        },
+        {
+          "kind": "paragraph",
+          "text": "나라: 베트남"
+        },
+        {
+          "kind": "paragraph",
+          "text": "직업: 근로자"
+        },
+        {
+          "kind": "paragraph",
+          "text": "전화번호: 010-1234-5678"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.familiar_words"
+      ],
+      "lexemeRefs": [
+        "ko:w:ireum",
+        "ko:w:nara",
+        "ko:w:beteunam",
+        "ko:w:jigeop",
+        "ko:w:geulloja",
+        "ko:w:jeonhwabeonho"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ug_signs",
+      "kind": "notice",
+      "title": "공장 안",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "위험"
+        },
+        {
+          "kind": "paragraph",
+          "text": "금연"
+        },
+        {
+          "kind": "paragraph",
+          "text": "출입 금지"
+        },
+        {
+          "kind": "paragraph",
+          "text": "비상구"
+        },
+        {
+          "kind": "paragraph",
+          "text": "소화기"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.vocab.work_korea"
+      ],
+      "lexemeRefs": [
+        "ko:w:gongjang",
+        "ko:w:an",
+        "ko:w:wiheom",
+        "ko:w:geumyeon",
+        "ko:w:churip",
+        "ko:w:geumji",
+        "ko:w:bisanggu",
+        "ko:w:sohwagi"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 5,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ug_rules",
+      "kind": "notice",
+      "title": "공장에서",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "공장에서는 안전모를 쓰세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "장갑을 끼세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "기계에 손을 넣지 마세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "공장은 금연이에요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.verbs.requests_rules"
+      ],
+      "lexemeRefs": [
+        "ko:w:gongjang",
+        "ko:w:anjeonmo",
+        "ko:w:sseuda",
+        "ko:w:janggap",
+        "ko:w:kkida",
+        "ko:w:gigye",
+        "ko:w:son",
+        "ko:w:neota",
+        "ko:w:geumyeon"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ug_shift",
+      "kind": "notice",
+      "title": "근무 시간",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "주간: 오전 여덟 시부터 오후 다섯 시까지"
+        },
+        {
+          "kind": "paragraph",
+          "text": "야간: 오후 여덟 시부터 오전 다섯 시까지"
+        },
+        {
+          "kind": "paragraph",
+          "text": "점심시간: 열두 시부터 한 시까지"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "ko:w:geunmu",
+        "ko:w:sigan",
+        "ko:w:jugan",
+        "ko:w:ojeon",
+        "ko:w:yeodeol",
+        "ko:w:si",
+        "ko:w:ohu",
+        "ko:w:daseot",
+        "ko:w:yagan",
+        "ko:w:jeomsimsigan",
+        "ko:w:han"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ug_msg_leader",
+      "kind": "message",
+      "title": "문자",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "남 씨, 내일은 일곱 시에 출근하세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "식당 앞에서 만나요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "반장님"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "ko:w:munja",
+        "ko:w:ssi",
+        "ko:w:naeil",
+        "ko:w:ilgop",
+        "ko:w:si",
+        "ko:w:chulgeunhada",
+        "ko:w:sikdang",
+        "ko:w:ap",
+        "ko:w:mannada",
+        "ko:w:banjangnim"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ug_menu",
+      "kind": "notice",
+      "title": "식당 메뉴",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "김밥 3,000원"
+        },
+        {
+          "kind": "paragraph",
+          "text": "라면 4,000원"
+        },
+        {
+          "kind": "paragraph",
+          "text": "비빔밥 7,000원"
+        },
+        {
+          "kind": "paragraph",
+          "text": "음료수 1,500원"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.numbers.two_systems"
+      ],
+      "lexemeRefs": [
+        "ko:w:sikdang",
+        "ko:w:menyu",
+        "ko:w:gimbap",
+        "ko:w:ramyeon",
+        "ko:w:bibimbap",
+        "ko:w:eumnyosu"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uh_exits",
+      "kind": "notice",
+      "title": "출구",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "1번 출구: 시청"
+        },
+        {
+          "kind": "paragraph",
+          "text": "2번 출구: 병원"
+        },
+        {
+          "kind": "paragraph",
+          "text": "3번 출구: 고용센터"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.numbers.two_systems"
+      ],
+      "lexemeRefs": [
+        "ko:w:chulgu",
+        "ko:w:sicheong",
+        "ko:w:byeong-won",
+        "ko:w:goyongsenteo"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uh_bus",
+      "kind": "notice",
+      "title": "10번 버스",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "10번 버스는 역에서 출발해요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "버스는 십 분마다 와요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "밤 열한 시까지 있어요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.numbers.two_systems"
+      ],
+      "lexemeRefs": [
+        "ko:w:beoseu",
+        "ko:w:yeok",
+        "ko:w:chulbalhada",
+        "ko:w:sip",
+        "ko:w:bun",
+        "ko:w:oda",
+        "ko:w:bam",
+        "ko:w:si",
+        "ko:w:itda"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ui_receipt",
+      "kind": "notice",
+      "title": "영수증",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "김밥 1개 3,000원"
+        },
+        {
+          "kind": "paragraph",
+          "text": "생수 1병 1,000원"
+        },
+        {
+          "kind": "paragraph",
+          "text": "모두 4,000원"
+        },
+        {
+          "kind": "paragraph",
+          "text": "카드"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.numbers.two_systems"
+      ],
+      "lexemeRefs": [
+        "ko:w:yeongsujeung",
+        "ko:w:gimbap",
+        "ko:w:saengsu",
+        "ko:w:modu",
+        "ko:w:kadeu"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ui_store",
+      "kind": "dialogue",
+      "title": "편의점에서",
+      "blocks": [
+        {
+          "kind": "line",
+          "speaker": "직원",
+          "text": "어서 오세요."
+        },
+        {
+          "kind": "line",
+          "speaker": "흐엉",
+          "text": "이 도시락 얼마예요?"
+        },
+        {
+          "kind": "line",
+          "speaker": "직원",
+          "text": "오천 원이에요. 봉투 필요하세요?"
+        },
+        {
+          "kind": "line",
+          "speaker": "흐엉",
+          "text": "네, 봉투 하나 주세요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages",
+        "ko.obj.numbers.two_systems"
+      ],
+      "lexemeRefs": [
+        "ko:w:eoseo-oseyo",
+        "ko:w:pyeonuijeom",
+        "ko:w:i",
+        "ko:w:dosirak",
+        "ko:w:eolmayeyo",
+        "ko:w:won",
+        "ko:w:bongtu",
+        "ko:w:piryohada",
+        "ko:w:ne",
+        "ko:w:hana",
+        "ko:w:juseyo"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ui_msg_friend",
+      "kind": "message",
+      "title": "문자",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "란 씨, 지금 편의점에 있어요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "물하고 과자를 살 거예요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "뭐 필요해요?"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "ko:w:munja",
+        "ko:w:ssi",
+        "ko:w:jigeum",
+        "ko:w:pyeonuijeom",
+        "ko:w:itda",
+        "ko:w:mul",
+        "ko:w:gwaja",
+        "ko:w:sal",
+        "ko:w:mwo",
+        "ko:w:piryohada"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.ui_msg_late",
+      "kind": "message",
+      "title": "문자",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "반장님, 죄송합니다."
+        },
+        {
+          "kind": "paragraph",
+          "text": "버스가 안 와요. 십 분 늦어요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "흐엉"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "ko:w:munja",
+        "ko:w:banjangnim",
+        "ko:w:joesonghamnida",
+        "ko:w:beoseu",
+        "ko:w:an",
+        "ko:w:oda",
+        "ko:w:sip",
+        "ko:w:bun",
+        "ko:w:neutda"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uj_rules",
+      "kind": "notice",
+      "title": "기숙사에서",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "밤 열 시부터 조용히 하세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "방에서 요리하면 안 돼요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "쓰레기는 월요일과 목요일에 버리세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "세탁기는 밤 아홉 시까지 쓸 수 있어요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.verbs.requests_rules"
+      ],
+      "lexemeRefs": [
+        "ko:w:gisuksa",
+        "ko:w:bam",
+        "ko:w:yeol",
+        "ko:w:si",
+        "ko:w:joyonghi",
+        "ko:w:hada",
+        "ko:w:bang",
+        "ko:w:yorihada",
+        "ko:w:an",
+        "ko:w:doeda",
+        "ko:w:sseuregi",
+        "ko:w:woryoil",
+        "ko:w:mogyoil",
+        "ko:w:beorida",
+        "ko:w:setakgi",
+        "ko:w:ahop",
+        "ko:w:sseuda",
+        "ko:w:itda"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uj_room",
+      "kind": "description",
+      "title": "제 방",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "제 방은 기숙사 삼 층에 있어요. 방은 작지만 깨끗해요. 침대하고 책상이 있어요. 냉장고는 부엌에 있어요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_texts",
+        "ko.obj.existence.itda"
+      ],
+      "lexemeRefs": [
+        "ko:w:je",
+        "ko:w:bang",
+        "ko:w:gisuksa",
+        "ko:w:sam",
+        "ko:w:cheung",
+        "ko:w:itda",
+        "ko:w:jakda",
+        "ko:w:kkaekkeutada",
+        "ko:w:chimdae",
+        "ko:w:chaeksang",
+        "ko:w:naengjanggo",
+        "ko:w:bueok"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uj_day",
+      "kind": "narrative",
+      "title": "남 씨의 하루",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "남 씨는 안산의 공장에서 일해요. 매일 여섯 시에 일어나요. 일곱 시에 버스를 타요. 일은 여덟 시부터 다섯 시까지예요. 저녁에는 기숙사에서 한국어를 공부해요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "ko:w:ssi",
+        "ko:w:haru",
+        "ko:w:gongjang",
+        "ko:w:ilhada",
+        "ko:w:maeil",
+        "ko:w:yeoseot",
+        "ko:w:si",
+        "ko:w:ireonada",
+        "ko:w:ilgop",
+        "ko:w:beoseu",
+        "ko:w:tada",
+        "ko:w:il",
+        "ko:w:yeodeol",
+        "ko:w:daseot",
+        "ko:w:jeonyeok",
+        "ko:w:gisuksa",
+        "ko:w:han-gugeo",
+        "ko:w:gongbuhada"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 5,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uj_weekend",
+      "kind": "narrative",
+      "title": "주말",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "지난 주말에 흐엉 씨는 친구하고 서울에 갔어요. 시장에서 옷을 샀어요. 그리고 식당에서 불고기를 먹었어요. 정말 재미있었어요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "ko:w:jumal",
+        "ko:w:jinada",
+        "ko:w:ssi",
+        "ko:w:chin-gu",
+        "ko:w:seoul",
+        "ko:w:gada",
+        "ko:w:sijang",
+        "ko:w:ot",
+        "ko:w:sada",
+        "ko:w:geurigo",
+        "ko:w:sikdang",
+        "ko:w:bulgogi",
+        "ko:w:meokda",
+        "ko:w:jeongmal",
+        "ko:w:jaemiitda"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.uj_rent",
+      "kind": "notice",
+      "title": "월세",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "이번 달 월세는 이십만 원이에요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "이십오일까지 보내 주세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "관리비는 삼만 원이에요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.numbers.two_systems"
+      ],
+      "lexemeRefs": [
+        "ko:w:ibeon-dal",
+        "ko:w:wolse",
+        "ko:w:won",
+        "ko:w:bonaeda",
+        "ko:w:juseyo",
+        "ko:w:gwallibi",
+        "ko:w:sam"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.cp3_msg_lan",
+      "kind": "message",
+      "title": "문자",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "남 씨, 기차가 다섯 시에 도착해요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "역에 와 주세요. 가방이 두 개 있어요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "란"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "ko:w:munja",
+        "ko:w:ssi",
+        "ko:w:gicha",
+        "ko:w:daseot",
+        "ko:w:si",
+        "ko:w:dochakada",
+        "ko:w:yeok",
+        "ko:w:wa",
+        "ko:w:juseyo",
+        "ko:w:gabang",
+        "ko:w:du",
+        "ko:w:gae",
+        "ko:w:itda"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.cp3_notice_shop",
+      "kind": "notice",
+      "title": "가게",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "매일 오전 열 시부터 밤 열 시까지"
+        },
+        {
+          "kind": "paragraph",
+          "text": "일요일 오전은 쉬어요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "계산대에서 계산하세요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info",
+        "ko.obj.vocab.time_calendar"
+      ],
+      "lexemeRefs": [
+        "ko:w:gage",
+        "ko:w:maeil",
+        "ko:w:ojeon",
+        "ko:w:yeol",
+        "ko:w:si",
+        "ko:w:bam",
+        "ko:w:iryoil",
+        "ko:w:swida",
+        "ko:w:gyesandae",
+        "ko:w:gyesanhada"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.cp3_notice_staff",
+      "kind": "notice",
+      "title": "직원 여러분",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "오늘 이 층 화장실은 쓸 수 없어요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "일 층 화장실을 쓰세요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "사장님"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages",
+        "ko.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:jigwon",
+        "ko:w:yeoreobun",
+        "ko:w:oneul",
+        "ko:w:i",
+        "ko:w:cheung",
+        "ko:w:hwajangsil",
+        "ko:w:sseuda",
+        "ko:w:eopda",
+        "ko:w:il",
+        "ko:w:sajangnim"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.cp3_text_friend",
+      "kind": "description",
+      "title": "제 친구 투이",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "투이 씨는 제 친구예요. 스물네 살이에요. 수원의 병원에서 일해요. 역 옆의 아파트에 살아요. 음악을 좋아해요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "ko:w:je",
+        "ko:w:chin-gu",
+        "ko:w:ssi",
+        "ko:w:sal",
+        "ko:w:byeong-won",
+        "ko:w:ilhada",
+        "ko:w:yeok",
+        "ko:w:yeop",
+        "ko:w:apateu",
+        "ko:w:salda",
+        "ko:w:eumak",
+        "ko:w:joahada"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 5,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.cp3_text_week",
+      "kind": "narrative",
+      "title": "민수 씨의 한 주",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "민수 씨는 월요일부터 금요일까지 일해요. 매일 자전거로 회사에 가요. 토요일에는 마트에서 장을 봐요. 일요일에는 집에서 책을 읽어요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "ko:w:minsu",
+        "ko:w:ssi",
+        "ko:w:han",
+        "ko:w:woryoil",
+        "ko:w:geumyoil",
+        "ko:w:ilhada",
+        "ko:w:maeil",
+        "ko:w:jajeon-geo",
+        "ko:w:hoesa",
+        "ko:w:gada",
+        "ko:w:toyoil",
+        "ko:w:mateu",
+        "ko:w:jang",
+        "ko:w:boda",
+        "ko:w:iryoil",
+        "ko:w:jip",
+        "ko:w:chaek",
+        "ko:w:ikda"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "장을 봐요",
+          "gloss": {
+            "vi": "đi chợ, mua đồ"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.a1cap_msg_mother",
+      "kind": "message",
+      "title": "문자",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "흐엉, 엄마는 여섯 시까지 일해. 냉장고에 저녁이 있어."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "ko:w:munja",
+        "ko:w:eomma",
+        "ko:w:yeoseot",
+        "ko:w:si",
+        "ko:w:ilhada",
+        "ko:w:naengjanggo",
+        "ko:w:jeonyeok",
+        "ko:w:itda"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.a1cap_invite",
+      "kind": "message",
+      "title": "파티",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "남 씨, 금요일 저녁에 우리 집에서 파티를 해요."
+        },
+        {
+          "kind": "paragraph",
+          "text": "일곱 시부터예요. 같이 가요?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "지영"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "ko:w:pati",
+        "ko:w:ssi",
+        "ko:w:geumyoil",
+        "ko:w:jeonyeok",
+        "ko:w:uri",
+        "ko:w:jip",
+        "ko:w:hada",
+        "ko:w:ilgop",
+        "ko:w:gachi",
+        "ko:w:gada",
+        "ko:w:jiyeong"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.pl_notice_shop",
+      "kind": "notice",
+      "title": "식당",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "점심: 열한 시부터 두 시까지"
+        },
+        {
+          "kind": "paragraph",
+          "text": "저녁: 다섯 시부터 아홉 시까지"
+        },
+        {
+          "kind": "paragraph",
+          "text": "월요일은 쉬어요."
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:sikdang",
+        "ko:w:jeomsim",
+        "ko:w:si",
+        "ko:w:du",
+        "ko:w:jeonyeok",
+        "ko:w:daseot",
+        "ko:w:ahop",
+        "ko:w:woryoil",
+        "ko:w:swida"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "ko.read.pl_message",
+      "kind": "message",
+      "title": "문자",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "민수 씨, 오늘은 집에 있어요. 저녁에 전화해 주세요. 란"
+        }
+      ],
+      "objectiveRefs": [
+        "ko.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "ko:w:munja",
+        "ko:w:minsu",
+        "ko:w:ssi",
+        "ko:w:oneul",
+        "ko:w:jip",
+        "ko:w:itda",
+        "ko:w:jeonyeok",
+        "ko:w:jeonhwahada",
+        "ko:w:juseyo"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    }
+  ]
+}

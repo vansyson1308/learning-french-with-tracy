@@ -1,13 +1,20 @@
 {
-  "lessons": 108,
-  "exercises": 824,
+  "lessons": 109,
+  "exercises": 973,
   "byType": {
     "conjugationCloze": 23,
+    "dictation": 6,
     "fillBlank": 124,
+    "guidedWriting": 19,
+    "listeningComprehension": 41,
     "match": 101,
+    "readingComprehension": 38,
     "select:listen": 24,
     "select:nativeToTarget": 159,
     "select:targetToNative": 179,
+    "simpleForm": 2,
+    "speakProduction": 34,
+    "speakRepetition": 9,
     "typeAnswer": 99,
     "wordBank": 115
   },
@@ -28,6 +35,62 @@
   },
   "lessonsWithConceptSteps": 50,
   "conceptSteps": 50,
-  "findings": [],
+  "findings": [
+    {
+      "id": "ko-vi:uf-l0-e90",
+      "rule": "comprehension-options",
+      "message": "repeated option in ['a', 'a', 'b', 'c']"
+    },
+    {
+      "id": "ko-vi:uf-l0-e90",
+      "rule": "comprehension-question",
+      "message": "'Biển 금연 là gì?': the question is Vietnamese"
+    },
+    {
+      "id": "ko-vi:uf-l0-e91",
+      "rule": "comprehension-key",
+      "message": "'주차장' is not in the text of ko.read.ug_signs"
+    },
+    {
+      "id": "ko-vi:uf-l0-e92",
+      "rule": "dictation-spacing",
+      "message": "'비가 와요.': the spelling without spaces is not accepted"
+    },
+    {
+      "id": "ko-vi:uf-l0-e93",
+      "rule": "particle",
+      "message": "'nam': Latin letters in Korean text"
+    },
+    {
+      "id": "ko-vi:uf-l0-e93",
+      "rule": "word",
+      "message": "'nam' is not a lexicon word, a form of one, or a noun with its particles"
+    },
+    {
+      "id": "ko-vi:uf-l0-e93",
+      "rule": "speech-script",
+      "message": "'nam': a spoken answer is Hangul only (no Latin, no digits: the grader spells them)"
+    },
+    {
+      "id": "ko-vi:uf-l0-e93",
+      "rule": "spoken-rendering",
+      "message": "'남이에요.' answers 'Hãy nói tên của bạn.' and is not among the variants"
+    },
+    {
+      "id": "ko-vi:uf-l0-e93",
+      "rule": "spoken-rendering",
+      "message": "'저는 남입니다.' answers 'Hãy nói tên của bạn.' and is not among the variants"
+    },
+    {
+      "id": "ko-vi:uf-l0-e93",
+      "rule": "spoken-rendering",
+      "message": "'남입니다.' answers 'Hãy nói tên của bạn.' and is not among the variants"
+    },
+    {
+      "id": "ko-vi:uf-l0-e94",
+      "rule": "writing-slot",
+      "message": "model '수원에 살아요.' realizes no variant of slot s"
+    }
+  ],
   "decided": []
 }

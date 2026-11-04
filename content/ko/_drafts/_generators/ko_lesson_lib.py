@@ -223,6 +223,111 @@ def C(concept):
     return {"concept": f"ko:concept:{concept}"}
 
 
+# ---------------------------------------------------------------- Sections 3-5: the layers (P4e session 3, after ja_lesson_lib.py)
+CLIPS = {c["id"]: c for c in _jsonl(f"{DRAFTS}/listening/OUTPUT.jsonl")}
+READINGS = {r["id"]: r for r in _jsonl(f"{DRAFTS}/readings/OUTPUT.jsonl")}
+SPEECH = {r["id"]: r for r in _jsonl(f"{DRAFTS}/speech/OUTPUT.jsonl")}
+WRITING = {r["id"]: r for r in _jsonl(f"{DRAFTS}/writing/OUTPUT.jsonl")}
+
+
+def _need(table, xid, what):
+    if xid not in table:
+        PROBLEMS.append(f"unknown {what} {xid}")
+        return None
+    if table[xid].get("reserved") is True:
+        PROBLEMS.append(f"{what} {xid} is reserved for assessment")
+    return table[xid]
+
+
+def LC(clip, q, ans, wrong, objs=None):
+    """listeningComprehension: a Vietnamese question; Vietnamese options, or Korean ones (a word heard). Heard through
+    the device voice; with no ko-KR voice the item is skipped, never wrong."""
+    _need(CLIPS, f"ko.clip.{clip}", "clip")
+    o, p = place(ans, wrong)
+    e = {"type": "listeningComprehension", "clipId": f"ko.clip.{clip}", "question": q, "options": [{"text": t} for t in o], "correct": p}
+    if objs:
+        e["objectiveTargets"] = objs
+    return e
+
+
+def RC(reading, q, ans, wrong):
+    _need(READINGS, f"ko.read.{reading}", "reading")
+    o, p = place(ans, wrong)
+    return {"type": "readingComprehension", "readingId": f"ko.read.{reading}", "question": q, "options": [{"text": t} for t in o], "correct": p}
+
+
+def D(clip):
+    """dictation of a clip: the key is its transcript; the one alternative is the same text without spaces (strict
+    grading keeps spacing, and 띄어쓰기 is not what a dictation at A1 tests). A digit-free clip is chosen."""
+    c = _need(CLIPS, f"ko.clip.{clip}", "clip")
+    text = " ".join(s["text"] for s in c["segments"]) if c else "?"
+    if re.search(r"\d", text):
+        PROBLEMS.append(f"dictation {clip}: digits have two spellings")
+    alts = [text.replace(" ", "")] if " " in text else []
+    return {"type": "dictation", "clipId": f"ko.clip.{clip}", "answer": text, "alternatives": alts, "objectiveTargets": ["ko.obj.listening.familiar_words"]}
+
+
+def SP(slug, more=()):
+    """A speech exercise mirroring its item. A review lesson re-using an item names one more objective, so the two are not one payload."""
+    sid = f"ko.speak.{slug}"
+    it = _need(SPEECH, sid, "speech item")
+    if it is None:
+        return {"type": "speakRepetition", "speechItemId": sid}
+    objs = it["objectiveRefs"] + [f"ko.obj.{m}" for m in more]
+    if it["elicitationType"] == "repetition":
+        return {"type": "speakRepetition", "speechItemId": sid, "modelClipId": it["modelAudioRef"], "target": it["target"], "acceptedVariants": it["acceptedVariants"], "objectiveTargets": objs}
+    pr = it["prompt"]
+    e = {"type": "speakProduction", "speechItemId": sid, "instruction": pr["instruction"]["vi"], "target": it["target"], "acceptedVariants": it["acceptedVariants"], "evidenceLexemeRefs": it["evidenceLexemeRefs"],
+         "revealTargetAfterAttempts": it["assistancePolicy"]["revealTargetAfterAttempts"], "allowContextualBias": it["assistancePolicy"]["allowContextualBias"], "modelClipId": it["modelAudioRef"], "allowedAttempts": it["allowedAttempts"], "objectiveTargets": objs}
+    if "cueEmoji" in pr:
+        e["cueEmoji"] = pr["cueEmoji"]
+    if "cueFacts" in pr:
+        e["cueFacts"] = [{"label": f["label"]["vi"], "value": f["value"]} for f in pr["cueFacts"]]
+    return e
+
+
+def WR(slug):
+    """A writing exercise mirroring its task."""
+    tid = f"ko.write.{slug}"
+    t = _need(WRITING, tid, "writing task")
+    if t is None:
+        return {"type": "guidedWriting", "writingTaskId": tid}
+    rub = {**t["rubric"], "requiredSlots": [{**s, "description": s["description"]["vi"]} for s in t["rubric"]["requiredSlots"]]}
+    fields = t.get("formFields")
+    e = {"type": "simpleForm" if fields else "guidedWriting", "writingTaskId": tid}
+    if not fields:
+        e["writingMode"] = t["mode"]
+    e["instruction"] = t["instruction"]["vi"]
+    if t.get("cueFacts"):
+        e["cueFacts"] = [{"label": f["label"]["vi"], "value": f["value"]} for f in t["cueFacts"]]
+    if fields:
+        e["fields"] = fields
+    e.update({"rubric": rub, "modelAnswers": t["modelAnswers"], "objectiveTargets": t["objectiveRefs"]})
+    return e
+
+
+LAYER_FIELDS = (("clipId", "clips"), ("readingId", "readings"), ("speechItemId", "speech"), ("writingTaskId", "writing"), ("scenarioId", "scenarios"))
+
+
+def _layer_refs():
+    """Every lesson of this generator uses exactly the layer ids ko_lesson_refs.py maps to it."""
+    from ko_lesson_refs import REFS
+    for rec in RECORDS:
+        got = {kind: set() for _, kind in LAYER_FIELDS}
+        for e in rec["exercises"]:
+            for field, kind in LAYER_FIELDS:
+                if field in e:
+                    got[kind].add(e[field])
+        want = REFS.get(rec["lessonId"], {})
+        for kind, xs in want.items():
+            for x in xs:
+                if x not in got[kind]:
+                    PROBLEMS.append(f"{rec['lessonId']}: mapped {kind} id {x} is not used")
+        for kind, xs in got.items():
+            for x in sorted(xs - set(want.get(kind, []))):
+                PROBLEMS.append(f"{rec['lessonId']}: {x} is not mapped to this lesson")
+
+
 def _mark(e, plain):
     if plain:
         e["_plain"] = True
@@ -247,6 +352,12 @@ def keyed(e):
         return [e["answer"]] + list(e["alternatives"])
     if t == "conjugationCloze":
         return [e["sentence"].replace("___", e["answer"])]
+    if t == "dictation":
+        return [e["answer"]]
+    if t in ("speakRepetition", "speakProduction"):
+        return [e["target"]]
+    if t == "guidedWriting":
+        return list(e["modelAnswers"])
     return []
 
 
@@ -262,6 +373,8 @@ def shown(e):
         out += e["tokens"]
     if t == "fillBlank":
         out += [e["sentence"].replace("___", o) for o in e["options"]]
+    if t in ("listeningComprehension", "readingComprehension"):
+        out += [o["text"] for o in e["options"] if KO.search(o["text"])]
     return out
 
 
@@ -300,6 +413,15 @@ def _check(eid, e):
         PROBLEMS.append(f"{eid}: a Vietnamese option holds Korean")
     if e["type"] == "wordBank" and e["direction"] == "targetToNative" and any(KO.search(t) for t in e["tokens"]):
         PROBLEMS.append(f"{eid}: a Vietnamese tile holds Korean")
+    # Comprehension: a Vietnamese question; options all Vietnamese, or all Korean (the sign or word itself).
+    if e["type"] in ("listeningComprehension", "readingComprehension"):
+        if KO.search(e["question"]):
+            PROBLEMS.append(f"{eid}: Vietnamese question {e['question']!r} holds Korean")
+        ko_opts = [bool(KO.search(o["text"])) for o in e["options"]]
+        if any(ko_opts) and not all(ko_opts):
+            PROBLEMS.append(f"{eid}: options mix Korean and Vietnamese")
+    if e["type"] in ("speakProduction", "guidedWriting", "simpleForm") and KO.search(re.sub(r"\(viết [^)]*\)", "", e["instruction"])):
+        PROBLEMS.append(f"{eid}: Vietnamese instruction holds Korean")
     return plain
 
 
@@ -328,6 +450,7 @@ def lesson(lid, steps):
 
 def finish(part):
     """Write this generator's lessons to lessons/parts/<part>.jsonl and stop on any problem."""
+    _layer_refs()
     seen = {}
     for r in RECORDS:
         for e in r["exercises"]:

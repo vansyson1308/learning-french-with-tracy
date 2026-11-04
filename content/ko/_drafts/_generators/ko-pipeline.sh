@@ -39,6 +39,12 @@ ingest concepts
 # QC 2026-11-05 §2.1: ko-vi bundles no audio; its listening is graded through the device voice (profile flag
 # deviceVoiceScoredListening, written by ko-units.py). The pack records the policy and its reason.
 python -I "$G/ko-pack-audio.py" .
+# Session 3: reception, speech and writing. s3 starts listening/OUTPUT.jsonl; the speech generator appends its model
+# clips. No clip has an asset (device voice). The Section 3-5 lessons point at these records (ko_lesson_refs.py).
+rm -f "$STAGED/content/ko/reception/reading.json" "$STAGED/content/ko/reception/listening.json" "$STAGED/content/ko/speech/items.json" "$STAGED/content/ko/writing/tasks.json"
+python -I "$G/ko-reception-s3.py" .
+python -I "$G/ko-speech-s4.py" .
+python -I "$G/ko-writing-s5.py" .
 # Lessons (session 2): each section's generator writes lessons/parts/<section>.jsonl; the self-check joins them into
 # lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json).
 rm -rf content/ko/_drafts/lessons/parts
@@ -46,6 +52,10 @@ for section in s1 s2 s3 s4 s5 s6; do
   python -I "$G/ko-lessons-$section.py" .
 done
 python -I "$G/ko-check-answers.py" .
+ingest listening
+ingest readings
+ingest speech
+ingest writing
 ingest lessons
 # The lessons ingest writes the staged course pack once every lesson has exercises; until then the draft pack is it.
 if ! python -I -c "import json,sys; p=json.load(open('content/ko/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then

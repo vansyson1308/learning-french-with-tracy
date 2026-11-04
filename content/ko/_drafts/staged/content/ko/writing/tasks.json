@@ -1,0 +1,2894 @@
+{
+  "version": 1,
+  "language": "ko",
+  "tasks": [
+    {
+      "id": "ko.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Nam. Hãy viết một câu tiếng Hàn nói tên của bạn."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Nam (viết 남)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên của bạn"
+            },
+            "variants": [
+              "남",
+              "남은",
+              "남이",
+              "남을",
+              "남에",
+              "남에서",
+              "남에는",
+              "남에서는",
+              "남도",
+              "남이에요",
+              "남입니다",
+              "남이었어요",
+              "남이었습니다",
+              "남 씨"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "저는 남이에요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn 23 tuổi. Hãy viết một câu tiếng Hàn nói tuổi của bạn."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tuổi"
+          },
+          "value": "23"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi của bạn"
+            },
+            "variants": [
+              "스물세 살",
+              "스물세 살은",
+              "스물세 살이",
+              "스물세 살을",
+              "스물세 살에",
+              "스물세 살에서",
+              "스물세 살에는",
+              "스물세 살에서는",
+              "스물세 살도",
+              "스물세 살이에요",
+              "스물세 살입니다",
+              "스물세 살이었어요",
+              "스물세 살이었습니다"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "저는 스물세 살이에요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.o_home",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu: bạn đến từ nước nào và bây giờ bạn sống ở thành phố nào."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Nước"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Thành phố"
+          },
+          "value": "Ansan (viết 안산)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "from",
+            "description": {
+              "vi": "bạn đến từ đâu"
+            },
+            "variants": [
+              "베트남에서",
+              "베트남 사람",
+              "베트남 사람은",
+              "베트남 사람이",
+              "베트남 사람을",
+              "베트남 사람에",
+              "베트남 사람에서",
+              "베트남 사람에는",
+              "베트남 사람에서는",
+              "베트남 사람도",
+              "베트남 사람이에요",
+              "베트남 사람입니다",
+              "베트남 사람이었어요",
+              "베트남 사람이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố bạn sống"
+            },
+            "variants": [
+              "안산",
+              "안산은",
+              "안산이",
+              "안산을",
+              "안산에",
+              "안산에서",
+              "안산에는",
+              "안산에서는",
+              "안산도",
+              "안산이에요",
+              "안산입니다",
+              "안산이었어요",
+              "안산이었습니다",
+              "안산 씨"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "베트남에서 왔어요. 지금 안산에 살아요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:beteunam",
+        "ko:w:oda",
+        "ko:w:jigeum",
+        "ko:w:salda"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.o_family",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu: bạn có hai em gái, và bạn thích nấu ăn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "sisters",
+            "description": {
+              "vi": "hai em gái"
+            },
+            "variants": [
+              "여동생이 두 명",
+              "여동생이 두 명은",
+              "여동생이 두 명이",
+              "여동생이 두 명을",
+              "여동생이 두 명에",
+              "여동생이 두 명에서",
+              "여동생이 두 명에는",
+              "여동생이 두 명에서는",
+              "여동생이 두 명도",
+              "여동생이 두 명이에요",
+              "여동생이 두 명입니다",
+              "여동생이 두 명이었어요",
+              "여동생이 두 명이었습니다",
+              "여동생 두 명",
+              "여동생 두 명은",
+              "여동생 두 명이",
+              "여동생 두 명을",
+              "여동생 두 명에",
+              "여동생 두 명에서",
+              "여동생 두 명에는",
+              "여동생 두 명에서는",
+              "여동생 두 명도",
+              "여동생 두 명이에요",
+              "여동생 두 명입니다",
+              "여동생 두 명이었어요",
+              "여동생 두 명이었습니다",
+              "여동생은 두 명",
+              "여동생은 두 명은",
+              "여동생은 두 명이",
+              "여동생은 두 명을",
+              "여동생은 두 명에",
+              "여동생은 두 명에서",
+              "여동생은 두 명에는",
+              "여동생은 두 명에서는",
+              "여동생은 두 명도",
+              "여동생은 두 명이에요",
+              "여동생은 두 명입니다",
+              "여동생은 두 명이었어요",
+              "여동생은 두 명이었습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "like",
+            "description": {
+              "vi": "bạn thích nấu ăn"
+            },
+            "variants": [
+              "요리하는 것을 좋아해요",
+              "요리하는 것 좋아해요",
+              "요리하는 것을 좋아합니다",
+              "요리하는 것 좋아합니다",
+              "요리하는 것이 좋아요",
+              "요리하는 것이 좋습니다",
+              "요리하는 것은 좋아요",
+              "요리하는 것은 좋습니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "여동생이 두 명 있어요. 요리하는 것을 좋아해요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:yeodongsaeng",
+        "ko:w:itda",
+        "ko:w:yorihada",
+        "ko:w:joahada"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.o_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố bạn sống."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Lan (viết 란)"
+        },
+        {
+          "label": {
+            "vi": "Tuổi"
+          },
+          "value": "28"
+        },
+        {
+          "label": {
+            "vi": "Thành phố"
+          },
+          "value": "Suwon (viết 수원)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "란",
+              "란은",
+              "란이",
+              "란을",
+              "란에",
+              "란에서",
+              "란에는",
+              "란에서는",
+              "란도",
+              "란이에요",
+              "란입니다",
+              "란이었어요",
+              "란이었습니다",
+              "란 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi"
+            },
+            "variants": [
+              "스물여덟 살",
+              "스물여덟 살은",
+              "스물여덟 살이",
+              "스물여덟 살을",
+              "스물여덟 살에",
+              "스물여덟 살에서",
+              "스물여덟 살에는",
+              "스물여덟 살에서는",
+              "스물여덟 살도",
+              "스물여덟 살이에요",
+              "스물여덟 살입니다",
+              "스물여덟 살이었어요",
+              "스물여덟 살이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố"
+            },
+            "variants": [
+              "수원",
+              "수원은",
+              "수원이",
+              "수원을",
+              "수원에",
+              "수원에서",
+              "수원에는",
+              "수원에서는",
+              "수원도",
+              "수원이에요",
+              "수원입니다",
+              "수원이었어요",
+              "수원이었습니다",
+              "수원 씨"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "저는 란이에요. 스물여덟 살이에요. 수원에 살아요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:salda"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.p_who",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu: anh Nam uống cà phê vào buổi sáng."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Người"
+          },
+          "value": "Nam (viết 남)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "drink",
+            "description": {
+              "vi": "uống cà phê"
+            },
+            "variants": [
+              "커피를 마셔요",
+              "커피 마셔요",
+              "커피를 마십니다",
+              "커피 마십니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "morning",
+            "description": {
+              "vi": "vào buổi sáng"
+            },
+            "variants": [
+              "아침에",
+              "매일 아침",
+              "매일 아침은",
+              "매일 아침이",
+              "매일 아침을",
+              "매일 아침에",
+              "매일 아침에서",
+              "매일 아침에는",
+              "매일 아침에서는",
+              "매일 아침도",
+              "매일 아침이에요",
+              "매일 아침입니다",
+              "매일 아침이었어요",
+              "매일 아침이었습니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 15
+      },
+      "modelAnswers": [
+        "남 씨는 아침에 커피를 마셔요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:achim",
+        "ko:w:keopi",
+        "ko:w:masida"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.p_neg",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu phủ định: bạn không uống rượu."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "neg",
+            "description": {
+              "vi": "bạn không uống rượu"
+            },
+            "variants": [
+              "술을 안 마셔요",
+              "술을 마시지 않아요",
+              "술 안 마셔요",
+              "술을 안 마십니다",
+              "술 마시지 않아요",
+              "술을 마시지 않습니다",
+              "술 안 마십니다",
+              "술 마시지 않습니다",
+              "술은 안 마셔요",
+              "술은 마시지 않아요",
+              "술은 안 마십니다",
+              "술은 마시지 않습니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "저는 술을 안 마셔요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:sul",
+        "ko:w:an",
+        "ko:w:masida"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.p_cant",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu: hôm nay bạn không đi làm được."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "cant",
+            "description": {
+              "vi": "bạn không đi làm được"
+            },
+            "variants": [
+              "못 가요",
+              "가지 못해요",
+              "못 갑니다",
+              "가지 못합니다",
+              "출근 못 해요",
+              "출근하지 못해요",
+              "출근 못 합니다",
+              "출근하지 못합니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "오늘은 회사에 못 가요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:oneul",
+        "ko:w:hoesa",
+        "ko:w:mot",
+        "ko:w:gada"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.p_ask",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu hỏi lịch sự: Bạn sống ở đâu?"
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ask",
+            "description": {
+              "vi": "câu hỏi về nơi sống"
+            },
+            "variants": [
+              "어디에 살아요",
+              "어디에 삽니다",
+              "어디에서 살아요",
+              "어디에서 삽니다",
+              "어디 살아요",
+              "어디 삽니다",
+              "어디에 사세요",
+              "어디에 사십시오"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "어디에 살아요?"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:salda"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.p_link",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu: bạn ăn sáng, sau đó bạn đi làm. Dùng một từ nối."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "breakfast",
+            "description": {
+              "vi": "bạn ăn sáng"
+            },
+            "variants": [
+              "아침을 먹어요",
+              "아침 먹어요",
+              "아침을 먹습니다",
+              "아침 먹습니다",
+              "아침을 먹었어요",
+              "아침 먹었어요",
+              "아침을 먹었습니다",
+              "아침 먹었습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "link",
+            "description": {
+              "vi": "từ nối"
+            },
+            "variants": [
+              "그리고"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "work",
+            "description": {
+              "vi": "bạn đi làm"
+            },
+            "variants": [
+              "회사에 가요",
+              "회사에 갑니다",
+              "출근해요",
+              "출근합니다",
+              "공장에 가요",
+              "공장에 갑니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "아침을 먹어요. 그리고 회사에 가요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:achim",
+        "ko:w:meokda",
+        "ko:w:geurigo",
+        "ko:w:hoesa",
+        "ko:w:gada"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.q_sick",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho tổ trưởng: chào, báo bạn bị ốm, và hôm nay bạn xin nghỉ."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "안녕하세요",
+              "안녕하십니까"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "sick",
+            "description": {
+              "vi": "bạn bị ốm"
+            },
+            "variants": [
+              "몸이 아파요",
+              "몸 아파요",
+              "몸이 아픕니다",
+              "몸은 아파요",
+              "몸 아픕니다",
+              "몸은 아픕니다",
+              "아파요",
+              "아픕니다",
+              "감기에 걸렸어요",
+              "감기에 걸렸습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "rest",
+            "description": {
+              "vi": "xin nghỉ"
+            },
+            "variants": [
+              "쉬고 싶어요",
+              "쉬고 싶습니다",
+              "쉬어도 돼요",
+              "쉬어도 됩니다",
+              "쉴게요",
+              "못 가요",
+              "가지 못해요",
+              "못 갑니다",
+              "가지 못합니다",
+              "출근 못 해요",
+              "출근하지 못해요",
+              "출근 못 합니다",
+              "출근하지 못합니다",
+              "쉴 거예요",
+              "쉴 겁니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "반장님, 안녕하세요. 몸이 아파요. 오늘은 쉬고 싶어요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:banjangnim",
+        "ko:w:annyeonghaseyo",
+        "ko:w:mom",
+        "ko:w:apeuda",
+        "ko:w:oneul",
+        "ko:w:swida"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.q_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho tổ trưởng: báo xe buýt không đến, xin lỗi, và nói bạn sẽ đến muộn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "bus",
+            "description": {
+              "vi": "xe buýt không đến"
+            },
+            "variants": [
+              "버스가 안 와요",
+              "버스가 오지 않아요",
+              "버스가 안 옵니다",
+              "버스가 오지 않습니다",
+              "버스가 늦어요",
+              "버스가 늦습니다",
+              "버스는 늦어요",
+              "버스는 늦습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "sorry",
+            "description": {
+              "vi": "lời xin lỗi"
+            },
+            "variants": [
+              "죄송합니다",
+              "미안해요",
+              "미안합니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "late",
+            "description": {
+              "vi": "bạn sẽ đến muộn"
+            },
+            "variants": [
+              "늦어요",
+              "늦습니다",
+              "늦을 거예요",
+              "늦을 겁니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "반장님, 버스가 안 와요. 죄송합니다. 조금 늦어요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:banjangnim",
+        "ko:w:beoseu",
+        "ko:w:an",
+        "ko:w:oda",
+        "ko:w:joesonghamnida",
+        "ko:w:jogeum",
+        "ko:w:neutda"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.q_reply",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Tổ trưởng nhắn: mai làm từ 7 giờ. Hãy trả lời: bạn đã hiểu, và cảm ơn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "ok",
+            "description": {
+              "vi": "bạn đã hiểu"
+            },
+            "variants": [
+              "알겠습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "thanks",
+            "description": {
+              "vi": "lời cảm ơn"
+            },
+            "variants": [
+              "감사합니다",
+              "고맙습니다",
+              "고마워요"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "네, 알겠습니다. 감사합니다."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:ne",
+        "ko:w:algetseumnida",
+        "ko:w:gamsahamnida"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.r_form_center",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu ở trung tâm việc làm với các thông tin trên thẻ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Nguyễn Nam (viết 응우옌 남)"
+        },
+        {
+          "label": {
+            "vi": "Địa chỉ"
+          },
+          "value": "Ansan (viết 안산)"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "010-1234-5678"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "이름",
+          "slotId": "name"
+        },
+        {
+          "id": "address",
+          "label": "주소",
+          "slotId": "address"
+        },
+        {
+          "id": "phone",
+          "label": "전화번호",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "응우옌 남",
+              "응우옌 남은",
+              "응우옌 남이",
+              "응우옌 남을",
+              "응우옌 남에",
+              "응우옌 남에서",
+              "응우옌 남에는",
+              "응우옌 남에서는",
+              "응우옌 남도",
+              "응우옌 남이에요",
+              "응우옌 남입니다",
+              "응우옌 남이었어요",
+              "응우옌 남이었습니다",
+              "응우옌 남 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "address",
+            "description": {
+              "vi": "địa chỉ"
+            },
+            "variants": [
+              "안산",
+              "안산은",
+              "안산이",
+              "안산을",
+              "안산에",
+              "안산에서",
+              "안산에는",
+              "안산에서는",
+              "안산도",
+              "안산이에요",
+              "안산입니다",
+              "안산이었어요",
+              "안산이었습니다",
+              "안산 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "010-1234-5678"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "응우옌 남 | 안산 | 010-1234-5678"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.r_form_clinic",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu của phòng khám với các thông tin trên thẻ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Lan (viết 란)"
+        },
+        {
+          "label": {
+            "vi": "Sinh nhật"
+          },
+          "value": "ngày 20 tháng 9 (viết 구월 이십일)"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "010-8765-4321"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "이름",
+          "slotId": "name"
+        },
+        {
+          "id": "birthday",
+          "label": "생일",
+          "slotId": "birthday"
+        },
+        {
+          "id": "phone",
+          "label": "전화번호",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "란",
+              "란은",
+              "란이",
+              "란을",
+              "란에",
+              "란에서",
+              "란에는",
+              "란에서는",
+              "란도",
+              "란이에요",
+              "란입니다",
+              "란이었어요",
+              "란이었습니다",
+              "란 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "birthday",
+            "description": {
+              "vi": "ngày sinh"
+            },
+            "variants": [
+              "구월 이십일",
+              "구월 이십일은",
+              "구월 이십일이",
+              "구월 이십일을",
+              "구월 이십일에",
+              "구월 이십일에서",
+              "구월 이십일에는",
+              "구월 이십일에서는",
+              "구월 이십일도",
+              "구월 이십일이에요",
+              "구월 이십일입니다",
+              "구월 이십일이었어요",
+              "구월 이십일이었습니다",
+              "구월 이십일 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "010-8765-4321"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "란 | 구월 이십일 | 010-8765-4321"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.r_note",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết lời nhắn cho đồng nghiệp: máy dừng rồi, xin gọi tổ trưởng giúp."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "machine",
+            "description": {
+              "vi": "máy dừng rồi"
+            },
+            "variants": [
+              "기계가 멈췄어요",
+              "기계가 멈췄습니다",
+              "기계가 안 돼요",
+              "기계가 안 됩니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "call",
+            "description": {
+              "vi": "gọi tổ trưởng"
+            },
+            "variants": [
+              "반장님을 불러 주세요",
+              "반장님 불러 주세요",
+              "반장님을 불러 주십시오",
+              "반장님 불러 주십시오",
+              "반장님에게 전화해 주세요",
+              "반장님한테 전화해 주세요",
+              "반장님에게 전화해 주십시오",
+              "반장님한테 전화해 주십시오"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "기계가 멈췄어요. 반장님을 불러 주세요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:gigye",
+        "ko:w:meomchuda",
+        "ko:w:banjangnim",
+        "ko:w:bureuda",
+        "ko:w:juseyo"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.o_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about",
+            "description": {
+              "vi": "một câu về bạn"
+            },
+            "variants": [
+              "저는",
+              "살아요",
+              "좋아해요",
+              "일해요"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "저는 호아예요. 하노이에서 왔어요. 음악을 좋아해요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:hanoi",
+        "ko:w:oda",
+        "ko:w:eumak",
+        "ko:w:joahada"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.p_open",
+      "taskFamily": "simple_description",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết vài câu về một ngày của bạn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "day",
+            "description": {
+              "vi": "một câu về ngày của bạn"
+            },
+            "variants": [
+              "일어나요",
+              "먹어요",
+              "일해요",
+              "자요",
+              "매일"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "매일 여섯 시에 일어나요. 저녁에는 기숙사에서 밥을 먹어요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:maeil",
+        "ko:w:yeoseot",
+        "ko:w:ireonada",
+        "ko:w:jeonyeok",
+        "ko:w:gisuksa",
+        "ko:w:bap",
+        "ko:w:meokda"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.q_open",
+      "taskFamily": "short_message",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết một tin nhắn ngắn cho một người bạn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "message",
+            "description": {
+              "vi": "lời chào hoặc lời mời"
+            },
+            "variants": [
+              "안녕하세요",
+              "고마워요",
+              "같이",
+              "볼까요"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "란 씨, 안녕하세요. 토요일에 같이 영화 볼까요?"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:annyeonghaseyo",
+        "ko:w:toyoil",
+        "ko:w:gachi",
+        "ko:w:yeonghwa",
+        "ko:w:boda"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.r_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết vài câu về công việc của bạn."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "work",
+            "description": {
+              "vi": "một câu về công việc"
+            },
+            "variants": [
+              "공장",
+              "회사",
+              "일해요",
+              "반장님",
+              "동료"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 40
+      },
+      "modelAnswers": [
+        "공장에서 일해요. 일은 여덟 시부터예요. 반장님은 아주 친절해요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:gongjang",
+        "ko:w:ilhada",
+        "ko:w:il",
+        "ko:w:yeodeol",
+        "ko:w:banjangnim",
+        "ko:w:aju",
+        "ko:w:chinjeolhada"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_profile_hoa",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Hoa. Hãy tự giới thiệu: tên, tuổi và thành phố, bằng câu hoàn chỉnh."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Hoa (viết 호아)"
+        },
+        {
+          "label": {
+            "vi": "Tuổi"
+          },
+          "value": "24"
+        },
+        {
+          "label": {
+            "vi": "Thành phố"
+          },
+          "value": "Suwon (viết 수원)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "호아",
+              "호아는",
+              "호아가",
+              "호아를",
+              "호아에",
+              "호아에서",
+              "호아에는",
+              "호아에서는",
+              "호아도",
+              "호아예요",
+              "호아입니다",
+              "호아였어요",
+              "호아였습니다",
+              "호아 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi"
+            },
+            "variants": [
+              "스물네 살",
+              "스물네 살은",
+              "스물네 살이",
+              "스물네 살을",
+              "스물네 살에",
+              "스물네 살에서",
+              "스물네 살에는",
+              "스물네 살에서는",
+              "스물네 살도",
+              "스물네 살이에요",
+              "스물네 살입니다",
+              "스물네 살이었어요",
+              "스물네 살이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố"
+            },
+            "variants": [
+              "수원",
+              "수원은",
+              "수원이",
+              "수원을",
+              "수원에",
+              "수원에서",
+              "수원에는",
+              "수원에서는",
+              "수원도",
+              "수원이에요",
+              "수원입니다",
+              "수원이었어요",
+              "수원이었습니다",
+              "수원 씨"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "저는 호아예요. 스물네 살이에요. 수원에 살아요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:salda"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_profile_tuan",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Tuấn. Hãy viết về bạn: tên, nước của bạn và nơi bạn làm việc."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Tuấn (viết 뚜언)"
+        },
+        {
+          "label": {
+            "vi": "Nước"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Nơi làm việc"
+          },
+          "value": "nhà máy"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "뚜언",
+              "뚜언은",
+              "뚜언이",
+              "뚜언을",
+              "뚜언에",
+              "뚜언에서",
+              "뚜언에는",
+              "뚜언에서는",
+              "뚜언도",
+              "뚜언이에요",
+              "뚜언입니다",
+              "뚜언이었어요",
+              "뚜언이었습니다",
+              "뚜언 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "from",
+            "description": {
+              "vi": "nước của bạn"
+            },
+            "variants": [
+              "베트남에서",
+              "베트남 사람",
+              "베트남 사람은",
+              "베트남 사람이",
+              "베트남 사람을",
+              "베트남 사람에",
+              "베트남 사람에서",
+              "베트남 사람에는",
+              "베트남 사람에서는",
+              "베트남 사람도",
+              "베트남 사람이에요",
+              "베트남 사람입니다",
+              "베트남 사람이었어요",
+              "베트남 사람이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "work",
+            "description": {
+              "vi": "nơi làm việc"
+            },
+            "variants": [
+              "공장",
+              "공장은",
+              "공장이",
+              "공장을",
+              "공장에",
+              "공장에서",
+              "공장에는",
+              "공장에서는",
+              "공장도",
+              "공장이에요",
+              "공장입니다",
+              "공장이었어요",
+              "공장이었습니다"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "저는 뚜언이에요. 베트남에서 왔어요. 공장에서 일해요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "ko:w:beteunam",
+        "ko:w:oda",
+        "ko:w:gongjang",
+        "ko:w:ilhada"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_like_music",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu nói rằng bạn thích âm nhạc."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "like",
+            "description": {
+              "vi": "bạn thích âm nhạc"
+            },
+            "variants": [
+              "음악을 좋아해요",
+              "음악 좋아해요",
+              "음악을 좋아합니다",
+              "음악 좋아합니다",
+              "음악이 좋아요",
+              "음악이 좋습니다",
+              "음악은 좋아요",
+              "음악은 좋습니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "저는 음악을 좋아해요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:eumak",
+        "ko:w:joahada"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_sister",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu về chị gái bạn (bạn là nữ): chị ấy tên là Thuỷ, và chị ấy là y tá."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Thuỷ (viết 투이)"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên của chị ấy"
+            },
+            "variants": [
+              "투이",
+              "투이는",
+              "투이가",
+              "투이를",
+              "투이에",
+              "투이에서",
+              "투이에는",
+              "투이에서는",
+              "투이도",
+              "투이예요",
+              "투이입니다",
+              "투이였어요",
+              "투이였습니다",
+              "투이 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "job",
+            "description": {
+              "vi": "nghề của chị ấy"
+            },
+            "variants": [
+              "간호사",
+              "간호사는",
+              "간호사가",
+              "간호사를",
+              "간호사에",
+              "간호사에서",
+              "간호사에는",
+              "간호사에서는",
+              "간호사도",
+              "간호사예요",
+              "간호사입니다",
+              "간호사였어요",
+              "간호사였습니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "우리 언니는 투이예요. 간호사예요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:eonni",
+        "ko:w:ganhosa"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_room",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu tả căn phòng: phòng nhỏ, và trong phòng có một cái giường."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "small",
+            "description": {
+              "vi": "phòng nhỏ"
+            },
+            "variants": [
+              "방이 작아요",
+              "방이 작습니다",
+              "방은 작아요",
+              "방은 작습니다",
+              "작은 방",
+              "작은 방은",
+              "작은 방이",
+              "작은 방을",
+              "작은 방에",
+              "작은 방에서",
+              "작은 방에는",
+              "작은 방에서는",
+              "작은 방도",
+              "작은 방이에요",
+              "작은 방입니다",
+              "작은 방이었어요",
+              "작은 방이었습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "bed",
+            "description": {
+              "vi": "có một cái giường"
+            },
+            "variants": [
+              "침대가 있어요",
+              "침대 있어요",
+              "침대가 있습니다",
+              "침대는 있어요",
+              "침대 있습니다",
+              "침대는 있습니다",
+              "침대가 하나 있어요",
+              "침대가 하나 있습니다",
+              "침대는 하나 있어요",
+              "침대는 하나 있습니다",
+              "침대 하나가 있어요",
+              "침대 하나 있어요",
+              "침대 하나가 있습니다",
+              "침대 하나는 있어요",
+              "침대 하나 있습니다",
+              "침대 하나는 있습니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "방이 작아요. 침대가 하나 있어요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "ko:w:bang",
+        "ko:w:jakda",
+        "ko:w:chimdae",
+        "ko:w:hana",
+        "ko:w:itda"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_note_movie",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Lan: rủ bạn ấy đi xem phim lúc 7 giờ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Lan (viết 란)"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "7 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "movie",
+            "description": {
+              "vi": "bộ phim"
+            },
+            "variants": [
+              "영화",
+              "영화는",
+              "영화가",
+              "영화를",
+              "영화에",
+              "영화에서",
+              "영화에는",
+              "영화에서는",
+              "영화도",
+              "영화예요",
+              "영화입니다",
+              "영화였어요",
+              "영화였습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ hẹn"
+            },
+            "variants": [
+              "일곱 시",
+              "일곱 시는",
+              "일곱 시가",
+              "일곱 시를",
+              "일곱 시에",
+              "일곱 시에서",
+              "일곱 시에는",
+              "일곱 시에서는",
+              "일곱 시도",
+              "일곱 시예요",
+              "일곱 시입니다",
+              "일곱 시였어요",
+              "일곱 시였습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "invite",
+            "description": {
+              "vi": "lời rủ"
+            },
+            "variants": [
+              "볼까요",
+              "봐요",
+              "봅니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "란 씨, 일곱 시에 같이 영화 볼까요?"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:ilgop",
+        "ko:w:gachi",
+        "ko:w:yeonghwa",
+        "ko:w:boda"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_note_sick",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho tổ trưởng: chào, báo bạn bị cảm, và hôm nay bạn xin nghỉ."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "안녕하세요",
+              "안녕하십니까"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "cold",
+            "description": {
+              "vi": "bạn bị cảm"
+            },
+            "variants": [
+              "감기",
+              "감기는",
+              "감기가",
+              "감기를",
+              "감기에",
+              "감기에서",
+              "감기에는",
+              "감기에서는",
+              "감기도",
+              "감기예요",
+              "감기입니다",
+              "감기였어요",
+              "감기였습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "rest",
+            "description": {
+              "vi": "xin nghỉ"
+            },
+            "variants": [
+              "쉬고 싶어요",
+              "쉬고 싶습니다",
+              "쉬어도 돼요",
+              "쉬어도 됩니다",
+              "쉴게요",
+              "못 가요",
+              "가지 못해요",
+              "못 갑니다",
+              "가지 못합니다",
+              "출근 못 해요",
+              "출근하지 못해요",
+              "출근 못 합니다",
+              "출근하지 못합니다",
+              "쉴 거예요",
+              "쉴 겁니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "반장님, 안녕하세요. 감기에 걸렸어요. 오늘은 쉬고 싶어요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:banjangnim",
+        "ko:w:annyeonghaseyo",
+        "ko:w:gamgi",
+        "ko:w:geollida",
+        "ko:w:oneul",
+        "ko:w:swida"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_note_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho tổ trưởng: xin lỗi, bạn sẽ đến muộn khoảng 15 phút."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Đến muộn"
+          },
+          "value": "15 phút"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "sorry",
+            "description": {
+              "vi": "lời xin lỗi"
+            },
+            "variants": [
+              "죄송합니다",
+              "미안해요",
+              "미안합니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "minutes",
+            "description": {
+              "vi": "đến muộn bao lâu"
+            },
+            "variants": [
+              "십오 분",
+              "십오 분은",
+              "십오 분이",
+              "십오 분을",
+              "십오 분에",
+              "십오 분에서",
+              "십오 분에는",
+              "십오 분에서는",
+              "십오 분도",
+              "십오 분이에요",
+              "십오 분입니다",
+              "십오 분이었어요",
+              "십오 분이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "late",
+            "description": {
+              "vi": "bạn sẽ đến muộn"
+            },
+            "variants": [
+              "늦어요",
+              "늦습니다",
+              "늦을 거예요",
+              "늦을 겁니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "죄송합니다. 십오 분 늦어요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:joesonghamnida",
+        "ko:w:neutda"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_mail_shift",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho tổ trưởng: chào, rồi hỏi thứ Bảy bạn có thể nghỉ không."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Ngày"
+          },
+          "value": "thứ Bảy"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "안녕하세요",
+              "안녕하십니까"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày nghỉ"
+            },
+            "variants": [
+              "토요일",
+              "토요일은",
+              "토요일이",
+              "토요일을",
+              "토요일에",
+              "토요일에서",
+              "토요일에는",
+              "토요일에서는",
+              "토요일도",
+              "토요일이에요",
+              "토요일입니다",
+              "토요일이었어요",
+              "토요일이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "rest",
+            "description": {
+              "vi": "xin nghỉ"
+            },
+            "variants": [
+              "쉬어도 돼요",
+              "쉬어도 됩니다",
+              "쉬고 싶어요",
+              "쉬고 싶습니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "반장님, 안녕하세요. 토요일에 쉬어도 돼요?"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:banjangnim",
+        "ko:w:annyeonghaseyo",
+        "ko:w:toyoil",
+        "ko:w:swida",
+        "ko:w:doeda"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_form_center",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu ở trung tâm việc làm với các thông tin trên thẻ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Phạm Linh (viết 팜 린)"
+        },
+        {
+          "label": {
+            "vi": "Địa chỉ"
+          },
+          "value": "Suwon (viết 수원)"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "010-2222-3333"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "이름",
+          "slotId": "name"
+        },
+        {
+          "id": "address",
+          "label": "주소",
+          "slotId": "address"
+        },
+        {
+          "id": "phone",
+          "label": "전화번호",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "팜 린",
+              "팜 린은",
+              "팜 린이",
+              "팜 린을",
+              "팜 린에",
+              "팜 린에서",
+              "팜 린에는",
+              "팜 린에서는",
+              "팜 린도",
+              "팜 린이에요",
+              "팜 린입니다",
+              "팜 린이었어요",
+              "팜 린이었습니다",
+              "팜 린 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "address",
+            "description": {
+              "vi": "địa chỉ"
+            },
+            "variants": [
+              "수원",
+              "수원은",
+              "수원이",
+              "수원을",
+              "수원에",
+              "수원에서",
+              "수원에는",
+              "수원에서는",
+              "수원도",
+              "수원이에요",
+              "수원입니다",
+              "수원이었어요",
+              "수원이었습니다",
+              "수원 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "010-2222-3333"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "팜 린 | 수원 | 010-2222-3333"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_form_clinic",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu của phòng khám với các thông tin trên thẻ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Hùng (viết 훙)"
+        },
+        {
+          "label": {
+            "vi": "Sinh nhật"
+          },
+          "value": "ngày 5 tháng 4 (viết 사월 오일)"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "010-1111-2222"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "이름",
+          "slotId": "name"
+        },
+        {
+          "id": "birthday",
+          "label": "생일",
+          "slotId": "birthday"
+        },
+        {
+          "id": "phone",
+          "label": "전화번호",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "훙"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "birthday",
+            "description": {
+              "vi": "ngày sinh"
+            },
+            "variants": [
+              "사월 오일",
+              "사월 오일은",
+              "사월 오일이",
+              "사월 오일을",
+              "사월 오일에",
+              "사월 오일에서",
+              "사월 오일에는",
+              "사월 오일에서는",
+              "사월 오일도",
+              "사월 오일이에요",
+              "사월 오일입니다",
+              "사월 오일이었어요",
+              "사월 오일이었습니다",
+              "사월 오일 씨"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "010-1111-2222"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "훙 | 사월 오일 | 010-1111-2222"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.cp5_form_work",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu nhân viên mới với các thông tin trên thẻ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên"
+          },
+          "value": "Lê Mai (viết 레 마이)"
+        },
+        {
+          "label": {
+            "vi": "Nước"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại"
+          },
+          "value": "010-3333-4444"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "이름",
+          "slotId": "name"
+        },
+        {
+          "id": "country",
+          "label": "나라",
+          "slotId": "country"
+        },
+        {
+          "id": "phone",
+          "label": "전화번호",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên"
+            },
+            "variants": [
+              "레 마이"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "country",
+            "description": {
+              "vi": "nước"
+            },
+            "variants": [
+              "베트남",
+              "베트남은",
+              "베트남이",
+              "베트남을",
+              "베트남에",
+              "베트남에서",
+              "베트남에는",
+              "베트남에서는",
+              "베트남도",
+              "베트남이에요",
+              "베트남입니다",
+              "베트남이었어요",
+              "베트남이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại"
+            },
+            "variants": [
+              "010-3333-4444"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "레 마이 | 베트남 | 010-3333-4444"
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.a1cap_note_station",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Hoa: hẹn gặp ở nhà ga lúc 5 giờ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Hoa (viết 호아)"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "5 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "place",
+            "description": {
+              "vi": "nhà ga"
+            },
+            "variants": [
+              "역",
+              "역은",
+              "역이",
+              "역을",
+              "역에",
+              "역에서",
+              "역에는",
+              "역에서는",
+              "역도",
+              "역이에요",
+              "역입니다",
+              "역이었어요",
+              "역이었습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ hẹn"
+            },
+            "variants": [
+              "다섯 시",
+              "다섯 시는",
+              "다섯 시가",
+              "다섯 시를",
+              "다섯 시에",
+              "다섯 시에서",
+              "다섯 시에는",
+              "다섯 시에서는",
+              "다섯 시도",
+              "다섯 시예요",
+              "다섯 시입니다",
+              "다섯 시였어요",
+              "다섯 시였습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "meet",
+            "description": {
+              "vi": "lời hẹn gặp"
+            },
+            "variants": [
+              "만나요",
+              "만납니다",
+              "만날까요"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "호아 씨, 다섯 시에 역에서 만나요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:daseot",
+        "ko:w:yeok",
+        "ko:w:mannada"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.a1cap_note_bus",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Nam: báo xe buýt của bạn đến lúc 6 giờ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Nam (viết 남)"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "6 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "bus",
+            "description": {
+              "vi": "xe buýt"
+            },
+            "variants": [
+              "버스",
+              "버스는",
+              "버스가",
+              "버스를",
+              "버스에",
+              "버스에서",
+              "버스에는",
+              "버스에서는",
+              "버스도",
+              "버스예요",
+              "버스입니다",
+              "버스였어요",
+              "버스였습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ xe đến"
+            },
+            "variants": [
+              "여섯 시",
+              "여섯 시는",
+              "여섯 시가",
+              "여섯 시를",
+              "여섯 시에",
+              "여섯 시에서",
+              "여섯 시에는",
+              "여섯 시에서는",
+              "여섯 시도",
+              "여섯 시예요",
+              "여섯 시입니다",
+              "여섯 시였어요",
+              "여섯 시였습니다"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "남 씨, 버스는 여섯 시에 도착해요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:beoseu",
+        "ko:w:yeoseot",
+        "ko:w:dochakada"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.a1cap_note_home",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Lan: bạn đang ở siêu thị, và 5 giờ bạn về nhà."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Lan (viết 란)"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "5 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "place",
+            "description": {
+              "vi": "siêu thị"
+            },
+            "variants": [
+              "마트",
+              "마트는",
+              "마트가",
+              "마트를",
+              "마트에",
+              "마트에서",
+              "마트에는",
+              "마트에서는",
+              "마트도",
+              "마트예요",
+              "마트입니다",
+              "마트였어요",
+              "마트였습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ về nhà"
+            },
+            "variants": [
+              "다섯 시",
+              "다섯 시는",
+              "다섯 시가",
+              "다섯 시를",
+              "다섯 시에",
+              "다섯 시에서",
+              "다섯 시에는",
+              "다섯 시에서는",
+              "다섯 시도",
+              "다섯 시예요",
+              "다섯 시입니다",
+              "다섯 시였어요",
+              "다섯 시였습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "home",
+            "description": {
+              "vi": "bạn về nhà"
+            },
+            "variants": [
+              "집에 가요",
+              "집에 갑니다",
+              "집에 돌아가요",
+              "집에 돌아갑니다",
+              "집에 갈 거예요",
+              "집에 갈 겁니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "란 씨, 지금 마트에 있어요. 다섯 시에 집에 가요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:jigeum",
+        "ko:w:mateu",
+        "ko:w:itda",
+        "ko:w:daseot",
+        "ko:w:jip",
+        "ko:w:gada"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "ko.write.a1cap_mail_absent",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho tổ trưởng: chào, báo thứ Năm bạn đi bệnh viện, nên bạn xin nghỉ."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Ngày"
+          },
+          "value": "thứ Năm"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "안녕하세요",
+              "안녕하십니까"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày nghỉ"
+            },
+            "variants": [
+              "목요일",
+              "목요일은",
+              "목요일이",
+              "목요일을",
+              "목요일에",
+              "목요일에서",
+              "목요일에는",
+              "목요일에서는",
+              "목요일도",
+              "목요일이에요",
+              "목요일입니다",
+              "목요일이었어요",
+              "목요일이었습니다"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "hospital",
+            "description": {
+              "vi": "bệnh viện"
+            },
+            "variants": [
+              "병원",
+              "병원은",
+              "병원이",
+              "병원을",
+              "병원에",
+              "병원에서",
+              "병원에는",
+              "병원에서는",
+              "병원도",
+              "병원이에요",
+              "병원입니다",
+              "병원이었어요",
+              "병원이었습니다"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "rest",
+            "description": {
+              "vi": "xin nghỉ"
+            },
+            "variants": [
+              "쉬고 싶어요",
+              "쉬고 싶습니다",
+              "쉬어도 돼요",
+              "쉬어도 됩니다",
+              "쉴게요",
+              "못 가요",
+              "가지 못해요",
+              "못 갑니다",
+              "가지 못합니다",
+              "출근 못 해요",
+              "출근하지 못해요",
+              "출근 못 합니다",
+              "출근하지 못합니다",
+              "쉴 거예요",
+              "쉴 겁니다"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "반장님, 안녕하세요. 목요일에 병원에 가요. 그래서 쉬고 싶어요."
+      ],
+      "objectiveRefs": [
+        "ko.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "ko:w:banjangnim",
+        "ko:w:annyeonghaseyo",
+        "ko:w:mogyoil",
+        "ko:w:byeong-won",
+        "ko:w:gada",
+        "ko:w:geuraeseo",
+        "ko:w:swida"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    }
+  ]
+}

@@ -40,6 +40,28 @@ key unless the prompt asks for the familiar style; `scripts/__tests__/ko-vi-form
 keys through the ko rules' lenient form and that every 해요 key lists a 합쇼체 rendering. Writing it found 5 keys the
 first rule missed (아니에요, -고 싶어요 ×3, 안녕하세요); the rule now covers the auxiliaries.
 
+## Session 3 (2026-11-05): readings, device-voice clips, speech, writing
+
+**What exists.** 28 readings (19 teaching, 5 checkpoint 3, 2 capstone, 2 placement), 92 clips (41 teaching, 21
+assessment, 30 speech models), 52 speech items (22 reserved), 36 writing tasks (15 guided + 4 open teaching, 16
+reserved; 5 forms). Sections 3–5 lessons point at them through `ko_lesson_refs.py`: listening 41, reading 36,
+dictation 5, speakProduction 33, speakRepetition 9, guidedWriting 18, simpleForm 2; 968 exercises in all. No clip
+has an asset: listening is graded through the device's ko-KR voice, or skipped with the install hint.
+
+**What the checks found on the way, and what changed.**
+
+| Found | By | Count | Resolution |
+|---|---|---|---|
+| Words outside the lexicon in first drafts (마실래요, 근처, 자기소개, 소개, 규칙, 계산 as a noun, 요리 as a noun, 안 as "inside" — 안 is the lexeme "not") | generator word check | 12 | rewritten with lexicon words (드릴까요, 옆, 공장에서, 계산대에서 계산하세요, 요리하는 것) |
+| A vocative 흐엉아 in the capstone mother's message (family 반말) | word check | 1 | 흐엉, — the message stays 반말, read only (marked plain) |
+| Writing slots that were bare nouns (남, 안산, 스물세 살): the build-time ko tokenizer cuts at spaces, so 남이에요 is one token and 남 no run of it — 14 model answers did not meet their own rubric | writing validator | 14 tasks | a noun slot now lists the spaced words an answer writes (남이에요, 남입니다, 안산에, 안산에서 …) |
+| A greeting realized twice (반장님, 안녕하세요 with both as variants: "keyword stuffing") and a day named twice in one model | writing validator | 5 | the greeting slot is 안녕하세요 only; the model says 그래서 |
+| The self-check's layer rules (rule 9) on 5 planted mistakes (a Korean question, repeated options, a key not in its text, a dictation without its no-space spelling, a Latin spoken variant, missing spoken renderings, a slot the model does not realize) | seeded test | 11 flags | all flagged, then removed |
+
+**Open for the reviewer.** Writing is graded by whole spaced words: a learner who writes 남 이에요 or puts a particle
+the slot does not list (남이라고 해요) is told the slot is missing. The slots list the common forms; the D-10 pass
+should read the slot lists of the 19 teaching tasks.
+
 **For the D-10 reviewer (read first).**
 - Section 1 is tap-only: no typed Korean before the primer. Typing starts in Section 2.
 - 해요체 everywhere; 합쇼체 only in set phrases, the interview (unit l, ua-l3) and announcements; 반말 only in two

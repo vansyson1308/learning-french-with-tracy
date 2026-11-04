@@ -25,6 +25,13 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags, built up front from
     (typeAnswer, dictation, conjugationCloze, a fill-in without options, guidedWriting, simpleForm);
  8. a payload repeated across lessons; a Vietnamese option whose bracket is not closed; a conjugation cloze whose future
     key lacks its spelling without the space.
+ 9. (session 3) the layers: rules 2-5 over dictation keys, every spoken answer a speech exercise accepts, writing model
+    answers, Korean comprehension keys, reading blocks and clip lines; comprehension questions in Vietnamese, options
+    distinct, a Korean reading key present in its text; a dictation key that is its clip's transcript, without
+    digits, accepting the spelling without spaces; a speech target among its own variants, variants in Hangul only (no
+    Latin, no digits) and listing the fair renderings of ko_text.variants; writing slot variants in Korean, every
+    guided slot realized in the model answer, every form value a variant of its slot; every teaching reading, clip,
+    speech item and writing task used by a lesson.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by
 hand, to REVIEW-NOTES.md. usage: python -I ko-check-answers.py <repo root>
 """
@@ -81,7 +88,105 @@ def key_texts(e):
         return [e["sentence"].replace("___", e["answer"])]
     if t == "match":
         return [p["target"] for p in e["pairs"]]
+    # Session 3: the layers. A dictation key, every spoken answer a speech exercise accepts, writing model answers,
+    # Korean comprehension keys.
+    if t == "dictation":
+        return [e["answer"]]
+    if t in ("speakRepetition", "speakProduction"):
+        return [e["target"]] + list(e["acceptedVariants"])
+    if t == "guidedWriting":
+        return list(e["modelAnswers"])
+    if t in ("listeningComprehension", "readingComprehension") and KO.search(e["options"][e["correct"]]["text"]):
+        return [e["options"][e["correct"]]["text"]]
     return []
+
+
+# ---------------------------------------------------------------- rule 9: the layers (session 3)
+def _jsonl(step):
+    path = f"{D}/{step}/OUTPUT.jsonl"
+    return {r["id"]: r for r in (json.loads(x) for x in open(path, encoding="utf-8") if x.strip())} if os.path.exists(path) else {}
+
+
+KO = re.compile(r"[가-힣ㄱ-ㅣ]")
+LATIN_OR_VI = re.compile(r"[A-Za-zăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]", re.I)
+CLIPS, READINGS, SPEECH, WRITING = _jsonl("listening"), _jsonl("readings"), _jsonl("speech"), _jsonl("writing")
+USED = {"clips": set(), "readings": set(), "speech": set(), "writing": set()}
+
+
+def layer_rules(eid, e):
+    t = e["type"]
+    for field, kind in (("clipId", "clips"), ("readingId", "readings"), ("speechItemId", "speech"), ("writingTaskId", "writing")):
+        if field in e:
+            USED[kind].add(e[field])
+    if t in ("listeningComprehension", "readingComprehension"):
+        texts = [o["text"] for o in e["options"]]
+        if len(set(texts)) != len(texts):
+            flag(eid, "comprehension-options", f"repeated option in {texts}")
+        if KO.search(e["question"]):
+            flag(eid, "comprehension-question", f"{e['question']!r}: the question is Vietnamese")
+        key = texts[e["correct"]]
+        if t == "readingComprehension" and KO.search(key):
+            body = " ".join(b["text"] for b in READINGS[e["readingId"]]["blocks"])
+            if key not in body:
+                flag(eid, "comprehension-key", f"{key!r} is not in the text of {e['readingId']}")
+    if t == "dictation":
+        clip = CLIPS.get(e["clipId"])
+        text = " ".join(s["text"] for s in clip["segments"]) if clip else None
+        if e["answer"] != text:
+            flag(eid, "dictation-key", f"{e['answer']!r} is not the transcript of {e['clipId']}")
+        if re.search(r"\d", e["answer"]):
+            flag(eid, "dictation-digits", f"{e['answer']!r}: a number has two spellings")
+        if " " in e["answer"] and e["answer"].replace(" ", "") not in e["alternatives"]:
+            flag(eid, "dictation-spacing", f"{e['answer']!r}: the spelling without spaces is not accepted")
+    if t in ("speakRepetition", "speakProduction"):
+        plain = re.sub(r"[.?!]+$", "", e["target"])
+        if _bare(plain) not in {_bare(v) for v in e["acceptedVariants"]}:
+            flag(eid, "speech-target", f"{e['target']!r} is not among its own variants")
+        for v in [e["target"]] + e["acceptedVariants"]:
+            if LATIN_OR_VI.search(v) or re.search(r"\d", v):
+                flag(eid, "speech-script", f"{v!r}: a spoken answer is Hangul only (no Latin, no digits: the grader spells them)")
+        if t == "speakProduction":
+            want = [w for w in variants(e["instruction"], e["target"], INDEX) if not re.search(r"\d", w)]
+            for w in missing_bare(e["acceptedVariants"], want):
+                flag(eid, "spoken-rendering", f"{w!r} answers {e['instruction']!r} and is not among the variants")
+    if t in ("guidedWriting", "simpleForm"):
+        for slot in e["rubric"]["requiredSlots"]:
+            for v in slot["variants"]:
+                if LATIN_OR_VI.search(v):
+                    flag(eid, "writing-script", f"slot {slot['id']}: {v!r} is not Korean")
+    if t == "guidedWriting" and e["writingMode"] == "guided":
+        for model in e["modelAnswers"]:
+            for slot in e["rubric"]["requiredSlots"]:
+                if not any(v in model for v in slot["variants"]):
+                    flag(eid, "writing-slot", f"model {model!r} realizes no variant of slot {slot['id']}")
+    if t == "simpleForm":
+        for model in e["modelAnswers"]:
+            for field, value in zip(e["fields"], (v.strip() for v in model.split(" | "))):
+                slot = next(s for s in e["rubric"]["requiredSlots"] if s["id"] == field["slotId"])
+                if value not in slot["variants"]:
+                    flag(eid, "form-value", f"{value!r} is not a variant of slot {slot['id']}")
+
+
+def missing_bare(accepted, wanted):
+    have = {_bare(a) for a in accepted}
+    return [w for w in wanted if _bare(w) not in have]
+
+
+def coverage_rules():
+    """Every teaching record of a layer is used by a lesson; a model clip is used through its speech item."""
+    models = {s.get("modelAudioRef") for s in SPEECH.values()}
+    for kind, table in (("clips", CLIPS), ("readings", READINGS), ("speech", SPEECH), ("writing", WRITING)):
+        for rid, r in table.items():
+            if r.get("reserved") is True or re.search(r"\.(cp\d|a1cap|pl)_", rid) or rid in models:
+                continue
+            if rid not in USED[kind]:
+                flag(rid, "layer-unused", f"teaching {kind} record {rid} is used by no lesson")
+    for rid, r in READINGS.items():
+        for b in r["blocks"]:
+            particle_rules(rid, b["text"])
+    for cid, c in CLIPS.items():
+        for s in c["segments"]:
+            particle_rules(cid, s["text"])
 
 
 # ---------------------------------------------------------------- rule 2: particles in a key
@@ -305,11 +410,13 @@ for r in records:
         register(eid, e, plain_ok)
         typed_rules(eid, e)
         cloze_rules(eid, e)
+        layer_rules(eid, e)
         if r["lessonId"] in SECTION1_LESSONS:
             section1_rules(eid, e)
         if e["type"] == "fillBlank" and e["options"][e["correct"]] in GROUPS:
             particle_items[e["options"][e["correct"]]] += 1
 
+coverage_rules()
 os.makedirs(f"{D}/lessons", exist_ok=True)
 with open(f"{D}/lessons/OUTPUT.jsonl", "w", encoding="utf-8", newline="\n") as f:
     for r in records:

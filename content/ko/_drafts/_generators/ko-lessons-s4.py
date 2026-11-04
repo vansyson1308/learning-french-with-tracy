@@ -5,7 +5,7 @@ recogniser) join these lessons in session 3. Writes lessons/parts/s4.jsonl. usag
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ko_lesson_lib import C, F, H, K, M, N, NX, T, TX, W, Y, finish, lesson
+from ko_lesson_lib import C, F, H, K, M, N, NX, SP, T, TX, W, Y, finish, lesson
 
 # ---------------------------------------------------------------- uk: greetings at work
 lesson("uk-l0", [
@@ -18,6 +18,8 @@ lesson("uk-l0", [
     Y("Tôi hiểu rồi. (kiểu trang trọng)", "알겠습니다.", "네, 알겠습니다."),
     W("Giám đốc, anh vất vả rồi.", "사장님|수고하셨습니다", ["사장님을", "수고했어"]),
     M("사장님", "반장님", "동료", "출근", "퇴근"),
+    # layers (session 3)
+    SP("k_rep_annyeong"), SP("k_greet_leader"),
 ])
 lesson("uk-l1", [
     T("동료", ["친구", "사장님", "손님"]),
@@ -28,6 +30,8 @@ lesson("uk-l1", [
     Y("Chào giám đốc.", "사장님, 안녕하세요.", "안녕하세요, 사장님."),
     W("Tôi đi làm lúc tám giờ.", "여덟|시에|출근해요", ["팔", "퇴근해요"]),
     M("수고하세요", "수고하셨습니다", "알겠습니다", "잘 부탁드립니다"),
+    # layers (session 3)
+    SP("k_rep_sugo"), SP("k_sugo"), SP("k_thanks"),
 ])
 lesson("uk-l2", [
     TX("고마워.", "(Nói thân mật, với bạn) Cảm ơn nhé.", ["(Nói thân mật) Xin lỗi nhé.", "(Nói thân mật) Tạm biệt.", "(Nói thân mật) Không sao."], plain=True),
@@ -37,6 +41,8 @@ lesson("uk-l2", [
     K("반장님은 아마 그 사람을 ___.", "알다", "haeyo:fut", "Có lẽ tổ trưởng sẽ biết người đó."),
     W("Tôi đến muộn. Xin lỗi.", "늦어서|죄송합니다", ["늦고", "감사합니다"]),
     M("늦다", "일찍", "먼저", "같이"),
+    # layers (session 3)
+    SP("k_rep_meonjeo"), SP("k_leave_first"), SP("k_sorry"), SP("k_excuse"),
 ])
 lesson("uk-l3", [
     TX("오늘 회의가 있어요?", "Hôm nay có họp không?", ["Hôm nay họp lúc mấy giờ?", "Hôm nay không có họp.", "Phòng họp ở đâu?"]),
@@ -45,6 +51,8 @@ lesson("uk-l3", [
     Y("Hôm nay tôi tan làm lúc sáu giờ.", "오늘 여섯 시에 퇴근해요."),
     W("Anh Min-su ơi, cùng ăn trưa nhé.", "민수 씨|같이|점심|먹어요", ["먹었어요", "혼자"]),
     M("회사", "회의", "점심시간", "휴식"),
+    # layers (session 3)
+    SP("k_greet_leader", more=("interaction.everyday_conversation",)), SP("k_sugo", more=("interaction.everyday_conversation",)), SP("k_leave_first", more=("interaction.everyday_conversation",)),
 ])
 
 # ---------------------------------------------------------------- ul: the interview self-introduction
@@ -57,6 +65,8 @@ lesson("ul-l0", [
     Y("Tôi là người Việt Nam.", "저는 베트남 사람이에요."),
     W("Tôi đến từ Việt Nam.", "베트남에서|왔어요", ["베트남에", "가요"]),
     M("나라", "고향", "직업", "나이", "취미"),
+    # layers (session 3)
+    SP("l_rep_cheoeum"), SP("l_name"), SP("l_from"),
 ])
 lesson("ul-l1", [
     T("면접", ["경험", "직업", "회사"]),
@@ -66,6 +76,8 @@ lesson("ul-l1", [
     Y("Tôi hai mươi tuổi. (kiểu trang trọng)", "저는 스무 살입니다."),
     W("Mong anh chị giúp đỡ.", "잘|부탁드립니다", ["잘못", "수고"]),
     M("면접", "경험", "직업", "결혼"),
+    # layers (session 3)
+    SP("l_age"), SP("l_work"),
 ])
 lesson("ul-l2", [
     C("want-like"),
@@ -76,6 +88,8 @@ lesson("ul-l2", [
     Y("Tôi muốn học tiếng Hàn.", "한국어를 배우고 싶어요.", "한국어를 공부하고 싶어요."),
     W("Tôi muốn gặp gia đình.", "가족을|만나고|싶어요", ["가족이", "만나요"]),
     M("취미", "축구", "음악", "영화", "노래"),
+    # layers (session 3)
+    SP("l_like"), SP("l_rep_butak"),
 ])
 lesson("ul-l3", [
     TX("결혼했어요?", "Bạn đã kết hôn chưa?", ["Bạn có con chưa?", "Bạn sẽ kết hôn à?", "Bạn có người yêu không?"]),
@@ -84,6 +98,8 @@ lesson("ul-l3", [
     Y("Tôi có kinh nghiệm.", "경험이 있어요."),
     W("Tôi nói tiếng Hàn giỏi.", "한국어를|잘|해요", ["한국어가", "못"]),
     M("결혼", "나이", "경험", "고향"),
+    # layers (session 3)
+    SP("l_name", more=("interaction.everyday_conversation",)), SP("l_from", more=("interaction.everyday_conversation",)), SP("l_work", more=("interaction.everyday_conversation",)),
 ])
 
 # ---------------------------------------------------------------- um: numbers and times aloud
@@ -96,6 +112,8 @@ lesson("um-l0", [
     Y("Số điện thoại là 010-1234-5678.", "전화번호는 010-1234-5678이에요.", "전화번호는 01012345678이에요."),
     W("Bảy giờ tối.", "오후|일곱|시예요", ["칠", "오전"]),
     M("일곱", "여덟", "아홉", "열"),
+    # layers (session 3)
+    SP("m_rep_price"), SP("m_price"),
 ])
 lesson("um-l1", [
     C("time-dates"),
@@ -106,6 +124,8 @@ lesson("um-l1", [
     Y("Tôi dậy lúc sáu giờ sáng.", "오전 여섯 시에 일어나요.", "아침 여섯 시에 일어나요."),
     W("Mấy giờ bạn tan làm?", "몇|시에|퇴근해요", ["무슨", "출근해요"]),
     M("오전", "오후", "반", "몇"),
+    # layers (session 3)
+    SP("m_time"), SP("m_rep_half"), SP("m_day"),
 ])
 lesson("um-l2", [
     TX("몇 살이에요?", "Bạn bao nhiêu tuổi?", ["Bạn tên là gì?", "Mấy giờ rồi?", "Có mấy người?"]),
@@ -115,6 +135,8 @@ lesson("um-l2", [
     Y("Có mấy người?", "몇 명이에요?", "몇 명 있어요?"),
     W("Tôi hai mươi tám tuổi.", "저는|스물여덟|살이에요", ["이십팔", "스무"]),
     H("몇 시예요", ["몇 살이에요", "몇 명이에요", "몇 번이에요"]),
+    # layers (session 3)
+    SP("m_birthday"), SP("m_tickets"),
 ])
 lesson("um-l3", [
     TX("세 개에 오천 원이에요.", "Ba cái năm nghìn won.", ["Năm cái ba nghìn won.", "Ba cái ba nghìn won.", "Một cái năm nghìn won."]),
@@ -123,6 +145,8 @@ lesson("um-l3", [
     Y("Văn phòng ở tầng năm.", "사무실은 오 층에 있어요."),
     W("Cho tôi ba ly cà phê.", "커피|세|잔|주세요", ["셋", "삼"]),
     M("층", "잔", "병", "권"),
+    # layers (session 3)
+    SP("m_price", more=("interaction.practical_needs",)), SP("m_time", more=("interaction.practical_needs",)), SP("m_day", more=("interaction.practical_needs",)),
 ])
 
 # ---------------------------------------------------------------- un: telling and describing
@@ -135,6 +159,8 @@ lesson("un-l0", [
     Y("Hôm qua tôi đã làm việc.", "어제 일했어요."),
     W("Hôm qua tôi mệt.", "어제|피곤했어요", ["피곤해요", "내일"]),
     M("어제", "주말", "지난주", "작년"),
+    # layers (session 3)
+    SP("n_rep_keoyo"), SP("n_box"),
 ])
 lesson("un-l1", [
     T("재미있다", ["재미없다", "힘들다", "바쁘다"]), N("친절하다", ["예쁘다", "바쁘다", "힘들다"]),
@@ -144,6 +170,8 @@ lesson("un-l1", [
     Y("Dạo này tôi bận.", "요즘 바빠요."),
     W("Căn phòng đẹp.", "방이|예뻐요", ["방을", "예쁘어요"]),
     M("재미있다", "힘들다", "피곤하다", "바쁘다", "친절하다"),
+    # layers (session 3)
+    SP("n_car"), SP("n_cat"),
 ])
 lesson("un-l2", [
     C("future"),
@@ -154,6 +182,8 @@ lesson("un-l2", [
     NX("Để tôi làm.", "제가 할게요.", ["제가 했어요.", "저가 할게요.", "제가 할까요?"]),
     Y("Tuần sau tôi sẽ nghỉ.", "다음 주에 쉴 거예요.", "다음 주에 쉬어요."),
     W("Ngày mai trời sẽ lạnh.", "내일은|추울|거예요", ["추워요", "거야"]),
+    # layers (session 3)
+    SP("n_rep_past"), SP("n_weekend"), SP("n_tomorrow"),
 ])
 lesson("un-l3", [
     TX("음식이 맛없었어요.", "Đồ ăn không ngon.", ["Đồ ăn ngon.", "Đồ ăn cay.", "Tôi không ăn."]),
@@ -162,5 +192,7 @@ lesson("un-l3", [
     Y("Hôm qua thú vị.", "어제는 재미있었어요."),
     W("Tôi đã mua quần áo đẹp.", "예쁜|옷을|샀어요", ["예뻐요", "살"]),
     M("예쁘다", "맛없다", "재미없다", "친절하다"),
+    # layers (session 3)
+    SP("n_box", more=("speaking.self_intro",)), SP("n_car", more=("speaking.self_intro",)), SP("n_cat", more=("speaking.self_intro",)),
 ])
 finish("s4")

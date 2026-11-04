@@ -5,7 +5,7 @@ Writes lessons/parts/s5.jsonl. usage: python -I ko-lessons-s5.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ko_lesson_lib import C, F, K, M, N, NX, T, TX, W, Y, finish, lesson
+from ko_lesson_lib import C, F, K, M, N, NX, T, TX, W, WR, Y, finish, lesson
 
 # ---------------------------------------------------------------- uo: about yourself
 lesson("uo-l0", [
@@ -17,6 +17,8 @@ lesson("uo-l0", [
     Y("Tôi sống ở Ansan.", "저는 안산에 살아요.", "저는 안산에서 살아요."),
     W("Địa chỉ của tôi là Ansan.", "제|주소는|안산이에요", ["주소를", "안산예요"]),
     M("주소", "생일", "영어", "베트남어"),
+    # layers (session 3)
+    WR("o_name"), WR("o_age"),
 ])
 lesson("uo-l1", [
     TX("저는 베트남어하고 영어를 해요.", "Tôi nói tiếng Việt và tiếng Anh.", ["Tôi học tiếng Việt và tiếng Anh.", "Tôi nói tiếng Hàn và tiếng Anh.", "Tôi không nói tiếng Anh."]),
@@ -25,6 +27,8 @@ lesson("uo-l1", [
     Y("Tôi là người Việt Nam. Tôi hai mươi lăm tuổi.", "저는 베트남 사람이에요. 스물다섯 살이에요."),
     W("Tôi ba mươi tuổi.", "저는|서른|살이에요", ["삼십", "서른살"]),
     M("우리", "저희", "제", "저"),
+    # layers (session 3)
+    WR("o_home"),
 ])
 lesson("uo-l2", [
     Y("Gõ bằng tiếng Hàn: địa chỉ", "주소"),
@@ -34,6 +38,8 @@ lesson("uo-l2", [
     F("부모님은 하노이___ 사세요.", "에", ["을", "가", "는"], "Bố mẹ tôi sống ở Hà Nội."),
     W("Tôi sống cùng bạn.", "친구하고|같이|살아요", ["친구를", "사요"]),
     M("살다", "사다", "쓰다", "읽다"),
+    # layers (session 3)
+    WR("o_family"),
 ])
 lesson("uo-l3", [
     T("이름", ["주소", "생일", "나이"]),
@@ -44,6 +50,8 @@ lesson("uo-l3", [
     K("여기에 주소를 ___.", "쓰다", "hon:pre", "Hãy viết địa chỉ vào đây."),
     W("Hãy viết số điện thoại.", "전화번호를|쓰세요", ["전화번호가", "읽으세요"]),
     M("이름", "주소", "생일", "전화번호"),
+    # layers (session 3)
+    WR("o_all"), WR("o_open"),
 ])
 
 # ---------------------------------------------------------------- up: simple sentences, 안 / 못, linking words
@@ -57,6 +65,8 @@ lesson("up-l0", [
     Y("Tôi không ăn được đồ cay.", "매운 음식을 못 먹어요.", "매운 음식은 못 먹어요."),
     W("Hôm nay tôi không làm việc.", "오늘은|일|안|해요", ["못", "일해요"]),
     M("안", "못", "자주", "가끔", "항상"),
+    # layers (session 3)
+    WR("p_neg"), WR("p_cant"),
 ])
 lesson("up-l1", [
     C("connectors"),
@@ -67,6 +77,8 @@ lesson("up-l1", [
     Y("Tiếng Hàn khó nhưng thú vị.", "한국어는 어렵지만 재미있어요.", "한국어는 어려워요. 하지만 재미있어요.", "한국어는 어려워요. 그런데 재미있어요."),
     W("Trời lạnh. Vì vậy tôi mặc áo ấm.", "추워요.|그래서|따뜻한|옷을|입어요", ["하지만", "옷이"]),
     M("그리고", "그래서", "하지만", "그런데"),
+    # layers (session 3)
+    WR("p_link"),
 ])
 lesson("up-l2", [
     TX("저는 고기를 먹지 않아요.", "Tôi không ăn thịt.", ["Tôi không ăn được thịt.", "Tôi đã ăn thịt.", "Tôi thích thịt."]),
@@ -76,6 +88,8 @@ lesson("up-l2", [
     K("그 사람을 ___.", "모르다", "haeyo:pre", "Tôi không biết người đó."),
     W("Tôi không biết rõ lắm.", "잘|몰라요", ["안", "알아요"]),
     M("하지만", "그래서", "자주", "가끔"),
+    # layers (session 3)
+    WR("p_who"), WR("p_ask"),
 ])
 lesson("up-l3", [
     C("past"),
@@ -85,6 +99,8 @@ lesson("up-l3", [
     Y("Tôi thường xuyên gọi điện cho mẹ.", "자주 어머니에게 전화해요.", "어머니에게 자주 전화해요."),
     W("Hôm qua tôi đã dọn dẹp và giặt đồ.", "어제|청소하고|빨래했어요", ["청소해요", "빨래하고"]),
     M("항상", "자주", "가끔", "또"),
+    # layers (session 3)
+    WR("p_open"),
 ])
 
 # ---------------------------------------------------------------- uq: messages to the team leader
@@ -97,6 +113,8 @@ lesson("uq-l0", [
     Y("Xin lỗi. Hôm nay tôi đến muộn.", "죄송합니다. 오늘 늦어요.", "죄송합니다. 오늘 늦을 거예요."),
     W("Tổ trưởng ơi, tôi bị cảm.", "반장님|감기에|걸렸어요", ["감기를", "걸려요"]),
     M("문자", "휴가", "감기", "병원"),
+    # layers (session 3)
+    WR("q_sick"),
 ])
 lesson("uq-l1", [
     TX("내일 아침에 병원에 가요.", "Sáng mai tôi đi bệnh viện.", ["Sáng nay tôi đã đi bệnh viện.", "Tối mai tôi đi bệnh viện.", "Bệnh viện mở cửa buổi sáng."]),
@@ -106,6 +124,8 @@ lesson("uq-l1", [
     K("반장님은 아마 내일 전화를 ___.", "하다", "haeyo:fut", "Có lẽ mai tổ trưởng sẽ gọi điện."),
     W("Tôi sẽ đến lúc ba giờ.", "세|시에|갈게요", ["삼", "갔어요"]),
     M("오전", "오후", "내일", "다음 주"),
+    # layers (session 3)
+    WR("q_late"),
 ])
 lesson("uq-l2", [
     C("future"),
@@ -115,6 +135,8 @@ lesson("uq-l2", [
     Y("Tôi sẽ gọi điện.", "전화할게요.", "전화할 거예요.", "제가 전화할게요."),
     W("Xin lỗi. Tôi sẽ cẩn thận.", "죄송합니다|조심할게요", ["조심했어요", "괜찮아요"]),
     M("보내다", "받다", "전화하다", "기다리다"),
+    # layers (session 3)
+    WR("q_reply"),
 ])
 lesson("uq-l3", [
     TX("민수 씨, 문자 받았어요?", "Anh Min-su, anh nhận được tin nhắn chưa?", ["Anh Min-su, anh gửi tin nhắn chưa?", "Anh Min-su, anh có điện thoại không?", "Anh Min-su, gọi cho tôi nhé."]),
@@ -124,6 +146,8 @@ lesson("uq-l3", [
     Y("Hôm qua tôi đã đi bệnh viện.", "어제 병원에 갔어요."),
     W("Tôi đã gửi tin nhắn cho tổ trưởng.", "반장님에게|문자를|보냈어요", ["반장님을", "보낼게요"]),
     M("아프다", "감기", "약", "병원"),
+    # layers (session 3)
+    WR("q_open"),
 ])
 
 # ---------------------------------------------------------------- ur: papers at the employment centre
@@ -135,6 +159,8 @@ lesson("ur-l0", [
     Y("Đây là hộ chiếu của tôi.", "제 여권이에요.", "이거 제 여권이에요.", "이것은 제 여권이에요."),
     W("Hãy mang hồ sơ đến.", "서류를|가져오세요", ["서류가", "가져가세요"]),
     M("고용센터", "여권", "서류", "계약서", "사진"),
+    # layers (session 3)
+    WR("r_form_center"),
 ])
 lesson("ur-l1", [
     TX("월급이 얼마예요?", "Lương tháng bao nhiêu?", ["Lương tháng trả khi nào?", "Tiền thuê nhà bao nhiêu?", "Hợp đồng bao lâu?"]),
@@ -152,6 +178,8 @@ lesson("ur-l2", [
     K("여기에 이름을 ___.", "쓰다", "hon:pre", "Hãy viết tên vào đây."),
     W("Hãy đọc hợp đồng.", "계약서를|읽으세요", ["계약서가", "쓰세요"]),
     M("사진", "통장", "은행", "계좌"),
+    # layers (session 3)
+    WR("r_form_clinic"),
 ])
 lesson("ur-l3", [
     TX("외국인 등록증을 잃어버렸어요.", "Tôi làm mất thẻ đăng ký người nước ngoài.", ["Tôi quên thẻ đăng ký người nước ngoài.", "Tôi có thẻ đăng ký người nước ngoài.", "Tôi muốn làm thẻ đăng ký người nước ngoài."]),
@@ -160,5 +188,7 @@ lesson("ur-l3", [
     Y("Tôi làm mất hộ chiếu.", "여권을 잃어버렸어요."),
     W("Trung tâm việc làm ở đâu?", "고용센터가|어디에|있어요", ["고용센터를", "누구"]),
     M("서류", "신청서", "계약서", "여권"),
+    # layers (session 3)
+    WR("r_note"), WR("r_open"),
 ])
 finish("s5")

@@ -1,0 +1,63 @@
+"""Which reception, speech and writing ids each ko-vi lesson uses (P4e session 3), after ja_lesson_refs.py: the hand-off
+between the layer generators and the Section 3-5 lessons. Reserved ids (checkpoint, capstone, placement) never appear
+here. ko-lessons-s3…s5.py fail if a lesson leaves out an id mapped to it or uses one that is not; ko-check-answers.py
+fails if a teaching reading, clip, speech item or writing task has no lesson. Scenarios (Section 6) join in session 4.
+A speech exercise takes its modelClipId from the item's modelAudioRef (ko.clip.u<k-n>_model_<slug>)."""
+CL = lambda *xs: [f"ko.clip.{x}" for x in xs]
+RD = lambda *xs: [f"ko.read.{x}" for x in xs]
+SP = lambda *xs: [f"ko.speak.{x}" for x in xs]
+WR = lambda *xs: [f"ko.write.{x}" for x in xs]
+C = "ko-vi:"
+REFS = {
+ C + "uf-l0": {"clips": CL("uf_nalssi", "uf_bi", "uf_usan", "uf_deowoyo", "uf_chuwoyo")},
+ C + "uf-l1": {"clips": CL("uf_baram", "uf_bi_wayo", "uf_malgayo", "uf_usan_isseoyo"), "readings": RD("uf_forecast")},
+ C + "uf-l2": {"clips": CL("uf_bom", "uf_gyeoul", "uf_rain_tomorrow", "uf_cold_wind"), "readings": RD("uf_seasons")},
+ C + "uf-l3": {"clips": CL("uf_moreugesseoyo", "uf_dasi", "uf_cheoncheonhi"), "readings": RD("uf_card")},
+ C + "ug-l0": {"clips": CL("ug_stop", "ug_helmet"), "readings": RD("ug_signs")},
+ C + "ug-l1": {"clips": CL("ug_gloves", "ug_exit"), "readings": RD("ug_rules")},
+ C + "ug-l2": {"clips": CL("ug_lunch"), "readings": RD("ug_shift", "ug_msg_leader")},
+ C + "ug-l3": {"clips": CL("ug_off"), "readings": RD("ug_menu")},
+ C + "uh-l0": {"clips": CL("uh_this_station", "uh_next_station", "uh_transfer")},
+ C + "uh-l1": {"clips": CL("uh_exit3"), "readings": RD("uh_exits")},
+ C + "uh-l2": {"clips": CL("uh_bus_soon", "uh_bus_cityhall", "uh_next_stop")},
+ C + "uh-l3": {"clips": CL("uh_ten_minutes"), "readings": RD("uh_bus")},
+ C + "ui-l0": {"clips": CL("ui_bag", "ui_welcome"), "readings": RD("ui_store")},
+ C + "ui-l1": {"clips": CL("ui_card", "ui_bento"), "readings": RD("ui_msg_friend")},
+ C + "ui-l2": {"clips": CL("ui_price", "ui_ramen"), "readings": RD("ui_receipt")},
+ C + "ui-l3": {"readings": RD("ui_msg_late")},
+ C + "uj-l0": {"clips": CL("uj_trash", "uj_quiet"), "readings": RD("uj_rules")},
+ C + "uj-l1": {"readings": RD("uj_rent")},
+ C + "uj-l2": {"clips": CL("uj_third_floor"), "readings": RD("uj_room")},
+ C + "uj-l3": {"clips": CL("uj_nam_ansan", "uj_seoul"), "readings": RD("uj_day", "uj_weekend")},
+ C + "uk-l0": {"speech": SP("k_rep_annyeong", "k_greet_leader")},
+ C + "uk-l1": {"speech": SP("k_rep_sugo", "k_sugo", "k_thanks")},
+ C + "uk-l2": {"speech": SP("k_rep_meonjeo", "k_leave_first", "k_sorry", "k_excuse")},
+ C + "uk-l3": {"speech": SP("k_greet_leader", "k_sugo", "k_leave_first")},
+ C + "ul-l0": {"speech": SP("l_rep_cheoeum", "l_name", "l_from")},
+ C + "ul-l1": {"speech": SP("l_age", "l_work")},
+ C + "ul-l2": {"speech": SP("l_like", "l_rep_butak")},
+ C + "ul-l3": {"speech": SP("l_name", "l_from", "l_work")},
+ C + "um-l0": {"speech": SP("m_rep_price", "m_price")},
+ C + "um-l1": {"speech": SP("m_time", "m_rep_half", "m_day")},
+ C + "um-l2": {"speech": SP("m_birthday", "m_tickets")},
+ C + "um-l3": {"speech": SP("m_price", "m_time", "m_day")},
+ C + "un-l0": {"speech": SP("n_rep_keoyo", "n_box")},
+ C + "un-l1": {"speech": SP("n_car", "n_cat")},
+ C + "un-l2": {"speech": SP("n_rep_past", "n_weekend", "n_tomorrow")},
+ C + "un-l3": {"speech": SP("n_box", "n_car", "n_cat")},
+ C + "uo-l0": {"writing": WR("o_name", "o_age")},
+ C + "uo-l1": {"writing": WR("o_home")},
+ C + "uo-l2": {"writing": WR("o_family")},
+ C + "uo-l3": {"writing": WR("o_all", "o_open")},
+ C + "up-l0": {"writing": WR("p_neg", "p_cant")},
+ C + "up-l1": {"writing": WR("p_link")},
+ C + "up-l2": {"writing": WR("p_who", "p_ask")},
+ C + "up-l3": {"writing": WR("p_open")},
+ C + "uq-l0": {"writing": WR("q_sick")},
+ C + "uq-l1": {"writing": WR("q_late")},
+ C + "uq-l2": {"writing": WR("q_reply")},
+ C + "uq-l3": {"writing": WR("q_open")},
+ C + "ur-l0": {"writing": WR("r_form_center")},
+ C + "ur-l2": {"writing": WR("r_form_clinic")},
+ C + "ur-l3": {"writing": WR("r_note", "r_open")},
+}

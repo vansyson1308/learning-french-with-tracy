@@ -338,7 +338,11 @@ class Index:
             if w.endswith(cop) and len(w) > len(cop):
                 base = w[: -len(cop)]
                 if not self.nounish(base):
-                    continue
+                    # 한 시까지예요, 서울에서예요: the copula after a noun with its particle
+                    inner = next((p for p in ("까지", "부터", "에서", "에게", "한테") if base.endswith(p) and self.nounish(base[: -len(p)])), None)
+                    if inner is None:
+                        continue
+                    base = inner
                 need = COPULA[cop]
                 if need is not None and ends_in_consonant(base) != need:
                     if cop in ("고", "지만") and need is False and ends_in_consonant(base):
@@ -434,6 +438,36 @@ class Index:
             if nb in SINO_COUNTERS and nb != "일":
                 if a in NATIVE_ATTR or a in NATIVE_PLAIN:
                     out.append(f"{a} {b}: {nb} counts with Sino-Korean numbers (일, 이, 삼 …), not {a}")
+        return out
+
+    # -------------------------------------------------------------- lexeme references
+    def lexemes_of(self, text):
+        """The lexicon surfaces a Korean text uses, in order: set phrases first (as written), then each word as a
+        surface, a form of a verb (its lemma), or a noun with its particles / copula."""
+        out = []
+
+        def add(s):
+            if s in self.lex and s not in out:
+                out.append(s)
+
+        rest = text
+        for s in sorted((s for s in self.lex if " " in s), key=len, reverse=True):
+            if s in rest:
+                add(s)
+                rest = rest.replace(s, " ")
+        for t in self.tokens(rest):
+            if t in self.lex:
+                add(t)
+                continue
+            if t in self.forms and self.forms[t][0] in self.lex:
+                add(self.forms[t][0])
+                continue
+            base = self.base_of(t)
+            for p in ("까지", "부터", "에서", "에게", "한테"):
+                if base.endswith(p) and base[: -len(p)] in self.lex:
+                    base = base[: -len(p)]
+            if base in self.lex:
+                add(base)
         return out
 
     # -------------------------------------------------------------- speech level
