@@ -159,6 +159,29 @@ itself.
   recording and the raw-share scoring are the course's choices (JLPT uses scaled scores), and
   the listening options are printed with Vietnamese questions where the real paper has
   Japanese and, in parts 3–4, only heard options (`content/ja/exam/FORMAT-SOURCES.md`).
+- **`ko-vi` (Korean for Vietnamese speakers, P4e) is being built and will ship unreviewed**,
+  on the same terms as `ja-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in the
+  staged `content/courses/ko-vi.profile.json`. All Korean and Vietnamese in the course is
+  AI-written; no native speaker of either language has read it yet. What is known now:
+  - **audio**: ko-vi bundles no audio (D-11: no Korean voice with a clean lineage;
+    QC 2026-11-05 §2). Its pack audio policy is `device-tts` and its profile sets
+    `deviceVoiceScoredListening`: listening and dictation are graded through the phone's own
+    Korean voice when a local one is installed. Without one, the item says "chưa có giọng
+    đọc trên máy", gives the install hint and is skipped, never counted wrong, so the A1
+    estimate counts only listening items the learner heard. Device voices differ in quality,
+    speed and dialogue (one voice reads both parts, the second at a lower pitch); none has
+    been heard on a phone. Google Cloud TTS is prepared and off until the owner approves it
+    (`OWNER-FINAL-CHECKLIST.md` B2);
+  - **homographs**: one lexeme per surface, so 개 is "con chó" (the ko-en word) and the
+    counter 개 is taught in a concept card; likewise 이 ("này", not the Sino 2), 네 ("vâng",
+    not the counter form of 4), 눈 ("mắt", not snow), 안 ("không", not inside);
+  - **readings**: RR comes from the project's rules (scripts/lib/cjk-readings/korean-rr.ts);
+    521 of 995 lexemes have no independent romanization to confirm it;
+  - **Hán-Việt** readings are shown only for Sino-Korean words; 194 course words were
+    added, many with a note because Unihan 17.0.0 lists only a Nôm reading for basic
+    characters. They were checked against Unihan, not by a Vietnamese teacher of Korean.
+  Level results are estimates aligned to CEFR, not certificates, and TOPIK levels are not
+  CEFR levels.
 - **`it-vi` (Italian for Vietnamese speakers, P3d(it)) ships unreviewed**, on the
   same terms as `de-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/it-vi.profile.json`. The owner signs
