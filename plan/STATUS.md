@@ -1,6 +1,15 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
-> **Lần thức gần nhất:** 2026-11-04 04:30 UTC. **Lần thức kế tiếp:** khoảng 1 giờ sau, hoặc khi agent phiên 1 của P4d báo xong. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
+> **TẠM DỪNG theo yêu cầu của chủ dự án (2026-11-04).** Không còn agent nào chạy, không còn lịch tự thức. Mọi thứ đã push.
+> - **main:** xanh. Đã merge #58 voice-lineage, #59 en-vi, #60 voice sampler, #61 D-15, #62 P4b, #63 ja-vi, #64 sửa cách chấm ja.
+> - **`phase-4/zh-vi` (P4d):** đã xong phiên 1–5: bộ từ, 108 bài, nhập môn thanh điệu, các lớp nội dung, kiểm tra và HSK 1–2, 42 truyện.
+>   - Duyệt D-10: lượt đáp án xong, 56 lỗi, lưu ở `content/zh/_drafts/review/findings-answers.json`, chưa sửa. Lượt ngôn ngữ bị dừng trước khi ghi file, phải chạy lại.
+>   - Bộ đọc audio tiếng Trung đang làm dở, để trên nhánh riêng `wip/zh-audio-frontend`. Chưa test, không merge nguyên trạng.
+>   - Chưa có audio tiếng Trung, chưa mở PR.
+> - **Chờ quyết định:** giọng tiếng Hàn (xem mục ngay dưới), rồi mới làm P4e ko-vi.
+> - **Khi tiếp tục:** chạy lại lượt duyệt ngôn ngữ, sửa theo cả hai lượt duyệt, audit, hoàn thành bộ đọc audio, chạy canary và generate, rồi mở PR zh-vi.
+>
+> **Lần thức gần nhất:** 2026-11-04 05:10 UTC. **Lần thức kế tiếp:** không có (đang tạm dừng). Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
 >
 > **PR #63 (P4c ja-vi) đã merge (a545448):** 22/22 check xanh. Báo cáo ở `plan/reports/P4c-ja-vi.md`.
 >
