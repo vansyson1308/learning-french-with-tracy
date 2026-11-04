@@ -1,6 +1,14 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
-> **TẠM DỪNG theo yêu cầu của chủ dự án (2026-11-04).** Không còn agent nào chạy, không còn lịch tự thức. Mọi thứ đã push.
+> **TIẾP TỤC theo QC-2026-11-05 (2026-11-05).** `main` 733552b xanh.
+> - **Thứ tự:**
+>   1. zh-vi (§1): nghe chép chấp nhận chữ phồn thể; bộ chấm nhận biết phủ định cho mọi khoá; chạy lại lượt duyệt ngôn ngữ, ghi file dần theo từng unit; sửa theo cả hai lượt; duyệt đáp án lần hai toàn bộ; audit độc lập; bộ đọc audio có biến điệu; audio; PR.
+>   2. ko-vi dùng giọng của thiết bị (§2.1). Adapter Google Cloud TTS để sẵn, chờ anh duyệt mục B2.
+>   3. pt, rồi P5, P6a, v1.0.
+> - **D-16 (Google Play closed test):** làm song song trên worktree `release/d16-play-closed-test`.
+> - **Đang chạy:** agent sửa engine (phủ định, chữ phồn thể); người duyệt ngôn ngữ zh; agent D-16.
+>
+> **Tạm dừng trước đó (2026-11-04, theo yêu cầu của chủ dự án).** Trạng thái lúc dừng:
 > - **main:** xanh. Đã merge #58 voice-lineage, #59 en-vi, #60 voice sampler, #61 D-15, #62 P4b, #63 ja-vi, #64 sửa cách chấm ja.
 > - **`phase-4/zh-vi` (P4d):** đã xong phiên 1–5: bộ từ, 108 bài, nhập môn thanh điệu, các lớp nội dung, kiểm tra và HSK 1–2, 42 truyện.
 >   - Duyệt D-10: lượt đáp án xong, 56 lỗi, lưu ở `content/zh/_drafts/review/findings-answers.json`, chưa sửa. Lượt ngôn ngữ bị dừng trước khi ghi file, phải chạy lại.
