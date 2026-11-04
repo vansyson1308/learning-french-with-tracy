@@ -5,8 +5,10 @@
 >   1. zh-vi (§1): nghe chép chấp nhận chữ phồn thể; bộ chấm nhận biết phủ định cho mọi khoá; chạy lại lượt duyệt ngôn ngữ, ghi file dần theo từng unit; sửa theo cả hai lượt; duyệt đáp án lần hai toàn bộ; audit độc lập; bộ đọc audio có biến điệu; audio; PR.
 >   2. ko-vi dùng giọng của thiết bị (§2.1). Adapter Google Cloud TTS để sẵn, chờ anh duyệt mục B2.
 >   3. pt, rồi P5, P6a, v1.0.
-> - **D-16 (Google Play closed test):** làm song song trên worktree `release/d16-play-closed-test`.
-> - **Đang chạy:** agent sửa engine (phủ định, chữ phồn thể); người duyệt ngôn ngữ zh; agent D-16.
+> - **D-16 (Google Play closed test):** đã merge (#65); phần còn lại là việc của anh (checklist F).
+> - **Cập nhật 2026-11-05:**
+>   - **zh-vi** đã xong cả bốn bước: duyệt (audit đạt 0,24 %), bộ đọc audio có biến điệu, audio (run 41928304254, 0 lỗi kỹ thuật, 9,5 MB) và A1 claimable. Báo cáo `plan/reports/P4d-zh-vi.md`. Đã mở PR.
+>   - **ko-vi:** xong phiên 1–3, đã đẩy lên `phase-4/ko-vi`. Gồm 108 bài, 968 bài tập, nhập môn Hangul, nghe bằng giọng của thiết bị, nói, viết và tự kiểm tra. Phiên 4 (kịch bản, TOPIK I, kiểm tra, xếp lớp, truyện) đang chạy.
 >
 > **Tạm dừng trước đó (2026-11-04, theo yêu cầu của chủ dự án).** Trạng thái lúc dừng:
 > - **main:** xanh. Đã merge #58 voice-lineage, #59 en-vi, #60 voice sampler, #61 D-15, #62 P4b, #63 ja-vi, #64 sửa cách chấm ja.

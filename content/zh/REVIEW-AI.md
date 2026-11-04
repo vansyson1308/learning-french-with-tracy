@@ -212,7 +212,9 @@ Tờ duyệt Hán-Việt `content/hanviet/REVIEW.md` cũng được sinh lại (
 
 ## Âm thanh
 
-Khoá zh-vi chưa sinh âm thanh (bước kiểm tra bản nháp chỉ báo thiếu file âm thanh: 732 `audioTarget` và 312 clip). Các
+**Đã sinh (05/11/2026):** run 41928304254, bot commit 7e6eed46. Có 2.326 clip, 0 lỗi kỹ thuật, CER phần nghe 0,02–0,045, dung lượng 9,5 MB. Chi tiết ở `plan/reports/P4d-zh-vi.md`. Mọi câu đã sửa ở các lượt duyệt dưới đây đều nằm trong lượt sinh này.
+
+Trước lượt sinh này, khoá zh-vi chưa có âm thanh (bước kiểm tra bản nháp chỉ báo thiếu file âm thanh: 732 `audioTarget` và 312 clip). Các
 câu tiếng Trung đã đổi — 5 clip (`ix_factory_safety_end`, `ix_clinic_doctor_miss`, `ix_cp6_interview_0_s`,
 `hsk1_a_l4_03`, `hsk2_b_l2b_01`), 3 clip đổi giọng (`hsk2_b_l3_02`, `hsk2_a_l3_07`, `ul_model_name`), các `audioTarget` của
 bài học và các câu truyện — sẽ vào cùng một lượt sinh âm thanh, như P-ai-review yêu cầu.
