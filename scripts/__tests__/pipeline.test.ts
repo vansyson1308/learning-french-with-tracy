@@ -116,9 +116,9 @@ describe("compiler: round-trip and determinism", () => {
     const catalog = JSON.parse(byPath.get("src/content/catalog.json")!) as { courses: { id: string; nativeCode: string }[] };
     expect(catalog.courses.map((c) => c.id)).not.toContain("xx-en");
     // P2b: the catalogue carries one course per (target, native) — French
-    // is explained in English and in Vietnamese, Spanish (P3d), German (P3d(de)), Italian (P3d(it)) and Japanese (P4c) too.
+    // is explained in English and in Vietnamese, Spanish (P3d), German (P3d(de)), Italian (P3d(it)), Japanese (P4c) and Chinese (P4d) too.
     // English (P4f) exists from Vietnamese only.
-    expect(catalog.courses.filter((c) => c.nativeCode !== "en").map((c) => c.id)).toEqual(["de-vi", "en-vi", "es-vi", "fr-vi", "it-vi", "ja-vi"]);
+    expect(catalog.courses.filter((c) => c.nativeCode !== "en").map((c) => c.id)).toEqual(["de-vi", "en-vi", "es-vi", "fr-vi", "it-vi", "ja-vi", "zh-vi"]);
   });
 
   test("compiling twice yields identical bytes (deterministic)", () => {
@@ -172,8 +172,8 @@ describe("compiler: round-trip and determinism", () => {
       // P4b stage 4: the synthetic CJK variant xc-en has an id registry too (one select, one match).
       // P4c: Japanese has an id registry from its lexicon on, so ja-en's unambiguous selects and matches carry targets, and ja-vi's
       // (262: Section 1 has no kana typing, and 7 of its former typed answers are now one-word selects).
-      // P4d: Chinese has an id registry from its lexicon on, so zh-en's unambiguous selects and matches carry targets.
-      const expected: Record<string, number> = { "xx-en": 2, "xc-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140, "de-vi": 196, "it-en": 140, "it-vi": 195, "en-vi": 190, "ja-en": 137, "ja-vi": 262, "zh-en": 140 };
+      // P4d: Chinese has an id registry from its lexicon on, so zh-en's unambiguous selects and matches carry targets; zh-vi (promoted) too.
+      const expected: Record<string, number> = { "xx-en": 2, "xc-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140, "de-vi": 196, "it-en": 140, "it-vi": 195, "en-vi": 190, "ja-en": 137, "ja-vi": 262, "zh-en": 140, "zh-vi": 276 };
       expect({ courseId, targets: row.withGradeTargets }).toEqual({ courseId, targets: expected[courseId] ?? 0 });
     }
   });
