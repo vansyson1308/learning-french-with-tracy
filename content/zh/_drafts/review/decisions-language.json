@@ -206,7 +206,7 @@
   "problem": "In a factory 经理 is a manager (phòng / bộ phận); the director is 厂长 or 总经理. The first gloss inflates the rank, and 王经理 = \"giám đốc Vương\" runs through every scenario.",
   "fix": "经理 = quản lý; giám đốc (bộ phận); 王经理 = \"quản lý Vương\" (or keep \"giám đốc\" and note it)",
   "uncertain": "\"giám đốc\" is the common Vietnamese rendering in business; owner may prefer to keep it",
-  "decision": "uncertain (owner): 经理 stays 'giám đốc; quản lý'. 'Giám đốc' is the usual Vietnamese rendering in Chinese-owned companies and 王经理 = 'giám đốc Vương' runs through every scenario; changing it to 'quản lý' touches about 20 lines. The reviewer marked it uncertain."
+  "decision": "fixed (owner item decided by the coordinator, answer-key pass 2, 2026-11-05: 经理 is 'quản lý'; 'giám đốc' is 总经理): the lexicon gloss of zh:w:jingli is 'quản lý', and every Vietnamese line of the generators that rendered 经理 as 'giám đốc' now says 'quản lý' (44 occurrences: lexicon examples, lessons, writing instructions and cues, scenarios, concept cards, the unit-k guide, an HSK 2 question, two stories). Was: uncertain (owner), kept 'giám đốc; quản lý'."
  },
  {
   "id": "zh-vi:ul-l3-e3",
@@ -378,7 +378,7 @@
   "problem": "老 + surname is how peers or seniors address a man; a young worker calling an older man 老李 to his face (Vietnamese \"chú\") is too familiar, and the 您 beside it clashes. The narrator may say 老李; the young speaker should say 李叔叔 / 李师傅.",
   "fix": "李师傅，您呢？您家在哪儿？ / 谢谢您，李师傅！ (师傅 is a unit-t lexeme); keep 老李 in narration",
   "uncertain": "Downgraded after reading zh:concept:polite-work, which teaches 老王 for older colleagues; in mainland workplaces juniors do say 老李 to older peers. Keep only if the owner agrees 李师傅 suits a young woman speaking to a man a generation older.",
-  "decision": "uncertain (owner): kept 老李. The course's own card zh:concept:polite-work teaches 老 + surname for an older colleague, mainland juniors do say it, and 师傅 / 叔叔 are no course words. The reviewer downgraded it and left it to the owner."
+  "decision": "fixed differently (owner item decided by the coordinator, answer-key pass 2, 2026-11-05: 李师傅 for a master worker or a driver, 老李 for a peer colleague): micro_home_far #11 — 老李 is a colleague on the same break, a peer: kept. new_room #20 — 老李 is the dormitory's older worker, so 李师傅 is meant; but 师傅 is no lexeme and 傅 has no reading in the pinned CC-CEDICT slice (content/zh/lexicon/derived/hsk-course.json), so the line would show a hanzi without pinyin. The girl's line drops the vocative (我知道了。谢谢您！ — Cháu biết rồi. Cháu cảm ơn chú!) and the narration keeps 老李; 李师傅 needs zh-subset.py re-run on the pinned downloads (owner, REVIEW-AI.md). Was: uncertain (owner), kept 老李."
  },
  {
   "id": "zh.story.forgotten_wallet#3",
