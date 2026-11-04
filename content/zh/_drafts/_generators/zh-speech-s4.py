@@ -14,7 +14,7 @@ from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from zh_layers import DRAFTS, PROBLEMS, check, check_vi, clip, content_refs, refs, report, spoken_variants, write_jsonl  # noqa: E402
-from zh_text import NAME_VOICE  # noqa: E402
+from zh_text import NAME_VOICE, SPEECH_TWINS, twin_text  # noqa: E402
 
 OBJ = {"k": "zh.obj.speaking.formulaic", "l": "zh.obj.speaking.self_intro", "m": "zh.obj.speaking.give_info", "n": "zh.obj.speaking.describe"}
 FAM = {"k": "formulaic_exchange", "l": "self_introduction", "m": "information_giving", "n": "description"}
@@ -27,29 +27,31 @@ TEACHING = {
   ("greet_morning", "situation_prompt", "Buổi sáng, bạn đến nhà máy. Hãy chào mọi người.", "大家早上好！", ["早上好", "大家好", "你们好", "大家早", "早"], None, None),
   ("rep_xinku", "repetition", None, "辛苦了！", [], None, None),
   ("xinku", "situation_prompt", "Hết ca, bạn đi ngang một đồng nghiệp còn đang làm. Hãy nói một câu thăm hỏi quen dùng ở chỗ làm.", "辛苦了！", ["你辛苦了", "大家辛苦了", "您辛苦了"], None, None),
-  ("thanks", "situation_prompt", "Tổ trưởng giúp bạn khiêng thùng hàng. Hãy cảm ơn anh ấy.", "谢谢您！", ["谢谢", "谢谢你", "太谢谢了", "太谢谢你了", "谢谢组长", "非常感谢"], None, None),
+  ("thanks", "situation_prompt", "Tổ trưởng giúp bạn khiêng thùng hàng. Hãy cảm ơn anh ấy.", "谢谢您！", ["谢谢", "谢谢你", "太谢谢了", "太谢谢你了", "谢谢组长", "非常感谢", "非常感谢您", "太感谢了", "太谢谢您了"], None, None),
   ("rep_xianzou", "repetition", None, "我先走了。", [], None, None),
-  ("xianzou", "situation_prompt", "Ca của bạn đã hết, đồng nghiệp còn làm. Hãy xin phép về trước.", "我先走了，明天见！", ["我先走了", "我先走了，再见", "我下班了，明天见", "明天见", "我先下班了"], None, None),
-  ("sorry", "situation_prompt", "Bạn đến muộn năm phút. Hãy xin lỗi tổ trưởng.", "对不起，我迟到了。", ["对不起", "不好意思，我迟到了", "不好意思", "对不起，我来晚了", "不好意思，我来晚了", "对不起，我晚到了"], None, None),
-  ("excuse", "situation_prompt", "Bạn muốn hỏi đường một người lạ. Hãy mở lời lịch sự.", "请问。", ["你好，请问", "您好，请问", "不好意思，请问", "对不起，请问"], None, None),
+  ("xianzou", "situation_prompt", "Ca của bạn đã hết, đồng nghiệp còn làm. Hãy xin phép về trước.", "我先走了，明天见！", ["我先走了", "我先走了，再见", "我下班了，明天见", "明天见", "我先下班了",
+                                                                                                         "我先回去了", "我先回家了", "我走了，明天见", "我先走了，拜拜", "我先回去了，明天见"], None, None),
+  ("sorry", "situation_prompt", "Bạn đến muộn năm phút. Hãy xin lỗi tổ trưởng.", "对不起，我迟到了。", ["对不起", "不好意思，我迟到了", "不好意思", "对不起，我来晚了", "不好意思，我来晚了", "对不起，我晚到了",
+                                                                                     "不好意思，我晚到了", "对不起，我迟到了五分钟", "不好意思，我迟到了五分钟", "对不起，我晚到了五分钟"], None, None),
+  ("excuse", "situation_prompt", "Bạn muốn hỏi đường một người lạ. Hãy mở lời lịch sự.", "请问。", ["你好，请问", "您好，请问", "不好意思，请问", "对不起，请问", "请问一下", "打扰一下", "打扰一下，请问", "不好意思，打扰一下"], None, None),
  ],
  "l": [
   ("rep_renshi", "repetition", None, "认识您很高兴。", [], None, None),
-  ("name", "information_prompt", "Hãy nói tên của bạn.", "我叫阮海。", ["我是阮海", "阮海", "我的名字是阮海", "您好，我叫阮海", "你好，我叫阮海", "我姓阮，叫阮海"], [("Tên", "Nguyễn Hải")], None),
-  ("from", "information_prompt", "Hãy nói bạn là người nước nào.", "我是越南人。", ["越南人", "我从越南来", "我是从越南来的"], [("Nước", "Việt Nam")], None),
+  ("name", "information_prompt", "Hãy nói tên của bạn.", "我叫阮海。", ["我是阮海", "阮海", "我的名字是阮海", "我的名字叫阮海", "我姓阮，叫阮海"], [("Tên", "Nguyễn Hải")], None),
+  ("from", "information_prompt", "Hãy nói bạn là người nước nào.", "我是越南人。", ["越南人", "我从越南来", "我是从越南来的", "我来自越南"], [("Nước", "Việt Nam")], None),
   ("age", "information_prompt", "Hãy nói tuổi của bạn.", "我今年二十五岁。", ["我二十五岁", "二十五岁", "今年二十五岁"], [("Tuổi", "25")], None),
-  ("work", "information_prompt", "Hãy nói bạn làm việc ở đâu.", "我在工厂工作。", ["我在工厂上班", "在工厂工作", "我在一家工厂工作"], [("Nơi làm việc", "nhà máy")], None),
+  ("work", "information_prompt", "Hãy nói bạn làm việc ở đâu.", "我在工厂工作。", ["我在工厂上班", "在工厂工作", "我在一家工厂工作", "我在一个工厂工作", "我在工厂里工作", "我在工厂里上班"], [("Nơi làm việc", "nhà máy")], None),
   ("like", "semantic_prompt", "Hãy nói rằng bạn thích hát.", "我喜欢唱歌。", ["我很喜欢唱歌", "我的爱好是唱歌", "我爱唱歌", "我非常喜欢唱歌"], None, "🎤"),
   ("rep_jieshao", "repetition", None, "我来介绍一下。", [], None, None),
  ],
  "m": [
   ("rep_price", "repetition", None, "十五块。", [], None, None),
-  ("price", "information_prompt", "Một vị khách hỏi giá một bát mì. Hãy trả lời.", "十八块。", ["十八块钱", "十八元", "一碗十八块", "面条十八块"], [("Giá", "18 tệ")], None),
-  ("time", "information_prompt", "Có người hỏi giờ. Hãy trả lời.", "现在八点。", ["八点", "八点了", "现在是八点", "现在八点了"], [("Giờ", "8 giờ")], "🕗"),
+  ("price", "information_prompt", "Một vị khách hỏi giá một bát mì. Hãy trả lời.", "十八块。", ["十八块钱", "十八元", "一碗十八块", "面条十八块", "一碗面条十八块", "面条一碗十八块"], [("Giá", "18 tệ")], None),
+  ("time", "information_prompt", "Có người hỏi giờ. Hãy trả lời.", "现在八点。", ["八点", "八点了", "现在是八点", "现在八点了", "八点钟", "现在八点钟", "现在是八点钟"], [("Giờ", "8 giờ")], "🕗"),
   ("rep_half", "repetition", None, "三点半。", [], None, None),
   ("day", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "今天星期一。", ["星期一", "今天是星期一"], [("Hôm nay", "thứ Hai")], None),
-  ("birthday", "information_prompt", "Hãy nói sinh nhật của bạn.", "我的生日是五月十号。", ["五月十号", "我生日是五月十号", "我的生日五月十号"], [("Sinh nhật", "ngày 10 tháng 5")], "🎂"),
-  ("tickets", "information_prompt", "Ở ga, bạn mua vé. Hãy nói bạn muốn hai vé.", "我要两张票。", ["两张票", "请给我两张票", "给我两张票", "我买两张票"], [("Số vé", "2")], "🎫"),
+  ("birthday", "information_prompt", "Hãy nói sinh nhật của bạn.", "我的生日是五月十号。", ["五月十号", "我生日是五月十号", "我的生日五月十号", "我生日五月十号"], [("Sinh nhật", "ngày 10 tháng 5")], "🎂"),
+  ("tickets", "information_prompt", "Ở ga, bạn mua vé. Hãy nói bạn muốn hai vé.", "我要两张票。", ["两张票", "请给我两张票", "给我两张票", "我买两张票", "我想要两张票", "我想买两张票", "我要买两张票", "我要两张"], [("Số vé", "2")], "🎫"),
  ],
  "n": [
   ("rep_zhong", "repetition", None, "这个箱子很重。", [], None, None),
@@ -58,7 +60,7 @@ TEACHING = {
   ("cat", "picture_prompt", "Nhìn hình: con mèo nhỏ. " + SAY, "这只猫很小。", ["猫很小", "这是一只小猫", "小猫", "这只猫非常小"], None, "🐈"),
   ("rep_bai", "repetition", None, "我的衣服是白的。", [], None, None),
   ("room", "picture_prompt", "Nhìn hình: căn phòng này sạch sẽ. " + SAY, "这个房间很干净。", ["房间很干净", "这个房间非常干净", "很干净"], None, "🛏️"),
-  ("person", "picture_prompt", "Nhìn hình: người phụ nữ này cao. " + SAY, "她很高。", ["她非常高", "这个女人很高", "这个人很高", "很高"], None, "👩"),
+  ("person", "picture_prompt", "Nhìn hình: người phụ nữ này cao. " + SAY, "她很高。", ["她非常高", "这个女人很高", "这个人很高", "很高", "她个子很高"], None, "👩"),
  ],
 }
 # slug, unit (family, objective), elicitation, instruction, target, more accepted answers, cue facts, emoji
@@ -76,7 +78,7 @@ RESERVED = [
  ("cp4_day_friday", "m", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "今天星期五。", ["星期五", "今天是星期五"], [("Hôm nay", "thứ Sáu")], None),
  ("cp4_tickets_three", "m", "information_prompt", "Ở ga, bạn mua vé. Hãy nói bạn muốn ba vé.", "我要三张票。", ["三张票", "请给我三张票", "给我三张票", "我买三张票"], [("Số vé", "3")], None),
  ("cp4_desc_dog", "n", "picture_prompt", "Nhìn hình: con chó to. " + SAY, "这只狗很大。", ["狗很大", "这是一只大狗", "大狗", "这条狗很大", "这是一条大狗", "这只狗非常大"], None, "🐕"),
- ("cp4_desc_shirt", "n", "picture_prompt", "Nhìn hình: chiếc áo trắng. " + SAY, "这件衣服是白的。", ["衣服是白的", "这是一件白衣服", "白衣服", "这件衣服是白色的", "衣服是白色的", "白色的衣服"], None, "👕"),
+ ("cp4_desc_shirt", "n", "picture_prompt", "Nhìn hình: chiếc áo trắng. " + SAY, "这件衣服是白的。", ["衣服是白的", "这是一件白衣服", "白衣服", "这件衣服是白色的", "衣服是白色的", "白色的衣服", "这是一件白色的衣服", "这件衣服是白颜色的"], None, "👕"),
  ("a1cap_time_nine", "m", "information_prompt", "Có người hỏi giờ. Hãy trả lời.", "现在九点。", ["九点", "九点了", "现在是九点", "现在九点了"], [("Giờ", "9 giờ")], None),
  ("a1cap_price_coffee", "m", "information_prompt", "Một vị khách hỏi giá cà phê. Hãy trả lời.", "二十块。", ["二十块钱", "二十元", "一杯二十块", "咖啡二十块"], [("Giá", "20 tệ")], None),
  ("a1cap_day_sunday", "m", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "今天星期天。", ["星期天", "今天是星期天"], [("Hôm nay", "Chủ nhật")], None),
@@ -84,7 +86,7 @@ RESERVED = [
  ("pl_hello", "k", "situation_prompt", "Buổi trưa, bạn gặp một người quen trên phố. Hãy chào.", "你好！", ["您好", "你好啊", "中午好", "中午好啊"], None, None),
  ("pl_name_nam", "l", "information_prompt", "Hãy nói tên của bạn.", "我叫阮南。", ["我是阮南", "阮南", "我的名字是阮南"], [("Tên", "Nguyễn Nam")], None),
  ("pl_age", "l", "information_prompt", "Hãy nói tuổi của bạn.", "我今年三十岁。", ["我三十岁", "三十岁", "今年三十岁"], [("Tuổi", "30")], None),
- ("pl_big_car", "n", "picture_prompt", "Nhìn hình: chiếc xe to. " + SAY, "这辆车很大。", ["车很大", "这是一辆大车", "大车"], None, "🚙"),
+ ("pl_big_car", "n", "picture_prompt", "Nhìn hình: chiếc xe to. " + SAY, "这辆车很大。", ["车很大", "这是一辆大车", "大车", "这辆车非常大", "这辆汽车很大", "汽车很大"], None, "🚙"),
 ]
 
 LATIN = re.compile(r"[A-Za-zÀ-ɏḀ-ỿ]")
@@ -127,13 +129,40 @@ def item(sid, u, elic, instr, target, more, facts, emoji, reserved, model):
             "modelAudioRef": model, "recognitionLocale": "zh-CN", "allowedAttempts": 2, "reserved": reserved, "sourceRef": "original-project"}
 
 
+GREETINGS = ("你好", "您好", "大家好")
+
+
+def widened_more(u, slug, elic, target, more):
+    """Answer-key pass 2 (2026-11-05) rules over the authored answers: a self-introduction may open with a greeting
+    (你好，我是阮海 — the reviewer found 你好，我叫 listed and 你好，我是 not); a description says 真 / 好 as well as 很
+    (这个箱子真大, 好大). The grader adds the frame itself (谢谢啊, 组长，谢谢: src/lib/languages/zh.ts utteranceFrame)."""
+    out = list(more)
+    if u == "l" and slug == "name":
+        for v in [target.rstrip("。！？")] + list(more):
+            if v.startswith(("我叫", "我是", "我姓", "我的名字")):
+                out += [f"{g}，{v}" for g in GREETINGS]
+    if u == "n" and elic != "repetition":
+        for v in [target.rstrip("。！？")] + list(more):
+            if "很" in v:
+                out += [v.replace("很", "真", 1), v.replace("很", "好", 1)]
+    return out
+
+
 items, clips = [], []
+by_slug = {}
 for u, rows in TEACHING.items():
     for i, (slug, elic, instr, target, more, facts, emoji) in enumerate(rows):
         cid = f"zh.clip.u{u}_model_{slug}"
-        items.append(item(f"zh.speak.{u}_{slug}", u, elic, instr, target, more, facts, emoji, False, cid))
+        it = item(f"zh.speak.{u}_{slug}", u, elic, instr, target, widened_more(u, slug, elic, target, more), facts, emoji, False, cid)
+        items.append(it)
+        by_slug[f"{u}_{slug}"] = it
         clips.append(clip(cid, "word_phrase", [(voice_of(target, "B" if i % 3 == 2 else "A"), target)], [OBJ[u]]))
 for slug, u, elic, instr, target, more, facts, emoji in RESERVED:
+    more = widened_more(u, slug, elic, target, more)
+    if slug in SPEECH_TWINS:
+        # The lesson twin's every accepted form, with this item's facts (zh_text.SPEECH_TWINS).
+        twin, mapping = SPEECH_TWINS[slug]
+        more = more + [twin_text(v, mapping) for v in by_slug[twin]["acceptedVariants"]]
     items.append(item(f"zh.speak.{slug}", u, elic, instr, target, more, facts, emoji, True, None))
 
 write_jsonl(f"{DRAFTS}/speech/OUTPUT.jsonl", items)

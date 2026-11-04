@@ -239,7 +239,7 @@ def _natural_step(text):
 
 TIMES = sorted(["今天", "明天", "昨天", "现在", "每天", "早上", "晚上", "上午", "下午", "中午", "周末", "今年", "明年", "去年",
                 "后天", "前天", "以后", "刚才", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天", "下次",
-                "上次", "一会儿"], key=len, reverse=True)
+                "上次", "一会儿", "周一", "周二", "周三", "周四", "周五", "周六", "周日"], key=len, reverse=True)
 SUBJECTS = ("我们", "你们", "他们", "我", "你", "他", "她", "您")
 _SUBJ_TIME = re.compile(rf"^({'|'.join(SUBJECTS)})((?:{'|'.join(TIMES)})+)(.+)$")
 _TIME_SUBJ = re.compile(rf"^((?:{'|'.join(TIMES)})+)，?({'|'.join(SUBJECTS)})(.+)$")
@@ -326,12 +326,59 @@ def bit_spellings(text, index, pos):
 
 
 PERSON_NOUNS = {"工人", "学生", "大学生", "老师", "医生", "护士", "司机", "经理", "越南人", "中国人"}
+# A job or a role also counts with 名 (我是一名工人, the written and formal measure word); a nationality does not.
+ROLE_NOUNS = PERSON_NOUNS - {"越南人", "中国人"}
 
 
 def one_spellings(text, index):
-    """是 + a person noun also takes 一个 (我是工人 ⇄ 我是一个工人: a learner says both)."""
+    """是 + a person noun also takes 一个 (我是工人 ⇄ 我是一个工人: a learner says both), and a job 一名 (pass 2:
+    我也是一名工人, which uo-l3-e0 accepted and ua-l3-e7 did not)."""
     toks = [t for t, _ in index.tokens(text)]
-    return ["".join(toks[:i + 1]) + "一个" + "".join(toks[i + 1:]) for i, t in enumerate(toks[:-1]) if t == "是" and toks[i + 1] in PERSON_NOUNS]
+    out = []
+    for i, t in enumerate(toks[:-1]):
+        if t == "是" and toks[i + 1] in PERSON_NOUNS:
+            out.append("".join(toks[:i + 1]) + "一个" + "".join(toks[i + 1:]))
+            if toks[i + 1] in ROLE_NOUNS:
+                out.append("".join(toks[:i + 1]) + "一名" + "".join(toks[i + 1:]))
+    return out
+
+
+def dou_spellings(text, index, pos):
+    """每天 + a verb phrase also takes 都 (我每天洗澡 ⇄ 我每天都洗澡, 每天我在工厂工作 ⇄ 每天我都在工厂工作: 每天 … 都 is the
+    collocation most learners are taught; answer-key pass 2)."""
+    toks = [t for t, _ in index.tokens(text)]
+    out = []
+    for i, t in enumerate(toks):
+        if t != "每天":
+            continue
+        j = i + 1
+        if j < len(toks) and toks[j] in SUBJECTS:
+            j += 1
+        if j < len(toks) and toks[j] != "都" and (pos.get(toks[j]) == "verb" or toks[j] in ("在", "去", "来")):
+            out.append("".join(toks[:j]) + "都" + "".join(toks[j:]))
+    return out
+
+
+_AGE_END = re.compile(r"岁(?=$|[。，！？])")
+
+
+def age_spellings(text):
+    """An age at the end of a clause also takes 了 (我今年二十岁 ⇄ 我今年二十岁了: 今年 … 岁了 is how one states one's age)."""
+    return [_AGE_END.sub("岁了", text, count=1)] if _AGE_END.search(text) and "岁了" not in text else []
+
+
+# A weekday: 星期一 ⇄ 周一 (everyday spoken and written Chinese); 星期天 / 星期日 ⇄ 周日. Not 周末, not 一周 (a week).
+_XINGQI = re.compile(r"星期([一二三四五六天日])")
+_ZHOU = re.compile(r"(?<![一二三四五六七八九十两几每这上下])周([一二三四五六日])")
+
+
+def week_spellings(text):
+    out = []
+    if _XINGQI.search(text):
+        out.append(_XINGQI.sub(lambda m: "周" + ("日" if m.group(1) in "天日" else m.group(1)), text))
+    if _ZHOU.search(text):
+        out.append(_ZHOU.sub(lambda m: "星期" + ("天" if m.group(1) == "日" else m.group(1)), text))
+    return out
 
 
 GEI_VERBS = ("发", "打", "打电话", "寄", "送", "写", "传")
@@ -363,13 +410,24 @@ def order_variants(toks, swap_time=True):
             if k < n - 1 and toks[k] in SUBJECTS:
                 out.append([toks[k]] + list(toks[:k]) + list(toks[k + 1:]))
     for i in range(end - 2):
-        # 给 P V O… (to the end) → V O… 给 P
-        if toks[i] == "给" and toks[i + 2] in GEI_VERBS and (end - (i + 3) >= 1 or toks[i + 2] == "打电话"):
-            out.append(list(toks[:i]) + list(toks[i + 2:end]) + ["给", toks[i + 1]] + tail)
+        # 给 P V O… (to the end) → V O… 给 P; P is one token or a pronoun + a noun (给我妈妈打电话, answer-key pass 2)
+        for size in (1, 2):
+            v = i + 1 + size
+            if size == 2 and toks[i + 1] not in SUBJECTS:
+                continue
+            if v < end and toks[i] == "给" and toks[v] in GEI_VERBS and (end - (v + 1) >= 1 or toks[v] == "打电话"):
+                out.append(list(toks[:i]) + list(toks[v:end]) + ["给"] + list(toks[i + 1:v]) + tail)
     for i in range(end):
-        # V O… 给 P (at the end) → 给 P V O…
-        if toks[i] in GEI_VERBS and end >= i + 3 and toks[end - 2] == "给" and end - 2 > i and (end - 2 - (i + 1) >= 1 or toks[i] == "打电话"):
-            out.append(list(toks[:i]) + ["给", toks[end - 1]] + list(toks[i:end - 2]) + tail)
+        # V O… 给 P (at the end) → 给 P V O…; P as above
+        done = False
+        for size in (1, 2):
+            g = end - 1 - size
+            if size == 2 and (g + 1 >= end or toks[g + 1] not in SUBJECTS):
+                continue
+            if toks[i] in GEI_VERBS and g > i and toks[g] == "给" and (g - (i + 1) >= 1 or toks[i] == "打电话"):
+                out.append(list(toks[:i]) + ["给"] + list(toks[g + 1:end]) + list(toks[i:g]) + tail)
+                done = True
+        if done:
             break
     if end >= 3 and "住" in toks[:end]:
         j = list(toks[:end]).index("住")
@@ -400,16 +458,51 @@ def variant_spellings(text):
         _VINDEX[0], _VINDEX[1] = Index(lex), {x["surface"]: x["partOfSpeech"] for x in lex}
     index, pos = _VINDEX
     out = price_spellings(text) + mei_spellings(text, index) + bit_spellings(text, index, pos) + one_spellings(text, index)
+    # answer-key pass 2: 每天 … 都, an age with 了, 星期一 ⇄ 周一
+    out += dou_spellings(text, index, pos) + age_spellings(text) + week_spellings(text)
     for clause in _clauses(text):
         toks = [t for t, _ in index.tokens(clause)]
         out += [text.replace(clause, "".join(v), 1) for v in order_variants(toks, swap_time=False)]
     out += [_DATE_HAO.sub(r"\1日", text)] if _DATE_HAO.search(text) else []
-    # A phone number typed without its hyphens: the writing fold keeps 13812345678 one token but 138-1234-5678 three.
+    # A phone number typed without its hyphens. The writing fold keeps each hyphen a token of its own (138-1234-5678 is
+    # five tokens, 13812345678 one); the zh plugin's joined slot runs (src/lib/languages/runs.ts, answer-key pass 2) then
+    # take the number with spaces (138 1234 5678) for the unbroken variant, so both spellings are listed.
     out += [re.sub(r"(?<=\d)-(?=\d)", "", text)] if re.search(r"\d-\d", text) else []
     for a, b in TYPED_PAIRS:
         if a in text:
             out.append(text.replace(a, b))
     return [x for x in dict.fromkeys(out) if x != text]
+
+
+# ---------------------------------------------------------------- speech twins (answer-key pass 2, 2026-11-05)
+# A reserved speech item (checkpoint, capstone, placement) that asks what a lesson item asks, with other facts, accepts
+# every form the lesson item accepts, the facts swapped (zh-speech-s4.py widens it so, zh-check-answers.py rule 11 checks
+# it): a learner placed or examined on the twin is never held to a narrower list than the one they practised.
+SPEECH_TWINS = {
+    "cp4_thanks_water": ("k_thanks", {}),
+    "cp4_name_hua": ("l_name", {"阮海": "阮花"}),
+    "pl_name_nam": ("l_name", {"阮海": "阮南"}),
+    "cp4_vietnamese": ("l_from", {}),
+    "cp4_work_shop": ("l_work", {"工厂": "超市"}),
+    "pl_age": ("l_age", {"二十五": "三十", "25": "30"}),
+    "cp4_tickets_three": ("m_tickets", {"两": "三", "2": "3"}),
+    "cp4_time_ten": ("m_time", {"八": "十", "8": "10"}),
+    "a1cap_time_nine": ("m_time", {"八": "九", "8": "9"}),
+    "cp4_day_friday": ("m_day", {"一": "五", "1": "5"}),
+    "a1cap_day_sunday": ("m_day", {"星期一": "星期天", "周一": "周日"}),
+    "a1cap_birthday": ("m_birthday", {"五": "九", "十": "二十", "5": "9", "10": "20"}),
+    "cp4_price_tea": ("m_price", {"十八": "五", "18": "5", "碗": "瓶", "面条": "茶"}),
+    "a1cap_price_coffee": ("m_price", {"十八": "二十", "18": "20", "碗": "杯", "面条": "咖啡"}),
+    "cp4_desc_dog": ("n_box", {"箱子": "狗", "个": "只"}),
+}
+
+
+def twin_text(text, mapping):
+    """One lesson answer with the twin's facts (every key replaced at once, the longest first)."""
+    if not mapping:
+        return text
+    pattern = re.compile("|".join(re.escape(k) for k in sorted(mapping, key=len, reverse=True)))
+    return pattern.sub(lambda m: mapping[m.group(0)], text)
 
 
 # ---------------------------------------------------------------- voices (D-10 review, 2026-11-05)

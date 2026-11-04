@@ -58,7 +58,7 @@ S.append(story("micro_who_is_that", "A1-0", "那是谁？", "Ngày đầu ở nh
     ["工厂", "经理", "真的"], [
     ("N", "阮南 和 小李 在 工厂。", "Nam và Tiểu Lý đang ở nhà máy."),
     ("B", "小李，请问，那 是 谁？", "Tiểu Lý, cho hỏi, kia là ai vậy?"),
-    ("A", "那 是 王 经理。", "Đó là giám đốc Vương."),
+    ("A", "那 是 王 经理。", "Đó là quản lý Vương."),
     ("B", "他 是 中国人 吗？", "Ông ấy là người Trung Quốc à?"),
     ("A", "是，他 是 中国人。他 姓 王。", "Đúng, ông ấy là người Trung Quốc. Ông ấy họ Vương."),
     ("B", "那 她 是 谁？", "Thế cô kia là ai?"),
@@ -74,8 +74,8 @@ S.append(story("micro_who_is_that", "A1-0", "那是谁？", "Ngày đầu ở nh
     ("B", "谢谢 你，小李！", "Cảm ơn bạn, Tiểu Lý!"),
     ("A", "不客气！", "Không có gì!"),
 ], [
-    Q("Giám đốc Vương là người nước nào?", ["Người Trung Quốc", "Người Việt Nam", "Câu chuyện không nói"]),
-    Q("Tiểu Vương là ai?", ["Con gái của giám đốc Vương", "Em gái của Tiểu Lý", "Một công nhân người Việt"]),
+    Q("Quản lý Vương là người nước nào?", ["Người Trung Quốc", "Người Việt Nam", "Câu chuyện không nói"]),
+    Q("Tiểu Vương là ai?", ["Con gái của quản lý Vương", "Em gái của Tiểu Lý", "Một công nhân người Việt"]),
     Q("Vì sao Nam hỏi lại xem có thật không?", ["Vì Nam không ngờ có nhiều công nhân người Việt ở đó", "Vì Nam không nghe rõ", "Vì Nam không thích nhà máy"], "infer"),
 ], cast=("小李", "阮南")))
 

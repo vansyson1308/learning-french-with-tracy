@@ -94,7 +94,7 @@ S.append(story("new_room", "A1-1", "我的新房间", "Ngày đầu ở ký túc
     ("B", "她们 今天 上午 都 去 商场 了。下午 回来。", "Sáng nay các cô ấy đều đi trung tâm thương mại rồi. Chiều sẽ về."),
     ("A", "我 的 东西 放 在 哪儿？", "Đồ của cháu để ở đâu ạ?"),
     ("B", "放 在 床 下 吧。", "Cháu để dưới gầm giường nhé."),
-    ("A", "我 知道 了。谢谢 您，老李！", "Cháu biết rồi. Cảm ơn chú Lý!"),
+    ("A", "我 知道 了。谢谢 您！", "Cháu biết rồi. Cháu cảm ơn chú!"),
     ("B", "不客气。你 需要 什么，就 来 一 层 问 我。", "Không có gì. Cháu cần gì thì xuống tầng một hỏi chú."),
     ("N", "下午，三 个 女孩 回来 了，她们 都 是 越南人。", "Buổi chiều, ba cô gái trở về, họ đều là người Việt Nam."),
     ("A", "你们好！我 叫 阮雪。", "Chào các chị! Em tên là Tuyết."),

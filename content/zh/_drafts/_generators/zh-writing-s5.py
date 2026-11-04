@@ -19,9 +19,12 @@ from zh_layers import DRAFTS, bare, check, check_vi, content_refs, natural_spell
 from zh_text import variant_spellings  # noqa: E402
 
 PROFILE, SENT, MSG, FORM = "zh.obj.writing.personal_info", "zh.obj.writing.phrases_sentences", "zh.obj.writing.short_message", "zh.obj.writing.form_filling"
-GREET = ["您好", "你好", "组长好", "经理好"]
+# Answer-key pass 2 (2026-11-05): a note written in the morning greets with 早上好 (one lexeme, so no 好 slot finds it);
+# a day off is also 不去 / 不能去 / 不能来上班. The rubric itself lets a slot take an aspect particle, a numeral + measure
+# word, 一下 or a surname before a title (请一天假, 喝一杯咖啡, 叫李组长: src/lib/languages/zh.ts slotRuns).
+GREET = ["您好", "你好", "组长好", "经理好", "早上好", "晚上好", "下午好", "早", "组长早", "经理早", "您早"]
 SORRY = ["对不起", "不好意思"]
-REST = ["请假", "不能上班", "休息"]
+REST = ["请假", "不能上班", "休息", "不去上班", "不上班", "不能去上班", "不能来上班", "不来上班"]
 FIELDS = {"name": ("name", "姓名"), "address": ("address", "地址"), "phone": ("phone", "电话"), "birthday": ("birthday", "生日"), "country": ("country", "国家")}
 # slug -> (family, objective, instruction, cue facts, slots (id, description, variants, cue provided), min, max, sentence verbs, model, form fields)
 GUIDED = {
@@ -40,17 +43,17 @@ GUIDED = {
  "p_neg": ("simple_description", SENT, "Hãy viết một câu phủ định: bạn không uống rượu.", None,
            [("neg", "bạn không uống rượu", ["不喝酒"], False)], 2, 12, None, "我不喝酒。", None),
  "p_ask": ("simple_description", SENT, "Hãy viết một câu hỏi: Bạn sống ở đâu?", None,
-           [("ask", "câu hỏi về nơi sống", ["住在哪儿", "住哪儿"], False)], 2, 12, None, "你住在哪儿？", None),
+           [("ask", "câu hỏi về nơi sống", ["住在哪儿", "住哪儿", "住在什么地方", "住什么地方"], False)], 2, 12, None, "你住在哪儿？", None),
  "p_link": ("simple_description", SENT, "Hãy viết hai câu: bạn ăn sáng, sau đó bạn đi làm. Dùng một từ nối.", None,
-            [("breakfast", "bạn ăn sáng", ["吃早饭"], False), ("link", "từ nối", ["然后", "以后", "再", "之后"], False), ("work", "bạn đi làm", ["上班", "去工厂", "去公司", "去工作", "工作"], False)], 5, 25, None,
+            [("breakfast", "bạn ăn sáng", ["吃早饭", "吃早餐"], False), ("link", "từ nối", ["然后", "以后", "再", "之后"], False), ("work", "bạn đi làm", ["上班", "去工厂", "去公司", "去工作", "工作"], False)], 5, 25, None,
             "我先吃早饭，然后去上班。", None),
  "q_sick": ("short_message", MSG, "Hãy nhắn cho tổ trưởng Lý: chào, báo bạn bị sốt, và hôm nay bạn xin nghỉ.", [("Gửi", "tổ trưởng Lý")],
             [("greeting", "lời chào", GREET, False), ("fever", "bạn bị sốt", ["发烧"], False), ("rest", "xin nghỉ", REST, False)], 5, 30, None, "李组长，您好！我发烧了，今天想请假。", None),
- "q_late": ("short_message", MSG, "Hãy nhắn cho giám đốc Vương: chào, báo xe buýt đến muộn, rồi xin lỗi.", [("Gửi", "giám đốc Vương")],
+ "q_late": ("short_message", MSG, "Hãy nhắn cho quản lý Vương: chào, báo xe buýt đến muộn, rồi xin lỗi.", [("Gửi", "quản lý Vương")],
             [("greeting", "lời chào", GREET, False), ("bus", "xe buýt đến muộn", ["公交车来晚了", "公交车晚了", "公交车晚点了", "公交车迟到了", "公交车来得很晚"], False), ("sorry", "lời xin lỗi", SORRY, False)], 5, 30, None,
             "王经理，您好！公交车来晚了，对不起！", None),
  "q_reply": ("short_message", MSG, "Tổ trưởng nhắn: mai làm từ 7 giờ. Hãy trả lời: bạn đã hiểu, và cảm ơn.", None,
-             [("ok", "bạn đã hiểu", ["好的", "明白了", "我明白了", "知道了", "收到"], False), ("thanks", "lời cảm ơn", ["谢谢"], False)], 2, 20, None, "明白了，谢谢组长！", None),
+             [("ok", "bạn đã hiểu", ["好的", "明白了", "我明白了", "知道了", "收到", "好", "懂了", "我懂了", "明白", "没问题", "行"], False), ("thanks", "lời cảm ơn", ["谢谢"], False)], 2, 20, None, "明白了，谢谢组长！", None),
  "r_form_bank": ("simple_form", FORM, "Hãy điền đơn mở thẻ ngân hàng với các thông tin trên thẻ.", [("Họ tên", "Nguyễn Nam"), ("Nước", "Việt Nam"), ("Điện thoại", "138-1234-5678")],
                  [("name", "họ tên", ["阮南"], True), ("country", "nước", ["越南"], True), ("phone", "số điện thoại", ["138-1234-5678"], True)], 2, 12, None,
                  "阮南 | 越南 | 138-1234-5678", ["name", "country", "phone"]),
@@ -58,15 +61,25 @@ GUIDED = {
                  [("name", "họ tên", ["阮海"], True), ("address", "địa chỉ", ["上海"], True), ("phone", "số điện thoại", ["139-8765-4321"], True)], 2, 12, None,
                  "阮海 | 上海 | 139-8765-4321", ["name", "address", "phone"]),
  "r_note": ("short_message", SENT, "Hãy viết lời nhắn cho đồng nghiệp: máy bị hỏng, xin gọi tổ trưởng đến.", None,
-            [("machine", "cái máy", ["机器"], False), ("broken", "máy bị hỏng", ["坏了", "有问题", "不动了"], False), ("call", "gọi tổ trưởng", ["叫组长", "告诉组长", "给组长打电话"], False)], 4, 25, None,
+            [("machine", "cái máy", ["机器"], False), ("broken", "máy bị hỏng", ["坏了", "有问题", "不动了", "出问题", "不能用了"], False),
+             ("call", "gọi tổ trưởng", ["叫组长", "告诉组长", "给组长打电话", "找组长", "请组长来", "让组长来"], False)], 4, 25, None,
             "机器坏了，请叫组长来。", None),
 }
 # Open practice: menu slots, never scored.
 OPEN = {
- "o_open": ("personal_profile", PROFILE, "Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được.", [("about", "một câu về bạn", ["是", "叫", "住", "喜欢", "工作"])], 3, 40, "我叫阮花。我是越南人。我喜欢音乐。"),
- "p_open": ("simple_description", SENT, "Hãy viết vài câu về một ngày của bạn.", [("day", "một câu về ngày của bạn", ["起床", "吃饭", "上班", "下班", "睡觉", "每天"])], 3, 40, "我每天六点起床。晚上我在宿舍吃饭。"),
- "q_open": ("short_message", MSG, "Hãy viết một tin nhắn ngắn cho một người bạn.", [("message", "lời chào hoặc lời mời", ["你好", "一起", "吧", "谢谢"])], 3, 40, "小王，你好！星期六我们一起去看电影吧。"),
- "r_open": ("personal_profile", SENT, "Hãy viết vài câu về công việc của bạn.", [("work", "một câu về công việc", ["工作", "工厂", "公司", "组长", "同事", "上班"])], 3, 40, "我在工厂工作。我早上七点上班。我的组长很好。"),
+# Answer-key pass 2 (2026-11-05): a menu lists the course's patterns for the topic, so a correct text is never met with a
+# false "đừng quên …" (我有两个妹妹。我今年二十岁。 / 我七点吃早饭，八点去工厂。 / 小王，明天见！ / 我是工人。我每天八点去车间。).
+ "o_open": ("personal_profile", PROFILE, "Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được.",
+            [("about", "một câu về bạn", ["是", "叫", "住", "喜欢", "工作", "有", "岁", "今年", "在", "家", "会", "想", "爱"])], 3, 40, "我叫阮花。我是越南人。我喜欢音乐。"),
+ "p_open": ("simple_description", SENT, "Hãy viết vài câu về một ngày của bạn.",
+            [("day", "một câu về ngày của bạn", ["起床", "吃饭", "上班", "下班", "睡觉", "每天", "早上", "晚上", "中午", "上午", "下午", "点", "去", "工作", "吃早饭", "吃午饭", "吃晚饭", "休息", "回家"])], 3, 40,
+            "我每天六点起床。晚上我在宿舍吃饭。"),
+ "q_open": ("short_message", MSG, "Hãy viết một tin nhắn ngắn cho một người bạn.",
+            [("message", "lời chào hoặc lời mời", ["你好", "一起", "吧", "谢谢", "您好", "早上好", "晚上好", "明天见", "再见", "生日快乐", "新年快乐", "有时间吗", "怎么样", "好吗"])], 3, 40,
+            "小王，你好！星期六我们一起去看电影吧。"),
+ "r_open": ("personal_profile", SENT, "Hãy viết vài câu về công việc của bạn.",
+            [("work", "một câu về công việc", ["工作", "工厂", "公司", "组长", "同事", "上班", "工人", "车间", "仓库", "经理", "老板", "司机", "加班", "下班", "机器", "箱子", "打卡"])], 3, 40,
+            "我在工厂工作。我早上七点上班。我的组长很好。"),
 }
 RESERVED = {
  "cp5_profile_hua": ("personal_profile", PROFILE, "Bạn là Nguyễn Hoa. Hãy tự giới thiệu: tên, tuổi và thành phố, bằng câu hoàn chỉnh.", [("Tên", "Nguyễn Hoa"), ("Tuổi", "24"), ("Thành phố", "Bắc Kinh")],
@@ -79,17 +92,18 @@ RESERVED = {
  "cp5_sister": ("simple_description", SENT, "Hãy viết hai câu về chị gái bạn: chị ấy tên là Nguyễn Hồng, và chị ấy là bác sĩ.", [("Tên", "Nguyễn Hồng")],
                 [("name", "tên của chị ấy", ["阮红"], True), ("job", "nghề của chị ấy", ["医生"], False)], 4, 20, ["叫", "是"], "我姐姐叫阮红。她是医生。", None),
  "cp5_room": ("simple_description", SENT, "Hãy viết hai câu tả căn phòng: phòng nhỏ, và trong phòng có một cái giường.", None,
-              [("small", "phòng nhỏ", ["房间很小", "房间不大"], False), ("bed", "có một cái giường", ["一张床"], False)], 4, 20, None, "我的房间很小。房间里有一张床。", None),
+              [("small", "phòng nhỏ", ["房间很小", "房间不大", "房间非常小", "房间有点儿小", "房间太小", "房间真小", "房间小"], False), ("bed", "có một cái giường", ["一张床", "张床", "床"], False)], 4, 20, None, "我的房间很小。房间里有一张床。", None),
  "cp5_note_movie": ("short_message", MSG, "Hãy nhắn cho Tiểu Vương: rủ bạn ấy đi xem phim lúc 7 giờ.", [("Gửi", "Tiểu Vương"), ("Giờ", "7 giờ")],
-                    [("movie", "bộ phim", ["看电影"], False), ("time", "giờ hẹn", ["七点"], True), ("invite", "lời rủ", ["吧", "好吗", "怎么样", "好不好", "行吗", "可以吗"], False)], 4, 25, None,
+                    [("movie", "bộ phim", ["看电影", "电影院", "电影"], False), ("time", "giờ hẹn", ["七点"], True), ("invite", "lời rủ", ["吧", "好吗", "怎么样", "好不好", "行吗", "可以吗"], False)], 4, 25, None,
                     "小王，晚上七点我们去看电影吧？", None),
  "cp5_note_sick": ("short_message", MSG, "Hãy nhắn cho tổ trưởng: chào, báo bạn bị cảm, và hôm nay bạn xin nghỉ.", None,
                    [("greeting", "lời chào", GREET, False), ("cold", "bạn bị cảm", ["感冒"], False), ("rest", "xin nghỉ", REST, False)], 5, 30, None, "组长，您好！我感冒了，今天想请假。", None),
- "cp5_note_late": ("short_message", MSG, "Hãy nhắn cho giám đốc: xin lỗi, bạn sẽ đến muộn khoảng 15 phút.", [("Đến muộn", "15 phút")],
+ "cp5_note_late": ("short_message", MSG, "Hãy nhắn cho quản lý: xin lỗi, bạn sẽ đến muộn khoảng 15 phút.", [("Đến muộn", "15 phút")],
                    [("sorry", "lời xin lỗi", SORRY, False), ("minutes", "đến muộn bao lâu", ["十五分钟"], True), ("late", "bạn sẽ đến muộn", ["晚到", "迟到", "来晚", "晚"], False)], 4, 25, None,
                    "对不起，我会晚到十五分钟。", None),
- "cp5_mail_shift": ("short_message", MSG, "Hãy nhắn cho giám đốc Vương: chào, rồi hỏi thứ Bảy bạn có thể nghỉ không.", [("Ngày", "thứ Bảy")],
-                    [("greeting", "lời chào", GREET, False), ("day", "ngày nghỉ", ["星期六"], True), ("rest", "xin nghỉ", ["可以请假吗", "能请假吗", "可以休息吗", "能休息吗", "请假可以吗", "能不能请假", "可不可以请假", "能不能休息", "可不可以休息", "想请假"], False)], 4, 25, None,
+ "cp5_mail_shift": ("short_message", MSG, "Hãy nhắn cho quản lý Vương: chào, rồi hỏi thứ Bảy bạn có thể nghỉ không.", [("Ngày", "thứ Bảy")],
+                    [("greeting", "lời chào", GREET, False), ("day", "ngày nghỉ", ["星期六"], True), ("rest", "xin nghỉ", ["可以请假吗", "能请假吗", "可以休息吗", "能休息吗", "请假可以吗", "能不能请假", "可不可以请假", "能不能休息", "可不可以休息", "想请假",
+                                                                                                                                     "想休息", "休息可以吗"], False)], 4, 25, None,
                     "王经理，您好！星期六我可以请假吗？", None),
  "cp5_form_bank": ("simple_form", FORM, "Hãy điền đơn mở thẻ ngân hàng với các thông tin trên thẻ.", [("Họ tên", "Nguyễn Hồng"), ("Nước", "Việt Nam"), ("Điện thoại", "137-2222-3333")],
                    [("name", "họ tên", ["阮红"], True), ("country", "nước", ["越南"], True), ("phone", "số điện thoại", ["137-2222-3333"], True)], 2, 12, None,
@@ -105,8 +119,8 @@ RESERVED = {
  "a1cap_note_bus": ("short_message", MSG, "Hãy nhắn cho Nguyễn Nam: báo xe buýt của bạn đến lúc 6 giờ.", [("Gửi", "Nguyễn Nam"), ("Giờ", "6 giờ")],
                     [("bus", "xe buýt", ["公交车"], False), ("time", "giờ xe đến", ["六点"], True)], 3, 25, None, "阮南，我的公交车六点到。", None),
  "a1cap_note_home": ("short_message", MSG, "Hãy nhắn cho Tiểu Lý: bạn đang ở siêu thị, và 5 giờ bạn về nhà.", [("Gửi", "Tiểu Lý"), ("Giờ", "5 giờ")],
-                     [("place", "siêu thị", ["超市"], False), ("time", "giờ về nhà", ["五点"], True), ("home", "bạn về nhà", ["回家"], False)], 4, 25, None, "小李，我现在在超市，五点回家。", None),
- "a1cap_mail_absent": ("short_message", MSG, "Hãy nhắn cho giám đốc Vương: chào, báo thứ Năm bạn đi bệnh viện, nên bạn xin nghỉ.", [("Ngày", "thứ Năm")],
+                     [("place", "siêu thị", ["超市"], False), ("time", "giờ về nhà", ["五点"], True), ("home", "bạn về nhà", ["回家", "回去", "到家", "回来"], False)], 4, 25, None, "小李，我现在在超市，五点回家。", None),
+ "a1cap_mail_absent": ("short_message", MSG, "Hãy nhắn cho quản lý Vương: chào, báo thứ Năm bạn đi bệnh viện, nên bạn xin nghỉ.", [("Ngày", "thứ Năm")],
                        [("greeting", "lời chào", GREET, False), ("day", "ngày nghỉ", ["星期四"], True), ("hospital", "bệnh viện", ["医院"], False), ("rest", "xin nghỉ", REST, False)], 5, 30, None,
                        "王经理，您好！星期四我要去医院，想请假一天。", None),
 }

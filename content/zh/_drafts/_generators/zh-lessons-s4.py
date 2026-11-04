@@ -14,17 +14,17 @@ lesson("uk-l0", [
     C("polite-work"),
     T("辛苦了", ["加油", "没问题", "好的"]), N("经理", ["组长", "老板", "工人"]),
     NX("Cuối ca, tổ trưởng nói với cả tổ:", "辛苦了！", ["加油！", "生日快乐！", "早上好！"]),
-    NX("Bạn chào giám đốc Vương buổi sáng.", "王经理，早上好！", ["王经理，晚安！", "王，早上好！", "经理王，早上好！"]),
-    F("王经理___！", "好", ["吗", "呢", "了"], "Chào giám đốc Vương!"),
+    NX("Bạn chào quản lý Vương buổi sáng.", "王经理，早上好！", ["王经理，晚安！", "王，早上好！", "经理王，早上好！"]),
+    F("王经理___！", "好", ["吗", "呢", "了"], "Chào quản lý Vương!"),
     W("Tôi về trước, mai gặp.", "我|先|走|了|明天见", ["再见", "来"]),
     M("辛苦了", "加油", "好的", "没问题", "我明白了"),
     SP("k_rep_zaoshang"), SP("k_greet_morning"),
 ])
 lesson("uk-l1", [
     F("___好！我是新来的工人。", "您", ["他", "她", "它"], "Xin chào! Tôi là công nhân mới đến."),
-    NX("Câu nào lịch sự khi nói với giám đốc?", "您好，王经理。", ["你好，小王。", "喂，王经理。", "嗯，你好。"]),
+    NX("Câu nào lịch sự khi nói với quản lý?", "您好，王经理。", ["你好，小王。", "喂，王经理。", "嗯，你好。"]),
     TX("您贵姓？", "Ông họ gì ạ?", ["Ông bao nhiêu tuổi ạ?", "Ông làm nghề gì ạ?", "Ông là người nước nào ạ?"]),
-    Y("Chào giám đốc (lịch sự).", "经理好", "经理，您好", "您好，经理"),
+    Y("Chào quản lý (lịch sự).", "经理好", "经理，您好", "您好，经理"),
     W("Xin đợi một chút.", "请|等|一下", ["一点儿", "看"]),
     T("好的", ["没问题", "辛苦了", "不客气"]),
     SP("k_rep_xinku"), SP("k_xinku"), SP("k_thanks"),
@@ -42,7 +42,7 @@ lesson("uk-l3", [
     H("辛苦了", ["新年", "加油", "心情"]), H("没问题", ["没关系", "没事儿", "问题"]), H("我明白了", ["我明天来", "我不明白", "我们白天"]),
     NX("Tổ trưởng giao việc, bạn trả lời: Vâng, không vấn đề gì.", "好的，没问题。", ["好的，没关系。", "不客气，没问题。", "对不起，没问题。"]),
     F("___，我明白了。", "好的", ["不客气", "对不起", "晚安"], "Vâng, tôi hiểu rồi."),
-    Y("Tôi hiểu rồi.", "我明白了", "明白了", "我懂了"),
+    Y("Tôi hiểu rồi.", "我明白了", "明白了", "我懂了", "懂了"),
     SP("k_greet_morning", ("politeness.register",)), SP("k_xinku", ("politeness.register",)), SP("k_xianzou", ("politeness.register",)),
 ])
 
@@ -73,17 +73,17 @@ lesson("ul-l2", [
     F("你___来我们公司吗？", "想", ["会", "是", "在"], "Bạn muốn vào công ty chúng tôi không?"),
     TX("我今天不能上班。", "Hôm nay tôi không đi làm được.", ["Hôm nay tôi không muốn đi làm.", "Hôm nay tôi không biết đi làm.", "Hôm nay tôi được nghỉ."]),
     NX("Tôi muốn làm việc ở Trung Quốc.", "我想在中国工作。", ["我想工作在中国。", "我在想中国工作。", "我会在中国工作。"]),
-    Y("Tôi biết nói tiếng Trung.", "我会说汉语", "我会说中文"),
+    Y("Tôi biết nói tiếng Trung.", "我会说汉语", "我会说中文", "我会讲中文", "我会讲汉语", "我会说普通话"),
     W("Tôi vào được không?", "我|可以|进来|吗", ["会", "呢"]),
     SP("l_like"), SP("l_rep_jieshao"),
 ])
 lesson("ul-l3", [
     T("介绍", ["认识", "希望", "喜欢"]),
-    TX("我来介绍一下，这是我的同事小王。", "Để tôi giới thiệu, đây là đồng nghiệp của tôi, Tiểu Vương.", ["Để tôi giới thiệu, đây là giám đốc Vương.", "Đây là bạn học của tôi, Tiểu Vương.", "Tiểu Vương giới thiệu tôi với đồng nghiệp."]),
+    TX("我来介绍一下，这是我的同事小王。", "Để tôi giới thiệu, đây là đồng nghiệp của tôi, Tiểu Vương.", ["Để tôi giới thiệu, đây là quản lý Vương.", "Đây là bạn học của tôi, Tiểu Vương.", "Tiểu Vương giới thiệu tôi với đồng nghiệp."]),
     F("我___你介绍一下。", "给", ["在", "是", "比"], "Tôi giới thiệu với bạn một chút."),
     NX("Tôi hy vọng được làm việc ở công ty của các anh chị.", "我希望在你们公司工作。", ["我希望工作在你们公司。", "我在希望你们公司工作。", "你们希望在我的公司工作。"]),
     W("Tôi thích công việc này.", "我|喜欢|这个|工作", ["想", "那个"]),
-    Y("Tôi thích âm nhạc.", "我喜欢音乐", "我喜欢听音乐", "我爱音乐"),
+    Y("Tôi thích âm nhạc.", "我喜欢音乐", "我喜欢听音乐", "我爱音乐", "我爱听音乐"),
     M("介绍", "希望", "喜欢", "觉得", "想"),
     SP("l_name", ("greetings.basic",)), SP("l_from", ("vocab.work_china",)), SP("l_work", ("vocab.work_china",)),
 ])
@@ -95,7 +95,7 @@ lesson("um-l0", [
     F("你的电话号码是___？", "多少", ["几", "谁", "哪"], "Số điện thoại của bạn là bao nhiêu?"),
     H("七点十分", ["七点四十", "十点七分", "一点十分"]),
     W("Bạn có điện thoại di động không?", "你|有|手机|吗", ["呢", "号码"]),
-    Y("Số điện thoại của bạn là bao nhiêu?", "你的电话号码是多少", "你电话号码是多少", "你的电话是多少"),
+    Y("Số điện thoại của bạn là bao nhiêu?", "你的电话号码是多少", "你电话号码是多少", "你的电话是多少", "你电话是多少", "你的号码是多少", "你号码是多少"),
     M("电话", "手机", "号码", "电脑", "照片"),
     SP("m_tickets"),
 ])
@@ -113,7 +113,7 @@ lesson("um-l2", [
     TX("我们几点见？", "Mấy giờ chúng ta gặp?", ["Chúng ta gặp ở đâu?", "Mấy giờ bạn đi?", "Hôm nào chúng ta gặp?"]),
     F("下午两点___分", "十", ["个", "岁", "块"], "hai giờ mười phút chiều"),
     NX("ngày một tháng năm", "五月一号", ["一月五号", "五号一月", "五月一年"]),
-    Y("Chúng ta gặp lúc ba giờ chiều.", "我们下午三点见", "我们下午三点见面"),
+    Y("Chúng ta gặp lúc ba giờ chiều.", "我们下午三点见", "我们下午三点见面", "我们下午三点见吧", "我们下午三点见面吧"),
     M("点", "分", "刻", "半", "小时"),
     SP("m_time"), SP("m_rep_half"),
 ])
@@ -154,7 +154,7 @@ lesson("un-l2", [
     NX("Tàu điện ngầm nhanh hơn xe buýt.", "地铁比公交车快。", ["地铁比公交车很快。", "公交车比地铁快。", "地铁快比公交车。"]),
     TX("我和他一样高。", "Tôi cao bằng anh ấy.", ["Tôi cao hơn anh ấy.", "Anh ấy cao hơn tôi.", "Tôi và anh ấy đều thấp."]),
     W("Hôm nay lạnh hơn hôm qua.", "今天|比|昨天|冷", ["很", "热"]),
-    Y("Cái này rẻ hơn cái kia.", "这个比那个便宜"),
+    Y("Cái này rẻ hơn cái kia.", "这个比那个便宜", "这个比那个更便宜", "这个比那个便宜一点儿"),
     M("比", "一样", "最", "快", "慢"),
     SP("n_rep_bai"), SP("n_cat"),
 ])

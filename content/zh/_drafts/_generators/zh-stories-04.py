@@ -72,7 +72,7 @@ S.append(story("rainy_monday", "A1-2", "下雨的星期一", "Sáng thứ Hai m�
 S.append(story("karaoke_night", "A1-2", "一起去唱歌", "Tối thứ Bảy, Hồng đi hát karaoke với đồng nghiệp và hát một bài tiếng Việt.",
     ["笑", "有时候", "一直"], [
     ("N", "星期六 晚上，阮红 和 同事 们 去 唱歌。", "Tối thứ Bảy, Hồng đi hát với các đồng nghiệp."),
-    ("N", "小王、小李 和 王 经理 都 来 了。", "Tiểu Vương, Tiểu Lý và giám đốc Vương đều đến."),
+    ("N", "小王、小李 和 王 经理 都 来 了。", "Tiểu Vương, Tiểu Lý và quản lý Vương đều đến."),
     ("N", "小王 先 唱歌，大家 都 说 很 好听。", "Tiểu Vương hát trước, mọi người đều khen hay."),
     ("B", "阮红，你 也 唱歌 吧！", "Hồng ơi, cô cũng hát đi!"),
     ("A", "我 不 会 用 汉语 唱歌。", "Tôi không biết hát bằng tiếng Trung."),
@@ -89,13 +89,13 @@ S.append(story("karaoke_night", "A1-2", "一起去唱歌", "Tối thứ Bảy, H
     ("N", "大家 都 笑 了。", "Mọi người đều cười."),
     ("B", "下次 你 教 我们 用 越南语 唱歌，好 吗？", "Lần sau cô dạy chúng tôi hát tiếng Việt nhé, được không?"),
     ("A", "好！我 教 你们。", "Được! Tôi sẽ dạy mọi người."),
-    ("N", "王 经理 也 唱歌 了，但是 不 太 好听。", "Giám đốc Vương cũng hát, nhưng không hay lắm."),
+    ("N", "王 经理 也 唱歌 了，但是 不 太 好听。", "Quản lý Vương cũng hát, nhưng không hay lắm."),
     ("N", "他 说：“我 唱歌 不 好，但是 我 很 高兴！”", "Ông ấy nói: \"Tôi hát không hay, nhưng tôi rất vui!\""),
     ("N", "唱歌 以后，大家 一起 吃 了 晚饭。", "Hát xong, mọi người cùng nhau ăn tối."),
     ("N", "那 天 晚上，他们 一直 玩儿 到 十一 点。", "Tối hôm đó, họ chơi mãi đến mười một giờ."),
 ], [
-    Q("Hôm đó ai đi hát cùng Hồng?", ["Tiểu Vương, Tiểu Lý và giám đốc Vương", "Chỉ có Tiểu Vương", "Cả nhà máy"]),
-    Q("Bài hát Hồng hát là bài ai hay hát?", ["Mẹ cô ấy", "Tiểu Vương", "Giám đốc Vương"]),
+    Q("Hôm đó ai đi hát cùng Hồng?", ["Tiểu Vương, Tiểu Lý và quản lý Vương", "Chỉ có Tiểu Vương", "Cả nhà máy"]),
+    Q("Bài hát Hồng hát là bài ai hay hát?", ["Mẹ cô ấy", "Tiểu Vương", "Quản lý Vương"]),
     Q("Vì sao mọi người cười?", ["Vì Hồng nói ở đây cô có mọi người nên bớt nhớ nhà", "Vì Hồng hát sai lời", "Vì Hồng không biết hát"], "infer"),
 ], cast=("阮红", "王经理")))
 

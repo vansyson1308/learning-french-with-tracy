@@ -31,7 +31,7 @@ lesson("ua-l1", [
     NX("Bạn có bận không?", "你忙吗？", ["你忙吗不？", "你是忙吗？", "你忙不忙吗？"]),
     NX("Mình đi thôi.", "我们走吧。", ["我们走吗。", "我们走呢。", "我们吧走。"]),
     W("Bạn có phải là học sinh không?", "你|是|学生|吗", ["呢", "不"]),
-    Y("Bạn có anh trai không?", "你有哥哥吗", "你有没有哥哥"),
+    Y("Bạn có anh trai không?", "你有哥哥吗", "你有没有哥哥", "你有哥哥没有"),
     M("吗", "呢", "吧", "也", "都"),
 ])
 lesson("ua-l2", [
@@ -54,7 +54,7 @@ lesson("ua-l3", [
     TX("他们都是中国人。", "Họ đều là người Trung Quốc.", ["Họ cũng là người Trung Quốc.", "Họ không phải người Trung Quốc.", "Chúng tôi đều là người Trung Quốc."]),
     NX("Chúng ta cùng đi nhé.", "我们一起去吧。", ["我们一起去吗。", "我们去一起吧。", "一起我们去吧。"]),
     W("Mọi người đều là bạn.", "大家|都|是|朋友", ["也", "不"]),
-    Y("Tôi cũng là công nhân.", "我也是工人"),
+    Y("Tôi cũng là công nhân.", "我也是工人"),  # 一个 / 一名 工人: zh_text.one_spellings
     M("也", "都", "大家", "我们", "一起"),
 ])
 
@@ -96,7 +96,7 @@ lesson("ub-l2", [
 lesson("ub-l3", [
     C("measure-words"),
     T("位", ["个", "种", "次"]), N("种", ["位", "次", "条"]),
-    F("这___先生是我们经理。", "位", ["本", "只", "张"], "Vị này là giám đốc của chúng tôi."),
+    F("这___先生是我们经理。", "位", ["本", "只", "张"], "Vị này là quản lý của chúng tôi."),
     F("你要几___包子？", "个", ["本", "次", "双"], "Bạn lấy mấy cái bánh bao?"),
     TX("我们公司有三百个工人。", "Công ty chúng tôi có ba trăm công nhân.", ["Công ty chúng tôi có ba mươi công nhân.", "Nhà máy có ba trăm người.", "Công ty chúng tôi có ba nghìn công nhân."]),
     NX("hai vị khách", "两位客人", ["二位客人", "两客人位", "两本客人"]),
@@ -111,11 +111,11 @@ lesson("uc-l0", [
     T("在", ["有", "是", "去"]),
     F("银行___超市旁边。", "在", ["有", "是", "的"], "Ngân hàng ở cạnh siêu thị."),
     F("宿舍里___洗手间。", "有", ["在", "的", "不"], "Trong ký túc xá có nhà vệ sinh."),
-    F("经理不___。", "在", ["有", "是", "的"], "Giám đốc không có ở đây."),
+    F("经理不___。", "在", ["有", "是", "的"], "Quản lý không có ở đây."),
     NX("Tôi ở nhà máy.", "我在工厂。", ["我有工厂。", "我是工厂。", "工厂在我。"]),
     TX("这儿没有电梯。", "Ở đây không có thang máy.", ["Thang máy ở đây.", "Ở đây có thang máy.", "Ở kia không có thang máy."]),
     W("Bạn ở đâu?", "你|在|哪儿", ["有", "吗"]),
-    Y("Tôi ở ký túc xá.", "我在宿舍", "我住在宿舍", "我住宿舍"),
+    Y("Tôi ở ký túc xá.", "我在宿舍", "我住在宿舍", "我住宿舍", "我在宿舍里", "我住在宿舍里"),
     M("在", "这儿", "那儿", "哪儿", "有"),
 ])
 lesson("uc-l1", [
@@ -149,7 +149,7 @@ lesson("uc-l3", [
     TX("我在门口等你。", "Tôi đợi bạn ở cửa.", ["Bạn đợi tôi ở cửa.", "Tôi đợi bạn ở nhà.", "Tôi ở cửa."]),
     NX("Tôi ăn cơm ở nhà ăn.", "我在食堂吃饭。", ["我吃饭在食堂。", "我在吃饭食堂。", "食堂在我吃饭。"]),
     W("Ngân hàng ở đối diện công ty.", "银行|在|公司|对面", ["旁边", "有"]),
-    Y("Nhà vệ sinh ở đâu?", "洗手间在哪儿"),
+    Y("Nhà vệ sinh ở đâu?", "洗手间在哪儿", "厕所在哪儿", "卫生间在哪儿"),
     M("这儿", "那儿", "哪儿", "对面", "门口"),
 ])
 
@@ -162,7 +162,7 @@ lesson("ud-l0", [
     NX("Mai tôi đi làm lúc tám giờ.", "我明天八点上班。", ["我上班明天八点。", "我明天上班八点。", "八点我明天上班。"]),
     TX("现在八点半。", "Bây giờ là tám giờ rưỡi.", ["Bây giờ là tám giờ.", "Bây giờ là tám giờ kém mười lăm.", "Bây giờ là chín giờ rưỡi."]),
     W("Hôm nay tôi nghỉ.", "我|今天|休息", ["明天", "了"], alts=("今天|我|休息",)),
-    Y("Bây giờ là mấy giờ?", "现在几点", "现在几点了"),
+    Y("Bây giờ là mấy giờ?", "现在几点", "现在几点了", "现在是几点", "现在几点钟", "现在是几点钟"),
     M("今天", "明天", "昨天", "现在", "点"),
 ])
 lesson("ud-l1", [
@@ -197,7 +197,7 @@ lesson("ud-l3", [
     TX("他正在吃饭。", "Anh ấy đang ăn cơm.", ["Anh ấy đã ăn cơm rồi.", "Anh ấy từng ăn cơm ở đây.", "Anh ấy muốn ăn cơm."]),
     TX("门开着。", "Cửa đang mở.", ["Cửa đóng rồi.", "Hãy mở cửa.", "Cửa hỏng rồi."]),
     W("Tôi đang làm việc.", "我|在|工作", ["过", "了"]),
-    Y("Tôi từng đến Trung Quốc.", "我去过中国", "我来过中国"),
+    Y("Tôi từng đến Trung Quốc.", "我去过中国", "我来过中国", "我到过中国", "我曾经去过中国", "我曾经来过中国"),
     M("了", "过", "正在", "已经", "刚才"),
 ])
 
@@ -210,7 +210,7 @@ lesson("ue-l0", [
     TX("你会写汉字吗？", "Bạn biết viết chữ Hán không?", ["Bạn biết đọc chữ Hán không?", "Bạn biết nói tiếng Trung không?", "Bạn học chữ Hán ở đâu?"]),
     NX("Tôi học tiếng Trung ở công ty.", "我在公司学习汉语。", ["我学习汉语在公司。", "我在汉语学习公司。", "公司在我学习汉语。"]),
     W("Tôi biết nói tiếng Trung.", "我|会|说|汉语", ["写", "字"]),
-    Y("Tôi học tiếng Trung.", "我学习汉语", "我学汉语", "我学习中文", "我学中文"),
+    Y("Tôi học tiếng Trung.", "我学习汉语", "我学汉语", "我学习中文", "我学中文", "我在学汉语", "我在学中文", "我在学习汉语", "我在学习中文"),
     M("汉字", "汉语", "字", "写", "学习"),
 ])
 lesson("ue-l1", [

@@ -42,6 +42,12 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags:
     text); a scenario concept group is never a bare negator (不 / 没 / 别 alone pass any negated sentence: 我很不舒服 is no
     "no fever"); a Vietnamese line beside a 块 / 元 amount says "tệ", not "đồng" (the Vietnamese dong), and one beside 斤
     never says a bare "cân" (a Vietnamese reader takes it for a kilogram; 一斤 is half of one).
+11. (answer-key pass 2, 2026-11-05) a scenario or speech concept form is never a number or clock time that a longer one
+    continues or ends (二十 passes 二十五, 两 passes 两个星期, 三点 passes 三点半, 二十个 passes 一百二十个: a numeric answer
+    is matched by its variants), nor one hanzi the course tokenizer also finds inside a longer word it does not store (有
+    in 有事, 好 in 好久, 是 in 只是 — probed over the HSK 1-3 words and the pinned CC-CEDICT slice of
+    lexicon/derived/hsk-course.json); a reserved speech item with a lesson twin (zh_text.SPEECH_TWINS) accepts every
+    answer its twin accepts, the facts swapped.
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I zh-check-answers.py <repo root>
 """
@@ -50,8 +56,9 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from zh_text import (COUNTER_NOUNS, HAN, MEASURE_WORDS, NOUN_MEASURES, Index, bare, load_lexicon, natural_spellings,  # noqa: E402
-                     numeral_spellings, order_variants, subject_spellings, topic_spellings, variant_spellings, vi_unit_problems, voice_problems)
+from zh_text import (COUNTER_NOUNS, HAN, MEASURE_WORDS, NOUN_MEASURES, SPEECH_TWINS, Index, bare, load_lexicon, natural_spellings,  # noqa: E402
+                     numeral_spellings, order_variants, subject_spellings, topic_spellings, twin_text, variant_spellings, vi_unit_problems,
+                     voice_problems)
 # Negators that, alone in a scenario concept group, would pass any negated sentence.
 BARE_NEGATORS = {"不", "没", "别", "不是", "不要", "不用"}
 
@@ -420,6 +427,55 @@ def scenario_rules():
                 for group in x.get("requiredConcepts", []):
                     if any(bare(c) in BARE_NEGATORS for c in group):
                         flag(where, "concept-negator", f"concept group {group}: a bare negator passes any negated sentence (我很不舒服); name the negated word (不发烧, 没发烧)")
+                    concept_rules(where, group)
+
+
+# ---------------------------------------------------------------- rule 11 (answer-key pass 2): concepts and speech twins
+# Digits of a number (几 asks for one: 几点 is a question, not a time a longer one continues).
+NUMERAL_CHARS = set("零一二三四五六七八九十百千两")
+_SLICE = json.load(open(f"{ROOT}/content/zh/lexicon/derived/hsk-course.json", encoding="utf-8"))
+# Words a learner may say that the course does not store: the runtime tokenizer splits them, so a one-hanzi concept
+# form inside one of them is matched (有 in 有事).
+PROBE_WORDS = sorted({r[1] for rows in _SLICE["hsk"].values() for r in rows} | set(_SLICE["cedict"]))
+PROBE_WORDS = [w for w in PROBE_WORDS if len(w) >= 2 and w not in LEX and HAN.search(w)]
+
+
+def concept_rules(where, group):
+    for form in group:
+        plain = bare(form)
+        toks = [t for t, _ in INDEX.tokens(plain)]
+        if not toks:
+            continue
+        last, first = plain[-1], toks[0]
+        # a clock time: numerals + 点, after an optional part of the day (三点, 下午三点; not 会一点 "a bit")
+        hour = re.sub(r"^(?:上午|下午|早上|晚上|中午|现在)+", "", plain)
+        clock = hour.endswith("点") and len(hour) > 1 and all(ch in NUMERAL_CHARS for ch in hour[:-1])
+        if last in NUMERAL_CHARS or clock:
+            flag(where, "concept-number", f"concept {form!r} is the start of a longer number or time (二十 → 二十五, 三点 → 三点半, 两 → 两个星期): use variants or close it (两天, 三点见)")
+        if all(ch in NUMERAL_CHARS for ch in first) and first != "两":
+            flag(where, "concept-number", f"concept {form!r} can end a longer number (二十个 in 一百二十个, 三点见 in 十三点见): use variants")
+        if len(plain) == 1 and HAN.search(plain):
+            others = [bare(g) for g in group if bare(g) != plain]
+            hits = [w for w in PROBE_WORDS if plain in w and plain in [t for t, _ in INDEX.tokens(w)] and not any(o in w for o in others)]
+            if hits:
+                flag(where, "concept-inside-word", f"concept {form!r} is one hanzi, also matched inside words the course does not store ({', '.join(hits[:5])}): name the phrase (有时间, 给您)")
+
+
+def twin_rules():
+    """A reserved speech item with a lesson twin accepts every answer the twin accepts, the facts swapped."""
+    for slug, (twin, mapping) in SPEECH_TWINS.items():
+        rid, tid = f"zh.speak.{slug}", f"zh.speak.{twin}"
+        if rid not in SPEECH or tid not in SPEECH:
+            flag(rid, "speech-twin", f"unknown speech item {rid if rid not in SPEECH else tid}")
+            continue
+        have = {bare(v) for v in SPEECH[rid]["acceptedVariants"]}
+        for v in SPEECH[tid]["acceptedVariants"]:
+            w = twin_text(v, mapping)
+            if bare(w) not in have:
+                flag(rid, "speech-twin", f"{w!r} (the lesson twin {tid} accepts {v!r}) is not accepted")
+    for sid, it in SPEECH.items():
+        for group in it.get("requiredConcepts", []):
+            concept_rules(sid, group)
 
 
 def reception_rules():
@@ -571,6 +627,7 @@ for x in LEXL:
 # Session 3: the layer records themselves (reserved ones included: checkpoints and placement show them later).
 reception_rules()
 scenario_rules()
+twin_rules()
 
 os.makedirs(f"{D}/lessons", exist_ok=True)
 with open(f"{D}/lessons/OUTPUT.jsonl", "w", encoding="utf-8", newline="\n") as f:

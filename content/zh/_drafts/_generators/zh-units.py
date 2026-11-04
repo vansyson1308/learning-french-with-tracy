@@ -417,7 +417,7 @@ unit(4, "unit-k", "uk", "Chào hỏi ở chỗ làm", "Chào khi vào ca, khi ta
 ## Ở chỗ làm
 
 - *早！* hoặc *早上好！* — chào buổi sáng (đồng nghiệp hay nói gọn *早*)
-- *王经理好！* (jīng lǐ) — chào giám đốc Vương: họ + chức vụ + *好*
+- *王经理好！* (jīng lǐ) — chào quản lý Vương: họ + chức vụ + *好*
 - *辛苦了！* (xīn kǔ le) — vất vả rồi: cấp trên nói với nhân viên, đồng nghiệp nói với nhau
 - *我先走了，明天见。* — Tôi về trước, mai gặp.
 
