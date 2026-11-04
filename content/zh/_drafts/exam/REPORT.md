@@ -24,7 +24,7 @@ Records: 2 · schema-valid: 2 · failed: 0 · validator errors after merge: 312
 - reception: zh.clip.uf_yu: generated asset 1e01c8a02c789c5437be.opus missing — run the reception-audio generate workflow (P7 §26)
 - reception: zh.clip.uf_tingbudong: generated asset 90edf0a6221689ae8ff0.opus missing — run the reception-audio generate workflow (P7 §26)
 - reception: zh.clip.ug_anquanmao: generated asset 4e9df8032445dd818793.opus missing — run the reception-audio generate workflow (P7 §26)
-- reception: zh.clip.ug_tingji: generated asset fdd926aca48267002298.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ug_tingji: generated asset a90edaca4d698e42c1d0.opus missing — run the reception-audio generate workflow (P7 §26)
 - reception: zh.clip.ug_fang: generated asset 7f95b905ac84074f9a43.opus missing — run the reception-audio generate workflow (P7 §26)
 - reception: zh.clip.ug_shoutao: generated asset f7b7545fbf7ee9aae312.opus missing — run the reception-audio generate workflow (P7 §26)
 - reception: zh.clip.uh_beijing: generated asset 75008e2ec9ce0095b1f8.opus missing — run the reception-audio generate workflow (P7 §26)

@@ -86,7 +86,7 @@ S.append(story("train_to_shanghai", "A1-2", "坐火车去上海", "Kỳ nghỉ �
     ("N", "他们 的 座位 是 十二 号 和 十三 号。", "Chỗ ngồi của họ là số mười hai và số mười ba."),
     ("A", "行李 放 在 哪儿？", "Hành lý để ở đâu anh?"),
     ("B", "放 在 那儿 吧。", "Để ở kia đi em."),
-    ("N", "火车 开 了。", "Tàu chạy."),
+    ("N", "火车 开 了。", "Tàu chạy rồi."),
     ("N", "火车 很 快，外边 的 山 和 河 都 很 漂亮。", "Tàu chạy rất nhanh, núi và sông bên ngoài đều rất đẹp."),
     ("A", "从 广州 到 上海 要 多 长 时间？", "Từ Quảng Châu đến Thượng Hải mất bao lâu hả anh?"),
     ("B", "七 个 小时。", "Bảy tiếng."),

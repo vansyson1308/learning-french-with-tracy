@@ -6,8 +6,8 @@ dạy người Việt (độc lập với các phiên đã viết nội dung). �
 "Nội dung được AI kiểm duyệt kỹ, chưa qua giáo viên bản ngữ."
 
 Theo quyết định điều phối QC-2026-11-05 §1.3, vì lượt đáp án đầu có 18 lỗi P0, khoá zh-vi chạy thêm **một lượt đáp án
-thứ hai trên toàn bộ** (không chỉ mẫu 10 %), rồi mới đến audit độc lập. Lượt hai đã xong (05/11/2026, mục "Lượt đáp án 2"
-bên dưới); dòng audit trong bảng còn "chờ".
+thứ hai trên toàn bộ** (không chỉ mẫu 10 %), rồi mới đến audit độc lập. Cả hai đã xong (05/11/2026, mục "Lượt đáp án 2"
+và "Audit độc lập 10 %" bên dưới); audit đạt.
 
 ## Phạm vi và kết quả từng lượt
 
@@ -16,7 +16,7 @@ bên dưới); dòng audit trong bảng còn "chờ".
 | Đáp án, lượt 1 (04/11/2026) | 1.547 mục có chấm điểm: 976 bài tập của 108 bài học (cùng 66 clip và 29 bài đọc chúng dùng), 115 câu kiểm tra (7 bài, kể cả bài tổng kết A1), 22 câu xếp lớp, 80 câu HSK 1 và 120 câu HSK 2 (mỗi cấp hai đề), 52 bài nói, 35 bài viết, 21 kịch bản (42 lượt người học có chấm), 126 câu hỏi truyện | 18 | 33 | 5 | 56 | 4 |
 | Ngôn ngữ, lượt 1 (tiếng Trung, tiếng Việt, đối chiếu; 05/11/2026) | 27/27 sách hướng dẫn đơn vị; 108/108 bài học (cả 976 bài tập); 42/42 truyện (902 câu, 126 câu hỏi, 42 lời giới thiệu) và một lượt quét bằng script giọng đọc theo tên nhân vật; 29/29 bài đọc và 30/90 bài đọc HSK; 222/222 clip và 30/90 clip HSK (quét tên và giọng trên cả 312); 21 kịch bản; 52 bài nói; 35 bài viết; 28 thẻ ngữ pháp; toàn bộ bài nhập môn thanh điệu và pinyin; 199 mục Hán-Việt; 302/906 từ vựng (một phần ba) cùng một lượt quét biểu thức chính quy trên cả 906 câu ví dụ | 0 | 25 | 80 | 105 | 4 |
 | Đáp án, lượt 2 (toàn bộ; 05/11/2026) | cả 1.547 mục có chấm điểm như lượt 1 (976 bài tập, 115 câu kiểm tra, 22 câu xếp lớp, 200 câu HSK, 52 bài nói, 35 bài viết, 21 kịch bản với 42 lượt có chấm, 126 câu hỏi truyện); mọi đáp án đáng ngờ được chạy qua chính bộ chấm của app | 14 | 41 | 32 | 87 | 2 |
-| Audit độc lập 10 % | chờ | chờ | chờ | chờ | chờ | chờ |
+| Audit độc lập 10 % (05/11/2026) | 414 dòng mà ba lượt trên không nêu, rút ngẫu nhiên (hạt giống 20261105): 126 mục có chấm điểm và 288 dòng ngôn ngữ; soát lại 10 bản sửa P0/P1 (10/10 đúng) | 0 | 1 | 10 | 11 | 0 |
 
 Lượt ngôn ngữ ghi kết quả dần theo từng đơn vị (`findings-language.jsonl` trong thư mục làm việc của phiên, rồi gộp
 thành `findings-language.json`), đúng yêu cầu QC-2026-11-05 §1.4.
@@ -29,17 +29,17 @@ ngôn ngữ: 块 dịch là "đồng" trong truyện (người Việt hiểu là
 hiểu là 1 ký, trong khi 一斤 là nửa ký), một giọng đọc cho hai nhân vật trong cùng cảnh, 有火 thay cho 着火 trong bài
 diễn tập chữa cháy, thẻ ngữ pháp cấm 我是阮海 (câu đúng mà khoá học chấp nhận), và "tr miền Bắc" trong thẻ phát âm.
 
-Quyết định cho từng lỗi nằm trong `content/zh/_drafts/review/decisions-answers.json`, `decisions-language.json` và
-`decisions-answers2.json` (cùng thư mục với các file lỗi gốc `findings-answers.json`, `findings-language.json`,
-`findings-answers2.json`):
+Quyết định cho từng lỗi nằm trong `content/zh/_drafts/review/decisions-answers.json`, `decisions-language.json`,
+`decisions-answers2.json` và `decisions-audit.json` (cùng thư mục với các file lỗi gốc `findings-answers.json`,
+`findings-language.json`, `findings-answers2.json`, `findings-audit.json`):
 
-| Quyết định | Đáp án 1 | Ngôn ngữ | Đáp án 2 | Tổng |
-|---|---|---|---|---|
-| Đã sửa trong bộ sinh nội dung hoặc bộ chấm (kể cả bằng quy tắc chung) | 55 | 94 | 86 | 235 |
-| Sửa theo cách khác (lý do ghi trong từng mục) | 1 | 9 | 1 | 11 |
-| Giữ nguyên, có lý do | 0 | 2 | 0 | 2 |
-| Chờ anh quyết định | 0 | 0 | 0 | 0 |
-| **Tổng** | **56** | **105** | **87** | **248** |
+| Quyết định | Đáp án 1 | Ngôn ngữ | Đáp án 2 | Audit | Tổng |
+|---|---|---|---|---|---|
+| Đã sửa trong bộ sinh nội dung hoặc bộ chấm (kể cả bằng quy tắc chung) | 55 | 94 | 86 | 8 | 243 |
+| Sửa theo cách khác (lý do ghi trong từng mục) | 1 | 9 | 1 | 2 | 13 |
+| Giữ nguyên, có lý do | 0 | 2 | 0 | 1 | 3 |
+| Chờ anh quyết định | 0 | 0 | 0 | 0 | 0 |
+| **Tổng** | **56** | **105** | **87** | **11** | **259** |
 
 Hai mục "chờ anh quyết định" của lượt ngôn ngữ đã được điều phối viên quyết định (xem "Chưa chắc" bên dưới), nên cột ngôn
 ngữ chuyển một mục sang "đã sửa" (经理) và một mục sang "sửa theo cách khác" (老李 / 李师傅).
@@ -119,6 +119,76 @@ nhắc sai "đừng quên …". Kiểm thử: `src/lib/__tests__/answer-runs.tes
 kiểm thử "các ngôn ngữ khác không đổi") và `scripts/__tests__/zh-answer-pass2.test.ts` (174 câu ví dụ của người duyệt chạy
 qua bộ chấm trên nội dung thật: các câu đúng được nhận, các câu sai bị từ chối; viết trước khi sửa: 134 trượt).
 
+## Audit độc lập 10 % (05/11/2026)
+
+Một agent thứ tư, ngữ cảnh mới, đóng vai giáo viên tiếng Trung bản ngữ đọc được tiếng Việt, chỉ đọc (không sửa) worktree
+ở commit d5070ff4 (lớp đã promote `content/courses/zh-vi.json` và `content/zh/**`). Kết quả gốc:
+`content/zh/_drafts/review/findings-audit.json`; cách lấy mẫu: `audit-sample.py` (cùng thư mục), chạy
+`python -I -X utf8 audit-sample.py <repo> <thư mục ra>`.
+
+**Mẫu.** Một "dòng" là một đơn vị người duyệt chấm: một bài tập, một câu kiểm tra / xếp lớp / HSK, một bài nói, một bài
+viết, một lượt kịch bản có chấm, một câu hỏi truyện; bên ngôn ngữ: một câu truyện (hoặc lời giới thiệu), một khối bài đọc,
+một clip, một từ vựng (nghĩa và câu ví dụ), một mục thẻ ngữ pháp, một dòng sách hướng dẫn, một mục bài nhập môn, một mục
+Hán-Việt, mục tiêu của một kịch bản. Tập rút mẫu là các dòng **cả ba lượt** không nêu tên: bỏ mọi id trong ba file lỗi (kể
+cả `alsoAffects`, khoảng câu truyện; id truyện trơn bỏ cả câu hỏi và lời giới thiệu), bài tập trỏ tới bài nói / bài viết /
+kịch bản đã nêu, mọi nút và clip của kịch bản đã nêu, mọi khối của bài đọc đã nêu. Các dòng mà quy tắc sửa có hệ thống đã
+đổi nhưng không lỗi nào nêu tên vẫn ở trong tập. Id được sắp xếp, `random.Random(20261105)`, rút `ceil(10 %)` mỗi nhóm,
+bài tập trước, ngôn ngữ sau, rồi 10 bản sửa P0/P1 từ 131 mục "fixed" của ba file quyết định. Đáp án đáng ngờ được chạy qua
+chính bộ chấm của app (`checkAnswer`, `gradeSpokenAttempt`, `matchIntent`, `evaluateGuidedWriting`, quy tắc zh với từ
+điển của khoá) bằng một script ngoài repo.
+
+| Nhóm | Số dòng | Chưa bị nêu | Rút mẫu | Theo loại (rút / chưa bị nêu) |
+|---|---|---|---|---|
+| Có chấm điểm | 1.568 | 1.260 | 126 | bài tập 74/806, HSK 25/198, kiểm tra 11/78, câu hỏi truyện 11/120, bài viết 2/12, bài nói 1/14, xếp lớp 1/18, lượt kịch bản 1/14 |
+| Ngôn ngữ | 3.338 | 2.871 | 288 | từ vựng 96/906, truyện 76/868, clip 29/224, bài đọc 24/201, thẻ ngữ pháp 20/181, Hán-Việt 18/196, sách hướng dẫn 18/235, nhập môn 5/53, kịch bản 2/7 |
+| **Tổng** | | | **414** | |
+
+**Kết quả.**
+
+| Nhóm | P0 | P1 | P2 | P0 + P1 |
+|---|---|---|---|---|
+| Có chấm điểm (126) | 0 | 1 (bài tập) | 4 (bài tập 2, bài viết 1, HSK 1) | 0,79 % |
+| Ngôn ngữ (288) | 0 | 0 | 6 (từ vựng 3, truyện 2, bài đọc 1) | 0 % |
+| **Tổng (414)** | **0** | **1** | **10** | **0,24 %**, dưới ngưỡng 2 %: **đạt** |
+
+Riêng đáp án (nhóm có chấm điểm) là 1/126 = 0,79 %, cũng dưới 2 % (khoảng tin cậy 95 % với một lỗi: khoảng 0,02 % đến
+4,3 %). Các loại khác không có lỗi nào. Soát lại 10 bản sửa (4 từ đáp án 1, 3 từ ngôn ngữ, 3 từ đáp án 2; 3 P0, 7 P1):
+10/10 đúng và đủ.
+
+**P1 thành quy tắc.** Lỗi P1 duy nhất (`zh-vi:ul-l2-e7`, bài nói `zh.speak.l_like`: 我特别喜欢唱歌 bị từ chối trong khi
+我很喜欢唱歌 và 我非常喜欢唱歌 được nhận) thuộc đúng loại chính của các lượt trước: một câu đúng thiếu một biến thể. Không sửa
+từng câu mà thêm `zh_text.tebie_spellings` vào các biến thể từ của `variant_spellings`: 很 / 非常 trước một động từ hoặc
+tính từ cũng nhận 特别 (特别 là từ của khoá); không bao giờ trong mệnh đề có 比 (sau 比 không có phó từ mức độ), và không
+đổi 很多 / 很少 trước danh từ (很多人, không nói 特别多人). Vì `variant_spellings` dùng chung, quy tắc tới câu gõ, bài nói,
+ô bài viết và lượt kịch bản; quy tắc 10 của `zh-check-answers.py` đóng nó (thiếu một dạng 特别 là pipeline dừng), và quy
+tắc 1 (cặp từ cùng điền được một chỗ trống), quy tắc 比 và quy tắc 是 + tính từ cũng biết 特别.
+
+| Phạm vi của quy tắc | Số mục |
+|---|---|
+| Bài nói | 12 (9 bài dạy, 3 bài dự trữ: `cp4_thanks_water`, `cp4_desc_dog`, `pl_big_car`), cùng 13 bản sao trong bài học, kiểm tra và xếp lớp |
+| Câu gõ trong bài học | 8 (`uf-l0-e6`, `uf-l2-e6`, `ug-l3-e6`, `un-l0-e6`, `un-l3-e6`, `ut-l1-e5`, `uu-l0-e5`, `uu-l1-e5`) |
+| Ô bài viết | 2 (`zh.write.q_late` bus, `zh.write.cp5_room` small, cùng bản sao của chúng) |
+| Lượt kịch bản | 2 (`clinic_doctor` l0, `a1cap_weekend` l1, mỗi lượt cả lần thử lại) |
+| **Tổng bản ghi nguồn** | **24** |
+
+Các P2 của audit:
+
+| Mục | Quyết định |
+|---|---|
+| `zh-vi:uq-l2-e0` (九点钟) | Đã sửa: nhận thêm 我明天九点钟到 / 我明天九点钟来 (và thứ tự 明天我…). Không thêm quy tắc chung 点 ⇄ 点钟: 一点 còn là "một chút", và 三点半, 九点多 không được thêm 钟 |
+| `zh.write.cp5_note_late` (一刻钟) | Đã sửa: ô số phút nhận 十五分钟 / 一刻钟 / 一刻 |
+| `zh.exi.hsk_1.b_l3_03` (🏨) | Đã sửa: "A. Bệnh viện" là 🏥 (bộ tranh dùng chung cho b_l3_01–05) |
+| `zh-vi:uf-l1-e6` (thẻ ghép trùng chữ đầu) | Đã sửa: nghĩa của 下雨 là "trời mưa"; 雨 vẫn là "mưa" |
+| `zh:w:jiating` | Đã sửa: 我的家庭很幸福。 / Gia đình tôi rất hạnh phúc. |
+| `zh:w:nan-south` | Sửa theo cách khác: 越南在中国南边。 / Việt Nam ở phía nam Trung Quốc. (广州在中国南方 sẽ hiện 南方 là một từ riêng, nên chính từ 南 không có trong câu ví dụ của nó) |
+| `zh:w:nar-45` (nà r) | Giữ nguyên, có lý do: cách đọc lưu một âm tiết pinyin cho mỗi chữ (lớp pinyin trên chữ xếp theo từng chữ; `zh-lexicon.test.ts` ghim `reading.pinyin` = `pronunciation.value`). Viết nàr cần một quy tắc hiển thị trong app cho cả 10 từ có 儿 hoá, không phải sửa nội dung; ghi ở `release/KNOWN_LIMITATIONS.md` |
+| `zh.story.night_shift_warehouse` #13 | Đã sửa: 不能发给顾客。 |
+| `zh.story.train_to_shanghai` #13 | Đã sửa tiếng Việt: Tàu chạy rồi. |
+| `zh.read.ug_rules` #2 (停机器) | Sửa theo cách khác: 机器有问题，请马上把机器关了，告诉组长。 停机 không có trong từ vựng và không có trong lát CC-CEDICT đã ghim (chữ 机 đứng riêng cũng không có cách đọc); 关掉 cần 掉, cũng không phải từ của khoá; 把 và 关 được dạy ở đơn vị c. Cùng chữ 停机器 ở clip `zh.clip.ug_tingji` (nay 机器有问题，快把机器关了！) và câu ví dụ của 停 (nay 雨停了。 / Mưa tạnh rồi.); hai đáp án đọc hiểu nay là "Tắt máy ngay (rồi báo tổ trưởng)". Kịch bản `factory_safety` vẫn nhận 怎么停机器 từ người học |
+
+Kiểm thử: `scripts/__tests__/zh-answer-audit.test.ts` (các câu của người duyệt và của quy tắc chạy qua bộ chấm trên nội
+dung thật; một câu sai vẫn bị từ chối; không câu nào có 特别 sau 比 hay 特别多 / 特别少 + danh từ; các dòng hiển thị đã sửa).
+
 ## Từ mới (qua ETL tiếng Trung, cách đọc từ CC-CEDICT, nghĩa tiếng Việt viết tay)
 
 | Từ | Pinyin | Nghĩa | Bậc | Dùng ở |
@@ -150,6 +220,11 @@ bài học và các câu truyện — sẽ vào cùng một lượt sinh âm tha
 Lượt đáp án 2 không đổi clip nào (`listening.json` giữ nguyên từng byte, cả phân vai giọng của bước âm thanh) và không đổi
 `audioTarget` nào; chỉ một câu truyện đổi chữ (`new_room` #20: 我知道了。谢谢您！). Câu HSK 1 `a_l4_03` chỉ đổi câu hỏi tiếng
 Việt.
+
+Sau audit đổi chữ Trung ở một clip (`zh.clip.ug_tingji`: 机器有问题，快把机器关了！), một câu truyện
+(`night_shift_warehouse` #13: 不能发给顾客), một khối bài đọc (`zh.read.ug_rules` #2, không có âm thanh riêng) và ba câu
+ví dụ từ điển (停 雨停了。, 家庭 我的家庭很幸福。, 南 越南在中国南边。); tất cả vào cùng lượt sinh âm thanh. `train_to_shanghai`
+#13 chỉ đổi tiếng Việt.
 
 ## Chưa chắc (đã quyết — điều phối viên, 05/11/2026)
 
@@ -193,9 +268,19 @@ Lượt đáp án 2 (khoá đã promote ở 540f5d60, nên `zh-pipeline.sh` sinh
 - `bun run test`: 3.323 đạt, 5 trượt — 4 trượt giống hệt ở HEAD (kiểm tra nội dung, độ lệch biên dịch, hai kiểm thử golden:
   cùng nguyên nhân thiếu âm thanh / chưa biên dịch), và `picture-cue-lint` quá thời gian khi máy bận, chạy riêng thì đạt.
 
+Sau audit (sửa trong bộ sinh nội dung, `zh-pipeline.sh`, rồi `author.ts promote --allow-missing-audio`; bước biên dịch dừng
+vì thiếu âm thanh nên `src/content` không đổi):
+
+- `zh-pipeline.sh` chạy lại sau promote: lớp staged giống hệt `content/` (22 file); hai lần chạy giống nhau từng byte (295
+  file). Tự kiểm tra: 108 bài, 976 bài tập, 337 câu đánh giá, 0 lỗi, 0 mục "decided"; truyện: 42 truyện, 902 câu, 0 lỗi.
+- `zh-answer-audit.test.ts` (mới) và các kiểm thử bị ảnh hưởng (`zh-answer-pass2`, `answer-runs`, `zh-lexicon`, re-key v8):
+  đạt. `course-draft.ts validate --target zh` và `bun run content:validate`: 1.044 lỗi, tất cả thiếu âm thanh zh (732
+  `audioTarget`, 312 clip), như trước. `golden.ts --check`: fr và en không đổi; 57 độ lệch, đúng danh sách ở HEAD; không
+  re-bless. `typecheck`, `lint`: đạt. `bun run test`: 3.348 đạt, 4 trượt, đúng 4 trượt ở HEAD. `jest --runInBand`: 129/129.
+
 ## Chấp nhận
 
 Profile `zh-vi` vẫn là `betaUntilReviewed`. Chỉ khi anh đánh ☑ dòng `ai-review:zh-vi` trong
 `plan/OWNER-FINAL-CHECKLIST.md` B, Claude mới ghi `review: { kind: "ai-simulated", … }` vào profile. Gate biên dịch kiểm
-tra điều đó (`reviewGateErrors`). Lượt đáp án thứ hai trên toàn bộ khoá đã xong; trước khi anh duyệt còn audit độc lập
-10 % (QC-2026-11-05 §1.3), kết quả sẽ được ghi vào dòng "chờ" ở bảng đầu file.
+tra điều đó (`reviewGateErrors`). Lượt đáp án thứ hai trên toàn bộ khoá và audit độc lập 10 % (QC-2026-11-05 §1.3) đã
+xong; audit đạt (0,24 % P0 + P1; riêng đáp án 0,79 %).

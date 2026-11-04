@@ -24,7 +24,7 @@ S.append(story("night_shift_warehouse", "A2-1", "仓库的夜班", "Ca đêm ở
     ("N", "阮雪 检查 质量，阮山 把 产品 放 进 箱子 里。", "Tuyết kiểm tra chất lượng, Sơn cho sản phẩm vào thùng."),
     ("N", "夜 里 两 点，他们 已经 包装 了 一百五十 个。", "Hai giờ đêm, họ đã đóng gói được một trăm năm mươi thùng."),
     ("N", "阮雪 说：“阮山，你 看，这个 产品 有 问题。”", "Tuyết nói: \"Sơn ơi, anh xem, sản phẩm này có vấn đề.\""),
-    ("B", "真的，这儿 坏 了。不 能 送 给 顾客。", "Đúng thật, chỗ này bị hỏng rồi. Không thể giao cho khách hàng được."),
+    ("B", "真的，这儿 坏 了。不 能 发 给 顾客。", "Đúng thật, chỗ này bị hỏng rồi. Không thể giao cho khách hàng được."),
     ("N", "阮雪 说：“我们 告诉 王 主管 吧。”", "Tuyết nói: \"Mình báo quản lý Vương đi.\""),
     ("N", "王 主管 来 了，她 看 了 看 那个 产品。", "Quản lý Vương đến, chị ấy xem xét sản phẩm đó."),
     ("A", "你们 做 得 很 好！有 问题 的 产品，一定 不 能 送 出去。", "Hai em làm tốt lắm! Sản phẩm có vấn đề nhất định không được gửi đi."),

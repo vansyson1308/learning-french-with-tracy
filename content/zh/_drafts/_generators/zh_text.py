@@ -381,6 +381,28 @@ def week_spellings(text):
     return out
 
 
+INTENSIFIERS = ("很", "非常")
+
+
+def tebie_spellings(text, index, pos):
+    """很 / 非常 before a verb or an adjective also take 特别 (我很喜欢唱歌 ⇄ 我特别喜欢唱歌: 特别 is a course word and the
+    learner's "… lắm"; independent audit, 2026-11-05, P1 on zh.speak.l_like). Not in a clause with 比 (no degree word
+    after 比), and not 很多 / 很少 before a noun (很多人, never 特别多人)."""
+    out = []
+    for clause in _clauses(text):
+        if "比" in clause:
+            continue
+        toks = [t for t, _ in index.tokens(clause)]
+        for i, t in enumerate(toks[:-1]):
+            nxt = toks[i + 1]
+            if t not in INTENSIFIERS or pos.get(nxt) not in ("adjective", "verb"):
+                continue
+            if nxt in ("多", "少") and i + 2 < len(toks) and toks[i + 2] not in _FINAL:
+                continue
+            out.append(text.replace(clause, "".join(toks[:i]) + "特别" + "".join(toks[i + 1:]), 1))
+    return out
+
+
 GEI_VERBS = ("发", "打", "打电话", "寄", "送", "写", "传")
 _FINAL = ("吧", "了", "吗", "呢", "啊", "。", "！", "？")
 
@@ -460,6 +482,8 @@ def variant_spellings(text):
     out = price_spellings(text) + mei_spellings(text, index) + bit_spellings(text, index, pos) + one_spellings(text, index)
     # answer-key pass 2: 每天 … 都, an age with 了, 星期一 ⇄ 周一
     out += dou_spellings(text, index, pos) + age_spellings(text) + week_spellings(text)
+    # independent audit: 很 / 非常 ⇄ 特别 before a verb or an adjective
+    out += tebie_spellings(text, index, pos)
     for clause in _clauses(text):
         toks = [t for t, _ in index.tokens(clause)]
         out += [text.replace(clause, "".join(v), 1) for v in order_variants(toks, swap_time=False)]

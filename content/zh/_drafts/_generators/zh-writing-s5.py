@@ -99,7 +99,7 @@ RESERVED = {
  "cp5_note_sick": ("short_message", MSG, "Hãy nhắn cho tổ trưởng: chào, báo bạn bị cảm, và hôm nay bạn xin nghỉ.", None,
                    [("greeting", "lời chào", GREET, False), ("cold", "bạn bị cảm", ["感冒"], False), ("rest", "xin nghỉ", REST, False)], 5, 30, None, "组长，您好！我感冒了，今天想请假。", None),
  "cp5_note_late": ("short_message", MSG, "Hãy nhắn cho quản lý: xin lỗi, bạn sẽ đến muộn khoảng 15 phút.", [("Đến muộn", "15 phút")],
-                   [("sorry", "lời xin lỗi", SORRY, False), ("minutes", "đến muộn bao lâu", ["十五分钟"], True), ("late", "bạn sẽ đến muộn", ["晚到", "迟到", "来晚", "晚"], False)], 4, 25, None,
+                   [("sorry", "lời xin lỗi", SORRY, False), ("minutes", "đến muộn bao lâu", ["十五分钟", "一刻钟", "一刻"], True), ("late", "bạn sẽ đến muộn", ["晚到", "迟到", "来晚", "晚"], False)], 4, 25, None,
                    "对不起，我会晚到十五分钟。", None),
  "cp5_mail_shift": ("short_message", MSG, "Hãy nhắn cho quản lý Vương: chào, rồi hỏi thứ Bảy bạn có thể nghỉ không.", [("Ngày", "thứ Bảy")],
                     [("greeting", "lời chào", GREET, False), ("day", "ngày nghỉ", ["星期六"], True), ("rest", "xin nghỉ", ["可以请假吗", "能请假吗", "可以休息吗", "能休息吗", "请假可以吗", "能不能请假", "可不可以请假", "能不能休息", "可不可以休息", "想请假",

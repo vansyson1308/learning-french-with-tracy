@@ -1,0 +1,90 @@
+[
+ {
+  "id": "zh-vi:ul-l2-e7",
+  "file": "content/zh/speech/items.json (zh.speak.l_like; source _drafts/_generators/zh-speech-s4.py)",
+  "severity": "P1",
+  "problem": "'Hãy nói rằng bạn thích hát.' Accepted: 我喜欢唱歌 | 我很喜欢唱歌 | 我非常喜欢唱歌 | 我爱唱歌 | 我的爱好是唱歌. 我特别喜欢唱歌 is rejected (run through gradeSpokenAttempt: false), although 特别 is a course word and the item already accepts the intensified forms with 很 and 非常. A learner who says 'thích hát lắm' with 特别 is marked wrong.",
+  "fix": "Add acceptedVariants 我特别喜欢唱歌 (and 我也喜欢唱歌 is not needed). Better: in zh-speech-s4.py, where a 喜欢 sentence takes 很 / 非常, also take 特别 / 真 (the descriptive items already treat 真 / 好 like 很).",
+  "decision": "fixed by a rule: zh_text.tebie_spellings — 很 / 非常 before a verb or an adjective also take 特别 (not in a clause with 比; not 很多 / 很少 before a noun), in variant_spellings, so typed keys, spoken answers, writing slots and scenario replies all widen, and zh-check-answers.py rule 10 closes it (rule 1 pairs and the 比 / 是 checks know 特别 too). Reach: 12 speech items (9 teaching, 3 reserved: cp4_thanks_water, cp4_desc_dog, pl_big_car) with their 13 lesson / checkpoint / placement copies, 8 typed lesson keys (uf-l0-e6, uf-l2-e6, ug-l3-e6, un-l0-e6, un-l3-e6, ut-l1-e5, uu-l0-e5, uu-l1-e5), 2 writing slots (q_late bus, cp5_room small, with their lesson / checkpoint copies) and 2 scenario turns (clinic_doctor l0, a1cap_weekend l1, each with its retry): 24 source records. 我特别喜欢唱歌 accepted (scripts/__tests__/zh-answer-audit.test.ts). 真 stays limited to the description items, where pass 2 put it."
+ },
+ {
+  "id": "zh-vi:uq-l2-e0",
+  "file": "content/courses/zh-vi.json (source _drafts/_generators/zh-lessons-s5.py)",
+  "severity": "P2",
+  "problem": "'Mai tôi đến lúc chín giờ.' 我明天九点钟到 is rejected (checkAnswer: false). 点钟 is not a course word, so this is unlikely from a learner; the speech items already accept 九点钟 after pass 2.",
+  "fix": "Optional: add 我明天九点钟到 | 明天我九点钟到 (and the 来 forms), or a time_spellings rule 九点 ⇄ 九点钟 for typed keys, matching the speech items.",
+  "decision": "fixed: alternatives 我明天九点钟到 | 我明天九点钟来 (the 明天我 orders follow from the topic rule), as ud-l0-e7 and uj-l3-e5 already take 几点钟. No general 点 ⇄ 点钟 rule: 一点 is also 'a little', and 三点半 / 九点多 must not grow 钟."
+ },
+ {
+  "id": "zh.write.cp5_note_late",
+  "file": "content/zh/writing/tasks.json (source _drafts/_generators/zh-writing-s5.py)",
+  "severity": "P2",
+  "problem": "Minutes slot has only 十五分钟. 对不起，我会晚到一刻钟。 (刻 is a course word: um-l2-e0 teaches 'khắc (mười lăm phút)') fails the slot (does_not_meet_rubric, matched sorry,late). The cue says '15 phút', so 十五分钟 is the likely answer; 一刻钟 is rare.",
+  "fix": "Optional: minutes variants 十五分钟 | 一刻钟 | 一刻.",
+  "decision": "fixed: minutes slot 十五分钟 | 一刻钟 | 一刻 (刻 is the course word of um-l2-e0), in the task and in the checkpoint copy."
+ },
+ {
+  "id": "zh.exi.hsk_1.b_l3_03",
+  "file": "content/zh/exam/hsk-1.json (source _drafts/_generators/zh-exam.py line 232)",
+  "severity": "P2",
+  "problem": "Picture pool option 'A. Bệnh viện' uses the emoji 🏨 (hotel). The text label is right, so the key is unaffected, but the picture says 'hotel'.",
+  "fix": "Use 🏥 for Bệnh viện (check the other HSK picture pools that reuse it).",
+  "decision": "fixed: the picture pool of HSK 1 b listening part 3 shows 🏥 for 'A. Bệnh viện' (the pool is shared by b_l3_01-05; no other pool used 🏨)."
+ },
+ {
+  "id": "zh-vi:uf-l1-e6",
+  "file": "content/courses/zh-vi.json (gloss from _drafts/_generators/core-3.txt line 61: 下雨 = 'mưa (trời mưa)')",
+  "severity": "P2",
+  "problem": "Match cards 下雨 = 'mưa (trời mưa)' and 雨 = 'mưa': both Vietnamese cards begin with the same word, so matching 雨 to 'mưa (trời mưa)' is a defensible tap that is counted as a miss. Solvable by elimination (下雪 = 'có tuyết rơi' shows the pattern).",
+  "fix": "下雨 = 'trời mưa' and 雨 = 'mưa (nước mưa)', or keep 下雨 out of the same match as 雨.",
+  "decision": "fixed: the gloss of 下雨 (zh:w:xiayu) is 'trời mưa'; 雨 stays 'mưa', so the two match cards no longer begin with the same word."
+ },
+ {
+  "id": "zh:w:jiating",
+  "file": "content/zh/lexicon/lexemes.json (source _drafts/_generators/core-1.txt)",
+  "severity": "P2",
+  "problem": "Example 我的家庭不大。 || Gia đình tôi không đông. A native says 我家人不多 / 我家人口不多 for 'my family is small'; 我的家庭不大 reads as a translation from Vietnamese (and 家庭 is register-heavy for A1 small talk). Meaning is right.",
+  "fix": "我的家庭很幸福。 || Gia đình tôi rất hạnh phúc. (幸福 is now a course word), or 这是一个大家庭。 || Đây là một đại gia đình.",
+  "decision": "fixed: example 我的家庭很幸福。 || Gia đình tôi rất hạnh phúc. (幸福 is a course word)."
+ },
+ {
+  "id": "zh:w:nan-south",
+  "file": "content/zh/lexicon/lexemes.json (source _drafts/_generators/core-4.txt)",
+  "severity": "P2",
+  "problem": "Example 广州在中国南边。 || Quảng Châu ở phía nam Trung Quốc. 在中国南边 most naturally means 'south of China' (outside it: 越南在中国南边); for a city inside the country a native says 南方 / 南部. The Vietnamese is right, the Chinese is loose.",
+  "fix": "广州在中国南方。 or 越南在中国南边。 || Việt Nam ở phía nam Trung Quốc.",
+  "decision": "fixed differently: example 越南在中国南边。 || Việt Nam ở phía nam Trung Quốc. — the auditor's second option. 广州在中国南方 would show 南方 as its own word, so the headword 南 would not appear in its own example."
+ },
+ {
+  "id": "zh:w:nar-45",
+  "file": "content/zh/lexicon/lexemes.json (pronunciation from CC-CEDICT)",
+  "severity": "P2",
+  "problem": "Pronunciation shown as 'nà r' (CC-CEDICT 'na4 r5' split into two syllables). Standard pinyin writes the erhua in one syllable: nàr. Same pattern likely for 哪儿 / 这儿 / 一点儿 / 玩儿.",
+  "fix": "Join a final r5 to the preceding syllable when converting CC-CEDICT readings for display (nàr, nǎr, zhèr, yì diǎnr); keep the stored reading for pinyin input.",
+  "decision": "kept, with a reason: the stored reading is one pinyin syllable per hanzi (nà r for 那儿), which the ruby layer aligns character by character and which scripts/__tests__/zh-lexicon.test.ts pins equal to pronunciation.value. Writing nàr needs a display rule in the app (word sheet and cards) for all 10 erhua lexemes (那儿, 哪儿, 这儿, 一点儿, 有点儿, 一会儿, 玩儿, 好玩儿, 小孩儿, 没事儿), not a content change; noted for the owner in KNOWN_LIMITATIONS."
+ },
+ {
+  "id": "zh.story.night_shift_warehouse#13",
+  "file": "content/zh/stories/stories.json (source _drafts/_generators/zh-stories-05.py)",
+  "severity": "P2",
+  "problem": "真的，这儿坏了。不能送给顾客。 送给 is 'give as a present'; shipping damaged goods is 发给顾客 / 给顾客. The Vietnamese 'giao cho khách hàng' is right.",
+  "fix": "真的，这儿坏了。不能发给顾客。",
+  "decision": "fixed: 真的，这儿坏了。不能发给顾客。 (the Vietnamese 'giao cho khách hàng' unchanged); the story line goes to the audio run."
+ },
+ {
+  "id": "zh.story.train_to_shanghai#13",
+  "file": "content/zh/stories/stories.json (source _drafts/_generators/zh-stories-03.py)",
+  "severity": "P2",
+  "problem": "火车开了。 || Tàu chạy. The 了 of a new situation is lost; 'Tàu chạy.' alone reads as a habitual statement.",
+  "fix": "|| Tàu chạy rồi. (or Tàu chuyển bánh.)",
+  "decision": "fixed: || Tàu chạy rồi."
+ },
+ {
+  "id": "zh.read.ug_rules#2",
+  "file": "content/zh/reception/reading.json (source _drafts/_generators/zh-reception-s3.py)",
+  "severity": "P2",
+  "problem": "机器有问题，请马上停机器，告诉组长。 停机器 is not idiomatic; a workshop notice says 停机 or 把机器停下来 / 关掉机器.",
+  "fix": "机器有问题，请马上停机，告诉组长。 (or 请马上关掉机器)",
+  "decision": "fixed differently: 机器有问题，请马上把机器关了，告诉组长。 停机 is not a course word and is missing from the pinned CC-CEDICT slice (no reading; 机 alone has none either), and 关掉 needs 掉, also not a course word; 把 and 关 are taught in unit c, before unit g. The same 停机器 was in clip zh.clip.ug_tingji (now 机器有问题，快把机器关了！) and in the example of 停 (now 雨停了。 || Mưa tạnh rồi.); the two comprehension keys say 'Tắt máy ngay (rồi báo tổ trưởng)'. The scenario factory_safety keeps 怎么停机器 among the answers it accepts from a learner."
+ }
+]

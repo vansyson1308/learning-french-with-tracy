@@ -43,7 +43,7 @@ READINGS = [
  ("uf_card", "notice", "我的名字", para(["姓名：阮海", "国家：越南", "工作：工人", "电话：138-1234-5678", "地址：工厂宿舍三号楼"]), [R_WORDS], [], 5),
  # Unit g: signs, rules and messages at the factory and the warehouse.
  ("ug_signs", "notice", "工厂里", para(["安全出口", "入口", "出口", "紧急出口", "危险", "小心机器", "禁止吸烟", "禁止进入", "注意安全", "灭火器"]), [R_NOTICE, WORK], [], 6),
- ("ug_rules", "notice", "车间安全", para(["进入车间要戴安全帽。", "工作的时候请穿工作服，戴手套。", "机器有问题，请马上停机器，告诉组长。", "车间里禁止吸烟。", "灭火器在门口旁边。"]), [R_NOTICE, WORK], [], 5),
+ ("ug_rules", "notice", "车间安全", para(["进入车间要戴安全帽。", "工作的时候请穿工作服，戴手套。", "机器有问题，请马上把机器关了，告诉组长。", "车间里禁止吸烟。", "灭火器在门口旁边。"]), [R_NOTICE, WORK], [], 5),
  ("ug_msg_leader", "message", "组长的短信", para(["大家好！", "明天早上七点上班，七点半开会。请别迟到。", "李组长"]), [R_MSG, TIME], [], 3),
  ("ug_shift", "notice", "早班和夜班", para(["早班：早上七点到下午三点", "夜班：晚上十一点到早上七点", "上班以前和下班以前请打卡。"]), [R_NOTICE, TIME], [], 3),
  ("ug_warehouse", "notice", "仓库", para(["重的箱子请两个人一起搬。", "箱子不要放在门口。", "货到了，先检查，然后放好。", "仓库里很危险，请小心。"]), [R_NOTICE, WORK], [], 4),
@@ -105,7 +105,7 @@ for slug, seg in [("tianqi", A("天气")), ("hen_leng", B("今天很冷。")), (
 # Unit g (lesson 3): instructions in the workshop and the warehouse.
 CLIPS += [
  C("ug_anquanmao", "instruction", A("请戴安全帽。"), [ANN, FW, WORK], 1),
- C("ug_tingji", "instruction", B("机器有问题，马上停机器！"), [ANN, WORK], 2),
+ C("ug_tingji", "instruction", B("机器有问题，快把机器关了！"), [ANN, WORK], 2),
  C("ug_fang", "instruction", A("请把箱子放在这儿。"), [ANN, WORK], 1),
  C("ug_shoutao", "instruction", B("请戴手套，穿工作服。"), [ANN, WORK], 2),
 ]

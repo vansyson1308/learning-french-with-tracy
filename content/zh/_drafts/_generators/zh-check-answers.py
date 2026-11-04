@@ -2,7 +2,7 @@
 lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags:
 
  1. more than one defensible answer: a fill-in or a word bank that offers both members of a pair that can fit the same
-    gap (了/过, 在/正在, 吗/吧, 很/非常/真, 这儿/这里, 那儿/那里, 哪儿/哪里, 一点儿/一点), 不 against 没 where the
+    gap (了/过, 在/正在, 吗/吧, 很/非常/真/特别, 这儿/这里, 那儿/那里, 哪儿/哪里, 一点儿/一点), 不 against 没 where the
     sentence or its Vietnamese does not decide (有 after the gap, chưa / đã không / hôm qua); a measure-word fill-in whose
     noun takes another offered measure word too (zh_text.NOUN_MEASURES; a noun missing from the table is a finding, so
     each new noun is declared); two options with the same Vietnamese gloss or in one synonym group
@@ -37,7 +37,7 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags:
     phrase, 住在 + place / 在 + place + 住); a typed, spoken, written or scenario answer lists its word variants
     (zh_text.variant_spellings: 没 ⇄ 没有, the price per unit in both orders 一碗十八块 ⇄ 十八块一碗, adjective + 一点儿 ⇄ 点儿,
     月…号 ⇄ 月…日, 疼 ⇄ 痛, the 给 and 住 orders, 是 + person ⇄ 是一个 + person, a phone number with and without its
-    hyphens); a clip line that says 我叫 / 我是 + a course name, or answers a line calling that name, is in that name's
+    hyphens; from the independent audit, 很 / 非常 ⇄ 特别 before a verb or an adjective); a clip line that says 我叫 / 我是 + a course name, or answers a line calling that name, is in that name's
     voice (A female, B male: zh_text.voice_problems); a match has distinct Vietnamese cards (match.tsx resolves a card by its
     text); a scenario concept group is never a bare negator (不 / 没 / 别 alone pass any negated sentence: 我很不舒服 is no
     "no fever"); a Vietnamese line beside a 块 / 元 amount says "tệ", not "đồng" (the Vietnamese dong), and one beside 斤
@@ -177,18 +177,18 @@ def grammar_rules(eid, text):
             flag(eid, "ma-question-word", f"{text!r}: a question word takes no 吗")
         if clause.endswith("吗") and re.search(r"(.)不\1", clause):
             flag(eid, "ma-a-not-a", f"{text!r}: an A不A question takes no 吗")
-        if re.search(r"比[^，。]*?(?:很|非常|太)", clause) and "比" in clause:
-            flag(eid, "bi-hen", f"{text!r}: no 很/非常/太 after 比")
+        if re.search(r"比[^，。]*?(?:很|非常|特别|太)", clause) and "比" in clause:
+            flag(eid, "bi-hen", f"{text!r}: no 很/非常/特别/太 after 比")
     for i, t in enumerate(toks):
         if t != "是":
             continue
-        rest = [x for x in toks[i + 1:] if x not in ("很", "太", "非常")]
+        rest = [x for x in toks[i + 1:] if x not in ("很", "太", "非常", "特别")]
         if rest and POS.get(rest[0]) == "adjective" and (len(rest) == 1 or rest[1] in "。！？，了"):
             flag(eid, "shi-adjective", f"{text!r}: 是 before a bare adjective ({rest[0]}): use 很, no 是")
 
 
 # ---------------------------------------------------------------- rule 1: more than one defensible answer
-PAIRS = [("了", "过"), ("在", "正在"), ("吗", "吧"), ("很", "非常"), ("很", "真"), ("非常", "真"),
+PAIRS = [("了", "过"), ("在", "正在"), ("吗", "吧"), ("很", "非常"), ("很", "真"), ("非常", "真"), ("很", "特别"), ("非常", "特别"),
          ("这儿", "这里"), ("那儿", "那里"), ("哪儿", "哪里"), ("一点儿", "一点")]
 # Measure words that count actions (吃三次药: 次 counts the eating), so the noun after them is the verb's object.
 VERBAL_MEASURES = {"次", "遍"}

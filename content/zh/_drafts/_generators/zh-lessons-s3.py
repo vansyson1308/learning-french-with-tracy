@@ -84,7 +84,7 @@ lesson("ug-l1", [
     Y("Đừng hút thuốc!", "别吸烟", "不要吸烟", "请不要吸烟", "请别吸烟", "禁止吸烟", "不能吸烟", "别抽烟", "不要抽烟", "请不要抽烟"),
     M("戴", "穿", "手套", "安全帽", "机器"),
     RC("ug_rules", "Vào phân xưởng phải làm gì?", "Đội mũ bảo hộ", ["Tắt điện thoại", "Đi giày mới", "Gọi tổ trưởng"]),
-    RC("ug_rules", "Máy có vấn đề thì làm gì?", "Dừng máy ngay rồi báo tổ trưởng", ["Tự sửa máy", "Tiếp tục làm việc", "Đi về nhà"]),
+    RC("ug_rules", "Máy có vấn đề thì làm gì?", "Tắt máy ngay rồi báo tổ trưởng", ["Tự sửa máy", "Tiếp tục làm việc", "Đi về nhà"]),
     RC("ug_rules", "Bình chữa cháy ở đâu?", "Cạnh cửa ra vào", ["Trong văn phòng", "Ở nhà ăn", "Trong kho"]),
 ])
 lesson("ug-l2", [
@@ -112,7 +112,7 @@ lesson("ug-l3", [
     RC("ug_warehouse", "Hàng đến thì làm gì trước?", "Kiểm tra", ["Cất vào kho", "Đóng gói", "Gửi đi"]),
     LC("ug_anquanmao", "Bạn phải làm gì?", "Đội mũ bảo hộ", ["Đeo găng tay", "Mặc đồ bảo hộ", "Dừng máy"]),
     D("ug_anquanmao"),
-    LC("ug_tingji", "Máy có vấn đề. Phải làm gì?", "Dừng máy ngay", ["Bật máy lên", "Gọi điện về nhà", "Đi nghỉ"]),
+    LC("ug_tingji", "Máy có vấn đề. Phải làm gì?", "Tắt máy ngay", ["Bật máy lên", "Gọi điện về nhà", "Đi nghỉ"]),
     LC("ug_fang", "Để thùng ở đâu?", "Ở đây", ["Ở cửa", "Trong kho", "Trên bàn"]),
     LC("ug_shoutao", "Bạn phải làm gì?", "Đeo găng tay và mặc đồ bảo hộ", ["Đội mũ bảo hộ", "Đeo khẩu trang", "Đi giày bảo hộ"]),
 ])

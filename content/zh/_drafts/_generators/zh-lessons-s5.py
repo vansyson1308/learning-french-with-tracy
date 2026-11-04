@@ -107,7 +107,7 @@ lesson("uq-l1", [
     WR("q_reply"),
 ])
 lesson("uq-l2", [
-    Y("Mai tôi đến lúc chín giờ.", "我明天九点到", "我明天九点来"),
+    Y("Mai tôi đến lúc chín giờ.", "我明天九点到", "我明天九点来", "我明天九点钟到", "我明天九点钟来"),
     TX("今天下午三点开会。", "Ba giờ chiều nay họp.", ["Ba giờ sáng nay họp.", "Ba giờ chiều mai họp.", "Họp ba tiếng chiều nay."]),
     F("明天我___上班。", "不能", ["没", "不是", "没有"], "Mai tôi không đi làm được."),
     NX("Thứ Hai tuần sau tôi đi làm lại.", "我下星期一再上班。", ["我下星期一又上班了。", "我上星期一再上班。", "我再下星期一上班。"]),
