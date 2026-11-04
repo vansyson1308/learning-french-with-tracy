@@ -94,6 +94,49 @@ function wholeReading(normalized: string, rules: LanguageRules): string | null {
   return reading === null ? null : compact(reading);
 }
 
+type Frame = NonNullable<LanguageRules["utteranceFrame"]>;
+
+/** Whether `text` is one or two pieces of `pieces` (character comparison: token boundaries do not count). */
+function inPieces(text: string, pieces: ReadonlySet<string>): boolean {
+  if (pieces.has(text)) return true;
+  const cps = [...text];
+  for (let i = 1; i < cps.length; i++) {
+    if (pieces.has(cps.slice(0, i).join("")) && pieces.has(cps.slice(i).join(""))) return true;
+  }
+  return false;
+}
+
+/** The particles the frame allows after one variant (its normalized tokens). */
+function particlesAfter(frame: Frame, variantTokens: readonly string[]): string[] {
+  const last = variantTokens[variantTokens.length - 1] ?? "";
+  if ((frame.finals ?? []).includes(last)) return [];
+  return (frame.particles ?? [])
+    .filter((p) => {
+      const conditions = [...(p.ifLast ?? []), ...(p.ifContains ?? [])];
+      return conditions.length === 0 || (p.ifLast ?? []).includes(last) || (p.ifContains ?? []).some((t) => variantTokens.includes(t));
+    })
+    .map((p) => p.particle);
+}
+
+/**
+ * Answer-key review pass 2: the transcript (compact, spaces dropped) is the variant inside the plugin's frame — a
+ * leading filler or vocative, a trailing vocative or particle (LanguageRules.utteranceFrame). The variant's text is
+ * compared exactly; only the frame around it is optional. No frame: false, so the result is the plain comparison.
+ */
+function framedMatch(heard: string, variant: { normalized: string }, frame: Frame | undefined): boolean {
+  if (frame === undefined) return false;
+  const core = compact(variant.normalized);
+  if (core.length === 0 || heard.length <= core.length) return false;
+  const leading = new Set([...(frame.leading ?? []), ...(frame.vocatives ?? [])]);
+  const trailing = new Set([...(frame.vocatives ?? []), ...particlesAfter(frame, tokens(variant.normalized))]);
+  for (let at = heard.indexOf(core); at >= 0; at = heard.indexOf(core, at + 1)) {
+    const before = heard.slice(0, at);
+    const after = heard.slice(at + core.length);
+    if ((before === "" || inPieces(before, leading)) && (after === "" || inPieces(after, trailing))) return true;
+  }
+  return false;
+}
+
 /**
  * Every slot realized as a contiguous token run (or, P4b, a run of the reading) that is not inside a negated span
  * (QC 2026-11-05 §1.2, languages/negation.ts): 不是 does not realize 是, "I don't like" does not realize "like".
@@ -152,11 +195,14 @@ export function gradeSpokenAttempt(
     const heardReading = readingOf(normalized, rules);
     const heardCompact = wholeReading(normalized, rules);
     // P4b: or the same READING (ja: the recognizer wrote in kana what the author wrote in kanji).
-    const variant = normalizedVariants.find(
-      (v) =>
-        v.normalized.length > 0 &&
-        (v.normalized === normalized || (heardCompact !== null && v.reading !== null && v.reading.length > 0 && v.reading === heardCompact))
-    );
+    const variant =
+      normalizedVariants.find(
+        (v) =>
+          v.normalized.length > 0 &&
+          (v.normalized === normalized || (heardCompact !== null && v.reading !== null && v.reading.length > 0 && v.reading === heardCompact))
+      ) ??
+      // Answer-key review pass 2: or the variant inside the plugin's frame (zh 谢谢啊, 组长，谢谢; absent elsewhere).
+      normalizedVariants.find((v) => framedMatch(compact(normalized), v, rules.utteranceFrame));
     if (variant) {
       return {
         correct: true,

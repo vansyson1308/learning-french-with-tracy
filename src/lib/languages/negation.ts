@@ -13,7 +13,8 @@
  * asks for the negation and is matched as before.
  */
 
-import type { LanguageRules, NegationRules } from "./types";
+import { slotRunSpans } from "./runs";
+import type { LanguageRules, NegationRules, SlotRunRules } from "./types";
 
 /** Text → its normalized form with tokens space-separated (normalizeSpoken, normalizeWritten, a reading). */
 export type Normalizer = (text: string) => string;
@@ -137,21 +138,23 @@ export function negationAwareMatcher(
   rules: Pick<LanguageRules, "negation">,
   raw: string | null,
   tokens: readonly string[],
-  normalize: Normalizer
+  normalize: Normalizer,
+  /** Answer-key review pass 2: the writing rubric's slot runs (insertions, joined tokens); absent = exact runs. */
+  runs?: SlotRunRules
 ): RunMatcher {
   const negation = rules.negation;
-  const plain: RunMatcher = (needle) => runStarts(tokens, needle).length > 0;
+  const plain: RunMatcher = (needle) => slotRunSpans(tokens, needle, runs).length > 0;
   if (negation === undefined) return plain;
   const clauses = raw === null ? tokens.map(() => 0) : clausesOf(raw, tokens, normalize, negation);
   const seq = unitsOf(tokens, clauses, negation.unit);
   const found = negatorsIn(seq, negation, normalize);
   return (needle) => {
-    const starts = runStarts(tokens, needle);
-    if (starts.length === 0) return false;
+    const spans = slotRunSpans(tokens, needle, runs);
+    if (spans.length === 0) return false;
     if (found.length === 0 || isNegation(needle, negation, normalize)) return true;
-    return starts.some((i) => {
-      const start = seq.tokenStart[i]!;
-      return !negatedSpan(found, negation, seq.clause[start]!, start, seq.tokenStart[i + needle.length]!);
+    return spans.some(([first, end]) => {
+      const start = seq.tokenStart[first]!;
+      return !negatedSpan(found, negation, seq.clause[start]!, start, seq.tokenStart[end]!);
     });
   };
 }
@@ -170,17 +173,4 @@ export function expressesNegation(rules: Pick<LanguageRules, "negation">, text: 
 function isNegation(needle: readonly string[], negation: NegationRules, normalize: Normalizer): boolean {
   const seq = unitsOf(needle, needle.map(() => 0), negation.unit);
   return negatorsIn(seq, negation, normalize).length > 0;
-}
-
-/** Token indices where `needle` starts as a contiguous run. */
-function runStarts(haystack: readonly string[], needle: readonly string[]): number[] {
-  const out: number[] = [];
-  if (needle.length === 0) return out;
-  outer: for (let i = 0; i + needle.length <= haystack.length; i++) {
-    for (let j = 0; j < needle.length; j++) {
-      if (haystack[i + j] !== needle[j]) continue outer;
-    }
-    out.push(i);
-  }
-  return out;
 }
