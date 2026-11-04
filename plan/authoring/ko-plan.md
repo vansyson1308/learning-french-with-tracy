@@ -34,6 +34,20 @@ Prompt: `plan/prompts/P4e-ko-vi-topik.md`, following `P3d-author-course-vi.md` w
 `course-draft validate --target ko`: 3 errors left, all session 5 (no checkpoints.json, placement.json, attainment
 reads the checkpoints). Two pipeline runs are byte-identical.
 
+### Session 3 (2026-11-05)
+
+| Layer | State | Where |
+|---|---|---|
+| Readings | 28: 19 teaching (units f-j), 5 checkpoint 3, 2 capstone, 2 placement | `_generators/ko-reception-s3.py` → staged `content/ko/reception/reading.json` |
+| Listening clips | 92, no asset (device voice): 41 teaching, 21 assessment, 30 speech models | same → staged `content/ko/reception/listening.json` |
+| Speech | 52 items (22 reserved), ko-KR | `_generators/ko-speech-s4.py` → staged `content/ko/speech/items.json` |
+| Writing | 36 tasks (15 guided + 4 open teaching, 16 reserved; 5 forms) | `_generators/ko-writing-s5.py` → staged `content/ko/writing/tasks.json` |
+| Lessons | 968 exercises; Sections 3–5 add listening 41, reading 36, dictation 5, speakProduction 33, speakRepetition 9, guidedWriting 18, simpleForm 2 | `_generators/ko_lesson_refs.py`, `ko-lessons-s3…s5.py` |
+| Device voice, unscored | speech models and scenario partner lines read by the local ko-KR voice, else the install hint (no skip) | `src/components/exercises/model-playback.tsx`, `interaction-scenario.tsx`, `src/lib/reception/device-voice-listening.ts` |
+| Self-check | rule 9 (layers); 0 findings | `_generators/ko-check-answers.py` |
+
+`course-draft validate --target ko`: the same 3 assessment errors.
+
 ## 2. Course shape (BLUEPRINT §1)
 
 Before Section 1: the Hangul primer (`/primer`, `content/ko/primer/script-primer.json`, P4b: 14 consonants, 10 vowels,
@@ -199,15 +213,35 @@ in `OWNER-FINAL-CHECKLIST.md` C asks for a licence review).
 14. **Vietnamese glosses** write "anh chị", never "anh/chị": the synonym-distractor validator splits glosses on "/", so
     안녕히 가세요 and 안녕히 계세요 shared the meaning "chào anh".
 
+### Session 3 (2026-11-05)
+
+15. **합쇼체 renderings of a 해요 key are accepted** (coordinator, after session 2): `ko_text._formal_forms`, tested in
+    `scripts/__tests__/ko-vi-formal-answers.test.ts`.
+16. **Unscored device voice** (coordinator 2026-11-05): a speech model and a scenario partner line of a
+    `deviceVoiceScoredListening` course without a bundled clip are read by the local voice; with no voice the notice
+    and install hint show without a skip, since nothing is graded — the target, the microphone and the partner's
+    text stay. A partner line reads its clip's transcript, else the node text.
+17. **ko writing is graded by spaced words.** The build-time ko rules have no lexicon, so the tokenizer cuts at spaces
+    (eojeol); a slot variant must be a spaced word or run the answer itself writes. Noun slots list the noun with its
+    particles and copula (남이에요, 안산에, 스물세 살이에요); a greeting slot is 안녕하세요 alone (one greeting, not two);
+    no `requireSentenceVerbs` (a ko verb is an ending). The runtime tokenizer (lexicon maximal match) gives the same
+    verdict on these runs; a D-10 check of the slot lists is noted in REVIEW-NOTES.
+18. **Dictation accepts the spelling without spaces** (strict grading keeps spacing; 띄어쓰기 is not the A1 target),
+    and dictation clips carry no digits.
+19. **Assessment records are authored with their layers** (as ja): the checkpoint 3 / capstone / placement readings and
+    clips, the reserved speech items and writing tasks exist now; session 4 builds the checkpoint and placement files on
+    them.
+
 ## 11. Next sessions
 
 1. ~~**Concepts + lessons**~~ done in session 2: 31 cards, 17 paradigm tables, 108 lessons / 824 exercises, the
    Hangul primer and its checkpoint, the self-check at 0 findings.
-2. **Reception + speech + writing** (session 3): readings, clips (no assets: device voice), speech items (`ko-KR`),
-   writing tasks, wired into the Section 3–5 lessons (a `ko_lesson_refs.py` like ja); the device voice for speech
-   models **and for scenario partner turns** (coordinator 2026-11-05, §7), same rule as listening. Extend
-   `ko-check-answers.py` with the layer rules of ja (rule 5).
-3. **Scenarios** (session 4), partner turns through the device voice wired in session 3.
+2. ~~**Reception + speech + writing**~~ done in session 3: 28 readings, 92 clips, 52 speech items, 36 writing tasks,
+   the unscored device voice, self-check rule 9 (decisions 15–19).
+3. **Session 4 (coordinator)**: assessment — TOPIK I-aligned checkpoints (6 section checkpoints + the capstone in 2
+   forms), placement and attainment on the reserved records above; then the stories. Read topik.go.kr first (§3).
+   **Scenarios** (Section 6, interactionScenario, 18 with 10 reserved) are not yet scheduled: checkpoint 6 needs
+   reserved scenarios, so they come with or before the assessment step (open question for the coordinator).
 4. **Checkpoints, placement, TOPIK I track** (session 5): read topik.go.kr first; 2 mock forms; device-voice listening
    (a skipped item is no evidence in the mock either).
 5. **Stories** (session 6), **D-10 review** (AI pass, then the owner), promote, compile, V8 re-key, claim gate,
