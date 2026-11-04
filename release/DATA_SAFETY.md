@@ -45,6 +45,13 @@ Phase 10 and verified on the merged manifest.
 - **Production**: full Data safety form, privacy-policy URL, target API 36
   (met), and the app-access / content-rating questionnaires.
 
+## Closed test (D-16, 2026-11-05)
+
+The closed-testing track needs the complete form. Enter the answers above
+("No data collected"); the Console-by-Console list is in
+`PLAY_STORE_LISTING.md` § Data safety. Privacy policy 1.3 (2026-11-05) only
+generalised the course wording; data handling is unchanged.
+
 ## Owner-supplied items
 
 - Privacy policy URL (text: `release/PRIVACY_POLICY.md`).
