@@ -1,22 +1,22 @@
 {
   "version": 1,
   "language": "zh",
-  "note": "Generation canary (P3b): difficult Mandarin Chinese rendered by every candidate voice BEFORE any shipped clip is generated. Never shipped to learners; drives the ASR audit and the voice-cast selection (content/audio/voice-casts.json).",
+  "note": "Generation canary (P3b): difficult Mandarin Chinese rendered by every candidate voice BEFORE any shipped clip is generated. Never shipped to learners; drives the ASR audit and the voice-cast selection (content/audio/voice-casts.json). P4d: every text uses course words only, so the course-readings front-end has a stored reading for every hanzi.",
   "items": [
     {
       "id": "canary.tone.ma",
-      "focus": "four tones (mā má mǎ mà)",
-      "text": "妈妈骑马，马慢，妈妈骂马。"
+      "focus": "four tones and the neutral tone",
+      "text": "妈妈买了很多水果，我们都很高兴。"
     },
     {
       "id": "canary.tone3.sandhi",
-      "focus": "third-tone sandhi",
-      "text": "我想买很好的雨伞。"
+      "focus": "third-tone sandhi (想买, 很好, 水果)",
+      "text": "我想买很好的水果。"
     },
     {
       "id": "canary.retroflex.zhi",
       "focus": "zh / ch / sh vs z / c / s",
-      "text": "这是四十四只石狮子。"
+      "text": "老师说：这是十四个学生，那是四十个。"
     },
     {
       "id": "canary.numbers.73",
@@ -30,8 +30,8 @@
     },
     {
       "id": "canary.erhua.nar",
-      "focus": "erhua 哪儿 / 一点儿",
-      "text": "我们去那儿玩一会儿，吃一点儿东西。"
+      "focus": "erhua 那儿 / 玩儿 / 一点儿",
+      "text": "我们去那儿玩儿一会儿，吃一点儿东西。"
     },
     {
       "id": "canary.measure.ge",
@@ -40,8 +40,8 @@
     },
     {
       "id": "canary.ü.lü",
-      "focus": "ü vs u (lǜ / lù)",
-      "text": "绿色的路很长。"
+      "focus": "ü vs u (nǚ / lù)",
+      "text": "女儿去学校，路很远。"
     },
     {
       "id": "canary.neutral.de",
@@ -61,7 +61,7 @@
     {
       "id": "canary.long.restaurant",
       "focus": "long sentence",
-      "text": "我想预订今天晚上八点两个人的桌子，可以吗？"
+      "text": "我想要今天晚上八点两个人的桌子，可以吗？"
     }
   ]
 }
