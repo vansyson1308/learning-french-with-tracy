@@ -100,6 +100,18 @@ describe("privacy policy source and Markdown", () => {
     expect(policyText).toMatch(/no advertising/);
   });
 
+  test("describes the multi-course app, not one target language (D-16: the Play listing names six courses)", () => {
+    // The policy is the same for every course, so it never says the app teaches one language.
+    for (const lang of ["French", "Spanish", "German", "Italian", "Japanese", "Korean", "Chinese", "Portuguese"]) {
+      expect({ lang, hit: new RegExp(`\\b${lang}\\b`).test(policyText) }).toEqual({ lang, hit: false });
+    }
+    for (const lang of ["tiếng Pháp", "tiếng Tây Ban Nha", "tiếng Đức", "tiếng Ý", "tiếng Nhật", "tiếng Hàn", "tiếng Trung"]) {
+      expect({ lang, hit: policyTextVi.includes(lang) }).toEqual({ lang, hit: false });
+    }
+    expect(policyText).toMatch(/the language you are learning/);
+    expect(policyTextVi).toMatch(/ngôn ngữ bạn đang học/);
+  });
+
   test("the in-app network-speech disclosure states the same boundary (§42, §74)", () => {
     // Since P2a the disclosure is a catalogue message (speech.disclosure) in both languages.
     const en = JSON.parse(readFileSync("src/lib/i18n/catalog/en.json", "utf8")) as Record<string, string>;
