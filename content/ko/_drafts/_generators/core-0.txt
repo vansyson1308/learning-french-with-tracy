@@ -1,0 +1,88 @@
+# ko-vi A1 — greetings and set phrases, pronouns, demonstratives, question words, the copula and the particles.
+# kind|surface|vi|en|topic|example|example vi|example en[|form=…][|rrs=…]   (see ko-lex.py for the kinds)
+# Set phrases keep their spaces (띄어쓰기); speech level 해요체 unless the phrase is itself 합쇼체.
+E|안녕하세요|xin chào|Hello|greetings|안녕하세요? 저는 흐엉이에요.|Xin chào. Tôi là Hương.|Hello. I'm Huong.
+E|안녕|chào (thân mật, với bạn bè)|Hi (informal)|greetings|민수야, 안녕!|Chào Min-su!|Hi, Minsu!
+E|안녕히 가세요|chào anh/chị đi nhé (nói với người ra về)|Goodbye (to someone leaving)|greetings|안녕히 가세요. 내일 봐요.|Anh về nhé. Mai gặp lại.|Goodbye. See you tomorrow.
+E|안녕히 계세요|chào anh/chị ở lại (khi mình ra về)|Goodbye (when you leave)|greetings|사장님, 안녕히 계세요.|Thưa giám đốc, tôi xin phép về ạ.|Goodbye, boss.
+E|잘 가요|tạm biệt (thân, lịch sự)|Goodbye|greetings|잘 가요. 또 만나요.|Tạm biệt. Gặp lại nhé.|Goodbye. See you again.
+E|처음 뵙겠습니다|rất hân hạnh (khi gặp lần đầu)|How do you do|greetings|처음 뵙겠습니다. 응우옌 남입니다.|Rất hân hạnh được gặp. Tôi là Nguyễn Nam.|How do you do. I'm Nguyen Nam.
+E|만나서 반갑습니다|rất vui được gặp|Nice to meet you|greetings|만나서 반갑습니다. 저는 란이에요.|Rất vui được gặp anh. Tôi là Lan.|Nice to meet you. I'm Lan.
+E|감사합니다|cảm ơn (trang trọng)|Thank you|greetings|도와주셔서 감사합니다.|Cảm ơn anh đã giúp.|Thank you for your help.
+E|고맙습니다|cảm ơn (lịch sự)|Thank you (polite)|greetings|정말 고맙습니다.|Thật sự cảm ơn anh.|Thank you so much.
+E|고마워요|cảm ơn (thân mà vẫn lịch sự)|Thanks (casual)|greetings|커피 고마워요.|Cảm ơn ly cà phê nhé.|Thanks for the coffee.
+E|죄송합니다|xin lỗi (trang trọng)|I'm sorry|greetings|늦어서 죄송합니다.|Xin lỗi vì tôi đến muộn.|I'm sorry I'm late.
+E|미안해요|xin lỗi (thân mà vẫn lịch sự)|Sorry|greetings|미안해요. 제가 잘못했어요.|Xin lỗi. Tôi sai rồi.|Sorry. It was my fault.
+E|괜찮아요|không sao|It's okay|greetings|괜찮아요. 걱정하지 마세요.|Không sao. Đừng lo.|It's okay. Don't worry.
+J|네|vâng; dạ|Yes|greetings|네, 알겠습니다.|Vâng, tôi hiểu rồi.|Yes, understood.
+J|아니요|không|No|greetings|아니요, 저는 학생이 아니에요.|Không, tôi không phải là học sinh.|No, I'm not a student.
+J|예|vâng (trang trọng hơn 네)|Yes (formal)|greetings|예, 사장님.|Vâng, thưa giám đốc.|Yes, boss.
+E|실례합니다|xin lỗi, cho tôi hỏi (khi làm phiền, khi vào phòng)|Excuse me|greetings|실례합니다. 화장실이 어디예요?|Xin lỗi, nhà vệ sinh ở đâu ạ?|Excuse me, where is the restroom?
+E|잠깐만요|xin chờ một chút|Just a moment|greetings|잠깐만요. 지금 가요.|Chờ một chút. Tôi đến ngay.|Just a moment. I'm coming now.
+E|여기요|anh/chị ơi (gọi nhân viên quán)|Excuse me (calling staff)|greetings|여기요! 물 좀 주세요.|Anh ơi! Cho tôi xin nước.|Excuse me! Some water, please.
+E|저기요|anh/chị ơi (gọi người lạ)|Excuse me (to a stranger)|greetings|저기요, 이거 떨어졌어요.|Chị ơi, cái này rơi rồi.|Excuse me, you dropped this.
+E|어서 오세요|xin mời vào (chào khách)|Welcome|greetings|어서 오세요. 몇 분이세요?|Xin mời vào. Anh chị mấy người ạ?|Welcome. How many people?
+E|잘 먹겠습니다|xin phép ăn (nói trước bữa ăn)|Thank you for the meal (before eating)|greetings|잘 먹겠습니다, 사장님.|Tôi xin phép ăn ạ, thưa giám đốc.|Thank you for the meal, boss.
+E|잘 먹었습니다|cảm ơn vì bữa ăn (nói sau bữa ăn)|Thank you for the meal (after eating)|greetings|정말 잘 먹었습니다.|Bữa ăn ngon quá, cảm ơn ạ.|Thank you, that was a great meal.
+E|수고하셨습니다|anh/chị vất vả rồi (cuối buổi làm)|Thanks for your hard work|work|오늘도 수고하셨습니다.|Hôm nay anh cũng vất vả rồi.|Thanks for your hard work today too.
+E|수고하세요|làm việc vui nhé (chào khi mình về trước)|Keep up the good work|work|먼저 갈게요. 수고하세요.|Tôi về trước nhé. Làm việc vui nhé.|I'm leaving first. Keep up the good work.
+E|축하합니다|chúc mừng|Congratulations|greetings|생일 축하합니다!|Chúc mừng sinh nhật!|Happy birthday!
+E|잘 부탁드립니다|mong anh/chị giúp đỡ|I look forward to working with you|work|오늘부터 일해요. 잘 부탁드립니다.|Từ hôm nay tôi làm ở đây. Mong mọi người giúp đỡ.|I start work today. I look forward to working with you.
+E|알겠습니다|tôi hiểu rồi; vâng ạ|Understood|work|네, 알겠습니다. 바로 할게요.|Vâng, tôi hiểu rồi. Tôi làm ngay.|Yes, understood. I'll do it right away.
+E|모르겠어요|tôi không biết; tôi không rõ|I don't know|everyday|죄송해요, 잘 모르겠어요.|Xin lỗi, tôi không rõ lắm.|Sorry, I don't really know.
+E|다시 말해 주세요|xin nói lại giúp tôi|Please say it again|school|잘 몰라요. 다시 말해 주세요.|Tôi chưa hiểu. Xin nói lại giúp tôi.|I don't understand. Please say it again.
+E|천천히 말해 주세요|xin nói chậm thôi|Please speak slowly|school|천천히 말해 주세요. 한국어를 배워요.|Xin nói chậm thôi ạ. Tôi đang học tiếng Hàn.|Please speak slowly. I'm learning Korean.
+E|얼마예요|bao nhiêu tiền?|How much is it?|shopping|이거 얼마예요?|Cái này bao nhiêu tiền?|How much is this?
+E|주세요|cho tôi (xin)|Please give me|shopping|물 한 병 주세요.|Cho tôi một chai nước.|A bottle of water, please.
+E|맞아요|đúng rồi|That's right|everyday|네, 맞아요. 제 가방이에요.|Vâng, đúng rồi. Túi của tôi đấy.|Yes, that's right. It's my bag.
+E|아니에요|không phải; không có gì|No, it isn't; not at all|everyday|아니에요, 괜찮아요.|Không có gì đâu, không sao.|Not at all, it's okay.
+E|그래요|vậy à; được thôi|Is that so; okay|everyday|아, 그래요? 몰랐어요.|À, vậy à? Tôi không biết.|Oh, really? I didn't know.
+J|아|à, ồ|Oh|everyday|아, 알겠어요.|À, tôi hiểu rồi.|Oh, I see.
+J|여보세요|alô (khi nghe điện thoại)|Hello (on the phone)|technology|여보세요? 민수 씨예요?|Alô? Anh Min-su phải không?|Hello? Is this Minsu?
+P|저|tôi (khiêm tốn)|I (humble)|people|저는 베트남 사람이에요.|Tôi là người Việt Nam.|I'm Vietnamese.
+P|제|của tôi (khiêm tốn)|my (humble)|people|제 이름은 흐엉이에요.|Tên tôi là Hương.|My name is Huong.
+P|우리|chúng tôi, chúng ta; của chúng tôi|we; our|people|우리 회사는 안산에 있어요.|Công ty chúng tôi ở Ansan.|Our company is in Ansan.
+P|저희|chúng tôi (khiêm tốn)|we (humble)|people|저희는 베트남에서 왔어요.|Chúng tôi đến từ Việt Nam.|We came from Vietnam.
+P|누구|ai|who|everyday|저 사람은 누구예요?|Người kia là ai?|Who is that person?
+P|무엇|cái gì (trang trọng)|what|everyday|이것은 무엇입니까?|Cái này là cái gì?|What is this?
+P|뭐|gì (khẩu ngữ)|what (spoken)|everyday|지금 뭐 해요?|Bây giờ bạn làm gì?|What are you doing now?
+P|어디|đâu|where|places|화장실이 어디예요?|Nhà vệ sinh ở đâu?|Where is the restroom?
+P|언제|khi nào|when|time|언제 한국에 왔어요?|Bạn sang Hàn Quốc khi nào?|When did you come to Korea?
+D|왜|tại sao|why|everyday|왜 늦었어요?|Sao bạn đến muộn?|Why were you late?
+D|어떻게|như thế nào; làm sao|how|everyday|역에 어떻게 가요?|Đi đến ga như thế nào?|How do I get to the station?
+P|얼마|bao nhiêu (tiền)|how much|shopping|모두 얼마예요?|Tất cả bao nhiêu tiền?|How much is it altogether?
+T|몇|mấy|how many|numbers|몇 시예요?|Mấy giờ rồi?|What time is it?
+T|무슨|gì, loại gì|what kind of|everyday|무슨 일을 해요?|Bạn làm công việc gì?|What work do you do?
+T|어느|nào|which|everyday|어느 나라 사람이에요?|Bạn là người nước nào?|Which country are you from?
+P|이거|cái này|this (thing)|everyday|이거 주세요.|Cho tôi cái này.|This one, please.
+P|그거|cái đó|that (thing)|everyday|그거 제 거예요.|Cái đó là của tôi.|That's mine.
+P|저거|cái kia|that (thing over there)|everyday|저거 얼마예요?|Cái kia bao nhiêu tiền?|How much is that over there?
+P|이것|cái này (trang trọng, văn viết)|this|everyday|이것은 제 책이에요.|Đây là sách của tôi.|This is my book.
+P|여기|ở đây|here|places|여기에 앉으세요.|Mời ngồi ở đây.|Please sit here.
+P|거기|ở đó|there|places|거기에 뭐가 있어요?|Ở đó có gì?|What's there?
+P|저기|ở kia|over there|places|저기가 편의점이에요.|Ở kia là cửa hàng tiện lợi.|Over there is the convenience store.
+T|이|này|this|everyday|이 사람은 제 친구예요.|Người này là bạn tôi.|This person is my friend.
+T|그|đó, ấy|that; the (one mentioned)|everyday|그 가방은 얼마예요?|Cái túi đó bao nhiêu tiền?|How much is that bag?
+X|이에요|là (sau phụ âm)|to be (after a consonant)|everyday|저는 학생이에요.|Tôi là học sinh.|I'm a student.
+X|예요|là (sau nguyên âm)|to be (polite)|everyday|제 이름은 투이예요.|Tên tôi là Thúy.|My name is Thuy.
+X|입니다|là (trang trọng)|to be (formal)|work|저는 응우옌 남입니다.|Tôi là Nguyễn Nam.|I am Nguyen Nam.
+X|은|(trợ từ chủ đề, sau phụ âm)|topic particle (after a consonant)|everyday|이름은 뭐예요?|Tên bạn là gì?|What's your name?
+X|는|(trợ từ chủ đề, sau nguyên âm)|topic particle (after a vowel)|everyday|저는 공장에서 일해요.|Tôi làm việc ở nhà máy.|I work at a factory.
+X|가|(trợ từ chủ ngữ, sau nguyên âm; sau phụ âm dùng 이)|subject particle (after a vowel)|everyday|비가 와요.|Trời mưa.|It's raining.
+X|을|(trợ từ tân ngữ, sau phụ âm)|object particle (after a consonant)|everyday|밥을 먹어요.|Tôi ăn cơm.|I eat rice.
+X|를|(trợ từ tân ngữ, sau nguyên âm)|object particle (after a vowel)|everyday|커피를 마셔요.|Tôi uống cà phê.|I drink coffee.
+X|에|ở; đến; vào lúc (nơi chốn, thời gian)|at, to, in (place, time)|everyday|일곱 시에 회사에 가요.|Tôi đến công ty lúc bảy giờ.|I go to the company at seven.
+X|에서|ở (nơi diễn ra hành động); từ|at (where an action happens); from|everyday|공장에서 일해요.|Tôi làm việc ở nhà máy.|I work at a factory.
+X|도|cũng|also, too|everyday|저도 베트남 사람이에요.|Tôi cũng là người Việt Nam.|I'm Vietnamese too.
+X|의|của|of, 's|everyday|친구의 집이에요.|Đây là nhà của bạn tôi.|It's my friend's house.
+X|하고|và; với (khẩu ngữ)|and; with (spoken)|everyday|빵하고 우유를 샀어요.|Tôi đã mua bánh mì và sữa.|I bought bread and milk.
+X|와|và; với (sau nguyên âm)|and; with (after a vowel)|everyday|우유와 빵을 먹어요.|Tôi ăn sữa với bánh mì.|I have milk and bread.
+X|과|và; với (sau phụ âm)|and; with (after a consonant)|everyday|밥과 김치를 먹어요.|Tôi ăn cơm với kim chi.|I eat rice and kimchi.
+X|까지|đến (tận)|until; to|time|아홉 시까지 일해요.|Tôi làm đến chín giờ.|I work until nine.
+X|부터|từ|from|time|월요일부터 일해요.|Tôi làm từ thứ Hai.|I work from Monday.
+X|에게|cho (người)|to (a person)|everyday|친구에게 전화해요.|Tôi gọi điện cho bạn.|I call a friend.
+X|한테|cho (người, khẩu ngữ)|to (a person, spoken)|everyday|엄마한테 문자를 보내요.|Tôi gửi tin nhắn cho mẹ.|I send my mom a text.
+X|으로|bằng; về phía (sau phụ âm)|by; toward (after a consonant)|travel|왼쪽으로 가세요.|Hãy đi về bên trái.|Go to the left.
+X|로|bằng; về phía (sau nguyên âm hoặc ㄹ)|by; toward (after a vowel)|travel|버스로 회사에 가요.|Tôi đi làm bằng xe buýt.|I go to work by bus.
+X|씨|anh, chị (đặt sau tên)|Mr., Ms. (after a name)|people|민수 씨, 안녕하세요?|Chào anh Min-su.|Hello, Minsu.
+X|님|(hậu tố kính ngữ sau chức danh)|honorific suffix|people|선생님, 감사합니다.|Em cảm ơn cô ạ.|Thank you, teacher.

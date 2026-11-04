@@ -1,0 +1,17 @@
+# Frequency anchor (ko-lex.py anchors_report): the 300 most frequent content entries of the candidate pool
+# (content/ko/lexicon/derived/candidate-pool.json, FrequencyWords subtitle counts over kaikki lemmas) that the course
+# does not take, each with the reason. An entry is lemma/partOfSpeech as the pool lists it. An entry whose lemma is a
+# course surface under another part of speech (오늘 noun, the pool's adverb entry) counts as taken.
+# @|code|legend     then     code|entry entry ...
+@|F|An inflected form or a word with a particle attached, not a dictionary entry (the course teaches its lemma or the particle)
+@|H|A rare homograph that took the count of a common form (널다 from 널 'you', 하지 'summer solstice' from 하지 'do-but')
+@|V|Vulgar, insulting or drama register, not taught to adult beginners at work
+@|C|A spoken contraction of a word the course teaches (근데 → 그런데)
+@|D|The course teaches the 하다 verb or the adjective of this noun (필요 → 필요하다)
+@|A|Beyond the A1 and A2-1 bands of this course (TOPIK I level 2 tail or TOPIK II); kept for later bands
+F|거야/noun 있어/verb 우린/noun 위해/noun 좋아요/noun 그렇지/adverb 때문에/adverb 보고/noun 아니라/adjective 가지고/noun 이젠/noun 몰라요/verb 없이/adverb 나랑/noun 해서/noun 와서/verb 나의/noun 뭔지/noun 한다/verb 앞으로/adverb 하세요/verb 싫어요/noun 앞에서/adverb 사실은/adverb 하기/noun 했다/verb 해요/verb 일로/adverb 모두들/noun 다들/adverb 대로/noun
+H|널다/verb 잘다/adjective 걸다/adjective 걸다/verb 날다/verb 수도/noun 거지/noun 하지/noun 해도/noun 가면/noun 애가/noun 하자/noun 대한/noun 주지/noun 마치/noun 마구/noun 이리/noun 누가/noun 단지/noun 가지/noun 줄다/verb 절다/verb 갈다/verb 차다/verb 차다/adjective 대체/noun 당장/noun 가장/noun 그리/adverb 피다/verb
+V|딸딸이/noun 보지/noun 여보/noun 바보/noun 아가씨/noun 엄청/adverb 도대체/adverb 제발/adverb 자식/noun
+C|근데/adverb 어서/adverb
+D|필요/noun 준비/noun 기억/noun
+A|만약/adverb 자기/noun 왜냐하면/adverb 가장/adverb 아직도/adverb 그저/adverb 제대로/adverb 그렇지만/adverb 완전히/adverb 정말로/adverb 부인/noun 아마도/adverb 완전/adverb 완전/noun 어쨌든/adverb 신경/noun 이리/adverb 그때/noun 당장/adverb 얼른/adverb 평생/noun 분명/adverb 영원히/adverb 정신/noun 그대로/adverb 한번/adverb 한번/noun 만큼/noun 번째/noun 단지/adverb 마이크/noun 가만히/adverb 또한/adverb 굉장히/adverb 절대로/adverb 마음대로/adverb 심지어/adverb 사건/noun 상관/noun 만날/adverb 마구/adverb 이상/noun 대체/adverb
