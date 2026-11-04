@@ -219,7 +219,8 @@ uses 您 and 请 with bosses.
   surface and no `legacy-unmapped.json`.
 - No `src/content/ids/zh.json` is compiled yet (compile waits for the promote). At promote: add `zh` to
   `V8_REKEYED_TARGETS` with a fixture `v3-rc3-zh.json` and a test like `migrations-v8-ja.test.ts`. No new migration:
-  `primerPassed` (v9) is keyed by course id.
+  `primerPassed` (v9) is keyed by course id. Done 2026-11-05 (`migrations-v8-zh.test.ts`; until the audio bot compiles
+  `src/content/ids/zh.json` the test registers the registry the compiler writes from `content/zh/lexemes.json`).
 
 ## 12. Decisions taken in session 1
 

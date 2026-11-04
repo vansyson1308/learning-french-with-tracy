@@ -159,30 +159,36 @@ itself.
   recording and the raw-share scoring are the course's choices (JLPT uses scaled scores), and
   the listening options are printed with Vietnamese questions where the real paper has
   Japanese and, in parts 3–4, only heard options (`content/ja/exam/FORMAT-SOURCES.md`).
-- **`zh-vi` (Mandarin Chinese for Vietnamese speakers, P4d) is being authored and will ship
-  unreviewed**, on the same terms as `ja-vi`: `allowUnreviewed: true` and `betaUntilReviewed`
-  in the staged `zh-vi.profile.json`. All Chinese and Vietnamese in it is AI-written and no
-  native speaker of either language has read it (`plan/authoring/zh-plan.md`). The AI-simulated
-  native review (D-10) has **not run yet**; only the validators, the reading checks of every
-  generator (every hanzi inside a lexicon surface, homographs only in their stored reading) and the
-  answer-key self-check (`content/zh/_drafts/REVIEW-NOTES.md`, 0 findings over the lessons,
-  checkpoints, placement and HSK items) have. Pinyin and the traditional spelling come from
-  CC-CEDICT in citation tones; tone sandhi (3-3, 不, 一) is taught, not stored. Hán-Việt readings
-  are shown only where they help and were checked against Unihan, not by a Vietnamese teacher of
-  Chinese. What is not verified or not there yet:
+- **`zh-vi` (Mandarin Chinese for Vietnamese speakers, P4d) ships unreviewed**, on the same
+  terms as `ja-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
+  `content/courses/zh-vi.profile.json` (promoted; `src/content` is compiled by the audio bot
+  commit). All Chinese and Vietnamese in it is AI-written and no native speaker of either
+  language has read it (`plan/authoring/zh-plan.md`). An AI-simulated native review ran per D-10
+  (`content/zh/REVIEW-AI.md`: two full answer-key passes, a language pass and an independent
+  audit of 414 lines at 0.24 % P0+P1, answer keys alone 0.79 %), which is not a native
+  speaker's review; the owner's acceptance `ai-review:zh-vi` is pending. Also run: the
+  validators, the reading checks of every generator (every hanzi inside a lexicon surface,
+  homographs only in their stored reading) and the answer-key and story self-checks (0
+  findings). Pinyin and the traditional spelling come from CC-CEDICT in citation tones; tone
+  sandhi (3-3, 不, 一) is taught, not stored, and an erhua word shows one syllable per hanzi
+  (那儿 "nà r", not "nàr"): the readings align character by character, so joining them needs a
+  display rule in the app. Hán-Việt readings are shown only where they help and were checked
+  against Unihan, not by a Vietnamese teacher of Chinese. Once zh-vi is compiled it ties en-vi
+  on capabilities and units and "Chinese" sorts first, so a Vietnamese UI preselects zh-vi in
+  onboarding (zh-en, like ja-en, leaves onboarding); RC3-era zh-en progress is re-keyed to the
+  zh ids by v8. What is not verified or not there yet:
   - **audio**: no zh clip has been generated or heard; every `audioTarget`, the reception and
-    scenario clips and the 90 HSK clips wait for the audio session (Kokoro zh voices, the
-    sandhi front-end), and the primer uses the device voice until then;
+    scenario clips, the story lines and the 90 HSK clips wait for the audio run (Kokoro zh
+    voices, the sandhi front-end), and the primer uses the device voice until then;
   - **speech**: the `zh-CN` recogniser is untried on a phone (hanzi or pinyin output, traditional
     characters, numbers in digits);
   - **pinyin keyboard**: the Chinese IME (candidate choice, full-width punctuation, traditional
     candidates) has not been tried on a device; pinyin typed for a hanzi key counts as practice;
   - **script**: simplified characters only, also in the Taiwan scenario; traditional characters are
     accepted in answers but no sign or text is shown in traditional yet; pinyin stays under the
-    characters until the learner turns the reading aid off (no automatic fade);
-  - **stories** are not written yet.
+    characters until the learner turns the reading aid off (no automatic fade).
   Level results are estimates aligned to CEFR, not certificates, and HSK levels are not CEFR
-  levels. The HSK 1 and HSK 2 practice tracks (staged `content/zh/exam/hsk-1.json`, `hsk-2.json`)
+  levels. The HSK 1 and HSK 2 practice tracks (`content/zh/exam/hsk-1.json`, `hsk-2.json`)
   are `partial`: parts, item counts, times and task types follow the official HSK 3.0 sample
   papers (HSK 3.0 is administered from the 13 December 2026 session), but the documents read
   publish no HSK 3.0 score scale, pass mark or play count, so 100 points a part, the 60 % reference
