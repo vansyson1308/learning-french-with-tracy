@@ -15,6 +15,8 @@ import {
   deviceUtterances,
   deviceVoiceListeningCourse,
   listeningAudioPlan,
+  partnerUtterances,
+  speakUtterances,
 } from "../reception/device-voice-listening";
 import { SLOW_RATE } from "../reception/listening-player";
 import { emptySessionState, sessionReducer, skipAllowed } from "../session/reducer";
@@ -123,5 +125,33 @@ describe("a listening item without a device voice is skipped, never wrong", () =
     expect(s.firstResults).toEqual({});
     expect(s.wrongCounts).toEqual({});
     expect(s.finished).toBe(true);
+  });
+});
+
+/**
+ * Coordinator 2026-11-05 (P4e session 3): speech models and scenario partner lines of a device-voice course follow the
+ * listening rule — played through the local voice when there is one, otherwise the install hint — but they are never
+ * graded, so nothing is skipped: the step goes on with the text on screen.
+ */
+describe("unscored device-voice playback (speech models, partner lines)", () => {
+  test("speakUtterances speaks every line in order, each at its speaker's pitch, through the chosen local voice", () => {
+    const calls: { text: string; options: Record<string, unknown> }[] = [];
+    speakUtterances(deviceUtterances(LINES), KO_VOICE, (text, options) => calls.push({ text, options }));
+    expect(calls).toEqual([
+      { text: "안녕하세요?", options: { language: "ko-KR", voice: KO_VOICE.identifier, pitch: DEVICE_VOICE_PITCH.A, rate: DEVICE_VOICE_RATE } },
+      { text: "네, 안녕하세요.", options: { language: "ko-KR", voice: KO_VOICE.identifier, pitch: DEVICE_VOICE_PITCH.B, rate: DEVICE_VOICE_RATE } },
+    ]);
+  });
+  test("a partner line reads its clip's transcript, or the node text when the clip is unknown; nothing when both are empty", () => {
+    expect(partnerUtterances(LINES, "x")).toEqual(deviceUtterances(LINES));
+    expect(partnerUtterances(null, " 어서 오세요. ")).toEqual([{ text: "어서 오세요.", pitch: DEVICE_VOICE_PITCH.A }]);
+    expect(partnerUtterances(null, " ")).toEqual([]);
+  });
+  test("the plan is the listening plan: a bundled clip wins, no voice is the install hint", () => {
+    const base = { bundled: null, deviceVoiceCourse: true, lines: LINES, voiceFailed: false };
+    expect(listeningAudioPlan({ ...base, voice: null }).kind).toBe("no-device-voice");
+    expect(listeningAudioPlan({ ...base, voice: KO_VOICE }).kind).toBe("device-voice");
+    expect(listeningAudioPlan({ ...base, bundled: 7, voice: KO_VOICE }).kind).toBe("bundled");
+    expect(listeningAudioPlan({ ...base, deviceVoiceCourse: false, voice: KO_VOICE }).kind).toBe("unavailable");
   });
 });

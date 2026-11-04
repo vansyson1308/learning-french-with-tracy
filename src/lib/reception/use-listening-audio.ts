@@ -5,6 +5,7 @@
  * renderer offers the skip). Both players are always created (hooks run
  * unconditionally); only the one the plan names is shown. A course that does
  * not opt in never looks for a voice and never reaches expo-speech here.
+ * P4e session 3: the speech exercises' model clips use the same plan (unscored).
  */
 
 import { useMemo } from "react";
@@ -20,11 +21,12 @@ import { useListeningPlayer, type ListeningPlayerApi } from "./use-listening-pla
 
 export function useListeningAudio(
   courseId: string,
-  clipId: string,
+  /** null: no clip (a speech item without a model); the plan is then "unavailable". */
+  clipId: string | null,
   config: ListeningPlayerConfig
 ): { plan: ListeningAudioPlan; api: ListeningPlayerApi } {
-  const bundled = clipAudioSource(courseId, clipId);
-  const clip = clipFor(courseId, clipId);
+  const bundled = clipId === null ? null : clipAudioSource(courseId, clipId);
+  const clip = clipId === null ? undefined : clipFor(courseId, clipId);
   const deviceCourse = deviceVoiceListeningCourse(courseId);
   const wantsVoice = deviceCourse && bundled === null && clip !== undefined;
   const voice = useDeviceVoice(courseProfile(courseId).ttsLocale, wantsVoice);

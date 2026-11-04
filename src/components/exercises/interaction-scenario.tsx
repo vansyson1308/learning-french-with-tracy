@@ -13,6 +13,7 @@
  */
 import { Ionicons } from "@expo/vector-icons";
 import { useAudioPlayer } from "expo-audio";
+import * as Speech from "expo-speech";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
@@ -32,8 +33,12 @@ import {
   type InteractionState,
   type TurnRecord,
 } from "@/lib/interaction/machine";
-import { clipAudioSource } from "@/lib/reception/content";
+import { DeviceVoiceMissing } from "@/components/session/device-voice-missing";
+import { courseProfile } from "@/lib/course-profile";
+import { clipAudioSource, clipFor } from "@/lib/reception/content";
+import { deviceVoiceListeningCourse, partnerUtterances, speakUtterances } from "@/lib/reception/device-voice-listening";
 import type { SpeechOutcome } from "@/lib/speech/types";
+import { useDeviceVoice } from "@/lib/stories/use-device-read-along";
 import type { SpeechExerciseContext } from "@/lib/speech/use-speech-session";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 import type { InteractionScenarioExercise } from "@/lib/types";
@@ -151,26 +156,49 @@ function LoadedScenario({
 
   // One conversation audio channel: each NEW partner line auto-plays once
   // (the partner speaking); replays go through the counted support moves.
+  // P4e session 3 (coordinator 2026-11-05): a device-voice course reads a
+  // line without a bundled clip through the installed local voice; with no
+  // voice the notice + install hint shows and the conversation goes on with
+  // the text (never graded, so nothing is skipped).
   const player = useAudioPlayer();
+  const deviceCourse = deviceVoiceListeningCourse(courseId);
+  const voice = useDeviceVoice(courseProfile(courseId).ttsLocale, deviceCourse);
+  const spoke = React.useRef(false);
   const playClip = React.useCallback(
-    (clipId: string | null) => {
-      if (clipId === null) return;
-      const source = clipAudioSource(courseId, clipId);
-      if (source === null) return;
-      player.replace(source);
-      player.seekTo(0);
-      player.play();
+    (clipId: string | null, text: string) => {
+      const source = clipId === null ? null : clipAudioSource(courseId, clipId);
+      if (source !== null) {
+        player.replace(source);
+        player.seekTo(0);
+        player.play();
+        return;
+      }
+      if (!deviceCourse || !voice) return;
+      const lines = clipId === null ? null : (clipFor(courseId, clipId)?.transcriptLines ?? null);
+      const utterances = partnerUtterances(lines, text);
+      if (utterances.length === 0) return;
+      if (spoke.current) Speech.stop();
+      spoke.current = true;
+      speakUtterances(utterances, voice, (say, options) => Speech.speak(say, options));
     },
-    [player, courseId]
+    [player, courseId, deviceCourse, voice]
+  );
+  React.useEffect(
+    () => () => {
+      if (spoke.current) Speech.stop();
+    },
+    []
   );
   const partnerTurns = state.history.filter((t) => t.speaker === "partner");
   const playedCountRef = React.useRef(0);
   React.useEffect(() => {
     if (partnerTurns.length <= playedCountRef.current) return;
+    // A device voice still being looked up: wait, so the first line is not lost.
+    if (deviceCourse && voice === undefined) return;
     playedCountRef.current = partnerTurns.length;
     const latest = partnerTurns[partnerTurns.length - 1];
-    playClip(clipIdForPartnerEntry(scenario, latest));
-  }, [partnerTurns, scenario, playClip]);
+    playClip(clipIdForPartnerEntry(scenario, latest), textForPartnerEntry(scenario, latest));
+  }, [partnerTurns, scenario, playClip, deviceCourse, voice]);
 
   // Submit the whole-scenario result exactly once, at the terminal.
   const onAnswerRef = React.useRef(onAnswer);
@@ -208,12 +236,12 @@ function LoadedScenario({
   const onRepeat = () => {
     if (!lastPartner) return;
     dispatch({ type: "repeatRequested" });
-    playClip(clipIdForPartnerEntry(scenario, lastPartner));
+    playClip(clipIdForPartnerEntry(scenario, lastPartner), textForPartnerEntry(scenario, lastPartner));
   };
   const onRephrase = () => {
     if (lastPartnerNode?.kind !== "partner" || !lastPartnerNode.rephraseClipId) return;
     dispatch({ type: "rephraseRequested" });
-    playClip(lastPartnerNode.rephraseClipId);
+    playClip(lastPartnerNode.rephraseClipId, lastPartnerNode.rephraseText ?? lastPartnerNode.text);
   };
 
   const onFinal = (value: SpokenAnswer) => {
@@ -239,6 +267,7 @@ function LoadedScenario({
         <Text style={styles.goalLabel}>{t("ex.yourGoal")}</Text>
         <Text style={styles.goalText}>{scenario.goal}</Text>
       </View>
+      {deviceCourse && voice === null ? <DeviceVoiceMissing courseId={courseId} /> : null}
 
       <View style={styles.historyWrap}>
         {state.history.map((turn, index) =>

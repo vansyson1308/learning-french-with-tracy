@@ -9,10 +9,9 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { useT } from "@/lib/i18n";
 import { SpeakRecordControl } from "@/components/exercises/speak-record-control";
-import { ListeningPlayerView } from "@/components/session/listening-player-view";
+import { ModelPlayback } from "@/components/exercises/model-playback";
 import { checkAnswer, isSpokenAnswer, type Answer, type SpokenAnswer } from "@/lib/grading";
-import { clipAudioSource } from "@/lib/reception/content";
-import { useListeningPlayer } from "@/lib/reception/use-listening-player";
+import { useListeningAudio } from "@/lib/reception/use-listening-audio";
 import {
   attemptAssisted,
   attemptMode,
@@ -44,7 +43,7 @@ export function SpeakRepetition({
   const styles = useStyles();
   const { t } = useT();
   const ctx = { scored: speech.scored };
-  const player = useListeningPlayer(clipAudioSource(courseId, exercise.modelClipId), {
+  const { plan, api: player } = useListeningAudio(courseId, exercise.modelClipId, {
     maxPlays: null,
     allowSlow: true,
   });
@@ -63,7 +62,7 @@ export function SpeakRepetition({
       <Text style={styles.target} testID="repetition-target">
         {exercise.target}
       </Text>
-      <ListeningPlayerView api={player} />
+      <ModelPlayback courseId={courseId} plan={plan} api={player} />
       <SpeakRecordControl
         targetLanguage={targetLanguage}
         scored={speech.scored}

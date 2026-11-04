@@ -10,10 +10,9 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { useT } from "@/lib/i18n";
 import { SpeakRecordControl } from "@/components/exercises/speak-record-control";
-import { ListeningPlayerView } from "@/components/session/listening-player-view";
+import { ModelPlayback } from "@/components/exercises/model-playback";
 import { checkAnswer, isSpokenAnswer, type Answer, type SpokenAnswer } from "@/lib/grading";
-import { clipAudioSource } from "@/lib/reception/content";
-import { useListeningPlayer } from "@/lib/reception/use-listening-player";
+import { useListeningAudio } from "@/lib/reception/use-listening-audio";
 import {
   attemptAssisted,
   attemptMode,
@@ -55,12 +54,7 @@ export function SpeakProduction({
   const targetVisible = showTarget(exercise, ctx, policyState);
   const modelPlayable = canPlayModel(exercise, ctx, { answered });
 
-  const player = useListeningPlayer(
-    exercise.modelClipId !== null && modelPlayable
-      ? clipAudioSource(courseId, exercise.modelClipId)
-      : null,
-    { maxPlays: null, allowSlow: true }
-  );
+  const { plan, api: player } = useListeningAudio(courseId, modelPlayable ? exercise.modelClipId : null, { maxPlays: null, allowSlow: true });
 
   const heard = isSpokenAnswer(answer) ? answer.finalTranscript : null;
   const hint =
@@ -93,7 +87,7 @@ export function SpeakProduction({
           {exercise.target}
         </Text>
       ) : null}
-      {modelPlayable ? <ListeningPlayerView api={player} /> : null}
+      {modelPlayable ? <ModelPlayback courseId={courseId} plan={plan} api={player} /> : null}
       <SpeakRecordControl
         targetLanguage={targetLanguage}
         scored={speech.scored}

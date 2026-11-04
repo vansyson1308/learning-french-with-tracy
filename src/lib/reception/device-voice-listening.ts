@@ -40,6 +40,28 @@ export function deviceSpeechRate(playerRate: number): number {
   return DEVICE_VOICE_RATE * playerRate;
 }
 
+/**
+ * Coordinator 2026-11-05 (P4e session 3): speech models and scenario partner lines of a device-voice course take the
+ * same plan as listening — played through the local voice, otherwise the install hint — but they are never graded,
+ * so nothing is skipped. A partner line reads its clip's transcript, or the node's own text when the clip is unknown.
+ */
+export function partnerUtterances(lines: readonly ListeningLine[] | null, text: string): DeviceUtterance[] {
+  if (lines !== null) return deviceUtterances(lines);
+  return deviceUtterances([{ speaker: "A", text }]);
+}
+
+export type SpeakOptions = { language: string; voice: string; pitch: number; rate: number };
+
+/** Speak the utterances in order through `speak` (expo-speech queues them), at the player rate. */
+export function speakUtterances(
+  utterances: readonly DeviceUtterance[],
+  voice: DeviceVoice,
+  speak: (text: string, options: SpeakOptions) => void,
+  playerRate = 1
+): void {
+  for (const u of utterances) speak(u.text, { language: voice.language, voice: voice.identifier, pitch: u.pitch, rate: deviceSpeechRate(playerRate) });
+}
+
 export type ListeningAudioPlan =
   | { kind: "bundled"; source: number }
   | { kind: "device-voice"; voice: DeviceVoice; utterances: DeviceUtterance[] }
