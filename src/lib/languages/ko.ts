@@ -28,7 +28,7 @@ import {
   spellDigitToken,
   tokenizeCjk,
 } from "./cjk";
-import type { CourseLexicon, LanguageRules } from "./types";
+import type { CourseLexicon, LanguageRules, NegationRules } from "./types";
 
 // --- jamo -------------------------------------------------------------------
 
@@ -188,6 +188,17 @@ const KO_READING_SPEED = {
   estimate: true,
 } as const;
 
+/**
+ * QC 2026-11-05 §1.2: 안 / 못 directly before the keyword negate it (안 가요 is not 가요) — only as a whole token, so
+ * the 안 of 안녕 or 불안 never does; -지 않다 / -지 못하다 and 아니다 after it, at most one syllable later (가지 않아요,
+ * 좋아하지 않아요, 학생이 아니에요), negate it too. Counted in syllables: the course tokenizer ignores spacing.
+ */
+const NEGATION: NegationRules = {
+  unit: "text",
+  before: { negators: ["안", "못"], reach: 0, wholeToken: true },
+  after: { negators: ["지 않", "지 못하", "지 못해", "지 못했", "지 못합", "아니에요", "아닙니다", "아니야"], gap: 1 },
+};
+
 export function createKoreanRules(lexicon?: CourseLexicon): LanguageRules {
   const dict = lexicon && lexicon.entries.length > 0 ? buildDictionary(lexiconMaps(lexicon, undefined).words, normalizeLenientKorean) : null;
   const fallback = tokenizeCjk("ko-KR", false);
@@ -195,6 +206,7 @@ export function createKoreanRules(lexicon?: CourseLexicon): LanguageRules {
     code: "ko",
     ttsLocale: "ko-KR",
     recognitionLocale: "ko-KR",
+    negation: NEGATION,
     articleCue: () => undefined,
     splitArticle: (surface) => ({ bare: surface }),
     numberToWords: koreanSinoNumber,

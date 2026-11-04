@@ -8,9 +8,24 @@
 import { frenchNumber } from "../learning/french-numbers";
 
 import { articleTable, latinRules } from "./base";
-import type { LanguageRules } from "./types";
+import type { LanguageRules, NegationRules } from "./types";
 
 const ARTICLES = articleTable(["le", "la", "l'"]);
+
+/**
+ * QC 2026-11-05 §1.2: ne…pas / n'…pas / ne…jamais / ne…plus negate the rest of their clause from "ne" / "n'" (the
+ * verb and what follows; the subject before it is not negated: "le restaurant n'est pas ouvert" still names the
+ * restaurant). Spoken French drops "ne" ("j'aime pas le café"): pas, jamais and rien negate what follows them and the
+ * verb right before them. Plus and personne alone do not ("plus tard", "une personne"). Idioms that negate nothing:
+ * pas mal, pas de problème, de rien, n'importe, n'est-ce pas. Conjunctions open a new clause.
+ */
+const NEGATION: NegationRules = {
+  unit: "word",
+  before: { negators: ["ne", "n'", "pas", "jamais", "rien"], reach: "clause" },
+  after: { negators: ["pas", "jamais", "rien"], gap: 0 },
+  idioms: ["pas mal", "pas de problème", "de rien", "n'importe", "n'est-ce pas"],
+  clauseBreaks: ["mais", "parce", "car", "et", "ou", "quand", "si"],
+};
 
 /**
  * Standalone digit tokens 0–100 become French words ("2" → "deux"). The
@@ -28,6 +43,7 @@ export const fr: LanguageRules = latinRules(
   { code: "fr", ttsLocale: "fr-FR", recognitionLocale: "fr-FR" },
   {
     ...ARTICLES,
+    negation: NEGATION,
     numberToWords: (value) => frenchNumber(value).traditional,
     spellDigits: spellFrenchDigits,
     // The labels the post-answer grammar note always used for French.

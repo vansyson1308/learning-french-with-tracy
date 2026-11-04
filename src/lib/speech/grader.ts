@@ -17,6 +17,7 @@
  * authored as acceptedVariants, not guessed by the grader.
  */
 
+import { expressesNegation, negationAwareMatcher } from "../languages/negation";
 import type { LanguageRules } from "../languages/types";
 
 /** Grading inputs an item author controls (subset of the speech schema). */
@@ -27,7 +28,8 @@ export type SpeechGradingSpec = {
    * Concept slots for information-giving tasks: EVERY slot must be
    * satisfied (any of its forms, as a contiguous token run) by ONE single
    * transcript. Optional; whole-variant matching also applies when both
-   * are present.
+   * are present. A run inside a negated span does not satisfy a slot
+   * (QC 2026-11-05 §1.2) unless the form itself is a negation.
    */
   requiredConcepts?: string[][];
 };
@@ -71,18 +73,6 @@ function tokens(normalized: string): string[] {
   return normalized.length === 0 ? [] : normalized.split(" ");
 }
 
-/** Contiguous token-run containment ("il y a" inside "il y a deux chats"). */
-function containsRun(haystack: string[], needle: string[]): boolean {
-  if (needle.length === 0) return false;
-  outer: for (let i = 0; i + needle.length <= haystack.length; i++) {
-    for (let j = 0; j < needle.length; j++) {
-      if (haystack[i + j] !== needle[j]) continue outer;
-    }
-    return true;
-  }
-  return false;
-}
-
 /**
  * P4b: the reading form of a normalized utterance (ja: 学生 → がくせい),
  * or null for languages without a reading layer — every language but the
@@ -104,19 +94,32 @@ function wholeReading(normalized: string, rules: LanguageRules): string | null {
   return reading === null ? null : compact(reading);
 }
 
+/**
+ * Every slot realized as a contiguous token run (or, P4b, a run of the reading) that is not inside a negated span
+ * (QC 2026-11-05 §1.2, languages/negation.ts): 不是 does not realize 是, "I don't like" does not realize "like".
+ */
 function conceptsSatisfied(
+  transcript: string,
   transcriptTokens: string[],
   transcriptReading: string[] | null,
   slots: string[][],
-  rules: LanguageRules
+  rules: LanguageRules,
+  /** The item's own expected text is negated: negation is what it asks for, so no slot is negation-checked. */
+  negationRequired: boolean
 ): boolean {
   if (slots.length === 0) return false;
+  const polarity = negationRequired ? {} : rules;
+  const matchTokens = negationAwareMatcher(polarity, transcript, transcriptTokens, (s) => normalizeSpoken(s, rules));
+  const matchReading =
+    transcriptReading === null
+      ? null
+      : negationAwareMatcher(polarity, transcript, transcriptReading, (s) => readingOf(normalizeSpoken(s, rules), rules) ?? "");
   return slots.every((slot) =>
     slot.some((form) => {
       const normalized = normalizeSpoken(form, rules);
-      if (containsRun(transcriptTokens, tokens(normalized))) return true;
-      const reading = transcriptReading === null ? null : readingOf(normalized, rules);
-      return reading !== null && containsRun(transcriptReading!, tokens(reading));
+      if (matchTokens(tokens(normalized))) return true;
+      const reading = matchReading === null ? null : readingOf(normalized, rules);
+      return reading !== null && matchReading!(tokens(reading));
     })
   );
 }
@@ -132,6 +135,12 @@ export function gradeSpokenAttempt(
   rules: LanguageRules
 ): SpeechGradeResult {
   const transcripts = [finals.finalTranscript, ...finals.alternatives];
+  // QC 2026-11-05 §1.2: if the expected text (any variant or concept form) is itself negated, negation is required.
+  let required: boolean | undefined;
+  const negationRequired = () =>
+    (required ??= [...spec.acceptedVariants, ...(spec.requiredConcepts ?? []).flat()].some((t) =>
+      expressesNegation(rules, t, (s) => normalizeSpoken(s, rules))
+    ));
   const normalizedVariants = spec.acceptedVariants.map((v) => {
     const normalized = normalizeSpoken(v, rules);
     return { authored: v, normalized, reading: wholeReading(normalized, rules) };
@@ -157,7 +166,10 @@ export function gradeSpokenAttempt(
         heard: finals.finalTranscript,
       };
     }
-    if (spec.requiredConcepts && conceptsSatisfied(tokens(normalized), heardReading === null ? null : tokens(heardReading), spec.requiredConcepts, rules)) {
+    if (
+      spec.requiredConcepts &&
+      conceptsSatisfied(transcripts[index]!, tokens(normalized), heardReading === null ? null : tokens(heardReading), spec.requiredConcepts, rules, negationRequired())
+    ) {
       return {
         correct: true,
         matchedTranscriptIndex: index,

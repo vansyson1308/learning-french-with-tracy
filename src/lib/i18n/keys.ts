@@ -92,6 +92,7 @@ export type MessageKey =
   | "ex.tapPairs"
   | "ex.tapWhatYouHear"
   | "ex.thatMatched"
+  | "ex.traditionalAccepted"
   | "ex.translateSentence"
   | "ex.typeIn"
   | "ex.typeInAccents"
@@ -567,4 +568,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 565;
+export const MESSAGE_KEY_COUNT = 566;

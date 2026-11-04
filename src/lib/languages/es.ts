@@ -14,7 +14,7 @@
  * Dictation and conjugation stay on the strict form, which spells nothing.
  */
 import { articleTable, foldSpokenLatin, latinRules } from "./base";
-import type { LanguageRules } from "./types";
+import type { LanguageRules, NegationRules } from "./types";
 
 const UNITS = ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
 const TEENS = ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"];
@@ -83,10 +83,23 @@ function spokenNumberFormats(text: string): string {
     .replace(/\b(\d{1,3})\s*(?:€|euros?\b)/gi, (_, e: string) => euroAmount(e));
 }
 
+/**
+ * QC 2026-11-05 §1.2: "no" (and nunca, tampoco) stands before the verb and negates the rest of its clause ("no quiero
+ * café"); what precedes it is not negated. A comma ends the clause ("No, soy de Madrid."), so do the conjunctions
+ * pero, sino, porque, y, cuando, si; "no hay problema", "no pasa nada" and "no hay de qué" negate nothing.
+ */
+const NEGATION: NegationRules = {
+  unit: "word",
+  before: { negators: ["no", "nunca", "tampoco"], reach: "clause" },
+  idioms: ["no hay problema", "no pasa nada", "no hay de qué"],
+  clauseBreaks: ["pero", "sino", "porque", "y", "cuando", "si"],
+};
+
 export const es: LanguageRules = latinRules(
   { code: "es", ttsLocale: "es-ES", recognitionLocale: "es-ES" },
   {
     ...articleTable(["el", "la", "los", "las"]),
+    negation: NEGATION,
     numberToWords: spanishNumber,
     spellDigits: spellSpanishDigits,
     foldSpoken: (text) => foldSpokenLatin(spokenNumberFormats(text)),

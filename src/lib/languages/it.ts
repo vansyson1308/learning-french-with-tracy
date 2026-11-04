@@ -10,7 +10,7 @@
  * Dictation and conjugation stay on the strict form, which spells nothing.
  */
 import { articleTable, foldSpokenLatin, latinRules } from "./base";
-import type { LanguageRules } from "./types";
+import type { LanguageRules, NegationRules } from "./types";
 
 const UNITS = ["zero", "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove"];
 const TEENS = ["dieci", "undici", "dodici", "tredici", "quattordici", "quindici", "sedici", "diciassette", "diciotto", "diciannove"];
@@ -60,10 +60,23 @@ function spokenNumberFormats(text: string): string {
     .replace(/\b(\d{1,3})\s*(?:€|euro\b)/gi, (_, e: string) => (Number(e) === 1 ? "un euro" : `${e} euro`));
 }
 
+/**
+ * QC 2026-11-05 §1.2: "non" stands before the verb and negates the rest of its clause ("non voglio un caffè"). A comma
+ * or a conjunction (ma, però, perché, e, quando, se) ends the clause; "non c'è problema", "non c'è di che" and "non fa
+ * niente" negate nothing.
+ */
+const NEGATION: NegationRules = {
+  unit: "word",
+  before: { negators: ["non"], reach: "clause" },
+  idioms: ["non c'è problema", "non c'è di che", "non fa niente"],
+  clauseBreaks: ["ma", "però", "perché", "e", "quando", "se"],
+};
+
 export const it: LanguageRules = latinRules(
   { code: "it", ttsLocale: "it-IT", recognitionLocale: "it-IT" },
   {
     ...articleTable(["il", "lo", "la", "l'", "i", "gli", "le"]),
+    negation: NEGATION,
     numberToWords: italianNumber,
     spellDigits: spellItalianDigits,
     foldSpoken: (text) => foldSpokenLatin(spokenNumberFormats(text)),

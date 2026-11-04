@@ -20,7 +20,11 @@
  *    the learner typed are never rewritten), and a pinyin token spelling a
  *    course word counts as known vocabulary (knownReading).
  *  - normalizeStrict (dictation, cloze): width and case only — hanzi as
- *    typed; no traditional fold, no pinyin.
+ *    typed; no traditional fold, no pinyin. QC 2026-11-05 §1.1: dictation
+ *    then also accepts an answer whose traditional spellings fold (word
+ *    level, the course lexicon's CC-CEDICT traditional forms) to the key
+ *    (alignScriptToKey); the screen shows the simplified key. No character
+ *    table ships: every word of the zh-vi dictations is a course word.
  *  - search fold: traditional → simplified, pinyin without tones (marks
  *    and numbers dropped, ü → u as SQLite's remove_diacritics does).
  */
@@ -42,7 +46,7 @@ import {
   tokenizeCjk,
   type CjkDictionary,
 } from "./cjk";
-import type { CourseLexicon, LanguageRules } from "./types";
+import type { CourseLexicon, LanguageRules, NegationRules } from "./types";
 
 const HAN_DIGITS = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
 
@@ -190,6 +194,21 @@ function bind(lexicon: CourseLexicon): Bound {
   };
 }
 
+/**
+ * QC 2026-11-05 §1.2: 不 / 没 (没有) / 别 negate what follows — the keyword starting directly after the negator or
+ * after at most two characters (one adverb, modal or copula: 不是第一次, 不太舒服, 不想去, 没有发烧), inside one
+ * clause. Counted in characters, because a segmenter may glue the negator to the next word (我不是). Words that
+ * contain a negator but negate nothing (没问题, 没关系, 对不起, 不客气, 别的 …) are idioms; traditional spellings too.
+ */
+const NEGATION: NegationRules = {
+  unit: "text",
+  before: { negators: ["不", "没", "沒", "别", "別"], reach: 2 },
+  idioms: [
+    "没问题", "沒問題", "没关系", "沒關係", "没事", "沒事", "不客气", "不客氣", "对不起", "對不起", "不好意思", "不用谢", "不用謝",
+    "不错", "不錯", "不过", "不過", "差不多", "了不起", "不久", "不少", "不但", "不同", "别的", "別的", "别人", "別人",
+  ],
+};
+
 export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
   const bound = lexicon && lexicon.entries.length > 0 ? bind(lexicon) : null;
   const foldVariants = (text: string) => (bound ? replaceLongest(text, bound.variants, bound.variantMax) : text);
@@ -222,6 +241,7 @@ export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
     code: "zh",
     ttsLocale: "zh-CN",
     recognitionLocale: "zh-CN",
+    negation: NEGATION,
     articleCue: () => undefined,
     splitArticle: (surface) => ({ bare: surface }),
     numberToWords: chineseNumber,
@@ -252,6 +272,8 @@ export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
     },
     readingInput: "pinyin",
     normalizeStrict: normalizeStrictChinese,
+    // QC 2026-11-05 §1.1: dictation accepts the traditional spelling of the key's words (word-level, from the lexicon).
+    alignScriptToKey: (answer, key) => (bound !== null && foldVariants(answer) === key ? key : answer),
     foldSpoken,
     tokenize: (folded) => {
       // Digits are spelt before segmentation, so 12个 and 十二个 split alike.

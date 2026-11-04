@@ -1,4 +1,4 @@
-import type { Exercise, GuidedWritingExercise, SimpleFormExercise } from "./types";
+import type { DictationExercise, Exercise, GuidedWritingExercise, SimpleFormExercise } from "./types";
 
 import { courseProfile } from "./course-profile";
 import { languageRulesForCourse } from "./languages";
@@ -230,6 +230,36 @@ export function productionWritingEvaluation(
   return { ...evaluation, matchedSlotIds: evaluation.matchedSlotIds.filter((id) => !readingOnly.includes(id)) };
 }
 
+/**
+ * How a dictation answer matches one of its keys. Dictation shares the strict
+ * contract (P7 §63): orthographic decoding is the construct, so accents and
+ * exact forms matter; punctuation is not part of it (D-10 review: "¡Hola!" for
+ * "hola"). "exact": as written. "script" (QC 2026-11-05 §1.1): only through
+ * the plugin's other accepted script (zh: traditional characters of the key's
+ * words) — correct, and the screen shows `key`, the taught form. null: wrong.
+ */
+export function dictationMatch(
+  exercise: DictationExercise,
+  answer: string,
+  rules: LanguageRules
+): { kind: "exact" | "script"; key: string } | null {
+  const fold = (s: string) => stripPunctuation(rules.normalizeStrict(s));
+  const keys = [exercise.answer, ...exercise.alternatives];
+  const attempt = fold(answer);
+  const exact = keys.find((k) => fold(k) === attempt);
+  if (exact !== undefined) return { kind: "exact", key: exact };
+  const align = rules.alignScriptToKey;
+  const script = align === undefined ? undefined : keys.find((k) => align(attempt, fold(k)) === fold(k));
+  return script === undefined ? null : { kind: "script", key: script };
+}
+
+/** The simplified (taught-script) key to show under a dictation answer accepted in another script; null otherwise. */
+export function dictationScriptNote(exercise: DictationExercise, answer: Answer, courseId: string): string | null {
+  if (typeof answer !== "string") return null;
+  const match = dictationMatch(exercise, answer, languageRulesForCourse(courseId));
+  return match?.kind === "script" ? match.key : null;
+}
+
 export function strictEquals(a: string, b: string, courseId?: string): boolean {
   const fold = courseId === undefined ? normalizeStrictLatin : languageRulesForCourse(courseId).normalizeStrict;
   return fold(a) === fold(b);
@@ -267,14 +297,10 @@ export function checkAnswer(exercise: Exercise, answer: Answer, courseId: string
       return keys.some((a) => lenientEquals(rules, a, answer));
     }
     case "conjugationCloze":
-    case "dictation": {
-      // Dictation shares the strict contract (P7 §63): orthographic
-      // decoding is the construct, so accents and exact forms matter.
-      // Punctuation is not part of it (D-10 review: "¡Hola!" for "hola").
       if (typeof answer !== "string") return false;
-      const fold = (s: string) => (exercise.type === "dictation" ? stripPunctuation(rules.normalizeStrict(s)) : rules.normalizeStrict(s));
-      return [exercise.answer, ...exercise.alternatives].some((a) => fold(a) === fold(answer));
-    }
+      return [exercise.answer, ...exercise.alternatives].some((a) => rules.normalizeStrict(a) === rules.normalizeStrict(answer));
+    case "dictation":
+      return typeof answer === "string" && dictationMatch(exercise, answer, rules) !== null;
     case "listeningComprehension":
     case "readingComprehension":
       return answer === exercise.correct;
