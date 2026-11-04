@@ -1,5 +1,13 @@
 # Android closed test plan (§36)
 
+> **D-16 (2026-11-05): the closed test starts early, before v1.0, with no
+> production release before v1.0.** Current documents: build + signing
+> `PLAY_SIGNING.md`, listing and Console answers `PLAY_STORE_LISTING.md`,
+> Vietnamese tester guide `docs/PLAY_TESTER_GUIDE_VI.md` (replaces the
+> template message below for this test), daily 12 × 14 record
+> `PLAY_CLOSED_TEST_TRACKER.md`. The targets, timeline and exit criteria
+> below still apply.
+
 Applies if the Play Console requires a closed test before production access
 for this new personal account (currently: at least 12 testers opted in for
 14 continuous days — **VERIFY IN CONSOLE**).

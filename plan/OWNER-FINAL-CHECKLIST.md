@@ -15,7 +15,7 @@ Ký hiệu: ☐ chưa làm · ☑ xong · (từ milestone nào)
 - ☐ **Giữ keystore an toàn**: `C:\keys\lft-upload.jks` + hai mật khẩu được sao lưu ngoại tuyến ở hai nơi (không ghi vào file văn bản thường). Đây là khoá đã ký RC3; mọi bản sau phải cùng khoá để cài đè được. (P0)
 - ☐ **Gõ mật khẩu keystore một lần** khi Claude báo bản v1.0 candidate đã build: chạy script ký trong `out\` (tên file Claude ghi ở đầu STATUS), gõ mật khẩu, báo "XONG".
 - ☐ **Đẩy tag** sau khi ký và CI xanh (phiên làm việc không đẩy tag được): `git tag -a v1.0.0 <commit> -m "v1.0.0"` rồi `git push origin v1.0.0`. Các tag RC cũ (rc.3, rc.4) không cần nữa. (P0, P3f)
-- ☐ **Tài khoản Google Play Console** (cá nhân) và chương trình closed test (12 tester × 14 ngày) — Claude chuẩn bị nội dung ở P6a; anh tạo tài khoản và bấm nộp. (P6)
+- ☐ **Tài khoản Google Play Console** (cá nhân) và chương trình closed test (12 tester × 14 ngày) — làm sớm theo D-16, các bước ở mục F. (P6, D-16)
 - ☐ (Tuỳ chọn, sau v1.0) Apple Developer Program + EAS project nếu muốn bản iOS. (RC2)
 
 ## B. Duyệt nội dung (D-10, 2026-10-29: không thuê người duyệt bản ngữ — AI mô phỏng người bản ngữ duyệt, anh chấp nhận từng khoá)
@@ -68,3 +68,16 @@ Thay cho mọi lượt test lẻ trước đây (gói P0 RC3, smoke P1d, kiểm 
 ## E. Thông tin cửa hàng (P6a)
 - ☐ Xác nhận email hỗ trợ (`release/support-contact.json` hiện là `duymank250997@gmail.com`, tạm thời) và tên nhà phát triển hiển thị trên cửa hàng.
 - ☐ Duyệt nội dung trang cửa hàng tiếng Việt + tiếng Anh và ảnh chụp màn hình Claude chuẩn bị.
+
+## F. Google Play closed test (D-16 — làm sớm, không chờ v1.0; chỉ closed test, không production)
+Hướng dẫn chi tiết: `out\play-signing.md` (= `release/PLAY_SIGNING.md`); trang cửa hàng: `release/PLAY_STORE_LISTING.md`.
+- ☐ Tạo tài khoản Play Console **cá nhân** tại play.google.com/console/signup, trả phí **25 USD** một lần (bật xác minh 2 bước cho tài khoản Google trước). (D-16)
+- ☐ **Xác minh danh tính**: tải giấy tờ tuỳ thân, hồ sơ thanh toán cùng tên thật, chờ email xác nhận (có thể vài ngày). (D-16)
+- ☐ **Tạo app**: tên "Learning French with Tracy" (hoặc tên mới nếu đã chốt D-3), App, Miễn phí; điền mục "Thiết lập ứng dụng" theo `release/PLAY_STORE_LISTING.md` (quảng cáo: Không; đối tượng 13+; An toàn dữ liệu: không thu thập; URL chính sách quyền riêng tư). (D-16)
+- ☐ **Build AAB** từ `main` mới nhất khi CI xanh: Git Bash → `bash plan/scripts/build-play-aab.sh`. (D-16)
+- ☐ **Ký AAB**: cmd → `plan\scripts\sign-aab-windows.cmd`, gõ mật khẩu keystore; script phải báo vân tay `D2:80:D1:DE…31:82`. (D-16)
+- ☐ **Bật Play App Signing** ở lần tải đầu: giữ mặc định "Google tạo khoá ký ứng dụng"; khoá upload = `C:\keys\lft-upload.jks`. (D-16)
+- ☐ **Tải AAB lên** Kiểm thử kín (track `v1-closed`), thêm danh sách email tester, bấm triển khai, chép đường liên kết tham gia. (D-16)
+- ☐ **Mời tester**: 15 người (tối thiểu 12), gửi link + `docs/PLAY_TESTER_GUIDE_VI.md`; ghi biệt danh (không ghi email) vào `release/PLAY_CLOSED_TEST_TRACKER.md`. (D-16)
+- ☐ **Giữ ≥ 12 tester trong 14 ngày liên tục**: mỗi ngày xem số tester trong Console, đánh dấu vào tracker, nhắc ngày 3/7/11. (D-16)
+- ☐ **Sau mỗi lần merge một khoá**: Claude tăng versionCode (`bun run release:bump`) → anh build, ký, tải lên cùng track (không mất ngày đã tính). (D-16)

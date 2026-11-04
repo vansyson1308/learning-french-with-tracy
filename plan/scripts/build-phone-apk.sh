@@ -18,6 +18,8 @@ bun install --frozen-lockfile
 bun scripts/compile-content.ts --check
 bunx expo prebuild --platform android --no-install --clean
 git checkout package.json 2>/dev/null || true
+# Metro reads all ~9k assets at once; Node on Windows hits EMFILE without this cap (scripts/lib/fs-read-limit.cjs).
+export NODE_OPTIONS="--require $(cygpath -m "$(pwd)/scripts/lib/fs-read-limit-preload.cjs") ${NODE_OPTIONS:-}"
 cd android
 ./gradlew.bat :app:assembleRelease --no-daemon -PreactNativeArchitectures="$ABIS"
 ls -la app/build/outputs/apk/release/

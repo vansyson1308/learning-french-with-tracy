@@ -1,5 +1,9 @@
 # Store metadata — final v1 drafts (Part IX)
 
+> **D-16 (2026-11-05):** the Play closed-test listing (Vietnamese first,
+> six courses) is `PLAY_STORE_LISTING.md`; it supersedes the French-only
+> Play copy below for the closed test. The claims policy below still applies.
+
 The listing copy for both stores, written to what the app verifiably does
 (`docs/USER_GUIDE_VALIDATION.md`) and to the policies in
 `MONETIZATION_POLICY_V1.md` and `PRIVACY_FINAL.md`. Owner-supplied fields
