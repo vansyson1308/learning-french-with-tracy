@@ -1,0 +1,92 @@
+{
+  "generator": "content/ko/_drafts/_generators/ko-topik-format.py",
+  "readAt": "2026-11-05",
+  "sources": [
+    {
+      "url": "https://www.niied.go.kr/convert/preview/1764681490990/index.html",
+      "title": "한국어능력시험(TOPIK) 기본운영규정, 규정 제204호 (2024.9.12, 8차 개정)",
+      "publisher": "국립국제교육원 (NIIED)",
+      "used": true
+    },
+    {
+      "url": "https://www.niied.go.kr/web/niied/contents/niied_topik",
+      "title": "사업 > 한국어능력시험 > 한국어능력시험(TOPIK)",
+      "publisher": "국립국제교육원 (NIIED)",
+      "used": false
+    },
+    {
+      "url": "https://www.topik.go.kr/TWGUIDE/TWGUIDE0010.do",
+      "title": "TOPIK 한국어능력시험 (시험 안내)",
+      "publisher": "국립국제교육원 (NIIED)",
+      "used": false,
+      "note": "rendered by JavaScript: only the page title was returned on 2026-11-05; no figure is taken from it"
+    }
+  ],
+  "pbt": {
+    "where": "제3조제2항",
+    "sections": [
+      {
+        "id": "listening",
+        "name": "듣기",
+        "items": 30,
+        "minutes": 40
+      },
+      {
+        "id": "reading",
+        "name": "읽기",
+        "items": 40,
+        "minutes": 60
+      }
+    ],
+    "totalMinutes": 100,
+    "levels": {
+      "where": "〔별표 1〕 (제4조제1항)",
+      "basis": "total score of the sections",
+      "1급": [
+        80,
+        139
+      ],
+      "2급": [
+        140,
+        200
+      ]
+    }
+  },
+  "ibt": {
+    "where": "제3조제2항, 〔별표 1〕",
+    "sections": [
+      {
+        "id": "listening",
+        "name": "듣기",
+        "items": 30,
+        "minutes": 40
+      },
+      {
+        "id": "reading",
+        "name": "읽기",
+        "items": 30,
+        "minutes": 45
+      }
+    ],
+    "totalMinutes": 85,
+    "levels": {
+      "1급": [
+        132,
+        207
+      ],
+      "2급": [
+        208,
+        400
+      ]
+    }
+  },
+  "notStated": [
+    "points per item and per section (the regulation gives only the level ranges by total score; 200 is the PBT maximum of 〔별표 1〕)",
+    "the number of answer options per item",
+    "the item types within each section"
+  ],
+  "courseChoices": [
+    "Checkpoint and placement items that point at TOPIK I are 4-option choices (the course's choice; the regulation does not state it).",
+    "Readiness is reported as \"mức sẵn sàng ước tính\" on the course's own items, never as a TOPIK score, level or pass."
+  ]
+}

@@ -275,7 +275,9 @@ with open(f"{ROOT}/content/ko/_drafts/objectives/topik-references.json", "w", en
     json.dump({
         "generator": "content/ko/_drafts/_generators/ko-objectives.py",
         "source": "TOPIK I (한국어능력시험 I, levels 1–2), National Institute for International Education (NIIED), https://www.topik.go.kr/ — cited by section and level only; no item, can-do or syllabus text is reproduced.",
-        "checkedAgainstOfficialSource": False,
+        "checkedAgainstOfficialSource": True,
+        "checkedAt": "2026-11-05",
+        "checkedWith": "한국어능력시험(TOPIK) 기본운영규정, 규정 제204호 (2024.9.12), NIIED — https://www.niied.go.kr/convert/preview/1764681490990/index.html; see content/ko/exam/FORMAT-SOURCES.md (ko-topik-format.py)",
         "note": "TOPIK I tests listening (듣기) and reading (읽기) only. Each objective names the TOPIK I section it prepares, or null when TOPIK I does not test it (speaking, writing, interaction). TOPIK levels are not CEFR levels and the app never says they are. The section names and the level range are to be checked against topik.go.kr before the exam-track session records `checkedAgainstOfficialGuide`.",
         "objectives": TOPIK_ROWS,
     }, f, ensure_ascii=False, indent=2)
@@ -353,8 +355,9 @@ here.
 - **TOPIK I (한국어능력시험 I)**, National Institute for International Education:
   https://www.topik.go.kr/ — levels 1 and 2; sections 듣기 (listening) and 읽기 (reading).
   Each objective names the TOPIK I section it prepares in
-  `content/ko/_drafts/objectives/topik-references.json` (`checkedAgainstOfficialSource:
-  false` until the exam-track session reads the official pages). TOPIK levels are not
+  `content/ko/_drafts/objectives/topik-references.json`, checked on 2026-11-05 against the
+  administrator's regulation (기본운영규정 제204호, 2024.9.12; content/ko/exam/FORMAT-SOURCES.md:
+  듣기 30 items / 40 min, 읽기 40 items / 60 min, 1급 from 80 and 2급 from 140 of 200). TOPIK levels are not
   CEFR levels, and this course never says that they are.
 - **EPS-TOPIK** (the Employment Permit System test run by HRD Korea) shares the scenario
   world of this course — factory, farm, safety, the employment centre — but the course
