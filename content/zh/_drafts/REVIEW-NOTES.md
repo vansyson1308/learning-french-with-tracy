@@ -1,4 +1,4 @@
-# zh-vi — review notes (P4d sessions 2-3: lessons, concept cards, the layer exercises)
+# zh-vi — review notes (P4d sessions 2-5: lessons, concept cards, the layer exercises, assessment, stories)
 
 Self-check of the answer keys, run by the session that wrote them. It is not the D-10 review: that is a later session
 (AI pass, then the owner), and it reads these notes first.
@@ -92,6 +92,39 @@ For the D-10 reviewer, session 4: read the HSK pools first — each pool of six 
 fits each item (R3 words: 去 and 在 never in one pool, 想 / 要 never beside 喜欢); the 书写 component pools were chosen so
 that the shown part takes no other pool component to make a character with the target's reading (唱/倡, 机/叽, 妹/昧
 avoided). The Vietnamese labels of the emoji pictures are short on purpose (a picture names a thing, not a sentence).
+
+## Session 5 (2026-11-04): graded stories
+
+The stories have their own self-check (`_generators/zh-check-stories.py`, run at the end of `zh-pipeline.sh` because
+the stories are graded by the staged syllabus): 42 stories (A1-0 5, A1-1 13, A1-2 13, A2-1 11), 902 sentences, 126
+questions, 0 findings, 0 decided; output `review/stories-selfcheck.json`. Every check also runs in the builder
+(`zh_stories_lib.story`), which stops a batch on any finding.
+
+| Check | Rule |
+|---|---|
+| Segmentation | sentences are authored word-spaced; the port of the `stories.ts` dictionary path (longest match, one step of lookahead) must cut exactly there and resolve each word to the lexeme meant |
+| Coverage | word tokens 50–100 (A1-0) or 150–400; ≥ 95 % known at the band; 3–5 new lexemes, each in the text, none of an earlier band; nothing beyond the band undeclared; every token resolves |
+| Readings | `zh_text.Index` as in the lessons (every hanzi inside a lexicon surface, 中 / 地 in compounds, 只 / 得 / 还 / 长 in the stored reading, no Latin), no half-width punctuation; titles too |
+| Measure words | rule 2 of the lessons, plus the counted noun must take that measure word (`NOUN_MEASURES` + `STORY_MEASURES`; an undeclared counted noun is a finding); 把 never counts (the lexeme is the preposition) |
+| 了 and aspect | rule 3 of the lessons (没 + verb … 了, 了 with a habit, 不有, 吗 after a question word, 是 + bare adjective, 很 after 比) + 正在 … 了; 了 from A1-1, 过 from A1-2, 着 from A2-1 |
+| Kinship | a third-person narrator says whose family it is (他妈妈, 阮海的妻子), never a bare or 我 kin word, and its Vietnamese never says "mẹ tôi"; first-person stories (5) speak of 我妈妈 / 妈妈 |
+| Questions | three per story, exactly one inference, 3–4 distinct Vietnamese options, a "?"; answer positions spread (the builder moves the right option by the story id) |
+
+Found and fixed while writing (counts): 8 sentences the engine would cut otherwise (最好吃 → 最好|吃, 很好的 and 不好的 →
+好的 ×2, 你好好学习 → 你好, 多少 钱 → 多少钱, 不 对 → 不对 ×3); 9 stories under 150 tokens or over 5 % new words
+(lengthened, or a declared word replaced by a known one); 3 words of a later band left undeclared (晚上 and 雨 in A1-1,
+车间 in A1-2); 1 declared new word of an earlier band (声音); 12 counted nouns declared in `STORY_MEASURES`; 3 counts
+with 把 (一把椅子 ×2, 两把钥匙: the lexeme is the preposition, so the word check would show its gloss); 1 character
+without a lexeme (唱 → 唱歌); 3 hanzi in Vietnamese translations; 1 false positive of the lessons' measure-word rule
+fixed in the story port (那 + 下次 is "then", not a missing measure word), and one of `zh_text` avoided by rewording
+(组长了 matches the 长了 = zhǎng pattern). The builder splits a hanzi numeral written as one word (二十, 五月) into the
+engine's one-character words.
+
+For the D-10 reviewer, session 5: read the inference questions first (`stories/OUTPUT.jsonl`, kind `infer`) — each was
+written so that the text implies one option and states none; then the A1-1 stories, which say a lot with a few
+adjectives (贵 and 便宜 are the only A1-1 adjectives, so 好 / 大 / 多 / 高兴 come in as declared new words); then the
+Mid-Autumn story, which says 八月十五 and 月亮 because 中秋节 and 月饼 are not lexemes. Vocatives in the Vietnamese follow
+the speakers' ages and roles (cháu / ông for an old neighbour, em / anh for a team leader and a young worker).
 
 ## For the D-10 reviewer
 

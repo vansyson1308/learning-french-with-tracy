@@ -26,6 +26,7 @@ later `bun scripts/author.ts promote --target zh --native vi --allow-missing-aud
 | Lessons (session 3) | 976 exercises: +165 layer exercises in Sections 3–6 (LC 44, RC 47, dictation 7, speakProduction 28, speakRepetition 9, guidedWriting 17, simpleForm 2, interactionScenario 11); self-check 0 findings | `zh-lessons-s3…s6.py`, `zh-check-answers.py` rule 8 |
 | Assessment (session 4) | 7 checkpoints (Sections 1–6: 12/24/27/14/12/6 items; A1 capstone 20 items, forms a/b of 10) on the reserved records; placement in 4 stages (22 items); the attainment policy of session 1 now resolves (0 errors) | `_generators/zh-assessment.py` → staged `content/zh/assessment/{checkpoints,placement}.json` |
 | HSK tracks (session 4) | HSK 1 and HSK 2 on the HSK 3.0 sample format (first HSK 3.0 session 13 Dec 2026): HSK 1 40 items/form (听力 20 in 12 min, 阅读 20 in 20 min), HSK 2 60 items/form (听力 25 / 17 min, 阅读 25 / 25 min, 书写 10 / 10 min); 2 forms each, 90 exam clips, 90 exam readings; `partial`, checked against the official sample papers; score scale, pass mark (reference 60 %) and play count (2) are the course's | `_generators/zh-exam.py`, `content/zh/exam/FORMAT-SOURCES.md`, `scripts/__tests__/zh-exam-track.test.ts`, self-check rule 9 |
+| Stories (session 5) | 42 graded stories (A1-0 5, A1-1 13, A1-2 13, A2-1 11), 902 sentences, 126 questions; band-1 audio 18 stories; self-check 0 findings | `_generators/zh-stories-00…06.py`, `zh_stories_lib.py`, `zh-check-stories.py`, `zh-stories-seed.py`, `zh-reception-audio.py`; staged `content/zh/stories/stories.json`, `content/zh/reception/audio-source-manifest.json` |
 
 `course-draft.ts validate --target zh`: 192 errors, all of three kinds a session-1 course has (ja-vi had the same):
 108 stub lessons with one exercise and 81 stub payload repeats (lessons, session 2), and the missing checkpoints,
@@ -39,6 +40,9 @@ asset is missing (all audio session), and the 3 missing assessment files.
 
 After session 4: 1,044 errors, all audio — 732 `audioTarget has no audio` + 312 clips without a generated asset (222
 layer clips, 90 HSK clips). The assessment files exist and validate; stories are the one layer still absent.
+
+After session 5: still 1,044, the same two audio kinds; the 42 stories validate with 0 errors (their 416 band-1
+sentences without audio are a bootstrap warning until the first generate run).
 
 ## 2. Course shape (BLUEPRINT §1)
 
@@ -295,7 +299,7 @@ uses 您 and 请 with bosses.
 2. ~~**Primer** (session 3)~~ done: §4, decision 18.
 3. ~~**Reception, speech, writing, scenarios**~~ done in session 3 (§1, decisions 19–22), with the Section 3–6 exercises.
 4. ~~**Assessment + HSK 1–2 track**~~ done in session 4 (decisions 23–26).
-5. **Stories** (session 5): 40–50 graded stories on the dictionary tokenizer of P4c (`scripts/lib/stories.ts`, script han).
+5. ~~**Stories**~~ done in session 5: 42 graded stories (decisions 27–31), self-check 0 findings.
 6. **D-10 review, audio** (canary with the extra voices, the front-end of §7 with sandhi and the voice cast, generate, CER
    audit; the HSK clips are among them), promote, compile, V8 re-key, claim gate, STATUS, PR.
 
@@ -314,6 +318,30 @@ uses 您 and 请 with bosses.
 26. **Level-true vocabulary.** Every word of an HSK n item is an HSK 3.0 word of level ≤ n (`hsk-course.json`); a
     compound outside the list passes only if each character is a level character. 苹果 (level 3) and 工厂 (level 3) are
     therefore not in the HSK items although the course teaches them in A1.
+
+### Session 5 (2026-11-04): graded stories
+
+27. **42 stories on the P4c dictionary path** (`zh-stories-00…06.py`, `zh_stories_lib.py`, self-check
+    `zh-check-stories.py`): A1-0 5 micro-stories (units 1–3 + closed-class words), A1-1 13, A1-2 13, A2-1 11; 902
+    sentences, 126 questions (one inference each). Sentences are authored word-spaced; the builder checks that the
+    engine cuts exactly there (家人 for 家 人, 好的 for 好 的, 你好 for 你 好, 不对 / 还有 / 没问题 / 我明白了 are lexemes and
+    were written whole). The Python port agrees with `scripts/lib/stories.ts` on every token, unknown count and lexeme
+    of the 42 stories (checked against the TypeScript analysis under the staging overlay).
+28. **Function words (seed, 15):** 的 了 吗 呢 吧 啊 着 过 得 们 不 没 也 很 都 — known at every band, as the ja
+    particles; 了 / 过 / 着 are still gated by band in the self-check (了 from A1-1, 过 from A1-2, 着 from A2-1). Names
+    (阮南, 阮花, 小王, 老李 …, 王 / 李 before a title) are story tokenMap names; their characters are lexicon surfaces.
+29. **Story voice cast = the plan's, until the canary.** voice-casts.json has no zh cast (pending canary), so the seed
+    takes §7's A `kokoro-zf_xiaobei` (female, narrator) and B `kokoro-zm_yunjian` (male); a dialogue needs A ≠ B. The
+    listening cast stays `unselected` (its ingest reads voice-casts.json) until the audio session.
+30. **Reception voice manifest staged, band-1 audio 18 stories.** `zh-reception-audio.py` writes the manifest to the
+    staged `content/zh/reception/audio-source-manifest.json` (promote moves it with the listening clips and stories it
+    voices: in the real tree before them `audio.ts plan --mode generate` stops on the missing listening.json):
+    pipelineVersion 3 / storyPipelineVersion 4 as ja, `storyAudio` band-1 = the 13 A1-1 stories + the first 5 A1-2
+    (416 sentences, ≈ 4,000 hanzi, ≈ 2.1–2.5 MB at Opus 16 kbps; §7's ≈ 9 MB holds). The other 24 stories use the device
+    voice.
+31. **What the lexicon cannot say yet:** no 中秋节 / 月饼 / 信 / 寄 (not in the pinned CC-CEDICT subset), so the
+    Mid-Autumn story says 八月十五 and 月亮, and letters home are WeChat messages; 把 is stored as the preposition, so no
+    story counts with it (一把椅子 → 椅子 uncounted or 一个椅子); 唱 alone is no lexeme (唱歌 only).
 
 The four open questions of session 1 (audio front-end, pinyin fade, Unihan re-derive, wordfreq) were decided by the
 coordinator on 2026-11-04 (decisions 10–13).
