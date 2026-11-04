@@ -27,6 +27,11 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags:
     target among its own variants, every spoken, written or scenario answer hanzi only (no pinyin, no Hán-Việt) and
     widened by the natural pairs; every guided slot realized in the model answer, every form value a variant of its
     slot; rules 2, 3 and 5 over every reading, clip, speech answer, writing model and scenario line.
+ 9. (session 4) every checkpoint, placement and HSK item by the rules above (checkpoints/, placement/, exam/OUTPUT.jsonl;
+    run after zh-assessment.py and zh-exam.py): no payload repeated across lessons and assessments, the Section 1
+    checkpoint and the first placement stage tap-only, an HSK item's options distinct and of one language, no
+    distractor that is the key in another spelling; the exam stimuli are read by rule 8 (they are in readings/ and
+    listening/).
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by hand,
 to REVIEW-NOTES.md. usage: python -I zh-check-answers.py <repo root>
 """
@@ -290,9 +295,27 @@ LATIN = re.compile(r"[A-Za-zÀ-ɏḀ-ỿ]")
 VI_LETTER = re.compile(r"[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]", re.I)
 
 
-def layer_rules(eid, e):
-    """The rules of the Section 3-6 exercise types (the layer generators check their own records too)."""
+def layer_rules(eid, e, exam=False):
+    """The rules of the Section 3-6 exercise types (the layer generators check their own records too). An exam item's
+    Chinese key is a reply or a word the stimulus need not contain (HSK 听力 2, 阅读 2), so the key-in-stimulus rule is
+    left to the lessons and checkpoints."""
     t = e["type"]
+    if t in ("listeningComprehension", "readingComprehension") and exam:
+        texts = [o["text"] for o in e["options"]]
+        if len(set(texts)) != len(texts):
+            flag(eid, "comprehension-options", f"repeated option in {texts}")
+        if HAN.search(e["question"]):
+            flag(eid, "comprehension-question", f"{e['question']!r}: the question is Vietnamese")
+        zh = [bool(HAN.search(x)) for x in texts]
+        if any(zh) and not all(zh):
+            flag(eid, "comprehension-options", f"{texts}: options are all Chinese or all Vietnamese")
+        key = texts[e["correct"]]
+        if HAN.search(key):
+            eq = equivalents(key)
+            for x in texts:
+                if x != key and bare(x) in eq:
+                    flag(eid, "equivalent-distractor", f"{x!r} is another spelling of the key {key!r}")
+        return
     if t in ("listeningComprehension", "readingComprehension"):
         texts = [o["text"] for o in e["options"]]
         if len(set(texts)) != len(texts):
@@ -403,8 +426,39 @@ def reception_rules():
                     grammar_rules(tid, value)
 
 
-# ---------------------------------------------------------------- run
+# ---------------------------------------------------------------- one exercise, wherever it sits
 seen = {}
+
+
+def _list(step):
+    path = f"{D}/{step}/OUTPUT.jsonl"
+    return [json.loads(x) for x in open(path, encoding="utf-8") if x.strip()] if os.path.exists(path) else []
+
+
+def exercise_rules(eid, e, exam=False, section1=False):
+    payload = json.dumps({k: v for k, v in e.items() if k != "id"}, ensure_ascii=False, sort_keys=True)
+    if payload in seen:
+        flag(eid, "duplicate", f"repeats {seen[payload]}")
+    seen[payload] = eid
+    if e.get("scriptAid") != "hidden":
+        for text in set(shown_texts(e)):
+            for p in INDEX.problems(text):
+                flag(eid, "reading", p)
+    for text in key_texts(e):
+        if text not in LEX and e.get("scriptAid") != "hidden":
+            grammar_rules(eid, text)
+    if e["type"] == "fillBlank":
+        fill_rules(eid, e)
+    tile_rules(eid, e)
+    option_rules(eid, e)
+    layer_rules(eid, e, exam)
+    if e["type"] == "typeAnswer":
+        typed_rules(eid, e)
+    if section1 and (e["type"] in TYPED_TYPES or (e["type"] == "fillBlank" and not e.get("options"))):
+        flag(eid, "section1-typing", f"{e['type']}: Section 1 has no typing of hanzi or pinyin (word bank or choice instead)")
+
+
+# ---------------------------------------------------------------- run
 stats = Counter()
 measure_items = Counter()
 aspect_items = Counter()
@@ -419,32 +473,32 @@ for r in records:
                 concept_steps += 1
                 concepts_used.add(s["concept"])
     for e in r["exercises"]:
-        eid = e["id"]
         stats[e["type"] + (":" + e["mode"] if e["type"] == "select" else "")] += 1
-        payload = json.dumps({k: v for k, v in e.items() if k != "id"}, ensure_ascii=False, sort_keys=True)
-        if payload in seen:
-            flag(eid, "duplicate", f"repeats {seen[payload]}")
-        seen[payload] = eid
-        for text in set(shown_texts(e)):
-            for p in INDEX.problems(text):
-                flag(eid, "reading", p)
-        for text in key_texts(e):
-            if text not in LEX:
-                grammar_rules(eid, text)
+        exercise_rules(e["id"], e, section1=r["lessonId"] in SECTION1_LESSONS)
         if e["type"] == "fillBlank":
-            fill_rules(eid, e)
             k = e["options"][e["correct"]]
             if k in MEASURE_WORDS:
                 measure_items[k] += 1
             if k in ("了", "过", "着", "在", "正在"):
                 aspect_items[k] += 1
-        tile_rules(eid, e)
-        option_rules(eid, e)
-        layer_rules(eid, e)
-        if e["type"] == "typeAnswer":
-            typed_rules(eid, e)
-        if r["lessonId"] in SECTION1_LESSONS and (e["type"] in TYPED_TYPES or (e["type"] == "fillBlank" and not e.get("options"))):
-            flag(eid, "section1-typing", f"{e['type']}: Section 1 has no typing of hanzi or pinyin (word bank or choice instead)")
+
+# Rule 9 (session 4): the checkpoint, placement and HSK items, by the same rules. A Section 1 checkpoint and the
+# placement's first stage are tap-only like Section 1; an item whose readings are hidden (HSK 书写 1: character
+# components) is not reading-checked, since it shows no pinyin and its options are components, not words.
+assessment = Counter()
+for cp in _list("checkpoints"):
+    for it in cp["items"]:
+        assessment["checkpoint"] += 1
+        exercise_rules(it["id"], it["exercise"], section1=cp["sectionId"] == "zh-vi:section-1" and "forms" not in cp)
+for st in _list("placement"):
+    for cl in st["clusters"]:
+        for it in cl["items"]:
+            assessment["placement"] += 1
+            exercise_rules(it["id"], it["exercise"], section1=st["id"] == "zh.pstage.foundations")
+for track in _list("exam"):
+    for it in track["items"]:
+        assessment[track["name"]] += 1
+        exercise_rules(it["id"], it["exercise"], exam=True)
 
 concepts = {json.loads(x)["id"] for x in open(f"{D}/concepts/OUTPUT.jsonl", encoding="utf-8") if x.strip()}
 for c in sorted(concepts - concepts_used):
@@ -470,6 +524,7 @@ summary = {
     "lessonsWithConceptSteps": lessons_with_flow,
     "conceptSteps": concept_steps,
     "conceptCardsUsed": len(concepts_used),
+    "assessmentItems": dict(sorted(assessment.items())),
     "findings": findings,
     "decided": [{"id": k[0], "rule": k[1], "reason": v} for k, v in sorted(DECIDED.items())],
 }
@@ -481,6 +536,7 @@ for x in findings:
     print(f"{x['id']} [{x['rule']}] {x['message']}", file=sys.stderr)
 print(f"self-check: {summary['lessons']} lessons, {summary['exercises']} exercises, {sum(measure_items.values())} measure-word and "
       f"{sum(aspect_items.values())} aspect fill-ins, {lessons_with_flow} lessons with concept steps ({len(concepts_used)} cards), "
+      f"assessment items {dict(sorted(assessment.items()))}, "
       f"{len(findings)} finding(s), {len(DECIDED)} decided")
 if findings:
     sys.exit(1)

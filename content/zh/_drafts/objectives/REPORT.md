@@ -1,6 +1,6 @@
 # objectives — ingest report (zh-vi)
 
-Records: 36 · schema-valid: 36 · failed: 0 · validator errors after merge: 1
+Records: 36 · schema-valid: 36 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -43,7 +43,7 @@ Records: 36 · schema-valid: 36 · failed: 0 · validator errors after merge: 1
 
 ## Validator errors (fix these records and ingest again)
 
-- attainment: schema validation failed — ENOENT: no such file or directory, open 'C:\src\lft-zh\content\zh\assessment\checkpoints.json'
+- none
 
 ## Written
 

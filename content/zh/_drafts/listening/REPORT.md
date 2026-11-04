@@ -1,6 +1,6 @@
 # listening — ingest report (zh-vi)
 
-Records: 222 · schema-valid: 222 · failed: 0 · validator errors after merge: 222
+Records: 312 · schema-valid: 312 · failed: 0 · validator errors after merge: 312
 
 ## Records
 
@@ -226,6 +226,96 @@ Records: 222 · schema-valid: 222 · failed: 0 · validator errors after merge: 
 - ✅ line 220 `zh.clip.ix_a1cap_weekend_1`
 - ✅ line 221 `zh.clip.ix_a1cap_weekend_1_s`
 - ✅ line 222 `zh.clip.ix_a1cap_weekend_end`
+- ✅ line 223 `zh.clip.hsk1_a_l1_01`
+- ✅ line 224 `zh.clip.hsk1_a_l1_02`
+- ✅ line 225 `zh.clip.hsk1_a_l1_03`
+- ✅ line 226 `zh.clip.hsk1_a_l1_04`
+- ✅ line 227 `zh.clip.hsk1_a_l1_05`
+- ✅ line 228 `zh.clip.hsk1_a_l2_01`
+- ✅ line 229 `zh.clip.hsk1_a_l2_02`
+- ✅ line 230 `zh.clip.hsk1_a_l2_03`
+- ✅ line 231 `zh.clip.hsk1_a_l2_04`
+- ✅ line 232 `zh.clip.hsk1_a_l2_05`
+- ✅ line 233 `zh.clip.hsk1_a_l3_01`
+- ✅ line 234 `zh.clip.hsk1_a_l3_02`
+- ✅ line 235 `zh.clip.hsk1_a_l3_03`
+- ✅ line 236 `zh.clip.hsk1_a_l3_04`
+- ✅ line 237 `zh.clip.hsk1_a_l3_05`
+- ✅ line 238 `zh.clip.hsk1_a_l4_01`
+- ✅ line 239 `zh.clip.hsk1_a_l4_02`
+- ✅ line 240 `zh.clip.hsk1_a_l4_03`
+- ✅ line 241 `zh.clip.hsk1_a_l4_04`
+- ✅ line 242 `zh.clip.hsk1_a_l4_05`
+- ✅ line 243 `zh.clip.hsk1_b_l1_01`
+- ✅ line 244 `zh.clip.hsk1_b_l1_02`
+- ✅ line 245 `zh.clip.hsk1_b_l1_03`
+- ✅ line 246 `zh.clip.hsk1_b_l1_04`
+- ✅ line 247 `zh.clip.hsk1_b_l1_05`
+- ✅ line 248 `zh.clip.hsk1_b_l2_01`
+- ✅ line 249 `zh.clip.hsk1_b_l2_02`
+- ✅ line 250 `zh.clip.hsk1_b_l2_03`
+- ✅ line 251 `zh.clip.hsk1_b_l2_04`
+- ✅ line 252 `zh.clip.hsk1_b_l2_05`
+- ✅ line 253 `zh.clip.hsk1_b_l3_01`
+- ✅ line 254 `zh.clip.hsk1_b_l3_02`
+- ✅ line 255 `zh.clip.hsk1_b_l3_03`
+- ✅ line 256 `zh.clip.hsk1_b_l3_04`
+- ✅ line 257 `zh.clip.hsk1_b_l3_05`
+- ✅ line 258 `zh.clip.hsk1_b_l4_01`
+- ✅ line 259 `zh.clip.hsk1_b_l4_02`
+- ✅ line 260 `zh.clip.hsk1_b_l4_03`
+- ✅ line 261 `zh.clip.hsk1_b_l4_04`
+- ✅ line 262 `zh.clip.hsk1_b_l4_05`
+- ✅ line 263 `zh.clip.hsk2_a_l1_01`
+- ✅ line 264 `zh.clip.hsk2_a_l1_02`
+- ✅ line 265 `zh.clip.hsk2_a_l1_03`
+- ✅ line 266 `zh.clip.hsk2_a_l1_04`
+- ✅ line 267 `zh.clip.hsk2_a_l1_05`
+- ✅ line 268 `zh.clip.hsk2_a_l2a_01`
+- ✅ line 269 `zh.clip.hsk2_a_l2a_02`
+- ✅ line 270 `zh.clip.hsk2_a_l2a_03`
+- ✅ line 271 `zh.clip.hsk2_a_l2a_04`
+- ✅ line 272 `zh.clip.hsk2_a_l2a_05`
+- ✅ line 273 `zh.clip.hsk2_a_l2b_01`
+- ✅ line 274 `zh.clip.hsk2_a_l2b_02`
+- ✅ line 275 `zh.clip.hsk2_a_l2b_03`
+- ✅ line 276 `zh.clip.hsk2_a_l2b_04`
+- ✅ line 277 `zh.clip.hsk2_a_l2b_05`
+- ✅ line 278 `zh.clip.hsk2_a_l3_01`
+- ✅ line 279 `zh.clip.hsk2_a_l3_02`
+- ✅ line 280 `zh.clip.hsk2_a_l3_03`
+- ✅ line 281 `zh.clip.hsk2_a_l3_04`
+- ✅ line 282 `zh.clip.hsk2_a_l3_05`
+- ✅ line 283 `zh.clip.hsk2_a_l3_06`
+- ✅ line 284 `zh.clip.hsk2_a_l3_07`
+- ✅ line 285 `zh.clip.hsk2_a_l3_08`
+- ✅ line 286 `zh.clip.hsk2_a_l3_09`
+- ✅ line 287 `zh.clip.hsk2_a_l3_10`
+- ✅ line 288 `zh.clip.hsk2_b_l1_01`
+- ✅ line 289 `zh.clip.hsk2_b_l1_02`
+- ✅ line 290 `zh.clip.hsk2_b_l1_03`
+- ✅ line 291 `zh.clip.hsk2_b_l1_04`
+- ✅ line 292 `zh.clip.hsk2_b_l1_05`
+- ✅ line 293 `zh.clip.hsk2_b_l2a_01`
+- ✅ line 294 `zh.clip.hsk2_b_l2a_02`
+- ✅ line 295 `zh.clip.hsk2_b_l2a_03`
+- ✅ line 296 `zh.clip.hsk2_b_l2a_04`
+- ✅ line 297 `zh.clip.hsk2_b_l2a_05`
+- ✅ line 298 `zh.clip.hsk2_b_l2b_01`
+- ✅ line 299 `zh.clip.hsk2_b_l2b_02`
+- ✅ line 300 `zh.clip.hsk2_b_l2b_03`
+- ✅ line 301 `zh.clip.hsk2_b_l2b_04`
+- ✅ line 302 `zh.clip.hsk2_b_l2b_05`
+- ✅ line 303 `zh.clip.hsk2_b_l3_01`
+- ✅ line 304 `zh.clip.hsk2_b_l3_02`
+- ✅ line 305 `zh.clip.hsk2_b_l3_03`
+- ✅ line 306 `zh.clip.hsk2_b_l3_04`
+- ✅ line 307 `zh.clip.hsk2_b_l3_05`
+- ✅ line 308 `zh.clip.hsk2_b_l3_06`
+- ✅ line 309 `zh.clip.hsk2_b_l3_07`
+- ✅ line 310 `zh.clip.hsk2_b_l3_08`
+- ✅ line 311 `zh.clip.hsk2_b_l3_09`
+- ✅ line 312 `zh.clip.hsk2_b_l3_10`
 
 ## Validator errors (fix these records and ingest again)
 
@@ -451,6 +541,96 @@ Records: 222 · schema-valid: 222 · failed: 0 · validator errors after merge: 
 - reception: zh.clip.ix_a1cap_weekend_1: generated asset 6fd934ba0221695f2450.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: zh.clip.ix_a1cap_weekend_1_s: generated asset 1fbd96100ad9af6ce7f1.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: zh.clip.ix_a1cap_weekend_end: generated asset 0ce742426ee7eea6916f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_01: generated asset c02d6ae3a4fe769d88c1.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_02: generated asset 4d133c8bc53481f30c03.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_03: generated asset 785165e23e28e5e4ed6c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_04: generated asset fa1e7dc5101f9e485e1e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_05: generated asset 59d898a469bf3635cbd0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_01: generated asset 6f19711ec85d2341f0be.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_02: generated asset a7e3a2a58ae951d119ed.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_03: generated asset d2e16e51e43630709efa.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_04: generated asset 61318511aec049b22439.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_05: generated asset 4c704bb4babe1baabd7a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_01: generated asset 43becc5f7e2a65f43dbf.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_02: generated asset de1752b7d2a13734fe48.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_03: generated asset ce8cd45581fcac205b5c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_04: generated asset 7123217554d914ca92b1.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_05: generated asset 781c52a6c92b52063e86.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_01: generated asset 5ab2b96e62ec2699bbe2.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_02: generated asset 1fdbc1b67dacf0a8ffdb.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_03: generated asset 01af8f85903f17ad9e5a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_04: generated asset 5954d56e0436a58dd3a1.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_05: generated asset dbec60badd569cb63d94.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_01: generated asset ff9d4b372956b7d68e1b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_02: generated asset 39084a01948b3a835797.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_03: generated asset e88fe95ad711a7a41a27.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_04: generated asset 07da9cfa47cef586a024.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_05: generated asset 46786d5617d49d1ddb65.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_01: generated asset c1d9f397faaa2c369a26.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_02: generated asset c684f73324e940d3f206.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_03: generated asset fbdf3f93bdffca1e7b4b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_04: generated asset 758962f2800567c083da.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_05: generated asset 14bca23f629be5d33d5b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_01: generated asset ce9e12cc6415b19709ec.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_02: generated asset 14389b45296946f77752.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_03: generated asset 70d385ff5260125963c0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_04: generated asset 057eee6d7e074683fc6b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_05: generated asset 298143573ec6676775a0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_01: generated asset d887204bf18d66c47e58.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_02: generated asset 92a864b799ae14151207.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_03: generated asset 450908e8a800bc211589.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_04: generated asset 4fbe2ece05a323eaf242.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_05: generated asset f3c4fd3b6835722cfe2a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_01: generated asset b70ec264f54fc9cd9160.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_02: generated asset 40cb3355234416b814e3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_03: generated asset 6161bd3f323f9e1c72d6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_04: generated asset dc1cfd3453569231a3f3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_05: generated asset dc436ce4a014f7d35176.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_01: generated asset b389e6cdac99e204f0ec.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_02: generated asset 649012d83e3dfb2382f9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_03: generated asset 6d4e929b60507a05fa72.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_04: generated asset d3715f357bd7cd48258e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_05: generated asset 4a8a7e832eefc4ef9683.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_01: generated asset 08bfdf569c52b16607ef.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_02: generated asset 9c85920ea45a9d6a07ae.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_03: generated asset e0eb6a99ebe9e2178d4b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_04: generated asset ce0d1ef7446b2a486310.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_05: generated asset b64ef70da6851972be62.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_01: generated asset 00a742dd65495b315936.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_02: generated asset 066122a87c7e6ea9c118.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_03: generated asset df74eee5fcfc6dcc4368.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_04: generated asset 47fda50cc8648790bc1f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_05: generated asset e2127c7f59b5b46ba32d.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_06: generated asset 7a813e1b5f8d51115715.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_07: generated asset 92fe5cc26eb1d640c4d9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_08: generated asset 4785b5004b278e35ccd6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_09: generated asset 880ede190c764272d2ed.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_10: generated asset 6b15ab314ac0907b9d35.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_01: generated asset 8d12d59e9577312c38ce.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_02: generated asset b340b9e368270fa23cb0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_03: generated asset 4c55f21482c62a876df0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_04: generated asset 45081ec51db39366d463.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_05: generated asset eb80c147b2c74f38c897.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_01: generated asset de5aed01a64b515c3382.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_02: generated asset 64a4c14e797732c15fa3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_03: generated asset 1f7047a62fd6d2200625.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_04: generated asset de04099d970c5c8fb631.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_05: generated asset 643da949db162a2b3186.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_01: generated asset ac6de8eda314f1e52814.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_02: generated asset 5040c59a6b60b0cbb3a5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_03: generated asset b7f5f4416cf1da0ba765.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_04: generated asset 06bdce4fd18f70e4c3ee.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_05: generated asset c544044feb1ff8de5cb5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_01: generated asset d1c2ee9545b74e78ce57.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_02: generated asset 53de82dc4011f799c754.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_03: generated asset 764078a0869c97929047.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_04: generated asset 4b546080e083830a6df5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_05: generated asset 6be87b88a4f7310e2e94.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_06: generated asset e9410b9e0bd964b7cac0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_07: generated asset 310e02554c22da7cb7d6.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_08: generated asset 326137dea7365c32137e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_09: generated asset 91a5e1a664eb074b20e2.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_10: generated asset f1aef790f6803a0d5630.mp3 missing — run the reception-audio generate workflow (P7 §26)
 
 ## Written
 

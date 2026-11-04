@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# zh-vi, sessions 1-3 of P4d (lexicon, objectives, units; concept cards and lessons; the tone primer, reception,
-# speech, writing and scenarios): regenerate the drafts and ingest
+# zh-vi, sessions 1-4 of P4d (lexicon, objectives, units; concept cards and lessons; the tone primer, reception,
+# speech, writing and scenarios; checkpoints, placement and the HSK 1-2 tracks): regenerate the drafts and ingest
 # them through the toolkit. Byte-deterministic: run it twice, the outputs are identical. Offline: zh-subset.py (the
 # one-time slice of the pinned hsk30, CC-CEDICT and wordfreq files) is not part of it; its output
 # content/zh/lexicon/derived/hsk-course.json is.
@@ -43,6 +43,12 @@ python -I "$G/zh-reception-s3.py" .
 python -I "$G/zh-speech-s4.py" .
 python -I "$G/zh-writing-s5.py" .
 python -I "$G/zh-scenarios-s6.py" .
+# Session 4: checkpoints and placement point at the reserved records above and write their own OUTPUT; the HSK 1 and
+# HSK 2 tracks append their exam stimuli (use: "exam") to listening and readings. Both run before the lessons so that the
+# self-check reads their items too.
+rm -f "$STAGED/content/zh/assessment/checkpoints.json" "$STAGED/content/zh/assessment/placement.json" "$STAGED"/content/zh/exam/hsk-*.json
+python -I "$G/zh-assessment.py" .
+python -I "$G/zh-exam.py" .
 # Lessons (session 2): each section's generator writes lessons/parts/<section>.jsonl; the self-check joins them into
 # lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json). Sections 3-6
 # point at the layer records above (zh_lesson_refs.py), so the layers run first.
@@ -57,6 +63,9 @@ ingest speech
 ingest writing
 ingest scenarios
 ingest lessons
+for step in checkpoints placement exam; do
+  ingest "$step"
+done
 if ! python -I -c "import json,sys; p=json.load(open('content/zh/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then
   mkdir -p "$STAGED/content/courses"
   cp content/zh/_drafts/pack.json "$STAGED/content/courses/zh-vi.json"
