@@ -9,7 +9,7 @@ import { describe, expect, test } from "bun:test";
 import { conceptId } from "../../content/schema";
 import { BUILD_LANGUAGES, buildPlugin } from "../lib/languages";
 import { japaneseGroupRules, japaneseParadigmCells } from "../lib/languages/ja-morph";
-import { koreanAeoForm, koreanGroupRules, koreanParadigmCells } from "../lib/languages/ko-morph";
+import { koreanAeoForm, koreanGroupRules, koreanParadigmCells, tagKoreanCells } from "../lib/languages/ko-morph";
 import { genericPlugin } from "../lib/languages/generic";
 import { validateParadigmsData } from "../lib/pedagogy";
 
@@ -175,5 +175,53 @@ describe("paradigm validation with the declared cells", () => {
     expect(check("食べる", "ichidan", { ...japaneseParadigmCells("食べる", "ichidan")!, te: "食べって" }).join()).toContain("is not evidenced");
     const nine = evidence.filter((v) => new Set(v.rows.map((r) => r.infoVer.split(",")[0])).size >= 10).length; // inf + 9 cells
     expect(nine).toBeGreaterThanOrEqual(140);
+  });
+
+  test("P4e: ko 해요체 cells are read from the verb's own kaikki rows; the future is composed from the stated modifier", () => {
+    const rows = [
+      { mot: "가다", infoVer: "inf" },
+      { mot: "가", infoVer: "inf" },
+      { mot: "가", infoVer: "informal" },
+      { mot: "가요", infoVer: "informal" },
+      { mot: "갔어요", infoVer: "informal" },
+      { mot: "가세요", infoVer: "informal" },
+      { mot: "가셔요", infoVer: "informal" },
+      { mot: "갈", infoVer: "formal" },
+      { mot: "가실", infoVer: "formal" },
+    ];
+    const tagged = tagKoreanCells(rows).slice(rows.length);
+    expect(tagged).toEqual([
+      { mot: "가요", infoVer: "haeyo:pre" },
+      { mot: "갔어요", infoVer: "haeyo:pas" },
+      { mot: "가세요", infoVer: "hon:pre" },
+      { mot: "갈 거예요", infoVer: "haeyo:fut,composed" },
+    ]);
+    // The honorific 가셔요 is informal and ends in 요, but 가셔 is no infinitive row: it is never the present.
+    expect(tagged.some((r) => r.mot === "가셔요")).toBe(false);
+    // A table without the honorific row tags no hon:pre.
+    expect(tagKoreanCells(rows.filter((r) => r.mot !== "가세요")).some((r) => r.infoVer === "hon:pre")).toBe(false);
+  });
+
+  test("P4e: the committed ko morphology validates real tables (regular, 하다, an irregular), and a wrong cell fails", () => {
+    const plugin = buildPlugin("ko");
+    const evidence = plugin.paradigm!.loadEvidence()!;
+    const check = (lemma: string, group: "regular" | "hada" | "irregular", cells: Record<string, string>) =>
+      validateParadigmsData({
+        paradigms: { version: 1, language: "ko", tables: [{ lemma, gloss: { vi: "x", en: "x" }, group, cells, evidence: { source: "kaikki-en" } }] } as never,
+        plugin,
+        evidence,
+        registryIds: new Set(["kaikki-en"]),
+      }).errors;
+    expect(check("가다", "regular", koreanParadigmCells("가다", "regular")!)).toEqual([]);
+    expect(check("살다", "regular", koreanParadigmCells("살다", "regular")!)).toEqual([]);
+    expect(check("하다", "hada", koreanParadigmCells("하다", "hada")!)).toEqual([]);
+    // 걷다's page merges 걷다 (walk, ㄷ-irregular) and 걷다 (roll up): both futures are composed.
+    expect(check("걷다", "irregular", { inf: "걷다", "haeyo:pre": "걸어요", "haeyo:pas": "걸었어요", "haeyo:fut": "걸을 거예요", "hon:pre": "걸으세요" })).toEqual([]);
+    expect(check("모르다", "irregular", { inf: "모르다", "haeyo:pre": "몰라요", "haeyo:pas": "몰랐어요", "haeyo:fut": "모를 거예요", "hon:pre": "모르세요" })).toEqual([]);
+    expect(check("모르다", "irregular", { inf: "모르다", "haeyo:pre": "모르어요", "haeyo:pas": "몰랐어요", "haeyo:fut": "모를 거예요", "hon:pre": "모르세요" }).join()).toContain(
+      'cell haeyo:pre = "모르어요" is not evidenced'
+    );
+    // 먹다's honorific is 드세요, which its kaikki table does not state: no complete table.
+    expect(check("먹다", "regular", koreanParadigmCells("먹다", "regular")!).join()).toContain("hon:pre");
   });
 });

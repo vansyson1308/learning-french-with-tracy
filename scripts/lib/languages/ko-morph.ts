@@ -100,6 +100,46 @@ export function koreanParadigmCells(lemma: string, group: KoGroup): Record<KoCel
   };
 }
 
+type EvidenceRow = { mot: string; infoVer: string };
+
+/**
+ * P4e: the 해요체 cells read from the kaikki conjugation table of one verb. The derivation tags a Korean row only
+ * `inf`, `formal` or `informal` (the speech-level groups of the source table), so the cells are named here from
+ * the table's own rows, never from the rules above:
+ *  - haeyo:pre — an informal row that is an `inf` row (the 아/어 infinitive, 가 / 먹어 / 해) + 요;
+ *  - haeyo:pas — an informal row that is that infinitive with ㅆ + 어요 (갔어요, 먹었어요, 했어요);
+ *  - hon:pre — the informal row in 세요 (가세요, 먹으세요);
+ *  - haeyo:fut — composed: the shortest formal row(s) closing on ㄹ (the prospective modifier 갈 / 먹을 / 살; the
+ *    honorific 가실 is longer) + " 거예요". The source table states the modifier, not the phrase, so the row is
+ *    marked `composed` too.
+ * The tagged rows are added beside the source rows (which stay as they are); a verb whose table lacks a row gets no
+ * row for that cell, so its paradigm table cannot validate (먹다: its honorific is 드세요, not in the table).
+ */
+export function tagKoreanCells(rows: EvidenceRow[]): EvidenceRow[] {
+  const informal = new Set(rows.filter((r) => r.infoVer.split(",").includes("informal")).map((r) => r.mot));
+  const inf = rows.filter((r) => r.infoVer.split(",").includes("inf") && !r.mot.endsWith("다")).map((r) => r.mot);
+  const out: EvidenceRow[] = [];
+  const add = (mot: string, cell: string) => {
+    if (!out.some((r) => r.mot === mot && r.infoVer === cell)) out.push({ mot, infoVer: cell });
+  };
+  for (const a of inf) {
+    if (informal.has(`${a}요`)) add(`${a}요`, "haeyo:pre");
+    const last = split(a.slice(-1));
+    if (last !== null && last.t === 0) {
+      const past = `${withFinal(a, T_SSANGSIOT)}어요`;
+      if (informal.has(past)) add(past, "haeyo:pas");
+    }
+  }
+  for (const mot of informal) if (mot.endsWith("세요")) add(mot, "hon:pre");
+  const prospective = rows
+    .filter((r) => r.infoVer.split(",").includes("formal") && split(r.mot.slice(-1))?.t === T_RIEUL)
+    .map((r) => r.mot)
+    .sort((x, y) => x.length - y.length || (x < y ? -1 : x > y ? 1 : 0));
+  // A page that merges two homographs (걷다 walk / roll up) states two modifiers of the same length: both are composed.
+  for (const m of prospective.filter((x) => x.length === prospective[0]?.length)) add(`${m} 거예요`, "haeyo:fut,composed");
+  return [...rows, ...out];
+}
+
 /** Group rules for authored paradigm tables: every cell of a regular / 하다 verb must be the rule's form. */
 export function koreanGroupRules(table: { lemma: string; group: string; cells: Record<string, string> }, err: (m: string) => void): void {
   if (table.group !== "regular" && table.group !== "hada") return;
