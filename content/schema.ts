@@ -644,6 +644,20 @@ export const CatalogSchema = z.strictObject({
 });
 
 /**
+ * content/onboarding-priority.json (P4d): the D-15 language priority
+ * (plan/10-LADDER-A1-C2.md §1). It breaks a tie in the onboarding default
+ * order after core-capability score and unit count; a target it does not
+ * name ranks after every listed one. Lowercase codes, each at most once.
+ */
+export const OnboardingPrioritySchema = z.strictObject({
+  decision: z.string().min(1),
+  targets: z
+    .array(languageCode)
+    .min(1)
+    .refine((codes) => new Set(codes).size === codes.length, { message: "a target code appears more than once" }),
+});
+
+/**
  * content/courses/<id>.profile.json (P1b, optional): explicit capability
  * overrides layered on what the compiler derives from the course's
  * artifacts — e.g. `{ "enabled": { "fsrs": true } }` to move a legacy
@@ -916,6 +930,42 @@ export const TonesSectionSchema = z.strictObject({
   notes: z.array(PrimerTextSchema).optional(),
 });
 
+/**
+ * P4d: sounds a learner confuses that differ in letters, not only in tone (zh/z, ü/u, -n/-ng, b/p …): each pair is
+ * two words whose pinyin spells different syllables, with the sound it contrasts (`focus`, e.g. "zh – z").
+ */
+export const SoundContrastsSectionSchema = z.strictObject({
+  kind: z.literal("soundContrasts"),
+  id: primerSectionId,
+  title: PrimerTextSchema,
+  explanation: PrimerTextSchema,
+  contrasts: z
+    .array(z.strictObject({ focus: z.string().min(1), a: PrimerHanziSchema, b: PrimerHanziSchema, note: PrimerTextSchema.optional() }))
+    .min(1),
+  notes: z.array(PrimerTextSchema).optional(),
+});
+
+/**
+ * P4d: tone sandhi (third tone before third tone, 不, 一). Each example gives the citation pinyin (what dictionaries
+ * and the app write) and what is said; scripts/lib/zh-sandhi.ts checks that the spoken tones are the rule's.
+ */
+export const ToneSandhiSectionSchema = z.strictObject({
+  kind: z.literal("toneSandhi"),
+  id: primerSectionId,
+  title: PrimerTextSchema,
+  explanation: PrimerTextSchema,
+  rules: z
+    .array(
+      z.strictObject({
+        rule: z.enum(["third-third", "bu", "yi"]),
+        text: PrimerTextSchema,
+        examples: z.array(z.strictObject({ hanzi: z.string().min(1), written: z.string().min(1), spoken: z.string().min(1), gloss: PrimerTextSchema, audio: PrimerAudioSchema })).min(1),
+      })
+    )
+    .min(1),
+  notes: z.array(PrimerTextSchema).optional(),
+});
+
 export const StrokesSectionSchema = z.strictObject({
   kind: z.literal("strokes"),
   id: primerSectionId,
@@ -954,10 +1004,12 @@ const checkpointItemId = z.string().regex(/^c[0-9]{2}$/);
 const checkpointOptions = z.array(z.string().min(1)).min(2).max(4);
 
 /**
- * P4c: the primer's checkpoint (kana primers only). Two item kinds: read a
- * kana and pick its rōmaji, or hear a sound and pick the kana (minimal pairs
- * are sound items with two options). Passing (`passMark` correct) is the only
- * thing it records: the course's persisted `primerPassed`.
+ * P4c: the primer's checkpoint. Kana primers: read a kana and pick its rōmaji,
+ * or hear a sound and pick the kana (minimal pairs are sound items with two
+ * options). P4d, tone primers: hear a word and pick its pinyin (a tone or a
+ * sound to tell apart; minimal pairs again with two options). Passing
+ * (`passMark` correct) is the only thing it records: the course's persisted
+ * `primerPassed`.
  */
 export const PrimerCheckpointSchema = z.strictObject({
   title: PrimerTextSchema,
@@ -968,6 +1020,7 @@ export const PrimerCheckpointSchema = z.strictObject({
       z.discriminatedUnion("kind", [
         z.strictObject({ kind: z.literal("kanaToRomaji"), id: checkpointItemId, kana: z.string().min(1), options: checkpointOptions, correct: z.number().int().min(0) }),
         z.strictObject({ kind: z.literal("soundToKana"), id: checkpointItemId, audio: PrimerAudioSchema, options: checkpointOptions, correct: z.number().int().min(0) }),
+        z.strictObject({ kind: z.literal("soundToPinyin"), id: checkpointItemId, audio: PrimerAudioSchema, options: checkpointOptions, correct: z.number().int().min(0) }),
       ])
     )
     .min(10),
@@ -981,7 +1034,7 @@ export const ScriptPrimerSchema = z.strictObject({
   id: z.string().regex(/^(ja|zh|ko)\.primer\.script$/),
   title: PrimerTextSchema,
   intro: PrimerTextSchema,
-  sections: z.array(z.discriminatedUnion("kind", [KanaTableSectionSchema, TonesSectionSchema, StrokesSectionSchema, HangulSectionSchema])).min(1),
+  sections: z.array(z.discriminatedUnion("kind", [KanaTableSectionSchema, TonesSectionSchema, SoundContrastsSectionSchema, ToneSandhiSectionSchema, StrokesSectionSchema, HangulSectionSchema])).min(1),
   checkpoint: PrimerCheckpointSchema.optional(),
 });
 export type ScriptPrimer = z.infer<typeof ScriptPrimerSchema>;

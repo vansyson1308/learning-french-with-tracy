@@ -1,0 +1,1013 @@
+{
+  "version": 1,
+  "language": "zh",
+  "objectives": [
+    {
+      "id": "zh.obj.greetings.basic",
+      "title": {
+        "en": "Greetings and set phrases",
+        "vi": "Lời chào và câu nói cố định"
+      },
+      "canDo": {
+        "en": "I can recognize and choose the everyday greetings and set phrases — 你好, 谢谢, 对不起, 没关系, 请问, 辛苦了 — and pick the one that fits the moment and the person.",
+        "vi": "Tôi có thể nhận ra và chọn lời chào, câu nói cố định hằng ngày — 你好, 谢谢, 对不起, 没关系, 请问, 辛苦了 — hợp lúc, hợp người."
+      },
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Conversation (spoken interaction)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:conversation"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sociolinguistic appropriateness",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Written recognition and choice only. Saying these phrases aloud is assessed by zh.obj.speaking.formulaic."
+    },
+    {
+      "id": "zh.obj.vocab.everyday_basics",
+      "title": {
+        "en": "Common everyday words",
+        "vi": "Từ thông dụng hằng ngày"
+      },
+      "canDo": {
+        "en": "I can understand and name the course's everyday words — people, family, food and drink, the home, familiar objects — when I read them.",
+        "vi": "Tôi có thể hiểu và gọi tên những từ hằng ngày của khoá học — người, gia đình, đồ ăn thức uống, nhà ở, đồ vật quen thuộc — khi đọc thấy chúng."
+      },
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ],
+      "essential": true
+    },
+    {
+      "id": "zh.obj.vocab.work_china",
+      "title": {
+        "en": "Words for work with a Chinese-speaking employer",
+        "vi": "Từ về công việc với chủ người Hoa"
+      },
+      "canDo": {
+        "en": "I can understand the words I need first at a factory, a warehouse or an office — 工厂, 机器, 安全, 小心, 加班, 工资, 请假 — when I read or hear them.",
+        "vi": "Tôi có thể hiểu những từ cần trước tiên ở nhà máy, kho hay văn phòng — 工厂, 机器, 安全, 小心, 加班, 工资, 请假 — khi đọc hay nghe thấy."
+      },
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "zh.obj.vocab.time_calendar",
+      "title": {
+        "en": "Time, days and dates",
+        "vi": "Giờ, thứ và ngày tháng"
+      },
+      "canDo": {
+        "en": "I can use the words for time and the calendar — 今天, 明天, 每天, 星期一 to 星期天, the months and dates such as 五月一号.",
+        "vi": "Tôi có thể dùng các từ chỉ thời gian và lịch — 今天, 明天, 每天, 星期一 đến 星期天, các tháng và ngày như 五月一号."
+      },
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "zh.obj.numbers.measure_words",
+      "title": {
+        "en": "Numbers, prices and measure words",
+        "vi": "Số đếm, giá tiền và lượng từ"
+      },
+      "canDo": {
+        "en": "I can read numbers up to 10,000, prices in 块 and 元, and the measure words used most — 个, 本, 杯, 只, 件, 张 — and say 两个, never 二个.",
+        "vi": "Tôi có thể đọc số đến 10.000, giá tiền bằng 块 và 元, các lượng từ hay dùng nhất — 个, 本, 杯, 只, 件, 张 — và nói 两个, không nói 二个."
+      },
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Numbers are read and chosen or typed here; spoken numbers are assessed by the listening and speaking objectives."
+    },
+    {
+      "id": "zh.obj.script.pinyin_tones",
+      "title": {
+        "en": "Pinyin and the four tones",
+        "vi": "Pinyin và bốn thanh điệu"
+      },
+      "canDo": {
+        "en": "I can read pinyin with its tone marks, tell the four tones and the neutral tone apart, and match a syllable I hear to its spelling — mā, má, mǎ, mà.",
+        "vi": "Tôi có thể đọc pinyin có dấu thanh, phân biệt bốn thanh và thanh nhẹ, và nối âm tiết nghe được với cách viết — mā, má, mǎ, mà."
+      },
+      "category": "written_reception",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall reading comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Phonological control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:phonological-control"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed by the tone and pinyin primer checkpoint. Pinyin is a reading aid: it is never accepted as production evidence for a word written in characters."
+    },
+    {
+      "id": "zh.obj.script.hanzi_hanviet",
+      "title": {
+        "en": "About 470 characters, helped by Hán-Việt",
+        "vi": "Khoảng 470 chữ Hán, nhờ âm Hán-Việt"
+      },
+      "canDo": {
+        "en": "I can recognize the characters of the course's words — 人, 学, 工作, 银行, 安全 — and use their Hán-Việt reading, where it helps, to remember the meaning.",
+        "vi": "Tôi có thể nhận ra chữ Hán trong các từ của khoá học — 人, 学, 工作, 银行, 安全 — và dùng âm Hán-Việt, khi có ích, để nhớ nghĩa."
+      },
+      "category": "written_reception",
+      "prerequisites": [
+        "zh.obj.script.pinyin_tones"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:orthographic-control"
+        }
+      ],
+      "essential": false,
+      "evidenceNote": "Recognition with pinyin available. Writing characters by hand is not taught or assessed; traditional characters are recognised, never required."
+    },
+    {
+      "id": "zh.obj.reading.familiar_words",
+      "title": {
+        "en": "Reading familiar words and phrases",
+        "vi": "Đọc từ và cụm từ quen thuộc"
+      },
+      "canDo": {
+        "en": "I can recognize familiar words and very short learned phrases written in characters with pinyin, and match them to their meaning.",
+        "vi": "Tôi có thể nhận ra từ quen thuộc và cụm từ rất ngắn đã học khi thấy chúng viết bằng chữ Hán có pinyin, và nối chúng với nghĩa."
+      },
+      "category": "written_reception",
+      "prerequisites": [
+        "zh.obj.script.pinyin_tones"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall reading comprehension",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall reading comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at Pre-A1 only: written recognition of familiar words and learned phrases. Reading short simple texts at A1 belongs to the reading objectives below."
+    },
+    {
+      "id": "zh.obj.writing.pinyin_input",
+      "title": {
+        "en": "Typing Chinese with a pinyin keyboard",
+        "vi": "Gõ tiếng Trung bằng bàn phím pinyin"
+      },
+      "canDo": {
+        "en": "I can type familiar words in characters on a phone with a pinyin keyboard and pick the right character from the list — 是 not 事, 买 not 卖.",
+        "vi": "Tôi có thể gõ từ quen thuộc bằng chữ Hán trên điện thoại với bàn phím pinyin và chọn đúng chữ trong danh sách — 是 chứ không phải 事, 买 chứ không phải 卖."
+      },
+      "category": "written_production",
+      "prerequisites": [
+        "zh.obj.script.pinyin_tones"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:orthographic-control"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Evidence is single words and short learned phrases in characters. An answer typed in pinyin for a key in characters is accepted but is practice, not production evidence (P4b evidence guard)."
+    },
+    {
+      "id": "zh.obj.sentences.shi_questions",
+      "title": {
+        "en": "是 sentences, 不 and 没, questions with 吗",
+        "vi": "Câu với 是, 不 và 没, câu hỏi với 吗"
+      },
+      "canDo": {
+        "en": "I can say what or who something is with 是, make it negative with 不 or 没, and ask yes-no questions with 吗 or 是不是 — 你是越南人吗？",
+        "vi": "Tôi có thể nói ai, cái gì là gì bằng 是, phủ định bằng 不 hoặc 没, và hỏi có/không bằng 吗 hoặc 是不是 — 你是越南人吗？"
+      },
+      "category": "grammar",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true
+    },
+    {
+      "id": "zh.obj.grammar.word_order",
+      "title": {
+        "en": "Word order: time and place before the verb, 的 before the noun",
+        "vi": "Trật tự từ: thời gian, nơi chốn trước động từ; 的 trước danh từ"
+      },
+      "canDo": {
+        "en": "I can put time and place before the verb — 我明天在家吃饭 — and the describing word with 的 before the noun — 我的手机, 红色的车 — the reverse of Vietnamese.",
+        "vi": "Tôi có thể đặt thời gian, nơi chốn trước động từ — 我明天在家吃饭 — và từ bổ nghĩa với 的 trước danh từ — 我的手机, 红色的车 — ngược với tiếng Việt."
+      },
+      "category": "grammar",
+      "prerequisites": [
+        "zh.obj.sentences.shi_questions"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true
+    },
+    {
+      "id": "zh.obj.aspect.le_guo_zai",
+      "title": {
+        "en": "了, 过, 在 and 着",
+        "vi": "了, 过, 在 và 着"
+      },
+      "canDo": {
+        "en": "I can say that something has happened with 了, that I have done it before with 过, and that it is going on with 在 or 正在 — close to the Vietnamese words for 'already', 'ever' and 'in the middle of'.",
+        "vi": "Tôi có thể nói việc đã xảy ra bằng 了, việc đã từng làm bằng 过, việc đang diễn ra bằng 在 hay 正在 — gần với rồi, từng, đang của tiếng Việt."
+      },
+      "category": "grammar",
+      "prerequisites": [
+        "zh.obj.grammar.word_order"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Taught as learned patterns with common verbs; 着 is recognition only. 了 is not a past tense, and the course never says it is."
+    },
+    {
+      "id": "zh.obj.existence.you_zai",
+      "title": {
+        "en": "有 and 在: having, being somewhere",
+        "vi": "有 và 在: có, ở đâu"
+      },
+      "canDo": {
+        "en": "I can say what I have and what there is with 有 (negative 没有), and where something or someone is with 在 — 银行在超市旁边.",
+        "vi": "Tôi có thể nói mình có gì, ở đâu có gì bằng 有 (phủ định 没有), và cái gì, ai ở đâu bằng 在 — 银行在超市旁边."
+      },
+      "category": "grammar",
+      "prerequisites": [
+        "zh.obj.sentences.shi_questions"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true
+    },
+    {
+      "id": "zh.obj.questions.question_words",
+      "title": {
+        "en": "Question words in place",
+        "vi": "Từ để hỏi đặt đúng chỗ"
+      },
+      "canDo": {
+        "en": "I can ask questions with 什么, 谁, 哪儿, 几, 多少 and 怎么 put where the answer goes, with no change of word order — 你在哪儿工作？",
+        "vi": "Tôi có thể đặt câu hỏi với 什么, 谁, 哪儿, 几, 多少, 怎么 ở đúng chỗ của câu trả lời, không đổi trật tự từ — 你在哪儿工作？"
+      },
+      "category": "grammar",
+      "prerequisites": [
+        "zh.obj.sentences.shi_questions"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "zh.obj.modals.can_want",
+      "title": {
+        "en": "Wanting and being able: 想, 要, 会, 能, 可以",
+        "vi": "Muốn và có thể: 想, 要, 会, 能, 可以"
+      },
+      "canDo": {
+        "en": "I can say what I want or intend with 想 and 要, what I know how to do with 会, and whether I can or may with 能 and 可以.",
+        "vi": "Tôi có thể nói điều mình muốn, định làm bằng 想 và 要, việc mình biết làm bằng 会, và việc mình làm được, được phép bằng 能 và 可以."
+      },
+      "category": "grammar",
+      "prerequisites": [
+        "zh.obj.grammar.word_order"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A2",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": false,
+      "evidenceNote": "Learned patterns with common verbs; the fine contrast between 能 and 可以 is practice only; kept at A2 supports."
+    },
+    {
+      "id": "zh.obj.adjectives.hen_tai",
+      "title": {
+        "en": "Adjectives with 很 and 太…了",
+        "vi": "Tính từ với 很 và 太…了"
+      },
+      "canDo": {
+        "en": "I can describe with an adjective after 很, with no 是 — 今天很冷 — and react with 太…了 — 太贵了！",
+        "vi": "Tôi có thể miêu tả bằng tính từ đứng sau 很, không cần 是 — 今天很冷 — và phản ứng bằng 太…了 — 太贵了！"
+      },
+      "category": "grammar",
+      "prerequisites": [
+        "zh.obj.sentences.shi_questions"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "zh.obj.politeness.register",
+      "title": {
+        "en": "Polite forms at work",
+        "vi": "Cách nói lịch sự ở chỗ làm"
+      },
+      "canDo": {
+        "en": "I can speak politely to a boss or a customer — 您, 请, 请问, a surname with 经理 or 先生 — and recognise the friendly style co-workers use with each other.",
+        "vi": "Tôi có thể nói lịch sự với cấp trên hay khách hàng — 您, 请, 请问, họ kèm 经理 hay 先生 — và nhận ra cách nói thân mật đồng nghiệp dùng với nhau."
+      },
+      "category": "grammar",
+      "prerequisites": [
+        "zh.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Sociolinguistic appropriateness",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+        }
+      ],
+      "essential": false,
+      "evidenceNote": "The friendly style is recognition only."
+    },
+    {
+      "id": "zh.obj.pronunciation.tones_sounds",
+      "title": {
+        "en": "Tones, tone changes and retroflex sounds",
+        "vi": "Thanh điệu, biến điệu và âm uốn lưỡi"
+      },
+      "canDo": {
+        "en": "I can hear tone pairs such as 买 mǎi / 卖 mài, the tone changes of 不, 一 and two third tones, and the difference between zh, ch, sh and z, c, s.",
+        "vi": "Tôi có thể nghe phân biệt cặp thanh như 买 mǎi / 卖 mài, biến điệu của 不, 一 và hai thanh 3 liền nhau, và khác biệt giữa zh, ch, sh với z, c, s."
+      },
+      "category": "phonology",
+      "prerequisites": [
+        "zh.obj.script.pinyin_tones"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Phonological control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:phonological-control"
+        }
+      ],
+      "essential": false,
+      "evidenceNote": "Contrast recognition only. The learner's own pronunciation is not assessed, and a recogniser transcript is never a pronunciation score."
+    },
+    {
+      "id": "zh.obj.strategy.hanviet_false_friends",
+      "title": {
+        "en": "Hán-Việt and false friends",
+        "vi": "Hán-Việt và “bạn giả”"
+      },
+      "canDo": {
+        "en": "I can guess new words through their Sino-Vietnamese reading — 银行 (bank), 准备 (to prepare) — and avoid false friends such as 小心, which means careful, and 方便, which means convenient.",
+        "vi": "Tôi có thể đoán nghĩa từ mới nhờ âm Hán-Việt — 银行 ngân hàng, 准备 chuẩn bị — và tránh “bạn giả” như 小心 là cẩn thận, 方便 là thuận tiện."
+      },
+      "category": "strategy",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Identifying cues and inferring (reception strategy)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:identifying-cues-inferring"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "zh.obj.listening.familiar_words",
+      "title": {
+        "en": "Hearing familiar words and phrases",
+        "vi": "Nghe từ và cụm từ quen thuộc"
+      },
+      "canDo": {
+        "en": "I can pick out familiar words and short learned phrases when they are said clearly and slowly.",
+        "vi": "Tôi có thể nhận ra từ quen thuộc và cụm từ ngắn đã học khi nghe chúng được nói rõ và chậm."
+      },
+      "category": "spoken_reception",
+      "prerequisites": [
+        "zh.obj.vocab.everyday_basics"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall listening comprehension",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall listening comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at Pre-A1 only: bundled, clear, synthesized clips of single words and short phrases, scored in the Section 3 checkpoint. Natural conversational speech and regional accents are not assessed."
+    },
+    {
+      "id": "zh.obj.listening.short_info",
+      "title": {
+        "en": "Hearing facts in a short recording",
+        "vi": "Nghe thông tin trong đoạn ghi âm ngắn"
+      },
+      "canDo": {
+        "en": "I can catch concrete facts — a time, a price, a date, a place — in a short, clear, slow recording about daily life or work.",
+        "vi": "Tôi có thể nghe ra thông tin cụ thể như giờ, giá, ngày, địa điểm trong một đoạn ghi âm ngắn, rõ và chậm về cuộc sống hằng ngày hay công việc."
+      },
+      "category": "spoken_reception",
+      "prerequisites": [
+        "zh.obj.listening.familiar_words",
+        "zh.obj.numbers.measure_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to audio media and recordings",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:audio-media-recordings"
+        },
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall listening comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1 within the bundled audio: short synthesized recordings holding 1-3 facts, scored in the Section 3 checkpoint. Authentic-speed media are not assessed."
+    },
+    {
+      "id": "zh.obj.listening.announcements",
+      "title": {
+        "en": "Announcements and safety instructions",
+        "vi": "Thông báo và chỉ dẫn an toàn"
+      },
+      "canDo": {
+        "en": "I can understand very short announcements and instructions spoken clearly and slowly — at a station, in a shop, and the safety rules of a factory or warehouse.",
+        "vi": "Tôi có thể hiểu thông báo và chỉ dẫn rất ngắn nói rõ và chậm — ở nhà ga, trong cửa hàng, và nội quy an toàn ở nhà máy hay kho hàng."
+      },
+      "category": "spoken_reception",
+      "prerequisites": [
+        "zh.obj.listening.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to announcements and instructions",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:announcements-instructions"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1 within the bundled audio: synthesized station, shop and workplace announcements and simple instructions, scored in the Section 3 checkpoint."
+    },
+    {
+      "id": "zh.obj.listening.short_dialogues",
+      "title": {
+        "en": "Understanding short dialogues",
+        "vi": "Nghe hiểu hội thoại ngắn"
+      },
+      "canDo": {
+        "en": "I can follow the main point when two people say a few clear sentences to each other about daily life or work.",
+        "vi": "Tôi có thể hiểu ý chính khi hai người nói rõ ràng với nhau vài câu về chuyện hằng ngày hoặc công việc."
+      },
+      "category": "spoken_reception",
+      "prerequisites": [
+        "zh.obj.listening.familiar_words",
+        "zh.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Understanding conversation between other speakers",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:understanding-conversation"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1 within the bundled audio: two-voice synthesized exchanges of 2-4 turns (cast A and B are different speakers), scored in the Section 3 checkpoint. The learner only listens: interaction is assessed by the interaction objectives."
+    },
+    {
+      "id": "zh.obj.reading.short_messages",
+      "title": {
+        "en": "Reading short messages",
+        "vi": "Đọc tin nhắn ngắn"
+      },
+      "canDo": {
+        "en": "I can understand short, simple messages from a co-worker or a boss — on WeChat or a note — about shifts, times and everyday tasks.",
+        "vi": "Tôi có thể hiểu tin nhắn ngắn, đơn giản của đồng nghiệp hay cấp trên — trên WeChat hay giấy nhắn — về ca làm, giờ giấc và việc hằng ngày."
+      },
+      "category": "written_reception",
+      "prerequisites": [
+        "zh.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading correspondence",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-correspondence"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1: original short messages in simplified characters with pinyin available, read and answered in the Section 3 checkpoint."
+    },
+    {
+      "id": "zh.obj.reading.notices_info",
+      "title": {
+        "en": "Signs, notices and timetables",
+        "vi": "Biển báo, thông báo và lịch"
+      },
+      "canDo": {
+        "en": "I can find the facts I need on signs and simple notices — 禁止吸烟, 小心, 出口, 入口, opening hours, a shift table.",
+        "vi": "Tôi có thể tìm thông tin cần thiết trên biển báo và thông báo đơn giản — 禁止吸烟, 小心, 出口, 入口, giờ mở cửa, bảng ca làm."
+      },
+      "category": "written_reception",
+      "prerequisites": [
+        "zh.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading for orientation",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-orientation"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1: original notices and schedules with locate-type questions, scored in the Section 3 checkpoint. Signs may be shown in traditional characters for recognition (Taiwan)."
+    },
+    {
+      "id": "zh.obj.reading.short_texts",
+      "title": {
+        "en": "Reading very short texts",
+        "vi": "Đọc đoạn văn rất ngắn"
+      },
+      "canDo": {
+        "en": "I can read a very short text about familiar people and routines, slowly and more than once if I need to.",
+        "vi": "Tôi có thể đọc hiểu đoạn văn rất ngắn về người và sinh hoạt quen thuộc, đọc chậm và đọc lại khi cần."
+      },
+      "category": "written_reception",
+      "prerequisites": [
+        "zh.obj.reading.familiar_words",
+        "zh.obj.aspect.le_guo_zai"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall reading comprehension",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        },
+        {
+          "level": "A2",
+          "scaleName": "Overall reading comprehension",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1: original 2-5 sentence descriptions and small stories with pinyin available, scored in the Section 3 checkpoint. Longer texts and unfamiliar topics are not assessed."
+    },
+    {
+      "id": "zh.obj.speaking.formulaic",
+      "title": {
+        "en": "Saying set phrases aloud",
+        "vi": "Nói các câu cố định thành tiếng"
+      },
+      "canDo": {
+        "en": "I can say the everyday greetings, thanks, apologies and requests aloud — 你好, 谢谢, 对不起, 请再说一遍 — and choose the one that fits the moment.",
+        "vi": "Tôi có thể nói thành tiếng lời chào, cảm ơn, xin lỗi và nhờ vả hằng ngày — 你好, 谢谢, 对不起, 请再说一遍 — và chọn câu hợp lúc."
+      },
+      "category": "spoken_production",
+      "prerequisites": [
+        "zh.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sociolinguistic appropriateness",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed from what an on-device zh-CN speech recogniser heard: characters recognised, never a tone or pronunciation-quality score. Simplified and traditional transcripts count as equal."
+    },
+    {
+      "id": "zh.obj.speaking.self_intro",
+      "title": {
+        "en": "Introducing yourself",
+        "vi": "Tự giới thiệu"
+      },
+      "canDo": {
+        "en": "I can introduce myself aloud in short sentences, as at an interview or on the first day at work — name, country, age, job, 认识你很高兴.",
+        "vi": "Tôi có thể tự giới thiệu thành tiếng bằng câu ngắn, như khi phỏng vấn hay ngày đầu đi làm — tên, nước, tuổi, việc làm, 认识你很高兴."
+      },
+      "category": "spoken_production",
+      "prerequisites": [
+        "zh.obj.sentences.shi_questions"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: describing experience",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed from recognised words in elicited sentences. The meaning cue is in Vietnamese; the Chinese is never shown before the attempt."
+    },
+    {
+      "id": "zh.obj.speaking.give_info",
+      "title": {
+        "en": "Giving simple facts aloud",
+        "vi": "Nói thông tin đơn giản"
+      },
+      "canDo": {
+        "en": "I can give simple facts aloud with numbers and common words — a phone number, a price, a time, a date, how many.",
+        "vi": "Tôi có thể nói thông tin đơn giản bằng con số và từ thông dụng — số điện thoại, giá, giờ, ngày, số lượng."
+      },
+      "category": "spoken_production",
+      "prerequisites": [
+        "zh.obj.numbers.measure_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: giving information",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-giving-information"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Recognised digits and character numerals count as the same information (两 and 二 are kept apart before a measure word); a wrong number is a wrong answer, and silence is never scored."
+    },
+    {
+      "id": "zh.obj.speaking.describe",
+      "title": {
+        "en": "Describing aloud",
+        "vi": "Mô tả thành tiếng"
+      },
+      "canDo": {
+        "en": "I can describe familiar people, places and objects aloud in short phrases: what it is and one simple feature.",
+        "vi": "Tôi có thể tả người, nơi chốn và đồ vật quen thuộc bằng cụm từ ngắn: đó là gì và một đặc điểm đơn giản của nó."
+      },
+      "category": "spoken_production",
+      "prerequisites": [
+        "zh.obj.vocab.everyday_basics",
+        "zh.obj.adjectives.hen_tai"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: describing experience",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
+        }
+      ],
+      "essential": false,
+      "evidenceNote": "Short separate phrases only: connected description is beyond this course's A1 claim."
+    },
+    {
+      "id": "zh.obj.writing.personal_info",
+      "title": {
+        "en": "Writing about yourself",
+        "vi": "Viết về bản thân"
+      },
+      "canDo": {
+        "en": "I can write short sentences about myself in characters with a pinyin keyboard — name, age, country, where I live, my job.",
+        "vi": "Tôi có thể viết những câu ngắn về bản thân bằng chữ Hán với bàn phím pinyin — tên, tuổi, nước, nơi ở và công việc."
+      },
+      "category": "written_production",
+      "prerequisites": [
+        "zh.obj.writing.pinyin_input",
+        "zh.obj.sentences.shi_questions"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall written production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall written interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-interaction"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:orthographic-control"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed by guided rubric-scored writing with required information slots; open free writing is never scored evidence. A slot met only through pinyin for a key in characters is practice, not production evidence."
+    },
+    {
+      "id": "zh.obj.writing.phrases_sentences",
+      "title": {
+        "en": "Writing simple sentences",
+        "vi": "Viết câu đơn giản"
+      },
+      "canDo": {
+        "en": "I can write short sentences about familiar people and things — who does what, where, when — and join them with 和, 但是, 然后.",
+        "vi": "Tôi có thể viết câu ngắn về người và việc quen thuộc — ai làm gì, ở đâu, khi nào — và nối câu bằng 和, 但是, 然后."
+      },
+      "category": "written_production",
+      "prerequisites": [
+        "zh.obj.writing.personal_info",
+        "zh.obj.grammar.word_order"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall written production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed by guided tasks whose rubric requires a verb from an authored list plus the task's information slots."
+    },
+    {
+      "id": "zh.obj.writing.short_message",
+      "title": {
+        "en": "Writing a short message",
+        "vi": "Viết tin nhắn ngắn"
+      },
+      "canDo": {
+        "en": "I can write a very short message to a boss or a co-worker, as on WeChat: a greeting, one or two facts such as a time or a reason, and a polite closing.",
+        "vi": "Tôi có thể viết tin nhắn rất ngắn cho cấp trên hay đồng nghiệp, như trên WeChat: lời chào, một hai thông tin như giờ hay lý do, và lời kết lịch sự."
+      },
+      "category": "written_production",
+      "prerequisites": [
+        "zh.obj.writing.personal_info",
+        "zh.obj.vocab.time_calendar"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Correspondence",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:correspondence"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall written interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-interaction"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed by guided tasks; the rubric requires the message's parts (greeting, fact, closing) and never judges style."
+    },
+    {
+      "id": "zh.obj.writing.form_filling",
+      "title": {
+        "en": "Filling in a form",
+        "vi": "Điền biểu mẫu"
+      },
+      "canDo": {
+        "en": "I can fill in a simple form at a bank, a clinic or a company — 姓名, 国籍, 电话, 地址, 护照号码 — in characters and numbers.",
+        "vi": "Tôi có thể điền biểu mẫu đơn giản ở ngân hàng, phòng khám hay công ty — 姓名, 国籍, 电话, 地址, 护照号码 — bằng chữ Hán và chữ số."
+      },
+      "category": "written_production",
+      "prerequisites": [
+        "zh.obj.writing.pinyin_input",
+        "zh.obj.numbers.measure_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Notes, messages and forms",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:notes-messages-forms"
+        }
+      ],
+      "essential": false,
+      "evidenceNote": "Assessed by separate labelled fields checked against the cue facts; an empty form is insufficient evidence, never a failure."
+    },
+    {
+      "id": "zh.obj.interaction.everyday_conversation",
+      "title": {
+        "en": "Short conversations",
+        "vi": "Trò chuyện ngắn"
+      },
+      "canDo": {
+        "en": "I can take part in a short conversation with a patient partner — greet, introduce myself at work, answer simple interview questions — and ask for a repeat (请再说一遍).",
+        "vi": "Tôi có thể tham gia cuộc trò chuyện ngắn với người kiên nhẫn — chào hỏi, giới thiệu mình ở chỗ làm, trả lời câu hỏi phỏng vấn đơn giản — và nhờ nhắc lại (请再说一遍)."
+      },
+      "category": "interaction",
+      "prerequisites": [
+        "zh.obj.speaking.formulaic",
+        "zh.obj.speaking.self_intro",
+        "zh.obj.listening.short_dialogues"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall oral interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-interaction"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Conversation (spoken interaction)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:conversation"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed by multi-turn deterministic scenarios where the recognized meaning decides the partner's next turn. Asking for a repeat is tracked and never penalized; a technical speech failure is insufficient evidence, never a failure."
+    },
+    {
+      "id": "zh.obj.interaction.practical_needs",
+      "title": {
+        "en": "Practical tasks with Chinese speakers",
+        "vi": "Việc thực tế với người nói tiếng Trung"
+      },
+      "canDo": {
+        "en": "I can handle very simple tasks — buy and pay in a shop, open a bank account, see a doctor, ask the way, phone my workplace to say I am ill — and understand the short answer.",
+        "vi": "Tôi có thể xử lý việc rất đơn giản — mua và trả tiền ở cửa hàng, mở tài khoản ngân hàng, đi khám, hỏi đường, gọi điện báo chỗ làm là mình ốm — và hiểu câu trả lời ngắn."
+      },
+      "category": "interaction",
+      "prerequisites": [
+        "zh.obj.speaking.give_info",
+        "zh.obj.listening.short_info",
+        "zh.obj.numbers.measure_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Obtaining goods and services",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:obtaining-goods-services"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Information exchange",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:information-exchange"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed by multi-turn scenario items in a shop, at a bank, at a clinic, on the street, on the phone and at work. Passing needs the goal met and first-attempt intent matches on scored turns; a repair keeps the conversation alive and is recorded."
+    }
+  ]
+}

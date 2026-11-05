@@ -50,8 +50,8 @@ import { packClipRecipe, phonemeFrontendProblems, phonemeFrontendSpec, reception
 import { asrModelId, mergeAsrResults, splitPlanByCache, type AsrResult } from "./lib/asr-cache";
 import { blessedBySha, committedBlessedSha256, ownerListeningLines, splitReview, techQaDoc, type ReviewRow } from "./lib/audio-qa";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
-import { jaFrontendInputsSha256, staleFrontendMessage } from "./lib/tts/ja-frontend-inputs";
-import { loadJaSpeechIndex } from "./lib/tts/ja-kana";
+import { courseReadingsReader, frontendInputsSha256 } from "./lib/tts/frontends";
+import { staleFrontendMessage } from "./lib/tts/ja-frontend-inputs";
 import { attachKokoroPhonemes } from "./lib/tts/kokoro";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
 
@@ -182,6 +182,17 @@ function primaryCourseId(): string {
   const primary = courseRolesFor(LANG, loadPacks().filter((p) => p.pack.testOnly !== true)).primary;
   if (!primary) fail(`${LANG}: no course pack`);
   return primary.pack.id;
+}
+
+/**
+ * P4d: a course of the manifest whose pack is not in content/courses yet (a course still staged under
+ * content/<lang>/_drafts/staged, e.g. zh-vi before promote) is a plan problem, not a crash.
+ */
+function courseFilePresent(courseId: string, problems: string[]): boolean {
+  const rel = `content/courses/${courseId}.json`;
+  if (existsSync(path.join(ROOT, rel))) return true;
+  problems.push(`${courseId}: ${rel} does not exist — promote the staged course first (bun scripts/author.ts promote)`);
+  return false;
 }
 
 /** Every string a course pack can speak (unchanged from the V1 pipeline). */
@@ -375,10 +386,12 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
   // P4c: the front-end version is in the key of every Kokoro clip of the language; its recorded inputs must be the current ones.
   const frontend = phonemeFrontendSpec(LANG);
   problems.push(...phonemeFrontendProblems(LANG, frontend));
-  if (frontend !== null && LANG === "ja") {
-    const actual = jaFrontendInputsSha256((rel) => readFileSync(path.join(ROOT, rel), "utf8"));
-    if (actual !== frontend.inputsSha256) problems.push(staleFrontendMessage(LANG, frontend.inputsSha256, actual));
-  } else if (frontend !== null) problems.push(`content/audio/engines.json kokoro.phonemeFrontends.${LANG}: "${frontend.id}" is the Japanese front-end only`);
+  if (frontend !== null) {
+    // P4d: ja and zh have a course-readings front-end (scripts/lib/tts/frontends.ts).
+    const actual = frontendInputsSha256(LANG, (rel) => readFileSync(path.join(ROOT, rel), "utf8"));
+    if (actual === null) problems.push(`content/audio/engines.json kokoro.phonemeFrontends.${LANG}: "${frontend.id}" has no front-end for ${LANG}`);
+    else if (actual !== frontend.inputsSha256) problems.push(staleFrontendMessage(LANG, frontend.inputsSha256, actual));
+  }
   // ---- pack + lexicon layers (course-keyed, content/audio/pack-audio-manifest.json) ----
   if (wantsPack) {
     const m = loadPackManifest();
@@ -414,7 +427,7 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
           const recipe = packClipRecipe({ language: LANG, engine: voice.engine, text: item.text, pipelineVersion: version, synthesis: null, codec, encoding: engines.encoding });
           clips.push({ clipId: `${item.id}@${voiceId}`, layer: "pack", courseId: null, language: LANG, text: item.text, segments: [{ voiceId, speaker, text: item.text }], assetKey: packAssetKey(LANG, voiceId, typeof speaker === "number" ? speaker : null, item.text, version, recipe), pipelineVersion: version, ...(codec !== "mp3" ? { codec } : {}) });
         }
-        for (const [id] of mine) for (const text of canarySample(courseAudioStrings(m, id))) pushPack("pack", id, voiceId, text, `@${voiceId}`);
+        for (const [id] of mine) if (courseFilePresent(id, problems)) for (const text of canarySample(courseAudioStrings(m, id))) pushPack("pack", id, voiceId, text, `@${voiceId}`);
       }
     } else if (LAYER !== "lexicon") {
       if (mine.length === 0) problems.push(`no course of ${LANG} in content/audio/pack-audio-manifest.json`);
@@ -423,7 +436,7 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
         if (course.policy !== "generated") continue;
         const voiceId = course.voiceCast?.A ?? course.voiceId;
         if (!voiceId) problems.push(`${id}: no selected voice — run canary + select first`);
-        else for (const text of courseAudioStrings(m, id)) pushPack("pack", id, voiceId, text, "");
+        else if (courseFilePresent(id, problems)) for (const text of courseAudioStrings(m, id)) pushPack("pack", id, voiceId, text, "");
       }
     }
     // Apply replaces the language's pack and lexicon audio as one set, so a generate of only one would delete the other.
@@ -499,8 +512,8 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
     // Layer-filtered runs plan only part of the list; a stale id (its text was edited) is reported, never fatal.
     if (absent.length > 0) console.log(`  not in this plan (other layer, or text changed): ${absent.join(" | ")}`);
   }
-  // P4c: a Kokoro front-end language (ja) gets its phonemes here, from the course's stored readings — never a guess.
-  const fronted = attachKokoroPhonemes(clips, new Map(allVoices().map((v) => [v.id, v])), engines, () => loadJaSpeechIndex(readJson, (rel) => existsSync(path.join(ROOT, rel))));
+  // P4c/P4d: a Kokoro front-end language (ja, zh) gets its phonemes here, from the course's stored readings — never a guess.
+  const fronted = attachKokoroPhonemes(clips, new Map(allVoices().map((v) => [v.id, v])), engines, (lang) => courseReadingsReader(lang, readJson, (rel) => existsSync(path.join(ROOT, rel))));
   problems.push(...fronted.problems);
   const plugin = buildPlugin(LANG);
   const doc: PlanDoc = { language: LANG, mode, layers: [...new Set(layers)], normalization: plugin.normalizeForAsr, charsPerSecBand: [plugin.charsPerSecBand.min, plugin.charsPerSecBand.max], clips: fronted.clips };

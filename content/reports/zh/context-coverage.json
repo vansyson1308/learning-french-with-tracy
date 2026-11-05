@@ -1,0 +1,368 @@
+{
+  "generator": "scripts/lib/context-coverage.ts",
+  "rule": "a syllabus lexeme has context when a lesson exercise grades it, a reading or listening clip references it, or a graded story uses it — counted only from sources whose band is at or below the lexeme's CEFR level (lesson: its unit's band; reading/clip: the earliest unit using it, else the level's last band; story: its band)",
+  "level": "A1",
+  "syllabus": 725,
+  "withContext": 612,
+  "share": 0.8441,
+  "bySource": {
+    "lessons": 353,
+    "readings": 329,
+    "listening": 378,
+    "stories": 461
+  },
+  "aboveLevelOnly": 21,
+  "units": [
+    {
+      "unitId": "zh-vi:unit-1",
+      "total": 25,
+      "withContext": 24,
+      "missing": [
+        "zh:w:nihaoma"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-2",
+      "total": 33,
+      "withContext": 30,
+      "missing": [
+        "zh:w:renmen",
+        "zh:w:nv",
+        "zh:w:nan"
+      ],
+      "aboveLevelOnly": [
+        "zh:w:nv"
+      ]
+    },
+    {
+      "unitId": "zh-vi:unit-3",
+      "total": 22,
+      "withContext": 19,
+      "missing": [
+        "zh:w:jiating",
+        "zh:w:zhaogu",
+        "zh:w:airen"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-4",
+      "total": 27,
+      "withContext": 26,
+      "missing": [
+        "zh:w:ji-1"
+      ],
+      "aboveLevelOnly": [
+        "zh:w:ji-1"
+      ]
+    },
+    {
+      "unitId": "zh-vi:unit-5",
+      "total": 19,
+      "withContext": 19,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-a",
+      "total": 56,
+      "withContext": 45,
+      "missing": [
+        "zh:w:xiguan",
+        "zh:w:zuihao",
+        "zh:w:keneng",
+        "zh:w:zanmen",
+        "zh:w:naxie-31",
+        "zh:w:geng",
+        "zh:w:youde",
+        "zh:w:shenghuo",
+        "zh:w:zhe-5",
+        "zh:w:hua",
+        "zh:w:zheyang"
+      ],
+      "aboveLevelOnly": [
+        "zh:w:zuihao",
+        "zh:w:keneng",
+        "zh:w:youde",
+        "zh:w:hua",
+        "zh:w:zheyang"
+      ]
+    },
+    {
+      "unitId": "zh-vi:unit-b",
+      "total": 31,
+      "withContext": 23,
+      "missing": [
+        "zh:w:yiban",
+        "zh:w:wan-4",
+        "zh:w:xie-1",
+        "zh:w:men",
+        "zh:w:yuan",
+        "zh:w:gongjin",
+        "zh:w:gongli",
+        "zh:w:ling"
+      ],
+      "aboveLevelOnly": [
+        "zh:w:wan-4"
+      ]
+    },
+    {
+      "unitId": "zh-vi:unit-c",
+      "total": 117,
+      "withContext": 96,
+      "missing": [
+        "zh:w:xiamian",
+        "zh:w:dong",
+        "zh:w:zhongjian",
+        "zh:w:wei",
+        "zh:w:bei",
+        "zh:w:canjia",
+        "zh:w:taiwan",
+        "zh:w:didian",
+        "zh:w:waiguo",
+        "zh:w:bangzhu",
+        "zh:w:gan",
+        "zh:w:yinggai",
+        "zh:w:wang",
+        "zh:w:wangji",
+        "zh:w:zhaodao",
+        "zh:w:huan",
+        "zh:w:xi",
+        "zh:w:jizhu",
+        "zh:w:qilai",
+        "zh:w:jinlai",
+        "zh:w:nali-45"
+      ],
+      "aboveLevelOnly": [
+        "zh:w:canjia",
+        "zh:w:taiwan",
+        "zh:w:wang",
+        "zh:w:huan",
+        "zh:w:jizhu"
+      ]
+    },
+    {
+      "unitId": "zh-vi:unit-d",
+      "total": 64,
+      "withContext": 56,
+      "missing": [
+        "zh:w:shangci",
+        "zh:w:zuijin",
+        "zh:w:qiantian",
+        "zh:w:zhou",
+        "zh:w:xinnian",
+        "zh:w:ri",
+        "zh:w:baitian",
+        "zh:w:jingchang"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-e",
+      "total": 47,
+      "withContext": 31,
+      "missing": [
+        "zh:w:xiake",
+        "zh:w:zhongxue",
+        "zh:w:shubao",
+        "zh:w:ju",
+        "zh:w:juzi",
+        "zh:w:huida",
+        "zh:w:waiyu",
+        "zh:w:rongyi",
+        "zh:w:xiaoxue",
+        "zh:w:fangxue",
+        "zh:w:jiaoshi",
+        "zh:w:putonghua",
+        "zh:w:zhishi",
+        "zh:w:jie",
+        "zh:w:du",
+        "zh:w:kewen"
+      ],
+      "aboveLevelOnly": [
+        "zh:w:ju",
+        "zh:w:rongyi"
+      ]
+    },
+    {
+      "unitId": "zh-vi:unit-f",
+      "total": 27,
+      "withContext": 27,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-g",
+      "total": 37,
+      "withContext": 28,
+      "missing": [
+        "zh:w:shiqing",
+        "zh:w:zhunbei",
+        "zh:w:ban-4",
+        "zh:w:dagong",
+        "zh:w:fuwu",
+        "zh:w:jihui",
+        "zh:w:ban-1",
+        "zh:w:zu",
+        "zh:w:renzhen"
+      ],
+      "aboveLevelOnly": [
+        "zh:w:dagong",
+        "zh:w:jihui",
+        "zh:w:zu",
+        "zh:w:renzhen"
+      ]
+    },
+    {
+      "unitId": "zh-vi:unit-h",
+      "total": 20,
+      "withContext": 19,
+      "missing": [
+        "zh:w:malu"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-i",
+      "total": 9,
+      "withContext": 9,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-j",
+      "total": 16,
+      "withContext": 15,
+      "missing": [
+        "zh:w:heshi"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-k",
+      "total": 17,
+      "withContext": 14,
+      "missing": [
+        "zh:w:o",
+        "zh:w:a",
+        "zh:w:en"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-l",
+      "total": 15,
+      "withContext": 12,
+      "missing": [
+        "zh:w:kaiwanxiao",
+        "zh:w:kuaile",
+        "zh:w:shengqi"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-m",
+      "total": 20,
+      "withContext": 19,
+      "missing": [
+        "zh:w:dianyingyuan"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-n",
+      "total": 42,
+      "withContext": 31,
+      "missing": [
+        "zh:w:yiban-11",
+        "zh:w:budui",
+        "zh:w:bucuo",
+        "zh:w:cha",
+        "zh:w:youming",
+        "zh:w:youyong",
+        "zh:w:baise",
+        "zh:w:duan",
+        "zh:w:hongse",
+        "zh:w:huang",
+        "zh:w:huangse"
+      ],
+      "aboveLevelOnly": [
+        "zh:w:budui",
+        "zh:w:bucuo"
+      ]
+    },
+    {
+      "unitId": "zh-vi:unit-o",
+      "total": 3,
+      "withContext": 3,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-p",
+      "total": 8,
+      "withContext": 8,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-q",
+      "total": 3,
+      "withContext": 3,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-r",
+      "total": 3,
+      "withContext": 3,
+      "missing": [],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-s",
+      "total": 14,
+      "withContext": 11,
+      "missing": [
+        "zh:w:ke-3",
+        "zh:w:tian-2",
+        "zh:w:bao-3"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-t",
+      "total": 21,
+      "withContext": 20,
+      "missing": [
+        "zh:w:fei"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-u",
+      "total": 19,
+      "withContext": 13,
+      "missing": [
+        "zh:w:zhuyuan",
+        "zh:w:jiankang",
+        "zh:w:toufa",
+        "zh:w:bing",
+        "zh:w:bingren",
+        "zh:w:jiao-3"
+      ],
+      "aboveLevelOnly": []
+    },
+    {
+      "unitId": "zh-vi:unit-v",
+      "total": 10,
+      "withContext": 8,
+      "missing": [
+        "zh:w:shangwang",
+        "zh:w:xinwen"
+      ],
+      "aboveLevelOnly": []
+    }
+  ]
+}

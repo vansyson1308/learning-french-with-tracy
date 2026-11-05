@@ -17,4 +17,5 @@ export const COURSE_LOADERS: Record<string, () => Promise<CourseBundle>> = {
   "ko-en": () => import("./courses/ko-en").then((m) => m.COURSE),
   "pt-en": () => import("./courses/pt-en").then((m) => m.COURSE),
   "zh-en": () => import("./courses/zh-en").then((m) => m.COURSE),
+  "zh-vi": () => import("./courses/zh-vi").then((m) => m.COURSE),
 };

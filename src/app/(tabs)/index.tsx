@@ -16,7 +16,7 @@ import { Flag } from "@/components/flag";
 import { useCourseContent } from "@/lib/content";
 import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { primerPassedFor } from "@/lib/learning/primer-progress";
-import { coursePrimer } from "@/lib/script-primer";
+import { coursePrimer, isKanaPrimer } from "@/lib/script-primer";
 import {
   activeToday,
   assessmentFor,
@@ -72,13 +72,15 @@ export default function LearnScreen() {
 
   const primer = coursePrimer(activeCourseId);
   const hasPrimer = primer !== null;
-  // P4c: a primer with a checkpoint is recommended first (never required: Section 1 stays open).
+  // P4c: a primer with a checkpoint is recommended first (never required: Section 1 stays open). P4d: the kana
+  // primer's texts speak of kana and romaji; a tones primer (zh) has its own, and keeps its readings when passed.
+  const kanaPrimer = primer !== null && isKanaPrimer(primer);
   const primerSubtitle =
     primer?.checkpoint === undefined
       ? t("primer.entrySubtitle")
       : primerPassedFor(progress.primerPassed, activeCourseId)
-        ? t("primer.entryPassed")
-        : t("primer.entryRecommended");
+        ? t(kanaPrimer ? "primer.entryPassed" : "primer.entryPassedGeneric")
+        : t(kanaPrimer ? "primer.entryRecommended" : "primer.entryRecommendedGeneric");
 
   // Units cycle through the palette across the whole course.
   const unitColor = new Map<string, (typeof unitPalette)[number]>();

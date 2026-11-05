@@ -83,6 +83,38 @@ describe("P4c: the kana checkpoint", () => {
   });
 });
 
+describe("P4d: the tone and pinyin checkpoint", () => {
+  const items = () => coursePrimer("zh-en")!.checkpoint!.items;
+
+  test("hear a word and pick its pinyin; passing records primerPassed and says the reading stays", async () => {
+    seed("zh-en");
+    const user = userEvent.setup();
+    renderRouter("./src/app", { initialUrl: "/primer" });
+    await waitFor(() => expect(screen.getByTestId("primer-checkpoint-start")).toBeOnTheScreen());
+    await user.press(screen.getByTestId("primer-checkpoint-start"));
+    expect(screen.getByText("Listen, then pick the pinyin.")).toBeOnTheScreen();
+    expect(screen.getByTestId("primer-checkpoint-play")).toBeOnTheScreen();
+    // Four wrong answers, sixteen right: exactly the pass mark.
+    let n = 0;
+    for (const item of items()) {
+      const pick = n++ < 4 ? (item.correct + 1) % item.options.length : item.correct;
+      await user.press(screen.getByTestId(`primer-checkpoint-option-${pick}`));
+      await user.press(screen.getByTestId("primer-checkpoint-next"));
+    }
+    await waitFor(() => expect(screen.getByTestId("primer-checkpoint-passed")).toBeOnTheScreen());
+    expect(screen.getByTestId("primer-checkpoint-passed")).toHaveTextContent(/^You passed! The reading still shows/);
+    expect(useProgress.getState().primerPassed).toEqual({ "zh-en": true });
+  });
+
+  test("the Learn card recommends it first and shows it passed, with no word about rōmaji", async () => {
+    seed("zh-en");
+    renderRouter("./src/app", { initialUrl: "/" });
+    await waitFor(() => expect(screen.getByTestId("script-primer-status")).toHaveTextContent(/^Best before lesson 1: how the script sounds/));
+    useProgress.setState({ primerPassed: { "zh-en": true } });
+    await waitFor(() => expect(screen.getByTestId("script-primer-status")).toHaveTextContent(/^Quick check passed/));
+  });
+});
+
 describe("Section 1 entry", () => {
   test("a ja course opens its primer from Section 1", async () => {
     seed("ja-en");
@@ -125,8 +157,18 @@ describe("primer screen", () => {
     expect(screen.getByText("Pairs that differ only in tone")).toBeOnTheScreen();
   });
 
-  test("zh and ko primers have no checkpoint", async () => {
+  test("zh (P4d): the sound contrasts and the tone sandhi with written and said pinyin", async () => {
     seed("zh-en");
+    renderRouter("./src/app", { initialUrl: "/primer" });
+    await waitFor(() => expect(screen.getByTestId("primer-screen")).toBeOnTheScreen());
+    expect(screen.getByTestId("primer-contrast-找早")).toBeOnTheScreen();
+    expect(screen.getByText("zh – z")).toBeOnTheScreen();
+    for (const rule of ["third-third", "bu", "yi"]) expect(screen.getByTestId(`primer-sandhi-${rule}`)).toBeOnTheScreen();
+    expect(screen.getByText("written: bù shì → said: bú shì")).toBeOnTheScreen();
+  });
+
+  test("the ko primer has no checkpoint", async () => {
+    seed("ko-en");
     renderRouter("./src/app", { initialUrl: "/primer" });
     await waitFor(() => expect(screen.getByTestId("primer-screen")).toBeOnTheScreen());
     expect(screen.queryByTestId("primer-checkpoint")).toBeNull();

@@ -1,0 +1,1224 @@
+{
+  "generator": "scripts/lib/speech.ts",
+  "version": 1,
+  "order": [
+    "zh.speak.k_rep_zaoshang",
+    "zh.speak.k_greet_morning",
+    "zh.speak.k_rep_xinku",
+    "zh.speak.k_xinku",
+    "zh.speak.k_thanks",
+    "zh.speak.k_rep_xianzou",
+    "zh.speak.k_xianzou",
+    "zh.speak.k_sorry",
+    "zh.speak.k_excuse",
+    "zh.speak.l_rep_renshi",
+    "zh.speak.l_name",
+    "zh.speak.l_from",
+    "zh.speak.l_age",
+    "zh.speak.l_work",
+    "zh.speak.l_like",
+    "zh.speak.l_rep_jieshao",
+    "zh.speak.m_rep_price",
+    "zh.speak.m_price",
+    "zh.speak.m_time",
+    "zh.speak.m_rep_half",
+    "zh.speak.m_day",
+    "zh.speak.m_birthday",
+    "zh.speak.m_tickets",
+    "zh.speak.n_rep_zhong",
+    "zh.speak.n_box",
+    "zh.speak.n_car",
+    "zh.speak.n_cat",
+    "zh.speak.n_rep_bai",
+    "zh.speak.n_room",
+    "zh.speak.n_person"
+  ],
+  "byId": {
+    "zh.speak.k_rep_zaoshang": {
+      "id": "zh.speak.k_rep_zaoshang",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "早上好！",
+      "acceptedVariants": [
+        "早上好"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:zaoshanghao"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.uk_model_rep_zaoshang",
+      "allowedAttempts": 2
+    },
+    "zh.speak.k_greet_morning": {
+      "id": "zh.speak.k_greet_morning",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Buổi sáng, bạn đến nhà máy. Hãy chào mọi người."
+      },
+      "target": "大家早上好！",
+      "acceptedVariants": [
+        "大家早上好",
+        "早上好",
+        "大家好",
+        "你们好",
+        "大家早",
+        "早"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:dajia",
+        "zh:w:zaoshanghao"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:zaoshanghao"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.uk_model_greet_morning",
+      "allowedAttempts": 2
+    },
+    "zh.speak.k_rep_xinku": {
+      "id": "zh.speak.k_rep_xinku",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "辛苦了！",
+      "acceptedVariants": [
+        "辛苦了"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:xinkule"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.uk_model_rep_xinku",
+      "allowedAttempts": 2
+    },
+    "zh.speak.k_xinku": {
+      "id": "zh.speak.k_xinku",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Hết ca, bạn đi ngang một đồng nghiệp còn đang làm. Hãy nói một câu thăm hỏi quen dùng ở chỗ làm."
+      },
+      "target": "辛苦了！",
+      "acceptedVariants": [
+        "辛苦了",
+        "你辛苦了",
+        "大家辛苦了",
+        "您辛苦了"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:xinkule"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:xinkule"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.uk_model_xinku",
+      "allowedAttempts": 2
+    },
+    "zh.speak.k_thanks": {
+      "id": "zh.speak.k_thanks",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Tổ trưởng giúp bạn khiêng thùng hàng. Hãy cảm ơn anh ấy."
+      },
+      "target": "谢谢您！",
+      "acceptedVariants": [
+        "谢谢您",
+        "谢谢",
+        "谢谢你",
+        "太谢谢了",
+        "太谢谢你了",
+        "谢谢组长",
+        "非常感谢",
+        "特别感谢",
+        "非常感谢您",
+        "特别感谢您",
+        "太感谢了",
+        "太谢谢您了"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:xiexie",
+        "zh:w:nin"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:xiexie"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.uk_model_thanks",
+      "allowedAttempts": 2
+    },
+    "zh.speak.k_rep_xianzou": {
+      "id": "zh.speak.k_rep_xianzou",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "我先走了。",
+      "acceptedVariants": [
+        "我先走了"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:xian",
+        "zh:w:zou",
+        "zh:w:le"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.uk_model_rep_xianzou",
+      "allowedAttempts": 2
+    },
+    "zh.speak.k_xianzou": {
+      "id": "zh.speak.k_xianzou",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Ca của bạn đã hết, đồng nghiệp còn làm. Hãy xin phép về trước."
+      },
+      "target": "我先走了，明天见！",
+      "acceptedVariants": [
+        "我先走了，明天见",
+        "我先走了",
+        "我先走了，再见",
+        "我下班了，明天见",
+        "明天见",
+        "我先下班了",
+        "我先回去了",
+        "我先回家了",
+        "我走了，明天见",
+        "我先走了，拜拜",
+        "我先回去了，明天见"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:xian",
+        "zh:w:zou",
+        "zh:w:le",
+        "zh:w:mingtianjian"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:xian",
+        "zh:w:zou",
+        "zh:w:mingtianjian"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.uk_model_xianzou",
+      "allowedAttempts": 2
+    },
+    "zh.speak.k_sorry": {
+      "id": "zh.speak.k_sorry",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Bạn đến muộn năm phút. Hãy xin lỗi tổ trưởng."
+      },
+      "target": "对不起，我迟到了。",
+      "acceptedVariants": [
+        "对不起，我迟到了",
+        "对不起",
+        "不好意思，我迟到了",
+        "不好意思",
+        "对不起，我来晚了",
+        "不好意思，我来晚了",
+        "对不起，我晚到了",
+        "不好意思，我晚到了",
+        "对不起，我迟到了五分钟",
+        "不好意思，我迟到了五分钟",
+        "对不起，我晚到了五分钟"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:duibuqi",
+        "zh:w:wo",
+        "zh:w:chidao",
+        "zh:w:le"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:duibuqi",
+        "zh:w:chidao"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.uk_model_sorry",
+      "allowedAttempts": 2
+    },
+    "zh.speak.k_excuse": {
+      "id": "zh.speak.k_excuse",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Bạn muốn hỏi đường một người lạ. Hãy mở lời lịch sự."
+      },
+      "target": "请问。",
+      "acceptedVariants": [
+        "请问",
+        "你好，请问",
+        "您好，请问",
+        "不好意思，请问",
+        "对不起，请问",
+        "请问一下",
+        "打扰一下",
+        "打扰一下，请问",
+        "不好意思，打扰一下"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "zh:w:qingwen"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:qingwen"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.uk_model_excuse",
+      "allowedAttempts": 2
+    },
+    "zh.speak.l_rep_renshi": {
+      "id": "zh.speak.l_rep_renshi",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "认识您很高兴。",
+      "acceptedVariants": [
+        "认识您很高兴",
+        "认识您特别高兴"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:renshi",
+        "zh:w:nin",
+        "zh:w:hen",
+        "zh:w:gaoxing"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.ul_model_rep_renshi",
+      "allowedAttempts": 2
+    },
+    "zh.speak.l_name": {
+      "id": "zh.speak.l_name",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói tên của bạn.",
+        "cueFacts": [
+          {
+            "label": "Tên",
+            "value": "Nguyễn Hải"
+          }
+        ]
+      },
+      "target": "我叫阮海。",
+      "acceptedVariants": [
+        "我叫阮海",
+        "我是阮海",
+        "阮海",
+        "我的名字是阮海",
+        "我的名字叫阮海",
+        "我姓阮，叫阮海",
+        "你好，我叫阮海",
+        "您好，我叫阮海",
+        "大家好，我叫阮海",
+        "你好，我是阮海",
+        "您好，我是阮海",
+        "大家好，我是阮海",
+        "你好，我的名字是阮海",
+        "您好，我的名字是阮海",
+        "大家好，我的名字是阮海",
+        "你好，我的名字叫阮海",
+        "您好，我的名字叫阮海",
+        "大家好，我的名字叫阮海",
+        "你好，我姓阮，叫阮海",
+        "您好，我姓阮，叫阮海",
+        "大家好，我姓阮，叫阮海"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:jiao",
+        "zh:w:ruan",
+        "zh:w:hai-3"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:jiao",
+        "zh:w:hai-3"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.ul_model_name",
+      "allowedAttempts": 2
+    },
+    "zh.speak.l_from": {
+      "id": "zh.speak.l_from",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn là người nước nào.",
+        "cueFacts": [
+          {
+            "label": "Nước",
+            "value": "Việt Nam"
+          }
+        ]
+      },
+      "target": "我是越南人。",
+      "acceptedVariants": [
+        "我是越南人",
+        "我是一个越南人",
+        "越南人",
+        "我从越南来",
+        "我是从越南来的",
+        "我来自越南"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:shi",
+        "zh:w:yuenanren"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:shi",
+        "zh:w:yuenanren"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.ul_model_from",
+      "allowedAttempts": 2
+    },
+    "zh.speak.l_age": {
+      "id": "zh.speak.l_age",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói tuổi của bạn.",
+        "cueFacts": [
+          {
+            "label": "Tuổi",
+            "value": "25"
+          }
+        ]
+      },
+      "target": "我今年二十五岁。",
+      "acceptedVariants": [
+        "我今年二十五岁",
+        "今年我二十五岁",
+        "我今年二十五岁了",
+        "我二十五岁",
+        "我二十五岁了",
+        "二十五岁",
+        "二十五岁了",
+        "今年二十五岁",
+        "今年二十五岁了",
+        "今年我二十五岁了"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:jinnian",
+        "zh:w:er",
+        "zh:w:shi-2",
+        "zh:w:wu",
+        "zh:w:sui"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:jinnian"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.ul_model_age",
+      "allowedAttempts": 2
+    },
+    "zh.speak.l_work": {
+      "id": "zh.speak.l_work",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn làm việc ở đâu.",
+        "cueFacts": [
+          {
+            "label": "Nơi làm việc",
+            "value": "nhà máy"
+          }
+        ]
+      },
+      "target": "我在工厂工作。",
+      "acceptedVariants": [
+        "我在工厂工作",
+        "我在工厂上班",
+        "在工厂工作",
+        "我在一家工厂工作",
+        "我在一个工厂工作",
+        "我在工厂里工作",
+        "我在工厂里上班"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:zai",
+        "zh:w:gongchang",
+        "zh:w:gongzuo"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:gongchang",
+        "zh:w:gongzuo"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.ul_model_work",
+      "allowedAttempts": 2
+    },
+    "zh.speak.l_like": {
+      "id": "zh.speak.l_like",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng bạn thích hát.",
+        "cueEmoji": "🎤"
+      },
+      "target": "我喜欢唱歌。",
+      "acceptedVariants": [
+        "我喜欢唱歌",
+        "我很喜欢唱歌",
+        "我特别喜欢唱歌",
+        "我的爱好是唱歌",
+        "我爱唱歌",
+        "我非常喜欢唱歌"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:xihuan",
+        "zh:w:changge"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:xihuan",
+        "zh:w:changge"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.ul_model_like",
+      "allowedAttempts": 2
+    },
+    "zh.speak.l_rep_jieshao": {
+      "id": "zh.speak.l_rep_jieshao",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "我来介绍一下。",
+      "acceptedVariants": [
+        "我来介绍一下"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:lai",
+        "zh:w:jieshao",
+        "zh:w:yixia"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.ul_model_rep_jieshao",
+      "allowedAttempts": 2
+    },
+    "zh.speak.m_rep_price": {
+      "id": "zh.speak.m_rep_price",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "十五块。",
+      "acceptedVariants": [
+        "十五块"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:shi-2",
+        "zh:w:wu",
+        "zh:w:kuai-kuai"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.um_model_rep_price",
+      "allowedAttempts": 2
+    },
+    "zh.speak.m_price": {
+      "id": "zh.speak.m_price",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Một vị khách hỏi giá một bát mì. Hãy trả lời.",
+        "cueFacts": [
+          {
+            "label": "Giá",
+            "value": "18 tệ"
+          }
+        ]
+      },
+      "target": "十八块。",
+      "acceptedVariants": [
+        "十八块",
+        "十八块钱",
+        "十八元",
+        "一碗十八块",
+        "十八块一碗",
+        "十八块钱一碗",
+        "面条十八块",
+        "一碗面条十八块",
+        "面条一碗十八块",
+        "面条十八块一碗",
+        "面条十八块钱一碗",
+        "一碗十八块钱",
+        "面条一碗十八块钱"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:shi-2",
+        "zh:w:ba-1",
+        "zh:w:kuai-kuai"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.um_model_price",
+      "allowedAttempts": 2
+    },
+    "zh.speak.m_time": {
+      "id": "zh.speak.m_time",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Có người hỏi giờ. Hãy trả lời.",
+        "cueEmoji": "🕗",
+        "cueFacts": [
+          {
+            "label": "Giờ",
+            "value": "8 giờ"
+          }
+        ]
+      },
+      "target": "现在八点。",
+      "acceptedVariants": [
+        "现在八点",
+        "八点",
+        "八点了",
+        "现在是八点",
+        "现在八点了",
+        "八点钟",
+        "现在八点钟",
+        "现在是八点钟"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:xianzai",
+        "zh:w:ba-1",
+        "zh:w:dian"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:xianzai"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.um_model_time",
+      "allowedAttempts": 2
+    },
+    "zh.speak.m_rep_half": {
+      "id": "zh.speak.m_rep_half",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "三点半。",
+      "acceptedVariants": [
+        "三点半"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:san",
+        "zh:w:dian",
+        "zh:w:ban"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.um_model_rep_half",
+      "allowedAttempts": 2
+    },
+    "zh.speak.m_day": {
+      "id": "zh.speak.m_day",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói hôm nay là thứ mấy.",
+        "cueFacts": [
+          {
+            "label": "Hôm nay",
+            "value": "thứ Hai"
+          }
+        ]
+      },
+      "target": "今天星期一。",
+      "acceptedVariants": [
+        "今天星期一",
+        "今天周一",
+        "星期一",
+        "周一",
+        "今天是星期一",
+        "今天是周一"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:jintian",
+        "zh:w:xingqiyi"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:jintian",
+        "zh:w:xingqiyi"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.um_model_day",
+      "allowedAttempts": 2
+    },
+    "zh.speak.m_birthday": {
+      "id": "zh.speak.m_birthday",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói sinh nhật của bạn.",
+        "cueEmoji": "🎂",
+        "cueFacts": [
+          {
+            "label": "Sinh nhật",
+            "value": "ngày 10 tháng 5"
+          }
+        ]
+      },
+      "target": "我的生日是五月十号。",
+      "acceptedVariants": [
+        "我的生日是五月十号",
+        "我的生日是五月十日",
+        "五月十号",
+        "五月十日",
+        "我生日是五月十号",
+        "我生日是五月十日",
+        "我的生日五月十号",
+        "我的生日五月十日",
+        "我生日五月十号",
+        "我生日五月十日"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:de",
+        "zh:w:shengri",
+        "zh:w:shi",
+        "zh:w:wu",
+        "zh:w:yue",
+        "zh:w:shi-2",
+        "zh:w:hao-4"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:shengri",
+        "zh:w:shi",
+        "zh:w:yue",
+        "zh:w:hao-4"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.um_model_birthday",
+      "allowedAttempts": 2
+    },
+    "zh.speak.m_tickets": {
+      "id": "zh.speak.m_tickets",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Ở ga, bạn mua vé. Hãy nói bạn muốn hai vé.",
+        "cueEmoji": "🎫",
+        "cueFacts": [
+          {
+            "label": "Số vé",
+            "value": "2"
+          }
+        ]
+      },
+      "target": "我要两张票。",
+      "acceptedVariants": [
+        "我要两张票",
+        "两张票",
+        "请给我两张票",
+        "给我两张票",
+        "我买两张票",
+        "我想要两张票",
+        "我想买两张票",
+        "我要买两张票",
+        "我要两张"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:yao",
+        "zh:w:liang",
+        "zh:w:zhang",
+        "zh:w:piao"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:yao",
+        "zh:w:piao"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.um_model_tickets",
+      "allowedAttempts": 2
+    },
+    "zh.speak.n_rep_zhong": {
+      "id": "zh.speak.n_rep_zhong",
+      "taskFamily": "description",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "这个箱子很重。",
+      "acceptedVariants": [
+        "这个箱子很重",
+        "这个箱子特别重"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhege",
+        "zh:w:xiangzi",
+        "zh:w:hen",
+        "zh:w:zhong"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.un_model_rep_zhong",
+      "allowedAttempts": 2
+    },
+    "zh.speak.n_box": {
+      "id": "zh.speak.n_box",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: cái thùng to. Hãy nói câu đó bằng tiếng Trung.",
+        "cueEmoji": "📦"
+      },
+      "target": "这个箱子很大。",
+      "acceptedVariants": [
+        "这个箱子很大",
+        "这个箱子特别大",
+        "箱子很大",
+        "箱子特别大",
+        "这个箱子非常大",
+        "这是一个大箱子",
+        "很大",
+        "特别大",
+        "这个箱子真大",
+        "这个箱子好大",
+        "箱子真大",
+        "箱子好大",
+        "真大",
+        "好大"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhege",
+        "zh:w:xiangzi",
+        "zh:w:hen",
+        "zh:w:da"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:xiangzi",
+        "zh:w:hen",
+        "zh:w:da"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.un_model_box",
+      "allowedAttempts": 2
+    },
+    "zh.speak.n_car": {
+      "id": "zh.speak.n_car",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: chiếc xe mới. Hãy nói câu đó bằng tiếng Trung.",
+        "cueEmoji": "🚗"
+      },
+      "target": "这辆车很新。",
+      "acceptedVariants": [
+        "这辆车很新",
+        "这辆车特别新",
+        "车很新",
+        "车特别新",
+        "这是一辆新车",
+        "这辆汽车很新",
+        "这辆汽车特别新",
+        "这是新车",
+        "新车",
+        "这辆车是新的",
+        "车是新的",
+        "这辆车真新",
+        "这辆车好新",
+        "车真新",
+        "车好新",
+        "这辆汽车真新",
+        "这辆汽车好新"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhe",
+        "zh:w:liang-4",
+        "zh:w:che",
+        "zh:w:hen",
+        "zh:w:xin"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:che",
+        "zh:w:hen",
+        "zh:w:xin"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.un_model_car",
+      "allowedAttempts": 2
+    },
+    "zh.speak.n_cat": {
+      "id": "zh.speak.n_cat",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: con mèo nhỏ. Hãy nói câu đó bằng tiếng Trung.",
+        "cueEmoji": "🐈"
+      },
+      "target": "这只猫很小。",
+      "acceptedVariants": [
+        "这只猫很小",
+        "这只猫特别小",
+        "猫很小",
+        "猫特别小",
+        "这是一只小猫",
+        "小猫",
+        "这只猫非常小",
+        "这只猫真小",
+        "这只猫好小",
+        "猫真小",
+        "猫好小"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhe",
+        "zh:w:zhi",
+        "zh:w:mao-1",
+        "zh:w:hen",
+        "zh:w:xiao"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:mao-1",
+        "zh:w:hen",
+        "zh:w:xiao"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.un_model_cat",
+      "allowedAttempts": 2
+    },
+    "zh.speak.n_rep_bai": {
+      "id": "zh.speak.n_rep_bai",
+      "taskFamily": "description",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi nói lại."
+      },
+      "target": "我的衣服是白的。",
+      "acceptedVariants": [
+        "我的衣服是白的"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:wo",
+        "zh:w:de",
+        "zh:w:yifu",
+        "zh:w:shi",
+        "zh:w:bai"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "zh.clip.un_model_rep_bai",
+      "allowedAttempts": 2
+    },
+    "zh.speak.n_room": {
+      "id": "zh.speak.n_room",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: căn phòng này sạch sẽ. Hãy nói câu đó bằng tiếng Trung.",
+        "cueEmoji": "🛏️"
+      },
+      "target": "这个房间很干净。",
+      "acceptedVariants": [
+        "这个房间很干净",
+        "这个房间特别干净",
+        "房间很干净",
+        "房间特别干净",
+        "这个房间非常干净",
+        "很干净",
+        "特别干净",
+        "这个房间真干净",
+        "这个房间好干净",
+        "房间真干净",
+        "房间好干净",
+        "真干净",
+        "好干净"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:zhege",
+        "zh:w:fangjian",
+        "zh:w:hen",
+        "zh:w:ganjing"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:fangjian",
+        "zh:w:hen",
+        "zh:w:ganjing"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.un_model_room",
+      "allowedAttempts": 2
+    },
+    "zh.speak.n_person": {
+      "id": "zh.speak.n_person",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Nhìn hình: người phụ nữ này cao. Hãy nói câu đó bằng tiếng Trung.",
+        "cueEmoji": "👩"
+      },
+      "target": "她很高。",
+      "acceptedVariants": [
+        "她很高",
+        "她特别高",
+        "她非常高",
+        "这个女人很高",
+        "这个女人特别高",
+        "这个人很高",
+        "这个人特别高",
+        "很高",
+        "特别高",
+        "她个子很高",
+        "她个子特别高",
+        "她真高",
+        "她好高",
+        "这个女人真高",
+        "这个女人好高",
+        "这个人真高",
+        "这个人好高",
+        "真高",
+        "好高",
+        "她个子真高",
+        "她个子好高"
+      ],
+      "objectiveRefs": [
+        "zh.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "zh:w:ta-she",
+        "zh:w:hen",
+        "zh:w:gao"
+      ],
+      "evidenceLexemeRefs": [
+        "zh:w:hen",
+        "zh:w:gao"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "zh.clip.un_model_person",
+      "allowedAttempts": 2
+    }
+  }
+}

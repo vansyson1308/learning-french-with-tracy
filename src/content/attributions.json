@@ -364,6 +364,25 @@
       ]
     },
     {
+      "id": "original-chinese-course",
+      "name": "Learning French with Tracy — authored zh-vi course (Mandarin Chinese for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Chinese course content for Vietnamese speakers by the Learning French with Tracy project.",
+      "covers": [
+        "content/courses/zh-vi.json",
+        "content/zh/pedagogy/",
+        "content/zh/reception/reading.json",
+        "content/zh/reception/listening.json",
+        "content/zh/speech/",
+        "content/zh/writing/",
+        "content/zh/interaction/",
+        "content/zh/assessment/",
+        "content/zh/exam/"
+      ]
+    },
+    {
       "id": "unihan",
       "name": "Unihan Database — Unicode Character Database 17.0.0",
       "kind": "character data (kVietnamese, kMandarin, kJapanese/On/Kun, kHangul readings; variant links) used at build time to check the Hán-Việt tables",
@@ -411,6 +430,28 @@
       "attribution": "The Japanese audio front-end's kana → phoneme table and rules are adapted from misaki 0.9.4 misaki/cutlet.py (Copyright hexgrad, Apache-2.0), which is itself adapted from cutlet (https://github.com/polm/cutlet, Copyright Paul O'Leary McCann, MIT). Both licence notices are kept in scripts/lib/tts/ja-phonemes.ts.",
       "covers": [
         "scripts/lib/tts/ja-phonemes.ts"
+      ]
+    },
+    {
+      "id": "misaki-zh-g2p",
+      "name": "misaki 0.9.4 [zh] extra — the Mandarin G2P Kokoro uses at pipeline time (jieba, pypinyin, cn2an, ordered-set, pypinyin-dict)",
+      "kind": "libraries and their bundled dictionaries installed on the audio runner (text → pinyin → Kokoro phonemes; never shipped)",
+      "license": "MIT",
+      "url": "https://github.com/hexgrad/misaki",
+      "attribution": "Mandarin text is turned into Kokoro phonemes by misaki 0.9.4 (hexgrad, Apache-2.0) with jieba 0.42.1 (MIT), pypinyin 0.55.0 (MIT, data from mozillazg/pinyin-data and phrase-pinyin-data, MIT), cn2an 0.5.24 (MIT, with proces 0.1.7, MIT) and ordered-set 4.1.0 (MIT); pypinyin-dict 0.9.0 (MIT) is installed by the extra.",
+      "covers": [
+        "content/audio/engines.json"
+      ]
+    },
+    {
+      "id": "misaki-zh-pinyin-ipa",
+      "name": "misaki 0.9.4 Mandarin pinyin → IPA table and tone arrows (hexgrad), adapted from pinyin-to-ipa (Stefan Taubert)",
+      "kind": "code adapted at pipeline time (pinyin → Kokoro phoneme table and rules of the Mandarin audio front-end; never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://github.com/hexgrad/misaki/blob/main/misaki/transcription.py",
+      "attribution": "The Mandarin audio front-end's pinyin → phoneme table, tone arrows and clean-up are adapted from misaki 0.9.4 misaki/transcription.py and misaki/zh.py (Copyright hexgrad, Apache-2.0); transcription.py is itself adapted from pinyin-to-ipa (https://github.com/stefantaubert/pinyin-to-ipa, Copyright Stefan Taubert, MIT). Both licence notices are kept in scripts/lib/tts/zh-phonemes.ts.",
+      "covers": [
+        "scripts/lib/tts/zh-phonemes.ts"
       ]
     },
     {

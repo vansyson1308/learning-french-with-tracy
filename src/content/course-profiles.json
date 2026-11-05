@@ -586,12 +586,12 @@
       "recognitionLocale": "zh-CN",
       "ttsLocale": "zh-CN",
       "script": "han",
-      "idPrefix": "",
-      "legacyIdPrefix": "",
+      "idPrefix": "zh:w:",
+      "legacyIdPrefix": "zh:legacy:",
       "capabilities": {
         "fsrs": false,
         "dailySession": false,
-        "lexicon": false,
+        "lexicon": true,
         "concepts": false,
         "placement": false,
         "checkpoints": false,
@@ -602,7 +602,67 @@
         "writing": false,
         "conversation": false
       },
-      "artifacts": {}
+      "artifacts": {
+        "ids": "src/content/ids/zh.json",
+        "lexiconIndex": "src/content/lexicon/zh-en-index.json",
+        "lexiconFallback": "src/content/lexicon/zh-en-web-fallback.json",
+        "lexiconDb": "assets/lexicon/zh-en-lexicon-v3-ca3f6322a7ed8dfd.db"
+      },
+      "role": "standalone",
+      "hiddenFromOnboarding": true
+    },
+    "zh-vi": {
+      "id": "zh-vi",
+      "targetCode": "zh",
+      "nativeCode": "vi",
+      "targetLanguage": "Chinese",
+      "nativeLanguage": "Vietnamese",
+      "flag": "🇨🇳",
+      "flagAsset": "cn",
+      "recognitionLocale": "zh-CN",
+      "ttsLocale": "zh-CN",
+      "script": "han",
+      "idPrefix": "zh:w:",
+      "legacyIdPrefix": "zh:legacy:",
+      "capabilities": {
+        "fsrs": true,
+        "dailySession": true,
+        "lexicon": true,
+        "concepts": true,
+        "placement": true,
+        "checkpoints": true,
+        "goals": true,
+        "listening": true,
+        "reading": true,
+        "speaking": true,
+        "writing": true,
+        "conversation": true,
+        "exam": true,
+        "stories": true
+      },
+      "artifacts": {
+        "ids": "src/content/ids/zh.json",
+        "lexiconIndex": "src/content/lexicon/zh-index.json",
+        "lexiconFallback": "src/content/lexicon/zh-web-fallback.json",
+        "lexiconDb": "assets/lexicon/zh-lexicon-v3-246be96fba151e7d.db",
+        "concepts": "src/content/concepts/zh-concepts.json",
+        "objectives": "src/content/assessment/zh-objectives.json",
+        "checkpoints": "src/content/assessment/zh-checkpoints.json",
+        "placement": "src/content/assessment/zh-placement.json",
+        "attainment": "src/content/assessment/zh-attainment.json",
+        "claim": "src/content/assessment/zh-claim.json",
+        "listening": "src/content/reception/zh-listening.json",
+        "reading": "src/content/reception/zh-reading.json",
+        "clipAssets": "src/content/reception/zh-clip-assets.ts",
+        "speech": "src/content/speech/zh-speech-items.json",
+        "writing": "src/content/writing/zh-writing.json",
+        "scenarios": "src/content/interaction/zh-scenarios.json",
+        "examTracks": "src/content/exam/zh-exam-tracks.json",
+        "dailyWords": "src/content/lexicon/zh-daily.json",
+        "stories": "src/content/stories/zh-stories.json",
+        "storyAssets": "src/content/stories/zh-story-assets.ts"
+      },
+      "beta": true
     }
   }
 }

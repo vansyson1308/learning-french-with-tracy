@@ -1,0 +1,637 @@
+# listening — ingest report (zh-vi)
+
+Records: 312 · schema-valid: 312 · failed: 0 · validator errors after merge: 312
+
+## Records
+
+- ✅ line 1 `zh.clip.uf_tianqi`
+- ✅ line 2 `zh.clip.uf_hen_leng`
+- ✅ line 3 `zh.clip.uf_hen_re`
+- ✅ line 4 `zh.clip.uf_xiayu`
+- ✅ line 5 `zh.clip.uf_feng`
+- ✅ line 6 `zh.clip.uf_chuntian`
+- ✅ line 7 `zh.clip.uf_siyue`
+- ✅ line 8 `zh.clip.uf_zaishuo`
+- ✅ line 9 `zh.clip.uf_mandian`
+- ✅ line 10 `zh.clip.uf_jiudian`
+- ✅ line 11 `zh.clip.uf_shiwu`
+- ✅ line 12 `zh.clip.uf_mao`
+- ✅ line 13 `zh.clip.uf_yu`
+- ✅ line 14 `zh.clip.uf_tingbudong`
+- ✅ line 15 `zh.clip.ug_anquanmao`
+- ✅ line 16 `zh.clip.ug_tingji`
+- ✅ line 17 `zh.clip.ug_fang`
+- ✅ line 18 `zh.clip.ug_shoutao`
+- ✅ line 19 `zh.clip.uh_beijing`
+- ✅ line 20 `zh.clip.uh_wanle`
+- ✅ line 21 `zh.clip.uh_menkou`
+- ✅ line 22 `zh.clip.uh_xiayizhan`
+- ✅ line 23 `zh.clip.uh_zhuyi`
+- ✅ line 24 `zh.clip.uh_shangche`
+- ✅ line 25 `zh.clip.uh_plane`
+- ✅ line 26 `zh.clip.uh_piao`
+- ✅ line 27 `zh.clip.uh_liangzhang`
+- ✅ line 28 `zh.clip.uh_zhanzai`
+- ✅ line 29 `zh.clip.uh_huzhao`
+- ✅ line 30 `zh.clip.uh_wumen`
+- ✅ line 31 `zh.clip.uh_yixiaoshi`
+- ✅ line 32 `zh.clip.ui_yao`
+- ✅ line 33 `zh.clip.ui_yifu`
+- ✅ line 34 `zh.clip.ui_yigong`
+- ✅ line 35 `zh.clip.ui_jin`
+- ✅ line 36 `zh.clip.ui_saoma`
+- ✅ line 37 `zh.clip.ui_zhaoqian`
+- ✅ line 38 `zh.clip.ui_gui`
+- ✅ line 39 `zh.clip.ui_shi`
+- ✅ line 40 `zh.clip.ui_xiexie`
+- ✅ line 41 `zh.clip.uj_hai_work`
+- ✅ line 42 `zh.clip.uj_hua_father`
+- ✅ line 43 `zh.clip.uj_canteen_open`
+- ✅ line 44 `zh.clip.uj_park`
+- ✅ line 45 `zh.clip.uj_anjing`
+- ✅ line 46 `zh.clip.cp3_train_gz`
+- ✅ line 47 `zh.clip.cp3_plane`
+- ✅ line 48 `zh.clip.cp3_supermarket`
+- ✅ line 49 `zh.clip.cp3_page`
+- ✅ line 50 `zh.clip.cp3_shirt`
+- ✅ line 51 `zh.clip.cp3_class`
+- ✅ line 52 `zh.clip.cp3_birthday`
+- ✅ line 53 `zh.clip.cp3_dlg_tea`
+- ✅ line 54 `zh.clip.cp3_dlg_live`
+- ✅ line 55 `zh.clip.cp3_dlg_movie`
+- ✅ line 56 `zh.clip.cp3_dlg_doctor`
+- ✅ line 57 `zh.clip.cp3_dict_work`
+- ✅ line 58 `zh.clip.cp3_dict_station`
+- ✅ line 59 `zh.clip.cp3_dict_safety`
+- ✅ line 60 `zh.clip.a1cap_bank`
+- ✅ line 61 `zh.clip.a1cap_bus`
+- ✅ line 62 `zh.clip.a1cap_pharmacy`
+- ✅ line 63 `zh.clip.a1cap_bag`
+- ✅ line 64 `zh.clip.pl_shui`
+- ✅ line 65 `zh.clip.pl_shop`
+- ✅ line 66 `zh.clip.pl_pay`
+- ✅ line 67 `zh.clip.uk_model_rep_zaoshang`
+- ✅ line 68 `zh.clip.uk_model_greet_morning`
+- ✅ line 69 `zh.clip.uk_model_rep_xinku`
+- ✅ line 70 `zh.clip.uk_model_xinku`
+- ✅ line 71 `zh.clip.uk_model_thanks`
+- ✅ line 72 `zh.clip.uk_model_rep_xianzou`
+- ✅ line 73 `zh.clip.uk_model_xianzou`
+- ✅ line 74 `zh.clip.uk_model_sorry`
+- ✅ line 75 `zh.clip.uk_model_excuse`
+- ✅ line 76 `zh.clip.ul_model_rep_renshi`
+- ✅ line 77 `zh.clip.ul_model_name`
+- ✅ line 78 `zh.clip.ul_model_from`
+- ✅ line 79 `zh.clip.ul_model_age`
+- ✅ line 80 `zh.clip.ul_model_work`
+- ✅ line 81 `zh.clip.ul_model_like`
+- ✅ line 82 `zh.clip.ul_model_rep_jieshao`
+- ✅ line 83 `zh.clip.um_model_rep_price`
+- ✅ line 84 `zh.clip.um_model_price`
+- ✅ line 85 `zh.clip.um_model_time`
+- ✅ line 86 `zh.clip.um_model_rep_half`
+- ✅ line 87 `zh.clip.um_model_day`
+- ✅ line 88 `zh.clip.um_model_birthday`
+- ✅ line 89 `zh.clip.um_model_tickets`
+- ✅ line 90 `zh.clip.un_model_rep_zhong`
+- ✅ line 91 `zh.clip.un_model_box`
+- ✅ line 92 `zh.clip.un_model_car`
+- ✅ line 93 `zh.clip.un_model_cat`
+- ✅ line 94 `zh.clip.un_model_rep_bai`
+- ✅ line 95 `zh.clip.un_model_room`
+- ✅ line 96 `zh.clip.un_model_person`
+- ✅ line 97 `zh.clip.ix_shop_fruit_miss`
+- ✅ line 98 `zh.clip.ix_shop_fruit_0`
+- ✅ line 99 `zh.clip.ix_shop_fruit_0_s`
+- ✅ line 100 `zh.clip.ix_shop_fruit_1`
+- ✅ line 101 `zh.clip.ix_shop_fruit_1_s`
+- ✅ line 102 `zh.clip.ix_shop_fruit_end`
+- ✅ line 103 `zh.clip.ix_restaurant_order_miss`
+- ✅ line 104 `zh.clip.ix_restaurant_order_0`
+- ✅ line 105 `zh.clip.ix_restaurant_order_0_s`
+- ✅ line 106 `zh.clip.ix_restaurant_order_1`
+- ✅ line 107 `zh.clip.ix_restaurant_order_1_s`
+- ✅ line 108 `zh.clip.ix_restaurant_order_end`
+- ✅ line 109 `zh.clip.ix_ask_subway_miss`
+- ✅ line 110 `zh.clip.ix_ask_subway_0`
+- ✅ line 111 `zh.clip.ix_ask_subway_0_s`
+- ✅ line 112 `zh.clip.ix_ask_subway_1`
+- ✅ line 113 `zh.clip.ix_ask_subway_1_s`
+- ✅ line 114 `zh.clip.ix_ask_subway_end`
+- ✅ line 115 `zh.clip.ix_taxi_miss`
+- ✅ line 116 `zh.clip.ix_taxi_0`
+- ✅ line 117 `zh.clip.ix_taxi_0_s`
+- ✅ line 118 `zh.clip.ix_taxi_1`
+- ✅ line 119 `zh.clip.ix_taxi_1_s`
+- ✅ line 120 `zh.clip.ix_taxi_end`
+- ✅ line 121 `zh.clip.ix_clinic_reception_miss`
+- ✅ line 122 `zh.clip.ix_clinic_reception_0`
+- ✅ line 123 `zh.clip.ix_clinic_reception_0_s`
+- ✅ line 124 `zh.clip.ix_clinic_reception_1`
+- ✅ line 125 `zh.clip.ix_clinic_reception_1_s`
+- ✅ line 126 `zh.clip.ix_clinic_reception_end`
+- ✅ line 127 `zh.clip.ix_bank_account_miss`
+- ✅ line 128 `zh.clip.ix_bank_account_0`
+- ✅ line 129 `zh.clip.ix_bank_account_0_s`
+- ✅ line 130 `zh.clip.ix_bank_account_1`
+- ✅ line 131 `zh.clip.ix_bank_account_1_s`
+- ✅ line 132 `zh.clip.ix_bank_account_end`
+- ✅ line 133 `zh.clip.ix_clinic_doctor_miss`
+- ✅ line 134 `zh.clip.ix_clinic_doctor_0`
+- ✅ line 135 `zh.clip.ix_clinic_doctor_0_s`
+- ✅ line 136 `zh.clip.ix_clinic_doctor_1`
+- ✅ line 137 `zh.clip.ix_clinic_doctor_1_s`
+- ✅ line 138 `zh.clip.ix_clinic_doctor_end`
+- ✅ line 139 `zh.clip.ix_call_sick_miss`
+- ✅ line 140 `zh.clip.ix_call_sick_0`
+- ✅ line 141 `zh.clip.ix_call_sick_0_s`
+- ✅ line 142 `zh.clip.ix_call_sick_1`
+- ✅ line 143 `zh.clip.ix_call_sick_1_s`
+- ✅ line 144 `zh.clip.ix_call_sick_end`
+- ✅ line 145 `zh.clip.ix_factory_safety_miss`
+- ✅ line 146 `zh.clip.ix_factory_safety_0`
+- ✅ line 147 `zh.clip.ix_factory_safety_0_s`
+- ✅ line 148 `zh.clip.ix_factory_safety_1`
+- ✅ line 149 `zh.clip.ix_factory_safety_1_s`
+- ✅ line 150 `zh.clip.ix_factory_safety_end`
+- ✅ line 151 `zh.clip.ix_warehouse_boxes_miss`
+- ✅ line 152 `zh.clip.ix_warehouse_boxes_0`
+- ✅ line 153 `zh.clip.ix_warehouse_boxes_0_s`
+- ✅ line 154 `zh.clip.ix_warehouse_boxes_1`
+- ✅ line 155 `zh.clip.ix_warehouse_boxes_1_s`
+- ✅ line 156 `zh.clip.ix_warehouse_boxes_end`
+- ✅ line 157 `zh.clip.ix_taiwan_first_day_miss`
+- ✅ line 158 `zh.clip.ix_taiwan_first_day_0`
+- ✅ line 159 `zh.clip.ix_taiwan_first_day_0_s`
+- ✅ line 160 `zh.clip.ix_taiwan_first_day_1`
+- ✅ line 161 `zh.clip.ix_taiwan_first_day_1_s`
+- ✅ line 162 `zh.clip.ix_taiwan_first_day_end`
+- ✅ line 163 `zh.clip.ix_cp6_new_colleague_miss`
+- ✅ line 164 `zh.clip.ix_cp6_new_colleague_0`
+- ✅ line 165 `zh.clip.ix_cp6_new_colleague_0_s`
+- ✅ line 166 `zh.clip.ix_cp6_new_colleague_1`
+- ✅ line 167 `zh.clip.ix_cp6_new_colleague_1_s`
+- ✅ line 168 `zh.clip.ix_cp6_new_colleague_end`
+- ✅ line 169 `zh.clip.ix_cp6_interview_miss`
+- ✅ line 170 `zh.clip.ix_cp6_interview_0`
+- ✅ line 171 `zh.clip.ix_cp6_interview_0_s`
+- ✅ line 172 `zh.clip.ix_cp6_interview_1`
+- ✅ line 173 `zh.clip.ix_cp6_interview_1_s`
+- ✅ line 174 `zh.clip.ix_cp6_interview_end`
+- ✅ line 175 `zh.clip.ix_cp6_supermarket_pay_miss`
+- ✅ line 176 `zh.clip.ix_cp6_supermarket_pay_0`
+- ✅ line 177 `zh.clip.ix_cp6_supermarket_pay_0_s`
+- ✅ line 178 `zh.clip.ix_cp6_supermarket_pay_1`
+- ✅ line 179 `zh.clip.ix_cp6_supermarket_pay_1_s`
+- ✅ line 180 `zh.clip.ix_cp6_supermarket_pay_end`
+- ✅ line 181 `zh.clip.ix_cp6_way_bank_miss`
+- ✅ line 182 `zh.clip.ix_cp6_way_bank_0`
+- ✅ line 183 `zh.clip.ix_cp6_way_bank_0_s`
+- ✅ line 184 `zh.clip.ix_cp6_way_bank_1`
+- ✅ line 185 `zh.clip.ix_cp6_way_bank_1_s`
+- ✅ line 186 `zh.clip.ix_cp6_way_bank_end`
+- ✅ line 187 `zh.clip.ix_cp6_clinic_cough_miss`
+- ✅ line 188 `zh.clip.ix_cp6_clinic_cough_0`
+- ✅ line 189 `zh.clip.ix_cp6_clinic_cough_0_s`
+- ✅ line 190 `zh.clip.ix_cp6_clinic_cough_1`
+- ✅ line 191 `zh.clip.ix_cp6_clinic_cough_1_s`
+- ✅ line 192 `zh.clip.ix_cp6_clinic_cough_end`
+- ✅ line 193 `zh.clip.ix_cp6_call_office_miss`
+- ✅ line 194 `zh.clip.ix_cp6_call_office_0`
+- ✅ line 195 `zh.clip.ix_cp6_call_office_0_s`
+- ✅ line 196 `zh.clip.ix_cp6_call_office_1`
+- ✅ line 197 `zh.clip.ix_cp6_call_office_1_s`
+- ✅ line 198 `zh.clip.ix_cp6_call_office_end`
+- ✅ line 199 `zh.clip.ix_a1cap_shift_change_miss`
+- ✅ line 200 `zh.clip.ix_a1cap_shift_change_0`
+- ✅ line 201 `zh.clip.ix_a1cap_shift_change_0_s`
+- ✅ line 202 `zh.clip.ix_a1cap_shift_change_1`
+- ✅ line 203 `zh.clip.ix_a1cap_shift_change_1_s`
+- ✅ line 204 `zh.clip.ix_a1cap_shift_change_end`
+- ✅ line 205 `zh.clip.ix_a1cap_canteen_lunch_miss`
+- ✅ line 206 `zh.clip.ix_a1cap_canteen_lunch_0`
+- ✅ line 207 `zh.clip.ix_a1cap_canteen_lunch_0_s`
+- ✅ line 208 `zh.clip.ix_a1cap_canteen_lunch_1`
+- ✅ line 209 `zh.clip.ix_a1cap_canteen_lunch_1_s`
+- ✅ line 210 `zh.clip.ix_a1cap_canteen_lunch_end`
+- ✅ line 211 `zh.clip.ix_a1cap_friend_plan_miss`
+- ✅ line 212 `zh.clip.ix_a1cap_friend_plan_0`
+- ✅ line 213 `zh.clip.ix_a1cap_friend_plan_0_s`
+- ✅ line 214 `zh.clip.ix_a1cap_friend_plan_1`
+- ✅ line 215 `zh.clip.ix_a1cap_friend_plan_1_s`
+- ✅ line 216 `zh.clip.ix_a1cap_friend_plan_end`
+- ✅ line 217 `zh.clip.ix_a1cap_weekend_miss`
+- ✅ line 218 `zh.clip.ix_a1cap_weekend_0`
+- ✅ line 219 `zh.clip.ix_a1cap_weekend_0_s`
+- ✅ line 220 `zh.clip.ix_a1cap_weekend_1`
+- ✅ line 221 `zh.clip.ix_a1cap_weekend_1_s`
+- ✅ line 222 `zh.clip.ix_a1cap_weekend_end`
+- ✅ line 223 `zh.clip.hsk1_a_l1_01`
+- ✅ line 224 `zh.clip.hsk1_a_l1_02`
+- ✅ line 225 `zh.clip.hsk1_a_l1_03`
+- ✅ line 226 `zh.clip.hsk1_a_l1_04`
+- ✅ line 227 `zh.clip.hsk1_a_l1_05`
+- ✅ line 228 `zh.clip.hsk1_a_l2_01`
+- ✅ line 229 `zh.clip.hsk1_a_l2_02`
+- ✅ line 230 `zh.clip.hsk1_a_l2_03`
+- ✅ line 231 `zh.clip.hsk1_a_l2_04`
+- ✅ line 232 `zh.clip.hsk1_a_l2_05`
+- ✅ line 233 `zh.clip.hsk1_a_l3_01`
+- ✅ line 234 `zh.clip.hsk1_a_l3_02`
+- ✅ line 235 `zh.clip.hsk1_a_l3_03`
+- ✅ line 236 `zh.clip.hsk1_a_l3_04`
+- ✅ line 237 `zh.clip.hsk1_a_l3_05`
+- ✅ line 238 `zh.clip.hsk1_a_l4_01`
+- ✅ line 239 `zh.clip.hsk1_a_l4_02`
+- ✅ line 240 `zh.clip.hsk1_a_l4_03`
+- ✅ line 241 `zh.clip.hsk1_a_l4_04`
+- ✅ line 242 `zh.clip.hsk1_a_l4_05`
+- ✅ line 243 `zh.clip.hsk1_b_l1_01`
+- ✅ line 244 `zh.clip.hsk1_b_l1_02`
+- ✅ line 245 `zh.clip.hsk1_b_l1_03`
+- ✅ line 246 `zh.clip.hsk1_b_l1_04`
+- ✅ line 247 `zh.clip.hsk1_b_l1_05`
+- ✅ line 248 `zh.clip.hsk1_b_l2_01`
+- ✅ line 249 `zh.clip.hsk1_b_l2_02`
+- ✅ line 250 `zh.clip.hsk1_b_l2_03`
+- ✅ line 251 `zh.clip.hsk1_b_l2_04`
+- ✅ line 252 `zh.clip.hsk1_b_l2_05`
+- ✅ line 253 `zh.clip.hsk1_b_l3_01`
+- ✅ line 254 `zh.clip.hsk1_b_l3_02`
+- ✅ line 255 `zh.clip.hsk1_b_l3_03`
+- ✅ line 256 `zh.clip.hsk1_b_l3_04`
+- ✅ line 257 `zh.clip.hsk1_b_l3_05`
+- ✅ line 258 `zh.clip.hsk1_b_l4_01`
+- ✅ line 259 `zh.clip.hsk1_b_l4_02`
+- ✅ line 260 `zh.clip.hsk1_b_l4_03`
+- ✅ line 261 `zh.clip.hsk1_b_l4_04`
+- ✅ line 262 `zh.clip.hsk1_b_l4_05`
+- ✅ line 263 `zh.clip.hsk2_a_l1_01`
+- ✅ line 264 `zh.clip.hsk2_a_l1_02`
+- ✅ line 265 `zh.clip.hsk2_a_l1_03`
+- ✅ line 266 `zh.clip.hsk2_a_l1_04`
+- ✅ line 267 `zh.clip.hsk2_a_l1_05`
+- ✅ line 268 `zh.clip.hsk2_a_l2a_01`
+- ✅ line 269 `zh.clip.hsk2_a_l2a_02`
+- ✅ line 270 `zh.clip.hsk2_a_l2a_03`
+- ✅ line 271 `zh.clip.hsk2_a_l2a_04`
+- ✅ line 272 `zh.clip.hsk2_a_l2a_05`
+- ✅ line 273 `zh.clip.hsk2_a_l2b_01`
+- ✅ line 274 `zh.clip.hsk2_a_l2b_02`
+- ✅ line 275 `zh.clip.hsk2_a_l2b_03`
+- ✅ line 276 `zh.clip.hsk2_a_l2b_04`
+- ✅ line 277 `zh.clip.hsk2_a_l2b_05`
+- ✅ line 278 `zh.clip.hsk2_a_l3_01`
+- ✅ line 279 `zh.clip.hsk2_a_l3_02`
+- ✅ line 280 `zh.clip.hsk2_a_l3_03`
+- ✅ line 281 `zh.clip.hsk2_a_l3_04`
+- ✅ line 282 `zh.clip.hsk2_a_l3_05`
+- ✅ line 283 `zh.clip.hsk2_a_l3_06`
+- ✅ line 284 `zh.clip.hsk2_a_l3_07`
+- ✅ line 285 `zh.clip.hsk2_a_l3_08`
+- ✅ line 286 `zh.clip.hsk2_a_l3_09`
+- ✅ line 287 `zh.clip.hsk2_a_l3_10`
+- ✅ line 288 `zh.clip.hsk2_b_l1_01`
+- ✅ line 289 `zh.clip.hsk2_b_l1_02`
+- ✅ line 290 `zh.clip.hsk2_b_l1_03`
+- ✅ line 291 `zh.clip.hsk2_b_l1_04`
+- ✅ line 292 `zh.clip.hsk2_b_l1_05`
+- ✅ line 293 `zh.clip.hsk2_b_l2a_01`
+- ✅ line 294 `zh.clip.hsk2_b_l2a_02`
+- ✅ line 295 `zh.clip.hsk2_b_l2a_03`
+- ✅ line 296 `zh.clip.hsk2_b_l2a_04`
+- ✅ line 297 `zh.clip.hsk2_b_l2a_05`
+- ✅ line 298 `zh.clip.hsk2_b_l2b_01`
+- ✅ line 299 `zh.clip.hsk2_b_l2b_02`
+- ✅ line 300 `zh.clip.hsk2_b_l2b_03`
+- ✅ line 301 `zh.clip.hsk2_b_l2b_04`
+- ✅ line 302 `zh.clip.hsk2_b_l2b_05`
+- ✅ line 303 `zh.clip.hsk2_b_l3_01`
+- ✅ line 304 `zh.clip.hsk2_b_l3_02`
+- ✅ line 305 `zh.clip.hsk2_b_l3_03`
+- ✅ line 306 `zh.clip.hsk2_b_l3_04`
+- ✅ line 307 `zh.clip.hsk2_b_l3_05`
+- ✅ line 308 `zh.clip.hsk2_b_l3_06`
+- ✅ line 309 `zh.clip.hsk2_b_l3_07`
+- ✅ line 310 `zh.clip.hsk2_b_l3_08`
+- ✅ line 311 `zh.clip.hsk2_b_l3_09`
+- ✅ line 312 `zh.clip.hsk2_b_l3_10`
+
+## Validator errors (fix these records and ingest again)
+
+- reception: zh.clip.uf_tianqi: generated asset 27d35898d025958dbc04.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_hen_leng: generated asset 462361e1b1a76d792481.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_hen_re: generated asset 92ffd199012f76cfd238.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_xiayu: generated asset 854002f747beb6aec3dd.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_feng: generated asset 424a6d8e5ed02e0a2065.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_chuntian: generated asset 8b2d758c3a3dd226599c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_siyue: generated asset bcf69f0beb37406b4869.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_zaishuo: generated asset 08b9a9c89b08ec9e2c85.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_mandian: generated asset d8dec368a46b29e7c753.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_jiudian: generated asset 79215177ffe56cc56144.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_shiwu: generated asset 3a979030fad54e7ebdf6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_mao: generated asset 3281ea226ba0d2f38e8c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_yu: generated asset 1e01c8a02c789c5437be.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uf_tingbudong: generated asset 90edf0a6221689ae8ff0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ug_anquanmao: generated asset 4e9df8032445dd818793.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ug_tingji: generated asset a90edaca4d698e42c1d0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ug_fang: generated asset 7f95b905ac84074f9a43.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ug_shoutao: generated asset f7b7545fbf7ee9aae312.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_beijing: generated asset 75008e2ec9ce0095b1f8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_wanle: generated asset da3eeada23262849b800.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_menkou: generated asset 045c705c00dd77b5606a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_xiayizhan: generated asset 7ed8e9699f35f1b23b6c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_zhuyi: generated asset 569a574c50345d570975.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_shangche: generated asset a035a76170419fb0fee7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_plane: generated asset 7e3ff74aa28f65b19679.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_piao: generated asset 6d9d1be72f45815a1173.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_liangzhang: generated asset 39a51ba6b2fb51d08e94.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_zhanzai: generated asset 1db021187e5c54453d9d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_huzhao: generated asset 3e2f45d9725ed802c6f5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_wumen: generated asset f3d65a789a902f8dac82.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uh_yixiaoshi: generated asset 44de46146e4c0c03976b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_yao: generated asset 3a3487b2717939f5229f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_yifu: generated asset b1523021a916247cc644.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_yigong: generated asset 72d8163bd7cba28720fa.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_jin: generated asset d6a61c5c2273d4cce19b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_saoma: generated asset 2060af23ec9d9f5e2164.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_zhaoqian: generated asset d49c0e32ab9402796115.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_gui: generated asset 23b24c76d6be8939beed.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_shi: generated asset 06d8311529569a767a3c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ui_xiexie: generated asset 74020468174daa5c251e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uj_hai_work: generated asset 0727e4f88806574ba38f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uj_hua_father: generated asset 8032c7b9cb87545c8018.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uj_canteen_open: generated asset 415795e1c9b522eb6e02.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uj_park: generated asset c0ee867a49c1467c694c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uj_anjing: generated asset 48ec46a6b26e8ba412c5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_train_gz: generated asset 517e1304917d4a268db3.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_plane: generated asset 1d61369210e91395b781.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_supermarket: generated asset 6b788c5f2733037bf2b7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_page: generated asset e413cc41213ca17ca0f2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_shirt: generated asset 43ab2d51969db7a9bc5f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_class: generated asset 7540a5d96cc6887a4434.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_birthday: generated asset ccf29bf3f7322005533f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_dlg_tea: generated asset cc431984ed4a29064f52.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_dlg_live: generated asset 818664716ac553d4a383.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_dlg_movie: generated asset e2fd1c9ecebfa5a3efef.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_dlg_doctor: generated asset 7ab5f1728fb0b0b3d1bd.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_dict_work: generated asset b6ac87abd30254be2845.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_dict_station: generated asset d73949e0c02090a3b6e9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.cp3_dict_safety: generated asset 569a574c50345d570975.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.a1cap_bank: generated asset 0d71d4755a187d5a8610.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.a1cap_bus: generated asset fd7072eacf9a64e1edf8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.a1cap_pharmacy: generated asset aa3974d47c8f5b34c0af.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.a1cap_bag: generated asset 62e95c518a31942f9837.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.pl_shui: generated asset c46df2d4cb89929152f8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.pl_shop: generated asset e217970a5d9b2cbf9d9a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.pl_pay: generated asset 0e63855eb74c668f1436.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_rep_zaoshang: generated asset b47a13d7fa9c5db13f83.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_greet_morning: generated asset f04780a456577104c90a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_rep_xinku: generated asset e9b36ad36368e39cd598.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_xinku: generated asset 2db32b3b9eaaa08c3f94.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_thanks: generated asset 4f110ac8afd6be3868e1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_rep_xianzou: generated asset 8a95d2cbb20dcd232406.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_xianzou: generated asset 62e74feb597be7463102.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_sorry: generated asset f51572c79f3c7b90f5a1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.uk_model_excuse: generated asset 52149af02016a7a9d0e9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ul_model_rep_renshi: generated asset 9a68dfb0c471c7c4870c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ul_model_name: generated asset 0a580260593c271ce3e6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ul_model_from: generated asset da4d523b0ae76c25d2df.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ul_model_age: generated asset 5caab878eeada8f3dd62.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ul_model_work: generated asset a95e9d38d3d36058169d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ul_model_like: generated asset c46ec722d2cc05e6b203.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ul_model_rep_jieshao: generated asset 9e4cc6b34d39b59326da.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.um_model_rep_price: generated asset 9242f5fcc879500abb63.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.um_model_price: generated asset ce4ca77b1bcf7ce45649.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.um_model_time: generated asset a34aa44cabd4d97464ea.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.um_model_rep_half: generated asset 6b6058a410d4749b375a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.um_model_day: generated asset b2e1c70ad23ae12989f7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.um_model_birthday: generated asset 7608b916597330e03bbb.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.um_model_tickets: generated asset 008751732ab51450cbe6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.un_model_rep_zhong: generated asset 9c8c4dc587c4724cedc0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.un_model_box: generated asset 385b335c4f69b45d8b5f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.un_model_car: generated asset b824584d48e98980b872.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.un_model_cat: generated asset 4812e0a15b889cb24cd5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.un_model_rep_bai: generated asset 4cc2b2dc25e21fc1ae0c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.un_model_room: generated asset f8d272e32cadce7f1cc5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.un_model_person: generated asset d2d252c019f6b321f123.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_shop_fruit_miss: generated asset b756a263fbb61283369f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_shop_fruit_0: generated asset 36eff42128a078af48af.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_shop_fruit_0_s: generated asset 0e2d3ae6f4c43231b917.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_shop_fruit_1: generated asset 1be626af06519d2ac690.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_shop_fruit_1_s: generated asset bd441ee4e6dd83dce6d9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_shop_fruit_end: generated asset c16664c5eece2b7ba389.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_restaurant_order_miss: generated asset dcf29a06f54ebb0334f4.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_restaurant_order_0: generated asset e02aa0edf26fd0227e4c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_restaurant_order_0_s: generated asset a52877077a4e026f4b77.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_restaurant_order_1: generated asset 959a09accc148ec67c7e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_restaurant_order_1_s: generated asset ac31d03813e2b396d3f3.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_restaurant_order_end: generated asset 3c9b2c324a1c5ff872bc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_ask_subway_miss: generated asset 754fbaf60ee2bb814411.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_ask_subway_0: generated asset 4d637813e2127d211a5f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_ask_subway_0_s: generated asset c95484dfe8b65b3126f9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_ask_subway_1: generated asset 9b2fef0297bb03af7424.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_ask_subway_1_s: generated asset 3bbc8a5286e3228a0e7b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_ask_subway_end: generated asset d82a244effe7070f2374.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taxi_miss: generated asset 54e508d71d1898087a32.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taxi_0: generated asset 780725e76402550907be.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taxi_0_s: generated asset cb1ab3f78e440eff7556.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taxi_1: generated asset 014d7a9cc305b52626d8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taxi_1_s: generated asset f00fa6a31c8eab17cefc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taxi_end: generated asset f59cda9388a62909a32b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_reception_miss: generated asset 5c13fa0bccfa57aa7a0b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_reception_0: generated asset 2b11e14f0130b1597082.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_reception_0_s: generated asset a125651f99609850f42b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_reception_1: generated asset 5804d3e5ccf6eee3dc43.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_reception_1_s: generated asset 9096e47976529cad20c9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_reception_end: generated asset 3e21e071ad77d959d281.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_bank_account_miss: generated asset 1fa13c5e75bb909aada3.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_bank_account_0: generated asset 0581ffeea19b5af69a1b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_bank_account_0_s: generated asset 84e62185e48698a9a96b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_bank_account_1: generated asset e5c3248e584a4f71c91c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_bank_account_1_s: generated asset a5b6c1bca4be1defb6eb.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_bank_account_end: generated asset 778c08c6767a7f827e3c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_doctor_miss: generated asset 18ec8cb5d673ca79ce28.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_doctor_0: generated asset c6f5a0b497f17a07dd49.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_doctor_0_s: generated asset 775d9c777ad3c9299b7c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_doctor_1: generated asset b0b50ddc352dba485bab.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_doctor_1_s: generated asset a5a2ff4f9a0e43d72ae0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_clinic_doctor_end: generated asset b1db98c36c8ed97b5e55.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_call_sick_miss: generated asset d2dc1c02554e5fbfe8d7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_call_sick_0: generated asset fee485cb42c32f18e06e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_call_sick_0_s: generated asset 757b9c00c2d438b05b9a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_call_sick_1: generated asset 4fde574684c232f1059f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_call_sick_1_s: generated asset ba4b59df5b47cb1ddf02.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_call_sick_end: generated asset 1d6f0dfa34da57e79da5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_factory_safety_miss: generated asset c1c4391788973884638c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_factory_safety_0: generated asset 78eb4e6c12205e485845.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_factory_safety_0_s: generated asset 8d2679632744fc6f57a2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_factory_safety_1: generated asset f2ff841a9f234590fd91.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_factory_safety_1_s: generated asset c812b51172670c3ed9ba.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_factory_safety_end: generated asset cd419fa77d74a59da666.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_warehouse_boxes_miss: generated asset 52dfc0175b549e845fef.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_warehouse_boxes_0: generated asset 2467ab27365f470384bf.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_warehouse_boxes_0_s: generated asset 16fa8be15b100e6cb250.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_warehouse_boxes_1: generated asset 9a795e54817beda0dff6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_warehouse_boxes_1_s: generated asset 1b4e92a26d5592e63b86.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_warehouse_boxes_end: generated asset ed7dbff09b3645480e5a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taiwan_first_day_miss: generated asset 5f6d72db6a293cccff77.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taiwan_first_day_0: generated asset f8d0d3a622effa7381f4.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taiwan_first_day_0_s: generated asset 25141564ef6cf2cd0a8c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taiwan_first_day_1: generated asset 66e6a7267de5b69d47c5.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taiwan_first_day_1_s: generated asset 04e90474b2133d154608.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_taiwan_first_day_end: generated asset c29de8406d841ea9eaed.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_new_colleague_miss: generated asset d0bba3ae54cb820e4b49.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_new_colleague_0: generated asset ff19cb5b1d9e5c9d2b96.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_new_colleague_0_s: generated asset b44c278e1e27c6ffa4a8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_new_colleague_1: generated asset 9356e5be4d7c3489b975.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_new_colleague_1_s: generated asset b5fe60621b681e919bfa.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_new_colleague_end: generated asset 624b0114a3d0f7678e02.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_interview_miss: generated asset 2fbc4034c0030cc8fe58.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_interview_0: generated asset d3d76ef6f2221197244e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_interview_0_s: generated asset 2628ecea04e63a14f4bf.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_interview_1: generated asset e1f7bac706c118972959.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_interview_1_s: generated asset 094e531652d515fa8901.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_interview_end: generated asset 38428fb0a70a75343230.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_supermarket_pay_miss: generated asset 5c13fa0bccfa57aa7a0b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_supermarket_pay_0: generated asset 3cad1b401a64bb7d4f81.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_supermarket_pay_0_s: generated asset 0829b2076ffa9ef9eec9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_supermarket_pay_1: generated asset fa42f9599fbfc9f05fd7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_supermarket_pay_1_s: generated asset 562faf5ff4a6cfddea40.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_supermarket_pay_end: generated asset d8aed2f31550953105cd.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_way_bank_miss: generated asset 65cb14d1e069b2295829.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_way_bank_0: generated asset 81b3eba5cb88920081cc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_way_bank_0_s: generated asset 572f826310e545a11c76.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_way_bank_1: generated asset 63a823672399f13ea73d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_way_bank_1_s: generated asset f71ccd721d410215f155.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_way_bank_end: generated asset 7d031071f18752d4bb1c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_clinic_cough_miss: generated asset 02f98cbe0ec2878a7334.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_clinic_cough_0: generated asset 775d9c777ad3c9299b7c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_clinic_cough_0_s: generated asset 8a8dbb8d513685389a6c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_clinic_cough_1: generated asset e166f9d8e87bb1c8192b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_clinic_cough_1_s: generated asset 9325c50c49719ea9728f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_clinic_cough_end: generated asset 3effc7546ec031c08f81.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_call_office_miss: generated asset a056e6af02e64361b619.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_call_office_0: generated asset 3b78b678e4e22c21f121.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_call_office_0_s: generated asset 5b1837358102495a49ac.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_call_office_1: generated asset d3ff50a5d5c416e8fff9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_call_office_1_s: generated asset 0573ca48b96f0311ace1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_cp6_call_office_end: generated asset e3e69e7999652aafaa3e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_shift_change_miss: generated asset 6e75a702f7361d4c28d2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_shift_change_0: generated asset bfe7e43e9fa28a26458c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_shift_change_0_s: generated asset 83b9d43a3458b0d8240e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_shift_change_1: generated asset c581d53dfca5636b6f87.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_shift_change_1_s: generated asset 4d88a2f77215294ba5a4.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_shift_change_end: generated asset 9a4364a78754ddf03d43.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_canteen_lunch_miss: generated asset fc1f09bf76f1b982fce1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_canteen_lunch_0: generated asset 27b4426f475d1c39f64a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_canteen_lunch_0_s: generated asset dc966e87755b26fca5d0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_canteen_lunch_1: generated asset ea6ca45a96bc5b7f5c8e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_canteen_lunch_1_s: generated asset 11c9b2768c7c2c405ec1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_canteen_lunch_end: generated asset 0fbf76b1277bdef97a0f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_friend_plan_miss: generated asset 3671b7965cdf53e83132.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_friend_plan_0: generated asset e72f994cd3c6c4b8a927.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_friend_plan_0_s: generated asset b5ba9ea9ec666517e8e9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_friend_plan_1: generated asset 1411a52466330359ba8f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_friend_plan_1_s: generated asset d585bcf4f981eeb19e9d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_friend_plan_end: generated asset 2de4416d9c8527afc2f4.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_weekend_miss: generated asset 8580bf6b6885d5f27362.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_weekend_0: generated asset 0df7c4b0337888d83b79.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_weekend_0_s: generated asset f4d51bc52c520436254a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_weekend_1: generated asset 6f3788044422523c2c9a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_weekend_1_s: generated asset 08077443263f46fc74b2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.ix_a1cap_weekend_end: generated asset 44f0338cb93437465399.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_01: generated asset 3a24cc234e4ba21144d6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_02: generated asset 799c65e7c3d7e57e8f48.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_03: generated asset e782375ef01731d75207.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_04: generated asset e3febfd5423e0f0da2fe.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l1_05: generated asset 7d4bdb4b0ed91fcf1c9e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_01: generated asset 8c37f0e2c38ee65b67e7.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_02: generated asset fe57e05c11f97e9ea4dd.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_03: generated asset 3ad53dc40632d2a6b4f0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_04: generated asset 905484bf7248e084e74f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l2_05: generated asset 46c702a4ecb912e7aff0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_01: generated asset 29a4f4494eeee49ba0cc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_02: generated asset e819ce4fa0c65f1466b0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_03: generated asset 3ac2c488593b9ccbbca0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_04: generated asset 9017eb87b72cfd57d79c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l3_05: generated asset 861fe0f772ad71351c63.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_01: generated asset c9e96875b79b438053f8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_02: generated asset 5a5b7d448909755278c9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_03: generated asset 54bfb696875336a1c79c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_04: generated asset 83ba9482e66547c2683b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_a_l4_05: generated asset 7a2a8e96c3072b2660a0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_01: generated asset 7e5e3637fa4b101cd303.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_02: generated asset 9f038bdda368ab6af31c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_03: generated asset d164399cd905d303c1cc.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_04: generated asset a5d5d38a7b6b46cd6f42.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l1_05: generated asset bebc16d22d815e96d62c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_01: generated asset 2e4f7679d00776d6f1fa.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_02: generated asset 3ceb192a8a0f4b88c367.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_03: generated asset e1f7bac706c118972959.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_04: generated asset 268bd0c1584bf6268a1c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l2_05: generated asset 07967e4c6b1fcc8e8b8b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_01: generated asset cfaf94a2808022b1f7c0.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_02: generated asset aa6a75628e4f329e7c55.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_03: generated asset 44bd938f9db213eaf905.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_04: generated asset a1647c5c04e177819810.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l3_05: generated asset d88ac8e43356e3a00676.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_01: generated asset 9acfd2d5144356a61f4d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_02: generated asset ab7496f4f6a933efb574.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_03: generated asset 4592d348dc7858f4ec49.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_04: generated asset f2bdc84d38f7ba800952.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk1_b_l4_05: generated asset c60f610aae2954b7447b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_01: generated asset 25d792488e24bf5400b2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_02: generated asset 78200c4a867bd458bc3f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_03: generated asset 5b07a153641213b1fc80.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_04: generated asset b6de6a62ed5c3fdd9872.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l1_05: generated asset d1a3b2830aef96e39c4c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_01: generated asset 46e975ac34eb1688bc27.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_02: generated asset de3101e9dc3ffa118746.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_03: generated asset 04227f15b6e13e4b136e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_04: generated asset 5acf78db0ef2d3e38b74.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2a_05: generated asset 2b28c11752e53aa36dfa.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_01: generated asset 597677e65db7e577eadf.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_02: generated asset 220cfe29ac352a73bbad.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_03: generated asset 2fbcbf674363d1685160.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_04: generated asset 7b5d4124215e0fe31b4f.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l2b_05: generated asset f4fc9cdd0b74ce0d5b2a.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_01: generated asset 9a401445cb19bbb17583.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_02: generated asset 5fb76ca26194fe205d6c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_03: generated asset 8ddf7eda90e52252ecf8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_04: generated asset b6d6185a0b23c114a0a6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_05: generated asset 368ad4d917137a0d6eba.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_06: generated asset ba68265ff9a6a1dcc5ba.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_07: generated asset dd854ce6d09981468273.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_08: generated asset ef33f1927dc37f79d6db.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_09: generated asset ae6700f93f9c9b6c98d9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_a_l3_10: generated asset 2d3972e06f56fa1b79dd.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_01: generated asset 26be31d42801b8f0d2b6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_02: generated asset 24b730e62cc817498e37.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_03: generated asset ce64b41fcc7a9ab591d8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_04: generated asset 6e4016958bcd1ca05255.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l1_05: generated asset 25b5b249d8056c7b1261.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_01: generated asset 070b4b5292ec0c183fbb.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_02: generated asset 0bb4855dbc171ec3217e.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_03: generated asset 7417a12267c3e5d4d5f9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_04: generated asset 3745e9affe6b5e27e240.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2a_05: generated asset d05a357e4d962765ced2.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_01: generated asset f508f1ae52cabc0efb0d.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_02: generated asset 6f76393d9d695a89f738.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_03: generated asset 4cfa5bc27d092c6cc7c8.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_04: generated asset 3ad4df1b6d510533e53c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l2b_05: generated asset 14c7d943fec68f02504b.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_01: generated asset 1bcb65d83eaa7ca3ced1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_02: generated asset cb02f096cbfc853128aa.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_03: generated asset 1d7c6c452a66c313cbe1.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_04: generated asset 4f44d908313ff74cc563.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_05: generated asset adfe8f02cb051e62a9bf.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_06: generated asset 795ac857a00bb47f7dc6.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_07: generated asset 0e8003093400a68caeaa.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_08: generated asset d079baab3e81a0aa216c.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_09: generated asset e7496eef78f6f80bb2b9.opus missing — run the reception-audio generate workflow (P7 §26)
+- reception: zh.clip.hsk2_b_l3_10: generated asset f09930f43903a673003a.opus missing — run the reception-audio generate workflow (P7 §26)
+
+## Written
+
+- content/zh/reception/listening.json

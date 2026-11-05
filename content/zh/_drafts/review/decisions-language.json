@@ -1,0 +1,980 @@
+[
+ {
+  "id": "zh-vi:unit-3#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "Tiếng Việt cũng có loại từ (\"bốn người\", \"hai đứa con\")",
+  "problem": "\"bốn người\" has no loại từ (người is the noun itself), so the first example does not show what the sentence claims. Only \"hai đứa con\" does.",
+  "fix": "Tiếng Việt cũng có loại từ (\"hai đứa con\", \"ba con mèo\"); tiếng Trung bắt buộc phải có lượng từ giữa số và danh từ.",
+  "decision": "fixed: (\"hai đứa con\", \"ba con mèo\")."
+ },
+ {
+  "id": "zh-vi:u3-l3-e5",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s1.py)",
+  "severity": "P1",
+  "quote": "Trưa nay tôi ăn sủi cảo. => 我中午吃饺子。",
+  "problem": "中午 alone is \"at noon\" (habitual or unspecified), not \"trưa nay\". The learner maps \"trưa nay\" onto 中午 and later fails to produce 今天中午.",
+  "fix": "prompt: \"Buổi trưa tôi ăn sủi cảo.\" (keep 我中午吃饺子。), or key 我今天中午吃饺子。 if 今天 is allowed in Section 1",
+  "decision": "fixed: prompt 'Buổi trưa tôi ăn sủi cảo.' (the key 我中午吃饺子 stays)."
+ },
+ {
+  "id": "zh-vi:unit-5#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "*便宜一点儿吧。* (pián yi) — Rẻ một chút đi.",
+  "problem": "\"Rẻ một chút đi\" is translationese; a Vietnamese buyer says \"Bớt chút đi\" or \"Rẻ hơn chút đi\".",
+  "fix": "*便宜一点儿吧。* (pián yi) — Bớt chút đi. / Rẻ hơn một chút đi.",
+  "decision": "fixed: 'Bớt chút đi.'"
+ },
+ {
+  "id": "zh-vi:unit-5#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "Khi đếm, đọc số: *二* (èr) — *二十*, *二月* / Trước lượng từ: *两* (liǎng)",
+  "problem": "u4-l1-e6 then teaches 两百块 without a word on 百/千: before 百 both 二百 and 两百 are said, before 千/万 两 is usual. A learner who applies the guidebook rule (百 is no measure word) would mark 两百 as wrong.",
+  "fix": "add: \"Trước 百 nói được cả 二百 lẫn 两百; trước 千, 万 thường nói 两千, 两万.\"",
+  "decision": "fixed: the guidebook adds 'Trước 百 nói được cả 二百 lẫn 两百; trước 千, 万 thường nói 两千, 两万.'"
+ },
+ {
+  "id": "zh-vi:ua-l1-e0",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s2.py)",
+  "severity": "P2",
+  "quote": "你是越南人___？ / Bạn là người Việt Nam à?",
+  "problem": "The unit guidebook glosses 吗 as the neutral \"có phải … không?\"; \"à\" adds surprise or a check of something already guessed. The same lesson (e6 \"Bạn là học sinh à?\") repeats it. Not wrong, but it teaches 吗 = \"à\".",
+  "fix": "Bạn có phải là người Việt Nam không? (e6: Bạn có phải là học sinh không?)",
+  "uncertain": "\"à\" is a defensible rendering in speech; style choice",
+  "decision": "fixed (reviewer's wording): ua-l1-e0 'Bạn có phải là người Việt Nam không?' and ua-l1-e6 'Bạn có phải là học sinh không?'."
+ },
+ {
+  "id": "zh-vi:ub-l0-e9",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s2.py)",
+  "severity": "P1",
+  "quote": "个 = cái … 件 = cái",
+  "problem": "Two pairs of one match exercise have the same Vietnamese side \"cái\", so the learner cannot tell which hanzi goes with which card (and may be marked wrong for a correct pairing).",
+  "fix": "件 = chiếc (áo, việc), or replace 件 by 张 = tờ; tấm",
+  "decision": "fixed: 件 = 'chiếc; cái (áo, việc)' (see the answer finding of the same id; rule 'match-native')."
+ },
+ {
+  "id": "zh-vi:ub-l2-e4",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s2.py)",
+  "severity": "P1",
+  "quote": "两___苹果 / hai cân táo (and ub-l2-e6 \"Cho tôi hai cân táo.\")",
+  "problem": "For a Vietnamese reader \"cân\" is a kilogram, so \"hai cân táo\" says 2 kg; 两斤 is 1 kg. The gloss \"cân (nửa ki-lô-gam)\" explains it, but the sentence translations then state the wrong quantity. At a market this costs money.",
+  "fix": "translation \"hai cân (1 ký) táo\" / \"Cho tôi hai cân táo (= 1 ký).\"; keep the gloss \"cân Trung Quốc (nửa ký)\"",
+  "decision": "fixed: 斤 is glossed 'cân Trung Quốc (nửa ký)' and every 斤 quantity is said in ký ('1 ký táo (hai cân Trung Quốc)', 'nửa ký'); 公斤 is 'ki-lô-gam (ký)'. Rule 'vi-unit' (zh_text.vi_unit_problems, in zh-check-answers.py rule 10 and the story check) flags a Vietnamese line with a bare 'cân' beside 斤. Reach beyond ub-l2-e4/e6/e8: ui-l0-e8, ui-l0-e10, ui-l1-e3, ui-l1-e4, ui-l1-e7, ui-l1-e9, zh.exi.hsk_2.a_l3_05, the lexeme examples of 斤 and 多少钱, the shop_fruit scenario and forgotten_wallet (4 lines and q0)."
+ },
+ {
+  "id": "zh-vi:ub-l2-e8",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s2.py)",
+  "severity": "P2",
+  "quote": "条 = sợi",
+  "problem": "The guidebook teaches 条 for roads, rivers and fish (一条鱼 = một con cá in e3), none of which is \"sợi\". \"sợi\" alone suggests 根 or thread.",
+  "fix": "条 = con; sợi (vật dài) — and the e1 prompt \"con, sợi (vật dài)\"",
+  "decision": "fixed: 条 = 'con, sợi (vật dài: cá, đường, sông); điều'."
+ },
+ {
+  "id": "zh-vi:uc-l1-e5",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s2.py)",
+  "severity": "P2",
+  "quote": "杯子在桌子下。",
+  "problem": "Bare 下 after a noun is bookish; speech says 桌子下面 or 桌子底下 (上 and 里 are fine bare). The e8 match teaches 下 = dưới with no hint.",
+  "fix": "杯子在桌子下面。 (if 下面 is a lexeme; else keep and add 下面 to the unit words)",
+  "decision": "fixed: 下面 is a lexeme now (CC-CEDICT xià miàn) and the sentence is 杯子在桌子下面。"
+ },
+ {
+  "id": "zh-vi:unit-d#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "*我明天八点上班。* — Tôi mai tám giờ đi làm.",
+  "problem": "\"Tôi mai tám giờ đi làm\" is not natural Vietnamese. Vietnamese can keep the Chinese order with the time first: \"Ngày mai tám giờ tôi đi làm\". Lesson ud-l0-e4 already says \"Mai tôi đi làm lúc tám giờ.\"",
+  "fix": "*我明天八点上班。* — Ngày mai tám giờ tôi đi làm.",
+  "decision": "fixed: '*我明天八点上班。* — Ngày mai tám giờ tôi đi làm.' with the explanation reworded."
+ },
+ {
+  "id": "zh-vi:unit-e#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "*一* trước thanh 4 đọc thanh 2 (*一个* yí ge), trước thanh khác đọc thanh 4 (*一杯* yì bēi).",
+  "problem": "The rule as stated makes a learner say yì in 十一, 第一 or when counting 一、二、三 (unit 5 drills exactly that). The exception belongs in the same sentence.",
+  "fix": "… trước thanh khác đọc thanh 4 (*一杯* yì bēi). Khi đếm số, đọc số thứ tự hay đứng cuối từ (*十一*, *第一*) thì vẫn đọc yī.",
+  "decision": "fixed: the 一 rule adds the exception (counting, ordinals, 一 at the end of a word: 十一, 第一 stay yī)."
+ },
+ {
+  "id": "zh-vi:unit-f#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "*四* (sì) và *十* (shí) khác nhau ở âm uốn lưỡi sh … thanh 3 tiếng Trung xuống thấp như thanh hỏi, thanh 4 rơi mạnh từ cao như khi ra lệnh.",
+  "problem": "四/十 also differ in tone (4 vs 2), the more audible cue for a Vietnamese ear. The tone comparisons are stated as equalities (\"như thanh hỏi\"); STYLE-vi §1 and the primer say \"gần giống\".",
+  "fix": "*四* (sì) và *十* (shí) khác nhau cả ở âm uốn lưỡi sh lẫn thanh (thanh 4 và thanh 2) … thanh 3 xuống thấp, gần giống thanh hỏi; thanh 4 rơi mạnh từ cao, gần giống giọng ra lệnh.",
+  "decision": "fixed: 四/十 differ in the curl and in the tone (4 vs 2); the tone comparisons say 'gần giống'."
+ },
+ {
+  "id": "zh-vi:uf-l2-e6",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s3.py)",
+  "severity": "P2",
+  "quote": "Mùa thu rất đẹp. => 秋天很漂亮",
+  "problem": "漂亮 describes people, clothes, places (风景很漂亮); for a season natives say 秋天很美 or 秋天很舒服 / 秋天天气很好. As a typed key the learner copies the odd collocation.",
+  "fix": "key 北京的秋天很漂亮 is still odd; use 秋天天气很好 (\"Mùa thu thời tiết rất đẹp.\") or add 美 and key 秋天很美",
+  "decision": "fixed differently: see the answer finding zh-vi:uf-l2-e6 (prompt 'Mùa thu thời tiết rất đẹp.', key 秋天天气很好)."
+ },
+ {
+  "id": "zh-vi:unit-g#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P1",
+  "quote": "*出口* lối ra, *入口* lối vào — \"bạn giả\": không phải xuất khẩu, nhập khẩu!",
+  "problem": "False as stated: 出口 does mean \"xuất khẩu\" too (出口商品, 中国出口大米); only 入口 ≠ nhập khẩu, which is 进口. A learner in a factory that exports will meet 出口 = export and believe the course said it cannot be.",
+  "fix": "*出口* lối ra, *入口* lối vào. Trên biển báo, *出口* là lối ra; nghĩa \"xuất khẩu\" chỉ gặp khi nói về hàng hoá. \"Nhập khẩu\" là *进口*, không phải *入口*.",
+  "decision": "fixed: '出口 lối ra, 入口 lối vào. Trên biển báo, 出口 là lối ra; nghĩa \"xuất khẩu\" chỉ gặp khi nói về hàng hoá. \"Nhập khẩu\" là 进口, không phải 入口.' The concept card hanviet-false-friends and the Hán-Việt note say the same."
+ },
+ {
+  "id": "zh-vi:unit-g#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P1",
+  "quote": "Biển báo ở Đài Loan viết chữ phồn thể: *禁止吸煙*, *小心*.",
+  "problem": "Taiwan's standard and its no-smoking signs write 菸 for tobacco: 禁止吸菸 (the Tobacco Hazards Prevention Act signage). 吸煙 is the Hong Kong form. The example shows a sign a learner will not see in a Taiwan factory.",
+  "fix": "*禁止吸菸* (Đài Loan viết 菸 cho thuốc lá), *小心*",
+  "decision": "fixed: 禁止吸菸 (Đài Loan viết 菸 cho thuốc lá); the concept card simplified-traditional too."
+ },
+ {
+  "id": "zh-vi:uh-l2-e2",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s3.py)",
+  "severity": "P2",
+  "quote": "我___地铁上班。 / Tôi đi tàu điện ngầm đi làm.",
+  "problem": "\"đi … đi làm\" repeats the verb and reads clumsily.",
+  "fix": "Tôi đi làm bằng tàu điện ngầm.",
+  "decision": "fixed: 'Tôi đi làm bằng tàu điện ngầm.'"
+ },
+ {
+  "id": "zh-vi:unit-i#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "*一共二十八块。* (yí gòng)",
+  "problem": "Unit 1 and unit e say course pinyin always shows citation tones, and the app lays yī gòng under the hanzi; this guidebook writes the sandhi form, so the two disagree on one screen.",
+  "fix": "(yī gòng, đọc yí gòng)",
+  "decision": "fixed: '(yī gòng, đọc yí gòng)'."
+ },
+ {
+  "id": "zh-vi:ui-l3-e6",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s3.py)",
+  "severity": "P2",
+  "quote": "Rẻ một chút đi. => 便宜一点儿吧",
+  "problem": "Translationese; the same lesson (e0, e2) and the guidebook already render 便宜一点儿吧 as \"bớt chút đi\".",
+  "fix": "prompt: \"Bớt chút đi.\"",
+  "decision": "fixed: prompt 'Bớt chút đi.'"
+ },
+ {
+  "id": "zh-vi:unit-j#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "Thời gian luôn đứng trước động từ",
+  "problem": "Only the time point does; a duration follows the verb (我睡了八个小时, 我在中国工作了两年), which A1-2/A2-1 stories use. STYLE-vi §4 reserves \"luôn\" for rules without exceptions.",
+  "fix": "Thời điểm (mấy giờ, hôm nào) đứng trước động từ; *然后* …",
+  "decision": "fixed: 'Thời điểm (mấy giờ, hôm nào) đứng trước động từ'."
+ },
+ {
+  "id": "zh-vi:uj-l2-e1",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s3.py)",
+  "severity": "P2",
+  "quote": "rửa => 洗 (and match 洗 = rửa)",
+  "problem": "The lesson is about laundry (洗衣服 = giặt quần áo, 洗衣机 = máy giặt, 洗澡 = tắm); the single gloss \"rửa\" hides the sense the lesson teaches.",
+  "fix": "洗 = rửa; giặt (prompt \"rửa, giặt\")",
+  "decision": "fixed: 洗 = 'rửa, giặt' (the lesson prompt and the match card show both)."
+ },
+ {
+  "id": "zh-vi:食堂 (lexeme gloss vs lessons/readings)",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json; staged reception/reading.json",
+  "severity": "P2",
+  "quote": "căng tin (uc-l3-e5, guidebook unit j) / nhà ăn (uj-l0-e11, uj-l2-e8…e12, readings)",
+  "problem": "食堂 is rendered two ways across one section; a learner may think 员工食堂 and 食堂 are different places.",
+  "fix": "pick one (\"nhà ăn\", the usual word in Vietnamese factories) and use it everywhere; \"căng tin\" can stay as a second gloss",
+  "decision": "fixed: 'nhà ăn' everywhere (lexeme example, uc-l3-e5, guidebook j, concept card time-place-order, the canteen scenario title); 'căng tin' stays the second gloss."
+ },
+ {
+  "id": "zh-vi:unit-k#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "Với đồng nghiệp cùng tuổi: *小王*, *小李* (tiểu + họ), thân mật như \"anh/chị Vương\" ở Việt Nam.",
+  "problem": "小 + họ is said to a peer or someone younger (closer to \"em/cậu Vương\"); an older colleague is 老 + họ. Telling a learner it equals \"anh/chị\" invites calling an older team-mate 小李.",
+  "fix": "Với đồng nghiệp cùng tuổi hoặc trẻ hơn: *小王*, *小李* (thân mật, gần như \"cậu Vương\", \"em Lý\"); với người lớn tuổi hơn: *老王*, *老李*.",
+  "decision": "fixed: 小王/小李 for a colleague of the same age or younger ('cậu Vương', 'em Lý'), 老王/老李 for an older one."
+ },
+ {
+  "id": "zh:w:jingli (unit k words, lessons uk-l0-e1, uk-l2-e6)",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json; content/zh/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "经理 = giám đốc; quản lý",
+  "problem": "In a factory 经理 is a manager (phòng / bộ phận); the director is 厂长 or 总经理. The first gloss inflates the rank, and 王经理 = \"giám đốc Vương\" runs through every scenario.",
+  "fix": "经理 = quản lý; giám đốc (bộ phận); 王经理 = \"quản lý Vương\" (or keep \"giám đốc\" and note it)",
+  "uncertain": "\"giám đốc\" is the common Vietnamese rendering in business; owner may prefer to keep it",
+  "decision": "fixed (owner item decided by the coordinator, answer-key pass 2, 2026-11-05: 经理 is 'quản lý'; 'giám đốc' is 总经理): the lexicon gloss of zh:w:jingli is 'quản lý', and every Vietnamese line of the generators that rendered 经理 as 'giám đốc' now says 'quản lý' (44 occurrences: lexicon examples, lessons, writing instructions and cues, scenarios, concept cards, the unit-k guide, an HSK 2 question, two stories). Was: uncertain (owner), kept 'giám đốc; quản lý'."
+ },
+ {
+  "id": "zh-vi:ul-l3-e3",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s4.py)",
+  "severity": "P2",
+  "quote": "我希望在您的公司工作。 / Tôi hy vọng được làm việc ở công ty của ông.",
+  "problem": "您的公司 makes the interviewer the owner; a candidate says 你们公司 (the guidebook itself uses 我们公司 from the other side) or formally 贵公司.",
+  "fix": "我希望在你们公司工作。 / Tôi hy vọng được làm việc ở công ty của các anh chị. (or 贵公司 if it is a lexeme)",
+  "decision": "fixed: 我希望在你们公司工作。 / 'Tôi hy vọng được làm việc ở công ty của các anh chị.' (distractors with 你们 too)."
+ },
+ {
+  "id": "zh-vi:um-l3",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s4.py)",
+  "severity": "P2",
+  "quote": "title \"Ngày tháng\"; e0–e6 电影, 唱歌, 爱好, 旅游, 音乐",
+  "problem": "Seven of nine exercises are about hobbies; only e7–e8 are dates. The title misleads the learner choosing a lesson.",
+  "fix": "title \"Sở thích và ngày tháng\"",
+  "decision": "fixed: um-l3 'Sở thích và ngày tháng'."
+ },
+ {
+  "id": "zh-vi:un-l1-e5",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s4.py)",
+  "severity": "P1",
+  "quote": "Tôi thích màu đỏ. => 我喜欢红颜色",
+  "problem": "The standard phrase is 我喜欢红色; 红颜色 is marginal colloquial and is what a learner would then produce. The guidebooks of units c and n already write 红色的车, so the course shows 红色 without teaching it (红色 is no lexeme, REVIEW-NOTES session 2).",
+  "fix": "add 红色 (and 白色 / 黑色 …) as lexemes and key 我喜欢红色; else rephrase to 我喜欢红的 (\"Tôi thích cái màu đỏ.\")",
+  "decision": "fixed: 红色 (and 白色, 黄色) are lexemes now through the ETL (CC-CEDICT hóng sè); the word bank is 我 喜欢 红色 with the distractor 白色."
+ },
+ {
+  "id": "zh-vi:un-l2 / un-l3",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s4.py)",
+  "severity": "P2",
+  "quote": "un-l2 \"Màu sắc\" (exercises: 比, 一样, 最) / un-l3 \"So sánh\" (exercises: 漂亮, 年轻, 可爱, 热情)",
+  "problem": "The two lesson titles are swapped or wrong: colours are in un-l1, comparison is in un-l2, people's looks in un-l3.",
+  "fix": "un-l2 \"So sánh\", un-l3 \"Tả người\" (and un-l1 \"Đồ vật và màu sắc\")",
+  "decision": "fixed: un-l1 'Đồ vật và màu sắc', un-l2 'So sánh', un-l3 'Tả người'."
+ },
+ {
+  "id": "zh-vi:uo-l3-e2",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s5.py)",
+  "severity": "P2",
+  "quote": "Tôi đến từ Việt Nam. => 我从越南来 (and fillBlank uo-l3-e3 我___越南来。)",
+  "problem": "Bare 我从越南来 as a statement is textbook-stiff; natives say 我是从越南来的 (or 我来自越南). The key teaches the stiff form first; the alternative is the natural one.",
+  "fix": "answer 我是从越南来的, alternatives 我从越南来, 我是越南人; fillBlank 我是___越南来的。",
+  "decision": "fixed: key 我是从越南来的, alternatives 我从越南来 | 我是越南人 | 我来自越南; the fill-in is 我是___越南来的。"
+ },
+ {
+  "id": "zh-vi:up-l2-e5",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s5.py)",
+  "severity": "P1",
+  "quote": "Tôi mệt nên muốn nghỉ. => 我累所以想休息",
+  "problem": "A bare predicate adjective with no 很/了 before a clause linker sounds broken (the unit's own checklist item 4 asks for 很). Natives say 我很累，所以想休息 or 我累了，所以想休息. The word bank makes the learner build the broken form.",
+  "fix": "answer 我 很 累 所以 想 休息 (tokens + 很), alternative 我 累 了 所以 想 休息",
+  "decision": "fixed: the answer is 我 很 累 所以 想 休息. The 了 form is not added: the bank has no 了 tile."
+ },
+ {
+  "id": "zh-vi:unit-q#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P1",
+  "quote": "Ở nơi làm việc người Hoa, *微信* (WeChat) là cách liên lạc chính.",
+  "problem": "True for mainland China only. In Taiwan (a main destination of Vietnamese workers, and a setting of this course) work groups run on LINE; WeChat is little used. \"người Hoa\" also generalises to every Chinese-speaking workplace.",
+  "fix": "Ở Trung Quốc đại lục, *微信* (WeChat) là cách liên lạc chính ở chỗ làm; ở Đài Loan người ta thường dùng LINE. Cách viết tin nhắn thì giống nhau.",
+  "decision": "fixed: 'Ở Trung Quốc đại lục, 微信 (WeChat) là cách liên lạc chính ở chỗ làm …; ở Đài Loan người ta thường dùng LINE. Cách viết tin nhắn thì giống nhau.'"
+ },
+ {
+  "id": "zh:w:duanxin (unit q words, uq-l1-e5)",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json; content/zh/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "短信 = tin nhắn",
+  "problem": "短信 is an SMS (phone text), not a WeChat message (微信 / 消息 / 信息). In a unit about WeChat the bare gloss suggests 发短信 for WeChat.",
+  "fix": "短信 = tin nhắn SMS (tin nhắn điện thoại); add to the guidebook \"nhắn WeChat: 发微信\"",
+  "decision": "fixed: 短信 = 'tin nhắn SMS (tin nhắn điện thoại)'; the unit-q guidebook adds 'nhắn WeChat: 发微信'. The stories now send 短信 home (first_day_factory, money_home, overtime_for_sister)."
+ },
+ {
+  "id": "zh-vi:uq-l1-e3",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s5.py)",
+  "severity": "P2",
+  "quote": "Tôi sẽ đến muộn ba mươi phút. => 我晚到三十分钟",
+  "problem": "For a future lateness natives mark it: 我会晚到三十分钟 / 我可能要晚到三十分钟; the bare form reads as a report. The accepted list has the natural forms, but the shown key (and the guidebook 我晚到二十分钟) is the bare one.",
+  "fix": "answer 我会晚到三十分钟, keep 我晚到三十分钟 as an alternative; guidebook 我会晚到二十分钟。",
+  "decision": "fixed: the key 我会晚到三十分钟 and the guidebook 我会晚到二十分钟 (uq-l1-e2 fill-in too)."
+ },
+ {
+  "id": "zh-vi:ur-l0-e7 (身份证)",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json; content/zh/lexicon/lexemes.json",
+  "severity": "P2",
+  "quote": "身份证 = chứng minh thư",
+  "problem": "Vietnam replaced the chứng minh thư by the thẻ căn cước (công dân); uh-l3-e11 already offers \"Thẻ căn cước\". Two renderings of the same document in one course, one of them outdated.",
+  "fix": "身份证 = thẻ căn cước (chứng minh thư) — and use \"thẻ căn cước\" everywhere",
+  "decision": "fixed: 身份证 = 'thẻ căn cước; chứng minh thư (cũ)'; 'thẻ căn cước' in the lexicon example and the bank_card story option."
+ },
+ {
+  "id": "zh-vi:ur-l0-e2",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s5.py)",
+  "severity": "P2",
+  "quote": "我想要一张银行卡。 / Tôi muốn làm một thẻ ngân hàng.",
+  "problem": "\"làm thẻ\" is 办卡; 想要 is \"want to have\". The guidebook teaches 我想办一张银行卡, but the lesson (and ur-l2-e2's key) shows 想要, with 想办 only as an alternative.",
+  "fix": "prompt/key 我想办一张银行卡。 (ur-l2-e2 answer 我想办一张银行卡, 我想要… as alternative)",
+  "decision": "fixed: TX 我想办一张银行卡。 and the typed key (办 is a lexeme now)."
+ },
+ {
+  "id": "zh.write.r_form_bank (ur-l0-e8)",
+  "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json (source _generators/zh-writing-s5.py)",
+  "severity": "P2",
+  "quote": "fields: 姓名 | 国家 | 电话",
+  "problem": "The unit guidebook teaches the bank-form label 国籍 (quốc tịch); real forms say 国籍, and the form here asks 国家 (country). The learner meets a label the guidebook did not teach and misses the one it did.",
+  "fix": "label 国籍 (if a lexeme; else keep 国家 and drop 国籍 from the guidebook table)",
+  "decision": "fixed differently: 国籍 is not in the pinned CC-CEDICT slice (籍 has no entry there), so the form keeps 国家 and the guidebook row now reads '国家 | nước (đơn thật thường ghi 国籍 — quốc tịch)'."
+ },
+ {
+  "id": "zh-vi:unit-s#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "*一共多少钱？* (yí gòng)",
+  "problem": "Same as unit i: the guidebook writes the sandhi tone while the course states pinyin is shown in citation tones (yī gòng under the hanzi).",
+  "fix": "(yī gòng, đọc yí gòng)",
+  "decision": "fixed: '(yī gòng, đọc yí gòng)'."
+ },
+ {
+  "id": "zh-vi:us-l2 / us-l3",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s6.py)",
+  "severity": "P2",
+  "quote": "us-l2 \"Ở cửa hàng\" (辣, 好吃, 饱, 饿) / us-l3 \"Hội thoại: mặc cả\" (一共, 付, 请客, scenario restaurant_order)",
+  "problem": "Titles do not match content: us-l2 is restaurant tastes, us-l3 has no bargaining at all (paying and treating).",
+  "fix": "us-l2 \"Ăn ở nhà hàng\", us-l3 \"Hội thoại: trả tiền, mời khách\"",
+  "decision": "fixed: us-l2 'Ăn ở nhà hàng', us-l3 'Hội thoại: trả tiền, mời khách'."
+ },
+ {
+  "id": "zh-vi:unit-t#guidebook",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "*出租车* (chū zū chē) là taxi; nói hằng ngày là *打车* (gọi xe).",
+  "problem": "打车 is the verb \"take/hail a taxi\", not a word for the car; the sentence reads as if 打车 = taxi. Taiwan says 計程車, not 出租车, which a learner in a Taiwan factory needs.",
+  "fix": "*出租车* là taxi; \"đi taxi\" nói hằng ngày là *打车*. Ở Đài Loan taxi gọi là *计程车* (計程車).",
+  "decision": "fixed: '\"đi taxi\" nói hằng ngày là 打车. Ở Đài Loan taxi gọi là 計程車.'"
+ },
+ {
+  "id": "zh-vi:ut-l3-e5",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s6.py)",
+  "severity": "P2",
+  "quote": "一直 = luôn",
+  "problem": "The unit uses 一直 only in 一直往前走 (\"cứ đi thẳng\"), where \"luôn\" does not fit.",
+  "fix": "一直 = thẳng một mạch; luôn",
+  "decision": "fixed: 一直 = 'cứ thẳng; luôn; mãi' (the match card reads 'cứ thẳng')."
+ },
+ {
+  "id": "zh-vi:uv-l3",
+  "file": "content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-lessons-s6.py)",
+  "severity": "P2",
+  "quote": "title \"Hội thoại: phỏng vấn ngắn\" (exercises: 微信, 发, 发照片; scenarios warehouse_boxes, taiwan_first_day)",
+  "problem": "Nothing in the lesson is an interview; it is WeChat messaging plus the warehouse and Taiwan first-day scenarios.",
+  "fix": "\"Hội thoại: WeChat và ngày đầu đi làm\"",
+  "decision": "fixed: uv-l3 'Hội thoại: WeChat và ngày đầu đi làm'."
+ },
+ {
+  "id": "zh.story.micro_new_colleague#0",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-00.py)",
+  "severity": "P2",
+  "quote": "他是阮南。 || Đây là Nguyễn Nam.",
+  "problem": "An opening introduction says 这是阮南 (as micro_home_far #0 does); 他是阮南 presupposes he was already mentioned. The Vietnamese \"Đây là\" renders 这是, not 他是.",
+  "fix": "这是阮南。 || Đây là Nguyễn Nam.",
+  "decision": "fixed: 这是阮南。"
+ },
+ {
+  "id": "zh.story.micro_home_far#11",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-00.py)",
+  "severity": "P2",
+  "quote": "老李，您呢？您家在哪儿？ || Chú Lý, còn chú? (also zh.story.new_room #20 谢谢您，老李！)",
+  "problem": "老 + surname is how peers or seniors address a man; a young worker calling an older man 老李 to his face (Vietnamese \"chú\") is too familiar, and the 您 beside it clashes. The narrator may say 老李; the young speaker should say 李叔叔 / 李师傅.",
+  "fix": "李师傅，您呢？您家在哪儿？ / 谢谢您，李师傅！ (师傅 is a unit-t lexeme); keep 老李 in narration",
+  "uncertain": "Downgraded after reading zh:concept:polite-work, which teaches 老王 for older colleagues; in mainland workplaces juniors do say 老李 to older peers. Keep only if the owner agrees 李师傅 suits a young woman speaking to a man a generation older.",
+  "decision": "fixed differently (owner item decided by the coordinator, answer-key pass 2, 2026-11-05: 李师傅 for a master worker or a driver, 老李 for a peer colleague): micro_home_far #11 — 老李 is a colleague on the same break, a peer: kept. new_room #20 — 老李 is the dormitory's older worker, so 李师傅 is meant; but 师傅 is no lexeme and 傅 has no reading in the pinned CC-CEDICT slice (content/zh/lexicon/derived/hsk-course.json), so the line would show a hanzi without pinyin. The girl's line drops the vocative (我知道了。谢谢您！ — Cháu biết rồi. Cháu cảm ơn chú!) and the narration keeps 老李; 李师傅 needs zh-subset.py re-run on the pinned downloads (owner, REVIEW-AI.md). Was: uncertain (owner), kept 老李."
+ },
+ {
+  "id": "zh.story.forgotten_wallet#3",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "阮花和她男朋友阮山去商场。… 商场里的东西很便宜。 (apples by the 斤, eggs, meat, queueing at a till)",
+  "problem": "In China apples by the jin, eggs and meat are bought at a 超市 or 菜市场; a 商场 is a department store/mall. The scene reads oddly to a native and teaches 商场 for the wrong place.",
+  "fix": "阮花和她男朋友阮山去超市。… 超市里的东西很便宜。 (translations \"siêu thị\")",
+  "decision": "fixed: 超市 (also #1 and q1); 超市 is declared a new word of this A1-1 story."
+ },
+ {
+  "id": "zh.story.forgotten_wallet#6",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "一斤五块。 || Năm đồng một cân. (#15 120块钱 || 120 đồng; q0 options \"Ba đồng / Năm đồng / Mười đồng\")",
+  "problem": "The lessons render 块 as \"tệ\"; \"đồng\" reads as Vietnamese đồng to a learner. Also \"cân\" = 1 kg for a Vietnamese reader while 一斤 is 500 g (see ub-l2-e4).",
+  "fix": "Năm tệ một cân (nửa ký). / 120 tệ / options \"Ba tệ / Năm tệ / Mười tệ\"",
+  "decision": "fixed: 'Năm tệ nửa ký.', 'một ký rưỡi', 'một ký thịt', q0 'Nửa ký táo giá bao nhiêu?' (Năm tệ / Ba tệ / Mười tệ)."
+ },
+ {
+  "id": "zh.story.first_dumplings#5",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P1",
+  "quote": "不常常吃。这是我第一次在中国吃饺子。",
+  "problem": "常常 is negated as 不常 (or 不经常); 不常常 is a textbook-flagged learner error. The learner copies it.",
+  "fix": "不常吃。这是我第一次在中国吃饺子。 (check that the story segmenter accepts 不常; else 很少吃 if 少 is known, or 不是常常吃)",
+  "decision": "fixed differently: 很少吃。 (常 alone is no lexeme, so 不常 would show a character without pinyin); 少 is declared new."
+ },
+ {
+  "id": "zh.story.first_dumplings#9",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "也来两杯茶，谢谢。",
+  "problem": "Adding to an order is 再来两杯茶 or 还要两杯茶; 也来 sounds off.",
+  "fix": "再来两杯茶，谢谢。",
+  "decision": "fixed: 再来两杯茶 (再 declared new)."
+ },
+ {
+  "id": "zh.story.first_dumplings#15",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "太好吃了！我今天也太饿了。",
+  "problem": "也 has nothing to attach to (\"also too hungry\"); the natural reason clause is 我今天太饿了 / 而且我今天很饿.",
+  "fix": "太好吃了！我今天太饿了。 || Ngon quá! Hôm nay anh đói quá.",
+  "decision": "fixed: 太好吃了！我今天太饿了。 'Hôm nay anh đói quá.'"
+ },
+ {
+  "id": "zh.story.new_room#14",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "这儿有几个人？ || Ở đây có mấy người ạ?",
+  "problem": "Asking how many share the room is 这个房间住几个人？; \"这儿有几个人\" asks how many people are present right now (the room is empty), which the answer 四个人 then contradicts.",
+  "fix": "这个房间住几个人？ || Phòng này mấy người ở ạ?",
+  "decision": "fixed: 这个房间住几个人？ 'Phòng này mấy người ở ạ?' (住 declared new)."
+ },
+ {
+  "id": "zh.story.birthday_cup#22",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "在中国，大家生日都吃面条。 || Ở Trung Quốc, sinh nhật ai cũng ăn mì.",
+  "problem": "Birthday noodles (长寿面) are a tradition, but \"everyone\" overstates it (cake is as common among young people). A cultural statement should not be absolute.",
+  "fix": "在中国，很多人生日吃面条。 || Ở Trung Quốc, nhiều người ăn mì vào ngày sinh nhật (mì trường thọ).",
+  "decision": "fixed: 在中国，很多人生日吃面条。 'Ở Trung Quốc, nhiều người ăn mì vào ngày sinh nhật.' (多 declared new)."
+ },
+ {
+  "id": "zh.story.rainy_takeaway#17",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "还没有。送了外卖，我就回去吃。",
+  "problem": "\"after delivering\" is 送完外卖; 送了外卖 + 就 is understandable but stilted.",
+  "fix": "还没有。送完外卖，我就回去吃。 (if 完 is a lexeme; else 外卖送了以后，我就回去吃。)",
+  "decision": "fixed differently: 送了这些外卖以后，我就回去吃。 (完 is no course word)."
+ },
+ {
+  "id": "zh.story.tea_in_the_park#16",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P1",
+  "quote": "是啊！越南的面条和咖啡都很好吃。",
+  "problem": "Drinks are 好喝, not 好吃; 咖啡很好吃 is a collocation error the learner would copy (the lessons contrast 好吃/好喝).",
+  "fix": "是啊！越南的面条很好吃，咖啡也很好喝。 || Đúng vậy ạ! Mì Việt Nam rất ngon, cà phê cũng rất ngon.",
+  "decision": "fixed: 530 块钱 / '530 tệ' and the q1 options."
+ },
+ {
+  "id": "zh.story.tea_in_the_park#21",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "老王说中国的东西，阮花说越南的东西。 || Ông Vương kể chuyện Trung Quốc, Hoa kể chuyện Việt Nam.",
+  "problem": "东西 is \"things, objects\"; \"tell about things in China\" is 说中国的事 / 讲中国的事. The Vietnamese \"kể chuyện\" is right, the Chinese is not.",
+  "fix": "老王说中国的事，阮花说越南的事。 (if 事 is a lexeme; else 老王说中国，阮花说越南。)",
+  "decision": "fixed: 越南的面条很好吃，咖啡也很好喝。 (好喝 declared new)."
+ },
+ {
+  "id": "zh.story.tea_in_the_park#12",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "胡志明市是我的家！ || Thành phố Hồ Chí Minh là quê cháu đấy!",
+  "problem": "\"X 是我的家\" is poetic (\"X is my home\"); the reply to \"they live in HCMC\" is 我家就在胡志明市！ or 我是胡志明市人！",
+  "fix": "我家就在胡志明市！",
+  "decision": "fixed with the reviewer's fallback: 老王说中国，阮花说越南。 (事 is band A1-2 and the story was at its new-word limit)."
+ },
+ {
+  "id": "zh.story.found_wallet#12",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "里边有520块钱。",
+  "problem": "520 (wǔ èr líng ≈ 我爱你) is the best-known Chinese number pun; a stranger answering \"520\" to a young man raises a smile the story does not intend. Also \"520 đồng\" in the translation and q1 (see the 块 = tệ finding).",
+  "fix": "里边有五百三十块钱。 / 530 tệ (and q1 options)",
+  "decision": "fixed: 我家就在胡志明市！"
+ },
+ {
+  "id": "zh.story.borrowed_chopsticks#10",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "这双你用，那双你朋友用。",
+  "problem": "Hoa arrived alone and no friend has been mentioned; the old man's \"for your friend\" comes from nowhere. (Also #14: chopsticks, cups and apples are bought at a 超市, not a 商场.)",
+  "fix": "这双你用，那双你明天用。 or 一双不够，拿两双吧。; #14 去超市买东西",
+  "decision": "fixed: 那双你明天用 ('để mai cháu dùng'); #14 去超市买东西 (超市 and 明天 declared new)."
+ },
+ {
+  "id": "zh.story.moving_day#1",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "这个周末，小李换房子。 … 阮海和小李一起拿桌子上楼。",
+  "problem": "Moving house is 搬家; 换房子 is \"change flats\" in the abstract. Furniture is 搬'd, not 拿'd (拿 is for things held in the hand). 搬 is a unit-g lexeme.",
+  "fix": "这个周末，小李搬家。 (if 搬家 is a lexeme) / 阮海和小李一起搬桌子上楼。 / 他们又搬了椅子、床和电视。",
+  "decision": "fixed: 搬家 is a lexeme now (CC-CEDICT bān jiā); 小李搬家, 搬桌子, 又搬了椅子… (搬 and 搬家 declared new)."
+ },
+ {
+  "id": "zh.story.wedding_cups#16",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "阮海，我们来了！祝你们快乐！ || Chúc hai bạn hạnh phúc!",
+  "problem": "The wedding wish is 祝你们幸福！ or 新婚快乐！; 祝你们快乐 is generic and sounds off at a wedding. The Vietnamese \"hạnh phúc\" is 幸福.",
+  "fix": "祝你们幸福！ (if 幸福 is a lexeme) or 新婚快乐！",
+  "decision": "fixed: 祝你们幸福！ (幸福 is a lexeme now, declared new instead of 快乐)."
+ },
+ {
+  "id": "zh.story.mother_visits#22",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P1",
+  "quote": "他妈妈这次在广州七天。",
+  "problem": "No verb: a duration in a place needs one (住 / 待). As written it is ungrammatical and the learner copies the pattern.",
+  "fix": "他妈妈这次在广州住了七天。 || Lần này mẹ anh ấy ở Quảng Châu bảy ngày.",
+  "decision": "fixed: 他妈妈这次在广州住了七天。 (住 declared new)."
+ },
+ {
+  "id": "zh.story.mother_visits#8",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P2",
+  "quote": "太谢谢您了！ (Nam to his mother)",
+  "problem": "A son does not thank his mother with the formal 您 + 太谢谢了; it sounds cold or ironic.",
+  "fix": "谢谢妈妈！ || Con cảm ơn mẹ!",
+  "decision": "fixed: 谢谢妈妈！ 'Con cảm ơn mẹ!'"
+ },
+ {
+  "id": "zh.story.lost_child#13-#18",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-01.py)",
+  "severity": "P1",
+  "quote": "#13 B: 孩子，你妈妈姓什么？ / #14 B: 我妈妈姓李。 / #18 A: 儿子！",
+  "problem": "Speaker B is both the mall staff member and the boy in two consecutive lines, and A is both Tuyết and the boy's mother. With the A/B voice cast the audio has one man's voice ask and answer, and Tuyết's voice cry \"儿子！\".",
+  "fix": "give the staff and mother lines to N (narrated: 商场的人问：“…”; 那个女人说：“儿子！”), or restructure so each voice is one character",
+  "decision": "fixed: the staff's question and the mother's cry are narrated (商场的人问：“…”, 她说：“儿子！”); A is only Tuyết, B only the boy. Story rule 9 of zh-check-stories.py (zh_stories_lib.voice_and_unit_problems): each story declares its cast, one character per voice, A female / B male; a voice may not call its own character or answer its own question. On the stories as they were, the rule flags lost_child, a_bicycle, renting_a_flat, dinner_for_countrymen and forgotten_wallet (a self-question, rewritten as one sentence)."
+ },
+ {
+  "id": "zh.story.first_day_factory#23",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-02.py)",
+  "severity": "P2",
+  "quote": "他给他妈妈发了一条微信：“我今天开始工作了！” (also call_in_sick #20 to a Chinese boss: fine)",
+  "problem": "A mother in Vietnam uses Zalo or Messenger, rarely WeChat; the detail rings false to Vietnamese readers. (REVIEW-NOTES: letters home became WeChat messages for lack of 信 / 寄.)",
+  "fix": "他给他妈妈发了一条信息 / 短信 (短信 is a lexeme): “我今天开始工作了！”",
+  "decision": "fixed: 发了一条短信 'nhắn tin cho mẹ' (also money_home #20/#21 and overtime_for_sister)."
+ },
+ {
+  "id": "zh-vi stories: 块 rendered \"đồng\"",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (sources _generators/zh-stories-01…06.py)",
+  "severity": "P1",
+  "quote": "overtime_for_sister #10 阮海的工资是七千块。 || Lương của Hải là bảy nghìn đồng. (q0/q1 \"5.000 đồng / 7.000 đồng\"); also forgotten_wallet, found_wallet, wedding_cups, first_snow …",
+  "problem": "To a Vietnamese reader \"đồng\" is the Vietnamese dong: \"7.000 đồng\" is about 30 US cents, so the salary story makes no sense, and q0/q1 options read as VND. The lessons say \"tệ\" throughout.",
+  "fix": "render every 块/元 amount in story translations and question options as \"tệ\" (7.000 tệ, 500 tệ, 120 tệ …); one replace in zh_stories_lib or each batch",
+  "decision": "fixed: every 块/元 amount in the story translations and options is 'tệ' (46 lines in 10 stories; Taiwan: 'Đài tệ'). Rule 'vi-unit' (a number + 'đồng' beside 块/元 is a finding) runs in the story check, the lesson check and over the lexicon examples; the lexeme 块 is glossed 'tệ (tiền, khẩu ngữ); miếng'."
+ },
+ {
+  "id": "zh.story.train_to_shanghai#15",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-03.py)",
+  "severity": "P2",
+  "quote": "从广州到上海要多少时间？",
+  "problem": "\"How long does it take\" is 要多长时间 / 要多久; 多少时间 is heard but marked as learner-ish.",
+  "fix": "从广州到上海要多长时间？ (if 长 cháng is allowed here: REVIEW-NOTES says 长 is stored as cháng, so it is)",
+  "decision": "fixed: 从广州到上海要多长时间？"
+ },
+ {
+  "id": "zh.story.wechat_to_mother (title, #0–#20)",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-03.py)",
+  "severity": "P2",
+  "quote": "给妈妈的微信 / 妈妈，你好！… 你们的女儿：阮花",
+  "problem": "A Vietnamese daughter writing to her mother in Vietnam on WeChat, in Chinese, strains belief (Vietnamese families use Zalo/Messenger; the mother reads no Chinese). Same pattern as first_day_factory #23.",
+  "fix": "frame it as a 日记 / a message to her Chinese teacher or a Chinese friend describing her life, or add one narrator line: 阮花用汉语写，然后给妈妈翻译。; title 给老师的信息 / 我的一天",
+  "decision": "fixed differently: one line before the signature says why the mother gets Chinese: 这是我用汉语写的。妈妈，你看不懂吧？下次我用越南语写！ (翻译 is no course word; the letter is kept)."
+ },
+ {
+  "id": "zh.story.rainy_monday#7-#8",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-03.py)",
+  "severity": "P2",
+  "quote": "#7 阮山八点二十分到了工厂。 #8 车上，阮山一直看手机上的时间。 #9 他跑进工厂。",
+  "problem": "Chronology is broken: he arrives at the factory, then is back on the bus watching the time, then runs in.",
+  "fix": "swap #7 and #8 (车上… then 阮山八点二十分到了工厂。他跑进工厂。)",
+  "decision": "fixed: #7 and #8 swapped."
+ },
+ {
+  "id": "zh.story.rainy_monday#12",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-03.py)",
+  "severity": "P2",
+  "quote": "阮山，你今天怎么晚了？ / #14 今天很多人都晚了。",
+  "problem": "For arriving late natives say 怎么来晚了 / 很多人都来晚了 (or 迟到了, a declared new word of this story); bare 晚了 means \"it is late\".",
+  "fix": "阮山，你今天怎么来晚了？ / 今天很多人都迟到了。",
+  "decision": "fixed: 你今天怎么来晚了？ / 今天很多人都迟到了。"
+ },
+ {
+  "id": "zh.story.karaoke_night#2",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-03.py)",
+  "severity": "P2",
+  "quote": "小王先唱歌，他的歌非常好听。 / #21 他们一直唱歌到十一点。",
+  "problem": "他的歌 is \"his songs\" (as if he wrote them); \"he sings well\" is 他唱得非常好听. A separable verb-object 唱歌 does not take 到 + time after it: 一直唱到十一点.",
+  "fix": "小王先唱，他唱得非常好听。 / 那天晚上，他们一直唱到十一点。",
+  "decision": "fixed differently: 唱 alone is no course word, so 小王先唱歌，大家都说很好听。 and 他们一直玩儿到十一点。"
+ },
+ {
+  "id": "zh.story.sister_arrives#13-#16",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-03.py)",
+  "severity": "P1",
+  "quote": "#13 B: 你们是越南人吧？ #15 B: 欢迎！中国菜你吃过吗？ (taxi driver) — B is also Nam (#6, #8, #10, #18)",
+  "problem": "Speaker B voices both Nam and the taxi driver within the same scene, so the audio gives Nam's voice the driver's questions to Nam's own sister. Same issue in phone_on_the_bus (B = supermarket staff #7 and bus driver #11–#17, milder).",
+  "fix": "put the driver's lines in narration (司机问：“你们是越南人吧？”) or let N voice them; check the builder for a rule: one character per voice letter per story",
+  "decision": "fixed: the taxi driver's lines are narrated (司机问：“…”, 司机说：“…”); B is only Nam."
+ },
+ {
+  "id": "zh.story.sister_arrives#7",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-03.py)",
+  "severity": "P2",
+  "quote": "不累。在飞机上我睡觉了。",
+  "problem": "睡觉了 with a place phrase reads \"I went to bed on the plane\"; natural is 我在飞机上睡了一会儿 or 在飞机上我睡了。",
+  "fix": "不累。在飞机上我睡了。",
+  "decision": "fixed differently: 在飞机上我休息了。 (睡 alone is no course word)."
+ },
+ {
+  "id": "zh.story.phone_on_the_bus#18",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-03.py)",
+  "severity": "P2",
+  "quote": "阮雪买了一瓶果汁，送了司机。",
+  "problem": "送 with only a recipient after 了 sounds cut off; it needs 送给司机 or 送司机 + object.",
+  "fix": "阮雪买了一瓶果汁，送给了司机。 (or …送给司机。)",
+  "decision": "fixed: 送给司机; the passer-by at #7 is narrated (他说：“…”)."
+ },
+ {
+  "id": "zh.story.a_bicycle#20-#21",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-04.py)",
+  "severity": "P1",
+  "quote": "#20 A: 阮红，你有自行车了！真漂亮！ #21 A: 是啊！以后我每天骑车上班。",
+  "problem": "Two consecutive lines by two characters (小李, then Hồng answering) carry the same speaker A, so one voice greets and answers itself; a reader also cannot tell who speaks #21.",
+  "fix": "#20 B or N (小李说：“阮红，你有自行车了！真漂亮！”), keep #21 A",
+  "decision": "fixed: #20 is narrated (小李说：“阮红，你有自行车了！…”)."
+ },
+ {
+  "id": "zh-vi stories: one voice letter for several characters",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (sources _generators/zh-stories-04/05.py)",
+  "severity": "P2",
+  "quote": "night_shift_warehouse: A = 王主管 (#4, #16) and 阮雪 (#12, #14); mid_autumn_moon: A = 小李 (#5), 阮花 (#10), her mother (#14, #16); money_home: A = bank clerk (#3–#18) and Hải's mother (#21)",
+  "problem": "Same voice for different characters in one scene; with a two-voice cast the listener cannot follow who speaks (the two P1 cases are lost_child and sister_arrives / a_bicycle).",
+  "fix": "narrate the minor character's line (N + 说：“…”), or add a self-check rule: within a story each speaker letter maps to one tokenMap name",
+  "decision": "fixed: night_shift_warehouse (Tuyết narrated), mid_autumn_moon (Tiểu Lý and Hoa narrated, A = the mother), money_home (the mother's reply narrated); the same rule found three more two-character voices and they are narrated too: spring_festival_call (the sister), overtime_for_sister (the sister), cough_at_the_clinic (the nurse). Every story with dialogue now declares its cast (stories/casts.json, 40 stories)."
+ },
+ {
+  "id": "zh.story.mid_autumn_moon#7",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-05.py)",
+  "severity": "P2",
+  "quote": "晚上，宿舍楼上有很多人。 || … trên sân thượng ký túc xá …",
+  "problem": "楼上 is \"upstairs\" (any upper floor); a rooftop is 楼顶 / 天台. The Vietnamese and q1 (\"Trên sân thượng\") say rooftop.",
+  "fix": "晚上，宿舍楼顶上有很多人。 / 我们越南老乡都在楼顶上看月亮。 (if 顶 is in a lexeme; else translate \"trên tầng trên\" and q1 accordingly)",
+  "decision": "fixed differently: 顶 is no course word, so the Chinese keeps 楼上 and the Vietnamese and q1 say 'trên lầu'."
+ },
+ {
+  "id": "zh.story.money_home#21",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-05.py)",
+  "severity": "P2",
+  "quote": "收到了我告诉你。你自己也要吃好！",
+  "problem": "The conditional \"when I get it I'll tell you\" needs 就: 收到了我就告诉你. Without it the line reads as two clauses run together. (Also #20: a mother in Vietnam on WeChat, see first_day_factory #23.)",
+  "fix": "收到了我就告诉你。你自己也要吃好！",
+  "decision": "fixed: 他妈妈回了一条短信：“收到了我就告诉你。…”"
+ },
+ {
+  "id": "zh.story.taiwan_words#2",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-06.py)",
+  "severity": "P1",
+  "quote": "这儿的人说普通话，但是有的词不一样。 || Người ở đây nói tiếng phổ thông …",
+  "problem": "In Taiwan the standard language is called 国语 (國語) or 华语, never 普通话; a story that teaches Taiwan words should not open with the mainland label, and a Taiwanese colleague would correct it.",
+  "fix": "这儿的人也说中文，但是有的词不一样。 || Người ở đây cũng nói tiếng Trung, nhưng có một số từ khác. (or add 国语 as a lexeme: 这儿的人说“国语”，就是普通话。)",
+  "decision": "fixed: 这儿的人也说中文，但是有的词不一样。"
+ },
+ {
+  "id": "zh.story.taiwan_words#9-#11",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-06.py)",
+  "severity": "P2",
+  "quote": "八十块。 || Tám mươi đồng. … 这儿的钱不一样，八十块很便宜！ || Tiền ở đây khác, tám mươi đồng là rẻ lắm!",
+  "problem": "The point of the scene is that Taiwan uses New Taiwan dollars; \"đồng\" hides it (and reads as VND). The Vietnamese should name the currency.",
+  "fix": "Tám mươi Đài tệ. / Tiền ở đây khác, tám mươi Đài tệ là rẻ lắm!",
+  "decision": "fixed: 'Tám mươi Đài tệ'."
+ },
+ {
+  "id": "zh.story.renting_a_flat#8-#10",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-06.py)",
+  "severity": "P1",
+  "quote": "#8 A: 一个月一千五百块。 #9 A: 有点儿贵。能便宜一点儿吗？ #10 A: 如果你们租一年，一千四百块。",
+  "problem": "Speaker A is the landlady (李小姐) and the tenant Hồng (#9, #14, #21); three consecutive A lines alternate between them, so the audio has one voice bargain with itself and the reader cannot tell who asks.",
+  "fix": "#9 → B (Sơn asks) or N (阮红说：“有点儿贵…”); keep each voice to one character",
+  "decision": "fixed: #9 is Sơn's (B); Hồng's #14 and #21 are narrated; A is only the landlady."
+ },
+ {
+  "id": "zh.story.renting_a_flat#12",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-06.py)",
+  "severity": "P2",
+  "quote": "你们来以前，我一定让人洗干净。",
+  "problem": "A dirty room is 打扫干净 (cleaned), not 洗干净 (washed, said of clothes, dishes, hands).",
+  "fix": "你们来以前，我一定让人打扫干净。 (if 打扫 is a lexeme; else 我一定让人弄干净。)",
+  "decision": "fixed: 打扫干净 (打扫 is a lexeme now, band A2-1, CC-CEDICT dǎ sǎo as a chain of entries)."
+ },
+ {
+  "id": "zh.story.fire_drill#3",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-06.py)",
+  "severity": "P1",
+  "quote": "如果有火，先别急 … #10 有火的时候 … #14 “火！火！” … #19 如果真的有火",
+  "problem": "A fire breaking out is 着火 (zháo huǒ) / 发生火灾; 有火 means \"have a light\" and the alarm cry is 着火了！ The safety lesson teaches the learner the wrong word for the one emergency where it matters.",
+  "fix": "add 着火 (zháo huǒ; 着 is stored as zhe, so it needs its own lexeme) and write 如果着火了 / 着火的时候 / “着火了！着火了！” / 如果真的着火了",
+  "decision": "fixed: 着火 is a lexeme now (CC-CEDICT zháo huǒ, a chain of entries; 着 alone stays zhe): 如果着火了, 着火的时候, “着火了！着火了！”, 如果真的着火了."
+ },
+ {
+  "id": "zh.story.dinner_for_countrymen#8",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-06.py)",
+  "severity": "P1",
+  "quote": "#8 B: 我们去哪儿吃？ #9 B: 去工厂对面的越南饭馆。",
+  "problem": "B (Nam) asks where to eat and then answers himself; #8 is the friend's question.",
+  "fix": "#8 speaker A",
+  "decision": "fixed: #8 is the friend's (A)."
+ },
+ {
+  "id": "zh.story.cough_at_the_clinic#12",
+  "file": "content/zh/_drafts/staged/content/zh/stories/stories.json (source _generators/zh-stories-06.py)",
+  "severity": "P2",
+  "quote": "让我看一下你的嘴。 || Để tôi xem miệng anh một chút.",
+  "problem": "For a cough the doctor looks at the throat: 张开嘴，我看一下 / 让我看看你的嗓子. 看你的嘴 sounds like checking the lips.",
+  "fix": "张开嘴，让我看一下。 || Anh há miệng ra, để tôi xem.",
+  "decision": "kept: 张开 / 嗓子 / 喉咙 are no course words and 张 is stored as the measure word (its word card would say 'tờ'). 让我看一下你的嘴 is understood; the doctor examining the mouth is plausible at A2-1."
+ },
+ {
+  "id": "zh.read.a1cap_msg_mother",
+  "file": "content/zh/_drafts/staged/content/zh/reception/reading.json (source _generators/zh-assessment.py)",
+  "severity": "P2",
+  "quote": "妈妈今天晚上加班。饭在桌子上。吃了饭请洗碗。",
+  "problem": "A mother does not write 请 to her child; it reads like a notice. Natural: 吃完饭把碗洗了 / 吃了饭洗一下碗。",
+  "fix": "吃了饭洗一下碗。 (or 吃了饭别忘了洗碗。)",
+  "decision": "fixed: 吃了饭洗一下碗。"
+ },
+ {
+  "id": "zh.read.hsk1_b_r4_05",
+  "file": "content/zh/_drafts/staged/content/zh/reception/reading.json (source _generators/zh-exam.py)",
+  "severity": "P2",
+  "quote": "我的房间不大，很干净。",
+  "problem": "The contrast \"not big, (but) clean\" wants 但是/可是 or 不大，但是很干净; without it the second clause sounds like a continuation.",
+  "fix": "我的房间不大，但是很干净。",
+  "decision": "kept: 但是 and 可是 are HSK 3.0 level 2 and an HSK 1 item may use level-1 words only (zh-exam.py stops otherwise); 不大，很干净 is natural in speech."
+ },
+ {
+  "id": "zh.clip.hsk2_b_l3_02",
+  "file": "content/zh/_drafts/staged/content/zh/reception/listening.json (source _generators/zh-exam.py)",
+  "severity": "P1",
+  "quote": "A: 阮花，你哥哥做什么工作？ | B: 他是司机，开出租车。",
+  "problem": "阮花 (Hoa, a woman) is answered by speaker B, the male voice. Also zh.clip.hsk2_a_l3_07 (A: 阮花，你周末想去哪儿玩儿？ | B: 我想去公园。). In a listening exam the voice contradicts the name.",
+  "fix": "swap the speakers (B asks, A answers) or rename the addressee to a man (阮南)",
+  "decision": "fixed: the two speakers are swapped in hsk2_b_l3_02 and hsk2_a_l3_07, so 阮花 answers with the female voice. zh-check-answers.py rule 10 'voice' (zh_text.voice_problems) flags a clip line that says 我叫/我是 + a course name, or answers a line calling that name, in the other voice; no other clip had one."
+ },
+ {
+  "id": "zh.clip.hsk2_b_l2b_01",
+  "file": "content/zh/_drafts/staged/content/zh/reception/listening.json (source _generators/zh-exam.py)",
+  "severity": "P2",
+  "quote": "A: 你在等谁？ | B: 我在等公交车。",
+  "problem": "谁 asks for a person; the answer is a bus. Natural: 你在等什么？ / 你在这儿等什么？",
+  "fix": "A: 你在等什么？ | B: 我在等公交车。",
+  "decision": "fixed: 你在等什么？"
+ },
+ {
+  "id": "zh.clip.ul_model_name",
+  "file": "content/zh/_drafts/staged/content/zh/reception/listening.json (source _generators/zh-speech-s4.py)",
+  "severity": "P2",
+  "quote": "A: 我叫阮海。 (model for zh.speak.l_name, cue \"Bạn là Nguyễn Hải\")",
+  "problem": "The model sentence \"I am Nguyễn Hải\" is given to the female voice A; the speech item casts the learner as a man.",
+  "fix": "speaker B (male) for ul_model_name",
+  "decision": "fixed: the model clip of a speech item whose target says the learner's name is voiced by that name's voice (zh-speech-s4.voice_of): zh.clip.ul_model_name is B. Rule 'voice' checks it."
+ },
+ {
+  "id": "zh.clip.ix_factory_safety_end",
+  "file": "content/zh/_drafts/staged/content/zh/reception/listening.json (source _generators/zh-scenarios-s6.py)",
+  "severity": "P2",
+  "quote": "用这个红的，机器就停了。",
+  "problem": "A stop button is pressed: 按这个红的(按钮). 用这个红的 (\"use this red one\") is vague for a safety instruction.",
+  "fix": "按这个红的，机器就停了。 (if 按 is a lexeme)",
+  "decision": "fixed: 按这个红的，机器就停了。 (按 is a lexeme now, band A2-1)."
+ },
+ {
+  "id": "zh.clip.ix_clinic_doctor_miss",
+  "file": "content/zh/_drafts/staged/content/zh/reception/listening.json (source _generators/zh-scenarios-s6.py)",
+  "severity": "P2",
+  "quote": "我们去问护士吧。",
+  "problem": "The doctor's repair line, when the learner's answer is not understood, sends both to ask the nurse; a doctor would say 请再说一遍 / 你慢慢说. The line reads as giving up on the patient.",
+  "fix": "没关系，你慢慢说。",
+  "decision": "fixed: 没关系，你慢慢说。"
+ },
+ {
+  "id": "zh.clip.ix_cp6_interview_0_s",
+  "file": "content/zh/_drafts/staged/content/zh/reception/listening.json (source _generators/zh-scenarios-s6.py)",
+  "severity": "P2",
+  "quote": "_0: 你好，请坐。你叫什么名字？ / _0_s: 您的名字是？",
+  "problem": "The interviewer switches from 你 to 您 between the line and its simplified repeat; an interviewer addressing a candidate uses 你 (or keeps one register).",
+  "fix": "_0_s: 你的名字是？ / 你叫什么？",
+  "decision": "fixed: 你的名字是？"
+ },
+ {
+  "id": "zh.scenario.restaurant_order p1",
+  "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json (source _generators/zh-scenarios-s6.py)",
+  "severity": "P2",
+  "quote": "title \"Mua cơm hộp ở quán (kiểu Đài Loan)\"; p1 在这儿吃还是带走？",
+  "problem": "A Taiwan 便当 shop asks 内用还是外带？ (內用/外帶); 在这儿吃还是带走 is the mainland phrasing. The scenario is labelled Taiwan, so the learner rehearses a question they will not hear there.",
+  "fix": "either drop \"(kiểu Đài Loan)\" from the title, or add 内用 / 外带 as lexemes and use p1 内用还是外带？ with 内用 among the accepted replies; mention the pair in the unit-s guidebook \"Ở Đài Loan\" section",
+  "decision": "fixed: the title drops '(kiểu Đài Loan)'; the unit-s guidebook names the Taiwan question 內用還是外帶？ beside the mainland 在这儿吃还是带走？ (内用 / 外带 are not in the pinned CC-CEDICT slice)."
+ },
+ {
+  "id": "zh:concept:initials-traps",
+  "file": "content/zh/_drafts/staged/content/zh/pedagogy/concepts.json (source _generators/zh-concepts.py)",
+  "severity": "P1",
+  "quote": "zh gần \"tr\" miền Bắc nói cong lưỡi, ch như zh nhưng bật hơi.",
+  "problem": "Northern Vietnamese pronounces tr exactly like ch (no curled tongue); the retroflex tr is Central/Southern. A Hanoi learner told to copy \"tr miền Bắc\" will say an unretroflexed zh, the very error the card fights.",
+  "fix": "zh gần \"tr\" khi uốn lưỡi (như giọng miền Trung, miền Nam), không bật hơi; ch như zh nhưng bật hơi.",
+  "decision": "fixed: 'zh gần \"tr\" khi uốn lưỡi (như giọng miền Trung, miền Nam; giọng Bắc đọc tr như ch, không uốn), không bật hơi' (en too)."
+ },
+ {
+  "id": "zh:concept:initials-traps",
+  "file": "content/zh/_drafts/staged/content/zh/pedagogy/concepts.json (source _generators/zh-concepts.py)",
+  "severity": "P2",
+  "quote": "c (菜 cài) là \"x\" bật hơi, không phải \"c\".",
+  "problem": "c is an aspirated affricate [tsʰ]; \"x bật hơi\" (an aspirated s) misses the stop at the start. z likewise is [ts], not mentioned.",
+  "fix": "c (菜 cài) đọc như \"ts\" bật hơi mạnh (gần \"x\" nhưng có tiếng bật ở đầu), không phải \"c\"; z là \"ts\" không bật hơi.",
+  "uncertain": "\"x bật hơi\" is the usual shorthand in Vietnamese textbooks; the fix only sharpens it",
+  "decision": "fixed (reviewer's wording; the uncertainty was about style only): c = 'ts' bật hơi mạnh, z = 'ts' không bật hơi."
+ },
+ {
+  "id": "zh:concept:shi-sentences",
+  "file": "content/zh/_drafts/staged/content/zh/pedagogy/concepts.json (source _generators/zh-concepts.py)",
+  "severity": "P1",
+  "quote": "EXC: Câu nói tên dùng 叫 hay 姓, không dùng 是: 我叫阮海, 我姓阮.",
+  "problem": "False: 我是阮海 is normal Chinese (on the phone, introducing oneself; the stories use it: 我是阮红, 我是二号车间的阮海), and the speech items accept it. The card forbids what the course itself teaches and grades as right.",
+  "fix": "Nói tên thường dùng 叫: 我叫阮海; 我是阮海 (\"tôi là Hải\") cũng đúng, nhất là khi gọi điện. Nói họ dùng 姓: 我姓阮.",
+  "decision": "fixed: 'Nói tên thường dùng 叫: 我叫阮海; 我是阮海 (\"tôi là Hải\") cũng đúng, nhất là khi gọi điện. Nói họ dùng 姓: 我姓阮.'"
+ },
+ {
+  "id": "zh:concept:bu-mei",
+  "file": "content/zh/_drafts/staged/content/zh/pedagogy/concepts.json (source _generators/zh-concepts.py)",
+  "severity": "P2",
+  "quote": "EXC: 是 và tính từ luôn đi với 不: 不是, 不贵, kể cả khi nói về hôm qua: 昨天不冷.",
+  "problem": "\"luôn\" is too strong for adjectives: a change that has not happened takes 没 (衣服还没干, 天还没黑, 病还没好). STYLE-vi §4 keeps \"luôn\" for exceptionless rules.",
+  "fix": "是 luôn đi với 不; tính từ thường đi với 不, kể cả khi nói về hôm qua: 昨天不冷 (trừ khi nói một thay đổi chưa xảy ra: 还没好).",
+  "decision": "fixed: '是 luôn đi với 不: 不是; tính từ thường đi với 不 … (trừ khi nói một thay đổi chưa xảy ra: 还没好)'."
+ },
+ {
+  "id": "zh:concept:simplified-traditional",
+  "file": "content/zh/_drafts/staged/content/zh/pedagogy/concepts.json (source _generators/zh-concepts.py)",
+  "severity": "P1",
+  "quote": "Ở nhà máy Đài Loan bạn sẽ thấy 禁止吸煙, 車站, 小心",
+  "problem": "Taiwan signs write 禁止吸菸 (菸 for tobacco); 吸煙 is the Hong Kong form (same as the unit-g guidebook finding).",
+  "fix": "Ở nhà máy Đài Loan bạn sẽ thấy 禁止吸菸, 車站, 小心",
+  "decision": "fixed: 禁止吸菸 (vi and en)."
+ },
+ {
+  "id": "zh:concept:hanviet-false-friends",
+  "file": "content/zh/_drafts/staged/content/zh/pedagogy/concepts.json (source _generators/zh-concepts.py)",
+  "severity": "P2",
+  "quote": "Phần lớn từ Hán-Việt có gốc chữ Hán, nên nhiều từ tiếng Trung nghĩa giống hệt",
+  "problem": "Circular (Hán-Việt words are by definition from Chinese). The intended point is that much Vietnamese vocabulary is Hán-Việt.",
+  "fix": "Rất nhiều từ tiếng Việt là từ Hán-Việt, nên nhiều từ tiếng Trung nghĩa giống hệt: …",
+  "decision": "fixed: 'Rất nhiều từ tiếng Việt là từ Hán-Việt, nên …' (en too); its 出口 example is aligned with the new 出口 note."
+ },
+ {
+  "id": "zh.primer.script four-tones.tone2",
+  "file": "content/zh/primer/script-primer.json (source _generators/zh-primer.py)",
+  "severity": "P1",
+  "quote": "Thanh 2 (35): đi lên từ giữa lên cao, như khi hỏi lại «hả?».",
+  "problem": "\"hả\" is written with dấu hỏi, the tone the very next line maps to tone 3. A Vietnamese reader sees the mark, not the rising intonation, and links tone 2 to hỏi. The comparison should use a word whose own tone rises.",
+  "fix": "Thanh 2 (35): đi lên từ giữa lên cao, như giọng hỏi lại ngạc nhiên «Á?» hay «Thế á?». (en: like a surprised \"huh?\")",
+  "decision": "fixed: 'như giọng hỏi lại ngạc nhiên «Á?» hay «Thế á?»'; the compiled primer and its review sheet are regenerated."
+ },
+ {
+  "id": "hanviet:zh:出口",
+  "file": "content/hanviet/zh.json (source _drafts/_generators/hanviet-zh.txt; sheet content/hanviet/REVIEW.md)",
+  "severity": "P1",
+  "quote": "False friend: 出口 on a sign is the exit (lối ra); Vietnamese xuất khẩu means export.",
+  "problem": "出口 means \"export\" in Chinese too (出口产品, 出口公司), so it is at most a partial false friend; flagging it as a full one (and the unit-g guidebook \"không phải xuất khẩu\") misleads workers in export factories. The real trap is 入口 ≠ nhập khẩu (import is 进口).",
+  "fix": "Partly a false friend: on a sign 出口 is the exit (lối ra); about goods it is export (xuất khẩu), as in Vietnamese. Import is 进口, not 入口.",
+  "decision": "fixed: 'Partly a false friend: on a sign 出口 is the exit (lối ra); about goods it is export (xuất khẩu), as in Vietnamese. Import is 进口, not 入口.'"
+ },
+ {
+  "id": "hanviet:zh:作业",
+  "file": "content/hanviet/zh.json (source _drafts/_generators/hanviet-zh.txt)",
+  "severity": "P2",
+  "quote": "False friend: 作业 is homework (bài tập); Vietnamese tác nghiệp means to carry out an operation at work.",
+  "problem": "In factories 作业 is exactly \"tác nghiệp\": 作业区, 安全作业, 作业指导书 (work instruction). For this course's audience the work sense is the one they will read on the shop floor.",
+  "fix": "Partly a false friend: at school 作业 is homework (bài tập); in a factory 作业 is a work operation, as Vietnamese tác nghiệp (作业区 khu tác nghiệp).",
+  "decision": "fixed: 'Partly a false friend: at school 作业 is homework; in a factory 作业 is a work operation, as Vietnamese tác nghiệp (作业区 khu tác nghiệp).'"
+ },
+ {
+  "id": "hanviet:zh:小姐",
+  "file": "content/hanviet/zh.json (source _drafts/_generators/hanviet-zh.txt); also zh-vi:u1-l2-e7 (小姐 = cô (gọi lịch sự))",
+  "severity": "P2",
+  "quote": "Partly a false friend: 小姐 is the polite \"Miss\" for any young woman",
+  "problem": "On the Mainland, calling a waitress or shop girl 小姐 is now avoided (it can suggest a hostess or sex worker); 服务员, 美女 or 你好 are used. 李小姐 with a surname stays fine. A worker told it is the polite word for any young woman can give offence.",
+  "fix": "… polite with a surname (李小姐); on the Mainland do not call a waitress just 小姐 (use 服务员) — the bare word can be misread. (Same caveat on the unit-2 match gloss.)",
+  "decision": "fixed: the note says 小姐 is polite with a surname and not to call a waitress just 小姐 on the Mainland; the gloss is 'cô (đi với họ, như cô Lý)'."
+ },
+ {
+  "id": "zh:w:jin-1 / zh:w:gongjin",
+  "file": "content/zh/lexicon/lexemes.json (source _generators/zh-lex.py)",
+  "severity": "P2",
+  "quote": "斤 = cân (nửa ki-lô-gam) / 公斤 example: 这个箱子二十公斤。 || Cái thùng này hai mươi cân.",
+  "problem": "Both 斤 (500 g) and 公斤 (1 kg) are rendered \"cân\"; the 公斤 example is right for a Vietnamese reader, so every 斤 sentence translated \"… cân\" doubles the weight (see ub-l2-e4, forgotten_wallet).",
+  "fix": "斤 = cân Trung Quốc (nửa ký); 公斤 = ki-lô-gam (ký, cân); in translations of 斤 write \"nửa ký\" multiples or \"cân (Tàu)\"",
+  "decision": "fixed: 斤 = 'cân Trung Quốc (nửa ký)', its example 'Cho tôi nửa ký táo.'; 公斤 = 'ki-lô-gam (ký)', example 'nặng hai mươi ký'."
+ },
+ {
+  "id": "zh:w:kuai-kuai",
+  "file": "content/zh/lexicon/lexemes.json (source _generators/zh-lex.py)",
+  "severity": "P2",
+  "quote": "块 = đồng (tiền, khẩu ngữ); miếng (example: 一杯咖啡二十块。 || … hai mươi tệ.)",
+  "problem": "The gloss names the unit \"đồng\" while its own example, the lessons and the guidebooks say \"tệ\"; this gloss is probably where the stories' \"đồng\" comes from.",
+  "fix": "块 = tệ (khẩu ngữ, = 元); miếng",
+  "decision": "fixed: 块 = 'tệ (tiền, khẩu ngữ); miếng'."
+ },
+ {
+  "id": "zh:w:shihou",
+  "file": "content/zh/lexicon/lexemes.json (source _generators/zh-lex.py)",
+  "severity": "P2",
+  "quote": "你什么时候下班？ || Mấy giờ bạn tan ca?",
+  "problem": "什么时候 is \"khi nào / bao giờ\"; \"mấy giờ\" is 几点. The example of the lexeme 时候 should not translate it away.",
+  "fix": "你什么时候下班？ || Khi nào bạn tan ca?",
+  "decision": "fixed: 'Khi nào bạn tan ca?'"
+ },
+ {
+  "id": "zh:w:huang",
+  "file": "content/zh/lexicon/lexemes.json (source _generators/zh-lex.py)",
+  "severity": "P2",
+  "quote": "我喜欢黄的花。 || Tôi thích hoa màu vàng.",
+  "problem": "Colour + 的 + noun is marginal; natives say 黄色的花 or 黄花. Same gap as 红颜色 (un-l1-e5): the lexicon has no 红色 / 黄色.",
+  "fix": "我喜欢黄色的花。 once 黄色 is a lexeme; until then 这朵花是黄的。 is natural",
+  "decision": "fixed: 黄色 is a lexeme (example 我喜欢黄色的花。); 黄's own example is 那个杯子是黄的。"
+ },
+ {
+  "id": "zh:w:wei-hello vs unit-v guidebook",
+  "file": "content/zh/lexicon/lexemes.json; content/zh/_drafts/staged/content/courses/zh-vi.json (source _generators/zh-units.py)",
+  "severity": "P2",
+  "quote": "lexeme 喂 [wèi]; guidebook unit v: *喂，您好！* (wéi) — Trên điện thoại 喂 thường đọc thanh 2.",
+  "problem": "The pinyin laid under 喂 in every exercise is wèi, the guidebook writes wéi as if it were the spelling. Same kind of clash as the sandhi tones in units i and s.",
+  "fix": "guidebook: *喂* (pinyin ghi wèi; khi nghe điện thoại thường đọc wéi)",
+  "decision": "fixed: 'Pinyin ghi 喂 là wèi; khi nghe điện thoại người ta thường đọc wéi (thanh 2).'"
+ },
+ {
+  "id": "_summary",
+  "severity": "info",
+  "file": "C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\6dd650d7c5d7341a\\82ea6b33-e22d-4a2d-907b-9b4441f9e202\\scratchpad\\zh-review\\findings-language.json",
+  "problem": "D-10 language pass, zh-vi, reviewer persona: native Vietnamese, native-level Mandarin teacher. Read-only on C:\\src\\lft-zh (HEAD 4c373d07). Not a finding.",
+  "linesRead": {
+   "lessonsAndGuidebooks": "27/27 unit guidebooks + word lists; 108/108 lessons, 976/976 exercises read (100 %, every prompt, option, key, translation)",
+   "stories": "42/42 stories: 902 sentences + 126 questions + 42 blurbs (all); plus a scripted scan of speaker letters vs names and same-speaker question/answer pairs",
+   "readings": "29/29 course readings (all blocks); 30/90 HSK exam readings (every 3rd)",
+   "listeningClips": "222/222 course clips incl. 126 scenario partner turns (all segments); 30/90 HSK exam clips (every 3rd) + a name-vs-voice scan of all 312",
+   "scenarios": "21/21 (titles, goals, partner lines, learner prompts, accepted variants)",
+   "speechItems": "52/52 (30 via lessons, 22 reserved)",
+   "writingTasks": "35/35 (19 via lessons, 16 reserved)",
+   "conceptCards": "28/28 (all vi fields + examples)",
+   "primer": "content/zh/primer/script-primer.json (= REVIEW.md): intro, 5 tones, 10 tone pairs, 10 sound contrasts + notes, 3 sandhi rules with 13 examples + notes, strokes, 20/20 checkpoint items (all)",
+   "hanViet": "199/199 entries of content/hanviet/zh.json, all 79 with a note (24 false-friend + 14 partly flags)",
+   "lexiconGlossesAndExamples": "302/906 (33 %): every 3rd lexeme in file order (index % 3 == 0), gloss vi + example; plus a regex scan of all 906 examples"
+  },
+  "counts": {
+   "P0": 0,
+   "P1": 25,
+   "P2": 80,
+   "total": 105,
+   "uncertain": 4
+  },
+  "method": "Dump scripts in the session scratchpad (zh-review/*.py); findings appended per unit/batch to findings-language.jsonl with progress.jsonl. Fixes name the staged file and the generator that is the source of truth. Answer keys were out of scope (separate D-10 answer pass, commit 84ba9c5a).",
+  "progressEntries": 42,
+  "decision": "not a finding (the scope the reviewer read)."
+ }
+]

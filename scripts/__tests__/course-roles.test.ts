@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { readFileSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 
 import { resolveCourseRoles, type CourseRole } from "../lib/course-roles";
 import { deriveProfiles, nativeArtifactPrefix, primaryNativeCodeOf } from "../lib/course-profiles";
@@ -110,11 +110,27 @@ describe("course roles (P3d)", () => {
     expect(derive([ja, jaVi], true, false)["ja-en"].hiddenFromOnboarding).toBeUndefined();
   });
 
-  test("P4a: in the shipped catalogue only the legacy es-en, de-en, it-en and ja-en are hidden from onboarding (es-vi, de-vi, it-vi, ja-vi are A1-claimable)", () => {
+  test("P4d: zh-vi is the primary Chinese course; zh-en is standalone and leaves onboarding once zh is A1-claimable", () => {
+    const packs = loadPacks().map((p) => p.pack);
+    const zh = packs.filter((p) => p.targetCode === "zh");
+    expect(zh.map((p) => p.id).sort()).toEqual(["zh-en", "zh-vi"]);
+    const derive = (claimA1: boolean) => deriveProfiles({ packs: zh, presentRelPaths: [], lexiconDbs: {}, claimA1ByTarget: { zh: claimA1 } });
+    expect(derive(true)["zh-en"].role).toBe("standalone");
+    expect(derive(true)["zh-en"].hiddenFromOnboarding).toBe(true);
+    expect(derive(true)["zh-vi"].role).toBeUndefined();
+    expect(derive(true)["zh-vi"].hiddenFromOnboarding).toBeUndefined();
+    // A standalone course is never offered in onboarding, claimable or not.
+    expect(derive(false)["zh-en"].hiddenFromOnboarding).toBe(true);
+  });
+
+  test("P4a: in the shipped catalogue only the legacy es-en, de-en, it-en, ja-en (and zh-en, once zh-vi is compiled) are hidden from onboarding", () => {
     const shipped = JSON.parse(readFileSync("src/content/course-profiles.json", "utf8")) as {
       profiles: Record<string, { hiddenFromOnboarding?: boolean }>;
     };
     const hidden = Object.entries(shipped.profiles).filter(([, p]) => p.hiddenFromOnboarding).map(([id]) => id);
-    expect(hidden).toEqual(["de-en", "es-en", "it-en", "ja-en"]);
+    // zh-vi reaches src/content with the first zh compile (the audio bot commit; P4d): zh is A1-claimable then
+    // (a dry compile in memory, 2026-11-05), so zh-en leaves onboarding like ja-en.
+    const zhCompiled = existsSync("src/content/ids/zh.json");
+    expect(hidden).toEqual(["de-en", "es-en", "it-en", "ja-en", ...(zhCompiled ? ["zh-en"] : [])]);
   });
 });

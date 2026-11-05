@@ -13,6 +13,7 @@
 import { existsSync } from "fs";
 
 import type { PackSource } from "../../../content/schema";
+import { buildPlugin } from "../languages";
 import { readJson, safeResolve } from "../pipeline";
 
 export type LintFinding = { rule: string; severity: "error" | "warn" | "info"; where: string; message: string };
@@ -216,11 +217,34 @@ export function lintSyllabusCoverage(
   return { findings, stats };
 }
 
+/** How the context lint reads a text: whether it is a sentence, and the words it uses. */
+type ContextReader = { dictionary: boolean; words(text: string): string[] | null; key(surface: string): string };
+
+const MIN_SENTENCE_WORDS = 3;
+const LATIN_ARTICLE = /^(el|la|los|las|le|les|l'|un|une|der|die|das|il|lo|gli|o|a|os|as) /;
+
+/**
+ * P4d: the words of a course text. A plugin that segments by dictionary (ja, zh, ko: `withLexicon`) reads it with
+ * its own tokenizer bound to the course's words — the dictionary path the app lays readings with — so an unspaced
+ * sentence has words and a word is found whole, never inside a longer stored word. Every other language keeps the
+ * P3f whitespace path (words between spaces; a surface matched as a whole word, its article stripped).
+ */
+function contextReader(lang: string, lexicon: { surface: string }[]): ContextReader {
+  const rules = buildPlugin(lang).rules;
+  if (rules.withLexicon) {
+    const bound = rules.withLexicon({ entries: lexicon.map((l) => ({ surface: l.surface })) });
+    const words = (text: string) => bound.tokenize(bound.foldSpoken(text));
+    return { dictionary: true, words, key: (surface) => words(surface).join(" ") };
+  }
+  return { dictionary: false, words: () => null, key: (surface) => surface.toLowerCase().replace(LATIN_ARTICLE, "") };
+}
+
 /**
  * P3f: a daily word is learnt in context — every syllabus lexeme should
  * appear in at least one sentence (≥ 3 words) of a lesson, a reading, a
  * listening clip or a graded story (P5b: content/<lang>/stories/). A
- * warning for now; the target is 0 by the end of P5b.
+ * warning for now; the target is 0 by the end of P5b. P4d: unspaced
+ * scripts are read by the plugin's dictionary tokenizer (contextReader).
  */
 export function lintSyllabusContext(
   pack: PackSource,
@@ -231,10 +255,16 @@ export function lintSyllabusContext(
   const findings: LintFinding[] = [];
   const stats = { withContext: 0, withoutContext: 0 };
   if (!syllabus || !lexicon) return { findings, stats };
+  const reader = contextReader(lang, lexicon);
   const sentences: string[] = [];
+  // Dictionary path: every word of every sentence, as the tokenizer's tokens.
+  const sentenceWords = new Set<string>();
   const collect = (v: unknown): void => {
     if (typeof v === "string") {
-      if (v.trim().split(/\s+/).length >= 3) sentences.push(v.toLowerCase());
+      const words = reader.words(v);
+      if (words === null) {
+        if (v.trim().split(/\s+/).length >= MIN_SENTENCE_WORDS) sentences.push(v.toLowerCase());
+      } else if (words.length >= MIN_SENTENCE_WORDS) for (const w of words) sentenceWords.add(w);
     } else if (Array.isArray(v)) v.forEach(collect);
     else if (v && typeof v === "object") Object.values(v).forEach(collect);
   };
@@ -247,13 +277,16 @@ export function lintSyllabusContext(
   const stories = rel(`content/${lang}/stories/stories.json`);
   if (stories) collect(stories);
   const byId = new Map(lexicon.map((l) => [l.id, l]));
-  const head = (surface: string) => surface.toLowerCase().replace(/^(el|la|los|las|le|les|l'|un|une|der|die|das|il|lo|gli|o|a|os|as) /, "");
   const escape = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const inContext = (surface: string): boolean => {
+    if (reader.dictionary) return sentenceWords.has(reader.key(surface));
+    const re = new RegExp(`(^|[^\\p{L}])${escape(reader.key(surface))}([^\\p{L}]|$)`, "u");
+    return sentences.some((t) => re.test(t));
+  };
   for (const e of syllabus.entries) {
     const lex = byId.get(e.lexemeId);
     if (!lex) continue;
-    const re = new RegExp(`(^|[^\\p{L}])${escape(head(lex.surface))}([^\\p{L}]|$)`, "u");
-    if (sentences.some((t) => re.test(t))) stats.withContext += 1;
+    if (inContext(lex.surface)) stats.withContext += 1;
     else {
       stats.withoutContext += 1;
       findings.push({ rule: "syllabus-context", severity: "warn", where: e.lexemeId, message: `"${lex.surface}" is a daily word but no lesson, reading, clip or story uses it in a sentence (target 0 by the end of P5b)` });

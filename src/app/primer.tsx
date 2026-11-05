@@ -18,11 +18,12 @@ import { courseProfile } from "@/lib/course-profile";
 import { useT } from "@/lib/i18n";
 import { exitScreen } from "@/lib/navigation";
 import { primerPassedFor } from "@/lib/learning/primer-progress";
-import { coursePrimer, primerText, scorePrimerCheckpoint, type PrimerCheckpoint, type PrimerSection, type PrimerText } from "@/lib/script-primer";
+import { coursePrimer, isKanaPrimer, primerText, scorePrimerCheckpoint, type PrimerCheckpoint, type PrimerSection, type PrimerText } from "@/lib/script-primer";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
-type Ctx = { courseId: string; native: string };
+/** kana: a kana primer, whose checkpoint texts speak of kana and the romaji line (ja); a tones primer has its own (zh). */
+type Ctx = { courseId: string; native: string; kana: boolean };
 
 export default function PrimerScreen() {
   const styles = useStyles();
@@ -31,7 +32,7 @@ export default function PrimerScreen() {
   const courseId = useProgress((s) => s.activeCourseId);
   const primer = coursePrimer(courseId);
   if (!primer) return <Redirect href="/" />;
-  const ctx: Ctx = { courseId, native: courseProfile(courseId).nativeCode };
+  const ctx: Ctx = { courseId, native: courseProfile(courseId).nativeCode, kana: isKanaPrimer(primer) };
   const tx = (text: PrimerText) => primerText(text, ctx.native);
 
   return (
@@ -91,6 +92,8 @@ function Sound({ say, ctx, children, testID }: { say: string; ctx: Ctx; children
  * sound (device voice) and pick the kana. Reaching the pass mark records `primerPassed` for the course — which turns
  * off the romaji line of a `romajiUntilPrimer` course; nothing else is written (no XP, no lesson, no evidence). A
  * failed attempt changes nothing, and it can be retaken at once; no lesson is ever locked behind it.
+ * P4d: a tones primer's items — hear a word and pick its pinyin. Passing records `primerPassed` the same way; the
+ * reading under the text stays (the learner's own reading-aid switch turns it off), and the texts say so.
  */
 function Checkpoint({ checkpoint, ctx }: { checkpoint: PrimerCheckpoint; ctx: Ctx }) {
   const styles = useStyles();
@@ -119,7 +122,7 @@ function Checkpoint({ checkpoint, ctx }: { checkpoint: PrimerCheckpoint; ctx: Ct
       {passedBefore && answers === null ? (
         <View style={styles.badge} testID="primer-checkpoint-passed-badge">
           <Ionicons name="checkmark-circle" size={18} color={colors.greenDark} />
-          <Text style={styles.badgeText}>{t("primer.checkpoint.passedBadge")}</Text>
+          <Text style={styles.badgeText}>{t(ctx.kana ? "primer.checkpoint.passedBadge" : "primer.checkpoint.passedBadgeGeneric")}</Text>
         </View>
       ) : null}
     </>
@@ -145,7 +148,7 @@ function Checkpoint({ checkpoint, ctx }: { checkpoint: PrimerCheckpoint; ctx: Ct
           {t("primer.checkpoint.score", { correct: result.correct, total: result.total })}
         </Text>
         <Text style={styles.paragraph} testID={result.passed ? "primer-checkpoint-passed" : "primer-checkpoint-not-yet"}>
-          {result.passed ? t("primer.checkpoint.passed") : t("primer.checkpoint.notYet", { passMark: checkpoint.passMark })}
+          {result.passed ? t(ctx.kana ? "primer.checkpoint.passed" : "primer.checkpoint.passedReadingStays") : t("primer.checkpoint.notYet", { passMark: checkpoint.passMark })}
         </Text>
         <Pressable onPress={start} accessibilityRole="button" style={({ pressed }) => [styles.secondaryButton, pressed && styles.pressed]} testID="primer-checkpoint-retry">
           <Text style={styles.secondaryButtonText}>{t("primer.checkpoint.retry")}</Text>
@@ -173,7 +176,7 @@ function Checkpoint({ checkpoint, ctx }: { checkpoint: PrimerCheckpoint; ctx: Ct
         </>
       ) : (
         <>
-          <Text style={styles.paragraph}>{t("primer.checkpoint.listenPick")}</Text>
+          <Text style={styles.paragraph}>{t(item.kind === "soundToPinyin" ? "primer.checkpoint.listenPinyin" : "primer.checkpoint.listenPick")}</Text>
           <Pressable
             onPress={() => speakTarget(ctx.courseId, item.audio.say)}
             accessibilityRole="button"
@@ -273,6 +276,50 @@ function SectionBody({ section, ctx }: { section: PrimerSection; ctx: Ctx }) {
                 ))}
               </View>
               {pair.note ? <Text style={styles.tip}>{tx(pair.note)}</Text> : null}
+            </View>
+          ))}
+        </View>
+      );
+    case "soundContrasts":
+      return (
+        <View style={{ gap: 10 }}>
+          {section.contrasts.map((pair) => (
+            <View key={pair.a.hanzi + pair.b.hanzi} style={{ gap: 4 }}>
+              <Text style={styles.label}>{pair.focus}</Text>
+              <View style={styles.row} testID={`primer-contrast-${pair.a.hanzi}${pair.b.hanzi}`}>
+                {[pair.a, pair.b].map((w) => (
+                  <Sound key={w.hanzi} say={w.hanzi} ctx={ctx}>
+                    <Text style={styles.glyph}>{w.hanzi}</Text>
+                    <Text style={styles.small}>
+                      {w.pinyin} · {tx(w.gloss)}
+                    </Text>
+                  </Sound>
+                ))}
+              </View>
+              {pair.note ? <Text style={styles.tip}>{tx(pair.note)}</Text> : null}
+            </View>
+          ))}
+        </View>
+      );
+    case "toneSandhi":
+      return (
+        <View style={{ gap: 12 }}>
+          {section.rules.map((rule) => (
+            <View key={rule.rule} style={{ gap: 6 }} testID={`primer-sandhi-${rule.rule}`}>
+              <Text style={styles.paragraph}>{tx(rule.text)}</Text>
+              {rule.examples.map((x) => (
+                <View key={x.hanzi} style={styles.row}>
+                  <Sound say={x.audio.say} ctx={ctx}>
+                    <Text style={styles.glyph}>{x.hanzi}</Text>
+                  </Sound>
+                  <View style={{ flex: 1, gap: 2 }}>
+                    <Text style={styles.label}>
+                      {t("primer.sandhi.written")}: {x.written} → {t("primer.sandhi.said")}: {x.spoken}
+                    </Text>
+                    <Text style={styles.small}>{tx(x.gloss)}</Text>
+                  </View>
+                </View>
+              ))}
             </View>
           ))}
         </View>

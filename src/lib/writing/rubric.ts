@@ -25,7 +25,9 @@
  */
 
 import { msg, type Message } from "../i18n/message";
+import { negationAwareMatcher } from "../languages/negation";
 import { alignedMatchKind, bestMatchKind, type MatchKind } from "../languages/reading-input";
+import { slotRunSpans } from "../languages/runs";
 import type { LanguageRules } from "../languages/types";
 import { normalizeSpoken } from "../speech/grader";
 
@@ -105,14 +107,22 @@ type AlignToKey = LanguageRules["alignAnswerToKey"];
  * hanzi variant — languages/reading-input.ts), or not at all. Whether it
  * matches is exactly the plain containment-after-alignment test.
  */
-function slotMatch(answerTokens: string[], slot: WritingSlot, rules: LanguageRules, align: AlignToKey): MatchKind {
+function slotMatch(raw: string, answerTokens: string[], slot: WritingSlot, rules: LanguageRules, align: AlignToKey): MatchKind {
+  // QC 2026-11-05 §1.2: a variant inside a negated span does not realize the slot ("Je n'aime pas" is not "j'aime").
+  // A cue-provided slot is a fact handed to the learner (a name, a day): mentioning it is the requirement, whatever the
+  // polarity of its clause ("I can't come on Thursday" names the day off), so it is matched as before.
+  const normalize = (text: string) => normalizeWritten(text, rules);
+  const polarity = slot.cueProvided ? {} : rules;
+  // Answer-key review pass 2: a plugin may let a slot take insertions and joined tokens (zh 喝一杯咖啡, 138 1234 5678).
+  const plain = negationAwareMatcher(polarity, raw, answerTokens, normalize, rules.slotRuns);
   return bestMatchKind(
     slot.variants.map((variant) => {
       const key = normalizeWritten(variant, rules);
       const aligned = align?.(answerTokens.join(" "), key);
       const keyTokens = tokensOf(key);
-      if (!containsRun(aligned === undefined ? answerTokens : tokensOf(aligned), keyTokens)) return null;
-      return aligned === undefined || containsRun(answerTokens, keyTokens) ? "script" : alignedMatchKind(rules);
+      const matches = aligned === undefined ? plain : negationAwareMatcher(polarity, raw, tokensOf(aligned), normalize, rules.slotRuns);
+      if (!matches(keyTokens)) return null;
+      return aligned === undefined || plain(keyTokens) ? "script" : alignedMatchKind(rules);
     })
   );
 }
@@ -143,19 +153,6 @@ function readingOnlyField(slotIds: string[]): { readingOnlySlotIds?: string[] } 
   return slotIds.length === 0 ? {} : { readingOnlySlotIds: slotIds };
 }
 
-/** Every [start, end) run where `needle` occurs in `haystack`. */
-function runSpans(haystack: string[], needle: string[]): [number, number][] {
-  const spans: [number, number][] = [];
-  if (needle.length === 0) return spans;
-  outer: for (let i = 0; i + needle.length <= haystack.length; i++) {
-    for (let j = 0; j < needle.length; j++) {
-      if (haystack[i + j] !== needle[j]) continue outer;
-    }
-    spans.push([i, i + needle.length]);
-  }
-  return spans;
-}
-
 /**
  * How many DISTINCT places the answer realizes one slot (Phase 10 §27):
  * overlapping variant matches ("moi je suis Léa" hitting two variants at
@@ -164,7 +161,7 @@ function runSpans(haystack: string[], needle: string[]): [number, number][] {
  */
 function slotRealizations(answerTokens: string[], slot: WritingSlot, rules: LanguageRules): number {
   const spans = slot.variants
-    .flatMap((variant) => runSpans(answerTokens, tokensOf(normalizeWritten(variant, rules))))
+    .flatMap((variant) => slotRunSpans(answerTokens, tokensOf(normalizeWritten(variant, rules)), rules.slotRuns))
     .sort((a, b) => a[0] - b[0]);
   let count = 0;
   let end = -1;
@@ -205,7 +202,7 @@ export function evaluateGuidedWriting(input: {
   const answerTokens = tokensOf(normalized);
   const tokenCount = answerTokens.length;
 
-  const kinds = new Map(rubric.requiredSlots.map((s) => [s, slotMatch(answerTokens, s, rules, rules.alignWrittenToKey)]));
+  const kinds = new Map(rubric.requiredSlots.map((s) => [s, slotMatch(input.text, answerTokens, s, rules, rules.alignWrittenToKey)]));
   const matched = rubric.requiredSlots.filter((s) => kinds.get(s) !== null);
   const missing = rubric.requiredSlots
     .filter((s) => !matched.includes(s))
@@ -366,7 +363,7 @@ export function evaluateSimpleForm(input: {
     }
     filled += 1;
     // A form field holds one value, not the learner's sentence: it aligns as a typed answer does.
-    const kind = slotMatch(answerTokens, slot, rules, rules.alignAnswerToKey);
+    const kind = slotMatch(raw, answerTokens, slot, rules, rules.alignAnswerToKey);
     if (kind !== null) {
       matchedSlotIds.push(slot.id);
       if (kind === "reading") readingOnlySlotIds.push(slot.id);

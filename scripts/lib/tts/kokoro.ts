@@ -9,8 +9,10 @@
  * P4c: a language listed in `engines.kokoro.phonemeFrontends` is NOT handed
  * to Kokoro's own G2P. Its phonemes are built at plan time from the course's
  * stored readings ("course-readings": ja, scripts/lib/tts/ja-kana.ts — misaki's
- * Japanese G2P needs a MeCab dictionary, and every one is BSD), carried on
- * each plan segment, and the helper feeds them to the model directly
+ * Japanese G2P needs a MeCab dictionary, and every one is BSD; P4d: zh,
+ * scripts/lib/tts/zh-readings.ts — the stored CC-CEDICT pinyin with the tone
+ * sandhi for audio, instead of jieba + pypinyin), carried on each plan
+ * segment, and the helper feeds them to the model directly
  * (`--input phonemes`). Every other language is unchanged: text in, misaki /
  * espeak-ng G2P inside the helper.
  */
@@ -20,16 +22,16 @@ import path from "path";
 
 import { shq } from "../piper-audio";
 
-import { jaClipPhonemes, type JaSpeechIndex } from "./ja-kana";
 import type { DownloadItem, EnginesDoc, LicenseCard, SynthJob, TtsEngine, Voice } from "./types";
 
 export const KOKORO_HELPER = "scripts/lib/tts/kokoro_synth.py";
 
 /**
  * Kokoro leaves long edge silence on short words, which fails the speaking-rate check: French "merci"
- * (0.55 s of speech in 1.25 s), English run 41474632304 (302 of 1,656 clips, "about": 0.51 s in 1.25 s).
+ * (0.55 s of speech in 1.25 s), English run 41474632304 (302 of 1,656 clips, "about": 0.51 s in 1.25 s),
+ * Mandarin run 41919221002 (15 short words with about 1.2 s of trailing silence, e.g. 明白, 越南).
  */
-export const TRIM_EDGES: ReadonlySet<string> = new Set(["fr", "en"]);
+export const TRIM_EDGES: ReadonlySet<string> = new Set(["fr", "en", "zh"]);
 
 export type PhonemeFrontend = "course-readings";
 
@@ -40,32 +42,47 @@ export function kokoroFrontend(engines: Pick<EnginesDoc, "engines">, language: s
 
 type PhonemeSegment = { voiceId: string; text: string; phonemes?: string };
 
+/** A front-end's reading of one clip text: its Kokoro phonemes, or why they cannot be built without a guess. */
+export type PhonemeReader = (text: string) => { ok: true; phonemes: string } | { ok: false; error: string };
+/** A language's front-end, loaded once: its reader, or the problems that stop it (scripts/lib/tts/frontends.ts). */
+export type PhonemeReaderLoad = { read: PhonemeReader | null; problems: string[] };
+
 /**
  * Plan step (P4c): the Kokoro phonemes of every segment whose voice is a Kokoro voice of a front-end language,
  * as new segments (inputs untouched); a segment the front-end cannot read without a guess is a problem.
+ * `load` is called once per front-end language the clips need.
  */
 export function attachKokoroPhonemes<C extends { clipId: string; segments: S[] }, S extends PhonemeSegment>(
   clips: readonly C[],
   voicesById: ReadonlyMap<string, Pick<Voice, "engine" | "language">>,
   engines: Pick<EnginesDoc, "engines">,
-  jaIndex: () => { index: JaSpeechIndex | null; problems: string[] }
+  load: (language: string) => PhonemeReaderLoad
 ): { clips: C[]; problems: string[] } {
-  const wants = (s: PhonemeSegment) => {
+  const languageOf = (s: PhonemeSegment): string | null => {
     const v = voicesById.get(s.voiceId);
-    return v !== undefined && v.engine === "kokoro" && kokoroFrontend(engines, v.language) === "course-readings";
+    return v !== undefined && v.engine === "kokoro" && kokoroFrontend(engines, v.language) === "course-readings" ? v.language : null;
   };
-  if (!clips.some((c) => c.segments.some(wants))) return { clips: [...clips], problems: [] };
-  const loaded = jaIndex();
-  if (loaded.index === null) return { clips: [...clips], problems: loaded.problems };
-  const index = loaded.index;
+  if (!clips.some((c) => c.segments.some((s) => languageOf(s) !== null))) return { clips: [...clips], problems: [] };
   const problems: string[] = [];
+  const readers = new Map<string, PhonemeReader | null>();
+  const readerFor = (language: string): PhonemeReader | null => {
+    if (!readers.has(language)) {
+      const loaded = load(language);
+      problems.push(...loaded.problems);
+      readers.set(language, loaded.read);
+    }
+    return readers.get(language) ?? null;
+  };
   const out = clips.map((clip) => ({
     ...clip,
     segments: clip.segments.map((seg) => {
-      if (!wants(seg)) return seg;
-      const r = jaClipPhonemes(seg.text, index);
+      const language = languageOf(seg);
+      if (language === null) return seg;
+      const read = readerFor(language);
+      if (read === null) return seg;
+      const r = read(seg.text);
       if (!r.ok) {
-        problems.push(`kokoro ja front-end: ${clip.clipId}: ${r.error}`);
+        problems.push(`kokoro ${language} front-end: ${clip.clipId}: ${r.error}`);
         return seg;
       }
       return { ...seg, phonemes: r.phonemes };
