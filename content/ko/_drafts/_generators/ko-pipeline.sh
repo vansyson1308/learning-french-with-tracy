@@ -76,3 +76,11 @@ if ! python -I -c "import json,sys; p=json.load(open('content/ko/_drafts/pack.js
 fi
 bun scripts/course-draft.ts syllabus --target ko
 python -I "$G/ko-lex.py" . split
+# Session 4: graded stories. They are graded by the staged syllabus (bands) and lexicon, so they come last; each
+# batch stops on a story the checks reject, and ko-check-stories.py on a finding over the whole set. The seed writes
+# the head of the staged stories.json afresh (voice cast, function words).
+rm -rf content/ko/_drafts/stories/batches
+for story_batch in "$G"/ko-stories-[0-9]*.py; do python -I "$story_batch" .; done
+python -I "$G/ko-check-stories.py" .
+python -I "$G/ko-stories-seed.py" .
+ingest stories

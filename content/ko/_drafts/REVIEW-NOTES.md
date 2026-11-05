@@ -106,6 +106,25 @@ answer rule over both banks. Findings on the first runs: 1 non-word (모 → 차
 마십니까 / 마시십시오 / 마셔), Hangul in one Vietnamese description (rewritten). `course-draft validate --target ko`: 0
 errors.
 
+**Graded stories (coordinator: 40–50, as for de-vi).** 43 graded stories (A1-1 12, A1-2 16, A2-1 15) and 2 A1-0
+micro-stories, 7,334 word tokens, 144 declared new words; 616 of the 786 A1 syllabus lexemes occur in a story.
+`ko_stories_lib.py` ports the story engine for Korean (Intl.Segmenter cuts at spaces, so a token is an eojeol): each
+authored word is analysed to the lexeme it is (a noun with its particles and the copula, a conjugated verb) and
+written into the story's tokenMap, so the app's word sheet shows that lexeme. Every sentence passes the lesson word
+check (particles, number systems) and ends in 해요체 or 합쇼체. `ko-check-stories.py` re-runs every check and the band
+mix; `ko-vi-stories.test.ts` runs the real validator (validateStories) over the staged layer: 0 errors. No story
+bundles audio (no clean recorded voice, D-11); `stories/story-audio.json` holds the `storyAudio: bundled false` block
+for the reception manifest at promote. Written by six agents from one brief, then rebuilt and checked together.
+Findings: the name 후에 (Huế) hid the time word 후에 (removed from the names); the brief listed 그리고 / 하지만 as
+function words, but they are lexemes with a band (the A1-1 stories use 그래도 / 그러면 instead).
+
+**Open for the reviewer (stories).** (1) A parent speaks 해요체 to a child (a11a_call_home, the micro-stories): 반말
+is not taught as production, so the stories never end a sentence in it; a real mother would. (2) A compound number
+(이천, 스물두) has no lexeme: the tokenMap points it at its head (천, 스물), which the word sheet then shows. (3) 개
+(the counter) resolves to "dog" (one lexeme, coordinator 2026-11-05), so the stories avoid the counter; 말 (speech)
+likewise is only "horse". (4) The D-10 pass should read the A2-1 workplace stories (shift change, forklift, visa
+extension, remittance) for the facts they state.
+
 **Open for the reviewer (assessment).** The register items accept only the register asked for, so a select item may
 show 반말 (마셔.) as a wrong option; the dictations are scored by whole text with the no-space spelling as the only
 alternative; pronunciation.batchim_sounds is not sampled by a checkpoint (non-essential; the listening item 딸 / 달 /

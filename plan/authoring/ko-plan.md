@@ -48,6 +48,20 @@ reads the checkpoints). Two pipeline runs are byte-identical.
 
 `course-draft validate --target ko`: the same 3 assessment errors.
 
+### Session 4 (2026-11-05)
+
+| Layer | State | Where |
+|---|---|---|
+| Scenarios | 20 (8 teaching in units s–v, 12 reserved), 200 nodes, 120 partner clips (device voice) | `_generators/ko-scenarios-s6.py` → staged `content/ko/interaction/scenarios.json` |
+| Writing endings | every slot lists its 해요 and 합니다 variants by kind (name / place / other); self-check rule 10 | `_generators/ko-writing-s5.py`, `ko-check-answers.py` |
+| TOPIK I format | NIIED regulation 제204호 (2024-09-12), read 2026-11-05; topik.go.kr renders by script (cited, no figure taken) | `_generators/ko-topik-format.py` → `exam/topik-i-format.json`, staged `content/ko/exam/FORMAT-SOURCES.md` |
+| Checkpoints | 6 sections + the A1 capstone, 2 disjoint forms each, 145 items, reserved records only; self-check rule 11 | `_generators/ko-assessment.py` → staged `content/ko/assessment/checkpoints.json` |
+| Placement | 4 stages (foundations, building blocks, reception, production), 21 items | same → staged `content/ko/assessment/placement.json` |
+| Stories | 43 graded (A1-1 12, A1-2 16, A2-1 15) + 2 micro, 7,334 tokens, device voice | `_generators/ko_stories_lib.py`, `ko-stories-00…06.py`, `ko-check-stories.py`, `ko-stories-seed.py` → staged `content/ko/stories/stories.json` |
+
+`course-draft validate --target ko`: **0 errors**. `ko-vi-checkpoints.test.ts` and `ko-vi-stories.test.ts` (the real
+story validator over the staged layer) pass. Two pipeline runs are byte-identical.
+
 ## 2. Course shape (BLUEPRINT §1)
 
 Before Section 1: the Hangul primer (`/primer`, `content/ko/primer/script-primer.json`, P4b: 14 consonants, 10 vowels,
@@ -232,17 +246,29 @@ in `OWNER-FINAL-CHECKLIST.md` C asks for a licence review).
     clips, the reserved speech items and writing tasks exist now; session 4 builds the checkpoint and placement files on
     them.
 
+### Session 4 (2026-11-05)
+
+20. **Scenarios before the assessment** (coordinator): checkpoint 6 and the capstone sample the reserved scenarios.
+21. **Writing slots keep the build-time split** (coordinator): the generator adds the common endings per slot kind;
+    rule 10 checks every 해요 variant has its 합쇼체 rendering and a bare-noun slot both N이에요/예요 and N입니다.
+22. **TOPIK I is cited from NIIED's regulation**, with the URL and the date read; results are "mức sẵn sàng ước tính",
+    never a TOPIK level or certificate.
+23. **Two parallel forms per checkpoint**: items alternate a / b per objective, so each form holds ≥ 2 items of every
+    objective the checkpoint samples (P9 §39); the capstone's forms are explicit, one objective per domain. Register
+    (politeness.speech_levels) is assessed in Section 2 by situation → register choice; negation in Section 5.
+24. **Stories are graded by the engine's eojeol tokens**: the builder writes each authored word's lexeme into the
+    story's tokenMap; no story bundles audio (D-11); a story never ends a sentence in 반말.
+
 ## 11. Next sessions
 
 1. ~~**Concepts + lessons**~~ done in session 2: 31 cards, 17 paradigm tables, 108 lessons / 824 exercises, the
    Hangul primer and its checkpoint, the self-check at 0 findings.
 2. ~~**Reception + speech + writing**~~ done in session 3: 28 readings, 92 clips, 52 speech items, 36 writing tasks,
    the unscored device voice, self-check rule 9 (decisions 15–19).
-3. **Session 4 (coordinator)**: assessment — TOPIK I-aligned checkpoints (6 section checkpoints + the capstone in 2
-   forms), placement and attainment on the reserved records above; then the stories. Read topik.go.kr first (§3).
-   **Scenarios** (Section 6, interactionScenario, 18 with 10 reserved) are not yet scheduled: checkpoint 6 needs
-   reserved scenarios, so they come with or before the assessment step (open question for the coordinator).
-4. **Checkpoints, placement, TOPIK I track** (session 5): read topik.go.kr first; 2 mock forms; device-voice listening
-   (a skipped item is no evidence in the mock either).
-5. **Stories** (session 6), **D-10 review** (AI pass, then the owner), promote, compile, V8 re-key, claim gate,
-   STATUS. Audio: Google route if the owner approves (B2), else the device voice stays.
+3. ~~**Session 4**~~ done: scenarios, writing endings, the TOPIK I format, checkpoints in 2 forms, placement,
+   attainment, 45 stories; `course-draft validate --target ko` at 0 errors (decisions 20–24).
+4. **TOPIK I practice track** (exam/ mock forms, as ja's JLPT N5 track): 2 mock forms in the PBT format recorded in
+   `exam/topik-i-format.json`; device-voice listening (a skipped item is no evidence in the mock either).
+5. **D-10 review** (AI pass, then the owner; REVIEW-NOTES "Open for the reviewer"), promote (rebuild the registry from
+   main's, the reception manifest with `stories/story-audio.json`), compile, V8 re-key, claim gate, STATUS. Audio:
+   Google route if the owner approves (B2), else the device voice stays.

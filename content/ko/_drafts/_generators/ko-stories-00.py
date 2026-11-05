@@ -1,0 +1,68 @@
+"""ko-vi graded stories, band A1-0 (micro-stories): the words of the course's first three units — greetings, the
+copula, people and family. usage: python -I ko-stories-00.py <repo root>"""
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ko_stories_lib import Q, story, write_batch  # noqa: E402
+
+S = []
+S.append(story("micro_first_meeting", "A1-0", "처음 뵙겠습니다",
+ "Ngày đầu đi làm, Hương gặp anh Junho và chào hỏi.",
+ ["씨", "친구", "반장님"],
+ [("N", "여기는 한국이에요.", "Đây là Hàn Quốc."),
+  ("N", "흐엉은 베트남 사람이에요.", "Hương là người Việt Nam."),
+  ("N", "흐엉은 근로자예요.", "Hương là người lao động."),
+  ("A", "안녕하세요. 처음 뵙겠습니다.", "Xin chào. Rất hân hạnh được gặp anh."),
+  ("A", "제 이름은 흐엉이에요.", "Tên em là Hương."),
+  ("A", "저는 베트남 사람이에요. 잘 부탁드립니다.", "Em là người Việt Nam. Mong anh giúp đỡ."),
+  ("B", "네, 안녕하세요. 만나서 반갑습니다.", "Vâng, xin chào. Rất vui được gặp em."),
+  ("B", "저는 준호예요. 저는 한국 사람이에요.", "Anh là Junho. Anh là người Hàn Quốc."),
+  ("B", "저는 회사원이에요.", "Anh là nhân viên công ty."),
+  ("N", "준호는 흐엉의 반장님이에요.", "Junho là tổ trưởng của Hương."),
+  ("A", "준호 씨, 이분은 누구예요?", "Anh Junho ơi, vị này là ai ạ?"),
+  ("B", "이분은 제 아내예요.", "Đây là vợ anh."),
+  ("B", "제 아내도 회사원이에요.", "Vợ anh cũng là nhân viên công ty."),
+  ("A", "그분 이름은 뭐예요?", "Chị ấy tên là gì ạ?"),
+  ("B", "제 아내 이름은 지민이에요.", "Vợ anh tên là Jimin."),
+  ("N", "지민은 한국 사람이에요.", "Jimin là người Hàn Quốc."),
+  ("A", "저기 그분은 누구예요?", "Còn người ở đằng kia là ai ạ?"),
+  ("B", "그분은 제 친구예요. 베트남 사람이에요.", "Đó là bạn anh. Anh ấy là người Việt Nam."),
+  ("A", "그분도 근로자예요?", "Anh ấy cũng là người lao động ạ?"),
+  ("B", "네, 근로자예요. 이름은 훙이에요.", "Ừ, là người lao động. Tên anh ấy là Hùng."),
+  ("N", "훙도 흐엉도 베트남 사람이에요.", "Hùng và Hương đều là người Việt Nam."),
+  ("A", "감사합니다.", "Em cảm ơn anh."),
+  ("B", "아니요, 괜찮아요.", "Không có gì đâu.")],
+ [Q("Junho là ai của Hương?", ["Tổ trưởng", "Chồng", "Bạn cùng lớp"]),
+  Q("Vợ của Junho làm nghề gì?", ["Nhân viên công ty", "Người lao động", "Học sinh"]),
+  Q("Vì sao Hương có thể nói chuyện với anh Hùng bằng tiếng Việt?", ["Vì anh Hùng cũng là người Việt Nam", "Vì anh Hùng là tổ trưởng", "Vì anh Hùng là chồng của Hương"], "infer")]))
+
+S.append(story("micro_family_photo", "A1-0", "우리 가족 사진",
+ "Lan cho anh Junho xem ảnh gia đình mình.",
+ ["사진", "오빠", "아이"],
+ [("A", "이거 우리 가족 사진이에요.", "Đây là ảnh gia đình em."),
+  ("B", "이분은 누구예요?", "Vị này là ai?"),
+  ("A", "제 아버지예요.", "Là bố em."),
+  ("A", "이분은 제 어머니예요.", "Còn đây là mẹ em."),
+  ("B", "이 사람은 누구예요?", "Người này là ai?"),
+  ("A", "제 오빠예요. 회사원이에요.", "Là anh trai em. Anh ấy là nhân viên công ty."),
+  ("B", "이 사람은 언니예요?", "Người này là chị gái em à?"),
+  ("A", "네, 제 언니예요. 언니는 학생이에요.", "Vâng, là chị gái em. Chị ấy là sinh viên."),
+  ("B", "이 아이는 누구예요?", "Còn đứa bé này là ai?"),
+  ("A", "제 딸이에요. 이름은 마이예요.", "Là con gái em. Tên cháu là Mai."),
+  ("B", "이 사람은 남편이에요?", "Người này là chồng em à?"),
+  ("A", "네, 제 남편이에요. 남편은 한국 사람이에요.", "Vâng, là chồng em. Chồng em là người Hàn Quốc."),
+  ("A", "저는 베트남 사람이에요.", "Còn em là người Việt Nam."),
+  ("B", "할머니하고 할아버지는 어디예요?", "Ông bà em đâu?"),
+  ("A", "베트남이에요.", "Ở Việt Nam ạ."),
+  ("B", "여기는 어디예요?", "Chỗ này là ở đâu?"),
+  ("A", "여기는 한국이에요.", "Chỗ này là Hàn Quốc."),
+  ("B", "이 사람은 누구예요? 동생이에요?", "Người này là ai? Em của em à?"),
+  ("A", "아니요. 제 남편 동생이에요.", "Không. Là em của chồng em."),
+  ("A", "이름은 민이에요. 민도 회사원이에요.", "Tên cậu ấy là Min. Min cũng là nhân viên công ty."),
+  ("B", "저는 한국 사람이에요. 우리 가족도 한국 사람이에요.", "Anh là người Hàn Quốc. Gia đình anh cũng là người Hàn Quốc."),
+  ("A", "감사합니다.", "Em cảm ơn anh."),
+  ("N", "란의 가족은 베트남 사람하고 한국 사람이에요.", "Gia đình Lan có người Việt Nam và người Hàn Quốc.")],
+ [Q("Chị gái của Lan làm gì?", ["Là sinh viên", "Là nhân viên công ty", "Là người lao động"]),
+  Q("Con gái của Lan tên là gì?", ["Mai", "Lan", "Min"]),
+  Q("Vì sao gia đình Lan có cả người Việt Nam và người Hàn Quốc?", ["Vì Lan là người Việt Nam, còn chồng Lan là người Hàn Quốc", "Vì cả nhà Lan sống ở Việt Nam", "Vì bố mẹ Lan là người Hàn Quốc"], "infer")]))
+
+write_batch("00-micro", S)
