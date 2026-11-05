@@ -1,25 +1,22 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
-> **TIẾP TỤC theo QC-2026-11-05 (2026-11-05).** `main` 733552b xanh.
-> - **Thứ tự:**
->   1. zh-vi (§1): nghe chép chấp nhận chữ phồn thể; bộ chấm nhận biết phủ định cho mọi khoá; chạy lại lượt duyệt ngôn ngữ, ghi file dần theo từng unit; sửa theo cả hai lượt; duyệt đáp án lần hai toàn bộ; audit độc lập; bộ đọc audio có biến điệu; audio; PR.
->   2. ko-vi dùng giọng của thiết bị (§2.1). Adapter Google Cloud TTS để sẵn, chờ anh duyệt mục B2.
->   3. pt, rồi P5, P6a, v1.0.
-> - **D-16 (Google Play closed test):** đã merge (#65); phần còn lại là việc của anh (checklist F).
-> - **Cập nhật 2026-11-05:**
->   - **zh-vi** đã xong cả bốn bước: duyệt (audit đạt 0,24 %), bộ đọc audio có biến điệu, audio (run 41928304254, 0 lỗi kỹ thuật, 9,5 MB) và A1 claimable. Báo cáo `plan/reports/P4d-zh-vi.md`. Đã mở PR.
->   - **ko-vi:** xong phiên 1–3, đã đẩy lên `phase-4/ko-vi`. Gồm 108 bài, 968 bài tập, nhập môn Hangul, nghe bằng giọng của thiết bị, nói, viết và tự kiểm tra. Phiên 4 (kịch bản, TOPIK I, kiểm tra, xếp lớp, truyện) đang chạy.
+> **TẠM DỪNG (2026-11-05, theo yêu cầu của chủ dự án: "67 xanh hết thì merge rồi tạm dừng báo cáo kết quả").** Trạng thái lúc dừng:
+> - **main:** 564f5c7d (đã merge #66 zh-vi và #67 thứ tự khoá audio không phụ thuộc ICU, cả hai 22/22 check xanh).
+>   - Device acceptance trên 749c0143 lần đầu đỏ ở shard API 34 lessons (không cuộn tới được thẻ khoá en-vi). Chạy lại trên cùng commit thì xanh. Đã ghi vào `plan/reports/flakes.md`, kèm việc cần làm tiếp: `switchCourse` mở khoá bằng deep link.
+>   - Device acceptance cho 564f5c7d chạy sau khi merge; kết quả đọc từ GitHub API khi tiếp tục.
+> - **zh-vi (P4d):** xong. Duyệt D-10 (audit 0,24 % P0+P1), bộ đọc audio có biến điệu, audio (run 41928304254, 2.326 clip, 0 lỗi kỹ thuật, 9,5 MB), A1 claimable. Báo cáo `plan/reports/P4d-zh-vi.md`. Còn chờ anh đánh ☑ `ai-review:zh-vi`.
+> - **`phase-4/ko-vi` (P4e), commit 8df7ab0a, đã đẩy lên GitHub:**
+>   - **Phiên 1–4:** 995 từ, 108 bài (968 bài tập), 31 thẻ khái niệm, nhập môn Hangul có checkpoint; 28 bài đọc, 92 clip nghe bằng giọng của thiết bị, 52 bài nói, 36 bài viết, 20 kịch bản; 6 checkpoint và bài cuối khoá (mỗi bài 2 đề, 145 câu), xếp lớp 4 giai đoạn, 43 truyện và 2 truyện rất ngắn.
+>   - **Phiên 5 (dừng giữa chừng):** luật nêu người nghe cho câu hỏi về mức độ lịch sự; 반말 chỉ trong lời thoại truyện có khai báo quan hệ; KNOWN_LIMITATIONS phần ko; 2 đề luyện TOPIK I (mỗi đề 30 nghe + 40 đọc, `formatFidelity: partial`). Máy không có giọng tiếng Hàn thì chỉ báo phần đọc.
+>   - **Gate:** `course-draft validate --target ko` 0 lỗi; tự kiểm tra 0 lỗi; `bun run test` 3.419 đạt, 1 trượt (golden zh-vi.ts trên Windows, đúng lỗi mà #67 sửa); jest 138/138.
+>   - **Câu hỏi cho anh:** câu nghe bị bỏ qua vì máy không có giọng nay bị loại khỏi kết quả thay vì tính 0 điểm, áp dụng cho mọi khoá. Đề xuất giữ cho mọi khoá, vì claim chỉ được tính trên câu đã làm.
+> - **Khi tiếp tục, theo thứ tự:**
+>   1. ko: gộp main mới (có #67) vào `phase-4/ko-vi`, rồi `golden --check`; chạy lại `ko-pipeline.sh`; thêm `storyAudio` (`bundled: false`) vào `content/ko/reception/audio-source-manifest.json`; `author.ts promote --target ko`; `content:compile`; thêm ko vào `V8_REKEYED_TARGETS` kèm test; kiểm tra claim gate, khoá mặc định và độ phủ ngữ cảnh. Điểm tiếp tục ghi ở `plan/authoring/ko-plan.md` §11 mục 4.
+>   2. ko: các lượt duyệt D-10 (đáp án; ngôn ngữ ghi dần theo từng unit), sửa, audit độc lập, báo cáo `plan/reports/P4e-ko-vi.md`, mở PR (không có audio đóng gói).
+>   3. pt, rồi P5 (a, c, e, d, f), P6a, v1.0.
+> - **Đang chờ anh:** B2, tức adapter Google Cloud TTS cho ko/pt (đang tắt); checklist F, tức D-16 Play closed test; các dòng `ai-review:*`.
 >
-> **Tạm dừng trước đó (2026-11-04, theo yêu cầu của chủ dự án).** Trạng thái lúc dừng:
-> - **main:** xanh. Đã merge #58 voice-lineage, #59 en-vi, #60 voice sampler, #61 D-15, #62 P4b, #63 ja-vi, #64 sửa cách chấm ja.
-> - **`phase-4/zh-vi` (P4d):** đã xong phiên 1–5: bộ từ, 108 bài, nhập môn thanh điệu, các lớp nội dung, kiểm tra và HSK 1–2, 42 truyện.
->   - Duyệt D-10: lượt đáp án xong, 56 lỗi, lưu ở `content/zh/_drafts/review/findings-answers.json`, chưa sửa. Lượt ngôn ngữ bị dừng trước khi ghi file, phải chạy lại.
->   - Bộ đọc audio tiếng Trung đang làm dở, để trên nhánh riêng `wip/zh-audio-frontend`. Chưa test, không merge nguyên trạng.
->   - Chưa có audio tiếng Trung, chưa mở PR.
-> - **Chờ quyết định:** giọng tiếng Hàn (xem mục ngay dưới), rồi mới làm P4e ko-vi.
-> - **Khi tiếp tục:** chạy lại lượt duyệt ngôn ngữ, sửa theo cả hai lượt duyệt, audit, hoàn thành bộ đọc audio, chạy canary và generate, rồi mở PR zh-vi.
->
-> **Lần thức gần nhất:** 2026-11-04 05:10 UTC. **Lần thức kế tiếp:** không có (đang tạm dừng). Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
+> **Lần thức gần nhất:** 2026-11-05. **Lần thức kế tiếp:** không có (đang tạm dừng). Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
 >
 > **PR #63 (P4c ja-vi) đã merge (a545448):** 22/22 check xanh. Báo cáo ở `plan/reports/P4c-ja-vi.md`.
 >

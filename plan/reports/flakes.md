@@ -2,6 +2,12 @@
 
 Each entry: the failing run, the passing re-run on the **same** commit, what failed, and what was changed so the next one costs less. A failure is only recorded here after a re-run on the same commit was green; a second red on the same commit is a bug, not a flake.
 
+## 2026-11-05 — Device acceptance on `main` 749c0143 (after PR #66, zh-vi) and on PR #67 3bbc624a
+
+- **Failed:** in run [41941469339](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/41941469339) (main) and run [41941519738](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/41941519738) (PR #67), attempt 1, at the same time. Only the API 34 **lessons** shard failed, both times on the same flow: "lesson en-vi — Scrolling DOWN until id: courses-course-en-vi is visible … FAILED" (the retry failed too), then "audio events en-vi — no playback event although 1057 clips are bundled". The second step depends on the first. On main, onboarding (vi) had also passed only on its retry. API 30 lessons and every other shard were green.
+- **Passed:** attempt 2 of both runs on the same commits, all 6 shards green. PR #66 itself had passed this shard.
+- **Pattern:** this is the second time `switchCourse` failed its scroll to a course card on API 34 lessons (fr-vi on 2026-10-31, en-vi now). The list grew to include zh-vi in #66, so the card sits lower and the scroll does more work. Follow-up when work resumes: in `scripts/device/maestro-flows.ts` `switchCourse`, open the course through a deep link or scroll with a lower visibility percentage, so that a slow emulator cannot fail the whole lesson flow. Not done now because the owner paused the work.
+
 ## 2026-11-04 — Device acceptance on `main` fca73ec (after PR #65, D-16)
 
 - **Failed:** run [41887905668](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/41887905668) attempt 1, API 30 **backup-upgrade** only. The first failure was "onboarding after pm clear", which ran for about 10 minutes and failed on the retry. The backup import and re-export that come after it then failed on `profile-stat`. The same flows passed on API 34, and the RC3 upgrade flows later in the same API 30 shard passed.
