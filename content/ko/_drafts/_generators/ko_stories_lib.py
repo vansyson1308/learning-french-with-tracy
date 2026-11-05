@@ -29,7 +29,7 @@ import glob, json, math, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from ko_text import COPULA, NAMES as KO_NAMES, PARTICLES, Index, conjugate  # noqa: E402
+from ko_text import COPULA, IRREG_D, NAMES as KO_NAMES, PARTICLES, T_L, Index, _past, conjugate, final, with_final  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
 D = os.path.join(ROOT, "content", "ko", "_drafts")
@@ -60,7 +60,8 @@ INDEX = Index(LEX)
 # Function words the seed writes into stories.json: grammar with no lexeme of its own — the dependent words of the
 # patterns the course teaches (갈 거예요, 할 수 있어요) and the auxiliaries of -고 싶다, -지 않다 and -지 마세요, as ja's
 # ます is grammar. Known at every band. The connectives (그리고, 하지만 …) are lexemes and keep their band.
-FUNCTION = ("거 거예요 겁니다 수 싶어요 싶었어요 싶습니다 싶어서 않아요 않았어요 않습니다 마세요 마십시오").split()
+FUNCTION = ("거 거예요 겁니다 수 싶어요 싶었어요 싶습니다 싶어서 않아요 않았어요 않습니다 마세요 마십시오 "
+            "싶어 싶었어 않아 않았어").split()  # the last four: their 반말 forms (session 5, dialogue lines only)
 # Names of the stories (Korean and Vietnamese people, places) on top of ko_text NAMES; none spells a lexeme
 # (no 이 / 한 / 정: they are words too).
 NAMES = (set(KO_NAMES) | set("지민 서연 현우 영수 미나 하준 수민 정우 은지 철수 영희 대구 광주 대전 제주도 명동 강남 "
@@ -253,6 +254,62 @@ def _forms():
 
 
 FORMS = _forms()
+
+# ---------------------------------------------------------------------------
+# 반말 in dialogue (coordinator 2026-11-05, session 5)
+# ---------------------------------------------------------------------------
+# A dialogue line may end in 반말 only for a declared relation, and only with an ending of the allowlist; never in
+# narration. The first occurrence of each ending in a story carries its gloss in the Vietnamese line.
+RELATIONS = {"parent>child": "bố mẹ nói với con", "friends": "bạn thân cùng tuổi", "older>younger": "anh chị nói với em"}
+BANMAL_GLOSS = {
+    "eo": "thân mật: đuôi -a/-eo, bỏ «yo» của -ayo/-eoyo",
+    "ya": "thân mật: «-ya / -iya» thay cho «-yeyo / -ieyo» (là)",
+    "ja": "rủ thân mật: «-ja» = «mình cùng … nhé»",
+    "ji": "thân mật: «-ji» = «… nhỉ, … chứ»",
+    "ne": "thân mật: «-ne» = «… quá, … ghê» (vừa nhận ra)",
+}
+
+
+def _banmal_forms():
+    """{form: (lexeme id, ending)} for the -자 / -지 / -네 forms of the lexicon verbs and adjectives (present and past)."""
+    out = {}
+    for x in LEX:
+        lemma, pos = x["surface"], x["partOfSpeech"]
+        if pos not in ("verb", "adjective") or " " in lemma or not lemma.endswith("다") or len(lemma) < 2:
+            continue
+        s = lemma[:-1]
+        ne_stem = with_final(s, 0) if final(s[-1]) == T_L and lemma not in IRREG_D else s  # 살다 → 사네
+        past = _past(lemma)
+        got = {s + "지": "ji", past + "지": "ji", ne_stem + "네": "ne", past + "네": "ne"}
+        if pos == "verb":
+            got[s + "자"] = "ja"
+        for form, kind in got.items():
+            out.setdefault(form, (x["id"], kind))
+    return out
+
+
+BANMAL_FORMS = _banmal_forms()
+for _aux in ("싶어", "싶었어", "않아", "않았어"):
+    INDEX.forms.setdefault(_aux, (_aux, "banmal"))
+for _f, (_lid, _k) in BANMAL_FORMS.items():
+    INDEX.forms.setdefault(_f, (LEX_BY_ID[_lid]["surface"], "banmal"))
+    if _f not in FORMS:
+        FORMS[_f] = [_lid]
+
+
+def banmal_ending(word):
+    """The allowlisted 반말 ending a sentence-final word carries (eo / ya / ja / ji / ne), 'other' for any other 반말
+    end (the dictionary form, -ㄹ게, a connective), None when the word is not 반말."""
+    if INDEX.kind(word) != "banmal":
+        return None
+    if word in BANMAL_FORMS:
+        return BANMAL_FORMS[word][1]
+    form = INDEX.forms.get(word)
+    if form and (form[1] == "aeo" or (form[1] == "banmal" and word[-1] in "어아") and not word.endswith("다")):
+        return "eo"
+    if word.endswith("야") and (INDEX.nounish(word[:-1]) or (word.endswith("이야") and INDEX.nounish(word[:-2])) or word[:-1] in BY_SURFACE):
+        return "ya"
+    return "other"
 # Honorific / suppletive forms of the course (ko_text SUPPLETIVE) and the auxiliaries' own lexemes.
 SUPPLETIVE = {"드세요": "먹다", "드셨어요": "먹다", "드십시오": "먹다", "계세요": "있다", "계셨어요": "있다", "계십니다": "있다", "주무세요": "자다"}
 COPULAS = sorted(COPULA, key=len, reverse=True)
@@ -316,9 +373,12 @@ VI_MARK = re.compile(r"[ăâđêôơưáàảãạấầẩẫậắằẳẵặ
 CEFR = re.compile(r"\b(CEFR|[ABC][12](?:[-.]\d)?)\b")
 
 
-def check_story(r):
-    """Messages for one story record (empty: the story passes)."""
+def check_story(r, registers=None):
+    """Messages for one story record (empty: the story passes). `registers`: sentence number (1-based, as a string) →
+    the declared relation of a 반말 dialogue line (stories/batches/*.registers.json)."""
     msgs = []
+    regs = registers or {}
+    glossed = set()
     a = analyze(r)
     lo, hi = TOKEN_RANGE.get(r["band"], DEFAULT_RANGE)
     if not lo <= a["tokens"] <= hi:
@@ -353,10 +413,24 @@ def check_story(r):
             msgs.append(f"#{n}: digits, Latin letters or curly quotes in {text!r} (numbers in Hangul)")
         for p in INDEX.problems(text):
             msgs.append(f"#{n}: {p}")
-        for last, kind in INDEX.sentence_ends(text):
-            if kind == "banmal":
-                msgs.append(f"#{n}: 반말 sentence end {last!r} (stories speak 해요체 / 합쇼체)")
         vi = s["translation"].get("vi", "")
+        rel = regs.get(str(n))
+        if rel is not None and (rel not in RELATIONS or s["speaker"] == "N"):
+            msgs.append(f"#{n}: relation {rel!r} on a {'narrator' if s['speaker'] == 'N' else 'dialogue'} line (relations: {sorted(RELATIONS)}, dialogue only)")
+        for last, kind in INDEX.sentence_ends(text):
+            if kind != "banmal":
+                continue
+            ending = banmal_ending(last)
+            if s["speaker"] == "N":
+                msgs.append(f"#{n}: 반말 sentence end {last!r} in narration (narration speaks 해요체)")
+            elif rel not in RELATIONS:
+                msgs.append(f"#{n}: 반말 sentence end {last!r} without a declared relation ({', '.join(sorted(RELATIONS))})")
+            elif ending not in BANMAL_GLOSS:
+                msgs.append(f"#{n}: 반말 sentence end {last!r} is not one of the allowed endings -아/어, -야/이야, -자, -지, -네")
+            elif ending not in glossed:
+                glossed.add(ending)
+                if BANMAL_GLOSS[ending] not in vi:
+                    msgs.append(f"#{n}: the first {ending!r} ending of the story ({last!r}) carries no gloss in its Vietnamese line")
         if not vi.strip() or HANGUL.search(vi) or CEFR.search(vi):
             msgs.append(f"#{n}: Vietnamese translation empty, with Hangul or a level label: {vi!r}")
         if s["speaker"] not in ("N", "A", "B"):
@@ -399,9 +473,18 @@ def _slug_id(slug):
 
 
 def story(sid, band, title, blurb, new, sentences, questions):
+    """A sentence is (speaker, Korean, Vietnamese) or, for a 반말 dialogue line, (speaker, Korean, Vietnamese,
+    relation) with a relation of RELATIONS; the first occurrence of each 반말 ending gets its gloss appended."""
     full = f"ko.story.{sid}"
-    tm, problems, texts = {}, [], []
-    for n, (speaker, text, vi) in enumerate(sentences, 1):
+    tm, problems, texts, regs, glossed = {}, [], [], {}, set()
+    for n, (speaker, text, vi, *rel) in enumerate(sentences, 1):
+        if rel:
+            regs[str(n)] = rel[0]
+            for last, kind in INDEX.sentence_ends(re.sub(r"=[a-z0-9_-]+", "", text)):
+                ending = banmal_ending(last) if kind == "banmal" else None
+                if ending in BANMAL_GLOSS and ending not in glossed:
+                    glossed.add(ending)
+                    vi = f"{vi} ({BANMAL_GLOSS[ending]}; {RELATIONS.get(rel[0], rel[0])})"
         forced = dict(re.findall(r"([가-힣]+)=([a-z0-9_-]+)", text))
         clean = re.sub(r"=[a-z0-9_-]+", "", text)
         texts.append((speaker, clean, vi))
@@ -449,13 +532,16 @@ def story(sid, band, title, blurb, new, sentences, questions):
         rows.append({"kind": kind, "prompt": {"vi": qv}, "options": [{"vi": o} for o in ordered], "answer": at})
     out["questions"] = rows
     out["sourceRef"] = "original-project"
-    problems += check_story(out)
+    problems += check_story(out, regs)
     if problems:
         FAILED.append(f"{full}:\n  " + "\n  ".join(problems))
+    if regs:
+        REGISTERS[full] = regs
     return out
 
 
 FAILED = []
+REGISTERS = {}  # story id → {sentence number: relation} of its 반말 dialogue lines
 
 
 def write_batch(name, stories):
@@ -468,6 +554,10 @@ def write_batch(name, stories):
     with open(os.path.join(d, f"{name}.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         for s in stories:
             f.write(json.dumps(s, ensure_ascii=False) + "\n")
+    regs = {s["id"]: REGISTERS[s["id"]] for s in stories if s["id"] in REGISTERS}
+    with open(os.path.join(d, f"{name}.registers.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump(regs, f, ensure_ascii=False, indent=1, sort_keys=True)
+        f.write("\n")
     with open(os.path.join(base, "OUTPUT.jsonl"), "w", encoding="utf-8", newline="\n") as out:
         for fn in sorted(glob.glob(os.path.join(d, "*.jsonl"))):
             out.write(open(fn, encoding="utf-8").read())

@@ -258,7 +258,7 @@ s2 = items("s2", [
  ("q_name", (sel("Bạn tên là gì?", "이름이 뭐예요?", ["이름이 어디예요?", "이름이 누구예요?", "이름이 얼마예요?"], N2T), QW)),
  # 해요체 / 합쇼체: which register a situation asks for (unit a; essential, §64)
  ("pol_meeting", (sel("Trong buổi họp, bạn tự giới thiệu với giám đốc. Câu nào trang trọng nhất?", "저는 남입니다.", ["저는 남이에요?", "남이에요?", "저는 남입니까?"], N2T), PL)),
- ("pol_daily", (sel("Câu nào là cách nói lịch sự hằng ngày, đuôi \"yo\"?", "커피를 마셔요.", ["커피를 마십니까?", "커피를 마셔.", "커피를 마시십시오."], N2T), PL)),
+ ("pol_daily", (sel("Giờ nghỉ, một đồng nghiệp lớn tuổi hỏi bạn uống gì. Bạn trả lời lịch sự: \"Tôi uống cà phê.\"", "커피를 마셔요.", ["커피를 마십니까?", "커피를 마셔.", "커피를 마시십시오."], N2T), PL)),
  ("pol_sorry", (sel("Bạn xin lỗi giám đốc. Câu nào trang trọng nhất?", "죄송합니다.", ["미안해요.", "괜찮아요.", "감사합니다."], N2T), PL)),
  ("pol_bank", (sel("Nhân viên ngân hàng chào khách một cách trang trọng. Câu nào đúng?", "안녕하십니까?", ["안녕히 계세요.", "안녕하세요?", "잘 먹겠습니다."], N2T), PL)),
 ])

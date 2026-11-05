@@ -36,6 +36,8 @@ lessons/parts/*.jsonl into lessons/OUTPUT.jsonl, then flags, built up front from
     variant its 합쇼체 rendering, a bare noun of a guided slot its copula in both styles (남이에요 / 남입니다).
 11. (session 4) every checkpoint and placement exercise goes through rules 1-10, and a Section 1 bank item holds no
     typed Korean.
+12. (coordinator 2026-11-05, session 5) a register item names its listener: an exercise whose wrong option is a 반말
+    sentence has a Vietnamese prompt that says who is spoken to (a boss, a colleague, a stranger, a shop, a clinic).
 A finding stops the pipeline unless DECIDED gives the reason it stands. Counts go to review/selfcheck.json and, by
 hand, to REVIEW-NOTES.md. usage: python -I ko-check-answers.py <repo root>
 """
@@ -379,6 +381,31 @@ def register(eid, e, plain_ok):
             flag(eid, "level-mix", f"{text!r}: 합쇼체 and 해요체 in one key (outside the set phrases)")
 
 
+# ---------------------------------------------------------------- rule 12: a register item names its listener
+# Coordinator 2026-11-05 (session 5): a 반말 sentence may be a wrong option only where the prompt's situation asks for
+# polite speech, so the Vietnamese prompt names who is spoken to (a stranger, a boss, a shop, a clinic ...).
+LISTENERS = re.compile(r"giám đốc|tổ trưởng|sếp|đồng nghiệp|người lạ|nhân viên|khách|bác sĩ|y tá|dược sĩ|người bán|"
+                       r"cô giáo|thầy giáo|giáo viên|người lớn tuổi|cảnh sát|chủ nhà|hàng xóm|người qua đường|cửa hàng|"
+                       r"phòng khám|bệnh viện|ngân hàng|buổi họp|cuộc họp|phỏng vấn", re.I)
+
+
+def _option_texts(e):
+    if e["type"] == "select":
+        return [o["text"] for i, o in enumerate(e["options"]) if i != e["correct"]]
+    if e["type"] == "fillBlank" and e.get("options"):
+        return [e["sentence"].replace("___", o) for i, o in enumerate(e["options"]) if i != e["correct"]]
+    return []
+
+
+def listener_rule(eid, e):
+    wrong_banmal = [t for t in _option_texts(e) if re.search(r"[가-힣]", t) and re.search(r"[.?!]$|\s", t.strip()) and "banmal" in sentence_kinds(t)]
+    if not wrong_banmal:
+        return
+    prompt = e.get("prompt") or e.get("translation") or ""
+    if re.search(r"[가-힣]", prompt) or not LISTENERS.search(prompt):
+        flag(eid, "register-listener", f"{wrong_banmal[0]!r} is a 반말 wrong option, but the Vietnamese prompt {prompt!r} names no listener who needs polite speech")
+
+
 # ---------------------------------------------------------------- rule 6: typed renderings
 def typed_rules(eid, e):
     if e["type"] != "typeAnswer":
@@ -427,6 +454,7 @@ for r in records:
                 flag(eid, "word" if "is not a lexicon word" in p else "number" if "counts with" in p or "before a counter" in p else "particle", p)
         ambiguity(eid, e)
         register(eid, e, plain_ok)
+        listener_rule(eid, e)
         typed_rules(eid, e)
         cloze_rules(eid, e)
         layer_rules(eid, e)
@@ -456,6 +484,7 @@ for bank, exercises in BANKS.items():
                 flag(eid, "word" if "is not a lexicon word" in p else "number" if "counts with" in p or "before a counter" in p else "particle", p)
         ambiguity(eid, e)
         register(eid, e, False)
+        listener_rule(eid, e)
         typed_rules(eid, e)
         cloze_rules(eid, e)
         layer_rules(eid, e)

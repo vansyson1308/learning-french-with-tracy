@@ -23,11 +23,15 @@
     "마십시오",
     "수",
     "싶습니다",
+    "싶어",
     "싶어서",
     "싶어요",
+    "싶었어",
     "싶었어요",
     "않습니다",
+    "않아",
     "않아요",
+    "않았어",
     "않았어요"
   ],
   "stories": [
@@ -1310,9 +1314,9 @@
         },
         {
           "speaker": "A",
-          "text": "아들! 왜 지난주에는 전화하지 않았어요? 엄마는 매일 기다렸어요.",
+          "text": "아들! 왜 지난주에는 전화하지 않았어? 엄마는 매일 기다렸어.",
           "translation": {
-            "vi": "Con trai! Sao tuần trước con không gọi điện? Ngày nào mẹ cũng đợi."
+            "vi": "Con trai! Sao tuần trước con không gọi điện? Ngày nào mẹ cũng đợi. (thân mật: đuôi -a/-eo, bỏ «yo» của -ayo/-eoyo; bố mẹ nói với con)"
           }
         },
         {
@@ -1324,9 +1328,9 @@
         },
         {
           "speaker": "A",
-          "text": "괜찮아요. 한국 생활은 어때요?",
+          "text": "그래. 한국 생활은 어때?",
           "translation": {
-            "vi": "Không sao. Cuộc sống ở Hàn Quốc thế nào con?"
+            "vi": "Ừ. Cuộc sống ở Hàn Quốc thế nào con?"
           }
         },
         {
@@ -1338,9 +1342,9 @@
         },
         {
           "speaker": "A",
-          "text": "한국은 지금 밤이에요?",
+          "text": "한국은 지금 밤이야?",
           "translation": {
-            "vi": "Ở Hàn Quốc bây giờ là ban đêm à con?"
+            "vi": "Ở Hàn Quốc bây giờ là ban đêm à con? (thân mật: «-ya / -iya» thay cho «-yeyo / -ieyo» (là); bố mẹ nói với con)"
           }
         },
         {
@@ -1352,7 +1356,7 @@
         },
         {
           "speaker": "A",
-          "text": "밥은 많이 먹어요?",
+          "text": "밥은 많이 먹어?",
           "translation": {
             "vi": "Con có ăn cơm nhiều không?"
           }
@@ -1366,7 +1370,7 @@
         },
         {
           "speaker": "A",
-          "text": "친구요? 그 친구는 누구예요?",
+          "text": "친구? 그 친구는 누구야?",
           "translation": {
             "vi": "Bạn à? Bạn đó là ai vậy?"
           }
@@ -1380,14 +1384,14 @@
         },
         {
           "speaker": "A",
-          "text": "그렇게 좋은 친구가 있어요? 정말 좋아요.",
+          "text": "그렇게 좋은 친구가 있어? 정말 좋네.",
           "translation": {
-            "vi": "Con có người bạn tốt như vậy à? Thật là tốt quá."
+            "vi": "Con có người bạn tốt như vậy à? Thật là tốt quá. (thân mật: «-ne» = «… quá, … ghê» (vừa nhận ra); bố mẹ nói với con)"
           }
         },
         {
           "speaker": "A",
-          "text": "한국 밥은 맛있어요?",
+          "text": "한국 밥은 맛있어?",
           "translation": {
             "vi": "Cơm Hàn Quốc có ngon không con?"
           }
@@ -1408,14 +1412,14 @@
         },
         {
           "speaker": "A",
-          "text": "네, 아버지도 여기 계세요. 동생도 있어요.",
+          "text": "그래, 아버지도 여기 있어. 동생도 있어.",
           "translation": {
             "vi": "Có, bố cũng đang ở đây. Em con cũng ở đây."
           }
         },
         {
           "speaker": "A",
-          "text": "동생은 요즘 매일 공부해요.",
+          "text": "동생은 요즘 매일 공부해.",
           "translation": {
             "vi": "Dạo này ngày nào em con cũng học."
           }
@@ -1429,7 +1433,7 @@
         },
         {
           "speaker": "A",
-          "text": "우리 아들은 정말 좋은 아들이에요.",
+          "text": "우리 아들은 정말 좋은 아들이야.",
           "translation": {
             "vi": "Con trai của mẹ thật là ngoan."
           }
@@ -1443,7 +1447,7 @@
         },
         {
           "speaker": "A",
-          "text": "엄마도요. 우리 가족 모두 아들 생각을 많이 해요.",
+          "text": "엄마도. 우리 가족 모두 아들 생각을 많이 해.",
           "translation": {
             "vi": "Mẹ cũng vậy. Cả nhà mình đều nghĩ đến con nhiều lắm."
           }
@@ -1457,14 +1461,14 @@
         },
         {
           "speaker": "A",
-          "text": "정말요? 고마워요, 아들.",
+          "text": "정말? 좋아, 아들.",
           "translation": {
-            "vi": "Thật không? Cảm ơn con trai."
+            "vi": "Thật không? Tốt quá, con trai."
           }
         },
         {
           "speaker": "A",
-          "text": "밥 많이 먹고 많이 자요.",
+          "text": "밥 많이 먹고 많이 자.",
           "translation": {
             "vi": "Con ăn nhiều, ngủ nhiều nhé."
           }
@@ -1499,18 +1503,21 @@
       "tokenMap": {
         "같은": "ko:w:gatda",
         "계세요": "ko:w:itda",
+        "공부해": "ko:w:gongbuhada",
         "공부해요": "ko:w:gongbuhada",
+        "그래": "ko:w:geureota",
         "김치찌개가": "ko:w:gimchijjigae",
         "남은": "name",
         "남이에요": "name",
-        "누구예요": "ko:w:nugu",
+        "누구야": "ko:w:nugu",
         "늦게까지": "ko:w:neutge",
         "동생도": "ko:w:dongsaeng",
         "동생은": "ko:w:dongsaeng",
         "뚜언": "name",
+        "맛있어": "ko:w:masitda",
         "맛있어요": "ko:w:masitda",
         "밤에": "ko:w:bam",
-        "밤이에요": "ko:w:bam",
+        "밤이야": "ko:w:bam",
         "밥은": "ko:w:bap",
         "밥이": "ko:w:bap",
         "방에": "ko:w:bang",
@@ -1522,17 +1529,17 @@
         "생활은": "ko:w:saenghwal",
         "시예요": "ko:w:si",
         "아들은": "ko:w:adeul",
-        "아들이에요": "ko:w:adeul",
+        "아들이야": "ko:w:adeul",
         "아버지는": "ko:w:abeoji",
         "아버지도": "ko:w:abeoji",
         "아침부터": "ko:w:achim",
         "아침에": "ko:w:achim",
         "아침에는": "ko:w:achim",
-        "어때요": "ko:w:eotteota",
+        "어때": "ko:w:eotteota",
         "어머니에게": "ko:w:eomeoni",
         "어머니하고": "ko:w:eomeoni",
         "엄마는": "ko:w:eomma",
-        "엄마도요": "ko:w:eomma",
+        "엄마도": "ko:w:eomma",
         "요리해요": "ko:w:yorihada",
         "우유를": "ko:w:uyu",
         "이야기를": "ko:w:iyagi",
@@ -1547,7 +1554,8 @@
         "전화하지": "ko:w:jeonhwahada",
         "전화할게요": "ko:w:jeonhwahada",
         "전화했어요": "ko:w:jeonhwahada",
-        "정말요": "ko:w:jeongmal",
+        "좋네": "ko:w:jota",
+        "좋아": "ko:w:jota",
         "좋아요": "ko:w:jota",
         "좋았어요": "ko:w:jota",
         "좋은": "ko:w:jota",
@@ -1557,9 +1565,9 @@
         "처음에는": "ko:w:cheo-eum",
         "친구가": "ko:w:chin-gu",
         "친구는": "ko:w:chin-gu",
-        "친구요": "ko:w:chin-gu",
         "친구하고": "ko:w:chin-gu",
         "한국은": "ko:w:han-guk",
+        "해": "ko:w:hada",
         "형이에요": "ko:w:hyeong"
       },
       "questions": [

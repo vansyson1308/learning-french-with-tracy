@@ -7,14 +7,19 @@ import collections, json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ko_stories_lib import D, LEX_BY_ID, STORY_BANDS, analyze, check_story  # noqa: E402
+import glob  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")
 rows = [json.loads(line) for line in open(os.path.join(D, "stories", "OUTPUT.jsonl"), encoding="utf-8")]
 findings = []
 ids = collections.Counter(r["id"] for r in rows)
 findings += [f"duplicate story id {i}" for i, n in ids.items() if n > 1]
+# The declared relations of the 반말 dialogue lines (coordinator 2026-11-05, session 5).
+REGISTERS = {}
+for fn in sorted(glob.glob(os.path.join(D, "stories", "batches", "*.registers.json"))):
+    REGISTERS.update(json.load(open(fn, encoding="utf-8")))
 for r in rows:
-    findings += [f"{r['id']}: {m}" for m in check_story(r)]
+    findings += [f"{r['id']}: {m}" for m in check_story(r, REGISTERS.get(r["id"]))]
 bands = collections.Counter(r["band"] for r in rows)
 graded = sum(n for b, n in bands.items() if b != "A1-0")
 if not 40 <= graded <= 50:
@@ -33,7 +38,8 @@ syllabus = {i for i, b in STORY_BANDS.items() if b in ("A1-0", "A1-1", "A1-2")}
 summary = {"stories": len(rows), "byBand": dict(sorted(bands.items())), "wordTokens": tokens,
            "syllabusLexemesInStories": len(used & syllabus), "syllabusLexemes": len(syllabus),
            "a21LexemesInStories": len({i for i in used if STORY_BANDS.get(i) == "A2-1"}),
-           "newLexemes": sum(len(r["newLexemes"]) for r in rows), "findings": findings}
+           "newLexemes": sum(len(r["newLexemes"]) for r in rows),
+           "banmalLines": {k: len(v) for k, v in sorted(REGISTERS.items())}, "findings": findings}
 assert all(i in LEX_BY_ID for i in used)
 os.makedirs(os.path.join(D, "review"), exist_ok=True)
 with open(os.path.join(D, "review", "stories-selfcheck.json"), "w", encoding="utf-8", newline="\n") as f:

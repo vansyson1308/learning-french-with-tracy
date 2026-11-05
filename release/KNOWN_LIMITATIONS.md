@@ -174,7 +174,16 @@ itself.
     (`OWNER-FINAL-CHECKLIST.md` B2);
   - **homographs**: one lexeme per surface, so 개 is "con chó" (the ko-en word) and the
     counter 개 is taught in a concept card; likewise 이 ("này", not the Sino 2), 네 ("vâng",
-    not the counter form of 4), 눈 ("mắt", not snow), 안 ("không", not inside);
+    not the counter form of 4), 눈 ("mắt", not snow), 안 ("không", not inside); sense-keyed
+    lexemes are post-v1.0 (coordinator 2026-11-05);
+  - **word lookup** (stories, readings): a tap shows the one lexeme a surface has, so the
+    counter 개 shows "con chó" and 말 ("lời nói") shows "con ngựa" — the stories avoid both
+    senses; a compound numeral (이천, 스물두) has no lexeme and shows its head (천 "nghìn",
+    스물 "hai mươi"), not its full value;
+  - **반말** appears only in story dialogue lines of a declared relation (a parent to a child,
+    close friends of one age, an older sibling to a younger one), with the endings -아/어,
+    -야/이야, -자, -지, -네, each glossed at its first occurrence; never in narration, in an
+    answer the learner gives, or in a scenario turn. Elsewhere the course speaks 해요체;
   - **readings**: RR comes from the project's rules (scripts/lib/cjk-readings/korean-rr.ts);
     521 of 995 lexemes have no independent romanization to confirm it;
   - **Hán-Việt** readings are shown only for Sino-Korean words; 194 course words were
