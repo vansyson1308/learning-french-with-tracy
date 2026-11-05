@@ -1,8 +1,10 @@
 /**
  * Script primer checkpoint record (P4c, persisted from v9): the courses whose
- * kana primer checkpoint the learner passed (courseId → true). A course whose
- * profile sets `romajiUntilPrimer` shows a romaji line under Japanese text
- * until its entry exists. Only a pass is stored — a failed attempt changes
+ * primer checkpoint the learner passed (courseId → true): the kana check, and
+ * from P4d the tone and pinyin check of zh courses (same record, no new
+ * migration). A course whose profile sets `romajiUntilPrimer` shows a romaji
+ * line under Japanese text until its entry exists; for any other course the
+ * entry only marks the primer card "passed". Only a pass is stored — a failed attempt changes
  * nothing, and nothing here locks a lesson. Dependency-free so the
  * persistence layer can use the normaliser.
  */

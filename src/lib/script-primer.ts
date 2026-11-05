@@ -39,6 +39,14 @@ export function primerText(text: PrimerText, nativeCode: string): string {
   return nativeCode === "vi" ? text.vi : text.en;
 }
 
+/**
+ * P4d: whether a primer is a kana primer (ja): its checkpoint texts speak of kana and of the romaji line. A tones
+ * primer (zh) says only that the check was passed: the reading under the text stays.
+ */
+export function isKanaPrimer(primer: ScriptPrimer): boolean {
+  return primer.sections.some((s) => s.kind === "kanaTable");
+}
+
 export type PrimerCheckpoint = NonNullable<ScriptPrimer["checkpoint"]>;
 export type PrimerCheckpointItem = PrimerCheckpoint["items"][number];
 

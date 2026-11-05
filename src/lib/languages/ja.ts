@@ -49,7 +49,7 @@ import {
   type CjkDictionary,
 } from "./cjk";
 import { furiganaFromKana, japaneseInflections } from "./ja-inflection";
-import type { CourseLexicon, LanguageRules } from "./types";
+import type { CourseLexicon, LanguageRules, NegationRules } from "./types";
 
 const KANJI_DIGITS = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
 
@@ -239,6 +239,19 @@ function bind(lexicon: CourseLexicon): Bound {
   };
 }
 
+/**
+ * QC 2026-11-05 §1.2: Japanese negates after the predicate — 行きません is not 行き(ます), 好きじゃない is not 好き,
+ * 時間がない is not 時間. A keyword run followed, after at most one character (a particle が/は or a stem vowel), by
+ * one of these endings is negated. Counted in characters: the dictionary tokenizer splits ません as ま + せん.
+ */
+const NEGATION: NegationRules = {
+  unit: "text",
+  after: {
+    negators: ["ない", "なかった", "なくて", "ません", "ありません", "いません", "じゃない", "ではない", "じゃありません", "ではありません", "じゃなかった", "ではなかった"],
+    gap: 1,
+  },
+};
+
 export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
   const bound = lexicon && lexicon.entries.length > 0 ? bind(lexicon) : null;
   const fallback = tokenizeCjk("ja-JP", true);
@@ -254,6 +267,7 @@ export function createJapaneseRules(lexicon?: CourseLexicon): LanguageRules {
     code: "ja",
     ttsLocale: "ja-JP",
     recognitionLocale: "ja-JP",
+    negation: NEGATION,
     articleCue: () => undefined,
     splitArticle: (surface) => ({ bare: surface }),
     numberToWords: japaneseNumber,

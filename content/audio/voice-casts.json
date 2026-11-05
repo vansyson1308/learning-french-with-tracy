@@ -312,8 +312,8 @@
         }
       ],
       "cast": {
-        "A": null,
-        "B": null
+        "A": "kokoro-zf_xiaobei",
+        "B": "kokoro-zm_yunjian"
       },
       "canary": {
         "reportedAt": "2026-10-22",
@@ -339,7 +339,7 @@
           }
         ]
       },
-      "castNote": "A=melotts-zh (MeloTTS melotts-zh speaker ZH); B=kokoro-zm_yunjian: different speaker (Kokoro voice pack zm_yunjian), gender male (no other-gender candidate within the floor), mean WER/CER 0.1475 ≤ 0.6"
+      "castNote": "P4d plan cast (plan/authoring/zh-plan.md §7), pending the canary of the course-readings front-end: A=kokoro-zf_xiaobei (female; 2026-10-22 canary CER 0.2242 on misaki's G2P), B=kokoro-zm_yunjian (male; 0.1475) — Kokoro zh voices only (MeloTTS excluded by D-11). The canary and `audio.ts select` replace this cast and its report."
     },
     "ko": {
       "status": "no-clean-voice",

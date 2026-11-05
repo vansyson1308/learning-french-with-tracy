@@ -26,7 +26,7 @@ import type { CourseArtifactPaths, CourseCapabilities, CourseProfile } from "../
 import { audioCourseIds, parseAudioManifest, renderAudioSlice, renderCourseBundlesStatic, renderCourseLoaders, renderCourseModule } from "./course-bundles";
 import { resolveCourseRoles, type CourseRef, type CourseRole } from "./course-roles";
 import { buildLanguage } from "./languages";
-import { canonicalJson, courseIsBeta, courseProfileFlag, courseReviewIsAi, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
+import { canonicalJson, courseIsBeta, courseProfileFlag, courseReviewIsAi, courseRoleOf, loadOnboardingPriority, readJson, safeResolve, type CompiledFile } from "./pipeline";
 
 export type LexiconDbInfo = { name: string; contentHash: string };
 
@@ -189,6 +189,60 @@ export function deriveProfiles(args: {
   return profiles;
 }
 
+const CORE_CAPABILITIES = ["fsrs", "dailySession", "lexicon", "concepts", "placement", "checkpoints", "goals", "listening", "reading", "speaking", "writing", "conversation"] as const;
+
+type DefaultCandidate = Pick<CourseProfile, "id" | "targetCode" | "nativeCode" | "targetLanguage" | "hiddenFromOnboarding"> & {
+  capabilities: Pick<CourseCapabilities, (typeof CORE_CAPABILITIES)[number]>;
+};
+
+/**
+ * The onboarding defaults are data too. Order: the most core capabilities
+ * (optional add-ons such as `exam` don't count), then the most units, then
+ * the D-15 language priority (`onboardingPriority`, from
+ * content/onboarding-priority.json; a target it does not name ranks after
+ * every listed one — P4d, so a tie never goes to alphabetical order), then
+ * target-language name, then id — never exercise count, which content edits
+ * move. A course hidden from onboarding (standalone, retired basic pack) is
+ * never a default.
+ *
+ * P3e §7: the same order per native language — a Vietnamese UI preselects
+ * the first `-vi` course. A course is preferred only once its target passes
+ * the A1 claim gate (P4f: en-vi becomes the Vietnamese suggestion when it
+ * does; before that fr-vi stays first). The global default serves a UI
+ * language with no course of its own, which the app shows in English: so it
+ * is the English UI's course (P0: fr-en). Read at runtime by defaultCourseForUi.
+ */
+export function deriveDefaultCourses(args: {
+  profiles: Record<string, DefaultCandidate>;
+  unitCount: (courseId: string) => number;
+  claimA1ByTarget: Record<string, boolean>;
+  onboardingPriority: readonly string[];
+}): { defaultCourseId: string; defaultCourseByNative: Record<string, string> } {
+  const { profiles, unitCount, claimA1ByTarget, onboardingPriority } = args;
+  const score = (id: string) => CORE_CAPABILITIES.filter((k) => profiles[id].capabilities[k]).length;
+  const rank = (id: string) => {
+    const i = onboardingPriority.indexOf(profiles[id].targetCode);
+    return i === -1 ? onboardingPriority.length : i;
+  };
+  const defaultOrder = Object.keys(profiles)
+    .sort()
+    .filter((id) => profiles[id].hiddenFromOnboarding !== true)
+    .sort(
+      (a, b) =>
+        score(b) - score(a) ||
+        unitCount(b) - unitCount(a) ||
+        rank(a) - rank(b) ||
+        profiles[a].targetLanguage.localeCompare(profiles[b].targetLanguage) ||
+        a.localeCompare(b)
+    );
+  const claimed = (id: string) => claimA1ByTarget[profiles[id].targetCode] === true;
+  const defaultCourseByNative: Record<string, string> = {};
+  for (const id of [...defaultOrder.filter(claimed), ...defaultOrder.filter((id) => !claimed(id))]) {
+    defaultCourseByNative[profiles[id].nativeCode] ??= id;
+  }
+  return { defaultCourseId: defaultCourseByNative.en ?? defaultOrder[0], defaultCourseByNative };
+}
+
 const ident = (id: string) => id.replace(/[^a-zA-Z0-9]/g, "_");
 
 /** Import specifier from `fromDir` to a repo-relative module path (POSIX, no extension for .ts). */
@@ -339,36 +393,13 @@ export function compileCourseProfileArtifacts(args: {
     }
   }
   const courseIds = Object.keys(profiles).sort();
-  // The fallback default is data too: the course with the most core
-  // capabilities (optional add-ons such as `exam` don't count), ties broken
-  // in the course pickers' order (most units, then target-language name,
-  // then id) — never by exercise count, which content edits move. A
-  // standalone course is never the default. Onboarding refines this per UI
-  // language at runtime (P3e §7: defaultCourseByNative below, read by defaultCourseForUi).
-  const CORE_CAPABILITIES = ["fsrs", "dailySession", "lexicon", "concepts", "placement", "checkpoints", "goals", "listening", "reading", "speaking", "writing", "conversation"] as const;
   const packById = new Map(args.packs.map((p) => [p.id, p]));
-  const unitCount = (id: string) => packById.get(id)?.sections.reduce((n, s) => n + s.units.length, 0) ?? 0;
-  const defaultOrder = [...courseIds].filter((id) => profiles[id].hiddenFromOnboarding !== true).sort((a, b) => {
-    const score = (id: string) => CORE_CAPABILITIES.filter((k) => profiles[id].capabilities[k]).length;
-    return (
-      score(b) - score(a) ||
-      unitCount(b) - unitCount(a) ||
-      (packById.get(a)?.targetLanguage ?? "").localeCompare(packById.get(b)?.targetLanguage ?? "") ||
-      a.localeCompare(b)
-    );
+  const { defaultCourseId, defaultCourseByNative } = deriveDefaultCourses({
+    profiles,
+    unitCount: (id) => packById.get(id)?.sections.reduce((n, s) => n + s.units.length, 0) ?? 0,
+    claimA1ByTarget,
+    onboardingPriority: loadOnboardingPriority(),
   });
-  // P3e §7: the same order per native language — a Vietnamese UI preselects
-  // the first `-vi` course. A course is preferred only once its target passes
-  // the A1 claim gate (P4f: en-vi becomes the Vietnamese suggestion when it
-  // does; before that fr-vi stays first).
-  const claimed = (id: string) => claimA1ByTarget[packById.get(id)?.targetCode ?? ""] === true;
-  const defaultCourseByNative: Record<string, string> = {};
-  for (const id of [...defaultOrder.filter(claimed), ...defaultOrder.filter((id) => !claimed(id))]) {
-    defaultCourseByNative[profiles[id].nativeCode] ??= id;
-  }
-  // The global default serves a UI language with no course of its own, which
-  // the app shows in English: so it is the English UI's course (P0: fr-en).
-  const defaultCourseId = defaultCourseByNative.en ?? defaultOrder[0];
   out.push({
     relPath: `${root}/course-profiles.json`,
     contents: canonicalJson({ version: 1, defaultCourseId, defaultCourseByNative, profiles }),

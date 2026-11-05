@@ -1,0 +1,32 @@
+{
+  "generator": "scripts/audio.ts apply",
+  "language": "zh",
+  "pipelineVersion": 3,
+  "layers": [
+    "pack",
+    "lexicon",
+    "reception"
+  ],
+  "courses": [
+    {
+      "courseId": "zh-en",
+      "policy": "device-tts",
+      "voiceCast": null,
+      "clips": 0
+    },
+    {
+      "courseId": "zh-vi",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "kokoro-zf_xiaobei",
+        "B": "kokoro-zm_yunjian"
+      },
+      "clips": 1599
+    }
+  ],
+  "receptionClips": 727,
+  "files": {
+    "pack": 1247,
+    "reception": 722
+  }
+}

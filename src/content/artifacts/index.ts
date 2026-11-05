@@ -13,6 +13,7 @@ import { ARTIFACTS as ja_vi } from "./ja-vi";
 import { ARTIFACTS as ko_en } from "./ko-en";
 import { ARTIFACTS as pt_en } from "./pt-en";
 import { ARTIFACTS as zh_en } from "./zh-en";
+import { ARTIFACTS as zh_vi } from "./zh-vi";
 import type { CourseArtifacts } from "../../lib/content-registry";
 
 export const COURSE_ARTIFACTS: Record<string, CourseArtifacts> = {
@@ -30,4 +31,5 @@ export const COURSE_ARTIFACTS: Record<string, CourseArtifacts> = {
   "ko-en": ko_en,
   "pt-en": pt_en,
   "zh-en": zh_en,
+  "zh-vi": zh_vi,
 };

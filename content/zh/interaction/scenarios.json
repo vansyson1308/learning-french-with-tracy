@@ -1,0 +1,4008 @@
+{
+  "version": 1,
+  "language": "zh",
+  "scenarios": [
+    {
+      "id": "zh.scenario.shop_fruit",
+      "title": {
+        "vi": "Mua hoa quả"
+      },
+      "goal": {
+        "vi": "Mua 1 ký táo (hai cân Trung Quốc), rồi hỏi trả bằng mã QR được không."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "不好意思，我不明白。",
+          "clipId": "zh.clip.ix_shop_fruit_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "你好！你要什么？",
+          "clipId": "zh.clip.ix_shop_fruit_0",
+          "rephraseText": "你想买什么？",
+          "rephraseClipId": "zh.clip.ix_shop_fruit_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn 1 ký táo (hai cân Trung Quốc)."
+          },
+          "expected": [
+            {
+              "intent": "buy",
+              "acceptedVariants": [
+                "我要两斤苹果",
+                "两斤苹果",
+                "我想买两斤苹果",
+                "给我两斤苹果",
+                "请给我两斤苹果",
+                "我买两斤苹果"
+              ],
+              "requiredConcepts": [
+                [
+                  "苹果"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "你想买什么？",
+          "clipId": "zh.clip.ix_shop_fruit_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn 1 ký táo (hai cân Trung Quốc)."
+          },
+          "expected": [
+            {
+              "intent": "buy",
+              "acceptedVariants": [
+                "我要两斤苹果",
+                "两斤苹果",
+                "我想买两斤苹果",
+                "给我两斤苹果",
+                "请给我两斤苹果",
+                "我买两斤苹果"
+              ],
+              "requiredConcepts": [
+                [
+                  "苹果"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "两斤十块。",
+          "clipId": "zh.clip.ix_shop_fruit_1",
+          "rephraseText": "一共十块钱。",
+          "rephraseClipId": "zh.clip.ix_shop_fruit_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy hỏi trả bằng mã QR được không."
+          },
+          "expected": [
+            {
+              "intent": "qr",
+              "acceptedVariants": [
+                "可以扫码吗",
+                "能扫码吗",
+                "我可以扫码吗",
+                "扫码可以吗",
+                "我扫你可以吗",
+                "可以用微信吗",
+                "可以用微信付吗",
+                "可以微信支付吗"
+              ],
+              "requiredConcepts": [
+                [
+                  "扫码",
+                  "扫",
+                  "微信"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "一共十块钱。",
+          "clipId": "zh.clip.ix_shop_fruit_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy hỏi trả bằng mã QR được không."
+          },
+          "expected": [
+            {
+              "intent": "qr",
+              "acceptedVariants": [
+                "可以扫码吗",
+                "能扫码吗",
+                "我可以扫码吗",
+                "扫码可以吗",
+                "我扫你可以吗",
+                "可以用微信吗",
+                "可以用微信付吗",
+                "可以微信支付吗"
+              ],
+              "requiredConcepts": [
+                [
+                  "扫码",
+                  "扫",
+                  "微信"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "可以，你扫我吧。谢谢！",
+          "clipId": "zh.clip.ix_shop_fruit_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.restaurant_order",
+      "title": {
+        "vi": "Mua cơm hộp ở quán"
+      },
+      "goal": {
+        "vi": "Gọi một hộp cơm và một chai nước, rồi nói bạn ăn ở đây."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "不好意思，请再说一遍。",
+          "clipId": "zh.clip.ix_restaurant_order_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "欢迎！您要什么？",
+          "clipId": "zh.clip.ix_restaurant_order_0",
+          "rephraseText": "您想吃什么？",
+          "rephraseClipId": "zh.clip.ix_restaurant_order_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy gọi một hộp cơm và một chai nước."
+          },
+          "expected": [
+            {
+              "intent": "order",
+              "acceptedVariants": [
+                "我要一个便当和一瓶水",
+                "一个便当，一瓶水",
+                "请给我一个便当和一瓶水",
+                "给我一个便当和一瓶水",
+                "我要一个便当，一瓶水",
+                "我要一个盒饭和一瓶水",
+                "一个盒饭，一瓶水",
+                "我要一个便当和水",
+                "一个便当和水"
+              ],
+              "requiredConcepts": [
+                [
+                  "便当",
+                  "盒饭"
+                ],
+                [
+                  "瓶水"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "您想吃什么？",
+          "clipId": "zh.clip.ix_restaurant_order_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy gọi một hộp cơm và một chai nước."
+          },
+          "expected": [
+            {
+              "intent": "order",
+              "acceptedVariants": [
+                "我要一个便当和一瓶水",
+                "一个便当，一瓶水",
+                "请给我一个便当和一瓶水",
+                "给我一个便当和一瓶水",
+                "我要一个便当，一瓶水",
+                "我要一个盒饭和一瓶水",
+                "一个盒饭，一瓶水",
+                "我要一个便当和水",
+                "一个便当和水"
+              ],
+              "requiredConcepts": [
+                [
+                  "便当",
+                  "盒饭"
+                ],
+                [
+                  "瓶水"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "在这儿吃还是带走？",
+          "clipId": "zh.clip.ix_restaurant_order_1",
+          "rephraseText": "您在这儿吃吗？",
+          "rephraseClipId": "zh.clip.ix_restaurant_order_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn ăn ở đây."
+          },
+          "expected": [
+            {
+              "intent": "eat_here",
+              "acceptedVariants": [
+                "在这儿吃",
+                "在这里吃",
+                "我在这儿吃",
+                "我在这里吃",
+                "这儿吃",
+                "这里吃",
+                "在这儿吃吧",
+                "在这里吃吧"
+              ],
+              "requiredConcepts": [
+                [
+                  "这儿",
+                  "这里"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "您在这儿吃吗？",
+          "clipId": "zh.clip.ix_restaurant_order_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn ăn ở đây."
+          },
+          "expected": [
+            {
+              "intent": "eat_here",
+              "acceptedVariants": [
+                "在这儿吃",
+                "在这里吃",
+                "我在这儿吃",
+                "我在这里吃",
+                "这儿吃",
+                "这里吃",
+                "在这儿吃吧",
+                "在这里吃吧"
+              ],
+              "requiredConcepts": [
+                [
+                  "这儿",
+                  "这里"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好的，请坐。",
+          "clipId": "zh.clip.ix_restaurant_order_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.ask_subway",
+      "title": {
+        "vi": "Hỏi đường đến ga tàu điện ngầm"
+      },
+      "goal": {
+        "vi": "Hỏi một người lạ ga tàu điện ngầm ở đâu, rồi cảm ơn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "对不起，我也不知道。",
+          "clipId": "zh.clip.ix_ask_subway_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "你好，有什么事吗？",
+          "clipId": "zh.clip.ix_ask_subway_0",
+          "rephraseText": "你需要帮忙吗？",
+          "rephraseClipId": "zh.clip.ix_ask_subway_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi ga tàu điện ngầm ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "请问，地铁站在哪儿",
+                "请问，地铁站在哪里",
+                "地铁站在哪儿",
+                "地铁站在哪里",
+                "请问地铁站怎么走",
+                "地铁站怎么走",
+                "请问，去地铁站怎么走"
+              ],
+              "requiredConcepts": [
+                [
+                  "地铁站",
+                  "地铁"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "你需要帮忙吗？",
+          "clipId": "zh.clip.ix_ask_subway_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi ga tàu điện ngầm ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "请问，地铁站在哪儿",
+                "请问，地铁站在哪里",
+                "地铁站在哪儿",
+                "地铁站在哪里",
+                "请问地铁站怎么走",
+                "地铁站怎么走",
+                "请问，去地铁站怎么走"
+              ],
+              "requiredConcepts": [
+                [
+                  "地铁站",
+                  "地铁"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "一直往前走，到路口往右边走。",
+          "clipId": "zh.clip.ix_ask_subway_1",
+          "rephraseText": "往前走，然后往右边走。",
+          "rephraseClipId": "zh.clip.ix_ask_subway_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "谢谢",
+                "谢谢你",
+                "谢谢您",
+                "太谢谢了",
+                "好的，谢谢"
+              ],
+              "requiredConcepts": [
+                [
+                  "谢谢"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "往前走，然后往右边走。",
+          "clipId": "zh.clip.ix_ask_subway_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "谢谢",
+                "谢谢你",
+                "谢谢您",
+                "太谢谢了",
+                "好的，谢谢"
+              ],
+              "requiredConcepts": [
+                [
+                  "谢谢"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "不客气！",
+          "clipId": "zh.clip.ix_ask_subway_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.taxi",
+      "title": {
+        "vi": "Đi taxi"
+      },
+      "goal": {
+        "vi": "Nói với tài xế bạn đi ga tàu hoả, rồi xin dừng ở đây khi đến nơi."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "对不起，我听不懂。",
+          "clipId": "zh.clip.ix_taxi_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "您好，去哪儿？",
+          "clipId": "zh.clip.ix_taxi_0",
+          "rephraseText": "您要去哪儿？",
+          "rephraseClipId": "zh.clip.ix_taxi_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đi ga tàu hoả."
+          },
+          "expected": [
+            {
+              "intent": "where",
+              "acceptedVariants": [
+                "去火车站",
+                "我去火车站",
+                "火车站",
+                "请去火车站",
+                "我要去火车站"
+              ],
+              "requiredConcepts": [
+                [
+                  "火车站"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "您要去哪儿？",
+          "clipId": "zh.clip.ix_taxi_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đi ga tàu hoả."
+          },
+          "expected": [
+            {
+              "intent": "where",
+              "acceptedVariants": [
+                "去火车站",
+                "我去火车站",
+                "火车站",
+                "请去火车站",
+                "我要去火车站"
+              ],
+              "requiredConcepts": [
+                [
+                  "火车站"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "到了。在这儿停吗？",
+          "clipId": "zh.clip.ix_taxi_1",
+          "rephraseText": "这儿可以吗？",
+          "rephraseClipId": "zh.clip.ix_taxi_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói: vâng, dừng ở đây."
+          },
+          "expected": [
+            {
+              "intent": "stop",
+              "acceptedVariants": [
+                "好，在这儿停",
+                "好，在这里停",
+                "对，在这儿停",
+                "对，在这里停",
+                "可以",
+                "好的，就在这儿停",
+                "好的，就在这里停",
+                "在这儿停吧",
+                "在这里停吧",
+                "对，就在这儿",
+                "对，就在这里",
+                "好",
+                "好的",
+                "对",
+                "停这儿吧",
+                "停这里吧",
+                "就这儿吧",
+                "就这里吧"
+              ],
+              "requiredConcepts": [
+                [
+                  "在这儿停",
+                  "在这里停",
+                  "就在这儿",
+                  "就在这里",
+                  "停这儿",
+                  "停在这儿",
+                  "停这里",
+                  "停在这里"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "这儿可以吗？",
+          "clipId": "zh.clip.ix_taxi_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói: vâng, dừng ở đây."
+          },
+          "expected": [
+            {
+              "intent": "stop",
+              "acceptedVariants": [
+                "好，在这儿停",
+                "好，在这里停",
+                "对，在这儿停",
+                "对，在这里停",
+                "可以",
+                "好的，就在这儿停",
+                "好的，就在这里停",
+                "在这儿停吧",
+                "在这里停吧",
+                "对，就在这儿",
+                "对，就在这里",
+                "好",
+                "好的",
+                "对",
+                "停这儿吧",
+                "停这里吧",
+                "就这儿吧",
+                "就这里吧"
+              ],
+              "requiredConcepts": [
+                [
+                  "在这儿停",
+                  "在这里停",
+                  "就在这儿",
+                  "就在这里",
+                  "停这儿",
+                  "停在这儿",
+                  "停这里",
+                  "停在这里"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好的，三十块。",
+          "clipId": "zh.clip.ix_taxi_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.clinic_reception",
+      "title": {
+        "vi": "Ở quầy lễ tân phòng khám"
+      },
+      "goal": {
+        "vi": "Nói đây là lần đầu bạn đến, rồi đưa hộ chiếu."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "不好意思，请再说一遍。",
+          "clipId": "zh.clip.ix_clinic_reception_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "您好！您是第一次来吗？",
+          "clipId": "zh.clip.ix_clinic_reception_0",
+          "rephraseText": "以前来过吗？",
+          "rephraseClipId": "zh.clip.ix_clinic_reception_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời: đúng, đây là lần đầu bạn đến."
+          },
+          "expected": [
+            {
+              "intent": "first",
+              "acceptedVariants": [
+                "是，第一次",
+                "对，第一次",
+                "是的，我第一次来",
+                "对",
+                "是",
+                "是的",
+                "对的"
+              ],
+              "requiredConcepts": [
+                [
+                  "第一次"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "以前来过吗？",
+          "clipId": "zh.clip.ix_clinic_reception_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời: đúng, đây là lần đầu bạn đến."
+          },
+          "expected": [
+            {
+              "intent": "first",
+              "acceptedVariants": [
+                "是，第一次",
+                "对，第一次",
+                "是的，我第一次来",
+                "对",
+                "是",
+                "是的",
+                "对的"
+              ],
+              "requiredConcepts": [
+                [
+                  "第一次"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "请给我看一下您的护照。",
+          "clipId": "zh.clip.ix_clinic_reception_1",
+          "rephraseText": "有护照吗？",
+          "rephraseClipId": "zh.clip.ix_clinic_reception_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy đưa hộ chiếu và nói một câu lịch sự."
+          },
+          "expected": [
+            {
+              "intent": "hand_over",
+              "acceptedVariants": [
+                "好的，给您",
+                "给您",
+                "这是我的护照",
+                "好，给你",
+                "在这儿",
+                "在这里"
+              ],
+              "requiredConcepts": [
+                [
+                  "给您",
+                  "给你",
+                  "这是",
+                  "护照",
+                  "这儿"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "有护照吗？",
+          "clipId": "zh.clip.ix_clinic_reception_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy đưa hộ chiếu và nói một câu lịch sự."
+          },
+          "expected": [
+            {
+              "intent": "hand_over",
+              "acceptedVariants": [
+                "好的，给您",
+                "给您",
+                "这是我的护照",
+                "好，给你",
+                "在这儿",
+                "在这里"
+              ],
+              "requiredConcepts": [
+                [
+                  "给您",
+                  "给你",
+                  "这是",
+                  "护照",
+                  "这儿"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好，请等一下。",
+          "clipId": "zh.clip.ix_clinic_reception_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.bank_account",
+      "title": {
+        "vi": "Làm thẻ ở ngân hàng"
+      },
+      "goal": {
+        "vi": "Nói bạn muốn làm một thẻ ngân hàng, rồi báo bạn đã điền xong đơn."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "没关系，我帮您填。",
+          "clipId": "zh.clip.ix_bank_account_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "您好，您需要什么？",
+          "clipId": "zh.clip.ix_bank_account_0",
+          "rephraseText": "您要做什么？",
+          "rephraseClipId": "zh.clip.ix_bank_account_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn làm một thẻ ngân hàng."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "我想要一张银行卡",
+                "我要一张银行卡",
+                "我想办一张银行卡",
+                "我要办银行卡",
+                "办银行卡"
+              ],
+              "requiredConcepts": [
+                [
+                  "银行卡"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "您要做什么？",
+          "clipId": "zh.clip.ix_bank_account_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn làm một thẻ ngân hàng."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "我想要一张银行卡",
+                "我要一张银行卡",
+                "我想办一张银行卡",
+                "我要办银行卡",
+                "办银行卡"
+              ],
+              "requiredConcepts": [
+                [
+                  "银行卡"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "好的，请先填这张表。",
+          "clipId": "zh.clip.ix_bank_account_1",
+          "rephraseText": "请填一下这张表。",
+          "rephraseClipId": "zh.clip.ix_bank_account_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn đã điền xong."
+          },
+          "expected": [
+            {
+              "intent": "filled",
+              "acceptedVariants": [
+                "我填好了",
+                "填好了",
+                "好了",
+                "我已经填好了",
+                "好的，填好了",
+                "我填完了",
+                "填完了",
+                "写完了",
+                "我写好了"
+              ],
+              "requiredConcepts": [
+                [
+                  "好了",
+                  "填好",
+                  "填完",
+                  "写完",
+                  "写好"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "请填一下这张表。",
+          "clipId": "zh.clip.ix_bank_account_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn đã điền xong."
+          },
+          "expected": [
+            {
+              "intent": "filled",
+              "acceptedVariants": [
+                "我填好了",
+                "填好了",
+                "好了",
+                "我已经填好了",
+                "好的，填好了",
+                "我填完了",
+                "填完了",
+                "写完了",
+                "我写好了"
+              ],
+              "requiredConcepts": [
+                [
+                  "好了",
+                  "填好",
+                  "填完",
+                  "写完",
+                  "写好"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好的，请输入密码。",
+          "clipId": "zh.clip.ix_bank_account_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.clinic_doctor",
+      "title": {
+        "vi": "Đi khám bệnh"
+      },
+      "goal": {
+        "vi": "Nói với bác sĩ bạn đau đầu và bị sốt, đã hai ngày rồi."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "没关系，你慢慢说。",
+          "clipId": "zh.clip.ix_clinic_doctor_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "你哪儿不舒服？",
+          "clipId": "zh.clip.ix_clinic_doctor_0",
+          "rephraseText": "你怎么了？",
+          "rephraseClipId": "zh.clip.ix_clinic_doctor_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đau đầu và bị sốt."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "我头疼，发烧",
+                "我头痛，发烧",
+                "我头疼，还发烧",
+                "我头痛，还发烧",
+                "头疼，发烧",
+                "头痛，发烧",
+                "我头疼，也发烧了",
+                "我头痛，也发烧了",
+                "我头疼",
+                "我头痛",
+                "我发烧了",
+                "我头很疼，发烧了",
+                "我头特别疼，发烧了",
+                "我头很痛，发烧了",
+                "我头特别痛，发烧了"
+              ],
+              "requiredConcepts": [
+                [
+                  "头疼",
+                  "头很疼",
+                  "头有点儿疼",
+                  "头有点疼",
+                  "头痛",
+                  "头很痛",
+                  "头有点儿痛",
+                  "头有点痛",
+                  "发烧"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "你怎么了？",
+          "clipId": "zh.clip.ix_clinic_doctor_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đau đầu và bị sốt."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "我头疼，发烧",
+                "我头痛，发烧",
+                "我头疼，还发烧",
+                "我头痛，还发烧",
+                "头疼，发烧",
+                "头痛，发烧",
+                "我头疼，也发烧了",
+                "我头痛，也发烧了",
+                "我头疼",
+                "我头痛",
+                "我发烧了",
+                "我头很疼，发烧了",
+                "我头特别疼，发烧了",
+                "我头很痛，发烧了",
+                "我头特别痛，发烧了"
+              ],
+              "requiredConcepts": [
+                [
+                  "头疼",
+                  "头很疼",
+                  "头有点儿疼",
+                  "头有点疼",
+                  "头痛",
+                  "头很痛",
+                  "头有点儿痛",
+                  "头有点痛",
+                  "发烧"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "疼了几天了？",
+          "clipId": "zh.clip.ix_clinic_doctor_1",
+          "rephraseText": "几天了？",
+          "rephraseClipId": "zh.clip.ix_clinic_doctor_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói đã hai ngày rồi."
+          },
+          "expected": [
+            {
+              "intent": "since",
+              "acceptedVariants": [
+                "两天了",
+                "两天",
+                "疼了两天了",
+                "痛了两天了",
+                "已经两天了"
+              ],
+              "requiredConcepts": [
+                [
+                  "两天"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "几天了？",
+          "clipId": "zh.clip.ix_clinic_doctor_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói đã hai ngày rồi."
+          },
+          "expected": [
+            {
+              "intent": "since",
+              "acceptedVariants": [
+                "两天了",
+                "两天",
+                "疼了两天了",
+                "痛了两天了",
+                "已经两天了"
+              ],
+              "requiredConcepts": [
+                [
+                  "两天"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "这是药，一天吃三次。",
+          "clipId": "zh.clip.ix_clinic_doctor_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.call_sick",
+      "title": {
+        "vi": "Gọi điện xin nghỉ ốm"
+      },
+      "goal": {
+        "vi": "Gọi cho tổ trưởng Lý: nói bạn là Nguyễn Hải, bạn bị sốt và hôm nay xin nghỉ."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "我听不清楚，你再说一遍。",
+          "clipId": "zh.clip.ix_call_sick_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "喂，你好！",
+          "clipId": "zh.clip.ix_call_sick_0",
+          "rephraseText": "喂，哪位？",
+          "rephraseClipId": "zh.clip.ix_call_sick_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy chào tổ trưởng và nói bạn là Nguyễn Hải."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "喂，组长好，我是阮海",
+                "组长好，我是阮海",
+                "我是阮海",
+                "喂，我是阮海",
+                "您好，我是阮海",
+                "李组长，我是阮海"
+              ],
+              "requiredConcepts": [
+                [
+                  "阮海"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "喂，哪位？",
+          "clipId": "zh.clip.ix_call_sick_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy chào tổ trưởng và nói bạn là Nguyễn Hải."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "喂，组长好，我是阮海",
+                "组长好，我是阮海",
+                "我是阮海",
+                "喂，我是阮海",
+                "您好，我是阮海",
+                "李组长，我是阮海"
+              ],
+              "requiredConcepts": [
+                [
+                  "阮海"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "阮海，什么事？",
+          "clipId": "zh.clip.ix_call_sick_1",
+          "rephraseText": "有什么事吗？",
+          "rephraseClipId": "zh.clip.ix_call_sick_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn bị sốt và hôm nay xin nghỉ."
+          },
+          "expected": [
+            {
+              "intent": "sick",
+              "acceptedVariants": [
+                "我发烧了，今天想请假",
+                "我发烧了，今天不能上班",
+                "我今天想请假",
+                "今天我想请假",
+                "我发烧了",
+                "我生病了，想请假一天",
+                "我今天不能来上班",
+                "今天我不能来上班"
+              ],
+              "requiredConcepts": [
+                [
+                  "发烧",
+                  "生病",
+                  "请假",
+                  "不能"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "有什么事吗？",
+          "clipId": "zh.clip.ix_call_sick_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn bị sốt và hôm nay xin nghỉ."
+          },
+          "expected": [
+            {
+              "intent": "sick",
+              "acceptedVariants": [
+                "我发烧了，今天想请假",
+                "我发烧了，今天不能上班",
+                "我今天想请假",
+                "今天我想请假",
+                "我发烧了",
+                "我生病了，想请假一天",
+                "我今天不能来上班",
+                "今天我不能来上班"
+              ],
+              "requiredConcepts": [
+                [
+                  "发烧",
+                  "生病",
+                  "请假",
+                  "不能"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好的，好好休息。",
+          "clipId": "zh.clip.ix_call_sick_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.factory_safety",
+      "title": {
+        "vi": "Chỉ dẫn an toàn ở nhà máy"
+      },
+      "goal": {
+        "vi": "Nghe chỉ dẫn an toàn, nói bạn đã hiểu, rồi hỏi cách dừng máy."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "不明白的时候，问组长。",
+          "clipId": "zh.clip.ix_factory_safety_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "进车间以前，请戴安全帽和手套。",
+          "clipId": "zh.clip.ix_factory_safety_0",
+          "rephraseText": "要戴安全帽，戴手套。",
+          "rephraseClipId": "zh.clip.ix_factory_safety_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đã hiểu."
+          },
+          "expected": [
+            {
+              "intent": "understood",
+              "acceptedVariants": [
+                "我明白了",
+                "明白了",
+                "好的，明白了",
+                "好的",
+                "知道了",
+                "好的，我知道了",
+                "懂了",
+                "我懂了",
+                "好的，我懂了"
+              ],
+              "requiredConcepts": [
+                [
+                  "我明白了",
+                  "明白",
+                  "知道",
+                  "好的",
+                  "懂了"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "要戴安全帽，戴手套。",
+          "clipId": "zh.clip.ix_factory_safety_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đã hiểu."
+          },
+          "expected": [
+            {
+              "intent": "understood",
+              "acceptedVariants": [
+                "我明白了",
+                "明白了",
+                "好的，明白了",
+                "好的",
+                "知道了",
+                "好的，我知道了",
+                "懂了",
+                "我懂了",
+                "好的，我懂了"
+              ],
+              "requiredConcepts": [
+                [
+                  "我明白了",
+                  "明白",
+                  "知道",
+                  "好的",
+                  "懂了"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "这个机器很危险，工作的时候要小心。",
+          "clipId": "zh.clip.ix_factory_safety_1",
+          "rephraseText": "机器很危险，要小心。",
+          "rephraseClipId": "zh.clip.ix_factory_safety_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy hỏi làm sao để dừng máy."
+          },
+          "expected": [
+            {
+              "intent": "ask_stop",
+              "acceptedVariants": [
+                "机器怎么停",
+                "怎么停机器",
+                "请问怎么停",
+                "机器怎么关",
+                "怎么关机器",
+                "怎么停",
+                "怎么关"
+              ],
+              "requiredConcepts": [
+                [
+                  "怎么停",
+                  "怎么关",
+                  "怎么让机器停",
+                  "怎么把机器关"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "机器很危险，要小心。",
+          "clipId": "zh.clip.ix_factory_safety_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy hỏi làm sao để dừng máy."
+          },
+          "expected": [
+            {
+              "intent": "ask_stop",
+              "acceptedVariants": [
+                "机器怎么停",
+                "怎么停机器",
+                "请问怎么停",
+                "机器怎么关",
+                "怎么关机器",
+                "怎么停",
+                "怎么关"
+              ],
+              "requiredConcepts": [
+                [
+                  "怎么停",
+                  "怎么关",
+                  "怎么让机器停",
+                  "怎么把机器关"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "按这个红的，机器就停了。",
+          "clipId": "zh.clip.ix_factory_safety_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.warehouse_boxes",
+      "title": {
+        "vi": "Làm việc trong kho"
+      },
+      "goal": {
+        "vi": "Hỏi tổ trưởng để thùng ở đâu, rồi nói có bao nhiêu thùng."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "没关系，我来看看。",
+          "clipId": "zh.clip.ix_warehouse_boxes_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "请把这些箱子搬到仓库。",
+          "clipId": "zh.clip.ix_warehouse_boxes_0",
+          "rephraseText": "这些箱子，搬到仓库去。",
+          "rephraseClipId": "zh.clip.ix_warehouse_boxes_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi để thùng ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "where_put",
+              "acceptedVariants": [
+                "放在哪儿",
+                "放在哪里",
+                "箱子放在哪儿",
+                "箱子放在哪里",
+                "放哪儿",
+                "放哪里",
+                "箱子放哪儿",
+                "箱子放哪里",
+                "请问放在哪儿",
+                "请问放在哪里"
+              ],
+              "requiredConcepts": [
+                [
+                  "哪儿",
+                  "哪里"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "这些箱子，搬到仓库去。",
+          "clipId": "zh.clip.ix_warehouse_boxes_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi để thùng ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "where_put",
+              "acceptedVariants": [
+                "放在哪儿",
+                "放在哪里",
+                "箱子放在哪儿",
+                "箱子放在哪里",
+                "放哪儿",
+                "放哪里",
+                "箱子放哪儿",
+                "箱子放哪里",
+                "请问放在哪儿",
+                "请问放在哪里"
+              ],
+              "requiredConcepts": [
+                [
+                  "哪儿",
+                  "哪里"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "放在门口旁边。一共有几个箱子？",
+          "clipId": "zh.clip.ix_warehouse_boxes_1",
+          "rephraseText": "有几个箱子？",
+          "rephraseClipId": "zh.clip.ix_warehouse_boxes_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói có hai mươi thùng."
+          },
+          "expected": [
+            {
+              "intent": "count",
+              "acceptedVariants": [
+                "二十个",
+                "一共二十个",
+                "有二十个箱子",
+                "一共有二十个箱子",
+                "二十个箱子",
+                "有二十个",
+                "一共有二十个",
+                "一共二十个箱子"
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "有几个箱子？",
+          "clipId": "zh.clip.ix_warehouse_boxes_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói có hai mươi thùng."
+          },
+          "expected": [
+            {
+              "intent": "count",
+              "acceptedVariants": [
+                "二十个",
+                "一共二十个",
+                "有二十个箱子",
+                "一共有二十个箱子",
+                "二十个箱子",
+                "有二十个",
+                "一共有二十个",
+                "一共二十个箱子"
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好的，谢谢，辛苦了！",
+          "clipId": "zh.clip.ix_warehouse_boxes_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.taiwan_first_day",
+      "title": {
+        "vi": "Ngày đầu ở nhà máy Đài Loan"
+      },
+      "goal": {
+        "vi": "Trả lời tổ trưởng trong ngày đầu đi làm, rồi hỏi chỗ chấm công."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "不懂可以问我。",
+          "clipId": "zh.clip.ix_taiwan_first_day_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "早！你是新来的工人吗？",
+          "clipId": "zh.clip.ix_taiwan_first_day_0",
+          "rephraseText": "你是新来的吗？",
+          "rephraseClipId": "zh.clip.ix_taiwan_first_day_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Nguyễn Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "是，我叫阮南",
+                "对，我是阮南",
+                "是的，我叫阮南",
+                "我叫阮南",
+                "我是阮南"
+              ],
+              "requiredConcepts": [
+                [
+                  "阮南"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "你是新来的吗？",
+          "clipId": "zh.clip.ix_taiwan_first_day_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Nguyễn Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "是，我叫阮南",
+                "对，我是阮南",
+                "是的，我叫阮南",
+                "我叫阮南",
+                "我是阮南"
+              ],
+              "requiredConcepts": [
+                [
+                  "阮南"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "好。上班以前要打卡。",
+          "clipId": "zh.clip.ix_taiwan_first_day_1",
+          "rephraseText": "上班要先打卡。",
+          "rephraseClipId": "zh.clip.ix_taiwan_first_day_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy hỏi chấm công ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "where_clock",
+              "acceptedVariants": [
+                "在哪儿打卡",
+                "在哪里打卡",
+                "请问在哪儿打卡",
+                "请问在哪里打卡",
+                "打卡在哪儿",
+                "打卡在哪里",
+                "在哪儿打卡呢",
+                "在哪里打卡呢"
+              ],
+              "requiredConcepts": [
+                [
+                  "打卡"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "上班要先打卡。",
+          "clipId": "zh.clip.ix_taiwan_first_day_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy hỏi chấm công ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "where_clock",
+              "acceptedVariants": [
+                "在哪儿打卡",
+                "在哪里打卡",
+                "请问在哪儿打卡",
+                "请问在哪里打卡",
+                "打卡在哪儿",
+                "打卡在哪里",
+                "在哪儿打卡呢",
+                "在哪里打卡呢"
+              ],
+              "requiredConcepts": [
+                [
+                  "打卡"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "在门口。宿舍在工厂后边，下班以后我带你去。",
+          "clipId": "zh.clip.ix_taiwan_first_day_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.cp6_new_colleague",
+      "title": {
+        "vi": "Đồng nghiệp mới"
+      },
+      "goal": {
+        "vi": "Làm quen với một đồng nghiệp ở nhà máy."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "没关系，以后再说吧。",
+          "clipId": "zh.clip.ix_cp6_new_colleague_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "你好！我叫小王。你是新来的吗？",
+          "clipId": "zh.clip.ix_cp6_new_colleague_0",
+          "rephraseText": "你是新同事吗？",
+          "rephraseClipId": "zh.clip.ix_cp6_new_colleague_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Nguyễn Hoa."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "是，我叫阮花",
+                "对，我叫阮花",
+                "我叫阮花",
+                "我是阮花",
+                "是的，我是阮花"
+              ],
+              "requiredConcepts": [
+                [
+                  "阮花"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "你是新同事吗？",
+          "clipId": "zh.clip.ix_cp6_new_colleague_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy trả lời là đúng, rồi nói tên bạn: Nguyễn Hoa."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "是，我叫阮花",
+                "对，我叫阮花",
+                "我叫阮花",
+                "我是阮花",
+                "是的，我是阮花"
+              ],
+              "requiredConcepts": [
+                [
+                  "阮花"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "你是哪国人？",
+          "clipId": "zh.clip.ix_cp6_new_colleague_1",
+          "rephraseText": "你是从哪儿来的？",
+          "rephraseClipId": "zh.clip.ix_cp6_new_colleague_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn là người Việt Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_origin",
+              "acceptedVariants": [
+                "我是越南人",
+                "我是一个越南人",
+                "越南人",
+                "我从越南来",
+                "我是从越南来的"
+              ],
+              "requiredConcepts": [
+                [
+                  "越南"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "你是从哪儿来的？",
+          "clipId": "zh.clip.ix_cp6_new_colleague_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn là người Việt Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_origin",
+              "acceptedVariants": [
+                "我是越南人",
+                "我是一个越南人",
+                "越南人",
+                "我从越南来",
+                "我是从越南来的"
+              ],
+              "requiredConcepts": [
+                [
+                  "越南"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "认识你很高兴！",
+          "clipId": "zh.clip.ix_cp6_new_colleague_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.cp6_interview",
+      "title": {
+        "vi": "Phỏng vấn xin việc"
+      },
+      "goal": {
+        "vi": "Trả lời hai câu hỏi trong buổi phỏng vấn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "谢谢，再见。",
+          "clipId": "zh.clip.ix_cp6_interview_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "你好，请坐。你叫什么名字？",
+          "clipId": "zh.clip.ix_cp6_interview_0",
+          "rephraseText": "你的名字是？",
+          "rephraseClipId": "zh.clip.ix_cp6_interview_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói tên bạn: Nguyễn Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "我叫阮南",
+                "我是阮南",
+                "阮南",
+                "您好，我叫阮南"
+              ],
+              "requiredConcepts": [
+                [
+                  "阮南"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "你的名字是？",
+          "clipId": "zh.clip.ix_cp6_interview_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói tên bạn: Nguyễn Nam."
+          },
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "我叫阮南",
+                "我是阮南",
+                "阮南",
+                "您好，我叫阮南"
+              ],
+              "requiredConcepts": [
+                [
+                  "阮南"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "你会说汉语吗？",
+          "clipId": "zh.clip.ix_cp6_interview_1",
+          "rephraseText": "你的汉语怎么样？",
+          "rephraseClipId": "zh.clip.ix_cp6_interview_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn biết nói một chút."
+          },
+          "expected": [
+            {
+              "intent": "little",
+              "acceptedVariants": [
+                "会一点儿",
+                "会一点",
+                "我会说一点儿",
+                "我会说一点",
+                "会说一点儿汉语",
+                "会说一点汉语",
+                "一点儿",
+                "一点",
+                "我会说一点儿汉语",
+                "我会说一点汉语"
+              ],
+              "requiredConcepts": [
+                [
+                  "一点儿",
+                  "会一点",
+                  "说一点"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "你的汉语怎么样？",
+          "clipId": "zh.clip.ix_cp6_interview_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn biết nói một chút."
+          },
+          "expected": [
+            {
+              "intent": "little",
+              "acceptedVariants": [
+                "会一点儿",
+                "会一点",
+                "我会说一点儿",
+                "我会说一点",
+                "会说一点儿汉语",
+                "会说一点汉语",
+                "一点儿",
+                "一点",
+                "我会说一点儿汉语",
+                "我会说一点汉语"
+              ],
+              "requiredConcepts": [
+                [
+                  "一点儿",
+                  "会一点",
+                  "说一点"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好，下个星期给你打电话。",
+          "clipId": "zh.clip.ix_cp6_interview_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.cp6_supermarket_pay",
+      "title": {
+        "vi": "Trả tiền ở siêu thị"
+      },
+      "goal": {
+        "vi": "Hỏi trả bằng thẻ ngân hàng được không, rồi nói bạn không cần gì thêm."
+      },
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "不好意思，请再说一遍。",
+          "clipId": "zh.clip.ix_cp6_supermarket_pay_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "一共八十二块。",
+          "clipId": "zh.clip.ix_cp6_supermarket_pay_0",
+          "rephraseText": "八十二块钱。",
+          "rephraseClipId": "zh.clip.ix_cp6_supermarket_pay_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi trả bằng thẻ ngân hàng được không."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "可以用银行卡吗",
+                "能用银行卡吗",
+                "用银行卡可以吗",
+                "我用银行卡，可以吗"
+              ],
+              "requiredConcepts": [
+                [
+                  "银行卡",
+                  "卡"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "八十二块钱。",
+          "clipId": "zh.clip.ix_cp6_supermarket_pay_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi trả bằng thẻ ngân hàng được không."
+          },
+          "expected": [
+            {
+              "intent": "card",
+              "acceptedVariants": [
+                "可以用银行卡吗",
+                "能用银行卡吗",
+                "用银行卡可以吗",
+                "我用银行卡，可以吗"
+              ],
+              "requiredConcepts": [
+                [
+                  "银行卡",
+                  "卡"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "可以。还要别的吗？",
+          "clipId": "zh.clip.ix_cp6_supermarket_pay_1",
+          "rephraseText": "还要什么吗？",
+          "rephraseClipId": "zh.clip.ix_cp6_supermarket_pay_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn không cần gì nữa."
+          },
+          "expected": [
+            {
+              "intent": "nothing",
+              "acceptedVariants": [
+                "不要了",
+                "不要了，谢谢",
+                "没有了",
+                "没有了，谢谢",
+                "不用了，谢谢",
+                "不用了",
+                "不需要了",
+                "不需要了，谢谢"
+              ],
+              "requiredConcepts": [
+                [
+                  "不要了",
+                  "没有了",
+                  "不用了",
+                  "不需要了"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "还要什么吗？",
+          "clipId": "zh.clip.ix_cp6_supermarket_pay_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn không cần gì nữa."
+          },
+          "expected": [
+            {
+              "intent": "nothing",
+              "acceptedVariants": [
+                "不要了",
+                "不要了，谢谢",
+                "没有了",
+                "没有了，谢谢",
+                "不用了，谢谢",
+                "不用了",
+                "不需要了",
+                "不需要了，谢谢"
+              ],
+              "requiredConcepts": [
+                [
+                  "不要了",
+                  "没有了",
+                  "不用了",
+                  "不需要了"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好的，谢谢，欢迎再来！",
+          "clipId": "zh.clip.ix_cp6_supermarket_pay_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.cp6_way_bank",
+      "title": {
+        "vi": "Tìm ngân hàng"
+      },
+      "goal": {
+        "vi": "Hỏi một người lạ ngân hàng ở đâu, rồi cảm ơn."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "对不起，我不知道。",
+          "clipId": "zh.clip.ix_cp6_way_bank_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "你好，有什么事吗？",
+          "clipId": "zh.clip.ix_cp6_way_bank_0",
+          "rephraseText": "你要去哪儿？",
+          "rephraseClipId": "zh.clip.ix_cp6_way_bank_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy hỏi ngân hàng ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "请问，银行在哪儿",
+                "请问，银行在哪里",
+                "银行在哪儿",
+                "银行在哪里",
+                "请问银行怎么走",
+                "银行怎么走",
+                "请问，去银行怎么走"
+              ],
+              "requiredConcepts": [
+                [
+                  "银行"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "你要去哪儿？",
+          "clipId": "zh.clip.ix_cp6_way_bank_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy hỏi ngân hàng ở đâu."
+          },
+          "expected": [
+            {
+              "intent": "ask_way",
+              "acceptedVariants": [
+                "请问，银行在哪儿",
+                "请问，银行在哪里",
+                "银行在哪儿",
+                "银行在哪里",
+                "请问银行怎么走",
+                "银行怎么走",
+                "请问，去银行怎么走"
+              ],
+              "requiredConcepts": [
+                [
+                  "银行"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "银行在超市对面，很近。",
+          "clipId": "zh.clip.ix_cp6_way_bank_1",
+          "rephraseText": "在超市对面。",
+          "rephraseClipId": "zh.clip.ix_cp6_way_bank_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "谢谢",
+                "谢谢你",
+                "谢谢您",
+                "太谢谢了",
+                "好的，谢谢"
+              ],
+              "requiredConcepts": [
+                [
+                  "谢谢"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "在超市对面。",
+          "clipId": "zh.clip.ix_cp6_way_bank_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy cảm ơn."
+          },
+          "expected": [
+            {
+              "intent": "thank",
+              "acceptedVariants": [
+                "谢谢",
+                "谢谢你",
+                "谢谢您",
+                "太谢谢了",
+                "好的，谢谢"
+              ],
+              "requiredConcepts": [
+                [
+                  "谢谢"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "不客气。",
+          "clipId": "zh.clip.ix_cp6_way_bank_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.cp6_clinic_cough",
+      "title": {
+        "vi": "Ở phòng khám"
+      },
+      "goal": {
+        "vi": "Nói với y tá bạn bị ho, và bạn không sốt."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "请等一下，医生马上来。",
+          "clipId": "zh.clip.ix_cp6_clinic_cough_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "你怎么了？",
+          "clipId": "zh.clip.ix_cp6_clinic_cough_0",
+          "rephraseText": "哪儿不舒服？",
+          "rephraseClipId": "zh.clip.ix_cp6_clinic_cough_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn bị ho."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "我咳嗽",
+                "我咳嗽了",
+                "咳嗽",
+                "我有点儿咳嗽",
+                "我有点咳嗽"
+              ],
+              "requiredConcepts": [
+                [
+                  "咳嗽"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "哪儿不舒服？",
+          "clipId": "zh.clip.ix_cp6_clinic_cough_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn bị ho."
+          },
+          "expected": [
+            {
+              "intent": "symptom",
+              "acceptedVariants": [
+                "我咳嗽",
+                "我咳嗽了",
+                "咳嗽",
+                "我有点儿咳嗽",
+                "我有点咳嗽"
+              ],
+              "requiredConcepts": [
+                [
+                  "咳嗽"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "发烧吗？",
+          "clipId": "zh.clip.ix_cp6_clinic_cough_1",
+          "rephraseText": "你发烧吗？",
+          "rephraseClipId": "zh.clip.ix_cp6_clinic_cough_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn không sốt."
+          },
+          "expected": [
+            {
+              "intent": "no_fever",
+              "acceptedVariants": [
+                "不发烧",
+                "我不发烧",
+                "没有发烧",
+                "没发烧",
+                "没有"
+              ],
+              "requiredConcepts": [
+                [
+                  "不发烧",
+                  "没发烧",
+                  "没有发烧",
+                  "没有"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "你发烧吗？",
+          "clipId": "zh.clip.ix_cp6_clinic_cough_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn không sốt."
+          },
+          "expected": [
+            {
+              "intent": "no_fever",
+              "acceptedVariants": [
+                "不发烧",
+                "我不发烧",
+                "没有发烧",
+                "没发烧",
+                "没有"
+              ],
+              "requiredConcepts": [
+                [
+                  "不发烧",
+                  "没发烧",
+                  "没有发烧",
+                  "没有"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "多喝水，好好休息。",
+          "clipId": "zh.clip.ix_cp6_clinic_cough_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.cp6_call_office",
+      "title": {
+        "vi": "Gọi điện đến văn phòng"
+      },
+      "goal": {
+        "vi": "Xin nói chuyện với quản lý Vương; ông ấy không có ở đó, nên bạn sẽ gọi lại."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "对不起，我听不清楚。",
+          "clipId": "zh.clip.ix_cp6_call_office_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "喂，您好！这里是工厂办公室。",
+          "clipId": "zh.clip.ix_cp6_call_office_0",
+          "rephraseText": "您好，办公室。",
+          "rephraseClipId": "zh.clip.ix_cp6_call_office_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy xin nói chuyện với quản lý Vương."
+          },
+          "expected": [
+            {
+              "intent": "ask_person",
+              "acceptedVariants": [
+                "我找王经理",
+                "请问王经理在吗",
+                "王经理在吗",
+                "我想找王经理",
+                "我要找王经理"
+              ],
+              "requiredConcepts": [
+                [
+                  "王经理",
+                  "经理"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "您好，办公室。",
+          "clipId": "zh.clip.ix_cp6_call_office_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy xin nói chuyện với quản lý Vương."
+          },
+          "expected": [
+            {
+              "intent": "ask_person",
+              "acceptedVariants": [
+                "我找王经理",
+                "请问王经理在吗",
+                "王经理在吗",
+                "我想找王经理",
+                "我要找王经理"
+              ],
+              "requiredConcepts": [
+                [
+                  "王经理",
+                  "经理"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "王经理现在不在。您一会儿再打吧。",
+          "clipId": "zh.clip.ix_cp6_call_office_1",
+          "rephraseText": "他现在不在。",
+          "rephraseClipId": "zh.clip.ix_cp6_call_office_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy đồng ý gọi lại sau."
+          },
+          "expected": [
+            {
+              "intent": "agree",
+              "acceptedVariants": [
+                "好的，我一会儿再打",
+                "好的",
+                "我一会儿再打",
+                "一会儿我再打",
+                "好，我再打",
+                "好的，谢谢",
+                "好",
+                "好，谢谢"
+              ],
+              "requiredConcepts": [
+                [
+                  "好的",
+                  "再打"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "他现在不在。",
+          "clipId": "zh.clip.ix_cp6_call_office_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy đồng ý gọi lại sau."
+          },
+          "expected": [
+            {
+              "intent": "agree",
+              "acceptedVariants": [
+                "好的，我一会儿再打",
+                "好的",
+                "我一会儿再打",
+                "一会儿我再打",
+                "好，我再打",
+                "好的，谢谢",
+                "好",
+                "好，谢谢"
+              ],
+              "requiredConcepts": [
+                [
+                  "好的",
+                  "再打"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好的，再见。",
+          "clipId": "zh.clip.ix_cp6_call_office_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.a1cap_shift_change",
+      "title": {
+        "vi": "Đổi ca"
+      },
+      "goal": {
+        "vi": "Tổ trưởng hỏi bạn đổi ca: nói bạn làm ca đêm được, rồi hỏi mấy giờ bắt đầu."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "我在微信上告诉你。",
+          "clipId": "zh.clip.ix_a1cap_shift_change_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "明天你能上夜班吗？",
+          "clipId": "zh.clip.ix_a1cap_shift_change_0",
+          "rephraseText": "明天上夜班，可以吗？",
+          "rephraseClipId": "zh.clip.ix_a1cap_shift_change_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói được."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "可以",
+                "能",
+                "可以，没问题",
+                "没问题",
+                "好的",
+                "能上",
+                "行",
+                "行啊",
+                "好"
+              ],
+              "requiredConcepts": [
+                [
+                  "可以",
+                  "能上",
+                  "没问题",
+                  "好的"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "明天上夜班，可以吗？",
+          "clipId": "zh.clip.ix_a1cap_shift_change_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói được."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "可以",
+                "能",
+                "可以，没问题",
+                "没问题",
+                "好的",
+                "能上",
+                "行",
+                "行啊",
+                "好"
+              ],
+              "requiredConcepts": [
+                [
+                  "可以",
+                  "能上",
+                  "没问题",
+                  "好的"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "太好了，谢谢！你有什么问题吗？",
+          "clipId": "zh.clip.ix_a1cap_shift_change_1",
+          "rephraseText": "有问题吗？",
+          "rephraseClipId": "zh.clip.ix_a1cap_shift_change_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy hỏi mấy giờ bắt đầu."
+          },
+          "expected": [
+            {
+              "intent": "ask_time",
+              "acceptedVariants": [
+                "几点开始",
+                "夜班几点开始",
+                "几点上班",
+                "夜班几点上班",
+                "请问几点开始"
+              ],
+              "requiredConcepts": [
+                [
+                  "几点"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "有问题吗？",
+          "clipId": "zh.clip.ix_a1cap_shift_change_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy hỏi mấy giờ bắt đầu."
+          },
+          "expected": [
+            {
+              "intent": "ask_time",
+              "acceptedVariants": [
+                "几点开始",
+                "夜班几点开始",
+                "几点上班",
+                "夜班几点上班",
+                "请问几点开始"
+              ],
+              "requiredConcepts": [
+                [
+                  "几点"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "晚上十一点开始。",
+          "clipId": "zh.clip.ix_a1cap_shift_change_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.a1cap_canteen_lunch",
+      "title": {
+        "vi": "Ăn trưa ở nhà ăn"
+      },
+      "goal": {
+        "vi": "Nhận lời ăn trưa với đồng nghiệp, rồi nói bạn muốn ăn gì."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "没关系，我们去看看吧。",
+          "clipId": "zh.clip.ix_a1cap_canteen_lunch_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "十二点了，一起去食堂吃饭吧？",
+          "clipId": "zh.clip.ix_a1cap_canteen_lunch_0",
+          "rephraseText": "去吃午饭吗？",
+          "rephraseClipId": "zh.clip.ix_a1cap_canteen_lunch_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nhận lời."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "好啊",
+                "好的",
+                "好，一起去吧",
+                "走吧",
+                "好啊，走吧",
+                "好的，一起去",
+                "好"
+              ],
+              "requiredConcepts": [
+                [
+                  "好啊",
+                  "好的",
+                  "走吧",
+                  "一起去"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "去吃午饭吗？",
+          "clipId": "zh.clip.ix_a1cap_canteen_lunch_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nhận lời."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "好啊",
+                "好的",
+                "好，一起去吧",
+                "走吧",
+                "好啊，走吧",
+                "好的，一起去",
+                "好"
+              ],
+              "requiredConcepts": [
+                [
+                  "好啊",
+                  "好的",
+                  "走吧",
+                  "一起去"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "你想吃什么？",
+          "clipId": "zh.clip.ix_a1cap_canteen_lunch_1",
+          "rephraseText": "吃什么？",
+          "rephraseClipId": "zh.clip.ix_a1cap_canteen_lunch_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn ăn mì."
+          },
+          "expected": [
+            {
+              "intent": "food",
+              "acceptedVariants": [
+                "我想吃面条",
+                "面条",
+                "我要面条",
+                "吃面条吧"
+              ],
+              "requiredConcepts": [
+                [
+                  "面条"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "吃什么？",
+          "clipId": "zh.clip.ix_a1cap_canteen_lunch_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn muốn ăn mì."
+          },
+          "expected": [
+            {
+              "intent": "food",
+              "acceptedVariants": [
+                "我想吃面条",
+                "面条",
+                "我要面条",
+                "吃面条吧"
+              ],
+              "requiredConcepts": [
+                [
+                  "面条"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好，我也吃面条。",
+          "clipId": "zh.clip.ix_a1cap_canteen_lunch_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.a1cap_friend_plan",
+      "title": {
+        "vi": "Hẹn một người bạn"
+      },
+      "goal": {
+        "vi": "Nhận lời hẹn vào Chủ nhật, rồi nói giờ gặp."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "好的，以后再说吧。",
+          "clipId": "zh.clip.ix_a1cap_friend_plan_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "星期天你有时间吗？",
+          "clipId": "zh.clip.ix_a1cap_friend_plan_0",
+          "rephraseText": "星期天忙不忙？",
+          "rephraseClipId": "zh.clip.ix_a1cap_friend_plan_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn rảnh."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "有时间",
+                "有",
+                "我有时间",
+                "星期天有时间",
+                "星期日有时间",
+                "周日有时间",
+                "我不忙",
+                "有空",
+                "我有空"
+              ],
+              "requiredConcepts": [
+                [
+                  "有时间",
+                  "有空",
+                  "不忙",
+                  "没事"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "星期天忙不忙？",
+          "clipId": "zh.clip.ix_a1cap_friend_plan_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn rảnh."
+          },
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "有时间",
+                "有",
+                "我有时间",
+                "星期天有时间",
+                "星期日有时间",
+                "周日有时间",
+                "我不忙",
+                "有空",
+                "我有空"
+              ],
+              "requiredConcepts": [
+                [
+                  "有时间",
+                  "有空",
+                  "不忙",
+                  "没事"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "我们几点见？",
+          "clipId": "zh.clip.ix_a1cap_friend_plan_1",
+          "rephraseText": "几点见面？",
+          "rephraseClipId": "zh.clip.ix_a1cap_friend_plan_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói gặp lúc 3 giờ."
+          },
+          "expected": [
+            {
+              "intent": "time",
+              "acceptedVariants": [
+                "三点见",
+                "下午三点见",
+                "三点吧",
+                "我们三点见",
+                "三点",
+                "下午三点",
+                "三点钟",
+                "我们下午三点见",
+                "下午我们三点见",
+                "下午三点吧",
+                "三点钟见"
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "几点见面？",
+          "clipId": "zh.clip.ix_a1cap_friend_plan_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói gặp lúc 3 giờ."
+          },
+          "expected": [
+            {
+              "intent": "time",
+              "acceptedVariants": [
+                "三点见",
+                "下午三点见",
+                "三点吧",
+                "我们三点见",
+                "三点",
+                "下午三点",
+                "三点钟",
+                "我们下午三点见",
+                "下午我们三点见",
+                "下午三点吧",
+                "三点钟见"
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "好，星期天下午三点见！",
+          "clipId": "zh.clip.ix_a1cap_friend_plan_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "zh.scenario.a1cap_weekend",
+      "title": {
+        "vi": "Chuyện cuối tuần"
+      },
+      "goal": {
+        "vi": "Kể với đồng nghiệp cuối tuần bạn đã đi đâu."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "zh.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "好，下次再说吧。",
+          "clipId": "zh.clip.ix_a1cap_weekend_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "周末你做什么了？",
+          "clipId": "zh.clip.ix_a1cap_weekend_0",
+          "rephraseText": "周末去哪儿了？",
+          "rephraseClipId": "zh.clip.ix_a1cap_weekend_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn đã đi công viên."
+          },
+          "expected": [
+            {
+              "intent": "where",
+              "acceptedVariants": [
+                "我去公园了",
+                "去公园了",
+                "我去了公园",
+                "我和朋友去公园了"
+              ],
+              "requiredConcepts": [
+                [
+                  "公园"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "周末去哪儿了？",
+          "clipId": "zh.clip.ix_a1cap_weekend_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn đã đi công viên."
+          },
+          "expected": [
+            {
+              "intent": "where",
+              "acceptedVariants": [
+                "我去公园了",
+                "去公园了",
+                "我去了公园",
+                "我和朋友去公园了"
+              ],
+              "requiredConcepts": [
+                [
+                  "公园"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "公园怎么样？",
+          "clipId": "zh.clip.ix_a1cap_weekend_1",
+          "rephraseText": "好玩儿吗？",
+          "rephraseClipId": "zh.clip.ix_a1cap_weekend_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói công viên rất đẹp."
+          },
+          "expected": [
+            {
+              "intent": "how",
+              "acceptedVariants": [
+                "很漂亮",
+                "特别漂亮",
+                "公园很漂亮",
+                "公园特别漂亮",
+                "非常漂亮",
+                "很好看",
+                "特别好看",
+                "公园很好看",
+                "公园特别好看",
+                "很美",
+                "公园很美",
+                "非常美"
+              ],
+              "requiredConcepts": [
+                [
+                  "漂亮",
+                  "好看",
+                  "很美",
+                  "真美",
+                  "非常美",
+                  "太美"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "好玩儿吗？",
+          "clipId": "zh.clip.ix_a1cap_weekend_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói công viên rất đẹp."
+          },
+          "expected": [
+            {
+              "intent": "how",
+              "acceptedVariants": [
+                "很漂亮",
+                "特别漂亮",
+                "公园很漂亮",
+                "公园特别漂亮",
+                "非常漂亮",
+                "很好看",
+                "特别好看",
+                "公园很好看",
+                "公园特别好看",
+                "很美",
+                "公园很美",
+                "非常美"
+              ],
+              "requiredConcepts": [
+                [
+                  "漂亮",
+                  "好看",
+                  "很美",
+                  "真美",
+                  "非常美",
+                  "太美"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "下次我也想去。",
+          "clipId": "zh.clip.ix_a1cap_weekend_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    }
+  ]
+}

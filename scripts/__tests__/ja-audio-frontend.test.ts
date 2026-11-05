@@ -255,14 +255,14 @@ describe("plan → synth-script wiring (ja only)", () => {
   const ja = voice("kokoro-jf_alpha", "ja");
   const es = voice("kokoro-ef_dora", "es");
 
-  test("engines.json: ja uses the course-readings front-end, misaki[ja] is not installed, zh keeps misaki[zh]", () => {
+  test("engines.json: ja (and zh, P4d) use the course-readings front-end; misaki is installed without extras", () => {
     expect(kokoroFrontend(engines, "ja")).toBe("course-readings");
     expect(kokoroFrontend(engines, "es")).toBeNull();
-    expect(kokoroFrontend(engines, "zh")).toBeNull();
+    expect(kokoroFrontend(engines, "zh")).toBe("course-readings");
     const install = engines.engines.kokoro.install.join(" ");
-    expect(install).not.toContain("misaki[ja");
-    expect(install).toContain("misaki[zh]==0.9.4");
-    expect(install).not.toMatch(/unidic|pyopenjtalk|fugashi/);
+    expect(install).not.toContain("misaki[");
+    expect(install).toContain('"misaki==0.9.4"');
+    expect(install).not.toMatch(/unidic|pyopenjtalk|fugashi|jieba|pypinyin|cn2an/);
   });
 
   test("the plan attaches phonemes to ja Kokoro segments only", () => {
@@ -270,12 +270,12 @@ describe("plan → synth-script wiring (ja only)", () => {
       { clipId: "a", segments: [{ voiceId: ja.id, text: "私は学生です。" }] },
       { clipId: "b", segments: [{ voiceId: es.id, text: "Hola." }] },
     ];
-    const out = attachKokoroPhonemes(clips, new Map([ja, es].map((v) => [v.id, v])), engines, () => ({ index: INDEX, problems: [] }));
+    const out = attachKokoroPhonemes(clips, new Map([ja, es].map((v) => [v.id, v])), engines, () => ({ read: (t) => jaClipPhonemes(t, INDEX), problems: [] }));
     expect(out.problems).toEqual([]);
     expect(out.clips[0]!.segments[0]!.phonemes).toBe("βataɕi βa ɡakɯseː desɨ.");
     expect(out.clips[1]!.segments[0]).toEqual({ voiceId: es.id, text: "Hola." });
     expect(clips[0]!.segments[0]).toEqual({ voiceId: ja.id, text: "私は学生です。" });
-    const bad = attachKokoroPhonemes([{ clipId: "c", segments: [{ voiceId: ja.id, text: "猫" }] }], new Map([[ja.id, ja]]), engines, () => ({ index: INDEX, problems: [] }));
+    const bad = attachKokoroPhonemes([{ clipId: "c", segments: [{ voiceId: ja.id, text: "猫" }] }], new Map([[ja.id, ja]]), engines, () => ({ read: (t) => jaClipPhonemes(t, INDEX), problems: [] }));
     expect(bad.problems[0]).toContain("c:");
   });
 
@@ -357,7 +357,7 @@ describe("re-render gate: the front-end version is part of every ja Kokoro key",
     expect(receptionClipRecipe("ja", clip.id, segments.map((s) => s.voiceId), null, "mp3")).toBe(tag);
     expect(listeningClipKey("ja", listening, clip)).toBe(receptionAssetKey("ja", segments, receptionPipelineVersion("ja"), `${tag}|opus-16k-lim3`));
     expect(listeningClipKey("ja", listening, clip)).not.toBe(receptionAssetKey("ja", segments, receptionPipelineVersion("ja"), `${phonemeFrontendTag(bumped)}|opus-16k-lim3`));
-    for (const lang of ["fr", "de", "es", "en", "it", "pt", "zh", "ko"]) {
+    for (const lang of ["fr", "de", "es", "en", "it", "pt", "ko"]) {
       expect(phonemeFrontendSpec(lang)).toBeNull();
       expect(frontendRecipeForEngine(lang, "kokoro")).toBeNull();
       expect(packClipRecipe({ language: lang, engine: "kokoro", text: "x y z w", pipelineVersion: 3, synthesis: null })).toBeNull();

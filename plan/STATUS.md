@@ -1,8 +1,48 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
-> **Lần thức gần nhất:** 2026-11-03 01:00 UTC. **Lần thức kế tiếp:** khoảng 50 phút sau, hoặc khi agent giai đoạn 4 của P4b báo xong. Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
+> **TIẾP TỤC theo QC-2026-11-05 (2026-11-05).** `main` 733552b xanh.
+> - **Thứ tự:**
+>   1. zh-vi (§1): nghe chép chấp nhận chữ phồn thể; bộ chấm nhận biết phủ định cho mọi khoá; chạy lại lượt duyệt ngôn ngữ, ghi file dần theo từng unit; sửa theo cả hai lượt; duyệt đáp án lần hai toàn bộ; audit độc lập; bộ đọc audio có biến điệu; audio; PR.
+>   2. ko-vi dùng giọng của thiết bị (§2.1). Adapter Google Cloud TTS để sẵn, chờ anh duyệt mục B2.
+>   3. pt, rồi P5, P6a, v1.0.
+> - **D-16 (Google Play closed test):** đã merge (#65); phần còn lại là việc của anh (checklist F).
+> - **Cập nhật 2026-11-05:**
+>   - **zh-vi** đã xong cả bốn bước: duyệt (audit đạt 0,24 %), bộ đọc audio có biến điệu, audio (run 41928304254, 0 lỗi kỹ thuật, 9,5 MB) và A1 claimable. Báo cáo `plan/reports/P4d-zh-vi.md`. Đã mở PR.
+>   - **ko-vi:** xong phiên 1–3, đã đẩy lên `phase-4/ko-vi`. Gồm 108 bài, 968 bài tập, nhập môn Hangul, nghe bằng giọng của thiết bị, nói, viết và tự kiểm tra. Phiên 4 (kịch bản, TOPIK I, kiểm tra, xếp lớp, truyện) đang chạy.
 >
-> **Cần quyết định của điều phối viên (2026-11-03): giấy phép bộ đọc tiếng Nhật cho audio.**
+> **Tạm dừng trước đó (2026-11-04, theo yêu cầu của chủ dự án).** Trạng thái lúc dừng:
+> - **main:** xanh. Đã merge #58 voice-lineage, #59 en-vi, #60 voice sampler, #61 D-15, #62 P4b, #63 ja-vi, #64 sửa cách chấm ja.
+> - **`phase-4/zh-vi` (P4d):** đã xong phiên 1–5: bộ từ, 108 bài, nhập môn thanh điệu, các lớp nội dung, kiểm tra và HSK 1–2, 42 truyện.
+>   - Duyệt D-10: lượt đáp án xong, 56 lỗi, lưu ở `content/zh/_drafts/review/findings-answers.json`, chưa sửa. Lượt ngôn ngữ bị dừng trước khi ghi file, phải chạy lại.
+>   - Bộ đọc audio tiếng Trung đang làm dở, để trên nhánh riêng `wip/zh-audio-frontend`. Chưa test, không merge nguyên trạng.
+>   - Chưa có audio tiếng Trung, chưa mở PR.
+> - **Chờ quyết định:** giọng tiếng Hàn (xem mục ngay dưới), rồi mới làm P4e ko-vi.
+> - **Khi tiếp tục:** chạy lại lượt duyệt ngôn ngữ, sửa theo cả hai lượt duyệt, audit, hoàn thành bộ đọc audio, chạy canary và generate, rồi mở PR zh-vi.
+>
+> **Lần thức gần nhất:** 2026-11-04 05:10 UTC. **Lần thức kế tiếp:** không có (đang tạm dừng). Trạng thái run luôn đọc từ GitHub API (QC-2026-11-01 §0).
+>
+> **PR #63 (P4c ja-vi) đã merge (a545448):** 22/22 check xanh. Báo cáo ở `plan/reports/P4c-ja-vi.md`.
+>
+> **Cần quyết định của điều phối viên và chủ dự án (2026-11-04): giọng tiếng Hàn trước P4e.**
+>
+> Đã khảo sát mọi mô hình TTS tiếng Hàn đang có: XTTS-v2, OpenVoice v2, CosyVoice3, Qwen3-TTS, Chatterbox, Supertonic, Orpheus-ko, VibeVoice, Bark, F5/MaskGCT, Spark, Zonos, StyleTTS2-ko, ESPnet-KSS, MMS. **Không mô hình nào qua được D-11.** Mỗi cái hỏng ở một trong các lý do: không khai dữ liệu huấn luyện, giấy phép NC hoặc OpenRAIL-M, gốc Llama, hoặc không có tiếng Hàn. Lý do hỏng là ở dữ liệu, không ở code.
+>
+> Dữ liệu tiếng Hàn có giấy phép sạch:
+> - Zeroth-Korean: CC BY 4.0, 51,6 giờ, 105 người nói.
+> - Emilia-YODAS phần tiếng Hàn: CC BY 4.0 theo khai báo của người đăng.
+> - FLEURS ko: CC BY 4.0, nhỏ.
+>
+> Các hướng:
+> - **(1)** Tự huấn luyện giọng: code MIT/Apache (VITS/Matcha), huấn luyện từ đầu trên dữ liệu CC BY 4.0, đa người nói, không nhái giọng một người cụ thể. Cần GPU một lần, chủ dự án chạy.
+> - **(2)** Gửi thư hỏi nguồn dữ liệu huấn luyện của Qwen3-TTS, CosyVoice và Chatterbox.
+> - **(3)** Thuê thu âm một giọng nữ và một giọng nam theo hợp đồng CC-BY-4.0, rồi huấn luyện theo hướng (1).
+> - **Chỉ dùng giọng của thiết bị (hiện trạng).** Theo D-5, phần nghe có chấm điểm phải dùng audio đóng gói, nên ko-vi sẽ không có nghe chấm điểm, không có thẻ nghe FSRS, và claim gate không khẳng định gì về nghe hay TOPIK nghe.
+>
+> **Đề xuất:** làm ko-vi với giọng của thiết bị; phần nghe không chấm điểm và claim giới hạn tương ứng, ghi rõ trong KNOWN_LIMITATIONS. Song song, mở hướng (1) như một việc của chủ dự án, và gửi thư theo hướng (2).
+>
+> Trong lúc chờ quyết định: làm P4d zh-vi trước, ko-vi làm sau.
+>
+> **Đã giải quyết (2026-11-03): giấy phép bộ đọc tiếng Nhật cho audio.**
 >
 > Audio ja-vi lần chạy 41633821152 dừng ở bước Synthesize. Bộ chuyển chữ thành âm tiếng Nhật của Kokoro (`misaki[ja]`) cần từ điển MeCab, cụ thể là UniDic qua fugashi. Mọi từ điển MeCab (UniDic, unidic-lite, NAIST-jdic, IPADIC) đều dùng giấy phép BSD hoặc bộ ba BSD/GPL/LGPL, và BSD không nằm trong allowlist. Trước đây quy trình chạy được chỉ vì bước cài MeloTTS có tải UniDic; MeloTTS đã bị loại theo D-11. Chưa có audio tiếng Nhật nào được phát hành: ja-en vẫn dùng giọng của thiết bị, và chỉ có canary P3e đã dùng từ điển này trên runner.
 >
@@ -152,7 +192,7 @@
 | P3d(pt) | pt-vi + CAPLE A1 | – | not started | | |
 | P4b | CJK plugins + Hán-Việt readings (Unihan kVietnamese + reviewed overrides) | `phase-4/cjk-plugins` | in progress — stage 2 (Hán-Việt) done: 118 pairs ja/zh/ko in `content/hanviet/`, checked against Unihan 17.0.0, `hanVietFor` runtime helper; D-10 sheet `content/hanviet/REVIEW.md` pending. Stage 3 (tasks 2–3, code) done: ja/zh/ko runtime plugins (dictionary maximal-match tokenizer bound to the course lexicon via `withLexicon`, kana/width/ー/small-kana folds, kana-for-kanji and pinyin-for-hanzi as lenient practice matches from stored readings, word-level traditional→simplified from the lexicon, jamo composition + spacing-insensitive alternate, keystroke-jamo search fold, sino/native numbers and counters, 两/二, reading-speed bands) and the speech grader's reading layer (ja kana ≡ kanji); real recognizer transcripts pending (owner, checklist §C; fixture `src/lib/__fixtures__/speech/owner-recognizer-transcripts.json`) | | |
 | P4c | ja-vi + JLPT N5 | `phase-4/ja-vi` | content, D-10 review and audit done; promoted with `--allow-missing-audio` (2026-11-03); audio run, CI and PR pending | 2026-11-03 | 108 lessons / 1,024 exercises, 957 lexemes, 45 stories, 7 checkpoints, 4-stage placement, JLPT N5 track 2 × 67; D-10 review 194 findings, independent audit 407 lines 0.74 % P0+P1 (`content/ja/REVIEW-AI.md`; answer keys 2.54 %, the three classes closed by generator rules + self-check rule 9); `typeAnswer.script: "katakana"` (owner decision, 9 items); `ja` joins `V8_REKEYED_TARGETS` (fixture `v3-rc3-ja.json`: ja-en surfaces → `ja:w:`, さかな keeps `ja:legacy:`); dry compile: ja A1 claimable, Vietnamese default stays en-vi, ja-en leaves onboarding; `content:validate` 1,020 errors, all missing ja audio (268 clips / 258 assets, 752 pack audioTargets) — the audio bot commit compiles and re-blesses the goldens |
-| P4d | zh-vi + HSK 1–2 | – | not started | | |
+| P4d | zh-vi + HSK 1–2 | `phase-4/zh-vi` | content, D-10 review (answers ×2, language) and independent audit done; promoted with `--allow-missing-audio`; audio run, CI and PR pending | 2026-11-05 | 108 lessons / 976 exercises, 916 lexemes, 42 stories, 7 checkpoints, placement, HSK 1–2 tracks; D-10: 259 findings all decided, independent audit 414 lines 0.24 % P0+P1 (answer keys 0.79 %; the P1 became rule `tebie_spellings`, 24 records), `content/zh/REVIEW-AI.md`; `zh` joins `V8_REKEYED_TARGETS` (fixture `v3-rc3-zh.json`: zh-en surfaces → `zh:w:`, an unknown surface keeps `zh:legacy:`); dry compile: zh A1 claimable, zh-en leaves onboarding, zh-vi ties en-vi on score and units — coordinator decision: the D-15 language priority (`content/onboarding-priority.json`) breaks the tie, so **the Vietnamese UI default stays en-vi** and the English UI's stays fr-en (tests pin it); `content:validate` 1,044 errors, all missing zh audio (732 audioTargets, 312 clips) — the audio bot commit compiles and re-blesses the goldens |
 | P4e | ko-vi + TOPIK I | – | not started | | |
 | P4f | en-vi + bậc 2 track (QĐ 1481), not VSTEP | `phase-4/en-vi` | content and AI review done, audio and CI pending; see `plan/reports/P4f-en-vi.md` | | |
 | P5a | FSRS visible | – | not started | | |

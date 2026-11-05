@@ -7,11 +7,11 @@ downloaded and hash-verified by the pipeline beforehand.
 
     kokoro_synth.py --lang-code e --model kokoro-v1_0.pth --config config.json --voice ef_dora.pt --jobs jobs.jsonl
 
-P4c: `--input phonemes` (Japanese) takes `{"phonemes": ..., "text": ..., "out": ...}`
+P4c: `--input phonemes` (Japanese; P4d: Mandarin) takes `{"phonemes": ..., "text": ..., "out": ...}`
 jobs whose phonemes the plan built from the course's stored readings
-(scripts/lib/tts/ja-kana.ts). The model is then called directly: no
-KPipeline is built, so misaki's Japanese G2P (MeCab + a BSD dictionary) is
-never imported. Every other language keeps `--input text`.
+(scripts/lib/tts/ja-kana.ts, zh-readings.ts). The model is then called directly: no
+KPipeline is built, so misaki's Japanese G2P (MeCab + a BSD dictionary) and its
+Chinese G2P (jieba + pypinyin) are never imported. Every other language keeps `--input text`.
 """
 
 import argparse
@@ -67,7 +67,7 @@ def main() -> int:
     ap.add_argument("--jobs", required=True)
     ap.add_argument("--speed", type=float, default=1.0)
     ap.add_argument("--trim-edges", action="store_true", help="cut edge silence (voices that leave a long one)")
-    ap.add_argument("--input", choices=["text", "phonemes"], default="text", help="phonemes: jobs carry plan-built phonemes (P4c, ja)")
+    ap.add_argument("--input", choices=["text", "phonemes"], default="text", help="phonemes: jobs carry plan-built phonemes (P4c ja, P4d zh)")
     args = ap.parse_args()
 
     os.environ.setdefault("HF_HUB_OFFLINE", "1")

@@ -1,0 +1,2991 @@
+{
+  "version": 1,
+  "language": "zh",
+  "exerciseNativeCode": "vi",
+  "id": "zh.exam.hsk_1",
+  "trackVersion": 1,
+  "name": "HSK 1",
+  "level": "HSK 1",
+  "formatFidelity": "partial",
+  "title": {
+    "vi": "Luyện đề HSK 1 (theo đề mẫu HSK 3.0 chính thức)"
+  },
+  "description": {
+    "vi": "Luyện theo cấu trúc của HSK 1 bản mới (HSK 3.0), kỳ thi Hán ngữ do Trung tâm Giao lưu Hợp tác Ngôn ngữ Trung – Ngoại (CLEC) ban hành và Công ty Khảo thí Hán ngữ Quốc tế (CTI) tổ chức, áp dụng từ kỳ thi ngày 13/12/2026. Theo đề mẫu chính thức: hai phần thi, 40 câu — Nghe 20 câu (khoảng 12 phút) và Đọc 20 câu (20 phút), mỗi phần thi có bốn dạng, mỗi dạng năm câu. Mọi câu hỏi đều do khoá học tự soạn, không lấy từ đề thi hay đề mẫu. Những điều các tài liệu chính thức đã đọc chưa công bố cho HSK 3.0 do khoá học chọn: thang điểm (ở đây mỗi phần thi 100 điểm, mỗi câu trong phần bằng điểm nhau), ngưỡng tham khảo 120/200 (theo quy định đang công bố của HSK 1 hiện hành) và số lần nghe (ở đây hai lần). Phần Nghe được điều chỉnh: tranh là biểu tượng kèm chữ tiếng Việt, câu hỏi hiện bằng tiếng Việt, các lựa chọn được in ra. Pinyin hiện dưới chữ Hán như trên đề mẫu. Từ vựng thuộc cấp 1 của chuẩn HSK 3.0. HSK 1 không phải một bậc của khung CEFR, và đây không phải kỳ thi chính thức."
+  },
+  "formatSource": {
+    "publisher": "Center for Language Education and Cooperation (中外语言交流合作中心); Chinese Testing International (汉考国际, CTI)",
+    "references": [
+      {
+        "url": "https://www.chinesetest.cn/news/51336883",
+        "title": "HSK 3.0 will be officially launched worldwide on December 13, 2026! (announcement, published 2026-09-08)",
+        "retrieved": "2026-11-04"
+      },
+      {
+        "url": "https://www.chinesetest.cn/news/50278989",
+        "title": "Chinese Test Dates in 2026 (HSK 1-6 sessions; the last before HSK 3.0 is 7 November)",
+        "retrieved": "2026-11-04"
+      },
+      {
+        "url": "https://hsk-sample-1409982902.cos.ap-beijing.myqcloud.com/HSK3.0.zip",
+        "title": "HSK 3.0 sample package linked from chinesetest.cn ('Sample Questions'): HSK（一级）样卷 and HSK（二级）样卷 with answer keys — cover notes and part layout only",
+        "retrieved": "2026-11-04"
+      },
+      {
+        "url": "https://hsk.cn-bj.ufileos.com/3.0/%E6%96%B0%E7%89%88HSK%E8%80%83%E8%AF%95%E5%A4%A7%E7%BA%B21219.pdf",
+        "title": "新版HSK考试大纲 (syllabus: 2025-11 published, 2026-07 in force; tasks, topics, words, characters, grammar)",
+        "retrieved": "2026-11-04"
+      },
+      {
+        "url": "https://www.chinesetest.cn/HSK/1",
+        "title": "HSK (Level 1) test structure and score report of the current HSK (100 points a section, 120/200 to pass)",
+        "retrieved": "2026-11-04"
+      },
+      {
+        "url": "https://www.chinesetest.cn/HSK/2",
+        "title": "HSK (Level 2) test structure and score report of the current HSK (100 points a section, 120/200 to pass)",
+        "retrieved": "2026-11-04"
+      }
+    ],
+    "checkedAgainstOfficialGuide": true,
+    "checkedBy": "coding agent (owner-delegated)",
+    "checkedAt": "2026-11-04",
+    "note": {
+      "vi": "Cấu trúc (các phần thi, số câu, thời gian, dạng câu hỏi của từng phần) được đối chiếu ngày 2026-11-04 với đề mẫu chính thức HSK 3.0 do chinesetest.cn dẫn tới và thông báo HSK 3.0 bắt đầu từ kỳ thi ngày 13/12/2026. Chỉ đọc phần chú ý ở bìa và bố cục các phần của đề mẫu, không chép câu hỏi nào. Thang điểm, điểm đạt và số lần nghe của HSK 3.0 không có trong các tài liệu đã đọc: khoá học dùng 100 điểm mỗi phần, ngưỡng tham khảo 60 % tổng điểm (quy định đang công bố của HSK hiện hành) và cho nghe hai lần."
+    }
+  },
+  "sections": [
+    {
+      "id": "tingli",
+      "skill": "listening",
+      "title": {
+        "vi": "听力 — Nghe hiểu"
+      },
+      "minutes": 12,
+      "maxPoints": 100,
+      "playsPerRecording": 2,
+      "tasks": [
+        {
+          "id": "l1",
+          "title": {
+            "vi": "Phần 1 — Nghe, chọn tranh"
+          },
+          "instruction": {
+            "vi": "Nghe một câu, chọn tranh đúng trong ba tranh. Tranh ở đây là biểu tượng kèm chữ tiếng Việt; đề thật dùng tranh vẽ."
+          },
+          "format": "pictureMcq",
+          "itemsPerForm": 5
+        },
+        {
+          "id": "l2",
+          "title": {
+            "vi": "Phần 2 — Nghe câu hỏi, chọn câu trả lời"
+          },
+          "instruction": {
+            "vi": "Nghe một câu hỏi, chọn câu trả lời đúng trong ba câu in sẵn."
+          },
+          "format": "mcq3",
+          "itemsPerForm": 5
+        },
+        {
+          "id": "l3",
+          "title": {
+            "vi": "Phần 3 — Nghe hội thoại, ghép tranh"
+          },
+          "instruction": {
+            "vi": "Nghe mỗi hội thoại ngắn, chọn tranh phù hợp trong sáu tranh dùng chung (một tranh thừa; trong đề thật đó là tranh của câu ví dụ). Tranh ở đây là biểu tượng kèm chữ tiếng Việt; đề thật dùng tranh vẽ."
+          },
+          "format": "matchToPool",
+          "itemsPerForm": 5,
+          "poolSize": 6
+        },
+        {
+          "id": "l4",
+          "title": {
+            "vi": "Phần 4 — Nghe và trả lời"
+          },
+          "instruction": {
+            "vi": "Nghe một câu nói, chọn câu trả lời đúng trong ba lựa chọn in sẵn. Ở đây câu hỏi hiện bằng tiếng Việt; trong đề thật câu hỏi được đọc bằng tiếng Trung."
+          },
+          "format": "mcq3",
+          "itemsPerForm": 5
+        }
+      ]
+    },
+    {
+      "id": "yuedu",
+      "skill": "reading",
+      "title": {
+        "vi": "阅读 — Đọc hiểu"
+      },
+      "minutes": 20,
+      "maxPoints": 100,
+      "tasks": [
+        {
+          "id": "r1",
+          "title": {
+            "vi": "Phần 1 — Đọc câu, ghép tranh"
+          },
+          "instruction": {
+            "vi": "Đọc mỗi câu, chọn tranh phù hợp trong sáu tranh dùng chung (một tranh thừa). Tranh ở đây là biểu tượng kèm chữ tiếng Việt; đề thật dùng tranh vẽ."
+          },
+          "format": "matchToPool",
+          "itemsPerForm": 5,
+          "poolSize": 6
+        },
+        {
+          "id": "r2",
+          "title": {
+            "vi": "Phần 2 — Ghép câu hỏi với câu trả lời"
+          },
+          "instruction": {
+            "vi": "Đọc mỗi câu hỏi, chọn câu trả lời phù hợp trong sáu câu dùng chung (một câu thừa)."
+          },
+          "format": "matchToPool",
+          "itemsPerForm": 5,
+          "poolSize": 6
+        },
+        {
+          "id": "r3",
+          "title": {
+            "vi": "Phần 3 — Chọn từ điền chỗ trống"
+          },
+          "instruction": {
+            "vi": "Chọn từ thích hợp cho chỗ trống （　） trong sáu từ dùng chung (một từ thừa)."
+          },
+          "format": "completeFromPool",
+          "itemsPerForm": 5,
+          "poolSize": 6
+        },
+        {
+          "id": "r4",
+          "title": {
+            "vi": "Phần 4 — Đọc và trả lời câu hỏi ★"
+          },
+          "instruction": {
+            "vi": "Đọc câu văn và câu hỏi có dấu ★, chọn câu trả lời đúng. Câu hỏi cũng hiện bằng tiếng Việt."
+          },
+          "format": "mcq3",
+          "itemsPerForm": 5
+        }
+      ]
+    }
+  ],
+  "passRule": {
+    "total": {
+      "title": {
+        "vi": "Ngưỡng tham khảo của khoá học: tổng điểm tối thiểu 120/200 (HSK 3.0 chưa công bố điểm đạt)"
+      },
+      "min": 120
+    },
+    "everySectionTaken": true
+  },
+  "scoring": {
+    "perItem": "share_of_section_points",
+    "negativeMarking": false
+  },
+  "readiness": {
+    "bands": [
+      {
+        "id": "ready_estimate",
+        "minGroupShare": 0.75,
+        "label": {
+          "vi": "Mức sẵn sàng ước tính: tốt"
+        },
+        "message": {
+          "vi": "Ở lần làm thử này, tổng điểm cao hơn ngưỡng tham khảo 120/200 một khoảng an toàn. Đây là mức sẵn sàng ước tính từ bài luyện của khoá học, không phải điểm HSK."
+        }
+      },
+      {
+        "id": "getting_close",
+        "minGroupShare": 0.6,
+        "label": {
+          "vi": "Mức sẵn sàng ước tính: gần đạt"
+        },
+        "message": {
+          "vi": "Tổng điểm đã chạm ngưỡng tham khảo 120/200 nhưng chưa có khoảng an toàn. Hãy luyện thêm các phần yếu bên dưới."
+        }
+      },
+      {
+        "id": "not_yet",
+        "minGroupShare": 0,
+        "label": {
+          "vi": "Mức sẵn sàng ước tính: cần luyện thêm"
+        },
+        "message": {
+          "vi": "Tổng điểm còn dưới ngưỡng tham khảo. Hãy luyện các phần yếu bên dưới, rồi thử đề còn lại."
+        }
+      }
+    ],
+    "incomplete": {
+      "vi": "Chưa đủ dữ liệu để ước tính: hãy làm đủ các phần thi của HSK 1. Các phần đã làm vẫn được tính điểm."
+    },
+    "disclaimer": {
+      "vi": "Mức sẵn sàng ước tính dựa trên bài luyện của khoá học: không phải kỳ thi chính thức, không do CLEC hay CTI cấp, và không dự đoán kết quả thi thật. Các tài liệu khoá học đã đọc chưa công bố thang điểm và điểm đạt của HSK 3.0; ngưỡng 120/200 là ngưỡng tham khảo của khoá học, lấy theo quy định đang công bố của HSK hiện hành. Cấp HSK không phải một bậc của khung CEFR, và HSK 1 không tương ứng với một bậc CEFR nào."
+    }
+  },
+  "items": [
+    {
+      "id": "zh.exi.hsk_1.a_l1_01",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l1_01",
+        "clipId": "zh.clip.hsk1_a_l1_01",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Uống trà",
+            "emoji": "🍵"
+          },
+          {
+            "text": "Ăn cơm",
+            "emoji": "🍚"
+          },
+          {
+            "text": "Đọc sách",
+            "emoji": "📖"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l1_02",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l1_02",
+        "clipId": "zh.clip.hsk1_a_l1_02",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Đi máy bay",
+            "emoji": "✈️"
+          },
+          {
+            "text": "Lái xe",
+            "emoji": "🚗"
+          },
+          {
+            "text": "Đi bộ",
+            "emoji": "🚶"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l1_03",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l1_03",
+        "clipId": "zh.clip.hsk1_a_l1_03",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Trời nắng",
+            "emoji": "☀️"
+          },
+          {
+            "text": "Có gió",
+            "emoji": "💨"
+          },
+          {
+            "text": "Trời mưa",
+            "emoji": "🌧️"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l1_04",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l1_04",
+        "clipId": "zh.clip.hsk1_a_l1_04",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Điện thoại di động",
+            "emoji": "📱"
+          },
+          {
+            "text": "Máy tính",
+            "emoji": "💻"
+          },
+          {
+            "text": "Ví tiền",
+            "emoji": "👛"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l1_05",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l1_05",
+        "clipId": "zh.clip.hsk1_a_l1_05",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Trường học",
+            "emoji": "🏫"
+          },
+          {
+            "text": "Bệnh viện",
+            "emoji": "🏥"
+          },
+          {
+            "text": "Cửa hàng",
+            "emoji": "🏪"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l2_01",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l2_01",
+        "clipId": "zh.clip.hsk1_a_l2_01",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "我是学生。"
+          },
+          {
+            "text": "我很好。"
+          },
+          {
+            "text": "我叫阮南。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l2_02",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l2_02",
+        "clipId": "zh.clip.hsk1_a_l2_02",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "我去商店。"
+          },
+          {
+            "text": "八点去。"
+          },
+          {
+            "text": "我是老师。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l2_03",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l2_03",
+        "clipId": "zh.clip.hsk1_a_l2_03",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "三个人。"
+          },
+          {
+            "text": "十五块。"
+          },
+          {
+            "text": "下午三点。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l2_04",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l2_04",
+        "clipId": "zh.clip.hsk1_a_l2_04",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "很好吃。"
+          },
+          {
+            "text": "在学校。"
+          },
+          {
+            "text": "很忙。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l2_05",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l2_05",
+        "clipId": "zh.clip.hsk1_a_l2_05",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "我喝水。"
+          },
+          {
+            "text": "我吃米饭。"
+          },
+          {
+            "text": "我不去。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l3_01",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l3_01",
+        "clipId": "zh.clip.hsk1_a_l3_01",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xem ti vi",
+            "emoji": "📺"
+          },
+          {
+            "text": "B. Gọi điện thoại",
+            "emoji": "☎️"
+          },
+          {
+            "text": "C. Hoa quả",
+            "emoji": "🍎"
+          },
+          {
+            "text": "D. Trường học",
+            "emoji": "🏫"
+          },
+          {
+            "text": "E. Đi ngủ",
+            "emoji": "🛏️"
+          },
+          {
+            "text": "F. Taxi",
+            "emoji": "🚕"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l3_02",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l3_02",
+        "clipId": "zh.clip.hsk1_a_l3_02",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xem ti vi",
+            "emoji": "📺"
+          },
+          {
+            "text": "B. Gọi điện thoại",
+            "emoji": "☎️"
+          },
+          {
+            "text": "C. Hoa quả",
+            "emoji": "🍎"
+          },
+          {
+            "text": "D. Trường học",
+            "emoji": "🏫"
+          },
+          {
+            "text": "E. Đi ngủ",
+            "emoji": "🛏️"
+          },
+          {
+            "text": "F. Taxi",
+            "emoji": "🚕"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l3_03",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l3_03",
+        "clipId": "zh.clip.hsk1_a_l3_03",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xem ti vi",
+            "emoji": "📺"
+          },
+          {
+            "text": "B. Gọi điện thoại",
+            "emoji": "☎️"
+          },
+          {
+            "text": "C. Hoa quả",
+            "emoji": "🍎"
+          },
+          {
+            "text": "D. Trường học",
+            "emoji": "🏫"
+          },
+          {
+            "text": "E. Đi ngủ",
+            "emoji": "🛏️"
+          },
+          {
+            "text": "F. Taxi",
+            "emoji": "🚕"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l3_04",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l3_04",
+        "clipId": "zh.clip.hsk1_a_l3_04",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xem ti vi",
+            "emoji": "📺"
+          },
+          {
+            "text": "B. Gọi điện thoại",
+            "emoji": "☎️"
+          },
+          {
+            "text": "C. Hoa quả",
+            "emoji": "🍎"
+          },
+          {
+            "text": "D. Trường học",
+            "emoji": "🏫"
+          },
+          {
+            "text": "E. Đi ngủ",
+            "emoji": "🛏️"
+          },
+          {
+            "text": "F. Taxi",
+            "emoji": "🚕"
+          }
+        ],
+        "correct": 4
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l3_05",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l3_05",
+        "clipId": "zh.clip.hsk1_a_l3_05",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xem ti vi",
+            "emoji": "📺"
+          },
+          {
+            "text": "B. Gọi điện thoại",
+            "emoji": "☎️"
+          },
+          {
+            "text": "C. Hoa quả",
+            "emoji": "🍎"
+          },
+          {
+            "text": "D. Trường học",
+            "emoji": "🏫"
+          },
+          {
+            "text": "E. Đi ngủ",
+            "emoji": "🛏️"
+          },
+          {
+            "text": "F. Taxi",
+            "emoji": "🚕"
+          }
+        ],
+        "correct": 5
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l4_01",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l4_01",
+        "clipId": "zh.clip.hsk1_a_l4_01",
+        "question": "Buổi chiều người nói đi đâu?",
+        "options": [
+          {
+            "text": "学校"
+          },
+          {
+            "text": "商店"
+          },
+          {
+            "text": "医院"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l4_02",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l4_02",
+        "clipId": "zh.clip.hsk1_a_l4_02",
+        "question": "Nhà người nói có mấy người?",
+        "options": [
+          {
+            "text": "三口人"
+          },
+          {
+            "text": "五口人"
+          },
+          {
+            "text": "四口人"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l4_03",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l4_03",
+        "clipId": "zh.clip.hsk1_a_l4_03",
+        "question": "Ngày mai người nói bao nhiêu tuổi?",
+        "options": [
+          {
+            "text": "十八岁"
+          },
+          {
+            "text": "八岁"
+          },
+          {
+            "text": "十岁"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l4_04",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l4_04",
+        "clipId": "zh.clip.hsk1_a_l4_04",
+        "question": "Người nói đi Bắc Kinh bằng gì?",
+        "options": [
+          {
+            "text": "坐火车"
+          },
+          {
+            "text": "坐飞机"
+          },
+          {
+            "text": "开车"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_l4_05",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-a_l4_05",
+        "clipId": "zh.clip.hsk1_a_l4_05",
+        "question": "Người nói muốn làm gì?",
+        "options": [
+          {
+            "text": "买这本书"
+          },
+          {
+            "text": "写一本书"
+          },
+          {
+            "text": "再看一次"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r1_01",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r1_01",
+        "readingId": "zh.read.hsk1_a_r1_01",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xe đạp",
+            "emoji": "🚲"
+          },
+          {
+            "text": "B. Bác sĩ",
+            "emoji": "🧑‍⚕️"
+          },
+          {
+            "text": "C. Sữa",
+            "emoji": "🥛"
+          },
+          {
+            "text": "D. Ăn ở nhà hàng",
+            "emoji": "🍽️"
+          },
+          {
+            "text": "E. Trời đẹp",
+            "emoji": "🌤️"
+          },
+          {
+            "text": "F. Quyển sách",
+            "emoji": "📕"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r1_02",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r1_02",
+        "readingId": "zh.read.hsk1_a_r1_02",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xe đạp",
+            "emoji": "🚲"
+          },
+          {
+            "text": "B. Bác sĩ",
+            "emoji": "🧑‍⚕️"
+          },
+          {
+            "text": "C. Sữa",
+            "emoji": "🥛"
+          },
+          {
+            "text": "D. Ăn ở nhà hàng",
+            "emoji": "🍽️"
+          },
+          {
+            "text": "E. Trời đẹp",
+            "emoji": "🌤️"
+          },
+          {
+            "text": "F. Quyển sách",
+            "emoji": "📕"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r1_03",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r1_03",
+        "readingId": "zh.read.hsk1_a_r1_03",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xe đạp",
+            "emoji": "🚲"
+          },
+          {
+            "text": "B. Bác sĩ",
+            "emoji": "🧑‍⚕️"
+          },
+          {
+            "text": "C. Sữa",
+            "emoji": "🥛"
+          },
+          {
+            "text": "D. Ăn ở nhà hàng",
+            "emoji": "🍽️"
+          },
+          {
+            "text": "E. Trời đẹp",
+            "emoji": "🌤️"
+          },
+          {
+            "text": "F. Quyển sách",
+            "emoji": "📕"
+          }
+        ],
+        "correct": 5
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r1_04",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r1_04",
+        "readingId": "zh.read.hsk1_a_r1_04",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xe đạp",
+            "emoji": "🚲"
+          },
+          {
+            "text": "B. Bác sĩ",
+            "emoji": "🧑‍⚕️"
+          },
+          {
+            "text": "C. Sữa",
+            "emoji": "🥛"
+          },
+          {
+            "text": "D. Ăn ở nhà hàng",
+            "emoji": "🍽️"
+          },
+          {
+            "text": "E. Trời đẹp",
+            "emoji": "🌤️"
+          },
+          {
+            "text": "F. Quyển sách",
+            "emoji": "📕"
+          }
+        ],
+        "correct": 4
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r1_05",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r1_05",
+        "readingId": "zh.read.hsk1_a_r1_05",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Xe đạp",
+            "emoji": "🚲"
+          },
+          {
+            "text": "B. Bác sĩ",
+            "emoji": "🧑‍⚕️"
+          },
+          {
+            "text": "C. Sữa",
+            "emoji": "🥛"
+          },
+          {
+            "text": "D. Ăn ở nhà hàng",
+            "emoji": "🍽️"
+          },
+          {
+            "text": "E. Trời đẹp",
+            "emoji": "🌤️"
+          },
+          {
+            "text": "F. Quyển sách",
+            "emoji": "📕"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r2_01",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r2_01",
+        "readingId": "zh.read.hsk1_a_r2_01",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "不客气。"
+          },
+          {
+            "text": "在学校旁边。"
+          },
+          {
+            "text": "我是越南人。"
+          },
+          {
+            "text": "九点半。"
+          },
+          {
+            "text": "喜欢，我常常喝。"
+          },
+          {
+            "text": "我和朋友一起去。"
+          }
+        ],
+        "correct": 4
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r2_02",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r2_02",
+        "readingId": "zh.read.hsk1_a_r2_02",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "不客气。"
+          },
+          {
+            "text": "在学校旁边。"
+          },
+          {
+            "text": "我是越南人。"
+          },
+          {
+            "text": "九点半。"
+          },
+          {
+            "text": "喜欢，我常常喝。"
+          },
+          {
+            "text": "我和朋友一起去。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r2_03",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r2_03",
+        "readingId": "zh.read.hsk1_a_r2_03",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "不客气。"
+          },
+          {
+            "text": "在学校旁边。"
+          },
+          {
+            "text": "我是越南人。"
+          },
+          {
+            "text": "九点半。"
+          },
+          {
+            "text": "喜欢，我常常喝。"
+          },
+          {
+            "text": "我和朋友一起去。"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r2_04",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r2_04",
+        "readingId": "zh.read.hsk1_a_r2_04",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "不客气。"
+          },
+          {
+            "text": "在学校旁边。"
+          },
+          {
+            "text": "我是越南人。"
+          },
+          {
+            "text": "九点半。"
+          },
+          {
+            "text": "喜欢，我常常喝。"
+          },
+          {
+            "text": "我和朋友一起去。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r2_05",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r2_05",
+        "readingId": "zh.read.hsk1_a_r2_05",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "不客气。"
+          },
+          {
+            "text": "在学校旁边。"
+          },
+          {
+            "text": "我是越南人。"
+          },
+          {
+            "text": "九点半。"
+          },
+          {
+            "text": "喜欢，我常常喝。"
+          },
+          {
+            "text": "我和朋友一起去。"
+          }
+        ],
+        "correct": 5
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r3_01",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r3_01",
+        "readingId": "zh.read.hsk1_a_r3_01",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "本"
+          },
+          {
+            "text": "是"
+          },
+          {
+            "text": "喜欢"
+          },
+          {
+            "text": "热"
+          },
+          {
+            "text": "回"
+          },
+          {
+            "text": "名字"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r3_02",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r3_02",
+        "readingId": "zh.read.hsk1_a_r3_02",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "本"
+          },
+          {
+            "text": "是"
+          },
+          {
+            "text": "喜欢"
+          },
+          {
+            "text": "热"
+          },
+          {
+            "text": "回"
+          },
+          {
+            "text": "名字"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r3_03",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r3_03",
+        "readingId": "zh.read.hsk1_a_r3_03",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "本"
+          },
+          {
+            "text": "是"
+          },
+          {
+            "text": "喜欢"
+          },
+          {
+            "text": "热"
+          },
+          {
+            "text": "回"
+          },
+          {
+            "text": "名字"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r3_04",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r3_04",
+        "readingId": "zh.read.hsk1_a_r3_04",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "本"
+          },
+          {
+            "text": "是"
+          },
+          {
+            "text": "喜欢"
+          },
+          {
+            "text": "热"
+          },
+          {
+            "text": "回"
+          },
+          {
+            "text": "名字"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r3_05",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r3_05",
+        "readingId": "zh.read.hsk1_a_r3_05",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "本"
+          },
+          {
+            "text": "是"
+          },
+          {
+            "text": "喜欢"
+          },
+          {
+            "text": "热"
+          },
+          {
+            "text": "回"
+          },
+          {
+            "text": "名字"
+          }
+        ],
+        "correct": 4
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r4_01",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r4_01",
+        "readingId": "zh.read.hsk1_a_r4_01",
+        "question": "Nam làm gì ở Bắc Kinh?",
+        "options": [
+          {
+            "text": "学习汉语"
+          },
+          {
+            "text": "工作"
+          },
+          {
+            "text": "看病"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r4_02",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r4_02",
+        "readingId": "zh.read.hsk1_a_r4_02",
+        "question": "Hôm nay người viết làm gì?",
+        "options": [
+          {
+            "text": "上班"
+          },
+          {
+            "text": "在家休息"
+          },
+          {
+            "text": "去学校"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r4_03",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r4_03",
+        "readingId": "zh.read.hsk1_a_r4_03",
+        "question": "Người viết muốn làm gì?",
+        "options": [
+          {
+            "text": "买衣服"
+          },
+          {
+            "text": "回家"
+          },
+          {
+            "text": "买这个包"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r4_04",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r4_04",
+        "readingId": "zh.read.hsk1_a_r4_04",
+        "question": "Người viết đi học lúc mấy giờ?",
+        "options": [
+          {
+            "text": "八点"
+          },
+          {
+            "text": "七点"
+          },
+          {
+            "text": "九点"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.a_r4_05",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-a_r4_05",
+        "readingId": "zh.read.hsk1_a_r4_05",
+        "question": "Mẹ của người viết làm nghề gì?",
+        "options": [
+          {
+            "text": "老师"
+          },
+          {
+            "text": "医生"
+          },
+          {
+            "text": "学生"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l1_01",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l1_01",
+        "clipId": "zh.clip.hsk1_b_l1_01",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Xem ti vi",
+            "emoji": "📺"
+          },
+          {
+            "text": "Nghe nhạc",
+            "emoji": "🎧"
+          },
+          {
+            "text": "Đọc sách",
+            "emoji": "📚"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l1_02",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l1_02",
+        "clipId": "zh.clip.hsk1_b_l1_02",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Tàu hoả",
+            "emoji": "🚆"
+          },
+          {
+            "text": "Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "Máy bay",
+            "emoji": "🛫"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l1_03",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l1_03",
+        "clipId": "zh.clip.hsk1_b_l1_03",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Chạy",
+            "emoji": "🏃"
+          },
+          {
+            "text": "Ngủ",
+            "emoji": "😴"
+          },
+          {
+            "text": "Ăn mì",
+            "emoji": "🍜"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l1_04",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l1_04",
+        "clipId": "zh.clip.hsk1_b_l1_04",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Điện thoại",
+            "emoji": "☎️"
+          },
+          {
+            "text": "Ti vi",
+            "emoji": "📺"
+          },
+          {
+            "text": "Máy tính",
+            "emoji": "💻"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l1_05",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l1_05",
+        "clipId": "zh.clip.hsk1_b_l1_05",
+        "question": "Bạn nghe thấy gì? Chọn tranh đúng.",
+        "options": [
+          {
+            "text": "Cơm",
+            "emoji": "🍙"
+          },
+          {
+            "text": "Bánh mì",
+            "emoji": "🍞"
+          },
+          {
+            "text": "Trứng",
+            "emoji": "🥚"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l2_01",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l2_01",
+        "clipId": "zh.clip.hsk1_b_l2_01",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "我很高兴。"
+          },
+          {
+            "text": "我二十岁。"
+          },
+          {
+            "text": "我在大学。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l2_02",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l2_02",
+        "clipId": "zh.clip.hsk1_b_l2_02",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "坐火车回家。"
+          },
+          {
+            "text": "我家很大。"
+          },
+          {
+            "text": "明天回家。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l2_03",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l2_03",
+        "clipId": "zh.clip.hsk1_b_l2_03",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "会一点儿。"
+          },
+          {
+            "text": "不客气。"
+          },
+          {
+            "text": "我没有钱。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l2_04",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l2_04",
+        "clipId": "zh.clip.hsk1_b_l2_04",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "他很忙。"
+          },
+          {
+            "text": "他是医生。"
+          },
+          {
+            "text": "他五十岁。"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l2_05",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l2_05",
+        "clipId": "zh.clip.hsk1_b_l2_05",
+        "question": "Chọn câu trả lời đúng.",
+        "options": [
+          {
+            "text": "我不想吃。"
+          },
+          {
+            "text": "在桌子上。"
+          },
+          {
+            "text": "喝水吧。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l3_01",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l3_01",
+        "clipId": "zh.clip.hsk1_b_l3_01",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Bệnh viện",
+            "emoji": "🏥"
+          },
+          {
+            "text": "B. Mua quần áo",
+            "emoji": "👕"
+          },
+          {
+            "text": "C. Học tiếng Trung",
+            "emoji": "📝"
+          },
+          {
+            "text": "D. Ga tàu",
+            "emoji": "🚉"
+          },
+          {
+            "text": "E. Uống trà nóng",
+            "emoji": "☕"
+          },
+          {
+            "text": "F. Nấu cơm",
+            "emoji": "🍳"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l3_02",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l3_02",
+        "clipId": "zh.clip.hsk1_b_l3_02",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Bệnh viện",
+            "emoji": "🏥"
+          },
+          {
+            "text": "B. Mua quần áo",
+            "emoji": "👕"
+          },
+          {
+            "text": "C. Học tiếng Trung",
+            "emoji": "📝"
+          },
+          {
+            "text": "D. Ga tàu",
+            "emoji": "🚉"
+          },
+          {
+            "text": "E. Uống trà nóng",
+            "emoji": "☕"
+          },
+          {
+            "text": "F. Nấu cơm",
+            "emoji": "🍳"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l3_03",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l3_03",
+        "clipId": "zh.clip.hsk1_b_l3_03",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Bệnh viện",
+            "emoji": "🏥"
+          },
+          {
+            "text": "B. Mua quần áo",
+            "emoji": "👕"
+          },
+          {
+            "text": "C. Học tiếng Trung",
+            "emoji": "📝"
+          },
+          {
+            "text": "D. Ga tàu",
+            "emoji": "🚉"
+          },
+          {
+            "text": "E. Uống trà nóng",
+            "emoji": "☕"
+          },
+          {
+            "text": "F. Nấu cơm",
+            "emoji": "🍳"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l3_04",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l3_04",
+        "clipId": "zh.clip.hsk1_b_l3_04",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Bệnh viện",
+            "emoji": "🏥"
+          },
+          {
+            "text": "B. Mua quần áo",
+            "emoji": "👕"
+          },
+          {
+            "text": "C. Học tiếng Trung",
+            "emoji": "📝"
+          },
+          {
+            "text": "D. Ga tàu",
+            "emoji": "🚉"
+          },
+          {
+            "text": "E. Uống trà nóng",
+            "emoji": "☕"
+          },
+          {
+            "text": "F. Nấu cơm",
+            "emoji": "🍳"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l3_05",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l3_05",
+        "clipId": "zh.clip.hsk1_b_l3_05",
+        "question": "Hội thoại này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Bệnh viện",
+            "emoji": "🏥"
+          },
+          {
+            "text": "B. Mua quần áo",
+            "emoji": "👕"
+          },
+          {
+            "text": "C. Học tiếng Trung",
+            "emoji": "📝"
+          },
+          {
+            "text": "D. Ga tàu",
+            "emoji": "🚉"
+          },
+          {
+            "text": "E. Uống trà nóng",
+            "emoji": "☕"
+          },
+          {
+            "text": "F. Nấu cơm",
+            "emoji": "🍳"
+          }
+        ],
+        "correct": 4
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l4_01",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l4_01",
+        "clipId": "zh.clip.hsk1_b_l4_01",
+        "question": "Người nói làm việc ở đâu?",
+        "options": [
+          {
+            "text": "商店"
+          },
+          {
+            "text": "医院"
+          },
+          {
+            "text": "学校"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l4_02",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l4_02",
+        "clipId": "zh.clip.hsk1_b_l4_02",
+        "question": "Con gái của người nói thích làm gì?",
+        "options": [
+          {
+            "text": "看电视"
+          },
+          {
+            "text": "唱歌"
+          },
+          {
+            "text": "写字"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l4_03",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l4_03",
+        "clipId": "zh.clip.hsk1_b_l4_03",
+        "question": "Người nói đi chuyến bay lúc mấy giờ?",
+        "options": [
+          {
+            "text": "八点"
+          },
+          {
+            "text": "十二点"
+          },
+          {
+            "text": "十点"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l4_04",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l4_04",
+        "clipId": "zh.clip.hsk1_b_l4_04",
+        "question": "Nhà người nói ở đâu?",
+        "options": [
+          {
+            "text": "学校旁边"
+          },
+          {
+            "text": "医院旁边"
+          },
+          {
+            "text": "商店前边"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_l4_05",
+      "itemVersion": 1,
+      "sectionId": "tingli",
+      "taskId": "l4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "id": "zh-exx-hsk_1-b_l4_05",
+        "clipId": "zh.clip.hsk1_b_l4_05",
+        "question": "Hôm qua người nói đã làm gì?",
+        "options": [
+          {
+            "text": "看书"
+          },
+          {
+            "text": "看电影"
+          },
+          {
+            "text": "去医院"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r1_01",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r1_01",
+        "readingId": "zh.read.hsk1_b_r1_01",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Cà phê",
+            "emoji": "☕️"
+          },
+          {
+            "text": "B. Máy bay",
+            "emoji": "✈"
+          },
+          {
+            "text": "C. Gia đình",
+            "emoji": "👨‍👩‍👧"
+          },
+          {
+            "text": "D. Gọi điện",
+            "emoji": "📞"
+          },
+          {
+            "text": "E. Trời mưa",
+            "emoji": "☔"
+          },
+          {
+            "text": "F. Viết chữ",
+            "emoji": "✍️"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r1_02",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r1_02",
+        "readingId": "zh.read.hsk1_b_r1_02",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Cà phê",
+            "emoji": "☕️"
+          },
+          {
+            "text": "B. Máy bay",
+            "emoji": "✈"
+          },
+          {
+            "text": "C. Gia đình",
+            "emoji": "👨‍👩‍👧"
+          },
+          {
+            "text": "D. Gọi điện",
+            "emoji": "📞"
+          },
+          {
+            "text": "E. Trời mưa",
+            "emoji": "☔"
+          },
+          {
+            "text": "F. Viết chữ",
+            "emoji": "✍️"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r1_03",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r1_03",
+        "readingId": "zh.read.hsk1_b_r1_03",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Cà phê",
+            "emoji": "☕️"
+          },
+          {
+            "text": "B. Máy bay",
+            "emoji": "✈"
+          },
+          {
+            "text": "C. Gia đình",
+            "emoji": "👨‍👩‍👧"
+          },
+          {
+            "text": "D. Gọi điện",
+            "emoji": "📞"
+          },
+          {
+            "text": "E. Trời mưa",
+            "emoji": "☔"
+          },
+          {
+            "text": "F. Viết chữ",
+            "emoji": "✍️"
+          }
+        ],
+        "correct": 4
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r1_04",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r1_04",
+        "readingId": "zh.read.hsk1_b_r1_04",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Cà phê",
+            "emoji": "☕️"
+          },
+          {
+            "text": "B. Máy bay",
+            "emoji": "✈"
+          },
+          {
+            "text": "C. Gia đình",
+            "emoji": "👨‍👩‍👧"
+          },
+          {
+            "text": "D. Gọi điện",
+            "emoji": "📞"
+          },
+          {
+            "text": "E. Trời mưa",
+            "emoji": "☔"
+          },
+          {
+            "text": "F. Viết chữ",
+            "emoji": "✍️"
+          }
+        ],
+        "correct": 5
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r1_05",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r1",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r1_05",
+        "readingId": "zh.read.hsk1_b_r1_05",
+        "question": "Câu này hợp với tranh nào?",
+        "options": [
+          {
+            "text": "A. Cà phê",
+            "emoji": "☕️"
+          },
+          {
+            "text": "B. Máy bay",
+            "emoji": "✈"
+          },
+          {
+            "text": "C. Gia đình",
+            "emoji": "👨‍👩‍👧"
+          },
+          {
+            "text": "D. Gọi điện",
+            "emoji": "📞"
+          },
+          {
+            "text": "E. Trời mưa",
+            "emoji": "☔"
+          },
+          {
+            "text": "F. Viết chữ",
+            "emoji": "✍️"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.familiar_words"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r2_01",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r2_01",
+        "readingId": "zh.read.hsk1_b_r2_01",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "吃了，很好吃。"
+          },
+          {
+            "text": "我叫阮南。"
+          },
+          {
+            "text": "在桌子上。"
+          },
+          {
+            "text": "下午三点吧。"
+          },
+          {
+            "text": "认识，他是我同学。"
+          },
+          {
+            "text": "四口人。"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r2_02",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r2_02",
+        "readingId": "zh.read.hsk1_b_r2_02",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "吃了，很好吃。"
+          },
+          {
+            "text": "我叫阮南。"
+          },
+          {
+            "text": "在桌子上。"
+          },
+          {
+            "text": "下午三点吧。"
+          },
+          {
+            "text": "认识，他是我同学。"
+          },
+          {
+            "text": "四口人。"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r2_03",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r2_03",
+        "readingId": "zh.read.hsk1_b_r2_03",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "吃了，很好吃。"
+          },
+          {
+            "text": "我叫阮南。"
+          },
+          {
+            "text": "在桌子上。"
+          },
+          {
+            "text": "下午三点吧。"
+          },
+          {
+            "text": "认识，他是我同学。"
+          },
+          {
+            "text": "四口人。"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r2_04",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r2_04",
+        "readingId": "zh.read.hsk1_b_r2_04",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "吃了，很好吃。"
+          },
+          {
+            "text": "我叫阮南。"
+          },
+          {
+            "text": "在桌子上。"
+          },
+          {
+            "text": "下午三点吧。"
+          },
+          {
+            "text": "认识，他是我同学。"
+          },
+          {
+            "text": "四口人。"
+          }
+        ],
+        "correct": 4
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r2_05",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r2",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r2_05",
+        "readingId": "zh.read.hsk1_b_r2_05",
+        "question": "Chọn câu trả lời hợp với câu này.",
+        "options": [
+          {
+            "text": "吃了，很好吃。"
+          },
+          {
+            "text": "我叫阮南。"
+          },
+          {
+            "text": "在桌子上。"
+          },
+          {
+            "text": "下午三点吧。"
+          },
+          {
+            "text": "认识，他是我同学。"
+          },
+          {
+            "text": "四口人。"
+          }
+        ],
+        "correct": 5
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r3_01",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r3_01",
+        "readingId": "zh.read.hsk1_b_r3_01",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "杯"
+          },
+          {
+            "text": "去"
+          },
+          {
+            "text": "很"
+          },
+          {
+            "text": "知道"
+          },
+          {
+            "text": "几"
+          },
+          {
+            "text": "学生"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r3_02",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r3_02",
+        "readingId": "zh.read.hsk1_b_r3_02",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "杯"
+          },
+          {
+            "text": "去"
+          },
+          {
+            "text": "很"
+          },
+          {
+            "text": "知道"
+          },
+          {
+            "text": "几"
+          },
+          {
+            "text": "学生"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r3_03",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r3_03",
+        "readingId": "zh.read.hsk1_b_r3_03",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "杯"
+          },
+          {
+            "text": "去"
+          },
+          {
+            "text": "很"
+          },
+          {
+            "text": "知道"
+          },
+          {
+            "text": "几"
+          },
+          {
+            "text": "学生"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r3_04",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r3_04",
+        "readingId": "zh.read.hsk1_b_r3_04",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "杯"
+          },
+          {
+            "text": "去"
+          },
+          {
+            "text": "很"
+          },
+          {
+            "text": "知道"
+          },
+          {
+            "text": "几"
+          },
+          {
+            "text": "学生"
+          }
+        ],
+        "correct": 3
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r3_05",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r3",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r3_05",
+        "readingId": "zh.read.hsk1_b_r3_05",
+        "question": "Chọn từ thích hợp cho chỗ trống （　）.",
+        "options": [
+          {
+            "text": "杯"
+          },
+          {
+            "text": "去"
+          },
+          {
+            "text": "很"
+          },
+          {
+            "text": "知道"
+          },
+          {
+            "text": "几"
+          },
+          {
+            "text": "学生"
+          }
+        ],
+        "correct": 4
+      },
+      "objectiveTargets": [
+        "zh.obj.vocab.everyday_basics"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r4_01",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r4_01",
+        "readingId": "zh.read.hsk1_b_r4_01",
+        "question": "Người viết làm việc ở đâu?",
+        "options": [
+          {
+            "text": "火车站"
+          },
+          {
+            "text": "饭店"
+          },
+          {
+            "text": "机场"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r4_02",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r4_02",
+        "readingId": "zh.read.hsk1_b_r4_02",
+        "question": "Hôm nay người viết thế nào?",
+        "options": [
+          {
+            "text": "很忙"
+          },
+          {
+            "text": "生病了"
+          },
+          {
+            "text": "不想吃"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r4_03",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r4_03",
+        "readingId": "zh.read.hsk1_b_r4_03",
+        "question": "Bạn gái của người viết làm việc ở đâu?",
+        "options": [
+          {
+            "text": "北京"
+          },
+          {
+            "text": "越南"
+          },
+          {
+            "text": "中国"
+          }
+        ],
+        "correct": 1
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r4_04",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r4_04",
+        "readingId": "zh.read.hsk1_b_r4_04",
+        "question": "Người viết muốn mấy giờ về nhà?",
+        "options": [
+          {
+            "text": "五点"
+          },
+          {
+            "text": "七点"
+          },
+          {
+            "text": "六点"
+          }
+        ],
+        "correct": 2
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "zh.exi.hsk_1.b_r4_05",
+      "itemVersion": 1,
+      "sectionId": "yuedu",
+      "taskId": "r4",
+      "exercise": {
+        "type": "readingComprehension",
+        "id": "zh-exx-hsk_1-b_r4_05",
+        "readingId": "zh.read.hsk1_b_r4_05",
+        "question": "Phòng của người viết có to không?",
+        "options": [
+          {
+            "text": "不大"
+          },
+          {
+            "text": "很大"
+          },
+          {
+            "text": "有一点儿大"
+          }
+        ],
+        "correct": 0
+      },
+      "objectiveTargets": [
+        "zh.obj.reading.short_texts"
+      ]
+    }
+  ],
+  "forms": [
+    {
+      "formId": "a",
+      "itemIds": [
+        "zh.exi.hsk_1.a_l1_01",
+        "zh.exi.hsk_1.a_l1_02",
+        "zh.exi.hsk_1.a_l1_03",
+        "zh.exi.hsk_1.a_l1_04",
+        "zh.exi.hsk_1.a_l1_05",
+        "zh.exi.hsk_1.a_l2_01",
+        "zh.exi.hsk_1.a_l2_02",
+        "zh.exi.hsk_1.a_l2_03",
+        "zh.exi.hsk_1.a_l2_04",
+        "zh.exi.hsk_1.a_l2_05",
+        "zh.exi.hsk_1.a_l3_01",
+        "zh.exi.hsk_1.a_l3_02",
+        "zh.exi.hsk_1.a_l3_03",
+        "zh.exi.hsk_1.a_l3_04",
+        "zh.exi.hsk_1.a_l3_05",
+        "zh.exi.hsk_1.a_l4_01",
+        "zh.exi.hsk_1.a_l4_02",
+        "zh.exi.hsk_1.a_l4_03",
+        "zh.exi.hsk_1.a_l4_04",
+        "zh.exi.hsk_1.a_l4_05",
+        "zh.exi.hsk_1.a_r1_01",
+        "zh.exi.hsk_1.a_r1_02",
+        "zh.exi.hsk_1.a_r1_03",
+        "zh.exi.hsk_1.a_r1_04",
+        "zh.exi.hsk_1.a_r1_05",
+        "zh.exi.hsk_1.a_r2_01",
+        "zh.exi.hsk_1.a_r2_02",
+        "zh.exi.hsk_1.a_r2_03",
+        "zh.exi.hsk_1.a_r2_04",
+        "zh.exi.hsk_1.a_r2_05",
+        "zh.exi.hsk_1.a_r3_01",
+        "zh.exi.hsk_1.a_r3_02",
+        "zh.exi.hsk_1.a_r3_03",
+        "zh.exi.hsk_1.a_r3_04",
+        "zh.exi.hsk_1.a_r3_05",
+        "zh.exi.hsk_1.a_r4_01",
+        "zh.exi.hsk_1.a_r4_02",
+        "zh.exi.hsk_1.a_r4_03",
+        "zh.exi.hsk_1.a_r4_04",
+        "zh.exi.hsk_1.a_r4_05"
+      ]
+    },
+    {
+      "formId": "b",
+      "itemIds": [
+        "zh.exi.hsk_1.b_l1_01",
+        "zh.exi.hsk_1.b_l1_02",
+        "zh.exi.hsk_1.b_l1_03",
+        "zh.exi.hsk_1.b_l1_04",
+        "zh.exi.hsk_1.b_l1_05",
+        "zh.exi.hsk_1.b_l2_01",
+        "zh.exi.hsk_1.b_l2_02",
+        "zh.exi.hsk_1.b_l2_03",
+        "zh.exi.hsk_1.b_l2_04",
+        "zh.exi.hsk_1.b_l2_05",
+        "zh.exi.hsk_1.b_l3_01",
+        "zh.exi.hsk_1.b_l3_02",
+        "zh.exi.hsk_1.b_l3_03",
+        "zh.exi.hsk_1.b_l3_04",
+        "zh.exi.hsk_1.b_l3_05",
+        "zh.exi.hsk_1.b_l4_01",
+        "zh.exi.hsk_1.b_l4_02",
+        "zh.exi.hsk_1.b_l4_03",
+        "zh.exi.hsk_1.b_l4_04",
+        "zh.exi.hsk_1.b_l4_05",
+        "zh.exi.hsk_1.b_r1_01",
+        "zh.exi.hsk_1.b_r1_02",
+        "zh.exi.hsk_1.b_r1_03",
+        "zh.exi.hsk_1.b_r1_04",
+        "zh.exi.hsk_1.b_r1_05",
+        "zh.exi.hsk_1.b_r2_01",
+        "zh.exi.hsk_1.b_r2_02",
+        "zh.exi.hsk_1.b_r2_03",
+        "zh.exi.hsk_1.b_r2_04",
+        "zh.exi.hsk_1.b_r2_05",
+        "zh.exi.hsk_1.b_r3_01",
+        "zh.exi.hsk_1.b_r3_02",
+        "zh.exi.hsk_1.b_r3_03",
+        "zh.exi.hsk_1.b_r3_04",
+        "zh.exi.hsk_1.b_r3_05",
+        "zh.exi.hsk_1.b_r4_01",
+        "zh.exi.hsk_1.b_r4_02",
+        "zh.exi.hsk_1.b_r4_03",
+        "zh.exi.hsk_1.b_r4_04",
+        "zh.exi.hsk_1.b_r4_05"
+      ]
+    }
+  ]
+}

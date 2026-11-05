@@ -24,6 +24,7 @@ export function Dictation({
   onAudioUnavailable,
   courseId,
   audioKind = "bundled",
+  scriptNote,
 }: {
   targetLanguage: string;
   exercise: DictationExercise;
@@ -36,6 +37,8 @@ export function Dictation({
   courseId?: string;
   /** How the clip is heard; "no-device-voice" = not answerable, only the skip. */
   audioKind?: ListeningAudioPlan["kind"];
+  /** QC 2026-11-05 §1.1: the taught-script key, when a correct answer was written in another accepted script. */
+  scriptNote?: string | null;
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
@@ -70,6 +73,11 @@ export function Dictation({
         autoCorrect={false}
         testID="dictation-input"
       />
+      {status === "correct" && scriptNote ? (
+        <Text style={styles.note} testID="dictation-script-note">
+          {t("ex.traditionalAccepted", { form: scriptNote })}
+        </Text>
+      ) : null}
     </View>
   );
 }
@@ -78,6 +86,7 @@ const useStyles = makeThemedStyles((colors) =>
   StyleSheet.create({
     wrap: { gap: 16 },
     title: { fontSize: 22, fontWeight: "800", color: colors.text },
+    note: { fontSize: 15, color: colors.textMuted },
     input: {
       borderWidth: 2,
       borderColor: colors.neutral200,

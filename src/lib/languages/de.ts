@@ -12,7 +12,7 @@
  * orthography is the construct there.
  */
 import { articleTable, foldSpokenLatin, latinRules, normalizeLenientLatin } from "./base";
-import type { LanguageRules } from "./types";
+import type { LanguageRules, NegationRules } from "./types";
 
 const UNITS = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun"];
 const TEENS = ["zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn"];
@@ -62,10 +62,23 @@ function normalizeLenientGermanTransliterated(text: string): string {
   );
 }
 
+/**
+ * QC 2026-11-05 §1.2: nicht / kein(e, en, em, er, es) — and nie, niemals, nichts — negate their whole clause (the
+ * negator usually follows the verb: "ich komme heute nicht"). Conjunctions open a new clause (aber, sondern, weil,
+ * denn, und, oder, dass, wenn, obwohl); "nicht nur", "kein Problem" and "nichts zu danken" negate nothing.
+ */
+const NEGATION: NegationRules = {
+  unit: "word",
+  clause: ["nicht", "kein", "keine", "keinen", "keinem", "keiner", "keines", "nie", "niemals", "nichts"],
+  idioms: ["nicht nur", "kein Problem", "nichts zu danken"],
+  clauseBreaks: ["aber", "sondern", "weil", "denn", "und", "oder", "dass", "wenn", "obwohl"],
+};
+
 export const de: LanguageRules = latinRules(
   { code: "de", ttsLocale: "de-DE", recognitionLocale: "de-DE" },
   {
     ...articleTable(["der", "die", "das"]),
+    negation: NEGATION,
     numberToWords: germanNumber,
     spellDigits: spellGermanDigits,
     normalizeLenient: normalizeLenientGerman,

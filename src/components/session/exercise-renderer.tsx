@@ -24,7 +24,7 @@ import { TypeAnswer } from "@/components/exercises/type-answer";
 import { WordBank } from "@/components/exercises/word-bank";
 import { useReadingAid, useScriptReading } from "@/lib/use-reading-aid";
 import { speakTarget } from "@/lib/audio";
-import type { Answer, Status } from "@/lib/grading";
+import { dictationScriptNote, type Answer, type Status } from "@/lib/grading";
 import { clipFor } from "@/lib/reception/content";
 import { useListeningAudio } from "@/lib/reception/use-listening-audio";
 import type { SpeechExerciseContext } from "@/lib/speech/use-speech-session";
@@ -125,6 +125,7 @@ function DictationStep({
       player={player}
       onAnswer={onAnswer}
       onAudioUnavailable={status === "none" ? reception.onAudioSkip : undefined}
+      scriptNote={status === "correct" ? dictationScriptNote(exercise, answer, courseId) : null}
     />
   );
 }

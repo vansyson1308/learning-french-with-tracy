@@ -31,6 +31,7 @@ import {
   type PackSource,
   type SourceRegistry,
   CourseProfileOverrideSchema,
+  OnboardingPrioritySchema,
   ScriptPrimerSchema,
 } from "../../content/schema";
 
@@ -402,6 +403,11 @@ export function sharedMeaning(a: string, b: string): boolean {
 /** Words one language treats as answering the same question although their glosses differ (content/synonym-groups.json). */
 export function loadSynonymGroups(): Record<string, string[][]> {
   return (readJson("content/synonym-groups.json") as { groups: Record<string, string[][]> }).groups;
+}
+
+/** The D-15 language priority that breaks an onboarding-default tie (content/onboarding-priority.json, P4d). */
+export function loadOnboardingPriority(): string[] {
+  return OnboardingPrioritySchema.parse(readJson("content/onboarding-priority.json")).targets;
 }
 
 /**

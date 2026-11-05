@@ -1,0 +1,280 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "policyVersion": 2,
+  "minItemsForAssessed": 3,
+  "breadthPolicy": {
+    "minItemsPerDirectObjective": 3,
+    "minDistinctInputsPerDirectObjective": 2,
+    "minTaskFamiliesPerDomain": 2,
+    "minDistinctScalesPerDomain": 2
+  },
+  "levels": [
+    {
+      "level": "PRE_A1",
+      "claimable": false,
+      "domains": [
+        {
+          "domain": "spoken_reception",
+          "status": "objectives_not_assessed",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_reception",
+          "status": "insufficient_breadth",
+          "directAssessedObjectives": [
+            "zh.obj.reading.familiar_words"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "select"
+            ],
+            "scaleNames": [
+              "Overall reading comprehension"
+            ],
+            "distinctInputsByObjective": {
+              "zh.obj.reading.familiar_words": 3
+            }
+          }
+        },
+        {
+          "domain": "spoken_production",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_production",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "interaction",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        }
+      ],
+      "coveredCompetences": [
+        "zh.obj.greetings.basic",
+        "zh.obj.vocab.everyday_basics"
+      ],
+      "unassessedDomains": [
+        "spoken_reception",
+        "written_reception",
+        "spoken_production",
+        "written_production",
+        "interaction"
+      ],
+      "evidenceLimitations": [
+        "Listening has direct objectives at this level, but not enough scored evidence to count as assessed.",
+        "Reading is assessed at this level, but the evidence does not yet span enough task families or scales for a claim.",
+        "Spoken production is not assessed (no direct assessment exists at this level).",
+        "Written production is not assessed (no direct assessment exists at this level).",
+        "Interaction is not assessed (no direct assessment exists at this level)."
+      ]
+    },
+    {
+      "level": "A1",
+      "claimable": true,
+      "domains": [
+        {
+          "domain": "spoken_reception",
+          "status": "covered",
+          "directAssessedObjectives": [
+            "zh.obj.listening.announcements",
+            "zh.obj.listening.short_dialogues",
+            "zh.obj.listening.short_info"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "dictation",
+              "listeningComprehension"
+            ],
+            "scaleNames": [
+              "Listening to announcements and instructions",
+              "Listening to audio media and recordings",
+              "Understanding conversation between other speakers"
+            ],
+            "distinctInputsByObjective": {
+              "zh.obj.listening.short_info": 7,
+              "zh.obj.listening.announcements": 5,
+              "zh.obj.listening.short_dialogues": 4
+            }
+          }
+        },
+        {
+          "domain": "written_reception",
+          "status": "covered",
+          "directAssessedObjectives": [
+            "zh.obj.reading.notices_info",
+            "zh.obj.reading.short_messages",
+            "zh.obj.reading.short_texts"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "readingComprehension",
+              "select"
+            ],
+            "scaleNames": [
+              "Overall reading comprehension",
+              "Reading correspondence",
+              "Reading for orientation"
+            ],
+            "distinctInputsByObjective": {
+              "zh.obj.reading.short_messages": 4,
+              "zh.obj.reading.notices_info": 4,
+              "zh.obj.reading.short_texts": 2
+            }
+          }
+        },
+        {
+          "domain": "spoken_production",
+          "status": "covered",
+          "directAssessedObjectives": [
+            "zh.obj.speaking.formulaic",
+            "zh.obj.speaking.give_info",
+            "zh.obj.speaking.self_intro"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "formulaic_exchange",
+              "information_giving",
+              "self_introduction"
+            ],
+            "scaleNames": [
+              "Overall oral production",
+              "Sustained monologue: describing experience",
+              "Sustained monologue: giving information"
+            ],
+            "distinctInputsByObjective": {
+              "zh.obj.speaking.formulaic": 4,
+              "zh.obj.speaking.self_intro": 4,
+              "zh.obj.speaking.give_info": 8
+            }
+          }
+        },
+        {
+          "domain": "written_production",
+          "status": "covered",
+          "directAssessedObjectives": [
+            "zh.obj.writing.form_filling",
+            "zh.obj.writing.phrases_sentences",
+            "zh.obj.writing.short_message"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "short_message",
+              "simple_description",
+              "simple_form"
+            ],
+            "scaleNames": [
+              "Correspondence",
+              "Notes, messages and forms",
+              "Overall written interaction",
+              "Overall written production"
+            ],
+            "distinctInputsByObjective": {
+              "zh.obj.writing.phrases_sentences": 3,
+              "zh.obj.writing.short_message": 8,
+              "zh.obj.writing.form_filling": 3
+            }
+          }
+        },
+        {
+          "domain": "interaction",
+          "status": "covered",
+          "directAssessedObjectives": [
+            "zh.obj.interaction.everyday_conversation",
+            "zh.obj.interaction.practical_needs"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "conversation",
+              "information_exchange",
+              "transaction"
+            ],
+            "scaleNames": [
+              "Conversation (spoken interaction)",
+              "Information exchange",
+              "Obtaining goods and services",
+              "Overall oral interaction"
+            ],
+            "distinctInputsByObjective": {
+              "zh.obj.interaction.everyday_conversation": 7,
+              "zh.obj.interaction.practical_needs": 3
+            }
+          }
+        }
+      ],
+      "coveredCompetences": [
+        "zh.obj.aspect.le_guo_zai",
+        "zh.obj.grammar.word_order",
+        "zh.obj.greetings.basic",
+        "zh.obj.numbers.measure_words",
+        "zh.obj.sentences.shi_questions",
+        "zh.obj.vocab.everyday_basics"
+      ],
+      "unassessedDomains": [],
+      "evidenceLimitations": [
+        "Listening evidence uses clear synthesized standard-French audio with limited speaker and accent diversity."
+      ]
+    },
+    {
+      "level": "A2",
+      "claimable": false,
+      "domains": [
+        {
+          "domain": "spoken_reception",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_reception",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "spoken_production",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_production",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "interaction",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        }
+      ],
+      "coveredCompetences": [],
+      "unassessedDomains": [
+        "spoken_reception",
+        "written_reception",
+        "spoken_production",
+        "written_production",
+        "interaction"
+      ],
+      "evidenceLimitations": [
+        "Listening is not assessed (no direct assessment exists at this level).",
+        "Reading is not assessed (no direct assessment exists at this level).",
+        "Spoken production is not assessed (no direct assessment exists at this level).",
+        "Written production is not assessed (no direct assessment exists at this level).",
+        "Interaction is not assessed (no direct assessment exists at this level)."
+      ]
+    }
+  ],
+  "wording": "CEFR-aligned estimate — not an official CEFR examination or certification.",
+  "courses": [
+    {
+      "courseId": "zh-en",
+      "nativeCode": "en",
+      "inherits": true
+    },
+    {
+      "courseId": "zh-vi",
+      "nativeCode": "vi",
+      "inherits": true
+    }
+  ]
+}

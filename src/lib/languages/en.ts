@@ -18,7 +18,7 @@
  * Strict comparison (dictation, conjugation) expands nothing: exact form is the construct.
  */
 import { foldSpokenLatin, latinRules, normalizeLenientLatin, normalizeStrictLatin } from "./base";
-import type { LanguageRules } from "./types";
+import type { LanguageRules, NegationRules } from "./types";
 
 const UNITS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 const TEENS = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
@@ -374,9 +374,30 @@ function foldSpokenEnglish(text: string): string {
   return usSpelling(foldSpokenLatin(expandContractions(spokenNumberFormats(text))));
 }
 
+/**
+ * QC 2026-11-05 §1.2: not / n't / never / no negate the rest of their clause ("I'm not hungry", "I have no money"),
+ * and "not" also the auxiliary right before it ("I can't" is not "I can"); the subject before it is not negated
+ * ("the printer does not work" still names the printer). The spoken and written forms expand n't to "not"; an
+ * inverted n't stays together ("don t you"), listed too. Conjunctions open a new clause ("I can't come because I am
+ * sick" still says sick).
+ */
+const INVERTED_NOT = [
+  ...["do", "does", "did", "is", "are", "was", "were", "have", "has", "had", "could", "would", "should", "must"].map((aux) => `${aux}n t`),
+  "can t",
+  "won t",
+];
+const NEGATION: NegationRules = {
+  unit: "word",
+  before: { negators: ["not", "never", "no", "nothing", "nobody", "none", ...INVERTED_NOT], reach: "clause" },
+  after: { negators: ["not"], gap: 0 },
+  idioms: ["no problem", "no worries", "not only"],
+  clauseBreaks: ["but", "because", "so", "and", "or", "although", "though", "if", "when", "while", "since"],
+};
+
 export const en: LanguageRules = latinRules(
   { code: "en", ttsLocale: "en-US", recognitionLocale: "en-US" },
   {
+    negation: NEGATION,
     numberToWords: englishNumber,
     spellDigits: spellEnglishDigits,
     normalizeLenient: normalizeLenientEnglish,

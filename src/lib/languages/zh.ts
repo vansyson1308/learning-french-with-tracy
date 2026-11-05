@@ -20,7 +20,11 @@
  *    the learner typed are never rewritten), and a pinyin token spelling a
  *    course word counts as known vocabulary (knownReading).
  *  - normalizeStrict (dictation, cloze): width and case only — hanzi as
- *    typed; no traditional fold, no pinyin.
+ *    typed; no traditional fold, no pinyin. QC 2026-11-05 §1.1: dictation
+ *    then also accepts an answer whose traditional spellings fold (word
+ *    level, the course lexicon's CC-CEDICT traditional forms) to the key
+ *    (alignScriptToKey); the screen shows the simplified key. No character
+ *    table ships: every word of the zh-vi dictations is a course word.
  *  - search fold: traditional → simplified, pinyin without tones (marks
  *    and numbers dropped, ü → u as SQLite's remove_diacritics does).
  */
@@ -42,7 +46,7 @@ import {
   tokenizeCjk,
   type CjkDictionary,
 } from "./cjk";
-import type { CourseLexicon, LanguageRules } from "./types";
+import type { CourseLexicon, LanguageRules, NegationRules, SlotRunRules, UtteranceFrame } from "./types";
 
 const HAN_DIGITS = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
 
@@ -190,6 +194,73 @@ function bind(lexicon: CourseLexicon): Bound {
   };
 }
 
+/**
+ * QC 2026-11-05 §1.2: 不 / 没 (没有) / 别 negate what follows — the keyword starting directly after the negator or
+ * after at most two characters (one adverb, modal or copula: 不是第一次, 不太舒服, 不想去, 没有发烧), inside one
+ * clause. Counted in characters, because a segmenter may glue the negator to the next word (我不是). Words that
+ * contain a negator but negate nothing (没问题, 没关系, 对不起, 不客气, 别的 …) are idioms; traditional spellings too.
+ */
+const NEGATION: NegationRules = {
+  unit: "text",
+  before: { negators: ["不", "没", "沒", "别", "別"], reach: 2 },
+  idioms: [
+    "没问题", "沒問題", "没关系", "沒關係", "没事", "沒事", "不客气", "不客氣", "对不起", "對不起", "不好意思", "不用谢", "不用謝",
+    "不错", "不錯", "不过", "不過", "差不多", "了不起", "不久", "不少", "不但", "不同", "别的", "別的", "别人", "別人",
+  ],
+};
+
+/**
+ * Answer-key review pass 2 (2026-11-05): titles a learner addresses people by, and the surnames that lead them
+ * (李组长, 王经理; 老李 / 小王 between colleagues). With a course lexicon bound, only the titles that are course words.
+ */
+const TITLES = ["组长", "经理", "老师", "医生", "老板", "师傅", "先生", "小姐", "阿姨", "叔叔", "主任", "厂长", "同学", "大家"];
+const SURNAMES = ["李", "王", "张", "陈", "刘", "黄", "赵", "林", "阮", "范", "黎"];
+const NUMERALS = ["一", "二", "两", "三", "四", "五", "六", "七", "八", "九", "十", "百", "几", "半", "零"];
+
+/**
+ * (a)/(b) A writing slot's words may take, between them or (a separable verb) inside one, the material that says the
+ * same thing: an aspect particle (吃了早饭, 去过), a resultative 完 (吃完早饭), 一下 / 点儿, a measure word with or without
+ * its numeral (喝一杯咖啡, 请一天假, 请个假), a surname before a title (叫李组长); tokens join across the segmenter's
+ * boundaries (138 1234 5678 is 13812345678). Never a negator, never a content word.
+ */
+function slotRuns(titles: readonly string[]): SlotRunRules {
+  return {
+    joinTokens: true,
+    insertions: {
+      words: ["了", "过", "着", "完", "一下", "点儿", "一点儿"],
+      numerals: NUMERALS,
+      measures: CHINESE_MEASURE_WORDS,
+      titled: { prefixes: SURNAMES, titles },
+    },
+  };
+}
+
+/**
+ * (c) A whole spoken answer may be said with 嗯 / 那 in front, with a vocative before or after it (组长，谢谢 · 谢谢您，
+ * 组长 · 老李，…), and with a sentence-final particle where it changes nothing: 啊 / 呀 after any answer; 了 after an
+ * age or 明白 / 懂 / 知道 (我今年二十五岁了, 我懂了); 吧 after a request or 见 (给我两张票吧, 明天见吧); 呢 after a question
+ * word (银行在哪儿呢). Never after a final particle already there.
+ */
+function utteranceFrame(titles: readonly string[]): UtteranceFrame {
+  const vocatives = [
+    ...titles,
+    ...SURNAMES.flatMap((s) => titles.filter((t) => t !== "大家" && t !== "同学").map((t) => s + t)),
+    ...SURNAMES.flatMap((s) => [`老${s}`, `小${s}`]),
+  ];
+  return {
+    leading: ["嗯", "那"],
+    vocatives,
+    particles: [
+      { particle: "啊" },
+      { particle: "呀" },
+      { particle: "了", ifLast: ["岁", "明白", "懂", "知道"] },
+      { particle: "吧", ifLast: ["见"], ifContains: ["请", "给", "一起", "咱们"] },
+      { particle: "呢", ifContains: ["什么", "哪儿", "哪里", "几", "多少", "谁", "怎么"] },
+    ],
+    finals: ["吗", "吧", "呢", "啊", "呀", "了", "啦", "嘛"],
+  };
+}
+
 export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
   const bound = lexicon && lexicon.entries.length > 0 ? bind(lexicon) : null;
   const foldVariants = (text: string) => (bound ? replaceLongest(text, bound.variants, bound.variantMax) : text);
@@ -197,6 +268,7 @@ export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
   // Typed pinyin may spell ü as "u:" (CC-CEDICT style); keep it through the punctuation strip.
   const normalizeLenient = (text: string) => collapseSpaces(stripPunctuation(foldVariants(nfkcLower(text).replace(/u:/g, "ü"))));
   const fallback = tokenizeCjk("zh-CN", true);
+  const titles = bound ? TITLES.filter((t) => bound.dict.words.has(t)) : TITLES;
 
   /** The key's stored syllables, or null when a hanzi of it has no stored reading. */
   const keySyllables = (key: string): Syllable[] | null => {
@@ -222,6 +294,9 @@ export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
     code: "zh",
     ttsLocale: "zh-CN",
     recognitionLocale: "zh-CN",
+    negation: NEGATION,
+    slotRuns: slotRuns(titles),
+    utteranceFrame: utteranceFrame(titles),
     articleCue: () => undefined,
     splitArticle: (surface) => ({ bare: surface }),
     numberToWords: chineseNumber,
@@ -252,6 +327,8 @@ export function createChineseRules(lexicon?: CourseLexicon): LanguageRules {
     },
     readingInput: "pinyin",
     normalizeStrict: normalizeStrictChinese,
+    // QC 2026-11-05 §1.1: dictation accepts the traditional spelling of the key's words (word-level, from the lexicon).
+    alignScriptToKey: (answer, key) => (bound !== null && foldVariants(answer) === key ? key : answer),
     foldSpoken,
     tokenize: (folded) => {
       // Digits are spelt before segmentation, so 12个 and 十二个 split alike.

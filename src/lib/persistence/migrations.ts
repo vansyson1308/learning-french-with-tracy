@@ -452,9 +452,11 @@ function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
  * the registries added before it ships join this list: it, then en (en-vi,
  * P4f; no English-target course ever shipped, so nothing is re-keyed today),
  * then ja (ja-vi, P4c: RC3-era ja-en progress is surface-keyed — みず reaches
- * ja:w:mizu through legacySurfaces, さかな keeps a reversible ja:legacy: id).
+ * ja:w:mizu through legacySurfaces, さかな keeps a reversible ja:legacy: id),
+ * then zh (zh-vi, P4d: RC3-era zh-en progress is keyed by its hanzi surfaces,
+ * every one a zh-vi lexeme; an unknown key keeps a reversible zh:legacy: id).
  */
-export const V8_REKEYED_TARGETS: readonly string[] = ["de", "en", "es", "fr", "it", "ja"];
+export const V8_REKEYED_TARGETS: readonly string[] = ["de", "en", "es", "fr", "it", "ja", "zh"];
 
 /** Every target whose surface-keyed progress a numbered step re-keyed. */
 export const REKEYED_TARGETS: readonly string[] = [...V8_REKEYED_TARGETS];

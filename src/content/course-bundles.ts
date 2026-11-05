@@ -15,6 +15,7 @@ import { COURSE as ja_vi } from "./courses/ja-vi";
 import { COURSE as ko_en } from "./courses/ko-en";
 import { COURSE as pt_en } from "./courses/pt-en";
 import { COURSE as zh_en } from "./courses/zh-en";
+import { COURSE as zh_vi } from "./courses/zh-vi";
 import type { CourseBundle } from "../lib/course-bundle";
 
 export const ALL_COURSE_BUNDLES: CourseBundle[] = [
@@ -32,4 +33,5 @@ export const ALL_COURSE_BUNDLES: CourseBundle[] = [
   ko_en,
   pt_en,
   zh_en,
+  zh_vi,
 ];

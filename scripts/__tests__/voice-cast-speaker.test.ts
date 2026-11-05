@@ -106,8 +106,8 @@ describe("pickCast", () => {
 });
 
 describe("Kokoro edge trim", () => {
-  test("French and English Kokoro clips are trimmed (their short words failed the speaking-rate check)", () => {
-    expect([...TRIM_EDGES].sort()).toEqual(["en", "fr"]);
+  test("French, English and Mandarin Kokoro clips are trimmed (their short words failed the speaking-rate or trailing-silence check)", () => {
+    expect([...TRIM_EDGES].sort()).toEqual(["en", "fr", "zh"]);
   });
 });
 

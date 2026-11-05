@@ -1,0 +1,1011 @@
+{
+ "reviewer": "Claude (simulated native reviewer, fresh context, D-10 answer-key pass 2, full course)",
+ "course": "zh-vi",
+ "date": "2026-11-05",
+ "basis": "Every scored item read from the staged files after the pass-1 fixes; every doubtful acceptance was run through the app's own graders (src/lib/languages/zh.ts createChineseRules bound to content/zh/lexicon/lexemes.json, grading.ts lenientMatch/dictationMatch logic, speech/grader.ts gradeSpokenAttempt, writing/rubric.ts evaluateGuidedWriting/evaluateSimpleForm, interaction/machine.ts intent order) from a scratch harness; the repository was not modified. 'ran the grader' in a finding means the verdict quoted is the engine's.",
+ "_summary": {
+  "itemsRead": 1547,
+  "perCategory": {
+   "lessonExercises": 976,
+   "checkpointItems": 115,
+   "placementItems": 22,
+   "hsk1Items": 80,
+   "hsk2Items": 120,
+   "speechItems": 52,
+   "writingTasks": 35,
+   "scenarios": 21,
+   "scenarioScoredLearnerNodes": 42,
+   "storyQuestions": 126,
+   "stories": 42
+  },
+  "findings": 87,
+  "P0": 14,
+  "P1": 41,
+  "P2": 32,
+  "uncertain": 2,
+  "line": "87 findings: P0 14, P1 41, P2 32 (2 marked uncertain) over 1547 scored items read; several findings list further affected ids in alsoAffects.",
+  "progress": [
+   {
+    "done": "unit-1 (u0-l0..l3)",
+    "items": 38,
+    "findings": 0
+   },
+   {
+    "done": "unit-2 (u1-l0..l3)",
+    "items": 32,
+    "findings": 1
+   },
+   {
+    "done": "unit-3 (u2-l0..l3)",
+    "items": 31,
+    "findings": 0
+   },
+   {
+    "done": "unit-4 (u3-l0..l3)",
+    "items": 36,
+    "findings": 0
+   },
+   {
+    "done": "unit-5 (u4-l0..l3)",
+    "items": 36,
+    "findings": 0
+   },
+   {
+    "done": "unit-a (ua-l0..l3)",
+    "items": 37,
+    "findings": 2
+   },
+   {
+    "done": "unit-b (ub-l0..l3)",
+    "items": 37,
+    "findings": 0
+   },
+   {
+    "done": "unit-c (uc-l0..l3)",
+    "items": 37,
+    "findings": 1
+   },
+   {
+    "done": "unit-d (ud-l0..l3)",
+    "items": 37,
+    "findings": 2
+   },
+   {
+    "done": "unit-e (ue-l0..l3)",
+    "items": 38,
+    "findings": 1
+   },
+   {
+    "done": "unit-f (uf-l0..l3)",
+    "items": 51,
+    "findings": 2
+   },
+   {
+    "done": "unit-g (ug-l0..l3)",
+    "items": 51,
+    "findings": 0
+   },
+   {
+    "done": "unit-h (uh-l0..l3)",
+    "items": 53,
+    "findings": 0
+   },
+   {
+    "done": "unit-i (ui-l0..l3)",
+    "items": 50,
+    "findings": 0
+   },
+   {
+    "done": "unit-j (uj-l0..l3)",
+    "items": 57,
+    "findings": 3
+   },
+   {
+    "done": "unit-k (uk-l0..l3)",
+    "items": 41,
+    "findings": 5
+   },
+   {
+    "done": "unit-l (ul-l0..l3)",
+    "items": 41,
+    "findings": 7
+   },
+   {
+    "done": "unit-m (um-l0..l3)",
+    "items": 37,
+    "findings": 7
+   },
+   {
+    "done": "unit-n (un-l0..l3)",
+    "items": 40,
+    "findings": 2
+   },
+   {
+    "done": "unit-o (uo-l0..l3)",
+    "items": 34,
+    "findings": 5
+   },
+   {
+    "done": "unit-p (up-l0..l3)",
+    "items": 34,
+    "findings": 5
+   },
+   {
+    "done": "unit-q (uq-l0..l3)",
+    "items": 31,
+    "findings": 4
+   },
+   {
+    "done": "unit-r (ur-l0..l3)",
+    "items": 31,
+    "findings": 3
+   },
+   {
+    "done": "unit-s (us-l0..l3; scenario refs reviewed with the scenarios)",
+    "items": 30,
+    "findings": 2
+   },
+   {
+    "done": "unit-t (ut-l0..l3; scenario refs reviewed with the scenarios)",
+    "items": 30,
+    "findings": 1
+   },
+   {
+    "done": "unit-u (uu-l0..l3; scenario refs reviewed with the scenarios)",
+    "items": 29,
+    "findings": 1
+   },
+   {
+    "done": "unit-v (uv-l0..l3; scenario refs reviewed with the scenarios)",
+    "items": 31,
+    "findings": 3
+   },
+   {
+    "done": "checkpoints (7: s1..s6 + A1 capstone)",
+    "items": 115,
+    "findings": 10
+   },
+   {
+    "done": "placement (4 stages, 22 items)",
+    "items": 22,
+    "findings": 3
+   },
+   {
+    "done": "HSK 1 form A (40 items)",
+    "items": 40,
+    "findings": 1
+   },
+   {
+    "done": "HSK 1 form B (40 items)",
+    "items": 40,
+    "findings": 0
+   },
+   {
+    "done": "HSK 2 form A (60 items incl. 10 shuxie)",
+    "items": 60,
+    "findings": 0
+   },
+   {
+    "done": "HSK 2 form B (60 items incl. 10 shuxie)",
+    "items": 60,
+    "findings": 0
+   },
+   {
+    "done": "speech items (52, 22 reserved; lesson-mirror findings already logged per unit)",
+    "items": 52,
+    "findings": 2
+   },
+   {
+    "done": "writing tasks (35, 16 reserved; lesson/checkpoint findings already logged)",
+    "items": 35,
+    "findings": 2
+   },
+   {
+    "done": "scenarios (21, 10 reserved; 42 scored learner nodes + their retry nodes)",
+    "items": 21,
+    "findings": 12
+   },
+   {
+    "done": "stories batch 1 (10 stories, 30 questions)",
+    "items": 30,
+    "findings": 0
+   },
+   {
+    "done": "stories batch 2 (10 stories, 30 questions)",
+    "items": 30,
+    "findings": 0
+   },
+   {
+    "done": "stories batch 3 (10 stories, 30 questions)",
+    "items": 30,
+    "findings": 0
+   },
+   {
+    "done": "stories batch 4 (10 stories, 30 questions)",
+    "items": 30,
+    "findings": 0
+   },
+   {
+    "done": "stories batch 5 (2 stories, 6 questions)",
+    "items": 6,
+    "findings": 0
+   }
+  ],
+  "notes": [
+   "Pass-1 fixes verified: all 56 pass-1 items were re-read; most fixes hold. Five are wrong or incomplete and are reported again: zh.exi.hsk_1.a_l4_03 (the 就 fix now makes the key wrong), zh.write.p_link (the pass-1 example 我吃了早饭以后去上班 still fails), zh.write.cp5_mail_shift, the phone slots (space-separated numbers still fail; the decision's tokenization claim is wrong: the hyphen stays a token), zh-vi:uv-l0-e5 (我打电话给我妈妈 still missing).",
+   "Largest new P0 class — writing rubrics: slots are contiguous token runs, so an aspect particle, a numeral + measure word or a name inside a verb-object slot breaks it (喝一杯咖啡, 吃了早饭, 请一天假, 叫李组长), 早上好 is one lexeme token so no greeting slot accepts it, and the four open tasks (o_open, p_open, r_open, q_open) have menus so narrow that correct texts get the false feedback 'đừng quên…'. Checked by running evaluateGuidedWriting on each example.",
+   "Speech items are whole-utterance only (no requiredConcepts on any zh speech item): vocatives (组长，谢谢), final particles (谢谢啊), 了 (我今年二十五岁了) and 想 (我想买两张票 for 'muốn') fail; checkpoint/placement twins are narrower than their lesson twins.",
+   "Scenarios have the opposite problem: single-word concepts accept wrong answers (两 for 'two days' accepts 两个星期; 二十 accepts 二十五; 有 accepts 我有事 = busy; 三点 accepts 三点半; 这儿 accepts 这儿不能停 because the negation follows the run).",
+   "Clean: Section 1, checkpoint s1 and placement stage 1 are tap-only; no pinyin key; 两/二, 不/没, measure-word and aspect fill-ins have one answer each; HSK 1/2 pools (r2/r3 match-to-pool, 书写 components) have one answer per stem; HSK wording stays honest ('ngưỡng tham khảo', 'không phải điểm HSK'); traditional input folds in typed answers and dictation (spot-checked: 誰, 沒, 聽, 頭).",
+   "Stories: 126 questions over 42 stories re-read in full; keys match the texts; no new finding."
+  ]
+ },
+ "findings": [
+  {
+   "id": "zh-vi:u1-l2-e6",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Tôi tên là Nguyễn Hải.' tiles 他 阮海 叫 名字 我, key 我 叫 阮海 only. 我 名字 叫 阮海 (的 dropped before 名字, common in speech) is built from the same tiles and rejected; uo-l1-e0 now accepts 我的名字叫阮海, so the course treats the 名字叫 pattern as correct.",
+   "fix": "Add alternative: 我 名字 叫 阮海 (or drop the 名字 tile so only one sentence can be built).",
+   "uncertain": "Some teachers still mark 我名字叫… (without 的) as colloquial; it is not wrong."
+  },
+  {
+   "id": "zh-vi:ua-l3-e7",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Tôi cũng là công nhân.' accepts 我也是工人 | 我也是一个工人 | 我也是1个工人 but not 我也是一名工人 (graded null). uo-l3-e0 'Tôi là công nhân.' accepts 我是一名工人 after pass 1, so the 是一名 + profession form is inconsistent across the course; the one_spellings rule adds 一个 but not 一名.",
+   "fix": "Add alternative 我也是一名工人, and extend zh_text.one_spellings so 是 + person noun also yields 是一名 + noun wherever it yields 是一个."
+  },
+  {
+   "id": "zh-vi:ua-l1-e7",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Bạn có anh trai không?' accepts 你有哥哥吗 | 你有没有哥哥; the clause-final form 你有哥哥没有 (natural, esp. in northern speech) is rejected.",
+   "fix": "Add alternative 你有哥哥没有."
+  },
+  {
+   "id": "zh-vi:uc-l3-e7",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Nhà vệ sinh ở đâu?' accepts only 洗手间在哪儿 | 洗手间在哪里. 厕所在哪儿 and 卫生间在哪儿 are equally correct renderings of 'nhà vệ sinh' that a learner may already know; rejected. (Typed alternatives are never shown, so no lexeme is needed.)",
+   "fix": "Add alternatives: 厕所在哪儿 | 厕所在哪里 | 卫生间在哪儿 | 卫生间在哪里"
+  },
+  {
+   "id": "zh-vi:ud-l0-e7",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P0",
+   "problem": "'Bây giờ là mấy giờ?' accepts 现在几点 | 现在几点了 only. 现在是几点 (the prompt itself says 'là', and 是 before a time is fully grammatical) is graded wrong; 现在几点钟 is also rejected.",
+   "fix": "Add alternatives: 现在是几点 | 现在几点钟 | 现在是几点钟"
+  },
+  {
+   "id": "zh-vi:ud-l3-e7",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi từng đến Trung Quốc.' accepts 我去过中国 | 我来过中国; 我到过中国 and 我曾经去过中国 (曾经 = từng, the learner's literal choice) are correct and rejected.",
+   "fix": "Add alternatives: 我到过中国 | 我曾经去过中国 | 我曾经来过中国"
+  },
+  {
+   "id": "zh-vi:ue-l0-e7",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi học tiếng Trung.' accepts 我学习汉语 | 我学汉语 | 我学习中文 | 我学中文 but not the progressive 我在学汉语 / 我在学中文, which is the commonest way to say 'I am learning Chinese' and fits the Vietnamese.",
+   "fix": "Add alternatives: 我在学汉语 | 我在学中文 | 我在学习汉语 | 我在学习中文"
+  },
+  {
+   "id": "zh-vi:uf-l2-e6",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Mùa thu thời tiết rất đẹp.' accepts 秋天天气很好 | 秋天的天气很好 | 秋天天气非常好 | 秋天天气真好, but the 的 form only with 很: 秋天的天气非常好 and 秋天的天气真好 (each combines two accepted choices) are graded wrong.",
+   "fix": "Add alternatives: 秋天的天气非常好 | 秋天的天气真好 (or let the generator cross the optional 的 with the degree adverbs)."
+  },
+  {
+   "id": "zh-vi:uf-l0-e6",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Hôm nay nóng.' accepts 今天很热 | 今天热 | 今天非常热 | 今天天气很热 | 今天天气热; 今天好热 and 今天天气非常热 (natural, same meaning) are rejected.",
+   "fix": "Add alternatives: 今天好热 | 今天天气非常热 | 今天真热"
+  },
+  {
+   "id": "zh-vi:uj-l1-e6",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Hằng ngày tôi tắm.' accepts 我每天洗澡 | 每天我洗澡 only. 我每天都洗澡 / 每天我都洗澡 — 每天 … 都 is the standard collocation many learners are taught — are graded wrong.",
+   "fix": "Add alternatives: 我每天都洗澡 | 每天我都洗澡 (and consider a generator rule: 每天 + V ⇄ 每天都 + V in typed keys)."
+  },
+  {
+   "id": "zh-vi:uj-l0-e6",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi sống ở ký túc xá.' accepts 我住在宿舍 | 我住宿舍 | 我在宿舍住; 我住在宿舍里 (locative 里, very common) is rejected. Same on uc-l0-e7 ('Tôi ở ký túc xá.': 我在宿舍里 rejected).",
+   "alsoAffects": [
+    "zh-vi:uc-l0-e7"
+   ],
+   "fix": "Add alternatives: 我住在宿舍里 | 我在宿舍里住; uc-l0-e7 + 我在宿舍里 | 我住在宿舍里"
+  },
+  {
+   "id": "zh-vi:uj-l3-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Bạn về nhà mấy giờ?' key 你几点回家 with no alternatives; 你几点钟回家 is rejected.",
+   "fix": "Add alternative: 你几点钟回家"
+  },
+  {
+   "id": "zh.speak.k_thanks",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:uk-l1-e8"
+   ],
+   "problem": "'Tổ trưởng giúp bạn khiêng thùng hàng. Hãy cảm ơn anh ấy.' Speech items are whole-utterance only (no requiredConcepts), so the vocative-first order 组长，谢谢您 / 组长，谢谢 (as natural as the listed 谢谢组长) fails, and so do 非常感谢您 and 太感谢了 while 非常感谢 and 太谢谢了 pass (ran the grader).",
+   "fix": "Add variants: 组长谢谢您 | 组长谢谢 | 组长谢谢你 | 非常感谢您 | 太感谢了 | 谢谢您组长 — or give the item requiredConcepts [[谢谢, 感谢]]."
+  },
+  {
+   "id": "zh.speak.k_sorry",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:uk-l2-e9"
+   ],
+   "problem": "'Bạn đến muộn năm phút. Hãy xin lỗi tổ trưởng.' 对不起，我迟到了五分钟 (states the cue fact), 组长，对不起，我迟到了 (vocative) and 不好意思，我晚到了 (while 对不起，我晚到了 is listed) all fail the whole-utterance match.",
+   "fix": "Add variants: 对不起我迟到了五分钟 | 不好意思我迟到了五分钟 | 组长对不起我迟到了 | 组长不好意思我迟到了 | 不好意思我晚到了 — or requiredConcepts [[对不起, 不好意思]]."
+  },
+  {
+   "id": "zh.speak.k_xianzou",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:uk-l2-e8",
+    "zh-vi:uk-l3-e8"
+   ],
+   "problem": "'Hãy xin phép về trước.' 我先回去了 (the commonest alternative to 我先走了), 我走了，明天见 and 我先走了，拜拜 (拜拜 is a course word) are rejected.",
+   "fix": "Add variants: 我先回去了 | 我先回家了 | 我走了明天见 | 我先走了拜拜 | 我先走了明天见啊"
+  },
+  {
+   "id": "zh.speak.k_excuse",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh-vi:uk-l2-e10"
+   ],
+   "problem": "'Hãy mở lời lịch sự' (asking a stranger the way): 打扰一下 and 请问一下 are standard openers and fail.",
+   "fix": "Add variants: 请问一下 | 打扰一下 | 打扰一下请问 | 不好意思打扰一下"
+  },
+  {
+   "id": "zh-vi:uk-l3-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi hiểu rồi.' accepts 我明白了 | 明白了 | 我懂了; 懂了 (parallel to the accepted 明白了) is rejected.",
+   "fix": "Add alternative: 懂了"
+  },
+  {
+   "id": "zh.speak.l_name",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:ul-l0-e9",
+    "zh-vi:ul-l3-e7"
+   ],
+   "problem": "Cue Tên: Nguyễn Hải. 我的名字叫阮海 fails although the typed twin uo-l1-e0 accepts it (pass-1 fix); 你好，我是阮海 fails while 你好，我叫阮海 passes; 大家好，我叫阮海 (the interview opener) fails. Ran the grader.",
+   "fix": "Add variants: 我的名字叫阮海 | 你好我是阮海 | 您好我是阮海 | 大家好我叫阮海 | 大家好我是阮海"
+  },
+  {
+   "id": "zh.speak.l_age",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:ul-l1-e6"
+   ],
+   "problem": "Cue Tuổi: 25. 我今年二十五岁了 — 今年 … 岁了 is the most natural way to state one's age — fails; the typed question ul-l1-e5 accepts 你今年几岁了, so the course itself uses the 了.",
+   "fix": "Add variants: 我今年二十五岁了 | 今年我二十五岁了 | 我二十五岁了"
+  },
+  {
+   "id": "zh-vi:ul-l0-e6",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Năm nay tôi hai mươi tuổi.' accepts 我今年二十岁 | 我今年20岁 | 今年我二十岁 | 今年我20岁; 我今年二十岁了 (and the 20 and 今年我 forms with 了) is rejected.",
+   "fix": "Add alternatives: 我今年二十岁了 | 我今年20岁了 | 今年我二十岁了 | 今年我20岁了"
+  },
+  {
+   "id": "zh.speak.l_from",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:ul-l0-e10",
+    "zh-vi:ul-l3-e8"
+   ],
+   "problem": "Cue Nước: Việt Nam. 我来自越南 fails although the typed twin uo-l3-e2 accepts it after pass 1 (来自 = 'lai tự', the likeliest Vietnamese-speaker phrasing).",
+   "fix": "Add variant: 我来自越南"
+  },
+  {
+   "id": "zh.speak.l_work",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh-vi:ul-l1-e7",
+    "zh-vi:ul-l3-e9"
+   ],
+   "problem": "Cue nhà máy: 我在一个工厂工作 (spoken 一个 for 一家) and 我在工厂里工作 fail; 我在一家工厂工作 passes.",
+   "fix": "Add variants: 我在一个工厂工作 | 我在工厂里工作 | 我在工厂里上班"
+  },
+  {
+   "id": "zh-vi:ul-l3-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi thích âm nhạc.' accepts 我喜欢音乐 | 我喜欢听音乐 | 我爱音乐; 我爱听音乐 (accepted by the twin writing slot zh.write.cp5_like_music) is rejected.",
+   "fix": "Add alternative: 我爱听音乐"
+  },
+  {
+   "id": "zh-vi:ul-l2-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi biết nói tiếng Trung.' accepts 我会说汉语 | 我会说中文; 我会讲中文 / 我会说普通话 are correct and rejected.",
+   "fix": "Add alternatives: 我会讲中文 | 我会讲汉语 | 我会说普通话"
+  },
+  {
+   "id": "zh.speak.m_tickets",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:um-l0-e8"
+   ],
+   "problem": "'Hãy nói bạn muốn hai vé.' accepts 我要两张票 | 两张票 | 请给我两张票 | 给我两张票 | 我买两张票; 我想要两张票, 我想买两张票 and 我要买两张票 — the literal rendering of 'muốn' and the commonest ticket-desk phrasing — fail (ran the grader).",
+   "fix": "Add variants: 我想要两张票 | 我想买两张票 | 我要买两张票 | 我要两张"
+  },
+  {
+   "id": "zh.speak.m_time",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh-vi:um-l2-e7",
+    "zh.speak.cp4_time_ten",
+    "zh.speak.a1cap_time_nine"
+   ],
+   "problem": "Time replies with 钟 (八点钟, 现在八点钟) fail; the same gap is in the two reserved time items.",
+   "fix": "Add 八点钟 | 现在八点钟 (十点钟 / 九点钟 in the reserved items)."
+  },
+  {
+   "id": "zh.speak.m_birthday",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh-vi:um-l3-e8",
+    "zh.speak.a1cap_birthday"
+   ],
+   "problem": "我生日五月十号 (no 的, no 是) fails, though the typed twin ud-l1-e7 accepts 我生日五月五号 after pass 1.",
+   "fix": "Add variants: 我生日五月十号 | 我生日五月十日"
+  },
+  {
+   "id": "zh.speak.m_price",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh-vi:um-l1-e7"
+   ],
+   "problem": "'Một vị khách hỏi giá một bát mì.' 一碗面条十八块 / 面条一碗十八块 (naming the noodles) fail while 面条十八块 passes.",
+   "fix": "Add variants: 一碗面条十八块 | 面条一碗十八块 | 面条十八块一碗"
+  },
+  {
+   "id": "zh.speak.m_day",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh-vi:um-l3-e7"
+   ],
+   "problem": "'Hãy nói hôm nay là thứ mấy.' 今天周一 (周一 is everyday spoken Chinese) fails.",
+   "fix": "Add variants: 今天周一 | 周一 | 今天是周一"
+  },
+  {
+   "id": "zh-vi:um-l0-e6",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Số điện thoại của bạn là bao nhiêu?' accepts 你的电话号码是多少 | 你电话号码是多少 | 你的电话是多少; 你电话是多少 and 你的号码是多少 are rejected.",
+   "fix": "Add alternatives: 你电话是多少 | 你的号码是多少 | 你号码是多少"
+  },
+  {
+   "id": "zh-vi:um-l2-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Chúng ta gặp lúc ba giờ chiều.' 我们下午三点见吧 (吧 for a proposal is natural) is rejected.",
+   "fix": "Add alternatives: 我们下午三点见吧 | 我们下午三点见面吧"
+  },
+  {
+   "id": "zh-vi:un-l2-e4",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Cái này rẻ hơn cái kia.' key 这个比那个便宜 with no alternatives. 这个比那个更便宜 and 这个比那个便宜一点(儿) — the two commonest comparative forms after the bare one — are graded wrong.",
+   "fix": "Add alternatives: 这个比那个更便宜 | 这个比那个便宜一点 | 这个比那个便宜一点儿 | 这个比那个便宜点儿"
+  },
+  {
+   "id": "zh.speak.n_box",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh-vi:un-l1-e9",
+    "zh.speak.n_cat",
+    "zh.speak.n_room",
+    "zh.speak.n_person"
+   ],
+   "problem": "The picture-description items accept 很 / 非常 + adjective but not 真 / 好 (这个箱子真大, 房间真干净), the everyday exclamatory description; 她个子很高 also fails for n_person.",
+   "fix": "Add 真 / 好 forms to the describe items (这个箱子真大 | 这个箱子好大 …), and 她个子很高 to n_person."
+  },
+  {
+   "id": "zh.write.o_open",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh-vi:uo-l3-e7"
+   ],
+   "problem": "Open task 'Hãy viết vài câu về bạn. Bạn chọn nói gì cũng được.' has one menu slot about = 是 | 叫 | 住 | 喜欢 | 工作. Correct self-descriptions without those five verbs fail with the false feedback 'đừng quên một câu về bạn': 我有两个妹妹。我今年二十岁。 and 我家有四口人。我在河内。 both grade does_not_meet_rubric (ran evaluateGuidedWriting).",
+   "fix": "Widen the menu with the course's other self-description patterns: 有 | 岁 | 今年 | 在 | 家 | 会 | 想 | 爱 (open mode, so several hits are fine)."
+  },
+  {
+   "id": "zh-vi:uo-l1-e2",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Năm nay tôi hai mươi ba tuổi.' 我今年二十三岁了 (and 23岁了, 今年我…岁了) is rejected — same gap as ul-l0-e6; the writing twin zh.write.o_age accepts 我二十三岁了.",
+   "fix": "Add the 了 forms: 我今年二十三岁了 | 我今年23岁了 | 今年我二十三岁了 | 今年我23岁了"
+  },
+  {
+   "id": "zh-vi:uo-l2-e1",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Hằng ngày tôi làm việc ở nhà máy.' accepts 我每天在工厂工作 | 每天我在工厂工作; 我每天都在工厂工作 (每天 … 都) and 我每天在工厂上班 (the course's own synonym, accepted in zh.speak.l_work) are rejected.",
+   "fix": "Add alternatives: 我每天都在工厂工作 | 每天我都在工厂工作 | 我每天在工厂上班 | 我每天都在工厂上班"
+  },
+  {
+   "id": "zh-vi:uo-l3-e1",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi làm việc ở một công ty Trung Quốc.' accepts 我在一家中国公司工作 | 我在中国公司工作; spoken-style 我在一个中国公司工作 is rejected.",
+   "fix": "Add alternative: 我在一个中国公司工作"
+  },
+  {
+   "id": "zh-vi:uo-l1-e0",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi tên là Nguyễn Hải.' accepts 我的名字叫阮海 but not 我名字叫阮海 (的 dropped, common in speech); see also the word bank u1-l2-e6.",
+   "fix": "Add alternatives: 我名字叫阮海 | 我名字是阮海"
+  },
+  {
+   "id": "zh.write.p_who",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh-vi:up-l0-e6"
+   ],
+   "problem": "'Buổi sáng anh Nguyễn Nam uống cà phê.' Slot drink = 喝咖啡 is a contiguous run, so 阮南早上喝一杯咖啡 and 阮南早上喝了咖啡 (both correct) grade does_not_meet_rubric with 'missing: uống cà phê' (ran evaluateGuidedWriting: tokens 喝 一 杯 咖啡 / 喝 了 咖啡).",
+   "fix": "drink: 喝咖啡 | 喝一杯咖啡 | 喝了咖啡 | 喝杯咖啡 — or split into two slots (喝, 咖啡). The class recurs in every V+O slot (see zh.write.p_link)."
+  },
+  {
+   "id": "zh.write.p_link",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh-vi:up-l2-e7"
+   ],
+   "problem": "Pass-1 fix incomplete. The pass-1 example 我吃了早饭以后去上班 still fails: link (以后) and work now pass but breakfast = 吃早饭 is a contiguous run and 吃 了 早饭 breaks it. 吃完早饭以后，我去上班 fails the same way, and 我先吃早餐，然后去工厂 fails (早餐 not accepted). Ran the grader on all three.",
+   "fix": "breakfast: 吃早饭 | 吃了早饭 | 吃完早饭 | 吃早餐 | 吃了早餐 | 早饭 (or a slot on 早饭 / 早餐 alone)."
+  },
+  {
+   "id": "zh.write.p_open",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh-vi:up-l3-e5"
+   ],
+   "problem": "Open task 'Hãy viết vài câu về một ngày của bạn.' menu day = 起床 | 吃饭 | 上班 | 下班 | 睡觉 | 每天. 吃早饭 tokenizes 吃 早饭 (not a 吃饭 run), so 我七点吃早饭，八点去工厂。 and 早上我喝咖啡，然后去工作。晚上我看电视。 grade does_not_meet_rubric ('đừng quên một câu về ngày của bạn').",
+   "fix": "Widen the menu: 早上 | 晚上 | 中午 | 点 | 去 | 工作 | 吃早饭 | 吃午饭 | 吃晚饭 | 休息 | 回家 (open mode)."
+  },
+  {
+   "id": "zh.write.p_ask",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:up-l1-e7"
+   ],
+   "problem": "'Hãy viết một câu hỏi: Bạn sống ở đâu?' 你住在什么地方？ (correct, common) fails the ask slot.",
+   "fix": "ask: + 住在什么地方 | 住什么地方 | 在什么地方住"
+  },
+  {
+   "id": "zh-vi:up-l2-e4",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Nếu mai trời mưa, tôi không đi.' 如果明天下雨的话，我就不去 (的话 is the usual companion of 如果) and 要是明天下雨，我就不去 are rejected.",
+   "fix": "Add alternatives: 如果明天下雨的话我就不去 | 如果明天下雨的话我不去 | 要是明天下雨我就不去"
+  },
+  {
+   "id": "zh.write.q_sick",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh-vi:uq-l0-e6"
+   ],
+   "problem": "Two correct messages fail (ran evaluateGuidedWriting): (1) 李组长，早上好！我发烧了，今天想请假。 — 早上好 is one lexeme token, so greeting = 您好|你好|组长好|经理好 is missing; (2) 李组长，您好！我发烧了，今天想请一天假。 — the split form 请一天假 (the most natural way to ask for one day) does not contain the run 请假. 今天不去上班了 also fails the rest slot.",
+   "fix": "greeting: + 早上好 | 早 | 晚上好 | 组长早 | 您早; rest: + 请一天假 | 请个假 | 请天假 | 不去上班 | 不上班 | 不能去上班"
+  },
+  {
+   "id": "zh.write.q_late",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh-vi:uq-l2-e5"
+   ],
+   "problem": "王经理，早上好！公交车来晚了，对不起！ fails: 早上好 is one token and the greeting slot (您好|你好|组长好|经理好) has no time-of-day greeting, though a late-arrival message is written in the morning.",
+   "fix": "greeting: + 早上好 | 早 | 经理早 | 您早 (apply to every writing greeting slot: the same list is used by q_sick and the cp5 notes)."
+  },
+  {
+   "id": "zh.write.q_reply",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:uq-l1-e6"
+   ],
+   "problem": "'Hãy trả lời: bạn đã hiểu, và cảm ơn.' ok = 好的|明白了|我明白了|知道了|收到; 好，谢谢！, 懂了，谢谢！ and 明白，谢谢！ fail the 'đã hiểu' slot.",
+   "fix": "ok: + 好 | 懂了 | 我懂了 | 明白 | 没问题 | 行"
+  },
+  {
+   "id": "zh.write.q_open",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh-vi:uq-l3-e5"
+   ],
+   "problem": "Open task 'tin nhắn ngắn cho một người bạn', menu message = 你好|一起|吧|谢谢 ('lời chào hoặc lời mời'). Short friend messages that are greetings or invitations fail: 小王，明天见！, 小王，生日快乐！, 小王，星期六你有时间吗？ (您好 / 早上好 / 晚上好 are not in the menu either).",
+   "fix": "message: + 您好 | 早上好 | 晚上好 | 明天见 | 再见 | 生日快乐 | 新年快乐 | 有时间吗 | 怎么样 | 好吗"
+  },
+  {
+   "id": "zh.write.r_note",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh-vi:ur-l3-e5"
+   ],
+   "problem": "'Máy bị hỏng, xin gọi tổ trưởng đến.' Correct notes fail (ran evaluateGuidedWriting): 机器坏了，请找组长来 (找 = the everyday 'go get'), 机器坏了，请叫一下组长 (叫 一下 组长 breaks the 叫组长 run), 机器坏了，请叫李组长来 (the name breaks it), and 机器出问题了，请叫组长来 (broken slot has 有问题 but not 出问题).",
+   "fix": "call: + 找组长 | 叫一下组长 | 找一下组长 | 组长 (as a cue-like noun slot) — simplest: call = 组长 and keep the verb free; broken: + 出问题 | 出问题了 | 不能用了"
+  },
+  {
+   "id": "zh.write.r_form_bank",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.write.r_form_dorm",
+    "zh.write.cp5_form_bank",
+    "zh.write.cp5_form_clinic",
+    "zh.write.cp5_form_work",
+    "zh-vi:ur-l0-e8",
+    "zh-vi:ur-l2-e5"
+   ],
+   "problem": "Pass-1 fix incomplete. The decision says '138-1234-5678 and 138 1234 5678 fold to three tokens', but normalizeWritten keeps the hyphen as a token: 138-1234-5678 → [138 - 1234 - 5678], 138 1234 5678 → [138 1234 5678]. So the space-separated number — the usual way to write a Chinese mobile number — fails every phone slot (ran evaluateSimpleForm: 阮南 | 越南 | 138 1234 5678 → does_not_meet_rubric, missing phone).",
+   "fix": "Add the space-separated spelling to every phone slot (138 1234 5678, 139 8765 4321, …), or have zh_text.variant_spellings emit it beside the unbroken one."
+  },
+  {
+   "id": "zh-vi:ur-l3-e4",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Hộ chiếu của tôi ở trong túi.' key 我的护照在包里 with no alternatives; 我的护照在我的包里, 我护照在包里 and 我的护照在包里面 are rejected.",
+   "fix": "Add alternatives: 我的护照在我的包里 | 我护照在包里 | 我的护照在包里面"
+  },
+  {
+   "id": "zh-vi:us-l3-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Tổng cộng bao nhiêu tiền?' key 一共多少钱 with no alternatives; 一共是多少钱 (very common at a till) is graded wrong.",
+   "fix": "Add alternatives: 一共是多少钱 | 一共多少钱啊 | 总共多少钱"
+  },
+  {
+   "id": "zh-vi:us-l2-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Tôi đói rồi.' key 我饿了 with no alternatives; 我肚子饿了 (natural) is rejected.",
+   "fix": "Add alternatives: 我肚子饿了 | 我已经饿了"
+  },
+  {
+   "id": "zh-vi:ut-l3-e4",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P2",
+   "problem": "'Cứ đi thẳng.' accepts 一直往前走 | 一直走; 一直向前走 and 往前一直走 (both common) are rejected.",
+   "fix": "Add alternatives: 一直向前走 | 往前一直走 | 一直往前"
+  },
+  {
+   "id": "zh-vi:uu-l3-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Một ngày uống ba lần.' accepts 一天吃三次 | 一天三次 (+ digit forms) only. 每天吃三次 / 每天三次 (the usual dosage wording on a prescription) and 一天吃三次药 (with the object) are graded wrong.",
+   "fix": "Add alternatives: 每天吃三次 | 每天三次 | 一天吃三次药 | 每天吃三次药 (+ digit forms by widen)."
+  },
+  {
+   "id": "zh-vi:uv-l0-e5",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "Pass-1 fix incomplete. The decision says the 给 order rule adds 我打电话给妈妈 and 我打电话给我妈妈, but the staged alternatives are 我给我妈妈打电话 | 我打电话给妈妈 only: 我打电话给我妈妈 is still graded wrong.",
+   "fix": "Add alternative 我打电话给我妈妈 and check zh_text.order_variants on alternatives that were added by hand (the rule seems to run on the key only)."
+  },
+  {
+   "id": "zh-vi:uv-l1-e4",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Tôi muốn xin nghỉ một ngày.' accepts 我想请假一天 | 我要请假一天 | 我想请一天假 (+ digits) but not 我要请一天假 — the combination of two accepted choices.",
+   "fix": "Add alternatives: 我要请一天假 | 我要请1天假 (and let the generator cross 想/要 with both 请假 orders)."
+  },
+  {
+   "id": "zh-vi:uv-l2-e4",
+   "file": "content/zh/_drafts/staged/content/courses/zh-vi.json",
+   "severity": "P1",
+   "problem": "'Xin nói lại một lần nữa.' accepts 请再说一遍 | 请再说一次 (+ digits); 请你再说一遍 (the most common spoken request, 你 inserted) is graded wrong, and so are 请您再说一遍 and 再说一遍.",
+   "fix": "Add alternatives: 请你再说一遍 | 请您再说一遍 | 请你再说一次 | 请您再说一次 | 再说一遍"
+  },
+  {
+   "id": "zh.write.cp5_room",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh.cpi.s5.room"
+   ],
+   "problem": "Checkpoint 5 'phòng nhỏ, và trong phòng có một cái giường'. small = 房间很小 | 房间不大, so 我的房间非常小 and 我的房间有点儿小 fail; bed = 一张床, so 房间里有张床 (一 dropped, very common) fails. Ran evaluateGuidedWriting: each grades does_not_meet_rubric.",
+   "fix": "small: + 房间非常小 | 房间有点儿小 | 房间有点小 | 房间太小 | 房间真小 | 房间小; bed: + 张床 | 床"
+  },
+  {
+   "id": "zh.write.cp5_note_sick",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh.cpi.s5.note_sick"
+   ],
+   "problem": "Same two gaps as zh.write.q_sick, here in a checkpoint: 组长，早上好！我感冒了，今天想请假。 fails greeting (早上好 is one token) and 组长，您好！我感冒了，今天想请一天假。 fails rest (请一天假 is not the run 请假).",
+   "fix": "greeting: + 早上好 | 早 | 组长早 | 您早; rest: + 请一天假 | 请个假 | 不去上班 | 不能去上班 | 不能来上班"
+  },
+  {
+   "id": "zh.write.cp5_mail_shift",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh.cpi.s5.mail_shift"
+   ],
+   "problem": "Pass-1 fix incomplete. Still failing (ran the grader): 王经理，您好！星期六我想休息，可以吗？ (想休息 + tag), 王经理，您好！星期六我可以请一天假吗？ (split 请一天假), and 王经理，早上好！星期六我可以请假吗？ (早上好 greeting).",
+   "fix": "rest: + 想休息 | 休息可以吗 | 请一天假 | 请假 (the bare verb, the question is carried by 吗/可以 anyway); greeting: + 早上好 | 早 | 经理早 | 您早"
+  },
+  {
+   "id": "zh.write.a1cap_mail_absent",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh.cpi.cap.write_absent"
+   ],
+   "problem": "Capstone note 'thứ Năm bạn đi bệnh viện, nên bạn xin nghỉ': 王经理，您好！星期四我要去医院，不能来上班。 fails rest (不能来上班 is not the run 不能上班), and …想请一天假。 fails too (split 请一天假). The greeting slot has the same 早上好 gap.",
+   "fix": "rest: + 不能来上班 | 不能去上班 | 不来上班 | 请一天假 | 请个假; greeting: + 早上好 | 早 | 经理早"
+  },
+  {
+   "id": "zh.write.a1cap_note_home",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.cpi.cap.write_home"
+   ],
+   "problem": "'bạn đang ở siêu thị, và 5 giờ bạn về nhà': 小李，我在超市，五点回去。 (回去 in a message to a housemate means going home) and 五点到家 fail the home = 回家 slot.",
+   "fix": "home: + 回去 | 到家 | 回来"
+  },
+  {
+   "id": "zh.speak.cp4_thanks_water",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.cpi.s4.thanks_water"
+   ],
+   "problem": "Checkpoint thanks accepts 谢谢 | 谢谢你 | 谢谢您 | 太谢谢你了; 太谢谢了 and 非常感谢 — both accepted by the lesson item zh.speak.k_thanks — fail here, as does 谢谢啊.",
+   "fix": "Add variants: 太谢谢了 | 非常感谢 | 太谢谢您了 | 谢谢啊"
+  },
+  {
+   "id": "zh.speak.cp4_name_hua",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.cpi.s4.name_hua"
+   ],
+   "problem": "Checkpoint name item lacks forms its lesson twin zh.speak.l_name accepts (你好，我叫… / 您好，我叫…) and 我的名字叫阮花; both fail (ran the grader).",
+   "fix": "Add variants: 我的名字叫阮花 | 你好我叫阮花 | 您好我叫阮花 | 你好我是阮花 | 大家好我叫阮花"
+  },
+  {
+   "id": "zh.speak.cp4_vietnamese",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.cpi.s4.vietnamese"
+   ],
+   "problem": "我来自越南 fails (accepted in the typed uo-l3-e2), same gap as zh.speak.l_from.",
+   "fix": "Add variant: 我来自越南"
+  },
+  {
+   "id": "zh.speak.cp4_tickets_three",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.cpi.s4.tickets_three"
+   ],
+   "problem": "'Hãy nói bạn muốn ba vé.' 我想要三张票 / 我想买三张票 fail, same gap as zh.speak.m_tickets.",
+   "fix": "Add variants: 我想要三张票 | 我想买三张票 | 我要买三张票"
+  },
+  {
+   "id": "zh.speak.cp4_student",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh.cpi.s4.student",
+    "zh.speak.cp4_greet_evening",
+    "zh.speak.cp4_work_shop"
+   ],
+   "problem": "Small gaps in the checkpoint-4 menus: 我是一名大学生 (cp4_student), 晚上好啊 (cp4_greet_evening), 我在超市里工作 (cp4_work_shop) fail.",
+   "fix": "Add those variants (and 我在一个超市工作 for cp4_work_shop)."
+  },
+  {
+   "id": "zh.speak.pl_name_nam",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.pli.s4.name"
+   ],
+   "problem": "Placement name item accepts 我叫阮南 | 我是阮南 | 阮南 | 我的名字是阮南 only — narrower than its lesson twin zh.speak.l_name (which takes 你好/您好，我叫… and 我姓阮，叫…); 我的名字叫阮南 and 你好，我叫阮南 fail, so a capable learner can be placed too low.",
+   "fix": "Add variants: 我的名字叫阮南 | 你好我叫阮南 | 您好我叫阮南 | 我姓阮叫阮南 | 大家好我叫阮南"
+  },
+  {
+   "id": "zh.speak.pl_age",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.pli.s4.age"
+   ],
+   "problem": "我今年三十岁了 fails (same gap as zh.speak.l_age).",
+   "fix": "Add variants: 我今年三十岁了 | 今年我三十岁了 | 我三十岁了"
+  },
+  {
+   "id": "zh.speak.pl_big_car",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.pli.s4.car"
+   ],
+   "problem": "'chiếc xe to' accepts 这辆车很大 | 车很大 | 这是一辆大车 | 大车; 这辆车非常大 and 这辆汽车很大 — forms the lesson describe items accept (n_box lists 非常, n_car lists 这辆汽车) — fail.",
+   "fix": "Add variants: 这辆车非常大 | 这辆汽车很大 | 这辆车真大"
+  },
+  {
+   "id": "zh.exi.hsk_1.a_l4_03",
+   "file": "content/zh/_drafts/staged/content/zh/exam/hsk-1.json",
+   "severity": "P0",
+   "problem": "Pass-1 fix made the key wrong. The clip is now 明天是我的生日，我就十八岁了。 — with 就 the speaker turns 18 tomorrow, i.e. is 17 now — but the question still asks 'Người nói bao nhiêu tuổi?' with key 十八岁. A learner who understands 就 is marked wrong for not choosing 18, and no option is correct for 'how old is the speaker now'.",
+   "fix": "Ask 'Ngày mai người nói bao nhiêu tuổi?' (key 十八岁), or change the clip to 今天是我的生日，我十八岁了。 and keep the question."
+  },
+  {
+   "id": "zh.speak.k_greet_morning",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P1",
+   "alsoAffects": [
+    "zh.speak.k_thanks",
+    "zh.speak.k_sorry",
+    "zh.speak.k_xianzou",
+    "zh.speak.cp4_thanks_water",
+    "zh.speak.cp4_greet_evening",
+    "zh.speak.cp4_sorry_cup",
+    "zh.speak.l_name",
+    "zh.speak.cp4_name_hua",
+    "zh.speak.pl_name_nam",
+    "zh.speak.pl_hello"
+   ],
+   "problem": "Systemic: no zh speech item has requiredConcepts, so only listed whole utterances pass, and nothing covers the two most frequent spoken expansions: a sentence-final particle (谢谢啊, 晚上好啊, 对不起啊, 大家早上好啊 all fail; pl_hello lists 你好啊 by hand, the others do not) and a leading vocative (组长，谢谢 / 组长，对不起 / 王经理，早上好 fail). The per-item findings above are instances of this class.",
+   "fix": "Add a generator rule in zh-speech-s4.py (like the pass-1 order rules): for situation/formulaic items, add each variant + 啊 (and 呀 where natural) and vocative + variant for the addressee the prompt names (组长, 经理, 王经理, 大家); or give formulaic items requiredConcepts on the core formula ([[谢谢, 感谢]], [[对不起, 不好意思]], [[早上好, 早]])."
+  },
+  {
+   "id": "zh.speak.cp4_desc_shirt",
+   "file": "content/zh/_drafts/staged/content/zh/speech/items.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh.cpi.s4.desc_shirt"
+   ],
+   "problem": "'chiếc áo trắng' accepts 这是一件白衣服 and 白色的衣服 but not 这是一件白色的衣服 (combining two accepted pieces).",
+   "fix": "Add variants: 这是一件白色的衣服 | 这件衣服是白颜色的"
+  },
+  {
+   "id": "zh.write.r_open",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P0",
+   "alsoAffects": [
+    "zh-vi:ur-l3-e6"
+   ],
+   "problem": "Open task 'Hãy viết vài câu về công việc của bạn.' menu work = 工作|工厂|公司|组长|同事|上班. Correct texts about one's job fail with 'đừng quên một câu về công việc' (ran the grader): 我是工人。我每天八点去车间。 / 我在仓库搬箱子，很累。 / 我是司机，我开出租车。",
+   "fix": "Widen the menu with the course's work words: 工人 | 车间 | 仓库 | 经理 | 老板 | 司机 | 加班 | 下班 | 机器 | 箱子 | 打卡 (open mode)."
+  },
+  {
+   "id": "zh.write.cp5_note_movie",
+   "file": "content/zh/_drafts/staged/content/zh/writing/tasks.json",
+   "severity": "P2",
+   "alsoAffects": [
+    "zh.cpi.s5.note_movie"
+   ],
+   "problem": "小王，我们七点去电影院吧！ fails the movie = 看电影 slot (电影院 is one token).",
+   "fix": "movie: + 电影院 | 电影"
+  },
+  {
+   "id": "zh.scenario.a1cap_friend_plan",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P1",
+   "problem": "Capstone concepts accept wrong answers (ran the interaction grader): l0 'Hãy nói bạn rảnh' concept [有, 不忙] accepts 星期天我有事。 ('I have something on' = busy) as accept; l1 'gặp lúc 3 giờ' concept [三点] accepts 三点半吧。 (half past three).",
+   "fix": "l0: concepts [有时间, 有空, 不忙, 没事, 有] → drop bare 有, use [有时间, 有空, 不忙, 没事]; l1: keep 三点 but add an authored exclusion or use variants only (三点见 | 下午三点 | 三点 …), since 三点半 / 十三点 contain the run."
+  },
+  {
+   "id": "zh.scenario.clinic_doctor",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P1",
+   "problem": "l1 'Hãy nói đã hai ngày rồi' concept group [两天, 两] — the bare 两 accepts 两个星期了 and 两个小时 as 'two days' (ran the grader).",
+   "fix": "Concept [两天, 两日] only (两天了 / 疼了两天 still contain 两天)."
+  },
+  {
+   "id": "zh.scenario.warehouse_boxes",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P1",
+   "problem": "l1 'Hãy nói có hai mươi thùng' concept [二十] accepts 一共二十五个 (25) — any number from 二十一 to 二十九 contains the run.",
+   "fix": "Concept [二十个, 二十箱] (variants already cover 二十个 / 二十个箱子), or variants only."
+  },
+  {
+   "id": "zh.scenario.taxi",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P1",
+   "problem": "l1 'Hãy nói: vâng, dừng ở đây' concept [这儿, 这里, 可以, 好, 好的]: 这儿不能停 (the opposite) passes, because the negation follows 这儿 and the grader only checks a negator before the run.",
+   "fix": "Concepts [在这儿停, 在这里停, 就在这儿, 就在这里, 可以, 好, 好的] (multi-token, so a bare 这儿 no longer passes)."
+  },
+  {
+   "id": "zh.scenario.a1cap_shift_change",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P1",
+   "problem": "l0 'Hãy nói được.' — 行 (literally 'được', the commonest one-word yes to a request) is rejected; concepts are [可以, 能, 没问题, 好的].",
+   "fix": "Add 行 | 行啊 | 好 to the variants and concepts."
+  },
+  {
+   "id": "zh.scenario.factory_safety",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P1",
+   "problem": "l0 'Hãy nói bạn đã hiểu.' — 懂了 / 我懂了 are rejected (concepts 我明白了, 明白, 知道, 好的); the course accepts 我懂了 in uk-l3-e5.",
+   "fix": "Add 懂 / 懂了 to the concepts and variants."
+  },
+  {
+   "id": "zh.scenario.bank_account",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P1",
+   "problem": "l1 'Hãy nói bạn đã điền xong.' — 我填完了 (the most natural 'I have finished filling it in') is rejected; concepts are [好了, 填好].",
+   "fix": "Add 填完 | 填完了 | 写完了 to the concepts/variants (typed and spoken answers are never shown, so 完 needs no lexeme)."
+  },
+  {
+   "id": "zh.scenario.a1cap_weekend",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P1",
+   "problem": "l1 'Hãy nói công viên rất đẹp.' — 很美 / 公园很美 (what a native says first about a park) is rejected; concepts [漂亮, 好看].",
+   "uncertain": "美 is not a course lexeme; recognised answers are never displayed, so adding it to the concepts does not affect the reading aid.",
+   "fix": "Add 美 to the concepts and 很美 | 公园很美 | 非常美 to the variants."
+  },
+  {
+   "id": "zh.scenario.restaurant_order",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P2",
+   "problem": "l0 'Hãy gọi một hộp cơm và một chai nước.' requires 便当; the Mainland word 盒饭 (我要一个盒饭和一瓶水) is rejected.",
+   "fix": "Concept [便当, 盒饭] + matching variants."
+  },
+  {
+   "id": "zh.scenario.shop_fruit",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P2",
+   "problem": "l1 'hỏi trả bằng mã QR được không' — 可以用微信付吗 / 可以微信支付吗 (how QR payment is usually asked for) is rejected.",
+   "fix": "Concept [扫码, 扫, 微信] + variants 可以用微信吗 | 可以用微信付吗"
+  },
+  {
+   "id": "zh.scenario.a1cap_canteen_lunch",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P2",
+   "problem": "l0 'Hãy nhận lời.' concept [好, 好的, 走]: 我已经吃好了 (declining — 'I've already eaten') passes as accept.",
+   "fix": "Concepts [好啊, 好的, 好, 走吧, 一起去] with 好 restricted to a clause start, or use variants plus [好啊, 好的, 走吧, 一起去]."
+  },
+  {
+   "id": "zh.scenario.cp6_supermarket_pay",
+   "file": "content/zh/_drafts/staged/content/zh/interaction/scenarios.json",
+   "severity": "P2",
+   "problem": "l1 'Hãy nói bạn không cần gì nữa.' — 不需要了，谢谢 is rejected.",
+   "fix": "Concept + variant: 不需要了"
+  }
+ ]
+}

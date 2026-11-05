@@ -45,9 +45,85 @@ export type CharsPerSecBand = {
   estimate: boolean;
 };
 
+/**
+ * QC 2026-11-05 §1.2: how the language negates, as data for the shared matcher
+ * (src/lib/languages/negation.ts). A required keyword / concept / slot run that
+ * sits inside a negated span does not count — 不是 is not 是, "I don't like" is not
+ * "like". Negator phrases are written as learners write them; the matcher folds
+ * them with the same normalizer as the text it checks (spoken, written, reading).
+ *
+ * Spans (all stay inside one clause; clauses end at sentence punctuation and at
+ * the `clauseBreaks` words — speech transcripts usually carry no punctuation, so
+ * there the whole utterance is one clause unless a break word splits it):
+ *  - `clause`: a negator anywhere in the clause negates all of it (de — the
+ *    negator follows the verb, often at the end: "ich komme heute nicht");
+ *  - `before`: a negator negates what follows it, up to `reach` units between
+ *    its end and the keyword's start, or to the clause end (en, fr, es, it, pt;
+ *    zh, ko) — the subject before it is not negated;
+ *  - `after`: a negator negates what precedes it, the keyword run followed by it
+ *    after at most `gap` units (ja ません after the verb; ko -지 않다; en "not"
+ *    and fr "pas" after the auxiliary / verb: "I can't" is not "I can").
+ * `unit` "word" counts tokens; "text" counts characters of the clause with the
+ * token spaces removed (zh/ja/ko, whose segmentation may glue a negator to the
+ * next word). An occurrence inside an `idioms` phrase never negates (没问题,
+ * "no problem"). A form that itself contains a negator is exempt: when the
+ * expected answer is 不是 or "not", the negated form is what is required.
+ */
+export type NegationRules = {
+  unit: "word" | "text";
+  clause?: readonly string[];
+  /** `wholeToken`: the negator must be a whole token or token run (ko 안, never the 안 of 불안). */
+  before?: { negators: readonly string[]; reach: number | "clause"; wholeToken?: boolean };
+  after?: { negators: readonly string[]; gap: number };
+  idioms?: readonly string[];
+  clauseBreaks?: readonly string[];
+};
+
+/**
+ * Answer-key review pass 2 (zh-vi, 2026-11-05): how a writing slot's words may occur in an answer beyond the exact
+ * contiguous run of tokens — data for the shared run matcher (src/lib/languages/runs.ts). Absent = the exact run.
+ *  - `joinTokens`: the segmenter's token boundaries do not count — answer tokens whose concatenation is the slot's
+ *    words realize it (CJK: 138 1234 5678 = 13812345678), never part of a longer token; an insertion may then also
+ *    open a slot word (a separable verb: 请假 → 请一天假);
+ *  - `insertions`: material a learner may put between two words of the slot without changing what it says: whole
+ *    `words` (zh 了 / 过 / 着, 一下), a measure word with or without a numeral run before it (一杯, 两个, 个), a title
+ *    prefix (a surname) right before one of the `titled.titles` (叫李组长 for 叫组长). Never at the slot's edges.
+ */
+export type SlotRunRules = {
+  joinTokens?: boolean;
+  insertions?: {
+    words: readonly string[];
+    numerals?: readonly string[];
+    measures?: readonly string[];
+    titled?: { prefixes: readonly string[]; titles: readonly string[] };
+  };
+};
+
+/**
+ * Answer-key review pass 2 (zh-vi, 2026-11-05): material around a WHOLE spoken answer that leaves it the same answer —
+ * data for the speech grader (whole-utterance variants only; concept slots are runs already). The transcript is
+ * `leading` + variant + `trailing`, compared without token boundaries; every content word of the variant stays exact.
+ *  - `leading`: fillers and `vocatives` (at most two pieces: 嗯，组长，…);
+ *  - `trailing`: `vocatives` and the `particles` (at most two pieces). A particle may carry conditions on the variant —
+ *    its last token among `ifLast`, or a token among `ifContains` (any one holding is enough; none = any variant) —
+ *    and no particle follows a variant that already ends with one of `finals`.
+ */
+export type UtteranceFrame = {
+  leading?: readonly string[];
+  vocatives?: readonly string[];
+  particles?: readonly { particle: string; ifLast?: readonly string[]; ifContains?: readonly string[] }[];
+  finals?: readonly string[];
+};
+
 export type LanguageRules = {
   /** ISO 639-1 code ("fr", "vi", …). */
   code: string;
+  /** QC 2026-11-05 §1.2: negation data for negation-aware keyword matching. Absent = no negation check. */
+  negation?: NegationRules;
+  /** Answer-key review pass 2: insertions and joined tokens inside a writing slot. Absent = exact contiguous runs. */
+  slotRuns?: SlotRunRules;
+  /** Answer-key review pass 2: the optional frame of a whole spoken answer. Absent = the variant exactly. */
+  utteranceFrame?: UtteranceFrame;
   /** Device TTS locale (BCP-47). */
   ttsLocale: string;
   /** Speech-recognition locale (BCP-47). */
@@ -111,6 +187,13 @@ export type LanguageRules = {
   knownReading?(token: string): boolean;
   /** Strict comparison form: case/space folded, every letter and mark kept. */
   normalizeStrict(text: string): string;
+  /**
+   * QC 2026-11-05 §1.1: a dictation answer in the strict form rewritten toward one key in the same form, where the
+   * answer writes the key's words in another script the course accepts (zh: a traditional spelling the course lexicon
+   * records for a word → its simplified surface; mixed scripts fold word by word). Grading marks such an answer
+   * correct and shows the key, the taught form. Absent = the strict form is the whole contract.
+   */
+  alignScriptToKey?(answer: string, key: string): string;
   /**
    * Spoken-form folding WITHOUT digit conversion: case, ligatures,
    * apostrophes, hyphens, punctuation and whitespace unified into single

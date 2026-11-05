@@ -25,73 +25,109 @@
               "target": "男人",
               "native": "the man",
               "emoji": "👨",
-              "romanization": "nán rén"
+              "romanization": "nán rén",
+              "reading": {
+                "pinyin": "nán rén"
+              }
             },
             {
               "target": "女人",
               "native": "the woman",
               "emoji": "👩",
-              "romanization": "nǚ rén"
+              "romanization": "nǚ rén",
+              "reading": {
+                "pinyin": "nǚ rén"
+              }
             },
             {
               "target": "男孩",
               "native": "the boy",
               "emoji": "👦",
-              "romanization": "nán hái"
+              "romanization": "nán hái",
+              "reading": {
+                "pinyin": "nán hái"
+              }
             },
             {
               "target": "女孩",
               "native": "the girl",
               "emoji": "👧",
-              "romanization": "nǚ hái"
+              "romanization": "nǚ hái",
+              "reading": {
+                "pinyin": "nǚ hái"
+              }
             },
             {
               "target": "苹果",
               "native": "the apple",
               "emoji": "🍎",
-              "romanization": "píng guǒ"
+              "romanization": "píng guǒ",
+              "reading": {
+                "pinyin": "píng guǒ"
+              }
             },
             {
               "target": "面包",
               "native": "the bread",
               "emoji": "🍞",
-              "romanization": "miàn bāo"
+              "romanization": "miàn bāo",
+              "reading": {
+                "pinyin": "miàn bāo"
+              }
             },
             {
               "target": "水",
               "native": "the water",
               "emoji": "💧",
-              "romanization": "shuǐ"
+              "romanization": "shuǐ",
+              "reading": {
+                "pinyin": "shuǐ"
+              }
             },
             {
               "target": "牛奶",
               "native": "the milk",
               "emoji": "🥛",
-              "romanization": "niú nǎi"
+              "romanization": "niú nǎi",
+              "reading": {
+                "pinyin": "niú nǎi"
+              }
             },
             {
               "target": "我",
               "native": "I / me",
               "emoji": "🙋",
-              "romanization": "wǒ"
+              "romanization": "wǒ",
+              "reading": {
+                "pinyin": "wǒ"
+              }
             },
             {
               "target": "是",
               "native": "am / is / are",
               "emoji": "✅",
-              "romanization": "shì"
+              "romanization": "shì",
+              "reading": {
+                "pinyin": "shì"
+              }
             },
             {
               "target": "吃",
               "native": "to eat",
               "emoji": "🍽️",
-              "romanization": "chī"
+              "romanization": "chī",
+              "reading": {
+                "pinyin": "chī"
+              }
             },
             {
               "target": "喝",
               "native": "to drink",
               "emoji": "🥤",
-              "romanization": "hē"
+              "romanization": "hē",
+              "reading": {
+                "pinyin": "hē"
+              }
             }
           ],
           "lessons": [
@@ -123,7 +159,10 @@
                       "emoji": "👧"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:nanren"
+                  ]
                 },
                 {
                   "type": "select",
@@ -149,7 +188,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:nvren"
+                  ]
                 },
                 {
                   "type": "select",
@@ -175,7 +217,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:nanhai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -201,7 +246,10 @@
                       "emoji": "🙋"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:nanren"
+                  ]
                 },
                 {
                   "type": "select",
@@ -227,7 +275,10 @@
                       "emoji": "👦"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:nvren"
+                  ]
                 },
                 {
                   "type": "select",
@@ -249,7 +300,10 @@
                       "text": "男人"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:nanren"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -333,6 +387,13 @@
                       "target": "牛奶",
                       "native": "the milk"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:nanren",
+                    "zh:w:nvren",
+                    "zh:w:nanhai",
+                    "zh:w:he-1",
+                    "zh:w:niunai"
                   ]
                 },
                 {
@@ -376,7 +437,10 @@
                       "emoji": "🙋"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:nvhai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -402,7 +466,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:pingguo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -428,7 +495,10 @@
                       "emoji": "🙋"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:mianbao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -454,7 +524,10 @@
                       "emoji": "👨"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:nvhai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -480,7 +553,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:pingguo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -502,7 +578,10 @@
                       "text": "女孩"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:pingguo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -586,6 +665,13 @@
                       "target": "吃",
                       "native": "to eat"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:nvhai",
+                    "zh:w:pingguo",
+                    "zh:w:mianbao",
+                    "zh:w:shui",
+                    "zh:w:chi"
                   ]
                 },
                 {
@@ -629,7 +715,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:shui"
+                  ]
                 },
                 {
                   "type": "select",
@@ -655,7 +744,10 @@
                       "emoji": "🥛"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:niunai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -681,7 +773,10 @@
                       "emoji": "🥤"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:wo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -707,7 +802,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:shui"
+                  ]
                 },
                 {
                   "type": "select",
@@ -733,7 +831,10 @@
                       "emoji": "🙋"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:niunai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -755,7 +856,10 @@
                       "text": "喝"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:wo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -837,6 +941,13 @@
                       "target": "男孩",
                       "native": "the boy"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:shui",
+                    "zh:w:niunai",
+                    "zh:w:wo",
+                    "zh:w:shi",
+                    "zh:w:nanhai"
                   ]
                 },
                 {
@@ -880,7 +991,10 @@
                       "emoji": "✅"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:shi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -906,7 +1020,10 @@
                       "emoji": "🍽️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:chi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -932,7 +1049,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:he-1"
+                  ]
                 },
                 {
                   "type": "select",
@@ -958,7 +1078,10 @@
                       "emoji": "👧"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:shi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -984,7 +1107,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:chi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1006,7 +1132,10 @@
                       "text": "女孩"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:shi"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1086,6 +1215,13 @@
                       "target": "男人",
                       "native": "the man"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:shi",
+                    "zh:w:chi",
+                    "zh:w:he-1",
+                    "zh:w:nvhai",
+                    "zh:w:nanren"
                   ]
                 },
                 {
@@ -1113,73 +1249,109 @@
               "target": "你好",
               "native": "hello",
               "emoji": "👋",
-              "romanization": "nǐ hǎo"
+              "romanization": "nǐ hǎo",
+              "reading": {
+                "pinyin": "nǐ hǎo"
+              }
             },
             {
               "target": "再见",
               "native": "goodbye",
               "emoji": "👋",
-              "romanization": "zàijiàn"
+              "romanization": "zàijiàn",
+              "reading": {
+                "pinyin": "zài jiàn"
+              }
             },
             {
               "target": "请",
               "native": "please",
               "emoji": "🙏",
-              "romanization": "qǐng"
+              "romanization": "qǐng",
+              "reading": {
+                "pinyin": "qǐng"
+              }
             },
             {
               "target": "谢谢",
               "native": "thank you",
               "emoji": "🙏",
-              "romanization": "xièxie"
+              "romanization": "xièxie",
+              "reading": {
+                "pinyin": "xiè xie"
+              }
             },
             {
               "target": "早上好",
               "native": "good morning",
               "emoji": "🌅",
-              "romanization": "zǎoshang hǎo"
+              "romanization": "zǎoshang hǎo",
+              "reading": {
+                "pinyin": "zǎo shang hǎo"
+              }
             },
             {
               "target": "晚上好",
               "native": "good evening",
               "emoji": "🌆",
-              "romanization": "wǎnshang hǎo"
+              "romanization": "wǎnshang hǎo",
+              "reading": {
+                "pinyin": "wǎn shàng hǎo"
+              }
             },
             {
               "target": "晚安",
               "native": "good night",
               "emoji": "🌙",
-              "romanization": "wǎn'ān"
+              "romanization": "wǎn'ān",
+              "reading": {
+                "pinyin": "wǎn ān"
+              }
             },
             {
               "target": "不客气",
               "native": "you're welcome",
               "emoji": "😊",
-              "romanization": "bú kèqi"
+              "romanization": "bú kèqi",
+              "reading": {
+                "pinyin": "bù kè qi"
+              }
             },
             {
               "target": "对不起",
               "native": "sorry",
               "emoji": "🙇",
-              "romanization": "duìbùqǐ"
+              "romanization": "duìbùqǐ",
+              "reading": {
+                "pinyin": "duì bu qǐ"
+              }
             },
             {
               "target": "没关系",
               "native": "no problem",
               "emoji": "👍",
-              "romanization": "méiguānxi"
+              "romanization": "méiguānxi",
+              "reading": {
+                "pinyin": "méi guān xi"
+              }
             },
             {
               "target": "好",
               "native": "good",
               "emoji": "✅",
-              "romanization": "hǎo"
+              "romanization": "hǎo",
+              "reading": {
+                "pinyin": "hǎo"
+              }
             },
             {
               "target": "拜拜",
               "native": "bye-bye",
               "emoji": "👋",
-              "romanization": "bàibài"
+              "romanization": "bàibài",
+              "reading": {
+                "pinyin": "bái bái"
+              }
             }
           ],
           "lessons": [
@@ -1211,7 +1383,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:nihao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1237,7 +1412,10 @@
                       "emoji": "🌆"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:zaijian"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1263,7 +1441,10 @@
                       "emoji": "🌆"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:qing"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1289,7 +1470,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:nihao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1311,7 +1495,10 @@
                       "text": "晚上好"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:zaijian"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1333,7 +1520,10 @@
                       "text": "不客气"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:nihao"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1415,6 +1605,13 @@
                       "target": "晚安",
                       "native": "good night"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:nihao",
+                    "zh:w:zaijian",
+                    "zh:w:qing",
+                    "zh:w:xiexie",
+                    "zh:w:wanan"
                   ]
                 },
                 {
@@ -1460,7 +1657,10 @@
                       "emoji": "👋"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:xiexie"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1486,7 +1686,10 @@
                       "emoji": "🌅"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:zaoshanghao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1508,7 +1711,10 @@
                       "text": "good evening"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:wanshanghao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1534,7 +1740,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:xiexie"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1560,7 +1769,10 @@
                       "emoji": "😊"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:zaoshanghao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1582,7 +1794,10 @@
                       "text": "早上好"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:zaoshanghao"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1664,6 +1879,13 @@
                       "target": "请",
                       "native": "please"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:xiexie",
+                    "zh:w:zaoshanghao",
+                    "zh:w:wanshanghao",
+                    "zh:w:baibai",
+                    "zh:w:qing"
                   ]
                 },
                 {
@@ -1704,7 +1926,10 @@
                       "text": "hello"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:wanan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1730,7 +1955,10 @@
                       "emoji": "🌙"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:bukeqi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1756,7 +1984,10 @@
                       "emoji": "🌙"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:duibuqi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1778,7 +2009,10 @@
                       "text": "晚安"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:wanan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1804,7 +2038,10 @@
                       "emoji": "😊"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:bukeqi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1826,7 +2063,10 @@
                       "text": "不客气"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:duibuqi"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1908,6 +2148,13 @@
                       "target": "谢谢",
                       "native": "thank you"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:wanan",
+                    "zh:w:bukeqi",
+                    "zh:w:duibuqi",
+                    "zh:w:baibai",
+                    "zh:w:xiexie"
                   ]
                 },
                 {
@@ -1952,7 +2199,10 @@
                       "emoji": "🌆"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:meiguanxi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1978,7 +2228,10 @@
                       "emoji": "👍"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:hao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2000,7 +2253,10 @@
                       "text": "you're welcome"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:baibai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2026,7 +2282,10 @@
                       "emoji": "👋"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:meiguanxi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2052,7 +2311,10 @@
                       "emoji": "🌆"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:hao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2074,7 +2336,10 @@
                       "text": "没关系"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:meiguanxi"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2152,6 +2417,13 @@
                       "target": "请",
                       "native": "please"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:meiguanxi",
+                    "zh:w:hao",
+                    "zh:w:baibai",
+                    "zh:w:wanan",
+                    "zh:w:qing"
                   ]
                 },
                 {
@@ -2181,49 +2453,73 @@
               "target": "咖啡",
               "native": "the coffee",
               "emoji": "☕",
-              "romanization": "kāfēi"
+              "romanization": "kāfēi",
+              "reading": {
+                "pinyin": "kā fēi"
+              }
             },
             {
               "target": "米饭",
               "native": "the rice",
               "emoji": "🍚",
-              "romanization": "mǐfàn"
+              "romanization": "mǐfàn",
+              "reading": {
+                "pinyin": "mǐ fàn"
+              }
             },
             {
               "target": "鸡蛋",
               "native": "the egg",
               "emoji": "🥚",
-              "romanization": "jīdàn"
+              "romanization": "jīdàn",
+              "reading": {
+                "pinyin": "jī dàn"
+              }
             },
             {
               "target": "奶酪",
               "native": "the cheese",
               "emoji": "🧀",
-              "romanization": "nǎilào"
+              "romanization": "nǎilào",
+              "reading": {
+                "pinyin": "nǎi lào"
+              }
             },
             {
               "target": "水果",
               "native": "the fruit",
               "emoji": "🍎",
-              "romanization": "shuǐguǒ"
+              "romanization": "shuǐguǒ",
+              "reading": {
+                "pinyin": "shuǐ guǒ"
+              }
             },
             {
               "target": "果汁",
               "native": "the juice",
               "emoji": "🧃",
-              "romanization": "guǒzhī"
+              "romanization": "guǒzhī",
+              "reading": {
+                "pinyin": "guǒ zhī"
+              }
             },
             {
               "target": "茶",
               "native": "the tea",
               "emoji": "🍵",
-              "romanization": "chá"
+              "romanization": "chá",
+              "reading": {
+                "pinyin": "chá"
+              }
             },
             {
               "target": "面条",
               "native": "the noodles",
               "emoji": "🍜",
-              "romanization": "miàntiáo"
+              "romanization": "miàntiáo",
+              "reading": {
+                "pinyin": "miàn tiáo"
+              }
             }
           ],
           "lessons": [
@@ -2255,7 +2551,10 @@
                       "emoji": "☕"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:kafei"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2281,7 +2580,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:mifan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2307,7 +2609,10 @@
                       "emoji": "🧃"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:jidan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2333,7 +2638,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:kafei"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2359,7 +2667,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:mifan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2381,7 +2692,10 @@
                       "text": "奶酪"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:kafei"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2469,6 +2783,13 @@
                       "target": "牛奶",
                       "native": "the milk"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:kafei",
+                    "zh:w:mifan",
+                    "zh:w:jidan",
+                    "zh:w:miantiao",
+                    "zh:w:niunai"
                   ]
                 },
                 {
@@ -2512,7 +2833,10 @@
                       "emoji": "☕"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:nailao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2538,7 +2862,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:shuiguo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2564,7 +2891,10 @@
                       "emoji": "🧃"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:guozhi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2590,7 +2920,10 @@
                       "emoji": "🥛"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:nailao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2616,7 +2949,10 @@
                       "emoji": "🍏"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:shuiguo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2638,7 +2974,10 @@
                       "text": "鸡蛋"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:shuiguo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2730,6 +3069,13 @@
                       "target": "牛奶",
                       "native": "the milk"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:nailao",
+                    "zh:w:shuiguo",
+                    "zh:w:guozhi",
+                    "zh:w:miantiao",
+                    "zh:w:niunai"
                   ]
                 },
                 {
@@ -2774,7 +3120,10 @@
                       "emoji": "🧃"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:shui"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2800,7 +3149,10 @@
                       "emoji": "🍏"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:cha-2"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2826,7 +3178,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:mianbao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2852,7 +3207,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:shui"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2878,7 +3236,10 @@
                       "emoji": "🥚"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:cha-2"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2900,7 +3261,10 @@
                       "text": "苹果"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:mianbao"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2986,6 +3350,13 @@
                       "target": "面条",
                       "native": "the noodles"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:shui",
+                    "zh:w:cha-2",
+                    "zh:w:mianbao",
+                    "zh:w:jidan",
+                    "zh:w:miantiao"
                   ]
                 },
                 {
@@ -3030,7 +3401,10 @@
                       "emoji": "🍜"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:pingguo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3056,7 +3430,10 @@
                       "emoji": "🍚"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:niunai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3082,7 +3459,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:miantiao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3108,7 +3488,10 @@
                       "emoji": "🧃"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:pingguo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3134,7 +3517,10 @@
                       "emoji": "🧃"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:niunai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3156,7 +3542,10 @@
                       "text": "牛奶"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:pingguo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3244,6 +3633,13 @@
                       "target": "水",
                       "native": "the water"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:pingguo",
+                    "zh:w:niunai",
+                    "zh:w:miantiao",
+                    "zh:w:guozhi",
+                    "zh:w:shui"
                   ]
                 },
                 {
@@ -3271,73 +3667,109 @@
               "target": "狗",
               "native": "the dog",
               "emoji": "🐕",
-              "romanization": "gǒu"
+              "romanization": "gǒu",
+              "reading": {
+                "pinyin": "gǒu"
+              }
             },
             {
               "target": "猫",
               "native": "the cat",
               "emoji": "🐈",
-              "romanization": "māo"
+              "romanization": "māo",
+              "reading": {
+                "pinyin": "māo"
+              }
             },
             {
               "target": "马",
               "native": "the horse",
               "emoji": "🐴",
-              "romanization": "mǎ"
+              "romanization": "mǎ",
+              "reading": {
+                "pinyin": "mǎ"
+              }
             },
             {
               "target": "鸟",
               "native": "the bird",
               "emoji": "🐦",
-              "romanization": "niǎo"
+              "romanization": "niǎo",
+              "reading": {
+                "pinyin": "niǎo"
+              }
             },
             {
               "target": "鱼",
               "native": "the fish",
               "emoji": "🐟",
-              "romanization": "yú"
+              "romanization": "yú",
+              "reading": {
+                "pinyin": "yú"
+              }
             },
             {
               "target": "牛",
               "native": "the cow",
               "emoji": "🐄",
-              "romanization": "niú"
+              "romanization": "niú",
+              "reading": {
+                "pinyin": "niú"
+              }
             },
             {
               "target": "大",
               "native": "big",
               "emoji": "📏",
-              "romanization": "dà"
+              "romanization": "dà",
+              "reading": {
+                "pinyin": "dà"
+              }
             },
             {
               "target": "小",
               "native": "small",
               "emoji": "🤏",
-              "romanization": "xiǎo"
+              "romanization": "xiǎo",
+              "reading": {
+                "pinyin": "xiǎo"
+              }
             },
             {
               "target": "可爱",
               "native": "cute",
               "emoji": "🥰",
-              "romanization": "kě'ài"
+              "romanization": "kě'ài",
+              "reading": {
+                "pinyin": "kě ài"
+              }
             },
             {
               "target": "快",
               "native": "fast",
               "emoji": "💨",
-              "romanization": "kuài"
+              "romanization": "kuài",
+              "reading": {
+                "pinyin": "kuài"
+              }
             },
             {
               "target": "只",
               "native": "measure word for animals",
               "emoji": "🔢",
-              "romanization": "zhī"
+              "romanization": "zhī",
+              "reading": {
+                "pinyin": "zhī"
+              }
             },
             {
               "target": "动物",
               "native": "the animal",
               "emoji": "🦁",
-              "romanization": "dòngwù"
+              "romanization": "dòngwù",
+              "reading": {
+                "pinyin": "dòng wù"
+              }
             }
           ],
           "lessons": [
@@ -3369,7 +3801,10 @@
                       "emoji": "📏"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:gou"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3395,7 +3830,10 @@
                       "emoji": "🐈"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:mao-1"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3421,7 +3859,10 @@
                       "emoji": "🥰"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:ma-3"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3447,7 +3888,10 @@
                       "emoji": "🦁"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:gou"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3473,7 +3917,10 @@
                       "emoji": "🐈"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:mao-1"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3495,7 +3942,10 @@
                       "text": "快"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:gou"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3579,6 +4029,13 @@
                       "target": "动物",
                       "native": "the animal"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:gou",
+                    "zh:w:mao-1",
+                    "zh:w:ma-3",
+                    "zh:w:niao",
+                    "zh:w:dongwu"
                   ]
                 },
                 {
@@ -3623,7 +4080,10 @@
                       "emoji": "💨"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:niao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3649,7 +4109,10 @@
                       "emoji": "🐟"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:yu-2"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3675,7 +4138,10 @@
                       "emoji": "🐟"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:niu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3701,7 +4167,10 @@
                       "emoji": "🐦"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:niao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3727,7 +4196,10 @@
                       "emoji": "🦁"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:yu-2"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3749,7 +4221,10 @@
                       "text": "小"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:yu-2"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3837,6 +4312,13 @@
                       "target": "动物",
                       "native": "the animal"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:niao",
+                    "zh:w:yu-2",
+                    "zh:w:niu",
+                    "zh:w:ma-3",
+                    "zh:w:dongwu"
                   ]
                 },
                 {
@@ -3881,7 +4363,10 @@
                       "emoji": "🔢"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:da"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3907,7 +4392,10 @@
                       "emoji": "💨"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:xiao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3933,7 +4421,10 @@
                       "emoji": "🐦"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:keai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3959,7 +4450,10 @@
                       "emoji": "🦁"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:da"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3985,7 +4479,10 @@
                       "emoji": "🐦"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:xiao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4007,7 +4504,10 @@
                       "text": "可爱"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:keai"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4095,6 +4595,13 @@
                       "target": "只",
                       "native": "measure word for animals"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:da",
+                    "zh:w:xiao",
+                    "zh:w:keai",
+                    "zh:w:dongwu",
+                    "zh:w:zhi"
                   ]
                 },
                 {
@@ -4139,7 +4646,10 @@
                       "emoji": "🐕"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:kuai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4165,7 +4675,10 @@
                       "emoji": "🦁"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:zhi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4191,7 +4704,10 @@
                       "emoji": "🦁"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:dongwu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4217,7 +4733,10 @@
                       "emoji": "🐈"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:kuai"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4243,7 +4762,10 @@
                       "emoji": "🐈"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:zhi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4265,7 +4787,10 @@
                       "text": "鸟"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:kuai"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4349,6 +4874,13 @@
                       "target": "大",
                       "native": "big"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:kuai",
+                    "zh:w:zhi",
+                    "zh:w:dongwu",
+                    "zh:w:gou",
+                    "zh:w:da"
                   ]
                 },
                 {
@@ -4377,73 +4909,109 @@
               "target": "城市",
               "native": "the city",
               "emoji": "🏙️",
-              "romanization": "chéngshì"
+              "romanization": "chéngshì",
+              "reading": {
+                "pinyin": "chéng shì"
+              }
             },
             {
               "target": "酒店",
               "native": "the hotel",
               "emoji": "🏨",
-              "romanization": "jiǔdiàn"
+              "romanization": "jiǔdiàn",
+              "reading": {
+                "pinyin": "jiǔ diàn"
+              }
             },
             {
               "target": "机场",
               "native": "the airport",
               "emoji": "✈️",
-              "romanization": "jīchǎng"
+              "romanization": "jīchǎng",
+              "reading": {
+                "pinyin": "jī chǎng"
+              }
             },
             {
               "target": "火车站",
               "native": "the train station",
               "emoji": "🚉",
-              "romanization": "huǒchē zhàn"
+              "romanization": "huǒchē zhàn",
+              "reading": {
+                "pinyin": "huǒ chē zhàn"
+              }
             },
             {
               "target": "地铁",
               "native": "the subway",
               "emoji": "🚇",
-              "romanization": "dìtiě"
+              "romanization": "dìtiě",
+              "reading": {
+                "pinyin": "dì tiě"
+              }
             },
             {
               "target": "出租车",
               "native": "the taxi",
               "emoji": "🚕",
-              "romanization": "chūzū chē"
+              "romanization": "chūzū chē",
+              "reading": {
+                "pinyin": "chū zū chē"
+              }
             },
             {
               "target": "街道",
               "native": "the street",
               "emoji": "🛣️",
-              "romanization": "jiēdào"
+              "romanization": "jiēdào",
+              "reading": {
+                "pinyin": "jiē dào"
+              }
             },
             {
               "target": "博物馆",
               "native": "the museum",
               "emoji": "🏛️",
-              "romanization": "bówùguǎn"
+              "romanization": "bówùguǎn",
+              "reading": {
+                "pinyin": "bó wù guǎn"
+              }
             },
             {
               "target": "公园",
               "native": "the park",
               "emoji": "🌳",
-              "romanization": "gōngyuán"
+              "romanization": "gōngyuán",
+              "reading": {
+                "pinyin": "gōng yuán"
+              }
             },
             {
               "target": "地图",
               "native": "the map",
               "emoji": "🗺️",
-              "romanization": "dìtú"
+              "romanization": "dìtú",
+              "reading": {
+                "pinyin": "dì tú"
+              }
             },
             {
               "target": "护照",
               "native": "the passport",
               "emoji": "📔",
-              "romanization": "hùzhào"
+              "romanization": "hùzhào",
+              "reading": {
+                "pinyin": "hù zhào"
+              }
             },
             {
               "target": "行李",
               "native": "the luggage",
               "emoji": "🧳",
-              "romanization": "xínglǐ"
+              "romanization": "xínglǐ",
+              "reading": {
+                "pinyin": "xíng li"
+              }
             }
           ],
           "lessons": [
@@ -4475,7 +5043,10 @@
                       "emoji": "✈️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:chengshi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4501,7 +5072,10 @@
                       "emoji": "🏨"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:jiudian"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4527,7 +5101,10 @@
                       "emoji": "✈️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:jichang"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4553,7 +5130,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:chengshi"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4579,7 +5159,10 @@
                       "emoji": "🗺️"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:jiudian"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4601,7 +5184,10 @@
                       "text": "行李"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:chengshi"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4685,6 +5271,13 @@
                       "target": "火车站",
                       "native": "the train station"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:chengshi",
+                    "zh:w:jiudian",
+                    "zh:w:jichang",
+                    "zh:w:ditu",
+                    "zh:w:huochezhan"
                   ]
                 },
                 {
@@ -4728,7 +5321,10 @@
                       "emoji": "✈️"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:huochezhan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4754,7 +5350,10 @@
                       "emoji": "🚇"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:ditie"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4780,7 +5379,10 @@
                       "emoji": "🚕"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:chuzuche"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4806,7 +5408,10 @@
                       "emoji": "🚉"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:huochezhan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4832,7 +5437,10 @@
                       "emoji": "🚕"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:ditie"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4854,7 +5462,10 @@
                       "text": "地铁"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:ditie"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4940,6 +5551,13 @@
                       "target": "公园",
                       "native": "the park"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:huochezhan",
+                    "zh:w:ditie",
+                    "zh:w:chuzuche",
+                    "zh:w:bowuguan",
+                    "zh:w:gongyuan"
                   ]
                 },
                 {
@@ -4983,7 +5601,10 @@
                       "emoji": "🌳"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:jiedao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5009,7 +5630,10 @@
                       "emoji": "🏛️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:bowuguan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5035,7 +5659,10 @@
                       "emoji": "🌳"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:gongyuan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5061,7 +5688,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:jiedao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5087,7 +5717,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:bowuguan"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5109,7 +5742,10 @@
                       "text": "博物馆"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:gongyuan"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -5199,6 +5835,13 @@
                       "target": "出租车",
                       "native": "the taxi"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:jiedao",
+                    "zh:w:bowuguan",
+                    "zh:w:gongyuan",
+                    "zh:w:xingli",
+                    "zh:w:chuzuche"
                   ]
                 },
                 {
@@ -5243,7 +5886,10 @@
                       "emoji": "🚕"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:ditu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5269,7 +5915,10 @@
                       "emoji": "📔"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "zh:w:huzhao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5295,7 +5944,10 @@
                       "emoji": "🌳"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:xingli"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5321,7 +5973,10 @@
                       "emoji": "🧳"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "zh:w:ditu"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5347,7 +6002,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "zh:w:huzhao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5369,7 +6027,10 @@
                       "text": "火车站"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "zh:w:ditu"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -5459,6 +6120,13 @@
                       "target": "火车站",
                       "native": "the train station"
                     }
+                  ],
+                  "gradeTargets": [
+                    "zh:w:ditu",
+                    "zh:w:huzhao",
+                    "zh:w:xingli",
+                    "zh:w:bowuguan",
+                    "zh:w:huochezhan"
                   ]
                 },
                 {

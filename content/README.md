@@ -17,6 +17,7 @@ French is just the first target that has every layer.
 content/
   courses/<target>-<native>.json      one course pack per (target, native) pair
   courses/<id>.profile.json           optional capability overrides (P1b)
+  onboarding-priority.json            D-15 language priority: breaks an onboarding-default tie (P4d)
   <target>/lexemes.json               frozen surface → `<target>:w:<slug>` ids (persisted in learner data)
   <target>/lexicon/lexemes.json       rich lexicon (glosses, examples, pronunciation, frequency…)
   <target>/lexicon/source-manifest.json   external lexical source pin (optional; Lexique 4 for French)

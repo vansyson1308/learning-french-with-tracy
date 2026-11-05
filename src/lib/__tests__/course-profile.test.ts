@@ -108,9 +108,25 @@ describe("courseProfile", () => {
     expect(p.artifacts.lexiconIndex).toBe("src/content/lexicon/ja-en-index.json");
   });
 
+  test("zh-en (standalone once zh-vi compiles) ships the Chinese lexicon read-only: lexicon on, scheduler unchanged", () => {
+    const p = courseProfile("zh-en");
+    // Until the first zh compile (the audio bot commit, P4d) zh-en is still an inherited course with nothing rich.
+    if (!catalog.courses.some((c) => c.id === "zh-vi")) {
+      for (const flag of ALL_FLAGS) expect(p.capabilities[flag]).toBe(false);
+      return;
+    }
+    expect(p.role).toBe("standalone");
+    expect(p.idPrefix).toBe("zh:w:");
+    expect(p.capabilities.lexicon).toBe(true);
+    expect(p.capabilities.fsrs).toBe(false);
+    expect(p.capabilities.dailySession).toBe(false);
+    expect(courseProfile("zh-vi").role).toBeUndefined();
+    expect(courseProfile("zh-vi").capabilities.fsrs).toBe(true);
+  });
+
   test("every inherited course has no rich capability and no artifacts", () => {
     for (const course of catalog.courses) {
-      if (["fr-en", "fr-vi", "es-en", "es-vi", "de-en", "de-vi", "it-en", "it-vi", "en-vi", "ja-en", "ja-vi"].includes(course.id)) continue;
+      if (["fr-en", "fr-vi", "es-en", "es-vi", "de-en", "de-vi", "it-en", "it-vi", "en-vi", "ja-en", "ja-vi", "zh-en", "zh-vi"].includes(course.id)) continue;
       const p = courseProfile(course.id);
       for (const flag of ALL_FLAGS) expect(p.capabilities[flag]).toBe(false);
       expect(p.artifacts).toEqual({});

@@ -226,7 +226,7 @@
         "content/zh/lexicon/",
         "content/en/lexicon/"
       ],
-      "notes": "P3a: `zipf` column of the candidate pools only (authoring evidence); never the `frequency` field of a lexeme."
+      "notes": "P3a: `zipf` column of the candidate pools only (authoring evidence); never the `frequency` field of a lexeme. P4d: the zh ranks in content/zh/lexicon/derived/hsk-course.json are read from the pinned wordfreq-3.1.1 wheel's large_zh list (sha256 4b1c6ecf…) as selection evidence; zh lexemes carry no `frequency` field. P4d session 2 (2026-11-04, coordinator): wordfreq is the zh frequency source of the zh-vi course, as build-time selection evidence only (which HSK 2 words A1 takes, the order of the bare lexeme id among homographs); nothing of it ships. Licence re-read on the README of https://github.com/rspeer/wordfreq the same day: the code is redistributable under the Apache licence (LICENSE.txt), the data files under CC BY-SA 4.0, with credit to the Google Books Ngram Viewer, the SUBTLEX authors and OpenSubtitles. content/zh/lexicon/source-manifest.json keeps frequencywords as its `frequencySourceId` (the P3a pool's measurement, which no zh lexeme uses)."
     },
     {
       "id": "tatoeba",
@@ -273,7 +273,7 @@
       "covers": [
         "content/zh/lexicon/"
       ],
-      "notes": "P3a Chinese anchor (HSK 1–2 first). The repository's copyright caveat on the Ministry source is recorded in scripts/lib/lexicon-etl/sources.ts.",
+      "notes": "P3a Chinese anchor (HSK 1–2 first). The repository's copyright caveat on the Ministry source is recorded in scripts/lib/lexicon-etl/sources.ts. P4d (2026-11-04): licence re-read on the repository itself — LICENSE is MIT (Copyright 2023 Ivan Krasilnikov, 2021 Shawky, 2021 Pleco Inc.), and the README says the code is MIT and the data is derived from two MIT repositories, noting the Ministry's copyright notice and that the list may be public domain under PRC law. hsk30.csv re-hashed to the 2026-10-14 pin (8c2b73f7…); hsk30-chars.csv pinned by sha256 8c595710… (zh-subset.py). Level facts only, in content/zh/lexicon/derived/hsk-course.json; build time only.",
       "buildTimeOnly": true
     },
     {
@@ -316,7 +316,7 @@
       "covers": [
         "content/zh/lexicon/"
       ],
-      "notes": "P3a: pinyin (tone marks derived from the numbered export) for readings.json. P4b stage 4: tone-marked pinyin per syllable and the traditional spelling per Chinese lemma (content/zh/lexicon/derived/lexeme-readings.json, scripts/cjk-readings.ts) from a 2026-11-03 retrieval pinned by sha256 e203bbf4a28c2ab54762e9b1fb813e53aa9112939704e71a5117f3b3555a46cb (3,983,033 bytes) in content/zh/lexicon/readings-manifest.json; the export is never committed."
+      "notes": "P3a: pinyin (tone marks derived from the numbered export) for readings.json. P4b stage 4: tone-marked pinyin per syllable and the traditional spelling per Chinese lemma (content/zh/lexicon/derived/lexeme-readings.json, scripts/cjk-readings.ts) from a 2026-11-03 retrieval pinned by sha256 e203bbf4a28c2ab54762e9b1fb813e53aa9112939704e71a5117f3b3555a46cb (3,983,033 bytes) in content/zh/lexicon/readings-manifest.json; the export is never committed. P4d (zh-vi): the pinyin and traditional spelling of every zh-vi lexeme (content/zh/lexicon/lexemes.json) come from a 2026-11-04 retrieval (export header: licence CC BY-SA 4.0, date 2026-11-03T00:50:19Z, 125,360 entries) pinned by sha256 2ec9a065cee371c2ee6a75adda056deef979ee336a7ae45b3d25f2ef2e6d427f (3,983,195 bytes) in content/zh/_drafts/_generators/zh-subset.py; only the entries of HSK 1-3 words and course words are kept (content/zh/lexicon/derived/hsk-course.json)."
     },
     {
       "id": "cefr-j",
@@ -481,6 +481,27 @@
       "notes": "P4c: clean-room authored; Vietnamese learner-facing text pending the D-10 review. The hand-chosen lexicon is recorded under original-lexicon-etl, its readings under jmdict-furigana. JLPT levels (OpenJLPT) are a build-time anchor only. Ships under the repository's MIT grant like the other course packs."
     },
     {
+      "id": "original-chinese-course",
+      "name": "Learning French with Tracy — authored zh-vi course (Mandarin Chinese for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Chinese course content for Vietnamese speakers by the Learning French with Tracy project.",
+      "retrievedAt": "2026-11-04",
+      "covers": [
+        "content/courses/zh-vi.json",
+        "content/zh/pedagogy/",
+        "content/zh/reception/reading.json",
+        "content/zh/reception/listening.json",
+        "content/zh/speech/",
+        "content/zh/writing/",
+        "content/zh/interaction/",
+        "content/zh/assessment/",
+        "content/zh/exam/"
+      ],
+      "notes": "P4d: clean-room authored; Vietnamese learner-facing text pending the D-10 review. The hand-chosen lexicon is recorded under original-lexicon-etl, its readings under cedict. HSK 3.0 levels (ivankra/hsk30) are a build-time anchor only. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
       "id": "unihan",
       "name": "Unihan Database — Unicode Character Database 17.0.0",
       "kind": "character data (kVietnamese, kMandarin, kJapanese/On/Kun, kHangul readings; variant links) used at build time to check the Hán-Việt tables",
@@ -539,6 +560,34 @@
         "scripts/lib/tts/ja-phonemes.ts"
       ],
       "notes": "P4c (plan/reports/P4c-ja-audio-frontend.md): misaki[ja] is no longer installed — its G2P needs a MeCab dictionary (UniDic / NAIST-jdic, BSD). Only the dictionary-free kana table and rules were ported, read from the misaki 0.9.4 sdist (PyPI); the readings come from the course lexicon (JmdictFurigana, CC BY-SA 4.0) and content/audio/ja-spoken-readings.json (original). Upstream chain: cutlet MIT → misaki Apache-2.0 → this port, both allowlisted.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "misaki-zh-g2p",
+      "name": "misaki 0.9.4 [zh] extra — the Mandarin G2P Kokoro uses at pipeline time (jieba, pypinyin, cn2an, ordered-set, pypinyin-dict)",
+      "kind": "libraries and their bundled dictionaries installed on the audio runner (text → pinyin → Kokoro phonemes; never shipped)",
+      "license": "MIT",
+      "url": "https://github.com/hexgrad/misaki",
+      "attribution": "Mandarin text is turned into Kokoro phonemes by misaki 0.9.4 (hexgrad, Apache-2.0) with jieba 0.42.1 (MIT), pypinyin 0.55.0 (MIT, data from mozillazg/pinyin-data and phrase-pinyin-data, MIT), cn2an 0.5.24 (MIT, with proces 0.1.7, MIT) and ordered-set 4.1.0 (MIT); pypinyin-dict 0.9.0 (MIT) is installed by the extra.",
+      "retrievedAt": "2026-11-04",
+      "covers": [
+        "content/audio/engines.json"
+      ],
+      "notes": "P4d (plan/authoring/zh-plan.md §7): licences read 2026-11-04 from PyPI metadata (licence field and classifiers) and the misaki 0.9.4 sdist (sha256 3960fa3e…). All code is MIT or Apache-2.0 (misaki's zh frontend, tone sandhi and zh_normalization are adapted from PaddleSpeech, Apache-2.0; transcription.py from stefantaubert/pinyin-to-ipa, MIT). Kokoro v1.0 (lang z) takes misaki's legacy path: jieba segmentation + pypinyin's built-in dictionaries, no tone sandhi. Open: pypinyin-dict's large_pinyin phrase table (loaded only by misaki's version-1.1 frontend, not by Kokoro v1.0) merges zdic.net scrapes whose licence is not stated, beside cc_cedict (CC BY-SA 4.0); the course plans a front-end from its own stored CC-CEDICT pinyin, as for ja, so no clip depends on it. P4d audio session (plan/reports/P4d-zh-audio-frontend.md): that front-end is built (misaki-zh-pinyin-ipa) and the extra is no longer installed (engines.json kokoro.install: misaki==0.9.4 without [zh]); this row stays as the licence record of what was read.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "misaki-zh-pinyin-ipa",
+      "name": "misaki 0.9.4 Mandarin pinyin → IPA table and tone arrows (hexgrad), adapted from pinyin-to-ipa (Stefan Taubert)",
+      "kind": "code adapted at pipeline time (pinyin → Kokoro phoneme table and rules of the Mandarin audio front-end; never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://github.com/hexgrad/misaki/blob/main/misaki/transcription.py",
+      "attribution": "The Mandarin audio front-end's pinyin → phoneme table, tone arrows and clean-up are adapted from misaki 0.9.4 misaki/transcription.py and misaki/zh.py (Copyright hexgrad, Apache-2.0); transcription.py is itself adapted from pinyin-to-ipa (https://github.com/stefantaubert/pinyin-to-ipa, Copyright Stefan Taubert, MIT). Both licence notices are kept in scripts/lib/tts/zh-phonemes.ts.",
+      "retrievedAt": "2026-11-04",
+      "covers": [
+        "scripts/lib/tts/zh-phonemes.ts"
+      ],
+      "notes": "P4d (plan/reports/P4d-zh-audio-frontend.md): read from the misaki 0.9.4 sdist (PyPI, sha256 3960fa3e…) and checked against the Kokoro-82M config.json vocabulary at the pinned revision (sha256 5abb01e2…). Only the dictionary-free table and rules were ported: the pinyin is the course lexicon's (CC-CEDICT, CC BY-SA 4.0) with the tone sandhi for audio (scripts/lib/zh-sandhi.ts, original); jieba, pypinyin and their dictionaries are not installed. Upstream chain: pinyin-to-ipa MIT → misaki Apache-2.0 → this port, both allowlisted.",
       "buildTimeOnly": true
     },
     {

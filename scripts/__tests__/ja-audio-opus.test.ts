@@ -26,11 +26,12 @@ const LAYERS: CodecLayer[] = ["pack", "lexicon", "reception", "story"];
 const ESLINT_DIRECTIVE = "/* eslint-disable @typescript-eslint/no-require-imports -- generated: Metro static asset requires */";
 
 describe("the committed setting: Japanese is Opus on every layer, every other language unchanged", () => {
-  test("engines.json: codecByLanguage.ja switches pack, lexicon and reception; no problem", () => {
-    expect(enc.codecByLanguage).toEqual({ ja: { pack: "opus", lexicon: "opus", reception: "opus" } });
+  test("engines.json: codecByLanguage.ja (and zh, P4d) switches pack, lexicon and reception; no problem", () => {
+    expect(enc.codecByLanguage).toEqual({ ja: { pack: "opus", lexicon: "opus", reception: "opus" }, zh: { pack: "opus", lexicon: "opus", reception: "opus" } });
     expect(enc.opusKbps).toBe(16);
     expect(codecProblems(enc)).toEqual([]);
     for (const layer of LAYERS) expect(codecFor(enc, layer, "ja")).toBe("opus");
+    for (const layer of LAYERS) expect(codecFor(enc, layer, "zh")).toBe("opus");
   });
 
   test("es, de, en, it, pt keep mp3 pack/lexicon/reception (story opus); French mp3 everywhere", () => {

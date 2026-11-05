@@ -1,0 +1,123 @@
+# lessons — ingest report (zh-vi)
+
+Records: 108 · schema-valid: 108 · failed: 0 · validator errors after merge: 0
+
+## Records
+
+- ✅ line 1 `zh-vi:u0-l0`
+- ✅ line 2 `zh-vi:u0-l1`
+- ✅ line 3 `zh-vi:u0-l2`
+- ✅ line 4 `zh-vi:u0-l3`
+- ✅ line 5 `zh-vi:u1-l0`
+- ✅ line 6 `zh-vi:u1-l1`
+- ✅ line 7 `zh-vi:u1-l2`
+- ✅ line 8 `zh-vi:u1-l3`
+- ✅ line 9 `zh-vi:u2-l0`
+- ✅ line 10 `zh-vi:u2-l1`
+- ✅ line 11 `zh-vi:u2-l2`
+- ✅ line 12 `zh-vi:u2-l3`
+- ✅ line 13 `zh-vi:u3-l0`
+- ✅ line 14 `zh-vi:u3-l1`
+- ✅ line 15 `zh-vi:u3-l2`
+- ✅ line 16 `zh-vi:u3-l3`
+- ✅ line 17 `zh-vi:u4-l0`
+- ✅ line 18 `zh-vi:u4-l1`
+- ✅ line 19 `zh-vi:u4-l2`
+- ✅ line 20 `zh-vi:u4-l3`
+- ✅ line 21 `zh-vi:ua-l0`
+- ✅ line 22 `zh-vi:ua-l1`
+- ✅ line 23 `zh-vi:ua-l2`
+- ✅ line 24 `zh-vi:ua-l3`
+- ✅ line 25 `zh-vi:ub-l0`
+- ✅ line 26 `zh-vi:ub-l1`
+- ✅ line 27 `zh-vi:ub-l2`
+- ✅ line 28 `zh-vi:ub-l3`
+- ✅ line 29 `zh-vi:uc-l0`
+- ✅ line 30 `zh-vi:uc-l1`
+- ✅ line 31 `zh-vi:uc-l2`
+- ✅ line 32 `zh-vi:uc-l3`
+- ✅ line 33 `zh-vi:ud-l0`
+- ✅ line 34 `zh-vi:ud-l1`
+- ✅ line 35 `zh-vi:ud-l2`
+- ✅ line 36 `zh-vi:ud-l3`
+- ✅ line 37 `zh-vi:ue-l0`
+- ✅ line 38 `zh-vi:ue-l1`
+- ✅ line 39 `zh-vi:ue-l2`
+- ✅ line 40 `zh-vi:ue-l3`
+- ✅ line 41 `zh-vi:uf-l0`
+- ✅ line 42 `zh-vi:uf-l1`
+- ✅ line 43 `zh-vi:uf-l2`
+- ✅ line 44 `zh-vi:uf-l3`
+- ✅ line 45 `zh-vi:ug-l0`
+- ✅ line 46 `zh-vi:ug-l1`
+- ✅ line 47 `zh-vi:ug-l2`
+- ✅ line 48 `zh-vi:ug-l3`
+- ✅ line 49 `zh-vi:uh-l0`
+- ✅ line 50 `zh-vi:uh-l1`
+- ✅ line 51 `zh-vi:uh-l2`
+- ✅ line 52 `zh-vi:uh-l3`
+- ✅ line 53 `zh-vi:ui-l0`
+- ✅ line 54 `zh-vi:ui-l1`
+- ✅ line 55 `zh-vi:ui-l2`
+- ✅ line 56 `zh-vi:ui-l3`
+- ✅ line 57 `zh-vi:uj-l0`
+- ✅ line 58 `zh-vi:uj-l1`
+- ✅ line 59 `zh-vi:uj-l2`
+- ✅ line 60 `zh-vi:uj-l3`
+- ✅ line 61 `zh-vi:uk-l0`
+- ✅ line 62 `zh-vi:uk-l1`
+- ✅ line 63 `zh-vi:uk-l2`
+- ✅ line 64 `zh-vi:uk-l3`
+- ✅ line 65 `zh-vi:ul-l0`
+- ✅ line 66 `zh-vi:ul-l1`
+- ✅ line 67 `zh-vi:ul-l2`
+- ✅ line 68 `zh-vi:ul-l3`
+- ✅ line 69 `zh-vi:um-l0`
+- ✅ line 70 `zh-vi:um-l1`
+- ✅ line 71 `zh-vi:um-l2`
+- ✅ line 72 `zh-vi:um-l3`
+- ✅ line 73 `zh-vi:un-l0`
+- ✅ line 74 `zh-vi:un-l1`
+- ✅ line 75 `zh-vi:un-l2`
+- ✅ line 76 `zh-vi:un-l3`
+- ✅ line 77 `zh-vi:uo-l0`
+- ✅ line 78 `zh-vi:uo-l1`
+- ✅ line 79 `zh-vi:uo-l2`
+- ✅ line 80 `zh-vi:uo-l3`
+- ✅ line 81 `zh-vi:up-l0`
+- ✅ line 82 `zh-vi:up-l1`
+- ✅ line 83 `zh-vi:up-l2`
+- ✅ line 84 `zh-vi:up-l3`
+- ✅ line 85 `zh-vi:uq-l0`
+- ✅ line 86 `zh-vi:uq-l1`
+- ✅ line 87 `zh-vi:uq-l2`
+- ✅ line 88 `zh-vi:uq-l3`
+- ✅ line 89 `zh-vi:ur-l0`
+- ✅ line 90 `zh-vi:ur-l1`
+- ✅ line 91 `zh-vi:ur-l2`
+- ✅ line 92 `zh-vi:ur-l3`
+- ✅ line 93 `zh-vi:us-l0`
+- ✅ line 94 `zh-vi:us-l1`
+- ✅ line 95 `zh-vi:us-l2`
+- ✅ line 96 `zh-vi:us-l3`
+- ✅ line 97 `zh-vi:ut-l0`
+- ✅ line 98 `zh-vi:ut-l1`
+- ✅ line 99 `zh-vi:ut-l2`
+- ✅ line 100 `zh-vi:ut-l3`
+- ✅ line 101 `zh-vi:uu-l0`
+- ✅ line 102 `zh-vi:uu-l1`
+- ✅ line 103 `zh-vi:uu-l2`
+- ✅ line 104 `zh-vi:uu-l3`
+- ✅ line 105 `zh-vi:uv-l0`
+- ✅ line 106 `zh-vi:uv-l1`
+- ✅ line 107 `zh-vi:uv-l2`
+- ✅ line 108 `zh-vi:uv-l3`
+
+## Validator errors (fix these records and ingest again)
+
+- none
+
+## Written
+
+- content/zh/_drafts/pack.json
+- content/courses/zh-vi.json

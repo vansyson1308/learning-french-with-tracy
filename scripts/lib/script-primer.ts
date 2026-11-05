@@ -12,6 +12,12 @@
  *  - tones: tones 1–4 each once (neutral optional), each example's single
  *    syllable carries its tone (parsed by the zh plugin); a minimal pair
  *    spells the same syllables with different tones;
+ *  - P4d sound contrasts: two words whose pinyin spells different syllables;
+ *    P4d tone sandhi: each example's spoken tones are scripts/lib/zh-sandhi.ts
+ *    applied to its written (citation) tones, and every rule shows a change;
+ *  - checkpoint: kana items in a kana primer (Hepburn keys), soundToPinyin
+ *    items in a tones primer (the key is the pinyin the primer teaches for
+ *    the word heard, the options are pinyin that read differently);
  *  - hangul: basic jamo only, each consonant's initial / final and each
  *    vowel's RR is what the RR rules (cjk-readings/korean-rr.ts) give, and
  *    a block is exactly the keyboard composition of its parts (ko plugin);
@@ -34,6 +40,7 @@ import { composeJamo } from "../../src/lib/languages/ko";
 import { parsePinyinReading } from "../../src/lib/languages/zh";
 import { romanizeKorean } from "./cjk-readings/korean-rr";
 import { canonicalJson, safeResolve, type CompiledFile } from "./pipeline";
+import { sandhiTones } from "./zh-sandhi";
 
 export const PRIMER_LANGS = ["ja", "zh", "ko"] as const;
 export type PrimerLang = (typeof PRIMER_LANGS)[number];
@@ -95,6 +102,18 @@ function texts(primer: ScriptPrimer): { where: string; text: Text }[] {
         out.push({ where: `${s.id}.pair${i + 1}.a`, text: p.a.gloss }, { where: `${s.id}.pair${i + 1}.b`, text: p.b.gloss });
         if (p.note) out.push({ where: `${s.id}.pair${i + 1}.note`, text: p.note });
       });
+    }
+    if (s.kind === "soundContrasts") {
+      s.contrasts.forEach((c, i) => {
+        out.push({ where: `${s.id}.contrast${i + 1}.a`, text: c.a.gloss }, { where: `${s.id}.contrast${i + 1}.b`, text: c.b.gloss });
+        if (c.note) out.push({ where: `${s.id}.contrast${i + 1}.note`, text: c.note });
+      });
+    }
+    if (s.kind === "toneSandhi") {
+      for (const r of s.rules) {
+        out.push({ where: `${s.id}.${r.rule}`, text: r.text });
+        r.examples.forEach((x, j) => out.push({ where: `${s.id}.${r.rule}.example${j + 1}`, text: x.gloss }));
+      }
     }
     if (s.kind === "strokes") {
       for (const st of s.strokes) out.push({ where: `${s.id}.${st.name}`, text: st.description });
@@ -269,6 +288,41 @@ function checkTones(s: Extract<ScriptPrimer["sections"][number], { kind: "tones"
   });
 }
 
+const syllableKey = (syllables: readonly { base: string; tone: number }[]) => syllables.map((x) => `${x.base}${x.tone}`).join(" ");
+const lettersKey = (syllables: readonly { base: string }[]) => syllables.map((x) => x.base).join(" ");
+
+/** P4d: a contrast is two words whose pinyin spells different syllables (a tone-only pair belongs to minimalPairs). */
+function checkSoundContrasts(s: Extract<ScriptPrimer["sections"][number], { kind: "soundContrasts" }>, err: (m: string) => void): void {
+  s.contrasts.forEach((c, i) => {
+    const where = `${s.id} contrast ${i + 1}`;
+    const a = syllablesOf(c.a.hanzi, c.a.pinyin, where, err);
+    const b = syllablesOf(c.b.hanzi, c.b.pinyin, where, err);
+    if (c.a.hanzi === c.b.hanzi) err(`${where}: the same hanzi twice`);
+    if (a && b && lettersKey(a) === lettersKey(b)) err(`${where}: ${c.a.pinyin} / ${c.b.pinyin} spell the same syllables (a tone pair is a minimal pair)`);
+  });
+}
+
+/** P4d: every example's spoken tones are the sandhi of its written (citation) tones, and the rule it sits under fires. */
+function checkSandhi(s: Extract<ScriptPrimer["sections"][number], { kind: "toneSandhi" }>, err: (m: string) => void): void {
+  for (const r of s.rules) {
+    let fires = false;
+    r.examples.forEach((x, j) => {
+      const where = `${s.id} ${r.rule} example ${j + 1}`;
+      const written = syllablesOf(x.hanzi, x.written, where, err);
+      const spoken = syllablesOf(x.hanzi, x.spoken, where, err);
+      if (x.audio.say !== x.hanzi) err(`${where}: audio says "${x.audio.say}", not ${x.hanzi}`);
+      if (!written || !spoken || written.length !== [...x.hanzi].length || spoken.length !== written.length) return;
+      if (lettersKey(written) !== lettersKey(spoken)) err(`${where}: ${x.written} / ${x.spoken} are not the same syllables`);
+      const tones = sandhiTones(x.hanzi, written);
+      if (tones.join() !== spoken.map((y) => y.tone).join()) err(`${where}: ${x.hanzi} ${x.written} is said with tones ${tones.join("-")}, not as "${x.spoken}"`);
+      const marker = r.rule === "bu" ? "不" : r.rule === "yi" ? "一" : null;
+      if (marker !== null && !x.hanzi.includes(marker)) err(`${where}: ${x.hanzi} has no ${marker}`);
+      if (tones.join() !== written.map((y) => y.tone).join()) fires = true;
+    });
+    if (!fires) err(`${s.id} ${r.rule}: no example shows the rule changing a tone`);
+  }
+}
+
 function checkHangul(s: Extract<ScriptPrimer["sections"][number], { kind: "hangulBlocks" }>, err: (m: string) => void): void {
   const consonants = s.consonants.map((c) => c.jamo);
   if (new Set(consonants).size !== consonants.length) err(`${s.id}: a consonant is listed twice`);
@@ -305,20 +359,59 @@ function taughtKana(primer: ScriptPrimer): Set<string> {
   return out;
 }
 
-/** P4c: the checkpoint (kana primers only) — each key is the app's Hepburn reading, no two options read alike, every kana is taught. */
+/** P4d: every word a tones primer teaches with its pinyin (tone examples, minimal pairs, sound contrasts). */
+function taughtWords(primer: ScriptPrimer): Map<string, string> {
+  const out = new Map<string, string>();
+  const add = (w: { hanzi: string; pinyin: string }) => {
+    if (!out.has(w.hanzi)) out.set(w.hanzi, w.pinyin);
+  };
+  for (const s of primer.sections) {
+    if (s.kind === "tones") {
+      for (const t of s.tones) add(t.example);
+      for (const p of s.minimalPairs) [p.a, p.b].forEach(add);
+    }
+    if (s.kind === "soundContrasts") for (const c of s.contrasts) [c.a, c.b].forEach(add);
+  }
+  return out;
+}
+
+/**
+ * P4d: a tones primer's item — hear a word the primer teaches and pick its pinyin. The key is the taught pinyin
+ * (tone-exact); every option is pinyin of as many syllables, and no two options read alike.
+ */
+function checkPinyinItem(item: Extract<NonNullable<ScriptPrimer["checkpoint"]>["items"][number], { kind: "soundToPinyin" }>, taught: Map<string, string>, where: string, err: (m: string) => void): void {
+  const key = taught.get(item.audio.say);
+  const options = item.options.map((o) => parsePinyinReading(o));
+  item.options.forEach((o, i) => {
+    if (options[i] === null) err(`${where}: option "${o}" is not pinyin`);
+  });
+  if (key === undefined) {
+    err(`${where}: ${item.audio.say} is not a word the primer teaches`);
+    return;
+  }
+  const keySyllables = parsePinyinReading(key);
+  const chosen = options[item.correct];
+  if (keySyllables && chosen && syllableKey(chosen) !== syllableKey(keySyllables)) err(`${where}: ${item.audio.say} is ${key}, not "${item.options[item.correct]}"`);
+  if (keySyllables && options.some((o) => o !== null && o.length !== keySyllables.length)) err(`${where}: every option has ${keySyllables.length} syllable(s), as ${key}`);
+  const read = options.filter((o) => o !== null).map((o) => syllableKey(o!));
+  if (new Set(read).size !== read.length) err(`${where}: two options read the same (${item.options.join(", ")})`);
+}
+
+/**
+ * The checkpoint. Kana primers (P4c): each key is the app's Hepburn reading, no two options read alike, every kana is
+ * taught. Tones primers (P4d): checkPinyinItem. An item of the other primer's kind is refused.
+ */
 function checkCheckpoint(primer: ScriptPrimer, err: (m: string) => void): void {
   const cp = primer.checkpoint;
   if (cp === undefined) return;
-  const kanaItems = cp.items.some((i) => i.kind === "kanaToRomaji" || i.kind === "soundToKana");
-  const hangulItems = cp.items.some((i) => i.kind === "hangulToRr" || i.kind === "soundToHangul");
-  if (kanaItems && !primer.sections.some((s) => s.kind === "kanaTable")) {
-    err("checkpoint: only a kana primer has a checkpoint (its items read kana)");
+  const kana = primer.sections.some((s) => s.kind === "kanaTable");
+  const tones = primer.sections.some((s) => s.kind === "tones");
+  const hangul = primer.sections.some((s) => s.kind === "hangulBlocks");
+  if (!kana && !tones && !hangul) {
+    err("checkpoint: only a kana, a tones or a Hangul primer has a checkpoint");
     return;
   }
-  if (hangulItems && !primer.sections.some((s) => s.kind === "hangulBlocks")) {
-    err("checkpoint: only a Hangul primer has Hangul items");
-    return;
-  }
+  const words = taughtWords(primer);
   const ids = cp.items.map((i) => i.id);
   if (new Set(ids).size !== ids.length) err("checkpoint: item ids repeat");
   if (cp.passMark > cp.items.length) err(`checkpoint: passMark ${cp.passMark} is more than the ${cp.items.length} items`);
@@ -334,8 +427,15 @@ function checkCheckpoint(primer: ScriptPrimer, err: (m: string) => void): void {
     }
     keyPositions.add(item.correct);
     if (new Set(item.options).size !== item.options.length) err(`${where}: options repeat`);
+    const family = item.kind === "soundToPinyin" ? "tones" : item.kind === "hangulToRr" || item.kind === "soundToHangul" ? "Hangul" : "kana";
+    if (!(family === "tones" ? tones : family === "Hangul" ? hangul : kana)) {
+      err(`${where}: a ${item.kind} item belongs to a ${family} primer`);
+      continue;
+    }
     if (item.kind === "hangulToRr" || item.kind === "soundToHangul") {
       checkHangulItem(primer, item, where, err);
+    } else if (item.kind === "soundToPinyin") {
+      checkPinyinItem(item, words, where, err);
     } else if (item.kind === "kanaToRomaji") {
       const reading = kanaHepburn(item.kana) ?? hepburn(item.kana);
       if (reading === undefined) err(`${where}: ${item.kana} is not kana`);
@@ -369,6 +469,8 @@ export function validateScriptPrimerData(lang: PrimerLang, primer: ScriptPrimer)
   for (const s of primer.sections) {
     if (s.kind === "kanaTable") checkKana(s, err);
     else if (s.kind === "tones") checkTones(s, err);
+    else if (s.kind === "soundContrasts") checkSoundContrasts(s, err);
+    else if (s.kind === "toneSandhi") checkSandhi(s, err);
     else if (s.kind === "hangulBlocks") checkHangul(s, err);
     else if (s.kind === "hangulSounds") checkHangulSounds(s, err);
   }
