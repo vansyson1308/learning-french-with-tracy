@@ -36,9 +36,11 @@ import {
 } from "@/lib/exam/engine";
 import { useT } from "@/lib/i18n";
 import { buildWeakAreaSessionDefinition } from "@/lib/session/sources";
+import { deviceVoiceListeningCourse } from "@/lib/reception/device-voice-listening";
 import { networkDisclosureRequired, networkDisclosureText } from "@/lib/speech/step-policy";
 import { probeSpeechCapabilityOnce, requestSpeechPermissionOnce } from "@/lib/speech/use-speech-session";
 import { assessmentFor, useProgress } from "@/lib/store";
+import { useDeviceVoice } from "@/lib/stories/use-device-read-along";
 import { makeThemedStyles } from "@/lib/theme";
 
 export default function ExamRunScreen() {
@@ -174,6 +176,33 @@ function SpeechGateView({
   );
 }
 
+// ---------------------------------------------------------------- device voice (P4e)
+
+/**
+ * A device-voice course (ko-vi: no bundled audio) hears its listening items through the phone's own voice. With no
+ * local voice the whole listening section is unscored: the learner is told once and the section is skipped, so the
+ * sitting reports the other sections only (the track's `readiness.incomplete` says so). `true` while still looking.
+ */
+function useListeningWithoutVoice(courseId: string, section: { skill: string } | undefined): boolean | null {
+  const deviceCourse = deviceVoiceListeningCourse(courseId);
+  const needed = deviceCourse && section?.skill === "listening";
+  const voice = useDeviceVoice(courseProfile(courseId).ttsLocale, needed);
+  if (!needed) return false;
+  if (voice === undefined) return null;
+  return voice === null;
+}
+
+function NoVoiceView({ targetLanguage, onSkip }: { targetLanguage: string; onSkip: () => void }) {
+  const styles = useStyles();
+  const { t } = useT();
+  return (
+    <View style={styles.center} testID="exam-listening-no-voice">
+      <Text style={styles.body}>{t("exam.listening.noVoice", { language: targetLanguage })}</Text>
+      <DuoButton label={t("exam.listening.skipSection")} variant="primary" onPress={onSkip} testID="exam-listening-skip" />
+    </View>
+  );
+}
+
 // ---------------------------------------------------------------- practice
 
 function PracticeRun({ courseId, track, sectionId }: { courseId: string; track: CompiledExamTrack; sectionId: string }) {
@@ -187,7 +216,15 @@ function PracticeRun({ courseId, track, sectionId }: { courseId: string; track: 
   const definition = useMemo(() => buildExamSectionSession({ courseId, track, sectionId, formId: null, mode: "practice", attemptSeed: seed }), [courseId, track, sectionId, seed]);
   const speech = useSpeechGate(profile.recognitionLocale, section.skill === "speaking");
   const acknowledge = useProgress((s) => s.acknowledgeSpeechNotice);
+  const noVoice = useListeningWithoutVoice(courseId, section);
 
+  if (noVoice === true) {
+    return (
+      <SafeAreaView style={styles.screen}>
+        <NoVoiceView targetLanguage={targetLanguage} onSkip={() => router.back()} />
+      </SafeAreaView>
+    );
+  }
   if (section.skill === "speaking" && (speech.gate !== "ok" || speech.disclosure)) {
     return (
       <SafeAreaView style={styles.screen}>
@@ -211,7 +248,7 @@ function PracticeRun({ courseId, track, sectionId }: { courseId: string; track: 
       definition={definition}
       targetLanguage={targetLanguage}
       renderFinished={(controller) => (
-        <RecordAndShow track={track} mode="practice" sectionId={sectionId} formId="bank" itemResults={itemResultsFor(itemIds, controller.state.firstResults, controller.state.firstCredits)} startedAt={startedAt} />
+        <RecordAndShow track={track} mode="practice" sectionId={sectionId} formId="bank" itemResults={itemResultsFor(itemIds, controller.state.firstResults, controller.state.firstCredits, controller.state.skipped)} startedAt={startedAt} />
       )}
     />
   );
@@ -242,22 +279,25 @@ function MockRun({ courseId, track }: { courseId: string; track: CompiledExamTra
     [courseId, track, form.formId, seed]
   );
   const next = (index: number) => setPhase(index + 1 < track.sections.length ? { kind: "intro", index: index + 1 } : { kind: "done", itemResults: results.current });
-  const finishSection = (index: number, firstResults: Record<string, boolean>, firstCredits?: Record<string, number>) => {
+  const finishSection = (index: number, firstResults: Record<string, boolean>, firstCredits?: Record<string, number>, skipped?: Record<string, boolean>) => {
     const ids = sectionItems(track, track.sections[index].id, form.formId).map((i) => i.id);
-    results.current = [...results.current, ...itemResultsFor(ids, firstResults, firstCredits)];
+    results.current = [...results.current, ...itemResultsFor(ids, firstResults, firstCredits, skipped)];
     next(index);
   };
 
-  if (phase.kind === "done") {
-    return <RecordAndShow track={track} mode="mock" formId={form.formId} itemResults={phase.itemResults} startedAt={startedAt} />;
+  const section = phase.kind === "done" ? undefined : track.sections[phase.index];
+  const noVoice = useListeningWithoutVoice(courseId, section);
+  if (phase.kind === "done" || section === undefined) {
+    return <RecordAndShow track={track} mode="mock" formId={form.formId} itemResults={phase.kind === "done" ? phase.itemResults : []} startedAt={startedAt} />;
   }
-  const section = track.sections[phase.index];
 
   if (phase.kind === "intro") {
     const speakingBlocked = section.skill === "speaking" && (speech.gate !== "ok" || speech.disclosure);
     return (
       <SafeAreaView style={styles.screen}>
-        {speakingBlocked ? (
+        {noVoice === true ? (
+          <NoVoiceView targetLanguage={targetLanguage} onSkip={() => next(phase.index)} />
+        ) : speakingBlocked ? (
           <SpeechGateView
             gate={speech.gate}
             disclosure={speech.disclosure}
@@ -283,6 +323,7 @@ function MockRun({ courseId, track }: { courseId: string; track: CompiledExamTra
             <DuoButton
               label={t("exam.mock.startSection")}
               variant="primary"
+              disabled={noVoice === null}
               onPress={() => setPhase({ kind: "running", index: phase.index, endsAt: Date.now() + section.minutes * 60_000 })}
               testID="exam-mock-start-section"
             />
@@ -298,8 +339,8 @@ function MockRun({ courseId, track }: { courseId: string; track: CompiledExamTra
       key={section.id}
       definition={definitions[index]}
       targetLanguage={targetLanguage}
-      countdown={{ endsAt: phase.endsAt, onExpire: (controller) => finishSection(index, controller.state.firstResults, controller.state.firstCredits) }}
-      renderFinished={(controller) => <SectionDone onMount={() => finishSection(index, controller.state.firstResults, controller.state.firstCredits)} />}
+      countdown={{ endsAt: phase.endsAt, onExpire: (controller) => finishSection(index, controller.state.firstResults, controller.state.firstCredits, controller.state.skipped) }}
+      renderFinished={(controller) => <SectionDone onMount={() => finishSection(index, controller.state.firstResults, controller.state.firstCredits, controller.state.skipped)} />}
     />
   );
 }

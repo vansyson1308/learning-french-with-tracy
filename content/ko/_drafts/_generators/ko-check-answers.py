@@ -198,7 +198,7 @@ def coverage_rules():
     for kind, table in (("clips", CLIPS), ("readings", READINGS), ("speech", SPEECH), ("writing", WRITING)):
         for rid, r in table.items():
             # A partner clip (ko.clip.ix_*) is used through its scenario, a model clip through its speech item.
-            if r.get("reserved") is True or re.search(r"[._](cp\d|a1cap|pl)_", rid) or rid in models or ".ix_" in rid:
+            if r.get("reserved") is True or r.get("use") == "exam" or re.search(r"[._](cp\d|a1cap|pl)_", rid) or rid in models or ".ix_" in rid:
                 continue
             if rid not in USED[kind]:
                 flag(rid, "layer-unused", f"teaching {kind} record {rid} is used by no lesson")
@@ -470,6 +470,8 @@ for cp in _jsonl("checkpoints").values():
     BANKS["checkpoints"] += [i["exercise"] for i in cp["items"]]
 for stage in _jsonl("placement").values():
     BANKS["placement"] += [i["exercise"] for cl in stage["clusters"] for i in cl["items"]]
+# Session 5: the TOPIK I practice track's items too.
+BANKS["exam"] = [i["exercise"] for t in _jsonl("exam").values() for i in t["items"]]
 SECTION1_BANK = re.compile(r"^ko-(?:cpx|plx)-s1-")
 for bank, exercises in BANKS.items():
     for e in exercises:

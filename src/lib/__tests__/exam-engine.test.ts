@@ -250,6 +250,25 @@ describe("scoring and estimated readiness", () => {
     expect(r.filter((x) => x.correct === null).length).toBe(24);
     expect(scoreExam(TRACK, r).sections.find((s) => s.id === "listening")!.points).toBe(1);
   });
+
+  test("P4e: a device-skipped item is no evidence — left out, never a zero; a section skipped whole is not taken", () => {
+    const ids = sectionItems(TRACK, "listening", "a").map((i) => i.id);
+    // One item skipped (no device voice), one answered right, the rest time-up.
+    const r = itemResultsFor(ids, { [ids[0]]: true }, undefined, { [ids[1]]: true });
+    expect(r.map((x) => x.itemId)).not.toContain(ids[1]);
+    expect(r.length).toBe(ids.length - 1);
+    // Every listening item skipped: the section has no results, so it is not taken and the sitting has no band.
+    const reading = sectionItems(TRACK, "reading", "a").map((i) => i.id);
+    const sitting = [
+      ...itemResultsFor(ids, {}, undefined, Object.fromEntries(ids.map((id) => [id, true]))),
+      ...itemResultsFor(reading, Object.fromEntries(reading.map((id) => [id, true]))),
+    ];
+    const score = scoreExam(TRACK, sitting);
+    expect(score.sections.find((s) => s.id === "listening")!.points).toBeNull();
+    expect(score.sections.find((s) => s.id === "reading")!.points).toBe(score.sections.find((s) => s.id === "reading")!.maxPoints);
+    expect(score.complete).toBe(false);
+    expect(score.band).toBeNull();
+  });
 });
 
 describe("attempts, weak areas and FSRS isolation", () => {

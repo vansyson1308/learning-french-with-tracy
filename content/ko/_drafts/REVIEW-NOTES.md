@@ -125,6 +125,24 @@ is not taught as production, so the stories never end a sentence in it; a real m
 likewise is only "horse". (4) The D-10 pass should read the A2-1 workplace stories (shift change, forklift, visa
 extension, remittance) for the facts they state.
 
+## Session 5 (2026-11-05, paused before promote)
+
+**Coordinator answers.** Register items name their listener (self-check rule 12; 9 lesson fill-ins lost a dictionary-
+form / 반말 distractor, the Section 2 register item names an older colleague). Stories allow 반말 only in dialogue
+lines of a declared relation (parent>child, friends, older>younger) with -아/어, -야/이야, -자, -지, -네, glossed at the
+first occurrence (a11a_call_home: the mother's 13 lines). KNOWN_LIMITATIONS has the 개 / 말 / compound-number lookup
+limits; the compound-number reading in the word sheet was left (not cheap: the sheet shows the lexeme, not the token).
+
+**TOPIK I track** (`ko-exam.py`, data in `ko_topik_la/lb/ra/rb.py`, written by four agents from one brief): 2 disjoint
+forms of 30 listening + 40 reading items (140 items, 60 device-voice clips, 40 readings), `formatFidelity: partial`
+(task types, four options, 100 points a section and two plays are the course's choices), `checkedAgainstOfficialGuide:
+true` for the NIIED regulation only (topik.go.kr cited as not read). Without a Korean voice the mock skips the listening
+section; device-skipped items are left out of the results (engine `itemResultsFor`), so the sitting reports reading
+only and gives no band. Findings on the first run: 1 same-gloss gap item (한 / 일 → 두 against Sino 이 / 삼 / 사).
+
+**Open for the reviewer (TOPIK I).** The agents flagged: la L4 #5 (귀마개를 했어요), la L5 #6 (환불은 가능해요 for 환불해
+주세요), ra R2 (손을 다쳐서 … (   ) 해요: 잘 is wrong by meaning only), rb R2 (노래를 못 불러요 has no 안 option on purpose).
+
 **Open for the reviewer (assessment).** The register items accept only the register asked for, so a select item may
 show 반말 (마셔.) as a wrong option; the dictations are scored by whole text with the no-space spelling as the only
 alternative; pronunciation.batchim_sounds is not sampled by a checkpoint (non-essential; the listening item 딸 / 달 /

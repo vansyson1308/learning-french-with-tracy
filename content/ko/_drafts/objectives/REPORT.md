@@ -1,6 +1,6 @@
 # objectives — ingest report (ko-vi)
 
-Records: 38 · schema-valid: 38 · failed: 0 · validator errors after merge: 0
+Records: 38 · schema-valid: 38 · failed: 0 · validator errors after merge: 1
 
 ## Records
 
@@ -45,7 +45,7 @@ Records: 38 · schema-valid: 38 · failed: 0 · validator errors after merge: 0
 
 ## Validator errors (fix these records and ingest again)
 
-- none
+- attainment: schema validation failed — ENOENT: no such file or directory, open 'C:\src\lft-ko\content\ko\assessment\checkpoints.json'
 
 ## Written
 

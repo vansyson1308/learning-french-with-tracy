@@ -267,8 +267,10 @@ in `OWNER-FINAL-CHECKLIST.md` C asks for a licence review).
    the unscored device voice, self-check rule 9 (decisions 15–19).
 3. ~~**Session 4**~~ done: scenarios, writing endings, the TOPIK I format, checkpoints in 2 forms, placement,
    attainment, 45 stories; `course-draft validate --target ko` at 0 errors (decisions 20–24).
-4. **TOPIK I practice track** (exam/ mock forms, as ja's JLPT N5 track): 2 mock forms in the PBT format recorded in
-   `exam/topik-i-format.json`; device-voice listening (a skipped item is no evidence in the mock either).
+4. ~~**TOPIK I practice track**~~ done in session 5 (paused there): `ko-exam.py` + `ko_topik_*.py`, 2 forms × 70 items;
+   a mock with no Korean voice skips listening and reports reading only. Also session 5: rule 12, story 반말, main
+   (zh-vi) merged, staged registry and Unihan subset rebuilt over main's.
+   **Resume at:** merge origin/main again if PR #67 (ICU-free audio key order) has merged, then promote (below).
 5. **D-10 review** (AI pass, then the owner; REVIEW-NOTES "Open for the reviewer"), promote (rebuild the registry from
    main's, the reception manifest with `stories/story-audio.json`), compile, V8 re-key, claim gate, STATUS. Audio:
    Google route if the owner approves (B2), else the device voice stays.

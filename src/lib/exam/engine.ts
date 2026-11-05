@@ -185,9 +185,19 @@ export function buildExamSectionSession(args: {
   };
 }
 
-/** Item results from a session's first attempts; items never reached (time up) are `null`. */
-export function itemResultsFor(itemIds: readonly string[], firstResults: Record<string, boolean>, firstCredits?: Record<string, number>): AssessmentItemResult[] {
-  return itemIds.map((itemId) => ({
+/**
+ * Item results from a session's first attempts; items never reached (time up) are `null`. An item SKIPPED through the
+ * session's device channel (no device voice for a listening item, no speech recognition; session/reducer.ts skipAllowed:
+ * outside placement only device-dependent steps can be skipped) was never administered: it is left out, so it is no
+ * evidence and never a zero (P4e: a device-voice course without a voice reports reading only).
+ */
+export function itemResultsFor(
+  itemIds: readonly string[],
+  firstResults: Record<string, boolean>,
+  firstCredits?: Record<string, number>,
+  skipped?: Readonly<Record<string, boolean>>
+): AssessmentItemResult[] {
+  return itemIds.filter((itemId) => skipped?.[itemId] !== true).map((itemId) => ({
     itemId,
     correct: firstResults[itemId] === undefined ? null : firstResults[itemId],
     ...(firstResults[itemId] !== undefined && firstCredits?.[itemId] !== undefined ? { credit: firstCredits[itemId] } : {}),

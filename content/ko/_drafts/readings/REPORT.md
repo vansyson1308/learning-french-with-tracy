@@ -1,6 +1,6 @@
 # readings — ingest report (ko-vi)
 
-Records: 29 · schema-valid: 29 · failed: 0 · validator errors after merge: 215
+Records: 69 · schema-valid: 69 · failed: 0 · validator errors after merge: 275
 
 ## Records
 
@@ -33,6 +33,46 @@ Records: 29 · schema-valid: 29 · failed: 0 · validator errors after merge: 21
 - ✅ line 27 `ko.read.a1cap_invite`
 - ✅ line 28 `ko.read.pl_notice_shop`
 - ✅ line 29 `ko.read.pl_message`
+- ✅ line 30 `ko.read.topik_a_r3_01`
+- ✅ line 31 `ko.read.topik_a_r3_02`
+- ✅ line 32 `ko.read.topik_a_r3_03`
+- ✅ line 33 `ko.read.topik_a_r3_04`
+- ✅ line 34 `ko.read.topik_a_r3_05`
+- ✅ line 35 `ko.read.topik_a_r3_06`
+- ✅ line 36 `ko.read.topik_a_r4_01`
+- ✅ line 37 `ko.read.topik_a_r4_02`
+- ✅ line 38 `ko.read.topik_a_r4_03`
+- ✅ line 39 `ko.read.topik_a_r4_04`
+- ✅ line 40 `ko.read.topik_a_r4_05`
+- ✅ line 41 `ko.read.topik_a_r4_06`
+- ✅ line 42 `ko.read.topik_a_r4_07`
+- ✅ line 43 `ko.read.topik_a_r4_08`
+- ✅ line 44 `ko.read.topik_a_r5_01`
+- ✅ line 45 `ko.read.topik_a_r5_02`
+- ✅ line 46 `ko.read.topik_a_r5_03`
+- ✅ line 47 `ko.read.topik_a_r5_04`
+- ✅ line 48 `ko.read.topik_a_r5_05`
+- ✅ line 49 `ko.read.topik_a_r5_06`
+- ✅ line 50 `ko.read.topik_b_r3_01`
+- ✅ line 51 `ko.read.topik_b_r3_02`
+- ✅ line 52 `ko.read.topik_b_r3_03`
+- ✅ line 53 `ko.read.topik_b_r3_04`
+- ✅ line 54 `ko.read.topik_b_r3_05`
+- ✅ line 55 `ko.read.topik_b_r3_06`
+- ✅ line 56 `ko.read.topik_b_r4_01`
+- ✅ line 57 `ko.read.topik_b_r4_02`
+- ✅ line 58 `ko.read.topik_b_r4_03`
+- ✅ line 59 `ko.read.topik_b_r4_04`
+- ✅ line 60 `ko.read.topik_b_r4_05`
+- ✅ line 61 `ko.read.topik_b_r4_06`
+- ✅ line 62 `ko.read.topik_b_r4_07`
+- ✅ line 63 `ko.read.topik_b_r4_08`
+- ✅ line 64 `ko.read.topik_b_r5_01`
+- ✅ line 65 `ko.read.topik_b_r5_02`
+- ✅ line 66 `ko.read.topik_b_r5_03`
+- ✅ line 67 `ko.read.topik_b_r5_04`
+- ✅ line 68 `ko.read.topik_b_r5_05`
+- ✅ line 69 `ko.read.topik_b_r5_06`
 
 ## Validator errors (fix these records and ingest again)
 
@@ -251,6 +291,66 @@ Records: 29 · schema-valid: 29 · failed: 0 · validator errors after merge: 21
 - reception: ko.clip.ix_a1cap_lunch_1: generated asset b5a6c22d001ef6030e2e.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_a1cap_lunch_1_s: generated asset a1c30c27d1f70a23e589.mp3 missing — run the reception-audio generate workflow (P7 §26)
 - reception: ko.clip.ix_a1cap_lunch_end: generated asset f6cf56abb283def844a3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l1_01: generated asset 0fe56e88cd82e3ebdbbb.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l1_02: generated asset 3dda49042c6d930e4c2f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l1_03: generated asset b1b4d3f87038b8e2205a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l1_04: generated asset e5f6de0b32169b4568f8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l1_05: generated asset 87e4756f2e8c04b70864.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l1_06: generated asset f5bd6e70e7cac94c126e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l2_01: generated asset 7dc96861b918e0fd9acd.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l2_02: generated asset b34a2cb0c9d028b1999a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l2_03: generated asset 82a658d6e04fddca912c.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l2_04: generated asset 8b2d26fcaf319b0414d5.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l3_01: generated asset 76ce9fa142824b3fd719.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l3_02: generated asset acb39619b82f2239f817.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l3_03: generated asset b21bd50e31300c6555f8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l3_04: generated asset e09e3abd6ac43f728e87.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l4_01: generated asset 539e04365347f8e58772.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l4_02: generated asset 52fdf17bad3be1499b6b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l4_03: generated asset 9ae20801b497be9ed4f1.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l4_04: generated asset 73c9ba998cb2fa7b1854.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l4_05: generated asset 316dc3fa49bd6a9f9fca.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l4_06: generated asset 2b09fb0f0c2ff05af82e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l4_07: generated asset 7df8b7a6b924053e3037.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l4_08: generated asset 2196da6ded4d1994e242.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l5_01: generated asset 4a6925443d0a3395938a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l5_02: generated asset 620cd7d7203b86c4f1c9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l5_03: generated asset add5dd1ca471693909df.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l5_04: generated asset 0e3c9b6225f5ae1bcd47.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l5_05: generated asset 0b1179e32955b3a7aabf.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l5_06: generated asset 9d7152366979fbf66aeb.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l5_07: generated asset a6c679fd308c3ee3fafc.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_a_l5_08: generated asset 4ee75e83d14b166041a0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l1_01: generated asset a7d7713c302f43515577.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l1_02: generated asset 41015fbb3255dbbd7578.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l1_03: generated asset ccfacff0bfa967e340af.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l1_04: generated asset 02b2d4b5698966354db8.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l1_05: generated asset 95ad6c52f3fe19248ab9.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l1_06: generated asset 0f01d8dd46ee5047040a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l2_01: generated asset 31b6b31a72da478e8f08.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l2_02: generated asset a8c6389ea531c7aff0ed.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l2_03: generated asset d754232297f575a1b82e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l2_04: generated asset 1150ba7207dd704ff68e.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l3_01: generated asset 05063c1ad100e77f52b2.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l3_02: generated asset 4d7d44bebdb7c837ef01.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l3_03: generated asset 76938366e40ba9653593.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l3_04: generated asset 67545064e9cc07b1bc96.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l4_01: generated asset c42e30ae7035a08ed8cc.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l4_02: generated asset 2da3b84c383465884017.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l4_03: generated asset f6c4823388f47a544350.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l4_04: generated asset 02eebdb0d2eb67e72f30.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l4_05: generated asset 07ca551d283535fb55dc.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l4_06: generated asset 07a8f081e2ca76245e13.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l4_07: generated asset 9d14d76dc99c28c10127.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l4_08: generated asset 220030995fb672e89f73.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l5_01: generated asset ad39748f9b604c694eb3.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l5_02: generated asset 9edc456bf8d4ec1260e0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l5_03: generated asset e0e67a390d1204f1d40f.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l5_04: generated asset 995004ee31ef968554d0.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l5_05: generated asset 851e03f2ae6630ea477b.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l5_06: generated asset f639821b54d005606a29.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l5_07: generated asset 93576138685ca141d71a.mp3 missing — run the reception-audio generate workflow (P7 §26)
+- reception: ko.clip.topik_b_l5_08: generated asset 928420434271eae4b59f.mp3 missing — run the reception-audio generate workflow (P7 §26)
 
 ## Written
 

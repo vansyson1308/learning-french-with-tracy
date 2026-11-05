@@ -110,6 +110,8 @@ export type MessageKey =
   | "ex.yourGoal"
   | "exam.clockLabel"
   | "exam.glossTitle"
+  | "exam.listening.noVoice"
+  | "exam.listening.skipSection"
   | "exam.mock.body"
   | "exam.mock.last"
   | "exam.mock.lastIncomplete"
@@ -577,4 +579,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 575;
+export const MESSAGE_KEY_COUNT = 577;

@@ -54,6 +54,10 @@ python -I "$G/ko-scenarios-s6.py" .
 # the self-check reads their items too.
 rm -f "$STAGED/content/ko/assessment/checkpoints.json" "$STAGED/content/ko/assessment/placement.json"
 python -I "$G/ko-assessment.py" .
+# Session 5: the TOPIK I practice track (2 forms in the PBT format of exam/topik-i-format.json); it appends its exam
+# stimuli (use: "exam") to listening and readings, so it runs after the layer generators and before their ingest.
+rm -f "$STAGED/content/ko/exam/topik-i.json"
+python -I "$G/ko-exam.py" .
 # Lessons (session 2): each section's generator writes lessons/parts/<section>.jsonl; the self-check joins them into
 # lessons/OUTPUT.jsonl and stops on an answer key it finds wrong or ambiguous (review/selfcheck.json).
 rm -rf content/ko/_drafts/lessons/parts
@@ -69,6 +73,7 @@ ingest scenarios
 ingest lessons
 ingest checkpoints
 ingest placement
+ingest exam
 # The lessons ingest writes the staged course pack once every lesson has exercises; until then the draft pack is it.
 if ! python -I -c "import json,sys; p=json.load(open('content/ko/_drafts/pack.json',encoding='utf-8')); sys.exit(0 if all(l['exercises'] for s in p['sections'] for u in s['units'] for l in u['lessons']) else 1)"; then
   mkdir -p "$STAGED/content/courses"
