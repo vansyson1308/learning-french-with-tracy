@@ -1419,3 +1419,10 @@ migrations.golden.test.ts alone — the compile manifest was not re-blessed (the
 - compile: new      src/content/writing/zh-writing.json
 - compile: new      lexicon-db:zh-en:zh-en-lexicon-v3-ca3f6322a7ed8dfd.db
 - compile: new      lexicon-db:zh:zh-lexicon-v3-246be96fba151e7d.db
+
+## 2026-11-05 — audio key order without ICU: ja/zh manifest keys now in code-point order (Windows bun ICU ordered 累/红 differently from the Linux runner); fr/en and every Latin-script slice unchanged
+
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/ja-en.ts
+- compile: changed  src/content/audio/ja-vi.ts
+- compile: changed  src/content/audio/zh-vi.ts

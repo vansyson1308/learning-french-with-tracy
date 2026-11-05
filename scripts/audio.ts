@@ -41,6 +41,7 @@ import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScrip
 import { courseRolesFor, loadPacks, readJson } from "./lib/pipeline";
 import { engineLineageVerdict, piperLineageVerdict, registryIdFor, type LineageLink } from "./lib/voice-lineage";
 import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
+import { sortAudioKeys } from "./lib/audio-key-order";
 import { writeAudioSizeReport } from "./lib/audio-size";
 import { lexiconAudioStrings } from "./lib/lexicon-audio";
 import { receptionAssetKey } from "./lib/reception";
@@ -901,7 +902,7 @@ function renderAudioManifest(entries: { key: string; file: string }[]): string {
     "// pinned in content/audio/pack-audio-manifest.json (provenance:",
     "// release/AUDIO_PROVENANCE_FINAL.md). Keys are `<courseId>:<text>`.",
     "export const audioManifest: Record<string, number> = {",
-    ...entries.sort((a, b) => a.key.localeCompare(b.key)).map((e) => `  ${JSON.stringify(e.key)}: require(${JSON.stringify(e.file)}),`),
+    ...sortAudioKeys(entries).map((e) => `  ${JSON.stringify(e.key)}: require(${JSON.stringify(e.file)}),`),
     "};",
   ];
   return `${lines.join("\n")}\n`;
